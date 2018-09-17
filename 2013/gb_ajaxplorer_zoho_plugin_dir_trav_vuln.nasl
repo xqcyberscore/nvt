@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ajaxplorer_zoho_plugin_dir_trav_vuln.nasl 11140 2018-08-28 08:27:23Z jschulte $
+# $Id: gb_ajaxplorer_zoho_plugin_dir_trav_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # AjaXplorer zoho plugin Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803970");
-  script_version("$Revision: 11140 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-6226", "CVE-2013-6227");
   script_bugtraq_id(63647, 63662);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 10:27:23 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-26 12:27:43 +0530 (Tue, 26 Nov 2013)");
   script_name("AjaXplorer zoho plugin Directory Traversal Vulnerability");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation may allow an attacker
   to obtain sensitive information, and upload a malicious PHP script, which could
-  allow the attacker to execute arbitrary PHP code on the affected system.
-
-  Impact Level: System/Application");
+  allow the attacker to execute arbitrary PHP code on the affected system.");
 
   script_tag(name:"affected", value:"AjaXplorer zoho plugin 5.0.3 and probably
   before.");

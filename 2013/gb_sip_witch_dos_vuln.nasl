@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sip_witch_dos_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_sip_witch_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # SIP Witch Denial Of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803457");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-29 15:06:28 +0530 (Fri, 29 Mar 2013)");
   script_name("SIP Witch Denial Of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -43,9 +43,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/525904/30/90/threaded");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to cause
-  denial of service resulting in a loss of availability.
-
-  Impact Level: Application");
+  denial of service resulting in a loss of availability.");
 
   script_tag(name:"affected", value:"SIP Witch 0.7.4 with libosip2-4.0.0");
 

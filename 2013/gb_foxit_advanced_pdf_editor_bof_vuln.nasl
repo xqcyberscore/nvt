@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_advanced_pdf_editor_bof_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_advanced_pdf_editor_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Foxit Advanced PDF Editor Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803304");
-  script_version("$Revision: 11356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 11401 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-01 19:35:22 +0530 (Fri, 01 Feb 2013)");
   script_bugtraq_id(57558);
   script_cve_id("CVE-2013-0107");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("gb_foxit_advanced_pdf_editor_detect_win.nasl");
   script_mandatory_keys("foxit/advanced_editor/win/ver");
   script_tag(name:"impact", value:"Successful exploitation allows an attacker to execute arbitrary code or
-  cause a denial-of-service.
-  Impact Level: System/Application");
+  cause a denial-of-service.");
   script_tag(name:"affected", value:"Foxit Advanced PDF Editor Version 3.x before 3.04");
   script_tag(name:"insight", value:"The flaw caused due to stack buffer overflow, which allow attackers to
   execute arbitrary code via a crafted document containing instructions that

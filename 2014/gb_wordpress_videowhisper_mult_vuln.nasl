@@ -28,12 +28,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804530");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1906", "CVE-2014-1907", "CVE-2014-1905", "CVE-2014-1908");
   script_bugtraq_id(65876, 65877, 65866, 65880);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-01 12:28:38 +0530 (Tue, 01 Apr 2014)");
   script_name("WordPress VideoWhisper Live Streaming Integration Multiple Vulnerabilities");
 
@@ -55,9 +55,7 @@ cookie or not.");
   to rtmp_login.php and rtmp_logout.php scripts.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
 script code in a user's browser session in the context of an affected site and
-read/delete arbitrary files.
-
-Impact Level: Application");
+read/delete arbitrary files.");
   script_tag(name:"affected", value:"WordPress VideoWhisper Live Streaming Integration Plugin version 4.27.3
 and probably prior.");
   script_tag(name:"solution", value:"Upgrade to version 4.29.5 or later,

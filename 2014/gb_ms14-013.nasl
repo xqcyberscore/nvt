@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-013.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms14-013.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft DirectShow Remote Code Execution Vulnerability (2929961)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802068");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0301");
   script_bugtraq_id(66045);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-12 08:12:10 +0530 (Wed, 12 Mar 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft DirectShow Remote Code Execution Vulnerability (2929961)");
@@ -44,9 +44,7 @@ Bulletin MS14-013.");
 or not.");
   script_tag(name:"insight", value:"Flaw is due to an error within DirectShow when parsing JPEG image files.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code and
-cause memory corruption in the context of the current user.
-
-Impact Level: System/Application");
+cause memory corruption in the context of the current user.");
   script_tag(name:"affected", value:"Microsoft Windows XP Service Pack 3 and prior
 Microsoft Windows XP x64 Service Pack 2 and prior
 Microsoft Windows 2003 x32 Pack 3 and prior

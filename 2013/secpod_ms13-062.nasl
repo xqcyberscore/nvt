@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-062.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: secpod_ms13-062.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Windows NAT Driver Denial of Service Vulnerability (2849568)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903317");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3175");
   script_bugtraq_id(61673);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-14 12:08:17 +0530 (Wed, 14 Aug 2013)");
   script_name("Microsoft Windows NAT Driver Denial of Service Vulnerability (2849568)");
   script_tag(name:"summary", value:"This host is missing an important security update according to Microsoft
@@ -53,7 +53,7 @@ Microsoft Windows Vista x32/x64 Service Pack 2 and prior
 Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior
 Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code and
-take complete control of an affected system. Impact Level: System");
+take complete control of an affected system.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

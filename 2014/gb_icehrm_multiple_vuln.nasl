@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icehrm_multiple_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_icehrm_multiple_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # IceHrm Multiple Security Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805032");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_bugtraq_id(71552);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-17 11:48:55 +0530 (Wed, 17 Dec 2014)");
   script_name("IceHrm Multiple Security Vulnerabilities");
 
@@ -71,9 +71,7 @@ if(description)
   potentially allowing the attacker to steal cookie-based authentication
   credentials, upload arbitrary files to the affected application, read and
   write arbitrary files in the context of the user running the affected
-  application, and obtain potentially sensitive information.
-
-  Impact Level: Application");
+  application, and obtain potentially sensitive information.");
 
   script_tag(name:"affected", value:"IceHrm version 7.1 and prior.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2914486.nasl 10957 2018-08-14 13:26:50Z mmartin $
+# $Id: gb_microsoft_security_advisory_2914486.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Windows Kernel Privilege Escalation Vulnerability (2914368)
 #
@@ -30,12 +30,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803971");
-  script_version("$Revision: 10957 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5065");
   script_bugtraq_id(63971);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:26:50 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-02 15:40:48 +0530 (Mon, 02 Dec 2013)");
   script_name("Microsoft Windows Kernel Privilege Escalation Vulnerability (2914368)");
 
@@ -55,9 +55,7 @@ privileges.");
 Microsoft Windows XP x64 Edition Service Pack 2 and prior
 Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior ");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain escalated
-privileges.
-
-Impact Level: System");
+privileges.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/55809");
   script_xref(name:"URL", value:"https://support.microsoft.com/kb/2914368");
   script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms14-002");

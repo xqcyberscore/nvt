@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-060.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: secpod_ms13-060.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Unicode Scripts Processor Remote Code Execution Vulnerability (2850869)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902991");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3181");
   script_bugtraq_id(61697);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-14 09:22:01 +0530 (Wed, 14 Aug 2013)");
   script_name("Microsoft Unicode Scripts Processor Remote Code Execution Vulnerability (2850869)");
   script_tag(name:"summary", value:"This host is missing an critical security update according to
@@ -47,7 +47,7 @@ when processing OpenType fonts.");
   script_tag(name:"affected", value:"Microsoft Windows XP x32/64 Edition Service Pack 3 and prior
 Microsoft Windows 2003 x32/64 Edition Service Pack 2 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-code and or cause memory corruption. Impact Level: System");
+code and or cause memory corruption.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

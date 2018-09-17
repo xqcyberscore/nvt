@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_gif_rem_code_exec_vuln.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_ibm_domino_gif_rem_code_exec_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # IBM Domino GIF Integer Truncation Remote Code Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805543");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-0135");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-04 17:48:30 +0530 (Mon, 04 May 2015)");
   script_name("IBM Domino GIF Integer Truncation Remote Code Execution Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
   crafted GIF files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code on target machine.
-
-  Impact Level: System/Application");
+  attackers to execute arbitrary code on target machine.");
 
   script_tag(name:"affected", value:"IBM Domino 8.5 before 8.5.3 FP6 IF4 and
   9.0 before 9.0.1 FP3 IF2.");

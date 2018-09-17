@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ident_process_owner.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: ident_process_owner.nasl 11399 2018-09-15 07:45:12Z cfischer $
 #
 # Identd scan
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14674");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11399 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 09:45:12 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -122,7 +122,7 @@ for( i = 1; i <= 6 && ! isnull( ports ); i++ ) {
             if( os && ! egrep( string:os, pattern:"^[0-9]+$" ) && ! os_reported ) {
               os = tolower( os );
               if( "windows" >< os || "win32" >< os ) {
-                register_and_report_os( os:"Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, banner:res, port:iport, desc:SCRIPT_DESC, runs_key:"windows" );
+                register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, banner:res, port:iport, desc:SCRIPT_DESC, runs_key:"windows" );
                 os_reported = TRUE;
               } else if( "linux" >< os || "unix" >< os ) {
                 register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, banner:res, port:iport, desc:SCRIPT_DESC, runs_key:"unixoide" );

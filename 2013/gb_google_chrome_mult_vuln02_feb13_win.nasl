@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_feb13_win.nasl 11201 2018-09-03 14:35:07Z cfischer $
+# $Id: gb_google_chrome_mult_vuln02_feb13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-02 Feb2013 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803400");
-  script_version("$Revision: 11201 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0839", "CVE-2013-0840", "CVE-2013-0841", "CVE-2013-0842");
   script_bugtraq_id(57502);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 11:39:40 +0530 (Mon, 04 Feb 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Feb2013 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51935");
@@ -46,8 +46,7 @@ if(description)
   script_mandatory_keys("GoogleChrome/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
   restrictions, execute arbitrary code in the context of the browser or
-  cause a denial of service or possibly have unspecified other impact.
-  Impact Level: System/Application");
+  cause a denial of service or possibly have unspecified other impact.");
   script_tag(name:"affected", value:"Google Chrome versions prior to 24.0.1312.56 on Windows");
   script_tag(name:"insight", value:"Multiple flaws due to
 

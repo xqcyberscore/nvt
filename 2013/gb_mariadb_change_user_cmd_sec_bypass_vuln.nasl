@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_change_user_cmd_sec_bypass_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_mariadb_change_user_cmd_sec_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MariaDB 'COM_CHANGE_USER' Command Insecure Salt Generation Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804037");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-5627");
   script_bugtraq_id(56837);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-06 15:34:28 +0530 (Wed, 06 Nov 2013)");
   script_name("MariaDB 'COM_CHANGE_USER' Command Insecure Salt Generation Security Bypass Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -59,9 +59,7 @@ if(description)
   script_tag(name:"affected", value:"MariaDB versions 5.5.x before 5.5.29, 5.3.x before 5.3.12, and
   5.2.x before 5.2.14 on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to more easily
-  gain access to a user's account via a brute-force attack.
-
-  Impact Level: Application");
+  gain access to a user's account via a brute-force attack.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_symposium_plugin_xss_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_wordpress_symposium_plugin_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WordPress Symposium Plugin XSS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803373");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2695");
   script_bugtraq_id(59044);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-17 17:30:46 +0530 (Wed, 17 Apr 2013)");
   script_name("WordPress Symposium Plugin XSS Vulnerability");
   script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/52864");
@@ -48,8 +48,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML
   and script code, which will be executed in a user's browser session in the
-  context of an affected site.
-  Impact Level: Application");
+  context of an affected site.");
   script_tag(name:"affected", value:"WordPress Symposium Plugin version 13.02 and prior");
   script_tag(name:"insight", value:"The input passed via 'u' parameters to
   'wordpress/wp-content/plugins/wp-symposium/invite.php' script is not

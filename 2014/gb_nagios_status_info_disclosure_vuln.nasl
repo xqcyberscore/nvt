@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_status_info_disclosure_vuln.nasl 10954 2018-08-14 12:43:10Z mmartin $
+# $Id: gb_nagios_status_info_disclosure_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Nagios status.cgi Information Disclosure Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:nagios:nagios";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804247");
-  script_version("$Revision: 10954 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-2214");
   script_bugtraq_id(60814);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-17 18:31:41 +0530 (Mon, 17 Mar 2014)");
   script_name("Nagios status.cgi Information Disclosure Vulnerability");
 
@@ -45,9 +45,7 @@ able to read the string or not.");
   script_tag(name:"insight", value:"The flaw exists in status.cgi which fails to restrict access to all service
 groups");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain sensitive
-information.
-
-Impact Level: Application.");
+information.");
   script_tag(name:"affected", value:"Nagios version 4.0 before 4.0 beta4 and 3.x before 3.5.1.");
   script_tag(name:"solution", value:"Upgrade to version Nagios version 4.0 beta4, 3.5.1 or later.
 For updates refer to http://www.nagios.org");

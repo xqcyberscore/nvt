@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_unspecified_vuln02_aug14_lin.nasl 11189 2018-09-03 11:12:38Z cfischer $
+# $Id: gb_oracle_virtualbox_mult_unspecified_vuln02_aug14_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle VM VirtualBox Multiple Unspecified Vulnerabilities-02 Aug2014 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804695");
-  script_version("$Revision: 11189 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2477", "CVE-2014-2486", "CVE-2014-2488", "CVE-2014-2489");
   script_bugtraq_id(68613, 68618, 68621, 68610);
   script_tag(name:"cvss_base", value:"4.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:12:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-04 11:30:13 +0530 (Mon, 04 Aug 2014)");
   script_name("Oracle VM VirtualBox Multiple Unspecified Vulnerabilities-02 Aug2014 (Linux)");
 
@@ -45,9 +45,7 @@ is vulnerable or not.");
   script_tag(name:"insight", value:"Multiple flaws exists due to unspecified errors related to the 'core'
 subcomponent.");
   script_tag(name:"impact", value:"Successful exploitation will allow local users to affect confidentiality,
-integrity, and availability via unknown vectors.
-
-Impact Level: Application");
+integrity, and availability via unknown vectors.");
   script_tag(name:"affected", value:"Oracle VM VirtualBox before versions 3.2.24, 4.0.26, 4.1.34, 4.2.26, and
 4.3.12");
   script_tag(name:"solution", value:"Apply the patch from below link,

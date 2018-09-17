@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_multiple_vuln.nasl 10741 2018-08-02 14:44:11Z cfischer $
+# $Id: gb_owncloud_multiple_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # ownCloud Cross-Site Scripting and File Upload Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803741");
-  script_version("$Revision: 10741 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-5606", "CVE-2012-5607", "CVE-2012-5608", "CVE-2012-5609", "CVE-2012-5610");
   script_bugtraq_id(56658, 56764);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 16:44:11 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 16:55:36 +0530 (Wed, 21 Aug 2013)");
   script_name("ownCloud Cross-Site Scripting and File Upload Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -69,9 +69,7 @@ if(description)
   script_tag(name:"affected", value:"ownCloud versions before 4.0.9 and 4.5.0, 4.5.x before 4.5.2");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to execute arbitrary HTML
-  or script code or discloses sensitive information resulting in loss of confidentiality.
-
-  Impact Level: Application");
+  or script code or discloses sensitive information resulting in loss of confidentiality.");
 
   script_xref(name:"URL", value:"http://owncloud.org/changelog");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51357");

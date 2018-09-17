@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freenac_mult_xss_n_sql_inj_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_freenac_mult_xss_n_sql_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # FreeNAC Multiple XSS and SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803707");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(53617);
   script_cve_id("CVE-2012-6559", "CVE-2012-6560");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-24 13:19:39 +0530 (Fri, 24 May 2013)");
   script_name("FreeNAC Multiple XSS and SQL Injection Vulnerabilities");
 
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
   arbitrary SQL commands or execute arbitrary HTML or web script in a user's
-  browser session in context of an affected site.
-
-  Impact Level: Application");
+  browser session in context of an affected site.");
   script_tag(name:"affected", value:"FreeNAC version 3.02 and prior");
   script_tag(name:"insight", value:"The application does not validate the 'comment', 'mac',
   'graphtype', 'type', and 'name' parameters upon submission to the stats.php

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pineapp_mailsecure_61477.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_pineapp_mailsecure_61477.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PineApp Mail-SeCure 'test_li_connection.php' Remote Command Injection Vulnerability
 #
@@ -29,7 +29,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103748");
   script_bugtraq_id(61477);
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("PineApp Mail-SeCure 'test_li_connection.php' Remote Command Injection Vulnerability");
@@ -37,7 +37,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61477");
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-13-188/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-06 17:22:24 +0200 (Tue, 06 Aug 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -49,8 +49,7 @@ if (description)
   script_tag(name:"impact", value:"Successful exploits will result in the execution of arbitrary commands
  with root privileges in the context of the affected appliance.
 
- Authentication is not required to exploit this vulnerability.
- Impact Level: System/Application");
+ Authentication is not required to exploit this vulnerability.");
   script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check the response.");
   script_tag(name:"insight", value:"Input to the 'iptest' value is not properly sanitized in
  'test_li_connection.php'");

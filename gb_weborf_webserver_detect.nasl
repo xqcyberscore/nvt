@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weborf_webserver_detect.nasl 11028 2018-08-17 09:26:08Z cfischer $
+# $Id: gb_weborf_webserver_detect.nasl 11418 2018-09-17 05:57:41Z cfischer $
 #
 # Weborf Webserver Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801223");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11028 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11418 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 07:57:41 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-06-11 14:27:58 +0200 (Fri, 11 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Weborf Webserver Version Detection");
@@ -55,10 +55,6 @@ include("host_details.inc");
 SCRIPT_DESC = "Weborf Webserver Version Detection";
 
 port = get_http_port(default:8080);
-if(!port){
- exit(0);
-}
-
 banner = get_http_banner(port:port);
 
 if("Server: Weborf" >< banner)

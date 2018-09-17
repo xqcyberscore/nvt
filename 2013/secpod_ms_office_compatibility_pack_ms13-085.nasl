@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_compatibility_pack_ms13-085.nasl 11077 2018-08-22 09:40:33Z mmartin $
+# $Id: secpod_ms_office_compatibility_pack_ms13-085.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (2885080)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903410");
-  script_version("$Revision: 11077 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3889", "CVE-2013-3890");
   script_bugtraq_id(62829, 62824);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 11:13:35 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (2885080)");
 
@@ -48,9 +48,7 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-085");
 documents can be exploited to cause a memory corruption");
   script_tag(name:"affected", value:"Microsoft Office Compatibility Pack Service Pack 3 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
-code, cause memory corruption and compromise the system.
-
-Impact Level: System/Application ");
+code, cause memory corruption and compromise the system.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

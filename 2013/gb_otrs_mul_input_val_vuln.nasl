@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_mul_input_val_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_otrs_mul_input_val_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # OTRS Multiple Input Validation Vulnerabilities
 #
@@ -28,21 +28,19 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803935");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2005-3893", "CVE-2005-3894", "CVE-2005-3895");
   script_bugtraq_id(15537);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-25 15:32:50 +0530 (Wed, 25 Sep 2013)");
   script_name("OTRS Multiple Input Validation Vulnerabilities");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to steal the victim's
 cookie-based authentication credentials or execute arbitrary SQL commands and
-bypass authentication.
-
-Impact Level: Application");
+bypass authentication.");
   script_tag(name:"vuldetect", value:"Get the installed version of OTRS with the help of detect NVT and check the
 version is vulnerable or not.");
   script_tag(name:"insight", value:"Multiple error exists in the application which fails to validate below user-supplied

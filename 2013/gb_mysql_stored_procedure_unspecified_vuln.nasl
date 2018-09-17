@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_stored_procedure_unspecified_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_mysql_stored_procedure_unspecified_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MySQL Stored Procedure Unspecified Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803483");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2376", "CVE-2013-1511");
   script_bugtraq_id(59227);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-22 18:36:21 +0530 (Mon, 22 Apr 2013)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -40,9 +40,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote
   attackers to affect confidentiality, integrity, and availability via unknown
-  vectors.
-
-  Impact Level: Application");
+  vectors.");
 
   script_tag(name:"affected", value:"MySQL version 5.5.x before 5.5.31 and
   5.6.x before 5.6.11. on Linux");

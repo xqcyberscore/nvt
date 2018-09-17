@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_opmanager_mult_vuln.nasl 11324 2018-09-11 10:42:18Z asteins $
+# $Id: gb_manageengine_opmanager_mult_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # ManageEngine OpManager Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806053");
-  script_version("$Revision: 11324 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-7765", "CVE-2015-7766");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:42:18 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-16 11:10:46 +0530 (Wed, 16 Sep 2015)");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -50,9 +50,7 @@ with default credentials.");
 IntegrationUser/plugin.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute SQL queries on
-the backend PostgreSQL instance with administrator rights and access shell with SYSTEM privileges.
-
-  Impact Level: Application");
+the backend PostgreSQL instance with administrator rights and access shell with SYSTEM privileges.");
 
   script_tag(name:"affected", value:"ManageEngine OpManager versions 11.6 and earlier.");
 

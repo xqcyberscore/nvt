@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln01_jan13_win.nasl 11201 2018-09-03 14:35:07Z cfischer $
+# $Id: gb_opera_mult_vuln01_jan13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Opera Multiple Vulnerabilities-01 Jan13 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803138");
-  script_version("$Revision: 11201 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-6470", "CVE-2012-6471");
   script_bugtraq_id(56788, 56984);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-07 14:00:10 +0530 (Mon, 07 Jan 2013)");
   script_name("Opera Multiple Vulnerabilities-01 Jan13 (Windows)");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1038/");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("gb_opera_detect_portable_win.nasl");
   script_mandatory_keys("Opera/Win/Version");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker crash the browser leading to
-  denial of service, execute the arbitrary code or spoofing the address.
-  Impact Level: System/Application");
+  denial of service, execute the arbitrary code or spoofing the address.");
   script_tag(name:"affected", value:"Opera version before 12.12 on Windows");
   script_tag(name:"insight", value:"- Malformed GIF images could allow execution of arbitrary code.
 

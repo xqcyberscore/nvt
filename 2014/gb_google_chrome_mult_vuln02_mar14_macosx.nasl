@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_mar14_macosx.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_google_chrome_mult_vuln02_mar14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-02 Mar2014 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804340");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1700", "CVE-2014-1701", "CVE-2014-1702", "CVE-2014-1703",
                 "CVE-2014-1704");
   script_bugtraq_id(66120);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-19 13:30:04 +0530 (Wed, 19 Mar 2014)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Mar2014 (Mac OS X)");
 
@@ -60,9 +60,7 @@ vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to disclose potentially
 sensitive information, conduct cross-site scripting attacks, conduct denial of
 service, bypass certain security restrictions and possibly unspecified
-other impacts.
-
-Impact Level: System/Application");
+other impacts.");
   script_tag(name:"affected", value:"Google Chrome version prior to 33.0.1750.149 on Mac OS X.");
   script_tag(name:"solution", value:"Upgrade to Google Chrome 33.0.1750.149 or later,
 For updates refer to http://www.google.com/chrome");

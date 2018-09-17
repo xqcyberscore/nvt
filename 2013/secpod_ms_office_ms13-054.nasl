@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_ms13-054.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: secpod_ms_office_ms13-054.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerability (2848295)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902980");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3129");
   script_bugtraq_id(60978);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-10 11:19:43 +0530 (Wed, 10 Jul 2013)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (2848295)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/54057/");
@@ -49,8 +49,7 @@ if(description)
   script_mandatory_keys("MS/Office/Ver");
   script_require_ports(139, 445);
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code as
-  the logged-on user.
-  Impact Level: System/Application");
+  the logged-on user.");
   script_tag(name:"affected", value:"Microsoft Office 2003 Service Pack 3
   Microsoft Office 2007 Service Pack 2
   Microsoft Office 2010 Service Pack 1");

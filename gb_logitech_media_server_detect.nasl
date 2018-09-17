@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_logitech_media_server_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
+# $Id: gb_logitech_media_server_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # Logitech Media Server Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811877");
-  script_version("$Revision: 10906 $");
+  script_version("$Revision: 11408 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-10-24 17:24:40 +0530 (Tue, 24 Oct 2017)");
   script_name("Logitech Media Server Detection");
   script_tag(name:"summary", value:"Detection of installed version
@@ -47,18 +47,15 @@ if(description)
   script_dependencies("http_version.nasl");
   script_require_ports("Services/www", 9000);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
-
 include("http_func.inc");
-
 include("cpe.inc");
 include("host_details.inc");
 
-if(!logPort = get_http_port(default:9000)){
-  exit(0);
-}
+logPort = get_http_port(default:9000);
 
 banner = get_http_banner(port:logPort);
 if(banner =~ "HTTP/1.. 200 OK" && "Server: Logitech Media Server" >< banner)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_bson_obj_info_disclosure_vuln.nasl 10954 2018-08-14 12:43:10Z mmartin $
+# $Id: gb_mongodb_bson_obj_info_disclosure_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # MongoDB BSON Object Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mongodb:mongodb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804246");
-  script_version("$Revision: 10954 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2012-6619");
   script_bugtraq_id(64687);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-14 18:12:20 +0530 (Fri, 14 Mar 2014)");
   script_name("MongoDB BSON Object Information Disclosure Vulnerability");
 
@@ -49,9 +49,7 @@ if (description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   remote authenticated users to access sensitive information stored in the
-  server process memory.
-
-  Impact Level: Application");
+  server process memory.");
 
   script_tag(name:"affected", value:"MongoDB version prior to 2.3.2 on Windows");
 

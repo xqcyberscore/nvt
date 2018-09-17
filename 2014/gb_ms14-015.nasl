@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-015.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_ms14-015.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Windows Kernel Privilege Escalation Vulnerabilities (2930275)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804409");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0300", "CVE-2014-0323");
   script_bugtraq_id(66003, 66007);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-12 08:24:20 +0530 (Wed, 12 Mar 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows Kernel Privilege Escalation Vulnerabilities (2930275)");
@@ -46,9 +46,7 @@ or not.");
 privilege vulnerabilities exists when the Windows kernel-mode driver improperly
 handles objects in memory.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a DoS (Denial of
-Service) and gain escalated privileges.
-
-Impact Level: System");
+Service) and gain escalated privileges.");
   script_tag(name:"affected", value:"Microsoft Windows 8
 Windows 8.1 x32/x64 Edition
 Microsoft Windows Server 2012

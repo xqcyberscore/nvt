@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_appserv_open_project_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
+# $Id: gb_appserv_open_project_detect.nasl 11407 2018-09-15 11:02:05Z cfischer $
 #
 # AppServ Open Project Version Detection
 #
@@ -28,17 +28,18 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802428");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10908 $");
+  script_version("$Revision: 11407 $");
   script_tag(name:"cvss_base", value:"0.0");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:02:05 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-16 13:02:43 +0530 (Mon, 16 Apr 2012)");
   script_name("AppServ Open Project Version Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
-  script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Detection of AppServ Open Project, a open source web
   server (http://www.appservnetwork.com/?appserv).

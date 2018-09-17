@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_unspecified_vuln_win.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_comodo_unspecified_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Comodo Internet Security Unspecified Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803688");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2010-5185");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-05 15:51:39 +0530 (Fri, 05 Jul 2013)");
   script_name("Comodo Internet Security Unspecified Vulnerability");
   script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/429014.php");
@@ -42,8 +42,7 @@ if(description)
   script_dependencies("gb_comodo_internet_security_detect_win.nasl");
   script_mandatory_keys("Comodo/InternetSecurity/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allow attackers to execute arbitrary code or may
-  cause denial of service condition.
-  Impact Level: System/Application");
+  cause denial of service condition.");
   script_tag(name:"affected", value:"Comodo Internet Security versions before 5.3.174622.1216");
   script_tag(name:"insight", value:"Flaw related to the antivirus component, does not validate the revocation
   status of the X.509 certificates in signed binaries.");

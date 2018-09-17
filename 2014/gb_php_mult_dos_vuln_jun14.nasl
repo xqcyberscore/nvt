@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_dos_vuln_jun14.nasl 10456 2018-07-09 06:10:17Z cfischer $
+# $Id: gb_php_mult_dos_vuln_jun14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # PHP CDF File Parsing Denial of Service Vulnerabilities - 01 - Jun14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804639");
-  script_version("$Revision: 10456 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0237", "CVE-2014-0238");
   script_bugtraq_id(67759, 67765);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-16 10:22:50 +0530 (Mon, 16 Jun 2014)");
   script_name("PHP CDF File Parsing Denial of Service Vulnerabilities - 01 - Jun14");
 
@@ -52,9 +52,7 @@ if(description)
   - An error within the 'cdf_read_property_info' function in src/cdf.c script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
-  service attacks.
-
-  Impact Level: Application");
+  service attacks.");
 
   script_tag(name:"affected", value:"PHP version 5.x before 5.4.29 and 5.5.x before 5.5.13");
 

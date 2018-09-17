@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_web_gateway_dir_trav_vuln.nasl 10954 2018-08-14 12:43:10Z mmartin $
+# $Id: gb_mcafee_web_gateway_dir_trav_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # McAfee Web Gateway Directory Traversal Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:mcafee:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804420");
-  script_version("$Revision: 10954 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2535");
   script_bugtraq_id(66193);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-08 13:16:45 +0530 (Tue, 08 Apr 2014)");
   script_name("McAfee Web Gateway Directory Traversal Vulnerability");
 
@@ -45,9 +45,7 @@ and check the version is vulnerable or not.");
   script_tag(name:"insight", value:"The flaw is due to an error within the MWG web filtering port when processing
 requests.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to disclose potentially sensitive
-information.
-
-Impact Level: Application");
+information.");
   script_tag(name:"affected", value:"McAfee Web Gateway 7.4.x before 7.4.1, 7.3.x before 7.3.2.6, 7.2.0.9 and earlier");
   script_tag(name:"solution", value:"Upgrade to McAfee Web Gateway 7.3.2.6 or 7.4.1 or later,
 For updates refer to http://www.mcafee.com/us/products/web-gateway.aspx");

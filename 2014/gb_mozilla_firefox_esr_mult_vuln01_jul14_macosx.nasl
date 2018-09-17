@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804705");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1533", "CVE-2014-1538", "CVE-2014-1541");
   script_bugtraq_id(67965, 67976, 67979);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-01 15:31:57 +0530 (Tue, 01 Jul 2014)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 July14 (Mac OS X)");
 
@@ -50,9 +50,7 @@ vulnerabilities.");
   within the MIL Animation Controller.
 
   - And some unspecified errors exist.");
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to compromise a user's system.
-
-Impact Level: System/Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to compromise a user's system.");
   script_tag(name:"affected", value:"Mozilla Firefox ESR version 24.x before 24.6 on Mac OS X");
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 24.6 or later,
 For updates refer to http://www.mozilla.com/en-US/firefox/all.html");

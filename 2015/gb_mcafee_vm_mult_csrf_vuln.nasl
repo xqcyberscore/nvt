@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_vm_mult_csrf_vuln.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_mcafee_vm_mult_csrf_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # McAfee Vulnerability Manager Multiple Cross Site Request Forgery Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:vulnerability_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806611");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-7612");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-05 15:43:08 +0530 (Thu, 05 Nov 2015)");
   script_name("McAfee Vulnerability Manager Multiple Cross Site Request Forgery Vulnerabilities");
 
@@ -47,9 +47,7 @@ if(description)
   'Organizations' page in the application.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to conduct cross-site request forgery attacks.
-
-  Impact Level: Application");
+  to conduct cross-site request forgery attacks.");
 
   script_tag(name:"affected", value:"McAfee Vulnerability Manager 7.5.9 and
   earlier.");

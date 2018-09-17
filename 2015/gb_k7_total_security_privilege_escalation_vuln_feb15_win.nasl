@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k7_total_security_privilege_escalation_vuln_feb15_win.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_k7_total_security_privilege_escalation_vuln_feb15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # K7 Total Security Privilege Escalation Vulnerability Feb15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:k7computing:total_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805454");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-9643");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-27 17:11:51 +0530 (Tue, 27 Jan 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("K7 Total Security Privilege Escalation Vulnerability Feb15 (Windows)");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a local
   attacker to write controlled data to any memory location and execute code with
-  kernel-level privileges.
-
-  Impact Level: System");
+  kernel-level privileges.");
 
   script_tag(name:"affected", value:"K7 Total Security before 14.2.0.253
   on Windows.");

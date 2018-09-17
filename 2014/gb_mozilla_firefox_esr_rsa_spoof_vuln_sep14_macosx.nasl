@@ -1,6 +1,6 @@
 #############################################################################/##
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_rsa_spoof_vuln_sep14_macosx.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: gb_mozilla_firefox_esr_rsa_spoof_vuln_sep14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Mozilla Firefox ESR RSA Spoof Vulnerability September14 (Macosx)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804925");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1568");
   script_bugtraq_id(70116);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-30 09:47:58 +0530 (Tue, 30 Sep 2014)");
 
   script_name("Mozilla Firefox ESR RSA Spoof Vulnerability September14 (Macosx)");
@@ -48,9 +48,7 @@ if(description)
   ASN.1 values while parsing RSA signature");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to conduct spoofing attacks.
-
-  Impact Level: Application");
+  to conduct spoofing attacks.");
 
   script_tag(name:"affected", value:"Mozilla Firefox ESR 24.x before 24.8.1 and
   31.x before 31.1.1 on Macosx");

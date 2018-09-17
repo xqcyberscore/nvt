@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-049.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: secpod_ms13-049.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Windows Kernel-Mode Driver Denial of Service Vulnerability (2845690)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902975");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3138");
   script_bugtraq_id(60358);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-12 08:44:19 +0530 (Wed, 12 Jun 2013)");
   script_name("Microsoft Windows Kernel-Mode Driver Denial of Service Vulnerability (2845690)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53741/");
@@ -46,8 +46,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name:"impact", value:"Successful exploitation could allow attackers to cause a denial of service.
-  Impact Level: System");
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to cause a denial of service.");
   script_tag(name:"affected", value:"Microsoft Windows 8
   Microsoft Windows Server 2012
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior

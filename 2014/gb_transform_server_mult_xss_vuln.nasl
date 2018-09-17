@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_transform_server_mult_xss_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_transform_server_mult_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Transform Foundation Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804637");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2577");
   script_bugtraq_id(67810);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-12 12:37:47 +0530 (Thu, 12 Jun 2014)");
   script_name("Transform Foundation Server Multiple Cross Site Scripting Vulnerabilities");
 
@@ -52,9 +52,7 @@ if(description)
   users.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   script code in a user's browser session within the trust relationship
-  between their browser and the server.
-
-  Impact Level: Application");
+  between their browser and the server.");
   script_tag(name:"affected", value:"Transform Foundation Server version 4.3.1 and 5.2");
   script_tag(name:"solution", value:"Apply updates from the below link,
   http://bot24.blogspot.in/2014/06/cve-2014-2577-xss-on-transform.html");

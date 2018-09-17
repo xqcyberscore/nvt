@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_solr_dir_trav_vuln_jan14.nasl 10954 2018-08-14 12:43:10Z mmartin $
+# $Id: secpod_apache_solr_dir_trav_vuln_jan14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Apache Solr Directory Traversal Vulnerability Jan-14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:solr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903508");
-  script_version("$Revision: 10954 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-6397");
   script_bugtraq_id(63935);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-29 16:29:04 +0530 (Wed, 29 Jan 2014)");
   script_name("Apache Solr Directory Traversal Vulnerability Jan-14");
 
@@ -45,9 +45,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to improper verification of resource paths passed to certain
 Solr REST services within the 'SolrResourceLoader' class.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain potentially
-sensitive information.
-
-Impact Level: Application");
+sensitive information.");
   script_tag(name:"affected", value:"Apache Solr before version 4.6");
   script_tag(name:"solution", value:"Upgrade to Apache Solr version 4.6 or later,
 For updates refer to http://lucene.apache.org/solr");

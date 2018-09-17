@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-067.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: gb_ms14-067.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # MS Windows XML Core Services Remote Code Execution Vulnerability (2993958)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804879");
-  script_version("$Revision: 11194 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4118");
   script_bugtraq_id(70957);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 08:20:57 +0530 (Wed, 12 Nov 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("MS Windows XML Core Services Remote Code Execution Vulnerability (2993958)");
@@ -47,9 +47,7 @@ if(description)
   parsing XML content.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to compromise a vulnerable system.
-
-  Impact Level: System");
+  attackers to compromise a vulnerable system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
   Microsoft Windows Vista x32/x64 Service Pack 2 and prior

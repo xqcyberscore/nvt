@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_obj_link_rest_bypass_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_otrs_obj_link_rest_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # OTRS Object Link Restriction Bypass Vulnerability
 #
@@ -28,19 +28,17 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803940");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2625");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-25 18:35:59 +0530 (Wed, 25 Sep 2013)");
   script_name("OTRS Object Link Restriction Bypass Vulnerability");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote authenticated attacker to view
-objects, ticket titles, or edit links to objects.
-
-Impact Level: Application");
+objects, ticket titles, or edit links to objects.");
   script_tag(name:"vuldetect", value:"Get the installed version of OTRS with the help of detect NVT and check the
 version is vulnerable or not.");
   script_tag(name:"insight", value:"An error exists in  object linking mechanism which fails check for access

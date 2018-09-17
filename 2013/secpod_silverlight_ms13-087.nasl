@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_silverlight_ms13-087.nasl 10984 2018-08-15 12:54:14Z mmartin $
+# $Id: secpod_silverlight_ms13-087.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Silverlight Information Disclosure Vulnerability (2890788)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901223");
-  script_version("$Revision: 10984 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3896");
   script_bugtraq_id(62793);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 11:03:47 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Silverlight Information Disclosure Vulnerability (2890788)");
 
@@ -49,9 +49,7 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-087");
 memory.");
   script_tag(name:"affected", value:"Microsoft Silverlight version 5 on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain potentially
-sensitive information.
-
-Impact Level: Application");
+sensitive information.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/55149");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2890788");
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-087");

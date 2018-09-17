@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_mult_vuln_july_win.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_adobe_photoshop_mult_vuln_july_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Adobe Photoshop CC Multiple Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805597");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-3112", "CVE-2015-3111", "CVE-2015-3110", "CVE-2015-3109");
   script_bugtraq_id(75245, 75240, 75243, 75242);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-02 10:41:14 +0530 (Thu, 02 Jul 2015)");
   script_name("Adobe Photoshop CC Multiple Vulnerabilities (Windows)");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct denial-of-service attacks and take complete control of the
-  affected system.
-
-  Impact Level: System/Application");
+  affected system.");
 
   script_tag(name:"affected", value:"Adobe Photoshop CC before version 16.0
   on Windows.");

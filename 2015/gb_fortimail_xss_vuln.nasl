@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortimail_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_fortimail_xss_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # FortiMail Stored Cross Site Scripting Vulnerability - June 2015
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:fortinet:fortimail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805646");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2014-8617");
   script_bugtraq_id(72820);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-08 11:54:11 +0530 (Mon, 08 Jun 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("FortiMail Stored Cross Site Scripting Vulnerability - June 2015");
@@ -51,9 +51,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow a
   remote attacker to create a specially crafted request that would execute
   arbitrary script code in a user's browser session within the trust
-  relationship between their browser and the server.
-
-  Impact Level: Application");
+  relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"Fortinet FortiMail versions before 4.3.9,
   5.0.x before 5.0.8, 5.1.x before 5.1.5, and 5.2.x before 5.2.3.");

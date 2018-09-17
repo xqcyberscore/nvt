@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_lotuscms_php_code_exec_vuln.nasl 11041 2018-08-17 14:03:47Z mmartin $
+# $Id: secpod_lotuscms_php_code_exec_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # LotusCMS PHP Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903312");
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(52349);
   script_cve_id("CVE-2011-0518");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-27 14:55:42 +0530 (Thu, 27 Jun 2013)");
   script_name("LotusCMS PHP Code Execution Vulnerability");
 
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain
   some sensitive information or execute arbitrary code on the vulnerable Web
-  server.
-
-  Impact Level: Application");
+  server.");
   script_tag(name:"affected", value:"LotusCMS version 3.03, 3.04 and other versions may also be
   affected.");
   script_tag(name:"insight", value:"Input passed via the 'req' and 'page' parameters to index.php is

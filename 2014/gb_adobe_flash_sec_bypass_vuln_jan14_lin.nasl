@@ -29,24 +29,21 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804065");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0491", "CVE-2014-0492");
   script_bugtraq_id(64807, 64810);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 11:10:22 +0530 (Tue, 21 Jan 2014)");
   script_name("Adobe Flash Player Security Bypass Vulnerability Jan14 (Linux)");
-
 
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to security bypass
 vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaw is due to an unspecified error and other additional weakness.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to, bypass certain security
-restrictions and disclose certain memory informations.
-
-Impact Level: System/Application");
+restrictions and disclose certain memory information.");
   script_tag(name:"affected", value:"Adobe Flash Player version before 11.2.202.335 on Linux.");
   script_tag(name:"solution", value:"Update to Adobe Flash Player version 11.2.202.335 or later,
 For updates refer to  http://get.adobe.com/flashplayer");

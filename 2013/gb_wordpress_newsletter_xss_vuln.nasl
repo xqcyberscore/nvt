@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_newsletter_xss_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_wordpress_newsletter_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WordPress NewsLetter Plugin Cross Site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803493");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-16 15:45:07 +0530 (Thu, 16 May 2013)");
   script_name("WordPress NewsLetter Plugin Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53398");
@@ -47,9 +47,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML
   and script code, which will be executed in a user's browser session in the
-  context of an affected site.
-
-  Impact Level: Application");
+  context of an affected site.");
   script_tag(name:"affected", value:"Wordpress Newsletter Plugin 3.2.6 and prior");
   script_tag(name:"insight", value:"The input passed via 'alert' parameters to
   '/wp-content/plugins/newsletter/subscription/page.php' script is

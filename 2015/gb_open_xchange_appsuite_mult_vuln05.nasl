@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_mult_vuln05.nasl 11220 2018-09-04 11:57:09Z mmartin $
+# $Id: gb_open_xchange_appsuite_mult_vuln05.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # Open-Xchange (OX) AppSuite Multiple Vulnerabilities -05 Nov15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806524");
-  script_version("$Revision: 11220 $");
+  script_version("$Revision: 11422 $");
   script_cve_id("CVE-2013-6074", "CVE-2013-6241");
   script_bugtraq_id(63565);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-02 10:34:36 +0530 (Mon, 02 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Multiple Vulnerabilities -05 Nov15");
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject arbitrary web script or HTML and to obtain sensitive
-  information .
-
-  Impact Level: Application");
+  information .");
 
   script_tag(name:"affected", value:"Open-Xchange (OX) AppSuite versions
   7.2.x before 7.2.2-rev25 and 7.4.x before 7.4.0-rev14.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_mar13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_google_chrome_mult_vuln02_mar13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-02 March 2013 (Windows)
 #
@@ -28,8 +28,7 @@ if(description)
 {
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code
   with higher privileges, corrupt memory, processing of databases outside
-  a restricted origin path.
-  Impact Level: System/Application");
+  a restricted origin path.");
   script_tag(name:"affected", value:"Google Chrome versions prior to 25.0.1364.152 on Windows");
   script_tag(name:"insight", value:"Multiple flaws due to,
 
@@ -49,14 +48,14 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   script_oid("1.3.6.1.4.1.25623.1.0.803432");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0902", "CVE-2013-0903", "CVE-2013-0904", "CVE-2013-0905",
                 "CVE-2013-0906", "CVE-2013-0907", "CVE-2013-0908", "CVE-2013-0909",
                 "CVE-2013-0910", "CVE-2013-0911");
   script_bugtraq_id(58291);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 13:55:17 +0530 (Mon, 11 Mar 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

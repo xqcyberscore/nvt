@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804309");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-06 21:04:07 +0530 (Thu, 06 Feb 2014)");
   script_name("Shadowbox Local file Inclusion Vulnerability");
 
@@ -41,9 +41,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to improper validation of user supplied input to 'play'
   parameter.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain sensitive
-  information.
-
-  Impact Level: Application");
+  information.");
   script_tag(name:"affected", value:"Shadowbox version 3.0.3 and probably prior");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.
@@ -84,7 +82,6 @@ foreach dir (make_list_unique("/", "/media", "/shadowbox", cgi_dirs(port:boxPort
 
   foreach file (keys(files))
   {
-    ## Constuct exploit
     url = string(dir + "/plugins/system/shadowbox/min/index.php?g=sb&ad=base&" +
           "lan=en&play=" , crap(data:"..%2f",length:5*15), files[file], "%00");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_code_exec_vuln_jan15_win.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_adobe_flash_player_code_exec_vuln_jan15_win.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # Adobe Flash Player Unspecified Code Execution Vulnerability - Jan15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805259");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11422 $");
   script_cve_id("CVE-2015-0311", "CVE-2015-0312");
   script_bugtraq_id(72283, 72343);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-27 16:33:53 +0530 (Tue, 27 Jan 2015)");
   script_name("Adobe Flash Player Unspecified Code Execution Vulnerability - Jan15 (Windows)");
 
@@ -48,9 +48,7 @@ if(description)
   properly validated.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  remote attackers to compromise a user's system.
-
-  Impact Level: System/Application.");
+  remote attackers to compromise a user's system.");
 
   script_tag(name:"affected", value:"Adobe Flash Player version 13.x through
   13.0.0.262 and 14.x, 15.x, and 16.x through 16.0.0.287 on Windows.");

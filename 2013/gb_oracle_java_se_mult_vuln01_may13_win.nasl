@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln01_may13_win.nasl 11011 2018-08-16 14:14:31Z mmartin $
+# $Id: gb_oracle_java_se_mult_vuln01_may13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Oracle Java SE Multiple Vulnerabilities -01 May 13 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803486");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2440", "CVE-2013-2435", "CVE-2013-2433", "CVE-2013-2418",
                 "CVE-2013-2422", "CVE-2013-1558", "CVE-2013-1540", "CVE-2013-1563");
   script_bugtraq_id(59124, 59089, 59220, 59145, 59228, 59219, 59149, 59208);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-06 16:37:14 +0530 (Mon, 06 May 2013)");
   script_name("Oracle Java SE Multiple Vulnerabilities -01 May 13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53008");
@@ -46,8 +46,7 @@ if(description)
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to affect confidentiality,
   integrity, and availability via unknown vectors. Attackers can even execute
-  arbitrary code on the target system.
-  Impact Level: System/Application");
+  arbitrary code on the target system.");
   script_tag(name:"affected", value:"Oracle Java SE Version 7 Update 17 and earlier and 6 Update 43 and earlier");
   script_tag(name:"insight", value:"Multiple flaws due to unspecified errors in the Deployment, Libraries,
   Install and Beans components.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_google_document_embedder_sql_inj_vuln.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_wp_google_document_embedder_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Wordpress Google Document Embedder SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805107");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-28 11:35:28 +0530 (Fri, 28 Nov 2014)");
   script_name("Wordpress Google Document Embedder SQL Injection Vulnerability");
   script_cve_id("CVE-2014-9173");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to manipulate SQL queries in the backend database, and disclose certain
-  sensitive information.
-
-  Impact Level: Application");
+  sensitive information.");
 
   script_tag(name:"affected", value:"WordPress Google Doc Embedder Plugin
   version 2.5.14, prior may also be affected.");

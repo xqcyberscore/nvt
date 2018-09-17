@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_products_bof_vuln.nasl 11186 2018-09-03 09:12:42Z mmartin $
+# $Id: gb_panda_products_bof_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Panda Security Products av_pro Heap Based Buffer Overflow Sept14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:pandasecurity:panda_av_pro_2014";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804905");
-  script_version("$Revision: 11186 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-5307");
   script_bugtraq_id(69293);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-22 16:48:04 +0530 (Mon, 22 Sep 2014)");
 
   script_name("Panda Security Products av_pro Heap Based Buffer Overflow Sept14");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to cause a heap-based buffer overflow by sending a specially crafted IOCTL request
-  and execute arbitrary code on the system with kernel-level privileges.
-
-  Impact Level: System/Application");
+  and execute arbitrary code on the system with kernel-level privileges.");
 
   script_tag(name:"affected", value:"Panda Antivirus Pro 2014 13.01.01");
 

@@ -28,12 +28,12 @@ CPE = "cpe:/a:openwebanalytics:open_web_analytics";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803795");
-  script_version("$Revision: 10955 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1206");
   script_bugtraq_id(64774);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:55:20 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 13:34:38 +0530 (Tue, 21 Jan 2014)");
   script_name("Open Web Analytics 'owa_email_address' SQL Injection Vulnerability");
 
@@ -48,9 +48,7 @@ is possible.");
 a SQL query.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to manipulate SQL queries
 in the back-end database, allowing for the manipulation or disclosure
-of arbitrary data.
-
-Impact Level: Application");
+of arbitrary data.");
   script_tag(name:"affected", value:"Open Web Analytics version 1.5.4 and prior.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"solution", value:"Upgrade to Open Web Analytics 1.5.5 or later,

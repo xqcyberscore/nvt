@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_soplanning_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
+# $Id: gb_soplanning_detect.nasl 11396 2018-09-14 16:36:30Z cfischer $
 #
 # Simple Online Planning Version Detection
 #
@@ -24,15 +24,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112034");
-  script_version("$Revision: 8137 $");
+  script_version("$Revision: 11396 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-14 18:36:30 +0200 (Fri, 14 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-09-04 12:33:04 +0200 (Mon, 04 Sep 2017)");
   script_name("Simple Online Planning Version Detection");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("http_version.nasl", "find_service.nasl");
+  script_require_ports("Services/www", 80, 443);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"summary", value:"Detection of installed version
   of Simple Online Planning.
 
@@ -41,12 +48,6 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_family("Product detection");
-  script_dependencies("http_version.nasl", "find_service.nasl");
-  script_require_ports("Services/www", 80, 443);
-  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
 
@@ -57,12 +58,12 @@ include("host_details.inc");
 
 port = get_http_port(default:80);
 
-foreach dir(make_list_unique("/", "/SOPlanning/www/", cgi_dirs(port:port))) {
+foreach dir(make_list_unique("/", "/SOPlanning/www", cgi_dirs(port:port))) {
 
   install = dir;
   if( dir == "/" ) dir = "";
 
-  rcvRes = http_get_cache(port:port, item:dir+"/");
+  rcvRes = http_get_cache(port:port, item:dir + "/");
 
   if (rcvRes =~ "^HTTP/1\.[01] 200" && ('<title>SoPlanning</title>' >< rcvRes
       || '<span class="soplanning_index_title2">Simple Online Planning</span>' >< rcvRes

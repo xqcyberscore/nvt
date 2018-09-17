@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_info_disc_vuln_dec13.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_mediawiki_info_disc_vuln_dec13.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MediaWiki Information Disclosure Vulnerabilities-Dec13
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804166");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(62215, 62434);
   script_cve_id("CVE-2013-4302", "CVE-2013-4301");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-17 09:57:37 +0530 (Tue, 17 Dec 2013)");
   script_name("MediaWiki Information Disclosure Vulnerabilities-Dec13");
 
@@ -60,9 +60,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain CSRF tokens,
   bypass the cross-site request forgery (CSRF) protection mechanism and gain
-  knowledge on sensitive directories on the remote web server via requests.
-
-  Impact Level: Application");
+  knowledge on sensitive directories on the remote web server via requests.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/54715");
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2013/q3/553");

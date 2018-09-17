@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln01_jan13_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_adobe_acrobat_mult_vuln01_jan13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe Acrobat Multiple Vulnerabilities -01 Jan 13 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803434");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-1530", "CVE-2013-0601", "CVE-2013-0602", "CVE-2013-0603",
                 "CVE-2013-0604", "CVE-2013-0605", "CVE-2013-0606", "CVE-2013-0607",
                 "CVE-2013-0608", "CVE-2013-0609", "CVE-2013-0610", "CVE-2013-0611",
@@ -42,7 +42,7 @@ if(description)
                     57294, 57275, 57276, 57270, 57295, 57277, 57296, 57285, 57297, 65275);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-12 19:05:12 +0530 (Tue, 12 Mar 2013)");
   script_name("Adobe Acrobat Multiple Vulnerabilities -01 Jan 13 (Windows)");
 
@@ -52,9 +52,7 @@ vulnerabilities.");
   script_tag(name:"insight", value:"For more details about the vulnerabilities refer the reference section.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
 restrictions, execute arbitrary code in the context of the affected
-application or cause a denial of service.
-
-Impact Level: System/Application");
+application or cause a denial of service.");
   script_tag(name:"affected", value:"Adobe Acrobat versions 9.x to 9.5.2, 10.x to 10.1.4 and 11.0.0 on Windows");
   script_tag(name:"solution", value:"Upgrade to Adobe Acrobat version 9.5.3 or 10.1.5 or 11.0.1 or later,
 For updates refer to http://www.adobe.com");

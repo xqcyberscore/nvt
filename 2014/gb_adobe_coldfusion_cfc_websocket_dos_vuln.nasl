@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_cfc_websocket_dos_vuln.nasl 10953 2018-08-14 12:06:42Z mmartin $
+# $Id: gb_adobe_coldfusion_cfc_websocket_dos_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe ColdFusion Components (CFC) Denial Of Service Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804443");
-  script_version("$Revision: 10953 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-3350");
   script_bugtraq_id(61042);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 15:14:38 +0530 (Tue, 06 May 2014)");
   script_name("Adobe ColdFusion Components (CFC) Denial Of Service Vulnerability");
 
@@ -45,9 +45,7 @@ check the version is vulnerable or not.");
   script_tag(name:"insight", value:"The flaw is due to an error in ColdFusion Components (CFC) public methods
 which can be accessed via WebSockets.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of service
-conditions.
-
-Impact Level: Application");
+conditions.");
   script_tag(name:"affected", value:"Adobe ColdFusion 10 before Update 11");
   script_tag(name:"solution", value:"Upgrade to Adobe ColdFusion 10 Update 11 or later,
 https://www.adobe.com/cfusion/tdrc/index.cfm?product=coldfusion");

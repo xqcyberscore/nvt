@@ -27,20 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804056");
-  script_version("$Revision: 11107 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-9347", "CVE-2014-9440");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 15:51:14 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-03 13:15:19 +0530 (Fri, 03 Jan 2014)");
   script_name("phpMyRecipes Multiple Vulnerabilities");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   HTML or script code, inject or manipulate SQL queries in the back-end
   database, allowing for the manipulation or disclosure of arbitrary data
-  and conduct other attacks.
-
-  Impact Level: Application");
+  and conduct other attacks.");
 
   script_tag(name:"affected", value:"phpMyRecipes version 1.x.x");
 

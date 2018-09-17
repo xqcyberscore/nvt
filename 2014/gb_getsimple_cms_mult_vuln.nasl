@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_getsimple_cms_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_getsimple_cms_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # GetSimple CMS Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:getsimple:getsimple";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804225");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2012-6621", "CVE-2013-7243");
   script_bugtraq_id(53501);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 17:46:37 +0530 (Tue, 21 Jan 2014)");
   script_name("GetSimple CMS Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -60,9 +60,7 @@ if(description)
   'Display name', 'Email Address' fields");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject HTML code or
-  steal the victim's cookie-based authentication credentials.
-
-  Impact Level: Application");
+  steal the victim's cookie-based authentication credentials.");
 
   script_tag(name:"affected", value:"GetSimple CMS 3.1, 3.1.2, 3.2.3, Other versions may also be affected.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");

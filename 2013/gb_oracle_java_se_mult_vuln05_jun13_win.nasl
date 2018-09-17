@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln05_jun13_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_oracle_java_se_mult_vuln05_jun13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Oracle Java SE Multiple Vulnerabilities -05 June 13 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803823");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2467");
   script_bugtraq_id(60649);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 18:12:09 +0530 (Mon, 24 Jun 2013)");
   script_name("Oracle Java SE Multiple Vulnerabilities -05 June 13 (Windows)");
 
@@ -46,8 +46,7 @@ if(description)
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to affect confidentiality,
   integrity, and availability via unknown vectors. Attackers can even execute
-  arbitrary code on the target system.
-  Impact Level: System/Application");
+  arbitrary code on the target system.");
   script_tag(name:"affected", value:"Oracle Java SE Version 5.0 Update 45 and earlier");
   script_tag(name:"insight", value:"Flaws are due to unspecified errors related to Java Installer.");
   script_tag(name:"summary", value:"This host is installed with Oracle Java SE and is prone to

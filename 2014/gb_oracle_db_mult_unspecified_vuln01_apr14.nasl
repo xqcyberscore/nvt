@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_mult_unspecified_vuln01_apr14.nasl 11207 2018-09-04 07:22:57Z mmartin $
+# $Id: gb_oracle_db_mult_unspecified_vuln01_apr14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle Database Server Multiple Unspecified Vulnerabilities-01 April2014
 #
@@ -28,13 +28,13 @@ CPE = 'cpe:/a:oracle:database_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804432");
-  script_version("$Revision: 11207 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2406", "CVE-2014-2408");
   script_bugtraq_id(66889, 66884);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 09:22:57 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-18 12:12:27 +0530 (Fri, 18 Apr 2014)");
   script_name("Oracle Database Server Multiple Unspecified Vulnerabilities-01 April2014");
 
@@ -47,9 +47,7 @@ vulnerable or not.");
 available at this moment.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to disclose sensitive
 information, manipulate certain data, and compromise a vulnerable
-system.
-
-Impact Level: System/Application");
+system.");
   script_tag(name:"affected", value:"Oracle Database Server 11.1.0.7, 11.2.0.3, 11.2.0.4, and 12.1.0.1");
   script_tag(name:"solution", value:"Apply patches from below link,
 http://www.oracle.com/technetwork/topics/security/cpuapr2014-1972952.html

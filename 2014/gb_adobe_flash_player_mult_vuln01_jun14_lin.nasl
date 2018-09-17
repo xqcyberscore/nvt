@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_jun14_lin.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_adobe_flash_player_mult_vuln01_jun14_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities-01 June14 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804647");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0531", "CVE-2014-0532", "CVE-2014-0533", "CVE-2014-0534",
                 "CVE-2014-0535", "CVE-2014-0536");
   script_bugtraq_id(67962, 67973, 67974, 67963, 67970, 67961);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-19 12:50:33 +0530 (Thu, 19 Jun 2014)");
   script_name("Adobe Flash Player Multiple Vulnerabilities-01 June14 (Linux)");
 
@@ -55,9 +55,7 @@ the user.
   - Another unspecified error can be exploited to bypass certain security
 restrictions.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct cross-site scripting
-attacks, bypass certain security restrictions, and compromise a user's system.
-
-Impact Level: System/Application");
+attacks, bypass certain security restrictions, and compromise a user's system.");
   script_tag(name:"affected", value:"Adobe Flash Player before version 11.2.202.378 on Linux.");
   script_tag(name:"solution", value:"Update to Adobe Flash Player version 11.2.202.378 or later
 For updates refer to  http://get.adobe.com/flashplayer");

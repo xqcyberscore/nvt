@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avtech_dvr_multiple_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_avtech_dvr_multiple_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # AVTECH DVR Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803768");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4980", "CVE-2013-4981", "CVE-2013-4982");
   script_bugtraq_id(62035, 62037, 62033);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-07 16:31:24 +0530 (Mon, 07 Oct 2013)");
   script_name("AVTECH DVR Multiple Vulnerabilities");
 
@@ -57,9 +57,7 @@ features, remove the product or replace the product by another one.");
   script_tag(name:"affected", value:"DVR 4CH H.264 (AVTECH AVN801) firmware 1017-1003-1009-1003");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to bypass CAPTCHA
 requests, cause a buffer overflow resulting in a denial of service or
-potentially allowing the execution of arbitrary code.
-
-Impact Level: System/Application");
+potentially allowing the execution of arbitrary code.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/27942");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Aug/284");

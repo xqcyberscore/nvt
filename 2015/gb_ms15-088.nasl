@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-088.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_ms15-088.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # MS Windows Command Line Parameter Information Disclosure Vulnerability (3082458)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806012");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2423");
   script_bugtraq_id(76202);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 08:30:53 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Command Line Parameter Information Disclosure Vulnerability (3082458)");
@@ -47,9 +47,7 @@ if(description)
   restrictions on files stored on an affected system.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a local
-  attacker to obtain sensitive information that may aid in further attacks.
-
-  Impact Level: System");
+  attacker to obtain sensitive information that may aid in further attacks.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows 8.1 x32/x64

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aastra_ip_telephone_telnet_sec_bypass_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_aastra_ip_telephone_telnet_sec_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Aastra IP Telephone Hardcoded Telnet Password Security Bypass Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803190");
-  script_version("$Revision: 9984 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-09 15:08:24 +0530 (Tue, 09 Apr 2013)");
   script_name("Aastra IP Telephone Hardcoded Telnet Password Security Bypass Vulnerability");
 
@@ -52,9 +52,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running Aastra IP Telephone and is prone to
   security bypass vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to access the device
-  and gain privileged access.
-
-  Impact Level: Application");
+  and gain privileged access.");
   script_tag(name:"affected", value:"Aastra 6753i IP Telephone");
 
   script_tag(name:"solution_type", value:"VendorFix");

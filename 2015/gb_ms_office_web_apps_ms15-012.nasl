@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms15-012.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_ms_office_web_apps_ms15-012.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Office Web Apps Remote Code Execution Vulnerability (3032328)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805048");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0064");
   script_bugtraq_id(72463);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 12:20:06 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft Office Web Apps Remote Code Execution Vulnerability (3032328)");
 
@@ -49,9 +49,7 @@ if(description)
   objects in memory while parsing specially crafted Office files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code on the affected system.
-
-  Impact Level: System/Application");
+  attackers to execute arbitrary code on the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Web Applications 2010 Service Pack 2 and prior.");
 

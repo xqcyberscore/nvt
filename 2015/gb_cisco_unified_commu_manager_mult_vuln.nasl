@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_unified_commu_manager_mult_vuln.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_cisco_unified_commu_manager_mult_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Cisco Unified Communications Manager Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:cisco:unified_communications_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805097");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-24 17:37:08 +0530 (Mon, 24 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Cisco Unified Communications Manager Multiple Vulnerabilities");
@@ -65,9 +65,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to spawn a shell running as the user 'admin', enumerate the internal
-  network, view the contents of any locally accessible files on the web server
-
-  Impact Level: Application");
+  network, view the contents of any locally accessible files on the web server.");
 
   script_tag(name:"affected", value:"Cisco Unified Communications Manager 9.x < 9.2,
   10.x < 10.5.2, 11.x < 11.0.1 ");

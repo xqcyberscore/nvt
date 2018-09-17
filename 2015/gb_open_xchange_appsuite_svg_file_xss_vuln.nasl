@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_svg_file_xss_vuln.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_open_xchange_appsuite_svg_file_xss_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Open-Xchange (OX) AppSuite SVG File Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806076");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-1679");
   script_bugtraq_id(65500);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-07 10:16:00 +0530 (Wed, 07 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite SVG File Cross Site Scripting Vulnerability");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to inject arbitrary web script or HTML leading to session hijacking or
-  triggering unwanted actions via the web interface.
-
-  Impact Level: Application");
+  triggering unwanted actions via the web interface.");
 
   script_tag(name:"affected", value:"Open-Xchange (OX) AppSuite versins before
   7.2.2-rev31, 7.4.0 before 7.4.0-rev27, and 7.4.1 before 7.4.1-rev17");

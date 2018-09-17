@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2871997.nasl 10904 2018-08-10 14:24:40Z mmartin $
+# $Id: gb_microsoft_security_advisory_2871997.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Update to Improve Credentials Protection and Management (2871997)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804453");
-  script_version("$Revision: 10904 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0292");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-15 13:07:18 +0530 (Thu, 15 May 2014)");
   script_name("Update to Improve Credentials Protection and Management (2871997)");
 
@@ -43,9 +43,7 @@ or not.");
   script_tag(name:"insight", value:"This improves credential protection and domain authentication controls
 to reduce credential theft");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass the security
-restrictions.
-
-Impact Level: System/Application");
+restrictions.");
   script_tag(name:"affected", value:"Microsoft Windows Server 2012
 Microsoft Windows 8 for 32/64-bit Systems
 Microsoft Windows 7 for 32/x64-bit Systems Service Pack 1

@@ -28,12 +28,12 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804154");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5607");
   script_bugtraq_id(63802);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-26 09:47:20 +0530 (Tue, 26 Nov 2013)");
   script_name("Mozilla Firefox ESR Integer Overflow Vulnerability-01 Nov13 (Mac OS X)");
 
@@ -48,9 +48,7 @@ in Mozilla Netscape Portable Runtime (NSPR).");
   script_tag(name:"affected", value:"Mozilla Firefox ESR version 17.x before 17.0.11 and 24.x before 24.1.1 on
 Mac OS X");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
-service (application crash) or possibly have unspecified other impact.
-
-Impact Level: Application.");
+service (application crash) or possibly have unspecified other impact.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 

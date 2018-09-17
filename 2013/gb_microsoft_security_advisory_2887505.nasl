@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2887505.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_microsoft_security_advisory_2887505.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (2879017)
 #
@@ -28,14 +28,14 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804004");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3871", "CVE-2013-3872", "CVE-2013-3873", "CVE-2013-3874",
                 "CVE-2013-3875", "CVE-2013-3882", "CVE-2013-3885", "CVE-2013-3886",
                 "CVE-2013-3893", "CVE-2013-3897");
   script_bugtraq_id(62802, 62803, 62804, 62805, 62806, 62808, 62809, 62810, 62453, 62811);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-23 13:37:15 +0530 (Mon, 23 Sep 2013)");
   script_name("Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (2879017)");
 
@@ -59,9 +59,7 @@ http://technet.microsoft.com/en-us/security/bulletin/ms13-080");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x/10.x
 Microsoft Internet Explorer version 11.x on Windows 8.1");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to corrupt memory by the
-execution of arbitrary code in the context of the current user.
-
-Impact Level: System/Application");
+execution of arbitrary code in the context of the current user.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/54884");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2879017");

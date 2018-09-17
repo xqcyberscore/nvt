@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_denial_of_service_nov14.nasl 10456 2018-07-09 06:10:17Z cfischer $
+# $Id: gb_php_denial_of_service_nov14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # PHP 'donate' function Denial of Service Vulnerability - Nov14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804884");
-  script_version("$Revision: 10456 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3710");
   script_bugtraq_id(70807);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-17 12:25:37 +0530 (Mon, 17 Nov 2014)");
   script_name("PHP 'donate' function Denial of Service Vulnerability - Nov14");
 
@@ -47,9 +47,7 @@ if(description)
   read error in the 'donote' function in readelf.c script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a local
-  attacker to conduct a denial of service attack.
-
-  Impact Level: Application");
+  attacker to conduct a denial of service attack.");
 
   script_tag(name:"affected", value:"PHP versions 5.4.x before 5.4.35,
   5.5.x before 5.5.19 and 5.6.x before 5.6.3");

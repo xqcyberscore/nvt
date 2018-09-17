@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_mult_vuln01_aug13.nasl 11011 2018-08-16 14:14:31Z mmartin $
+# $Id: gb_mcafee_epolicy_orchestrator_mult_vuln01_aug13.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # McAfee ePolicy Orchestrator (ePO) Multiple Vulnerabilities-01 August13
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:mcafee:epolicy_orchestrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803864");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0140", "CVE-2013-0141");
   script_bugtraq_id(59500, 59505);
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-09 14:52:18 +0530 (Fri, 09 Aug 2013)");
   script_name("McAfee ePolicy Orchestrator (ePO) Multiple Vulnerabilities-01 August13");
 
@@ -51,7 +51,7 @@ directory traversal style (e.g., ../../).");
   script_tag(name:"affected", value:"McAfee ePolicy Orchestrator (ePO) version before 4.5.7 and 4.6.x before 4.6.6");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject or manipulate
 SQL queries in the back-end database, allowing for the manipulation or
-disclosure of arbitrary data. Impact Level: Application");
+disclosure of arbitrary data.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53196");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/209131");
   script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10042");

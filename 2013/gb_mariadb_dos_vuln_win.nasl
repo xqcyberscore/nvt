@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_dos_vuln_win.nasl 11077 2018-08-22 09:40:33Z mmartin $
+# $Id: gb_mariadb_dos_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MariaDB Denial Of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804035");
-  script_version("$Revision: 11077 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1861");
   script_bugtraq_id(58511);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-28 19:18:10 +0530 (Mon, 28 Oct 2013)");
   script_name("MariaDB Denial Of Service Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -60,9 +60,7 @@ if(description)
   script_tag(name:"affected", value:"MariaDB version 5.5.x before 5.5.30, 5.3.x before 5.3.13,
   5.2.x before 5.2.15, and 5.1.x before 5.1.68 on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to crash the program
-  via a crafted geometry feature that specifies a large number of points.
-
-  Impact Level: Application");
+  via a crafted geometry feature that specifies a large number of points.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

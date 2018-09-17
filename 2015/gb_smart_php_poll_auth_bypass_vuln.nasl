@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smart_php_poll_auth_bypass_vuln.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_smart_php_poll_auth_bypass_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Smart PHP Poll Authentication Bypass Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805506");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-17 15:24:03 +0530 (Tue, 17 Mar 2015)");
   script_name("Smart PHP Poll Authentication Bypass Vulnerability");
 
@@ -45,9 +45,7 @@ if(description)
   to admin.php script");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  remote attackers to bypass the authentication.
-
-  Impact Level: Application.");
+  remote attackers to bypass the authentication.");
 
   script_tag(name:"affected", value:"Smart PHP Poll");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_priv_esc_vuln_mar15_win.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_mozilla_firefox_esr_priv_esc_vuln_mar15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Mozilla Firefox ESR SVG Privilege Escalation Vulnerability Mar15 (Windows)
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805516");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0818");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-27 13:32:25 +0530 (Fri, 27 Mar 2015)");
   script_name("Mozilla Firefox ESR SVG Privilege Escalation Vulnerability Mar15 (Windows)");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain elevated privileges and execute arbitrary scripts with the
-  elevated privileges.
-
-  Impact Level: System/Application");
+  elevated privileges.");
 
   script_tag(name:"affected", value:"Mozilla Firefox ESR 31.x before 31.5.3 on
   Windows");

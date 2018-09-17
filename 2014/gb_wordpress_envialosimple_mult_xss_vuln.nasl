@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_envialosimple_mult_xss_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_wordpress_envialosimple_mult_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WordPress EnvialoSimple Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804757");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4527");
   script_bugtraq_id(69226);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-26 16:21:56 +0530 (Tue, 26 Aug 2014)");
   script_name("WordPress EnvialoSimple Multiple Cross Site Scripting Vulnerabilities");
 
@@ -47,9 +47,7 @@ cookie or not.");
 to the 'FormID' and 'AdministratorID' GET parameters before returning to
 the users.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-script code in a user's browser session in the context of an affected site.
-
-Impact Level: Application");
+script code in a user's browser session in the context of an affected site.");
   script_tag(name:"affected", value:"WordPress EnvialoSimple: Email Marketing and Newsletters Plugin
 version 1.97, and possibly prior.");
   script_tag(name:"solution", value:"Upgrade to version 1.98 or higher,

@@ -28,12 +28,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804048");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-7276");
   script_bugtraq_id(64548);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-30 18:18:36 +0530 (Mon, 30 Dec 2013)");
   script_name("Wordpress Recommend to a friend plugin Cross Site Scripting Vulnerability");
 
@@ -49,9 +49,7 @@ cookie or not.");
   script_tag(name:"affected", value:"WordPress Recommend to a friend Plugin version 2.0.2, Other versions may
 also be affected.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-script code in a user's browser session in the context of an affected site.
-
-Impact Level: Application");
+script code in a user's browser session in the context of an affected site.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/56209");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/56209");
   script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2013120161");

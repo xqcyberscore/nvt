@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_integer_overflow_vuln01_jun13_win.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_imagemagick_integer_overflow_vuln01_jun13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # ImageMagick Integer Overflow Vulnerability - 01 June13 (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803814");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-1185");
   script_bugtraq_id(51957);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 11:06:50 +0530 (Mon, 24 Jun 2013)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("secpod_imagemagick_detect_win.nasl");
   script_mandatory_keys("ImageMagick/Win/Installed");
   script_tag(name:"impact", value:"Successful exploitation will allow a context-dependent attacker to cause
-  denial of service condition or potentially execute arbitrary code.
-  Impact Level: Application/System");
+  denial of service condition or potentially execute arbitrary code.");
   script_tag(name:"affected", value:"ImageMagick version 6.7.5 and earlier on Windows.");
   script_tag(name:"insight", value:"Integer overflow error occurs due to an improper sanitation of user supplied
   input when computing the sum of 'number_bytes' and 'offset' in

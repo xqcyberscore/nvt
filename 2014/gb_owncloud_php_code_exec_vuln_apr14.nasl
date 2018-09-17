@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_php_code_exec_vuln_apr14.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_owncloud_php_code_exec_vuln_apr14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ownCloud PHP Remote Code Execution Vulnerabilities Apr14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804364");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-7344", "CVE-2013-0303");
   script_bugtraq_id(58109);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-07 10:17:33 +0530 (Mon, 07 Apr 2014)");
   script_name("ownCloud PHP Remote Code Execution Vulnerabilities Apr14");
 
@@ -49,9 +49,7 @@ vulnerabilities.");
   - Unspecified input passed to core/settings.php is not properly sanitized
   before being used.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to mount the local
-filesystem and gain access to the information contained within it.
-
-Impact Level: Application");
+filesystem and gain access to the information contained within it.");
   script_tag(name:"affected", value:"ownCloud Server version 4.5.x before 4.5.6 and 4.0.x before 4.0.12");
   script_tag(name:"solution", value:"Upgrade to ownCloud version 4.5.6 or 4.0.12 or later,
 For updates refer to http://owncloud.org");

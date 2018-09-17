@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_unified_commu_manager_detect.nasl 11224 2018-09-04 12:57:17Z cfischer $
+# $Id: gb_cisco_unified_commu_manager_detect.nasl 11407 2018-09-15 11:02:05Z cfischer $
 #
 # Cisco Unified Communications Manager Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805098");
-  script_version("$Revision: 11224 $");
+  script_version("$Revision: 11407 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:57:17 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:02:05 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-31 15:17:33 +0530 (Mon, 31 Aug 2015)");
   script_name("Cisco Unified Communications Manager Webinterface Detection");
 
@@ -43,8 +43,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_require_ports("Services/www", 443);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 443);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -59,8 +61,7 @@ foreach dir (make_list_unique("/", "/cmplatform", "/cucm", "/ccmuser", "/ccmadmi
   install = dir;
   if( dir == "/" ) dir = "";
 
-  sndReq = http_get(item:string(dir, "/showHome.do"), port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/showHome.do"), port:http_port);
 
   if(">Cisco Unified" >< rcvRes && 'www.cisco.com' >< rcvRes)
   {

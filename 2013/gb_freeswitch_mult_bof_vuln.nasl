@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freeswitch_mult_bof_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_freeswitch_mult_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # FreeSWITCH 'switch_regex.c' Multiple Buffer Overflow Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:freeswitch:freeswitch";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804025");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2238");
   script_bugtraq_id(60890);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-07 18:52:44 +0530 (Mon, 07 Oct 2013)");
   script_name("FreeSWITCH 'switch_regex.c' Multiple Buffer Overflow Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -60,9 +60,7 @@ if(description)
   script_tag(name:"affected", value:"FreeSWITCH version 1.2");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to cause multiple buffer
-  overflows, resulting in a denial of service.
-
-  Impact Level: Application");
+  overflows, resulting in a denial of service.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_banner");

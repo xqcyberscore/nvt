@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_cron_jobs_xss_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_apache_activemq_cron_jobs_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Apache ActiveMQ < 5.9.0 Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803866");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1879", "CVE-2013-1880");
   script_bugtraq_id(61142, 65615);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-13 14:52:49 +0530 (Tue, 13 Aug 2013)");
   script_name("Apache ActiveMQ < 5.9.0 Multiple Cross Site Scripting Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -63,9 +63,7 @@ if(description)
   script or HTML via the refresh parameter to demo/portfolioPublish");
   script_tag(name:"affected", value:"Apache ActiveMQ 5.8.0 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  script code in a user's browser session in the context of an affected site.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");

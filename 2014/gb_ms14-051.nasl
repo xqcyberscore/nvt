@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-051.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms14-051.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2976627)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804739");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2774", "CVE-2014-2784", "CVE-2014-2796", "CVE-2014-2808",
                 "CVE-2014-2810", "CVE-2014-2811", "CVE-2014-2817", "CVE-2014-2818",
                 "CVE-2014-2819", "CVE-2014-2820", "CVE-2014-2821", "CVE-2014-2822",
@@ -44,7 +44,7 @@ if(description)
                     69132, 69134, 70937, 72593, 70578, 70937);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-13 07:44:02 +0530 (Wed, 13 Aug 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2976627)");
@@ -56,9 +56,7 @@ Bulletin MS14-051.");
 or not.");
   script_tag(name:"insight", value:"Flaws are due to multiple unspecified errors.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execution of arbitrary code
-and compromise a user's system.
-
-Impact Level: System/Application");
+and compromise a user's system.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x/10.x/11.x");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
 update mentioned hotfixes in the advisory from the below link,

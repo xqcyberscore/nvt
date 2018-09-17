@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-010.nasl 11201 2018-09-03 14:35:07Z cfischer $
+# $Id: secpod_ms13-010.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Internet Explorer VML Remote Code Execution Vulnerability (2797052)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903301");
-  script_version("$Revision: 11201 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0030");
   script_bugtraq_id(57852);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-13 13:16:30 +0530 (Wed, 13 Feb 2013)");
   script_name("Microsoft Internet Explorer VML Remote Code Execution Vulnerability (2797052)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52129/");
@@ -46,8 +46,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code and
-  failed attacks will cause denial of service.
-  Impact Level: System/Application");
+  failed attacks will cause denial of service.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x/10.x");
   script_tag(name:"insight", value:"The flaw is due to an unspecified error when handling certain VML data and
   can be exploited to corrupt memory.");

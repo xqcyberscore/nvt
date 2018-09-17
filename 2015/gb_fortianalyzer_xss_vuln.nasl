@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortianalyzer_xss_vuln.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_fortianalyzer_xss_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # FortiAnalyzer Reflected Cross Site Scripting Vulnerability - May 2015
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/h:fortinet:fortianalyzer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805640");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-3620");
   script_bugtraq_id(74646);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-01 15:56:50 +0530 (Mon, 01 Jun 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("FortiAnalyzer Reflected Cross Site Scripting Vulnerability - May 2015");
@@ -50,9 +50,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to create a specially crafted request that would
   execute arbitrary script code in a user's browser session within the trust
-  relationship between their browser and the server.
-
-  Impact Level: Application");
+  relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"Fortinet FortiAnalyzer versions 5.0.0
   through 5.0.10 and 5.2.0 through 5.2.1");

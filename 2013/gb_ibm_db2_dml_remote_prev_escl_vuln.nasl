@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_dml_remote_prev_escl_vuln.nasl 11024 2018-08-17 08:18:16Z mmartin $
+# $Id: gb_ibm_db2_dml_remote_prev_escl_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # IBM DB2 DML Statement Execution Remote Privilege Escalation Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803757");
-  script_version("$Revision: 11024 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4033");
   script_bugtraq_id(62018);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:18:16 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-05 17:26:08 +0530 (Thu, 05 Sep 2013)");
   script_name("IBM DB2 DML Statement Execution Remote Privilege Escalation Vulnerability");
 
@@ -50,9 +50,7 @@ authority, which will allow a remote attacker to potentially execute the SELECT,
 INSERT, UPDATE or DELETE DML statements with elevated privileges.");
   script_tag(name:"affected", value:"IBM DB2 versions 9.7 through FP8, 10.1 through FP2, and 10.5 through FP1");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to gain escalated privileges and
-bypass certain security restrictions.
-
-Impact Level: Application");
+bypass certain security restrictions.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/54644");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/86093");

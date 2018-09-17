@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_sandbox_bypass_vuln_aug14_win.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_adobe_acrobat_sandbox_bypass_vuln_aug14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Acrobat Sandbox Bypass Vulnerability - Aug14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804814");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0546");
   script_bugtraq_id(69193);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-19 12:25:49 +0530 (Tue, 19 Aug 2014)");
   script_name("Adobe Acrobat Sandbox Bypass Vulnerability - Aug14 (Windows)");
 
@@ -44,9 +44,7 @@ vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaw exists due to some unspecified error.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to bypass sandbox restrictions
-and execute native code in a privileged context.
-
-Impact Level: System/Application");
+and execute native code in a privileged context.");
   script_tag(name:"affected", value:"Adobe Acrobat X version 10.x before 10.1.11 and XI version 11.x before 11.0.08
 on Windows.");
   script_tag(name:"solution", value:"Upgrade to version 10.1.11 or 11.0.08 or higher,

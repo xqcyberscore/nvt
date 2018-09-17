@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_info_disc_vuln_jun05_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_adobe_reader_info_disc_vuln_jun05_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Reader Information Disclosure Vulnerability Jun05 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804256");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2005-1306", "CVE-2005-1623", "CVE-2005-1624");
   script_bugtraq_id(13962, 14076, 14075);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-15 18:00:27 +0530 (Tue, 15 Apr 2014)");
   script_name("Adobe Reader Information Disclosure Vulnerability Jun05 (Mac OS X)");
 
@@ -45,9 +45,7 @@ disclosure vulnerability.");
   script_tag(name:"insight", value:"Flaw exist due to an error in the adobe reader control which allows reading
 the contents of certain text files.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain knowledge of potentially
-sensitive information and execute arbitrary local programs on user's system.
-
-Impact Level: System/Application");
+sensitive information and execute arbitrary local programs on user's system.");
   script_tag(name:"affected", value:"Adobe Reader version 7.0.0 and 7.0.1 on Mac OS X.");
   script_tag(name:"solution", value:"Upgrade to Adobe Reader 7.0.5 or later. For
 updates refer to http://get.adobe.com/reader");

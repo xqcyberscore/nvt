@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903501");
-  script_version("$Revision: 11077 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3887");
   script_bugtraq_id(63545);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-13 09:16:37 +0530 (Wed, 13 Nov 2013)");
   script_name("MS Windows Ancillary Function Driver Information Disclosure Vulnerability (2875783)");
 
@@ -53,9 +53,7 @@ Microsoft Windows 2003 x64 Edition Service Pack 2 and prior
 Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow disclosure of potentially sensitive
 information if an attacker logs on to a user's system and runs a specially
-crafted application.
-
-Impact Level: Application");
+crafted application.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

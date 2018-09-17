@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wnpa-sec-2018-34_wnpa-sec-2018-41_macosx.nasl 10558 2018-07-20 14:08:23Z santu $
+# $Id: gb_wireshark_wnpa-sec-2018-34_wnpa-sec-2018-41_macosx.nasl 11416 2018-09-17 03:39:26Z ckuersteiner $
 #
 # Wireshark Security Updates (wnpa-sec-2018-34_wnpa-sec-2018-41) MACOSX
 #
@@ -29,22 +29,21 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813587");
-  script_version("$Revision: 10558 $");
-  script_cve_id("CVE-2018-14339", "CVE-2018-14344", "CVE-2018-14343", "CVE-2018-14342", 
+  script_version("$Revision: 11416 $");
+  script_cve_id("CVE-2018-14339", "CVE-2018-14344", "CVE-2018-14343", "CVE-2018-14342",
                 "CVE-2018-14341", "CVE-2018-14340", "CVE-2018-14369", "CVE-2018-14368");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 16:08:23 +0200 (Fri, 20 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 05:39:26 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 10:41:30 +0530 (Fri, 20 Jul 2018)");
   script_name("Wireshark Security Updates (wnpa-sec-2018-34_wnpa-sec-2018-41) MACOSX");
 
-  script_tag(name: "summary" , value:"This host is installed with Wireshark
+  script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to an,
+  script_tag(name:"insight", value:"Multiple flaws exists due to an,
 
   - Improperly sanitized MMSE dissector.
 
@@ -62,27 +61,25 @@ if(description)
 
   - Improperly sanitized Bazaar protocol dissector.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject a malformed packet causing excessive CPU resources
-  consumption and denial of service.
+  consumption and denial of service.");
 
-  Impact Level: Application.");
-
-  script_tag(name: "affected" , value: "Wireshark version 2.6.0 to 2.6.1, 2.4.0 to
+  script_tag(name:"affected", value:"Wireshark version 2.6.0 to 2.6.1, 2.4.0 to
   2.4.7, 2.2.0 to 2.2.15 on Macosx.");
 
-  script_tag(name: "solution" , value: "Upgrade to Wireshark version 2.6.2, 2.4.8, 2.2.16
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 2.6.2, 2.4.8, 2.2.16
   For updates refer to Reference links.");
 
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2018-38");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2018-35");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2018-37");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2018-34");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2018-39");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2018-36");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2018-41");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2018-40");
-  script_xref(name : "URL" , value : "https://www.wireshark.org"); 
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2018-38");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2018-35");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2018-37");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2018-34");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2018-39");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2018-36");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2018-41");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2018-40");
+  script_xref(name:"URL", value:"https://www.wireshark.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

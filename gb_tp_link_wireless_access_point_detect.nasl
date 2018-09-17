@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tp_link_wireless_access_point_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
+# $Id: gb_tp_link_wireless_access_point_detect.nasl 11418 2018-09-17 05:57:41Z cfischer $
 #
 # TP-Link Wireless Access Point Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107331");
-  script_version("$Revision: 10911 $");
+  script_version("$Revision: 11418 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 07:57:41 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-16 14:32:15 +0200 (Mon, 16 Jul 2018)");
   script_name("TP-Link Wireless Access Point Detection");
 
@@ -47,20 +47,16 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("http_func.inc");
 
-
 tlPort = get_http_port(default:80);
-if(!tlPort){
-  exit(0);
-}
-
 banner = get_http_banner(port:tlPort);
+
 if(banner && banner =~ 'WWW-Authenticate: Basic realm="TP-LINK Wireless N Access Point.*')
 {
   location = "/";

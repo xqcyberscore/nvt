@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_info_disc_vuln_mar15_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_putty_info_disc_vuln_mar15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # PuTTY Information Disclosure vulnerability Mar15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:putty:putty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805434");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2157");
   script_bugtraq_id(72825);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-31 13:05:20 +0530 (Tue, 31 Mar 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PuTTY Information Disclosure vulnerability Mar15 (Windows)");
@@ -49,9 +49,7 @@ if(description)
   loading of key files to disk.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a local
-  attacker to gain access to potentially sensitive information.
-
-  Impact Level: System/Application");
+  attacker to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"PuTTY version 0.51 through 0.63 on
   Windows.");

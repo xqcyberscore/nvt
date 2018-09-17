@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wdmn_wireless_router_info_disc_vuln.nasl 11114 2018-08-26 12:36:02Z cfischer $
+# $Id: gb_wdmn_wireless_router_info_disc_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Western Digital My Net Devices Information Disclosure Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803731");
-  script_version("$Revision: 11114 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5006");
   script_bugtraq_id(61361);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-26 14:36:02 +0200 (Sun, 26 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-05 16:18:11 +0530 (Mon, 05 Aug 2013)");
   script_name("Western Digital My Net Devices Information Disclosure Vulnerability");
 
@@ -62,9 +62,7 @@ if(description)
   Western Digital My Net N900C 1.05, 1.06");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to gain access to credential
-  information.
-
-  Impact Level: Application");
+  information.");
 
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Aug/10");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/85903");

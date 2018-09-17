@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_july14_lin.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_july14_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - 01 July14 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804729");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3160", "CVE-2014-3162");
   script_bugtraq_id(68677);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-01 18:43:05 +0530 (Fri, 01 Aug 2014)");
   script_name("Google Chrome Multiple Vulnerabilities - 01 July14 (Linux)");
 
@@ -45,9 +45,7 @@ vulnerabilities.");
   script_tag(name:"insight", value:"Multiple flaws are due to An error within SVG component and multiple
 unspecified errors exist.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass certain
-security restrictions and possibly have other unspecified impact.
-
-Impact Level: System/Application");
+security restrictions and possibly have other unspecified impact.");
   script_tag(name:"affected", value:"Google Chrome version prior to 36.0.1985.125 on Linux.");
   script_tag(name:"solution", value:"Upgrade to Google Chrome 36.0.1985.125 or later,
 For updates refer to http://www.google.com/chrome");

@@ -1,6 +1,6 @@
 ####################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_detect_win.nasl 10891 2018-08-10 12:51:28Z cfischer $
+# $Id: gb_asp_dotnet_core_detect_win.nasl 11420 2018-09-17 06:33:13Z cfischer $
 #
 # ASP.NET Core/.NET Core SDK Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812949");
-  script_version("$Revision: 10891 $");
+  script_version("$Revision: 11420 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:33:13 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-02-26 16:34:26 +0530 (Mon, 26 Feb 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ASP.NET Core/.NET Core SDK Detection (Windows)");
@@ -47,21 +47,15 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
-
-os_arch = "";
-psPath = "";
-psName = "";
-psVer = "";
-key = "";
 
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
@@ -120,7 +114,7 @@ foreach key (key_list1)
     if(coreVer)
     {
       set_kb_item(name:"ASP.NET/Core/Ver", value:coreVer);
-
+      aspflag = TRUE;
       cpe = build_cpe(value:coreVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:asp.net_core:");
       if(!cpe)
         cpe = "cpe:/a:microsoft:asp.net_core";
@@ -139,6 +133,41 @@ foreach key (key_list1)
   }
 }
 
+if(!aspflag)
+{
+  ##ASP .NET Core
+  foreach key (key_list)
+  {
+    foreach item (registry_enum_keys(key:key))
+    {
+      psName = registry_get_sz(key:key + item, item:"DisplayName");
+      if("Microsoft ASP.NET Core" >< psName)
+      {
+        aspcoreVer = eregmatch(pattern:"Microsoft ASP.NET Core ([0-9.]+)", string:psName);
+        if(aspcoreVer[1])
+        {
+          coreVer = aspcoreVer[1] ;
+          set_kb_item(name:"ASP.NET/Core/Ver", value:coreVer);
+          cpe = build_cpe(value:coreVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:asp.net_core:");
+          if(!cpe)
+            cpe = "cpe:/a:microsoft:asp.net_core";
+
+          if("64" >< os_arch && "Wow6432Node" >!< key)
+          {
+            set_kb_item(name:"ASP.NET64/Core/Ver", value:coreVer);
+            cpe = build_cpe(value:coreVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:asp.net_core:x64:");
+            if(!cpe)
+              cpe = "cpe:/a:microsoft:asp.net_core:x64";
+          }
+          register_and_report_cpe(app:"ASP .NET Core", ver:coreVer, concluded: "ASP .NET Core " + coreVer,
+                              cpename:cpe, insloc:"Couldn find the install location from registry");
+          break;
+        }
+      }
+    }
+  }
+}
+
 ##.NET Core SDK
 foreach key (key_list)
 {
@@ -148,7 +177,9 @@ foreach key (key_list)
     if("Microsoft .NET Core SDK" >< psName)
     {
       sdkVer = eregmatch(pattern:"Microsoft .NET Core SDK - ([0-9.]+)", string:psName);
-
+      if(!sdkVer){
+        sdkVer = eregmatch(pattern:"Microsoft .NET Core SDK ([0-9.]+)", string:psName);
+      }
       if(sdkVer)
       {
         set_kb_item(name:".NET/Core/SDK/Ver", value:sdkVer[1]);

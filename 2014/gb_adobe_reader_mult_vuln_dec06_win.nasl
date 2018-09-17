@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln_dec06_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_adobe_reader_mult_vuln_dec06_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities Dec06 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804366");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2006-6027", "CVE-2006-6236");
   script_bugtraq_id(21155, 21338);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-07 19:51:38 +0530 (Mon, 07 Apr 2014)");
   script_name("Adobe Reader Multiple Vulnerabilities Dec06 (Windows)");
 
@@ -43,9 +43,7 @@ vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaws are due to errors in the 'AcroPDF ActiveX' control in AcroPDF.dll.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct denial of service,
-possibly execute arbitrary code and compromise a user's system.
-
-Impact Level: System/Application");
+possibly execute arbitrary code and compromise a user's system.");
   script_tag(name:"affected", value:"Adobe Reader version 7.0 through 7.0.8 on Windows.");
   script_tag(name:"solution", value:"Upgrade to Adobe Reader version 8.0 or later. For updates refer to
 http://get.adobe.com/reader");

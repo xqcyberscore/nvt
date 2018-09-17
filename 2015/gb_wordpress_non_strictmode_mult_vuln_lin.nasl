@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_non_strictmode_mult_vuln_lin.nasl 7546 2017-10-24 11:58:30Z cfischer $
+# $Id: gb_wordpress_non_strictmode_mult_vuln_lin.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # WordPress 'Non-Strict Mode' Multiple Cross-Site Scripting Vulnerabilities (Linux)
 #
@@ -28,29 +28,26 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805988");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-3438");
   script_bugtraq_id(74269);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-12 14:01:19 +0530 (Mon, 12 Oct 2015)");
   script_name("WordPress 'Non-Strict Mode' Multiple Cross-Site Scripting Vulnerabilities (Linux)");
 
   script_tag(name:"summary", value:"This host is running WordPress and is prone
   to multiple cross site scripting vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to improper input
   data sanitization via four-byte UTF-8 character or via an invalid character.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary script code in a user's browser session within
-  the trust relationship between their browser and the server.
-
-  Impact Level: Application");
+  the trust relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"Wordpress versions before 4.1.2 on Linux.");
 
@@ -61,14 +58,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "https://wordpress.org/news/2015/04/wordpress-4-1-2");
-  script_xref(name : "URL" , value : "http://zoczus.blogspot.in/2015/04/plupload-same-origin-method-execution.html");
+  script_xref(name:"URL", value:"https://wordpress.org/news/2015/04/wordpress-4-1-2");
+  script_xref(name:"URL", value:"http://zoczus.blogspot.in/2015/04/plupload-same-origin-method-execution.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("os_detection.nasl", "secpod_wordpress_detect_900182.nasl");
-  script_mandatory_keys("wordpress/installed","Host/runs_unixoide");
+  script_mandatory_keys("wordpress/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
   exit(0);
 }
@@ -76,22 +73,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-wpPort = "";
-wpName = "";
-wpVer = "";
-
-## get the port
 if(!wpPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!wpVer = get_app_version(cpe:CPE, port:wpPort)){
   exit(0);
 }
 
-## Check for version
 if(version_is_less(version:wpVer, test_version:"4.1.2"))
 {
   report = 'Installed Version: ' + wpVer + '\n' +

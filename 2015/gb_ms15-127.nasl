@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-127.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_ms15-127.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Microsoft Windows DNS Remote Code Execution Vulnerability (3100465)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806173");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-6125");
   script_bugtraq_id(78496);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 10:00:59 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft Windows DNS Remote Code Execution Vulnerability (3100465)");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to execute arbitrary code in the context of the vulnerable application.
-  Failed exploit attempts will result in a denial-of-service condition.
-
-  Impact Level: System/Application");
+  Failed exploit attempts will result in a denial-of-service condition.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows 8.1 x32/x64 Edition

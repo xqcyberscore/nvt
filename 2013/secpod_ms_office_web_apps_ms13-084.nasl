@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_web_apps_ms13-084.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: secpod_ms_office_web_apps_ms13-084.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Office Web Apps Remote Code Execution vulnerability (2885089)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903327");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3889", "CVE-2013-3895");
   script_bugtraq_id(62829, 62800);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 17:04:48 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Office Web Apps Remote Code Execution vulnerability (2885089)");
 
@@ -51,9 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Web Applications 2010 Service Pack 2 and prior.
   Microsoft Excel Web App 2010 Service Pack 1 and prior.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
-  cause a DoS (Denial of Service), and compromise a vulnerable system.
-
-  Impact Level: System/Application");
+  cause a DoS (Denial of Service), and compromise a vulnerable system.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

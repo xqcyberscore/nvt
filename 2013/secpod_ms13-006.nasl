@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-006.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: secpod_ms13-006.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Windows Security Feature Bypass Vulnerability (2785220)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901214");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0013");
   script_bugtraq_id(57144);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-09 12:04:09 +0530 (Wed, 09 Jan 2013)");
   script_name("Microsoft Windows Security Feature Bypass Vulnerability (2785220)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51724");
@@ -48,8 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to silently downgrade
   a SSL version 3 or TLS connection to SSL version 2, which supports weak
-  encryption cyphers.
-  Impact Level: System");
+  encryption cyphers.");
   script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_vuln.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_cloudbees_jenkins_mult_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # CloudBees Jenkins Multiple Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807001");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-5317", "CVE-2015-5318", "CVE-2015-5319", "CVE-2015-5320",
                 "CVE-2015-5321", "CVE-2015-5322", "CVE-2015-5323", "CVE-2015-5324",
                 "CVE-2015-5325", "CVE-2015-5326", "CVE-2015-8103", "CVE-2015-7536",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(77572, 77570, 77574, 77636, 77619);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-15 17:52:00 +0530 (Tue, 15 Dec 2015)");
   script_name("CloudBees Jenkins Multiple Vulnerabilities");
 
@@ -71,9 +71,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to obtain sensitive information, bypass the protection mechanism,
   gain elevated privileges, bypass intended access restrictions and execute
-  arbitrary code.
-
-  Impact Level: Application");
+  arbitrary code.");
 
   script_tag(name:"affected", value:"CloudBees Jenkins LTS before 1.625.2
   on Windows");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_tmp_file_symlink_vuln_lin.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_adobe_reader_tmp_file_symlink_vuln_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Reader Temporary Files Arbitrary File Overwrite Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804629");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2002-1764");
   script_bugtraq_id(5068);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-05 12:20:17 +0530 (Thu, 05 Jun 2014)");
   script_name("Adobe Reader Temporary Files Arbitrary File Overwrite Vulnerability (Linux)");
 
@@ -46,9 +46,7 @@ vulnerability.");
 printing PDF files");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to create a symbolic link from a
 file in the /tmp directory to an arbitrary file on the system so that the
-arbitrary file is overwritten once the PDF file is opened.
-
-Impact Level: System/Application");
+arbitrary file is overwritten once the PDF file is opened.");
   script_tag(name:"affected", value:"Adobe Reader version 4.0.5 on Linux.");
   script_tag(name:"solution", value:"Update to Adobe Reader version 5.0.5 or later. For Updates refer
 http://www.adobe.com");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_security_bypass_vuln_nov15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_google_chrome_security_bypass_vuln_nov15_macosx.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Google Chrome PDF Viewer Security Bypass Vulnerability Nov15 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806569");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-1302");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-13 18:16:04 +0530 (Fri, 13 Nov 2015)");
   script_name("Google Chrome PDF Viewer Security Bypass Vulnerability Nov15 (Mac OS X)");
 
@@ -46,9 +46,7 @@ if(description)
   not properly restrict scripting messages and API exposure.");
 
   script_tag(name:"impact", value:"Successful exploitation would allow remote
-  attackers to bypass the Same Origin Policy.
-
-  Impact Level: Application");
+  attackers to bypass the Same Origin Policy.");
 
   script_tag(name:"affected", value:"Google Chrome versions prior to
   46.0.2490.86 on Mac OS X.");

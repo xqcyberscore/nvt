@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_yassl_bof_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_mysql_yassl_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MySQL 'yaSSL' Buffer Overflow Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803462");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-0553", "CVE-2013-1492");
   script_bugtraq_id(58594, 58595);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-04 13:53:42 +0530 (Thu, 04 Apr 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,9 +48,7 @@ if(description)
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a buffer
-  overflow resulting in loss of availability.
-
-  Impact Level: Application");
+  overflow resulting in loss of availability.");
   script_tag(name:"affected", value:"MySQL version 5.1.x before 5.1.68 and 5.5.x before 5.5.30");
   script_tag(name:"insight", value:"Flaw is due an improper validation of user supplied data before copying it
   into an insufficient sized buffer.");

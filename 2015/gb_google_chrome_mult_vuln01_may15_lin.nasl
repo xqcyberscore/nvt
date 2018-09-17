@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805376");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-1250", "CVE-2015-1243");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-04 14:23:48 +0530 (Mon, 04 May 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 May15 (Linux)");
 
@@ -50,9 +50,7 @@ if(description)
   - Multiple Unspecified flaws due to unknown vectors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause a denial-of-service condition and other unspecified impacts.
-
-  Impact Level: System/Application");
+  attackers to cause a denial-of-service condition and other unspecified impacts.");
 
   script_tag(name:"affected", value:"Google Chrome version prior to
   42.0.2311.135 on Linux.");

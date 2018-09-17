@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_mem_corr_vuln_lin.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_oracle_virtualbox_mult_mem_corr_vuln_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle VM VirtualBox Multiple Memory Corruption Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804356");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0981", "CVE-2014-0983");
   script_bugtraq_id(66131, 66133);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-03 16:19:08 +0530 (Thu, 03 Apr 2014)");
   script_name("Oracle VM VirtualBox Multiple Memory Corruption Vulnerabilities (Linux)");
 
@@ -53,9 +53,7 @@ is vulnerable or not.");
   - A boundary error within multiple generated 'crServerDispatchVertexAttrib*ARB'
   functions.");
   script_tag(name:"impact", value:"Successful exploitation will allow local users to conduct a denial of service
-or potentially execute arbitrary code.
-
-Impact Level: System/Application");
+or potentially execute arbitrary code.");
   script_tag(name:"affected", value:"Oracle VM VirtualBox version 4.2.x through 4.2.20, 4.3.x before 4.3.8 on
 Linux.");
   script_tag(name:"solution", value:"Upgrade to Oracle VM VirtualBox version 4.3.8 or later,

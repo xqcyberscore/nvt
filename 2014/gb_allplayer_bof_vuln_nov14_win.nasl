@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_allplayer_bof_vuln_nov14_win.nasl 10844 2018-08-08 14:38:33Z cfischer $
+# $Id: gb_allplayer_bof_vuln_nov14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ALLPlayer Buffer Overflow Vulnerability - Nov14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:allplayer:allplayer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805101");
-  script_version("$Revision: 10844 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-7409");
   script_bugtraq_id(62926);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 16:38:33 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-21 11:25:38 +0530 (Fri, 21 Nov 2014)");
   script_name("ALLPlayer Buffer Overflow Vulnerability - Nov14 (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -62,9 +62,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to cause a buffer overflow, resulting in a denial of service or potentially
-  allowing the execution of arbitrary code.
-
-  Impact Level: System/Application");
+  allowing the execution of arbitrary code.");
 
   script_tag(name:"affected", value:"ALLPlayer version 5.6.2 through 5.8.1
   on Windows");

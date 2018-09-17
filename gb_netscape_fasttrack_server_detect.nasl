@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netscape_fasttrack_server_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: gb_netscape_fasttrack_server_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # Netscape FastTrack Server Version Detection
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811544");
-  script_version("$Revision: 10922 $");
+  script_version("$Revision: 11408 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-07-28 13:24:46 +0530 (Fri, 28 Jul 2017)");
   script_name("Netscape FastTrack Server Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -51,16 +51,11 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
-
 include("cpe.inc");
 include("host_details.inc");
 
-
-if(!netport = get_http_port(default:80)){
-  exit(0);
-}
+netport = get_http_port(default:80);
 
 banner = get_http_banner(port:netport);
 

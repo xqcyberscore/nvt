@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_code_execution_vuln_win.nasl 11201 2018-09-03 14:35:07Z cfischer $
+# $Id: gb_oracle_java_se_mult_code_execution_vuln_win.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Oracle Java SE Multiple Remote Code Execution Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803156");
-  script_version("$Revision: 11201 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2012-3174", "CVE-2013-0422");
   script_bugtraq_id(57246, 57312);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-17 12:41:59 +0530 (Thu, 17 Jan 2013)");
   script_name("Oracle Java SE Multiple Remote Code Execution Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51820/");
@@ -47,8 +47,7 @@ if(description)
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary code
-  via unspecified vectors,
-  Impact Level: System/Application");
+  via unspecified vectors.");
   script_tag(name:"affected", value:"Oracle Java version 7 before Update 11 on windows");
   script_tag(name:"solution", value:"Upgrade to Oracle Java 7 Update 11 or later
   For updates refer to

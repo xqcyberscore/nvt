@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_libpcap_dos_n_code_exec_vuln_macosx.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: gb_wireshark_libpcap_dos_n_code_exec_vuln_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Wireshark 'Libpcap' Denial of Service and Code Execution Vulnerabilities (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804668");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4174");
   script_bugtraq_id(66755);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-07 10:18:34 +0530 (Mon, 07 Jul 2014)");
   script_name("Wireshark 'Libpcap' Denial of Service and Code Execution Vulnerabilities (Mac OS X)");
 
@@ -45,9 +45,7 @@ remote code execution vulnerabilities.");
   script_tag(name:"insight", value:"Flaw is due to an unspecified error in 'wiretap/libpcap.c' within the libpcap
 file parser.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a DoS (Denial of Service)
-and compromise a vulnerable system.
-
-Impact Level: System/Application");
+and compromise a vulnerable system.");
   script_tag(name:"affected", value:"Wireshark version 1.10.x before 1.10.4 on Mac OS X");
   script_tag(name:"solution", value:"Upgrade to Wireshark version 1.10.4 or later,
 For updates refer to http://www.wireshark.org/download");

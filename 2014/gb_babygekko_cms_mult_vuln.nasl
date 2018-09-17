@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_babygekko_cms_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_babygekko_cms_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Baby Gekko CMS Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804856");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2012-5698", "CVE-2012-5699", "CVE-2012-5700");
   script_bugtraq_id(56523, 56523, 56523);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-24 14:10:24 +0530 (Wed, 24 Sep 2014)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -59,9 +59,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database and
   execute arbitrary HTML and script code in a user's browser session in the
-  context of an affected site.
-
-  Impact Level: Application");
+  context of an affected site.");
 
   script_tag(name:"affected", value:"Baby Gekko CMS before version 1.2.2f");
 

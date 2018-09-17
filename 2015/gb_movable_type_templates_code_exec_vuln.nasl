@@ -29,11 +29,11 @@ CPE = "cpe:/a:sixapart:movable_type";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805369");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0845");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-22 16:50:00 +0530 (Wed, 22 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Movable Type Templates Arbitrary Code Execution Vulnerability");
@@ -49,9 +49,7 @@ if(description)
   arbitrary code.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  unauthenticated remote attacker to execute arbitrary code in an affected site.
-
-  Impact Level: Application");
+  unauthenticated remote attacker to execute arbitrary code in an affected site.");
 
   script_tag(name:"affected", value:"Movable Type before 5.2.13");
 

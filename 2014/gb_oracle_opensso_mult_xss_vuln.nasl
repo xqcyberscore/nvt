@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_opensso_mult_xss_vuln.nasl 10864 2018-08-09 15:04:27Z cfischer $
+# $Id: gb_oracle_opensso_mult_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle OpenSSO Multiple XSS Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:opensso";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804436");
-  script_version("$Revision: 10864 $");
+  script_version("$Revision: 11402 $");
   script_bugtraq_id(56733);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 17:04:27 +0200 (Thu, 09 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-22 13:06:41 +0530 (Tue, 22 Apr 2014)");
   script_name("Oracle OpenSSO Multiple XSS Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -65,9 +65,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to create a specially crafted
   request that would execute arbitrary script code in a user's browser within
-  the trust relationship between their browser and the server.
-
-  Impact Level: Application");
+  the trust relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"Oracle OpenSSO 8.0 Update 2 Patch3 Build 6.1");
 

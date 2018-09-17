@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx201145.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_xenserver_ctx201145.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Citrix XenServer Multiple Security Updates (CTX201145)
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-4106", "CVE-2015-4163", "CVE-2015-4164", "CVE-2015-2756", "CVE-2015-4103", "CVE-2015-4104", "CVE-2015-4105");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11299 $");
+  script_version("$Revision: 11423 $");
 
   script_name("Citrix XenServer Multiple Security Updates (CTX201145)");
 
@@ -48,13 +48,19 @@ Citrix XenServer 6.5 Service Pack 1.
 
 The following vulnerabilities have been addressed:
 
- - CVE-2015-4106: Unmediated PCI register access in qemu.
- - CVE-2015-4163: GNTTABOP_swap_grant_ref operation misbehavior.
- - CVE-2015-4164: vulnerability in the iret hypercall handler
- - CVE-2015-2756: Unmediated PCI command register access in qemu
- - CVE-2015-4103: Potential unintended writes to host MSI message data field via qemu.
- - CVE-2015-4104: PCI MSI mask bits inadvertently exposed to guests.
- - CVE-2015-4105: Guest triggerable qemu MSI-X pass-through error messages");
+  - CVE-2015-4106: Unmediated PCI register access in qemu.
+
+  - CVE-2015-4163: GNTTABOP_swap_grant_ref operation misbehavior.
+
+  - CVE-2015-4164: vulnerability in the iret hypercall handler
+
+  - CVE-2015-2756: Unmediated PCI command register access in qemu
+
+  - CVE-2015-4103: Potential unintended writes to host MSI message data field via qemu.
+
+  - CVE-2015-4104: PCI MSI mask bits inadvertently exposed to guests.
+
+  - CVE-2015-4105: Guest triggerable qemu MSI-X pass-through error messages");
 
   script_tag(name:"affected", value:"XenServer 6.5
 XenServer 6.2.0
@@ -65,7 +71,7 @@ XenServer 6.1.0");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-12 16:17:32 +0200 (Fri, 12 Jun 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Citrix Xenserver Local Security Checks");

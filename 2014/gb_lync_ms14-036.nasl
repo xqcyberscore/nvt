@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_ms14-036.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_lync_ms14-036.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Lync Remote Code Execution Vulnerabilities (2967487)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804461");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1817", "CVE-2014-1818");
   script_bugtraq_id(67897, 67904);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-11 13:39:10 +0530 (Wed, 11 Jun 2014)");
   script_name("Microsoft Lync Remote Code Execution Vulnerabilities (2967487)");
 
@@ -48,9 +48,7 @@ or not.");
   - An error within GDI+ when validating images.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
 code in the context of the currently logged-in user, which may lead to a
-complete compromise of an affected computer.
-
-Impact Level: System/Application");
+complete compromise of an affected computer.");
   script_tag(name:"affected", value:"Microsoft Lync 2010
 Microsoft Lync 2013");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update

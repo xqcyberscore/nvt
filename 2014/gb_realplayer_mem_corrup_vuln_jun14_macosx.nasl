@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mem_corrup_vuln_jun14_macosx.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_realplayer_mem_corrup_vuln_jun14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # RealNetworks RealPlayer '.3gp' Memory Corruption Vulnerability Jun14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:realnetworks:realplayer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804620");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3444");
   script_bugtraq_id(67434);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-06 19:16:08 +0530 (Fri, 06 Jun 2014)");
   script_name("RealNetworks RealPlayer '.3gp' Memory Corruption Vulnerability Jun14 (Mac OS X)");
 
@@ -45,9 +45,7 @@ vulnerability.");
   script_tag(name:"insight", value:"Flaw is due to input not being properly sanitized when handling a specially
 crafted 3GP file.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to corrupt memory, causing
-a denial of service or potentially allowing the execution of arbitrary code.
-
-Impact Level: System/Application");
+a denial of service or potentially allowing the execution of arbitrary code.");
   script_tag(name:"affected", value:"RealNetworks RealPlayer version 16.0.3.51 and before on Mac OS X.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

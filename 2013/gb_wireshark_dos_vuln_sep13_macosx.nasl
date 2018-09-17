@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804019");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5717");
   script_bugtraq_id(62322);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-27 11:13:03 +0530 (Fri, 27 Sep 2013)");
   script_name("Wireshark Denial of Service Vulnerability Sep13 (Mac OS X)");
 
@@ -49,9 +49,7 @@ For updates refer to http://www.wireshark.org/download");
   - bthci_acl.c)");
   script_tag(name:"affected", value:"Wireshark version 1.10.x before 1.10.2 on Mac OS X");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a DoS (Denial of Service)
-and potentially compromise a vulnerable system.
-
-Impact Level: System/Application");
+and potentially compromise a vulnerable system.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 

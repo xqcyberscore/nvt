@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_remote_code_exec_vuln.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_jboss_remote_code_exec_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # JBoss Application Server Remote Code Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805373");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-30 14:34:53 +0530 (Thu, 30 Apr 2015)");
   script_name("JBoss Application Server Remote Code Execution Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
   script not properly sanitizing user-supplied input.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to execute arbitrary code in the affected system.
-
-  Impact Level: Application");
+  to execute arbitrary code in the affected system.");
 
   script_tag(name:"affected", value:"JBoss AS versions 3, 4, 5, 6.");
 

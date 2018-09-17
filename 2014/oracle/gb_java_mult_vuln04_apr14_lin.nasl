@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_vuln04_apr14_lin.nasl 11214 2018-09-04 10:09:46Z mmartin $
+# $Id: gb_java_mult_vuln04_apr14_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle Java SE Multiple Vulnerabilities-04 Apr 2014 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108423");
-  script_version("$Revision: 11214 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0463", "CVE-2014-0464", "CVE-2014-2410");
   script_bugtraq_id(66908, 66913, 66886);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-18 16:48:49 +0530 (Fri, 18 Apr 2014)");
   script_name("Oracle Java SE Multiple Vulnerabilities-04 Apr 2014 (Linux)");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to manipulate certain data, cause a DoS (Denial of Service) and compromise a
-  vulnerable system.
-
-  Impact Level: System/Application.");
+  vulnerable system.");
 
   script_tag(name:"affected", value:"Oracle Java SE version 8 on Linux");
 

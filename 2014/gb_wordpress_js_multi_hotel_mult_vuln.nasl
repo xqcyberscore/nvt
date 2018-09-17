@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_js_multi_hotel_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_wordpress_js_multi_hotel_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WordPress Js-Multi-Hotel Plugin Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804572");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_bugtraq_id(66529);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-08 11:09:59 +0530 (Thu, 08 May 2014)");
   script_name("WordPress Js-Multi-Hotel Plugin Multiple Vulnerabilities");
 
@@ -51,9 +51,7 @@ cookie or not.");
   and /includes/timthumb.php scripts discloses the software's installation path.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
 script code in a user's browser session in the context of an affected site,
-and cause a denial of service via CPU consumption.
-
-Impact Level: System/Application");
+and cause a denial of service via CPU consumption.");
   script_tag(name:"affected", value:"WordPress JS MultiHotel Plugin version 2.2.1, Other versions may also be
 affected.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.

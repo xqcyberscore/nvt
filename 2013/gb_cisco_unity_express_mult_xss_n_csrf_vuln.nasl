@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_unity_express_mult_xss_n_csrf_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_cisco_unity_express_mult_xss_n_csrf_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Cisco Unity Express Multiple XSS and CSRF Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803167");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1114", "CVE-2013-1120");
   script_bugtraq_id(57677, 57678);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-06 11:33:49 +0530 (Wed, 06 Feb 2013)");
   script_name("Cisco Unity Express Multiple XSS and CSRF Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52045");
@@ -48,9 +48,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
   and script code in a users browser session in context of an affected site and
-  perform certain actions when a logged-in user visits a specially crafted web page.
-
-  Impact Level: Application");
+  perform certain actions when a logged-in user visits a specially crafted web page.");
   script_tag(name:"affected", value:"Cisco Unity Express version 7.x");
   script_tag(name:"insight", value:"- Input passed via the 'gui_pagenotableData' parameter to Web/SA2/ScriptList.do
     and 'holiday.description' parameter to /Web/SA3/AddHoliday.do are not

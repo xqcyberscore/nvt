@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_dos_vuln_win.nasl 11077 2018-08-22 09:40:33Z mmartin $
+# $Id: gb_apache_tomcat_dos_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Apache Tomcat Denial Of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803637");
-  script_version("$Revision: 11077 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-3544");
   script_bugtraq_id(59797);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-06 13:10:27 +0530 (Thu, 06 Jun 2013)");
   script_name("Apache Tomcat Denial Of Service Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -52,9 +52,7 @@ if(description)
   script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=revision&revision=1378702");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial
-  of service via a specially crafted request.
-
-  Impact Level: Application");
+  of service via a specially crafted request.");
   script_tag(name:"affected", value:"Apache Tomcat version 6.x before 6.0.37 and 7.x before 7.0.30");
   script_tag(name:"insight", value:"Flaw due to improper validation of an error in the way CRLF sequences at the
   end of data chunks are processed by chunked transfer encoding.");

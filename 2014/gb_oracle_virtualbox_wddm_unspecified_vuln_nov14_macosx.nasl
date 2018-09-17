@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_wddm_unspecified_vuln_nov14_macosx.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_oracle_virtualbox_wddm_unspecified_vuln_nov14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle Virtualbox WDDM Unspecified Vulnerability Nov14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804949");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-6540");
   script_bugtraq_id(70493);
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-03 11:52:04 +0530 (Mon, 03 Nov 2014)");
   script_name("Oracle Virtualbox WDDM Unspecified Vulnerability Nov14 (Mac OS X)");
 
@@ -47,9 +47,7 @@ if(description)
   Graphics driver (WDDM) for Windows Guests subcomponent.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to
-  cause denial of service attack.
-
-  Impact Level: Application");
+  cause denial of service attack.");
 
   script_tag(name:"affected", value:"VirtualBox version 4.1.x before 4.1.34, 4.2.x
   before 4.2.26, and 4.3.x before 4.3.14 on Mac OS X");

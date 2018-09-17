@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_multiple_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_symantec_web_gateway_multiple_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Symantec Web Gateway Multiple Vulnerabilities-Aug2013
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:symantec:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803732");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(61106, 61101, 61103, 61102, 61104);
   script_cve_id("CVE-2013-1616", "CVE-2013-1617", "CVE-2013-4670", "CVE-2013-4671",
                 "CVE-2013-4672");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-06 15:41:47 +0530 (Tue, 06 Aug 2013)");
   script_name("Symantec Web Gateway Multiple Vulnerabilities-Aug2013");
   script_tag(name:"summary", value:"This host is running Symantec Web Gateway and is prone to multiple
@@ -57,7 +57,7 @@ For updates refer to http://www.symantec.com/business/web-gateway");
   script_tag(name:"affected", value:"Symantec Web Gateway versions prior to 5.1.1");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to gain escalated privileges and
 conduct cross-site scripting and cross-site request forgery attacks and
-compromise a vulnerable system. Impact Level: Application");
+compromise a vulnerable system.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/54294");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/27136");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Jul/177");

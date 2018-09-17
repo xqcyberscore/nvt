@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_mult_vuln01_nov14.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_apache_tomcat_mult_vuln01_nov14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Apache Tomcat Multiple Vulnerabilities - 01 - Nov14
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805018");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0075", "CVE-2014-0096", "CVE-2014-0099");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-28 19:36:20 +0530 (Fri, 28 Nov 2014)");
   script_name("Apache Tomcat Multiple Vulnerabilities - 01 Nov14");
   script_category(ACT_GATHER_INFO);
@@ -65,9 +65,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service (resource consumption), bypass
   security-manager restrictions and read arbitrary files, conduct HTTP request
-  smuggling attacks via a crafted Content-Length HTTP header.
-
-  Impact Level: Application");
+  smuggling attacks via a crafted Content-Length HTTP header.");
 
   script_tag(name:"affected", value:"Apache Tomcat before 6.0.40, 7.x before 7.0.53, and 8.x before 8.0.4");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mobile_pack_info_disc_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_wordpress_mobile_pack_info_disc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WordPress Mobile Pack Plugin Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804838");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-5337");
   script_bugtraq_id(69292);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-09 14:31:29 +0530 (Tue, 09 Sep 2014)");
 
   script_name("WordPress Mobile Pack Plugin Information Disclosure Vulnerability");
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to bypass certain security restrictions and read password protected
-  posts containing valuable information.
-
-  Impact Level: Application");
+  posts containing valuable information.");
 
   script_tag(name:"affected", value:"WordPress Mobile Pack plugin
   version  2.0.1 and earlier.");

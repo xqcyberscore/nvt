@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pcman_ftp_stor_buff_overflow_vuln.nasl 10977 2018-08-15 11:13:28Z jschulte $
+# $Id: gb_pcman_ftp_stor_buff_overflow_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PCMAN FTP Server STOR Command Buffer Overflow vulnerability
 #
@@ -27,10 +27,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803875");
-  script_version("$Revision: 10977 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 13:13:28 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 16:49:10 +0530 (Wed, 21 Aug 2013)");
   script_name("PCMAN FTP Server STOR Command Buffer Overflow vulnerability");
 
@@ -47,9 +47,7 @@ is crashed or not.");
 'STOR' command followed by '/../' parameter.");
   script_tag(name:"affected", value:"PCMAN FTP version 2.07, Other versions may also be affected.");
   script_tag(name:"impact", value:"Successful exploitation will allow a remote attacker to cause denial of
-service condition result in loss of availability for the application.
-
-Impact Level: Application");
+service condition result in loss of availability for the application.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL", value:"http://1337day.com/exploit/21134");

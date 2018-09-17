@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-053.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_ms14-053.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft .NET Framework Denial of Service Vulnerability (2990931)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804480");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4072");
   script_bugtraq_id(69603);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-10 09:34:51 +0530 (Wed, 10 Sep 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -50,9 +50,7 @@ if(description)
   crafted requests.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  attackers to cause a denial of service.
-
-  Impact Level: Application");
+  attackers to cause a denial of service.");
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 1.1,
   2.0, 3.0, 3.5, 3.5.1, 4.0, 4.5, 4.5.1 and 4.5.2");

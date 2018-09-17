@@ -29,7 +29,7 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805657");
-  script_version("$Revision: 10456 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-3329", "CVE-2015-3307", "CVE-2015-2783", "CVE-2015-1352",
                 "CVE-2015-4599", "CVE-2015-4600", "CVE-2015-4602", "CVE-2015-4603",
                 "CVE-2015-4604", "CVE-2015-4605", "CVE-2015-3411", "CVE-2015-3412");
@@ -37,7 +37,7 @@ if(description)
                     75255, 75250);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-17 16:00:15 +0530 (Wed, 17 Jun 2015)");
   script_name("PHP Multiple Vulnerabilities - 03 - Jun15 (Linux)");
 
@@ -61,9 +61,7 @@ if(description)
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to cause a denial of service, to obtain sensitive
   information from process memory and to execute arbitrary code via crafted
-  dimensions.
-
-  Impact Level: Application");
+  dimensions.");
 
   script_tag(name:"affected", value:"PHP versions before 5.4.40, 5.5.x before
   5.5.24, and 5.6.x before 5.6.8");

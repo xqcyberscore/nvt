@@ -28,13 +28,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804576");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2434", "CVE-2014-2442", "CVE-2014-2444",
                 "CVE-2014-2450", "CVE-2014-2451");
   script_bugtraq_id(66872, 66823, 66885, 66863, 66828);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-08 13:23:07 +0530 (Thu, 08 May 2014)");
   script_name("Oracle MySQL Multiple Unspecified vulnerabilities - 03 May14 (Windows)");
 
@@ -45,9 +45,7 @@ vulnerabilities.");
   script_tag(name:"insight", value:"Unspecified errors in the MySQL Server component via unknown vectors related
 to DML, MyISAM, InnoDB, Optimizer, and Privileges.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to manipulate certain data
-and cause a DoS (Denial of Service).
-
-Impact Level: Application");
+and cause a DoS (Denial of Service).");
   script_tag(name:"affected", value:"Oracle MySQL version 5.6.15 and earlier on Windows.");
   script_tag(name:"solution", value:"Apply the patch from below link,
 http://www.oracle.com/technetwork/topics/security/cpuapr2014-1972952.html");

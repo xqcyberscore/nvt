@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samsung_iPOLis_manager_buffer_overflow_vuln.nasl 11348 2018-09-12 07:38:26Z cfischer $
+# $Id: gb_samsung_iPOLis_manager_buffer_overflow_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Samsung iPOLiS Device Manager Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:samsung:ipolis_device_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805482");
-  script_version("$Revision: 11348 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0555");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-20 15:38:22 +0530 (Fri, 20 Mar 2015)");
   script_name("Samsung iPOLiS Device Manager Buffer Overflow Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
   the XnsSdkDeviceIpInstaller.ocx ActiveX control in Samsung iPOLiS Device Manager.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows a
-  context-dependent attacker to execute arbitrary code or cause a denial of service.
-
-  Impact Level: System/Application");
+  context-dependent attacker to execute arbitrary code or cause a denial of service.");
 
   script_tag(name:"affected", value:"Samsung iPOLiS Device Manager version 1.12.2");
 

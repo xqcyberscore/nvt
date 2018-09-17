@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms14-007.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: secpod_ms14-007.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Windows Direct2D Remote Code Execution Vulnerability (2912390)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903431");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0263");
   script_bugtraq_id(65393);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-12 11:41:52 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft Windows Direct2D Remote Code Execution Vulnerability (2912390)");
 
@@ -45,9 +45,7 @@ or not.");
 specially crafted 2D geometric figures and can be exploited to cause
 memory corruption.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code and
-take complete control of an affected system.
-
-Impact Level: System");
+take complete control of an affected system.");
   script_tag(name:"affected", value:"Microsoft Windows 8
 Microsoft Windows 8.1 x32/x64
 Microsoft Windows Server 2012

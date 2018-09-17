@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_plugin_sig_bypass_vuln_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_adobe_reader_plugin_sig_bypass_vuln_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Reader Plugin Signature Bypass Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804625");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2002-0030");
   script_bugtraq_id(7174);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-04 17:27:52 +0530 (Wed, 04 Jun 2014)");
   script_name("Adobe Reader Plugin Signature Bypass Vulnerability (Mac OS X)");
 
@@ -45,9 +45,7 @@ bypass vulnerability.");
   script_tag(name:"insight", value:"The flaw is due to fact the program only verifies the PE header of executable
 code for a plug-in signature check.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to submit a modified plug-in to
-bypass signature checks and execute malicious code on the system.
-
-Impact Level: System/Application");
+bypass signature checks and execute malicious code on the system.");
   script_tag(name:"affected", value:"Adobe Reader 4.x and 5.x version on Mac OS X.");
   script_tag(name:"solution", value:"Update to Adobe Reader version 6.0 or later. For updates refer,
 For updates refer to http://www.adobe.com");

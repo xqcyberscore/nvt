@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_level_four_storefront_sql_inj_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_wordpress_level_four_storefront_sql_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Wordpress Level Four Storefront Plugin SQL Injection Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803449");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-26 15:01:02 +0530 (Tue, 26 Mar 2013)");
   script_name("Wordpress Level Four Storefront Plugin SQL Injection Vulnerability");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/120950/wplevelfourstorefront-sql.txt");
@@ -45,9 +45,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject or
 manipulate SQL queries in the back-end database, allowing for the manipulation
-or disclosure of arbitrary data.
-
-Impact Level: Application");
+or disclosure of arbitrary data.");
   script_tag(name:"affected", value:"Wordpress Level Four Storefront Plugin");
   script_tag(name:"insight", value:"The flaw is due to improper validation of user-supplied input to
 the getsortmanufacturers.php script via id parameter.");

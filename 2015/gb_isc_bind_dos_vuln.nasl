@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_dos_vuln.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_isc_bind_dos_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # ISC BIND Denial of Service Vulnerability - Oct15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806079");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-4620");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-07 15:17:54 +0530 (Wed, 07 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND Denial of Service Vulnerability - Oct15");
@@ -48,9 +48,7 @@ if(description)
   validation.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to cause denial of service to clients.
-
-  Impact Level: Application");
+  to cause denial of service to clients.");
 
   script_tag(name:"affected", value:"ISC BIND versions 9.7.x through 9.9.x before
   9.9.7-P1 and 9.10.x before 9.10.2-P2");

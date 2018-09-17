@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_cms_xss_vuln.nasl 5889 2017-04-07 09:14:58Z cfi $
+# $Id: gb_modx_cms_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MODX CMS Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804124");
-  script_version("$Revision: 5889 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(63274);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-29 11:49:17 +0530 (Tue, 29 Oct 2013)");
   script_name("MODX CMS Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
   or script code, steal cookie-based authentication credentials and launch
-  other attacks.
-
-  Impact Level: Application");
+  other attacks.");
 
   script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP GET request and check whether it
   is able to read the cookie or not.");

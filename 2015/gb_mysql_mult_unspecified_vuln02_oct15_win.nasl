@@ -28,12 +28,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805765");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-4905", "CVE-2015-4866");
   script_bugtraq_id(77143, 77132);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-28 13:07:06 +0530 (Wed, 28 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-02 Oct15 (Windows)");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allows an
   authenticated remote attacker to affect confidentiality, integrity, and
-  availability via unknown vectors.
-
-  Impact Level: Application");
+  availability via unknown vectors.");
 
   script_tag(name:"affected", value:"Oracle MySQL Server 5.6.23 and earlier on
   windows");

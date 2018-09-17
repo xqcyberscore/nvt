@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_nov15_macosx.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_apple_safari_mult_vuln_nov15_macosx.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Apple Safari Multiple Vulnerabilities-01 Nov15 (Mac OS X)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806608");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-5928", "CVE-2015-5929", "CVE-2015-5930", "CVE-2015-5931",
                 "CVE-2015-7002", "CVE-2015-7011", "CVE-2015-7012", "CVE-2015-7013",
                 "CVE-2015-7014");
   script_bugtraq_id(77264, 77267);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-03 14:39:29 +0530 (Tue, 03 Nov 2015)");
   script_name("Apple Safari Multiple Vulnerabilities-01 Nov15 (Mac OS X)");
 
@@ -49,9 +49,7 @@ if(description)
   memory corruption issues in webKit.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code on the affected system.
-
-  Impact Level: System/Application");
+  attackers to execute arbitrary code on the affected system.");
 
   script_tag(name:"affected", value:"Apple Safari versions before 9.0.1");
 

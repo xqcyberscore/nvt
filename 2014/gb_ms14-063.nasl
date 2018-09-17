@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-063.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_ms14-063.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Windows FAT32 Disk Partition Driver Privilege Escalation Vulnerability (2998579)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804493");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4115");
   script_bugtraq_id(70343);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-15 09:05:23 +0530 (Wed, 15 Oct 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -49,9 +49,7 @@ if(description)
   write data in otherwise reserved memory.");
 
   script_tag(name:"impact", value:"Successful exploitation could allow
-  local users to gain escalated privileges.
-
-  Impact Level: System");
+  local users to gain escalated privileges.");
 
   script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Service Pack 2 and prior
   Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior

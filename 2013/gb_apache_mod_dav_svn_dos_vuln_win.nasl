@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_dav_svn_dos_vuln_win.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_apache_mod_dav_svn_dos_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Apache HTTP Server 'mod_dav_svn' Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803743");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1896");
   script_bugtraq_id(61129);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 18:57:17 +0530 (Wed, 21 Aug 2013)");
   script_name("Apache HTTP Server 'mod_dav_svn' Denial of Service Vulnerability (Windows)");
 
@@ -50,9 +50,7 @@ whether DAV is enabled for a URI.");
   script_tag(name:"affected", value:"Apache HTTP Server version before 2.2.25 on windows.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to cause a denial of
 service (segmentation fault) via a MERGE request in which the URI is
-configured for handling by the mod_dav_svn module.
-
-  Impact Level: Application");
+configured for handling by the mod_dav_svn module.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

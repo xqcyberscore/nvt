@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsys_promotic_mult_vuln_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_microsys_promotic_mult_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsys Promotic Multiple Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803660");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2011-4520", "CVE-2011-4519", "CVE-2011-4518");
   script_bugtraq_id(50133);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-17 17:30:15 +0530 (Mon, 17 Jun 2013)");
   script_name("Microsys Promotic Multiple Vulnerabilities (Windows)");
   script_category(ACT_ATTACK);
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation allows attackers to cause stack or heap based buffer
   overflow or disclose sensitive information or execute arbitrary code within
-  the context of the affected application.
-
-  Impact Level: System/Application");
+  the context of the affected application.");
   script_tag(name:"affected", value:"Promotic versions prior to 8.1.5 on Windows");
   script_tag(name:"insight", value:"Multiple flaws due to,
 

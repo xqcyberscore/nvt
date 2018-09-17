@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln02_aug15_lin.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_drupal_mult_vuln02_aug15_lin.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Drupal Multiple Vulnerabilities-02 August15 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805967");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-6665", "CVE-2015-6659");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-28 12:40:50 +0530 (Fri, 28 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal Multiple Vulnerabilities-02 August15 (Linux)");
@@ -54,9 +54,7 @@ if(description)
   attackers to inject or manipulate SQL queries in the back-end database,
   allowing for the manipulation or disclosure of arbitrary data, and
   execute arbitrary HTML and script code in a user's browser session in the
-  context of an affected site.
-
-  Impact Level: Application");
+  context of an affected site.");
 
   script_tag(name:"affected", value:"Drupal 7.x before 7.39 on Linux.");
 

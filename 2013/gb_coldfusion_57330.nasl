@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coldfusion_57330.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_coldfusion_57330.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe ColdFusion Authentication Bypass Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2013-0632");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
 
   script_name("Adobe ColdFusion Authentication Bypass Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57330");
   script_xref(name:"URL", value:"http://www.adobe.com/products/coldfusion/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-20 12:36:50 +0200 (Tue, 20 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -53,8 +53,7 @@ if (description)
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to bypass certain authentication
 processes and potentially allow an attacker to take control of the
-affected system.
-Impact Level: Application");
+affected system.");
   script_tag(name:"vuldetect", value:"Try to bypass authentication by sending some HTTP requests.");
   script_tag(name:"insight", value:"Adobe ColdFusion versions 9.0, 9.0.1, and 9.0.2 do not properly check the
 'rdsPasswordAllowed' field when accessing the Administrator API CFC that is used for

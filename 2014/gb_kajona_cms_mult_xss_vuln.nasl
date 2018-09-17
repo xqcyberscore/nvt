@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kajona_cms_mult_xss_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_kajona_cms_mult_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Kajona CMS Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804824");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4742", "CVE-2014-4743");
   script_bugtraq_id(68496, 68498);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-27 12:09:04 +0530 (Wed, 27 Aug 2014)");
   script_name("Kajona CMS Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -49,9 +49,7 @@ if(description)
   'systemid' parameter.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to execute arbitrary script
   code in a user's browser session within the trust relationship between their
-  browser and the server.
-
-  Impact Level: Application");
+  browser and the server.");
   script_tag(name:"affected", value:"Kajona CMS version 4.4 and prior.");
   script_tag(name:"solution", value:"Upgrade to Kajona CMS version 4.5 or later. For updates refer to
   http://www.kajona.de");

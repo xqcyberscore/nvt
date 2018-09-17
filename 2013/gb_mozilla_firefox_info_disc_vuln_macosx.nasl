@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804015");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1729");
   script_bugtraq_id(62474);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-24 16:13:31 +0530 (Tue, 24 Sep 2013)");
   script_name("Mozilla Firefox Information Disclosure Vulnerability (Mac OS X)");
 
@@ -48,9 +48,7 @@ For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
   script_tag(name:"affected", value:"Mozilla Firefox version before 24.0 on Mac OS X, When NVIDIA graphics
 drivers used.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to obtain desktop screenshot
-data by reading from a CANVAS element.
-
-Impact Level: System/Application");
+data by reading from a CANVAS element.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 

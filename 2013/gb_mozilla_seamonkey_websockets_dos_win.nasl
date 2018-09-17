@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_seamonkey_websockets_dos_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_mozilla_seamonkey_websockets_dos_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Mozilla Seamonkey 'WebSockets' Denial of Service Vulnerability (Windows)
 #
@@ -28,8 +28,7 @@ if(description)
 {
   script_tag(name:"impact", value:"Successful exploitation will let attackers to cause a denial of service
   (memory corruption and application crash) or possibly execute arbitrary
-  code via unspecified vectors.
-  Impact Level: System/Application");
+  code via unspecified vectors.");
   script_tag(name:"affected", value:"SeaMonkey versions before 2.13.1 on Windows");
   script_tag(name:"insight", value:"Error in the WebSockets implementation, allows remote attackers to cause a
   denial of service.");
@@ -38,12 +37,12 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with Mozilla Seamonkey and is prone to multiple
   vulnerabilities.");
   script_oid("1.3.6.1.4.1.25623.1.0.803391");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-4191");
   script_bugtraq_id(55889);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 17:43:07 +0530 (Mon, 15 Oct 2012)");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

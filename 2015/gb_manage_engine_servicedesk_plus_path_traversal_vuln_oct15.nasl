@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_servicedesk_plus_path_traversal_vuln_oct15.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_manage_engine_servicedesk_plus_path_traversal_vuln_oct15.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # ManageEngine ServiceDesk Plus 'fName' Parameter Path Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:manageengine:servicedesk_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806510");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-21 13:10:53 +0530 (Wed, 21 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ManageEngine ServiceDesk Plus 'fName' Parameter Path Traversal Vulnerability");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to read arbitrary files and to obtain sensitive information which
-  may lead to further attacks.
-
-  Impact Level: Application");
+  may lead to further attacks.");
 
   script_tag(name:"affected", value:"ManageEngine ServiceDesk Plus version
   9.1 build 9110 and previous versions.");

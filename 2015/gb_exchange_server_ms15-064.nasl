@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exchange_server_ms15-064.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_exchange_server_ms15-064.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # Microsoft Exchange Server Privilege Escalation Vulnerability (3062157)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805198");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11422 $");
   script_cve_id("CVE-2015-1764", "CVE-2015-1771", "CVE-2015-2359");
   script_bugtraq_id(75007, 75011, 75013);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-10 10:26:35 +0530 (Wed, 10 Jun 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Exchange Server Privilege Escalation Vulnerability (3062157)");
@@ -51,9 +51,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to scan and attack systems behind a firewall that are normally
   inaccessible from the outside world, enumerate and attack services that are
-  running on these host systems and exploit host-based authentication services.
-
-  Impact Level: System/Application");
+  running on these host systems and exploit host-based authentication services.");
 
   script_tag(name:"affected", value:"Microsoft Exchange Server 2013 SP1
   and Microsoft Exchange Server 2013 Cumulative Update 8");

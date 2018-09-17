@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_clickjacking_vuln_jun13_win.nasl 11011 2018-08-16 14:14:31Z mmartin $
+# $Id: gb_google_chrome_clickjacking_vuln_jun13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Google Chrome Clickjacking Vulnerability June13 (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803675");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2866");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 11:15:34 +0530 (Mon, 24 Jun 2013)");
   script_name("Google Chrome Clickjacking Vulnerability June13 (Windows)");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1028694");
@@ -42,8 +42,7 @@ if(description)
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to obtain sensitive information
-  and conduct clickjacking attacks against the users Flash configuration.
-  Impact Level: Application");
+  and conduct clickjacking attacks against the users Flash configuration.");
   script_tag(name:"affected", value:"Google Chrome version prior to 27.0.1453.116 on Windows");
   script_tag(name:"insight", value:"Flaw within Flash plug-in which does not properly determine whether a user
   wishes to permit camera or microphone access by a Flash application.");

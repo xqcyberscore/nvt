@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tribiq_cms_info_disc_vuln.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: gb_tribiq_cms_info_disc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Tribiq CMS Direct Request Information Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805232");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2011-2727");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-31 15:18:53 +0530 (Wed, 31 Dec 2014)");
   script_name("Tribiq CMS Direct Request Information Disclosure Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain knowledge of the web root directory and other potentially
-  sensitive information.
-
-  Impact Level: Application");
+  sensitive information.");
 
   script_tag(name:"affected", value:"Tribiq CMS version 5.2.7b and probably
   prior.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wonderdesk_mult_xss_vuln.nasl 11219 2018-09-04 11:52:00Z cfischer $
+# $Id: gb_wonderdesk_mult_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Wonderdesk SQL Multiple Cross-Site Scripting (XSS) Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803625");
-  script_version("$Revision: 11219 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-1788");
   script_bugtraq_id(52193);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-03 15:30:38 +0530 (Mon, 03 Jun 2013)");
   script_name("Wonderdesk SQL Multiple Cross-Site Scripting (XSS) Vulnerabilities");
 
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
   arbitrary HTML and script code in a users browser session in context of an
-  affected site and launch other attacks.
-
-  Impact Level: Application");
+  affected site and launch other attacks.");
   script_tag(name:"affected", value:"Wonderdesk version 4.14, other versions may also be affected");
   script_tag(name:"insight", value:"Multiple flaws due to,
 

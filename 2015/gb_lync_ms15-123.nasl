@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_ms15-123.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_lync_ms15-123.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Lync Information Disclosure Vulnerability (3105872)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806155");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-6061");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 10:03:45 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft Lync Information Disclosure Vulnerability (3105872)");
 
@@ -47,9 +47,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow a
   remote attacker disclosure if an attacker invites a target user to an instant
   message session and then sends that user a message containing specially crafted
-  JavaScript content.
-
-  Impact Level: System/Application");
+  JavaScript content.");
 
   script_tag(name:"affected", value:"Microsoft Lync 2010
   Microsoft Lync 2013");

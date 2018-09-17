@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mult_vuln_aug13_macosx.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_realplayer_mult_vuln_aug13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities August13 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:realnetworks:realplayer";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803881");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4973", "CVE-2013-4974");
   script_bugtraq_id(61989, 61990);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-29 10:36:10 +0530 (Thu, 29 Aug 2013)");
   script_name("RealNetworks RealPlayer Multiple Vulnerabilities August13 (Mac OS X)");
   script_tag(name:"summary", value:"The host is installed with RealPlayer and is prone to multiple vulnerabilities.");
@@ -46,7 +46,7 @@ RealMedia files.");
   script_tag(name:"affected", value:"RealPlayer version prior to 12.0.1.1738 on Mac OS X.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote unauthenticated attacker to obtain
 sensitive information, cause a denial of service condition, or execute
-arbitrary code with the privileges of the application. Impact Level: System/Application");
+arbitrary code with the privileges of the application.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_mar15_win.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_mar15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 Mar15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805503");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-1213", "CVE-2015-1214", "CVE-2015-1215", "CVE-2015-1216",
                 "CVE-2015-1217", "CVE-2015-1218", "CVE-2015-1219", "CVE-2015-1220",
                 "CVE-2015-1221", "CVE-2015-1222", "CVE-2015-1223", "CVE-2015-1224",
@@ -40,7 +40,7 @@ if(description)
   script_bugtraq_id(72901, 72916);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-13 14:45:49 +0530 (Fri, 13 Mar 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Mar15 (Windows)");
 
@@ -56,9 +56,7 @@ if(description)
   attackers to dereference already freed memory, potentially execute arbitrary code,
   potentially disclose memory contents, gain unauthorized access to information,
   cause a denial of service, conduct cookie-injection attacks and other unspecified
-  impacts.
-
-  Impact Level: System/Application");
+  impacts.");
 
   script_tag(name:"affected", value:"Google Chrome version prior to
   41.0.2272.76 on Windows.");

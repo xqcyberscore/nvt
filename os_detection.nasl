@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 10985 2018-08-15 12:56:20Z cfischer $
+# $Id: os_detection.nasl 11412 2018-09-16 10:21:40Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 10985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:56:20 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 11412 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-16 12:21:40 +0200 (Sun, 16 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,6 +38,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
   # Keep order the same as in host_details.inc. Also add NVTs registering an OS there if adding here.
+  # nmap_net.nasl was not added as this is in ACT_SCANNER and doesn't use register_and_report_os yet
   # Keep in sync with os_fingerprint.nasl as well.
   script_dependencies("gb_greenbone_os_detect.nasl", "gb_ami_megarac_sp_web_detect.nasl",
                       "gb_ros_detect.nasl", "gb_apple_mobile_detect.nasl",
@@ -62,10 +63,11 @@ if(description)
                       "gb_simatic_cp_consolidation.nasl", "gb_simatic_scalance_snmp_detect.nasl",
                       "gb_siemens_ruggedcom_consolidation.nasl", "ilo_detect.nasl",
                       "gb_watchguard_fireware_detect.nasl", "gb_vibnode_consolidation.nasl",
-                      "gb_hyperip_consolidation.nasl", "gb_windows_cpe_detect.nasl",
+                      "gb_hyperip_consolidation.nasl", "gb_avm_fritz_box_detect.nasl",
+                      "gb_windows_cpe_detect.nasl",
                       "gather-package-list.nasl", "gb_cisco_pis_version.nasl",
                       "gb_checkpoint_fw_version.nasl", "gb_smb_windows_detect.nasl",
-                      "gb_nec_communication_platforms_detect.nasl", "gb_ssh_os_detection.nasl", # nmap_net.nasl not added as this is in ACT_SCANNER (and doesn't use register_and_report_os yet)
+                      "gb_nec_communication_platforms_detect.nasl", "gb_ssh_os_detection.nasl",
                       "gb_citrix_netscaler_version.nasl",
                       "gb_junos_snmp_version.nasl", "gb_snmp_os_detection.nasl",
                       "gb_dns_os_detection.nasl", "gb_ftp_os_detection.nasl",
@@ -81,6 +83,7 @@ if(description)
                       "ident_process_owner.nasl", "gb_pihole_detect.nasl",
                       "gb_dropbear_ssh_detect.nasl", "gb_rtsp_os_detection.nasl",
                       "gb_nntp_os_detection.nasl", "gb_android_adb_detect.nasl",
+                      "netbios_name_get.nasl",
                       "gb_nmap_os_detection.nasl", "os_fingerprint.nasl");
 
   script_tag(name:"summary", value:"This script consolidates the OS information detected by several NVTs and tries to find the best matching OS.

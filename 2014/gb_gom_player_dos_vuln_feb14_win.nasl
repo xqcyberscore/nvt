@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gom_player_dos_vuln_feb14_win.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: gb_gom_player_dos_vuln_feb14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # GOM Media Player Denial of Service (dos) Vulnerability Feb14 (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:gomlab:gom_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804304");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-7184");
   script_bugtraq_id(64481);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-03 11:14:36 +0530 (Mon, 03 Feb 2014)");
   script_name("GOM Media Player Denial of Service (dos) Vulnerability Feb14 (Windows)");
 
@@ -44,9 +44,7 @@ denial-of-service vulnerability.");
   script_tag(name:"insight", value:"The flaw is in the application caused by improper bounds checking when
 processing .avi files with an overly long string.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to corrupt memory and
-cause a denial of service or execute an arbitrary code.
-
-Impact Level: System/Application");
+cause a denial of service or execute an arbitrary code.");
   script_tag(name:"affected", value:"GOM Media Player version 2.2.56.5158 and prior on Windows");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

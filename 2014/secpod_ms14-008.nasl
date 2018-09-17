@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms14-008.nasl 11196 2018-09-03 13:09:40Z mmartin $
+# $Id: secpod_ms14-008.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Forefront Protection For Exchange RCE Vulnerability (2927022)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:microsoft_forefront_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903430");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0294");
   script_bugtraq_id(65397);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-12 10:41:31 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft Forefront Protection For Exchange RCE Vulnerability (2927022)");
 
@@ -45,9 +45,7 @@ Bulletin MS14-008.");
 or not.");
   script_tag(name:"insight", value:"The flaw is due to an unspecified error when parsing mail content.");
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to run arbitrary code via a
-specially crafted email message and compromise a vulnerable system.
-
-Impact Level: System/Application");
+specially crafted email message and compromise a vulnerable system.");
   script_tag(name:"affected", value:"Microsoft Forefront Protection 2010 for Exchange Server");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
 mentioned hotfixes in the advisory from the below link,

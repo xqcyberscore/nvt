@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804708");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1539");
   script_bugtraq_id(67967);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-04 10:41:41 +0530 (Fri, 04 Jul 2014)");
   script_name("Mozilla Thunderbird clickjacking Vulnerability-01 July14 (Mac OS X)");
 
@@ -45,9 +45,7 @@ vulnerabilities.");
   script_tag(name:"insight", value:"Flaws are due to error in handling cursor rendering related to an embedded
 flash object.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct clickjacking attacks
-and compromise a user's system.
-
-Impact Level: System/Application");
+and compromise a user's system.");
   script_tag(name:"affected", value:"Mozilla Thunderbird version 24.x through 24.6 on Mac OS X");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"qod_type", value:"package");

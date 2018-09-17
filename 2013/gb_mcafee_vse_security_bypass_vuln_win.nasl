@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_vse_security_bypass_vuln_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_mcafee_vse_security_bypass_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # McAfee VirusScan Enterprise Security Bypass Vulnerability (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803321");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2010-3496");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-04 10:50:36 +0530 (Mon, 04 Mar 2013)");
   script_name("McAfee VirusScan Enterprise Security Bypass Vulnerability (Windows)");
 
@@ -44,8 +44,7 @@ if(description)
   script_dependencies("gb_mcafee_virusscan_enterprise_detect_win.nasl");
   script_mandatory_keys("McAfee/VirusScan/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code
-  via malware that is correctly detected by this product.
-  Impact Level: System/Application");
+  via malware that is correctly detected by this product.");
   script_tag(name:"affected", value:"McAfee VirusScan Enterprise versions 8.5i and 8.7i");
   script_tag(name:"insight", value:"Does not properly interact with the processing of hcp:// URLs by the
   Microsoft Help and Support Center.");

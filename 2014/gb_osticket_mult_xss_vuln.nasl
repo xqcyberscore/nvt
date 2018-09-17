@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_osticket_mult_xss_vuln.nasl 11196 2018-09-03 13:09:40Z mmartin $
+# $Id: gb_osticket_mult_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # osTicket Ticketing System Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804823");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4744");
   script_bugtraq_id(68500);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-26 13:09:40 +05340 (Tue, 26 Aug 2014)");
   script_name("osTicket Ticketing System Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -46,9 +46,7 @@ if(description)
   validated before returning it to users.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to execute arbitrary script
   code in a user's browser session within the trust relationship between their
-  browser and the server.
-
-  Impact Level: Application");
+  browser and the server.");
   script_tag(name:"affected", value:"osTicket before version 1.9.2");
   script_tag(name:"solution", value:"Upgrade to osTicket version 1.9.2 or later. For updates refer to
   http://osticket.com");

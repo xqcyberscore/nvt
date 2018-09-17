@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms14-005.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: secpod_ms14-005.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Window XML Core Services Information Disclosure Vulnerability (2916036)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903510");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0266");
   script_bugtraq_id(65407);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-12 08:44:58 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft Window XML Core Services Information Disclosure Vulnerability (2916036)");
 
@@ -45,9 +45,7 @@ or not.");
 policies.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to read files on the
 local file system of the user or read content of web domains where the user
-is currently authenticated.
-
-Impact Level: System/Application ");
+is currently authenticated.");
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
 Microsoft Windows 8.1 x32/x64
 Microsoft Windows Server 2012

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln03_july14.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_owncloud_mult_vuln03_july14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ownCloud Multiple Vulnerabilities-03 July14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804661");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3832", "CVE-2014-3834", "CVE-2014-3836", "CVE-2014-3837");
   script_bugtraq_id(67451, 68196, 68061, 68058);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-03 15:47:48 +0530 (Thu, 03 Jul 2014)");
   script_name("ownCloud Multiple Vulnerabilities-03 July14");
 
@@ -59,9 +59,7 @@ vulnerabilities.");
 gain access to arbitrary contacts of other users, perform a Cross-Site Request
 Forgery attack, enumerate shared files of other users and execute arbitrary
 script code in a user's browser session within the trust relationship between
-their browser and the server.
-
-Impact Level: Application");
+their browser and the server.");
   script_tag(name:"affected", value:"ownCloud Server 6.0.x before 6.0.3");
   script_tag(name:"solution", value:"Upgrade to ownCloud version 6.0.3 or later,
 For updates refer to http://owncloud.org");

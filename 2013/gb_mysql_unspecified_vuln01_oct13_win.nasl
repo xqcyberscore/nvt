@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln01_oct13_win.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_mysql_unspecified_vuln01_oct13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Oracle MySQL Multiple Unspecified vulnerabilities-01 Oct-2013 (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804032");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5767", "CVE-2013-5786", "CVE-2013-5793");
   script_bugtraq_id(63113, 63107, 63116);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-28 15:46:59 +0530 (Mon, 28 Oct 2013)");
   script_name("Oracle MySQL Multiple Unspecified vulnerabilities-01 Oct-2013 (Windows)");
 
@@ -49,9 +49,7 @@ to Optimizer and InnoDB.");
   script_tag(name:"affected", value:"Oracle MySQL version 5.6.12 and earlier on Windows.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to disclose sensitive
 information, manipulate certain data, cause a DoS (Denial of Service) and
-bypass certain security restrictions.
-
-Impact Level: Application");
+bypass certain security restrictions.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/55327");
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html");

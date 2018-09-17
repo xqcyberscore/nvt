@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_sec_bypass_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_mcafee_epolicy_orchestrator_sec_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # McAfee ePolicy Orchestrator (ePO) Security Bypass Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:mcafee:epolicy_orchestrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803863");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-4594");
   script_bugtraq_id(55183);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-09 12:24:03 +0530 (Fri, 09 Aug 2013)");
   script_name("McAfee ePolicy Orchestrator (ePO) Security Bypass Vulnerability");
   script_tag(name:"summary", value:"This host is running McAfee ePolicy Orchestrator and is prone to security
@@ -46,7 +46,7 @@ https://kc.mcafee.com/corporate/index?page=content&id=SB10025");
   script_tag(name:"insight", value:"Flaw is due to an improper parsing of an ID value in a console URL.");
   script_tag(name:"affected", value:"McAfee ePolicy Orchestrator (ePO) version 4.6.1 and earlier");
   script_tag(name:"impact", value:"Successful exploitation will allow remote authenticated attacker to gain
-access to potentially sensitive information. Impact Level: Application");
+access to potentially sensitive information.");
 
   script_xref(name:"URL", value:"http://cxsecurity.com/cveshow/CVE-2012-4594");
   script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10025");

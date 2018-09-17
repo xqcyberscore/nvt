@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-076.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_ms15-076.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # MS Windows Remote Procedure Call Privilege Elevation Vulnerability (3067505)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805921");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2370");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 12:11:27 +0530 (Wed, 15 Jul 2015)");
   script_name("MS Windows Remote Procedure Call Privilege Elevation Vulnerability (3067505)");
 
@@ -45,9 +45,7 @@ if(description)
   inadvertently allows DCE/RPC connection reflection.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to gain privileged access.
-
-  Impact Level: System");
+  attacker to gain privileged access.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Edition Service Pack 2
   Microsoft Windows Vista x32/x64 Edition Service Pack 2

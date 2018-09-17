@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_parallels_plesk_sitebuilder_remote_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_parallels_plesk_sitebuilder_remote_detect.nasl 11407 2018-09-15 11:02:05Z cfischer $
 #
 # Parallels Plesk Sitebuilder Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812278");
-  script_version("$Revision: 11015 $");
+  script_version("$Revision: 11407 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:02:05 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-12-27 12:18:56 +0530 (Wed, 27 Dec 2017)");
   script_name("Parallels Plesk Sitebuilder Remote Detection");
 
@@ -44,8 +44,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 2006);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -57,8 +59,7 @@ include("http_keepalive.inc");
 ppsPort = get_http_port(default:2006);
 
 url = "/Login.aspx";
-ppsReq = http_get(item:url, port:ppsPort);
-ppsRes = http_keepalive_send_recv(port:ppsPort, data:ppsReq);
+ppsRes = http_get_cache(item:url, port:ppsPort);
 
 if("Log in to Plesk Sitebuilder" >< ppsRes && ppsRes =~ "Copyright.*Parallels" &&
    ">Interface language" >< ppsRes && ">User name" >< ppsRes)
@@ -72,10 +73,9 @@ if("Log in to Plesk Sitebuilder" >< ppsRes && ppsRes =~ "Copyright.*Parallels" &
 
   set_kb_item(name:"Parallels/Plesk/Sitebuilder/Installed", value:TRUE);
 
-  ## Created new cpe
   cpe = build_cpe(value:ppsVer, exp:"^([0-9.]+)", base:"cpe:/a:parallels:parallels_plesk_sitebuilder:");
   if(!cpe)
-    cpe= "cpe:/a:parallels:parallels_plesk_sitebuilder";
+    cpe = "cpe:/a:parallels:parallels_plesk_sitebuilder";
 
   register_product(cpe:cpe, location:"/", port:ppsPort);
 

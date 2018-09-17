@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_etd_file_dos_vuln_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_adobe_reader_etd_file_dos_vuln_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Reader '.ETD File' Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804384");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2004-1153");
   script_bugtraq_id(11934);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-10 15:10:46 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader '.ETD File' Denial of Service Vulnerability (Windows)");
 
@@ -43,9 +43,7 @@ vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaw is due to the format string error in '.etd' file.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code on
-the system and gain sensitive information.
-
-Impact Level: System/Application");
+the system and gain sensitive information.");
   script_tag(name:"affected", value:"Adobe Reader version 6.0.0 through 6.0.2 on Windows.");
   script_tag(name:"solution", value:"Upgrade to Adobe Reader version 6.0.3 or later. For updates refer to
 http://get.adobe.com/reader");

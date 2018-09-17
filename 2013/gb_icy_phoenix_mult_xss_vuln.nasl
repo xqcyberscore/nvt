@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icy_phoenix_mult_xss_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_icy_phoenix_mult_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Icy Phoenix Multiple Cross-Site Scripting Vulnerability
 #
@@ -27,18 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803952");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(62722);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-08 15:21:12 +0530 (Tue, 08 Oct 2013)");
   script_name("Icy Phoenix Multiple Cross-Site Scripting Vulnerability");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to steal the victim's
-  cookie-based authentication credentials.
-
-  Impact Level: Application");
+  cookie-based authentication credentials.");
   script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP GET request and check whether it is able
   to read the string or not.");
   script_tag(name:"insight", value : 'An error exists in the application which fails to properly sanitize user-supplied

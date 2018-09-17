@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804063");
-  script_version("$Revision: 11197 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0491", "CVE-2014-0492");
   script_bugtraq_id(64807, 64810);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:31:53 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 10:42:12 +0530 (Tue, 21 Jan 2014)");
   script_name("Adobe Flash Player Security Bypass Vulnerability Jan14 (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -54,9 +54,7 @@ if(description)
   script_tag(name:"insight", value:"Flaw is due to an unspecified error and other additional weakness.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to, bypass certain security
-  restrictions and disclose certain memory information.
-
-  Impact Level: System/Application");
+  restrictions and disclose certain memory information.");
 
   script_tag(name:"affected", value:"Adobe Flash Player version before 11.7.700.260, 11.8.x, 11.9.x before
   12.0.0.38 on Windows.");

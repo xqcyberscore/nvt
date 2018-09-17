@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_sharepoint_sever_n_foundation_ms15-036.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_ms_sharepoint_sever_n_foundation_ms15-036.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # MS SharePoint Server and Foundation Elevation of Privilege Vulnerability (3052044)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805167");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-1653");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 15:21:41 +0530 (Wed, 15 Apr 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server and Foundation Elevation of Privilege Vulnerability (3052044)");
@@ -48,9 +48,7 @@ if(description)
   not validate input before returning it to users.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  authenticated attackers to execute arbitrary HTML and script code.
-
-  Impact Level: System/Application");
+  authenticated attackers to execute arbitrary HTML and script code.");
 
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2013 Service Pack 1,
 

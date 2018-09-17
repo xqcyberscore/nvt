@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_server_monitor_mult_csrf_vuln.nasl 11348 2018-09-12 07:38:26Z cfischer $
+# $Id: gb_php_server_monitor_mult_csrf_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # PHP Server Monitor Multiple CSRF Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:phpserver:monitor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806528");
-  script_version("$Revision: 11348 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-02 18:23:47 +0530 (Mon, 02 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("PHP Server Monitor Multiple CSRF Vulnerabilities");
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to add arbitrary users & servers to the system, modify system
-  configurations and delete arbitrary servers.
-
-  Impact Level: Application");
+  configurations and delete arbitrary servers.");
 
   script_tag(name:"affected", value:"PHP Server Monitor 3.1.1");
 

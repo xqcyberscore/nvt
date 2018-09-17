@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_portaldemo_orgchart_sql_inj_vuln.nasl 11069 2018-08-21 12:29:19Z mmartin $
+# $Id: gb_oracle_portaldemo_orgchart_sql_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Oracle Portal Demo Organization Chart SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803772");
-  script_version("$Revision: 11069 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3831");
   script_bugtraq_id(63043);
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 14:29:19 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-21 13:54:36 +0530 (Mon, 21 Oct 2013)");
   script_name("Oracle Portal Demo Organization Chart SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to manipulate SQL queries
-  by injecting arbitrary SQL code.
-
-  Impact Level: Application");
+  by injecting arbitrary SQL code.");
   script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP GET request and check whether it
   is able to read the database information or not.");
   script_tag(name:"insight", value:"Input passed via the 'p_arg_values' parameter to /pls/portal/PORTAL_DEMO.ORG

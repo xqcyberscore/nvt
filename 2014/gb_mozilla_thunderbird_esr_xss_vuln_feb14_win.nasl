@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_xss_vuln_feb14_win.nasl 11214 2018-09-04 10:09:46Z mmartin $
+# $Id: gb_mozilla_thunderbird_esr_xss_vuln_feb14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Mozilla Thunderbird ESR Multiple XSS Vulnerabilities Feb14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:thunderbird_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804505");
-  script_version("$Revision: 11214 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-6674", "CVE-2014-2018");
   script_bugtraq_id(65158, 65620);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-19 16:45:33 +0530 (Wed, 19 Feb 2014)");
   script_name("Mozilla Thunderbird ESR Multiple XSS Vulnerabilities Feb14 (Windows)");
 
@@ -46,9 +46,7 @@ cross site scripting vulnerabilities.");
 IFRAME elements or EMBED or OBJECT element before returning it to users.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary script code
 in a user's browser session within the trust relationship between their
-browser and the server.
-
-Impact Level: Application");
+browser and the server.");
   script_tag(name:"affected", value:"Mozilla Thunderbird version ESR 17.x through 17.0.10 on Windows");
   script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 23.0 or later,
 For updates refer to http://www.mozilla.com/en-US/thunderbird");

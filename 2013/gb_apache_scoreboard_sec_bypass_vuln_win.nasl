@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_scoreboard_sec_bypass_vuln_win.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_apache_scoreboard_sec_bypass_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Apache HTTP Server Scoreboard Security Bypass Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803744");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-0031");
   script_bugtraq_id(51407);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 19:53:07 +0530 (Wed, 21 Aug 2013)");
   script_name("Apache HTTP Server Scoreboard Security Bypass Vulnerability (Windows)");
 
@@ -49,9 +49,7 @@ a scoreboard shared memory segment leading to an invalid call to the free
 function.");
   script_tag(name:"affected", value:"Apache HTTP Server version before 2.2.22 on windows.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to bypass certain security
-restrictions. Other attacks are also possible.
-
-  Impact Level: Application");
+restrictions. Other attacks are also possible.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

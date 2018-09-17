@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zerocms_priv_esc_n_sql_inj_vuln.nasl 11196 2018-09-03 13:09:40Z mmartin $
+# $Id: gb_zerocms_priv_esc_n_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ZeroCMS Privilege Escalation & SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804640");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4034", "CVE-2014-4195", "CVE-2014-4194", "CVE-2014-4710");
   script_bugtraq_id(67953, 68246, 68134, 68935);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-16 13:03:02 +0530 (Mon, 16 Jun 2014)");
   script_name("ZeroCMS Privilege Escalation & SQL Injection Vulnerabilities");
 
@@ -53,9 +53,7 @@ if(description)
   attacker to gain unauthorized privileges and manipulate SQL queries in the
   backend database allowing for the manipulation or disclosure of arbitrary
   data, execute arbitrary HTML and script code in a user's browser session in
-  the context of an affected site.
-
-  Impact Level: Application");
+  the context of an affected site.");
 
   script_tag(name:"affected", value:"ZeroCMS version 1.0");
 

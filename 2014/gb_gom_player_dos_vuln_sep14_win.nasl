@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gom_player_dos_vuln_sep14_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_gom_player_dos_vuln_sep14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # GOM Media Player Denial of Service Vulnerability Sep14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:gomlab:gom_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804903");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3899");
   script_bugtraq_id(69182);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-15 12:54:27 +0530 (Mon, 15 Sep 2014)");
 
   script_name("GOM Media Player Denial of Service Vulnerability Sep14 (Windows)");
@@ -49,9 +49,7 @@ if(description)
   for the program");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause a denial of service.
-
-  Impact Level: Application");
+  attackers to cause a denial of service.");
 
   script_tag(name:"affected", value:"GOM Media Player version 2.2.51.5149
   and prior on Windows.");

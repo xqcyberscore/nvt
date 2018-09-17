@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_may15_macosx.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_may15_macosx.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-01 May15 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805628");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0797", "CVE-2015-2708", "CVE-2015-2710", "CVE-2015-2713",
                 "CVE-2015-2716");
   script_bugtraq_id(74611, 74615);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-21 18:31:24 +0530 (Thu, 21 May 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 May15 (Mac OS X)");
 
@@ -58,9 +58,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to execute arbitrary code, gain unauthorized access
-  to information or to cause the server to crash.
-
-  Impact Level: System/Application");
+  to information or to cause the server to crash.");
 
   script_tag(name:"affected", value:"Mozilla Firefox ESR 31.x before 31.7 on
   Mac OS X");

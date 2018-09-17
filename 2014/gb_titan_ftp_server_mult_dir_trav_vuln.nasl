@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_titan_ftp_server_mult_dir_trav_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_titan_ftp_server_mult_dir_trav_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Titan FTP Server Multiple Directory Traversal Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:southrivertech:titan_ftp_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804400");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1841", "CVE-2014-1842", "CVE-2014-1843");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-11 16:31:02 +0530 (Tue, 11 Feb 2014)");
   script_name("Titan FTP Server Multiple Directory Traversal Vulnerabilities");
 
@@ -56,9 +56,7 @@ if(description)
   - It is possible to observe the 'Properties' for an existing user home
    folder. This also allows for enumeration of existing users on the system.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to read arbitrary files
-  and information on the target system.
-
-  Impact Level: Application");
+  and information on the target system.");
   script_tag(name:"affected", value:"Titan FTP Server version 10.32 Build 1816");
   script_tag(name:"solution", value:"Upgrade to Titan FTP Server 10.40 Build 1829 or later,
   For updates refer to http://webdrive.com/products/titan-ftp-server");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_wptouch_path_disc_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_wp_wptouch_path_disc_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WordPress WPtouch Plugin Path Disclosure Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803849");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-06 11:43:33 +0530 (Tue, 06 Aug 2013)");
   script_name("WordPress WPtouch Plugin Path Disclosure Vulnerability");
 
@@ -45,9 +45,7 @@ For Updated refer to http://wordpress.org/plugins/wptouch");
   script_tag(name:"insight", value:"Flaws is due to error in the php files in plugin folder and subfolders.");
   script_tag(name:"affected", value:"WPtouch version 1.9.7.1 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to gain sensitive information
-like installation path.
-
-Impact Level: Application");
+like installation path.");
 
   script_xref(name:"URL", value:"http://1337day.com/exploit/21071");
   script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2013080037");

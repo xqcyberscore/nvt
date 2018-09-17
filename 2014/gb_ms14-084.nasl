@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-084.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms14-084.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # MS Windows VBScript Remote Code Execution Vulnerability (3016711)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805206");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-6363");
   script_bugtraq_id(71504);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-10 08:42:37 +0530 (Wed, 10 Dec 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("MS Windows VBScript Remote Code Execution Vulnerability (3016711)");
@@ -49,9 +49,7 @@ if(description)
   Engine triggered when user-supplied input is not properly sanitized.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code and corrupt memory.
-
-  Impact Level: System/Application");
+  attackers to execute arbitrary code and corrupt memory.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
   Microsoft Windows Vista x32/x64 Service Pack 2 and prior

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_burden_auth_bypass_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_burden_auth_bypass_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Burden 'burden_user_rememberme' Authentication Bypass Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803792");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-7137");
   script_bugtraq_id(64662);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-13 15:17:42 +0530 (Mon, 13 Jan 2014)");
   script_name("Burden 'burden_user_rememberme' Authentication Bypass Vulnerability");
 
@@ -44,9 +44,7 @@ if(description)
   can set 'burden_user_rememberme' cookie to '1' and gain administrative
   access to the application.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to login as admin without
-  providing credentials.
-
-  Impact Level: Application");
+  providing credentials.");
   script_tag(name:"affected", value:"Burden version 1.8 and prior.");
   script_tag(name:"solution", value:"Upgrade to Burden 1.8.1 or later,
   For updates refer to https://github.com/joshf/Burden/releases/tag/1.8.1 ");

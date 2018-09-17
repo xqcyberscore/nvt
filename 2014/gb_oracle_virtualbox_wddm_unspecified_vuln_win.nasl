@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_wddm_unspecified_vuln_win.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_oracle_virtualbox_wddm_unspecified_vuln_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle VM VirtualBox Graphics Driver(WDDM) Unspecified Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804433");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2441");
   script_bugtraq_id(66868);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-18 12:39:26 +0530 (Fri, 18 Apr 2014)");
   script_name("Oracle VM VirtualBox Graphics Driver(WDDM) Unspecified Vulnerability (Windows)");
 
@@ -48,9 +48,7 @@ guests component and can be exploited by disclose, update, insert, or delete
 certain data and to cause a crash.");
   script_tag(name:"impact", value:"Successful exploitation will allow local users to disclose sensitive
 information, manipulate certain data, and cause a DoS (Denial of
-Service).
-
-Impact Level: System/Application");
+Service).");
   script_tag(name:"affected", value:"Oracle Virtualization VirtualBox 4.1.x before 4.1.32, 4.2.x before 4.2.24,
 and 4.3.x before 4.3.10 on Windows");
   script_tag(name:"solution", value:"Upgrade to Oracle VM VirtualBox version 4.1.32, 4.2.24, 4.3.10 or later,

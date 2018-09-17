@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firebird_cnct_num_bof_vuln_win.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_firebird_cnct_num_bof_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Firebird Relational Database CNCT Group Number Buffer Overflow Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803185");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2492");
   script_bugtraq_id(58393);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-25 15:25:55 +0530 (Mon, 25 Mar 2013)");
   script_name("Firebird Relational Database CNCT Group Number Buffer Overflow Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52506");
@@ -48,8 +48,7 @@ if(description)
   script_mandatory_keys("Host/runs_windows");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause denial of
-  service condition.
-  Impact Level: Application");
+  service condition.");
   script_tag(name:"affected", value:"Firebird Server version 2.1.3 to 2.1.5 before 18514 and
   2.5.1 to 2.5.3 before 26623 on Windows");
   script_tag(name:"insight", value:"The flaw exists with a group number extracted from the CNCT information,

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_ajaxfx_plugin_sql_inj_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_mybb_ajaxfx_plugin_sql_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MyBB Ajaxfs Plugin 'usertooltip' Parameter SQL Injection Vulnerability
 #
@@ -29,19 +29,17 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803966");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-6936");
   script_bugtraq_id(63818);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-22 11:50:32 +0530 (Fri, 22 Nov 2013)");
   script_name("MyBB Ajaxfs Plugin 'usertooltip' Parameter SQL Injection Vulnerability");
 
   script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL queries by
-  injecting arbitrary SQL code and gain sensitive information.
-
-  Impact Level: Application.");
+  injecting arbitrary SQL code and gain sensitive information.");
   script_tag(name:"affected", value:"MyBB Ajaxfs Plugin Version 2.0, Other versions may also be affected.");
   script_tag(name:"insight", value:"The flaw is due to input passed via the 'usertooltip' parameter to
   'ajaxfs.php', which is not properly sanitised before being used in a SQL

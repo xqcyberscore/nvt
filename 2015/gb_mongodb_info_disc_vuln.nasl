@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_info_disc_vuln.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_mongodb_info_disc_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # MongoDB Information Disclosure Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mongodb:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805730");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-24 11:51:27 +0530 (Fri, 24 Jul 2015)");
   script_name("MongoDB Information Disclosure Vulnerability");
 
@@ -45,9 +45,7 @@ if(description)
   a 'bind_ip 127.0.0.1' option set in the mongodb.conf.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain access to potentially sensitive information.
-
-  Impact Level: Application");
+  attackers to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"MongoDB version 2.4.x, 2.6.x");
 

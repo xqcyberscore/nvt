@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_smb_accessible_shares.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: secpod_ms_smb_accessible_shares.nasl 11420 2018-09-17 06:33:13Z cfischer $
 #
 # Microsoft Windows SMB Accessible Shares
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902425");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11420 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:33:13 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-29 12:08:36 +0530 (Wed, 29 Feb 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Microsoft Windows SMB Accessible Shares");
@@ -40,26 +40,14 @@ if(description)
   script_dependencies("smb_login.nasl");
   script_require_keys("SMB/transport", "SMB/name", "SMB/login", "SMB/password");
   script_require_ports(139, 445);
+
   script_tag(name:"summary", value:"The script detects the Windows SMB Accessible Shares and sets the
   result into KB.");
+
   exit(0);
 }
 
-
 include("smb_nt.inc");
-
-
-
-name = "";
-domain = "";
-port = "";
-login = "";
-pass = "";
-soc = "";
-r = "";
-prot = "";
-uid = "";
-tid = "";
 
 name = kb_smb_name();
 domain = kb_smb_domain();
@@ -75,13 +63,11 @@ if(!get_port_state(port)){
  exit(0);
 }
 
-## Open the tcp socket
 soc = open_sock_tcp(port);
 if(!soc){
   exit(0);
 }
 
-## Session request
 r = smb_session_request(soc:soc, remote:name);
 if(!r)
 {
@@ -96,7 +82,6 @@ if(!prot)
   exit(0);
 }
 
-## Start the session
 r = smb_session_setup(soc:soc, login:login, password:pass ,domain:"", prot:prot);
 if(!r)
 {

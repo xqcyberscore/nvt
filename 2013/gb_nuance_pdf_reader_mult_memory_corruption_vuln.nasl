@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuance_pdf_reader_mult_memory_corruption_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_nuance_pdf_reader_mult_memory_corruption_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Nuance PDF Reader Multiple Memory Corruption Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803329");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(57851);
   script_cve_id("CVE-2013-0113");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 15:51:39 +0530 (Mon, 11 Mar 2013)");
   script_name("Nuance PDF Reader Multiple Memory Corruption Vulnerabilities");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/248449");
@@ -47,9 +47,7 @@ if(description)
   script_mandatory_keys("Nuance/PDFReader/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allows an attacker to corrupt memory, execute
 arbitrary code within the context of the user running the affected
-application or failed attempts may cause a denial-of-service.
-
-Impact Level: System/Application");
+application or failed attempts may cause a denial-of-service.");
   script_tag(name:"affected", value:"Nuance PDF Reader version 7.0");
   script_tag(name:"insight", value:"Multiple unspecified flaws as user input is not properly
 sanitized when handling PDF files.");

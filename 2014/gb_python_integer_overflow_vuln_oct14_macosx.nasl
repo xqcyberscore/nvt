@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_integer_overflow_vuln_oct14_macosx.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_python_integer_overflow_vuln_oct14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Python Integer Overflow Vulnerability - 01 Oct14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:python:python";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804940");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-7185");
   script_bugtraq_id(70089);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-17 14:35:32 +0530 (Fri, 17 Oct 2014)");
 
   script_name("Python Integer Overflow Vulnerability  01 Oct14 (Mac OS X)");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to potentially sensitive information or cause a denial
-  of service.
-
-  Impact Level: Application");
+  of service.");
 
   script_tag(name:"affected", value:"Python 2.7.x before version 2.7.8 on
   Mac OS X.");

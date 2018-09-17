@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_6_30.nasl 4956 2017-01-05 16:30:47Z cfi $
+# $Id: gb_avm_fritz_box_6_30.nasl 11412 2018-09-16 10:21:40Z cfischer $
 #
 # Multiple AVM FRITZ!Box Remote Code Execution
 #
@@ -25,16 +25,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:avm:fritzbox';
+CPE = "cpe:/o:avm:fritz%21_os";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105501");
-  script_version("$Revision: 4956 $");
+  script_version("$Revision: 11412 $");
   script_name("Multiple AVM FRITZ!Box Remote Code Execution");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-05 17:30:47 +0100 (Thu, 05 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-16 12:21:40 +0200 (Sun, 16 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-07 18:59:41 +0100 (Thu, 07 Jan 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -47,12 +47,16 @@ if(description)
   script_xref(name:"URL", value:"https://avm.de/service/aktuelle-sicherheitshinweise/");
 
   script_tag(name:"vuldetect", value:"Check the firmware version");
+
   script_tag(name:"solution", value:"Update the firmware to 6.30 or higher");
-  script_tag(name:"summary", value:"Several models of the AVM FRITZ!Box are vulnerable to a stack-based buffer overflow, which allows attackers to execute arbitrary code on the device.");
+
+  script_tag(name:"summary", value:"Several models of the AVM FRITZ!Box are vulnerable to a stack-based buffer overflow,
+  which allows attackers to execute arbitrary code on the device.");
+
   script_tag(name:"affected", value:"AVM FRITZ!Box 3272/7272, 3370/3390/3490, 7312/7412, 7320/7330 (SL), 736x (SL) and 7490");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -60,12 +64,12 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-get_app_version( cpe:CPE, nofork:TRUE ); # To have a reference to the Detection NVT.
-
+if( ! fw_version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 if( ! model = get_kb_item( "avm/fritz/model" ) ) exit( 0 );
-if( ! fw_version = get_kb_item( "avm/fritz/firmware_version" ) ) exit( 0 );
 
-valid_models = make_list( '3272', '7272', '3370', '3390', '3490', '7312', '7412', '7320', '7330', '736[0-9]+', '7490' );
+valid_models = make_list( "3272", "7272", "3370", "3390",
+                          "3490", "7312", "7412", "7320",
+                          "7330", "736[0-9]", "7490" );
 
 foreach m( valid_models ) {
   if( egrep( string:model, pattern:'^' + m ) ) {
@@ -76,14 +80,11 @@ foreach m( valid_models ) {
 
 if( ! vuln_model ) exit( 0 );
 
-fw = split( fw_version, sep:'.', keep:TRUE);
-if( max_index( fw ) < 3 ) exit( 0 );
-
-fw_version = fw[1] + fw[2];
-patch = '06.30';
-
+patch = "6.30";
 if( version_is_less( version:fw_version, test_version:patch ) ) {
-  report = 'Model: ' + model + '\nInstalled Firmware: ' + fw_version + '\nFixed Firmware:     ' + patch + '\n';
+  report  = 'Model:              ' + model + '\n';
+  report += 'Installed Firmware: ' + fw_version + '\n';
+  report += 'Fixed Firmware:     ' + patch;
   security_message( port:0, data:report );
   exit( 0 );
 }

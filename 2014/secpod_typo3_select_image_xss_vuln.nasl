@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_typo3_select_image_xss_vuln.nasl 11192 2018-09-03 12:08:26Z cfischer $
+# $Id: secpod_typo3_select_image_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # TYPO3 select_image.php Cross Site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903230");
-  script_version("$Revision: 11192 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:08:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-25 19:17:38 +0530 (Tue, 25 Feb 2014)");
   script_name("TYPO3 select_image.php Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -54,9 +54,7 @@ if(description)
   'RTEtsConfigParams' parameter in 'select_image.php' page.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  script code in a user's browser session in the context of an affected site.");
 
   script_tag(name:"affected", value:"TYPO3 6.1.7, previous versions may also be affected.");
 

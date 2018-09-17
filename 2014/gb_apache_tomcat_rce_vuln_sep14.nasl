@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_rce_vuln_sep14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_apache_tomcat_rce_vuln_sep14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Apache Tomcat Remote Code Execution Vulnerability - Sep14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804855");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-4444");
   script_bugtraq_id(69728);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-23 14:26:15 +0530 (Tue, 23 Sep 2014)");
   script_name("Apache Tomcat Remote Code Execution Vulnerability - Sep14");
   script_category(ACT_GATHER_INFO);
@@ -57,9 +57,7 @@ if(description)
   properly verify or sanitize user-uploaded files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to upload malicious script and execute the arbitrary code.
-
-  Impact Level: Application");
+  attackers to upload malicious script and execute the arbitrary code.");
 
   script_tag(name:"affected", value:"Apache Tomcat version 7.x before 7.0.40");
 

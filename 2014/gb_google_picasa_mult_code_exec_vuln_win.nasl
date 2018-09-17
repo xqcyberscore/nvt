@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:picasa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804185");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-5349", "CVE-2013-5357", "CVE-2013-5358", "CVE-2013-5359");
   script_bugtraq_id(64467, 64468, 64466, 64470);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-20 11:18:19 +0530 (Mon, 20 Jan 2014)");
   script_name("Google Picasa Multiple Code Execution Vulnerabilities");
 
@@ -55,9 +55,7 @@ check it is vulnerable or not.");
 
   - An error within the 'Picasa3.exe' module when parsing RAW files.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to trigger memory
-corruption and cause execution of arbitrary code.
-
-Impact Level: System/Application");
+corruption and cause execution of arbitrary code.");
   script_tag(name:"affected", value:"Google Picasa before version 3.9.0 build 137.69 on Windows");
   script_tag(name:"solution", value:"Upgrade to version 3.9.0 build 137.69 or later.
 For updates refer to http://picasa.google.com");

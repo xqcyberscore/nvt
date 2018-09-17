@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_epm_bof_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_symantec_epm_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Symantec Endpoint Protection Manager (SEPM) Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803882");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1612");
   script_bugtraq_id(60542);
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-29 12:35:52 +0530 (Thu, 29 Aug 2013)");
   script_name("Symantec Endpoint Protection Manager (SEPM) Buffer Overflow Vulnerability");
   script_tag(name:"summary", value:"The host is installed with Symantec Endpoint Protection Manager and is prone
@@ -44,7 +44,7 @@ For updates refer to http://www.symantec.com");
   script_tag(name:"insight", value:"Flaw is due to a boundary error within secars.dll.");
   script_tag(name:"affected", value:"Symantec Endpoint Protection Manager (SEPM) version 12.1.x before 12.1.3");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a buffer overflow via
-the web based management console. Impact Level: System/Application");
+the web based management console.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/53864");
   script_xref(name:"URL", value:"http://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&suid=20130618_00");

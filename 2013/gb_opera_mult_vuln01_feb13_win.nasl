@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803309");
-  script_version("$Revision: 11201 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1618", "CVE-2013-1637", "CVE-2013-1638", "CVE-2013-1639");
   script_bugtraq_id(57773, 57633);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-11 13:41:27 +0530 (Mon, 11 Feb 2013)");
   script_name("Opera Multiple Vulnerabilities -01 Feb 13 (Windows)");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1042");
@@ -48,8 +48,7 @@ if(description)
   script_mandatory_keys("Opera/Win/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   code, perform distinguishing attacks and plaintext-recovery attacks or cause
-  a denial of service.
-  Impact Level: System/Application");
+  a denial of service.");
   script_tag(name:"affected", value:"Opera version prior to 12.13 on Windows");
   script_tag(name:"insight", value:"- Does not send CORS preflight requests, this allows remote attackers to
     bypass CSRF protection mechanism via crafted site.

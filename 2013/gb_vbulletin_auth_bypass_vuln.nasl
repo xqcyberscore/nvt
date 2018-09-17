@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_auth_bypass_vuln.nasl 11201 2018-09-03 14:35:07Z cfischer $
+# $Id: gb_vbulletin_auth_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Vbulletin Authentication Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:vbulletin:vbulletin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804144");
-  script_version("$Revision: 11201 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-6129");
   script_bugtraq_id(62909);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-15 12:55:00 +0530 (Fri, 15 Nov 2013)");
   script_name("Vbulletin Authentication Bypass Vulnerability");
   script_category(ACT_ATTACK);
@@ -45,9 +45,7 @@ if(description)
   script_mandatory_keys("vBulletin/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass security
-  restrictions.
-
-  Impact Level: Application");
+  restrictions.");
   script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP GET request and check whether it
   is able to bypass authentication.");
   script_tag(name:"insight", value:"The flaw is due to the 'upgrade.php' script which does not require

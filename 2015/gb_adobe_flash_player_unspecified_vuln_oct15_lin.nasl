@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_unspecified_vuln_oct15_lin.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_adobe_flash_player_unspecified_vuln_oct15_lin.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Adobe Flash Player Unspecified Vulnerability Oct15 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806500");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-7645", "CVE-2015-7647", "CVE-2015-7648");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 15:46:37 +0530 (Fri, 16 Oct 2015)");
   script_name("Adobe Flash Player Unspecified Vulnerability Oct15 (Linux)");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to cause a crash and potentially an attacker to take control of the affected
-  system.
-
-  Impact Level: System/Application.");
+  system.");
 
   script_tag(name:"affected", value:"Adobe Flash Player versions 11.x through
   11.2.202.535 on Linux.");

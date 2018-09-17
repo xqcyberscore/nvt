@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_status2k_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_status2k_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Status2K Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804736");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-5088", "CVE-2014-5089", "CVE-2014-5090", "CVE-2014-5091",
                 "CVE-2014-5092", "CVE-2014-5093", "CVE-2014-5094");
   script_bugtraq_id(69012, 69015, 69017, 69008, 69009, 69013, 69010);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-08 11:40:09 +0530 (Fri, 08 Aug 2014)");
   script_name("Status2K Multiple Vulnerabilities");
 
@@ -62,9 +62,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code, manipulate SQL queries in the backend database, and disclose
-  certain sensitive information.
-
-  Impact Level: Application");
+  certain sensitive information.");
 
   script_tag(name:"affected", value:"Status2K");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");

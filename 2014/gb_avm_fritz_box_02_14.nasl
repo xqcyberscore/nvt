@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_02_14.nasl 5072 2017-01-24 10:16:40Z cfi $
+# $Id: gb_avm_fritz_box_02_14.nasl 11412 2018-09-16 10:21:40Z cfischer $
 #
 # Multiple AVM FRITZ!Box Multiple Vulnerabilities
 #
@@ -25,18 +25,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:avm:fritzbox';
+CPE = "cpe:/o:avm:fritz%21_os";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103911");
-  script_version("$Revision: 5072 $");
+  script_version("$Revision: 11412 $");
   script_bugtraq_id(74927, 65520);
   script_cve_id("CVE-2014-9727");
   script_name("Multiple AVM FRITZ!Box Multiple Vulnerabilities");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:16:40 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-16 12:21:40 +0200 (Sun, 16 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-19 15:07:20 +0100 (Wed, 19 Feb 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -68,56 +68,47 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-get_app_version( cpe:CPE, nofork:TRUE ); # To have a reference to the Detection NVT.
-
+if( ! fw_version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 if( ! model = get_kb_item( "avm/fritz/model" ) ) exit( 0 );
-if( ! fw_version = get_kb_item( "avm/fritz/firmware_version" ) ) exit( 0 );
 
-fixes = make_array(
-                   "7570", "04.92",
-                   "7490", "06.03",
-                   "7390", "06.03",
-                   "7362 SL", "06.03",
-                   "7360 SL", "06.03",
-                   "7360", "06.03",
-                   "7330 SL", "06.03",
-                   "7330", "06.03",
-                   "7320", "06.03",
-                   "7312", "06.03",
-                   "7272", "06.03",
-                   "7270 v2", "05.54",
-                   "7270 v3", "05.54",
-                   "7270 v1","04.89",
-                   "7240", "05.54",
-                   "7170 SL", "04.81",
-                   "7170", "04.88",
-                   "7150", "04.72",
-                   "7141", "04.77",
-                   "7112", "04.88",
-                   "6842 LTE", "06.03",
-                   "6840 LTE", "06.03",
-                   "6810 LTE", "06.03",
-                   "6360 Cable", "06.03",
-                   "6340 Cable", "06.03",
-                   "6320 Cable", "06.03",
-                   "3390", "06.03",
-                   "3370", "06.03",
-                   "3272", "06.03",
-                   "3270", "05.54"
-                   );
+fixes = make_array("7570", "4.92",
+                   "7490", "6.03",
+                   "7390", "6.03",
+                   "7362 SL", "6.03",
+                   "7360 SL", "6.03",
+                   "7360", "6.03",
+                   "7330 SL", "6.03",
+                   "7330", "6.03",
+                   "7320", "6.03",
+                   "7312", "6.03",
+                   "7272", "6.03",
+                   "7270 v2", "5.54",
+                   "7270 v3", "5.54",
+                   "7270 v1","4.89",
+                   "7240", "5.54",
+                   "7170 SL", "4.81",
+                   "7170", "4.88",
+                   "7150", "4.72",
+                   "7141", "4.77",
+                   "7112", "4.88",
+                   "6842 LTE", "6.03",
+                   "6840 LTE", "6.03",
+                   "6810 LTE", "6.03",
+                   "6360 Cable", "6.03",
+                   "6340 Cable", "6.03",
+                   "6320 Cable", "6.03",
+                   "3390", "6.03",
+                   "3370", "6.03",
+                   "3272", "6.03",
+                   "3270", "5.54");
 
 if( ! fixes[model] ) exit( 99 );
 patch = fixes[model];
 
-fw = split( fw_version, sep:'.', keep:TRUE);
-
-if( max_index( fw ) < 3 ) exit( 0 );
-
-fw_version = fw[1] + fw[2];
-
-if( version_is_less( version:fw_version, test_version:patch ) )
-{
-  report = 'Model: ' + model + '\nInstalled Firmware: ' + fw_version + '\nFixed Firmware:     ' + patch + '\n';
+if( version_is_less( version:fw_version, test_version:patch ) ) {
+  report  = 'Model:              ' + model + '\n';
+  report += 'Installed Firmware: ' + fw_version + '\n';
+  report += 'Fixed Firmware:     ' + patch;
   security_message( port:0, data:report );
   exit( 0 );
 }

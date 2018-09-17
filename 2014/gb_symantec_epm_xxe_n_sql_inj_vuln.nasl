@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_epm_xxe_n_sql_inj_vuln.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_symantec_epm_xxe_n_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Symantec Endpoint Protection Manager XXE and SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804513");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-5014", "CVE-2013-5015");
   script_bugtraq_id(65466, 65467);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-20 11:33:41 +0530 (Thu, 20 Mar 2014)");
   script_name("Symantec Endpoint Protection Manager XXE and SQL Injection Vulnerabilities");
 
@@ -42,9 +42,7 @@ if(description)
   TCP port 9090 and check whether it is able to execute commands remotely or not.");
   script_tag(name:"insight", value:"Flaw is due to an error when handling XML data within the servlet/ConsoleServlet.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to disclose potentially sensitive
-  information, manipulate certain data, and cause a DoS (Denial of Service).
-
-  Impact Level: System/Application");
+  information, manipulate certain data, and cause a DoS (Denial of Service).");
   script_tag(name:"affected", value:"Symantec Endpoint Protection Manager (SEPM) 11.0 before 11.0.7405.1424 and
   12.1 before 12.1.4023.4080, and Symantec Protection Center Small Business
   Edition 12.x before 12.1.4023.4080");

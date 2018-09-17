@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln04_apr15_win.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_mysql_unspecified_vuln04_apr15_win.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Oracle MySQL Multiple Unspecified vulnerabilities-04 Apr15 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805173");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-2567", "CVE-2015-0511", "CVE-2015-0508", "CVE-2015-0507",
                 "CVE-2015-0506", "CVE-2015-0503", "CVE-2015-0500", "CVE-2015-0498");
   script_bugtraq_id(74123, 74130, 74086, 74121, 74120, 74102, 74081, 74133);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-22 18:59:19 +0530 (Wed, 22 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle MySQL Multiple Unspecified vulnerabilities-04 Apr15 (Windows)");
@@ -51,9 +51,7 @@ if(description)
   Replication and some unknown vectors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows an
-  authenticated remote attacker to cause a denial of service.
-
-  Impact Level: Application");
+  authenticated remote attacker to cause a denial of service.");
 
   script_tag(name:"affected", value:"Oracle MySQL Server 5.6.23 and earlier
   on windows.");

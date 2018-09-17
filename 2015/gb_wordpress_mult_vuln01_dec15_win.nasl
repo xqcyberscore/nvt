@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln01_dec15_win.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_wordpress_mult_vuln01_dec15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # WordPress Multiple Vulnerabilities-01 Dec15 (Windows)
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806800");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-5734", "CVE-2015-5733", "CVE-2015-5732", "CVE-2015-5731",
                 "CVE-2015-5730", "CVE-2015-2213");
   script_bugtraq_id(76331, 76160);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-15 13:15:38 +0530 (Tue, 15 Dec 2015)");
   script_name("WordPress Multiple Vulnerabilities-01 Dec15 (Windows)");
 
@@ -69,9 +69,7 @@ if(description)
   remote attackers to inject arbitrary web script code in a user's browser
   session within the trust relationship between their browser and the server,
   to inject or manipulate SQL queries in the back-end database and to cause
-  denial of service.
-
-  Impact Level: Application");
+  denial of service.");
 
   script_tag(name:"affected", value:"WordPress Versions before 4.2.4
   on Windows.");

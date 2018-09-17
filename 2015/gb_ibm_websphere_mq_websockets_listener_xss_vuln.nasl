@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_websockets_listener_xss_vuln.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_ibm_websphere_mq_websockets_listener_xss_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # IBM WebSphere MQ XR WebSockets listener Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:websphere_mq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805547");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0176");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-06 12:12:34 +0530 (Wed, 06 May 2015)");
   script_name("IBM WebSphere MQ XR WebSockets listener Cross-Site Scripting Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to execute arbitrary script code in a user's browser session within
-  the trust relationship between their browser and the server.
-
-  Impact Level: Application");
+  the trust relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"IBM WebSphere MQ version 8.x before 8.0.0.2");
 

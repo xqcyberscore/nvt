@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_mult_info_disc_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_oracle_database_mult_info_disc_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Oracle Database Server Multiple Information Disclosure Vulnerabilities
 #
@@ -28,21 +28,19 @@ CPE = 'cpe:/a:oracle:database_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803956");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3826", "CVE-2013-5771");
   script_bugtraq_id(63046, 63044);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-28 14:27:36 +0530 (Mon, 28 Oct 2013)");
   script_name("Oracle Database Server Multiple Information Disclosure Vulnerabilities");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to obtain potentially sensitive
-information and manipulate certain data.
-
-Impact Level: Application");
+information and manipulate certain data.");
   script_tag(name:"affected", value:"Oracle Database Server version 11.1.0.7, 11.2.0.2, 11.2.0.3, and 12.1.0.1
 are affected");
   script_tag(name:"insight", value:"Multiple flaws exist in Core RDBMS component and XML Parser component, no

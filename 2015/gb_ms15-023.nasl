@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805351");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0077", "CVE-2015-0078", "CVE-2015-0094", "CVE-2015-0095");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-11 10:41:32 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Kernel-Mode Driver Privilege Elevation Vulnerabilities (3034344)");
@@ -58,9 +58,7 @@ if(description)
     Windows kernel-mode driver dereferences a NULL pointer.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to bypass security and gain restricted privileges
-
-  Impact Level: System");
+  attackers to bypass security and gain restricted privileges.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sepm_mult_vuln_dec14.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_sepm_mult_vuln_dec14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Symantec Endpoint Protection Manager Multiple Vulnerabilities - Dec14
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805203");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3439", "CVE-2014-3438", "CVE-2014-3437");
   script_bugtraq_id(70843, 70844, 70845);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-04 09:43:28 +0530 (Thu, 04 Dec 2014)");
   script_name("Symantec Endpoint Protection Manager Multiple Vulnerabilities - Dec14");
 
@@ -59,9 +59,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to gain access to arbitrary files, write to or overwrite arbitrary files and
   execute arbitrary script code in a user's browser session within the trust
-  relationship between their browser and the server.
-
-  Impact Level: Application");
+  relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"Symantec Endpoint Protection Manager (SEPM)
   12.1 before RU5.");

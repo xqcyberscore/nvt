@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_frame_metadissector_dos_vuln_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_wireshark_frame_metadissector_dos_vuln_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Wireshark 'Frame Metadissector' Denial of Service Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804667");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4020");
   script_bugtraq_id(68044);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-07 10:17:26 +0530 (Mon, 07 Jul 2014)");
   script_name("Wireshark 'Frame Metadissector' Denial of Service Vulnerability (Mac OS X)");
 
@@ -45,9 +45,7 @@ vulnerability.");
   script_tag(name:"insight", value:"Flaw is due to an error in 'dissect_frame' function in
 epan/dissectors/packet-frame.c within the frame metadissector.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct a DoS
-(Denial of Service) attack.
-
-Impact Level: Application");
+(Denial of Service) attack.");
   script_tag(name:"affected", value:"Wireshark version 1.10.0 through 1.10.7 on Mac OS X");
   script_tag(name:"solution", value:"Upgrade to Wireshark version 1.10.8 or later,
 For updates refer to http://www.wireshark.org/download");

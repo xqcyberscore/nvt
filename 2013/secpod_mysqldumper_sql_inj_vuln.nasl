@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mysqldumper_sql_inj_vuln.nasl 11223 2018-09-04 12:48:48Z cfischer $
+# $Id: secpod_mysqldumper_sql_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MySQLDumper SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mysqldumper:mysqldumper";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903211");
-  script_version("$Revision: 11223 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:48:48 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-29 12:55:13 +0530 (Wed, 29 May 2013)");
   script_name("MySQLDumper SQL Injection Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
   arbitrary SQL statements on the vulnerable system, which may leads to access
-  or modify data in the underlying database.
-
-  Impact Level: Application");
+  or modify data in the underlying database.");
   script_tag(name:"affected", value:"MySQLDumper version 1.24.4");
   script_tag(name:"insight", value:"The flaw is due to improper validation of input passed via the
   'db' parameter in sql.php script.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_unspecified_vuln_feb13_win.nasl 11201 2018-09-03 14:35:07Z cfischer $
+# $Id: gb_oracle_java_se_unspecified_vuln_feb13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Oracle Java SE Unspecified Vulnerability - Feb 13 (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803306");
-  script_version("$Revision: 11201 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1490");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-06 10:54:26 +0530 (Wed, 06 Feb 2013)");
   script_name("Oracle Java SE Unspecified Vulnerability - Feb 13 (Windows)");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Jan/142");
@@ -44,9 +44,7 @@ if(description)
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary
-code via unknown vectors.
-
-Impact Level: System/Application");
+code via unknown vectors.");
   script_tag(name:"affected", value:"Oracle Java version 7 Update 11 on Windows");
   script_tag(name:"insight", value:"An unspecified vulnerability allows remote attackers to bypass Java
 security sandbox via unknown vectors.");

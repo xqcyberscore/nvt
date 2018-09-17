@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_rce_vuln_dec14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_symantec_web_gateway_rce_vuln_dec14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Symantec Web Gateway Unspecified Remote Command Execution Vulnerability - Dec14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805229");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-7285");
   script_bugtraq_id(71620);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-23 15:04:28 +0530 (Tue, 23 Dec 2014)");
   script_name("Symantec Web Gateway Unspecified Remote Command Execution Vulnerability - Dec14");
 
@@ -47,9 +47,7 @@ if(description)
   error related to the appliance management console");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to compromise a vulnerable system.
-
-  Impact Level: System/Application");
+  attackers to compromise a vulnerable system.");
 
   script_tag(name:"affected", value:"Symantec Web Gateway prior to version
   5.2.2");

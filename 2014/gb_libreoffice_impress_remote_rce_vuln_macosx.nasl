@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_impress_remote_rce_vuln_macosx.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_libreoffice_impress_remote_rce_vuln_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # LibreOffice Impress Remote Socket Manager RCE Vulnerability Nov14 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804886");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3693");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-19 15:18:35 +0530 (Wed, 19 Nov 2014)");
   script_name("LibreOffice Impress Remote Socket Manager RCE Vulnerability Nov14 (Mac OS X)");
 
@@ -46,9 +46,7 @@ if(description)
   in the Impress Remote socket manager.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to cause a denial of service (crash) or possibly execute arbitrary code.
-
-  Impact Level: System/Application");
+  to cause a denial of service (crash) or possibly execute arbitrary code.");
 
   script_tag(name:"affected", value:"LibreOffice version 4.x prior
   to 4.2.7 and 4.3.x prior to 4.3.3 on Mac OS X");

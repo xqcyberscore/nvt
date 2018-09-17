@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mac_gallery_arbit_file_down_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_joomla_mac_gallery_arbit_file_down_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Joomla! Mac Gallery Component Arbitrary File Download Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804772");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-07 11:56:04 +0530 (Tue, 07 Oct 2014)");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -50,9 +50,7 @@ if(description)
   attacks (e.g. '../') to the 'albumid' parameter.");
 
   script_tag(name:"impact", value:"Successful exploitation may allow an attacker
-  to obtain sensitive information, which can lead to launching further attacks.
-
-  Impact Level: Application");
+  to obtain sensitive information, which can lead to launching further attacks.");
 
   script_tag(name:"affected", value:"Joomla! Mac Gallery Component version 1.5
   and prior.");

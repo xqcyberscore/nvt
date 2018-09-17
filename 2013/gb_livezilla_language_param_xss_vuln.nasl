@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_livezilla_language_param_xss_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_livezilla_language_param_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # LiveZilla 'g_language' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:livezilla:livezilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803785");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-7002", "CVE-2013-6224");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-17 13:21:53 +0530 (Tue, 17 Dec 2013)");
   script_name("LiveZilla 'g_language' Parameter Cross Site Scripting Vulnerability");
 
@@ -52,9 +52,7 @@ if(description)
   script_tag(name:"affected", value:"LiveZilla version 5.1.0.0");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
   and script code in a users browser session in the context of an affected site
-  and launch other attacks.
-
-  Impact Level: Application");
+  and launch other attacks.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/54505");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Dec/31");

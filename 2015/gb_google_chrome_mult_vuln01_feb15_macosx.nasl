@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_feb15_macosx.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_feb15_macosx.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 Feb15 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805456");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-1212", "CVE-2015-1211", "CVE-2015-1210", "CVE-2015-1209");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-02 12:58:34 +0530 (Fri, 02 Jan 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Google Chrome Multiple Vulnerabilities-01 Feb15 (Mac OS X)");
@@ -63,9 +63,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers gain elevated privileges, bypass cross-origin policies, to cause a
   denial of service or possibly have unspecified other impact via different
-  crafted dimensions.
-
-  Impact Level: Application");
+  crafted dimensions.");
 
   script_tag(name:"affected", value:"Google Chrome version prior to
   40.0.2214.111 on Mac OS X.");

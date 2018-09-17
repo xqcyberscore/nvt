@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpcombiner_remote_file_disc_vuln.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: gb_httpcombiner_remote_file_disc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # HttpCombiner ASP.NET Remote File Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805007");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-28 15:22:01 +0530 (Tue, 28 Oct 2014)");
 
   script_name("HttpCombiner ASP.NET Remote File Disclosure Vulnerability");
@@ -45,9 +45,7 @@ if(description)
   to some of the config files, which reveals the sensitive information.");
 
   script_tag(name:"impact", value:"Successful exploitation could allow
-  attackers to gain sensitive information.
-
-  Impact Level: Application");
+  attackers to gain sensitive information.");
 
   script_tag(name:"affected", value:"HttpCombiner version 1.0");
 

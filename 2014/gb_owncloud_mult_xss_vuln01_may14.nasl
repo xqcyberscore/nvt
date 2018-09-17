@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_xss_vuln01_may14.nasl 10953 2018-08-14 12:06:42Z mmartin $
+# $Id: gb_owncloud_mult_xss_vuln01_may14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ownCloud Multiple Cross Site Scripting Vulnerabilities -01 May14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804279");
-  script_version("$Revision: 10953 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-1822");
   script_bugtraq_id(58482);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-05 13:20:11 +0530 (Mon, 05 May 2014)");
   script_name("ownCloud Multiple Cross Site Scripting Vulnerabilities -01 May14");
 
@@ -48,9 +48,7 @@ passed via the 'quota' POST parameter to setquota.php within
 'shareWith' parameter passed to the core/js/share.js script.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
 script code in a user's browser within the trust relationship between their
-browser and the server.
-
-Impact Level: Application");
+browser and the server.");
   script_tag(name:"affected", value:"ownCloud Server 4.5.x before version 4.5.8");
   script_tag(name:"solution", value:"Upgrade to ownCloud version 4.5.8 or later,
 For updates refer to http://owncloud.org");

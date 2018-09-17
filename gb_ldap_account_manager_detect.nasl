@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ldap_account_manager_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_ldap_account_manager_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # LDAP Account Manager Detection
 #
@@ -27,19 +27,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103158");
-  script_version("$Revision: 11015 $");
+  script_version("$Revision: 11408 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-05-03 13:15:04 +0200 (Tue, 03 May 2011)");
   script_name("LDAP Account Manager Detection");
 
   script_tag(name:"summary", value:"This host is running LDAP Account Manager
 , a webfrontend for managing entries (e.g. users, groups, DHCP settings) stored
- in an LDAP directory.");
+  in an LDAP directory.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -48,7 +48,8 @@ if (description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8181);
   script_mandatory_keys("Settings/disable_cgi_scanning");
- exit(0);
+
+  exit(0);
 }
 
 include("http_func.inc");
@@ -56,10 +57,7 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("cpe.inc");
 
-if(!port = get_http_port(default:8181)){
-  exit(0);
-}
-
+port = get_http_port(default:8181);
 if(!can_host_php(port:port))exit(0);
 
 foreach dir( make_list_unique( "/ldap", "/ldap-account-manager", cgi_dirs( port:port ) ) ) {
@@ -69,7 +67,7 @@ foreach dir( make_list_unique( "/ldap", "/ldap-account-manager", cgi_dirs( port:
  url = string(dir, "/templates/login.php");
  req = http_get(item:url, port:port);
  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
- if( buf == NULL )continue;
+ if( !buf ) continue;
 
  if("<title>LDAP Account Manager</title>" >< buf && "LAM configuration" >< buf)
  {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cm3_acoracms_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_cm3_acoracms_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # CM3 AcoraCMS Multiple XSS, CSRF and Open Redirect Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804268");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-4722", "CVE-2013-4723", "CVE-2013-4724", "CVE-2013-4725",
                 "CVE-2013-4726", "CVE-2013-4727", "CVE-2013-4728");
   script_bugtraq_id(62008, 62007, 62009, 62011, 62010, 62012, 67701);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-29 11:10:25 +0530 (Tue, 29 Apr 2014)");
   script_name("CM3 AcoraCMS Multiple XSS, CSRF and Open Redirect Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -65,9 +65,7 @@ if(description)
   intended legitimate web site to an arbitrary web site, trick the users into
   performing an unspecified action in the context of their session with the
   application and execute arbitrary script code in a user's browser session
-  in context of an affected site.
-
-  Impact Level: Application");
+  in context of an affected site.");
 
   script_tag(name:"affected", value:"CM3 Acora CMS 6.0.6/1a, 6.0.2/1a, 5.5.7/12b, 5.5.0/1b-p1, and possibly other
   versions");

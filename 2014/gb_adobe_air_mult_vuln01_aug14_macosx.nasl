@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_aug14_macosx.nasl 11196 2018-09-03 13:09:40Z mmartin $
+# $Id: gb_adobe_air_mult_vuln01_aug14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe AIR Multiple Vulnerabilities-01 Aug14 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804746");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0538", "CVE-2014-0540", "CVE-2014-0541", "CVE-2014-0542",
                 "CVE-2014-0543", "CVE-2014-0544", "CVE-2014-0545", "CVE-2014-5333");
   script_bugtraq_id(69192, 69190, 69191, 69194, 69195, 69196, 69197, 69320);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-19 15:11:46 +0530 (Tue, 19 Aug 2014)");
   script_name("Adobe AIR Multiple Vulnerabilities-01 Aug14 (Mac OS X)");
 
@@ -45,9 +45,7 @@ vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple Flaws are due to an unspecified error and an use-after-free error.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
-restrictions and compromise a user's system.
-
-Impact Level: System/Application");
+restrictions and compromise a user's system.");
   script_tag(name:"affected", value:"Adobe AIR before version 14.0.0.178 on Mac OS X.");
   script_tag(name:"solution", value:"Update to Adobe AIR version 14.0.0.178 or later,
 For updates refer to  http://get.adobe.com/air");

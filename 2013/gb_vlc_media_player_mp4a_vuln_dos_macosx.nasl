@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mp4a_vuln_dos_macosx.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_vlc_media_player_mp4a_vuln_dos_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # VLC Media Player mp4a Denial of Service Vulnerability (MAC OS X)
 #
@@ -28,20 +28,18 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803955");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4388");
   script_bugtraq_id(62724);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-22 19:02:32 +0530 (Tue, 22 Oct 2013)");
   script_name("VLC Media Player mp4a Denial of Service Vulnerability (MAC OS X)");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to overflow buffer, cause denial
-of service.
-
-Impact Level: Application");
+of service.");
   script_tag(name:"affected", value:"VLC media player version 2.0.7 and prior on MAC OS X");
   script_tag(name:"insight", value:"A flaw exist in mpeg4audio.c file, which to perform adequate boundary checks
 on user-supplied input. ");

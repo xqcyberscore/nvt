@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openwga_cms_detect.nasl 10917 2018-08-10 16:48:12Z cfischer $
+# $Id: gb_openwga_cms_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # OpenWGA Content Management Server Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807686");
-  script_version("$Revision: 10917 $");
+  script_version("$Revision: 11408 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 18:48:12 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-03 17:32:47 +0530 (Tue, 03 May 2016)");
   script_name("OpenWGA Content Management Server Version Detection");
 
@@ -44,9 +44,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_require_ports("Services/www", 8080);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -54,9 +55,7 @@ include("http_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-if(!wgaPort = get_http_port(default:8080)){
-  exit(0);
-}
+wgaPort = get_http_port(default:8080);
 
 url = "/plugin-management/html/homepage:main.int.html";
 

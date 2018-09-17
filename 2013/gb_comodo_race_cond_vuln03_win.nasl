@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_race_cond_vuln03_win.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_comodo_race_cond_vuln03_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Comodo Internet Security Race Condition Vulnerability-03
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803686");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2010-5157");
   script_tag(name:"cvss_base", value:"6.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-05 15:35:47 +0530 (Fri, 05 Jul 2013)");
   script_name("Comodo Internet Security Race Condition Vulnerability-03");
   script_xref(name:"URL", value:"http://secunia.com/advisories/40094");
@@ -42,8 +42,7 @@ if(description)
   script_dependencies("gb_comodo_internet_security_detect_win.nasl");
   script_mandatory_keys("Comodo/InternetSecurity/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allows local attacker to bypass certain security
-  features.
-  Impact Level: System/Application");
+  features.");
   script_tag(name:"affected", value:"Comodo Internet Security versions before 4.1.149672.916");
   script_tag(name:"insight", value:"Flaw due to improper implementation of security checks in certain kernel
   hooks.");

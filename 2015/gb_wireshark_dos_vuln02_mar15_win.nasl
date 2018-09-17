@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln02_mar15_win.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_wireshark_dos_vuln02_mar15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Wireshark Denial-of-Service Vulnerability-02 Mar15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805486");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2191", "CVE-2015-2189", "CVE-2015-2188");
   script_bugtraq_id(72942, 72944, 72941);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-09 16:41:59 +0530 (Mon, 09 Mar 2015)");
   script_name("Wireshark Denial-of-Service Vulnerability-02 Mar15 (Windows)");
 
@@ -50,9 +50,7 @@ if(description)
   dissector.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct denial of service attack.
-
-  Impact Level: Application");
+  attackers to conduct denial of service attack.");
 
   script_tag(name:"affected", value:"Wireshark version 1.12.x before 1.12.4
   and 1.10.x before 1.10.13 on Windows");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_platform_symphony_dev_edi_auth_bypass_vuln.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: gb_ibm_platform_symphony_dev_edi_auth_bypass_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # IBM Platform Symphony Developer Edition Authentication Bypass Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804240");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-5400");
   script_bugtraq_id(65616);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-19 11:25:08 +0530 (Wed, 19 Feb 2014)");
   script_name("IBM Platform Symphony Developer Edition Authentication Bypass Vulnerability");
 
@@ -43,9 +43,7 @@ able to read the string or not.");
   script_tag(name:"insight", value:"The flaw is in a servlet in the application, which authenticates a user with
 built-in credentials.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain access to the
-local environment.
-
-Impact Level: Application.");
+local environment.");
   script_tag(name:"affected", value:"IBM Platform Symphony Developer Edition 5.2 and 6.1.x through 6.1.1");
   script_tag(name:"solution", value:"Apply the workaround from below link,
 http://www-01.ibm.com/support/docview.wss?uid=isg3T1020564");

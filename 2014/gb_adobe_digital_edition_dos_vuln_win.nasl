@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_edition_dos_vuln_win.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_adobe_digital_edition_dos_vuln_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Digital Edition Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804301");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0494");
   script_bugtraq_id(65091);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-03 14:43:16 +0530 (Mon, 03 Feb 2014)");
   script_name("Adobe Digital Edition Denial of Service Vulnerability (Windows)");
 
@@ -45,9 +45,7 @@ denial-of-service vulnerability.");
   script_tag(name:"insight", value:"The flaw is due to an unspecified error and can be exploited to cause memory
 corruption.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
-service or execute an arbitrary code.
-
-Impact Level: System/Application");
+service or execute an arbitrary code.");
   script_tag(name:"affected", value:"Adobe Digital Edition version 2.0.1 on Windows.");
   script_tag(name:"solution", value:"Upgrade to Adobe Digital Edition 3.0 or later,
 For updates refer to http://www.adobe.com/products/digital-editions/download.html");

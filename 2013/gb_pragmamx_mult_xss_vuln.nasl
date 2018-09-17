@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pragmamx_mult_xss_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_pragmamx_mult_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PragmaMX Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803345");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(53669);
   script_cve_id("CVE-2012-2452");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-25 16:37:00 +0530 (Mon, 25 Mar 2013)");
   script_name("PragmaMX Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -49,8 +49,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
-  or web script in a user's browser session in context of an affected site.
-  Impact Level: Application");
+  or web script in a user's browser session in context of an affected site.");
   script_tag(name:"affected", value:"PragmaMX version 1.12.1 and prior");
   script_tag(name:"insight", value:"Multiple flaws due to input passed via 'name' parameter to modules.php and
   'img_url' parameter to img_popup.php is not properly sanitised before being

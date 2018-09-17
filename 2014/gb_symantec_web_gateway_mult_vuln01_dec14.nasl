@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_mult_vuln01_dec14.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_symantec_web_gateway_mult_vuln01_dec14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Symantec Web Gateway Multiple Vulnerabilities -01 Dec14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805227");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-5017", "CVE-2014-1650");
   script_bugtraq_id(67752, 67753);
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-23 11:50:52 +0530 (Tue, 23 Dec 2014)");
   script_name("Symantec Web Gateway Multiple Vulnerabilities -01 Dec14");
 
@@ -54,9 +54,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject and execute arbitrary commands, and inject or manipulate
   SQL queries in the back-end database, allowing for the manipulation or
-  disclosure of arbitrary data.
-
-  Impact Level: System/Application");
+  disclosure of arbitrary data.");
 
   script_tag(name:"affected", value:"Symantec Web Gateway prior to version
   5.2.1");

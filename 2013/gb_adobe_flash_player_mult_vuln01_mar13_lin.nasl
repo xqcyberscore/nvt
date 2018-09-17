@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_mar13_lin.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_adobe_flash_player_mult_vuln01_mar13_lin.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities -01 March13 (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803324");
-  script_version("$Revision: 11336 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 11401 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-04 18:54:31 +0530 (Mon, 04 Mar 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-  code or cause  denial-of-service condition.
-  Impact Level: System/Application");
+  code or cause  denial-of-service condition.");
   script_tag(name:"affected", value:"Adobe Flash Player 10.3.183.61 and earlier, and 11.x to 11.2.202.270
   on Linux");
   script_tag(name:"insight", value:"Multiple flaws due to,

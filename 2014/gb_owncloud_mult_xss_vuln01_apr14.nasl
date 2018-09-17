@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_xss_vuln01_apr14.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_owncloud_mult_xss_vuln01_apr14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ownCloud Multiple XSS Vulnerabilities-01 Apr14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804361");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-0201", "CVE-2013-0202", "CVE-2013-0203");
   script_bugtraq_id(57497);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-04 14:54:56 +0530 (Fri, 04 Apr 2014)");
   script_name("ownCloud Multiple XSS Vulnerabilities-01 Apr14");
 
@@ -62,9 +62,7 @@ vulnerabilities.");
   is not properly sanitized before being used.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to execute arbitrary script
 code in a user's browser within the trust relationship between their browser
-and the server.
-
-Impact Level: Application");
+and the server.");
   script_tag(name:"affected", value:"ownCloud Server version 4.5.x before 4.5.6 and 4.0.x before 4.0.11");
   script_tag(name:"solution", value:"Upgrade to ownCloud version 4.5.6 or 4.0.11 or later,
 For updates refer to http://owncloud.org");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adminsystems_cms_mult_vuln.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_adminsystems_cms_mult_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Adminsystems CMS Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805292");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-1603", "CVE-2015-1604");
   script_bugtraq_id(72605);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-27 11:02:30 +0530 (Fri, 27 Feb 2015)");
   script_name("Adminsystems CMS Multiple Vulnerabilities");
 
@@ -56,9 +56,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary PHP code and execute arbitrary script code in
   a user's browser session within the trust relationship between their browser
-  and the server.
-
-  Impact Level: Application");
+  and the server.");
 
   script_tag(name:"affected", value:"Adminsystems CMS before 4.0.2");
 

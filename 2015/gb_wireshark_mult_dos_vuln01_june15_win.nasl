@@ -29,13 +29,13 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805392");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-3906", "CVE-2015-3815", "CVE-2015-3813",
                 "CVE-2015-3810", "CVE-2015-3809", "CVE-2015-3808");
   script_bugtraq_id(74837, 74630, 74629, 74633, 74632, 74628);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-01 17:26:23 +0530 (Mon, 01 Jun 2015)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-01 June15 (Windows)");
 
@@ -64,9 +64,7 @@ if(description)
   reject a zero length.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct denial of service attack.
-
-  Impact Level: Application");
+  attackers to conduct denial of service attack.");
 
   script_tag(name:"affected", value:"Wireshark version 1.12.x before 1.12.5
   on Windows");

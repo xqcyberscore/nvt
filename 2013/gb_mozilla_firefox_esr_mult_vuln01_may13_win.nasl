@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803607");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1681", "CVE-2013-1680", "CVE-2013-1679", "CVE-2013-1678",
                 "CVE-2013-1677", "CVE-2013-1676", "CVE-2013-1675", "CVE-2013-1674",
                 "CVE-2013-1672", "CVE-2013-1670", "CVE-2013-0801");
@@ -35,7 +35,7 @@ if(description)
                     59865, 59855);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-27 12:30:20 +0530 (Mon, 27 May 2013)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities -01 May13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53410");
@@ -48,8 +48,7 @@ if(description)
   script_mandatory_keys("Firefox-ESR/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
   memory corruption, bypass certain security restrictions and compromise
-  a user's system.
-  Impact Level: System/Application");
+  a user's system.");
   script_tag(name:"affected", value:"Mozilla Firefox ESR version before 17.x before 17.0.6 on Windows");
   script_tag(name:"insight", value:"- Unspecified vulnerabilities in the browser engine.
 

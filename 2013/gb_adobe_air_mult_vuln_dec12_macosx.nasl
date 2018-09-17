@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln_dec12_macosx.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: gb_adobe_air_mult_vuln_dec12_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe Air Multiple Vulnerabilities - December12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803455");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-5676", "CVE-2012-5677", "CVE-2012-5678");
   script_bugtraq_id(56892, 56896, 56898);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-28 18:17:03 +0530 (Thu, 28 Mar 2013)");
   script_name("Adobe Air Multiple Vulnerabilities - December12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51560");
@@ -47,8 +47,7 @@ if(description)
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Air/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-  code or denial of service.
-  Impact Level: System/Application");
+  code or denial of service.");
   script_tag(name:"affected", value:"Adobe AIR version 3.5.0.600 and earlier on Mac OS X");
   script_tag(name:"insight", value:"Multiple unspecified errors and integer overflow exists that could lead to
   code execution.");

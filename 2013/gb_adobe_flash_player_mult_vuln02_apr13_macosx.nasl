@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln02_apr13_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_adobe_flash_player_mult_vuln02_apr13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities -02 April 13 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803384");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1380", "CVE-2013-1379", "CVE-2013-1378", "CVE-2013-2555");
   script_bugtraq_id(58949, 58951, 58947, 58396);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-19 11:16:07 +0530 (Fri, 19 Apr 2013)");
   script_name("Adobe Flash Player Multiple Vulnerabilities -02 April 13 (Mac OS X)");
   script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/52931");
@@ -44,8 +44,7 @@ if(description)
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Flash/Player/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-  code or cause denial-of-service condition.
-  Impact Level: System/Application");
+  code or cause denial-of-service condition.");
   script_tag(name:"affected", value:"Adobe Flash Player 10.3.183.68 and earlier, and 11.x to 11.6.602.180 on
   Mac OS X");
   script_tag(name:"insight", value:"Multiple flaws due to,

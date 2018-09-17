@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_neobill_mult_vuln.nasl 11186 2018-09-03 09:12:42Z mmartin $
+# $Id: gb_neobill_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # NeoBill Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804226");
-  script_version("$Revision: 11186 $");
+  script_version("$Revision: 11402 $");
   script_bugtraq_id(64112);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-23 13:48:00 +0530 (Thu, 23 Jan 2014)");
   script_name("NeoBill Multiple Vulnerabilities");
 
@@ -42,9 +42,7 @@ if(description)
   which fail to properly sanitize user-supplied input to 'query' and other
   parameter's");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute SQL commands,
-  obtain sensitive information and execute arbitrary commands.
-
-  Impact Level: Application/System");
+  obtain sensitive information and execute arbitrary commands.");
   script_tag(name:"affected", value:"NeoBill version NeoBill 0.9-alpha, Other versions may also be affected.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");

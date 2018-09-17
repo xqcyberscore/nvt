@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_feb15_macosx.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_apple_safari_webkit_mult_vuln_feb15_macosx.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Apple Safari 'Webkit' Multiple Vulnerabilities -01 Feb15 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805336");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-4479", "CVE-2014-4477", "CVE-2014-4476");
   script_bugtraq_id(72330, 72331, 72329);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-09 18:15:32 +0530 (Mon, 09 Feb 2015)");
   script_name("Apple Safari 'Webkit' Multiple Vulnerabilities -01 Feb15 (Mac OS X)");
 
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to conduct denial of service attack and potentially execute
-  arbitrary code.
-
-  Impact Level: System/Application");
+  arbitrary code.");
 
   script_tag(name:"affected", value:"Apple Safari versions before 6.2.3, 7.x
   before 7.1.3 and 8.x before 8.0.3");

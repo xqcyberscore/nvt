@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-071.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms14-071.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Window Audio Service Privilege Escalation Vulnerability (3005607)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804880");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-6322");
   script_bugtraq_id(70978);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 10:30:01 +0530 (Wed, 12 Nov 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Window Audio Service Privilege Escalation Vulnerability (3005607)");
@@ -47,9 +47,7 @@ if(description)
   Windows Audio Service.");
 
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker
-  to execute arbitrary scripts with elevated privileges.
-
-  Impact Level: System");
+  to execute arbitrary scripts with elevated privileges.");
 
   script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior

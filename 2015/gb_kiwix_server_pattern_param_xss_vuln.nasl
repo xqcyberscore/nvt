@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kiwix_server_pattern_param_xss_vuln.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_kiwix_server_pattern_param_xss_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Kiwix Server 'pattern' Parameter Cross-Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805131");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-1032");
   script_bugtraq_id(72279);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-28 13:22:01 +0530 (Wed, 28 Jan 2015)");
   script_name("Kiwix Server 'pattern' Parameter Cross-Site Scripting Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary HTML and script code in a users browser session
-  in the context of an affected site.
-
-  Impact Level: Application");
+  in the context of an affected site.");
 
   script_tag(name:"affected", value:"Kiwix version 0.9 and prior.");
 

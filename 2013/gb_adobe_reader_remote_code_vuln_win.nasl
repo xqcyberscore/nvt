@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804111");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5325");
   script_bugtraq_id(62888);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-18 08:47:35 +0530 (Fri, 18 Oct 2013)");
   script_name("Adobe Reader Remote Code Execution Vulnerability(Windows)");
 
@@ -48,9 +48,7 @@ For updates refer to http://www.adobe.com/downloads/updates.html");
   script_tag(name:"affected", value:"Adobe Reader version 11.x before 11.0.05 on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass the security controls
 and execute arbitrary javascript code by launching javascript scheme URIs
-when a PDF file is being viewed in a browser.
-
-Impact Level: System/Application");
+when a PDF file is being viewed in a browser.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

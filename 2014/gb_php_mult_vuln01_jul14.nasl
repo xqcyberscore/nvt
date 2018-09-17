@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln01_jul14.nasl 10456 2018-07-09 06:10:17Z cfischer $
+# $Id: gb_php_mult_vuln01_jul14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # PHP Multiple Vulnerabilities - 01 - Jul14
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804683");
-  script_version("$Revision: 10456 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3478", "CVE-2014-3515", "CVE-2014-0207", "CVE-2014-3487",
                 "CVE-2014-3479", "CVE-2014-3480");
   script_bugtraq_id(68239, 68237, 68243, 68120, 68241, 68238);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-18 16:56:10 +0530 (Fri, 18 Jul 2014)");
   script_name("PHP Multiple Vulnerabilities - 01 - Jul14");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -61,9 +61,7 @@ if(description)
   'cdf_check_stream_offset' functions in cdf.c related to Fileinfo.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
-  service attacks or potentially execute arbitrary code.
-
-  Impact Level: Application");
+  service attacks or potentially execute arbitrary code.");
 
   script_tag(name:"affected", value:"PHP version 5.4.x before 5.4.30 and 5.5.x before 5.5.14");
 

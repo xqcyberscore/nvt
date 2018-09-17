@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_n_compact_ftpd_server_mult_vun.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_open_n_compact_ftpd_server_mult_vun.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Open and Compact FTPD Auth Bypass and Directory Traversal Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803733");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-12 11:33:28 +0530 (Mon, 12 Aug 2013)");
   script_name("Open and Compact FTPD Auth Bypass and Directory Traversal Vulnerabilities");
 
@@ -51,9 +51,7 @@ features, remove the product or replace the product by another one.");
   script_tag(name:"affected", value:"Open and Compact FTP Server version 1.2 and prior.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute FTP commands
 without any authentication and read arbitrary files on the affected
-application.
-
-Impact Level: Application");
+application.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL", value:"http://1337day.com/exploit/21078");

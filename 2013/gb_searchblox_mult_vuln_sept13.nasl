@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_searchblox_mult_vuln_sept13.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_searchblox_mult_vuln_sept13.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # SearchBlox Multiple Vulnerabilities Sept-13
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802060");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(61973, 61974, 61975);
   script_cve_id("CVE-2013-3598", "CVE-2013-3597", "CVE-2013-3590");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-03 10:46:51 +0530 (Tue, 03 Sep 2013)");
   script_name("SearchBlox Multiple Vulnerabilities Sept-13");
 
@@ -56,9 +56,7 @@ if(description)
   script_tag(name:"affected", value:"SearchBlox before 7.5 build 1");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary JSP code or
   obtain potentially sensitive information or can overwrite arbitrary files
-  via directory traversal sequences.
-
-  Impact Level: Application");
+  via directory traversal sequences.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/54629");
   script_xref(name:"URL", value:"http://www.searchblox.com/developers-2/change-log");

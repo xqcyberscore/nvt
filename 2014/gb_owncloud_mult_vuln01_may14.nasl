@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln01_may14.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_owncloud_mult_vuln01_may14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ownCloud Multiple Vulnerabilities - 01 May14
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804288");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-2041", "CVE-2013-2086", "CVE-2013-2044", "CVE-2013-2047",
                 "CVE-2013-2048", "CVE-2013-2085", "CVE-2013-2089");
   script_bugtraq_id(59951, 66540, 59962, 66542, 59975, 59949, 59968);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 19:11:33 +0530 (Tue, 06 May 2014)");
   script_name("ownCloud Multiple Vulnerabilities - 01 May14");
 
@@ -68,9 +68,7 @@ administrator, conduct cross-site request forgery attacks, gain access to a
 user's account or password, redirect users to arbitrary web sites and conduct
 phishing attacks, obtain sensitive information and execute arbitrary
 script code in a user's browser within the trust relationship between their
-browser and the server.
-
-Impact Level: System/Application");
+browser and the server.");
   script_tag(name:"affected", value:"ownCloud Server 5.0.x before version 5.0.6");
   script_tag(name:"solution", value:"Upgrade to ownCloud version 5.0.6 or later,
 For updates refer to http://owncloud.org");

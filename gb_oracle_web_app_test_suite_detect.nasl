@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_web_app_test_suite_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_oracle_web_app_test_suite_detect.nasl 11418 2018-09-17 05:57:41Z cfischer $
 #
 # Oracle Application Testing Suite Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809730");
-  script_version("$Revision: 11015 $");
+  script_version("$Revision: 11418 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 07:57:41 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-25 10:47:18 +0530 (Fri, 25 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle Application Testing Suite Detection");
@@ -43,9 +43,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8088);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -55,9 +56,6 @@ include("host_details.inc");
 include("http_keepalive.inc");
 
 oatPort = get_http_port(default:8088);
-if(!oatPort){
-  exit(0);
-}
 
 sndReq = http_get(item:"/olt/Login.do", port:oatPort);
 rcvRes = http_keepalive_send_recv(port:oatPort, data:sndReq);

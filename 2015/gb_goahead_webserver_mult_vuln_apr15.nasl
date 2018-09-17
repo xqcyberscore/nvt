@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_goahead_webserver_mult_vuln_apr15.nasl 11188 2018-09-03 11:04:26Z cfischer $
+# $Id: gb_goahead_webserver_mult_vuln_apr15.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # GoAhead Webserver Multiple Vulnerabilities - Apr15
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805521");
-  script_version("$Revision: 11188 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-9707");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-06 09:25:29 +0530 (Mon, 06 Apr 2015)");
   script_name("GoAhead Webserver Multiple Vulnerabilities - Apr15");
   script_category(ACT_ATTACK);
@@ -57,9 +57,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to read arbitrary files on the target system, conduct
-  denial-of-service attack and potentially execute arbitrary code.
-
-  Impact Level: System/Application");
+  denial-of-service attack and potentially execute arbitrary code.");
 
   script_tag(name:"affected", value:"GoAhead Web Server versions 3.x.x before
   3.4.2");

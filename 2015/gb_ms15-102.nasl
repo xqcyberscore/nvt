@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-102.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_ms15-102.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # MS Windows Task Management Privilege Elevation Vulnerabilities (3089657)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806045");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2524", "CVE-2015-2525", "CVE-2015-2528");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 10:27:35 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Task Management Privilege Elevation Vulnerabilities (3089657)");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to gain elevated privileges to perform arbitrary administration functions such
-  as add users and install applications on the targeted machine.
-
-  Impact Level: System");
+  as add users and install applications on the targeted machine.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows 8.1 x32/x64

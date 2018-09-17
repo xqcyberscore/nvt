@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_oct13_lin.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_oct13_lin.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 Oct2013 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804107");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2906", "CVE-2013-2923", "CVE-2013-2924", "CVE-2013-2922",
                 "CVE-2013-2921", "CVE-2013-2907", "CVE-2013-2908", "CVE-2013-2909",
                 "CVE-2013-2910", "CVE-2013-2911", "CVE-2013-2912", "CVE-2013-2913",
@@ -38,7 +38,7 @@ if(description)
   script_bugtraq_id(62752);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-08 06:27:23 +0530 (Tue, 08 Oct 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Oct2013 (Linux)");
 
@@ -53,9 +53,7 @@ For updates refer to http://www.google.com/chrome");
   script_tag(name:"affected", value:"Google Chrome version before 30.0.1599.66 on Linux");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
 service and to spoof the address bar or possibly have unspecified other
-impacts via some known or unknown vectors.
-
-Impact Level: System/Application");
+impacts via some known or unknown vectors.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 

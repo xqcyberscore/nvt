@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siteengine_detect.nasl 11224 2018-09-04 12:57:17Z cfischer $
+# $Id: gb_siteengine_detect.nasl 11396 2018-09-14 16:36:30Z cfischer $
 #
 # SiteEngine Version Detection
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801681");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11224 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:57:17 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 11396 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-14 18:36:30 +0200 (Fri, 14 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-12-31 07:04:16 +0100 (Fri, 31 Dec 2010)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SiteEngine Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -48,22 +48,20 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default:80);
-
 if(!can_host_php(port:port)) exit(0);
 
-foreach dir (make_list_unique("/", "/SiteEngine/", cgi_dirs(port:port))) {
+foreach dir (make_list_unique("/", "/SiteEngine", cgi_dirs(port:port))) {
 
   install = dir;
   if(dir == "/") dir = "";
 
-  res = http_get_cache(item: dir + "/index.php", port:port);
+  res = http_get_cache(item:dir + "/index.php", port:port);
 
   if("Powered by SiteEngine" >< res) {
 

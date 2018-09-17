@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geovision_ip_camera_remote_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
+# $Id: gb_geovision_ip_camera_remote_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # Geovision Inc. IP Camera Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812758");
-  script_version("$Revision: 10888 $");
+  script_version("$Revision: 11408 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 17:51:20 +0530 (Thu, 08 Feb 2018)");
   script_name("Geovision Inc. IP Camera Remote Detection");
 
@@ -44,25 +44,18 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-geoPort = 0;
-rcvRes = "";
-sndReq = "";
-version = "";
-
-if(!geoPort = get_http_port(default:80)){
-  exit(0);
-}
+geoPort = get_http_port(default:80);
 
 sndReq = http_get(item:"/ssi.cgi/Login.htm", port:geoPort);
 rcvRes = http_keepalive_send_recv(port:geoPort, data:sndReq);
@@ -84,6 +77,6 @@ if("<TITLE>GeoVision Inc. - IP Camera</TITLE>" >< rcvRes &&
                                           cpe:cpe,
                                           concluded:version),
                                           port:geoPort);
-  exit(0);
 }
+
 exit(0);

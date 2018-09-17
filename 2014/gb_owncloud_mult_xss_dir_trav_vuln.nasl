@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_xss_dir_trav_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_owncloud_mult_xss_dir_trav_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ownCloud Multiple Cross-Site Scripting & Directory Traversal Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804287");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-2040", "CVE-2013-2039", "CVE-2013-2042");
   script_bugtraq_id(59950, 59947, 59952);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 18:50:55 +0530 (Tue, 06 May 2014)");
   script_name("ownCloud Multiple Cross-Site Scripting & Directory Traversal Vulnerabilities");
 
@@ -53,9 +53,7 @@ to lib/files/view.php, media/js/playlist.js, media/js/player.js or
 media/js/collection.js script.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain access to
 arbitrary files and execute arbitrary script code in a user's browser
-within the trust relationship between their browser and the server.
-
-Impact Level: Application");
+within the trust relationship between their browser and the server.");
   script_tag(name:"affected", value:"ownCloud Server 4.x before 4.0.15, 4.5.x before 4.5.11, and 5.0.x before
 5.0.6");
   script_tag(name:"solution", value:"Upgrade to ownCloud version 4.0.15 or 4.5.11 or 5.0.6 or later.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-038.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms14-038.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Windows Journal Remote Code Execution Vulnerability (2975689)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804473");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1824");
   script_bugtraq_id(68396);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-09 09:01:16 +0530 (Wed, 09 Jul 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows Journal Remote Code Execution Vulnerability (2975689)");
@@ -45,9 +45,7 @@ or not.");
   script_tag(name:"insight", value:"The flaw is due to an unspecified error within Windows Journal when handling
 Journal (JNT) files.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
-and compromise a user's system.
-
-Impact Level: System");
+and compromise a user's system.");
   script_tag(name:"affected", value:"Microsoft Windows 8
 Windows 8.1 x32/x64 Edition
 Microsoft Windows Server 2012/R2

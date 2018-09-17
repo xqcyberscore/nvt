@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_mult_bof_vuln_nov15.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_ibm_domino_mult_bof_vuln_nov15.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # IBM Domino Multiple Buffer Overflow Vulnerabilities - Nov15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806610");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-4994", "CVE-2015-5040");
   script_bugtraq_id(77322, 77324);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-04 11:23:23 +0530 (Wed, 04 Nov 2015)");
   script_name("IBM Domino Multiple Buffer Overflow Vulnerabilities - Nov15");
 
@@ -47,9 +47,7 @@ if(description)
   processing GIF files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to execute arbitrary code or crash the application.
-
-  Impact Level: System/Application");
+  to execute arbitrary code or crash the application.");
 
   script_tag(name:"affected", value:"IBM Domino 8.5.1 through 8.5.3 before 8.5.3
   FP6 IF10 and 9.x before 9.0.1 FP4 IF3");

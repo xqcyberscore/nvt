@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_diag_srv_msg_pkt_bof_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_hp_diag_srv_msg_pkt_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # HP Diagnostics Server Message Packet Buffer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:diagnostics_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802053");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(55159);
   script_cve_id("CVE-2012-3278");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-22 13:07:18 +0530 (Wed, 22 May 2013)");
   script_name("HP Diagnostics Server Message Packet Buffer Overflow Vulnerability");
 
@@ -49,8 +49,7 @@ if(description)
   script_require_ports("Services/www", 2006, 23472);
   script_mandatory_keys("hpdiagnosticsserver/installed");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
-  within the context of the application or cause a denial of service condition.
-  Impact Level: System/Application");
+  within the context of the application or cause a denial of service condition.");
   script_tag(name:"affected", value:"HP Diagnostics Server 8.x through 8.07 and 9.x through 9.21");
   script_tag(name:"insight", value:"The flaw is due to an error within the magentservice.exe process when
   parsing crafted message packets sent to TCP port 23472.");

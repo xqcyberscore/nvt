@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webui_rce_vuln.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_webui_rce_vuln.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # WebUI Remote Command Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805175");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11422 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-27 17:26:29 +0530 (Mon, 27 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("WebUI Remote Command Execution Vulnerability");
@@ -45,9 +45,7 @@ if(description)
   is not properly sanitized upon submission to the mainfile.php script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to execute arbitrary command on the affected system.
-
-  Impact Level: System/Application");
+  attacker to execute arbitrary command on the affected system.");
 
   script_tag(name:"affected", value:"WebUI version 1.5b6, Prior versions may
   also be affected.");

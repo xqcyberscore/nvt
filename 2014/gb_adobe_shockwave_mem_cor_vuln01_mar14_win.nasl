@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:shockwave_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804517");
-  script_version("$Revision: 11186 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0505");
   script_bugtraq_id(66182);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-21 14:04:57 +0530 (Fri, 21 Mar 2014)");
   script_name("Adobe Shockwave Player Memory Corruption Vulnerability Mar14 (Windows)");
 
@@ -44,9 +44,7 @@ corruption vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaw is due to an unspecified error.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code, cause
-memory corruption and compromise a user's system.
-
-Impact Level: System/Application");
+memory corruption and compromise a user's system.");
   script_tag(name:"affected", value:"Adobe Shockwave Player version before 12.1.0.150 on Windows.");
   script_tag(name:"solution", value:"Upgrade to version 12.1.0.150 or later,
 For updates refer to http://get.adobe.com/shockwave");

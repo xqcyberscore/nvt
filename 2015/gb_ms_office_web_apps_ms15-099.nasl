@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms15-099.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms_office_web_apps_ms15-099.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Microsoft Office Web Apps RCE Vulnerability (3089664)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806112");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11423 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 11:18:07 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Web Apps RCE Vulnerability (3089664)");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to corrupt memory and potentially
-  execute arbitrary code.
-
-  Impact Level: System/Application");
+  execute arbitrary code.");
 
   script_tag(name:"affected", value:"Microsoft Office Web Apps Server 2013 Service Pack 1 and prior.");
 
@@ -70,6 +68,7 @@ if(description)
   script_dependencies("gb_ms_office_web_apps_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Web/Apps/Ver");
+
   exit(0);
 }
 

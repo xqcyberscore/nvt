@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-077.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: secpod_ms13-077.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MS Windows Service Control Manager Privilege Elevation Vulnerability (2872339)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902993");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3862");
   script_bugtraq_id(62182);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 08:13:01 +0530 (Wed, 11 Sep 2013)");
   script_name("MS Windows Service Control Manager Privilege Elevation Vulnerability (2872339)");
 
@@ -50,9 +50,7 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-077");
 Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
 code with kernel-mode privileges within the context of the Service Control
-Manager and or corrupt memory.
-
-Impact Level: System ");
+Manager and or corrupt memory.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

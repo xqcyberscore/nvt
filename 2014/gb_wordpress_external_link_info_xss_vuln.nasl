@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_external_link_info_xss_vuln.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_wordpress_external_link_info_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WordPress WP Js External link Info Plugin 'redirect.php' XSS Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804573");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11402 $");
   script_bugtraq_id(66999);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-08 11:23:17 +0530 (Thu, 08 May 2014)");
   script_name("WordPress WP Js External link Info Plugin 'redirect.php' XSS Vulnerability");
 
@@ -44,9 +44,7 @@ cookie or not.");
   script_tag(name:"insight", value:"Input passed via the 'blog' GET parameter to 'redirect.php' script is not
 properly sanitized before being returned to the user.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-script code in a user's browser session in the context of an affected site.
-
-Impact Level: Application");
+script code in a user's browser session in the context of an affected site.");
   script_tag(name:"affected", value:"WordPress JS External Link Info Plugin version 1.21, Other versions may also
 be affected.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.

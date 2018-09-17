@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_iprint_client_dos_vuln_feb14_win.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_novell_iprint_client_dos_vuln_feb14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Novell iPrint Client Denial of Service (dos) Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:novell:iprint";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804308");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-3708");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-05 21:04:07 +0530 (Wed, 05 Feb 2014)");
   script_name("Novell iPrint Client Denial of Service (dos) Vulnerability (Windows)");
 
@@ -43,9 +43,7 @@ denial-of-service vulnerability.");
   script_tag(name:"insight", value:"The flaw is due to some unspecified error in 'id1.GetPrinterURLList(arg1, arg2)'
 function.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
-service.
-
-Impact Level: Application");
+service.");
   script_tag(name:"affected", value:"Novell iPrint Client before version 5.93 on Windows.");
   script_tag(name:"solution", value:"Upgrade to version 5.93 or later,
 For updates refer to http://www.novell.com");

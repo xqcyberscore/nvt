@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_webserver_code_exec_vuln.nasl 11069 2018-08-21 12:29:19Z mmartin $
+# $Id: gb_nginx_webserver_code_exec_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # nginx Arbitrary Code Execution Vulnerability
 #
@@ -29,9 +29,7 @@ CPE = "cpe:/a:nginx:nginx";
 if(description)
 {
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execution arbitrary
-  code.
-
-  Impact Level: Application");
+  code.");
   script_tag(name:"affected", value:"nginx versions 0.5.x, 0.6.x, 0.7.x to 0.7.65 and 0.8.x to 0.8.37");
   script_tag(name:"insight", value:"The null bytes are allowed in URIs by default (their presence is indicated
   via a variable named zero_in_uri defined in ngx_http_request.h). Individual
@@ -41,10 +39,10 @@ if(description)
   script_tag(name:"summary", value:"This host is running nginx and is prone to arbitrary code execution
   vulnerability.");
   script_oid("1.3.6.1.4.1.25623.1.0.803194");
-  script_version("$Revision: 11069 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 14:29:19 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-22 15:03:39 +0530 (Mon, 22 Apr 2013)");
   script_name("nginx Arbitrary Code Execution Vulnerability");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brother_hl_series_printer_detect.nasl 10246 2018-06-19 07:07:36Z cfischer $
+# $Id: gb_brother_hl_series_printer_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # Brother HL Series Printers Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813390");
-  script_version("$Revision: 10246 $");
+  script_version("$Revision: 11408 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-19 09:07:36 +0200 (Tue, 19 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-06 15:18:41 +0530 (Wed, 06 Jun 2018)");
   script_name("Brother HL Series Printers Detection");
 
@@ -49,6 +49,7 @@ if(description)
   script_dependencies("find_service.nasl", "httpver.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -57,9 +58,7 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-if(!brPort = get_http_port(default:80)){
-  exit(0);
-}
+brPort = get_http_port(default:80);
 
 res = http_get_cache(item:"/general/information.html?kind=item", port:brPort);
 

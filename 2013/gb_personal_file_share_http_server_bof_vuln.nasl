@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_personal_file_share_http_server_bof_vuln.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: gb_personal_file_share_http_server_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Personal File Share HTTP Server Remote Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803196");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-02 13:34:27 +0530 (Thu, 02 May 2013)");
   script_name("Personal File Share HTTP Server Remote Buffer Overflow Vulnerability");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Apr/184");
@@ -42,9 +42,7 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_tag(name:"impact", value:"Successful exploitation will let remote unauthenticated attackers
-  to cause a denial of service.
-
-  Impact Level: Application");
+  to cause a denial of service.");
   script_tag(name:"affected", value:"Personal File Share HTTP Server version 1.1 and prior");
   script_tag(name:"insight", value:"The flaw is due to an error when handling certain Long requests,
   which can be exploited to cause a denial of service.");

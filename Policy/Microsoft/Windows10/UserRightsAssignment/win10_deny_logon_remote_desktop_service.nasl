@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win10_deny_logon_remote_desktop_service.nasl 10649 2018-07-27 07:16:55Z emoss $
+# $Id: win10_deny_logon_remote_desktop_service.nasl 11387 2018-09-14 12:19:57Z emoss $
 #
 # Check value for Deny log on through Remote Desktop Services (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109131");
-  script_version("$Revision: 10649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:16:55 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 11387 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-14 14:19:57 +0200 (Fri, 14 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-30 13:36:08 +0200 (Mon, 30 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -37,14 +37,14 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
-  script_dependencies("gb_wmi_access.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("gb_wmi_access.nasl", "smb_reg_service_pack.nasl", "os_detection.nasl");
   script_add_preference(name:"Value", type:"entry", value:"Guests, Local account");
   script_mandatory_keys("Compliance/Launch");
   script_require_keys("WMI/access_successful");
-  script_tag(name: "summary", value: "This policy setting determines which users 
-are prevented from logging on to the device through a Remote Desktop connection 
-through Remote Desktop Services. It is possible for a user to establish a 
-Remote Desktop connection to a particular server, but not be able to log on to 
+  script_tag(name:"summary", value:"This policy setting determines which users
+are prevented from logging on to the device through a Remote Desktop connection
+through Remote Desktop Services. It is possible for a user to establish a
+Remote Desktop connection to a particular server, but not be able to log on to
 the console of that server.");
   exit(0);
 }
@@ -58,10 +58,11 @@ to query the registry.');
   exit(0);
 }
 
-WindowsName = get_kb_item("SMB/WindowsName");
-if('windows 10' >!< tolower(WindowsName)){
-  policy_logging(text:'Host is not a Microsoft Windows 10 System.');
-  exit(0); 
+HostDetails = get_kb_list("HostDetails");
+if("cpe:/o:microsoft:windows_10" >!< HostDetails){
+  policy_logging(text:'Host is not a Microsoft Windows 10 system.
+This setting applies to Windows 10 systems only.');
+  exit(0);
 }
 
 title = 'Deny log on through Remote Desktop Services';

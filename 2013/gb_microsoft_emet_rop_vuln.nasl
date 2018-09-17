@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_emet_rop_vuln.nasl 10957 2018-08-14 13:26:50Z mmartin $
+# $Id: gb_microsoft_emet_rop_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Enhanced Mitigation Experience Toolkit (EMET) ROP Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803972");
-  script_version("$Revision: 10957 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-6791");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:26:50 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-03 13:41:01 +0530 (Tue, 03 Dec 2013)");
   script_name("Microsoft Enhanced Mitigation Experience Toolkit (EMET) ROP Vulnerability");
 
@@ -47,9 +47,7 @@ is vulnerable or not.");
 functions.");
   script_tag(name:"affected", value:"Microsoft Enhanced Mitigation Experience Toolkit (EMET) before 4.0");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass ASLR protection
-mechanism via a return-oriented programming (ROP) attack.
-
-Impact Level: System");
+mechanism via a return-oriented programming (ROP) attack.");
 
   script_xref(name:"URL", value:"http://en.nsfocus.com/2013/advisories_0620/150.html");
   script_xref(name:"URL", value:"http://blogs.technet.com/b/srd/archive/2013/06/17/emet-4-0-now-available-for-download.aspx");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_unspecified_vuln_july15_lin.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_oracle_virtualbox_unspecified_vuln_july15_lin.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Oracle Virtualbox Unspecified Vulnerability July15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805725");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2594");
   script_bugtraq_id(75899);
   script_tag(name:"cvss_base", value:"6.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-21 10:27:00 +0530 (Tue, 21 Jul 2015)");
   script_name("Oracle Virtualbox Unspecified Vulnerability July15 (Linux)");
 
@@ -46,9 +46,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to unspecified errors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to have an impact on confidentiality, integrity, and availability.
-
-  Impact Level: System/Application");
+  to have an impact on confidentiality, integrity, and availability.");
 
   script_tag(name:"affected", value:"VirtualBox versions prior to 4.0.32,
   4.1.40, 4.2.32, and 4.3.30 on Linux.");

@@ -28,10 +28,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804054");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-02 15:02:10 +0530 (Thu, 02 Jan 2014)");
   script_name("WordPress WP Realty Plugin 'listing_id' XSS and SQL Injection Vulnerabilities");
 
@@ -48,9 +48,7 @@ not properly sanitized before being returned to the user.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
 script code in a user's browser session in the context of an affected site
 or execute arbitrary SQL commands in applications database and gain complete
-control over the vulnerable web application.
-
-Impact Level: Application");
+control over the vulnerable web application.");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/29021");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124418");

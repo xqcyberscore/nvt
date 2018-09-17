@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-062.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms14-062.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Windows Message Queuing Service Privilege Escalation Vulnerability (2993254)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804492");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4971");
   script_bugtraq_id(68764);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-15 08:38:41 +0530 (Wed, 15 Oct 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -49,9 +49,7 @@ if(description)
   privileges by sending a specially crafted IOCTL request.");
 
   script_tag(name:"impact", value:"Successful exploitation could allow
-  local users to gain escalated privileges.
-
-  Impact Level: System");
+  local users to gain escalated privileges.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior");
 

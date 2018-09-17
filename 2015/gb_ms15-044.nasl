@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-044.nasl 11220 2018-09-04 11:57:09Z mmartin $
+# $Id: gb_ms15-044.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Windows Font Drivers Remote Code Execution Vulnerability (3057110)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805556");
-  script_version("$Revision: 11220 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-1670", "CVE-2015-1671");
   script_bugtraq_id(74490, 74485);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-13 15:04:39 +0530 (Wed, 13 May 2015)");
   script_name("Microsoft Windows Font Drivers Remote Code Execution Vulnerability (3057110)");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to gain access to potentially sensitive information and to execute
-  arbitrary code on the affected system.
-
-  Impact Level: System");
+  arbitrary code on the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Edition Service Pack 2
   Microsoft Windows Vista x32/x64 Edition Service Pack 2

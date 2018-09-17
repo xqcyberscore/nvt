@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zoho_manageengine_analyzer_xss_vuln.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: gb_zoho_manageengine_analyzer_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ZOHO ManageEngine EventLog Analyzer 'j_username' Parameter XSS Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804815");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-5103");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-19 14:57:37 +0530 (Tue, 19 Aug 2014)");
   script_name("ZOHO ManageEngine EventLog Analyzer 'j_username' Parameter XSS Vulnerability");
 
@@ -42,9 +42,7 @@ cookie or not.");
   script_tag(name:"insight", value:"Input passed via the 'j_username' POST parameter to event/j_security_check
 script is not properly sanitised before returning to the user.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-script code in a user's browser session in the context of an affected site.
-
-Impact Level: Application");
+script code in a user's browser session in the context of an affected site.");
   script_tag(name:"affected", value:"ZOHO ManageEngine EventLog Analyzer version 9.0 build 9000 and probably
 other versions.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year

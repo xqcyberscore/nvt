@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_stmm_dos_vuln_lin.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_ibm_db2_stmm_dos_vuln_lin.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # IBM DB2 STMM Denial Of Service Vulnerability (Linux)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803766");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2011-1373");
   script_bugtraq_id(50686);
   script_tag(name:"cvss_base", value:"1.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-30 17:51:03 +0530 (Mon, 30 Sep 2013)");
   script_name("IBM DB2 STMM Denial Of Service Vulnerability (Linux)");
 
@@ -47,9 +47,7 @@ For updates refer to http://www-01.ibm.com ");
 and the AUTOMATIC DATABASE_MEMORY setting are configured.");
   script_tag(name:"affected", value:"IBM DB2 version 9.7 before FP5 on Linux.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to allows local users to cause a
-denial of service (daemon crash) via unknown vectors.
-
-Impact Level: Application");
+denial of service (daemon crash) via unknown vectors.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 

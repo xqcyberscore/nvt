@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_money_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
+# $Id: gb_ms_money_detect.nasl 11420 2018-09-17 06:33:13Z cfischer $
 #
 # Microsoft Money Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800217");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10911 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11420 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:33:13 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-01-08 14:06:04 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"registry");
@@ -37,8 +37,8 @@ if(description)
 
   script_tag(name:"summary", value:"Detects the installed version of Microsoft Money on Windows.
 
-The script logs in via smb, searches for Microsoft Money in the registry
-and gets the version from registry.");
+  The script logs in via smb, searches for Microsoft Money in the registry
+  and gets the version from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
@@ -46,6 +46,7 @@ and gets the version from registry.");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -53,12 +54,6 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-osArch = "";
-key_list = "";
-key = "";
-item = "";
-InstallPath = "";
 
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cis_manager_email_sql_inj_vuln.nasl 11196 2018-09-03 13:09:40Z mmartin $
+# $Id: gb_cis_manager_email_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # CIS Manager 'email' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804455");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3749");
   script_bugtraq_id(67442);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-26 16:44:36 +0530 (Mon, 26 May 2014)");
   script_name("CIS Manager 'email' Parameter SQL Injection Vulnerability");
 
@@ -44,9 +44,7 @@ if(description)
   sanitizing user-supplied input to the 'email' parameter.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to inject or manipulate SQL
   queries in the back-end database, allowing for the manipulation or disclosure
-  of arbitrary data.
-
-  Impact Level: Application");
+  of arbitrary data.");
   script_tag(name:"affected", value:"CIS Manager CMS");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

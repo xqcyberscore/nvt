@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804133");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5603", "CVE-2013-5604", "CVE-2013-5602", "CVE-2013-5601",
                 "CVE-2013-5600", "CVE-2013-5599", "CVE-2013-5597", "CVE-2013-5591",
                 "CVE-2013-5590", "CVE-2013-5593", "CVE-2013-5595", "CVE-2013-5596");
@@ -37,7 +37,7 @@ if(description)
                     63415, 63429, 63421, 63420);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-07 15:28:51 +0530 (Thu, 07 Nov 2013)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 Nov13 (Windows)");
 
@@ -77,9 +77,7 @@ function.
   script_tag(name:"affected", value:"Mozilla Thunderbird before version 24.1 on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
 cause a denial of service, spoof the address bar, conduct clickjacking attacks
-and conduct buffer overflow attacks.
-
-Impact Level: System/Application.");
+and conduct buffer overflow attacks.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

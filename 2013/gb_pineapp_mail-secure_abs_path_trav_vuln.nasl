@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pineapp_mail-secure_abs_path_trav_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_pineapp_mail-secure_abs_path_trav_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PineApp Mail-SeCure Absolute Path Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802066");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(63827);
   script_cve_id("CVE-2013-6827");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-04 12:01:21 +0530 (Wed, 04 Dec 2013)");
   script_name("PineApp Mail-SeCure Absolute Path Traversal Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
   script_tag(name:"affected", value:"PineApp Mail-SeCure 5099SK version 3.70, Other versions may also be
   affected.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to perform directory
-  traversal attacks and read arbitrary files on the affected appliance.
-
-  Impact Level: Application");
+  traversal attacks and read arbitrary files on the affected appliance.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Nov/136");

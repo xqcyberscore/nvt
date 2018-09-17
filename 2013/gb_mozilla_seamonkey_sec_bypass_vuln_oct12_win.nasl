@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_seamonkey_sec_bypass_vuln_oct12_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_mozilla_seamonkey_sec_bypass_vuln_oct12_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Mozilla Seamonkey Security Bypass Vulnerabilities - Oct 12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803670");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-4192", "CVE-2012-4193");
   script_bugtraq_id(55889);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-12 12:48:01 +0530 (Fri, 12 Jul 2013)");
   script_name("Mozilla Seamonkey Security Bypass Vulnerabilities - Oct 12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50856");
@@ -44,8 +44,7 @@ if(description)
   script_dependencies("gb_seamonkey_detect_win.nasl");
   script_mandatory_keys("Seamonkey/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will let attackers to bypass the Same Origin Policy
-  and read the properties of a Location object via a crafted web site.
-  Impact Level: Application");
+  and read the properties of a Location object via a crafted web site.");
   script_tag(name:"affected", value:"SeaMonkey versions before 2.13.1 on Windows");
   script_tag(name:"insight", value:"Security wrappers are unwrapped without doing a security check in
   defaultValue(). This can allow for improper access to the Location object.");

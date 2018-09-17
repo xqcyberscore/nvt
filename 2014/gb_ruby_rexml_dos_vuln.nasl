@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_rexml_dos_vuln.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_ruby_rexml_dos_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Ruby 'REXML' parser Denial-of-Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ruby-lang:ruby";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804889");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-8080");
   script_bugtraq_id(70935);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-21 16:58:24 +0530 (Fri, 21 Nov 2014)");
   script_name("Ruby 'REXML' parser Denial-of-Service Vulnerability (Windows)");
 
@@ -47,9 +47,7 @@ if(description)
   XML parser accepting XML external entities from an untrusted source");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to cause a denial of service (crash) condition.
-
-  Impact Level: Application");
+  to cause a denial of service (crash) condition.");
 
   script_tag(name:"affected", value:"Ruby versions Ruby 1.9.x before 1.9.3-p550,
   2.0.x before 2.0.0-p594, and 2.1.x before 2.1.4 on Windows.");

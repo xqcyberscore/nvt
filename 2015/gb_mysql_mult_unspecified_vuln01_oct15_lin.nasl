@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_mult_unspecified_vuln01_oct15_lin.nasl 11220 2018-09-04 11:57:09Z mmartin $
+# $Id: gb_mysql_mult_unspecified_vuln01_oct15_lin.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Oracle MySQL Multiple Unspecified Vulnerabilities-01 Oct15 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107018");
-  script_version("$Revision: 11220 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-4913", "CVE-2015-4830", "CVE-2015-4826", "CVE-2015-4815",
                 "CVE-2015-4807", "CVE-2015-4802", "CVE-2015-4792", "CVE-2015-4870",
                 "CVE-2015-4861", "CVE-2015-4858", "CVE-2015-4836");
@@ -37,7 +37,7 @@ if(description)
                     77145, 77190);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-01 12:46:24 +0530 (Fri, 01 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-01 Oct15 (Linux)");
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allows an
   authenticated remote attacker to affect confidentiality, integrity, and
-  availability via unknown vectors.
-
-  Impact Level: Application");
+  availability via unknown vectors.");
 
   script_tag(name:"affected", value:"Oracle MySQL Server 5.5.45 and earlier
   and 5.6.26 and earlier on windows");

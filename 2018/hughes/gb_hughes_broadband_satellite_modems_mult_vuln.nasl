@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hughes_broadband_satellite_modems_mult_vuln.nasl 10887 2018-08-10 12:05:12Z santu $
+# $Id: gb_hughes_broadband_satellite_modems_mult_vuln.nasl 11388 2018-09-14 13:45:12Z cfischer $
 #
 # Hughes Broadband Satellite Modems Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:hughes:broadband_satelite_modem";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813749");
-  script_version("$Revision: 10887 $");
+  script_version("$Revision: 11388 $");
   script_cve_id("CVE-2016-9497", "CVE-2016-9496", "CVE-2016-9494", "CVE-2016-9495");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:05:12 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"8.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-14 15:45:12 +0200 (Fri, 14 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-08 14:01:09 +0530 (Wed, 08 Aug 2018)");
   script_name("Hughes Broadband Satellite Modems Multiple Vulnerabilities");
 

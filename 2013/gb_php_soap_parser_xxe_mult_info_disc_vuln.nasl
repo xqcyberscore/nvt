@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_soap_parser_xxe_mult_info_disc_vuln.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_soap_parser_xxe_mult_info_disc_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PHP SOAP Parser Multiple Information Disclosure Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803764");
-  script_version("$Revision: 10458 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1824");
   script_bugtraq_id(62373);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-24 11:54:43 +0530 (Tue, 24 Sep 2013)");
   script_name("PHP SOAP Parser Multiple Information Disclosure Vulnerabilities");
 
@@ -53,9 +53,7 @@ if(description)
   script_tag(name:"affected", value:"PHP version before 5.3.22 and 5.4.x before 5.4.12");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain sensitive
-  information.
-
-  Impact Level: Application");
+  information.");
 
   script_xref(name:"URL", value:"http://php.net/ChangeLog-5.php");
   script_xref(name:"URL", value:"http://git.php.net/?p=php-src.git;a=commit;h=afe98b7829d50806559acac9b530acb8283c3bf4");

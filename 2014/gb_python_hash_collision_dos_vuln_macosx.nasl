@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: gb_python_hash_collision_dos_vuln_macosx.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: gb_python_hash_collision_dos_vuln_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Python 'Hash Collision' Denial of Service Vulnerability (Mac OS X)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:python:python";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804634");
-  script_version("$Revision: 11194 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-7040");
   script_bugtraq_id(64194);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-09 18:02:10 +0530 (Mon, 09 Jun 2014)");
   script_name("Python 'Hash Collision' Denial of Service Vulnerability (Mac OS X)");
 
@@ -44,9 +44,7 @@ vulnerability.");
   script_tag(name:"insight", value:"Flaw is due to an error within a hash generation function when hashing form
 posts and updating a hash table.");
   script_tag(name:"impact", value:"Successful exploitation will allow a remote attacker to cause a hash collision
-resulting in a denial of service.
-
-Impact Level: Application");
+resulting in a denial of service.");
   script_tag(name:"affected", value:"Python version 2.7 before 3.4");
   script_tag(name:"solution", value:"Upgrade to Python version 3.4 or later.
 For updates refer to www.python.org/download");

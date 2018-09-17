@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_vuln_jan_09.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_typo3_mult_vuln_jan_09.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # TYPO3 Multiple Vulnerabilities Jan09
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803988");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2009-0255", "CVE-2009-0256", "CVE-2009-0257", "CVE-2009-0258");
   script_bugtraq_id(33376);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-26 16:32:44 +0530 (Thu, 26 Dec 2013)");
   script_name("TYPO3 Multiple Vulnerabilities Jan09");
   script_category(ACT_GATHER_INFO);
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://typo3.org/teams/security/security-bulletins/typo3-core/TYPO3-SA-2009-001/");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-  code or steal the victim's cookie-based authentication credentials.
-
-  Impact Level: Application");
+  code or steal the victim's cookie-based authentication credentials.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:'Multiple error exists in the application,
   - An error exist in Indexed Search Engine system extension which fails to

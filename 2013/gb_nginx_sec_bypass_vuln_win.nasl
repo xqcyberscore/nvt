@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_sec_bypass_vuln_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_nginx_sec_bypass_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # nginx Security Bypass Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803222");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2011-4963");
   script_bugtraq_id(55920);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-01 13:21:59 +0530 (Fri, 01 Feb 2013)");
   script_name("nginx Security Bypass Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50912");
@@ -50,9 +50,7 @@ if (description)
   script_mandatory_keys("nginx/installed", "Host/runs_windows");
   script_tag(name:"impact", value:"Successful exploitation will let attackers to gain unauthorized access to
   restricted resources via specially crafted HTTP requests containing NTFS
-  extended attributes.
-
-  Impact Level: Application");
+  extended attributes.");
   script_tag(name:"affected", value:"nginx versions 0.7.52 through 1.2.0 and 1.3.0 on Windows");
   script_tag(name:"insight", value:"The flaw is due to an error when processing HTTP requests for resources
   defined via the 'location' directive.");

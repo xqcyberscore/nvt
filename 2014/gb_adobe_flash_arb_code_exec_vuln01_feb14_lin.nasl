@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804087");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0497");
   script_bugtraq_id(65327);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-05 15:24:29 +0530 (Wed, 05 Feb 2014)");
   script_name("Adobe Flash Player Arbitrary Code Execution Vulnerability - 01 Feb14 (Linux)");
 
@@ -45,9 +45,7 @@ code execution vulnerability.");
   script_tag(name:"insight", value:"Flaw is due to an integer underflow condition that is triggered as unspecified
 user-supplied input is not properly validated.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to, execute arbitrary code and
-cause buffer overflow.
-
-Impact Level: System/Application");
+cause buffer overflow.");
   script_tag(name:"affected", value:"Adobe Flash Player versions before 11.2.202.336 on Linux");
   script_tag(name:"solution", value:"Update to Adobe Flash Player version 11.2.202.336 or later,
 For updates refer to  http://get.adobe.com/flashplayer");

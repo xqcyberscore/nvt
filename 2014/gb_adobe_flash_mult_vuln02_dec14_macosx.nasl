@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_mult_vuln02_dec14_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_adobe_flash_mult_vuln02_dec14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities(APSB14-27)- 02 Dec14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805213");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-9163");
   script_bugtraq_id(71582);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-15 17:50:31 +0530 (Mon, 15 Dec 2014)");
   script_name("Adobe Flash Player Multiple Vulnerabilities(APSB14-27)- 02 Dec14 (Mac OS X)");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to cause a stack-based buffer overflow, potentially allowing the execution of
-  arbitrary code.
-
-  Impact Level: System/Application");
+  arbitrary code.");
 
   script_tag(name:"affected", value:"Adobe Flash Player version before
   13.0.0.259, 14.x and 15.x before 15.0.0.246 and 16.x before 16.0.0.235 on

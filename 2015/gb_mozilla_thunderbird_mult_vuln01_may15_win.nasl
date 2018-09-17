@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_may15_win.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_may15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 May15 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805629");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0797", "CVE-2015-2708", "CVE-2015-2710", "CVE-2015-2713",
                 "CVE-2015-2716", "CVE-2011-3079");
   script_bugtraq_id(74611, 74615, 53309);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-21 18:33:07 +0530 (Thu, 21 May 2015)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 May15 (Windows)");
 
@@ -61,9 +61,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to execute arbitrary code, gain unauthorized access
   to sensitive information, cause the server to crash and gain elevated
-  privileges.
-
-  Impact Level: System/Application");
+  privileges.");
 
   script_tag(name:"affected", value:"Mozilla Thunderbird before version 31.7
   on Windows");

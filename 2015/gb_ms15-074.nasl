@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-074.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_ms15-074.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Windows Installer Service Privilege Escalation Vulnerarbility (3072630)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805078");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2371");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 09:12:38 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Installer Service Privilege Escalation Vulnerarbility (3072630)");
@@ -47,9 +47,7 @@ if(description)
   action scripts.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to
-  elevate privileges on a targeted system.
-
-  Impact Level: System");
+  elevate privileges on a targeted system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Windows 8.1 x32/x64 Edition

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_cache_dos_vuln.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_apache_mod_cache_dos_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Apache HTTP Server Mod_Cache Denial of service Vulnerability May15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805634");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2013-4352");
   script_bugtraq_id(68863, 69248);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-27 12:15:46 +0530 (Wed, 27 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); # Only vulnerable if mod_cache is enabled
   script_name("Apache HTTP Server Mod_Cache Denial of service Vulnerability May15");
@@ -49,9 +49,7 @@ if(description)
    mod_cache module in the Apache HTTP Server.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attackers to cause a denial of service via specially crafted request.
-
-  Impact Level: Application");
+  attackers to cause a denial of service via specially crafted request.");
 
   script_tag(name:"affected", value:"Apache HTTP Server version 2.4.6.");
 

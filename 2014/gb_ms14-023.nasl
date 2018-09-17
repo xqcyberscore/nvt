@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-023.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_ms14-023.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2961037)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804450");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1756", "CVE-2014-1808");
   script_bugtraq_id(67274, 67279);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-14 12:01:21 +0530 (Wed, 14 May 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2961037)");
@@ -54,9 +54,7 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-023");
 Microsoft Office 2010 Service Pack 2 (proofing tools) and prior
 Microsoft Office 2013 Service Pack 1 (proofing tools) and prior ");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
-code.
-
-Impact Level: System/Application");
+code.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"https://support.microsoft.com/kb/2767772");

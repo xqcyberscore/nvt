@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samiftp_retr_cmd_dos_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_samiftp_retr_cmd_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # SamiFTP Server 'RETR' Command Denial of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803717");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(60513);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-13 15:16:51 +0530 (Thu, 13 Jun 2013)");
   script_name("SamiFTP Server 'RETR' Command Denial of Service Vulnerability");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/26133");
@@ -43,9 +43,7 @@ if(description)
   script_dependencies("secpod_ftp_anonymous.nasl");
   script_require_ports("Services/ftp", 21);
   script_tag(name:"impact", value:"Successful exploitation will allow the remote attackers to cause
-a denial of service.
-
-Impact Level: Application");
+a denial of service.");
   script_tag(name:"affected", value:"SamiFTP Server version 2.0.1");
   script_tag(name:"insight", value:"The flaw is due to an error while parsing RETR command, which can
 be exploited to crash the FTP service by sending crafted data via 'RETR' command.");

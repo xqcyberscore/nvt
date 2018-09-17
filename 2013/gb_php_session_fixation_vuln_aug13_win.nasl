@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_session_fixation_vuln_aug13_win.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_session_fixation_vuln_aug13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PHP Sessions Subsystem Session Fixation Vulnerability - Aug13 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803737");
-  script_version("$Revision: 10458 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2011-4718");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-19 12:03:50 +0530 (Mon, 19 Aug 2013)");
   script_name("PHP Sessions Subsystem Session Fixation Vulnerability - Aug13 (Windows)");
 
@@ -50,9 +50,7 @@ if(description)
   script_tag(name:"affected", value:"PHP version prior to 5.5.2 on Windows.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to hijack web sessions by
-  specifying a session ID.
-
-  Impact Level: Application");
+  specifying a session ID.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/54562");
   script_xref(name:"URL", value:"http://cxsecurity.com/cveshow/CVE-2011-4718");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_http_parse_bof_vuln.nasl 11219 2018-09-04 11:52:00Z cfischer $
+# $Id: gb_nginx_http_parse_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Nginx Chunked Transfer Encoding Stack Based Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nginx:nginx";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802052");
-  script_version("$Revision: 11219 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2028");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-21 11:44:36 +0530 (Tue, 21 May 2013)");
   script_name("Nginx Chunked Transfer Encoding Stack Based Buffer Overflow Vulnerability");
 
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated attackers
   to cause a buffer overflow, resulting in a denial of service or potentially
-  allowing the execution of arbitrary code.
-
-  Impact Level: System/Application");
+  allowing the execution of arbitrary code.");
   script_tag(name:"affected", value:"Nginx version 1.3.9 through 1.4.0");
   script_tag(name:"insight", value:"A stack-based buffer overflow will occur in a worker process while handling
   certain chunked transfer encoding requests.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln_oct12_win.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_mozilla_thunderbird_mult_vuln_oct12_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities - Oct 12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803656");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-5354", "CVE-2012-3989", "CVE-2012-3985", "CVE-2012-3984");
   script_bugtraq_id(55856);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-12 11:10:46 +0530 (Fri, 12 Jul 2013)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities - Oct 12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50856");
@@ -47,8 +47,7 @@ if(description)
   script_mandatory_keys("Thunderbird/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will let attackers to conduct cross-site scripting,
   clickjacking attacks or cause a denial of service or possibly execute
-  arbitrary code.
-  Impact Level: System/Application");
+  arbitrary code.");
   script_tag(name:"affected", value:"Thunderbird versions before 16.0 on Windows");
   script_tag(name:"insight", value:"The flaws are due to:
 

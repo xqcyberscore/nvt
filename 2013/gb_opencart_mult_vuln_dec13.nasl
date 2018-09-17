@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencart_mult_vuln_dec13.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_opencart_mult_vuln_dec13.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # OpenCart Multiple Vulnerabilities Dec-13
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:opencart:opencart";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804161");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(64162);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-09 19:52:35 +0530 (Mon, 09 Dec 2013)");
   script_name("OpenCart Multiple Vulnerabilities Dec-13");
 
@@ -53,9 +53,7 @@ displays the full installation path within error messages.
   script_tag(name:"affected", value:"OpenCart version 1.5.6 and probably previous versions may also be affected.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to execute arbitrary
 HTML or script code, discloses the software's installation path resulting in a
-loss of confidentiality.
-
-Impact Level: Application");
+loss of confidentiality.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53036");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Dec/29");

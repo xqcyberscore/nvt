@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_may15_macosx.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_mozilla_firefox_mult_vuln01_may15_macosx.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 May15 (Mac OS X)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805626");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2708", "CVE-2015-2709", "CVE-2015-2710", "CVE-2015-2711",
                 "CVE-2015-2712", "CVE-2015-2713", "CVE-2015-2715", "CVE-2015-2716",
                 "CVE-2015-2717", "CVE-2015-2718", "CVE-2015-0797", "CVE-2015-4496");
   script_bugtraq_id(74615, 74611, 76333);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-21 18:29:20 +0530 (Thu, 21 May 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 May15 (Mac OS X)");
 
@@ -75,9 +75,7 @@ if(description)
   context-dependent attacker to corrupt memory and potentially execute arbitrary
   code, bypass security restrictions, bypass origin restrictions, gain
   knowledge of sensitive information, run custom code, cause the server to
-  crash and gain privileged access.
-
-  Impact Level: System/Application");
+  crash and gain privileged access.");
 
   script_tag(name:"affected", value:"Mozilla Firefox before version 38.0 on
   Mac OS X");

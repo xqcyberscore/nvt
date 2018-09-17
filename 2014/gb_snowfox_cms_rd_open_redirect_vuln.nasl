@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snowfox_cms_rd_open_redirect_vuln.nasl 11196 2018-09-03 13:09:40Z mmartin $
+# $Id: gb_snowfox_cms_rd_open_redirect_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Snowfox CMS 'rd' Parameter Open Redirect Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805208");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-9343");
   script_bugtraq_id(71174);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-11 18:21:19 +0530 (Thu, 11 Dec 2014)");
   script_name("Snowfox CMS 'rd' Parameter Open Redirect Vulnerability");
 
@@ -49,9 +49,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to create a specially crafted URL, that if clicked, would redirect
   a victim from the intended legitimate web site to an arbitrary web site of the
-  attacker's choosing.
-
-  Impact Level: Application");
+  attacker's choosing.");
 
   script_tag(name:"affected", value:"Snowfox CMS version 1.0");
 

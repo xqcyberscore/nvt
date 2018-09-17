@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln01_mar14_win.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: gb_wireshark_dos_vuln01_mar14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Wireshark 'M3UA' Denial of Service Vulnerability-01 Mar14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804333");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2282");
   script_bugtraq_id(66070);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-14 11:40:29 +0530 (Fri, 14 Mar 2014)");
   script_name("Wireshark 'M3UA' Denial of Service Vulnerability-01 Mar14 (Windows)");
 
@@ -44,9 +44,7 @@ vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaw is due to improper memory allocation by 'dissect_protocol_data_parameter'
 function within the M3UA dissector (epan/dissectors/packet-m3ua.c).");
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a Denial of Service.
-
-Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a Denial of Service.");
   script_tag(name:"affected", value:"Wireshark version 1.10.x before 1.10.6 on Windows");
   script_tag(name:"solution", value:"Upgrade to Wireshark version 1.10.6 or later,
 For updates refer to http://www.wireshark.org/download");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_honeywell_xlweb_scada_dir_trav_vuln.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_honeywell_xlweb_scada_dir_trav_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Honeywell Falcon XL Web Controller Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805540");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-0984");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-27 10:42:16 +0530 (Mon, 27 Apr 2015)");
   script_name("Honeywell Falcon XL Web Controller Directory Traversal Vulnerability");
 
@@ -45,9 +45,7 @@ if(description)
   properly sanitizing user input, specifically path traversal style attacks.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  remote attackers to read arbitrary files on the target system.
-
-  Impact Level: System/Application");
+  remote attackers to read arbitrary files on the target system.");
 
   script_tag(name:"affected", value:"XL1000C50-EXCEL WEB 52 I/O before 2.04.01
   XL1000C100-EXCEL WEB 104 I/O before 2.04.01

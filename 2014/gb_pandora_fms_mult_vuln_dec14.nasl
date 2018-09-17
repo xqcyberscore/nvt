@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pandora_fms_mult_vuln_dec14.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_pandora_fms_mult_vuln_dec14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Pandora FMS Multiple Vulnerabilities - Dec14
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:artica:pandora_fms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805204");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-04 12:25:10 +0530 (Thu, 04 Dec 2014)");
   script_name("Pandora FMS Multiple Vulnerabilities - Dec14");
 
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to gain privileged access, inject or manipulate SQL queries in the back-end
-  database allowing for the manipulation or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  database allowing for the manipulation or disclosure of arbitrary data.");
 
   script_tag(name:"affected", value:"Pandora FMS version 5.0 SP2 and prior.");
 

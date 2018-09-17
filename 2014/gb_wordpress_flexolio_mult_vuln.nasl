@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_flexolio_mult_vuln.nasl 11214 2018-09-04 10:09:46Z mmartin $
+# $Id: gb_wordpress_flexolio_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WordPress Flexolio Multiple Vulnerabilities May14
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804578");
-  script_version("$Revision: 11214 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-09 16:46:52 +0530 (Fri, 09 May 2014)");
   script_name("WordPress Flexolio Multiple Vulnerabilities May14");
 
@@ -44,9 +44,7 @@ cookie or not.");
 scripts are not properly sanitized before being returned to the user.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
 script code, disclose potentially sensitive information, and cause
-denial of service.
-
-Impact Level: Application");
+denial of service.");
   script_tag(name:"affected", value:"WordPress Flexolio");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

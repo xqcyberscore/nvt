@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_opensso_data_manipulation_vuln.nasl 10864 2018-08-09 15:04:27Z cfischer $
+# $Id: gb_oracle_opensso_data_manipulation_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle OpenSSO Administration Component Data Manipulation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:opensso";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804437");
-  script_version("$Revision: 10864 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2012-0079");
   script_bugtraq_id(51492);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 17:04:27 +0200 (Thu, 09 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-22 14:57:24 +0530 (Tue, 22 Apr 2014)");
   script_name("Oracle OpenSSO Administration Component Data Manipulation Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -52,9 +52,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an unspecified error in the Administration component.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to update, insert, or delete
-  certain Oracle OpenSSO accessible data.
-
-  Impact Level: Application");
+  certain Oracle OpenSSO accessible data.");
 
   script_tag(name:"affected", value:"Oracle OpenSSO version 7.1 and 8.0");
 

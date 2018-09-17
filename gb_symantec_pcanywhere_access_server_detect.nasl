@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_pcanywhere_access_server_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
+# $Id: gb_symantec_pcanywhere_access_server_detect.nasl 11420 2018-09-17 06:33:13Z cfischer $
 #
 # Symantec pcAnywhere Access Server Remote Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802883");
-  script_version("$Revision: 10894 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11420 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:33:13 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-09 11:16:49 +0530 (Mon, 09 Jul 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,17 +49,11 @@ if(description)
   exit(0);
 }
 
-
 include("misc_func.inc");
 include("host_details.inc");
 
-pcAnyport = "";
-resp = "";
-cpe = NULL;
-
 pcAnyport = get_unknown_port( default:5631 );
 
-##  Open tcp socket
 soc = open_sock_tcp(pcAnyport);
 if(!soc){
   exit(0);

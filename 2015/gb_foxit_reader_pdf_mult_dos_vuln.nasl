@@ -29,11 +29,11 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805379");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-3633", "CVE-2015-3632");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-05 10:41:19 +0530 (Tue, 05 May 2015)");
   script_name("Foxit Reader Multiple Denial of Service Vulnerabilities");
 
@@ -50,9 +50,7 @@ if(description)
   - when performing digital signature verification.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause multiple denial-of-service attacks.
-
-  Impact Level: System/Application");
+  attackers to cause multiple denial-of-service attacks.");
 
   script_tag(name:"affected", value:"Foxit Reader version 7.1.0.306 and 7.1.3.320.");
 

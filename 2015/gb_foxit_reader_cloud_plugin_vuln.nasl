@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_cloud_plugin_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_reader_cloud_plugin_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Foxit Reader Cloud Plugin Windows Search Path Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805364");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2789");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-07 18:04:50 +0530 (Tue, 07 Apr 2015)");
   script_name("Foxit Reader Cloud Plugin Windows Search Path Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
   local users can gain privileges via a Trojan horse.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
-  attackers to gain privileges and execute malicious files.
-
-  Impact Level: System/Application");
+  attackers to gain privileges and execute malicious files.");
 
   script_tag(name:"affected", value:"Foxit Reader version 6.1 before version
   7.0.6.1126");

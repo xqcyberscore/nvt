@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_mar14_lin.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_mar14_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 Mar2014 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804330");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-6663", "CVE-2013-6664", "CVE-2013-6665", "CVE-2013-6666",
                 "CVE-2013-6667", "CVE-2013-6668");
   script_bugtraq_id(65930);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-13 11:35:05 +0530 (Thu, 13 Mar 2014)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Mar2014 (Linux)");
 
@@ -56,9 +56,7 @@ vulnerabilities.");
   - Some unspecified errors related to V8 and other few unspecified errors.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
 service, bypass certain security restrictions, execute arbitrary code and
-other unspecified impacts.
-
-Impact Level: System/Application");
+other unspecified impacts.");
   script_tag(name:"affected", value:"Google Chrome version prior to 33.0.1750.146 on Linux.");
   script_tag(name:"solution", value:"Upgrade to version 33.0.1750.146 or later,
 For updates refer to http://www.google.com/chrome");

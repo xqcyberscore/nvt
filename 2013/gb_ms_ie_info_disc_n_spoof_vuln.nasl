@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_info_disc_n_spoof_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_ms_ie_info_disc_n_spoof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MS IE Information Disclosure and Web Site Spoofing Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803305");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(57640, 57641);
   script_cve_id("CVE-2013-1450", "CVE-2013-1451");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 11:45:52 +0530 (Mon, 04 Feb 2013)");
   script_name("MS IE Information Disclosure and Web Site Spoofing Vulnerabilities");
   script_xref(name:"URL", value:"http://pastebin.com/raw.php?i=rz9BcBey");
@@ -49,9 +49,7 @@ if(description)
   script_mandatory_keys("MS/IE/Version");
   script_tag(name:"impact", value:"Successful exploitation allows attackers to disclose the
 sensitive information and view the contents of spoofed site or carry out
-phishing attacks.
-
-Impact Level: Application");
+phishing attacks.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer versions 8 and 9");
   script_tag(name:"insight", value:"The proxy settings configuration has same proxy address and value for HTTP
   and HTTPS,

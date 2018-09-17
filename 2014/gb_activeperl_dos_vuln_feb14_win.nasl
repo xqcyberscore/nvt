@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_activeperl_dos_vuln_feb14_win.nasl 11196 2018-09-03 13:09:40Z mmartin $
+# $Id: gb_activeperl_dos_vuln_feb14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Active Perl Denial of Service Vulnerability Feb 2014 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:perl:perl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804315");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2010-4777");
   script_bugtraq_id(47006);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-17 10:12:58 +0530 (Mon, 17 Feb 2014)");
   script_name("Active Perl Denial of Service Vulnerability Feb 2014 (Windows)");
 
@@ -45,9 +45,7 @@ vulnerability.");
   script_tag(name:"insight", value:"The flaw is due to improper handling of crafted input by
 'Perl_reg_numbered_buff_fetch' function.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
-service.
-
-Impact Level: Application");
+service.");
   script_tag(name:"affected", value:"Active Perl versions 5.10.0, 5.12.0, 5.14.0 and other versions.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

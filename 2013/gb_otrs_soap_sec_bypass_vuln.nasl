@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_soap_sec_bypass_vuln.nasl 11007 2018-08-16 13:20:25Z mmartin $
+# $Id: gb_otrs_soap_sec_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # OTRS SOAP Security Bypass Vulnerability
 #
@@ -32,12 +32,12 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803947");
-  script_version("$Revision: 11007 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2008-1515");
   script_bugtraq_id(74733);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-28 13:08:01 +0530 (Sat, 28 Sep 2013)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OTRS SOAP Security Bypass Vulnerability");
@@ -52,9 +52,7 @@ if(description)
   fails to properly validate user credentials before performing certain actions.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to read and modify objects via the OTRS SOAP interface
-
-  Impact Level: Application");
+  attackers to read and modify objects via the OTRS SOAP interface.");
 
   script_tag(name:"affected", value:"OTRS (Open Ticket Request System)
   version 2.1.0 before 2.1.8 and 2.2.0 before 2.2.6");

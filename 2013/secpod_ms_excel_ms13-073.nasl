@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_excel_ms13-073.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: secpod_ms_excel_ms13-073.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Office Excel Remote Code Execution Vulnerabilities (2858300)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902997");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1315", "CVE-2013-3158", "CVE-2013-3159");
   script_bugtraq_id(62167, 62219, 62225);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 13:11:33 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft Office Excel Remote Code Execution Vulnerabilities (2858300)");
 
@@ -52,9 +52,7 @@ Microsoft Excel 2003 Service Pack 3 and prior
 Microsoft Excel 2007 Service Pack 3 and prior
 Microsoft Excel 2010 Service Pack 2 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to corrupt memory and
-disclose sensitive information.
-
-Impact Level: Application ");
+disclose sensitive information.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

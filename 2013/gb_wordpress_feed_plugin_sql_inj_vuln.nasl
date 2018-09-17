@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_feed_plugin_sql_inj_vuln.nasl 11041 2018-08-17 14:03:47Z mmartin $
+# $Id: gb_wordpress_feed_plugin_sql_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WordPress Feed Plugin SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803682");
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-03 16:54:17 +0530 (Wed, 03 Jul 2013)");
   script_name("WordPress Feed Plugin SQL Injection Vulnerability");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Jul/13");
@@ -46,9 +46,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("wordpress/installed");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to manipulate SQL
-queries by injecting arbitrary SQL code and gain sensitive information.
-
-Impact Level: Application");
+queries by injecting arbitrary SQL code and gain sensitive information.");
   script_tag(name:"affected", value:"WordPress Feed Plugin");
   script_tag(name:"insight", value:"Input passed via the 'nid' parameter to
 '/wp-content/plugins/feed/news_dt.php' is not properly sanitised before being

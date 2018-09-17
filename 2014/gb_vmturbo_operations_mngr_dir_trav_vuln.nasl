@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmturbo_operations_mngr_dir_trav_vuln.nasl 11140 2018-08-28 08:27:23Z jschulte $
+# $Id: gb_vmturbo_operations_mngr_dir_trav_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # VM Turbo Operations Manager Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804448");
-  script_version("$Revision: 11140 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3806");
   script_bugtraq_id(67292);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 10:27:23 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-09 14:42:04 +0530 (Fri, 09 May 2014)");
   script_name("VM Turbo Operations Manager Directory Traversal Vulnerability");
 
@@ -43,9 +43,7 @@ if(description)
   script_tag(name:"insight", value:"Input passed to the 'xml_path' parameter in '/cgi-bin/help/doIt.cgi' is not
   properly sanitised before being used to get the contents of a resource.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to perform directory traversal
-  attacks and read arbitrary files on the affected application.
-
-  Impact Level: Application");
+  attacks and read arbitrary files on the affected application.");
   script_tag(name:"affected", value:"VM Turbo Operations Manager 4.5.x and earlier");
   script_tag(name:"solution", value:"Upgrade to VM Turbo Operations Manager 4.6 or later,
   For updates refer to http://go.vmturbo.com/cloud-edition-download.html ");

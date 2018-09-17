@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bacula_web_jobid_sql_inj_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_bacula_web_jobid_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Bacula-web 'jobid' Parameter SQL Injection Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804771");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-07 11:01:51 +0530 (Tue, 07 Oct 2014)");
 
   script_name("Bacula-web 'jobid' Parameter SQL Injection Vulnerability");
@@ -46,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to manipulate SQL queries in the backend database, and disclose certain
-  sensitive information.
-
-  Impact Level: Application");
+  sensitive information.");
 
   script_tag(name:"affected", value:"Bacula-web version 5.2.10, Other versions
   may also be affected.");

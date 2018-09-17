@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_domino_http_server_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_ibm_lotus_domino_http_server_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # IBM Lotus Domino HTTP Server Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803187");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(55095, 58152);
   script_cve_id("CVE-2012-3301", "CVE-2012-3302", "CVE-2012-4842", "CVE-2012-4844");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-27 14:56:20 +0530 (Wed, 27 Mar 2013)");
   script_name("IBM Lotus Domino HTTP Server Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50330");
@@ -54,9 +54,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML or
   web script in a user's browser session in context of an affected site, compromise the application and access
-  web server configuration information.
-
-  Impact Level: Application");
+  web server configuration information.");
   script_tag(name:"affected", value:"IBM Lotus Domino 7.x and 8.x before 8.5.4");
   script_tag(name:"insight", value:"- Input appended to the URL after servlet/ is not properly sanitized before
     being returned to the user.

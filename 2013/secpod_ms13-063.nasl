@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-063.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: secpod_ms13-063.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Windows Kernel Privilege Elevation Vulnerabilities (2859537)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902990");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2556", "CVE-2013-3196", "CVE-2013-3197", "CVE-2013-3198");
   script_bugtraq_id(58566, 61682, 61683, 1684);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-14 08:43:13 +0530 (Wed, 14 Aug 2013)");
   script_name("Microsoft Windows Kernel Privilege Elevation Vulnerabilities (2859537)");
 
@@ -58,7 +58,7 @@ Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
 Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
 Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior ");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-code with kernel-mode privileges and or corrupt memory. Impact Level: System");
+code with kernel-mode privileges and or corrupt memory.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

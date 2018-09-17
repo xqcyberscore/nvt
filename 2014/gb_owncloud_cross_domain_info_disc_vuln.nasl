@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_cross_domain_info_disc_vuln.nasl 10953 2018-08-14 12:06:42Z mmartin $
+# $Id: gb_owncloud_cross_domain_info_disc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ownCloud Flash Cross-Domain Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804282");
-  script_version("$Revision: 10953 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2049");
   script_bugtraq_id(66229);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 15:24:42 +0530 (Tue, 06 May 2014)");
   script_name("ownCloud Flash Cross-Domain Information Disclosure Vulnerability");
 
@@ -44,9 +44,7 @@ disclosure vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaw is due to unspecified error related to flash cross-domain policies.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain access to a user's
-stored files.
-
-Impact Level: Application");
+stored files.");
   script_tag(name:"affected", value:"ownCloud Server before version 5.0.15 and 6.x before version 6.0.2");
   script_tag(name:"solution", value:"Upgrade to ownCloud version 5.0.15 or 6.0.2 or later,
 For updates refer to http://owncloud.org");

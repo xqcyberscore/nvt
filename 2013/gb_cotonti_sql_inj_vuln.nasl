@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cotonti_sql_inj_vuln.nasl 11041 2018-08-17 14:03:47Z mmartin $
+# $Id: gb_cotonti_sql_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Cotonti 'c' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803848");
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4789");
   script_bugtraq_id(61538);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-05 17:34:41 +0530 (Mon, 05 Aug 2013)");
   script_name("Cotonti 'c' Parameter SQL Injection Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
   script_tag(name:"affected", value:"Cotonti version 0.9.13 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to inject or manipulate SQL
   queries in the back-end database, allowing for the manipulation or disclosure
-  of arbitrary data.
-
-  Impact Level: Application");
+  of arbitrary data.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/54289");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Aug/1");

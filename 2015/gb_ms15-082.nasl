@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-082.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_ms15-082.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # Microsoft Windows RDP Remote Code Execution Vulnerabilities (3080348)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805080");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11422 $");
   script_cve_id("CVE-2015-2472", "CVE-2015-2473");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 10:37:53 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows RDP Remote Code Execution Vulnerabilities (3080348)");
@@ -54,9 +54,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow  attacker
   to take complete control of an affected system. An attacker could then install,
   programs, view, change, or delete data  or create new accounts with full user
-  rights.
-
-  Impact Level: System");
+  rights.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows Server 2012/R2

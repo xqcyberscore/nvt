@@ -29,12 +29,12 @@ CPE = "cpe:/a:opera:opera_browser";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804102");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4705");
   script_bugtraq_id(31795);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-01 09:52:30 +0530 (Tue, 01 Oct 2013)");
   script_name("Opera Cross-Site Scripting (XSS) Vulnerability (Windows)");
 
@@ -47,9 +47,7 @@ For updates refer to http://www.opera.com");
   script_tag(name:"insight", value:"The flaw is due to some error when encoding settings are set to UTF-8.");
   script_tag(name:"affected", value:"Opera versions prior to 15.00 on Windows.");
   script_tag(name:"impact", value:"Successful exploitation will let attacker to execute an arbitrary web
-script or HTML on the user's web browser.
-
-Impact Level: Application");
+script or HTML on the user's web browser.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

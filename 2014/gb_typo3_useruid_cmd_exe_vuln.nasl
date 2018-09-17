@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_useruid_cmd_exe_vuln.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_typo3_useruid_cmd_exe_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # TYPO3 userUid Command Execution Vulnerability
 #
@@ -28,21 +28,19 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804221");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2006-6690");
   script_bugtraq_id(21680);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-09 17:58:28 +0530 (Thu, 09 Jan 2014)");
   script_name("TYPO3 userUid Command Execution Vulnerability");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-commands.
-
-Impact Level: System/Application");
+commands.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"An error exists in the rtehtmlarea extension, which fails to properly
 validate user supplied input to 'userUid' parameter");

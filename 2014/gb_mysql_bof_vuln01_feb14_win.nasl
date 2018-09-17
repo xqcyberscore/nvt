@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804082");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0001");
   script_bugtraq_id(65298);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-03 18:02:51 +0530 (Mon, 03 Feb 2014)");
   script_name("Oracle MySQL Client Remote Buffer Overflow Vulnerability (Windows)");
 
@@ -43,9 +43,7 @@ overflow vulnerability.");
   script_tag(name:"insight", value:"Flaw is due to an user-supplied input is not properly validated when handling
 server versions in client/mysql.cc.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to manipulate certain data and
-cause a DoS (Denial of Service).
-
-Impact Level: Application");
+cause a DoS (Denial of Service).");
   script_tag(name:"affected", value:"Oracle MySQL version 5.5.34 and earlier.");
   script_tag(name:"solution", value:"Upgrade to MySQL version 5.5.35 or later,
 For Updates refer to http://www.mysql.com");

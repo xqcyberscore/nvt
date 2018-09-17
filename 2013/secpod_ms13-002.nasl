@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-002.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: secpod_ms13-002.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft XML Core Services Remote Code Execution Vulnerabilities (2756145)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903101");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0006", "CVE-2013-0007");
   script_bugtraq_id(57116, 57122);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-09 12:27:26 +0530 (Wed, 09 Jan 2013)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft XML Core Services Remote Code Execution Vulnerabilities (2756145)");
@@ -47,8 +47,7 @@ if(description)
   caused due to the way that Microsoft XML Core Services parses XML content.");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote
-  attackers to execute arbitrary code as the logged-on user.
-  Impact Level: System/Application");
+  attackers to execute arbitrary code as the logged-on user.");
 
   script_tag(name:"affected", value:"Microsoft Expression Web 2
   Microsoft Office Word Viewer

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_open_enterprise_server_remote_detect.nasl 10734 2018-08-02 10:35:39Z asteins $
+# $Id: gb_novell_open_enterprise_server_remote_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # Novell Open Enterprise Server Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809479");
-  script_version("$Revision: 10734 $");
+  script_version("$Revision: 11408 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 12:35:39 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-21 13:12:56 +0530 (Mon, 21 Nov 2016)");
   script_name("Novell Open Enterprise Server Remote Version Detection");
 
@@ -55,9 +55,7 @@ include("http_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-if(!novellPort = get_http_port(default:80)){
-  exit(0);
-}
+novellPort = get_http_port(default:80);
 
 foreach dir (make_list_unique("/", "/novell", cgi_dirs(port:novellPort)))
 {

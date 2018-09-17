@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_code_exec_vuln_jun13_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_adobe_air_code_exec_vuln_jun13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe Air Remote Code Execution Vulnerability -June13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803664");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3343");
   script_bugtraq_id(60478);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-18 15:20:47 +0530 (Tue, 18 Jun 2013)");
   script_name("Adobe Air Remote Code Execution Vulnerability -June13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53751");
@@ -46,8 +46,7 @@ if(description)
   script_mandatory_keys("Adobe/Air/Win/Installed");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   code on the target system or cause a denial of service (memory corruption)
-  via unspecified vectors.
-  Impact Level: System/Application");
+  via unspecified vectors.");
   script_tag(name:"affected", value:"Adobe Air 3.7.0.1860 and earlier on Windows");
   script_tag(name:"insight", value:"Unspecified flaw due to improper sanitization of user-supplied input.");
   script_tag(name:"solution", value:"Update to Adobe Air version 3.7.0.2090 or later

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sharepoint_server_ms13-035.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: secpod_sharepoint_server_ms13-035.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft SharePoint Server HTML Sanitisation Component XSS Vulnerability (2821818)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902961");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(58883);
   script_cve_id("CVE-2013-1289");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-10 10:11:54 +0530 (Wed, 10 Apr 2013)");
   script_name("Microsoft SharePoint Server HTML Sanitisation Component XSS Vulnerability (2821818)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52928/");
@@ -48,8 +48,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to bypass certain security
-  restrictions and conduct cross-site scripting and spoofing attacks.
-  Impact Level: Application");
+  restrictions and conduct cross-site scripting and spoofing attacks.");
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2010 Service Pack 1");
   script_tag(name:"insight", value:"Certain unspecified input is not properly sanitized within the HTML
   Sanitation component before being returned to the user. This can be

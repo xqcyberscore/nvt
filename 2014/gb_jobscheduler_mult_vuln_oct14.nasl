@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jobscheduler_mult_vuln_oct14.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_jobscheduler_mult_vuln_oct14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # JobScheduler Multiple Vulnerabilities - Oct14
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804773");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-5391", "CVE-2014-5392", "CVE-2014-5393");
   script_bugtraq_id(69660, 69664, 69661);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-09 10:33:16 +0530 (Thu, 09 Oct 2014)");
 
   script_name("JobScheduler Multiple Vulnerabilities - Oct14");
@@ -53,9 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to gain access to arbitrary files, execute arbitrary HTML and
-  script code or cause a denial of service.
-
-  Impact Level: Application");
+  script code or cause a denial of service.");
 
   script_tag(name:"affected", value:"JobScheduler version before 1.6.4246 and
   7.x before 1.7.4241.");

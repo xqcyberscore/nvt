@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rsa_auth_agent_iis_auth_bypass_vuln_win.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_rsa_auth_agent_iis_auth_bypass_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # RSA Authentication Agent for IIS Authentication Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:emc:rsa_authentication_agent_iis";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804150");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3280");
   script_bugtraq_id(63303);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-25 15:39:27 +0530 (Mon, 25 Nov 2013)");
   script_name("RSA Authentication Agent for IIS Authentication Bypass Vulnerability");
 
@@ -46,9 +46,7 @@ For updates refer to http://www.rsa.com/node.aspx?id=2575");
   script_tag(name:"insight", value:"The flaw is due to fail open design error.");
   script_tag(name:"affected", value:"RSA Authentication Agent version 7.1.x before 7.1.2 for IIS.");
   script_tag(name:"impact", value:"Successful exploitation will allow local attacker to bypass certain security
-restrictions and gain unauthorized privileged access.
-
-Impact Level: System/Application");
+restrictions and gain unauthorized privileged access.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

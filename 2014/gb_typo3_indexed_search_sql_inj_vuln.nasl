@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_indexed_search_sql_inj_vuln.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: gb_typo3_indexed_search_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # TYPO3 indexed_search SQL Injection Vulnerability
 #
@@ -28,21 +28,19 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803984");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2007-6381");
   script_bugtraq_id(26871);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-24 11:14:51 +0530 (Tue, 24 Dec 2013)");
   script_name("TYPO3 indexed_search SQL Injection Vulnerability");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote authenticated attackers to view,
-add, modify or delete information in the back-end database.
-
-Impact Level: Application");
+add, modify or delete information in the back-end database.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"An error exists in indexed_search system extension which fails to
 sufficiently sanitize user-supplied data before using it in an SQL query.");

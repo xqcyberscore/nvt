@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_detect.nasl 4966 2017-01-06 15:21:01Z cfi $
+# $Id: gb_avm_fritz_box_detect.nasl 11412 2018-09-16 10:21:40Z cfischer $
 #
-# AVM FRITZ!Box Detection (Version)
+# AVM FRITZ!Box Version Detection Consolidation
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103910");
-  script_version("$Revision: 4966 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-06 16:21:01 +0100 (Fri, 06 Jan 2017) $");
+  script_version("$Revision: 11412 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-16 12:21:40 +0200 (Sun, 16 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-19 13:21:05 +0100 (Wed, 19 Feb 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("AVM FRITZ!Box Detection (Version)");
+  script_name("AVM FRITZ!Box Version Detection Consolidation");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (c) 2014 Greenbone Networks GmbH");
@@ -42,19 +42,26 @@ if(description)
   script_mandatory_keys("avm_fritz_box/detected");
 
   script_tag(name:"summary", value:"The script reports a detected AVM FRITZ!Box including the model,
-  version number and exposed services.");
+  exposed services and a possible gathered version of the FRITZ!OS.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
 
+# nb: Newer FRITZ!OS releases are only providing the version via UPnP...
+
 include("cpe.inc");
 include("host_details.inc");
 
-detected_type = "unknown";
-detected_model = "unknown";
+if( ! get_kb_item( "avm_fritz_box/detected" ) ) exit( 0 );
+
+SCRIPT_DESC       = "AVM FRITZ!Box Version Detection Consolidation";
+detected_type     = "unknown";
+detected_model    = "unknown";
 detected_firmware = "unknown";
+os_cpe_firmware   = "unknown";
+report_firmware   = "unknown";
 
 foreach source( make_list( "sip/tcp", "sip/udp", "upnp", "ftp", "http" ) ) {
 
@@ -83,36 +90,68 @@ foreach source( make_list( "sip/tcp", "sip/udp", "upnp", "ftp", "http" ) ) {
   }
 }
 
+# nb: Versions are coming in like:
+# 06.04.33
+# 29.04.76
+# 113.06.93
+# Only the last two parts are relevant for us. Also make sure
+# to not keep the leading 0 as all advisories are only referencing
+# to versions without that 0.
+if( detected_firmware != "unknown" ) {
+  _fw = split( detected_firmware, sep:'.', keep:TRUE );
+  if( max_index( _fw ) == 3 ) {
+    os_cpe_firmware = _fw[1] + _fw[2];
+    os_cpe_firmware = ereg_replace( string:os_cpe_firmware, pattern:"^0", replace:"" );
+  }
+  if( os_cpe_firmware != "unknown" )
+    report_firmware = os_cpe_firmware + " (" + detected_firmware + ")";
+  else
+    report_firmware = detected_firmware;
+}
+
+# Currently used different variants of CPEs by the NVD:
+# <vuln:product>cpe:/a:avm:fritzbox:7050</vuln:product>
+# <vuln:product>cpe:/o:avm:fritz%21box_6810_lte_firmware:-</vuln:product>
+# <vuln:product>cpe:/o:avm:fritz%21box_6840_lte_firmware:-</vuln:product>
+# <vuln:product>cpe:/o:avm:fritz%21_os:6.23</vuln:product>
+# <vuln:product>cpe:/a:avm:fritz%21box</vuln:product>
+# <vuln:product>cpe:/o:avm:fritz%21_os:6.23</vuln:product>
+
+os_app  = "AVM FRITZ!OS";
+os_cpe  = build_cpe( value:os_cpe_firmware, exp:"^([0-9.]+)", base:"cpe:/o:avm:fritz%21_os:" );
+# nb: One older CVE is using this CPE so also register it for now...
+app_cpe = build_cpe( value:os_cpe_firmware, exp:"^([0-9.]+)", base:"cpe:/a:avm:fritz%21box" );
+if( ! os_cpe ) {
+  os_cpe  = "cpe:/o:avm:fritz%21_os";
+  app_cpe = "cpe:/a:avm:fritz%21box";
+  register_and_report_os( os:os_app, cpe:os_cpe, desc:SCRIPT_DESC, runs_key:"unixoide" );
+} else {
+  register_and_report_os( os:os_app + " " + report_firmware, cpe:os_cpe, desc:SCRIPT_DESC, runs_key:"unixoide" );
+}
+
 if( detected_model != "unknown" ) {
   cpe_model = str_replace( string:tolower( detected_model ), find:" ", replace:"_" );
-  cpe = build_cpe( value:detected_firmware, exp:"^([0-9.]+)", base:"cpe:/a:avm:fritzbox:" + cpe_model + ":" );
+  hw_cpe    = "cpe:/h:avm:fritzbox:" + cpe_model;
 } else {
-  cpe = build_cpe( value:detected_firmware, exp:"^([0-9.]+)", base:"cpe:/a:avm:fritzbox::" );
+  hw_cpe = "cpe:/h:avm:fritzbox";
 }
 
-if( isnull( cpe ) ) {
-  if( detected_model != "unknown" ) {
-    cpe = "cpe:/a:avm:fritzbox:" + cpe_model;
-  } else {
-    cpe = "cpe:/a:avm:fritzbox";
-  }
-}
-
-app = "AVM FRITZ!Box";
+hw_app = "AVM FRITZ!Box";
 if( detected_type != "unknown" ) {
-  app += " " + detected_type;
+  hw_app += " " + detected_type;
 }
 if( detected_model != "unknown" ) {
-  app += " " + detected_model;
+  hw_app += " " + detected_model;
 }
 
 location = "/";
-extra = '\nExposed services:\n';
 
 if( http_port = get_kb_list( "avm_fritz_box/http/port" ) ) {
   foreach port( http_port ) {
     extra += "HTTP(s) on port " + port + '/tcp\n';
-    register_product( cpe:cpe, location:location, port:port, service: "www" );
+    register_product( cpe:hw_cpe, location:location, port:port, service:"www" );
+    register_product( cpe:os_cpe, location:location, port:port, service:"www" );
+    register_product( cpe:app_cpe, location:location, port:port, service:"www" );
   }
 }
 
@@ -120,7 +159,9 @@ if( sip_port = get_kb_list( "avm_fritz_box/sip/tcp/port" ) ) {
   foreach port( sip_port ) {
     concluded = get_kb_item( "avm_fritz_box/sip/tcp/" + port + "/concluded" );
     extra += "SIP on port " + port + '/tcp\nBanner: ' + concluded + '\n';
-    register_product( cpe:cpe, location:location, port:port, service:"sip" );
+    register_product( cpe:hw_cpe, location:location, port:port, service:"sip" );
+    register_product( cpe:os_cpe, location:location, port:port, service:"sip" );
+    register_product( cpe:app_cpe, location:location, port:port, service:"sip" );
   }
 }
 
@@ -128,7 +169,9 @@ if( sip_port = get_kb_list( "avm_fritz_box/sip/udp/port" ) ) {
   foreach port( sip_port ) {
     concluded = get_kb_item( "avm_fritz_box/sip/udp/" + port + "/concluded" );
     extra += "SIP on port " + port + '/udp\nBanner: ' + concluded + '\n';
-    register_product( cpe:cpe, location:location, port:port, service:"sip", proto:"udp" );
+    register_product( cpe:hw_cpe, location:location, port:port, service:"sip", proto:"udp" );
+    register_product( cpe:os_cpe, location:location, port:port, service:"sip", proto:"udp" );
+    register_product( cpe:app_cpe, location:location, port:port, service:"sip", proto:"udp" );
   }
 }
 
@@ -136,7 +179,9 @@ if( upnp_port = get_kb_list( "avm_fritz_box/upnp/port" ) ) {
   foreach port( upnp_port ) {
     concluded = get_kb_item( "avm_fritz_box/upnp/" + port + "/concluded" );
     extra += "UPnP on port " + port + '/udp\nBanner: ' + concluded + '\n';
-    register_product( cpe:cpe, location:location, port:port, service:"upnp", proto:"udp" );
+    register_product( cpe:hw_cpe, location:location, port:port, service:"upnp", proto:"udp" );
+    register_product( cpe:os_cpe, location:location, port:port, service:"upnp", proto:"udp" );
+    register_product( cpe:app_cpe, location:location, port:port, service:"upnp", proto:"udp" );
   }
 }
 
@@ -144,15 +189,26 @@ if( ftp_port = get_kb_list( "avm_fritz_box/ftp/port" ) ) {
   foreach port( ftp_port ) {
     concluded = get_kb_item( "avm_fritz_box/ftp/" + port + "/concluded" );
     extra += "FTP on port " + port + '/ftp\nBanner: ' + concluded + '\n';
-    register_product( cpe:cpe, location:location, port:port, service: "ftp" );
+    register_product( cpe:hw_cpe, location:location, port:port, service:"ftp" );
+    register_product( cpe:os_cpe, location:location, port:port, service:"ftp" );
+    register_product( cpe:app_cpe, location:location, port:port, service:"ftp" );
   }
 }
 
-log_message( data:build_detection_report( app:app,
-                                          version:detected_firmware,
-                                          install:location,
-                                          cpe:cpe,
-                                          extra:extra ),
-                                          port:0 );
+report = build_detection_report( app:os_app,
+                                 version:report_firmware,
+                                 install:location,
+                                 cpe:os_cpe );
 
+report += '\n\n' + build_detection_report( app:hw_app,
+                                           skip_version:TRUE,
+                                           install:location,
+                                           cpe:hw_cpe );
+
+if( extra ) {
+  report += '\n\nExposed services:\n';
+  report += '\n' + extra;
+}
+
+log_message( port:0, data:report );
 exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_aem_remote_detect.nasl 10712 2018-08-01 14:15:12Z cfischer $
+# $Id: gb_adobe_aem_remote_detect.nasl 11420 2018-09-17 06:33:13Z cfischer $
 #
 # Adobe Experience Manager Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807067");
-  script_version("$Revision: 10712 $");
+  script_version("$Revision: 11420 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 16:15:12 +0200 (Wed, 01 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:33:13 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-11 14:43:49 +0530 (Thu, 11 Feb 2016)");
   script_name("Adobe Experience Manager Remote Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -55,10 +55,9 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if( ! port = get_http_port( default:80 ) ) exit( 0 );
+port = get_http_port( default:80 );
 host = http_host_name( dont_add_port:TRUE );
 
-extra = "";
 url = "/libs/granite/core/content/login.html?";
 
 sndReq = http_get( item:url, port:port );

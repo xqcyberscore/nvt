@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804099");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-18 11:02:48 +0530 (Tue, 18 Feb 2014)");
   script_name("NetGear DGN2200 N300 Wireless Router Multiple Vulnerabilities");
 
@@ -61,9 +61,7 @@ access or not.");
 
   - Program storing password information in plaintext in /etc/passwd.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary commands,
-gain access to arbitrary files, and manipulate the device's settings.
-
-Impact Level: System/Application");
+gain access to arbitrary files, and manipulate the device's settings.");
   script_tag(name:"affected", value:"NetGear DGN2200 N300 Wireless Router Firmware Version 1.0.0.36-7.0.37");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");

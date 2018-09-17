@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_email_message_mult_xss_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_ibm_domino_email_message_mult_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # IBM Domino Email Message Cross-Site Scripting Vulnerabilities
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803787");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4063", "CVE-2013-4064", "CVE-2013-4065");
   script_bugtraq_id(64445, 64451, 64444);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-26 10:59:41 +0530 (Thu, 26 Dec 2013)");
   script_name("IBM Domino Email Message Cross-Site Scripting Vulnerabilities");
 
@@ -49,9 +49,7 @@ in e-mail messages, ultra-light mode, is not properly sanitised before being
 used.");
   script_tag(name:"affected", value:"IBM Domino 8.5.x before 8.5.3 FP6 and 9.0.x before 9.0.1");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
-and script code in a user's browser session in context of an affected site.
-
-Impact Level: Application");
+and script code in a user's browser session in context of an affected site.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/56164");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/86594");

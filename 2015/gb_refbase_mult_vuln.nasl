@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_refbase_mult_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_refbase_mult_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Web Reference Database Multiple Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:refbase:refbase";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806062");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-6007", "CVE-2015-6008", "CVE-2015-6009", "CVE-2015-6010",
                 "CVE-2015-6011", "CVE-2015-6012", "CVE-2015-7381", "CVE-2015-7382",
                 "CVE-2015-7383");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-05 13:23:43 +0530 (Mon, 05 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_active");
   script_name("Web Reference Database Multiple Vulnerabilities");
@@ -85,9 +85,7 @@ if(description)
   attackers to submit valid requests to the server on behalf of authenticated
   users, execute arbitrary code on the server, directly read, write, and modify
   arbitrary data in the application's database, redirect victims to malicious
-  web addresses.
-
-  Impact Level: Application");
+  web addresses.");
 
   script_tag(name:"affected", value:"refbase versions 0.9.6 and possibly earlier");
 

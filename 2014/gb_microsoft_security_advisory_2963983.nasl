@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2963983.nasl 10957 2018-08-14 13:26:50Z mmartin $
+# $Id: gb_microsoft_security_advisory_2963983.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Internet Explorer Remote Code Execution Vulnerability (2965111)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804441");
-  script_version("$Revision: 10957 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1776");
   script_bugtraq_id(67075);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:26:50 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-30 13:55:25 +0530 (Wed, 30 Apr 2014)");
   script_name("Microsoft Internet Explorer Remote Code Execution Vulnerability (2965111)");
 
@@ -45,9 +45,7 @@ or not.");
   script_tag(name:"insight", value:"The flaw exists in the way that Internet Explorer accesses an object in memory
 that has been deleted or has not been properly allocated.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to corrupt memory by the
-execution of arbitrary code in the context of the current user.
-
-Impact Level: System/Application");
+execution of arbitrary code in the context of the current user.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x/10.x/11.x");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
 update mentioned hotfixes in the advisory from the below link,

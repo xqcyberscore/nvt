@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_dzs_video_gallery_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_wordpress_dzs_video_gallery_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WordPress Digital Zoom Studio (DZS) Video Gallery Plugin Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804899");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-9094");
   script_bugtraq_id(68525);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-28 20:20:50 +0530 (Fri, 28 Nov 2014)");
   script_name("WordPress Digital Zoom Studio (DZS) Video Gallery Plugin Multiple Vulnerabilities");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -61,9 +61,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary script code in a user's browser session within the
   trust relationship between their browser and the server, result in loss of
-  confidentiality and execute arbitrary commands.
-
-  Impact Level: Application");
+  confidentiality and execute arbitrary commands.");
 
   script_tag(name:"affected", value:"WordPress Digital Zoom Studio (DZS) Video
   Gallery Plugin");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpsound_mult_xss_vuln.nasl 10844 2018-08-08 14:38:33Z cfischer $
+# $Id: gb_phpsound_mult_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # phpSound Multiple Cross-Site Scripting (XSS) Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805105");
-  script_version("$Revision: 10844 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-8954");
   script_bugtraq_id(71172);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 16:38:33 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-27 12:05:21 +0530 (Thu, 27 Nov 2014)");
   script_name("phpSound Multiple Cross-Site Scripting (XSS) Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -56,9 +56,7 @@ if(description)
   parameters in an explore action to index.php script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to execute arbitrary HTML and script code in the context of an affected site.
-
-  Impact Level: Application");
+  to execute arbitrary HTML and script code in the context of an affected site.");
 
   script_tag(name:"affected", value:"phpSound version 1.0.5, prior versions
   may also be affected.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ajax_store_locator_dir_trav_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
+# $Id: gb_wordpress_ajax_store_locator_dir_trav_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WordPress Ajax Store Locator Plugin Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805209");
-  script_version("$Revision: 11188 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-12 13:27:38 +0530 (Fri, 12 Dec 2014)");
   script_name("WordPress Ajax Store Locator Plugin Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -55,9 +55,7 @@ if(description)
   being returned to the user.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  attacker to read arbitrary files on the target system.
-
-  Impact Level: System/Application");
+  attacker to read arbitrary files on the target system.");
 
   script_tag(name:"affected", value:"WordPress Ajax Store Locator version 1.2
   and prior.");

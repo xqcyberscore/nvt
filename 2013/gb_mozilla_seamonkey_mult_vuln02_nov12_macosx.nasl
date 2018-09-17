@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_seamonkey_mult_vuln02_nov12_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_mozilla_seamonkey_mult_vuln02_nov12_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Mozilla SeaMonkey Multiple Vulnerabilities-02 November12 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803365");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-4212", "CVE-2012-4213", "CVE-2012-4217", "CVE-2012-4217",
                 "CVE-2012-4204", "CVE-2012-4205", "CVE-2012-4208", "CVE-2012-5843",
                 "CVE-2012-5836", "CVE-2012-5838");
@@ -35,7 +35,7 @@ if(description)
                     56627, 56612, 56616, 56644);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 1:30:03 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla SeaMonkey Multiple Vulnerabilities-02 November12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51358");
@@ -55,8 +55,7 @@ if(description)
   script_mandatory_keys("SeaMonkey/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts, bypass
   certain security restrictions, execute arbitrary code in the context of the
-  browser.
-  Impact Level: System/Application");
+  browser.");
   script_tag(name:"affected", value:"SeaMonkey version before 2.14 on Mac OS X");
   script_tag(name:"insight", value:"Multiple error exists
 

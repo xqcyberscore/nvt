@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netcharts_server_multiple_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_netcharts_server_multiple_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # NetCharts Server Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:visual_mining:netcharts_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805643");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-4031", "CVE-2015-4032");
   script_bugtraq_id(74788);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-03 12:12:21 +0530 (Wed, 03 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("NetCharts Server Multiple Vulnerabilities");
@@ -55,9 +55,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to write to arbitrary files via unspecified vectors, rename files
-  and execute arbitrary PHP code.
-
-  Impact Level: Application");
+  and execute arbitrary PHP code.");
 
   script_tag(name:"affected", value:"Visual Mining NetChart Server");
 

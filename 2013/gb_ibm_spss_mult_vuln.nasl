@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_spss_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_ibm_spss_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # IBM SPSS SamplePower Multiple Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:spss_samplepower";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803398");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-5947", "CVE-2012-5946", "CVE-2012-5945", "CVE-2013-0593");
   script_bugtraq_id(59556, 59559, 59557, 59527);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-08 11:50:37 +0530 (Wed, 08 May 2013)");
   script_name("IBM SPSS SamplePower Multiple Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53234");
@@ -50,8 +50,7 @@ if(description)
   script_mandatory_keys("IBM/SPSS/Win/Installed");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
   code in the context of the application using the ActiveX control. Failed
-  attempts will likely result in denial of service conditions.
-  Impact Level: System/Application");
+  attempts will likely result in denial of service conditions.");
   script_tag(name:"affected", value:"IBM SPSS SamplePower version 3.0 and prior");
   script_tag(name:"insight", value:"Multiple flaws due to,
 

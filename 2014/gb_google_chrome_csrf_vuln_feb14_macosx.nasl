@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_csrf_vuln_feb14_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_google_chrome_csrf_vuln_feb14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Google Chrome Cross-Site Request Forgery (CSRF) Vulnerability (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804317");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-6166");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-17 17:40:48 +0530 (Mon, 17 Feb 2014)");
   script_name("Google Chrome Cross-Site Request Forgery (CSRF) Vulnerability (Mac OS X)");
 
@@ -44,9 +44,7 @@ forgery attack.");
   script_tag(name:"insight", value:"The flaw is due to improper validation of 'HTTP Cookie headers' for
 restricted character-set.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct the
-equivalent of a persistent Logout cross-site request forgery (CSRF) attack.
-
-Impact Level: Application");
+equivalent of a persistent Logout cross-site request forgery (CSRF) attack.");
   script_tag(name:"affected", value:"Google Chrome version prior to 29 on Mac OS X.");
   script_tag(name:"solution", value:"Upgrade to Google Chrome version 29 or later,
 For updates refer to http://www.google.com/chrome");

@@ -23,24 +23,22 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:typo3:typo3";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804218");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-08 18:30:39 +0530 (Wed, 08 Jan 2014)");
   script_name("TYPO3 mailforms Unspecified Arbitrary Mail Relay Vulnerability");
 
-
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to send mail to a wrong
-receipient.
-
-Impact Level: Application");
+recipient.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"An error exists in the application, which uses default encryption key unless
 it is changed by administrator");
@@ -58,13 +56,12 @@ vulnerability.");
   script_dependencies("gb_typo3_detect.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
-
 
 if(!typoPort = get_app_port(cpe:CPE)){
   exit(0);

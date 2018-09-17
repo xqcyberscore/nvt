@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smartermail_stored_xss_vuln.nasl 11244 2018-09-05 12:23:51Z cfischer $
+# $Id: gb_smartermail_stored_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # SmarterMail Enterprise and Standard Stored XSS vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:smartertools:smartermail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803793");
-  script_version("$Revision: 11244 $");
+  script_version("$Revision: 11402 $");
   script_bugtraq_id(64970);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 14:23:51 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-20 13:17:30 +0530 (Mon, 20 Jan 2014)");
   script_name("SmarterMail Enterprise and Standard Stored XSS vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -56,9 +56,7 @@ if(description)
   returning it to users.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML or
-  script code.
-
-  Impact Level: Application");
+  script code.");
 
   script_tag(name:"affected", value:"SmarterMail Enterprise and Standard versions 11.x and prior.");
 

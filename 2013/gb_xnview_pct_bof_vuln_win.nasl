@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_pct_bof_vuln_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_xnview_pct_bof_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # XnView PCT File Handling Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803740");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2577");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 12:23:59 +0530 (Wed, 21 Aug 2013)");
   script_name("XnView PCT File Handling Buffer Overflow Vulnerability");
   script_tag(name:"summary", value:"This host is installed XnView and is prone to buffer overflow Vulnerability.");
@@ -45,7 +45,7 @@ For updates refer to http://www.xnview.com/en/xnview/#downloads");
   script_tag(name:"affected", value:"XnView versions 2.03 and prior for Windows.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
 code on the target machine, by enticing the user of XnView to open a specially
-crafted file. Impact Level: System/Application");
+crafted file.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

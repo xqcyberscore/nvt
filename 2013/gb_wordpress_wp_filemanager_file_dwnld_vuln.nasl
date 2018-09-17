@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_filemanager_file_dwnld_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_wordpress_wp_filemanager_file_dwnld_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WordPress wp-FileManager Plugin File Download Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803492");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-17 17:30:46 +0530 (Wed, 17 Apr 2013)");
   script_name("WordPress wp-FileManager Plugin File Download Vulnerability");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/25440");
@@ -48,9 +48,7 @@ if(description)
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to download and
-  read arbitrary files on the affected application.
-
-  Impact Level: Application");
+  read arbitrary files on the affected application.");
   script_tag(name:"affected", value:"Wordpress wp-FileManager Plugin before 1.4.0");
   script_tag(name:"insight", value:"The input passed via 'path' parameter to
   'wordpress/wp-content/plugins/wp-filemanager/incl/libfile.php' script is

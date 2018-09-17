@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_free_hosting_manager_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_free_hosting_manager_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Free Hosting Manager Multiple Vulnerabilities
 #
@@ -27,20 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803446");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(56991, 56754);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-25 14:43:46 +0530 (Mon, 25 Mar 2013)");
   script_name("Free Hosting Manager Multiple Vulnerabilities");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject or
   manipulate SQL queries in the back-end database, allowing for the manipulation
   or disclosure of arbitrary data and execute arbitrary HTML or web script in
-  a user's browser session in context of an affected site.
-
-  Impact Level: Application");
+  a user's browser session in context of an affected site.");
   script_tag(name:"affected", value:"Free Hosting Manager version 2.0.2 and prior");
   script_tag(name:"insight", value:"Multiple flaws due to,
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ds3_authentication_server_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_ds3_authentication_server_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # DS3 Authentication Server Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803710");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-04 13:59:02 +0530 (Tue, 04 Jun 2013)");
   script_name("DS3 Authentication Server Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/526784/30/0/threaded");
@@ -61,9 +61,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running DS3 Authentication Server and is prone to
   multiple vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to
-  execute arbitrary commands and obtain the sensitive information.
-
-  Impact Level: Application");
+  execute arbitrary commands and obtain the sensitive information.");
   script_tag(name:"affected", value:"DS3 Authentication Server");
 
   script_tag(name:"solution_type", value:"WillNotFix");

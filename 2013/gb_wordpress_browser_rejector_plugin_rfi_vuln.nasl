@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_browser_rejector_plugin_rfi_vuln.nasl 11201 2018-09-03 14:35:07Z cfischer $
+# $Id: gb_wordpress_browser_rejector_plugin_rfi_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WordPress Browser Rejector Plugin Remote File Inclusion Vulnerability
 #
@@ -29,8 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to perform directory traversal
-  attacks and read arbitrary files on the affected application.
-  Impact Level: Application");
+  attacks and read arbitrary files on the affected application.");
   script_tag(name:"affected", value:"Browser Rejector Plugin version 2.10 and prior");
   script_tag(name:"insight", value:"The flaw is due to an improper validation of user supplied input to the
   'wppath' parameter in 'wp-content/plugins/browser-rejector/rejectr.js.php',
@@ -40,11 +39,11 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with WordPress Browser Rejector Plugin and is prone
   to remote file inclusion vulnerability.");
   script_oid("1.3.6.1.4.1.25623.1.0.803209");
-  script_version("$Revision: 11201 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(57220);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-17 14:17:27 +0530 (Thu, 17 Jan 2013)");
   script_name("WordPress Browser Rejector Plugin Remote File Inclusion Vulnerability");
 

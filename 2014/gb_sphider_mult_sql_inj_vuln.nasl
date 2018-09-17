@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sphider_mult_sql_inj_vuln.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_sphider_mult_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Sphider Multiple Vulnerabilities - Aug14
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804737");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-5082", "CVE-2014-5192", "CVE-2014-5193");
   script_bugtraq_id(69019, 68985);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-25 13:06:02 +0530 (Mon, 25 Aug 2014)");
   script_name("Sphider Multiple Vulnerabilities - Aug14");
 
@@ -44,9 +44,7 @@ if(description)
   parameters.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
   and script code and SQL statements on the vulnerable system, which may lead to
-  access or modify data in the underlying database.
-
-  Impact Level: Application");
+  access or modify data in the underlying database.");
   script_tag(name:"affected", value:"Sphider version 1.3.6 and earlier");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

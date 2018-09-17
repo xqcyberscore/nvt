@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-065.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms14-065.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (3003057)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804790");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4143", "CVE-2014-6323", "CVE-2014-6337", "CVE-2014-6339",
                 "CVE-2014-6340", "CVE-2014-6341", "CVE-2014-6342", "CVE-2014-6343",
                 "CVE-2014-6344", "CVE-2014-6345", "CVE-2014-6346", "CVE-2014-6347",
@@ -39,7 +39,7 @@ if(description)
                     70346, 70942, 70946, 70347, 70348, 70939, 70940, 70323, 70333);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 08:00:12 +0530 (Wed, 12 Nov 2014)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (3003057)");
 
@@ -54,9 +54,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to disclose potentially sensitive information, bypass certain security
-  restrictions, and compromise a user's system.
-
-  Impact Level: System/Application");
+  restrictions, and compromise a user's system.");
 
   script_tag(name:"affected", value:"Microsoft Internet Explorer version
   6.x/7.x/8.x/9.x/10.x/11.x");

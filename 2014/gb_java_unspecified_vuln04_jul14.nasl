@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_unspecified_vuln04_jul14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_java_unspecified_vuln04_jul14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle Java SE JRE Unspecified Vulnerability-04 Jul 2014 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804690");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4247");
   script_bugtraq_id(68626);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-25 10:43:38 +0530 (Fri, 25 Jul 2014)");
   script_name("Oracle Java SE JRE Unspecified Vulnerability-04 Jul 2014 (Windows)");
 
@@ -44,9 +44,7 @@ vulnerability.");
   script_tag(name:"vuldetect", value:"Get the installed version of Oracle Java SE JRE with the help of detect NVT
 and check it is vulnerable or not.");
   script_tag(name:"insight", value:"The flaw exists due to an error related to the JavaFX subcomponent");
-  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code.
-
-Impact Level: System/Application.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code.");
   script_tag(name:"affected", value:"Oracle Java SE 8 update 5.0 and prior on Windows");
   script_tag(name:"solution", value:"Apply the patch from below link,
 http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");

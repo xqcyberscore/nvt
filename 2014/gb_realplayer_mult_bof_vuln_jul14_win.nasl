@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mult_bof_vuln_jul14_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_realplayer_mult_bof_vuln_jul14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # RealNetworks RealPlayer Multiple Buffer Overflow Vulnerabilities July14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:realnetworks:realplayer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804678");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3113");
   script_bugtraq_id(68442);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-14 16:18:41 +0530 (Mon, 14 Jul 2014)");
   script_name("RealNetworks RealPlayer Multiple Buffer Overflow Vulnerabilities July14 (Windows)");
 
@@ -46,9 +46,7 @@ vulnerabilities.");
 incorrect media sample sizes.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a buffer
 overflow, resulting in a denial of service or potentially allowing the
-execution of arbitrary code.
-
-Impact Level: System/Application");
+execution of arbitrary code.");
   script_tag(name:"affected", value:"RealNetworks RealPlayer before version 17.0.10.8 on Windows.");
   script_tag(name:"solution", value:"Upgrade to RealNetworks RealPlayer version 17.0.10.8 or later.
 For updates refer http://www.real.com");

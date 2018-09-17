@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_msg_service_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
+# $Id: gb_sap_msg_service_detect.nasl 11404 2018-09-15 09:17:49Z cfischer $
 #
 # SAP Message Server Service Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141067");
-  script_version("$Revision: 10896 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11404 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:17:49 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 09:04:58 +0700 (Wed, 09 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,11 +42,11 @@ if(description)
 
 SAP Message Server is for
 
-- Central communication channel between the individual application servers (instances) of the system
+  - Central communication channel between the individual application servers (instances) of the system
 
-- Load distribution of logons using SAP GUI and RFC with logon groups
+  - Load distribution of logons using SAP GUI and RFC with logon groups
 
-- Information point for the Web Dispatcher and the application servers");
+  - Information point for the Web Dispatcher and the application servers");
 
   script_category(ACT_GATHER_INFO);
 

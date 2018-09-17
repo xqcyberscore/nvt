@@ -1,5 +1,5 @@
 ###############################################################################                                                                 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_remote_code_exec_vuln_may18_macosx.nasl 9906 2018-05-18 10:34:56Z santu $
+# $Id: gb_adobe_photoshop_remote_code_exec_vuln_may18_macosx.nasl 11416 2018-09-17 03:39:26Z ckuersteiner $
 #
 # Adobe Photoshop CC Remote Code Execution Vulnerability May18 (Mac OS X)
 #
@@ -17,7 +17,7 @@
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.                                                                                                   
+# GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
@@ -25,45 +25,42 @@
 ###############################################################################
 
 CPE = "cpe:/a:adobe:photoshop_cc2017";
-       
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812890");
-  script_version("$Revision: 9906 $");
+  script_version("$Revision: 11416 $");
   script_cve_id("CVE-2018-4946");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 12:34:56 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 05:39:26 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-05-16 11:46:20 +0530 (Wed, 16 May 2018)");
   script_name("Adobe Photoshop CC Remote Code Execution Vulnerability May18 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"The host is installed with Adobe Photoshop
+  script_tag(name:"summary", value:"The host is installed with Adobe Photoshop
   CC and is prone to remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an out of bounds 
+  script_tag(name:"insight", value:"The flaw exists due to an out of bounds
   write error.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code in the context of the user running the
-  affected application and gain elevated privileges.
+  affected application and gain elevated privileges.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Adobe Photoshop CC 2017 18.1.3 and earlier 
+  script_tag(name:"affected", value:"Adobe Photoshop CC 2017 18.1.3 and earlier
   and Adobe Photoshop CC 2018 19.1.3 and earlier versions on Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Adobe Photoshop CC 2017 
+  script_tag(name:"solution", value:"Upgrade to Adobe Photoshop CC 2017
   18.1.4 or Photoshop CC 2018 19.1.4 or later. For updates refer to Reference
   links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/photoshop/apsb18-17.html");
-  script_xref(name : "URL" , value : "http://www.adobe.com/in/products/photoshop.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/photoshop/apsb18-17.html");
+  script_xref(name:"URL", value:"http://www.adobe.com/in/products/photoshop.html");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_timthumb_remote_code_exec_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
+# $Id: gb_wp_timthumb_remote_code_exec_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Binary Moon TimThumb Remote Code Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805116");
-  script_version("$Revision: 11321 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4663");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-23 11:22:48 +0530 (Tue, 23 Dec 2014)");
   script_name("Binary Moon TimThumb Remote Code Execution Vulnerability");
 
@@ -48,9 +48,7 @@ if(description)
   parameter is not properly sanitized.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary commands.
-
-  Impact Level: Application");
+  attackers to execute arbitrary commands.");
 
   script_tag(name:"affected", value:"Binary Moon TimThumb version 2.8.13,
   prior versions may also be affected.");

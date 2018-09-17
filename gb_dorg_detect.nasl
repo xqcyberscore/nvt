@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dorg_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_dorg_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # Disc Organization System (DORG) Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806696");
-  script_version("$Revision: 11015 $");
+  script_version("$Revision: 11408 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:58 +0530 (Wed, 06 Apr 2016)");
   script_name("Disc Organization System (DORG) Remote Version Detection");
 
@@ -43,31 +43,27 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if(!dorgPort = get_http_port( default:80)){
-  exit(0);
-}
+dorgPort = get_http_port( default:80);
 
 foreach dir(make_list_unique( "/", "/dorg", cgi_dirs(port:dorgPort)))
 {
   install = dir;
   if(dir == "/") dir = "";
 
-  ##admin page
   url = dir + "/admin_panel/index.php";
 
-  dorgReq = http_get(port:dorgPort, item: url);
-  dorgRes = http_keepalive_send_recv(port:dorgPort, data:dorgReq);
+  dorgRes = http_get_cache(port:dorgPort, item: url);
 
   if(dorgRes =~ '<title>DORG.*admin panel<' && '>Disc Organization System<' >< dorgRes)
   {

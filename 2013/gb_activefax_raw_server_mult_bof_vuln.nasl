@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803169");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-11 17:46:45 +0530 (Mon, 11 Feb 2013)");
   script_name("ActiveFax RAW Server Multiple Buffer Overflow Vulnerabilities");
   script_category(ACT_DENIAL);
@@ -46,8 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.pwnag3.com/2013/02/actfax-raw-server-exploit.html");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
-  service.
-  Impact Level: Application");
+  service.");
   script_tag(name:"affected", value:"ActiveFax Version 5.01 build 0232 and prior");
   script_tag(name:"insight", value:"The flaws due to some boundary errors within the RAW server when processing
   the '@F000', '@F506', and '@F605' data fields can be exploited to cause

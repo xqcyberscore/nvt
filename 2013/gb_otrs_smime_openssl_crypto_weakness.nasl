@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_smime_openssl_crypto_weakness.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_otrs_smime_openssl_crypto_weakness.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # OTRS S/MIME OpenSSL Cryptographic Entropy Weakness
 #
@@ -28,19 +28,17 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803933");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2008-7278");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-20 17:07:00 +0530 (Fri, 20 Sep 2013)");
   script_name("OTRS S/MIME OpenSSL Cryptographic Entropy Weakness");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to decrypt e-mail messages
-that had lower than intended entropy available for cryptographic operations.
-
-Impact Level: Application");
+that had lower than intended entropy available for cryptographic operations.");
   script_tag(name:"vuldetect", value:"Get the installed version of OTRS with the help of detect NVT and check the
 version is vulnerable or not.");
   script_tag(name:"insight", value:"An error exists in S/MIME feature which does not properly configure

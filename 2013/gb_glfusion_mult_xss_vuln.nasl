@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_glfusion_mult_xss_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_glfusion_mult_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # glFusion Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803316");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1466");
   script_bugtraq_id(58058);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-01 11:22:26 +0530 (Fri, 01 Mar 2013)");
   script_name("glFusion Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -49,8 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation allow remote attackers to execute arbitrary code
   in the browser to steal cookie-based authentication credentials and launch
-  other attacks.
-  Impact Level: Application");
+  other attacks.");
   script_tag(name:"affected", value:"glFusion version 1.2.2 and prior");
   script_tag(name:"insight", value:"The flaws are due
 

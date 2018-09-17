@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_js_restaurant_sql_inj_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_wp_js_restaurant_sql_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WordPress JS Restaurant Plugin SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803697");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-16 13:11:56 +0530 (Tue, 16 Jul 2013)");
   script_name("WordPress JS Restaurant Plugin SQL Injection Vulnerability");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/122316/wpjsrestaurant-sql.txt");
@@ -45,9 +45,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("wordpress/installed");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to manipulate SQL
-queries by injecting arbitrary SQL code and gain sensitive information.
-
-Impact Level: Application");
+queries by injecting arbitrary SQL code and gain sensitive information.");
   script_tag(name:"affected", value:"WordPress JS Restaurant Plugin");
   script_tag(name:"insight", value:"Input passed to 'wp-content/plugins/js-restaurant/popup.php'
 script via 'restuarant_id' parameter is not properly sanitised before being

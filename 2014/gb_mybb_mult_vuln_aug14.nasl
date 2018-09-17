@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_mult_vuln_aug14.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: gb_mybb_mult_vuln_aug14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # MyBB Multiple Vulnerabilities - Aug14
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804747");
-  script_version("$Revision: 11194 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-21 18:16:52 +0530 (Thu, 21 Aug 2014)");
   script_name("MyBB Multiple Vulnerabilities - Aug14");
 
@@ -45,9 +45,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
   and script code in a user's browser session or execute arbitrary SQL statements
   on the vulnerable system, which may leads to access or modify data in the
-  underlying database.
-
-  Impact Level: Application");
+  underlying database.");
   script_tag(name:"affected", value:"MyBB version 1.8 Beta 3");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

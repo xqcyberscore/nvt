@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_sec_bypass_vuln01_mar14_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_adobe_flash_sec_bypass_vuln01_mar14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Flash Player Multiple Security Bypass Vulnerabilities - 01 Feb14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804515");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0503", "CVE-2014-0504");
   script_bugtraq_id(66122, 66127);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-20 10:50:26 +0530 (Thu, 20 Mar 2014)");
   script_name("Adobe Flash Player Multiple Security Bypass Vulnerabilities - 01 Feb14 (Mac OS X)");
 
@@ -44,9 +44,7 @@ security bypass vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaw are due to multiple unspecified errors.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
-restrictions and disclose potentially sensitive information.
-
-Impact Level: System/Application");
+restrictions and disclose potentially sensitive information.");
   script_tag(name:"affected", value:"Adobe Flash Player version before 11.7.700.272 and 11.8.x through 12.0.x
 before 12.0.0.77 on Mac OS X");
   script_tag(name:"solution", value:"Update to Adobe Flash Player version 11.7.700.272 or 12.0.0.77 or later,

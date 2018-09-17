@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ultra_minihttpd_server_bof_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_ultra_minihttpd_server_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Ultra Mini HTTPD Stack Buffer Overflow Vulnerability
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803721");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-16 11:19:36 +0530 (Tue, 16 Jul 2013)");
   script_name("Ultra Mini HTTPD Stack Buffer Overflow Vulnerability");
-  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause the application to crash, creating a denial-of-service condition. Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause the application to crash, creating a denial-of-service condition.");
   script_tag(name:"vuldetect", value:"Send a large crafted data via HTTP GET request and check the server is crashed
 or not.");
   script_tag(name:"affected", value:"Ultra Mini HTTPD server Version 1.21");

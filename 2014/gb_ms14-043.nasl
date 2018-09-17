@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-043.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_ms14-043.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Windows Media Center Remote Code Execution Vulnerability (2978742)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802079");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4060");
   script_bugtraq_id(69093);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-13 11:57:50 +0530 (Wed, 13 Aug 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows Media Center Remote Code Execution Vulnerability (2978742)");
@@ -45,9 +45,7 @@ or not.");
   script_tag(name:"insight", value:"MCPlayer fails to properly clean up resources after a CSyncBasePlayer
 object is deleted.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to arbitrary code in the
-context of the current user.
-
-Impact Level: System/Application");
+context of the current user.");
   script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
 
 Windows Media Center for

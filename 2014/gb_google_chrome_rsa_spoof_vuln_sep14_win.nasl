@@ -1,6 +1,6 @@
 #############################################################################/##
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_rsa_spoof_vuln_sep14_win.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_google_chrome_rsa_spoof_vuln_sep14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Google Chrome RSA Spoof Vulnerability September14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804922");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1568");
   script_bugtraq_id(70116);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-29 17:53:43 +0530 (Mon, 29 Sep 2014)");
 
   script_name("Google Chrome RSA Spoof Vulnerability September14 (Windows)");
@@ -48,9 +48,7 @@ if(description)
   ASN.1 values while parsing RSA signature");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to conduct spoofing attacks.
-
-  Impact Level: Application");
+  to conduct spoofing attacks.");
 
   script_tag(name:"affected", value:"Google Chrome before 37.0.2062.124 on Windows");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-024.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: secpod_ms13-024.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft SharePoint Server Privilege Elevation Vulnerabilities (2780176)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902953");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(58372, 58370, 58367, 58371);
   script_cve_id("CVE-2013-0080", "CVE-2013-0083", "CVE-2013-0084", "CVE-2013-0085");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-13 11:50:53 +0530 (Wed, 13 Mar 2013)");
   script_name("Microsoft SharePoint Server Privilege Elevation Vulnerabilities (2780176)");
 
@@ -50,8 +50,7 @@ if(description)
   script_require_ports(139, 445);
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to bypass certain security
   restrictions, disclose certain system data and conduct cross-site scripting
-  and spoofing attacks.
-  Impact Level: Application");
+  and spoofing attacks.");
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2010 Service Pack 1
   Microsoft SharePoint Foundation 2010 Service Pack 1");
   script_tag(name:"insight", value:"- The application allows users to perform certain actions via HTTP requests

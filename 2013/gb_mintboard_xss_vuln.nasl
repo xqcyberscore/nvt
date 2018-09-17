@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mintboard_xss_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_mintboard_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MintBoard Cross-Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803828");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-18 12:41:03 +0530 (Thu, 18 Jul 2013)");
   script_name("MintBoard Cross-Site Scripting Vulnerability");
 
@@ -44,9 +44,7 @@ if(description)
   before being returned to the user.");
   script_tag(name:"affected", value:"MintBoard 0.3 and prior.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  script code in a user's browser session in the context of an affected site.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");

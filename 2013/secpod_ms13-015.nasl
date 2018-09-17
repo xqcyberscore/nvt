@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-015.nasl 11069 2018-08-21 12:29:19Z mmartin $
+# $Id: secpod_ms13-015.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft .NET Framework Privilege Elevation Vulnerability (2800277)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902950");
-  script_version("$Revision: 11069 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(57847);
   script_cve_id("CVE-2013-0073");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 14:29:19 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-13 13:21:23 +0530 (Wed, 13 Feb 2013)");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerability (2800277)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52143/");
@@ -46,8 +46,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute arbitrary code.
-  Impact Level: System/Application");
+  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute arbitrary code.");
   script_tag(name:"affected", value:"Microsoft .NET Framework 4
   Microsoft .NET Framework 4.5
   Microsoft .NET Framework 3.5.1

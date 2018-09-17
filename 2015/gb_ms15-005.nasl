@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-005.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_ms15-005.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # MS Windows Network Location Awareness Service Security Bypass Vulnerability (3022777)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805036");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0006");
   script_bugtraq_id(71930);
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-14 08:53:24 +0530 (Wed, 14 Jan 2015)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("MS Windows Network Location Awareness Service Security Bypass Vulnerability (3022777)");
@@ -50,9 +50,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to relax the firewall policy and/or configuration of certain
   services by spoofing responses of DNS or LDAP traffic via a
-  Man-in-the-Middle attack.
-
-  Impact Level: System");
+  Man-in-the-Middle attack.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows Server 2012/R2

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_pgp_desktop_usp_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_symantec_pgp_desktop_usp_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Symantec PGP Desktop Untrusted Search Path Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:pgp_desktop";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803890");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2010-3397");
   script_bugtraq_id(42856);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-10 13:52:56 +0530 (Tue, 10 Sep 2013)");
   script_name("Symantec PGP Desktop Untrusted Search Path Vulnerability");
 
@@ -49,9 +49,7 @@ For updates refer to http://www.symantec.com");
 in an insecure manner.");
   script_tag(name:"affected", value:"Symantec PGP Desktop 9.9.0 Build 397, 9.10.x, 10.x prior to 10.0.0 Build 2732");
   script_tag(name:"impact", value:"Successful exploitation will allow remote unauthenticated attacker to execute
-arbitrary code and conduct DLL hijacking attacks.
-
-Impact Level: System/Application");
+arbitrary code and conduct DLL hijacking attacks.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/41135");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2010/Sep/170");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln01_july15.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_java_mult_unspecified_vuln01_july15.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-01 July 2015 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805722");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-4760", "CVE-2015-4749", "CVE-2015-4748", "CVE-2015-4733",
                 "CVE-2015-4732", "CVE-2015-4731", "CVE-2015-2664", "CVE-2015-2638",
                 "CVE-2015-2637", "CVE-2015-2621", "CVE-2015-2625", "CVE-2015-2627",
@@ -38,7 +38,7 @@ if(description)
                     75874, 75895, 75893, 75796, 75861, 75867, 75818);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-20 17:10:19 +0530 (Mon, 20 Jul 2015)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-01 July 2015 (Windows)");
 
@@ -51,9 +51,7 @@ if(description)
   flaws related to multiple unspecified vectors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to have an impact on confidentiality, integrity, and availability.
-
-  Impact Level: System/Application");
+  to have an impact on confidentiality, integrity, and availability.");
 
   script_tag(name:"affected", value:"Oracle Java SE 6 update 95, 7 update 80,
   8 update 45 on Windows.");

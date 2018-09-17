@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_compatibility_pack_ms13-073.nasl 11077 2018-08-22 09:40:33Z mmartin $
+# $Id: secpod_ms_office_compatibility_pack_ms13-073.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (2858300)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902999");
-  script_version("$Revision: 11077 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1315", "CVE-2013-3158", "CVE-2013-3159");
   script_bugtraq_id(62167, 62219, 62225);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 13:54:46 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (2858300)");
 
@@ -49,9 +49,7 @@ disclose contents of certain local files by sending specially crafted XML
 data including external entity references.");
   script_tag(name:"affected", value:"Microsoft Office Compatibility Pack Service Pack 3 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to corrupt memory and
-disclose sensitive information.
-
-Impact Level: Application ");
+disclose sensitive information.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

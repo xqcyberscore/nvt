@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wing_ftp_server_command_exec_vuln.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_wing_ftp_server_command_exec_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Wing FTP Server Authenticated Command Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804766");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"8.2");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-12 11:42:19 +0530 (Fri, 12 Sep 2014)");
 
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -47,9 +47,7 @@ if(description)
   handling specially crafted HTTP POST requests.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  authenticated remote attacker to execute arbitrary commands.
-
-  Impact Level: Application");
+  authenticated remote attacker to execute arbitrary commands.");
 
   script_tag(name:"affected", value:"Wing FTP Server version 4.3.8, Prior
   versions may also be affected.");

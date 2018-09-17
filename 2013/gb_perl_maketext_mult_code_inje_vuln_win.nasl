@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_maketext_mult_code_inje_vuln_win.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_perl_maketext_mult_code_inje_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Strawberry Perl Locale::Maketext Module Multiple Code Injection Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803162");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-6329");
   script_bugtraq_id(56852);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 12:42:04 +0530 (Thu, 24 Jan 2013)");
   script_name("Strawberry Perl Locale::Maketext Module Multiple Code Injection Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51498");
@@ -43,8 +43,7 @@ if(description)
   script_dependencies("gb_perl_detect_win.nasl");
   script_mandatory_keys("Strawberry/Perl/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code on
-  the system.
-  Impact Level: System/Application");
+  the system.");
   script_tag(name:"affected", value:"Strawberry Perl version prior to 5.17.7 on Windows");
   script_tag(name:"insight", value:"An improper validation of input by the '_compile()' function which can be
   exploited to inject and execute arbitrary Perl code on the system.");

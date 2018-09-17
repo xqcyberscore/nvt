@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-052.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: secpod_ms13-052.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft .NET Framework Multiple Vulnerabilities (2861561)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902985");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3129", "CVE-2013-3131", "CVE-2013-3132", "CVE-2013-3133",
                 "CVE-2013-3134", "CVE-2013-3171");
   script_bugtraq_id(60978, 60932, 60933, 60934, 60935, 60937);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-10 12:28:17 +0530 (Wed, 10 Jul 2013)");
   script_name("Microsoft .NET Framework Multiple Vulnerabilities (2861561)");
 
@@ -54,9 +54,7 @@ http://technet.microsoft.com/en-us/security/bulletin/ms13-052");
   and delegate objects during serialization");
   script_tag(name:"affected", value:"Microsoft .NET Framework 1.0, 1.1, 2.0, 3.0, 3.5, 3.5.1, 4.0 and 4.5");
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute arbitrary code,
-bypass security mechanism and take complete control of an affected system.
-
-Impact Level: System");
+bypass security mechanism and take complete control of an affected system.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

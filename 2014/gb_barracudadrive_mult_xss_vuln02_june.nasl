@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracudadrive_mult_xss_vuln02_june.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_barracudadrive_mult_xss_vuln02_june.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # BarracudaDrive Multiple XSS Vulnerabilities -02 June14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:barracudadrive:barracudadrive";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804611");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3808");
   script_bugtraq_id(67138);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-02 11:14:12 +0530 (Mon, 02 Jun 2014)");
   script_name("BarracudaDrive Multiple XSS Vulnerabilities -02 June14");
 
@@ -52,9 +52,7 @@ vulnerabilities.");
 to the user.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
 HTML and script code in a user's browser session in the context of a
-vulnerable site.
-
-Impact Level: Application");
+vulnerable site.");
   script_tag(name:"affected", value:"BarracudaDrive version 6.x before 6.7.2");
   script_tag(name:"solution", value:"Upgrade to BarracudaDrive version 6.7.2 or later. For updates refer
 http://barracudadrive.com");

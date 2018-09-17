@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webcollab_http_resp_splitting_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_webcollab_http_resp_splitting_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WebCollab 'item' Parameter HTTP Response Splitting Vulnerability
 #
@@ -27,19 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803773");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(63247);
   script_cve_id("CVE-2013-2652");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-28 15:46:55 +0530 (Mon, 28 Oct 2013)");
   script_name("WebCollab 'item' Parameter HTTP Response Splitting Vulnerability");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTTP
-  headers, which will be included in a response sent to the user.
-
-  Impact Level: Application");
+  headers, which will be included in a response sent to the user.");
   script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP GET request and check whether it
   is able to inject malicious data in header or not.");
   script_tag(name:"insight", value:"Input passed via the 'item' GET parameter to help/help_language.php is not

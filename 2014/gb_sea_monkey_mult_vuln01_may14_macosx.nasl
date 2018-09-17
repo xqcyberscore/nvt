@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:seamonkey";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804569");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1518", "CVE-2014-1519", "CVE-2014-1522", "CVE-2014-1523",
                 "CVE-2014-1524", "CVE-2014-1525", "CVE-2014-1526", "CVE-2014-1529",
                 "CVE-2014-1530", "CVE-2014-1531", "CVE-2014-1532");
@@ -37,7 +37,7 @@ if(description)
                     67132, 67135, 67137, 67134, 67130);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 16:15:38 +0530 (Tue, 06 May 2014)");
   script_name("SeaMonkey Multiple Vulnerabilities-01 May14 (Mac OS X)");
 
@@ -73,9 +73,7 @@ vulnerabilities.");
   - And some unspecified errors exist.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct spoofing attacks,
 disclose potentially sensitive information, bypass certain security
-restrictions, and compromise a user's system.
-
-Impact Level: System/Application");
+restrictions, and compromise a user's system.");
   script_tag(name:"affected", value:"SeaMonkey version before 2.26 on Mac OS X");
   script_tag(name:"solution", value:"Upgrade to SeaMonkey version 2.26 or later,
 For updates refer to http://www.mozilla.com/en-US/seamonkey");

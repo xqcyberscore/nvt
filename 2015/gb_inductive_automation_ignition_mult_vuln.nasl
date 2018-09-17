@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_inductive_automation_ignition_mult_vuln.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_inductive_automation_ignition_mult_vuln.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # Inductive Automation Ignition Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805472");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11422 $");
   script_cve_id("CVE-2015-0995", "CVE-2015-0994", "CVE-2015-0993", "CVE-2015-0992",
                 "CVE-2015-0991", "CVE-2015-0976");
   script_bugtraq_id(73475, 73474, 73473, 73471, 73469, 73468);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-11 14:20:21 +0530 (Sat, 11 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Inductive Automation Ignition Multiple Vulnerabilities");
@@ -68,9 +68,7 @@ if(description)
   attackers to gain access to potentially sensitive information, hijack an active
   session, bypass the anti-bruteforce mechanism, create malicious applications
   or conduct other spoofing attacks, and create a specially crafted request that
-  would execute arbitrary script code in a user's browser session.
-
-  Impact Level: Application");
+  would execute arbitrary script code in a user's browser session.");
 
   script_tag(name:"affected", value:"Inductive Automation Ignition version 7.7.2");
 

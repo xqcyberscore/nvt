@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_integer_overflow_vuln02_jun13_win.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_imagemagick_integer_overflow_vuln02_jun13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # ImageMagick Integer Overflow Vulnerability - 02 June13 (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803817");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-1610");
   script_bugtraq_id(52898);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 13:28:50 +0530 (Mon, 24 Jun 2013)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("secpod_imagemagick_detect_win.nasl");
   script_mandatory_keys("ImageMagick/Win/Installed");
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to cause denial of service
-  condition result in loss of availability for the application.
-  Impact Level: Application");
+  condition result in loss of availability for the application.");
   script_tag(name:"affected", value:"ImageMagick version before 6.7.6-4 on Windows.");
   script_tag(name:"insight", value:"Integer overflow error occurs due to improper sanitation of user supplied
   input when by a crafted JPEG EXIF tag with an excessive components count

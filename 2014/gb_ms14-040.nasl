@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804671");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1767");
   script_bugtraq_id(68394);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-09 09:19:40 +0530 (Wed, 09 Jul 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("MS Windows Ancillary Function Driver Elevation of Privilege Vulnerability (2975684)");
@@ -45,9 +45,7 @@ or not.");
   script_tag(name:"insight", value:"Flaw is due to a double-free error in the Ancillary Function Driver within
 'afd.sys'.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain elevated privileges and
-execute arbitrary code and take complete control of an affected system.
-
-Impact Level: System");
+execute arbitrary code and take complete control of an affected system.");
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32 Service Pack 3 and prior
 Microsoft Windows 2003 x64 Service Pack 2 and prior
 Microsoft Windows Vista x32/x64 Service Pack 2 and prior

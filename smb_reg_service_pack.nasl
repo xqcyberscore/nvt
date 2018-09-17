@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_reg_service_pack.nasl 11182 2018-09-03 08:10:36Z cfischer $
+# $Id: smb_reg_service_pack.nasl 11420 2018-09-17 06:33:13Z cfischer $
 #
 # SMB Registry : Windows Build Number and Service Pack Version
 #
@@ -53,10 +53,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10401");
-  script_version("$Revision: 11182 $");
+  script_version("$Revision: 11420 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 10:10:36 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:33:13 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-08-27 12:14:14 +0200 (Wed, 27 Aug 2008)");
   script_name("SMB Registry : Windows Build Number and Service Pack Version");
   script_category(ACT_GATHER_INFO);
@@ -81,11 +81,6 @@ if(description)
 include("smb_nt.inc");
 include("host_details.inc");
 
-access = "";
-winVal = "";
-winName = "";
-csdVer = 0;
-SP = "";
 SCRIPT_DESC = "SMB Registry : Windows Service Pack version";
 
 access = get_kb_item( "SMB/registry_access");

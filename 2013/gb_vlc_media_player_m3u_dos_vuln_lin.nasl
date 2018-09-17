@@ -28,20 +28,18 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804127");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-6283");
   script_bugtraq_id(61844);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-05 02:32:13 +0530 (Tue, 05 Nov 2013)");
   script_name("VLC Media Player M3U Denial of Service Vulnerability (Linux)");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of service
-and possibly execute arbitrary remote code.
-
-Impact Level: System/Application");
+and possibly execute arbitrary remote code.");
   script_tag(name:"affected", value:"VLC media player version 2.0.8 and prior on Linux");
   script_tag(name:"insight", value:"The flaw exists due to improper handling of a specially crafted M3U file.");
   script_tag(name:"solution", value:"Upgrade to VLC media player version 2.1.0 or later,

@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804100");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3934");
   script_bugtraq_id(31788);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-26 09:21:06 +0530 (Thu, 26 Sep 2013)");
   script_name("Kingsoft Office Stack Buffer Overflow Vulnerability (Windows)");
 
@@ -47,9 +47,7 @@ For updates refer to http://www.kingsoft.com/");
   script_tag(name:"affected", value:"Kingsoft Writer 2012 8.1.0.3030 used in Kingsoft Office 2013 before 9.1.0.4256");
   script_tag(name:"impact", value:"Successful exploitation will let attacker to execute arbitrary code via
 a long font name in a WPS file on the target users system which can cause
-a stack-based buffer overflow.
-
-Impact Level: System/Application");
+a stack-based buffer overflow.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

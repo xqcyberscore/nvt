@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_and_compat_pack_ms14-069.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_ms_office_and_compat_pack_ms14-069.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # MS Office Compatibility Pack Remote Code Execution Vulnerabilities (3009710)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805011");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-6333", "CVE-2014-6334", "CVE-2014-6335");
   script_bugtraq_id(70961, 70962, 70963);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 08:48:45 +0530 (Wed, 12 Nov 2014)");
 
   script_name("MS Office Compatibility Pack Remote Code Execution Vulnerabilities (3009710)");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute the arbitrary code, cause memory corruption and
-  compromise the system.
-
-  Impact Level: System");
+  compromise the system.");
 
   script_tag(name:"affected", value:"Microsoft Office Compatibility Pack SP3 and prior.");
 

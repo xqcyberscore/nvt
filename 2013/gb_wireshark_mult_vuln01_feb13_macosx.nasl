@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln01_feb13_macosx.nasl 11045 2018-08-19 19:29:09Z cfischer $
+# $Id: gb_wireshark_mult_vuln01_feb13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Wireshark Multiple Vulnerabilities(01) - Feb2013 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803166");
-  script_version("$Revision: 11045 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1572", "CVE-2013-1573", "CVE-2013-1574", "CVE-2013-1575",
                 "CVE-2013-1576", "CVE-2013-1577", "CVE-2013-1578", "CVE-2013-1579",
                 "CVE-2013-1580", "CVE-2013-1581", "CVE-2013-1582", "CVE-2013-1583",
@@ -36,7 +36,7 @@ if(description)
   script_bugtraq_id(57616);
   script_tag(name:"cvss_base", value:"2.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-19 21:29:09 +0200 (Sun, 19 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 19:46:29 +0530 (Mon, 04 Feb 2013)");
   script_name("Wireshark Multiple Vulnerabilities(01) - Feb2013 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51968");
@@ -57,9 +57,7 @@ if(description)
   script_mandatory_keys("Wireshark/MacOSX/Version");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to crash affected
-  application or to consume excessive CPU resources.
-
-  Impact Level: Application");
+  application or to consume excessive CPU resources.");
 
   script_tag(name:"affected", value:"Wireshark 1.6.x before 1.6.13 and 1.8.x before 1.8.5 on Mac OS X");
 

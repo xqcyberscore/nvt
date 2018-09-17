@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_jul15_macosx.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_jul15_macosx.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 Jul15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805914");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2740", "CVE-2015-2739", "CVE-2015-2738", "CVE-2015-2737",
                 "CVE-2015-2736", "CVE-2015-2735", "CVE-2015-2734", "CVE-2015-2724",
                 "CVE-2015-2721", "CVE-2015-2725", "CVE-2015-2741", "CVE-2015-2731",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(75541, 74733);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-09 13:45:29 +0530 (Thu, 09 Jul 2015)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 Jul15 (Mac OS X)");
 
@@ -76,9 +76,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code, obtain sensitive information, conduct
   man-in-the-middle attack, conduct denial-of-service attack and other
-  unspecified impacts.
-
-  Impact Level: System/Application");
+  unspecified impacts.");
 
   script_tag(name:"affected", value:"Mozilla Thunderbird before version 38.1
   on Mac OS X");

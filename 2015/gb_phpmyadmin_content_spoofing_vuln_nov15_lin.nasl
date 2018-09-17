@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_content_spoofing_vuln_nov15_lin.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_phpmyadmin_content_spoofing_vuln_nov15_lin.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # phpMyAdmin Content spoofing vulnerability Nov15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806736");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11422 $");
   script_cve_id("CVE-2015-7873");
   script_bugtraq_id(77299);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-27 12:26:46 +0530 (Fri, 27 Nov 2015)");
   script_name("phpMyAdmin Content spoofing vulnerability Nov15 (Linux)");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue may allow
   remote attackers to perform a content spoofing attack using the phpMyAdmin's
-  redirection mechanism to external sites.
-
-  Impact Level: Application");
+  redirection mechanism to external sites.");
 
   script_tag(name:"affected", value:"phpMyAdmin versions 4.4.x before 4.4.15.1
   and 4.5.x before 4.5.1 on Linux");

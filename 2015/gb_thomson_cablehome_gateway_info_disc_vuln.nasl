@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thomson_cablehome_gateway_info_disc_vuln.nasl 11220 2018-09-04 11:57:09Z mmartin $
+# $Id: gb_thomson_cablehome_gateway_info_disc_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Thomson CableHome Gateway(DWG849) Information Exposure
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805739");
-  script_version("$Revision: 11220 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-22 15:38:14 +0530 (Tue, 22 Sep 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Thomson CableHome Gateway(DWG849) Information Exposure");
@@ -45,9 +45,7 @@ if(description)
   security authentication through SNMPv1 and SNMPv2.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to gain access to potentially sensitive information.
-
-  Impact Level: Application");
+  to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"Thomson CableHome Gateway - DWG849");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_mult_bof_vuln.nasl 10954 2018-08-14 12:43:10Z mmartin $
+# $Id: gb_advantech_webaccess_mult_bof_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Advantech WebAccess Multiple Stack Based Buffer Overflow Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804478");
-  script_version("$Revision: 10954 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0985", "CVE-2014-0986", "CVE-2014-0987", "CVE-2014-0988",
                 "CVE-2014-0989", "CVE-2014-0990", "CVE-2014-0991", "CVE-2014-0992");
   script_bugtraq_id(69529, 69531, 69532, 69533, 69534, 69535, 69536, 69538);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-08 12:07:35 +0530 (Mon, 08 Sep 2014)");
 
   script_name("Advantech WebAccess Multiple Stack Based Buffer Overflow Vulnerabilities");
@@ -54,9 +54,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   attackers execution of arbitrary code within the context of the
-  application, or otherwise crash the whole application.
-
-  Impact Level: System/Application");
+  application, or otherwise crash the whole application.");
 
   script_tag(name:"affected", value:"Advantech WebAccess before 7.3");
 

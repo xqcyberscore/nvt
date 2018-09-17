@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_db_sql_inj_vuln.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_owncloud_db_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ownCloud 'lib/db.php' SQL Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804411");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-2045");
   script_bugtraq_id(59961);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-14 13:35:19 +0530 (Fri, 14 Mar 2014)");
   script_name("ownCloud 'lib/db.php' SQL Injection Vulnerability");
 
@@ -45,9 +45,7 @@ vulnerability.");
 supplied input before using it in SQL queries.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to inject or manipulate
 SQL queries in the back-end database, allowing for the manipulation or
-disclosure of arbitrary data.
-
-Impact Level: Application");
+disclosure of arbitrary data.");
   script_tag(name:"affected", value:"ownCloud Server 5.0.x before 5.0.6");
   script_tag(name:"solution", value:"Upgrade to ownCloud 5.0.6 or later,
 For updates refer to http://owncloud.org");

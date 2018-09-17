@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2960358.nasl 10904 2018-08-10 14:24:40Z mmartin $
+# $Id: gb_microsoft_security_advisory_2960358.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft .NET Framework 'RC4' Information Disclosure Vulnerability (2960358)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804587");
-  script_version("$Revision: 10904 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-15 15:17:33 +0530 (Thu, 15 May 2014)");
   script_name("Microsoft .NET Framework 'RC4' Information Disclosure Vulnerability (2960358)");
 
@@ -42,9 +42,7 @@ or not.");
   script_tag(name:"insight", value:"The flaw is due to the RC4 encryption algorithm is used in Transport
 Layer Security (TLS).");
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to perform man-in-the-middle
-attacks and recover plaintext from encrypted sessions.
-
-Impact Level: Application");
+attacks and recover plaintext from encrypted sessions.");
   script_tag(name:"affected", value:"Microsoft .NET Framework 3.5, 3.5.1, 4.0 and 4.5 and 4.5.X");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
 update mentioned hotfixes in the advisory from the below link,

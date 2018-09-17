@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_spreadsheet_mult_xss_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_wordpress_spreadsheet_mult_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WordPress Spreadsheet plugin Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804872");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-8363", "CVE-2014-8364");
   script_bugtraq_id(69073, 69089);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-29 15:09:33 +0530 (Wed, 29 Oct 2014)");
 
   script_name("WordPress Spreadsheet plugin Multiple Vulnerabilities");
@@ -51,9 +51,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary HTML and script code in a users browser session
   in the context of an affected site and inject or manipulate SQL queries in the
-  back-end database, allowing for the manipulation or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  back-end database, allowing for the manipulation or disclosure of arbitrary data.");
 
   script_tag(name:"affected", value:"WordPress Spreadsheet plugin version 0.62");
 

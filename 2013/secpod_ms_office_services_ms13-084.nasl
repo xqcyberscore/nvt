@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_services_ms13-084.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: secpod_ms_office_services_ms13-084.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Office Services Remote Code Execution vulnerability (2885089)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903328");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3889", "CVE-2013-3895");
   script_bugtraq_id(62829, 62800);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 17:36:47 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Office Services Remote Code Execution vulnerability (2885089)");
 
@@ -52,9 +52,7 @@ if(description)
 
   Word Automation Services on Microsoft SharePoint Server 2010/2013.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
-  cause a DoS (Denial of Service), and compromise a vulnerable system.
-
-  Impact Level: System/Application");
+  cause a DoS (Denial of Service), and compromise a vulnerable system.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

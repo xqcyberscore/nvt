@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_rails_xml_yaml_rce.nasl 11219 2018-09-04 11:52:00Z cfischer $
+# $Id: gb_ruby_rails_xml_yaml_rce.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Ruby on Rails XML Processor YAML Deserialization RCE Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802050");
-  script_version("$Revision: 11219 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(57187);
   script_cve_id("CVE-2013-0156");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-18 11:03:52 +0530 (Fri, 18 Jan 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -50,8 +50,7 @@ if(description)
   script_xref(name:"URL", value:"http://blog.codeclimate.com/blog/2013/01/10/rails-remote-code-execution-vulnerability-explained");
   script_xref(name:"URL", value:"https://community.rapid7.com/community/metasploit/blog/2013/01/09/serialization-mischief-in-ruby-land-cve-2013-0156");
 
-  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary commands.
-  Impact Level: System/Application");
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary commands.");
   script_tag(name:"affected", value:"Ruby on Rails before 2.3.15, 3.0.x before 3.0.19, 3.1.x before 3.1.10,
   and 3.2.x before 3.2.11");
   script_tag(name:"insight", value:"Flaw is due to an error when parsing XML parameters, which allows symbol

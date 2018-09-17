@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_http_default_no_pass.nasl 9194 2018-03-24 12:54:17Z cfischer $
+# $Id: gb_avm_fritz_box_http_default_no_pass.nasl 11412 2018-09-16 10:21:40Z cfischer $
 #
 # AVM FRITZ!Box Default / no Password (HTTP)
 #
@@ -24,13 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:avm:fritzbox';
+CPE = "cpe:/o:avm:fritz%21_os";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108042");
-  script_version("$Revision: 9194 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-24 13:54:17 +0100 (Sat, 24 Mar 2018) $");
+  script_version("$Revision: 11412 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-16 12:21:40 +0200 (Sun, 16 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-01-10 15:00:00 +0100 (Tue, 10 Jan 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -63,13 +63,10 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc"); # For report_vuln_url. Don't use http_keepalive_send_recv which is causing issues with this boxes
 include("host_details.inc");
 include("misc_func.inc");
 
-
 # nb: Keep http_send_recv for all request as it seems http_keepalive_send_recv doesn't return all data on this boxes
-
 
 # Creating the response, example from js:
 # var challenge = "769b3d3f"; var str = challenge + "-" + makeDots(pw); var response = challenge + "-" + hex_md5(str);
@@ -115,8 +112,7 @@ credentials = make_list( "1234",
                          "passwort" );
 
 if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-
+if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 if( dir == "/" ) dir = "";
 
 # e.g. FonWLAN 7113 with 60.04.48, FonWLAN 7240 with 73.04.48, Fon with 06.04.33

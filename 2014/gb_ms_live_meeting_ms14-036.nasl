@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_live_meeting_ms14-036.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_ms_live_meeting_ms14-036.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Live Meeting Remote Code Execution Vulnerability (2967487)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_live_meeting";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804598");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1817", "CVE-2014-1818");
   script_bugtraq_id(67897, 67904);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-11 15:48:21 +0530 (Wed, 11 Jun 2014)");
   script_name("Microsoft Live Meeting Remote Code Execution Vulnerability (2967487)");
 
@@ -49,9 +49,7 @@ or not.");
 
   - An error within GDI+ when validating images.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code
-and compromise a user's system.
-
-Impact Level: System/Application");
+and compromise a user's system.");
   script_tag(name:"affected", value:"Microsoft Live Meeting 2007 Console");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
 update mentioned hotfixes in the advisory from the below link,

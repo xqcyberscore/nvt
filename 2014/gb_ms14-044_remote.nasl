@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-044_remote.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_ms14-044_remote.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft SQL Server Elevation of Privilege Vulnerability (2984340) - Remote
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sql_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805110");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1820", "CVE-2014-4061");
   script_bugtraq_id(69071, 69088);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-01 16:03:48 +0530 (Mon, 01 Dec 2014)");
   script_name("Microsoft SQL Server Elevation of Privilege Vulnerability (2984340) - Remote");
 
@@ -50,9 +50,7 @@ if(description)
   - SQL Server processes an incorrectly formatted T-SQL query.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause a Denial of Service or elevation of privilege.
-
-  Impact Level: Application");
+  attackers to cause a Denial of Service or elevation of privilege.");
 
   script_tag(name:"affected", value:"Microsoft SQL Server 2014 x64 Edition,
   Microsoft SQL Server 2012 x86/x64 Edition Service Pack 1 and prior,

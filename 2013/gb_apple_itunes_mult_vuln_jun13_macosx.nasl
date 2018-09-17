@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_jun13_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_apple_itunes_mult_vuln_jun13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Apple iTunes Multiple Vulnerabilities - June13 (Mac OS X)
 #
@@ -27,8 +27,7 @@
 if(description)
 {
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
-  conduct Man-in-the-Middle (MitM) attack or cause heap-based buffer overflow.
-  Impact Level: System/Application");
+  conduct Man-in-the-Middle (MitM) attack or cause heap-based buffer overflow.");
   script_tag(name:"affected", value:"Apple iTunes before 11.0.3 on Mac OS X");
   script_tag(name:"insight", value:"Multiple flaws due to
 
@@ -46,7 +45,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apple iTunes and is prone to
   multiple vulnerabilities.");
   script_oid("1.3.6.1.4.1.25623.1.0.803807");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1014", "CVE-2013-1011", "CVE-2013-1010", "CVE-2013-1008",
                 "CVE-2013-1007", "CVE-2013-1006", "CVE-2013-1005", "CVE-2013-1004",
                 "CVE-2013-1003", "CVE-2013-1002", "CVE-2013-1001", "CVE-2013-1000",
@@ -58,7 +57,7 @@ if(description)
                                          59956, 59955, 59954, 59953, 59944);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-06 13:03:34 +0530 (Thu, 06 Jun 2013)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_apr15_macosx.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_mozilla_firefox_mult_vuln01_apr15_macosx.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 Apr15 (Mac OS X)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805523");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0816", "CVE-2015-0815", "CVE-2015-0814", "CVE-2015-0812",
                 "CVE-2015-0811", "CVE-2015-0810", "CVE-2015-0808", "CVE-2015-0807",
                 "CVE-2015-0806", "CVE-2015-0805", "CVE-2015-0804", "CVE-2015-0803",
                 "CVE-2015-0802", "CVE-2015-0801");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-06 15:05:42 +0530 (Mon, 06 Apr 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Apr15 (Mac OS X)");
 
@@ -75,9 +75,7 @@ if(description)
   attackers to execute arbitrary JavaScript code, conduct denial of service
   (memory corruption and application crash) attack, possibly execute arbitrary
   code, conduct DNS spoofing attack and conduct cross-site request forgery
-  (CSRF) attacks.
-
-  Impact Level: System/Application");
+  (CSRF) attacks.");
 
   script_tag(name:"affected", value:"Mozilla Firefox before version 37.0 on
   Mac OS X");

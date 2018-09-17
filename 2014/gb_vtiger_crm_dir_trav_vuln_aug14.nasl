@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_dir_trav_vuln_aug14.nasl 11196 2018-09-03 13:09:40Z mmartin $
+# $Id: gb_vtiger_crm_dir_trav_vuln_aug14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # vTiger CRM 'file' Arbitrary File Disclosure Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:vtiger:vtiger_crm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804748");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1222");
   script_bugtraq_id(66136);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-25 15:26:37 +0530 (Mon, 25 Aug 2014)");
   script_name("vTiger CRM 'file' Arbitrary File Disclosure Vulnerability");
 
@@ -47,9 +47,7 @@ disclosure vulnerability");
 input, specifically path traversal style attacks (e.g. '../') supplied
 via the 'file' parameter.");
   script_tag(name:"impact", value:"Successful exploitation will allow an authenticated remote attacker to gain
-access to arbitrary files.
-
-Impact Level: Application");
+access to arbitrary files.");
   script_tag(name:"affected", value:"Vtiger CRM version 6.0.0 and prior");
   script_tag(name:"solution", value:"Apply the patch Vtiger CRM 6.0.0 Security patch 1 from the below link,
 http://softlayer-sng.dl.sourceforge.net/project/vtigercrm/vtiger%20CRM%206.0.0/Add-ons/vtigercrm-600-security-patch1.zip

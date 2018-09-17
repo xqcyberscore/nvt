@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-045.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_ms14-045.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # MS Windows Kernel-Mode Drivers Privilege Escalation Vulnerabilities (2984615)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804807");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0318", "CVE-2014-1819", "CVE-2014-4064");
   script_bugtraq_id(69142, 69143, 69144);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-13 07:58:09 +0530 (Wed, 13 Aug 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("MS Windows Kernel-Mode Drivers Privilege Escalation Vulnerabilities (2984615)");
@@ -50,9 +50,7 @@ or not.");
 
   - An error related to Windows kernel pool.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to disclose certain sensitive
-information and gain escalated privileges.
-
-Impact Level: System");
+information and gain escalated privileges.");
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
 Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
 Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior

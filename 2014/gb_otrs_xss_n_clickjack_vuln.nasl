@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_xss_n_clickjack_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_otrs_xss_n_clickjack_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # OTRS Help Desk Cross-Site Scripting and Clickjacking Vulnerabilities
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804418");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2553", "CVE-2014-2554");
   script_bugtraq_id(66569, 66567);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-07 15:00:42 +0530 (Mon, 07 Apr 2014)");
   script_name("OTRS Help Desk Cross-Site Scripting and Clickjacking Vulnerabilities");
 
@@ -49,9 +49,7 @@ version is vulnerable or not.");
   - The application allows users to perform certain actions via HTTP requests
    via iframes without performing any validity checks to verify the requests.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct cross-site scripting
-and clickjacking attacks.
-
-Impact Level: Application");
+and clickjacking attacks.");
   script_tag(name:"affected", value:"Open Ticket Request System (OTRS) version 3.1.x before 3.1.21,
 3.2.x before 3.2.16, and 3.3.x before 3.3.6");
   script_tag(name:"solution", value:"Upgrade to OTRS version 3.1.21 or 3.2.16 or 3.3.6 or later,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-071.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: secpod_ms13-071.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Windows Theme File Remote Code Execution Vulnerability (2864063)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901221");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0810");
   script_bugtraq_id(62176);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 09:15:03 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft Windows Theme File Remote Code Execution Vulnerability (2864063)");
 
@@ -52,9 +52,7 @@ Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
 Microsoft Windows Vista x32/x64 Service Pack 2 and prior
 Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code and
-take complete control of an affected system.
-
-Impact Level: System");
+take complete control of an affected system.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

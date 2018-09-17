@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_mar13_macosx.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_wireshark_mult_vuln_mar13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Wireshark Multiple Dissector Multiple Vulnerabilities - March 13 (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803333");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2486", "CVE-2013-2487", "CVE-2013-2479", "CVE-2013-2477",
                 "CVE-2013-2476", "CVE-2013-2475");
   script_bugtraq_id(58363, 58350, 58354, 58358, 58349, 58364);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:29:11 +0530 (Mon, 11 Mar 2013)");
   script_name("Wireshark Multiple Dissector Multiple Vulnerabilities - March 13 (Mac OS X)");
   script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/52471");
@@ -46,8 +46,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_mandatory_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause denial of
-  service or to consume excessive CPU resources.
-  Impact Level: Application");
+  service or to consume excessive CPU resources.");
   script_tag(name:"affected", value:"Wireshark versions 1.8.x before 1.8.6 on Mac OS X");
   script_tag(name:"insight", value:"Multiple flaws are due to errors in RELOAD, MPLS Echo, CSN.1, HART/IP and TCP
   dissectors.");

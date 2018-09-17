@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-048.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_ms14-048.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft OneNote Remote Code Execution Vulnerability (2977201)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:onenote";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804809");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2815");
   script_bugtraq_id(69098);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-13 13:20:09 +0530 (Wed, 13 Aug 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft OneNote Remote Code Execution Vulnerability (2977201)");
@@ -46,9 +46,7 @@ Microsoft Bulletin MS14-048");
 or not.");
   script_tag(name:"insight", value:"The flaw is due to an unspecified error.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code and
-compromise a user's system.
-
-Impact Level: System");
+compromise a user's system.");
   script_tag(name:"affected", value:"Microsoft OneNote 2007 Service Pack 3");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
 mentioned hotfixes in the advisory from the below link,

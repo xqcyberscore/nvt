@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_out_of_bounds_vuln_feb15_win.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_adobe_reader_out_of_bounds_vuln_feb15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Adobe Reader Out-of-bounds Vulnerability Feb15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805438");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-9161");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-03 17:42:27 +0530 (Tue, 03 Feb 2015)");
   script_name("Adobe Reader Out-of-bounds Vulnerability Feb15 (Windows)");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   context-dependent attacker to cause a crash or potentially disclose memory
-  contents.
-
-  Impact Level: Application");
+  contents.");
 
   script_tag(name:"affected", value:"Adobe Reader 10.x before 10.1.13 and
   Adobe Reader 11.x before 11.0.10 on Windows.");

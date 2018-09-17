@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_visio_viewer_ms13-023.nasl 10984 2018-08-15 12:54:14Z mmartin $
+# $Id: secpod_visio_viewer_ms13-023.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Visio Viewer Remote Code Execution Vulnerability (2801261)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902957");
-  script_version("$Revision: 10984 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0079");
   script_bugtraq_id(58369);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-13 13:58:19 +0530 (Wed, 13 Mar 2013)");
   script_name("Microsoft Visio Viewer Remote Code Execution Vulnerability (2801261)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52550");
@@ -46,8 +46,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/VisioViewer/Ver");
-  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code.
-  Impact Level: System/Application");
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code.");
   script_tag(name:"affected", value:"Microsoft Visio Viewer 2010 Service Pack 1 and prior");
   script_tag(name:"insight", value:"The flaw is caused by a type confusion error when handling Tree objects
   and can be exploited via a specially crafted Visio file.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_jumpurl_file_disclosure_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_typo3_jumpurl_file_disclosure_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # TYPO3 jumpUrl File Disclosure Vulnerability
 #
@@ -28,20 +28,18 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803989");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2009-0815", "CVE-2009-0816");
   script_bugtraq_id(33714);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-26 17:48:31 +0530 (Thu, 26 Dec 2013)");
   script_name("TYPO3 jumpUrl File Disclosure Vulnerability");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to steal the
-victim's cookie-based authentication credentials or access arbitrary file.
-
-Impact Level: Application");
+victim's cookie-based authentication credentials or access arbitrary file.");
   script_tag(name:"vuldetect", value:"Send a Crafted HTTP GET request and check whether it is able to fetch a
 remote file.");
   script_tag(name:"insight", value:"Multiple error exists in the application,

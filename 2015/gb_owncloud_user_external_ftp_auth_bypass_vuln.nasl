@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_user_external_ftp_auth_bypass_vuln.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_owncloud_user_external_ftp_auth_bypass_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # ownCloud FTP Backend 'user_external' Password Authentication Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805281");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-9045");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-19 16:04:16 +0530 (Thu, 19 Feb 2015)");
   script_name("ownCloud FTP Backend 'user_external' Password Authentication Bypass Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
   passwords is not properly performed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  remote attackers to bypass authentication and login to the remote server.
-
-  Impact Level: Application");
+  remote attackers to bypass authentication and login to the remote server.");
 
   script_tag(name:"affected", value:"ownCloud Server 5.x before 5.0.18 and
   6.x before 6.0.6");

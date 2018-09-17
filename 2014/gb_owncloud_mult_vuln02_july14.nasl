@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln02_july14.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_owncloud_mult_vuln02_july14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ownCloud Multiple Vulnerabilities-02 July14
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804657");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2051", "CVE-2014-2053", "CVE-2014-2054", "CVE-2014-2055",
                 "CVE-2014-2056");
   script_bugtraq_id(66220, 66225, 66172, 66226, 66218);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-03 12:20:12 +0530 (Thu, 03 Jul 2014)");
   script_name("ownCloud Multiple Vulnerabilities-02 July14");
 
@@ -52,9 +52,7 @@ vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain information about
 existing LDAP users and potentially modify the login query, read arbitrary files,
 cause a denial of service, or possibly have other impact via an XML External
-Entity (XXE) attack.
-
-Impact Level: Application");
+Entity (XXE) attack.");
   script_tag(name:"affected", value:"ownCloud Server 5.0.x before 5.0.15 and 6.0.x before 6.0.2");
   script_tag(name:"solution", value:"Upgrade to ownCloud version 5.0.15 or 6.0.2 or later,
 For updates refer to http://owncloud.org");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln01_oct15_macosx.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_adobe_acrobat_mult_vuln01_oct15_macosx.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Adobe Acrobat Multiple Vulnerabilities - 01 October15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806506");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-5583", "CVE-2015-5586", "CVE-2015-6683", "CVE-2015-6684",
                 "CVE-2015-6685", "CVE-2015-6686", "CVE-2015-6687", "CVE-2015-6688",
                 "CVE-2015-6689", "CVE-2015-6690", "CVE-2015-6691", "CVE-2015-6692",
@@ -47,7 +47,7 @@ if(description)
                 "CVE-2015-7829", "CVE-2015-7650", "CVE-2015-8458");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-20 11:06:46 +0530 (Tue, 20 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Acrobat Multiple Vulnerabilities - 01 October15 (Mac OS X)");
@@ -79,9 +79,7 @@ if(description)
   attackers to conduct a denial of service, unauthorized disclosure of information,
   unauthorized modification, disruption of service, bypass certain access restrictions
   and execution restrictions, to delete arbitrary files, to obtain sensitive
-  information, execute arbitrary code and compromise a user's system.
-
-  Impact Level: System/Application");
+  information, execute arbitrary code and compromise a user's system.");
 
   script_tag(name:"affected", value:"Adobe Acrobat 10.1.x before 10.1.16
   and 11.x before 11.0.13 on Mac OS X.");

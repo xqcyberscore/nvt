@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nntp_os_detection.nasl 10794 2018-08-06 13:18:58Z cfischer $
+# $Id: gb_nntp_os_detection.nasl 11399 2018-09-15 07:45:12Z cfischer $
 #
 # NNTP Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108455");
-  script_version("$Revision: 10794 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 15:18:58 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 11399 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 09:45:12 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 13:53:41 +0200 (Mon, 06 Aug 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -70,13 +70,13 @@ if( banner == "200 NNTP server ready" ||
 # "Microsoft NNTP Service" according to shodan
 # 200 NNTP Service 6.0.3790.3959 Version: 6.0.3790.3959 Posting Allowed
 if( banner =~ "^200 NNTP Service [0-9.]+ Version: [0-9.]+ Posting Allowed$" ) {
-  register_and_report_os( os:"Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+  register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }
 
 # Runs on Windows only
 if( banner == "200 CCProxy NNTP Service" ) {
-  register_and_report_os( os:"Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+  register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }
 
@@ -84,7 +84,7 @@ if( banner == "200 CCProxy NNTP Service" ) {
 # 200 NNTP-Server Classic Hamster Version 2.1 (Build 2.1.0.11) (post ok) says: Hi!
 # 200 NNTP-Server Classic Hamster Vr. 2.1 (Build 2.1.0.11) (post ok) says: Hi!
 if( "NNTP-Server Classic Hamster" >< banner ) {
-  register_and_report_os( os:"Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+  register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }
 
@@ -107,14 +107,14 @@ if( " NNTP Citadel server " >< banner ) {
 # 200 example.com ready for action (Mailtraq 2.17.7.3560/NNTP)
 # 200 example.com ready for action (Mailtraq 1.1.5.1167/NNTP)
 if( "(Mailtraq " >< banner && "NNTP)" >< banner ) {
-  register_and_report_os( os:"Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+  register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }
 
 # 200 Lotus Domino NNTP Server for Windows/32 (Release 5.0.8, June 18, 2001) - OK to post
 # 200 Lotus Domino NNTP Server for Windows/32 (Build 166.1, March 30, 1999) - OK to post
 if( "Lotus Domino NNTP Server for Windows" >< banner ) {
-  register_and_report_os( os:"Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+  register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }
 

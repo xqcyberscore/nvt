@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: bugbear.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: bugbear.nasl 11404 2018-09-15 09:17:49Z cfischer $
 # Description: Bugbear worm
 #
 # Authors:
@@ -44,8 +44,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11135");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11404 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:17:49 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_xref(name:"IAVA", value:"2001-a-0004");
   script_bugtraq_id(2524);
@@ -64,8 +64,10 @@ if(description)
   script_require_ports(36794);
   script_dependencies("find_service.nasl");
   script_tag(name:"solution", value:"- Use an Anti-Virus package to remove it.
-- Close your Windows shares
-- Update your IE browser
+
+  - Close your Windows shares
+
+  - Update your IE browser
   See 'Incorrect MIME Header Can Cause IE to Execute E-mail Attachment'
   http://www.microsoft.com/technet/security/bulletin/MS01-020.mspx");
   script_tag(name:"solution_type", value:"Mitigation");

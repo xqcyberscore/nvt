@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_bof_vuln_win_dec13.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_realplayer_bof_vuln_win_dec13.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # RealNetworks RealPlayer Buffer Overflow Vulnerability Dec13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:realnetworks:realplayer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804178");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-6877", "CVE-2013-7260");
   script_bugtraq_id(64398, 64695);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-26 11:34:28 +0530 (Thu, 26 Dec 2013)");
   script_name("RealNetworks RealPlayer Buffer Overflow Vulnerability Dec13 (Windows)");
 
@@ -53,9 +53,7 @@ For updates refer to http://www.real.com/player");
   RMP files.");
   script_tag(name:"affected", value:"RealPlayer version before 17.0.4.61 on Windows.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote unauthenticated attacker to execute
-arbitrary code with the privileges of the application.
-
-Impact Level: System/Application");
+arbitrary code with the privileges of the application.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/56219");
   script_xref(name:"URL", value:"http://service.real.com/realplayer/security/12202013_player/en");
   script_category(ACT_GATHER_INFO);

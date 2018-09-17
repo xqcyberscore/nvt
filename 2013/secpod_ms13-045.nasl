@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-045.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: secpod_ms13-045.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Windows Essentials Information Disclosure Vulnerability (2813707)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:windows_essentials";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903210");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0096");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-15 16:30:40 +0530 (Wed, 15 May 2013)");
   script_name("Windows Essentials Information Disclosure Vulnerability (2813707)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2813707");
@@ -46,9 +46,7 @@ if(description)
   script_mandatory_keys("Windows/Essentials6432/Installed");
 
   script_tag(name:"impact", value:"Successful exploitation allow attackers to overwrite arbitrary files and
-  could led to launch further attacks.
-
-  Impact Level: System/Application");
+  could led to launch further attacks.");
   script_tag(name:"affected", value:"Windows Essentials 2012 and prior");
   script_tag(name:"insight", value:"The flaw is due to insufficient validation of user-supplied input processed
   by the Windows Writer component.");

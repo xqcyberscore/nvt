@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_webkit_remote_code_exec_vuln_macosx.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_google_chrome_webkit_remote_code_exec_vuln_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Google Chrome Webkit Remote Code Execution Vulnerability (MAC OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803623");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0912");
   script_bugtraq_id(58388);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-28 17:20:48 +0530 (Tue, 28 May 2013)");
   script_name("Google Chrome Webkit Remote Code Execution Vulnerability (MAC OS X)");
   script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/52534");
@@ -43,8 +43,7 @@ if(description)
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("GoogleChrome/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will let the attackers to execute arbitrary code via
-  crafted SVG document.
-  Impact Level: System/Application");
+  crafted SVG document.");
   script_tag(name:"affected", value:"Google Chrome version prior to 25.0.1364.160 on MAC OS X");
   script_tag(name:"insight", value:"WebKit contains a type confusion flaw in the 'SVGViewSpec::viewTarget'
   function in WebCore/svg/SVGViewSpec.cpp when handling non-SVG elements.");

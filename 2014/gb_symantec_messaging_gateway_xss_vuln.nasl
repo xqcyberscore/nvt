@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_xss_vuln.nasl 10954 2018-08-14 12:43:10Z mmartin $
+# $Id: gb_symantec_messaging_gateway_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Symantec Messaging Gateway 'displayTab' Cross-Site Scripting Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804440");
-  script_version("$Revision: 10954 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1648");
   script_bugtraq_id(66966);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-02 11:16:59 +0530 (Fri, 02 May 2014)");
   script_name("Symantec Messaging Gateway 'displayTab' Cross-Site Scripting Vulnerability");
 
@@ -46,9 +46,7 @@ detect NVT and check the version is vulnerable or not.");
 /brightmail/setting/compliance/DlpConnectFlow$view.flo is not properly
 sanitised before being returned to the user.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary HTML
-and script code in a user's browser session in context of an affected site.
-
-Impact Level: Application");
+and script code in a user's browser session in context of an affected site.");
   script_tag(name:"affected", value:"Symantec Messaging Gateway 10.x before 10.5.2");
   script_tag(name:"solution", value:"Upgrade to Symantec Messaging Gateway 10.5.2 or later,
 For updates refer to http://www.symantec.com/messaging-gateway");

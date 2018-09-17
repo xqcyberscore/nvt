@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_mult_vuln_may15_macosx.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_libreoffice_mult_vuln_may15_macosx.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # LibreOffice Multiple Vulnerabilities May15 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805605");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-1774");
   script_bugtraq_id(74338);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-05 18:00:52 +0530 (Tue, 05 May 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("LibreOffice Multiple Vulnerabilities May15 (Mac OS X)");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
   remote attacker to cause a denial of service or possibly execute arbitrary
-  code via a crafted HWP document access.
-
-  Impact Level: System/Application");
+  code via a crafted HWP document access.");
 
   script_tag(name:"affected", value:"LibreOffice version before 4.3.7 and 4.4.x before
   4.4.2 on Mac OS X.");

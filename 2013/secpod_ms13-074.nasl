@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-074.nasl 11077 2018-08-22 09:40:33Z mmartin $
+# $Id: secpod_ms13-074.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Office Access Database Remote Code Execution Vulnerabilities (2848637)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902995");
-  script_version("$Revision: 11077 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3155", "CVE-2013-3156", "CVE-2013-3157");
   script_bugtraq_id(62229, 62230, 62231);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 10:26:41 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft Office Access Database Remote Code Execution Vulnerabilities (2848637)");
 
@@ -49,9 +49,7 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-074");
 Microsoft Office 2007 Service Pack 3 and prior
 Microsoft Office 2010 Service Pack 2 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
-code via a specially crafted ACCDB file and compromise the system.
-
-Impact Level: System/Application ");
+code via a specially crafted ACCDB file and compromise the system.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

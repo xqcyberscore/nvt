@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_dec14_macosx.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_apple_safari_webkit_mult_vuln_dec14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Apple Safari 'Webkit' Multiple Vulnerabilities-01 Dec14 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805305");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4475", "CVE-2014-4474", "CVE-2014-4473", "CVE-2014-4472",
                 "CVE-2014-4471", "CVE-2014-4470", "CVE-2014-4469", "CVE-2014-4468",
                 "CVE-2014-4466", "CVE-2014-4465");
@@ -37,7 +37,7 @@ if(description)
                     71445, 71439);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-16 14:55:53 +0530 (Tue, 16 Dec 2014)");
   script_name("Apple Safari 'Webkit' Multiple Vulnerabilities-01 Dec14 (Mac OS X)");
 
@@ -54,9 +54,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to conduct denial of service attack, arbitrary code execution and bypass the
-  Same Origin Policy.
-
-  Impact Level: System/Application");
+  Same Origin Policy.");
 
   script_tag(name:"affected", value:"Apple Safari before version 6.2.1,
   7.x before 7.1.1, and 8.x before 8.0.1 on Mac OS X.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mobilechief_xss_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_wordpress_mobilechief_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WordPress MobileChief Mobile Site Builder Plugin Cross Site Scripting Vulnerability
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804036");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-29 11:55:35 +0530 (Tue, 29 Oct 2013)");
   script_name("WordPress MobileChief Mobile Site Builder Plugin Cross Site Scripting Vulnerability");
 
@@ -45,9 +45,7 @@ cookie or not.");
   script_tag(name:"affected", value:"WordPress MobileChief Mobile Site Builder Plugin version 1.5.7, Other
 versions may also be affected.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-script code in a user's browser session in the context of an affected site.
-
-Impact Level: Application");
+script code in a user's browser session in the context of an affected site.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/123809");
   script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/wordpress-mobilechief-cross-site-scripting");

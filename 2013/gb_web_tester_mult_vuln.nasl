@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_web_tester_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_web_tester_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WebTester Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804027");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-16 12:57:49 +0530 (Wed, 16 Oct 2013)");
   script_name("WebTester Multiple Vulnerabilities");
 
@@ -50,9 +50,7 @@ if (description)
   script_tag(name:"affected", value:"WebTester version 5.x, Other versions may also be affected.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to manipulate SQL queries
   by injecting arbitrary SQL code, Upload arbitrary file, and disclose sensitive
-  information.
-
-  Impact Level: Application");
+  information.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_neuroserver_denial_of_service_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_neuroserver_denial_of_service_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # NeuroServer Remote Denial of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805953");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11423 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-17 12:16:49 +0530 (Mon, 17 Aug 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("NeuroServer Remote Denial of Service Vulnerability");
@@ -46,15 +46,13 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to cause the application to crash, creating a denial-of-service
-  condition.
-
-  Impact Level: Application");
+  condition.");
 
   script_tag(name:"affected", value:"NeuroServer version 0.7.4");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
-Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -66,17 +64,15 @@ General solution options are to upgrade to a newer release, disable respective f
   script_family("Denial of Service");
   script_dependencies("find_service.nasl");
   script_require_ports(8336);
+
   exit(0);
 }
 
-
 neuroPort = 8336;
-
 if(!get_port_state(neuroPort)){
   exit(0);
 }
 
-## exit if socket is not created
 neuroSock = open_sock_tcp(neuroPort);
 if(!neuroSock){
   exit(0);
@@ -95,7 +91,6 @@ if("200 OK" >< Recv)
                        "                 \r\n");
 
 
-  ## Send crafted request
   send(socket:neuroSock, data:crafteddata);
 
   close(neuroSock);

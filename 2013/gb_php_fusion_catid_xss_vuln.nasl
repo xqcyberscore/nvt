@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_fusion_catid_xss_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_php_fusion_catid_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PHP-Fusion 'cat-id' Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php-fusion:php-fusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803221");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-6043");
   script_bugtraq_id(51365);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-01 10:26:58 +0530 (Fri, 01 Feb 2013)");
   script_name("PHP-Fusion 'cat-id' Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -56,9 +56,7 @@ if(description)
   scripting vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to insert arbitrary HTML and
   script code, which will be executed in a user's browser session in the
-  context of an affected site when the malicious data is being viewed.
-
-  Impact Level: Application");
+  context of an affected site when the malicious data is being viewed.");
   script_tag(name:"affected", value:"PHP-Fusion version 7.02.04");
 
   script_tag(name:"solution_type", value:"VendorFix");

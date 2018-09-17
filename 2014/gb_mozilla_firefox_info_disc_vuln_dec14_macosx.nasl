@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_info_disc_vuln_dec14_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_mozilla_firefox_info_disc_vuln_dec14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Mozilla Firefox CSP Information Disclosure Vulnerability Dec14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805218");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1591");
   script_bugtraq_id(71399);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-16 09:53:28 +0530 (Tue, 16 Dec 2014)");
   script_name("Mozilla Firefox CSP Information Disclosure Vulnerability Dec14 (Mac OS X)");
 
@@ -47,9 +47,7 @@ if(description)
   Content Security Policy (CSP) violation reports triggered by a redirect.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain access to usernames or single-sign-on tokens.
-
-  Impact Level: Application");
+  attackers to gain access to usernames or single-sign-on tokens.");
 
   script_tag(name:"affected", value:"Mozilla Firefox version 33.0 on Mac OS X");
 

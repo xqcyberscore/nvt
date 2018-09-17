@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-007.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: secpod_ms13-007.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft .NET Framework Open Data Protocol DOS Vulnerability (2769327)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902940");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0005");
   script_bugtraq_id(57141);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-09 12:59:12 +0530 (Wed, 09 Jan 2013)");
   script_name("Microsoft .NET Framework Open Data Protocol DOS Vulnerability (2769327)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51772/");
@@ -50,8 +50,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to execute arbitrary code
-  and cause a DoS (Denial of Service).
-  Impact Level: System/Application");
+  and cause a DoS (Denial of Service).");
   script_tag(name:"affected", value:"Microsoft .NET Framework 3.5, 3.5.1 and 4");
   script_tag(name:"insight", value:"The flaw is due to an error within the WCF 'Replace()' function when handling
   Open Data Protocol (OData) data and can be exploited to exhaust system

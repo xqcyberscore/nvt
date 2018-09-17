@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln_jun13_win.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_wireshark_dos_vuln_jun13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Wireshark DCP ETSI Dissector DoS Vulnerability - June 13 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803650");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4083");
   script_bugtraq_id(60504);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-28 13:30:52 +0530 (Tue, 28 May 2013)");
   script_name("Wireshark DCP ETSI Dissector DoS Vulnerability - June 13 (Windows)");
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1028648");
@@ -44,8 +44,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_win.nasl");
   script_mandatory_keys("Wireshark/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause denial of
-  service by injecting a malformed packet.
-  Impact Level: Application");
+  service by injecting a malformed packet.");
   script_tag(name:"affected", value:"Wireshark 1.6.x before 1.6.16, 1.8.x before 1.8.8 and 1.10.0 on Windows");
   script_tag(name:"insight", value:"- 'dissect_pft function' function in epan/dissectors/packet-dcp-etsi.c does
      not validate fragment length value.");

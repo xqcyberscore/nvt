@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_minibb_blind_sql_inj_vuln_jan15.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_minibb_blind_sql_inj_vuln_jan15.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # miniBB bb_func_unsub.php 'code' Parameter Blind SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805119");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-9254");
   script_bugtraq_id(71805);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-07 13:19:25 +0530 (Wed, 07 Jan 2015)");
   script_name("miniBB bb_func_unsub.php 'code' Parameter Blind SQL Injection Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database,
-  allowing for the manipulation or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  allowing for the manipulation or disclosure of arbitrary data.");
 
   script_tag(name:"affected", value:"MiniBB version 3.1 before 20141127");
 

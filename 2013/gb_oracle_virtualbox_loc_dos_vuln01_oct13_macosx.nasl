@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_loc_dos_vuln01_oct13_macosx.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: gb_oracle_virtualbox_loc_dos_vuln01_oct13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Oracle VM VirtualBox Local Denial of Service Vulnerability-01 Oct2013 (Mac OS X)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804122");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3792");
   script_bugtraq_id(60794);
   script_tag(name:"cvss_base", value:"3.8");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-28 09:51:57 +0530 (Mon, 28 Oct 2013)");
   script_name("Oracle VM VirtualBox Local Denial of Service Vulnerability-01 Oct2013 (Mac OS X)");
 
@@ -48,9 +48,7 @@ http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html");
   script_tag(name:"affected", value:"Oracle VM VirtualBox version 3.2.18 and before, 4.0.20 and before, 4.1.28
 and before, 4.2.18 and before on Mac OS X");
   script_tag(name:"impact", value:"Successful exploitation will allow local users to affect availability
-and cause local denial of service.
-
-Impact Level: Application");
+and cause local denial of service.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xitami_server_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
+# $Id: secpod_xitami_server_detect.nasl 11410 2018-09-15 20:11:00Z cfischer $
 #
-# Xitami Server Version Detection
+# Xitami Server Detection
 #
 # Authors:
 # Nikita MR <rnikita@secpod.com>
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900547");
-  script_version("$Revision: 10896 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11410 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 22:11:00 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-05-06 08:04:28 +0200 (Wed, 06 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("Xitami Server Version Detection");
+  script_name("Xitami Server Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
@@ -41,7 +41,7 @@ if(description)
 
   script_tag(name:"summary", value:"Detection of Xitami Server.
 
-  This script detects the installed version of Xitami Server and saves the result in KB.");
+  This script tries to detect an installed Xitami Server and its version.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -54,52 +54,103 @@ include("ftp_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-wwwPort = get_http_port(default:80);
+# nb: Don't use get_ftp_port() which could fork on multiple FTP ports...
+ports = get_kb_list( "Services/ftp" );
+if( ! ports ) ports = make_list( 21 );
 
-rcvRes = http_get_cache(port: wwwPort, item: "/");
+foreach port( ports ) {
 
-if("Xitami" >< rcvRes){
+  if( ! get_port_state( port ) ) continue;
+
+  banner = get_ftp_banner( port:port );
+
+  if( ! banner || ( "Welcome to this Xitami FTP server" >!< banner && "220 Xitami FTP " >!< banner ) ) continue;
+
+  set_kb_item( name:"xitami/detected", value:TRUE );
+  set_kb_item( name:"xitami/ftp/detected", value:TRUE );
   version = "unknown";
-  port = wwwPort;
-  location = "/";
+  install = port + "/tcp";
 
-  xitaVer = eregmatch(pattern:"Xitami(\/([0-9]\.[0-9.]+)([a-z][0-9]?)?)",
-                      string:rcvRes);
-  if(isnull(xitaVer[1]))
-  {
-    req = http_get(port: wwwPort, item: "/xitami/index.htm");
-    res = http_keepalive_send_recv(port: wwwPort, data: req);
-    xitaVer = eregmatch(pattern: "Xitami</B>.*Version ([0-9]\.[0-9a-z.]+)", string: res);
-
-    if (isnull(xitaVer[1])) {
-      ftpPort = get_ftp_port(default: 21);
-
-      banner = get_ftp_banner(port:ftpPort);
-      xitaVer = eregmatch(pattern: "Xitami FTP ([0-9a-z.]+)", string: banner);
-      if (!isnull(xitaVer[1])) {
-        port = ftpPort;
-        location = port + '/tcp';
-      }
-    }
+  # 220- Welcome to this Xitami FTP server, running version 2.5b5 of Xitami.
+  # 220 Xitami FTP 2.5c2 (c) 1991-2002 iMatix <http://www.imatix.com>
+  vers = eregmatch( pattern:"(220 Xitami FTP |Xitami FTP server, running version )([0-9a-z.]+)", string:banner );
+  if( vers[2] ) {
+    version = vers[2];
+    set_kb_item( name:"xitami/version", value:version );
+    set_kb_item( name:"xitami/ftp/version", value:version );
+    cpe = build_cpe( value:version, exp:"^([0-9a-z.]+)", base:"cpe:/a:imatix:xitami:" );
   }
 
-  if (!isnull(xitaVer[1])) {
-    xVer = xitaVer[1];
-    set_kb_item(name: "Xitami/Ver", value: xVer);
-  }
+  if( ! cpe )
+    cpe = "cpe:/a:imatix:xitami";
 
-  set_kb_item(name: "Xitami/installed", value: TRUE);
-
-  cpe = build_cpe(value: xVer, exp: "^([0-9a-z.]+)", base: "cpe:/a:imatix:xitami:");
-  if (!cpe)
-    cpe = 'cpe:/a:imatix:xitami';
-
-  register_product(cpe: cpe, location: location, port: port);
-
-  log_message(data: build_detection_report(app: "Xitami Server", version: xVer, install: location, cpe: cpe,
-                                           concluded: xitaVer[0]),
-              port: port);
-  exit(0);
+  register_product( cpe:cpe, location:install, port:port, service:"ftp" );
+  log_message( data:build_detection_report( app:"Xitami Server",
+                                            version:version,
+                                            install:install,
+                                            cpe:cpe,
+                                            concluded:vers[0] ),
+                                            port:port );
 }
 
-exit(0);
+if( get_kb_item( "Settings/disable_cgi_scanning" ) ) exit( 0 );
+
+port   = get_http_port( default:80 );
+banner = get_http_banner( port:port );
+res    = http_get_cache( port:port, item:"/" );
+
+# <TITLE>Welcome To Xitami v2.5b6</TITLE></HEAD>
+# <H1>Welcome To Xitami v2.5b6</H1>
+if( ! res || ( "erver: Xitami" >!< banner && ">Welcome To Xitami " >!< res ) ) exit( 0 );
+
+set_kb_item( name:"xitami/detected", value:TRUE );
+set_kb_item( name:"xitami/http/detected", value:TRUE );
+version = "unknown";
+cpe = ""; # Overwrite a possible existing cpe from the FTP detection
+install = port + "/tcp";
+
+vers = eregmatch( pattern:"Welcome To Xitami v([0-9]\.[0-9a-z.]+)", string:res );
+if( vers[1] ) {
+  version  = vers[1];
+  conclUrl = report_vuln_url( port:port, url:"/", url_only:TRUE );
+}
+
+if( version == "unknown" ) {
+  vers = eregmatch( pattern:"Xitami(\/([0-9]\.[0-9.]+)([a-z][0-9]?)?)", string:banner );
+  if( vers[1] ) {
+    version  = vers[1];
+    conclUrl = report_vuln_url( port:port, url:"/", url_only:TRUE );
+  }
+}
+
+if( version == "unknown" ) {
+  url = "/xitami/index.htm";
+  req = http_get( port:port, item:url );
+  res = http_keepalive_send_recv( port:port, data:req );
+  # <FONT SIZE=4><B>Xitami</B><BR><FONT SIZE=2>Version 2.5b6
+  vers = eregmatch( pattern:"Xitami</B>.*Version ([0-9]\.[0-9a-z.]+)", string:res );
+  if( vers[1] ) {
+    version  = vers[1];
+    conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+  }
+}
+
+if( version != "unknown" ) {
+  set_kb_item( name:"xitami/version", value:version );
+  set_kb_item( name:"xitami/http/version", value:version );
+  cpe = build_cpe( value:version, exp:"^([0-9a-z.]+)", base:"cpe:/a:imatix:xitami:" );
+}
+
+if( ! cpe )
+  cpe = "cpe:/a:imatix:xitami";
+
+register_product( cpe:cpe, location:install, port:port, service:"www" );
+
+log_message( data:build_detection_report( app:"Xitami Server",
+                                          version:version,
+                                          install:install,
+                                          cpe:cpe,
+                                          concludedUrl:conclUrl,
+                                          concluded:vers[0] ),
+                                          port:port );
+exit( 0 );

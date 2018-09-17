@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_dos_vuln02_jun13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_imagemagick_mult_dos_vuln02_jun13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # ImageMagick Multiple Denial of Service Vulnerabilities - 02 June13 (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803816");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-0248", "CVE-2012-0247");
   script_bugtraq_id(51957);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 13:05:53 +0530 (Mon, 24 Jun 2013)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -46,8 +46,7 @@ if(description)
   script_dependencies("secpod_imagemagick_detect_win.nasl");
   script_mandatory_keys("ImageMagick/Win/Installed");
   script_tag(name:"impact", value:"Successful exploitation will allow a context-dependent attacker to cause
-  denial of service result in loss of availability for the application.
-  Impact Level: Application");
+  denial of service result in loss of availability for the application.");
   script_tag(name:"affected", value:"ImageMagick version 6.7.5-7 and earlier on Windows.");
   script_tag(name:"insight", value:"Multiple flaw is due to,
 

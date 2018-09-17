@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_source_control_dir_trav_vuln.nasl 11186 2018-09-03 09:12:42Z mmartin $
+# $Id: gb_wordpress_source_control_dir_trav_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WordPress Content Source Control Plugin Directory Traversal Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804904");
-  script_version("$Revision: 11186 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-5368");
   script_bugtraq_id(69278);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-19 10:28:34 +0530 (Fri, 19 Sep 2014)");
   script_name("WordPress Content Source Control Plugin Directory Traversal Vulnerability");
 
@@ -50,9 +50,7 @@ if(description)
   to the user");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  attacker to read arbitrary files on the target system.
-
-  Impact Level: System/Application");
+  attacker to read arbitrary files on the target system.");
 
   script_tag(name:"affected", value:"WordPress Content Source Control plugin
   version 3.0.0 and earlier.");

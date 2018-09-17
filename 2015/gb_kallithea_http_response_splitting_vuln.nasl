@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kallithea_http_response_splitting_vuln.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_kallithea_http_response_splitting_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Kallithea 'came_from' parameter HTTP Response Splitting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:kallithea:kallithea";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806613");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-5285");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-06 12:57:52 +0530 (Fri, 06 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Kallithea 'came_from' parameter HTTP Response Splitting Vulnerability");
@@ -48,9 +48,7 @@ if(description)
   'came_from' parameter in the login instance.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct http response splitting attacks.
-
-  Impact Level: Application");
+  attackers to conduct http response splitting attacks.");
 
   script_tag(name:"affected", value:"Kallithea version 0.2.9 and 0.2.2");
 

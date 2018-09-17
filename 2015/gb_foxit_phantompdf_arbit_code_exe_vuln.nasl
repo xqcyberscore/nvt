@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_arbit_code_exe_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_phantompdf_arbit_code_exe_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Foxit PhantomPDF Arbitrary Code Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806904");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-8580");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-31 18:45:52 +0530 (Thu, 31 Dec 2015)");
   script_name("Foxit PhantomPDF Arbitrary Code Execution Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
   dangling pointer to be reused after it has been freed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code via a crafted PDF document.
-
-  Impact Level: System/Application");
+  attackers to execute arbitrary code via a crafted PDF document.");
 
   script_tag(name:"affected", value:"Foxit PhantomPDF version prior to
   7.2.2.");

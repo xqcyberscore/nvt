@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln02_feb14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: secpod_google_chrome_mult_vuln02_feb14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-02 Feb2014 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903514");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-6652", "CVE-2013-6653", "CVE-2013-6654", "CVE-2013-6655",
                 "CVE-2013-6656", "CVE-2013-6657", "CVE-2013-6658", "CVE-2013-6659",
                 "CVE-2013-6660", "CVE-2013-6661");
   script_bugtraq_id(65699);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-26 11:21:50 +0530 (Wed, 26 Feb 2014)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Feb2014 (Windows)");
 
@@ -74,9 +74,7 @@ vulnerabilities.");
 
   - Some unspecified errors exist. No further information is currently available.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
-service, execution of arbitrary code and unspecified other impacts.
-
-Impact Level: System/Application");
+service, execution of arbitrary code and unspecified other impacts.");
   script_tag(name:"affected", value:"Google Chrome version prior to 33.0.1750.117 on Windows");
   script_tag(name:"solution", value:"Upgrade to version 33.0.1750.117 or later,
 For updates refer to http://www.google.com/chrome");

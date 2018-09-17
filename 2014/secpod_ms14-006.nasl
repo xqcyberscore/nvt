@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms14-006.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: secpod_ms14-006.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Windows IPv6 Denial of Service Vulnerability (2904659)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901228");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0254");
   script_bugtraq_id(65409);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-12 09:23:09 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft Windows IPv6 Denial of Service Vulnerability (2904659)");
 
@@ -42,9 +42,7 @@ Bulletin MS14-006.");
 or not.");
   script_tag(name:"insight", value:"Flaw is due to incomplete validation of TCP/IP network packets.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of service
-condition.
-
-Impact Level: System");
+condition.");
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
 Microsoft Windows Server 2012");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and

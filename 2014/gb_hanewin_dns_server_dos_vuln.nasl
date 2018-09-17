@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hanewin_dns_server_dos_vuln.nasl 11214 2018-09-04 10:09:46Z mmartin $
+# $Id: gb_hanewin_dns_server_dos_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # haneWIN DNS Server Denial Of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803796");
-  script_version("$Revision: 11214 $");
+  script_version("$Revision: 11402 $");
   script_bugtraq_id(65024);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-28 19:50:58 +0530 (Tue, 28 Jan 2014)");
   script_name("haneWIN DNS Server Denial Of Service Vulnerability");
 
@@ -41,9 +41,7 @@ vulnerability.");
   script_tag(name:"vuldetect", value:"Send crafted request and check is it vulnerable to DoS or not.");
   script_tag(name:"insight", value:"The flaw is due to an error when handling specially crafted requests which can
 be exploited to crash the server.");
-  script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to cause a denial of service.
-
-Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to cause a denial of service.");
   script_tag(name:"affected", value:"haneWIN DNS Server version 1.5.3");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

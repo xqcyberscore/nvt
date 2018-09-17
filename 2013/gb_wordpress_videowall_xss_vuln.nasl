@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_videowall_xss_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_wordpress_videowall_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WordPress Videowall Plugin Cross Site Scripting Vulnerability
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804031");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-22 20:32:04 +0530 (Tue, 22 Oct 2013)");
   script_name("WordPress Videowall Plugin Cross Site Scripting Vulnerability");
 
@@ -45,9 +45,7 @@ cookie or not.");
 is not properly sanitized before being returned to the user.");
   script_tag(name:"affected", value:"WordPress videowall Plugin.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-script code in a user's browser session in the context of an affected site.
-
-Impact Level: Application");
+script code in a user's browser session in the context of an affected site.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name:"URL", value:"http://www.iedb.ir/exploits-716.html");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Oct/98");

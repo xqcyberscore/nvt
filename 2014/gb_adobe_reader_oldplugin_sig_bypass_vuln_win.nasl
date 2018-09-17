@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_oldplugin_sig_bypass_vuln_win.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: gb_adobe_reader_oldplugin_sig_bypass_vuln_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Reader Old Plugin Signature Bypass Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804627");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2003-0142");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-05 10:39:40 +0530 (Thu, 05 Jun 2014)");
   script_name("Adobe Reader Old Plugin Signature Bypass Vulnerability (Windows)");
 
@@ -44,9 +44,7 @@ bypass vulnerability.");
   script_tag(name:"insight", value:"The flaw is due to error that plug-ins with signatures used for older
 versions of Acrobat can also be loaded.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to submit a modified plug-in to
-bypass signature checks and execute malicious code on the system.
-
-Impact Level: System/Application");
+bypass signature checks and execute malicious code on the system.");
   script_tag(name:"affected", value:"Adobe Reader 6.x version on Windows.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

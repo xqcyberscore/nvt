@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_alipay_plugin_xss_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_wordpress_alipay_plugin_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WordPress Alipay plugin Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804873");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4514");
   script_bugtraq_id(70695);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-29 15:09:33 +0530 (Wed, 29 Oct 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary HTML and script code in a users browser session
-  in the context of an affected site.
-
-  Impact Level: Application");
+  in the context of an affected site.");
 
   script_tag(name:"affected", value:"WordPress Alipay plugin 3.6.0 and earlier");
 

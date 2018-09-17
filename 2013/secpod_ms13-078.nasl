@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-078.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: secpod_ms13-078.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft FrontPage Information Disclosure Vulnerability (2825621)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:microsoft:frontpage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903321");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3137");
   script_bugtraq_id(62185);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 11:12:46 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft FrontPage Information Disclosure Vulnerability (2825621)");
 
@@ -48,9 +48,7 @@ http://technet.microsoft.com/en-us/security/bulletin/ms13-078");
   script_tag(name:"insight", value:"Flaw is due to an an unspecified information disclosure vulnerability.");
   script_tag(name:"affected", value:"Microsoft FrontPage 2003 Service Pack 3");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to disclose the contents
-of a file on a target system.
-
-Impact Level: Application");
+of a file on a target system.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

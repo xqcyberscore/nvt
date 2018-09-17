@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln02_feb15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_owncloud_mult_vuln02_feb15.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # ownCloud Multiple Vulnerabilities -02 Feb15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805280");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2014-9046", "CVE-2014-9043", "CVE-2014-9042", "CVE-2014-9041");
   script_bugtraq_id(71383, 71389, 71373, 71369);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-19 15:54:16 +0530 (Thu, 19 Feb 2015)");
   script_name("ownCloud Multiple Vulnerabilities -02 Feb15");
 
@@ -62,9 +62,7 @@ if(description)
   remote attackers to perform a cross-site request forgery attack, execute
   arbitrary script code in a user's browser session within the trust
   relationship between their browser and the server, bypass authentication
-  mechanisms and gain access to arbitrary local files.
-
-  Impact Level: Application");
+  mechanisms and gain access to arbitrary local files.");
 
   script_tag(name:"affected", value:"ownCloud Server 5.x before 5.0.18, 6.x
   before 6.0.6, and 7.x before 7.0.3");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_sanitizeLocalUrl_xss_vuln.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_typo3_sanitizeLocalUrl_xss_vuln.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # TYPO3 'sanitizeLocalUrl' function Cross-Site Scripting Vulnerability (SA-2015-009)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805981");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11422 $");
   script_cve_id("CVE-2015-5956");
   script_bugtraq_id(76692);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-08 10:03:49 +0530 (Thu, 08 Oct 2015)");
   script_name("TYPO3 'sanitizeLocalUrl' function Cross-Site Scripting Vulnerability (SA-2015-009)");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   remote authenticated attackers to execute arbitrary HTML and script code in
-  a user's browser session in the context of an affected site.
-
-  Impact Level: Application.");
+  a user's browser session in the context of an affected site.");
 
   script_tag(name:"affected", value:"TYPO3 versions 6.2.x prior to 6.2.15,
   and 7.0.x prior to 7.4.0");

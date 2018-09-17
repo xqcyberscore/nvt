@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_info_disc_n_dos_vuln_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_adobe_reader_info_disc_n_dos_vuln_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Reader Information Disclosure & Denial of Service Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804398");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2005-0035", "CVE-2005-0492");
   script_bugtraq_id(12989);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-15 11:58:59 +0530 (Tue, 15 Apr 2014)");
   script_name("Adobe Reader Information Disclosure & Denial of Service Vulnerabilities (Windows)");
 
@@ -48,9 +48,7 @@ and denial of service vulnerabilities.");
   - An unspecified error within the processing of PDF documents containing a
 negative root page node 'Count' value.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct denial of service
-attack and the disclosure of sensitive information.
-
-Impact Level: Application");
+attack and the disclosure of sensitive information.");
   script_tag(name:"affected", value:"Adobe Reader version 7.0 and earlier on Windows.");
   script_tag(name:"solution", value:"Upgrade to Adobe Reader version 7.0.5 or later. For
 updates refer to http://get.adobe.com/reader");

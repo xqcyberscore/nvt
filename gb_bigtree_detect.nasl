@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
+# $Id: gb_bigtree_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # BigTree CMS Remote Version Detection
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807791");
-  script_version("$Revision: 8137 $");
+  script_version("$Revision: 11408 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-18 12:45:32 +0530 (Mon, 18 Apr 2016)");
   script_name("BigTree CMS Remote Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Detection of installed version
@@ -56,7 +56,7 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-if( ! port = get_http_port( default:80 ) ) exit( 0 );
+port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", "/BigTree", "/cms", "/bigtree", cgi_dirs( port:port ) ) ) {

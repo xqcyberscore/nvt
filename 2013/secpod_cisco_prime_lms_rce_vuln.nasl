@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cisco_prime_lms_rce_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: secpod_cisco_prime_lms_rce_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Cisco Prime LAN Management Solution Remote Command Execution Vulnerability
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901215");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(57221);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 16:05:48 +0530 (Thu, 24 Jan 2013)");
   script_cve_id("CVE-2012-6392");
   script_tag(name:"cvss_base", value:"10.0");
@@ -47,9 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20130109-lms");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary command
-  in the context of the root user.
-
-  Impact Level: System/Application");
+  in the context of the root user.");
   script_tag(name:"affected", value:"Cisco Prime LMS Virtual Appliance Version 4.1 through 4.2.2 on Linux");
   script_tag(name:"insight", value:"Flaw is due to improper validation of authentication and authorization
   commands sent to certain TCP ports.");
@@ -83,7 +81,6 @@ if(!get_port_state(rsh_port)){
   exit(0);
 }
 
-## Open socket with privileged port
 soc = open_priv_sock_tcp(dport:rsh_port);
 if(!soc){
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-083.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_ms15-083.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # MS Windows Server Message Block (SMB) Remote Code Execution Vulnerability (3073921)
 #
@@ -30,11 +30,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805079");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2474");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 09:25:26 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Server Message Block (SMB) Remote Code Execution Vulnerability (3073921)");
@@ -53,9 +53,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow  attacker
   to take complete control of an affected system. An attacker could then install,
   programs, view, change, or delete data  or create new accounts with full user
-  rights.
-
-  Impact Level: System");
+  rights.");
 
   script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");

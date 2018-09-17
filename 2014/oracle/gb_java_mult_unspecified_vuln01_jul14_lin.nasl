@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln01_jul14_lin.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_java_mult_unspecified_vuln01_jul14_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-01 Jul 2014 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108410");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4244", "CVE-2014-4262", "CVE-2014-4263", "CVE-2014-4252",
                 "CVE-2014-4268", "CVE-2014-4218", "CVE-2014-4216", "CVE-2014-4209");
   script_bugtraq_id(68624, 68599, 68636, 68642, 68615, 68583, 68562, 68639);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-24 10:09:17 +0530 (Thu, 24 Jul 2014)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-01 Jul 2014 (Linux)");
 
@@ -73,9 +73,7 @@ function in /java/util/concurrent/atomic/AtomicReferenceFieldUpdater.java
 share/classes/sun/security/rsa/RSACore.java and RSA 'blinding'.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to update,
 insert, or delete certain data, execute arbitrary code, conduct a denial of
-service and disclosure of potentially sensitive information.
-
-Impact Level: System/Application.");
+service and disclosure of potentially sensitive information.");
   script_tag(name:"affected", value:"Oracle Java SE 5 update 65 and prior, 6 update 75 and prior, 7 update 60 and
 prior, and 8 update 5 and prior on Linux");
   script_tag(name:"solution", value:"Apply the patch from below link,

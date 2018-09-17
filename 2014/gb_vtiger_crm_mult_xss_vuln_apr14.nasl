@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_mult_xss_vuln_apr14.nasl 10954 2018-08-14 12:43:10Z mmartin $
+# $Id: gb_vtiger_crm_mult_xss_vuln_apr14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Vtiger 'return_url' Parameter Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vtiger:vtiger_crm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804541");
-  script_version("$Revision: 10954 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-7326");
   script_bugtraq_id(64236);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-17 17:45:25 +0530 (Thu, 17 Apr 2014)");
   script_name("Vtiger 'return_url' Parameter Multiple Cross Site Scripting Vulnerabilities");
 
@@ -47,9 +47,7 @@ message.");
 'return_url' parameter to savetemplate.php and unspecified vectors to
 deletetask.php, edittask.php, savetask.php, or saveworkflow.php.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-script code in a user's browser session in the context of an affected site
-
-Impact Level: Application");
+script code in a user's browser session in the context of an affected site.");
   script_tag(name:"affected", value:"Vtiger CRM version 5.4.0");
   script_tag(name:"solution", value:"Upgrade to the latest version of Vtiger 6.0 or later,
 For updates refer to https://www.vtiger.com");

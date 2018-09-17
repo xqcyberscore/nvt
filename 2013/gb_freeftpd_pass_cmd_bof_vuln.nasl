@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freeftpd_pass_cmd_bof_vuln.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: gb_freeftpd_pass_cmd_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # freeFTPD PASS Command Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803747");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-22 16:55:03 +0530 (Thu, 22 Aug 2013)");
   script_name("freeFTPD PASS Command Buffer Overflow Vulnerability");
 
@@ -44,7 +44,7 @@ For updates refer to http://www.freesshd.com/?ctt=download");
 command.");
   script_tag(name:"affected", value:"freeFTPd version 1.0.10 and prior.");
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to crash an affected server,
-effectively denying service to legitimate users. Impact Level: Application");
+effectively denying service to legitimate users.");
 
   script_xref(name:"URL", value:"http://1337day.com/exploits/21139");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/27747/");
@@ -70,7 +70,6 @@ if(!get_port_state(ftpPort)){
   exit(0);
 }
 
-## Open TCP Socket
 soc = open_sock_tcp(ftpPort);
 if(!soc) {
   exit(0);

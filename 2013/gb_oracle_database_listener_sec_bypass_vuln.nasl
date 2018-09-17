@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_listener_sec_bypass_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_oracle_database_listener_sec_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Oracle Database Server listener Security Bypass Vulnerability
 #
@@ -28,21 +28,19 @@ CPE = 'cpe:/a:oracle:database_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803960");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2000-0818");
   script_bugtraq_id(1853);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-06 19:08:11 +0530 (Wed, 06 Nov 2013)");
   script_name("Oracle Database Server listener Security Bypass Vulnerability");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain access to an operating
-system account and execute commands.
-
-Impact Level: Application/System");
+system account and execute commands.");
   script_tag(name:"affected", value:"Oracle Database Server versions 7.3.4, 8.0.6, and 8.1.6 are affected");
   script_tag(name:"insight", value:"A flaw exist in Oracle listener program, which allows attacker to cause
 logging information to be appended to arbitrary files and execute commands

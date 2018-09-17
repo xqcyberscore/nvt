@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_amerisalere_plugin_xss_vuln.nasl 11030 2018-08-17 09:42:15Z mmartin $
+# $Id: secpod_wordpress_amerisalere_plugin_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WordPress Amerisale-Re Plugin Cross Site Scripting Vulnerability
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903504");
-  script_version("$Revision: 11030 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:42:15 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-28 14:48:09 +0530 (Thu, 28 Nov 2013)");
   script_name("WordPress Amerisale-Re Plugin Cross Site Scripting Vulnerability");
 
@@ -45,9 +45,7 @@ cookie or not.");
 parameter in 'wp-content/plugins/amerisale-re/netriesdetail/upload.php' page.");
   script_tag(name:"affected", value:"WordPress Amerisale-Re Plugin is affected.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-script code in a user's browser session in the context of an affected site.
-
-Impact Level: Application");
+script code in a user's browser session in the context of an affected site.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124187");

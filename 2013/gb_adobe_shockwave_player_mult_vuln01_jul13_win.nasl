@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln01_jul13_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_adobe_shockwave_player_mult_vuln01_jul13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities-01 July13 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803834");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3348");
   script_bugtraq_id(61040);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-25 17:45:29 +0530 (Thu, 25 Jul 2013)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities-01 July13 (Windows)");
   script_tag(name:"summary", value:"This host is installed with Adobe Shockwave player and is prone to
@@ -43,7 +43,7 @@ For updates refer to http://get.adobe.com/shockwave");
   script_tag(name:"insight", value:"Flaw is due to an error when parsing dir files");
   script_tag(name:"affected", value:"Adobe Shockwave Player before 12.0.3.133 on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-code on the target system and corrupt system memory. Impact Level: System/Application");
+code on the target system and corrupt system memory.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

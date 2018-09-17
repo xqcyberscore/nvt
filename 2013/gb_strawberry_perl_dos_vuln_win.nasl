@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_strawberry_perl_dos_vuln_win.nasl 11069 2018-08-21 12:29:19Z mmartin $
+# $Id: gb_strawberry_perl_dos_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Strawberry Perl Denial of Service Vulnerability (Windows)
 #
@@ -27,8 +27,7 @@
 if(description)
 {
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of service
-  (memory consumption) via specially-crafted hash key.
-  Impact Level: Application");
+  (memory consumption) via specially-crafted hash key.");
   script_tag(name:"affected", value:"Strawberry Perl versions 5.8.2 before 5.14.4 and 5.15 before 5.16.3 on Windows");
   script_tag(name:"insight", value:"Flaw is due to an error when rehashing user-supplied input.");
   script_tag(name:"solution", value:"Upgrade to Strawberry Perl version 5.16.3 or 5.14.4 or later,
@@ -36,12 +35,12 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with Strawberry Perl and is prone to denial
   of service vulnerability.");
   script_oid("1.3.6.1.4.1.25623.1.0.803371");
-  script_version("$Revision: 11069 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1667");
   script_bugtraq_id(58311);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 14:29:19 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-09 18:21:13 +0530 (Tue, 09 Apr 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atomcms_id_file_upload_n_sql_inj_vuln.nasl 11196 2018-09-03 13:09:40Z mmartin $
+# $Id: gb_atomcms_id_file_upload_n_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Digital Craft AtomCMS Arbitrary File Upload and SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804681");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4852");
   script_bugtraq_id(68437);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-17 12:04:59 +0530 (Thu, 17 Jul 2014)");
   script_name("Digital Craft AtomCMS Arbitrary File Upload and SQL Injection Vulnerabilities");
 
@@ -44,9 +44,7 @@ if(description)
   not properly sanitised before being used.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to gain unauthorized privileges and
   manipulate SQL queries in the backend database allowing for the manipulation
-  or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  or disclosure of arbitrary data.");
   script_tag(name:"affected", value:"Digital Craft AtomCMS version 2.0");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

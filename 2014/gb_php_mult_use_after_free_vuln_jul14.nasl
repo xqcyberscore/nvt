@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_use_after_free_vuln_jul14.nasl 10456 2018-07-09 06:10:17Z cfischer $
+# $Id: gb_php_mult_use_after_free_vuln_jul14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # PHP Multiple Use-After-Free Vulnerabilities - Jul14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804682");
-  script_version("$Revision: 10456 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4698", "CVE-2014-4670");
   script_bugtraq_id(68511, 68513);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-18 14:56:10 +0530 (Fri, 18 Jul 2014)");
   script_name("PHP Multiple Use-After-Free Vulnerabilities - Jul14");
 
@@ -48,14 +48,14 @@ if(description)
   and ArrayIterators.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
-  service attacks or possibly have some other unspecified impact.
-
-  Impact Level: Application");
+  service attacks or possibly have some other unspecified impact.");
 
   script_tag(name:"affected", value:"PHP version 5.x through 5.5.14");
 
   script_tag(name:"solution", value:"Apply Patches from below links,
+
   http://git.php.net/?p=php-src.git;a=patch;h=22882a9d89712ff2b6ebc20a689a89452bba4dcd
+
   http://git.php.net/?p=php-src.git;a=patch;h=df78c48354f376cf419d7a97f88ca07d572f00fb
 
   *****

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln_aug07_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_adobe_reader_mult_vuln_aug07_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities - Aug07 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804264");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2007-0103");
   script_bugtraq_id(21910);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-16 12:27:12 +0530 (Wed, 16 Apr 2014)");
   script_name("Adobe Reader Multiple Vulnerabilities - Aug07 (Windows)");
 
@@ -43,9 +43,7 @@ vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaw exist due to unspecified error within Adobe PDF specification.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to conduct denial of service,
-memory corruption and execution of arbitrary code.
-
-Impact Level: System/Application");
+memory corruption and execution of arbitrary code.");
   script_tag(name:"affected", value:"Adobe Reader before version 8.0 on Windows.");
   script_tag(name:"solution", value:"Upgrade to Adobe Reader 8.0 or later. For
 updates refer to http://get.adobe.com/reader");

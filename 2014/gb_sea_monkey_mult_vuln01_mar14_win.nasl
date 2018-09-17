@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:seamonkey";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804528");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1493", "CVE-2014-1494", "CVE-2014-1496", "CVE-2014-1497",
                 "CVE-2014-1498", "CVE-2014-1499", "CVE-2014-1500", "CVE-2014-1502",
                 "CVE-2014-1504", "CVE-2014-1505", "CVE-2014-1508", "CVE-2014-1509",
@@ -39,7 +39,7 @@ if(description)
                     66418, 66426, 66425, 66206, 66207, 66209, 66203, 66240);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-27 13:03:47 +0530 (Thu, 27 Mar 2014)");
   script_name("SeaMonkey Multiple Vulnerabilities-01 Mar14 (Windows)");
 
@@ -76,9 +76,7 @@ vulnerabilities.");
   - And some unspecified errors exist.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct spoofing attacks,
 disclose potentially sensitive information, bypass certain security
-restrictions, and compromise a user's system.
-
-Impact Level: System/Application");
+restrictions, and compromise a user's system.");
   script_tag(name:"affected", value:"SeaMonkey version before 2.25 on Windows");
   script_tag(name:"solution", value:"Upgrade to SeaMonkey version 2.25 or later,
 For updates refer to http://www.mozilla.com/en-US/seamonkey");

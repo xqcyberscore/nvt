@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zeroshell_lfi_08_13.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_zeroshell_lfi_08_13.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # ZeroShell 2.0RC2 File Disclosure / Command Execution
 #
@@ -28,13 +28,13 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103761");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
   script_name("ZeroShell 2.0RC2 File Disclosure / Command Execution");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/122799/ZeroShell-2.0RC2-File-Disclosure-Command-Execution.html");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-14 10:33:56 +0200 (Wed, 14 Aug 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -45,14 +45,13 @@ if (description)
 
   script_tag(name:"impact", value:"An attacker can exploit this vulnerability to view files or execute
  arbitrary script code in the context of the web server process. This may aid in
- further attacks.
- Impact Level: Application");
+ further attacks.");
   script_tag(name:"vuldetect", value:"Send a GET request which tries to include /etc/passwd and check the response.");
   script_tag(name:"insight", value:"Input to the 'Object' value in /cgi-bin/kerbynet is not properly sanitized");
   script_tag(name:"solution", value:"Updates are available.");
   script_tag(name:"summary", value:"ZeroShell is prone to a local file-include vulnerability because it
  fails to sufficiently sanitize user-supplied input.");
-  script_tag(name:"affected", value:"ZeroShell version 2.0RC2 is vulnerable; other versions may also
+  script_tag(name:"affected", value:"ZeroShell version 2.0RC2 is vulnerable. Other versions may also
  be affected.");
 
   script_tag(name:"qod_type", value:"remote_app");

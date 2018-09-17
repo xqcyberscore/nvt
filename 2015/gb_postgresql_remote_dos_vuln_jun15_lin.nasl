@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805805");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-3165");
   script_bugtraq_id(74787);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-24 15:36:26 +0530 (Wed, 24 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL Remote Denial Of Service Vulnerability June15 (Linux)");
@@ -48,9 +48,7 @@ if(description)
   is fired partway through the session shutdown sequence.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
-  remote attacker to crash the program.
-
-  Impact Level: Application");
+  remote attacker to crash the program.");
 
   script_tag(name:"affected", value:"PostgreSQL version before 9.0.20, 9.1.x
   before 9.1.16, 9.2.x before 9.2.11, 9.3.x before 9.3.7, and 9.4.x before 9.4.2

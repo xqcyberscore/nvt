@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_web_apps_ms14-001.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: secpod_ms_office_web_apps_ms14-001.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Office Web Apps Remote Code Execution vulnerability (2916605)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903428");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0258", "CVE-2014-0259", "CVE-2014-0260");
   script_bugtraq_id(64726, 64727, 64728);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-15 12:12:54 +0530 (Wed, 15 Jan 2014)");
   script_name("Microsoft Office Web Apps Remote Code Execution vulnerability (2916605)");
 
@@ -51,9 +51,7 @@ office file.");
 
 Microsoft Web Applications 2010 Service Pack 2 and prior ");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
-code, cause memory corruption and compromise the system.
-
-Impact Level: System/Application ");
+code, cause memory corruption and compromise the system.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

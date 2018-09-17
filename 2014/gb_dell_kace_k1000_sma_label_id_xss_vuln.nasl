@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_kace_k1000_sma_label_id_xss_vuln.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: gb_dell_kace_k1000_sma_label_id_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Dell KACE K1000 LABEL_ID Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:quest:kace_systems_management_appliance";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804238");
-  script_version("$Revision: 11194 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0330");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-14 15:46:39 +0530 (Fri, 14 Feb 2014)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -50,9 +50,7 @@ NVT and check the version is vulnerable or not.");
 sanitizing user-supplied input to LABEL_ID parameter.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-script.
-
-Impact Level: Application");
+script.");
 
   script_tag(name:"affected", value:"Dell KACE K1000 Systems Management Appliance version 5.5.90545");
 

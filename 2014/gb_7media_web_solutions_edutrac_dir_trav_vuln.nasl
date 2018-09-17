@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_7media_web_solutions_edutrac_dir_trav_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_7media_web_solutions_edutrac_dir_trav_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # 7Media Web Solutions EduTrac Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804198");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-7097");
   script_bugtraq_id(64255);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-22 16:29:04 +0530 (Wed, 22 Jan 2014)");
   script_name("7Media Web Solutions EduTrac Directory Traversal Vulnerability");
 
@@ -43,9 +43,7 @@ if(description)
   script_tag(name:"insight", value:"A flaw exist due to insufficient filtration of 'showmask' HTTP GET parameter
   passed to 'overview.php' script.");
   script_tag(name:"impact", value:"Successful exploitation may allow an attacker to obtain sensitive information,
-  which can lead to launching further attacks.
-
-  Impact Level: Application.");
+  which can lead to launching further attacks.");
   script_tag(name:"affected", value:"7Media Web Solutions eduTrac before version 1.1.2");
   script_tag(name:"solution", value:"Upgrade to 7Media Web Solutions eduTrac version 1.1.2 or later.
   For updates refer http://www.7mediaws.org/products/edutrac/");

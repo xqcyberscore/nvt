@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_html_injection_vuln.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_open_xchange_appsuite_html_injection_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Open-Xchange (OX) AppSuite HTML Injection Vulnerability Oct15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806072");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2013-7143");
   script_bugtraq_id(65013);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-06 12:24:33 +0530 (Tue, 06 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite HTML Injection Vulnerability Oct15");
@@ -52,9 +52,7 @@ if(description)
   attacker-supplied HTML and script code to run in the context of the affected
   browser, potentially allowing the attacker to steal cookie-based
   authentication credentials or control how the site is rendered to the user.
-  Other attacks are also possible.
-
-  Impact Level: Application");
+  Other attacks are also possible.");
 
   script_tag(name:"affected", value:"Open-Xchange (OX) AppSuite version 7.4.1");
 

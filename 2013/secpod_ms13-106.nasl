@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-106.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: secpod_ms13-106.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Office Shared Component Security Bypass Vulnerability (2905238)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903420");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5057");
   script_bugtraq_id(64095);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-11 11:33:55 +0530 (Wed, 11 Dec 2013)");
   script_name("Microsoft Office Shared Component Security Bypass Vulnerability (2905238)");
 
@@ -49,9 +49,7 @@ Space Layout Randomization (ASLR).");
   script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3 and prior
 Microsoft Office 2010 Service Pack 2 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass the ASLR
-security feature and disclose certain sensitive information.
-
-Impact Level: System/Application");
+security feature and disclose certain sensitive information.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mnogosearch_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_mnogosearch_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # mnoGoSearch Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803438");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2011-5235");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-15 11:19:57 +0530 (Fri, 15 Mar 2013)");
   script_name("mnoGoSearch Multiple Vulnerabilities");
 
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   HTML or web script in a user's browser session in context of an affected
-  site and disclose the content of an arbitrary file.
-  Impact Level: Application");
+  site and disclose the content of an arbitrary file.");
   script_tag(name:"affected", value:"mnoGoSearch Version 3.3.12 and prior");
   script_tag(name:"insight", value:"Multiple flaws due to,
 

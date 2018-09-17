@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_invalid_sdp_dos_vuln.nasl 11219 2018-09-04 11:52:00Z cfischer $
+# $Id: gb_asterisk_invalid_sdp_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Asterisk Products Invalid SDP SIP Channel Driver DoS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:digium:asterisk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802063");
-  script_version("$Revision: 11219 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5642");
   script_bugtraq_id(62022);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-28 15:06:58 +0530 (Mon, 28 Oct 2013)");
   script_name("Asterisk Products Invalid SDP SIP Channel Driver DoS Vulnerability");
   script_category(ACT_DENIAL);
@@ -65,9 +65,7 @@ if(description)
   Asterisk Digiumphones 10.x-digiumphones to 10.12.2-digiumphones");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial of
-  service via a crafted SDP in a SIP request.
-
-  Impact Level: Application");
+  service via a crafted SDP in a SIP request.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"exploit");

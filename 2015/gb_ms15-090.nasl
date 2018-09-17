@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-090.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_ms15-090.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Microsoft Windows Privilege Elevation Vulnerabilities (3060716)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805094");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-2428", "CVE-2015-2429", "CVE-2015-2430");
   script_bugtraq_id(76227, 76231, 76233);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 08:31:02 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Privilege Elevation Vulnerabilities (3060716)");
@@ -55,9 +55,7 @@ if(description)
     sandboxed applications.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow  users
-  to gain privileges via a crafted application.
-
-  Impact Level: System");
+  to gain privileges via a crafted application.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows Server 2012/R2

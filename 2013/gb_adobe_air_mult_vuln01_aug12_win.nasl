@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_aug12_win.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_adobe_air_mult_vuln01_aug12_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe Air Multiple Vulnerabilities -01 August 12 (Windows)
 #
@@ -30,8 +30,7 @@ if(description)
 {
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   code on the target system or cause a denial of service (memory corruption)
-  via unspecified vectors.
-  Impact Level: System/Application");
+  via unspecified vectors.");
   script_tag(name:"affected", value:"Adobe AIR version 3.3.0.3670 and earlier on Windows");
   script_tag(name:"insight", value:"The flaws are due to memory corruption, integer overflow errors that
   could lead to code execution.");
@@ -40,13 +39,13 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Adobe Air and is prone to multiple
   vulnerabilities.");
   script_oid("1.3.6.1.4.1.25623.1.0.803490");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-4163", "CVE-2012-4164", "CVE-2012-4165", "CVE-2012-4166",
                 "CVE-2012-4167", "CVE-2012-4168", "CVE-2012-4171", "CVE-2012-5054");
   script_bugtraq_id(55136, 55365);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-24 11:31:28 +0530 (Fri, 24 Aug 2012)");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_9ef52861b5_wireshark_fc27.nasl 10758 2018-08-03 12:49:20Z santu $
+# $Id: gb_fedora_2018_9ef52861b5_wireshark_fc27.nasl 11416 2018-09-17 03:39:26Z ckuersteiner $
 #
 # Fedora Update for wireshark FEDORA-2018-9ef52861b5
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874872");
-  script_version("$Revision: 10758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 14:49:20 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 11416 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 05:39:26 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-02 06:01:38 +0200 (Thu, 02 Aug 2018)");
   script_cve_id("CVE-2018-14339", "CVE-2018-14340", "CVE-2018-14341", "CVE-2018-14342", 
                 "CVE-2018-14343", "CVE-2018-14344", "CVE-2018-14367", "CVE-2018-14368", 
@@ -40,8 +40,8 @@ if(description)
                 "CVE-2017-17084", "CVE-2017-17083", "CVE-2017-15189", "CVE-2017-15190", 
                 "CVE-2017-15191", "CVE-2017-15192", "CVE-2017-15193", "CVE-2017-13764", 
                 "CVE-2017-13765", "CVE-2017-13766", "CVE-2017-13767");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for wireshark FEDORA-2018-9ef52861b5");
   script_tag(name:"summary", value:"Check the version of wireshark");

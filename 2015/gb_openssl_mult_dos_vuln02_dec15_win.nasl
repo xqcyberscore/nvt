@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_dos_vuln02_dec15_win.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_openssl_mult_dos_vuln02_dec15_win.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # OpenSSL Multiple Denial of Service Vulnerabilities -02 Dec15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806744");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11422 $");
   script_cve_id("CVE-2015-1789", "CVE-2015-1790", "CVE-2015-1791", "CVE-2015-1792");
   script_bugtraq_id(75156, 75157, 75161, 75154);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-01 09:41:47 +0530 (Tue, 01 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Multiple Denial of Service Vulnerabilities -02 Dec15 (Windows)");
@@ -59,9 +59,7 @@ if(description)
     loop with unknown hash function.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to cause a denial of service or possibly have unspecified other impact.
-
-  Impact Level: Application");
+  attacker to cause a denial of service or possibly have unspecified other impact.");
 
   script_tag(name:"affected", value:"OpenSSL versions before 0.9.8zg, 1.0.0
   before 1.0.0s, 1.0.1 before 1.0.1n, and 1.0.2 before 1.0.2b on Windows");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_ie_cmarkup_use_after_free_vuln.nasl 10948 2018-08-14 09:08:48Z jschulte $
+# $Id: gb_microsoft_ie_cmarkup_use_after_free_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (2925418)
 #
@@ -28,7 +28,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804500");
-  script_version("$Revision: 10948 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0297", "CVE-2014-0298", "CVE-2014-0299", "CVE-2014-0302",
                 "CVE-2014-0303", "CVE-2014-0304", "CVE-2014-0305", "CVE-2014-0306",
                 "CVE-2014-0307", "CVE-2014-0308", "CVE-2014-0309", "CVE-2014-0311",
@@ -38,7 +38,7 @@ if(description)
                     66033, 66034, 66035, 66036, 66037, 66038, 66039, 65551, 66040);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 11:08:48 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-18 16:40:06 +0530 (Tue, 18 Feb 2014)");
   script_name("Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (2925418)");
 
@@ -50,9 +50,7 @@ or not.");
   script_tag(name:"insight", value:"Multiple flaws are due to, error when handling CMarkup objects and multiple
 unspecified errors.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
-corrupt memory and compromise a user's system.
-
-Impact Level: System/Application");
+corrupt memory and compromise a user's system.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x/10.x/11.x");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and

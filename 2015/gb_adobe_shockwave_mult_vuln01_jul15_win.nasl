@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_mult_vuln01_jul15_win.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_adobe_shockwave_mult_vuln01_jul15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities -01 July15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:shockwave_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805925");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-5120", "CVE-2015-5121");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-16 12:25:12 +0530 (Thu, 16 Jul 2015)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities -01 July15 (Windows)");
 
@@ -46,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct denial of service attack and potentially execute arbitrary
-  code in the context of the affected user.
-
-  Impact Level: System/Application.");
+  code in the context of the affected user.");
 
   script_tag(name:"affected", value:"Adobe Shockwave Player version before
   12.1.9.159 on Windows.");

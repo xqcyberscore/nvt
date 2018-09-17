@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_concrete_cms_sql_inj_vuln.nasl 6080 2017-05-08 09:21:57Z cfi $
+# $Id: secpod_concrete_cms_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Concrete5 CMS SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:concrete5:concrete5';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903511");
-  script_version("$Revision: 6080 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:21:57 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-19 16:18:17 +0530 (Wed, 19 Feb 2014)");
   script_name("Concrete5 CMS SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -57,9 +57,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary SQL
   commands in applications database and gain complete control over the vulnerable
-  web application.
-
-  Impact Level: Application");
+  web application.");
 
   script_tag(name:"affected", value:"Concrete5 CMS version 5.6.3.4");
 

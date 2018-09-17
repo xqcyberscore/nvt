@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_category_gridview_gallery_xss_vuln.nasl 11041 2018-08-17 14:03:47Z mmartin $
+# $Id: gb_wp_category_gridview_gallery_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WordPress Category Grid View Gallery XSS Vulnerability
 #
@@ -29,18 +29,16 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803681");
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4117");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-03 16:01:07 +0530 (Wed, 03 Jul 2013)");
   script_name("WordPress Category Grid View Gallery XSS Vulnerability");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-script code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+script code in a user's browser session in the context of an affected site.");
   script_tag(name:"affected", value:"WordPress Category Grid View Gallery Plugin version 2.3.1 and prior");
   script_tag(name:"insight", value:"The flaw is caused due to an input validation error in the 'ID' parameter
 in '/wp-content/plugins/category-grid-view-gallery/includes/CatGridPost.php'

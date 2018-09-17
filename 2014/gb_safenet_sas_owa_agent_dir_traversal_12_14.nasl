@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_safenet_sas_owa_agent_dir_traversal_12_14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_safenet_sas_owa_agent_dir_traversal_12_14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # SafeNet SAS OWA Agent Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:safenet-inc:safenet_authentication_service_outlook_web_access_agen
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105152");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-5359");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-22 16:04:07 +0100 (Mon, 22 Dec 2014)");
   script_name("SafeNet SAS OWA Agent Directory Traversal Vulnerability");
 
@@ -46,9 +46,7 @@ and check whether it is able to read arbitrary files or not.");
   script_tag(name:"insight", value:"Via a .. (dot dot) in the GetFile parameter to owa/owa it is possible to read arbitrary files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to download arbitrary files.
-
-  Impact Level: Application");
+  attackers to download arbitrary files.");
 
   script_tag(name:"affected", value:"SafeNet Authentication Service before 1.03.30109");
   script_tag(name:"solution", value:"Update to 1.03.30109 or higher");

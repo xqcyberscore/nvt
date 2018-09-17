@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_sql_inj_vuln.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_mantisbt_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # MantisBT 'filter_config_id' SQL Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804345");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2238");
   script_bugtraq_id(65903);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-13 10:36:53 +0530 (Tue, 13 May 2014)");
   script_name("MantisBT 'filter_config_id' SQL Injection Vulnerability");
 
@@ -45,9 +45,7 @@ if(description)
   sanitizing user-supplied input to the 'filter_config_id' POST parameter.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote authenticated attacker to inject or
   manipulate SQL queries in the back-end database, allowing for the manipulation
-  or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  or disclosure of arbitrary data.");
   script_tag(name:"affected", value:"MantisBT version 1.2.13 through 1.2.16");
   script_tag(name:"solution", value:"Upgrade to MantisBT version 1.2.17 or later.
   For updates refer to http://www.mantisbt.org/download.php");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cogent_datahub_multiple_vuln.nasl 11113 2018-08-26 12:32:34Z cfischer $
+# $Id: gb_cogent_datahub_multiple_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Cogent DataHub Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803491");
-  script_version("$Revision: 11113 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0680", "CVE-2013-0681", "CVE-2013-0682", "CVE-2013-0683");
   script_bugtraq_id(58902, 58910, 58905, 58909);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-26 14:32:34 +0200 (Sun, 26 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-16 11:21:21 +0530 (Tue, 16 Apr 2013)");
   script_name("Cogent DataHub Multiple Vulnerabilities");
   script_category(ACT_DENIAL);
@@ -46,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
   arbitrary code or cause denial of service condition resulting in
-  loss of availability.
-
-  Impact Level: System/Application");
+  loss of availability.");
 
   script_tag(name:"affected", value:"Cogent DataHub before 7.3.0, OPC DataHub before 6.4.22,
   Cascade DataHub before 6.4.22 on Windows, and

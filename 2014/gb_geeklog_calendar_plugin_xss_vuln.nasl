@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geeklog_calendar_plugin_xss_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_geeklog_calendar_plugin_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Geeklog Calendar Plugin Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804237");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-1470");
   script_bugtraq_id(58209);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-13 18:21:52 +0530 (Thu, 13 Feb 2014)");
   script_name("Geeklog Calendar Plugin Cross Site Scripting Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
   'submit.php', which is not properly sanitised before using it.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to steal the victim's
-  cookie-based authentication credentials.
-
-  Impact Level: Application");
+  cookie-based authentication credentials.");
 
   script_tag(name:"affected", value:"Geeklog 1.8.2 and 2.0.0, Other versions may also be affected.");
 

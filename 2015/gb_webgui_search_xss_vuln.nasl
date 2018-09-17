@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webgui_search_xss_vuln.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_webgui_search_xss_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Plain Black WebGUI 'search' Cross-Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802090");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11424 $");
   script_bugtraq_id(72253);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 11:27:32 +0530 (Fri, 23 Jan 2015)");
   script_name("Plain Black WebGUI 'search' Cross-Site Scripting Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to
   execute arbitrary HTML and script code in a user's browser session in the context
-  of an affected site.
-
-  Impact Level: Application");
+  of an affected site.");
 
   script_tag(name:"affected", value:"Plain Black WebGUI version 7.10.29.
   Previous version maybe vulnerable also.");

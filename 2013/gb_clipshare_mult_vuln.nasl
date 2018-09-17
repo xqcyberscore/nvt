@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clipshare_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_clipshare_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # ClipShare Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803440");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-18 14:25:41 +0530 (Mon, 18 Mar 2013)");
   script_name("ClipShare Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -47,9 +47,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain
   access to the password information and inject or manipulate SQL queries in the
   back-end database, allowing for the manipulation or disclosure of arbitrary
-  data.
-
-  Impact Level: Application");
+  data.");
   script_tag(name:"affected", value:"ClipShare Version 4.1.4");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 

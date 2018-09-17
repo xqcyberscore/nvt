@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phlylabs_phlymail_lite_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_phlylabs_phlymail_lite_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # phlyLabs phlyMail Lite Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803151");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(57303, 57304);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-15 12:12:35 +0530 (Tue, 15 Jan 2013)");
   script_name("phlyLabs phlyMail Lite Multiple Vulnerabilities");
 
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
   HTML and script code in a user's browser session in context of an affected site
-  and displaying the full webapp installation path.
-
-  Impact Level: Application");
+  and displaying the full webapp installation path.");
   script_tag(name:"affected", value:"phlyLabs phlyMail Lite version 4.03.04");
   script_tag(name:"insight", value:"- Input passed via the 'go' parameter in 'derefer.php' script is
   not properly verified before being used to redirect users. This can be

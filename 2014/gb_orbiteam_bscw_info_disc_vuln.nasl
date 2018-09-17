@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orbiteam_bscw_info_disc_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_orbiteam_bscw_info_disc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # OrbiTeam BSCW 'op' Parameter Information Disclosure Vulnerability
 #
@@ -27,12 +27,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804297");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2301");
   script_bugtraq_id(67284);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-16 11:22:00 +0530 (Fri, 16 May 2014)");
   script_name("OrbiTeam BSCW 'op' Parameter Information Disclosure Vulnerability");
 
@@ -43,9 +43,7 @@ if (description)
   script_tag(name:"insight", value:"The flaw exists as the program associates filenames of documents with values
   mapped from the 'op' parameter.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain sensitive
-  information by enumerating the names of all objects stored in BSCW without prior authentication.
-
-  Impact Level: Application");
+  information by enumerating the names of all objects stored in BSCW without prior authentication.");
   script_tag(name:"affected", value:"OrbiTeam BSCW before version 5.0.8");
   script_tag(name:"solution", value:"Upgrade to OrbiTeam BSCW version 5.0.8 or later. For updates refer,
   http://www.bscw.de/english/product.html");

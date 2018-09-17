@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_tftp_server_dos_vuln.nasl 11114 2018-08-26 12:36:02Z cfischer $
+# $Id: gb_quick_tftp_server_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Quick TFTP Server Long Filename Denial Of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803714");
-  script_version("$Revision: 11114 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-26 14:36:02 +0200 (Sun, 26 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-10 18:00:09 +0530 (Mon, 10 Jun 2013)");
   script_name("Quick TFTP Server Long Filename Denial Of Service Vulnerability");
 
@@ -76,7 +76,6 @@ if(!tftp_alive(port:port)){
   exit(0);
 }
 
-## open socket for udp port
 soc = open_sock_udp(port);
 if(!soc){
   exit(0);

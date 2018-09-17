@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exchange_server_ms14-075.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_exchange_server_ms14-075.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Exchange Server Multiple Vulnerabilities (3009712)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805115");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-6319", "CVE-2014-6325", "CVE-2014-6326", "CVE-2014-6336");
   script_bugtraq_id(71437, 71440, 71441, 71443);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-10 15:28:46 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft Exchange Server Multiple Vulnerabilities (3009712)");
 
@@ -55,9 +55,7 @@ if(description)
     being used to redirect users.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct spoofing and cross-site scripting attacks.
-
-  Impact Level: System/Application");
+  attackers to conduct spoofing and cross-site scripting attacks.");
 
   script_tag(name:"affected", value:"Microsoft Exchange Server 2007 Service Pack 3 and prior
   Microsoft Exchange Server 2010 Service Pack 3 and prior

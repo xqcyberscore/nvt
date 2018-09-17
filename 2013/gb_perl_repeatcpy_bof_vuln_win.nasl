@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_repeatcpy_bof_vuln_win.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_perl_repeatcpy_bof_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Strawberry Perl 'Perl_repeatcpy()' Function Buffer Overflow Vulnerability (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803161");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-5195");
   script_bugtraq_id(56287);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-23 19:28:09 +0530 (Wed, 23 Jan 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,8 +44,7 @@ if(description)
   script_mandatory_keys("Strawberry/Perl/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a denial of service
   (memory consumption and crash) or possibly execute arbitrary code via the
-  'x' string repeat operator.
-  Impact Level: System/Application");
+  'x' string repeat operator.");
   script_tag(name:"affected", value:"Strawberry Perl 5.12.x before 5.12.5, 5.14.x before 5.14.3 and
   5.15.x before 15.15.5 on Windows");
   script_tag(name:"insight", value:"The Perl_repeatcpy() function in util.c fails to properly sanitize user

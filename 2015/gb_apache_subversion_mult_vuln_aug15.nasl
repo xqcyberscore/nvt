@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_mult_vuln_aug15.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_apache_subversion_mult_vuln_aug15.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Apache Subversion Multiple Vulnerabilities - Aug15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805095");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-3184", "CVE-2015-3187");
   script_bugtraq_id(76274, 76273);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-18 13:39:48 +0530 (Tue, 18 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Subversion Multiple Vulnerabilities - Aug15");
@@ -55,9 +55,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   authenticated remote attacker to obtain potentially sensitive information
-  from an ostensibly hidden repository.
-
-  Impact Level: Application");
+  from an ostensibly hidden repository.");
 
   script_tag(name:"affected", value:"Apache Subversion 1.7.x before 1.7.21 and 1.8.x before 1.8.14");
 

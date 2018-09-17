@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_cmd_inj_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_hp_smh_cmd_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # HP System Management Homepage Command Injection Vulnerability-July2013
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803846");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3576");
   script_bugtraq_id(60471);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-30 13:30:42 +0530 (Tue, 30 Jul 2013)");
   script_name("HP System Management Homepage Command Injection Vulnerability-July2013");
 
@@ -50,9 +50,7 @@ segment of the current requested URL path in an exec call without properly
 sanitizing the content.");
   script_tag(name:"affected", value:"HP System Management Homepage (SMH) version 7.2.1.3 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow an authenticated remote attacker to execute
-arbitrary commands.
-
-Impact Level: Application");
+arbitrary commands.");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/26420");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/735364");

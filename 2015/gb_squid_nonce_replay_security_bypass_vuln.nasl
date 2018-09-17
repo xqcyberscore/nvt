@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_nonce_replay_security_bypass_vuln.nasl 10121 2018-06-07 12:44:05Z cfischer $
+# $Id: gb_squid_nonce_replay_security_bypass_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Squid Nonce Replay Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806902");
-  script_version("$Revision: 10121 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-9749");
   script_bugtraq_id(77040);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 14:44:05 +0200 (Thu, 07 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-23 13:34:49 +0530 (Wed, 23 Dec 2015)");
   script_name("Squid Nonce Replay Security Bypass Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -57,9 +57,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   disabled user or users with changed password to access the squid service with
-  old credentials.
-
-  Impact Level: Application");
+  old credentials.");
 
   script_tag(name:"affected", value:"Squid versions 3.4.4 through 3.4.11 and 3.5.0.1 through 3.5.1");
 

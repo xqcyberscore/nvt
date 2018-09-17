@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_didiwiki_detect.nasl 11224 2018-09-04 12:57:17Z cfischer $
+# $Id: gb_didiwiki_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # DidiWiki Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807527");
-  script_version("$Revision: 11224 $");
+  script_version("$Revision: 11408 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:57:17 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-12 10:34:57 +0530 (Tue, 12 Apr 2016)");
   script_name("DidiWiki Remote Version Detection");
 
@@ -44,19 +44,19 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_require_ports("Services/www", 8000);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 8000);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
 include("http_func.inc");
+include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-if(!wikiPort = get_http_port(default:8000)){
-  exit(0);
-}
+wikiPort = get_http_port(default:8000);
 
 foreach dir (make_list_unique("/", "/didiwiki", "/wiki", cgi_dirs(port:wikiPort)))
 {
@@ -66,16 +66,14 @@ foreach dir (make_list_unique("/", "/didiwiki", "/wiki", cgi_dirs(port:wikiPort)
 
   url = dir + '/WikiHome';
 
-  sndReq = http_get(item:url, port:wikiPort);
-  rcvRes = http_send_recv(port:wikiPort, data:sndReq);
+  rcvRes = http_get_cache(item:url, port:wikiPort);
 
   if('<title>WikiHome</title>' >< rcvRes && '>DidiWiki' >< rcvRes)
   {
     version = eregmatch(pattern:'DidiWiki, Version: ([0-9.]+)', string:rcvRes);
     if(version[1]){
       wikiVer = version[1];
-    }
-    else{
+    } else {
       wikiVer = "Unknown";
     }
 

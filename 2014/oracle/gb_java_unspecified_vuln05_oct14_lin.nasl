@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_unspecified_vuln05_oct14_lin.nasl 11214 2018-09-04 10:09:46Z mmartin $
+# $Id: gb_java_unspecified_vuln05_oct14_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle Java SE JRE Unspecified Vulnerability-05 Oct 2014 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108426");
-  script_version("$Revision: 11214 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-6504");
   script_bugtraq_id(70564);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-20 14:00:18 +0530 (Mon, 20 Oct 2014)");
 
   script_name("Oracle Java SE JRE Unspecified Vulnerability-05 Oct 2014 (Linux)");
@@ -49,9 +49,7 @@ if(description)
   optimizations and range checks in the Hotspot subcomponent.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to disclose sensitive information.
-
-  Impact Level: Application.");
+  to disclose sensitive information.");
 
   script_tag(name:"affected", value:"Oracle Java SE 5.0u71 and prior, 6u81 and
   prior, and 7u67 and prior on Linux");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mailListIsPdf_bof_vuln_lin.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_adobe_reader_mailListIsPdf_bof_vuln_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Reader 'mailListIsPdf' Buffer Overflow Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804383");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2004-1152");
   script_bugtraq_id(11923);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-10 15:00:46 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader 'mailListIsPdf' Buffer Overflow Vulnerability (Linux)");
 
@@ -45,9 +45,7 @@ vulnerability.");
   script_tag(name:"insight", value:"Flaw is due to a boundary error in the 'mailListIsPdf' function when checking
 input files.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code and
-compromise a user's system.
-
-Impact Level: System/Application");
+compromise a user's system.");
   script_tag(name:"affected", value:"Adobe Reader version 5.0.9 on Linux.");
   script_tag(name:"solution", value:"Upgrade to Adobe Reader version 5.0.10 or later. For updates refer to
 http://get.adobe.com/reader");

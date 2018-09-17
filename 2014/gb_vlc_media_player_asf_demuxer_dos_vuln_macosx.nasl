@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_asf_demuxer_dos_vuln_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_vlc_media_player_asf_demuxer_dos_vuln_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # VLC Media Player ASF Demuxer Denial of Service Vulnerability (Mac OS X)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804324");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1684");
   script_bugtraq_id(65399);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-06 01:02:27 +0530 (Thu, 06 Mar 2014)");
   script_name("VLC Media Player ASF Demuxer Denial of Service Vulnerability (Mac OS X)");
 
@@ -44,9 +44,7 @@ service vulnerability.");
   script_tag(name:"insight", value:"The flaw exists due to a divide-by-zero error when processing malicious
 '.asf' files.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a denial of service
-condition.
-
-Impact Level: Application");
+condition.");
   script_tag(name:"affected", value:"VLC media player version 2.1.2 and prior on Mac OS X.");
   script_tag(name:"solution", value:"Upgrade to VLC media player version 2.1.3 or later,
 For updates refer to http://www.videolan.org/vlc");

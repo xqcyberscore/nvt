@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clansphere_where_param_xss_vuln.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_clansphere_where_param_xss_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # ClanSphere 'where' Parameter Cross-Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805130");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2014-100010");
   script_bugtraq_id(66058);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 17:16:23 +0530 (Fri, 23 Jan 2015)");
   script_name("ClanSphere 'where' Parameter Cross-Site Scripting Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary HTML and script code in a users browser session
-  in the context of an affected site.
-
-  Impact Level: Application");
+  in the context of an affected site.");
 
   script_tag(name:"affected", value:"ClanSphere version 2011.4, Prior versions
   may also be affected.");

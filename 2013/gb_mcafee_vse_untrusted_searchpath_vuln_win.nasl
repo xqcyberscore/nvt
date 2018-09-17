@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_vse_untrusted_searchpath_vuln_win.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_mcafee_vse_untrusted_searchpath_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # McAfee VirusScan Enterprise Untrusted Search Path Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803322");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2009-5118");
   script_bugtraq_id(45080);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-21 19:41:20 +0530 (Thu, 21 Feb 2013)");
   script_name("McAfee VirusScan Enterprise Untrusted Search Path Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://cxsecurity.com/cveshow/CVE-2009-5118");
@@ -44,9 +44,7 @@ if(description)
   script_dependencies("gb_mcafee_virusscan_enterprise_detect_win.nasl");
   script_mandatory_keys("McAfee/VirusScan/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
-code via a crafted document embedded with ActiveX control.
-
-Impact Level: System/Application");
+code via a crafted document embedded with ActiveX control.");
   script_tag(name:"affected", value:"McAfee VirusScan Enterprise versions prior to 8.7i");
   script_tag(name:"insight", value:"Flaw is due to loading dynamic-link libraries (DLL) from an
 untrusted path.");

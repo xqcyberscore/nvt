@@ -27,17 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804047");
-  script_version("$Revision: 11102 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 11:51:23 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-30 12:10:12 +0530 (Mon, 30 Dec 2013)");
   script_name("WebPagetest 'file' parameter Local File Disclosure Vulnerability");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain potentially
-  sensitive information from local files which may lead to further attacks.
-
-  Impact Level: Application");
+  sensitive information from local files which may lead to further attacks.");
   script_tag(name:"affected", value:"WebPagetest version 2.7 and prior.");
   script_tag(name:"insight", value:"Flaw is due to an improper validation of user supplied input to the
   'file' parameter in 'gettext.php', 'gettcpdump.php', and 'getgzip.php'

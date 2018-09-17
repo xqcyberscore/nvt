@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_codoforum_mult_vuln.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_codoforum_mult_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Codoforum Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:codoforum:codoforum";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806015");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-19 14:54:43 +0530 (Wed, 19 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Codoforum Multiple Vulnerabilities");
@@ -50,9 +50,7 @@ if(description)
   attackers to execute arbitrary script code in a user's browser session within
   the trust relationship between their browser and the server and to inject or
   manipulate SQL queries in the back-end database, allowing for the manipulation
-  or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  or disclosure of arbitrary data.");
 
   script_tag(name:"affected", value:"Codoforum version 3.3.1.");
 

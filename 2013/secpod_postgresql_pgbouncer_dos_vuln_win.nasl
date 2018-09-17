@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_postgresql_pgbouncer_dos_vuln_win.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: secpod_postgresql_pgbouncer_dos_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PostgreSQL PgBouncer Denial of Service Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903102");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-4575");
   script_bugtraq_id(56371);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-25 11:24:17 +0530 (Fri, 25 Jan 2013)");
   script_name("PostgreSQL PgBouncer Denial of Service Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51128");
@@ -47,8 +47,7 @@ if(description)
   script_mandatory_keys("PostgreSQL/Win/Ver");
   script_require_ports(139, 445);
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause the application
-  to crash by creating a denial of service condition.
-  Impact Level: Application");
+  to crash by creating a denial of service condition.");
   script_tag(name:"affected", value:"PostgreSQL PgBouncer Pooler version 1.5.2 and prior on Windows");
   script_tag(name:"insight", value:"An error exists within the 'add_database' function in objects.c in the
   pgbouncer pooler when adding new databases with an an overly large name.");

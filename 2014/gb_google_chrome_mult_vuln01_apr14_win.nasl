@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_apr14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_apr14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - 01 Apr14 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804548");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1716", "CVE-2014-1717", "CVE-2014-1718", "CVE-2014-1719",
                 "CVE-2014-1720", "CVE-2014-1721", "CVE-2014-1722", "CVE-2014-1723",
                 "CVE-2014-1724", "CVE-2014-1725", "CVE-2014-1726", "CVE-2014-1727",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(66704);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-22 12:53:01 +0530 (Tue, 22 Apr 2014)");
   script_name("Google Chrome Multiple Vulnerabilities - 01 Apr14 (Windows)");
 
@@ -58,9 +58,7 @@ vulnerabilities.");
   - An unspecified error within 'V8'.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct cross-site
 scripting attacks, bypass certain security restrictions, and compromise
-a user's system.
-
-Impact Level: System/Application");
+a user's system.");
   script_tag(name:"affected", value:"Google Chrome version prior to 34.0.1847.116 on Windows.");
   script_tag(name:"solution", value:"Upgrade to Google Chrome 34.0.1847.116 or later,
 For updates refer to http://www.google.com/chrome");

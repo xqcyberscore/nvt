@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_wicket_detect.nasl 7396 2017-10-10 14:19:33Z asteins $
+# $Id: gb_apache_wicket_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # Apache Wicket Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807584");
-  script_version("$Revision: 7396 $");
+  script_version("$Revision: 11408 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-10 16:19:33 +0200 (Tue, 10 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-10 15:16:04 +0530 (Tue, 10 May 2016)");
   script_name("Apache Wicket Version Detection");
   script_tag(name:"summary", value:"Detection of installed version
@@ -44,9 +44,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -55,9 +56,7 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-if(!port = get_http_port(default:8080)){
-  exit(0);
-}
+port = get_http_port(default:8080);
 
 foreach dir(make_list_unique("/", "/wicket-examples", "/wicket/wicket-examples", "/apache-wicket", cgi_dirs(port:port)))
 {
@@ -74,8 +73,7 @@ foreach dir(make_list_unique("/", "/wicket-examples", "/wicket/wicket-examples",
     ver = eregmatch( pattern:'class="version"> Wicket Version:.*>([0-9.A-Z-]+)</span>', string:rcvRes );
     if( ver[1] ){
       version = ver[1];
-    }
-    else{
+    } else {
       version = "unknown";
     }
     version = ereg_replace(pattern:"-", string:version, replace: ".");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-072.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms14-072.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft .NET Framework Privilege Elevation Vulnerability (3005210)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804791");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4149");
   script_bugtraq_id(70979);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 11:23:27 +0530 (Wed, 12 Nov 2014)");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerability (3005210)");
 
@@ -46,9 +46,7 @@ if(description)
   handles TypeFilterLevel checks for some malformed objects.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to bypass certain security restrictions.
-
-  Impact Level: System/Application");
+  to bypass certain security restrictions.");
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 1.1, 2.0, 3.5,
   3.5.1, 4.0, 4.5, 4.5.1 and 4.5.2");

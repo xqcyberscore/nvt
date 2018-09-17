@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_sec_bypass_vuln_jul14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_postgresql_sec_bypass_vuln_jul14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # PostgreSQL Multiple Security Bypass Vulnerability July14 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804710");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0060", "CVE-2014-0061", "CVE-2014-0062", "CVE-2014-0063",
                 "CVE-2014-0064", "CVE-2014-0065", "CVE-2014-0066");
   script_bugtraq_id(65723, 65724, 65727, 65719, 65725, 65731, 65728);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-07 14:54:12 +0530 (Mon, 07 Jul 2014)");
   script_name("PostgreSQL Multiple Security Bypass Vulnerability July14 (Windows)");
 
@@ -54,9 +54,7 @@ vulnerabilities.");
   - Some boundary errors when handling wide datetime input/output.");
   script_tag(name:"impact", value:"Successful exploitation may allow an attacker to bypass certain security
 restrictions, cause a DoS (Denial of Service), and potentially compromise
-a vulnerable system.
-
-Impact Level: System/Application");
+a vulnerable system.");
   script_tag(name:"affected", value:"PostgreSQL version before 8.4.20, 9.0.x before 9.0.16, 9.1.x before 9.1.12,
 9.2.x before 9.2.7, and 9.3.x before 9.3.3");
   script_tag(name:"solution", value:"Upgrade to version 9.3.3, 9.2.7, 9.1.12, 9.0.16 or 8.4.20, or higher,

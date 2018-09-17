@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_designfolio_arbit_file_upload_vuln.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_wordpress_designfolio_arbit_file_upload_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Wordpress DesignFolio Plus Theme Arbitrary File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805156");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-18 14:31:11 +0530 (Wed, 18 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress DesignFolio Plus Theme Arbitrary File Upload Vulnerability");
@@ -46,9 +46,7 @@ if(description)
   restrict access to certain files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  unauthenticated remote attacker to upload files in an affected site.
-
-  Impact Level: Application");
+  unauthenticated remote attacker to upload files in an affected site.");
 
   script_tag(name:"affected", value:"Wordpress DesignFolio Plus Theme
   version 1.2, Prior version may also be affected.");

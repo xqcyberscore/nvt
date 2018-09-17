@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_activemq_multiple_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: secpod_apache_activemq_multiple_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Apache ActiveMQ Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903306");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-6092", "CVE-2012-6551", "CVE-2013-3060");
   script_bugtraq_id(59400, 59401, 59402);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-27 12:08:18 +0530 (Sat, 27 Apr 2013)");
   script_name("Apache ActiveMQ Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site
-  and obtain sensitive information or cause a denial of service.
-
-  Impact Level: Application");
+  and obtain sensitive information or cause a denial of service.");
   script_tag(name:"affected", value:"Apache ActiveMQ before 5.8.0");
   script_tag(name:"insight", value:"- Flaw is due to an improper sanitation of user supplied input to the
     webapp/websocket/chat.js and PortfolioPublishServlet.java scripts via

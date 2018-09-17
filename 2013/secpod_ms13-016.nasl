@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-016.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: secpod_ms13-016.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2778344)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902943");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1248", "CVE-2013-1249", "CVE-2013-1250", "CVE-2013-1264",
                 "CVE-2013-1251", "CVE-2013-1265", "CVE-2013-1252", "CVE-2013-1266",
                 "CVE-2013-1253", "CVE-2013-1267", "CVE-2013-1254", "CVE-2013-1255",
@@ -42,7 +42,7 @@ if(description)
                     57817, 57818, 57819);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-13 06:40:06 +0530 (Wed, 13 Feb 2013)");
   script_name("Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2778344)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2778344");
@@ -58,8 +58,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to a specially crafted
   program to exploit race conditions in 'win32k.sys' and gain System level
-  privileges.
-  Impact Level: System");
+  privileges.");
   script_tag(name:"affected", value:"Microsoft Windows XP x32 Edition Service Pack 3 and prior
   Microsoft Windows XP x64 Edition Service Pack 2 and prior
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior

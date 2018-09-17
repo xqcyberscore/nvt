@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jasig_cas_mult_xss_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_jasig_cas_mult_xss_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Jasig Cas Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:apereo:central_authentication_service";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806502");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-19 13:02:46 +0530 (Mon, 19 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Jasig Cas Server Multiple Cross Site Scripting Vulnerabilities");
@@ -53,9 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary script code in a user's browser session within
-  the trust relationship between their browser and the server.
-
-  Impact Level: Application");
+  the trust relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"Jasig CAS server version 4.0.1");
 

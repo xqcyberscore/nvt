@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_light_httpd_bof_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: secpod_light_httpd_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Light HTTPD Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903207");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-26 14:47:16 +0530 (Fri, 26 Apr 2013)");
   script_name("Light HTTPD Buffer Overflow Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated
   attackers to cause a buffer overflow, resulting in a denial of service or
-  potentially allowing the execution of arbitrary code.
-
-  Impact Level: System/Application");
+  potentially allowing the execution of arbitrary code.");
   script_tag(name:"affected", value:"Light HTTPD 0.1");
   script_tag(name:"insight", value:"The flaw exists due to improper handling of user-supplied input.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");

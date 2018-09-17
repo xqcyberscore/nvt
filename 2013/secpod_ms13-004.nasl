@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-004.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: secpod_ms13-004.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft .NET Framework Privilege Elevation Vulnerability (2769324)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902939");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0001", "CVE-2013-0002", "CVE-2013-0003", "CVE-2013-0004");
   script_bugtraq_id(57124, 57126, 57114, 57113);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-09 10:02:42 +0530 (Wed, 09 Jan 2013)");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerability (2769324)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51777/");
@@ -61,8 +61,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to execute arbitrary code
   with the privileges of the currently logged-in user. Failed attacks will
-  cause denial-of-service conditions.
-  Impact Level: System/Application");
+  cause denial-of-service conditions.");
   script_tag(name:"affected", value:"Microsoft .NET Framework 1.0 SP3, 1.1 SP1, 2.0 SP2, 3.0, 3.5, 3.5.1, 4 and 4.5");
   script_tag(name:"insight", value:"- An error within the System Drawing namespace of Windows Forms when handling
     pointers can be exploited to bypass CAS (Code Access Security) restrictions

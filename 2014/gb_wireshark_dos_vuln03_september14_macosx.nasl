@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln03_september14_macosx.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_wireshark_dos_vuln03_september14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Wireshark Denial of Service Vulnerability-03 Sep14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804916");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-6421", "CVE-2014-6422");
   script_bugtraq_id(69855, 69856);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-24 16:26:02 +0530 (Wed, 24 Sep 2014)");
 
   script_name("Wireshark Denial of Service Vulnerability-03 Sep14 (Mac OS X)");
@@ -56,9 +56,7 @@ if(description)
   - via a crafted packet to the RTP dissector.
 
   - via a crafted packet that leverages split memory ownership between
-  the SDP and RTP dissectors.
-
-  Impact Level: Application");
+  the SDP and RTP dissectors.");
 
   script_tag(name:"affected", value:"Wireshark version 1.10.x before 1.10.10 on Mac OS X");
 

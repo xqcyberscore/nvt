@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803310");
-  script_version("$Revision: 11045 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1618", "CVE-2013-1637", "CVE-2013-1638", "CVE-2013-1639");
   script_bugtraq_id(57773, 57633);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-19 21:29:09 +0200 (Sun, 19 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-11 14:20:02 +0530 (Mon, 11 Feb 2013)");
   script_name("Opera Multiple Vulnerabilities -01 Feb 13 (Linux)");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1043");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   code, perform distinguishing attacks and plaintext-recovery attacks or cause
-  a denial of service.
-
-  Impact Level: System/Application");
+  a denial of service.");
 
   script_tag(name:"affected", value:"Opera version prior to 12.13 on Linux");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cvstrac_detect.nasl 9565 2018-04-23 10:00:20Z ckuersteiner $
+# $Id: cvstrac_detect.nasl 11396 2018-09-14 16:36:30Z cfischer $
 #
 # CVSTrac Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100091");
-  script_version("$Revision: 9565 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-23 12:00:20 +0200 (Mon, 23 Apr 2018) $");
+  script_version("$Revision: 11396 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-14 18:36:30 +0200 (Fri, 14 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-03-30 14:26:52 +0200 (Mon, 30 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,13 +57,13 @@ include("host_details.inc");
 
 port = get_http_port( default:80 );
 
-foreach dir( make_list_unique( "/cgi-bin/run-cvstrac/", "/cvstrac", cgi_dirs( port:port ) ) ) {
+foreach dir( make_list_unique( "/cgi-bin/run-cvstrac", "/cvstrac", cgi_dirs( port:port ) ) ) {
 
   install = dir;
   if( dir == "/" ) dir = "";
   url = dir + "/index";
   buf = http_get_cache( item:url, port:port );
-  if( isnull( buf  ) ) continue;
+  if( ! buf ) continue;
 
   if( egrep( pattern:'<a href="about">CVSTrac.*version [0-9.]+', string:buf ) ) {
 

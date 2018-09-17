@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_activeperl_modules_mult_vuln_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_activeperl_modules_mult_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Active Perl Modules Multiple Vulnerabilities (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803343");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2011-5060", "CVE-2011-4114", "CVE-2011-3597", "CVE-2011-2939",
                 "CVE-2011-2728");
   script_bugtraq_id(49911);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-27 11:15:50 +0530 (Wed, 27 Mar 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,8 +49,7 @@ if(description)
   script_dependencies("gb_perl_detect_win.nasl");
   script_mandatory_keys("ActivePerl/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause an affected
-  application to crash or execute arbitrary perl code.
-  Impact Level: System/Application");
+  application to crash or execute arbitrary perl code.");
   script_tag(name:"affected", value:"Active Perl PAR module before 1.003
   Active Perl Digest module before 1.17
   Active Perl Encode module before 2.44

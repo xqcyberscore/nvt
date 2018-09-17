@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_fusion_mult_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_php_fusion_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PHP-Fusion Multiple Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:php-fusion:php-fusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803431");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1803", "CVE-2013-1804", "CVE-2013-1805", "CVE-2013-1806",
                 "CVE-2013-1807", "CVE-2013-7375");
   script_bugtraq_id(58226, 58265, 58270);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-07 13:36:54 +0530 (Thu, 07 Mar 2013)");
   script_name("PHP-Fusion Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -63,9 +63,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary web script
   or HTML in a user's browser session in the context of an affected site and
   manipulate SQL queries by injecting arbitrary SQL code or disclose or
-  manipulation of arbitrary data.
-
-  Impact Level: Application");
+  manipulation of arbitrary data.");
 
   script_tag(name:"affected", value:"PHP-Fusion Version 7.02.05 and prior versions may also be affected");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cuppa_cms_file_inclusion_vuln.nasl 11140 2018-08-28 08:27:23Z jschulte $
+# $Id: gb_cuppa_cms_file_inclusion_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Cuppa CMS Remote/Local File Inclusion Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803805");
-  script_version("$Revision: 11140 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 10:27:23 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-06 10:36:14 +0530 (Thu, 06 Jun 2013)");
   script_name("Cuppa CMS Remote/Local File Inclusion Vulnerability");
   script_xref(name:"URL", value:"http://1337day.com/exploit/20855");
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to read
   or include arbitrary files from the local system using directory traversal
-  sequences on the target system.
-
-  Impact Level: Application");
+  sequences on the target system.");
   script_tag(name:"affected", value:"Cuppa CMS beta version 0.1");
   script_tag(name:"insight", value:"Improper sanitation of user supplied input via 'urlConfig'
   parameter to 'alerts/alertConfigField.php' script.");

@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804182");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-4858");
   script_bugtraq_id(61334);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-02 15:02:10 +0530 (Thu, 02 Jan 2014)");
   script_name("Microsoft Windows Movie Maker Denial of Service Vulnerability");
 
@@ -42,9 +42,7 @@ denial of service vulnerability.");
   script_tag(name:"insight", value:"The flaw is due to some unspecified error triggered when a user opens a
 malformed 'WAV' file.");
   script_tag(name:"impact", value:"Successful exploitation will allow a local attacker to crash the affected
-application and cause denial of service.
-
-Impact Level: Application");
+application and cause denial of service.");
   script_tag(name:"affected", value:"Microsoft Windows Movie Maker version 2.1.4026.0 on Windows XP SP3");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

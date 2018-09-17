@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_dec15_win.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_adobe_flash_player_mult_vuln_dec15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Adobe Flash Player Multiple Vulnerabilities Dec15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806778");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-8045", "CVE-2015-8047", "CVE-2015-8048", "CVE-2015-8049",
                 "CVE-2015-8050", "CVE-2015-8418", "CVE-2015-8454", "CVE-2015-8455",
                 "CVE-2015-8055", "CVE-2015-8056", "CVE-2015-8057", "CVE-2015-8058",
@@ -56,7 +56,7 @@ if(description)
   script_bugtraq_id(78717, 78718, 78715, 78714, 78716, 78712, 78710, 78715, 78713);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 13:31:37 +0530 (Thu, 10 Dec 2015)");
   script_name("Adobe Flash Player Multiple Vulnerabilities Dec15 (Windows)");
 
@@ -85,9 +85,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to bypass security restrictions and execute arbitrary code on the affected
-  system.
-
-  Impact Level: System/Application.");
+  system.");
 
   script_tag(name:"affected", value:"Adobe Flash Player version before
   18.0.0.268 and 19.x and 20.x before 20.0.0.228 on Windows.");

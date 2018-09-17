@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_desktopcentral_file_upload_vuln.nasl 11065 2018-08-21 09:49:00Z mmartin $
+# $Id: gb_manageengine_desktopcentral_file_upload_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # ManageEngine Desktop Central Arbitrary File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803777");
-  script_version("$Revision: 11065 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 11:49:00 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-20 12:28:14 +0530 (Wed, 20 Nov 2013)");
   script_name("ManageEngine Desktop Central Arbitrary File Upload Vulnerability");
   script_category(ACT_ATTACK);
@@ -46,9 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://security-assessment.com/files/documents/advisory/DesktopCentral%20Arbitrary%20File%20Upload.pdf");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to gain arbitrary code
-  execution on the server.
-
-  Impact Level: System/Application");
+  execution on the server.");
   script_tag(name:"affected", value:"ManageEngine Desktop Central 8.0.0 (build 80293 and below)");
   script_tag(name:"insight", value:"The flaw in the AgentLogUploadServlet. This servlet takes input from HTTP
   POST and constructs an output file on the server without performing any

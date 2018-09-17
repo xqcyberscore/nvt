@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_laserjet_multiple_vuln.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_hp_laserjet_multiple_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # HP LaserJet Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805040");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-29 13:07:29 +0530 (Thu, 29 Jan 2015)");
   script_name("HP LaserJet Multiple Vulnerabilities");
 
@@ -53,9 +53,7 @@ if(description)
     waste paper and cartridge of the printer.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to obtain the sensitive information.
-
-  Impact Level: Application");
+  attackers to obtain the sensitive information.");
 
   script_tag(name:"affected", value:"HP network MFP and printers with
   firmware 20130415 and previous versions.");

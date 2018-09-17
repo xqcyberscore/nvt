@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_connect_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_adobe_connect_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # Adobe Connect Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805661");
-  script_version("$Revision: 11015 $");
+  script_version("$Revision: 11408 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-19 10:58:10 +0530 (Fri, 19 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe Connect Version Detection");
@@ -51,15 +51,12 @@ if(description)
   exit(0);
 }
 
-
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-if(!acPort = get_http_port(default:80)){
-  exit(0);
-}
+acPort = get_http_port(default:80);
 
 sndReq = http_get(item:string("/system/login"), port:acPort);
 rcvRes = http_keepalive_send_recv(port:acPort, data:sndReq);

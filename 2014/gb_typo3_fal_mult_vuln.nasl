@@ -28,21 +28,19 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804205");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-4320", "CVE-2013-4321");
   script_bugtraq_id(62255, 62257);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-06 12:50:36 +0530 (Mon, 06 Jan 2014)");
   script_name("TYPO3 File Abstraction Layer Multiple Vulnerabilities");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
-or read sensitive information.
-
-Impact Level: System/Application");
+or read sensitive information.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"An error exist in the File Abstraction Layer, which implements partial
 permissions for copying, deleting, and moving files and it does not properly

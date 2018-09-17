@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_visualware_mycon_srv_mul_xss.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_visualware_mycon_srv_mul_xss.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Visualware MyConnection Server Multiple XSS Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805348");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2043");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 15:09:11 +0530 (Fri, 06 Mar 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Visualware MyConnection Server Multiple XSS Vulnerabilities");
@@ -47,9 +47,7 @@ if(description)
   script is not validated before returning it to users.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to execute arbitrary HTML and script code in the context of an affected site.
-
-  Impact Level: Application");
+  to execute arbitrary HTML and script code in the context of an affected site.");
 
   script_tag(name:"affected", value:"Visualware MyConnection Server 8.2b");
 

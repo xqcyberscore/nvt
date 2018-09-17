@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_feb13_macosx.nasl 10639 2018-07-26 13:36:15Z cfischer $
+# $Id: gb_adobe_flash_player_mult_vuln01_feb13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities -01 Feb13 (Mac OS X)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803405");
-  script_version("$Revision: 10639 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 15:36:15 +0200 (Thu, 26 Jul 2018) $");
+  script_version("$Revision: 11401 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-12 13:17:51 +0530 (Tue, 12 Feb 2013)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -46,9 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb13-04.html");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause buffer
-  overflow, remote code execution, and corrupt system memory.
-
-  Impact Level: System/Application");
+  overflow, remote code execution, and corrupt system memory.");
 
   script_tag(name:"affected", value:"Adobe Flash Player prior to 10.3.183.51 and 11.x prior to 11.5.502.149
   on Mac OS X");

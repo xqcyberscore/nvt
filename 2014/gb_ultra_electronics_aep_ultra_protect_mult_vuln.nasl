@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ultra_electronics_aep_ultra_protect_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_ultra_electronics_aep_ultra_protect_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Ultra Electronics AEP Ultra Protect Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804491");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-14 17:03:16 +0530 (Tue, 14 Oct 2014)");
 
   script_name("Ultra Electronics AEP Ultra Protect Multiple Vulnerabilities");
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to inject or manipulate SQL queries in the back-end database, allowing for
-  the manipulation or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  the manipulation or disclosure of arbitrary data.");
 
   script_tag(name:"affected", value:"Ultra Electronics - Series A
   Version 7.2.0.19 and 7.4.0.7");

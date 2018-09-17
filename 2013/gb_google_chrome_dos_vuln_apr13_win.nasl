@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_dos_vuln_apr13_win.nasl 11069 2018-08-21 12:29:19Z mmartin $
+# $Id: gb_google_chrome_dos_vuln_apr13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Google Chrome Denial of Service Vulnerability - April 13 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803355");
-  script_version("$Revision: 11069 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2632");
   script_bugtraq_id(58697);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 14:29:19 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-02 11:02:05 +0530 (Tue, 02 Apr 2013)");
   script_name("Google Chrome Denial of Service Vulnerability - April 13 (Windows)");
   script_xref(name:"URL", value:"http://cxsecurity.com/cveshow/CVE-2013-2632");
@@ -42,8 +42,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
-  script_tag(name:"impact", value:"Successful exploitation could allow attackers to cause denial-of-service.
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to cause denial-of-service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 27.0.1444.3 on Windows");
   script_tag(name:"insight", value:"User-supplied input is not properly sanitized when parsing JavaScript in
   'Google V8' JavaScript Engine.");

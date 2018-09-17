@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sharepoint_server_ms14-001.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: secpod_sharepoint_server_ms14-001.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft SharePoint Server Remote Code Execution Vulnerability (2916605)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903427");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0258", "CVE-2014-0259", "CVE-2014-0260");
   script_bugtraq_id(64726, 64727, 64728);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-15 11:05:47 +0530 (Wed, 15 Jan 2014)");
   script_name("Microsoft SharePoint Server Remote Code Execution Vulnerability (2916605)");
 
@@ -51,9 +51,7 @@ office file.");
 
 Microsoft SharePoint Server 2013 (coreserverloc)");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
-code, cause memory corruption and compromise the system.
-
-Impact Level: System/Application ");
+code, cause memory corruption and compromise the system.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 

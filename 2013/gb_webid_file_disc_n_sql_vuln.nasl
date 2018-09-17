@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_file_disc_n_sql_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_webid_file_disc_n_sql_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WeBid Local File Disclosure and SQL Injection Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:webidsupport:webid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803399");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-09 17:11:32 +0530 (Thu, 09 May 2013)");
   script_name("WeBid Local File Disclosure and SQL Injection Vulnerabilities");
   script_xref(name:"URL", value:"http://1337day.com/exploit/20730");
@@ -47,9 +47,7 @@ if(description)
   script_mandatory_keys("webid/installed");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform file
 disclosure attacks and read arbitrary files on the affected application or
-perform SQL injection and compromise the application.
-
-Impact Level: Application");
+perform SQL injection and compromise the application.");
   script_tag(name:"affected", value:"WeBid version 1.0.6 and prior");
   script_tag(name:"insight", value:"The flaws are due to improper input validation:
 

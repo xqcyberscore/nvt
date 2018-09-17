@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zyxel_router_multiple_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_zyxel_router_multiple_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ZyXEL ADSL Router Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804471");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-25 12:28:41 +0530 (Wed, 25 Jun 2014)");
   script_name("ZyXEL ADSL Router Multiple Vulnerabilities");
 
@@ -44,9 +44,7 @@ if(description)
   - ZyXEL contains a flaw that is due to a lack of protection mechanisms in
     the login form.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to trivially gain privileged
-  access to the device, execute arbitrary commands and gain access to arbitrary files.
-
-  Impact Level: System/Application");
+  access to the device, execute arbitrary commands and gain access to arbitrary files.");
   script_tag(name:"affected", value:"ZyXEL P660RT2 EE");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

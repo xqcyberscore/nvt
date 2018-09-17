@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_mult_vuln_feb14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_pidgin_mult_vuln_feb14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Pidgin Multiple Vulnerabilities Feb 2014 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:pidgin:pidgin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804314");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2012-6152", "CVE-2013-6477", "CVE-2013-6478", "CVE-2013-6479",
                 "CVE-2013-6481", "CVE-2013-6482", "CVE-2013-6483", "CVE-2013-6484",
                 "CVE-2013-6485", "CVE-2013-6486", "CVE-2013-6487", "CVE-2013-6489",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(65492, 65243, 65189, 65188, 65192, 65195);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-14 16:39:04 +0530 (Fri, 14 Feb 2014)");
   script_name("Pidgin Multiple Vulnerabilities Feb 2014 (Windows)");
 
@@ -75,9 +75,7 @@ if(description)
 
   - Multiple integer signedness errors in libpurple.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
-service or execute arbitrary programs or spoof iq traffic.
-
-Impact Level: System/Application");
+service or execute arbitrary programs or spoof iq traffic.");
   script_tag(name:"affected", value:"Pidgin version before 2.10.8.");
   script_tag(name:"solution", value:"Upgrade to Pidgin version 2.10.8 or later,
 For updates refer to http://www.pidgin.im/");

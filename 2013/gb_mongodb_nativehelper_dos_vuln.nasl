@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_nativehelper_dos_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_mongodb_nativehelper_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MongoDB nativeHelper Denial of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mongodb:mongodb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803951");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1892");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-07 15:50:02 +0530 (Mon, 07 Oct 2013)");
   script_name("MongoDB nativeHelper Denial of Service Vulnerability");
 
@@ -48,9 +48,7 @@ if (description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   authenticated users to cause a denial of service condition or execute arbitrary
-  code via a crafted memory address in the first argument.
-
-  Impact Level: System/Application");
+  code via a crafted memory address in the first argument.");
 
   script_tag(name:"affected", value:"MongoDB version before 2.0.9 and 2.2.x before 2.2.4 on Windows");
 

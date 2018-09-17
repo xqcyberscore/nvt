@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-045.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_ms15-045.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Windows Journal Remote Code Execution Vulnerability (3046002)
 #
@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802091");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-1675", "CVE-2015-1695", "CVE-2015-1696",
                 "CVE-2015-1697", "CVE-2015-1698", "CVE-2015-1699");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-13 13:29:45 +0530 (Wed, 13 May 2015)");
   script_name("Microsoft Windows Journal Remote Code Execution Vulnerability (3046002)");
 
@@ -45,9 +45,7 @@ if(description)
   within Windows Journal when handling Journal (JNT) files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code and compromise a user's system.
-
-  Impact Level: System");
+  attackers to execute arbitrary code and compromise a user's system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8/8.1 x32/x64
   Microsoft Windows Server 2012/R2

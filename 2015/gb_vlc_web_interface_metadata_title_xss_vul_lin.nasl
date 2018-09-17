@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_web_interface_metadata_title_xss_vul_lin.nasl 11220 2018-09-04 11:57:09Z mmartin $
+# $Id: gb_vlc_web_interface_metadata_title_xss_vul_lin.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # VLC Media Player Web Interface Cross Site Scripting Vulnerability Dec15 (Linux)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806753");
-  script_version("$Revision: 11220 $");
+  script_version("$Revision: 11422 $");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-01 10:52:46 +0530 (Tue, 01 Dec 2015)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("VLC Media Player Web Interface Cross Site Scripting Vulnerability Dec15 (Linux)");
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary script code in a user's browser session within
-  the trust relationship between their browser and the serve.
-
-  Impact Level: Application");
+  the trust relationship between their browser and the serve.");
 
   script_tag(name:"affected", value:"VideoLAN VLC media player 2.2.1 on Linux.");
 

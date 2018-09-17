@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln02_jul14.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_java_mult_unspecified_vuln02_jul14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Jul 2014 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804688");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4264", "CVE-2014-4266", "CVE-2014-4221", "CVE-2014-4220",
                 "CVE-2014-4208", "CVE-2014-2490");
   script_bugtraq_id(68612, 68596, 68571, 68576, 68580, 68645);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-25 09:35:38 +0530 (Fri, 25 Jul 2014)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Jul 2014 (Windows)");
 
@@ -63,9 +63,7 @@ share/classes/java/lang/invoke/MethodHandles.java
 constructor and destructor in share/vm/utilities/events.cpp");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to update, insert, or
 delete certain data, execute arbitrary code, conduct denial-of-service and
-disclose sensitive information.
-
-Impact Level: System/Application.");
+disclose sensitive information.");
   script_tag(name:"affected", value:"Oracle Java SE 7 update 60 and prior, and 8 update 5 and prior on Windows");
   script_tag(name:"solution", value:"Apply the patch from below link,
 http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");

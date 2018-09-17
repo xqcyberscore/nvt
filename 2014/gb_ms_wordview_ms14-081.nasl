@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_wordview_ms14-081.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_ms_wordview_ms14-081.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Office Word Viewer Remote Code Execution Vulnerabilities (3017301)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805026");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-6356", "CVE-2014-6357");
   script_bugtraq_id(71469, 71470);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-10 12:31:36 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft Office Word Viewer Remote Code Execution Vulnerabilities (3017301)");
 
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute the arbitrary code, cause memory corruption and
-  compromise the system.
-
-  Impact Level: System/Application");
+  compromise the system.");
 
   script_tag(name:"affected", value:"Microsoft Office Word Viewer 2007 SP3 and prior.");
 

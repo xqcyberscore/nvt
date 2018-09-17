@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_servicedesk_mult_vuln_feb15.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_manage_engine_servicedesk_mult_vuln_feb15.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # ZOHO ManageEngine ServiceDesk Plus (SDP) Multiple Vulnerabilities - Feb15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:manageengine:servicedesk_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805138");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-1479", "CVE-2015-1480");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-12 17:19:03 +0530 (Thu, 12 Feb 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ZOHO ManageEngine ServiceDesk Plus (SDP) Multiple Vulnerabilities - Feb15");
@@ -52,9 +52,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   authenticated attackers to gain access to ticket information and inject or
   manipulate SQL queries in the back-end database, allowing for the
-  manipulation or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  manipulation or disclosure of arbitrary data.");
 
   script_tag(name:"affected", value:"ZOHO ManageEngine ServiceDesk Plus (SDP)
   version before 9.0 build 9031");

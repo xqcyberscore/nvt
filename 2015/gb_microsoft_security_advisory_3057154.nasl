@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3057154.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_microsoft_security_advisory_3057154.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Microsoft DES Encryption Security Advisory (3057154)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805678");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11423 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-22 12:14:41 +0530 (Wed, 22 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft DES Encryption Security Advisory (3057154)");
@@ -46,15 +46,18 @@ if(description)
   application compatibility reasons.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  attackers to break certain authentication scenarios.
-
-  Impact Level: System");
+  attackers to break certain authentication scenarios.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
+
   Microsoft Windows Server 2012
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -73,9 +76,9 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

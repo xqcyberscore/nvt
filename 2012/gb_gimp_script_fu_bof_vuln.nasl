@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gimp_script_fu_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_gimp_script_fu_bof_vuln.nasl 11400 2018-09-15 08:18:45Z cfischer $
 #
 # GIMP Script-Fu Server Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802878");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11400 $");
   script_cve_id("CVE-2012-2763");
   script_bugtraq_id(53741);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:18:45 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-27 13:12:09 +0530 (Wed, 27 Jun 2012)");
   script_name("GIMP Script-Fu Server Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -64,14 +64,11 @@ if(description)
   exit(0);
 }
 
-
-## Default Realwin Port
 port = 10008;
 if(!get_port_state(port)){
   exit(0);
 }
 
-## Open TCP Socket
 soc = open_sock_tcp(port);
 if(!soc){
   exit(0);
@@ -84,7 +81,7 @@ send(socket:soc, data: testmsg);
 res = recv_line(socket:soc, length:100);
 res = hexstr(res);
 
-## and second byte 0x00 for error (0 on success, 1 on error)
+# nb: first byte 0x47 (Magic byte 'G') and second byte 0x00 for error (0 on success, 1 on error)
 if(!res || !(res =~ "^470100"))
 {
  close(soc);

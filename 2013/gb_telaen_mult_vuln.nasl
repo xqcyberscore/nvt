@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telaen_mult_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_telaen_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Telaen Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803646");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2621", "CVE-2013-2623", "CVE-2013-2624");
   script_bugtraq_id(60290, 60288, 60340);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-10 16:45:05 +0530 (Mon, 10 Jun 2013)");
   script_name("Telaen Multiple Vulnerabilities");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform open redirection,
   obtain sensitive information and execute arbitrary code in a user's browser
-  session in context of an affected site.
-
-  Impact Level: Application");
+  session in context of an affected site.");
 
   script_tag(name:"affected", value:"Telaen version 1.3.0 and prior");
 

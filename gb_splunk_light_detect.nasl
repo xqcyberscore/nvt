@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_light_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_splunk_light_detect.nasl 11396 2018-09-14 16:36:30Z cfischer $
 #
 # Splunk Light Remote Detection
 #
@@ -27,12 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809012");
-  script_version("$Revision: 11015 $");
+  script_version("$Revision: 11396 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-14 18:36:30 +0200 (Fri, 14 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-26 17:00:30 +0530 (Fri, 26 Aug 2016)");
   script_name("Splunk Light Remote Detection");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 8000);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"summary", value:"Detects the installed version of
   Splunk Light.
 
@@ -40,66 +47,49 @@ if(description)
   response, and sets the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_category(ACT_GATHER_INFO);
-  script_family("Product detection");
-  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 8000);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-spPort = "";
-url = "";
-req = "";
-buf = "";
-version = "";
+port = get_http_port(default:8000);
 
-if(!spPort = get_http_port(default:8000)){
-  exit(0);
-}
+foreach dir (make_list_unique("/", "/splunk/en-US", "/en-US", cgi_dirs(port:port))) {
 
-foreach dir (make_list_unique("/", "/splunk/en-US/", "/en-US", cgi_dirs(port:spPort)))
-{
   install = dir;
   if( dir == "/" ) dir = "";
 
-  req = http_get(item:string(dir, "/account/login"), port:spPort);
-  buf = http_keepalive_send_recv(port:spPort, data:req, bodyonly:FALSE);
+  buf = http_get_cache(item:dir + "/account/login", port:port);
 
   if(egrep(pattern:'content="Splunk Inc."', string: buf, icase: TRUE) &&
-     ('Splunk Light' >< buf || 'product_type":"lite' >< buf))
-  {
+     ('Splunk Light' >< buf || 'product_type":"lite' >< buf)) {
 
     vers = string("unknown");
 
     version = eregmatch(string:buf, pattern:'version":"([0-9.]+)', icase:TRUE);
 
     if(!isnull(version[1])){
-      vers=chomp(version[1]);
-    }
-    else {
+      vers = chomp(version[1]);
+    } else {
       version = eregmatch(string:buf, pattern:'versionNumber": "([0-9.]+)', icase:TRUE);
       if(!isnull(version[1]))
-        vers=chomp(version[1]);
+        vers = chomp(version[1]);
     }
 
-    b= eregmatch(string:buf, pattern:'build":"([0-9a-z.]+)', icase:TRUE);
+    b = eregmatch(string:buf, pattern:'build":"([0-9a-z.]+)', icase:TRUE);
 
     if(!isnull(b[1])){
       build = b[1];
     }
 
-    set_kb_item(name: string("www/", spPort, "/splunklight"), value: string(vers));
+    set_kb_item(name: string("www/", port, "/splunklight"), value: string(vers));
 
     if(!isnull(build)){
-      set_kb_item(name: string("www/", spPort, "/splunklight/build"), value: string(build));
+      set_kb_item(name: string("www/", port, "/splunklight/build"), value: string(build));
     }
 
     set_kb_item(name:"SplunkLight/installed", value:TRUE);
@@ -109,13 +99,13 @@ foreach dir (make_list_unique("/", "/splunk/en-US/", "/en-US", cgi_dirs(port:spP
       cpe = "cpe:/a:splunk:light";
     }
 
-    register_product(cpe:cpe, location:install, port:spPort);
+    register_product(cpe:cpe, location:install, port:port);
 
     log_message(data: build_detection_report(app: "Splunk Light",
                                              version: vers,
                                              install: install,
                                              cpe: cpe,
-                                             concluded: string(vers)), port: spPort);
+                                             concluded: string(vers)), port: port);
     exit(0);
   }
 }

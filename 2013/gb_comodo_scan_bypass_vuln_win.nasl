@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_scan_bypass_vuln_win.nasl 11065 2018-08-21 09:49:00Z mmartin $
+# $Id: gb_comodo_scan_bypass_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Comodo Internet Security Scan Bypass Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803694");
-  script_version("$Revision: 11065 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2009-5125");
   script_bugtraq_id(34737);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 11:49:00 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-05 17:08:06 +0530 (Fri, 05 Jul 2013)");
   script_name("Comodo Internet Security Scan Bypass Vulnerability");
   script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/428996.php");
@@ -43,8 +43,7 @@ if(description)
   script_dependencies("gb_comodo_internet_security_detect_win.nasl");
   script_mandatory_keys("Comodo/InternetSecurity/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allow attackers to bypass malware detection via
-  manipulation of the archive file format.
-  Impact Level: System/Application");
+  manipulation of the archive file format.");
   script_tag(name:"affected", value:"Comodo Internet Security versions before 3.9.95478.509");
   script_tag(name:"insight", value:"Flaw exist in the parsing engine and can be bypassed by a specially crafted
   and formatted RAR archive.");

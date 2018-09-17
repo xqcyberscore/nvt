@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_session_fixation_vuln.nasl 10953 2018-08-14 12:06:42Z mmartin $
+# $Id: gb_owncloud_session_fixation_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ownCloud Session Fixation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804286");
-  script_version("$Revision: 10953 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2047");
   script_bugtraq_id(66227);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 18:00:55 +0530 (Tue, 06 May 2014)");
   script_name("ownCloud Session Fixation Vulnerability");
 
@@ -45,9 +45,7 @@ vulnerability.");
   script_tag(name:"insight", value:"The flaw exists due to the application which while establishing a new session,
 does not invalidate an existing session identifier and assign a new one.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to steal the authenticated
-sessions and gain unauthorized access.
-
-Impact Level: Application");
+sessions and gain unauthorized access.");
   script_tag(name:"affected", value:"ownCloud Server 6.x before version 6.0.2");
   script_tag(name:"solution", value:"Upgrade to ownCloud version 6.0.2 or later,
 For updates refer to http://owncloud.org");

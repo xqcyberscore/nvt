@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-004.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-004.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Microsoft Windows Components Privilege Elevation Vulnerability (3025421)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805037");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-0016");
   script_bugtraq_id(71965);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-14 10:22:41 +0530 (Wed, 14 Jan 2015)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows Components Privilege Elevation Vulnerability (3025421)");
@@ -49,9 +49,7 @@ if(description)
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain restricted privileges.
-
-  Impact Level: System");
+  attackers to gain restricted privileges.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows Server 2012/R2

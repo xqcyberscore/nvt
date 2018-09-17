@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_code_exec_vuln_nov12_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_mozilla_firefox_esr_code_exec_vuln_nov12_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Mozilla Firefox ESR Code Execution Vulnerabilities - November12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803347");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-4206", "CVE-2012-4210");
   script_bugtraq_id(56625, 56646);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-01 16:45:30 +0530 (Mon, 01 Apr 2013)");
   script_name("Mozilla Firefox ESR Code Execution Vulnerabilities - November12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51358");
@@ -48,8 +48,7 @@ if(description)
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to gain privileges or execute
-  arbitrary code in the context of the browser.
-  Impact Level: System/Application");
+  arbitrary code in the context of the browser.");
   script_tag(name:"affected", value:"Mozilla Firefox ESR version 10.x before 10.0.11 on Windows");
   script_tag(name:"insight", value:"- Improper loading of DLL file in the default downloads directory by Firefox
     installer.

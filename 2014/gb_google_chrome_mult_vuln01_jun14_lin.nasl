@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jun14_lin.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_jun14_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - 01 June14 (Linux)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804618");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1743", "CVE-2014-1744", "CVE-2014-1745", "CVE-2014-1746",
                 "CVE-2014-1747", "CVE-2014-1748", "CVE-2014-1749", "CVE-2014-3152",
                 "CVE-2014-3803");
   script_bugtraq_id(67790, 67517, 67582);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-04 10:20:11 +0530 (Wed, 04 Jun 2014)");
   script_name("Google Chrome Multiple Vulnerabilities - 01 June14 (Linux)");
 
@@ -70,9 +70,7 @@ arm/lithium-codegen-arm.cc within v8.
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct a denial of
 service, inject arbitrary web script or HTML, spoof the UI, enable microphone
 access and obtain speech-recognition text and possibly have other unspecified
-impact.
-
-Impact Level: System/Application");
+impact.");
   script_tag(name:"affected", value:"Google Chrome version prior to 35.0.1916.114 on Linux.");
   script_tag(name:"solution", value:"Upgrade to Google Chrome 35.0.1916.114 or later,
 For updates refer to http://www.google.com/chrome");

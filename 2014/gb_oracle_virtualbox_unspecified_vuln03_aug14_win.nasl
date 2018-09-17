@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_unspecified_vuln03_aug14_win.nasl 11203 2018-09-03 14:49:51Z cfischer $
+# $Id: gb_oracle_virtualbox_unspecified_vuln03_aug14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle VM VirtualBox Unspecified Vulnerability-03 Aug2014 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804696");
-  script_version("$Revision: 11203 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4228");
   script_bugtraq_id(68601);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:49:51 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-04 10:51:06 +0530 (Mon, 04 Aug 2014)");
   script_name("Oracle VM VirtualBox Unspecified Vulnerability-03 Aug2014 (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -56,9 +56,7 @@ if(description)
   for Windows guests.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow local users to affect confidentiality,
-  integrity, and availability via unknown vectors.
-
-  Impact Level: Application");
+  integrity, and availability via unknown vectors.");
   script_tag(name:"affected", value:"Oracle VM VirtualBox before versions 4.1.34, 4.2.26, and 4.3.12");
 
   script_tag(name:"solution", value:"Apply the patch from below link,

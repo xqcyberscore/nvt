@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_crypt_n_digital_cert_handling_update.nasl 10984 2018-08-15 12:54:14Z mmartin $
+# $Id: secpod_crypt_n_digital_cert_handling_update.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Update to Improve Cryptography and Digital Certificate Handling (2854544)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903310");
-  script_version("$Revision: 10984 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-12 12:56:11 +0530 (Wed, 12 Jun 2013)");
   script_name("Microsoft Update to Improve Cryptography and Digital Certificate Handling (2854544)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2813430");
@@ -46,8 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to perform
   man-in-the-middle attack during a Windows Update session that basically
-  redirects the user's machine to a phony update with the malware.
-  Impact Level: System");
+  redirects the user's machine to a phony update with the malware.");
   script_tag(name:"affected", value:"Microsoft Windows 8
   Microsoft Windows Server 2012
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior

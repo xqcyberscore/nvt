@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_operations_orchestration_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
+# $Id: gb_hpe_operations_orchestration_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # HPE Operations Orchestration Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813101");
-  script_version("$Revision: 10891 $");
+  script_version("$Revision: 11408 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-03-26 17:54:51 +0530 (Mon, 26 Mar 2018)");
   script_name("HPE Operations Orchestration Remote Detection");
 
@@ -45,8 +45,9 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_require_ports("Services/www", 8080, 8443);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -55,9 +56,7 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-if(!hpePort = get_http_port(default:8080)){
-  exit(0);
-}
+hpePort = get_http_port(default:8080);
 
 res = http_get_cache(port:hpePort, item:"/oo/");
 if((">HPE Operations Orchestration<" >< res && "Server: OO" >< res)||

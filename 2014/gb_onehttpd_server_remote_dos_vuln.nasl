@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_onehttpd_server_remote_dos_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_onehttpd_server_remote_dos_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # OneHTTPD HTTP Server Remote Denial of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803798");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-10 14:48:46 +0530 (Mon, 10 Feb 2014)");
   script_name("OneHTTPD HTTP Server Remote Denial of Service Vulnerability");
 
@@ -41,9 +41,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error when processing certain long requests and can
   be exploited to cause a denial of service via a specially crafted packet.");
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause the application
-  to crash, creating a denial-of-service condition.
-
-  Impact Level: Application");
+  to crash, creating a denial-of-service condition.");
   script_tag(name:"affected", value:"OneHTTPD versions 0.7 and 0.8");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_itsm_mul_input_val_vuln.nasl 11024 2018-08-17 08:18:16Z mmartin $
+# $Id: gb_otrs_itsm_mul_input_val_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # OTRS ITSM Multiple Input Validation Vulnerability
 #
@@ -29,20 +29,18 @@ ITSMCPE = "cpe:/a:otrs:otrs_itsm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803944");
-  script_version("$Revision: 11024 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4717", "CVE-2013-4718");
   script_bugtraq_id(61036, 61037);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:18:16 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-27 16:44:31 +0530 (Fri, 27 Sep 2013)");
   script_name("OTRS ITSM Multiple Input Validation Vulnerability");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain access steal the
-victim's cookie-based authentication credentials or execute SQL query.
-
-Impact Level: Application");
+victim's cookie-based authentication credentials or execute SQL query.");
   script_tag(name:"vuldetect", value:"Get the installed version and location of OTRS with the help of detect NVT
 and check the OTRS and OTRS:ITSM version is vulnerable or not.");
   script_tag(name:"insight", value:"An error exists in AgentITSMConfigItemSearch which does not sanitize

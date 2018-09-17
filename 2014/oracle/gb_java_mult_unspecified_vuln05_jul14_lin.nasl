@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln05_jul14_lin.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_java_mult_unspecified_vuln05_jul14_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-05 Jul 2014 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108419");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4223", "CVE-2014-2483");
   script_bugtraq_id(68608, 68590);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-25 11:19:38 +0530 (Fri, 25 Jul 2014)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-05 Jul 2014 (Linux)");
 
@@ -50,9 +50,7 @@ and check it is vulnerable or not.");
   - Another unspecified error related to the Libraries subcomponent in
 share/vm/classfile/classFileParser.hpp");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-code.
-
-Impact Level: System/Application.");
+code.");
   script_tag(name:"affected", value:"Oracle Java SE 7 update 60 and prior on Linux");
   script_tag(name:"solution", value:"Apply the patch from below link,
 http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");

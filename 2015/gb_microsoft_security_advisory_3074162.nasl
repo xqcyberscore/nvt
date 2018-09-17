@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3074162.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_microsoft_security_advisory_3074162.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # MS Malicious Software Removal Tool Privilege Escalation Security Advisory (3057154)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805937");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2418");
   script_bugtraq_id(75962);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 17:52:04 +0530 (Thu, 23 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Malicious Software Removal Tool Privilege Escalation Security Advisory (3057154)");
@@ -48,9 +48,7 @@ if(description)
   a DLL-planting scenario.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to gain elevated privileges on the affected machine.
-
-  Impact Level: System");
+  to gain elevated privileges on the affected machine.");
 
   script_tag(name:"affected", value:"Microsoft Malicious Software Removal Tool
   versions prior to 5.26.11603.0");

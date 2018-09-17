@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_1842-01_kernel.nasl 6850 2017-08-04 07:23:54Z santu $
+# $Id: gb_RHSA-2017_1842-01_kernel.nasl 11388 2018-09-14 13:45:12Z cfischer $
 #
 # RedHat Update for kernel RHSA-2017:1842-01
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871855");
-  script_version("$Revision: 6850 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:23:54 +0200 (Fri, 04 Aug 2017) $");
+  script_version("$Revision: 11388 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-14 15:45:12 +0200 (Fri, 14 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 12:47:14 +0530 (Fri, 04 Aug 2017)");
   script_cve_id("CVE-2014-7970", "CVE-2014-7975", "CVE-2015-8839", "CVE-2015-8970", 
                 "CVE-2016-10088", "CVE-2016-10147", "CVE-2016-10200", "CVE-2016-6213", 
@@ -38,8 +38,8 @@ if(description)
                 "CVE-2017-6001", "CVE-2017-6951", "CVE-2017-7187", "CVE-2017-7616",
                 "CVE-2017-7889", "CVE-2017-8797", "CVE-2017-8890", "CVE-2017-9074", 
                 "CVE-2017-9075", "CVE-2017-9076", "CVE-2017-9077", "CVE-2017-9242"); 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2017:1842-01");
   script_tag(name: "summary", value: "Check the version of kernel");

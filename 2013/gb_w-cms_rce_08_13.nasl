@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_w-cms_rce_08_13.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_w-cms_rce_08_13.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # w-CMS 2.0.1 Remote Code Execution
 #
@@ -28,13 +28,13 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103762");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
   script_name("w-CMS 2.0.1 Remote Code Execution");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/122833/w-CMS-2.0.1-Remote-Code-Execution.html");
   script_xref(name:"URL", value:"http://w-cms.info/");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-16 11:12:08 +0200 (Fri, 16 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -46,8 +46,7 @@ if (description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue may allow an attacker to
 execute arbitrary code in the context of the user running the affected
-application.
-Impact Level: Application");
+application.");
   script_tag(name:"vuldetect", value:"Send a HTTP POST request which execute the phpinfo() command
 and check the response if it was successful.");
   script_tag(name:"insight", value:"Input passed to userFunctions.php is not properly sanitized.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nameko_webmail_xss_vuln.nasl 11223 2018-09-04 12:48:48Z cfischer $
+# $Id: gb_nameko_webmail_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Nameko Webmail Cross-Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803826");
-  script_version("$Revision: 11223 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:48:48 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-08 14:53:58 +0530 (Mon, 08 Jul 2013)");
   script_name("Nameko Webmail Cross-Site Scripting Vulnerability");
 
@@ -44,8 +44,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code in a user's browser session in the context of an affected site.
-  Impact Level: Application");
+  script code in a user's browser session in the context of an affected site.");
   script_tag(name:"affected", value:"Nameko Webmail version 0.10.146 and prior");
   script_tag(name:"insight", value:"Input passed via the 'fontsize' parameter to 'nameko.php' php script is not
   properly sanitised before being returned to the user.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_credential_cmd_exec_vuln.nasl 11186 2018-09-03 09:12:42Z mmartin $
+# $Id: gb_bash_shellshock_credential_cmd_exec_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # GNU Bash Environment Variable Handling Shell RCE Vulnerability (LSC)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804490");
-  script_version("$Revision: 11186 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-6271");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-26 13:50:37 +0530 (Fri, 26 Sep 2014)");
 
   script_name("GNU Bash Environment Variable Handling Shell RCE Vulnerability (LSC)");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   or local attackers to inject  shell commands, allowing local privilege
-  escalation or remote command execution depending on the application vector.
-
-  Impact Level: Application");
+  escalation or remote command execution depending on the application vector.");
 
   script_tag(name:"affected", value:"GNU Bash through 4.3");
 

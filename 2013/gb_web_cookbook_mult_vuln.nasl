@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_web_cookbook_mult_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_web_cookbook_mult_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Web Cookbook Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803437");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11423 $");
   script_bugtraq_id(58441);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-14 13:10:16 +0530 (Thu, 14 Mar 2013)");
   script_name("Web Cookbook Multiple Vulnerabilities");
 
@@ -49,9 +49,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
   HTML or web script in a user's browser session in context of an affected site,
   compromise the application and inject or manipulate SQL queries in the
-  back-end database,
-
-  Impact Level: Application");
+  back-end database.");
   script_tag(name:"affected", value:"Web Cookbook versions 0.9.9 and prior");
   script_tag(name:"insight", value:"Input passed via 'sstring', 'mode', 'title', 'prefix', 'postfix',
   'preparation', 'tipp', 'ingredient' parameters to searchrecipe.php,
@@ -63,9 +61,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");

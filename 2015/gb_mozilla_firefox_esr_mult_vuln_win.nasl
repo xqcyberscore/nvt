@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln_win.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_mozilla_firefox_esr_mult_vuln_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806101");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-4497", "CVE-2015-4498");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-31 16:24:54 +0530 (Mon, 31 Aug 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities (Windows)");
 
@@ -55,9 +55,7 @@ if(description)
   attackers to execute arbitrary code by leveraging improper interaction between
   resize events and changes to Cascading Style Sheets (CSS) token sequences for
   a CANVAS element and to bypass an intended user-confirmation requirement by
-  constructing a crafted data.
-
-  Impact Level: System/Application");
+  constructing a crafted data.");
 
   script_tag(name:"affected", value:"Mozilla Firefox ESR 38.x before 38.2.1 on
   Windows");

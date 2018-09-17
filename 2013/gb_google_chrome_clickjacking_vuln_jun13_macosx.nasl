@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_clickjacking_vuln_jun13_macosx.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_google_chrome_clickjacking_vuln_jun13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Google Chrome Clickjacking Vulnerability June13 (MAC OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803676");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2866");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 12:10:48 +0530 (Mon, 24 Jun 2013)");
   script_name("Google Chrome Clickjacking Vulnerability June13 (MAC OS X)");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1028694");
@@ -42,8 +42,7 @@ if(description)
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("GoogleChrome/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to obtain sensitive information
-  and conduct clickjacking attacks against the user's Flash configuration.
-  Impact Level: Application");
+  and conduct clickjacking attacks against the user's Flash configuration.");
   script_tag(name:"affected", value:"Google Chrome version prior to 27.0.1453.116 on MAC OS X");
   script_tag(name:"insight", value:"Flaw within Flash plug-in which does not properly determine whether a user
   wishes to permit camera or microphone access by a Flash application.");

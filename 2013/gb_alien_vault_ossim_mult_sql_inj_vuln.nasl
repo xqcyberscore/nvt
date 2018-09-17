@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alien_vault_ossim_mult_sql_inj_vuln.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: gb_alien_vault_ossim_mult_sql_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # AlienVault OSSIM 'date_from' Parameter Multiple SQL Injection Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:alienvault:open_source_security_information_management";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804028");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5967");
   script_bugtraq_id(62790);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-17 15:25:41 +0530 (Thu, 17 Oct 2013)");
   script_name("AlienVault OSSIM 'date_from' Parameter Multiple SQL Injection Vulnerabilities");
 
@@ -49,9 +49,7 @@ if (description)
   script_tag(name:"affected", value:"AlienVault Open Source Security Information Management (OSSIM) version 4.3
   and prior.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject or manipulate
-  SQL queries in the back-end database, allowing for the manipulation or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  SQL queries in the back-end database, allowing for the manipulation or disclosure of arbitrary data.");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/87652");
 

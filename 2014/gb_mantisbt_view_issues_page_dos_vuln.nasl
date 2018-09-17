@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_view_issues_page_dos_vuln.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: gb_mantisbt_view_issues_page_dos_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # MantisBT 'View Issues' Page Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804650");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-1883");
   script_bugtraq_id(58626);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-23 15:25:38 +0530 (Mon, 23 Jun 2014)");
   script_name("MantisBT 'View Issues' Page Denial of Service Vulnerability");
 
@@ -43,9 +43,7 @@ vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaw is due to an error in the filter_api.php script.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to consume all available
-memory resources and cause a denial of service condition.
-
-Impact Level: Application");
+memory resources and cause a denial of service condition.");
   script_tag(name:"affected", value:"MantisBT version 1.2.12 through 1.2.14");
   script_tag(name:"solution", value:"Upgrade to MantisBT version 1.2.15 or later.
 For updates refer to http://www.mantisbt.org/download.php");

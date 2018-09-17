@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_belkin_router_multiple_vuln.nasl 10844 2018-08-08 14:38:33Z cfischer $
+# $Id: gb_belkin_router_multiple_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Belkin N150 Wireless Home Router Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806170");
-  script_version("$Revision: 10844 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 16:38:33 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-02 14:31:19 +0530 (Wed, 02 Dec 2015)");
   script_name("Belkin N150 Wireless Home Router Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -67,9 +67,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary HTML and script code in a user's browser
   session in the context of an affected site and upload and download of
-  arbitrary files, and to take malicious actions against the application.
-
-  Impact Level: Application");
+  arbitrary files, and to take malicious actions against the application.");
 
   script_tag(name:"affected", value:"Belkin N150 WiFi N Router, other firmware may also be affected.");
 

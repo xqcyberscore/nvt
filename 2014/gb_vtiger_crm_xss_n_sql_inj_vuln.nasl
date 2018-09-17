@@ -28,12 +28,12 @@ CPE = "cpe:/a:vtiger:vtiger_crm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804055");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-5091");
   script_bugtraq_id(62487);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-03 11:00:19 +0530 (Fri, 03 Jan 2014)");
   script_name("vTiger CRM Cross Site Scripting and SQL Injection Vulnerabilities");
 
@@ -56,9 +56,7 @@ sanitizing the input passed via the 'return_url' parameter.");
   script_tag(name:"affected", value:"vTiger CRM version 5.4.0 and prior.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML or
 script code and inject or manipulate SQL queries in the back-end database,
-allowing for the manipulation or disclosure of arbitrary data.
-
-Impact Level: Application");
+allowing for the manipulation or disclosure of arbitrary data.");
 
   script_xref(name:"URL", value:"https://www.vtiger.com/blogs/?p=1467");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Sep/78");

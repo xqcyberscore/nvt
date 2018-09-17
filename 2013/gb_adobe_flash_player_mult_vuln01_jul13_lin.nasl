@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_jul13_lin.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_adobe_flash_player_mult_vuln01_jul13_lin.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities-01 July13 (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803833");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3347", "CVE-2013-3345", "CVE-2013-3344");
   script_bugtraq_id(61048, 61045, 61043);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-25 17:46:27 +0530 (Thu, 25 Jul 2013)");
   script_name("Adobe Flash Player Multiple Vulnerabilities-01 July13 (Linux)");
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to multiple
@@ -45,7 +45,7 @@ when resampling a PCM buffer.");
   script_tag(name:"affected", value:"Adobe Flash Player before 11.2.202.297 on Linux");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
 code on the target system will cause heap-based buffer overflow or cause
-memory corruption via unspecified vectors. Impact Level: System/Application");
+memory corruption via unspecified vectors.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 

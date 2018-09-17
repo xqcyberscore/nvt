@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dewes_webserver_dir_trav_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_dewes_webserver_dir_trav_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Twilight CMS DeWeS Web Server Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803746");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4900");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-22 12:47:40 +0530 (Thu, 22 Aug 2013)");
   script_name("Twilight CMS DeWeS Web Server Directory Traversal Vulnerability");
 
@@ -44,9 +44,7 @@ if(description)
   requests using directory traversal attack (e.g., /..%5c..%5c).");
   script_tag(name:"affected", value:"Twilight CMS DeWeS web server version 0.4.2 and prior.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to read arbitrary files
-  on the target system.
-
-  Impact Level: Application");
+  on the target system.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 

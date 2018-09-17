@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_accept-language_hdr_dos_vuln.nasl 11041 2018-08-17 14:03:47Z mmartin $
+# $Id: gb_squid_accept-language_hdr_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Squid Proxy Accept-Language Header Denial Of Service Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802062");
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(58316);
   script_cve_id("CVE-2013-1839");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-03 18:01:36 +0530 (Thu, 03 Oct 2013)");
   script_name("Squid Proxy Accept-Language Header Denial Of Service Vulnerability");
 
@@ -48,9 +48,7 @@ For updates refer to http://www.squid-cache.org/Download");
 handling the 'Accept-Language' header.");
   script_tag(name:"affected", value:"Squid Version 3.2.x before 3.2.9 and 3.3.x before 3.3.3");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial of
-service via a crafted 'Accept-Language' header.
-
-Impact Level: Application");
+service via a crafted 'Accept-Language' header.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52588");
   script_xref(name:"URL", value:"http://www.squid-cache.org/Advisories/SQUID-2013_1.txt");
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2013/03/11/7");

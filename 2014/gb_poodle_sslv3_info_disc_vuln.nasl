@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_poodle_sslv3_info_disc_vuln.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_poodle_sslv3_info_disc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # SSL/TLS: SSLv3 Protocol CBC Cipher Suites Information Disclosure Vulnerability (POODLE)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802087");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3566");
   script_bugtraq_id(70574);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-16 17:29:43 +0530 (Thu, 16 Oct 2014)");
   script_name("SSL/TLS: SSLv3 Protocol CBC Cipher Suites Information Disclosure Vulnerability (POODLE)");
   script_category(ACT_GATHER_INFO);
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw is due to the block cipher padding not being deterministic and not covered by the Message Authentication Code");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow a  man-in-the-middle attackers gain access to the plain text data stream.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow a  man-in-the-middle attackers gain access to the plain text data stream.");
 
   script_tag(name:"solution", value:"Possible Mitigations are:
 

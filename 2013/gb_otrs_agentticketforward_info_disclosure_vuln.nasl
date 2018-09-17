@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_agentticketforward_info_disclosure_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_otrs_agentticketforward_info_disclosure_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # OTRS AgentTicketForward Information Disclosure Vulnerability
 #
@@ -28,19 +28,17 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803929");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2010-4766");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-22 12:18:31 +0530 (Sun, 22 Sep 2013)");
   script_name("OTRS AgentTicketForward Information Disclosure Vulnerability");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote users to obtain potentially sensitive
-image information by reading a forwarded message from an e-mail client.
-
-Impact Level: Application");
+image information by reading a forwarded message from an e-mail client.");
   script_tag(name:"vuldetect", value:"Get the installed version of OTRS with the help of detect NVT and check the
 version is vulnerable or not.");
   script_tag(name:"insight", value:"An error exists in AgentTicketForward feature which fails to remove inline

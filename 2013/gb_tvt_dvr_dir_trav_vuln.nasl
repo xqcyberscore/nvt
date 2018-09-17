@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tvt_dvr_dir_trav_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_tvt_dvr_dir_trav_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # TVT DVR Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803784");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-6023");
   script_bugtraq_id(63360);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-05 16:15:57 +0530 (Thu, 05 Dec 2013)");
   script_name("TVT DVR Directory Traversal Vulnerability");
 
@@ -45,9 +45,7 @@ if(description)
   requests using directory traversal attack (e.g., ../).");
   script_tag(name:"affected", value:"TVT TD-2308SS-B DVR with firmware 3.2.0.P-3520A-00 and earlier");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to read arbitrary files
-  on the target system.
-
-  Impact Level: Application");
+  on the target system.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 

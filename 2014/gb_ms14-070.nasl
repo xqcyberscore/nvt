@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-070.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: gb_ms14-070.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Windows TCP/IP Privilege Elevation Vulnerability (2989935)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805010");
-  script_version("$Revision: 11194 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4076");
   script_bugtraq_id(70976);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 08:19:24 +0530 (Wed, 12 Nov 2014)");
   script_name("Microsoft Windows TCP/IP Privilege Elevation Vulnerability (2989935)");
 
@@ -46,9 +46,7 @@ if(description)
   the tcpip.sys and tcpip6.sys drivers when processing certain IOCTL.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker to  execute arbitrary code.
-
-  Impact Level: System");
+  attacker to  execute arbitrary code.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Edition
   Service Pack 2 and prior");

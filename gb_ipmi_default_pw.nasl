@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_default_pw.nasl 10898 2018-08-10 13:38:13Z cfischer $
+# $Id: gb_ipmi_default_pw.nasl 11404 2018-09-15 09:17:49Z cfischer $
 #
 # IPMI Default Password Vulnerability
 #
@@ -28,10 +28,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105923");
-  script_version("$Revision: 10898 $");
+  script_version("$Revision: 11404 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:17:49 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-29 11:12:02 +0700 (Wed, 29 Oct 2014)");
   script_name("IPMI Default Password Vulnerability");
 
@@ -45,9 +45,7 @@ or activate a session (IPMI v1.5).");
 combinations. If these are not changed or disabled if opens up an easy exploitable vulnerability.");
 
   script_tag(name:"impact", value:"An attacker can log into the IPMI enabled device often with
-privileged permissions and gain access to the host operating system.
-
-Impact Level: System");
+privileged permissions and gain access to the host operating system.");
 
   script_tag(name:"solution", value:"Change the default passwords or disable the default accounts
 if possible. Filter traffic to UDP port 623.");

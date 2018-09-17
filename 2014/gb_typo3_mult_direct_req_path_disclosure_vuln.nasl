@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_direct_req_path_disclosure_vuln.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_typo3_mult_direct_req_path_disclosure_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # TYPO3 Multiple Direct Request Path Disclosure Vulnerability
 #
@@ -28,20 +28,18 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803981");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2006-0327");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-20 15:01:13 +0530 (Fri, 20 Dec 2013)");
   script_name("TYPO3 Multiple Direct Request Path Disclosure Vulnerability");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain full
-installation path to the application.
-
-Impact Level: Application");
+installation path to the application.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"An error exists in the application which fails to properly determine its own
 physical path and therefore trying to 'require()' a wrong class file");

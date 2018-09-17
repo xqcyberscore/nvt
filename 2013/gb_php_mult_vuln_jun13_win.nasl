@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln_jun13_win.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_php_mult_vuln_jun13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PHP Multiple Vulnerabilities - Jun13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803678");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4635", "CVE-2013-2110");
   script_bugtraq_id(60731, 60411);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-25 17:29:19 +0530 (Tue, 25 Jun 2013)");
   script_name("PHP Multiple Vulnerabilities - Jun13 (Windows)");
 
@@ -51,9 +51,7 @@ if(description)
   script_mandatory_keys("php/installed", "Host/runs_windows");
 
   script_tag(name:"impact", value:"Successful exploitation allows attackers to execute arbitrary code or cause
-  denial of service condition via crafted arguments.
-
-  Impact Level:System/ Application");
+  denial of service condition via crafted arguments.");
 
   script_tag(name:"affected", value:"PHP version before 5.3.26 and 5.4.x before 5.4.16");
 

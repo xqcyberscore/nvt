@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_detect.nasl 10985 2018-08-15 12:56:20Z cfischer $
+# $Id: gb_apache_activemq_detect.nasl 11399 2018-09-15 07:45:12Z cfischer $
 #
 # Apache ActiveMQ Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105330");
-  script_version("$Revision: 10985 $");
+  script_version("$Revision: 11399 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:56:20 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 09:45:12 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-24 12:33:07 +0200 (Mon, 24 Aug 2015)");
   script_name("Apache ActiveMQ Detection");
   script_category(ACT_GATHER_INFO);
@@ -93,7 +93,7 @@ foreach jmsPort( jmsPorts ) {
     os = eregmatch( pattern:"OS: ([a-zA-Z]+), (([a-zA-Z0-9.\-]+),)?", string:buf );
     if( os[1] ) {
       if( "windows" >< tolower( os[1] ) ) {
-        register_and_report_os( os:"Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, banner:os[0], port:jmsPort, desc:SCRIPT_DESC, runs_key:"windows" );
+        register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, banner:os[0], port:jmsPort, desc:SCRIPT_DESC, runs_key:"windows" );
       } else if( "linux" >< tolower( os[1] ) ) {
         if( os[3] ) {
           register_and_report_os( os:"Linux", version:os[3], cpe:"cpe:/o:linux:kernel", banner_type:banner_type, banner:os[0], port:jmsPort, desc:SCRIPT_DESC, runs_key:"unixoide" );

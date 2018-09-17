@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-046.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: secpod_ms13-046.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2840221)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903208");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1332", "CVE-2013-1333", "CVE-2013-1334");
   script_bugtraq_id(59782, 59749, 59750);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-15 10:20:25 +0530 (Wed, 15 May 2013)");
   script_name("Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2840221)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2829361");
@@ -47,8 +47,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain escalated
-  privileges or cause buffer overflow and execute arbitrary code.
-  Impact Level: System");
+  privileges or cause buffer overflow and execute arbitrary code.");
   script_tag(name:"affected", value:"Microsoft Windows 8
   Microsoft Windows Server 2012
   Microsoft Windows XP x32 Edition Service Pack 3 and prior

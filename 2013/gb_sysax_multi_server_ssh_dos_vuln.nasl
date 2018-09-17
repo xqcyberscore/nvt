@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysax_multi_server_ssh_dos_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_sysax_multi_server_ssh_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Sysax Multi Server SSH Component NULL Pointer Dereference DOS Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803191");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-16 11:21:21 +0530 (Tue, 16 Apr 2013)");
   script_name("Sysax Multi Server SSH Component NULL Pointer Dereference DOS Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52934");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause the application
-  to crash, creating a denial-of-service condition.
-  Impact Level: Application");
+  to crash, creating a denial-of-service condition.");
   script_tag(name:"affected", value:"Sysax Multi Server version 6.10");
   script_tag(name:"insight", value:"The flaw is due to a NULL pointer dereference error within the SSH component
   when negotiating cipher keys and can be exploited to cause a crash via a
@@ -81,7 +80,6 @@ if (!banner || "SysaxSSH" >!< banner){
   exit(0);
 }
 
-## Open TCP Socket
 soc = open_sock_tcp(port);
 if(!soc){
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_libgd_dos_vuln.nasl 10456 2018-07-09 06:10:17Z cfischer $
+# $Id: gb_php_libgd_dos_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # PHP 'LibGD' Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804292");
-  script_version("$Revision: 10456 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2497");
   script_bugtraq_id(66233);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-09 14:18:22 +0530 (Fri, 09 May 2014)");
   script_name("PHP 'LibGD' Denial of Service Vulnerability");
 
@@ -48,9 +48,7 @@ if(description)
   function within LibGD.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
-  service attacks.
-
-  Impact Level: Application");
+  service attacks.");
 
   script_tag(name:"affected", value:"PHP version 5.x through 5.4.26 and probably other versions.");
 

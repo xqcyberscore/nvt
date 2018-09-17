@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-050.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: secpod_ms13-050.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Windows Print Spooler Components Privilege Escalation Vulnerability (2839894)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903212");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1339");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-12 09:16:20 +0530 (Wed, 12 Jun 2013)");
   script_name("Microsoft Windows Print Spooler Components Privilege Escalation Vulnerability (2839894)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53742");
@@ -46,8 +46,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code with system privileges, resulting in complete compromise of the target.
-  Impact Level: System");
+  code with system privileges, resulting in complete compromise of the target.");
   script_tag(name:"affected", value:"Microsoft Windows 8
   Microsoft Windows Server 2012
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior

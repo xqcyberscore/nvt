@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_mar13_macosx.nasl 11045 2018-08-19 19:29:09Z cfischer $
+# $Id: gb_google_chrome_mult_vuln01_mar13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 March 2013 (MAC OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803315");
-  script_version("$Revision: 11045 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0879", "CVE-2013-0880", "CVE-2013-0881", "CVE-2013-0882",
                 "CVE-2013-0883", "CVE-2013-0884", "CVE-2013-0885", "CVE-2013-0886",
                 "CVE-2013-0887", "CVE-2013-0888", "CVE-2013-0889", "CVE-2013-0890",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(58101);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-19 21:29:09 +0200 (Sun, 19 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-01 10:40:56 +0530 (Fri, 01 Mar 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 March 2013 (MAC OS X)");
   script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/438026.php");
@@ -53,9 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code in
   the context of the browser, bypass security restrictions, cause
-  denial-of-service condition or possibly have unspecified other impact.
-
-  Impact Level: System/Application");
+  denial-of-service condition or possibly have unspecified other impact.");
 
   script_tag(name:"affected", value:"Google Chrome version prior to 25.0.1364.99 on MAC OS X");
 

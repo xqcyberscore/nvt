@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln03_feb15_win.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_mysql_unspecified_vuln03_feb15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Oracle MySQL Multiple Unspecified vulnerabilities-03 Feb15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805134");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0409", "CVE-2015-0385");
   script_bugtraq_id(72223, 72229);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-03 12:53:13 +0530 (Tue, 03 Feb 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle MySQL Multiple Unspecified vulnerabilities-03 Feb15 (Windows)");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to disclose potentially sensitive information, manipulate certain data,
-  cause a DoS (Denial of Service), and compromise a vulnerable system.
-
-  Impact Level: Application");
+  cause a DoS (Denial of Service), and compromise a vulnerable system.");
 
   script_tag(name:"affected", value:"Oracle MySQL Server version 5.6.21 and
   earlier on Windows.");

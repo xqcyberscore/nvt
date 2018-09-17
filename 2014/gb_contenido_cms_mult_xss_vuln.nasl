@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_contenido_cms_mult_xss_vuln.nasl 11214 2018-09-04 10:09:46Z mmartin $
+# $Id: gb_contenido_cms_mult_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Contenido CMS Multiple Parameter Cross-Site Scripting Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805231");
-  script_version("$Revision: 11214 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-9433");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-26 15:09:14 +0530 (Fri, 26 Dec 2014)");
   script_name("Contenido CMS Multiple Parameter Cross-Site Scripting Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -58,9 +58,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary HTML and script code in a users browser
-  session in the context of an affected site.
-
-  Impact Level: Application");
+  session in the context of an affected site.");
 
   script_tag(name:"affected", value:"Contenido CMS versions 4.9.x through 4.9.5");
 

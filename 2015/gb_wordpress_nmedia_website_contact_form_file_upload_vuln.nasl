@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nmedia_website_contact_form_file_upload_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
+# $Id: gb_wordpress_nmedia_website_contact_form_file_upload_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Wordpress N-Media Website Contact Form Plugin File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805539");
-  script_version("$Revision: 11321 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-22 12:54:37 +0530 (Wed, 22 Apr 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress N-Media Website Contact Form Plugin File Upload Vulnerability");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   unauthenticated remote attacker to upload arbitrary files and execute the
-  uploaded script resulting in remote code execution.
-
-  Impact Level: System/Application");
+  uploaded script resulting in remote code execution.");
 
   script_tag(name:"affected", value:"Wordpress N-Media Website Contact Form
   Plugin version 1.3.4");

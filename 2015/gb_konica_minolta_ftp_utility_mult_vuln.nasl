@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_konica_minolta_ftp_utility_mult_vuln.nasl 10847 2018-08-09 02:37:37Z ckuersteiner $
+# $Id: gb_konica_minolta_ftp_utility_mult_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Konica Minolta FTP Utility Multiple vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:konicaminolta:ftp_utility";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805750");
-  script_version("$Revision: 10847 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 04:37:37 +0200 (Thu, 09 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-28 13:43:21 +0530 (Mon, 28 Sep 2015)");
   script_cve_id("CVE-2015-7603", "CVE-2015-7767", "CVE-2015-7768");
   script_name("Konica Minolta FTP Utility Multiple vulnerabilities");
@@ -60,9 +60,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to read arbitrary files on the affected application or execute arbitrary command
-  on the affected application.
-
-  Impact Level: Application.");
+  on the affected application.");
 
   script_tag(name:"affected", value:"Konica Minolta FTP Utility version 1.0.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intouch_machine_edition_detect_win.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_intouch_machine_edition_detect_win.nasl 11420 2018-09-17 06:33:13Z cfischer $
 #
 # InTouch Machine Edition Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812216");
-  script_version("$Revision: 11015 $");
+  script_version("$Revision: 11420 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:33:13 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-11-20 14:22:07 +0530 (Mon, 20 Nov 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("InTouch Machine Edition Version Detection (Windows)");
@@ -47,21 +47,14 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-os_arch = "";
-key_list = "";
-key = "";
-itmPath = "";
-itmVer = "";
-itmName = "";
 
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){

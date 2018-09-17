@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_83df5dc658_polkit_fc27.nasl 10758 2018-08-03 12:49:20Z santu $
+# $Id: gb_fedora_2018_83df5dc658_polkit_fc27.nasl 11388 2018-09-14 13:45:12Z cfischer $
 #
 # Fedora Update for polkit FEDORA-2018-83df5dc658
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874883");
-  script_version("$Revision: 10758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 14:49:20 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 11388 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-14 15:45:12 +0200 (Fri, 14 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-02 06:05:00 +0200 (Thu, 02 Aug 2018)");
   script_cve_id("CVE-2018-1116");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"3.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for polkit FEDORA-2018-83df5dc658");
   script_tag(name:"summary", value:"Check the version of polkit");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-031.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_ms15-031.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Schannel Security Feature Bypass Vulnerability (3046049)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805490");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-1637");
   script_bugtraq_id(72965);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-11 11:44:31 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Schannel Security Feature Bypass Vulnerability (3046049)");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to conduct cipher-downgrade attacks to EXPORT_RSA ciphers via
-  crafted TLS traffic.
-
-  Impact Level: System");
+  crafted TLS traffic.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Edition Service Pack 2
   Microsoft Windows Vista x32/x64 Edition Service Pack 2

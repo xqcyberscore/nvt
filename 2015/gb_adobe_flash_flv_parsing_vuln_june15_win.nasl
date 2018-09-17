@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805802");
-  script_version("$Revision: 11197 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-3113");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:31:53 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-24 11:58:55 +0530 (Wed, 24 Jun 2015)");
   script_name("Adobe Flash Player Improper FLV Parsing Vulnerability June15 (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -58,9 +58,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to downloaded a malicious flash file and create a back door results
-  in taking complete control over the victim's system.
-
-  Impact Level: System/Application.");
+  in taking complete control over the victim's system.");
 
   script_tag(name:"affected", value:"Adobe Flash Player versions before
   13.0.0.296 and 14.x through 18.x before 18.0.0.194 on Windows.");

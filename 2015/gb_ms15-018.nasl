@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-018.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_ms15-018.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (3032359)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805143");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0032", "CVE-2015-0056", "CVE-2015-0072", "CVE-2015-0099",
                 "CVE-2015-0100", "CVE-2015-1622", "CVE-2015-1623", "CVE-2015-1624",
                 "CVE-2015-1625", "CVE-2015-1626", "CVE-2015-1627", "CVE-2015-1634");
   script_bugtraq_id(72489);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-11 08:25:08 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (3032359)");
@@ -55,9 +55,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to access information from one domain and inject it into another
   domain, execute arbitrary script with elevated privileges, corrupt memory
-  and compromise a user's system.
-
-  Impact Level: System/Application");
+  and compromise a user's system.");
 
   script_tag(name:"affected", value:"Microsoft Internet Explorer version
   6.x/7.x/8.x/9.x/10.x/11.x and VBScript 5.8 on IE 8.x/9.x/10.x/11.x");

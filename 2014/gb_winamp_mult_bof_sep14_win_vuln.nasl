@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winamp_mult_bof_sep14_win_vuln.nasl 10954 2018-08-14 12:43:10Z mmartin $
+# $Id: gb_winamp_mult_bof_sep14_win_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Winamp Libraries Multiple Buffer Overflow Vulnerability - Sep14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:nullsoft:winamp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804845");
-  script_version("$Revision: 10954 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-4694");
   script_bugtraq_id(60883);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-18 16:49:22 +0530 (Thu, 18 Sep 2014)");
 
   script_name("Winamp Libraries Multiple Buffer Overflow Vulnerability - Sep14");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service or potentially allowing the execution
-  of arbitrary code.
-
-  Impact Level: Application");
+  of arbitrary code.");
 
   script_tag(name:"affected", value:"Winamp prior version 5.64 Build 3418");
 

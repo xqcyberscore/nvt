@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_spoofing_vuln.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_apache_subversion_spoofing_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Apache Subversion Spoofing Vulnerability May15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805608");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0251");
   script_bugtraq_id(74259);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-06 12:54:14 +0530 (Wed, 06 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Subversion Spoofing Vulnerability May15");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   authenticated remote attacker to forge a svn:author value via a crafted v1
-  HTTP protocol request .
-
-  Impact Level: Application");
+  HTTP protocol request .");
 
   script_tag(name:"affected", value:"Subversion 1.5.0 through 1.7.19 and 1.8.0
   through 1.8.11.");

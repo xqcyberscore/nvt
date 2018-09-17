@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln02_jan15.nasl 10456 2018-07-09 06:10:17Z cfischer $
+# $Id: gb_php_mult_vuln02_jan15.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # PHP Multiple Vulnerabilities - 02 - Jan15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805413");
-  script_version("$Revision: 10456 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-9426");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-07 12:28:06 +0530 (Wed, 07 Jan 2015)");
   script_name("PHP Multiple Vulnerabilities - 02 - Jan15");
 
@@ -47,9 +47,7 @@ if(description)
   libmagic/apprentice.c in the Fileinfo component.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause a denial of service or possibly have unspecified other impact.
-
-  Impact Level: Application");
+  attackers to cause a denial of service or possibly have unspecified other impact.");
 
   script_tag(name:"affected", value:"PHP versions before 5.6.5");
 

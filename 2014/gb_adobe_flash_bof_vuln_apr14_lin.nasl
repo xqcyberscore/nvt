@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_bof_vuln_apr14_lin.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_adobe_flash_bof_vuln_apr14_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Flash Player Buffer Overflow Vulnerability - Apr14 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804561");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0515");
   script_bugtraq_id(67092);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-29 11:45:09 +0530 (Tue, 29 Apr 2014)");
   script_name("Adobe Flash Player Buffer Overflow Vulnerability - Apr14 (Linux)");
 
@@ -45,9 +45,7 @@ overflow vulnerability.");
   script_tag(name:"insight", value:"Flaw is due to an improper validation of user-supplied input to the pixel
 bender component.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code and
-cause a buffer overflow, resulting in a denial of service condition.
-
-Impact Level: System/Application");
+cause a buffer overflow, resulting in a denial of service condition.");
   script_tag(name:"affected", value:"Adobe Flash Player version before 11.2.202.356 on Linux");
   script_tag(name:"solution", value:"Update to Adobe Flash Player version 11.2.202.356 or later,
 For updates refer to  http://get.adobe.com/flashplayer");

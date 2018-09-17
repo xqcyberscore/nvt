@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-103.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: secpod_ms13-103.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft VS Team Foundation Server SignalR XSS Vulnerability (2905244)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:visual_studio_team_foundation_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901227");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5042");
   script_bugtraq_id(64093);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-11 10:49:08 +0530 (Wed, 11 Dec 2013)");
   script_name("Microsoft VS Team Foundation Server SignalR XSS Vulnerability (2905244)");
 
@@ -51,9 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Visual Studio Team Foundation Server 2013");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary script
   code in a user's browser within the trust relationship between their
-  browser and the server.
-
-  Impact Level: Application");
+  browser and the server.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

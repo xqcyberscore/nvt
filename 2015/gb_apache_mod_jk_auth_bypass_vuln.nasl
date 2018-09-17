@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_jk_auth_bypass_vuln.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_apache_mod_jk_auth_bypass_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Apache Tomcat Connector Authentication Bypass Vulnerability May15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:mod_jk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805612");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-8111");
   script_bugtraq_id(74265);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-11 12:56:25 +0530 (Mon, 11 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat Connector Authentication Bypass Vulnerability May15");
@@ -50,9 +50,7 @@ if(description)
   artifact in a tree.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to gain access to potentially sensitive information.
-
-  Impact Level: Application");
+  attacker to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"Apache Tomcat Connectors (mod_jk)
   before 1.2.41.");

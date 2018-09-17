@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_sep_mult_vuln_jan14.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_symantec_sep_mult_vuln_jan14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Symantec Endpoint Protection Multiple Vulnerabilities Jan-14
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804199");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-5009", "CVE-2013-5010", "CVE-2013-5011");
   script_bugtraq_id(64128, 64129, 64130);
   script_tag(name:"cvss_base", value:"7.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-27 16:29:04 +0530 (Mon, 27 Jan 2014)");
   script_name("Symantec Endpoint Protection Multiple Vulnerabilities Jan-14");
 
@@ -52,9 +52,7 @@ version is vulnerable or not.");
 
   - an unquoted search path.");
   script_tag(name:"impact", value:"Successful exploitation may allow an attacker to gain escalated privileges
-and access sensitive files or directories.
-
-Impact Level: System/Application.");
+and access sensitive files or directories.");
   script_tag(name:"affected", value:"Symantec Endpoint Protection (SEP) 11.x before version 11.0.7.4 and 12.x
 before 12.1.2 RU2 and Endpoint Protection Small Business Edition 12.x before
 12.1.2 RU2");

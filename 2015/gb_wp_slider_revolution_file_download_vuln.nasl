@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_slider_revolution_file_download_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
+# $Id: gb_wp_slider_revolution_file_download_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Wordpress Slider Revolution Arbitrary File Download Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805518");
-  script_version("$Revision: 11321 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-31 12:15:41 +0530 (Tue, 31 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_cve_id("CVE-2015-1579", "CVE-2014-9734");
@@ -49,9 +49,7 @@ if(description)
   restrict access to certain files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  unauthenticated remote attacker to download any arbitrary file.
-
-  Impact Level: Application");
+  unauthenticated remote attacker to download any arbitrary file.");
 
   script_tag(name:"affected", value:"Wordpress Slider Revolution version
   4.1.4 and prior.");

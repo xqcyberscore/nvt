@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-032.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_ms15-032.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (3038314)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805163");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-1652", "CVE-2015-1657", "CVE-2015-1659", "CVE-2015-1660",
                 "CVE-2015-1661", "CVE-2015-1662", "CVE-2015-1665", "CVE-2015-1666",
                 "CVE-2015-1667", "CVE-2015-1668");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 08:46:55 +0530 (Wed, 15 Apr 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (3038314)");
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to corrupt memory and potentially execute arbitrary code in the
-  context of the current user.
-
-  Impact Level: System/Application");
+  context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Internet Explorer version
   6.x/7.x/8.x/9.x/10.x/11.x and VBScript 5.8 on IE 8.x/9.x/10.x/11.x");

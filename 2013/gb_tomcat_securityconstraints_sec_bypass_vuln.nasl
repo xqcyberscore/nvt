@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tomcat_securityconstraints_sec_bypass_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_tomcat_securityconstraints_sec_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Apache Tomcat SecurityConstraints Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803783");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2011-1582");
   script_bugtraq_id(47886);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-27 16:40:19 +0530 (Wed, 27 Nov 2013)");
   script_name("Apache Tomcat SecurityConstraints Security Bypass Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -59,9 +59,7 @@ if(description)
   annotations to bypass constraints and gain unauthorized access to the servlet.");
   script_tag(name:"affected", value:"Apache Tomcat version 7.0.13 and 7.0.12 ");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass certain
-  authentication and obtain sensitive information.
-
-  Impact Level: Application");
+  authentication and obtain sensitive information.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

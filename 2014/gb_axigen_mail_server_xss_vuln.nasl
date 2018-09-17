@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axigen_mail_server_xss_vuln.nasl 10954 2018-08-14 12:43:10Z mmartin $
+# $Id: gb_axigen_mail_server_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # AXIGEN Mail Server Email Message Cross-site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:gecad_technologies:axigen_mail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804669");
-  script_version("$Revision: 10954 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2012-2592");
   script_bugtraq_id(54899);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-07 14:34:53 +0530 (Mon, 07 Jul 2014)");
 
   script_name("AXIGEN Mail Server Email Message Cross-site Scripting Vulnerability");
@@ -48,9 +48,7 @@ scripting vulnerability.");
 email message before returning it to the user.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary script code
-in a user's browser within the trust relationship between their browser and the server.
-
-Impact Level: Application");
+in a user's browser within the trust relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"Axigen Mail Server version 8.0.1");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_fpm_privilege_escalation_vuln.nasl 10456 2018-07-09 06:10:17Z cfischer $
+# $Id: gb_php_fpm_privilege_escalation_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # PHP 'FastCGI Process Manager' Privilege Escalation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804290");
-  script_version("$Revision: 10456 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0185");
   script_bugtraq_id(67118);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-08 14:42:30 +0530 (Thu, 08 May 2014)");
   script_name("PHP 'FastCGI Process Manager' Privilege Escalation Vulnerability");
 
@@ -48,9 +48,7 @@ if(description)
   Manager that sets insecure permissions for a unix socket.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain access to the
-  socket and gain elevated privileges.
-
-  Impact Level: System/Application");
+  socket and gain elevated privileges.");
 
   script_tag(name:"affected", value:"PHP versions 5.4.x before 5.4.28 and 5.5.x before 5.5.12.");
 

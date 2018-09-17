@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_boltwire_mult_xss_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_boltwire_mult_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # BoltWire Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,19 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803961");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2651");
   script_bugtraq_id(62907);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-07 16:32:49 +0530 (Thu, 07 Nov 2013)");
   script_name("BoltWire Multiple Cross Site Scripting Vulnerabilities");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to steal the victim's
-cookie-based authentication credentials.
-
-Impact Level: Application");
+cookie-based authentication credentials.");
   script_tag(name:"affected", value:"BoltWire version 3.5 and earlier");
   script_tag(name:"insight", value:"An error exists in the index.php script which fails to properly sanitize
 user-supplied input to 'p' and 'content' parameter before using.");

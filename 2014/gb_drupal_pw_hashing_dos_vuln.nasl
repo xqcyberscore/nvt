@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_pw_hashing_dos_vuln.nasl 10953 2018-08-14 12:06:42Z mmartin $
+# $Id: gb_drupal_pw_hashing_dos_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Drupal Password Hashing Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:drupal:drupal';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105934");
-  script_version("$Revision: 10953 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 11402 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-09 16:56:24 +0700 (Tue, 09 Dec 2014)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -60,9 +60,7 @@ to a DoS.");
 supplied passwords are not stored in plain text. An attacker can send specially crafted requests
 resulting in CPU and memory exhaustion.");
 
-  script_tag(name:"impact", value:"An unauthenticated attacker can cause a denial of service.
-
-Impact Level: Application");
+  script_tag(name:"impact", value:"An unauthenticated attacker can cause a denial of service.");
 
   script_tag(name:"affected", value:"Drupal 7");
 

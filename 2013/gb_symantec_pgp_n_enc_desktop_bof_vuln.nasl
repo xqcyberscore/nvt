@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_pgp_n_enc_desktop_bof_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_symantec_pgp_n_enc_desktop_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Symantec PGP Desktop and Encryption Desktop Buffer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:pgp_desktop";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803888");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-6533");
   script_bugtraq_id(57835);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-06 13:18:19 +0530 (Fri, 06 Sep 2013)");
   script_name("Symantec PGP Desktop and Encryption Desktop Buffer Overflow Vulnerability");
 
@@ -51,9 +51,7 @@ For updates refer to http://www.symantec.com");
 Symantec Encryption Desktop 10.3.0 prior to 10.3.0 MP1 on
 Microsoft Windows XP and Microsoft Windows Server 2003");
   script_tag(name:"impact", value:"Successful exploitation will allow remote unauthenticated attacker to gain
-escalated privileges.
-
-Impact Level: Application");
+escalated privileges.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51762");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52219");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

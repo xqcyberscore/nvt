@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wnpa-sec-2018-42_wnpa-sec-2018-43_macosx.nasl 10618 2018-07-25 13:51:14Z cfischer $
+# $Id: gb_wireshark_wnpa-sec-2018-42_wnpa-sec-2018-43_macosx.nasl 11416 2018-09-17 03:39:26Z ckuersteiner $
 #
 # Wireshark Security Updates (wnpa-sec-2018-42_wnpa-sec-2018-43) MACOSX
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813589");
-  script_version("$Revision: 10618 $");
+  script_version("$Revision: 11416 $");
   script_cve_id("CVE-2018-14367", "CVE-2018-14370");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 15:51:14 +0200 (Wed, 25 Jul 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 05:39:26 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 10:41:45 +0530 (Fri, 20 Jul 2018)");
   script_name("Wireshark Security Updates (wnpa-sec-2018-42_wnpa-sec-2018-43) MACOSX");
 
@@ -49,9 +49,7 @@ if(description)
   - Improperly sanitized IEEE 802.11 protocol dissector.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to inject a malformed packet causing denial of service.
-
-  Impact Level: Application.");
+  attackers to inject a malformed packet causing denial of service.");
 
   script_tag(name:"affected", value:"Wireshark version 2.6.0 to 2.6.1, 2.4.0
   to 2.4.7 on Macosx.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_dos_vuln_jun14_win.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_vlc_media_player_dos_vuln_jun14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # VLC Media Player Denial of Service Vulnerability -01 June14 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804613");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3441");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-04 11:00:40 +0530 (Wed, 04 Jun 2014)");
   script_name("VLC Media Player Denial of Service Vulnerability -01 June14 (Windows)");
 
@@ -44,9 +44,7 @@ service vulnerability.");
   script_tag(name:"insight", value:"The flaw exists as user-supplied input is not properly sanitized when handling
 a specially crafted WAV file.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a denial of service
-conditions or potentially execute arbitrary code.
-
-Impact Level: System/Application");
+conditions or potentially execute arbitrary code.");
   script_tag(name:"affected", value:"VLC media player version 2.1.3 on Windows.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_thunderbird_esr_mult_vuln_jun13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: secpod_mozilla_thunderbird_esr_mult_vuln_jun13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities - June 13 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903217");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1684", "CVE-2013-1685", "CVE-2013-1686", "CVE-2013-1687",
                  "CVE-2013-1690", "CVE-2013-1692", "CVE-2013-1693", "CVE-2013-1694",
                  "CVE-2013-1697", "CVE-2013-1682");
@@ -35,7 +35,7 @@ if(description)
                     60784);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-26 17:09:51 +0530 (Wed, 26 Jun 2013)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities - June 13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53970");
@@ -49,8 +49,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
   obtain potentially sensitive information, gain escalated privileges, bypass
   security restrictions, and perform unauthorized actions. Other attacks may
-  also be possible.
-  Impact Level: Application");
+  also be possible.");
   script_tag(name:"affected", value:"Thunderbird ESR versions 17.x before 17.0.7 on Windows");
   script_tag(name:"insight", value:"Multiple flaws due to,
 

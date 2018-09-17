@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_elemata_cms_sql_inj_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: secpod_elemata_cms_sql_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Elemata CMS SQL Injection Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903311");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-27 10:38:15 +0530 (Thu, 27 Jun 2013)");
   script_name("Elemata CMS SQL Injection Vulnerability");
   script_xref(name:"URL", value:"http://1337day.com/exploit/20927");
@@ -45,9 +45,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
   arbitrary SQL statements on the vulnerable system, which may leads to access
-  or modify data in the underlying database.
-
-  Impact Level: Application");
+  or modify data in the underlying database.");
   script_tag(name:"affected", value:"Elemata CMS version RC3.0");
   script_tag(name:"insight", value:"The flaw is due to improper validation of input passed via
   the 'id' parameter in index.php script.");

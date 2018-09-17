@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prestashop_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_prestashop_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Prestashop Reflected Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805445");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2015-1175");
   script_bugtraq_id(71655);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-17 16:59:56 +0530 (Wed, 17 Dec 2014)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Prestashop Reflected Cross Site Scripting Vulnerability");
@@ -50,9 +50,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to create a specially crafted request that would execute arbitrary
   script code in a user's browser session within the trust relationship
-  between their browser and the server.
-
-  Impact Level: Application");
+  between their browser and the server.");
 
   script_tag(name:"affected", value:"Prestashop version 1.6.0.9 and earlier.");
 

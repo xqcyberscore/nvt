@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blogengine_net_info_disc_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_blogengine_net_info_disc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # BlogEngine.NET 'sioc.axd' Information Disclosure Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803791");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-6953");
   script_bugtraq_id(64635);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-08 13:24:03 +0530 (Wed, 08 Jan 2014)");
   script_name("BlogEngine.NET 'sioc.axd' Information Disclosure Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
   script_tag(name:"affected", value:"BlogEngine.net version 2.8.0.0 and earlier");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to read arbitrary files
   on the target system and obtain valuable information such as access
-  credentials.
-
-  Impact Level: Application");
+  credentials.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_frame_dos_vuln_win.nasl 11113 2018-08-26 12:32:34Z cfischer $
+# $Id: gb_google_chrome_frame_dos_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Google Chrome Frame Plugin For Microsoft IE Denial Of Service Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803461");
-  script_version("$Revision: 11113 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2493");
   script_bugtraq_id(58562);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-26 14:32:34 +0200 (Sun, 26 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-02 12:21:11 +0530 (Tue, 02 Apr 2013)");
   script_name("Google Chrome Frame Plugin For Microsoft IE Denial Of Service Vulnerability (Windows)");
   script_xref(name:"URL", value:"https://chromiumcodereview.appspot.com/12395021");
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to crash the
   program via a specially crafted _blank value for the target
-  attribute of an A element.
-
-  Impact Level: Application");
+  attribute of an A element.");
 
   script_tag(name:"affected", value:"Google Chrome Frame plugin version before 26.0.1410.28");
 

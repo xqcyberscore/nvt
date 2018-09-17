@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webtitan_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_webtitan_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WebTitan Multiple Security Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804469");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4306", "CVE-2014-4307");
   script_bugtraq_id(67921);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-23 18:10:58 +0530 (Mon, 23 Jun 2014)");
   script_name("WebTitan Multiple Security Vulnerabilities");
 
@@ -61,9 +61,7 @@ is able to get information or not.");
    reports-drill.php scripts not requiring authentication.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to trivially gain privileged
 access to the device, execute arbitrary commands and gain access to arbitrary
-files.
-
-Impact Level: System/Application");
+files.");
   script_tag(name:"affected", value:"WebTitan version 4.01 (Build 68)");
   script_tag(name:"solution", value:"Upgrade to WebTitan version 4.04 or later,
 For updates refer to http://www.webtitan.com ");

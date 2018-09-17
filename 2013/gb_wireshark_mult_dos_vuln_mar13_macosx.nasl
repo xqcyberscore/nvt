@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_mar13_macosx.nasl 11011 2018-08-16 14:14:31Z mmartin $
+# $Id: gb_wireshark_mult_dos_vuln_mar13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Wireshark Multiple Dissector Multiple DoS Vulnerabilities - March 13 (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803332");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2478", "CVE-2013-2480", "CVE-2013-2481", "CVE-2013-2482",
                 "CVE-2013-2483", "CVE-2013-2484", "CVE-2013-2485", "CVE-2013-2488");
   script_bugtraq_id(58357, 58351, 58340, 58353, 58355, 58356, 58362, 58365);
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 19:20:06 +0530 (Mon, 11 Mar 2013)");
   script_name("Wireshark Multiple Dissector Multiple DoS Vulnerabilities - March 13 (Mac OS X)");
   script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/52471");
@@ -46,8 +46,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_mandatory_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause denial of
-  service or to consume excessive CPU resources.
-  Impact Level: Application");
+  service or to consume excessive CPU resources.");
   script_tag(name:"affected", value:"Wireshark 1.6.x before 1.6.14, 1.8.x before 1.8.6 on Mac OS X");
   script_tag(name:"insight", value:"Multiple flaws are due to errors in MS-MMS, RTPS, RTPS2, Mount, AMPQ, ACN,
   CIMD, FCSP and DTLS dissectors.");

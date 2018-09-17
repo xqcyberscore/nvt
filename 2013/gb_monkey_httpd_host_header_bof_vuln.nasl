@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monkey_httpd_host_header_bof_vuln.nasl 11223 2018-09-04 12:48:48Z cfischer $
+# $Id: gb_monkey_httpd_host_header_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Monkey HTTPD Host Header Buffer Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803711");
-  script_version("$Revision: 11223 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3843");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:48:48 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-05 11:55:02 +0530 (Wed, 05 Jun 2013)");
   script_name("Monkey HTTPD Host Header Buffer Overflow Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
   script_mandatory_keys("Monkey/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will let remote unauthenticated attackers
-  to cause a denial of service or execute arbitrary code.
-
-  Impact Level: System/Application");
+  to cause a denial of service or execute arbitrary code.");
   script_tag(name:"affected", value:"Monkey HTTPD vesion 1.2.0 and prior.");
   script_tag(name:"insight", value:"The flaw is due to an error when handling certain Long requests
   sent via 'Host' field, which can be exploited to cause a denial of service or remote code execution.");

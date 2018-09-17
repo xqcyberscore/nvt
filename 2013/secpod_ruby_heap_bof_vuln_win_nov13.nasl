@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_heap_bof_vuln_win_nov13.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: secpod_ruby_heap_bof_vuln_win_nov13.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Ruby Interpreter Heap Overflow Vulnerability Nov13 (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:ruby-lang:ruby";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903502");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4164");
   script_bugtraq_id(63873);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-27 20:39:27 +0530 (Wed, 27 Nov 2013)");
   script_name("Ruby Interpreter Heap Overflow Vulnerability Nov13 (Windows)");
 
@@ -49,9 +49,7 @@ input data during conversion of strings to floating point values.");
   script_tag(name:"affected", value:"Ruby Interpreter version 1.8, 1.9 before 1.9.3 Patchlevel 484, 2.0 before
 2.0.0 Patchlevel 353.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to cause denial of service
-or potentially the execution of arbitrary code.
-
-Impact Level: System/Application.");
+or potentially the execution of arbitrary code.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/55787");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/89191");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_mult_vuln_jan13_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_postgresql_mult_vuln_jan13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PostgreSQL 'xml_parse()' And 'xslt_process()' Multiple Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803219");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-3488", "CVE-2012-3489");
   script_bugtraq_id(55072, 55074);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 17:08:52 +0530 (Thu, 24 Jan 2013)");
   script_name("PostgreSQL 'xml_parse()' And 'xslt_process()' Multiple Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50218");
@@ -49,8 +49,7 @@ if(description)
   script_require_ports("Services/postgresql", 5432);
   script_mandatory_keys("PostgreSQL/installed", "Host/runs_windows");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to modify data, obtain sensitive
-  information or trigger outbound traffic to arbitrary external hosts.
-  Impact Level: Application");
+  information or trigger outbound traffic to arbitrary external hosts.");
   script_tag(name:"affected", value:"PostgreSQL versions 8.3 before 8.3.20, 8.4 before 8.4.13,
   9.0 before 9.0.9, and 9.1 before 9.1.5 on Windows");
   script_tag(name:"insight", value:"- An error exists within the 'xml_parse()' function when parsing DTD data

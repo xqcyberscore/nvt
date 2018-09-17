@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_swdesk_51792.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_swdesk_51792.nasl 11396 2018-09-14 16:36:30Z cfischer $
 #
 # swDesk Multiple Input Validation Vulnerabilities
 #
@@ -25,57 +25,64 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "swDesk is prone to the following vulnerabilities:
-
-1. An arbitrary file-upload vulnerability.
-2. Multiple cross-site scripting vulnerabilities.
-3. Multiple PHP code-injection vulnerabilities.
-
-An attacker can exploit these issues to execute arbitrary script code
-in the context of the affected site, steal cookie-based authentication
-credentials, upload arbitrary code, or inject and execute arbitrary
-code in the context of the affected application. This may facilitate a
-compromise of the application and the underlying system; other attacks
-are also possible.";
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103425");
- script_bugtraq_id(51792);
- script_version ("$Revision: 9352 $");
- script_name("swDesk Multiple Input Validation Vulnerabilities");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51792");
- script_xref(name : "URL" , value : "http://www.swdesk.com/");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-02-16 13:08:33 +0100 (Thu, 16 Feb 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_oid("1.3.6.1.4.1.25623.1.0.103425");
+  script_bugtraq_id(51792);
+  script_version("$Revision: 11396 $");
+  script_name("swDesk Multiple Input Validation Vulnerabilities");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-14 18:36:30 +0200 (Fri, 14 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-16 13:08:33 +0100 (Thu, 16 Feb 2012)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51792");
+  script_xref(name:"URL", value:"http://www.swdesk.com/");
+
+  script_tag(name:"summary", value:"swDesk is prone to the following vulnerabilities:
+
+  1. An arbitrary file-upload vulnerability.
+
+  2. Multiple cross-site scripting vulnerabilities.
+
+  3. Multiple PHP code-injection vulnerabilities.");
+
+  script_tag(name:"impact", value:"An attacker can exploit these issues to execute arbitrary script code
+  in the context of the affected site, steal cookie-based authentication credentials, upload arbitrary code,
+  or inject and execute arbitrary code in the context of the affected application. This may facilitate a
+  compromise of the application and the underlying system. Other attacks are also possible.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"remote_vul");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-foreach dir( make_list_unique( "/helpdesk", "/swdesk", "/swhelpdesk/", cgi_dirs( port:port ) ) ) {
+host = http_host_name( port:port );
+
+foreach dir( make_list_unique( "/helpdesk", "/swdesk", "/swhelpdesk", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
   url = dir + "/signin.php";
   buf = http_get_cache( item:url, port:port );
 
   if( "Powered by swDesk" >< buf ) {
-
-    host = http_host_name( port:port );
 
     req = string("POST ",url," HTTP/1.1\r\n",
                  "Host: ",host,"\r\n",

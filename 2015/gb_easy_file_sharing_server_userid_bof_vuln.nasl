@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_easy_file_sharing_server_userid_bof_vuln.nasl 10844 2018-08-08 14:38:33Z cfischer $
+# $Id: gb_easy_file_sharing_server_userid_bof_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Easy File Sharing Web Server USERID Buffer Overflow Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:efssoft:easy_file_sharing_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806516");
-  script_version("$Revision: 10844 $");
+  script_version("$Revision: 11423 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 16:38:33 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-19 18:25:40 +0530 (Thu, 19 Nov 2015)");
   script_name("Easy File Sharing Web Server USERID Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -56,9 +56,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to cause the application to crash, creating a denial-of-service
-  condition.
-
-  Impact Level: Application");
+  condition.");
 
   script_tag(name:"affected", value:"Easy File Sharing Web Server version 7.2
   and possibly below");

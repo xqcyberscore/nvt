@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805337");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0003", "CVE-2015-0010", "CVE-2015-0057", "CVE-2015-0058",
                 "CVE-2015-0059", "CVE-2015-0060");
   script_bugtraq_id(72457, 72461, 72466, 72468, 72470, 72472);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 16:14:14 +0530 (Wed, 11 Feb 2015)");
   script_name("MS Windows Kernel-Mode Driver RCE Vulnerabilities (3036220)");
 
@@ -47,9 +47,7 @@ if(description)
   WebDAV kernel-mode driver (mrxdav.sys).");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to bypass security and gain restricted privileges
-
-  Impact Level: System");
+  attackers to bypass security and gain restricted privileges.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
 

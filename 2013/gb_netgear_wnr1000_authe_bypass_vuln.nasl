@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_wnr1000_authe_bypass_vuln.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: gb_netgear_wnr1000_authe_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # NETGEAR WNR1000 'Image' Request Authentication Bypass Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803188");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-05 18:28:47 +0530 (Fri, 05 Apr 2013)");
   script_name("NETGEAR WNR1000 'Image' Request Authentication Bypass Vulnerability");
 
@@ -55,9 +55,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running with NETGEAR WNR1000 and prone to
   authentication bypass vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain administrative access,
-  circumventing existing authentication mechanisms.
-
-  Impact Level: Application");
+  circumventing existing authentication mechanisms.");
   script_tag(name:"affected", value:"NETGEAR WNR1000v3, firmware version prior to 1.0.2.60");
 
   exit(0);

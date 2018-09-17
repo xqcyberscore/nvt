@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exponent_cms_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_exponent_cms_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Exponent CMS Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:exponentcms:exponent_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803702");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3294", "CVE-2013-3295");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-23 14:56:02 +0530 (Thu, 23 May 2013)");
   script_name("Exponent CMS Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -53,9 +53,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary SQL
   commands or include arbitrary PHP files from the local system using directory
   traversal sequences with URL-encoded NULL byte, read arbitrary files or execute
-  arbitrary PHP code on the target system.
-
-  Impact Level: Application");
+  arbitrary PHP code on the target system.");
 
   script_tag(name:"affected", value:"Exponent CMS version 2.2.0 beta 3 and prior");
 

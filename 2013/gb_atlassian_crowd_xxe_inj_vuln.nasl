@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_crowd_xxe_inj_vuln.nasl 11219 2018-09-04 11:52:00Z cfischer $
+# $Id: gb_atlassian_crowd_xxe_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Atlassian Crowd Xml eXternal Entity (XXE) Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803830");
-  script_version("$Revision: 11219 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3925");
   script_bugtraq_id(60899);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-09 15:27:15 +0530 (Tue, 09 Jul 2013)");
   script_name("Atlassian Crowd Xml eXternal Entity (XXE) Injection Vulnerability");
   script_tag(name:"summary", value:"This host is running Atlassian Crowd and is prone to xml external
@@ -46,7 +46,7 @@ For updates refer to http://www.atlassian.com/software/crowd/download");
 entities from an untrusted source.");
   script_tag(name:"affected", value:"Atlassian Crowd 2.5.x before 2.5.4, 2.6.x before 2.6.3, 2.3.8, and 2.4.9");
   script_tag(name:"impact", value:"Successful exploitation allow remote attackers to gain access to arbitrary
-files by sending specially crafted XML data. Impact Level: Application");
+files by sending specially crafted XML data.");
 
   script_xref(name:"URL", value:"https://jira.atlassian.com/browse/CWD-3366");
   script_xref(name:"URL", value:"http://www.commandfive.com/papers/C5_TA_2013_3925_AtlassianCrowd.pdf");

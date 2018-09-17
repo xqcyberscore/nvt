@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_bof_vuln_jul13_macosx.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_vlc_media_player_bof_vuln_jul13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # VLC Media Player Buffer Overflow Vulnerability - July 13 (MAC OS X)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803699");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1954");
   script_bugtraq_id(57333);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-16 13:56:02 +0530 (Tue, 16 Jul 2013)");
   script_name("VLC Media Player Buffer Overflow Vulnerability - July 13 (MAC OS X)");
 
-  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code or cause denial of service condition in the context of affected application via crafted ASF file.Impact Level: System/Application");
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code or cause denial of service condition in the context of affected application via crafted ASF file.");
   script_tag(name:"affected", value:"VLC media player version 2.0.5 and prior on MAC OS X");
   script_tag(name:"insight", value:"Flaw due to error in 'DemuxPacket()' function in the ASF Demuxer component
 (modules/demux/asf/asf.c) when parsing ASF files.");

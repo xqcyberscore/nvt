@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphite_61894.nasl 11007 2018-08-16 13:20:25Z mmartin $
+# $Id: gb_graphite_61894.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Graphite Remote Code Execution Vulnerability
 #
@@ -32,14 +32,14 @@ if (description)
   script_cve_id("CVE-2013-5093");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11007 $");
+  script_version("$Revision: 11401 $");
 
   script_name("Graphite Remote Code Execution Vulnerability");
 
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61894");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-22 17:46:22 +0200 (Thu, 22 Aug 2013)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -52,8 +52,7 @@ if (description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue will allow attackers to execute
-arbitrary code within the context of the application.
-Impact Level: Application");
+arbitrary code within the context of the application.");
   script_tag(name:"vuldetect", value:"Try to execute the 'sleep' command by sending a special crafted HTTP
 request and check how long the response take.");
   script_tag(name:"insight", value:"In graphite-web 0.9.5, a 'clustering' feature was introduced to

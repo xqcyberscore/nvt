@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804350");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0506", "CVE-2014-0510");
   script_bugtraq_id(66208, 66241);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-01 12:15:19 +0530 (Tue, 01 Apr 2014)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - 01 Apr14 (Windows)");
 
@@ -44,9 +44,7 @@ vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaws exist due to an use-after-free error and some other unspecified error.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to conduct denial of service or
-potentially execute arbitrary code.
-
-Impact Level: System/Application");
+potentially execute arbitrary code.");
   script_tag(name:"affected", value:"Adobe Flash Player version 12.0.0.77 on Windows.");
   script_tag(name:"solution", value:"Upgrade Flash Player to version 13.0.0.182 or later,
 For updates refer to http://get.adobe.com/flashplayer");

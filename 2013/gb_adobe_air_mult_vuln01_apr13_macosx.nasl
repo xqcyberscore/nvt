@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_apr13_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_adobe_air_mult_vuln01_apr13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe AIR Multiple Vulnerabilities -01 April 13 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803378");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1375", "CVE-2013-1371", "CVE-2013-0650", "CVE-2013-0646");
   script_bugtraq_id(58439, 58438, 58440, 58436);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-18 15:45:01 +0530 (Thu, 18 Apr 2013)");
   script_name("Adobe AIR Multiple Vulnerabilities -01 April 13 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52590");
@@ -44,8 +44,7 @@ if(description)
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Air/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-  code or cause denial-of-service condition.
-  Impact Level: System/Application");
+  code or cause denial-of-service condition.");
   script_tag(name:"affected", value:"Adobe AIR Version prior to 3.6.0.6090 on Mac OS X.");
   script_tag(name:"insight", value:"Multiple flaws due to
 

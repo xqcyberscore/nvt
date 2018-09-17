@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_bof_vul02_jan15_win.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_vlc_media_player_bof_vul02_jan15_win.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # VLC Media Player 'real_get_rdt_chunk' BOF Vulnerability-02 Jan15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805313");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2010-2062");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-02 12:58:41 +0530 (Fri, 02 Jan 2015)");
   script_name("VLC Media Player 'real_get_rdt_chunk' BOF Vulnerability-02 Jan15 (Windows)");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   attacker to execute an arbitrary code within the context of the VLC
-  media player and potentially compromise a user's system.
-
-  Impact Level: System/Application");
+  media player and potentially compromise a user's system.");
 
   script_tag(name:"affected", value:"VideoLAN VLC media player before 1.0.1
   on Windows.");

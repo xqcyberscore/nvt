@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_tools_sf_out_of_bounds_read_vuln_win.nasl 10637 2018-07-26 09:34:03Z santu $
+# $Id: gb_vmware_tools_sf_out_of_bounds_read_vuln_win.nasl 11388 2018-09-14 13:45:12Z cfischer $
 #
 # VMware Tools Shared Folders Out-of-bounds read Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:tools";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813700");
-  script_version("$Revision: 10637 $");
+  script_version("$Revision: 11388 $");
   script_cve_id("CVE-2018-6969");
   script_bugtraq_id(104737);
-  script_tag(name:"cvss_base", value:"4.6");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 11:34:03 +0200 (Thu, 26 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"4.4");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-14 15:45:12 +0200 (Fri, 14 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-23 16:50:47 +0530 (Mon, 23 Jul 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VMware Tools Shared Folders Out-of-bounds read Vulnerability (Windows)");

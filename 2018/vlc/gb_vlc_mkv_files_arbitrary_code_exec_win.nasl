@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_mkv_files_arbitrary_code_exec_win.nasl 10538 2018-07-18 10:58:40Z santu $
+# $Id: gb_vlc_mkv_files_arbitrary_code_exec_win.nasl 11388 2018-09-14 13:45:12Z cfischer $
 #
 # VLC Media Player MKV Files Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813579");
-  script_version("$Revision: 10538 $");
+  script_version("$Revision: 11388 $");
   script_cve_id("CVE-2018-11529");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-18 12:58:40 +0200 (Wed, 18 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-14 15:45:12 +0200 (Fri, 14 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 11:32:20 +0530 (Tue, 17 Jul 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VLC Media Player MKV Files Arbitrary Code Execution Vulnerability (Windows)");

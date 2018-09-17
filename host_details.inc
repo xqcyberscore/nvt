@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 11326 2018-09-11 11:17:53Z cfischer $
+# $Id: host_details.inc 11412 2018-09-16 10:21:40Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11326 $
+# $Revision: 11412 $
 #
 ###############################################################################
 
@@ -117,6 +117,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.106078", # gb_watchguard_fireware_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108338", # gb_vibnode_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108347", # gb_hyperip_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.103910", # gb_avm_fritz_box_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -154,6 +155,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108451", # gb_rtsp_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108455", # gb_nntp_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108447", # gb_android_adb_detect.nasl nb: Down here because an ADB service could be run on an Android emulator as well...
+    "1.3.6.1.4.1.25623.1.0.10150",  # netbios_name_get.nasl
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.102002"  # os_fingerprint.nasl
 );
@@ -204,6 +206,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.106864", # gb_cyberoam_umt_ngfw_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108338", # gb_vibnode_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108347", # gb_hyperip_consolidation.nasl
+    "1.3.6.1.4.1.25623.1.0.103910", # gb_avm_fritz_box_detect.nasl
     "1.3.6.1.4.1.25623.1.0.96207",  # gb_windows_cpe_detect.nasl
     "1.3.6.1.4.1.25623.1.0.50282",  # gather-package-list.nasl
     "1.3.6.1.4.1.25623.1.0.105614", # gb_cisco_pis_version.nasl
@@ -241,6 +244,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108451", # gb_rtsp_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108455", # gb_nntp_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108447", # gb_android_adb_detect.nasl nb: Down here because an ADB service could be run on an Android emulator as well...
+    "1.3.6.1.4.1.25623.1.0.10150",  # netbios_name_get.nasl
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.102002"  # os_fingerprint.nasl
 );
@@ -399,8 +403,8 @@ function host_runs() {
 
   #nb: update this to include possible cpes and txt from ssh_detect.nasl, gb_ssh_os_detection.nasl, gather-package-list.nasl and other *_os_detection.nasl
   if( "linux" >< tolower( ospattern ) )
-    ospattern = '(' + ospattern + '|apc:aos|ubuntu|debian|bsd|opensuse|fedora|suse|redhat|red hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|' +
-                'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen|panos|pan-os|qnap|synology|greenbone|hyperip|simatic|ruggedcom|vibnode)';
+    ospattern = '(' + ospattern + '|apc:aos|ubuntu|debian|bsd|opensuse|fedora|suse|red ?hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|' +
+                'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen|pan-?os|qnap|synology|greenbone|hyperip|simatic|ruggedcom|vibnode|avm(:| )fritz)';
 
   if( eregmatch( pattern:ospattern, string:best_os, icase:TRUE ) )
     return "yes";

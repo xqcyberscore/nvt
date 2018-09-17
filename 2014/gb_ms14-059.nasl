@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-059.nasl 11186 2018-09-03 09:12:42Z mmartin $
+# $Id: gb_ms14-059.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ASP.NET MVC Security Feature Bypass Vulnerability (2990942)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804778");
-  script_version("$Revision: 11186 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4075");
   script_bugtraq_id(70352);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-15 15:14:33 +0530 (Wed, 15 Oct 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to execute arbitrary HTML and script code in a user's browser session in the
-  context of an affected site.
-
-  Impact Level: System/Application");
+  context of an affected site.");
 
   script_tag(name:"affected", value:"ASP.NET MVC 2.0/3.0/4.0/5.0/5.1");
 

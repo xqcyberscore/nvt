@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_61918.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_netgear_61918.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Multiple NetGear ProSafe Switches Information Disclosure Vulnerability
 #
@@ -32,13 +32,13 @@ if (description)
   script_cve_id("CVE-2013-4775", "CVE-2013-4776");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
 
   script_name("Multiple NetGear ProSafe Switches  Information Disclosure Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61918");
   script_xref(name:"URL", value:"http://www.netgear.com");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-22 12:52:30 +0200 (Thu, 22 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -50,9 +50,7 @@ if (description)
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to download configuration file and
 disclose sensitive information. Information obtained may aid in
-further attacks.
-
-Impact Level: Application");
+further attacks.");
   script_tag(name:"vuldetect", value:"Try to read /filesystem/startup-config with a HTTP GET request and check the response.");
   script_tag(name:"insight", value:"The web management application fails to restrict URL access to differenti
 application areas. Remote, unauthenticated attackers could exploit this issue to

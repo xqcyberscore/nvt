@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_remote_code_exe_vuln_2847140.nasl 10984 2018-08-15 12:54:14Z mmartin $
+# $Id: gb_ms_ie_remote_code_exe_vuln_2847140.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MS Internet Explorer Remote Code Execution Vulnerability (2847140)
 #
@@ -29,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803395");
-  script_version("$Revision: 10984 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1347");
   script_bugtraq_id(59641);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-06 18:35:10 +0530 (Mon, 06 May 2013)");
   script_name("MS Internet Explorer Remote Code Execution Vulnerability (2847140)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53314");
@@ -49,8 +49,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
-  and failed attacks will cause denial of service conditions.
-  Impact Level: System/Application");
+  and failed attacks will cause denial of service conditions.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 8.x and 9.x");
   script_tag(name:"insight", value:"use-after-free error when handling 'CGenericElement'");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and

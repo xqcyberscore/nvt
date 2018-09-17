@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-042.nasl 11113 2018-08-26 12:32:34Z cfischer $
+# $Id: gb_ms14-042.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Windows Service Bus Denial of Service Vulnerability (2972621)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804474");
-  script_version("$Revision: 11113 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2814");
   script_bugtraq_id(68393);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-26 14:32:34 +0200 (Sun, 26 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-09 15:14:23 +0530 (Wed, 09 Jul 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows Service Bus Denial of Service Vulnerability (2972621)");
@@ -47,9 +47,7 @@ Queuing Protocol (AMQP) messages and can be exploited to cause Microsoft
 Service Bus to stop responding to incoming messages by sending specially
 crafted AMQP messages.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a Denial
-of Service.
-
-Impact Level: Application");
+of Service.");
   script_tag(name:"affected", value:"Microsoft Service Bus 1.1 on
 Microsoft Windows Server 2012/R2
 Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");

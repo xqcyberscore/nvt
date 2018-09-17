@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_vuln_feb15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mantisbt_mult_vuln_feb15.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # MantisBT Multiple Vulnerabilities - Feb15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805267");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2014-9573", "CVE-2014-9572", "CVE-2014-9571", "CVE-2014-9624");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-03 17:35:43 +0530 (Tue, 03 Feb 2015)");
   script_name("MantisBT Multiple Vulnerabilities - Feb15");
 
@@ -59,9 +59,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to execute arbitrary script code in a user's browser session within the trust
   relationship between their browser and the server, access the installation
-  script and obtain database access credentials and conduct SQL injection attacks.
-
-  Impact Level: Application");
+  script and obtain database access credentials and conduct SQL injection attacks.");
 
   script_tag(name:"affected", value:"MantisBT version before 1.2.19 and 1.3.x
   before 1.3.0-beta.2");

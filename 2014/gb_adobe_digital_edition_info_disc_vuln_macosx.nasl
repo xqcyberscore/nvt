@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_edition_info_disc_vuln_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_adobe_digital_edition_info_disc_vuln_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Digital Edition Information Disclosure Vulnerability (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804868");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-8068");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-22 11:00:38 +0530 (Wed, 22 Oct 2014)");
 
   script_name("Adobe Digital Edition Information Disclosure Vulnerability (Mac OS X)");
@@ -49,9 +49,7 @@ if(description)
   insecurely transmitted to adelogs.adobe.com without any encryption.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to gain access to potentially sensitive information when sniffing the network.
-
-  Impact Level: Application.");
+  to gain access to potentially sensitive information when sniffing the network.");
 
   script_tag(name:"affected", value:"Adobe Digital Edition version 4.0 on
   Mac OS X.");

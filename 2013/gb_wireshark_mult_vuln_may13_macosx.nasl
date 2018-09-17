@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_may13_macosx.nasl 11065 2018-08-21 09:49:00Z mmartin $
+# $Id: gb_wireshark_mult_vuln_may13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Wireshark Multiple Dissector Multiple Vulnerabilities - May 13 (Mac OS X)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803621");
-  script_version("$Revision: 11065 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3562", "CVE-2013-3561", "CVE-2013-3560", "CVE-2013-3559",
                 "CVE-2013-3558", "CVE-2013-3555");
   script_bugtraq_id(59998, 60002, 59996, 60001, 59999, 60000, 59995, 60003, 59994,
                     59992);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 11:49:00 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-28 15:42:11 +0530 (Tue, 28 May 2013)");
   script_name("Wireshark Multiple Dissector Multiple Vulnerabilities - May 13 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53425");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_mandatory_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to crash the
-  application, resulting in denial of service condition.
-  Impact Level: Application");
+  application, resulting in denial of service condition.");
   script_tag(name:"affected", value:"Wireshark versions 1.8.x before 1.8.7 on Mac OS X");
   script_tag(name:"insight", value:"Multiple flaws are due to errors in Websocket, MySQL, ETCH, MPEG DSM-CC,
   DCP ETSI, PPP CCP and GTPv2 dissectors.");

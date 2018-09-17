@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_multiple_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_webid_multiple_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WeBid Multiple Cross Site Scripting And LDAP Injection Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:webidsupport:webid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804476");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-5101", "CVE-2014-5114");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-29 12:53:33 +0530 (Tue, 29 Jul 2014)");
   script_name("WeBid Multiple Cross Site Scripting And LDAP Injection Vulnerabilities");
 
@@ -56,9 +56,7 @@ cookie or not.");
   - An input passed via the 'js' parameter is not properly sanitized upon
    submission to the loader.php script. ");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-script code in a user's browser session in the context of an affected site.
-
-Impact Level: Application");
+script code in a user's browser session in the context of an affected site.");
   script_tag(name:"affected", value:"WeBid Version 1.1.1");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");

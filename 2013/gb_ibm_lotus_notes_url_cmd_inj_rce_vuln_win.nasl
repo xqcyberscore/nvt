@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_notes_url_cmd_inj_rce_vuln_win.nasl 11201 2018-09-03 14:35:07Z cfischer $
+# $Id: gb_ibm_lotus_notes_url_cmd_inj_rce_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # IBM Lotus Notes URL Command Injection RCE Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803214");
-  script_version("$Revision: 11201 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-2174");
   script_bugtraq_id(54070);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-23 11:08:14 +0530 (Wed, 23 Jan 2013)");
   script_name("IBM Lotus Notes URL Command Injection RCE Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49601");
@@ -49,8 +49,7 @@ if(description)
   script_dependencies("secpod_ibm_lotus_notes_detect_win.nasl");
   script_mandatory_keys("IBM/LotusNotes/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code via a
-  malicious URLs.
-  Impact Level: System/Application");
+  malicious URLs.");
   script_tag(name:"affected", value:"IBM Lotus Notes Version 8.x before 8.5.3 FP2 on windows");
   script_tag(name:"insight", value:"An error exists within the URL handler which allows attackers to execute
   commands on the target.");

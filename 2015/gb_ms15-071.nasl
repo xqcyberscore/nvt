@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-071.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_ms15-071.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Windows NETLOGON Privilege Elevation Vulnerability (3068457)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805075");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2374");
   script_bugtraq_id(75633);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 09:12:11 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows NETLOGON Privilege Elevation Vulnerability (3068457)");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   man-in-the-middle attacker to conduct SMB relay attacks on domain environments
-  utilizing SMB Signing enforcement, and decrypt SMB3 communications intercepted.
-
-  Impact Level: System");
+  utilizing SMB Signing enforcement, and decrypt SMB3 communications intercepted.");
 
   script_tag(name:"affected", value:"Microsoft Windows Server 2012/R2
   Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior

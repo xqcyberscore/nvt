@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_login_mult_xss_vuln.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: gb_dotcms_login_mult_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # DotCMS Multiple Login Page Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804294");
-  script_version("$Revision: 11194 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-3484");
   script_bugtraq_id(60741);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-13 16:14:20 +0530 (Tue, 13 May 2014)");
   script_name("DotCMS Multiple Login Page Cross Site Scripting Vulnerabilities");
 
@@ -44,9 +44,7 @@ if(description)
   'my_account_login', 'email' POST parameters to /application/login/login.html,
   /c/portal_public/login and /dotCMS/forgotPassword scripts respectively.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  script code in a user's browser session in the context of an affected site.");
   script_tag(name:"affected", value:"DotCMS before version 2.3.2");
   script_tag(name:"solution", value:"Upgrade to DotCMS version 2.3.2 or later.
   For updates refer to http://dotcms.com/");

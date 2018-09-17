@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln01_sep14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_adobe_acrobat_mult_vuln01_sep14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Acrobat Multiple Vulnerabilities-01 Sep14 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804486");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0560", "CVE-2014-0561", "CVE-2014-0563", "CVE-2014-0565",
                 "CVE-2014-0566", "CVE-2014-0567", "CVE-2014-0568");
   script_bugtraq_id(69823, 69821, 69826, 69824, 69825, 69827, 69828);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-19 13:51:49 +0530 (Fri, 19 Sep 2014)");
 
   script_name("Adobe Acrobat Multiple Vulnerabilities-01 Sep14 (Windows)");
@@ -66,9 +66,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to disclose potentially sensitive information, bypass certain
-  security restrictions, execute arbitrary code and compromise a user's system.
-
-  Impact Level: System/Application");
+  security restrictions, execute arbitrary code and compromise a user's system.");
 
   script_tag(name:"affected", value:"Adobe Acrobat 10.x before 10.1.12 and
   11.x before 11.0.09 on Windows.");

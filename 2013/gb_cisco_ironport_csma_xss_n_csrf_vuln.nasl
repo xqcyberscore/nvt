@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ironport_csma_xss_n_csrf_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_cisco_ironport_csma_xss_n_csrf_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Cisco Content Security Management Appliance XSS and CSRF Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/h:cisco:content_security_management_appliance";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803754");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(60919, 60829);
   script_cve_id("CVE-2013-3395", "CVE-2013-3396");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-04 11:53:49 +0530 (Wed, 04 Sep 2013)");
   script_name("Cisco Content Security Management Appliance XSS and CSRF Vulnerabilities");
 
@@ -60,9 +60,7 @@ For updates refer to http://www.cisco.com/en/US/products/ps12503/index.html ");
   script_tag(name:"affected", value:"Cisco Content Security Management Appliance (SMA) 8.1 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary script
 code in the browser of an unsuspecting user in the context of the affected
-site.
-
-Impact Level: Application");
+site.");
   script_xref(name:"URL", value:"http://1337day.com/exploit/21168");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/122955");
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=29844");

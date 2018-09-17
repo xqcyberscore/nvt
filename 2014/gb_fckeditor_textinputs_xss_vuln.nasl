@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fckeditor_textinputs_xss_vuln.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: gb_fckeditor_textinputs_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # FCKeditor 'print_textinputs_var()' Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804701");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-01 12:07:59 +0530 (Tue, 01 Jul 2014)");
   script_name("FCKeditor 'print_textinputs_var()' Multiple Cross Site Scripting Vulnerabilities");
 
@@ -46,9 +46,7 @@ if(description)
   returned to the user.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  script code in a user's browser session in the context of an affected site.");
 
   script_tag(name:"affected", value:"FCKeditor version prior to 2.6.11");
 

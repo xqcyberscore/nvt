@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpads_auth_bypass_vuln.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_phpads_auth_bypass_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # PHPads Authentication Bypass Vulnerabilities - Jan15
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805321");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-13 13:48:08 +0530 (Tue, 13 Jan 2015)");
   script_name("PHPads Authentication Bypass Vulnerabilities - Jan15");
 
@@ -45,9 +45,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation allows to bypass
   the authentication mechanism by creating the cookies 'user' and 'pass'
-  and assigning them the corresponding values taken from the 'ads.dat' file.
-
-  Impact Level: Application");
+  and assigning them the corresponding values taken from the 'ads.dat' file.");
 
   script_tag(name:"affected", value:"PHPads version 2.0 ");
 

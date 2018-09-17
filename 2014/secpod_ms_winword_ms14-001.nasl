@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_winword_ms14-001.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: secpod_ms_winword_ms14-001.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities (2916605)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903426");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0258", "CVE-2014-0259", "CVE-2014-0260");
   script_bugtraq_id(64726, 64727, 64728);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-15 09:12:21 +0530 (Wed, 15 Jan 2014)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities (2916605)");
 
@@ -51,9 +51,7 @@ Microsoft Word 2003 Service Pack 3 and prior
 Microsoft Word 2007 Service Pack 3  and prior
 Microsoft Word 2010 Service Pack 2 and prior.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
-code, cause memory corruption and compromise the system.
-
-Impact Level: System/Application ");
+code, cause memory corruption and compromise the system.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

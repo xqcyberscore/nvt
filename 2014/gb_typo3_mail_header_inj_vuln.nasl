@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mail_header_inj_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_typo3_mail_header_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # TYPO3 Mail Header Injection Vulnerability
 #
@@ -28,21 +28,19 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803983");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2007-1081");
   script_bugtraq_id(22668);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-23 18:23:18 +0530 (Mon, 23 Dec 2013)");
   script_name("TYPO3 Mail Header Injection Vulnerability");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject arbitrary
-email headers.
-
-Impact Level: Application");
+email headers.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"An error exists in class.t3lib_formmail.php script which fails to properly
 validate certain email headers.");

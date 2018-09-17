@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_csp_mysql_user_manager_sql_inj_vuln.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_csp_mysql_user_manager_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # CSP MySQL User Manager SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804229");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1466");
   script_bugtraq_id(64731);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-28 11:34:43 +0530 (Tue, 28 Jan 2014)");
   script_name("CSP MySQL User Manager SQL Injection Vulnerability");
 
@@ -43,9 +43,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to input passed via the 'username' parameter to 'login.php',
   which is not properly sanitised before being used in a SQL query.");
   script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL queries by
-  injecting arbitrary SQL code and gain sensitive information.
-
-  Impact Level: Application.");
+  injecting arbitrary SQL code and gain sensitive information.");
   script_tag(name:"affected", value:"CSP MySQL User Manager 2.3, Other versions may also be affected.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

@@ -29,14 +29,14 @@ CPE = "cpe:/a:mozilla:thunderbird_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804012");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1718", "CVE-2013-1722", "CVE-2013-1725", "CVE-2013-1726",
                 "CVE-2013-1730", "CVE-2013-1732", "CVE-2013-1735", "CVE-2013-1736",
                 "CVE-2013-1737");
   script_bugtraq_id(62463, 62460, 62467, 62482, 62473, 62469, 62479, 62478, 62475);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-24 15:40:41 +0530 (Tue, 24 Sep 2013)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities-01 Sep13 (Mac OS X)");
 
@@ -50,9 +50,7 @@ For updates refer to http://www.mozilla.com/en-US/thunderbird");
   script_tag(name:"affected", value:"Mozilla Thunderbird ESR version 17.x before 17.0.9 on Mac OS X");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain escalated privileges,
 disclose potentially sensitive information, bypass certain security
-restrictions, and compromise a user's system.
-
-Impact Level: System/Application");
+restrictions, and compromise a user's system.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 

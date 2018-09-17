@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_rtf_mult_vuln_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_libreoffice_rtf_mult_vuln_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # LibreOffice RTF File Handling Multiple Vulnerabilities Nov14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805108");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-9093");
   script_bugtraq_id(71313);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-28 19:04:12 +0530 (Fri, 28 Nov 2014)");
   script_name("LibreOffice RTF File Handling Multiple Vulnerabilities Nov14 (Windows)");
 
@@ -47,9 +47,7 @@ if(description)
   rtf file.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to cause a denial of service (crash) or possibly execute arbitrary code.
-
-  Impact Level: System/Application");
+  to cause a denial of service (crash) or possibly execute arbitrary code.");
 
   script_tag(name:"affected", value:"LibreOffice version before 4.3.5
   on Windows");

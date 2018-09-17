@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hybridauth_remote_code_exec_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_hybridauth_remote_code_exec_vuln.nasl 11406 2018-09-15 10:29:52Z cfischer $
 #
 # HybridAuth 'install.php' Remote Code Execution Vulnerability
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804753");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11406 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 12:29:52 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-26 10:58:06 +0530 (Tue, 26 Aug 2014)");
   script_name("HybridAuth 'install.php' Remote Code Execution Vulnerability");
-  script_category(ACT_ATTACK);
+  script_category(ACT_DESTRUCTIVE_ATTACK); # nb: The original version of the script was in ACT_ATTACK and exited if safe_checks() was enabled.
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -47,15 +47,18 @@ if(description)
 
   script_tag(name:"summary", value:"This host is installed with HybridAuth and is prone to remote code execution
   vulnerability.");
+
   script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP GET request and check whether it is
   able to execute the code remotely.");
+
   script_tag(name:"insight", value:"Flaw exists because the hybridauth/install.php script does not properly verify
   or sanitize user-uploaded files.");
-  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code in the
-  affected system.
 
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code in the
+  affected system.");
+
   script_tag(name:"affected", value:"HybridAuth version 2.1.2 and probably prior.");
+
   script_tag(name:"solution", value:"Upgrade to HybridAuth version 2.2.2 or later, For updates refer
   http://hybridauth.sourceforge.net");
 
@@ -65,25 +68,20 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## exit if safe checks enabled
-if( safe_checks() ) exit( 0 );
-
 port = get_http_port( default:80 );
-
 if( ! can_host_php( port:port ) ) exit( 0 );
 
+useragent = get_http_user_agent();
 host = http_host_name( port:port );
 
 foreach dir( make_list_unique( "/", "/auth", "/hybridauth", "/social", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
 
-  sndReq = http_get( item:dir + "/install.php",  port:port );
-  rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
+  rcvRes = http_get_cache( item:dir + "/install.php",  port:port );
 
   if( ">HybridAuth Installer<" >< rcvRes ) {
 
@@ -93,6 +91,7 @@ foreach dir( make_list_unique( "/", "/auth", "/hybridauth", "/social", cgi_dirs(
 
     sndReq = string( "POST ", url, " HTTP/1.1\r\n",
                      "Host: ", host, "\r\n",
+                     "User-Agent: ", useragent, "\r\n",
                      "Content-Type: application/x-www-form-urlencoded\r\n",
                      "Content-Length: ", strlen( postData ), "\r\n",
                      "\r\n", postData );
@@ -107,6 +106,7 @@ foreach dir( make_list_unique( "/", "/auth", "/hybridauth", "/social", cgi_dirs(
 
       sndReq = string( "POST ", url, " HTTP/1.1\r\n",
                        "Host: ", host, "\r\n",
+                       "User-Agent: ", useragent, "\r\n",
                        "Content-Type: application/x-www-form-urlencoded\r\n",
                        "Content-Length: ", strlen( postData ), "\r\n",
                        "\r\n", postData );

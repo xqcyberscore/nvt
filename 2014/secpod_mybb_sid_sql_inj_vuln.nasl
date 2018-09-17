@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mybb_sid_sql_inj_vuln.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: secpod_mybb_sid_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # MyBB sid Sql Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903231");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-26 11:23:07 +0530 (Wed, 26 Feb 2014)");
   script_name("MyBB sid Sql Injection Vulnerability");
 
@@ -42,9 +42,7 @@ if(description)
   script_tag(name:"insight", value:"Flaw is due to improper validation of user-supplied input passed to
   'sid' parameter in 'search.php' page.");
   script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL queries by
-  injecting arbitrary SQL code and gain sensitive information.
-
-  Impact Level: Application");
+  injecting arbitrary SQL code and gain sensitive information.");
   script_tag(name:"affected", value:"MyBB 1.6.12, previous versions may also be affected.");
   script_tag(name:"solution", value:"Upgrade to version 1.6.13 or later,
   For updates refer to http://mybb.com");

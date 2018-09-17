@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804052");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-7113");
   script_bugtraq_id(64413);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-30 21:06:19 +0530 (Mon, 30 Dec 2013)");
   script_name("Wireshark BSSGP Dissector Denial of Service Vulnerability-02 Dec13 (Mac OS X)");
 
@@ -46,9 +46,7 @@ vulnerability.");
 For updates refer to http://www.wireshark.org/download");
   script_tag(name:"insight", value:"Flaw is due to an error within the BSSGP dissector.");
   script_tag(name:"affected", value:"Wireshark version 1.10.x before 1.10.4 on Mac OS X");
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a Denial of Service.
-
-Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a Denial of Service.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2916652.nasl 10957 2018-08-14 13:26:50Z mmartin $
+# $Id: gb_microsoft_security_advisory_2916652.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Digital Certificates Security Advisory (2916652)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803978");
-  script_version("$Revision: 10957 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:26:50 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-10 17:56:31 +0530 (Tue, 10 Dec 2013)");
   script_name("Microsoft Digital Certificates Security Advisory (2916652)");
 
@@ -50,9 +50,7 @@ Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
 Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
 Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to to spoof content, perform
-phishing attacks, or perform man-in-the-middle attacks.
-
-Impact Level: Application");
+phishing attacks, or perform man-in-the-middle attacks.");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2677070");
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/advisory/2916652");
   script_category(ACT_GATHER_INFO);

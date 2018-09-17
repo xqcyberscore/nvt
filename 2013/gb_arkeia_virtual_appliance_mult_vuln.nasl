@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arkeia_virtual_appliance_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_arkeia_virtual_appliance_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Arkeia Appliance Multiple Vulnerabilities
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:knox_software:arkeia_appliance";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803760");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-18 15:16:06 +0530 (Wed, 18 Sep 2013)");
   script_name("Arkeia Appliance Multiple Vulnerabilities");
 
@@ -54,9 +54,7 @@ For updates refer to http://www.arkeia.com/download ");
   script_tag(name:"affected", value:"Arkeia Appliance Version 10.0.10 and prior.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to perform directory
 traversal attacks and read arbitrary files on the affected application.
-arbitrary data.
-
-Impact Level: Application");
+arbitrary data.");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/28330");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/123275");
   script_category(ACT_ATTACK);

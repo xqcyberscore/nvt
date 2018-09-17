@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_ftp_default_pass.nasl 4987 2017-01-11 13:38:47Z cfi $
+# $Id: gb_avm_fritz_box_ftp_default_pass.nasl 11412 2018-09-16 10:21:40Z cfischer $
 #
 # AVM FRITZ!Box Default Password (FTP)
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:avm:fritzbox';
+CPE = "cpe:/o:avm:fritz%21_os";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108043");
-  script_version("$Revision: 4987 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-11 14:38:47 +0100 (Wed, 11 Jan 2017) $");
+  script_version("$Revision: 11412 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-16 12:21:40 +0200 (Sun, 16 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-01-11 11:00:00 +0100 (Wed, 11 Jan 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winradius_server_dos_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_winradius_server_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WinRadius Server Denial of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803716");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-12 12:06:46 +0530 (Wed, 12 Jun 2013)");
   script_name("WinRadius Server Denial of Service Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
   script_require_udp_ports("Services/udp/radius", 1812);
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a
-  denial of service.
-
-  Impact Level: Application");
+  denial of service.");
   script_tag(name:"affected", value:"WinRadius Server version 2.11");
   script_tag(name:"insight", value:"The flaw is due to an error when parsing Access-Request packets
   and can be exploited to crash the server.");

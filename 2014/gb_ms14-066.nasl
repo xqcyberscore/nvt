@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-066.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: gb_ms14-066.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # MS Windows Secure Channel Remote Code Execution Vulnerability (2992611)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804881");
-  script_version("$Revision: 11194 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-6321");
   script_bugtraq_id(70954);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 12:39:54 +0530 (Wed, 12 Nov 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("MS Windows Secure Channel Remote Code Execution Vulnerability (2992611)");
@@ -47,9 +47,7 @@ if(description)
   when handling Secure Channel packets.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code.
-
-  Impact Level: System");
+  attackers to execute arbitrary code.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior

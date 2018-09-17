@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_and_compat_pack_ms15-012.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_ms_office_and_compat_pack_ms15-012.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3032328)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805046");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0063", "CVE-2015-0064");
   script_bugtraq_id(72460, 72463);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 11:47:10 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3032328)");
 
@@ -47,9 +47,7 @@ if(description)
   handles objects in memory while parsing specially crafted Office files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code on the affected system.
-
-  Impact Level: System/Application");
+  attackers to execute arbitrary code on the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Office Compatibility Pack Service Pack 3");
 

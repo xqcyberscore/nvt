@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nextgen_gallery_dir_trav_vuln.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: gb_wordpress_nextgen_gallery_dir_trav_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WordPress NextGEN Gallery 'jqueryFileTree.php' Directory Traversal Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804510");
-  script_version("$Revision: 11194 $");
+  script_version("$Revision: 11402 $");
   script_bugtraq_id(65637);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-07 17:46:21 +0530 (Fri, 07 Mar 2014)");
   script_name("WordPress NextGEN Gallery 'jqueryFileTree.php' Directory Traversal Vulnerability");
 
@@ -45,9 +45,7 @@ local directory list or not.");
 properly sanitizing user input, specifically absolute paths passed via 'file'
 POST parameters.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to read arbitrary file
-details on the target system.
-
-Impact Level: Application");
+details on the target system.");
   script_tag(name:"affected", value:"WordPress NextGEN Gallery Plugin version 2.0.0, Other versions may also be
 affected.");
   script_tag(name:"solution", value:"Upgrade to WordPress NextGEN Gallery version 2.0.7 or later,

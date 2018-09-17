@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_services_ms14-022.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: gb_sharepoint_services_ms14-022.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft SharePoint Services 3.0 Multiple Vulnerabilities (2952166)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804583");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0251");
   script_bugtraq_id(67283);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-14 14:57:22 +0530 (Wed, 14 May 2014)");
   script_name("Microsoft SharePoint Services 3.0 Multiple Vulnerabilities (2952166)");
 
@@ -44,9 +44,7 @@ Bulletin MS14-022.");
 or not.");
   script_tag(name:"insight", value:"Flaws is due to multiple unspecified components when handling page content.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
-code and compromise a vulnerable system.
-
-Impact Level: System/Application ");
+code and compromise a vulnerable system.");
   script_tag(name:"affected", value:"Microsoft SharePoint Services 3.0 32/64 bit Service Pack 3 and prior.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
 update mentioned hotfixes in the advisory from the below link,

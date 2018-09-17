@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_divi_auth_bypass_vuln.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_wp_divi_auth_bypass_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # WordPress Divi Theme Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805343");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-1579");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 11:19:45 +0530 (Fri, 06 Mar 2015)");
   script_name("WordPress Divi Theme Directory Traversal Vulnerability");
 
@@ -48,9 +48,7 @@ if(description)
   attacks (e.g. '../') via the 'img' parameter.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to download arbitrary files.
-
-  Impact Level: Application");
+  attackers to download arbitrary files.");
 
   script_tag(name:"affected", value:"Wordpress Divi Theme");
 

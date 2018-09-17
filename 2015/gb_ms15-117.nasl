@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-117.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_ms15-117.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Windows NDIS Elevation of Privilege Vulnerability (3101722)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806615");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-6098");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 12:47:24 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft Windows NDIS Elevation of Privilege Vulnerability (3101722)");
 
@@ -45,9 +45,7 @@ if(description)
   length of a buffer prior to copying memory into it.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to gain elevated privileges on a targeted system.
-
-  Impact Level: System");
+  to gain elevated privileges on a targeted system.");
 
   script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2

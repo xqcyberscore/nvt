@@ -28,12 +28,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804151");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5607");
   script_bugtraq_id(63802);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-25 20:28:51 +0530 (Mon, 25 Nov 2013)");
   script_name("Mozilla Firefox Integer Overflow Vulnerability-01 Nov13 (Windows)");
 
@@ -47,9 +47,7 @@ For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 in Mozilla Netscape Portable Runtime (NSPR).");
   script_tag(name:"affected", value:"Mozilla Firefox before version 25.0.1 on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
-service (application crash) or possibly have unspecified other impact.
-
-Impact Level: Application");
+service (application crash) or possibly have unspecified other impact.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln02_jan13_lin.nasl 11114 2018-08-26 12:36:02Z cfischer $
+# $Id: gb_opera_mult_vuln02_jan13_lin.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Opera Multiple Vulnerabilities-02 Jan13 (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803142");
-  script_version("$Revision: 11114 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-6468", "CVE-2012-6469");
   script_bugtraq_id(56594);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-26 14:36:02 +0200 (Sun, 26 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-07 15:27:43 +0530 (Mon, 07 Jan 2013)");
   script_name("Opera Multiple Vulnerabilities-02 Jan13 (Linux)");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1037/");
@@ -46,9 +46,7 @@ if(description)
   script_mandatory_keys("Opera/Linux/Version");
 
   script_tag(name:"impact", value:"Successful exploitation will let the attacker crash the browser leading to
-  denial of service, execute the arbitrary code or disclose the information.
-
-  Impact Level: System/Application");
+  denial of service, execute the arbitrary code or disclose the information.");
 
   script_tag(name:"affected", value:"Opera version before 12.11 on Linux");
 

@@ -29,11 +29,11 @@ CPE = "cpe:/a:zohocorp:manageengine_assetexplorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805707");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-5061", "CVE-2015-2169");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-24 14:40:38 +0530 (Wed, 24 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Manage Engine Asset Explorer Multiple Cross Site Scripting Vulnerabilities");
@@ -54,9 +54,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to create a specially crafted request that would execute arbitrary
   script code in a user's browser session within the trust relationship between
-  their browser and the server.
-
-  Impact Level: Application");
+  their browser and the server.");
 
   script_tag(name:"affected", value:"ManageEngine AssetExplorer version
   6.1.0 Build 6112 and prior.");

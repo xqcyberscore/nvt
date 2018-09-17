@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_pie_register_xss_vuln.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_wp_pie_register_xss_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Wordpress Pie Register Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805763");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-7377");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-20 12:43:41 +0530 (Tue, 20 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Pie Register Cross-Site Scripting Vulnerability");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary HTML and script code in a user's browser session
-  in context of an affected site.
-
-  Impact Level: Application");
+  in context of an affected site.");
 
   script_tag(name:"affected", value:"Wordpress Pie Register version before
   2.0.19");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xboard_post_lfi_vuln.nasl 11140 2018-08-28 08:27:23Z jschulte $
+# $Id: gb_xboard_post_lfi_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # xBoard Local File Inclusion Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803790");
-  script_version("$Revision: 11140 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 10:27:23 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-27 11:30:04 +0530 (Fri, 27 Dec 2013)");
   script_name("xBoard Local File Inclusion Vulnerability");
 
@@ -44,9 +44,7 @@ if(description)
   ../(dot dot) sequences.");
   script_tag(name:"affected", value:"xBoard versions 5.0, 5.5, 6.0 ");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to read arbitrary files
-  on the target system.
-
-  Impact Level: Application");
+  on the target system.");
 
   script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2013120166");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124589/xboard-lfi.txt");

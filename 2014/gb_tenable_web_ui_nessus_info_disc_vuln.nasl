@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tenable_web_ui_nessus_info_disc_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_tenable_web_ui_nessus_info_disc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Nessus Tenable Web UI Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:tenable:nessus';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804802");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4980");
   script_bugtraq_id(68782);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-08 10:33:08 +0530 (Fri, 08 Aug 2014)");
   script_name("Nessus Tenable Web UI Information Disclosure Vulnerability");
 
@@ -45,9 +45,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw exists due to an error in /server/properties which does not validate
   'token' parameter.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain knowledge on
-  sensitive information.
-
-  Impact Level: Application");
+  sensitive information.");
   script_tag(name:"affected", value:"Tenable Web UI before 2.3.5 in Nessus versions 5.2.3 through 5.2.7");
   script_tag(name:"solution", value:"Upgrade Tenable Web UI component to 2.3.5 in Nessus. For updates refer
   http://www.tenable.com/products/nessus");

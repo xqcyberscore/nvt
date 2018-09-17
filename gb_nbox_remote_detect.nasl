@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nbox_remote_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_nbox_remote_detect.nasl 11407 2018-09-15 11:02:05Z cfischer $
 #
 # NBOX Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809082");
-  script_version("$Revision: 11015 $");
+  script_version("$Revision: 11407 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:02:05 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-03 18:01:01 +0530 (Thu, 03 Nov 2016)");
   script_name("NBOX Remote Detection");
 
@@ -43,8 +43,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 443);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -55,14 +57,10 @@ include("misc_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-if(!nbPort = get_http_port(default:443)){
-  exit(0);
-}
+nbPort = get_http_port(default:443);
 
-##url
 url = "/ntop-bin/dashboard.cgi";
 
-## Default credentials
 auth = base64(str:'nbox:nbox');
 
 req = http_get(item:url, port:nbPort);
@@ -74,7 +72,6 @@ if('401 Unauthorized' >< buf && 'WWW-Authenticate: Basic realm="Authentication R
 
   version = "unknown";
 
-  ## Send request with default credentials and receive response
   req = ereg_replace(string:req, pattern:'\r\n\r\n', replace: '\r\nAuthorization: Basic ' + auth + '\r\n\r\n');
   buf = http_keepalive_send_recv(port:nbPort, data:req, bodyonly:FALSE);
 

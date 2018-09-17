@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_unspecified_vuln01_jan14_win.nasl 11214 2018-09-04 10:09:46Z mmartin $
+# $Id: gb_oracle_virtualbox_mult_unspecified_vuln01_jan14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle VM VirtualBox Multiple Unspecified Vulnerabilities-01 Jan2014 (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804195");
-  script_version("$Revision: 11214 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0404", "CVE-2014-0405", "CVE-2014-0406", "CVE-2014-0407");
   script_bugtraq_id(64911, 64900, 64905, 64913);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-23 11:44:12 +0530 (Thu, 23 Jan 2014)");
   script_name("Oracle VM VirtualBox Multiple Unspecified Vulnerabilities-01 Jan2014 (Windows)");
 
@@ -44,9 +44,7 @@ unspecified vulnerabilities.");
 is vulnerable or not.");
   script_tag(name:"insight", value:"The flaw is due to unspecified errors related to 'core' subcomponent");
   script_tag(name:"impact", value:"Successful exploitation will allow local users to affect confidentiality,
-integrity, and availability via unknown vectors.
-
-Impact Level: Application");
+integrity, and availability via unknown vectors.");
   script_tag(name:"affected", value:"Oracle VM VirtualBox before version 3.2.20, before version 4.0.22, before
 version 4.1.30, before version 4.2.20 and before version 4.3.4 on Windows.");
   script_tag(name:"solution", value:"Apply the patch from below link,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-019.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: secpod_ms13-019.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MS Windows Client/Server Run-time Subsystem Privilege Escalation Vulnerability (2790113)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902946");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0076");
   script_bugtraq_id(57821);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-13 07:39:40 +0530 (Wed, 13 Feb 2013)");
   script_name("MS Windows Client/Server Run-time Subsystem Privilege Escalation Vulnerability (2790113)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52162/");
@@ -48,8 +48,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain escalated privileges
-  and execute the code.
-  Impact Level: System");
+  and execute the code.");
   script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
   Microsoft Windows Server 2008 R2 Edition Service Pack 1 and prior");
   script_tag(name:"insight", value:"The flaw is due to an error in the Client/Server Run-time Subsystem (CSRSS)

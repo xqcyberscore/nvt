@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cetil_login_xss_vuln.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_cetil_login_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Cetil 'logon_senha.asp' Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804463");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11402 $");
   script_bugtraq_id(67778);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-18 12:20:43 +0530 (Wed, 18 Jun 2014)");
   script_name("Cetil 'logon_senha.asp' Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -54,9 +54,7 @@ if(description)
   the 'UID' parameter before returning it to users.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  script code in a user's browser session in the context of an affected site.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

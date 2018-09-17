@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_torque_resource_manager_bof_vuln.nasl 11190 2018-09-03 11:25:15Z cfischer $
+# $Id: gb_torque_resource_manager_bof_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # TORQUE Resource Manager Stack Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804456");
-  script_version("$Revision: 11190 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0749");
   script_bugtraq_id(67420);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:25:15 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-29 14:39:49 +0530 (Thu, 29 May 2014)");
   script_name("TORQUE Resource Manager Stack Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -54,9 +54,7 @@ if(description)
   (src/lib/Libdis/disrsi_.c), which can be exploited to cause a stack-based buffer overflow.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to execute arbitrary code
-  and cause a denial of service.
-
-  Impact Level: Application");
+  and cause a denial of service.");
 
   script_tag(name:"affected", value:"TORQUE versions 2.5 through 2.5.13");
 

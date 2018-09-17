@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-025.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_ms15-025.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # MS Windows Kernel Privilege Elevation Vulnerabilities (3038680)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805350");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0073", "CVE-2015-0075");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-11 08:49:34 +0530 (Wed, 11 Mar 2015)");
   script_name("MS Windows Kernel Privilege Elevation Vulnerabilities (3038680)");
 
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to run arbitrary code and  bypass user account checks to gain
-  elevated privileges.
-
-  Impact Level: System");
+  elevated privileges.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
 

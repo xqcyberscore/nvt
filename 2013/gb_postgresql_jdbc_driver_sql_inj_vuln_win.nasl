@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_jdbc_driver_sql_inj_vuln_win.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_postgresql_jdbc_driver_sql_inj_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PostgreSQL JDBC Driver SQL Injection Vulnerability (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803220");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-1618");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 19:16:05 +0530 (Thu, 24 Jan 2013)");
   script_name("PostgreSQL JDBC Driver SQL Injection Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2012/Mar/125");
@@ -46,8 +46,7 @@ if(description)
   script_mandatory_keys("PostgreSQL/Win/Ver");
   script_require_ports(139, 445);
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to manipulate SQL queries by
-  injecting arbitrary SQL code and gain sensitive information.
-  Impact Level: Application");
+  injecting arbitrary SQL code and gain sensitive information.");
   script_tag(name:"affected", value:"PostgreSQL JDBC Driver versions 8.1 on Windows");
   script_tag(name:"insight", value:"An error exists within the JDBC driver which fails to escape unspecified
   JDBC statement parameters.");

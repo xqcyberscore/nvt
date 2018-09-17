@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-019.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms14-019.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft File Handling Component Remote Code Execution Vulnerability (2922229)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804375");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0315");
   script_bugtraq_id(66619);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 08:14:46 +0530 (Wed, 09 Apr 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft File Handling Component Remote Code Execution Vulnerability (2922229)");
@@ -45,9 +45,7 @@ or not.");
   script_tag(name:"insight", value:"Flaw is due to an improper path restrictions when processing .bat and .cmd
 files related to the 'CreateProcess' function.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code and
-potentially compromise user's system.
-
-Impact Level: System/Application");
+potentially compromise user's system.");
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
 Microsoft Windows 8.1 x32/x64
 Microsoft Windows Server 2012

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-039.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms14-039.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Windows On-Screen Keyboard Privilege Escalation Vulnerability (2975685)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804472");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2781");
   script_bugtraq_id(68397);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-09 08:30:57 +0530 (Wed, 09 Jul 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows On-Screen Keyboard Privilege Escalation Vulnerability (2975685)");
@@ -45,9 +45,7 @@ or not.");
   script_tag(name:"insight", value:"The flaw is triggered when executing the On-Screen keyboard from within the
 context of a low integrity process.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain escalated
-privileges.
-
-Impact Level: System");
+privileges.");
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
 Windows 8.1 x32/x64 Edition
 Microsoft Windows Server 2012/R2

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendnet_print_server_authe_bypass_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_trendnet_print_server_authe_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # TRENDnet Print Server Authentication Bypass Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803720");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-25 12:51:19 +0530 (Tue, 25 Jun 2013)");
   script_name("TRENDnet Print Server Authentication Bypass Vulnerability");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/26401");
@@ -54,9 +54,7 @@ features, remove the product or replace the product by another one.");
 authentication bypass vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to reset
 print server to factory settings or changing its IP address without password
-security check and obtain the sensitive information.
-
-Impact Level: Application");
+security check and obtain the sensitive information.");
   script_tag(name:"affected", value:"TRENDnet TE100-P1U Print Server Firmware 4.11");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);

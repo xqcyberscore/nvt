@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln01_may14_macosx.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_wireshark_dos_vuln01_may14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Wireshark RTP Dissector Denial of Service Vulnerability-01 May14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804275");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2907");
   script_bugtraq_id(67046);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-02 10:53:26 +0530 (Fri, 02 May 2014)");
   script_name("Wireshark RTP Dissector Denial of Service Vulnerability-01 May14 (Mac OS X)");
 
@@ -45,9 +45,7 @@ vulnerability.");
   script_tag(name:"insight", value:"The flaw is due to error in 'srtp_add_address' function within
 epan/dissectors/packet-rtp.c in the RTP dissector.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct a DoS (Denial of
-Service).
-
-Impact Level: Application");
+Service).");
   script_tag(name:"affected", value:"Wireshark version 1.10.x before 1.10.7 on Mac OS X");
   script_tag(name:"solution", value:"Upgrade to Wireshark version 1.10.7 or later,
 For updates refer to http://www.wireshark.org/download");

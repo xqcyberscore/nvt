@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_mult_vuln02.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_open_xchange_appsuite_mult_vuln02.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # Open-Xchange (OX) AppSuite Multiple Vulnerabilities -02 Oct15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806070");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11422 $");
   script_cve_id("CVE-2014-5236", "CVE-2014-5237");
   script_bugtraq_id(69794, 69793);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-05 16:02:56 +0530 (Mon, 05 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Multiple Vulnerabilities -02 Oct15");
@@ -55,9 +55,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to access or read arbitrary files that contain sensitive information, to
   perform certain unauthorized actions and gain access to the affected
-  application. Other attacks are also possible
-
-  Impact Level: Application");
+  application. Other attacks are also possible.");
 
   script_tag(name:"affected", value:"Open-Xchange (OX) AppSuite versions before
   7.4.2-rev10 and 7.6.x before 7.6.0-rev10.");

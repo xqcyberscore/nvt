@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_bof_vuln_jan13_win.nasl 11077 2018-08-22 09:40:33Z mmartin $
+# $Id: gb_adobe_air_bof_vuln_jan13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe Air Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803443");
-  script_version("$Revision: 11077 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0630");
   script_bugtraq_id(57184);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-21 13:10:21 +0530 (Thu, 21 Mar 2013)");
   script_name("Adobe Air Buffer Overflow Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51771");
@@ -47,8 +47,7 @@ if(description)
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
   script_mandatory_keys("Adobe/Air/Win/Installed");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-  code or cause denial of service condition.
-  Impact Level: System/Application");
+  code or cause denial of service condition.");
   script_tag(name:"affected", value:"Adobe AIR version 3.5.0.880 and earlier on Windows");
   script_tag(name:"insight", value:"An integer overflow error within 'flash.display.BitmapData()', which can be
   exploited to cause a heap-based buffer overflow.");

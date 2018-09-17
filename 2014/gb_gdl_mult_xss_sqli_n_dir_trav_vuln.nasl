@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gdl_mult_xss_sqli_n_dir_trav_vuln.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_gdl_mult_xss_sqli_n_dir_trav_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Ganesha Digital Library Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804509");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11402 $");
   script_bugtraq_id(65874);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-05 14:58:48 +0530 (Wed, 05 Mar 2014)");
   script_name("Ganesha Digital Library Multiple Vulnerabilities");
 
@@ -44,9 +44,7 @@ if(description)
   to download.php and 'keyword' parameter to gdl.php scripts.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code, manipulate SQL commands in backend database and read arbitrary
-  files.
-
-  Impact Level: Application");
+  files.");
   script_tag(name:"affected", value:"Ganesha Digital Library version 4.2, Other versions may also be affected.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

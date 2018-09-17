@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_vuln_mar_12.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_typo3_mult_vuln_mar_12.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # TYPO3 Multiple Vulnerabilities Mar12
 #
@@ -28,21 +28,19 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803998");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2012-1606", "CVE-2012-1607", "CVE-2012-1608");
   script_bugtraq_id(52771);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-02 17:09:08 +0530 (Thu, 02 Jan 2014)");
   script_name("TYPO3 Multiple Vulnerabilities Mar12");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to steal the victim's
-cookie-based authentication credentials or get sensitive information.
-
-Impact Level: Application");
+cookie-based authentication credentials or get sensitive information.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple error exists in the application,
 

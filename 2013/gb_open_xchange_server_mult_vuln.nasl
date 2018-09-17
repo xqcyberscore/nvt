@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_server_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_open_xchange_server_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Open-Xchange Server Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803182");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1646", "CVE-2013-1647", "CVE-2013-1648", "CVE-2013-1650",
                 "CVE-2013-1651");
   script_bugtraq_id(58465, 58473, 58475, 58469, 58470);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-18 10:14:58 +0530 (Mon, 18 Mar 2013)");
   script_name("Open-Xchange Server Multiple Vulnerabilities");
 
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML or
   web script in a user's browser session in context of an affected site,
-  compromise the application and access or modify data in the database.
-  Impact Level: Application");
+  compromise the application and access or modify data in the database.");
   script_tag(name:"affected", value:"Open-Xchange Server versions prior to 6.20.7-rev14, 6.22.0-rev13
   and 6.22.1-rev14.");
   script_tag(name:"insight", value:"- Input passed via arbitrary GET parameters to /servlet/TestServlet is not

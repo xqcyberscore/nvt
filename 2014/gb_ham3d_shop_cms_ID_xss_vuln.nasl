@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ham3d_shop_cms_ID_xss_vuln.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_ham3d_shop_cms_ID_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # HAM3D Shop Engine CMS 'ID' Parameter Cross-Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804652");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4302");
   script_bugtraq_id(68115);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-04 12:41:22 +0530 (Fri, 04 Jul 2014)");
   script_name("HAM3D Shop Engine CMS 'ID' Parameter Cross-Site Scripting Vulnerability");
 
@@ -43,9 +43,7 @@ if(description)
   script_tag(name:"insight", value:"Input passed via the HTTP GET parameter 'ID' to rating.php
   script is not properly sanitised before returning to the user.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  script code in a user's browser session in the context of an affected site.");
   script_tag(name:"affected", value:"HAM3D Shop Engine CMS.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804670");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2780");
   script_bugtraq_id(68392);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-09 08:09:40 +0530 (Wed, 09 Jul 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft DirectShow Elevation of Privileges Vulnerability (2975681)");
@@ -45,9 +45,7 @@ or not.");
   script_tag(name:"insight", value:"Flaw is due to an error in the way DirectShow handles objects in the memory.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain elevated privileges,
 execute code within the context of the logged on user and take complete
-control of an affected system.
-
-Impact Level: System");
+control of an affected system.");
   script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Service Pack 2 and prior
 Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior
 Microsoft Windows 7 x32/x64 Service Pack 1 and prior

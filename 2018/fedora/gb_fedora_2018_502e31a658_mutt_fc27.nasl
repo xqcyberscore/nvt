@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_502e31a658_mutt_fc27.nasl 10758 2018-08-03 12:49:20Z santu $
+# $Id: gb_fedora_2018_502e31a658_mutt_fc27.nasl 11416 2018-09-17 03:39:26Z ckuersteiner $
 #
 # Fedora Update for mutt FEDORA-2018-502e31a658
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874884");
-  script_version("$Revision: 10758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 14:49:20 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 11416 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 05:39:26 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-02 06:05:02 +0200 (Thu, 02 Aug 2018)");
   script_cve_id("CVE-2018-14358", "CVE-2018-14352", "CVE-2018-14353", "CVE-2018-14356", 
                 "CVE-2018-14359", "CVE-2018-14354", "CVE-2018-14355", "CVE-2018-14362", 
                 "CVE-2018-14357", "CVE-2018-14350", "CVE-2018-14349", "CVE-2018-14351");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mutt FEDORA-2018-502e31a658");
   script_tag(name:"summary", value:"Check the version of mutt");

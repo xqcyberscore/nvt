@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_jul15_macosx.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_jul15_macosx.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-01 July15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805908");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11422 $");
   script_cve_id("CVE-2015-2721", "CVE-2015-2722", "CVE-2015-2724", "CVE-2015-2728",
                 "CVE-2015-2730", "CVE-2015-2733", "CVE-2015-2734", "CVE-2015-2735",
                 "CVE-2015-2736", "CVE-2015-2737", "CVE-2015-2738", "CVE-2015-2739",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(75541, 74733);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-08 17:23:35 +0530 (Wed, 08 Jul 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 July15 (Mac OS X)");
 
@@ -85,9 +85,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code, obtain sensitive information, conduct
   man-in-the-middle attack, conduct denial-of-service attack, spoof ECDSA
-  signatures and other unspecified impacts.
-
-  Impact Level: System/Application");
+  signatures and other unspecified impacts.");
 
   script_tag(name:"affected", value:"Mozilla Firefox ESR 31.x before 31.8 and
   38.x before 38.1");

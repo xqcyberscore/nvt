@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netvault_backup_dos_vuln.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_netvault_backup_dos_vuln.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # Dell Netvault Denial Of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:dell:netvault_backup";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806003");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11422 $");
   script_cve_id("CVE-2015-5696");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-04 16:15:42 +0530 (Tue, 04 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Dell Netvault Denial Of Service Vulnerability");
@@ -48,9 +48,7 @@ if(description)
   affected system to crash.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause denial of service vulnerability (crash).
-
-  Impact Level: Application");
+  attackers to cause denial of service vulnerability (crash).");
 
   script_tag(name:"affected", value:"Dell Netvault Backup versions 10.0.1.24
   and probably prior");

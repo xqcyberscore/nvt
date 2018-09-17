@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_info_disc_vuln_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_apache_tomcat_info_disc_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Apache Tomcat Information Disclosure Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803635");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2071");
   script_bugtraq_id(59798);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-06 12:45:15 +0530 (Thu, 06 Jun 2013)");
   script_name("Apache Tomcat Information Disclosure Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -49,8 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=revision&revision=1471372");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain potentially
-  sensitive information.
-  Impact Level: Application");
+  sensitive information.");
   script_tag(name:"affected", value:"Apache Tomcat version 7.x to 7.0.39");
   script_tag(name:"insight", value:"Flaw due to improper handling of throwing a RunTimeException in an
   AsyncListener in 'java/org/apache/catalina/core/AsyncContextImpl.java'.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_mult_vuln_nov14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_pidgin_mult_vuln_nov14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Pidgin Multiple Vulnerabilities Nov 2014 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:pidgin:pidgin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804890");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3694", "CVE-2014-3695", "CVE-2014-3696", "CVE-2014-3697",
                 "CVE-2014-3698");
   script_bugtraq_id(70701, 70702, 70705, 70704, 70703);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-21 18:58:24 +0530 (Fri, 21 Nov 2014)");
   script_name("Pidgin Multiple Vulnerabilities Nov 2014 (Windows)");
 
@@ -58,9 +58,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to cause a denial of service (crash), disclosure of potentially sensitive
-  information, disclose and manipulate certain data and spoofing attacks.
-
-  Impact Level: Application");
+  information, disclose and manipulate certain data and spoofing attacks.");
 
   script_tag(name:"affected", value:"Pidgin before version 2.10.10 on Windows.");
 

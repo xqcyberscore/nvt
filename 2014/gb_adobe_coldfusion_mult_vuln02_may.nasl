@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_mult_vuln02_may.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_adobe_coldfusion_mult_vuln02_may.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe ColdFusion Multiple Vulnerabilities-02 May-2014
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804444");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-1387", "CVE-2013-1388");
   script_bugtraq_id(58974, 58975);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 15:52:29 +0530 (Tue, 06 May 2014)");
   script_name("Adobe ColdFusion Multiple Vulnerabilities-02 May-2014");
 
@@ -50,9 +50,7 @@ check the version is vulnerable or not.");
   - An unspecified error can be exploited to gain access to the ColdFusion
   administrator console.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to disclose certain sensitive
-information and bypass certain security restrictions.
-
-Impact Level: Application");
+information and bypass certain security restrictions.");
   script_tag(name:"affected", value:"Adobe ColdFusion 10 before Update 9");
   script_tag(name:"solution", value:"Upgrade to Adobe ColdFusion 10 Update 9 or later,
 https://www.adobe.com/cfusion/tdrc/index.cfm?product=coldfusion");

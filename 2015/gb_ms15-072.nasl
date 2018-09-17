@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-072.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_ms15-072.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Windows Graphics Component Privilege Elevation Vulnerability (3069392)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805920");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2364");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 11:06:14 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Graphics Component Privilege Elevation Vulnerability (3069392)");
@@ -46,9 +46,7 @@ if(description)
   graphics component fails to properly process bitmap conversions.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain elevated privileges.
-
-  Impact Level: System");
+  attackers to gain elevated privileges.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows 8.1 x32/x64

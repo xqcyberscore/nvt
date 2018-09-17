@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service2.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: find_service2.nasl 11386 2018-09-14 11:15:22Z cfischer $
 #
 # Service Detection with 'HELP' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11153");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11386 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-14 13:15:22 +0200 (Fri, 14 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -555,9 +555,18 @@ if( ereg( pattern:"^login: Login incorrect\.$", string:r ) ) {
 }
 
 # IRC server
-if( ereg( pattern: "^:.* 451 .*:", string:r ) ) {
+if( ereg( pattern:"^:.* 451 .*:", string:r ) ) {
   register_service( port:port, proto:"irc" );
   log_message( port:port, data:"An IRC server seems to be running on this port" );
+  exit( 0 );
+}
+
+# matterircd IRC server
+# https://github.com/42wim/matterircd
+if( ereg( pattern:"^:matterircd 461 HELP", string:r ) ) {
+  set_kb_item( name:"matterircd/detected", value:TRUE );
+  register_service( port:port, proto:"irc" );
+  log_message( port:port, data:"An IRC (matterircd) server seems to be running on this port" );
   exit( 0 );
 }
 

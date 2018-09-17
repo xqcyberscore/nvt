@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vino_vnc_dos_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_vino_vnc_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Vino VNC Server Remote Denial Of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802061");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(62443);
   script_cve_id("CVE-2013-5745");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-27 16:12:45 +0530 (Fri, 27 Sep 2013)");
   script_name("Vino VNC Server Remote Denial Of Service Vulnerability");
 
@@ -49,9 +49,7 @@ of the authentication process.");
   script_tag(name:"affected", value:"Vino VNC Server version 3.7.3 and prior.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to to cause a denial of service.
 Additionally, after the failure condition has occurred, the log file
-(~/.xsession-errors) grows quickly.
-
-Impact Level: Application");
+(~/.xsession-errors) grows quickly.");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/87155");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/28338");

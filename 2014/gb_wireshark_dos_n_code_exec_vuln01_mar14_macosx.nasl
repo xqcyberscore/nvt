@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_n_code_exec_vuln01_mar14_macosx.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_wireshark_dos_n_code_exec_vuln01_mar14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Wireshark Denial of Service and Code Execution Vulnerabilities-01 Mar14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804332");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2281", "CVE-2014-2283", "CVE-2014-2299");
   script_bugtraq_id(66066, 66072, 66068);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-14 11:15:29 +0530 (Fri, 14 Mar 2014)");
   script_name("Wireshark Denial of Service and Code Execution Vulnerabilities-01 Mar14 (Mac OS X)");
 
@@ -46,9 +46,7 @@ remote code execution vulnerabilities.");
 (epan/dissectors/packet-nfs.c), RLC dissector (epan/dissectors/packet-rlc) and
 MPEG parser (wiretap/mpeg.c).");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a DoS (Denial of Service)
-and compromise a vulnerable system.
-
-Impact Level: System/Application");
+and compromise a vulnerable system.");
   script_tag(name:"affected", value:"Wireshark version 1.8.x before 1.8.13 and 1.10.x before 1.10.6 on Mac OS X");
   script_tag(name:"solution", value:"Upgrade to Wireshark version 1.8.13 or 1.10.6 or later,
 For updates refer to http://www.wireshark.org/download");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-054.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_ms14-054.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Windows Task Scheduler Privilege Escalation Vulnerability (2988948)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804902");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4074");
   script_bugtraq_id(69593);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-10 12:15:20 +0530 (Wed, 10 Sep 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -48,9 +48,7 @@ if(description)
   Scheduler improperly conducts integrity checks on tasks.");
 
   script_tag(name:"impact", value:"Successful exploitation could allow
-  local users to gain escalated privileges.
-
-  Impact Level: System");
+  local users to gain escalated privileges.");
 
   script_tag(name:"affected", value:"Windows 8 x32/x64 Edition,
   Windows 8.1 x32/x64 Edition,

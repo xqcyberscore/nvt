@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2977292.nasl 10904 2018-08-10 14:24:40Z mmartin $
+# $Id: gb_microsoft_security_advisory_2977292.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft EAP Implementation TLS Information Disclosure Vulnerability (2977292)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804869");
-  script_version("$Revision: 10904 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-27 18:07:16 +0530 (Mon, 27 Oct 2014)");
 
   script_name("Microsoft EAP Implementation TLS Information Disclosure Vulnerability (2977292)");
@@ -45,9 +45,7 @@ if(description)
   versions of TLS allowing recovery of plaintext from encrypted sessions.");
 
   script_tag(name:"impact", value:"Successful exploitation allow an attacker
-  to perform man-in-the-middle attacks and recover plaintext from encrypted sessions.
-
-  Impact Level: System.");
+  to perform man-in-the-middle attacks and recover plaintext from encrypted sessions.");
 
   script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior.
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior.

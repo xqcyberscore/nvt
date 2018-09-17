@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_newtelligence_dasBlog_open_redirect_vuln.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_newtelligence_dasBlog_open_redirect_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Newtelligence dasBlog 'url' Parameter Open Redirect Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804875");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-7292");
   script_bugtraq_id(70654);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-04 11:40:26 +0530 (Tue, 04 Nov 2014)");
   script_name("Newtelligence dasBlog 'url' Parameter Open Redirect Vulnerability");
   script_category(ACT_ATTACK);
@@ -58,9 +58,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to create a specially crafted URL, that if clicked, would redirect
   a victim from the intended legitimate web site to an arbitrary web site of the
-  attacker's choosing.
-
-  Impact Level: Application");
+  attacker's choosing.");
 
   script_tag(name:"affected", value:"Newtelligence dasBlog versions
   2.1 (2.1.8102.813), 2.2 (2.2.8279.16125), and 2.3 (2.3.9074.18820).");

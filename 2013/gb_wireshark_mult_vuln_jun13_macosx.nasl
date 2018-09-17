@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_jun13_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_wireshark_mult_vuln_jun13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Wireshark Multiple Vulnerabilities - June 13 (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803655");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4082", "CVE-2013-4080", "CVE-2013-4079", "CVE-2013-4078",
                 "CVE-2013-4077", "CVE-2013-4076", "CVE-2013-4075");
   script_bugtraq_id(60506, 60503, 60498, 60495, 60502, 60499, 60501);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-28 13:52:52 +0530 (Tue, 28 May 2013)");
   script_name("Wireshark Multiple Vulnerabilities - June 13 (Mac OS X)");
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1028648");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_mandatory_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause application
-  crash, consume memory or heap-based buffer overflow.
-  Impact Level: Application");
+  crash, consume memory or heap-based buffer overflow.");
   script_tag(name:"affected", value:"Wireshark 1.8.x before 1.8.8 on Mac OS X");
   script_tag(name:"insight", value:"Multiple flaws due to erros in,
 

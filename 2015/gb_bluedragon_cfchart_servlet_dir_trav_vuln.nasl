@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bluedragon_cfchart_servlet_dir_trav_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
+# $Id: gb_bluedragon_cfchart_servlet_dir_trav_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # BlueDragon CFChart Servlet Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805068");
-  script_version("$Revision: 11188 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-5370");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-06 11:43:39 +0530 (Wed, 06 May 2015)");
   script_name("BlueDragon CFChart Servlet Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -58,9 +58,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to download arbitrary files from an affected server and
-  to also potentially see those files deleted after retrieval.
-
-  Impact Level: Application.");
+  to also potentially see those files deleted after retrieval.");
 
   script_tag(name:"affected", value:"BlueDragon CFChart Servlet 7.1.1.17759");
 

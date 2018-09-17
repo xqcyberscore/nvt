@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiny_http_server_file_disc_vuln.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: gb_tiny_http_server_file_disc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Tiny HTTP Server Arbitrary File Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805030");
-  script_version("$Revision: 11194 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-11 11:55:21 +0530 (Thu, 11 Dec 2014)");
   script_name("Tiny HTTP Server Arbitrary File Disclosure Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to perform directory traversal attacks and read arbitrary files on the affected
-  application.
-
-  Impact Level: Application");
+  application.");
 
   script_tag(name:"affected", value:"Tiny Server version 1.1.9");
 

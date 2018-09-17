@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pbboard_cms_email_sql_inj_vuln.nasl 11197 2018-09-03 13:31:53Z cfischer $
+# $Id: gb_pbboard_cms_email_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # PBBoard CMS 'email' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805205");
-  script_version("$Revision: 11197 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-9215");
   script_bugtraq_id(71471);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:31:53 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-08 15:01:55 +0530 (Mon, 08 Dec 2014)");
   script_name("PBBoard CMS 'email' Parameter SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -58,9 +58,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to inject or manipulate SQL queries in the back-end database allowing for the
-  manipulation or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  manipulation or disclosure of arbitrary data.");
 
   script_tag(name:"affected", value:"PBBoard version 3.0.1 and prior.");
 

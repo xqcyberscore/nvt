@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln02_nov14_win.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_wireshark_dos_vuln02_nov14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Wireshark Denial-of-Service Vulnerability-02 Nov14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804897");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-8710");
   script_bugtraq_id(71069);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-28 12:05:46 +0530 (Fri, 28 Nov 2014)");
   script_name("Wireshark Denial-of-Service Vulnerability-02 Nov14 (Windows)");
 
@@ -47,9 +47,7 @@ if(description)
   within the SigComp dissector.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  attackers to conduct denial of service attack.
-
-  Impact Level: Application");
+  attackers to conduct denial of service attack.");
 
   script_tag(name:"affected", value:"Wireshark version 1.10.x before 1.10.11
   on Windows");

@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804070");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0493", "CVE-2014-0495", "CVE-2014-0496");
   script_bugtraq_id(64802, 64803, 64804);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 12:51:13 +0530 (Tue, 21 Jan 2014)");
   script_name("Adobe Acrobat Multiple Vulnerabilities - 01 Jan14 (Windows)");
 
@@ -45,9 +45,7 @@ vulnerabilities.");
   script_tag(name:"insight", value:"Flaw is due to some unspecified errors and an error in dereferencing already
 freed memory.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to, execute arbitrary code and
-compromise a user's system.
-
-Impact Level: System/Application");
+compromise a user's system.");
   script_tag(name:"affected", value:"Adobe Acrobat X Version 10.x prior to 10.1.9 on Windows
 Adobe Acrobat XI Version 11.x prior to 11.0.06 on Windows");
   script_tag(name:"solution", value:"Update to Adobe Acrobat Version 10.1.9 or 11.0.06 or later,

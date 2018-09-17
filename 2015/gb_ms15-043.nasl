@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-043.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_ms15-043.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (3049563)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805380");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-1658", "CVE-2015-1684", "CVE-2015-1685", "CVE-2015-1686",
                 "CVE-2015-1688", "CVE-2015-1689", "CVE-2015-1691", "CVE-2015-1692",
                 "CVE-2015-1694", "CVE-2015-1703", "CVE-2015-1704", "CVE-2015-1705",
@@ -38,7 +38,7 @@ if(description)
                 "CVE-2015-1717", "CVE-2015-1718");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-13 11:36:27 +0530 (Wed, 13 May 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (3049563)");
@@ -61,9 +61,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow context
 
   - dependent attacker to corrupt memory, execute arbitrary code and compromise
-  a user's system.
-
-  Impact Level: System/Application");
+  a user's system.");
 
   script_tag(name:"affected", value:"Microsoft Internet Explorer version
   6.x/7.x/8.x/9.x/10.x/11.x");

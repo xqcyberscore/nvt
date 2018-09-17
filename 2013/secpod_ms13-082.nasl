@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-082.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: secpod_ms13-082.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerabilities (2878890)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903412");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3128", "CVE-2013-3860", "CVE-2013-3861");
   script_bugtraq_id(62819, 62820, 62807);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 12:14:29 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerabilities (2878890)");
 
@@ -56,9 +56,7 @@ Microsoft .NET Framework 3.x
 Microsoft .NET Framework 4.x ");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
 code, exhaust available system resource, cause a DoS (Denial of Service)
-and compromise the system.
-
-Impact Level: System/Application ");
+and compromise the system.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

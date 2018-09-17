@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wimax_modem_mult_vuln.nasl 10833 2018-08-08 10:35:26Z cfischer $
+# $Id: gb_wimax_modem_mult_vuln.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # WIMAX Modem Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806799");
-  script_version("$Revision: 10833 $");
+  script_version("$Revision: 11408 $");
   script_tag(name:"cvss_base", value:"9.7");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-15 09:04:51 +0530 (Tue, 15 Dec 2015)");
   script_name("WIMAX Modem Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -57,9 +57,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to to read sensitive information and set it on his own modem and
   send a packet to the modem for crashing/downgrading/DOS and to obtain the
-  control of similar modem in order to launch DOS or DDOS attacks on targets.
-
-  Impact Level: Application");
+  control of similar modem in order to launch DOS or DDOS attacks on targets.");
 
   script_tag(name:"affected", value:"WIMAX MT711x version V_3_11_14_9_CPE");
 
@@ -77,9 +75,7 @@ if(description)
 
 include("http_func.inc");
 
-if(!wimaxPort = get_http_port(default:80)){
-  exit(0);
-}
+wimaxPort = get_http_port(default:80);
 
 url = string("/cgi-bin/multi_wifi.cgi");
 

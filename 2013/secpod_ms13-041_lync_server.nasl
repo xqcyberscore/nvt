@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-041_lync_server.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: secpod_ms13-041_lync_server.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Lync Server Remote Code Execution Vulnerability (2834695)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901219");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(59791);
   script_cve_id("CVE-2013-1302");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-15 17:48:13 +0530 (Wed, 15 May 2013)");
   script_name("Microsoft Lync Server Remote Code Execution Vulnerability (2834695)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2827753");
@@ -51,8 +51,7 @@ if(description)
   code in the context of the current user by sharing specially crafted
   content, such as a file or a program, as a presentation in a Lync or
   Communicator session and then convince a user to view or share the
-  specially crafted content.
-  Impact Level: System/Application");
+  specially crafted content.");
   script_tag(name:"affected", value:"Microsoft Lync Server 2013 (Web Components Server)");
   script_tag(name:"insight", value:"A use-after-free error within the Lync control can be exploited to
   dereference already freed memory.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_recaptcha_bypass_vuln_nov15_lin.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_phpmyadmin_recaptcha_bypass_vuln_nov15_lin.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # phpMyAdmin Security Bypass Vulnerability Nov15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806735");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-6830");
   script_bugtraq_id(76674);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-24 10:32:31 +0530 (Tue, 24 Nov 2015)");
   script_name("phpMyAdmin Security Bypass Vulnerability Nov15 (Linux)");
 
@@ -49,9 +49,7 @@ if(description)
   correct response to a single reCaptcha.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue may allow
-  remote attackers to bypass multiple-reCaptcha protection mechanism.
-
-  Impact Level: Application");
+  remote attackers to bypass multiple-reCaptcha protection mechanism.");
 
   script_tag(name:"affected", value:"phpMyAdmin versions 4.3.x before 4.3.13.2
   and 4.4.x before 4.4.14.1 on Linux");

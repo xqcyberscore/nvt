@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_bof_vuln_oct2000_win.nasl 11186 2018-09-03 09:12:42Z mmartin $
+# $Id: gb_adobe_reader_bof_vuln_oct2000_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Reader '/Registry' and '/Ordering' Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804622");
-  script_version("$Revision: 11186 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2000-0713");
   script_bugtraq_id(1509);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-04 14:12:30 +0530 (Wed, 04 Jun 2014)");
   script_name("Adobe Reader '/Registry' and '/Ordering' Buffer Overflow Vulnerability (Windows)");
 
@@ -44,9 +44,7 @@ vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaw is due to the program fails to validate the '/Registry' and '/Ordering'
 strings");
-  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code.
-
-Impact Level: System/Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code.");
   script_tag(name:"affected", value:"Adobe Reader version 4.0.5 and before on Windows.");
   script_tag(name:"solution", value:"Apply the patch from the below link
 ftp://ftp.adobe.com/pub/adobe/acrobat/win/4.x/ac405up2.exe

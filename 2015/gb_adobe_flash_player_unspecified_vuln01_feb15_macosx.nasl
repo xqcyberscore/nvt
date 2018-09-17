@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_unspecified_vuln01_feb15_macosx.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_adobe_flash_player_unspecified_vuln01_feb15_macosx.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Adobe Flash Player Unspecified Vulnerability - 01 Feb15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805443");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0313", "CVE-2015-0314", "CVE-2015-0315", "CVE-2015-0316",
                 "CVE-2015-0317", "CVE-2015-0318", "CVE-2015-0319", "CVE-2015-0320",
                 "CVE-2015-0321", "CVE-2015-0322", "CVE-2015-0323", "CVE-2015-0324",
@@ -38,7 +38,7 @@ if(description)
   script_bugtraq_id(72429, 72514);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-10 11:38:12 +0530 (Tue, 10 Feb 2015)");
   script_name("Adobe Flash Player Unspecified Vulnerability - 01 Feb15 (Mac OS X)");
 
@@ -61,9 +61,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to corrupt memory, dereference already freed memory, execute arbitrary
-  code or have other unspecified impacts.
-
-  Impact Level: System/Application.");
+  code or have other unspecified impacts.");
 
   script_tag(name:"affected", value:"Adobe Flash Player before version
   13.0.0.269 and 14.x through 16.x before 16.0.0.305 on Mac OS X.");

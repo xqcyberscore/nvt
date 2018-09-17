@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms15-044.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_dotnet_framework_ms15-044.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (3057110)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805563");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-1670", "CVE-2015-1671");
   script_bugtraq_id(74490, 74485);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-14 19:19:40 +0530 (Thu, 14 May 2015)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (3057110)");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to gain access to potentially sensitive information and to execute
-  arbitrary code on the affected system.
-
-  Impact Level: System/Application");
+  arbitrary code on the affected system.");
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 3.0 Service Pack 2
   Microsoft .NET Framework 3.5

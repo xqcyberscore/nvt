@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803616");
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3342", "CVE-2013-3341", "CVE-2013-3340", "CVE-2013-3339",
                 "CVE-2013-3338", "CVE-2013-3337", "CVE-2013-2737", "CVE-2013-2736",
                 "CVE-2013-2735", "CVE-2013-2734", "CVE-2013-2733", "CVE-2013-2732",
@@ -42,7 +42,7 @@ if(description)
                     59927, 59915, 59913, 59912, 59909, 59907, 59902);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-28 10:47:39 +0530 (Tue, 28 May 2013)");
   script_name("Adobe Acrobat Multiple Unspecified Vulnerabilities -01 May13 (Windows)");
 
@@ -58,9 +58,7 @@ Adobe Acrobat Version 10.x prior to 10.1.7 on Windows
 Adobe Acrobat Version 11.x prior to 11.0.03 on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code,
 corrupt memory, obtain sensitive information, bypass certain security
-restrictions or cause a denial of service condition.
-
-Impact Level: System/Application");
+restrictions or cause a denial of service condition.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

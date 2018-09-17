@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_acropdf_dos_vuln_macosx.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_adobe_reader_acropdf_dos_vuln_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Reader 'AcroPDF.DLL' Denial of Service Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804378");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2007-1377");
   script_bugtraq_id(22856);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-10 11:24:07 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader 'AcroPDF.DLL' Denial of Service Vulnerability (Mac OS X)");
 
@@ -44,9 +44,7 @@ vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaw exists due to some unspecified error within 'AcroPDF.DLL' ActiveX.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to consume all available
-resources and conduct a denial of service.
-
-Impact Level: Application");
+resources and conduct a denial of service.");
   script_tag(name:"affected", value:"Adobe Reader version 8.0 on Mac OS X.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

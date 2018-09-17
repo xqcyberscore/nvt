@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_amsi_file_param_dir_traversal_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
+# $Id: gb_amsi_file_param_dir_traversal_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # AMSI 'file' Parameter Directory Traversal Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805237");
-  script_version("$Revision: 11188 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-12 16:30:44 +0530 (Mon, 12 Jan 2015)");
   script_name("AMSI 'file' Parameter Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -54,9 +54,7 @@ if(description)
   parameter.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  remote attackers to read arbitrary files on the target system.
-
-  Impact Level: System/Application");
+  remote attackers to read arbitrary files on the target system.");
 
   script_tag(name:"affected", value:"AMSI v3.20.47 build 37 and probably other
   versions.");

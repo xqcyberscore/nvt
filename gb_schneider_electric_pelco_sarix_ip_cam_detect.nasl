@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_electric_pelco_sarix_ip_cam_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
+# $Id: gb_schneider_electric_pelco_sarix_ip_cam_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # Schneider Electric Pelco Sarix IP Camera Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813064");
-  script_version("$Revision: 10894 $");
+  script_version("$Revision: 11408 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-03 14:44:14 +0530 (Tue, 03 Apr 2018)");
   script_name("Schneider Electric Pelco Sarix IP Camera Remote Detection");
 
@@ -46,8 +46,9 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -55,9 +56,7 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-if(!ipPort = get_http_port(default:80)){
-  exit(0);
-}
+ipPort = get_http_port(default:80);
 
 res = http_get_cache(port:ipPort, item:"/liveview");
 

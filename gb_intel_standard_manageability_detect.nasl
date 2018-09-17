@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_standard_manageability_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_intel_standard_manageability_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # Intel Standard Manageability Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810998");
-  script_version("$Revision: 11015 $");
+  script_version("$Revision: 11408 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-05-05 15:39:37 +0530 (Fri, 05 May 2017)");
   script_name("Intel Standard Manageability Remote Detection");
 
@@ -46,21 +46,18 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 16992, 16993);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-if(!intPort = get_http_port(default:16992)){
-  exit(0);
-}
+intPort = get_http_port(default:16992);
 
-intReq = http_get(port:intPort, item: "/logon.htm");
-intRes = http_keepalive_send_recv(port:intPort, data:intReq);
+intRes = http_get_cache(port:intPort, item: "/logon.htm");
 
 if('Server: Intel(R) Standard Manageability' >< intRes &&
    '<title>Intel&reg; Standard Manageability</title>' >< intRes)

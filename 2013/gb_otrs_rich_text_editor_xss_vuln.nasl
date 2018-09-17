@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_rich_text_editor_xss_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_otrs_rich_text_editor_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # OTRS Rich-text-editor XSS Vulnerability
 #
@@ -28,19 +28,17 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803925");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2010-4762");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-21 23:18:31 +0530 (Sat, 21 Sep 2013)");
   script_name("OTRS Rich-text-editor XSS Vulnerability");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote authenticated users to inject
-arbitrary web script.
-
-Impact Level: Application");
+arbitrary web script.");
   script_tag(name:"vuldetect", value:"Get the installed version of OTRS with the help of detect NVT and check the
 version is vulnerable or not.");
   script_tag(name:"insight", value:"An error exists in rich-text-editor component which fails to validate user

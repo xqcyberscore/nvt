@@ -29,12 +29,12 @@ CPE = "cpe:/a:quickheal:antivirus_pro";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804181");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-6767");
   script_bugtraq_id(64402);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-30 20:51:30 +0530 (Mon, 30 Dec 2013)");
   script_name("Quick Heal Antivirus Pro 'pepoly.dll' Stack Buffer Overflow Vulnerability");
 
@@ -47,9 +47,7 @@ buffer overflow vulnerability.");
   script_tag(name:"affected", value:"Quick Heal AntiVirus Pro version 7.0.0.1 and probably other versions.");
   script_tag(name:"impact", value:"Successful exploitation will allow a local attacker to cause a stack-based
 buffer overflow, resulting in a denial of service or execution of arbitrary
-code.
-
-Impact Level: System/Application");
+code.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/30374");
   script_xref(name:"URL", value:"http://www.vulnerability-lab.com/get_content.php?id=1171");

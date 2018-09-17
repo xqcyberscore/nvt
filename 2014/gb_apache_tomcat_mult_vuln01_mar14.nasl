@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804519");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-4286");
   script_bugtraq_id(65773);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-25 12:48:53 +0530 (Tue, 25 Mar 2014)");
   script_name("Apache Tomcat Multiple Vulnerabilities - 01 - Mar14");
   script_category(ACT_GATHER_INFO);
@@ -53,9 +53,7 @@ if(description)
   script_tag(name:"insight", value:"Flaws are due to the HTTP connector or AJP connector which do not properly
   handle certain inconsistent HTTP request headers.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct session
-  fixation attacks and manipulate certain data.
-
-  Impact Level: Application");
+  fixation attacks and manipulate certain data.");
   script_tag(name:"affected", value:"Apache Tomcat version before 6.0.39, 7.x before 7.0.47, and 8.x before
   8.0.0-RC3");
   script_tag(name:"solution", value:"Upgrade to version 6.0.39 or 7.0.47 or 8.0.0-RC3 or later,

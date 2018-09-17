@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_soliddb_sql_spc_dos_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_ibm_soliddb_sql_spc_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # IBM solidDB Stored Procedure Call Handling Denial of Service Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:ibm:soliddb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803761");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3031");
   script_bugtraq_id(59637);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-20 12:22:19 +0530 (Fri, 20 Sep 2013)");
   script_name("IBM solidDB Stored Procedure Call Handling Denial of Service Vulnerability");
 
@@ -50,9 +50,7 @@ parameters when the parameters have default values. This can be exploited
 to trigger an exception and cause the server to shutdown.");
   script_tag(name:"affected", value:"IBM solidDB 6.0.x before 6.0.1070, 6.3.x before 6.3.0.56,
 6.5.x before 6.5.0.12, and 7.0.x before 7.0.0.4 ");
-  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a denial of service.
-
-Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a denial of service.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53299");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/84593");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21643599");

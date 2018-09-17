@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_easy_post_types_xss_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_wordpress_easy_post_types_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WordPress Easy Post Types 'media.php' Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804758");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4524");
   script_bugtraq_id(69210);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-26 16:39:24 +0530 (Tue, 26 Aug 2014)");
   script_name("WordPress Easy Post Types 'media.php' Cross Site Scripting Vulnerability");
 
@@ -46,9 +46,7 @@ cookie or not.");
   script_tag(name:"insight", value:"Flaw exists as the classes/custom-image/media.php script does not validate
 input to the 'ref' GET parameter before returning it to users.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-script code in a user's browser session in the context of an affected site.
-
-Impact Level: Application");
+script code in a user's browser session in the context of an affected site.");
   script_tag(name:"affected", value:"WordPress WP Easy Post Types Plugin version 1.4.3, and possibly prior.");
   script_tag(name:"solution", value:"Upgrade to version 1.4.4 or higher,
 For updates refer to http://wordpress.org/plugins/easy-post-types");

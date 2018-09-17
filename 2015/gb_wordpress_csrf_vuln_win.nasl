@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_csrf_vuln_win.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_wordpress_csrf_vuln_win.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # WordPress 'admin impersonation via comments' CSRF Vulnerability (Windows)
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805946");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11422 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-07 11:29:02 +0530 (Fri, 07 Aug 2015)");
   script_name("WordPress 'admin impersonation via comments' CSRF Vulnerability (Windows)");
 
@@ -44,9 +44,7 @@ if(description)
   require a nonce value when posting comments.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
-  remote attackers to impersonate the admin via comments.
-
-  Impact Level: Application");
+  remote attackers to impersonate the admin via comments.");
 
   script_tag(name:"affected", value:"WordPress versions 3.8.1, 3.8.2 and 4.2.2
   on Windows.");

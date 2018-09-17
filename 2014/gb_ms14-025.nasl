@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-025.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms14-025.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Group Policy Preferences Privilege Elevation Vulnerability (2962486)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802073");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1812");
   script_bugtraq_id(67275);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-14 12:36:12 +0530 (Wed, 14 May 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Group Policy Preferences Privilege Elevation Vulnerability (2962486)");
@@ -45,9 +45,7 @@ or not.");
   script_tag(name:"insight", value:"Flaw is due the way Active Directory distributes passwords that are configured
 using Group Policy preferences.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker could decrypt the passwords and
-use them to elevate privileges on the domain.
-
-Impact Level: Application");
+use them to elevate privileges on the domain.");
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
 Microsoft Windows 8.1 x32/x64
 Microsoft Windows Server 2012

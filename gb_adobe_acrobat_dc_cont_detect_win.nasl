@@ -1,6 +1,6 @@
 ####################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_dc_cont_detect_win.nasl 10888 2018-08-10 12:08:02Z cfischer $
+# $Id: gb_adobe_acrobat_dc_cont_detect_win.nasl 11420 2018-09-17 06:33:13Z cfischer $
 #
 # Adobe Acrobat DC (Continuous Track) Detect (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812919");
-  script_version("$Revision: 10888 $");
+  script_version("$Revision: 11420 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:33:13 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 11:59:46 +0530 (Thu, 15 Feb 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Acrobat DC (Continuous Track) Detect (Windows)");
@@ -47,6 +47,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -55,12 +56,6 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
-
-os_arch = "";
-adobePath = "";
-adobeName = "";
-adobeVer = "";
-key = "";
 
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){

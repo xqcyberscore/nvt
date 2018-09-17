@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_insec_perm_priv_esc_vuln.nasl 10954 2018-08-14 12:43:10Z mmartin $
+# $Id: gb_apple_itunes_insec_perm_priv_esc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Apple iTunes Insecure Permissions Privilege Escalation Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804484");
-  script_version("$Revision: 10954 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1347");
   script_bugtraq_id(67457);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-18 14:45:02 +0530 (Thu, 18 Sep 2014)");
 
 
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
   attacker to manipulate contents in the directories and gain escalated
-  privileges.
-
-  Impact Level: Application.");
+  privileges.");
 
   script_tag(name:"affected", value:"Apple iTunes prior to 11.2.1 for Mac OS X.");
 

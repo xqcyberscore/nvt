@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_pass_mang_pro_sql_inj_vuln.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_manage_engine_pass_mang_pro_sql_inj_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # ManageEngine Password Manager Pro SQL Injection Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:manageengine:password_manager_pro";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805715");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11424 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-07 15:16:06 +0530 (Tue, 07 Jul 2015)");
   script_name("ManageEngine Password Manager Pro SQL injection Vulnerability");
 
@@ -47,9 +47,7 @@ if (description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database,
-  allowing for the manipulation or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  allowing for the manipulation or disclosure of arbitrary data.");
 
   script_tag(name:"affected", value:"ManageEngine Password Manager
   Pro 8.1 Build 8100 and below.");

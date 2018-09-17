@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_ssl_cert_val_sec_bypass_vuln_win.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_ssl_cert_val_sec_bypass_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PHP SSL Certificate Validation Security Bypass Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803739");
-  script_version("$Revision: 10458 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4248");
   script_bugtraq_id(61776);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-19 17:10:43 +0530 (Mon, 19 Aug 2013)");
   script_name("PHP SSL Certificate Validation Security Bypass Vulnerability (Windows)");
 
@@ -53,9 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to spoof the server via
   a MitM (Man-in-the-Middle) attack and disclose potentially sensitive
-  information.
-
-  Impact Level: Application");
+  information.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/54480");
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-5.php");

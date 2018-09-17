@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-012.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: secpod_ms13-012.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MS Exchange Server Remote Code Execution Vulnerabilities (2809279)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902948");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0393", "CVE-2013-0418");
   script_bugtraq_id(57364, 57357);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-13 10:16:56 +0530 (Wed, 13 Feb 2013)");
   script_name("MS Exchange Server Remote Code Execution Vulnerabilities (2809279)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52133/");
@@ -48,8 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to cause a denial of service
   condition or run arbitrary code as LocalService on the affected Exchange
-  server.
-  Impact Level: System/Application");
+  server.");
   script_tag(name:"affected", value:"Microsoft Exchange Server 2007 Service Pack 3
   Microsoft Exchange Server 2010 Service Pack 2");
   script_tag(name:"insight", value:"Flaws are in Microsoft Exchange Server WebReady Document Viewing and will

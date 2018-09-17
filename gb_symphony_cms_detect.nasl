@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symphony_cms_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
+# $Id: gb_symphony_cms_detect.nasl 11418 2018-09-17 05:57:41Z cfischer $
 #
 # Symphony CMS Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801219");
-  script_version("$Revision: 10896 $");
+  script_version("$Revision: 11418 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 07:57:41 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-06-11 14:27:58 +0200 (Fri, 11 Jun 2010)");
   script_name("Symphony CMS Version Detection");
 
@@ -44,9 +44,9 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -54,10 +54,6 @@ include("cpe.inc");
 include("host_details.inc");
 
 cmsPort = get_http_port(default:80);
-if(!cmsPort){
-  exit(0);
-}
-
 if(!can_host_php(port:cmsPort)){
   exit(0);
 }

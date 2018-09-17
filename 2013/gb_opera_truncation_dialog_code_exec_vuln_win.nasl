@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_truncation_dialog_code_exec_vuln_win.nasl 11201 2018-09-03 14:35:07Z cfischer $
+# $Id: gb_opera_truncation_dialog_code_exec_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Opera Truncated Dialogs Code Execution Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803147");
-  script_version("$Revision: 11201 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-6460");
   script_bugtraq_id(55301);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-07 16:22:46 +0530 (Mon, 07 Jan 2013)");
   script_name("Opera Truncated Dialogs Code Execution Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1028/");
@@ -44,8 +44,7 @@ if(description)
   script_dependencies("gb_opera_detect_portable_win.nasl");
   script_mandatory_keys("Opera/Win/Version");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker execute the code and perform
-  other unwanted actions.
-  Impact Level: System/Application");
+  other unwanted actions.");
   script_tag(name:"affected", value:"Opera version before 11.67 and 12.x before 12.02 on Windows");
   script_tag(name:"insight", value:"An error in handling of truncated dialogs, can be used to cause the user
   to download and run executables unexpectedly or perform other unwanted

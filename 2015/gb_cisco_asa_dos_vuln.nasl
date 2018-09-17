@@ -29,12 +29,12 @@ CPE = "cpe:/a:cisco:asa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805759");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-4241");
   script_bugtraq_id(75581);
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-07 18:52:56 +0530 (Wed, 07 Oct 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("Cisco ASA DoS Vulnerability");
@@ -48,9 +48,7 @@ if(description)
   OSPFv2 packets by an affected system.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct denial of service attack.
-
-  Impact Level: Application");
+  attackers to conduct denial of service attack.");
 
   script_tag(name:"affected", value:"Cisco ASA 9.3.2");
 

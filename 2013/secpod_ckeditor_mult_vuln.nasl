@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ckeditor_mult_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: secpod_ckeditor_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # CKEditor Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:ckeditor:ckeditor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903302");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-26 18:00:48 +0530 (Tue, 26 Feb 2013)");
   script_name("CKEditor Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in context of an affected site and
-  results in loss of confidentiality.
-
-  Impact Level: Application");
+  results in loss of confidentiality.");
   script_tag(name:"affected", value:"CKEditor Version 4.0.1");
   script_tag(name:"insight", value:"Input passed via POST parameters to /ckeditor/samples/sample_posteddata.php
   is not properly sanitized before being returned to the user.");

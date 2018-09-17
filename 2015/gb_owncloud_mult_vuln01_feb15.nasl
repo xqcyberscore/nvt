@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln01_feb15.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_owncloud_mult_vuln01_feb15.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # ownCloud Multiple Vulnerabilities -01 Feb15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805279");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-9047", "CVE-2014-9048", "CVE-2014-9049");
   script_bugtraq_id(71388, 71370, 71378);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-19 15:04:16 +0530 (Thu, 19 Feb 2015)");
   script_name("ownCloud Multiple Vulnerabilities -01 Feb15");
 
@@ -54,9 +54,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to gain access to arbitrary local files, gain access to
   session ID information and recently edited documents of every existing user
-  and bypass the password-protection gaining access to shared files.
-
-  Impact Level: Application");
+  and bypass the password-protection gaining access to shared files.");
 
   script_tag(name:"affected", value:"ownCloud Server 6.x before 6.0.6 and
   7.x before 7.0.3");

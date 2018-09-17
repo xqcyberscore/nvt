@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gom_player_dos_vuln_jun14_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_gom_player_dos_vuln_jun14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # GOM Media Player Denial of Service Vulnerability Jun14 (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:gomlab:gom_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804638");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3216");
   script_bugtraq_id(67385);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-13 19:29:01 +0530 (Fri, 13 Jun 2014)");
   script_name("GOM Media Player Denial of Service Vulnerability Jun14 (Windows)");
 
@@ -44,9 +44,7 @@ vulnerability.");
   script_tag(name:"insight", value:"The flaw is due to an array indexing error within the 'gaf.ax' filter when
 processing OGG files.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to corrupt memory and
-cause a denial of service or execute an arbitrary code.
-
-Impact Level: System/Application");
+cause a denial of service or execute an arbitrary code.");
   script_tag(name:"affected", value:"GOM Media Player version 2.2.57.5189 and before on Windows.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"qod_type", value:"registry");

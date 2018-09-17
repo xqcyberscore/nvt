@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-001.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_ms15-001.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Windows Application Compatibility Cache Privilege Escalation (3023266)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805125");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-0002");
   script_bugtraq_id(71972);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-14 07:55:13 +0530 (Wed, 14 Jan 2015)");
   script_name("Microsoft Windows Application Compatibility Cache Privilege Escalation (3023266)");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow local attacker
   to bypass the authorization check to create cache entries and in turn gain
-  escalated privileges on the system.
-
-  Impact Level: System");
+  escalated privileges on the system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior

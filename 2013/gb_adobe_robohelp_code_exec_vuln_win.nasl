@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_robohelp_code_exec_vuln_win.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_adobe_robohelp_code_exec_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe RoboHelp Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:robohelp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803771");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5327");
   script_bugtraq_id(62887);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-17 16:38:27 +0530 (Thu, 17 Oct 2013)");
   script_name("Adobe RoboHelp Arbitrary Code Execution Vulnerability (Windows)");
 
@@ -47,9 +47,7 @@ http://www.adobe.com/support/security/bulletins/apsb13-24.html ");
 memory corruption.");
   script_tag(name:"affected", value:"Adobe RoboHelp version 10.x on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
-cause a denial of service (application crash).
-
-Impact Level: System/Application");
+cause a denial of service (application crash).");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

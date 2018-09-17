@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mailpoet_arib_file_upload_vuln.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_wordpress_mailpoet_arib_file_upload_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WordPress MailPoet Newsletters Plugin Remote File Upload Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804724");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4725");
   script_bugtraq_id(68310);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-28 12:35:07 +0530 (Mon, 28 Jul 2014)");
   script_name("WordPress MailPoet Newsletters Plugin Remote File Upload Vulnerability");
 
@@ -46,9 +46,7 @@ upload file or not.");
   script_tag(name:"insight", value:"Flaw is due to the program uses the admin_init hook to determine if a user
 is an admin.");
   script_tag(name:"impact", value:"Successful exploitation will allow unauthenticated remote attacker to upload
-files in an affected site.
-
-Impact Level: Application");
+files in an affected site.");
   script_tag(name:"affected", value:"WordPress MailPoet Newsletters Plugin version prior to 2.6.7.");
   script_tag(name:"solution", value:"Upgrade to version 2.6.7 or later,
 For updates refer to http://wordpress.org/plugins/wysija-newsletters");

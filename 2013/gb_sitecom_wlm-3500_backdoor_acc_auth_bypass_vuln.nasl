@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitecom_wlm-3500_backdoor_acc_auth_bypass_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_sitecom_wlm-3500_backdoor_acc_auth_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Sitecom WLM-3500 Backdoor Accounts Authentication Bypass vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803193");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-18 15:27:50 +0530 (Thu, 18 Apr 2013)");
   script_name("Sitecom WLM-3500 Backdoor Accounts Authentication Bypass vulnerability");
 
@@ -47,8 +47,7 @@ if(description)
   script_mandatory_keys("ADSL_MODEM/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote attacker to access the web
-  interface of the affected devices using two distinct hard-coded users.
-  Impact Level: Application");
+  interface of the affected devices using two distinct hard-coded users.");
   script_tag(name:"affected", value:"Sitecom WLM-3500, firmware versions < 1.07");
   script_tag(name:"solution", value:"Upgrade to Sitecom WLM-3500, firmware versions 1.07 or later,
   For updates refer to http://www.sitecom.com/");

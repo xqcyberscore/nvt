@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-095.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: secpod_ms13-095.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Windows Digital Signatures Denial of Service Vulnerability (2868626)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903227");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3869");
   script_bugtraq_id(63561);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-13 09:04:19 +0530 (Wed, 13 Nov 2013)");
   script_name("Microsoft Windows Digital Signatures Denial of Service Vulnerability (2868626)");
 
@@ -57,9 +57,7 @@ Microsoft Windows 8 x32/x64
 Microsoft Windows 8.1 x32/x64
 Microsoft Windows Server 2012
 Microsoft Windows Server 2012 R2");
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a denial of service condition.
-
-Impact Level: System/Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a denial of service condition.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

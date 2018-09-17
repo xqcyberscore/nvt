@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kolibri_webserver_remote_bof_vuln.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_kolibri_webserver_remote_bof_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Kolibri WebServer HTTP Request Buffer Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804438");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2010-5301", "CVE-2014-4158");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-28 15:47:50 +0530 (Mon, 28 Apr 2014)");
   script_name("Kolibri WebServer HTTP Request Buffer Overflow Vulnerability");
 
@@ -43,9 +43,7 @@ if(description)
   to cause a stack-based buffer overflow via an overly long string passed in a
   HEAD or GET request.");
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause the application
-  to crash, creating a denial-of-service condition.
-
-  Impact Level: Application");
+  to crash, creating a denial-of-service condition.");
   script_tag(name:"affected", value:"Kolibri webserver version 2.0");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

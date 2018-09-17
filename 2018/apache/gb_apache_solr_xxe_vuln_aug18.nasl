@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_xxe_vuln_aug18.nasl 10758 2018-08-03 12:49:20Z santu $
+# $Id: gb_apache_solr_xxe_vuln_aug18.nasl 11388 2018-09-14 13:45:12Z cfischer $
 #
 # Apache Solr XML External Entity Multiple Information Disclosure Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:apache:solr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813555");
-  script_version("$Revision: 10758 $");
+  script_version("$Revision: 11388 $");
   script_cve_id("CVE-2018-8026");
-  script_tag(name:"cvss_base", value:"7.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 14:49:20 +0200 (Fri, 03 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-14 15:45:12 +0200 (Fri, 14 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-02 13:16:18 +0530 (Thu, 02 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Solr XML External Entity Multiple Information Disclosure Vulnerabilities");

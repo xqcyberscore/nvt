@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_silverlight_ms13-052_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: secpod_silverlight_ms13-052_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Silverlight Remote Code Execution Vulnerabilities-2861561 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902987");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3129", "CVE-2013-3131", "CVE-2013-3178");
   script_bugtraq_id(60978, 60932, 60938);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-11 11:32:39 +0530 (Thu, 11 Jul 2013)");
   script_name("Microsoft Silverlight Remote Code Execution Vulnerabilities-2861561 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/54025");
@@ -44,8 +44,7 @@ if(description)
   script_dependencies("gb_ms_silverlight_detect_macosx.nasl");
   script_mandatory_keys("MS/Silverlight/MacOSX/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute arbitrary code,
-  bypass security mechanism and take complete control of an affected system.
-  Impact Level: System/Application");
+  bypass security mechanism and take complete control of an affected system.");
   script_tag(name:"affected", value:"Microsoft Silverlight version 5 on Mac OS X");
   script_tag(name:"insight", value:"Multiple flaws due to,
 

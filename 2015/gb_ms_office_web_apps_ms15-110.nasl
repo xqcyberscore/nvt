@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms15-110.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms_office_web_apps_ms15-110.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Microsoft Office Web Apps XSS Spoofing Vulnerability (3096440)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805992");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-6037");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 10:47:07 +0530 (Wed, 14 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Web Apps XSS Spoofing Vulnerability (3096440)");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to perform cross-site scripting attacks on
-  affected systems and run script in the security context of the current user.
-
-  Impact Level: Application");
+  affected systems and run script in the security context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Office Web Apps 2010 Service Pack 2 and prior,
 

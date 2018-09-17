@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackcat_cms_xss_vuln.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: gb_blackcat_cms_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # BlackCat CMS Reflected Cross-Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804749");
-  script_version("$Revision: 11194 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-25 18:48:58 +0530 (Mon, 25 Aug 2014)");
   script_name("BlackCat CMS Reflected Cross-Site Scripting Vulnerability");
 
@@ -42,12 +42,12 @@ if(description)
   script not properly sanitize input to the 'attr' and 'msg' parameter before
   returning it to users.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  script code in a user's browser session in the context of an affected site.");
   script_tag(name:"affected", value:"BlackCat CMS version 1.0.3 and probably prior.");
   script_tag(name:"solution", value:"Apply the patch from the below link,
+
   http://forum.blackcat-cms.org/viewtopic.php?f=2&amp;t=263,
+
   or Upgrade to latest version, For updates refer to http://blackcat-cms.org");
 
   script_xref(name:"URL", value:"https://www.htbridge.com/advisory/HTB23228");

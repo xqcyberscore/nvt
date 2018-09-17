@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln02_sep15_lin.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_mantisbt_xss_vuln02_sep15_lin.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # MantisBT Cross Site Scripting Vulnerability-02 September15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805976");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-9272");
   script_bugtraq_id(71375);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 18:15:16 +0530 (Tue, 08 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("MantisBT Cross Site Scripting Vulnerability-02 September15 (Linux)");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject arbitrary web script or HTML via the
-  'config_option' parameter.
-
-  Impact Level: Application");
+  'config_option' parameter.");
 
   script_tag(name:"affected", value:"MantisBT versions 1.2.0a1 through 1.2.x
   before 1.2.18");

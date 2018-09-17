@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_office_infopath_ms15-116.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_office_infopath_ms15-116.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft InfoPath Privilege Elevation Vulnerability (3104540)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806160");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2503");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 13:08:19 +0530 (Wed, 11 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft InfoPath Privilege Elevation Vulnerability (3104540)");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain elevated privileges and break out of the Internet Explorer
-  sandbox.
-
-  Impact Level: System/Application");
+  sandbox.");
 
   script_tag(name:"affected", value:"Microsoft InfoPath 2007 Service Pack 3
   Microsoft InfoPath 2010 Service Pack 2

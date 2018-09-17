@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_may13_lin.nasl 11065 2018-08-21 09:49:00Z mmartin $
+# $Id: gb_adobe_flash_player_mult_vuln01_may13_lin.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities -01 May 13 (Linux)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803498");
-  script_version("$Revision: 11065 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3335", "CVE-2013-3334", "CVE-2013-3333", "CVE-2013-3332",
                 "CVE-2013-3331", "CVE-2013-3330", "CVE-2013-3329", "CVE-2013-3328",
                 "CVE-2013-3327", "CVE-2013-3326", "CVE-2013-3325", "CVE-2013-3324",
@@ -36,7 +36,7 @@ if(description)
                            59894, 59893, 59892, 59891, 59890, 59889);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 11:49:00 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-21 13:26:52 +0530 (Tue, 21 May 2013)");
   script_name("Adobe Flash Player Multiple Vulnerabilities -01 May 13 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53419");
@@ -48,8 +48,7 @@ if(description)
   script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   code on the target system or cause a denial of service (memory corruption)
-  via unspecified vectors.
-  Impact Level: System/Application");
+  via unspecified vectors.");
   script_tag(name:"affected", value:"Adobe Flash Player version before 10.3.183.76 and 11.x before 11.2.202.281
   on Linux");
   script_tag(name:"insight", value:"Multiple memory corruption flaws due to improper sanitation of user

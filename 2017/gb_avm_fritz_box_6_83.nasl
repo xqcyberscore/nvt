@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_6_83.nasl 5983 2017-04-19 13:28:01Z cfi $
+# $Id: gb_avm_fritz_box_6_83.nasl 11412 2018-09-16 10:21:40Z cfischer $
 #
 # Multiple AVM FRITZ!Box VoIP Remote Code Execution
 #
@@ -25,16 +25,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:avm:fritzbox';
+CPE = "cpe:/o:avm:fritz%21_os";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108146");
-  script_version("$Revision: 5983 $");
+  script_version("$Revision: 11412 $");
   script_name("Multiple AVM FRITZ!Box VoIP Remote Code Execution");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 15:28:01 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-16 12:21:40 +0200 (Sun, 16 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-04-19 11:59:41 +0200 (Wed, 19 Apr 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -63,10 +63,8 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-get_app_version( cpe:CPE, nofork:TRUE ); # To have a reference to the Detection NVT.
-
+if( ! fw_version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 if( ! model = get_kb_item( "avm/fritz/model" ) ) exit( 0 );
-if( ! fw_version = get_kb_item( "avm/fritz/firmware_version" ) ) exit( 0 );
 
 valid_models = make_list( "7390", "7490", "7580" );
 
@@ -79,14 +77,9 @@ foreach m( valid_models ) {
 
 if( ! vuln_model ) exit( 0 );
 
-fw = split( fw_version, sep:'.', keep:TRUE );
-if( max_index( fw ) < 3 ) exit( 0 );
-
-fw_version = fw[1] + fw[2];
-patch = "06.83";
-
+patch = "6.83";
 # Only 06.8x are vulnerable
-if( fw_version !~ "^06\.8" ) exit( 99 );
+if( fw_version !~ "^6\.8" ) exit( 99 );
 
 if( version_is_less( version:fw_version, test_version:patch ) ) {
   report  = 'Model:              ' + model + '\n';

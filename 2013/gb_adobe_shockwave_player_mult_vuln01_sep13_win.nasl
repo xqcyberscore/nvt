@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln01_sep13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_adobe_shockwave_player_mult_vuln01_sep13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities-01 Sep13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:shockwave_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804002");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3359", "CVE-2013-3359");
   script_bugtraq_id(62291, 62292);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-18 19:24:31 +0530 (Wed, 18 Sep 2013)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities-01 Sep13 (Windows)");
 
@@ -51,9 +51,7 @@ For updates refer to http://get.adobe.com/shockwave");
   - Another unspecified error.");
   script_tag(name:"affected", value:"Adobe Shockwave Player before 12.0.4.144 on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code, cause
-memory corruption and compromise a user's system.
-
-Impact Level: System/Application");
+memory corruption and compromise a user's system.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

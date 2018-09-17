@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-018.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: secpod_ms13-018.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Windows TCP/IP Denial of Service Vulnerability (2790655)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902945");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0075");
   script_bugtraq_id(57858);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-13 07:22:00 +0530 (Wed, 13 Feb 2013)");
   script_name("Microsoft Windows TCP/IP Denial of Service Vulnerability (2790655)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52158/");
@@ -48,8 +48,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to exhaust the non-paged pool
-  and render the system unusable or trigger a restart.
-  Impact Level: System");
+  and render the system unusable or trigger a restart.");
   script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior

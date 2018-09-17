@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webdepo_cms_sql_vuln.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_webdepo_cms_sql_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # WebDepo CMS 'wood' Parameter SQL Injection Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805374");
-  script_version("$Revision: 11299 $");
+  script_version("$Revision: 11423 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-23 17:22:49 +0530 (Thu, 23 Apr 2015)");
   script_name("WebDepo CMS 'wood' Parameter SQL Injection Vulnerability");
 
@@ -45,9 +45,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database,
-  allowing for the manipulation or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  allowing for the manipulation or disclosure of arbitrary data.");
 
   script_tag(name:"affected", value:"WebDepo CMS");
 
@@ -75,6 +73,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 cmsPort = get_http_port(default:80);
+if(!can_host_asp(port:cmsPort))exit(0);
 
 foreach dir (make_list_unique("/", "/webdepot", "/webdepo",  cgi_dirs(port:cmsPort)))
 {

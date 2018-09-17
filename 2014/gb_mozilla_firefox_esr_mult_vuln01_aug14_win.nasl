@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804732");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1547", "CVE-2014-1555", "CVE-2014-1557",
                 "CVE-2014-1551", "CVE-2014-1544", "CVE-2014-1556");
   script_bugtraq_id(68811, 68814, 68824, 68817, 68816, 68822);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-07 10:02:33 +0530 (Thu, 07 Aug 2014)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 August14 (Windows)");
 
@@ -55,9 +55,7 @@ vulnerabilities.");
   WebGL content.
 and Some unspecified errors.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
-restrictions and compromise a user's system.
-
-Impact Level: System/Application");
+restrictions and compromise a user's system.");
   script_tag(name:"affected", value:"Mozilla Firefox ESR version 24.x before 24.7 on Windows");
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 24.7 or later,
 For updates refer to http://www.mozilla.com/en-US/firefox/all.html");

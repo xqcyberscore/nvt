@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_domain_policy_bypass_vuln.nasl 11201 2018-09-03 14:35:07Z cfischer $
+# $Id: gb_ms_ie_domain_policy_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Internet Explorer Domain Policy Bypass Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803302");
-  script_version("$Revision: 11201 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-6502");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-01 11:11:56 +0530 (Fri, 01 Feb 2013)");
   script_name("Microsoft Internet Explorer Domain Policy Bypass Vulnerability");
   script_xref(name:"URL", value:"http://www.nsfocus.com/en/2012/advisories_1228/119.html");
@@ -44,8 +44,7 @@ if(description)
   script_dependencies("gb_ms_ie_detect.nasl");
   script_mandatory_keys("MS/IE/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to disclosure the information
-  when a user views a specially crafted webpage.
-  Impact Level: Application");
+  when a user views a specially crafted webpage.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x on Windows XP and 2003");
   script_tag(name:"insight", value:"The flaw due to error in UNC share pathname in SRC attribute of a SCRIPT
   element, which allows attackers to obtain sensitive information about the

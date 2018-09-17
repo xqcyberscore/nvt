@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tivoli_dir_server_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
+# $Id: gb_ibm_tivoli_dir_server_detect.nasl 11421 2018-09-17 06:58:23Z cfischer $
 #
 # IBM Tivoli Directory Server Version Detection
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801812");
-  script_version("$Revision: 10899 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11421 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -59,7 +59,7 @@ SCRIPT_DESC = "IBM Tivoli Directory Server Version Detection";
 
 port = get_ldap_port( default:389 );
 
-## LDAP searchMessage Request Payload
+# nb: LDAP searchMessage Request Payload
 req = raw_string(0x30, 0x84, 0x00, 0x00, 0x00, 0x2d, 0x02, 0x01,
                  0x0e, 0x63, 0x84, 0x00, 0x00, 0x00, 0x24, 0x04,
                  0x00, 0x0a, 0x01, 0x00, 0x0a, 0x01, 0x00, 0x02,
@@ -68,20 +68,17 @@ req = raw_string(0x30, 0x84, 0x00, 0x00, 0x00, 0x2d, 0x02, 0x01,
                  0x43, 0x6c, 0x61, 0x73, 0x73, 0x30, 0x84, 0x00,
                  0x00, 0x00, 0x00);
 
-## Open TCP Socket
 soc = open_sock_tcp(port);
 if(!soc) {
   exit(0);
 }
 
-## Sending Request
 send(socket:soc, data:req);
 result = recv(socket:soc, length:2000);
 close(soc);
 
 if("International Business Machines" >< result && "ibmdirectoryversion1" >< result)
 {
-  ## Extract Version From Response
   index = stridx(result, "ibmdirectoryversion1");
   if (index == -1){
     exit(0);

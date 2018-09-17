@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_mult_redirect_vuln.nasl 11223 2018-09-04 12:48:48Z cfischer $
+# $Id: gb_apache_struts2_mult_redirect_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Apache Struts2 Redirection and Security Bypass Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803838");
-  script_version("$Revision: 11223 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-2248", "CVE-2013-2251");
   script_bugtraq_id(61196, 61189);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:48:48 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-24 11:58:54 +0530 (Wed, 24 Jul 2013)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts2 Redirection and Security Bypass Vulnerabilities");
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker
   to execute arbitrary arbitrary Java code via OGNL (Object-Graph Navigation Language)
-  or redirect user to a malicious url.
-
-  Impact Level: Application");
+  or redirect user to a malicious url.");
 
   script_tag(name:"affected", value:"Apache Struts 2.0.0 to 2.3.15");
 

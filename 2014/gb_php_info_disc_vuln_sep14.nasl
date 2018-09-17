@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_info_disc_vuln_sep14.nasl 10456 2018-07-09 06:10:17Z cfischer $
+# $Id: gb_php_info_disc_vuln_sep14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # PHP Information Disclosure Vulnerability - 01 - Sep14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804849");
-  script_version("$Revision: 10456 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4721");
   script_bugtraq_id(68423);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-22 09:50:48 +0530 (Mon, 22 Sep 2014)");
 
   script_name("PHP Information Disclosure Vulnerability - 01 - Sep14");
@@ -48,9 +48,7 @@ if(description)
   'hp_print_info' function within /ext/standard/info.c script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a local
-  attacker to gain access to sensitive information.
-
-  Impact Level: Application");
+  attacker to gain access to sensitive information.");
 
   script_tag(name:"affected", value:"PHP before version 5.3.x before 5.3.29,
   5.4.x before 5.4.30, 5.5.x before 5.5.14");

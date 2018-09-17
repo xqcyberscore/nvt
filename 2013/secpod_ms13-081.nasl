@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903500");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3128", "CVE-2013-3200", "CVE-2013-3879", "CVE-2013-3880",
                 "CVE-2013-3881", "CVE-2013-3888", "CVE-2013-3894");
   script_bugtraq_id(62819, 62823, 62828, 62833, 62830, 62831, 62821);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 09:16:37 +0530 (Wed, 09 Oct 2013)");
   script_name("MS Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2870008)");
 
@@ -68,9 +68,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code with kernel-mode privileges and take
-  complete control of the affected system.
-
-  Impact Level: System");
+  complete control of the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8
   Microsoft Windows Server 2012

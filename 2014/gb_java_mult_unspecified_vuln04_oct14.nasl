@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln04_oct14.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_java_mult_unspecified_vuln04_oct14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-04 Oct 2014 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804865");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-6562", "CVE-2014-6485", "CVE-2014-6468");
   script_bugtraq_id(70523, 70519, 70488);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-20 13:53:18 +0530 (Mon, 20 Oct 2014)");
 
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-04 Oct 2014 (Windows)");
@@ -55,9 +55,7 @@ if(description)
   - Another unspecified error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to manipulate certain data, gain elevated privileges, and execute arbitrary code.
-
-  Impact Level: System/Application.");
+  to manipulate certain data, gain elevated privileges, and execute arbitrary code.");
 
   script_tag(name:"affected", value:"Oracle Java SE 8 update 20 and prior on
   Windows");

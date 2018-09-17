@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zte_zxdsl_admin_pass_remote_disc_vuln.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: gb_zte_zxdsl_admin_pass_remote_disc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ZTE ZXDSL Modem /adminpasswd.cgi Admin Password Remote Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804798");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11402 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-14 16:42:38 +0530 (Fri, 14 Nov 2014)");
   script_name("ZTE ZXDSL Modem /adminpasswd.cgi Admin Password Remote Disclosure Vulnerability");
   script_cve_id("CVE-2014-9184", "CVE-2014-9183");
@@ -45,9 +45,7 @@ if(description)
   /adminpasswd.cgi script displays admin password information in cleartext.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain access to admin password information.
-
-  Impact Level: Application");
+  attackers to gain access to admin password information.");
 
   script_tag(name:"affected", value:"ZTE ZXDSL 831CI Modem");
 

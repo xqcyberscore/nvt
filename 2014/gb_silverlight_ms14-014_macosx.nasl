@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms14-014_macosx.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: gb_silverlight_ms14-014_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Silverlight Security Bypass Vulnerability (2932677) (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804408");
-  script_version("$Revision: 11194 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0319");
   script_bugtraq_id(66046);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-12 08:10:37 +0530 (Wed, 12 Mar 2014)");
   script_name("Microsoft Silverlight Security Bypass Vulnerability (2932677) (Mac OS X)");
 
@@ -45,9 +45,7 @@ Microsoft Bulletin MS14-014.");
   script_tag(name:"insight", value:"Flaw is caused when Silverlight improperly handles certain objects in
 memory.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain potentially
-sensitive information.
-
-Impact Level: Application");
+sensitive information.");
   script_tag(name:"affected", value:"Microsoft Silverlight version 5 on Mac OS X");
   script_tag(name:"solution", value:"Download and update mentioned hotfixes in the advisory from the below link,
 https://technet.microsoft.com/en-us/security/bulletin/ms14-014");

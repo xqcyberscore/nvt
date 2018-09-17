@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mini_httpd_info_disc_vuln.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_mini_httpd_info_disc_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # mini_httpd server Long Protocol String Information Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805289");
-  script_version("$Revision: 11299 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-1548");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-24 16:28:18 +0530 (Tue, 24 Feb 2015)");
   script_name("mini_httpd server Long Protocol String Information Disclosure Vulnerability");
 
@@ -45,9 +45,7 @@ if(description)
   'add_headers' function in mini_httpd.c script");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain access to potentially sensitive information in the memory.
-
-  Impact Level: Application");
+  attackers to gain access to potentially sensitive information in the memory.");
 
   script_tag(name:"affected", value:"mini_httpd server version 1.21 and prior.");
 

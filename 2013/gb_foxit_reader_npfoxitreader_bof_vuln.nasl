@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_npfoxitreader_bof_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_reader_npfoxitreader_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Foxit Reader Plugin URL Processing Buffer Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803163");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(57174);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 13:51:25 +0530 (Thu, 24 Jan 2013)");
   script_name("Foxit Reader PDF File Handling Memory Corruption Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51733");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("foxit/reader/ver");
   script_tag(name:"impact", value:"Successful exploitation could allow the attackers to execute arbitrary code
-  on the target system.
-  Impact Level: System/Application");
+  on the target system.");
   script_tag(name:"affected", value:"Foxit Reader version 5.4.4.1128 and prior");
   script_tag(name:"insight", value:"The is flaw is due to a boundary error in the Foxit Reader plugin for
   browsers (npFoxitReaderPlugin.dll) when processing a URL and can be

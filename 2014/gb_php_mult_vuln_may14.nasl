@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln_may14.nasl 10456 2018-07-09 06:10:17Z cfischer $
+# $Id: gb_php_mult_vuln_may14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # PHP Multiple Vulnerabilities - 01 - May14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804291");
-  script_version("$Revision: 10456 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-7226", "CVE-2013-7327", "CVE-2013-7328", "CVE-2014-2020");
   script_bugtraq_id(65533, 65676, 65656, 65668);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-09 09:47:32 +0530 (Fri, 09 May 2014)");
   script_name("PHP Multiple Vulnerabilities - 01 - May14");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -64,9 +64,7 @@ if(description)
   implementation.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
-  service, gain sensitive information and have some other unspecified impacts.
-
-  Impact Level: System/Application");
+  service, gain sensitive information and have some other unspecified impacts.");
 
   script_tag(name:"affected", value:"PHP version 5.5.x before 5.5.9");
 

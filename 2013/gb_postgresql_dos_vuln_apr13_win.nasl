@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_dos_vuln_apr13_win.nasl 11011 2018-08-16 14:14:31Z mmartin $
+# $Id: gb_postgresql_dos_vuln_apr13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PostgreSQL Denial of Service Vulnerability - Apr13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803473");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1899");
   script_bugtraq_id(58876);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-09 16:49:46 +0530 (Tue, 09 Apr 2013)");
   script_name("PostgreSQL Denial of Service Vulnerability - Apr13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52837");
@@ -47,9 +47,7 @@ if(description)
   script_require_ports("Services/postgresql", 5432);
   script_mandatory_keys("PostgreSQL/installed", "Host/runs_windows");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-  SQL query, gain access or manipulate arbitrary files, and cause denial of service.
-
-  Impact Level: Application");
+  SQL query, gain access or manipulate arbitrary files, and cause denial of service.");
   script_tag(name:"affected", value:"PostgreSQL version 9.2.x before 9.2.4, 9.1.x before 9.1.9, and
   9.0.x before 9.0.13");
   script_tag(name:"insight", value:"Improper validation of connection request that contains database name

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_code_exec_vuln.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_code_exec_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PHP Remote Code Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804160");
-  script_version("$Revision: 10458 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-6712");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-06 13:02:20 +0530 (Fri, 06 Dec 2013)");
   script_name("PHP Remote Code Execution Vulnerability");
 
@@ -53,9 +53,7 @@ if(description)
   script_tag(name:"affected", value:"PHP versions 5.5.6 and prior.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to allow a remote attacker
-  to cause a heap-based buffer overflow, resulting in a denial of service.
-
-  Impact Level: Application");
+  to cause a heap-based buffer overflow, resulting in a denial of service.");
 
   script_xref(name:"URL", value:"http://git.php.net/?p=php-src.git;a=commit;h=12fe4e90be7bfa2a763197079f68f5568a14e071");
 

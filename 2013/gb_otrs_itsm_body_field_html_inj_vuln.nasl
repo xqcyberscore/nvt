@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_itsm_body_field_html_inj_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_otrs_itsm_body_field_html_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # OTRS ITSM 'Body' Field HTML Injection Vulnerability
 #
@@ -30,21 +30,19 @@ ITSMCPE = "cpe:/a:otrs:otrs_itsm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803937");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-2582");
   script_bugtraq_id(54890);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-25 19:02:06 +0530 (Wed, 25 Sep 2013)");
   script_name("OTRS ITSM 'Body' Field HTML Injection Vulnerability");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject arbitrary web
-script or HTML via an e-mail message body.
-
-Impact Level: Application");
+script or HTML via an e-mail message body.");
   script_tag(name:"vuldetect", value:"Get the installed version and location of OTRS with the help of detect NVT
 and check the OTRS and OTRS:ITSM version is vulnerable or not.");
   script_tag(name:"insight", value:"An error exists in application which fails to properly sanitize user-supplied

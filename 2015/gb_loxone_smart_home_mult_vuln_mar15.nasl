@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_loxone_smart_home_mult_vuln_mar15.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_loxone_smart_home_mult_vuln_mar15.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Loxone Smart Home Multiple Vulnerabilities - Mar15
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:loxone:loxone';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805298");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11423 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-10 09:36:22 +0530 (Tue, 10 Mar 2015)");
   script_name("Loxone Smart Home Multiple Vulnerabilities - Mar15");
 
@@ -71,9 +71,7 @@ if(description)
   forgery attack, cross-frame scripting (XFS) attack, denial-of-service (DoS)
   attack, decrypt user credentials, insert additional arbitrary HTTP headers
   and execute arbitrary script code in a user's browser session within the trust
-  relationship between their browser and the server.
-
-  Impact Level: Application.");
+  relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"Loxone Smart Home version 5.49");
 

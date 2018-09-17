@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_email_from_line_dos_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_otrs_email_from_line_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # OTRS Email From Line Denial of Service Vulnerability
 #
@@ -28,19 +28,17 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803930");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2010-4767");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-22 13:18:31 +0530 (Sun, 22 Sep 2013)");
   script_name("OTRS Email From Line Denial of Service Vulnerability");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
-service condition by sending a crafted message to a POP3 mailbox.
-
-Impact Level: Application");
+service condition by sending a crafted message to a POP3 mailbox.");
   script_tag(name:"vuldetect", value:"Get the installed version of OTRS with the help of detect NVT and check the
 version is vulnerable or not.");
   script_tag(name:"insight", value:"An error exists in the application while handling e-mail messages which

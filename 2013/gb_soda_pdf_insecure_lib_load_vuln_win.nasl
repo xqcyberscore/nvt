@@ -28,12 +28,12 @@ CPE = "cpe:/a:soda:soda_pdf";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803751");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3485");
   script_bugtraq_id(61727);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-03 11:21:22 +0530 (Tue, 03 Sep 2013)");
   script_name("Soda PDF Insecure Library Loading Vulnerability (Windows)");
 
@@ -46,9 +46,7 @@ loading vulnerability.");
 api-ms-win-core-localregistry-l1-1-0.dll) in an insecure manner.");
   script_tag(name:"affected", value:"Soda PDF version 5.1.183.10520, Other versions may also be affected.");
   script_tag(name:"impact", value:"Successful exploitation will allow local attacker to execute arbitrary code
-and conduct DLL hijacking attacks.
-
-Impact Level: System/Application");
+and conduct DLL hijacking attacks.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_server_types_unspecified_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_mysql_server_types_unspecified_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MySQL Server Types Unspecified Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803481");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1548");
   script_bugtraq_id(59223);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-22 18:01:05 +0530 (Mon, 22 Apr 2013)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
@@ -48,8 +48,7 @@ if(description)
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to affect
-  confidentiality, integrity, and availability via unknown vectors.
-  Impact Level: Application");
+  confidentiality, integrity, and availability via unknown vectors.");
   script_tag(name:"affected", value:"MySQL version 5.1.x before 5.1.64");
   script_tag(name:"insight", value:"Unspecified error in some unknown vectors related to Server Types.");
   script_tag(name:"solution", value:"Upgrade to MySQL version 5.1.64 or later,

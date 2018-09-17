@@ -1,6 +1,6 @@
 #############################################################################/##
 # OpenVAS Vulnerability Test
-# $Id: gb_tor_info_disc_vuln_oct14_win.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_tor_info_disc_vuln_oct14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Tor 'Relay Early' Traffic Confirmation Attack Vunerability Oct14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:tor:tor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804933");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-5117");
   script_bugtraq_id(68968);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-14 09:26:32 +0530 (Tue, 14 Oct 2014)");
 
   script_name("Tor 'Relay Early' Traffic Confirmation Attack Vunerability oct14 (Windows)");
@@ -48,9 +48,7 @@ if(description)
   in the handling of sequences of Relay and Relay Early commands.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to manipulate protocol headers and perform traffic confirmation attack.
-
-  Impact Level: Application");
+  to manipulate protocol headers and perform traffic confirmation attack.");
 
   script_tag(name:"affected", value:"Tor browser before 0.2.4.23 and 0.2.5
   before 0.2.5.6-alpha on Windows");

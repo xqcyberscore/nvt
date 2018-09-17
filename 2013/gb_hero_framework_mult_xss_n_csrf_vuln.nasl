@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hero_framework_mult_xss_n_csrf_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_hero_framework_mult_xss_n_csrf_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Hero Framework Cross-Site Scripting and Request Forgery Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803155");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(57035);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-16 14:02:15 +0530 (Wed, 16 Jan 2013)");
   script_name("Hero Framework Cross-Site Scripting and Request Forgery Vulnerabilities");
 
@@ -50,9 +50,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
-  HTML and script code in a user's browser session in context of an affected site.
-
-  Impact Level: Application");
+  HTML and script code in a user's browser session in context of an affected site.");
   script_tag(name:"affected", value:"Hero Framework version 3.76");
   script_tag(name:"insight", value:"- Input passed to the 'q' parameter in search and 'username'
   parameter in users/login (when 'errors' is set to 'true') is not properly

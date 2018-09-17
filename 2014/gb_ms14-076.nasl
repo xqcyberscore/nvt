@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-076.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: gb_ms14-076.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # MS Internet Information Services Security Feature Bypass Vulnerability (2982998)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805016");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4078");
   script_bugtraq_id(70937);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 13:00:44 +0530 (Wed, 12 Nov 2014)");
   script_name("MS Internet Information Services Security Feature Bypass Vulnerability (2982998)");
 
@@ -48,9 +48,7 @@ if(description)
   Microsoft Internet Information Services (IIS) component.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to bypass certain security restrictions.
-
-  Impact Level: Application");
+  attackers to bypass certain security restrictions.");
 
   script_tag(name:"affected", value:"Microsoft Internet Information Services 8.0/8.5
   on Microsoft Windows 8 x32/x64 and Microsoft Windows 8.1 x32/x64 Edition");

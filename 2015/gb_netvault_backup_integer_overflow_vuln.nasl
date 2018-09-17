@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netvault_backup_integer_overflow_vuln.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_netvault_backup_integer_overflow_vuln.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # Dell Netvault Backup Integer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:dell:netvault_backup";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805653");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11422 $");
   script_cve_id("CVE-2015-4067");
   script_bugtraq_id(74841);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-17 14:20:46 +0530 (Wed, 17 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Dell Netvault Backup Integer Overflow Vulnerability");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code and cause an integer overflow resulting
-  in an undersized allocation and eventually a heap overflow.
-
-  Impact Level: Application");
+  in an undersized allocation and eventually a heap overflow.");
 
   script_tag(name:"affected", value:"Dell Netvault Backup versions before 10.0.5");
 

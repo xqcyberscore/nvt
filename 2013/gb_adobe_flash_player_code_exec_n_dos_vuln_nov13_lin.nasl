@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_code_exec_n_dos_vuln_nov13_lin.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_adobe_flash_player_code_exec_n_dos_vuln_nov13_lin.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe Flash Player Code Execution and DoS Vulnerabilities Nov13 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804147");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5329", "CVE-2013-5330");
   script_bugtraq_id(63680, 63680);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-19 16:31:55 +0530 (Tue, 19 Nov 2013)");
   script_name("Adobe Flash Player Code Execution and DoS Vulnerabilities Nov13 (Linux)");
 
@@ -47,9 +47,7 @@ For updates refer to  http://get.adobe.com/flashplayer");
   script_tag(name:"insight", value:"Flaws are due to unspecified errors.");
   script_tag(name:"affected", value:"Adobe Flash Player before version 11.2.202.327 on Linux");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code, cause
-denial of service (memory corruption) and compromise a user's system.
-
-Impact Level: System/Application");
+denial of service (memory corruption) and compromise a user's system.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 

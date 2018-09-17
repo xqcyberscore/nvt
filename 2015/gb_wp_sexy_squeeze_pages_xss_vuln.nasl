@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_sexy_squeeze_pages_xss_vuln.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_wp_sexy_squeeze_pages_xss_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Wordpress Sexy Squeeze Pages 'id' Parameter XSS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805121");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-9176");
   script_bugtraq_id(71511);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-09 13:32:41 +0530 (Fri, 09 Jan 2015)");
   script_name("Wordpress Sexy Squeeze Pages 'id' Parameter XSS Vulnerability");
 
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary HTML and script code in a users browser session
-  in the context of an affected site.
-
-  Impact Level: Application");
+  in the context of an affected site.");
 
   script_tag(name:"affected", value:"Wordpress InstaSqueeze Sexy Squeeze
   Pages Plugin");

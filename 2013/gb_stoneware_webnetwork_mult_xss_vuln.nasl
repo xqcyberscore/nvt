@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_stoneware_webnetwork_mult_xss_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_stoneware_webnetwork_mult_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Stoneware webNetwork Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803326");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-4352");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-06 11:46:39 +0530 (Wed, 06 Mar 2013)");
   script_name("Stoneware webNetwork Multiple Cross-Site Scripting Vulnerabilities");
   script_xref(name:"URL", value:"http://stoneware-docs.s3.amazonaws.com/Bulletins/Security%20Bulletin%206_1_0.pdf");
@@ -46,8 +46,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML or
-  web script in a user's browser session in context of an affected site.
-  Impact Level: Application");
+  web script in a user's browser session in context of an affected site.");
   script_tag(name:"affected", value:"Stoneware WebNetwork 6.1 before SP1");
   script_tag(name:"insight", value:"Multiple flaws exists because application does the validate,
 

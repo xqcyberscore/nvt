@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iscripts_autohoster_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_iscripts_autohoster_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # iScripts AutoHoster Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804165");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-7189", "CVE-2013-7190");
   script_bugtraq_id(64377, 64377);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-31 11:25:53 +0530 (Tue, 31 Dec 2013)");
   script_name("iScripts AutoHoster Multiple Vulnerabilities");
 
@@ -58,9 +58,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to read arbitrary files on the
   target system, obtain some sensitive information or execute arbitrary script
   code on the vulnerable server, perform SQL injection and compromise the
-  application.
-
-  Impact Level: Application");
+  application.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");

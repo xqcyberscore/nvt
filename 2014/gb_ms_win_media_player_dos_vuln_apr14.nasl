@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_media_player_dos_vuln_apr14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms_win_media_player_dos_vuln_apr14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Windows Media Player '.wav' File Memory Corruption Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:windows_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804532");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2671");
   script_bugtraq_id(66403);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-04 16:03:11 +0530 (Fri, 04 Apr 2014)");
   script_name("Microsoft Windows Media Player '.wav' File Memory Corruption Vulnerability");
 
@@ -44,9 +44,7 @@ memorry corruption vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaw is due to improper handling of '.wav' files.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code or
-cause a denial of service.
-
-Impact Level: System/Application");
+cause a denial of service.");
   script_tag(name:"affected", value:"Microsoft Windows Media Player 11.0.5721.5230");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"qod_type", value:"registry");

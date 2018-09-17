@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms15-080.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_ms_office_ms15-080.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Office Font Drivers Remote Code Execution Vulnerability (3078662)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805083");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2431", "CVE-2015-2435", "CVE-2015-2455", "CVE-2015-2456",
                 "CVE-2015-2463", "CVE-2015-2464");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 12:46:32 +0530 (Wed, 12 Aug 2015)");
   script_name("Microsoft Office Font Drivers Remote Code Execution Vulnerability (3078662)");
 
@@ -46,9 +46,7 @@ if(description)
   TrueType fonts.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker to execute arbitrary code on the affected system.
-
-  Impact Level: System/Application");
+  attacker to execute arbitrary code on the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3
   Microsoft Office 2010 Service Pack 2");

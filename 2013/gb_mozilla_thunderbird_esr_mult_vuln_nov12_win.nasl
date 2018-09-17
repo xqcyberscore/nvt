@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_mult_vuln_nov12_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_mozilla_thunderbird_esr_mult_vuln_nov12_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities - November12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803629");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-4194", "CVE-2012-4195", "CVE-2012-4196");
   script_bugtraq_id(56301, 56302, 56306);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 16:08:12 +0530 (Fri, 02 Nov 2012)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities - November12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51144");
@@ -44,8 +44,7 @@ if(description)
   script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird-ESR/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to inject scripts and bypass
-  certain security restrictions.
-  Impact Level: Application");
+  certain security restrictions.");
   script_tag(name:"affected", value:"Thunderbird ESR version 10.x before 10.0.10 on Windows");
   script_tag(name:"insight", value:"Multiple errors
 

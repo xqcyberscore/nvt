@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-061.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_ms15-061.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # MS Windows Kernel-Mode Driver Privilege Elevation Vulnerabilities (3057839)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805582");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-1719", "CVE-2015-1720", "CVE-2015-1721", "CVE-2015-1722",
                 "CVE-2015-1723", "CVE-2015-1724", "CVE-2015-1725", "CVE-2015-1726",
                 "CVE-2015-1727", "CVE-2015-1768", "CVE-2015-2360");
@@ -35,7 +35,7 @@ if(description)
                     75008, 75024, 75025);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-10 08:00:55 +0530 (Wed, 10 Jun 2015)");
   script_name("MS Windows Kernel-Mode Driver Privilege Elevation Vulnerabilities (3057839)");
 
@@ -64,9 +64,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass security, gain elevated privileges and execute arbitrary
-  code on affected system.
-
-  Impact Level: System");
+  code on affected system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aloaha_pdf_viewer_bof_vuln.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_aloaha_pdf_viewer_bof_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Aloaha PDF Viewer Buffer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:aloha:aloahapdfviewer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804312");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-4978");
   script_bugtraq_id(62036);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-13 11:02:14 +0530 (Thu, 13 Feb 2014)");
   script_name("Aloaha PDF Viewer Buffer Overflow Vulnerability");
 
@@ -44,9 +44,7 @@ vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaw is due to some unspecified error when processing PDF files.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
-service or execution of arbitrary code.
-
-Impact Level: System/Application");
+service or execution of arbitrary code.");
   script_tag(name:"affected", value:"Aloaha PDF Viewer version 5.0.0.7 and probably other versions.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

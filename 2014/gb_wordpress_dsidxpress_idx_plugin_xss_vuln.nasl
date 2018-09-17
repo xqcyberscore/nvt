@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_dsidxpress_idx_plugin_xss_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_wordpress_dsidxpress_idx_plugin_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WordPress dsIDXpress IDX Plugin Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804803");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-4521");
   script_bugtraq_id(68328);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-11 10:21:09 +0530 (Mon, 11 Aug 2014)");
   script_name("WordPress dsIDXpress IDX Plugin Cross Site Scripting Vulnerability");
 
@@ -47,9 +47,7 @@ cookie or not.");
 properly sanitised before returning to the user.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to execute arbitrary script
 code in a user's browser session within the trust relationship between their
-browser and the server.
-
-Impact Level: Application");
+browser and the server.");
   script_tag(name:"affected", value:"WordPress dsIDXpress IDX Plugin version 2.1.0 and prior.");
   script_tag(name:"solution", value:"Upgrade to WordPress dsIDXpress IDX Plugin version 2.1.1 or later. For updates
 refer http://wordpress.org/plugins/dsidxpress/");

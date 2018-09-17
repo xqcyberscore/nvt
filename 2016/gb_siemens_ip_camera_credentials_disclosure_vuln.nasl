@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_ip_camera_credentials_disclosure_vuln.nasl 9382 2018-04-06 11:26:58Z cfischer $
+# $Id: gb_siemens_ip_camera_credentials_disclosure_vuln.nasl 11409 2018-09-15 12:30:12Z cfischer $
 #
 # SIEMENS IP-Camera Credentials Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807879");
-  script_version("$Revision: 9382 $");
+  script_version("$Revision: 11409 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:26:58 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 14:30:12 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-18 11:01:49 +0530 (Thu, 18 Aug 2016)");
   script_name("SIEMENS IP-Camera Credentials Disclosure Vulnerability");
 
@@ -44,9 +44,7 @@ if(description)
   restriction on user access levels for certain pages.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to read username and password of the device.
-
-  Impact Level: Application");
+  attacker to read username and password of the device.");
 
   script_tag(name:"affected", value:"CCMW3025:  All  versions  <  1.41_SP18_S1,
 
@@ -84,10 +82,9 @@ if(description)
   For updates refer to https://www.siemens.com/cert/pool/cert/siemens_security_advisory_ssa-284765.pdf");
 
   script_tag(name:"solution_type", value:"VendorFix");
-
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40254");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40254");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -95,28 +92,15 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("Boa/banner");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
-
-###script code starts here
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable initialization
-url = "";
-sie_port = 0;
-req = "";
-res = "";
-
-## Get HTTP Port
 sie_port = get_http_port(default:80);
-if(!sie_port){
-  exit(0);
-}
 
-## Confirm Application
 ## Siemens IP Camera uses 'Boa by topco' integrated web server
 ## Application confirmation to more specific is not possible, hence not
 ## going for detect NVT.
@@ -125,7 +109,6 @@ if('Server: Boa by topco' >!< banner){
   exit(0);
 }
 
-##Try Exploit
 url = "/cgi-bin/readfile.cgi?query=ADMINID";
 
 if(http_vuln_check(port:sie_port, url:url,  pattern:'var Adm_ID="', check_header:TRUE,
@@ -135,3 +118,5 @@ if(http_vuln_check(port:sie_port, url:url,  pattern:'var Adm_ID="', check_header
   security_message(port:sie_port, data:report);
   exit(0);
 }
+
+exit(99);

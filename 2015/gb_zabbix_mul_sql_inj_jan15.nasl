@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_mul_sql_inj_jan15.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_zabbix_mul_sql_inj_jan15.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Zabbix Multiple SQL injection Vulnerabilities - Jan15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:zabbix:zabbix";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805319");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2014-9450");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 10:22:50 +0530 (Fri, 23 Jan 2015)");
   script_name("Zabbix Multiple SQL injection Vulnerabilities - Jan15");
 
@@ -48,9 +48,7 @@ if(description)
   sanitised before being used in an SQL query");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  attackers to manipulate SQL queries by injecting arbitrary SQL code.
-
-  Impact Level: Application");
+  attackers to manipulate SQL queries by injecting arbitrary SQL code.");
 
   script_tag(name:"affected", value:"Zabbix versions before 1.8.22, 2.0.x
   before 2.0.14, and 2.2.x before 2.2.8.");

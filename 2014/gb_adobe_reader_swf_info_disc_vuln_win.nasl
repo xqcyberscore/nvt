@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_swf_info_disc_vuln_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_adobe_reader_swf_info_disc_vuln_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Reader 'SWF' Information Disclosure Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804262");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2004-1598");
   script_bugtraq_id(11386);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-16 10:27:12 +0530 (Wed, 16 Apr 2014)");
   script_name("Adobe Reader 'SWF' Information Disclosure Vulnerability (Windows)");
 
@@ -44,9 +44,7 @@ disclosure vulnerability.");
   script_tag(name:"insight", value:"Flaw exist due to the error in processing of embedded Macromedia Flash (.swf)
 files within PDF files.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain knowledge of potentially
-sensitive information.
-
-Impact Level: System/Application");
+sensitive information.");
   script_tag(name:"affected", value:"Adobe Reader version 6.x before 6.0.3 on Windows.");
   script_tag(name:"solution", value:"Upgrade to Adobe Reader 6.0.3 or later. For
 updates refer to http://get.adobe.com/reader");

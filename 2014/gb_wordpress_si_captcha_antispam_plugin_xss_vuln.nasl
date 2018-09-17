@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_si_captcha_antispam_plugin_xss_vuln.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_wordpress_si_captcha_antispam_plugin_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # WordPress SI CAPTCHA Anti-Spam Plugin Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804816");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-5190");
   script_bugtraq_id(69011);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-19 18:46:50 +0530 (Tue, 19 Aug 2014)");
   script_name("WordPress SI CAPTCHA Anti-Spam Plugin Cross Site Scripting Vulnerability");
 
@@ -47,9 +47,7 @@ cookie or not.");
 script via the URL is not validated before returning it to users.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to execute arbitrary script
 code in a user's browser session within the trust relationship between their
-browser and the server.
-
-Impact Level: Application");
+browser and the server.");
   script_tag(name:"affected", value:"WordPress SI CAPTCHA Anti-Spam plugin version 2.7.4");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

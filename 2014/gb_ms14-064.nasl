@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-064.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms14-064.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Windows OLE Object Handling Code Execution Vulnerabilities (3011443)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805015");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-6332", "CVE-2014-6352");
   script_bugtraq_id(70952, 70690);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 10:12:10 +0530 (Wed, 12 Nov 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -48,9 +48,7 @@ if(description)
   when handling OLE objects within Microsoft Office files and Internet Explorer.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to execute arbitrary code and compromise a user's system.
-
-  Impact Level: System");
+  attacker to execute arbitrary code and compromise a user's system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows Server 2012/R2

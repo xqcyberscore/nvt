@@ -29,12 +29,12 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804723");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2494", "CVE-2014-4207");
   script_bugtraq_id(68579, 68593);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-24 17:29:02 +0530 (Thu, 24 Jul 2014)");
   script_name("Oracle MySQL Multiple Unspecified vulnerabilities-03 July14 (Windows)");
 
@@ -45,9 +45,7 @@ vulnerabilities.");
   script_tag(name:"insight", value:"Unspecified errors in the MySQL Server component via unknown vectors related
 to ENARC and SROPTZR.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to manipulate certain data
-and cause a DoS (Denial of Service).
-
-Impact Level: Application");
+and cause a DoS (Denial of Service).");
   script_tag(name:"affected", value:"Oracle MySQL version 5.5.37 and earlier on Windows.");
   script_tag(name:"solution", value:"Apply the patch from below link,
 http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");

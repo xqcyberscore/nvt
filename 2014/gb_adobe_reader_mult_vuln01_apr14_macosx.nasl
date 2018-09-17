@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804354");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-0511", "CVE-2014-0512");
   script_bugtraq_id(66205, 66512);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-01 14:33:35 +0530 (Tue, 01 Apr 2014)");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 Apr14 (Mac OS X)");
 
@@ -44,9 +44,7 @@ vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaws are due to some unspecified errors.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass sandbox restrictions,
-execute arbitrary code and compromise a user's system.
-
-Impact Level: System/Application");
+execute arbitrary code and compromise a user's system.");
   script_tag(name:"affected", value:"Adobe Reader XI version 11.0.6 and probably other versions on Mac OS X.");
   script_tag(name:"solution", value:"Upgrade to version 11.0.07 or higher,
 For updates refer to http://get.adobe.com/reader");

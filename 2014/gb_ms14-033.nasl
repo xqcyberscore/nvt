@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-033.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_ms14-033.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Microsoft Window XML Core Services Information Disclosure Vulnerability (2966061)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804635");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1816");
   script_bugtraq_id(67895);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-11 08:45:39 +0530 (Wed, 11 Jun 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Window XML Core Services Information Disclosure Vulnerability (2966061)");
@@ -45,9 +45,7 @@ or not.");
   script_tag(name:"insight", value:"The flaw is due to an error when parsing XML entities that is triggered
 when handling specially crafted XML content on a webpage.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to disclose sensitive
-information.
-
-Impact Level: Application ");
+information.");
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
 
 Microsoft Windows Vista x32/x64 Service Pack 2 and prior

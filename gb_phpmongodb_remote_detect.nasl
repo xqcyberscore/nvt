@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmongodb_remote_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_phpmongodb_remote_detect.nasl 11420 2018-09-17 06:33:13Z cfischer $
 #
 # PHPmongoDB Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807553");
-  script_version("$Revision: 11015 $");
+  script_version("$Revision: 11420 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:33:13 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-25 12:39:59 +0530 (Mon, 25 Apr 2016)");
   script_name("PHPmongoDB Remote Version Detection");
 
@@ -55,11 +55,6 @@ include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-
-sndReq = "";
-rcvRes = "";
-phpmongoVer = "";
-mongoPort = "";
 
 mongoPort = get_http_port(default:80);
 if(!can_host_php(port:mongoPort)){

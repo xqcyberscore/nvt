@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_backend_username_disclosure_vuln.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_typo3_backend_username_disclosure_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # TYPO3 Backend Username Disclosure Vulnerability
 #
@@ -29,17 +29,15 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804210");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 11402 $");
   script_bugtraq_id(49072);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-07 15:31:34 +0530 (Tue, 07 Jan 2014)");
   script_name("TYPO3 Backend Username Disclosure Vulnerability");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain valid usernames.
-
-Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain valid usernames.");
   script_tag(name:"vuldetect", value:"Send a Crafted HTTP POST request and check whether it is able to get sensitive
 information.");
   script_tag(name:"insight", value:"An error exists in application, which returns a different response for

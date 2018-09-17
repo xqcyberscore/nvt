@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_opmanager_mult_vuln.nasl 11027 2018-08-17 08:57:39Z cfischer $
+# $Id: gb_manageengine_opmanager_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ManageEngine OpManager Multiple Vulnerabilities Nov14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805103");
-  script_version("$Revision: 11027 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-7866", "CVE-2014-7868", "CVE-2014-6035");
   script_bugtraq_id(71001, 71002);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-24 16:16:10 +0530 (Mon, 24 Nov 2014)");
   script_name("ManageEngine OpManager Multiple Vulnerabilities Nov14");
 
@@ -59,9 +59,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to upload arbitrary files and
   execute the script within the file with the privileges of the web server, manipulate SQL queries in the backend
-  database, and disclose certain sensitive information.
-
-  Impact Level: Application");
+  database, and disclose certain sensitive information.");
 
   script_tag(name:"affected", value:"ManageEngine OpManager version 11.3/11.4");
 

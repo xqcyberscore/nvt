@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_osclass_mult_xss_n_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_osclass_mult_xss_n_sql_inj_vuln.nasl 11405 2018-09-15 09:22:54Z cfischer $
 #
 # OSClass Multiple XSS and SQL Injection Vulnerabilities
 #
@@ -28,12 +28,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802970");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11405 $");
   script_bugtraq_id(51662);
   script_cve_id("CVE-2012-0973", "CVE-2012-0974", "CVE-2012-5162", "CVE-2012-5163");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:22:54 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-27 10:53:49 +0530 (Thu, 27 Sep 2012)");
   script_name("OSClass Multiple XSS and SQL Injection Vulnerabilities");
 
@@ -81,7 +81,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -94,15 +93,14 @@ foreach dir (make_list_unique("/", "/osclass", cgi_dirs(port:port)))
   if(http_vuln_check(port:port, url:url, check_header:TRUE,
      pattern:'>OSClass admin panel login<', extra_check:'"OSClass">'))
   {
-    ## Constuct an attck
-    url = string(dir, '/index.php?page=search&sCity="' +
-                      '><script>alert(document.cookie);</script>');
+    url = string(dir, '/index.php?page=search&sCity="><script>alert(document.cookie);</script>');
 
     if(http_vuln_check(port:port, url:url, check_header:TRUE,
                        pattern:"><script>alert\(document.cookie\);</script>",
                        extra_check:'>OSClass<'))
     {
-      security_message(port:port);
+      report = report_vuln_url(port:port, url:url);
+      security_message(port:port, data:report);
       exit(0);
     }
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pineapp_mailsecure_61474.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_pineapp_mailsecure_61474.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PineApp Mail-SeCure 'ldapsyncnow.php' Remote Command Injection Vulnerability
 #
@@ -29,7 +29,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103758");
   script_bugtraq_id(61474);
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -37,7 +37,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61474");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-13 11:34:56 +0200 (Tue, 13 Aug 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -47,8 +47,7 @@ if (description)
   script_exclude_keys("Settings/disable_cgi_scanning", "PineApp/missing");
 
   script_tag(name:"impact", value:"Successful exploits will result in the execution of arbitrary commands
- with root privileges in the context of the affected appliance.
- Impact Level: Application");
+ with root privileges in the context of the affected appliance.");
   script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check the response.");
   script_tag(name:"insight", value:"The specific flaw exists with input sanitization in the
  ldapsyncnow.php component. This flaw allows for the injection of arbitrary

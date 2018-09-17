@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_vuln_sep15_win.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_apple_quicktime_mult_vuln_sep15_win.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # Apple QuickTime Multiple Vulnerabilities Sep15 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apple:quicktime";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805969");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11422 $");
   script_cve_id("CVE-2015-3788", "CVE-2015-3789", "CVE-2015-3790", "CVE-2015-3791",
                 "CVE-2015-3792", "CVE-2015-5751", "CVE-2015-5779", "CVE-2015-5785",
                 "CVE-2015-5786");
   script_bugtraq_id(76340, 76443, 76444);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-01 17:24:20 +0530 (Tue, 01 Sep 2015)");
   script_name("Apple QuickTime Multiple Vulnerabilities Sep15 (Windows)");
 
@@ -49,9 +49,7 @@ if(description)
   corruption issues.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to have unexpected application termination or arbitrary code execution.
-
-  Impact Level: System/Application");
+  attackers to have unexpected application termination or arbitrary code execution.");
 
   script_tag(name:"affected", value:"Apple QuickTime version before 7.7.8 on
   Windows.");

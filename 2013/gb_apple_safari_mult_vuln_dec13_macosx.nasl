@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_dec13_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_apple_safari_mult_vuln_dec13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Apple Safari Multiple Vulnerabilities Dec13 (Mac OS X)
 #
@@ -28,21 +28,19 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804177");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5195", "CVE-2013-5196", "CVE-2013-5197", "CVE-2013-5198",
                 "CVE-2013-5199", "CVE-2013-5225", "CVE-2013-5227", "CVE-2013-5228");
   script_bugtraq_id(64356, 64353, 64358, 64359, 64361, 64360, 64355, 64362);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-24 11:34:57 +0530 (Tue, 24 Dec 2013)");
   script_name("Apple Safari Multiple Vulnerabilities Dec13 (Mac OS X)");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow local users to obtain sensitive user
-information, application termination or arbitrary code execution.
-
-Impact Level: System/Application");
+information, application termination or arbitrary code execution.");
   script_tag(name:"affected", value:"Apple Safari before version 6.1.1 and 7.x before version 7.0.1 on Mac OS X");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 

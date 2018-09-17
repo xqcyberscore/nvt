@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wanscam_admin_credentials_disclosure.nasl 11022 2018-08-17 07:57:39Z cfischer $
+# $Id: gb_wanscam_admin_credentials_disclosure.nasl 11408 2018-09-15 11:35:21Z cfischer $
 #
 # Wanscam HW0021 Administrator Credentials Disclosure
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113147");
-  script_version("$Revision: 11022 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11408 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-03 12:20:00 +0200 (Tue, 03 Apr 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -74,7 +74,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-if( ! port = get_http_port( default: 8080 ) ) exit( 0 );
+port = get_http_port( default: 8080 );
 
 res = http_get_cache( port: port, item: "/" );
 if( res !~ "http://www.onvif.org/ver10/media/wsdl" ) exit( 0 );

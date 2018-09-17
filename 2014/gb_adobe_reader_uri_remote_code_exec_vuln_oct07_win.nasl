@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_uri_remote_code_exec_vuln_oct07_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_adobe_reader_uri_remote_code_exec_vuln_oct07_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Adobe Reader URI Handler Remote Code Execution Vulnerabilities Oct07 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804376");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2007-5020", "CVE-2007-3896");
   script_bugtraq_id(25748, 25945);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-10 10:20:46 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader URI Handler Remote Code Execution Vulnerabilities Oct07 (Windows)");
 
@@ -44,9 +44,7 @@ vulnerabilities.");
   script_tag(name:"insight", value:"Flaws are due to an input validation error when handling specially crafted
 URIs with registered URI handlers.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code and
-compromise a user's system.
-
-Impact Level: System/Application");
+compromise a user's system.");
   script_tag(name:"affected", value:"Adobe Reader version 8.1 and prior on Windows.");
   script_tag(name:"solution", value:"Upgrade to Adobe Reader version 8.1.1 or later. For updates refer to
 http://get.adobe.com/reader");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_traffic_analyzer_plugin_xss_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_wordpress_traffic_analyzer_plugin_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WordPress Traffic Analyzer Plugin XSS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803372");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3526");
   script_bugtraq_id(58948);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-12 17:30:46 +0530 (Fri, 12 Apr 2013)");
   script_name("WordPress Traffic Analyzer Plugin XSS Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52929");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
 arbitrary HTML and script code, which will be executed in a user's browser
-session in the context of an affected site.
-
-Impact Level: Application");
+session in the context of an affected site.");
   script_tag(name:"affected", value:"WordPress Traffic Analyzer Plugin version 3.3.2 and prior");
   script_tag(name:"insight", value:"The input passed via 'aoid' parameters to
 '/wp-content/plugins/trafficanalyzer/js/ta_loaded.js.php' script is not

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-079.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms14-079.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # MS Windows Kernel-Mode Driver TrueType Font DoS Vulnerability (3002885)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804878");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-6317");
   script_bugtraq_id(70949);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 07:22:06 +0530 (Wed, 12 Nov 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("MS Windows Kernel-Mode Driver TrueType Font DoS Vulnerability (3002885)");
@@ -48,9 +48,7 @@ if(description)
   font files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to conduct denial-of-service attack.
-
-  Impact Level: System");
+  to conduct denial-of-service attack.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior

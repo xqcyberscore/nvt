@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_php_code_execution_vuln_july14.nasl 10953 2018-08-14 12:06:42Z mmartin $
+# $Id: gb_owncloud_php_code_execution_vuln_july14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # ownCloud PHP Remote Code Execution Vulnerability - July14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804659");
-  script_version("$Revision: 10953 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-0204");
   script_bugtraq_id(57497);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-03 14:00:12 +0530 (Thu, 03 Jul 2014)");
   script_name("ownCloud PHP Code Execution Vulnerability - July14");
 
@@ -45,9 +45,7 @@ vulnerability.");
   script_tag(name:"insight", value:"The flaw exists as the input passed via the '/settings/personal.php' script is
 not properly sanitized before being returned to the user.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary php
-code.
-
-Impact Level: Application");
+code.");
   script_tag(name:"affected", value:"ownCloud Server 4.5.x before 4.5.6");
   script_tag(name:"solution", value:"Upgrade to ownCloud version 4.5.6 or later,
 For updates refer to http://owncloud.org");

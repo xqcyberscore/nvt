@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_color_picker_wizard_rce_vuln.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: gb_typo3_color_picker_wizard_rce_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # TYPO3 Color Picker Wizard Remote PHP Code Execution Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804466");
-  script_version("$Revision: 11194 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-3942");
   script_bugtraq_id(67630);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-03 14:22:50 +0530 (Thu, 03 Jul 2014)");
   script_name("TYPO3 Color Picker Wizard Remote PHP Code Execution Vulnerability");
 
@@ -46,9 +46,7 @@ vulnerability.");
   script_tag(name:"insight", value:"The flaw is triggered as the program fails to validate the authenticity of
 input in an unserialize() call.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary PHP
-code.
-
-Impact Level: Application");
+code.");
   script_tag(name:"affected", value:"TYPO3 versions 4.5.0 to 4.5.33, 4.7.0 to 4.7.18, 6.0.0 to 6.0.13 and
 6.1.0 to 6.1.8");
   script_tag(name:"solution", value:"Upgrade to TYPO3 4.5.34, 4.7.19, 6.0.14 or 6.1.9 or later,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_credential_word_lineno_cmd_exec_vuln.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_bash_shellshock_credential_word_lineno_cmd_exec_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # GNU Bash Off-by-one aka 'word_lineno' Buffer Overflow Vulnerability (LSC)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802084");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-7187");
   script_bugtraq_id(70154);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-01 14:11:51 +0530 (Wed, 01 Oct 2014)");
 
   script_name("GNU Bash Off-by-one aka 'word_lineno' Buffer Overflow Vulnerability (LSC)");
@@ -49,9 +49,7 @@ if(description)
   constructs.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  attackers to execute arbitrary commands.
-
-  Impact Level: System/Application");
+  attackers to execute arbitrary commands.");
 
   script_tag(name:"affected", value:"GNU Bash through 4.3 bash43-026");
 

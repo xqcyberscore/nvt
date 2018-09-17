@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803968");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-6802", "CVE-2013-6632");
   script_bugtraq_id(63729, 63727);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-25 14:00:39 +0530 (Mon, 25 Nov 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Nov2013 (Linux)");
 
@@ -53,9 +53,7 @@ For updates refer to http://www.google.com/chrome");
   script_tag(name:"affected", value:"Google Chrome version prior to 31.0.1650.57 on Linux");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
 service condition, bypass sandbox protection and execute arbitrary code or
-possibly have other impact via unknown vectors.
-
-Impact Level: System/Application");
+possibly have other impact via unknown vectors.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_netextender_privilege_escalation_vuln.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_dell_sonicwall_netextender_privilege_escalation_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Dell SonicWall NetExtender Privilege Escalation Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/o:dell:sonicwall_netextender";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806043");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-4173");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:38:49 +0530 (Tue, 08 Sep 2015)");
   script_name("Dell SonicWall NetExtender Privilege Escalation Vulnerability (Windows)");
 
@@ -47,9 +47,7 @@ if(description)
   product.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  privileged code execution upon administrative login.
-
-  Impact Level: System/Application.");
+  privileged code execution upon administrative login.");
 
   script_tag(name:"affected", value:"Dell SonicWall NetExtender version before
   7.5.227 and before 8.0.238 on Windows.");

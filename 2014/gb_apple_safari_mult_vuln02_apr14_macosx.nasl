@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln02_apr14_macosx.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_apple_safari_mult_vuln02_apr14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Apple Safari Multiple Memory Corruption Vulnerabilities-02 Apr14 (Mac OS X)
 #
@@ -28,7 +28,7 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804534");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1297", "CVE-2014-1298", "CVE-2014-1299", "CVE-2014-1301",
                 "CVE-2014-1302", "CVE-2014-1304", "CVE-2014-1305", "CVE-2014-1307",
                 "CVE-2014-1308", "CVE-2014-1309", "CVE-2014-1310", "CVE-2014-1311",
@@ -37,7 +37,7 @@ if(description)
                     66572, 66573, 66574, 66575, 66577, 66578, 66579);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-07 13:22:25 +0530 (Mon, 07 Apr 2014)");
   script_name("Apple Safari Multiple Memory Corruption Vulnerabilities-02 Apr14 (Mac OS X)");
 
@@ -48,9 +48,7 @@ vulnerabilities.");
   script_tag(name:"insight", value:"Flaws are due to muliple unspecified errors in the WebKit");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass a sandbox protection
 mechanism, execute arbitrary code with root privileges via unknown vectors
-and corrupt memory.
-
-Impact Level: System/Application");
+and corrupt memory.");
   script_tag(name:"affected", value:"Apple Safari version 6.x before 6.1.3 and 7.x before 7.0.3 on Mac OS X");
   script_tag(name:"solution", value:"Upgrade to Apple Safari version 6.1.3 or 7.0.3 or later,
 For updates refer to 'http://www.apple.com/support'");

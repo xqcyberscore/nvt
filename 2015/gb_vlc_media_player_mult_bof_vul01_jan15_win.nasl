@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_bof_vul01_jan15_win.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_vlc_media_player_mult_bof_vul01_jan15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # VLC Media Player Multiple Buffer Overflow Vulnerabilities-01 Jan15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805308");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2011-3623");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-05 12:58:41 +0530 (Mon, 05 Jan 2015)");
   script_name("VLC Media Player Multiple Buffer Overflow Vulnerabilities-01 Jan15 (Windows)");
 
@@ -55,9 +55,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to conduct a denial of service attack or potentially the execution
-  of arbitrary code.
-
-  Impact Level: System/Application");
+  of arbitrary code.");
 
   script_tag(name:"affected", value:"VideoLAN VLC media player before 1.0.2
   on Windows.");

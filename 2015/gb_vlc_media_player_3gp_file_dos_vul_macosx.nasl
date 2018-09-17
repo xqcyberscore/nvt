@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_3gp_file_dos_vul_macosx.nasl 11348 2018-09-12 07:38:26Z cfischer $
+# $Id: gb_vlc_media_player_3gp_file_dos_vul_macosx.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # VLC Media Player 3GP File Denial of Service Vulnerability Oct15 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806088");
-  script_version("$Revision: 11348 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-5949");
   script_bugtraq_id(76448);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 16:16:33 +0530 (Tue, 13 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("VLC Media Player 3GP File Denial of Service Vulnerability Oct15 (Mac OS X)");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service (crash) and possibly execute arbitrary
-  code via a crafted 3GP file.
-
-  Impact Level: System/Application");
+  code via a crafted 3GP file.");
 
   script_tag(name:"affected", value:"VideoLAN VLC media player 2.2.1 and
   earlier on Mac OS X.");

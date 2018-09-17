@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_mult_unspecified_vuln01_jan14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_oracle_db_mult_unspecified_vuln01_jan14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Oracle Database Server Multiple Unspecified Vulnerabilities-01 Jan2014
 #
@@ -28,13 +28,13 @@ CPE = 'cpe:/a:oracle:database_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804227");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-5764", "CVE-2013-5853");
   script_bugtraq_id(64817, 64811);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-24 14:49:13 +0530 (Fri, 24 Jan 2014)");
   script_name("Oracle Database Server Multiple Unspecified Vulnerabilities-01 Jan2014");
 
@@ -46,9 +46,7 @@ vulnerable or not.");
   script_tag(name:"insight", value:"Multiple flaws exist in Core RDBMS component component, no further
 information available at this moment.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of service
-condition.
-
-Impact Level: Application");
+condition.");
   script_tag(name:"affected", value:"Oracle Database Server version 11.1.0.7, 11.2.0.3, and 12.1.0.1
 are affected");
   script_tag(name:"solution", value:"Apply patches from below link,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_priv_esca_vuln_dec14.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_otrs_priv_esca_vuln_dec14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # OTRS Help Desk Privilege Escalation Vulnerability - Dec14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805230");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-9324");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-24 12:30:49 +0530 (Wed, 24 Dec 2014)");
   script_name("OTRS Help Desk Privilege Escalation Vulnerability - Dec14");
 
@@ -48,9 +48,7 @@ if(description)
   'GenericInterface' that is due to a lack of sufficient permission checks.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain access to and make changes to ticket data of other users.
-
-  Impact Level: Application");
+  attackers to gain access to and make changes to ticket data of other users.");
 
   script_tag(name:"affected", value:"OTRS Help Desk versions 3.2.x before
   3.2.17, 3.3.x before 3.3.11, and 4.0.x before 4.0.3");

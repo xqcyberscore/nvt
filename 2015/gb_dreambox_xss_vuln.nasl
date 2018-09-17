@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dreambox_xss_vuln.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_dreambox_xss_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # DreamBox DM500-S Cross-Site Scripting (XSS) Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805071");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-4714");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-25 13:00:26 +0530 (Thu, 25 Jun 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("DreamBox DM500-S Cross-Site Scripting (XSS) Vulnerability");
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to execute arbitrary HTML and script code in a user's browser session in the
-  context of an affected site.
-
-  Impact Level: Application");
+  context of an affected site.");
 
   script_tag(name:"affected", value:"Dreambox DM500");
 

@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803715");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-11 13:49:12 +0530 (Tue, 11 Jun 2013)");
   script_name("ASUS RT56U Router Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/25998");
@@ -51,9 +51,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running ASUS RT56U Router and is prone to multiple
   vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
-  arbitrary shell commands and obtain the sensitive information.
-
-  Impact Level: Application");
+  arbitrary shell commands and obtain the sensitive information.");
   script_tag(name:"affected", value:"Asus RT56U version 3.0.0.4.360 and prior");
 
   script_tag(name:"solution_type", value:"WillNotFix");

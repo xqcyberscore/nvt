@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_unspecified_vuln_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_adobe_acrobat_mult_unspecified_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe Acrobat Multiple Unspecified Vulnerabilities - Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803803");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-4363");
   script_bugtraq_id(55055);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-24 16:05:37 +0530 (Fri, 24 Aug 2012)");
   script_name("Adobe Acrobat Multiple Unspecified Vulnerabilities - Windows");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50290");
@@ -44,9 +44,7 @@ if(description)
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Acrobat/Win/Installed");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code in
-  the context of the affected application.
-
-  Impact Level: System/Application");
+  the context of the affected application.");
   script_tag(name:"affected", value:"Adobe Acrobat versions 9.x to 9.5.2 and 10.x to 10.1.4 on Windows");
   script_tag(name:"insight", value:"The flaws are due to an unspecified errors.");
   script_tag(name:"solution", value:"Upgrade to Adobe Acrobat 9.5.3, 10.1.5 or later,

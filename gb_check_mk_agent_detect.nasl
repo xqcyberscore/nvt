@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_check_mk_agent_detect.nasl 10985 2018-08-15 12:56:20Z cfischer $
+# $Id: gb_check_mk_agent_detect.nasl 11399 2018-09-15 07:45:12Z cfischer $
 #
 # Check_MK Agent Detection
 #
@@ -30,8 +30,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.140096");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10985 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:56:20 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 11399 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 09:45:12 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-12 12:33:00 +0100 (Mon, 12 Dec 2016)");
   script_name("Check_MK Agent Detection");
   script_category(ACT_GATHER_INFO);
@@ -85,7 +85,7 @@ extra = 'Gathered info (truncated):\n\n' + substr( buf, 0, 2000 ) + '\n[...]\n\n
 os = eregmatch( pattern:'AgentOS: ([a-zA-Z]+[^ \r\n]+)', string:buf );
 if( os[1] ) {
   if( os[1] == "windows" ) {
-    register_and_report_os( os:"Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, banner:os[0], port:port, desc:SCRIPT_DESC, runs_key:"windows" );
+    register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, banner:os[0], port:port, desc:SCRIPT_DESC, runs_key:"windows" );
   } else if( os[1] == "linux" ) {
     register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, banner:os[0], port:port, desc:SCRIPT_DESC, runs_key:"unixoide" );
   } else {

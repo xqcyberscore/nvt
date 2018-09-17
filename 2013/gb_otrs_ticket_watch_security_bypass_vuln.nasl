@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_ticket_watch_security_bypass_vuln.nasl 11041 2018-08-17 14:03:47Z mmartin $
+# $Id: gb_otrs_ticket_watch_security_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # OTRS Ticket Watch Security Bypass Vulnerability
 #
@@ -28,21 +28,19 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803943");
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4088");
   script_bugtraq_id(60688);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-22 10:18:31 +0530 (Sun, 22 Sep 2013)");
   script_name("OTRS Ticket Watch Security Bypass Vulnerability");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote authenticated users to bypass
-intended security restriction and obtain sensitive information.
-
-Impact Level: Application");
+intended security restriction and obtain sensitive information.");
   script_tag(name:"vuldetect", value:"Get the installed version of OTRS with the help of detect NVT and check the
 version is vulnerable or not.");
   script_tag(name:"insight", value:"An error exists in application which fails properly verifying permissions

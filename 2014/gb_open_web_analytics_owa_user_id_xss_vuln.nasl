@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_web_analytics_owa_user_id_xss_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_open_web_analytics_owa_user_id_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Open Web Analytics Reflected Cross-Site Scripting Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:openwebanalytics:open_web_analytics";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804404");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1456");
   script_bugtraq_id(65571);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-05 13:12:41 +0530 (Wed, 05 Mar 2014)");
   script_name("Open Web Analytics Reflected Cross-Site Scripting Vulnerability");
 
@@ -45,9 +45,7 @@ possible.");
   script_tag(name:"insight", value:"Input passed via the 'owa_user_id' parameter to the login page is not properly
 sanitised before being returned to the user.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-script code in a user's browser session in context of an affected site.
-
-Impact Level: Application");
+script code in a user's browser session in context of an affected site.");
   script_tag(name:"affected", value:"Open Web Analytics version 1.5.5 and prior.");
   script_tag(name:"solution", value:"Upgrade to Open Web Analytics 1.5.6 or later,
 For updates refer to http://downloads.openwebanalytics.com");

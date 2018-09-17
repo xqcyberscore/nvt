@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitecom_default_telnet_cred.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_sitecom_default_telnet_cred.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Sitecom Devices Hard-coded credentials
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103772");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -37,7 +37,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/sitecom-n300-n600-access-bypass");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 16:02:55 +0200 (Wed, 21 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -47,8 +47,7 @@ if (description)
   script_require_ports("Services/telnet", 23);
 
   script_tag(name:"impact", value:"Attackers can exploit these issues to gain unauthorized access to the
-affected device and perform certain administrative actions.
-Impact Level: System");
+affected device and perform certain administrative actions.");
   script_tag(name:"vuldetect", value:"Start a telnet session with the hard-coded credentials.");
   script_tag(name:"insight", value:"A user can login to the Telnet service (with root privileges) using the
 hard-coded credential admin:1234. This administrative account is hard-coded

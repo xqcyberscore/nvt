@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spip_54292.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_spip_54292.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # SPIP 'connect' Parameter PHP Code Injection Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2013-4555", "CVE-2013-4556", "CVE-2013-4557");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11401 $");
 
   script_name("SPIP 'connect' Parameter PHP Code Injection Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.spip.net/en");
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1029317");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-29 12:05:48 +0200 (Thu, 29 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -55,8 +55,7 @@ if (description)
   script_tag(name:"impact", value:"An attacker can exploit this issue to inject and execute arbitrary PHP
 code in the context of the affected application. This may facilitate a
 compromise of the application and the underlying system, other attacks
-are also possible.
-Impact Level: Application/System");
+are also possible.");
   script_tag(name:"vuldetect", value:"Tries to execute the phpinfo() function by sending a HTTP POST request.");
   script_tag(name:"insight", value:"SPIP contains a flaw that is triggered when input passed via the 'connect'
 parameter is not properly sanitized before being used.");

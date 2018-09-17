@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aker_secure_mail_gateway_xss_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_aker_secure_mail_gateway_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Aker Secure Mail Gateway Cross-Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804413");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-6037");
   script_bugtraq_id(66024);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-17 13:12:47 +0530 (Mon, 17 Mar 2014)");
   script_name("Aker Secure Mail Gateway Cross-Site Scripting Vulnerability");
 
@@ -44,9 +44,7 @@ cookie or not.");
   script_tag(name:"insight", value:"Input passed via the 'msg_id' GET parameter to webgui/cf/index.php is not
 properly sanitised before being returned to the user.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary HTML and
-script code in a user's browser session in context of an affected site.
-
-Impact Level: Application");
+script code in a user's browser session in context of an affected site.");
   script_tag(name:"affected", value:"Aker Secure Mail Gateway version 2.5.2 and prior");
   script_tag(name:"solution", value:"Apply the patch from below link,
 http://www.aker.com.br/produtos/aker-secure-mail-gateway");

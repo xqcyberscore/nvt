@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clipperz_password_manager_rce_vuln.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_clipperz_password_manager_rce_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Clipperz Password Manager 'objectname' Remote Code Execution Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804607");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11402 $");
   script_bugtraq_id(67498);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-26 14:49:09 +0530 (Mon, 26 May 2014)");
   script_name("Clipperz Password Manager 'objectname' Remote Code Execution Vulnerability");
 
@@ -41,9 +41,7 @@ if(description)
   arbitrary php code.");
   script_tag(name:"insight", value:"The error exists as input passed via the 'objectname' parameter is not properly
   sanitized upon submission to the /backend/php/src/setup/rpc.php script");
-  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary php code.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary php code.");
   script_tag(name:"affected", value:"Clipperz Password Manager.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore.

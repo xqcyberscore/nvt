@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_office_infopath_ms13-035.nasl 10984 2018-08-15 12:54:14Z mmartin $
+# $Id: secpod_office_infopath_ms13-035.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft InfoPath HTML Sanitisation Component XSS Vulnerability (2821818)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902960");
-  script_version("$Revision: 10984 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(58883);
   script_cve_id("CVE-2013-1289");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-10 09:40:50 +0530 (Wed, 10 Apr 2013)");
   script_name("Microsoft InfoPath HTML Sanitisation Component XSS Vulnerability (2821818)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52928/");
@@ -49,8 +49,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to bypass certain security
-  restrictions and conduct cross-site scripting and spoofing attacks.
-  Impact Level: Application");
+  restrictions and conduct cross-site scripting and spoofing attacks.");
   script_tag(name:"affected", value:"Microsoft InfoPath 2010 Service Pack 1");
   script_tag(name:"insight", value:"Certain unspecified input is not properly sanitized within the HTML
   Sanitation component before being returned to the user. This can be

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerox_docushare_url_sql_inj_vuln.nasl 11196 2018-09-03 13:09:40Z mmartin $
+# $Id: gb_xerox_docushare_url_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Xerox DocuShare URL SQL Injection Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804556");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 11402 $");
   script_bugtraq_id(66922);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-24 15:12:51 +0530 (Thu, 24 Apr 2014)");
   script_name("Xerox DocuShare URL SQL Injection Vulnerability");
 
@@ -43,9 +43,7 @@ if(description)
   is not properly sanitised before being used in SQL queries.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML or
   script code and manipulate SQL queries in the backend database allowing
-  for the manipulation or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  for the manipulation or disclosure of arbitrary data.");
   script_tag(name:"affected", value:"Xerox DocuShare version 6.5.3 Patch 6, 6.6.1 Update 1, and 6.6.1 Update 2,
   Prior versions may also be affected.");
   script_tag(name:"solution", value:"Apply the hotfix from the below link,

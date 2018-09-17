@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-135.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_ms15-135.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Windows Kernel-Mode Drivers Code Execution Vulnerability (3119075)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806776");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-6171", "CVE-2015-6173", "CVE-2015-6174", "CVE-2015-6175",
                 "CVE-2015-6106", "CVE-2015-6107", "CVE-2015-6108");
   script_bugtraq_id(78509, 78510, 78513, 78514, 78497, 78498, 78499);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 08:11:32 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft Windows Kernel-Mode Drivers Code Execution Vulnerability (3119075)");
 
@@ -51,9 +51,7 @@ if(description)
     improperly handles specially crafted embedded fonts");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to execute arbitrary code in kernel mode with elevated privileges.
-
-  Impact Level: System");
+  to execute arbitrary code in kernel mode with elevated privileges.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows 10 x32/x64

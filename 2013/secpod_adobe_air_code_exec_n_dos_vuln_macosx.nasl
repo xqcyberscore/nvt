@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_air_code_exec_n_dos_vuln_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: secpod_adobe_air_code_exec_n_dos_vuln_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Adobe Air Code Execution and DoS Vulnerabilities (MAC OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903318");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-0772", "CVE-2012-0773", "CVE-2012-0724", "CVE-2012-0725");
   script_bugtraq_id(52748, 52916, 52914);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-26 14:01:59 +0530 (Mon, 26 Aug 2013)");
   script_name("Adobe Air Code Execution and DoS Vulnerabilities (MAC OS X)");
   script_tag(name:"summary", value:"This host is installed with Air and is prone to code execution and denial of
@@ -46,7 +46,7 @@ For updates refer to http://get.adobe.com/air");
 
   - An unspecified error within the NetStream class.");
   script_tag(name:"affected", value:"Adobe AIR version prior to 3.2.0.2070 on MAC OS X");
-  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code or cause a denial of service (memory corruption) via unknown vectors. Impact Level: System/Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code or cause a denial of service (memory corruption) via unknown vectors.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_mult_vuln_mar14.nasl 11244 2018-09-05 12:23:51Z cfischer $
+# $Id: gb_symantec_web_gateway_mult_vuln_mar14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Symantec Web Gateway Cross-Site Scripting and SQL Injection Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804406");
-  script_version("$Revision: 11244 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-5012", "CVE-2013-5013");
   script_bugtraq_id(65404, 65405);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 14:23:51 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-10 17:35:07 +0530 (Mon, 10 Mar 2014)");
   script_name("Symantec Web Gateway Cross-Site Scripting and SQL Injection Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -64,9 +64,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code in
   the context of the application, bypass certain security restrictions and
-  conduct SQL injection attacks.
-
-  Impact Level: Application");
+  conduct SQL injection attacks.");
 
   script_tag(name:"affected", value:"Symantec Web Gateway versions prior to 5.2");
 

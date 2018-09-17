@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_dec14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_dec14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-01 Dec14 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805219");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1594", "CVE-2014-1593", "CVE-2014-1592", "CVE-2014-1590",
                 "CVE-2014-1587");
   script_bugtraq_id(71396, 71395, 71398, 71397, 71391);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-16 10:53:05 +0530 (Tue, 16 Dec 2014)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 Dec14 (Windows)");
 
@@ -61,9 +61,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   disclose potentially sensitive information, compromise a user's system and
-  have other unknown impacts.
-
-  Impact Level: System/Application");
+  have other unknown impacts.");
 
   script_tag(name:"affected", value:"Mozilla Firefox ESR 31.x before 31.3 on
   Windows");

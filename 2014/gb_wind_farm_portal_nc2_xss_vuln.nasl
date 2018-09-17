@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wind_farm_portal_nc2_xss_vuln.nasl 11186 2018-09-03 09:12:42Z mmartin $
+# $Id: gb_wind_farm_portal_nc2_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Nordex NC2 'username' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804789");
-  script_version("$Revision: 11186 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-5408");
   script_bugtraq_id(70851);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-11 17:47:43 +0530 (Tue, 11 Nov 2014)");
   script_name("Nordex NC2 'username' Parameter Cross Site Scripting Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary HTML and script code in a users browser session
-  in the context of an affected site.
-
-  Impact Level: Application");
+  in the context of an affected site.");
 
   script_tag(name:"affected", value:"Nordex Control 2 (NC2) SCADA V15
   and prior versions");

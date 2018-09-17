@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atutor_acontent_lfi_vuln.nasl 10698 2018-08-01 07:20:28Z cfischer $
+# $Id: gb_atutor_acontent_lfi_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Atutor AContent Local File Inclusion Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803346");
-  script_version("$Revision: 10698 $");
+  script_version("$Revision: 11401 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 09:20:28 +0200 (Wed, 01 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-26 15:10:47 +0530 (Tue, 26 Mar 2013)");
   script_name("Atutor AContent Local File Inclusion Vulnerability");
   script_category(ACT_ATTACK);
@@ -46,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform
   directory traversal attacks and read arbitrary files on the affected
-  application.
-
-  Impact Level: Application");
+  application.");
 
   script_tag(name:"affected", value:"Atutor AContent version 1.3");
 

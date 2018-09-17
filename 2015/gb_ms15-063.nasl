@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-063.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_ms15-063.nasl 11422 2018-09-17 07:30:48Z mmartin $
 #
 # MS Windows Kernel Privilege Elevation Vulnerability (3063858)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805583");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11422 $");
   script_cve_id("CVE-2015-1758");
   script_bugtraq_id(75004);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-10 09:08:28 +0530 (Wed, 10 Jun 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Kernel Privilege Elevation Vulnerability (3063858)");
@@ -47,9 +47,7 @@ if(description)
   as it fails to properly validate user input.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to gain elevated privileges on affected system.
-
-  Impact Level: System");
+  to gain elevated privileges on affected system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows Server 2012

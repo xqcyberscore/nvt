@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_slider_revolution_file_download_vuln.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_wordpress_slider_revolution_file_download_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Wordpress Revslider Arbitrary File Download Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805670");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-9734");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-10 15:54:40 +0530 (Fri, 10 Jul 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress Revslider Arbitrary File Download Vulnerability");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to arbitrary files and to compromise
-  the application.
-
-  Impact Level: Application");
+  the application.");
 
   script_tag(name:"affected", value:"Wordpress Slider Revolution (revslider)
   plugin before 4.2.");

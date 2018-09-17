@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln_may13_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_mysql_unspecified_vuln_may13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MySQL Unspecified vulnerability - May 13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803459");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-1544");
   script_bugtraq_id(59229);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-02 10:59:46 +0530 (Thu, 02 May 2013)");
   script_name("MySQL Unspecified vulnerability - May 13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53022");
@@ -48,9 +48,7 @@ if(description)
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed");
   script_tag(name:"impact", value:"Successful exploitation could allow remote authenticated attackers to
-  cause a denial of service.
-
-  Impact Level: Application");
+  cause a denial of service.");
   script_tag(name:"affected", value:"MySQL version 5.1.x before 5.1.69, 5.5.x before 5.5.31 and
   5.6.x before 5.6.11");
   script_tag(name:"insight", value:"Unspecified flaw related to the Data Manipulation Language subcomponent.");

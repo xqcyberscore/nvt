@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_dos_vuln04_win.nasl 11011 2018-08-16 14:14:31Z mmartin $
+# $Id: gb_comodo_dos_vuln04_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Comodo Internet Security Denial of Service Vulnerability-04
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803691");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2009-5124", "CVE-2009-5123");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-05 16:23:15 +0530 (Fri, 05 Jul 2013)");
   script_name("Comodo Internet Security Denial of Service Vulnerability-04");
   script_xref(name:"URL", value:"http://personalfirewall.comodo.com/release_notes.html");
@@ -40,8 +40,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_comodo_internet_security_detect_win.nasl");
   script_mandatory_keys("Comodo/InternetSecurity/Win/Ver");
-  script_tag(name:"impact", value:"Successful exploitation allow attackers to cause denial of service condition.
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation allow attackers to cause denial of service condition.");
   script_tag(name:"affected", value:"Comodo Internet Security versions before 3.11.108364.552");
   script_tag(name:"insight", value:"Flaw related to the antivirus component, triggered when a user opens an
   unspecified malformed packed or compressed file.");

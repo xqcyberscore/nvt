@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_at_tftp_filename_bof_vuln.nasl 11041 2018-08-17 14:03:47Z mmartin $
+# $Id: gb_at_tftp_filename_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # AT-TFTP Server Long Filename BoF Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802065");
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(21320);
   script_cve_id("CVE-2006-6184");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-26 11:32:51 +0530 (Tue, 26 Nov 2013)");
   script_name("AT-TFTP Server Long Filename BoF Vulnerability");
 
@@ -45,9 +45,7 @@ if(description)
   specially crafted packet with an overly long filename.");
   script_tag(name:"affected", value:"Allied Telesyn TFTP Server (AT-TFTP) version 1.9 and possibly earlier.");
   script_tag(name:"impact", value:"Successfully exploiting these issues may allow an attacker to execute
-  arbitrary code with the privileges of the user running the affected application.
-
-  Impact Level: System/Application");
+  arbitrary code with the privileges of the user running the affected application.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/23106");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/30539");
@@ -80,7 +78,6 @@ if(!tftp_alive(port:tftp_port)){
   exit(0);
 }
 
-## open socket for udp port
 soc = open_sock_udp(tftp_port);
 if(!soc){
   exit(0);

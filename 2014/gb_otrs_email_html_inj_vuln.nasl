@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_email_html_inj_vuln.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_otrs_email_html_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # OTRS Email HTML Injection Vulnerability
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804243");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1695");
   script_bugtraq_id(65844);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-04 17:31:09 +0530 (Tue, 04 Mar 2014)");
   script_name("OTRS Email HTML Injection Vulnerability");
 
@@ -46,9 +46,7 @@ version is vulnerable or not.");
   script_tag(name:"insight", value:"An error exists in OTRS core system which fails to properly sanitize
 user-supplied input before using it in dynamically generated content");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to steal the victim's
-cookie-based authentication credentials.
-
-Impact Level: Application");
+cookie-based authentication credentials.");
   script_tag(name:"affected", value:"Open Ticket Request System (OTRS) version 3.1.x before 3.1.20, 3.2.x before 3.2.15,
 and 3.3.x before 3.3.5");
   script_tag(name:"solution", value:"Upgrade to OTRS version 3.1.20 or 3.2.15 or 3.3.5 or later,

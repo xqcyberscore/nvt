@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitecorecms_xss_vuln.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_sitecorecms_xss_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Sitecore CMS XSS Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:sitecore:cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805497");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-100004");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-20 10:14:06 +0530 (Fri, 20 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_app");
   script_name("Sitecore CMS XSS Vulnerabilities");
@@ -50,9 +50,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to create a specially crafted request that would
   execute arbitrary script code in a user's browser session within the trust
-  relationship between their browser and the server.
-
-  Impact Level: Application");
+  relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"Sitecore CMS before 7.0 Update-4 (rev. 140120).");
 

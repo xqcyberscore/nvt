@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avm_fritz_box_detect_sip.nasl 8141 2017-12-15 12:43:22Z cfischer $
+# $Id: gb_avm_fritz_box_detect_sip.nasl 11414 2018-09-16 12:02:34Z cfischer $
 #
 # AVM FRITZ!Box Detection (SIP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108037");
-  script_version("$Revision: 8141 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 11414 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-16 14:02:34 +0200 (Sun, 16 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-01-05 13:21:05 +0100 (Thu, 05 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -67,6 +67,9 @@ if( banner && ( "AVM FRITZ" >< banner || "FRITZ!OS" >< banner ) ) {
   model = "unknown";
   fw_version = "unknown";
 
+  # User-Agent: AVM FRITZ!Box Fon WLAN 7170 29.04.76 (Jul 13 2009)
+  # User-Agent: AVM FRITZ!Box Fon WLAN 7141 (UI) 40.04.77 TAL (Feb 10 2014)
+  # User-Agent: AVM FRITZ!Box 6810 LTE 108.05.56 (Aug 13 2013)
   mo = eregmatch( pattern:'AVM FRITZ!Box (Fon WLAN|WLAN)? ?([0-9]+( (v[0-9]+|vDSL|SL|LTE|Cable))?)', string:banner );
   if( ! isnull( mo[1] ) ) type = mo[1];
   if( ! isnull( mo[2] ) ) model = mo[2];

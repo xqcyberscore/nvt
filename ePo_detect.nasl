@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ePo_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: ePo_detect.nasl 11407 2018-09-15 11:02:05Z cfischer $
 #
 # ePo Agent Detection
 #
@@ -24,12 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100329");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11407 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:02:05 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-10-30 14:42:19 +0100 (Fri, 30 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
 
@@ -41,12 +41,13 @@ if (description)
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "http_version.nasl", "netbios_name_get.nasl");
   script_require_ports("Services/www", 8081);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Detection of ePo Agent
 
-The script sends a connection request to the server and attempts to extract some information from the reply.");
+  The script sends a connection request to the server and attempts to extract some information from the reply.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

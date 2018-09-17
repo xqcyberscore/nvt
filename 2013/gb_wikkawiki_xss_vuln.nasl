@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wikkawiki_xss_vuln.nasl 11041 2018-08-17 14:03:47Z mmartin $
+# $Id: gb_wikkawiki_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # WikkaWiki Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803892");
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5586");
   script_bugtraq_id(62325);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-16 15:14:50 +0530 (Mon, 16 Sep 2013)");
   script_name("WikkaWiki Cross Site Scripting Vulnerability");
 
@@ -46,9 +46,7 @@ if (description)
   sanitised before being returned to the user.");
   script_tag(name:"affected", value:"WikkaWiki 1.3.4 and probably prior.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  script code in a user's browser session in the context of an affected site.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/54790");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Sep/47");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_unspecified_vuln_nov15_macosx.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_oracle_virtualbox_unspecified_vuln_nov15_macosx.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Oracle Virtualbox Unspecified Vulnerability Nov15 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806606");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-4856");
   script_bugtraq_id(77202);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-02 15:18:36 +0530 (Mon, 02 Nov 2015)");
   script_name("Oracle Virtualbox Unspecified Vulnerability Nov15 (Mac OS X)");
 
@@ -47,9 +47,7 @@ if(description)
   error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
-  attackers to have an impact on availability.
-
-  Impact Level: Application");
+  attackers to have an impact on availability.");
 
   script_tag(name:"affected", value:"VirtualBox versions prior to 4.0.30,
   4.1.38, 4.2.30, 4.3.26, and 5.0.0 on Mac OS X.");

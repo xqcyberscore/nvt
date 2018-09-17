@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_rainloop_admin_default_credentials.nasl 6534 2017-07-05 09:58:29Z teissa $
+# $Id: sw_rainloop_admin_default_credentials.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # RainLoop Webmail admin default credentials
 #
@@ -27,35 +27,35 @@
 
 CPE = 'cpe:/a:rainloop:rainloop';
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.111011");
- script_version("$Revision: 6534 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("RainLoop Webmail admin default credentials");
- script_tag(name:"last_modification", value:"$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
- script_tag(name:"creation_date", value:"2015-03-30 15:30:00 +0200 (Mon, 30 Mar 2015)");
- script_category(ACT_ATTACK);
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
- script_dependencies("sw_rainloop_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("rainloop/installed");
+  script_oid("1.3.6.1.4.1.25623.1.0.111011");
+  script_version("$Revision: 11423 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("RainLoop Webmail admin default credentials");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-30 15:30:00 +0200 (Mon, 30 Mar 2015)");
+  script_category(ACT_ATTACK);
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
+  script_dependencies("sw_rainloop_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("rainloop/installed");
 
- script_tag(name: "summary" , value: 'The remote Rainloop Webmail web interface is prone to a default account
+  script_tag(name:"summary", value: 'The remote Rainloop Webmail web interface is prone to a default account
  authentication bypass vulnerability.');
 
- script_tag(name: "impact" , value: 'This issue may be exploited by a remote attacker to gain
+  script_tag(name:"impact", value: 'This issue may be exploited by a remote attacker to gain
  access to sensitive information.');
 
- script_tag(name: "vuldetect" , value: 'Try to login with default credentials.');
- script_tag(name: "insight" , value: 'It was possible to login with default credentials: admin/12345');
- script_tag(name: "solution" , value: 'Change the password.');
+  script_tag(name:"vuldetect", value: 'Try to login with default credentials.');
+  script_tag(name:"insight", value: 'It was possible to login with default credentials: admin/12345');
+  script_tag(name:"solution", value: 'Change the password.');
 
- script_tag(name : "solution_type", value : "Workaround");
+  script_tag(name:"solution_type", value:"Workaround");
 
- script_tag(name: "qod_type", value: "remote_app");
+  script_tag(name:"qod_type", value:"remote_app");
 
  exit(0);
 }

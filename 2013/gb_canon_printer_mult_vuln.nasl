@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803718");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4613", "CVE-2013-4614", "CVE-2013-4615");
   script_bugtraq_id(60612, 60601, 60598);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-19 12:00:59 +0530 (Wed, 19 Jun 2013)");
   script_name("Canon Printer Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/122073/");
@@ -60,9 +60,7 @@ interfaces by default. Unauthorized users on the network may configure the print
   script_tag(name:"summary", value:"This host is running Canon Printer and is prone to multiple
 vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause
-the denial of service and obtain the sensitive information.
-
-Impact Level: Application");
+the denial of service and obtain the sensitive information.");
   script_tag(name:"affected", value:"Canon Printers");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);

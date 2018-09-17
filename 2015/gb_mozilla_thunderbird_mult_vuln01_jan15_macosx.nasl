@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_jan15_macosx.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_jan15_macosx.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 Jan15 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805253");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-8639", "CVE-2014-8638", "CVE-2014-8634");
   script_bugtraq_id(72046, 72047, 72049);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-20 14:31:54 +0530 (Tue, 20 Jan 2015)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 Jan15 (Mac OS X)");
 
@@ -55,9 +55,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass certain security restrictions, and compromise a user's
-  system.
-
-  Impact Level: System/Application");
+  system.");
 
   script_tag(name:"affected", value:"Mozilla Thunderbird before version 31.4
   on Mac OS X");

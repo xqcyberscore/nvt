@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sea_monkey_mult_vuln01_dec14_macosx.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_sea_monkey_mult_vuln01_dec14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # SeaMonkey Multiple Vulnerabilities-01 Dec14 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:seamonkey";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805224");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1594", "CVE-2014-1593", "CVE-2014-1592", "CVE-2014-1590",
                 "CVE-2014-1589", "CVE-2014-1588", "CVE-2014-1587", "CVE-2014-8632",
                 "CVE-2014-8631", "CVE-2014-1591");
@@ -37,7 +37,7 @@ if(description)
                     71399);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-16 11:37:29 +0530 (Tue, 16 Dec 2014)");
   script_name("SeaMonkey Multiple Vulnerabilities-01 Dec14 (Mac OS X)");
 
@@ -74,9 +74,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to disclose potentially sensitive information, compromise a user's system, bypass
-  certain security restrictions and other unknown impacts.
-
-  Impact Level: System/Application");
+  certain security restrictions and other unknown impacts.");
 
   script_tag(name:"affected", value:"SeaMonkey version before 2.31 on Mac OS X.");
 

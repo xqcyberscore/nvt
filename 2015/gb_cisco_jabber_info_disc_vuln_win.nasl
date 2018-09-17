@@ -29,11 +29,11 @@ CPE = "cpe:/a:cisco:jabber";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805712");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-4218");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-03 11:19:11 +0530 (Fri, 03 Jul 2015)");
   script_name("Cisco Jabber Information Disclosure Vulnerability June15 (Windows)");
 
@@ -46,9 +46,7 @@ if(description)
   validation of GET parameter.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  attacker to gain access to potentially sensitive information.
-
-  Impact Level: System/Application.");
+  attacker to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"Cisco Jabber versions through
   9.6(3) and 9.7 through 9.7(5) Windows.");

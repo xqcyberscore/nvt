@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln_sep15_macosx.nasl 6329 2017-06-13 15:39:42Z teissa $
+# $Id: gb_adobe_air_mult_vuln_sep15_macosx.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Adobe Air Multiple Vulnerabilities Sep15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805745");
-  script_version("$Revision: 6329 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-5567", "CVE-2015-5568", "CVE-2015-5570", "CVE-2015-5571",
                 "CVE-2015-5572", "CVE-2015-5573", "CVE-2015-5574", "CVE-2015-5575",
                 "CVE-2015-5576", "CVE-2015-5577", "CVE-2015-5578", "CVE-2015-5579",
@@ -38,32 +38,32 @@ if(description)
                 "CVE-2015-6678", "CVE-2015-6679", "CVE-2015-6682");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-24 13:05:29 +0530 (Thu, 24 Sep 2015)");
   script_name("Adobe Air Multiple Vulnerabilities Sep15 (Mac OS X)");
 
-  script_tag(name: "summary" , value: "This host is installed with Adobe Air
+  script_tag(name:"summary", value:"This host is installed with Adobe Air
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Multiple memory corruption errors.
+
   - Multiple unspecified errors.
+
   - Multiple use-after-free vulnerabilities.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to potentially sensitive information, conduct denial
   of service attack and potentially execute arbitrary code in the context of the
-  affected user.
+  affected user.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Adobe Air versions before
+  script_tag(name:"affected", value:"Adobe Air versions before
   19.0.0.190 version on Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Adobe Air version
+  script_tag(name:"solution", value:"Upgrade to Adobe Air version
   19.0.0.190 or later.
   For updates refer to http://get.adobe.com/air");
 
@@ -71,7 +71,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name: "URL" , value : "https://helpx.adobe.com/security/products/flash-player/apsb15-23.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb15-23.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
@@ -83,15 +83,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-playerVer = "";
-
-## Get version
 if(!playerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 ## Fix will be updated once the solution details are available
 if(version_is_less(version:playerVer, test_version:"19.0.0.190"))
 {

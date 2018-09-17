@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_jul15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_jul15_win.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 Jul15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805913");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-2740", "CVE-2015-2739", "CVE-2015-2738", "CVE-2015-2737",
                 "CVE-2015-2736", "CVE-2015-2735", "CVE-2015-2734", "CVE-2015-2724",
                 "CVE-2015-2721", "CVE-2015-2725", "CVE-2015-2741", "CVE-2015-2731",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(75541, 74733);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-08 15:59:57 +0530 (Wed, 08 Jul 2015)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 Jul15 (Windows)");
 
@@ -47,27 +47,36 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Buffer overflow error in the 'nsXMLHttpRequest::AppendToResponseText' function.
+
   - An error in the 'rx::d3d11::SetBufferData' function in the Direct3D 11
   implementation.
+
   - An error in the 'YCbCrImageDataDeserializer::ToDataSourceSurface' function
   in the YCbCr implementation.
+
   - An error in 'ArrayBufferBuilder::append' function.
+
   - An error in the 'CairoTextureClientD3D9::BorrowDrawTarget' function in the
   Direct3D 9 implementation.
+
   - An error in 'nsZipArchive::BuildFileList' function.
+
   - Unspecified error in nsZipArchive.cpp script.
+
   - Multiple unspecified memory related errors.
+
   - Multiple errors within Network Security Services (NSS).
+
   - An use-after-free vulnerabilities.
+
   - An overridable error allowing for skipping pinning checks.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code, obtain sensitive information, conduct
   man-in-the-middle attack, conduct denial-of-service attack and other
-  unspecified impacts.
-
-  Impact Level: System/Application");
+  unspecified impacts.");
 
   script_tag(name:"affected", value:"Mozilla Thunderbird before version 38.1
   on Windows");

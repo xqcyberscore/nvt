@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_itsm_ticket_split_info_disclosure_vuln.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: gb_otrs_itsm_ticket_split_info_disclosure_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # OTRS ITSM Ticket Split Information Disclosure Vulnerability
 #
@@ -29,21 +29,19 @@ ITSMCPE = "cpe:/a:otrs:otrs_itsm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803942");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3551");
   script_bugtraq_id(60117);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-27 15:32:31 +0530 (Fri, 27 Sep 2013)");
   script_name("OTRS ITSM Ticket Split Information Disclosure Vulnerability");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain access to
-sensitive information.
-
-Impact Level: Application");
+sensitive information.");
   script_tag(name:"vuldetect", value:"Get the installed version and location of OTRS with the help of detect NVT
 and check the OTRS and OTRS:ITSM version is vulnerable or not.");
   script_tag(name:"insight", value:"An error exists in application when handling URLs related to the ticket split

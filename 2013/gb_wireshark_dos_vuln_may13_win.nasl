@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln_may13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_wireshark_dos_vuln_may13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Wireshark ASN.1 BER Dissector DoS Vulnerability - May 13 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803618");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3557", "CVE-2013-3556");
   script_bugtraq_id(59997, 60021);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-28 13:30:52 +0530 (Tue, 28 May 2013)");
   script_name("Wireshark ASN.1 BER Dissector DoS Vulnerability - May 13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53425");
@@ -43,8 +43,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_win.nasl");
   script_mandatory_keys("Wireshark/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause denial of
-  service by injecting a malformed packet.
-  Impact Level: Application");
+  service by injecting a malformed packet.");
   script_tag(name:"affected", value:"Wireshark 1.6.x before 1.6.15 and 1.8.x before 1.8.7 on Windows");
   script_tag(name:"insight", value:"- 'fragment_add_seq_common' function in epan/reassemble.c has an incorrect
     pointer dereference.

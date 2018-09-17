@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_may13_macosx.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_apple_safari_webkit_mult_vuln_may13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Apple Safari Webkit Multiple Vulnerabilities - May13 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803379");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-0960", "CVE-2013-0961");
   script_bugtraq_id(58496, 58495);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-02 15:50:15 +0530 (Thu, 02 May 2013)");
   script_name("Apple Safari Webkit Multiple Vulnerabilities - May13 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52658");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("macosx_safari_detect.nasl");
   script_mandatory_keys("AppleSafari/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker cause memory corruption,
-  arbitrary code execution or denial of service.
-  Impact Level: System/Application");
+  arbitrary code execution or denial of service.");
   script_tag(name:"affected", value:"Apple Safari versions prior to 6.0.3 on Mac OS X");
   script_tag(name:"insight", value:"Multiple flaws due to unspecified memory corruption issues in WebKit.");
   script_tag(name:"solution", value:"Upgrade to Apple Safari version 6.0.3 or later,

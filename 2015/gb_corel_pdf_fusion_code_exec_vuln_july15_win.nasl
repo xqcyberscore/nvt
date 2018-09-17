@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_corel_pdf_fusion_code_exec_vuln_july15_win.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_corel_pdf_fusion_code_exec_vuln_july15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Corel PDF Fusion Arbitrary Code Execution Vulnerability July15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:corel:pdf_fusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805674");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2014-8396");
   script_bugtraq_id(72007);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-07 16:52:25 +0530 (Tue, 07 Jul 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Corel PDF Fusion Arbitrary Code Execution Vulnerability July15 (Windows)");
@@ -51,9 +51,7 @@ if(description)
   user control.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a local
-  attacker to inject custom code.
-
-  Impact Level: System");
+  attacker to inject custom code.");
 
   script_tag(name:"affected", value:"Corel PDF Fusion prior or equal to 1.14
   on Windows.");

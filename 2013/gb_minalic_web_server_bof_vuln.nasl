@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_minalic_web_server_bof_vuln.nasl 11077 2018-08-22 09:40:33Z mmartin $
+# $Id: gb_minalic_web_server_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # MinaliC Host Header Handling Remote Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803192");
-  script_version("$Revision: 11077 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-0273");
   script_bugtraq_id(52873);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-16 13:14:39 +0530 (Tue, 16 Apr 2013)");
   script_name("MinaliC Host Header Handling Remote Buffer Overflow Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated
   attackers to cause a buffer overflow, resulting in a denial of service or
-  potentially allowing the execution of arbitrary code.
-
-  Impact Level: System/Application");
+  potentially allowing the execution of arbitrary code.");
   script_tag(name:"affected", value:"MinaliC Webserver version 2.0.0");
   script_tag(name:"insight", value:"The issue is due to user-supplied input is not properly
   validated when handling a specially crafted host header in the request.");

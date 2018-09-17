@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xwiki_enterprise_detect.nasl 11224 2018-09-04 12:57:17Z cfischer $
+# $Id: gb_xwiki_enterprise_detect.nasl 11407 2018-09-15 11:02:05Z cfischer $
 #
 # XWiki Enterprise Version Detection
 #
@@ -27,13 +27,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801840");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11224 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:57:17 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 11407 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:02:05 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-02-08 15:34:31 +0100 (Tue, 08 Feb 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("XWiki Enterprise Version Detection");
@@ -41,27 +40,23 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"summary", value:"XWiki Enterprise Version Detection.
 
-The script detects the version of XWiki Enterprise on remote host
-and sets the KB.");
+  The script detects the version of XWiki Enterprise on remote host
+  and sets the KB.");
+
   exit(0);
 }
 
-
 include("http_func.inc");
-
-
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default:8080);
-
-if(!port){
-  exit(0);
-}
 
 dir = "/xwiki";
 

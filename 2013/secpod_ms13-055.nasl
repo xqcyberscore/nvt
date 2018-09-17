@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-055.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: secpod_ms13-055.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2846071)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903314");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-3115", "CVE-2013-3143", "CVE-2013-3144", "CVE-2013-3145",
                 "CVE-2013-3146", "CVE-2013-3147", "CVE-2013-3148", "CVE-2013-3149",
                 "CVE-2013-3150", "CVE-2013-3151", "CVE-2013-3152", "CVE-2013-3153",
@@ -37,7 +37,7 @@ if(description)
                     60970, 60971, 60972, 60973, 60974, 60975, 60976, 60941);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-10 08:34:28 +0530 (Wed, 10 Jul 2013)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2846071)");
 
@@ -56,9 +56,7 @@ http://technet.microsoft.com/en-us/security/bulletin/ms13-055");
   - Improper handling of objects in memory.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x/10.x");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to corrupt memory by the
-execution of arbitrary code in the context of the current user.
-
-Impact Level: System/Application");
+execution of arbitrary code in the context of the current user.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

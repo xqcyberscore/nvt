@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_dos_vuln_jun13_win.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_dos_vuln_jun13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PHP Denial of Service Vulnerability - Jun13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803677");
-  script_version("$Revision: 10458 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-4636");
   script_bugtraq_id(60728);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-25 17:10:23 +0530 (Tue, 25 Jun 2013)");
   script_name("PHP Denial of Service Vulnerability - Jun13 (Windows)");
 
@@ -49,9 +49,7 @@ if(description)
   script_mandatory_keys("php/installed", "Host/runs_windows");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to cause denial of service
-  (invalid pointer dereference and application crash) via an MP3 file.
-
-  Impact Level: Application");
+  (invalid pointer dereference and application crash) via an MP3 file.");
 
   script_tag(name:"affected", value:"PHP version before 5.4.X before 5.4.16");
 

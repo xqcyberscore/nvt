@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-015.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-015.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Microsoft Windows Create Process Elevation of Privilege Vulnerability (3031432)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805272");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-0062");
   script_bugtraq_id(72458);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 08:09:52 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft Windows Create Process Elevation of Privilege Vulnerability (3031432)");
 
@@ -46,9 +46,7 @@ if(description)
   properly validated or enforced when creating processes.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
-  attacker to gain elevated privileges.
-
-  Impact Level: System");
+  attacker to gain elevated privileges.");
 
   script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior

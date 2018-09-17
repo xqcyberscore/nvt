@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln01_mar13_win.nasl 10459 2018-07-09 07:41:24Z cfischer $
+# $Id: gb_php_mult_vuln01_mar13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PHP Multiple Vulnerabilities - 01 - Mar13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803341");
-  script_version("$Revision: 10459 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-1172");
   script_bugtraq_id(53403);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-21 16:27:46 +0530 (Thu, 21 Mar 2013)");
   script_name("PHP Multiple Vulnerabilities - 01 - Mar13 (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -56,9 +56,7 @@ if(description)
   rfc1867.c and it does not handle invalid '[' characters in name values.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to retrieve, corrupt or upload
-  arbitrary files, or can cause denial of service via corrupted $_FILES indexes.
-
-  Impact Level: Application");
+  arbitrary files, or can cause denial of service via corrupted $_FILES indexes.");
 
   script_tag(name:"affected", value:"PHP version before 5.4.0");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln04_oct13.nasl 11011 2018-08-16 14:14:31Z mmartin $
+# $Id: gb_java_mult_unspecified_vuln04_oct13.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-04 Oct 2013 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804120");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-5805", "CVE-2013-5806", "CVE-2013-5810", "CVE-2013-5788",
                 "CVE-2013-5777", "CVE-2013-5775", "CVE-2013-5844", "CVE-2013-5851",
                 "CVE-2013-5854", "CVE-2013-5846", "CVE-2013-5800");
@@ -37,7 +37,7 @@ if(description)
                     63079, 63127, 63111);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-25 19:20:44 +0530 (Fri, 25 Oct 2013)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-04 Oct 2013 (Windows)");
 
@@ -52,9 +52,7 @@ http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html");
 vulnerabilities refer the reference section.");
   script_tag(name:"affected", value:"Oracle Java SE version prior to 1.7.0.40 on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to affect confidentiality,
-integrity, and availability via unknown vectors.
-
-Impact Level: System/Application.");
+integrity, and availability via unknown vectors.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

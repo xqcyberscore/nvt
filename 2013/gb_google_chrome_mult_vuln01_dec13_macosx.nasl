@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_dec13_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_dec13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 Dec2013 (Mac OS X)
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804163");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-6635", "CVE-2013-6634", "CVE-2013-6640", "CVE-2013-6636",
                 "CVE-2013-6639", "CVE-2013-6638", "CVE-2013-6637");
   script_bugtraq_id(64078);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-10 12:07:29 +0530 (Tue, 10 Dec 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Dec2013 (Mac OS X)");
 
@@ -64,9 +64,7 @@ handling the 302 HTTP status in sync.
   script_tag(name:"affected", value:"Google Chrome version prior to 31.0.1650.63 on Mac OS X.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
 service, spoofing, session fixation attacks, compromise a user's system and
-other attacks may also be possible.
-
-Impact Level: Application");
+other attacks may also be possible.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 

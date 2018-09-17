@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_dos_n_code_exec_vuln_dec13.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_dos_n_code_exec_vuln_dec13.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PHP Remote Code Execution and Denial of Service Vulnerabilities - Dec13
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804174");
-  script_version("$Revision: 10458 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2013-6420");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-19 18:09:47 +0530 (Thu, 19 Dec 2013)");
   script_name("PHP Remote Code Execution and Denial of Service Vulnerabilities - Dec13");
 
@@ -52,9 +52,7 @@ if(description)
   script_tag(name:"affected", value:"PHP versions before 5.3.28, 5.4.x before 5.4.23, and 5.5.x before 5.5.7.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
-  or cause a denial of service (memory corruption).
-
-  Impact Level: Application");
+  or cause a denial of service (memory corruption).");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/56055");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124436/PHP-openssl_x509_parse-Memory-Corruption.html");

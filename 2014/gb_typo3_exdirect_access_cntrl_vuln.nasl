@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_exdirect_access_cntrl_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_typo3_exdirect_access_cntrl_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # TYPO3 ExtDirect Missing Access Control Vulnerability
 #
@@ -28,20 +28,18 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804212");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11402 $");
   script_bugtraq_id(49072);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-07 16:28:55 +0530 (Tue, 07 Jan 2014)");
   script_name("TYPO3 ExtDirect Missing Access Control Vulnerability");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to consume any available
-ExtDirect endpoint service..
-
-Impact Level: Application");
+ExtDirect endpoint service..");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"An error exist in ExtDirect, where an ExtDirect endpoints are not associated
 with TYPO3 backend modules.");

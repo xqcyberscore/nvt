@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-109.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_ms15-109.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # MS Windows Shell and Tablet Input Band Remote Code Execution Vulnerabilities (3096443)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806090");
-  script_version("$Revision: 11333 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-2515", "CVE-2015-2548");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 08:11:18 +0530 (Wed, 14 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Shell and Tablet Input Band Remote Code Execution Vulnerabilities (3096443)");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to conduct denial-of-service conditions and execute arbitrary code
-  in the context of the currently logged-in user.
-
-  Impact Level: System");
+  in the context of the currently logged-in user.");
 
   script_tag(name:"affected", value:"Microsoft Windows Server 2012
   Microsoft Windows 10 x32/x64

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2283_1.nasl 10979 2018-08-15 12:00:56Z santu $
+# $Id: gb_suse_2018_2283_1.nasl 11416 2018-09-17 03:39:26Z ckuersteiner $
 #
 # SuSE Update for ceph openSUSE-SU-2018:2283-1 (ceph)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851846");
-  script_version("$Revision: 10979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:00:56 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 11416 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 05:39:26 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-10 06:01:00 +0200 (Fri, 10 Aug 2018)");
   script_cve_id("CVE-2018-10861", "CVE-2018-1128", "CVE-2018-1129");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ceph openSUSE-SU-2018:2283-1 (ceph)");
   script_tag(name:"summary", value:"Check the version of ceph");

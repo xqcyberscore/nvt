@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 10707 2018-08-01 10:58:06Z cfischer $
+# $Id: smb_nt.inc 11392 2018-09-14 14:36:38Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10707 $
+# $Revision: 11392 $
 #
 ###############################################################################
 
@@ -71,6 +71,11 @@ isSignActive = 0;
 g_mhi = multiplex_id / 256;
 g_mlo = multiplex_id % 256;
 
+# @brief Returns the known NetBIOS name of the target host saved within the knowledge base. To avoid
+#        querying the KB for the same info again it will be cached within an internal variable.
+#
+# @return The known NetBIOS name of the target host and (if none is known) the IP of the target.
+#
 function kb_smb_name() {
 
   local_var name;
@@ -79,7 +84,12 @@ function kb_smb_name() {
     name = string( __kb_smb_name );
   } else {
     name = string( get_kb_item( "SMB/name" ) );
-    __kb_smb_name = name;
+    if( strlen( name ) > 0 ) {
+      __kb_smb_name = name;
+    } else {
+      name = get_host_ip();
+      __kb_smb_name = name;
+    }
   }
   return name;
 }
@@ -143,6 +153,55 @@ function kb_smb_transport() {
   return transport;
 }
 
+# @brief Returns an array containing all required info to do a connection to a WMI or SMB endpoint.
+#
+# @return An array containing all required connection info with the following keys and values:
+#
+#         array["domain"]           -> The user specified domain.
+#         array["host"]             -> The IP of the target host.
+#         array["netbios_name"]     -> The NetBIOS name of the target.
+#         array["password"]         -> The user specified password.
+#         array["transport_port"]   -> The identified port/transport for a SMB connection.
+#         array["username_plain"]   -> The plain user specified username.
+#         array["username_wmi_smb"] -> The user specified username and in case a domain was specified also contains the domain in a form of domain\username.
+#         array["username_wincmd"]  -> The user specified username and in case a domain was specified also contains the domain in a form of domain/username.
+#
+#         FALSE in the case if any of the required data (host, username or password) is missing in the knowledge base.
+#
+function kb_smb_wmi_connectinfo() {
+
+  local_var host, usrname, passwd, usrname_wmi_smb, usrname_wincmd, domain, netbios_name, transport_port, ret;
+
+  host    = get_host_ip();
+  usrname = kb_smb_login();
+  passwd  = kb_smb_password();
+  if( ! host || ! usrname || ! passwd )
+    return FALSE;
+
+  usrname_wmi_smb = usrname;
+  usrname_wincmd  = usrname;
+
+  domain = kb_smb_domain();
+  if( domain ) {
+    usrname_wmi_smb = domain + '\\' + usrname;
+    usrname_wincmd  = domain + '/' + usrname;
+  }
+
+  netbios_name   = kb_smb_name();
+  transport_port = kb_smb_transport();
+
+  ret = make_array();
+  ret["domain"]           = domain;
+  ret["host"]             = host;
+  ret["netbios_name"]     = netbios_name;
+  ret["password"]         = passwd;
+  ret["transport_port"]   = transport_port;
+  ret["username_plain"]   = usrname;
+  ret["username_wmi_smb"] = usrname_wmi_smb;
+  ret["username_wincmd"]  = usrname_wincmd;
+  return ret;  
+}
+
 # @brief Returns the info if the remote host is a Samba server.
 #
 # @note NVTs calling this function needs a dependency to netbios_name_get.nasl
@@ -157,7 +216,6 @@ function kb_smb_is_samba() {
   if( ! isnull( __kb_smb_is_samba ) ) {
     is_samba = __kb_smb_is_samba;
   } else {
-
     lanman = get_kb_item( "SMB/NativeLanManager" );
     if( strlen( lanman ) > 0 ) {
       if( "samba" >< tolower( lanman ) ) {

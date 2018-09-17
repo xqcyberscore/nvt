@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-022.nasl 11011 2018-08-16 14:14:31Z mmartin $
+# $Id: secpod_ms13-022.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Microsoft Silverlight Remote Code Execution Vulnerability (2814124)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902954");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11401 $");
   script_bugtraq_id(58327);
   script_cve_id("CVE-2013-0074");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-13 12:18:20 +0530 (Wed, 13 Mar 2013)");
   script_name("Microsoft Silverlight Remote Code Execution Vulnerability (2814124)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52547");
@@ -46,8 +46,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("smb_reg_service_pack.nasl", "gb_ms_silverlight_detect.nasl");
   script_mandatory_keys("Microsoft/Silverlight/Installed");
-  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute arbitrary code.
-  Impact Level: System/Application");
+  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute arbitrary code.");
   script_tag(name:"affected", value:"Microsoft Silverlight version 5");
   script_tag(name:"insight", value:"The flaw is due to a double-free error when rendering a HTML object, which
   can be exploited via a specially crafted Silverlight application.");

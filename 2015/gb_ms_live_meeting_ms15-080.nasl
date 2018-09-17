@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_live_meeting_ms15-080.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_ms_live_meeting_ms15-080.nasl 11423 2018-09-17 07:35:16Z cfischer $
 #
 # Microsoft Live Meeting Remote Code Execution Vulnerabilities (3078662)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_live_meeting";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805084");
-  script_version("$Revision: 11299 $");
+  script_version("$Revision: 11423 $");
   script_cve_id("CVE-2015-2431", "CVE-2015-2435", "CVE-2015-2455", "CVE-2015-2456",
                 "CVE-2015-2463", "CVE-2015-2464");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 12:58:42 +0530 (Wed, 12 Aug 2015)");
   script_name("Microsoft Live Meeting Remote Code Execution Vulnerabilities (3078662)");
 
@@ -48,9 +48,7 @@ if(description)
   TrueType fonts.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
-  remote attacker to execute arbitrary code on the affected system.
-
-  Impact Level: System/Application");
+  remote attacker to execute arbitrary code on the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Live Meeting 2007 Console");
 

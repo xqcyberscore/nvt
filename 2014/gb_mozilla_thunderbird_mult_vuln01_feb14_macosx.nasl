@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804093");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2014-1477", "CVE-2014-1479", "CVE-2014-1481", "CVE-2014-1482",
                 "CVE-2014-1486", "CVE-2014-1487", "CVE-2014-1490", "CVE-2014-1491");
   script_bugtraq_id(65317, 65320, 65326, 65328, 65334, 65330, 65335, 65332);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-11 19:36:46 +0530 (Tue, 11 Feb 2014)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 Feb14 (Mac OS X)");
 
@@ -58,9 +58,7 @@ vulnerabilities.");
 
   - An error when handling JavaScript native getters on window objects.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
-restrictions and compromise a user's system.
-
-Impact Level: System/Application");
+restrictions and compromise a user's system.");
   script_tag(name:"affected", value:"Mozilla Thunderbird version before 24.3 on Mac OS X");
   script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 24.3 or later,
 For updates refer to http://www.mozilla.com/en-US/thunderbird");

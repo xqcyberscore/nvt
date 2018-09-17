@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_rate_param_sql_inj_vuln.nasl 10844 2018-08-08 14:38:33Z cfischer $
+# $Id: gb_piwigo_rate_param_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
 #
 # Piwigo 'rate' Parameter SQL Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:piwigo:piwigo';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805102");
-  script_version("$Revision: 10844 $");
+  script_version("$Revision: 11402 $");
   script_bugtraq_id(71066);
   script_cve_id("CVE-2014-9115");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 16:38:33 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-21 13:41:43 +0530 (Fri, 21 Nov 2014)");
   script_name("Piwigo 'rate' Parameter SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -59,9 +59,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to manipulate SQL queries in the backend database, and disclose certain
-  sensitive information.
-
-  Impact Level: Application");
+  sensitive information.");
 
   script_tag(name:"affected", value:"Piwigo version 2.6.0, prior versions may
   also be affected.");

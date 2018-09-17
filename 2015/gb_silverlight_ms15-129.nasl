@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms15-129.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_silverlight_ms15-129.nasl 11424 2018-09-17 08:03:52Z mmartin $
 #
 # Microsoft Silverlight Remote Code Execution Vulnerability (3106614)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806171");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11424 $");
   script_cve_id("CVE-2015-6114", "CVE-2015-6165", "CVE-2015-6166");
   script_bugtraq_id(78502, 78504, 78505);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 09:21:22 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft Silverlight Remote Code Execution Vulnerability (3106614)");
 
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to execute arbitrary code in the context of the vulnerable application. Failed
-  exploit attempts will result in a denial-of-service condition.
-
-  Impact Level: System/Application");
+  exploit attempts will result in a denial-of-service condition.");
 
   script_tag(name:"affected", value:"Microsoft Silverlight version 5 on Windows.");
 

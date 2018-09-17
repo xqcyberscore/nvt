@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_bof_vuln_win.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_bof_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # PHP '_php_stream_scandir()' Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803317");
-  script_version("$Revision: 10458 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2012-2688");
   script_bugtraq_id(54638);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-01 12:30:11 +0530 (Fri, 01 Mar 2013)");
   script_name("PHP '_php_stream_scandir()' Buffer Overflow Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/cve_reference/CVE-2012-2688");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code
-  and failed attempts will likely result in denial-of-service conditions.
-
-  Impact Level: System/Application");
+  and failed attempts will likely result in denial-of-service conditions.");
 
   script_tag(name:"affected", value:"PHP version before 5.3.15 and 5.4.x before 5.4.5");
 

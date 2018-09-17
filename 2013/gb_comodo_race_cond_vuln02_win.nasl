@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_race_cond_vuln02_win.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_comodo_race_cond_vuln02_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
 #
 # Comodo Internet Security Race Condition Vulnerability-02
 #
@@ -27,8 +27,7 @@
 if(description)
 {
   script_tag(name:"impact", value:"Successful exploitation allows local attacker to bypass the defense+
-  feature.
-  Impact Level: System/Application");
+  feature.");
   script_tag(name:"affected", value:"Comodo Internet Security versions before 5.8.213334.2131");
   script_tag(name:"insight", value:"Unspecified flaw that is triggered by multiple race conditions.");
   script_tag(name:"solution", value:"Upgrade to Comodo Internet Security version 5.8.213334.2131 or later,
@@ -36,11 +35,11 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with Comodo Internet Security and is prone
   to race condition vulnerability.");
   script_oid("1.3.6.1.4.1.25623.1.0.803685");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11401 $");
   script_cve_id("CVE-2011-5118");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-05 15:30:09 +0530 (Fri, 05 Jul 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

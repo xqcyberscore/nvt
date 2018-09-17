@@ -28,12 +28,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804058");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11402 $");
   script_cve_id("CVE-2013-7240");
   script_bugtraq_id(64587);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-07 16:29:23 +0530 (Tue, 07 Jan 2014)");
   script_name("WordPress Advanced Dewplayer 'dew_file' Directory Traversal Vulnerability");
 
@@ -50,9 +50,7 @@ input, specifically path traversal style attacks (e.g. '../') supplied via
 the 'dew_file' parameter.");
   script_tag(name:"affected", value:"WordPress Advanced Dewplayer 1.2, Other versions may also be affected.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to read arbitrary files
-on the target system.
-
-Impact Level: Application");
+on the target system.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/55941");
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2013/q4/566");
