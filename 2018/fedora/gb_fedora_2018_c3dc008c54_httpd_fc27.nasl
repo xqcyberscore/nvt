@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_c3dc008c54_httpd_fc27.nasl 10692 2018-07-31 13:51:55Z santu $
+# $Id: gb_fedora_2018_c3dc008c54_httpd_fc27.nasl 11444 2018-09-18 07:17:07Z cfischer $
 #
 # Fedora Update for httpd FEDORA-2018-c3dc008c54
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874865");
-  script_version("$Revision: 10692 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 15:51:55 +0200 (Tue, 31 Jul 2018) $");
+  script_version("$Revision: 11444 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 09:17:07 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-30 06:22:19 +0200 (Mon, 30 Jul 2018)");
   script_cve_id("CVE-2018-8011");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for httpd FEDORA-2018-c3dc008c54");
   script_tag(name:"summary", value:"Check the version of httpd");

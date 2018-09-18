@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_optima_plc_apiftp_mult_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_optima_plc_apiftp_mult_dos_vuln.nasl 11425 2018-09-17 09:11:30Z asteins $
 #
 # Optima PLC APIFTP Server Denial of Service Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803037");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11425 $");
   script_cve_id("CVE-2012-5048", "CVE-2012-5049");
   script_bugtraq_id(50658, 55712);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:11:30 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-04 17:49:57 +0530 (Thu, 04 Oct 2012)");
   script_name("Optima PLC APIFTP Server Denial of Service Vulnerabilities");
   script_category(ACT_DENIAL);
@@ -72,7 +72,6 @@ if(!get_port_state(port)){
   exit(0);
 }
 
-## Open TCP Socket
 soc = open_sock_tcp(port);
 if(!soc){
   exit(0);

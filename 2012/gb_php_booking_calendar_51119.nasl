@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_booking_calendar_51119.nasl 11396 2018-09-14 16:36:30Z cfischer $
+# $Id: gb_php_booking_calendar_51119.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # PHP Booking Calendar 'page_info_message' Parameter Cross Site Scripting Vulnerability
 #
@@ -32,9 +32,9 @@ if(description)
   script_cve_id("CVE-2011-5045");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11396 $");
+  script_version("$Revision: 11435 $");
   script_name("PHP Booking Calendar 'page_info_message' Parameter Cross Site Scripting Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 18:36:30 +0200 (Fri, 14 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-04 15:47:28 +0100 (Wed, 04 Jan 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -76,9 +76,9 @@ if( ! can_host_php( port:port ) ) exit( 0 );
 foreach dir( make_list_unique( "/booking_calendar", "/cal", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = dir + "/details_view.php?event_id=1&date=2000-12-01&view=month&loc=loc1&page_info_message=<script>alert(/openvas-xss-test/)</script>";
+  url = dir + "/details_view.php?event_id=1&date=2000-12-01&view=month&loc=loc1&page_info_message=<script>alert(/xss-test/)</script>";
 
-  if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/openvas-xss-test/\)</script>", check_header:TRUE, extra_check:"Booking Calendar" ) ) {
+  if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/xss-test/\)</script>", check_header:TRUE, extra_check:"Booking Calendar" ) ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

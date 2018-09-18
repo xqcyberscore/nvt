@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tikiwiki_jhot_remote_cmd_exec_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_tikiwiki_jhot_remote_cmd_exec_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
 #
 # Tiki Wiki CMS Groupware jhot.php Remote Command Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802946");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11431 $");
   script_cve_id("CVE-2006-4602");
   script_bugtraq_id(19819);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-22 13:59:26 +0530 (Wed, 22 Aug 2012)");
   script_name("Tiki Wiki CMS Groupware jhot.php Remote Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -77,6 +77,7 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( res !~ "HTTP/1\.. 200" ) exit( 0 );
 
+useragent = get_http_user_agent();
 host = http_host_name( port:port );
 
 fname = "ovtest_" + rand() + ".php";
@@ -92,7 +93,7 @@ content = string( "--bound\r\n",
 
 req2 = string( "POST ", dir, "/jhot.php HTTP/1.1\r\n",
                "Host: ", host, "\r\n",
-               "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+               "User-Agent: ", useragent, "\r\n",
                "Connection: Keep-Alive\r\n",
                "Content-Type: multipart/form-data; boundary=bound\r\n",
                "Content-Length: " +  strlen( content ) + "\r\n",

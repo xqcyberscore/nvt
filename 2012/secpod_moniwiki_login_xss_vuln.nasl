@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_moniwiki_login_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_moniwiki_login_xss_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
 #
 # MoniWiki 'login_id' Cross-Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902794");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11431 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 17:36:32 +0530 (Tue, 21 Feb 2012)");
   script_name("MoniWiki 'login_id' Cross-Site Scripting Vulnerability");
 
@@ -42,7 +42,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -59,9 +59,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -72,6 +72,7 @@ if(!can_host_php(port:port)){
   exit(0);
 }
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 foreach dir (make_list_unique("/moniwiki", "/MoniWiki", cgi_dirs(port:port)))
@@ -79,8 +80,7 @@ foreach dir (make_list_unique("/moniwiki", "/MoniWiki", cgi_dirs(port:port)))
 
   if(dir == "/") dir = "";
 
-  sndReq = http_get(item:string(dir, "/wiki.php"), port:port);
-  rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/wiki.php"), port:port);
 
   if(rcvRes && "powered by MoniWiki" >< rcvRes)
   {
@@ -89,11 +89,10 @@ foreach dir (make_list_unique("/moniwiki", "/MoniWiki", cgi_dirs(port:port)))
 
     monReq = string("POST ", dir, "/wiki.php/FrontPage HTTP/1.1\r\n",
                     "Host: ", host, "\r\n",
-                    "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                    "User-Agent: ", useragent, "\r\n",
                     "Content-Type: application/x-www-form-urlencoded\r\n",
                     "Content-Length: ", strlen(postdata), "\r\n",
                     "\r\n", postdata);
-
     monRes = http_keepalive_send_recv(port:port, data:monReq);
 
     if(monRes =~ "HTTP/1\.. 200" && "<script>alert(document.cookie)</script>" >< monRes)

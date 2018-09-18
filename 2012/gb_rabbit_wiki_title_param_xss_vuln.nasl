@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rabbit_wiki_title_param_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_rabbit_wiki_title_param_xss_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # RabbitWiki 'title' Parameter Cross Site Scripting Vulnerability
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802608");
   script_bugtraq_id(51971);
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11435 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-13 15:15:15 +0530 (Mon, 13 Feb 2012)");
   script_name("RabbitWiki 'title' Parameter Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51971");
@@ -61,15 +61,14 @@ General solution options are to upgrade to a newer release, disable respective f
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -83,10 +82,10 @@ foreach dir (make_list_unique("/RabbitWiki", "/wiki", cgi_dirs(port:port)))
 
   if(!isnull(res) && '>RabbitWiki<' >< res)
   {
-    url = dir + "/index.php?title=<script>alert(/openvas-xss-test/)</script>";
+    url = dir + "/index.php?title=<script>alert(/xss-test/)</script>";
 
     if(http_vuln_check(port:port, url:url, check_header: TRUE,
-       pattern:"<script>alert\(/openvas-xss-test/\)</script>"))
+       pattern:"<script>alert\(/xss-test/\)</script>"))
     {
       security_message(port:port);
       exit(0);

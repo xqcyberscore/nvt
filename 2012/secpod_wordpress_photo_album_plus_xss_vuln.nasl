@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_photo_album_plus_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_wordpress_photo_album_plus_xss_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
 #
 # WordPress WP Photo Album Plus Plugin 'Search Photos' XSS Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902698");
-  script_version("$Revision: 11374 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_version("$Revision: 11431 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-31 14:00:10 +0530 (Mon, 31 Dec 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -56,6 +56,7 @@ sanitised before it is returned to the user.");
 or later. For updates refer http://wordpress.org/plugins/wp-photo-album-plus/");
   script_tag(name:"summary", value:"This host is installed with WordPress WP Photo Album Plus Plugin
 and is prone to cross site scripting vulnerability.");
+
   exit(0);
 }
 
@@ -66,6 +67,7 @@ include("http_keepalive.inc");
 if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 ## page_id for WP Photo Album Plus Plugin is 8
@@ -75,12 +77,10 @@ wppaData = 'wppa-searchstring=<script>alert(document.cookie)</script>';
 
 wppaReq = string("POST ", wppaurl, " HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
-                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                 "User-Agent: ", useragent, "\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
                  "Content-Length: ", strlen(wppaData), "\r\n",
                  "\r\n", wppaData);
-
-## Send attack and receive the response
 wppaRes = http_keepalive_send_recv(port:port, data: wppaReq);
 
 if(wppaRes && wppaRes =~ "HTTP/1\.[0-9]+ 200" &&

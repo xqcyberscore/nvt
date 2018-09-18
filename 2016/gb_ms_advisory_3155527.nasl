@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_advisory_3155527.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_ms_advisory_3155527.nasl 11426 2018-09-17 09:38:26Z asteins $
 #
 # Microsoft Windows Cipher Suites For FalseStart MiTM Vulnerability (3155527)
 #
@@ -26,14 +26,14 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.807326") ;
-  script_version("$Revision: 5557 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.807326");
+  script_version("$Revision: 11426 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 12:46:33 +0530 (Wed, 11 May 2016)");
   script_name("Microsoft Windows Cipher Suites For FalseStart MiTM Vulnerability (3155527)");
-  
+
   script_tag(name:"summary", value:"This host is missing a security update
   according to Microsoft Security Advisory 3155527");
 
@@ -47,12 +47,9 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to launch a man-in-the-middle (MiTM) attack to force the TLS client to encrypt
   the first flight of application_data records using the attacker's chosen cipher
-  suite from the client's list.
+  suite from the client's list.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8.1 x32/x64 Edition
+  script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
   Microsoft Windows Server 2012/2012R2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -70,7 +67,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -81,22 +79,15 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-sysVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2012:1, win2012R2:1, win8_1:1, win8_1x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of Ntoskrnl.exe
 sysVer = fetch_file_version(sysPath, file_name:"system32\Lsasrv.dll");
 if(!sysVer){
   exit(0);
@@ -112,16 +103,13 @@ else if (sysVer =~ "^(6\.3\.9600\.1)"){
 ## Server 2012
 if(hotfix_check_sp(win2012:1) > 0)
 {
-  ## Check for Lsasrv.dll version
   if(version_is_less(version:sysVer, test_version:"6.2.9200.21830")){
      VULN = TRUE ;
   }
 }
 
-## Windows 8.1 and Server 2012 R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Lsasrv.dll version
   if(version_is_less(version:sysVer, test_version:"6.3.9600.18298")){
     VULN = TRUE ;
   }

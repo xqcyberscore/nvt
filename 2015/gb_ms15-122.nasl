@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-122.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_ms15-122.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # Microsoft Windows Kerberos Local Security Bypass Vulnerability (3105256)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806556");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-6095");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 08:59:53 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft Windows Kerberos Local Security Bypass Vulnerability (3105256)");
 
@@ -46,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
   attackers to bypass certain security restrictions and perform unauthorized
-  actions.
-
-  Impact Level: System");
+  actions.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows 10 x32/x64

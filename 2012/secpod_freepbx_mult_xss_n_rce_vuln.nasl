@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freepbx_mult_xss_n_rce_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_freepbx_mult_xss_n_rce_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
 #
 # FreePBX Multiple Cross Site Scripting and Remote Command Execution Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902823");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11429 $");
   script_bugtraq_id(52630);
   script_cve_id("CVE-2012-4869", "CVE-2012-4870");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-27 16:35:51 +0530 (Tue, 27 Mar 2012)");
   script_name("FreePBX Multiple Cross Site Scripting and Remote Command Execution Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48475");
@@ -49,7 +49,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_freepbx_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("freepbx/installed");
+  script_mandatory_keys("freepbx/installed");
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to steal cookie-based
   authentication credentials or execute arbitrary commands within the context
   of the affected application.");
@@ -71,19 +71,11 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
-
-if(!can_host_php(port:port)){
-  exit(0);
-}
 
 if(!dir = get_dir_from_kb(port:port, app:"freepbx")){
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms15-092.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_dotnet_framework_ms15-092.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # Microsoft .NET Framework Privilege Elevation Vulnerability (3086251)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805952");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-2479", "CVE-2015-2480", "CVE-2015-2481");
   script_bugtraq_id(76268, 76269, 76270);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 12:08:40 +0530 (Wed, 12 Aug 2015)");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerability (3086251)");
 
@@ -47,9 +47,7 @@ if(description)
   error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to take complete control of an affected system.
-
-  Impact Level: System/Application");
+  attackers to take complete control of an affected system.");
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 4.6");
 

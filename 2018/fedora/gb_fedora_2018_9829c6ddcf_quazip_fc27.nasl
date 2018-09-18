@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_9829c6ddcf_quazip_fc27.nasl 11110 2018-08-25 05:03:07Z santu $
+# $Id: gb_fedora_2018_9829c6ddcf_quazip_fc27.nasl 11444 2018-09-18 07:17:07Z cfischer $
 #
 # Fedora Update for quazip FEDORA-2018-9829c6ddcf
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874981");
-  script_version("$Revision: 11110 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-25 07:03:07 +0200 (Sat, 25 Aug 2018) $");
+  script_version("$Revision: 11444 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 09:17:07 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-22 06:59:31 +0200 (Wed, 22 Aug 2018)");
   script_cve_id("CVE-2018-1002209");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for quazip FEDORA-2018-9829c6ddcf");
   script_tag(name:"summary", value:"Check the version of quazip");

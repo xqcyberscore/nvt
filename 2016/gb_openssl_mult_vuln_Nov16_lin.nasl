@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln_Nov16_lin.nasl 9585 2018-04-24 11:46:06Z asteins $
+# $Id: gb_openssl_mult_vuln_Nov16_lin.nasl 11426 2018-09-17 09:38:26Z asteins $
 # OpenSSL Multiple Vulnerabilities - Nov 16 (Linux)
 #
 # Authors:
@@ -28,12 +28,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107079");
-  script_version("$Revision: 9585 $");
+  script_version("$Revision: 11426 $");
   script_cve_id("CVE-2016-7054", "CVE-2016-7053");
 
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 13:46:06 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-11 11:19:11 +0100 (Fri, 11 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
@@ -61,7 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed","Host/runs_unixoide");
+  script_mandatory_keys("OpenSSL/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
 
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http_dos_vuln_aug15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_apache_http_dos_vuln_aug15_win.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # Apache HTTP Server Denial Of Service Vulnerability August15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806000");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-0253");
   script_bugtraq_id(75964);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-14 12:49:14 +0530 (Fri, 14 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache HTTP Server Denial Of Service Vulnerability August15 (Windows)");
@@ -49,9 +49,7 @@ if(description)
   'server/protocol.c' script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause a denial of service by sending a crafted request .
-
-  Impact Level: Application");
+  attackers to cause a denial of service by sending a crafted request .");
 
   script_tag(name:"affected", value:"Apache HTTP Server version 2.4.12 on windows.");
 

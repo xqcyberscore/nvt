@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SpecView_54243.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_SpecView_54243.nasl 11429 2018-09-17 10:08:59Z cfischer $
 #
 # SpecView Web Server Directory Traversal Vulnerability
 #
@@ -25,7 +25,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103506");
@@ -33,13 +32,13 @@ if (description)
   script_cve_id("CVE-2012-5972");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11429 $");
 
   script_name("SpecView Web Server Directory Traversal Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54243");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-02 12:15:35 +0200 (Mon, 02 Jul 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -67,9 +66,7 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 banner = get_http_banner(port:port);
 if("SpecView" >!< banner)exit(0);

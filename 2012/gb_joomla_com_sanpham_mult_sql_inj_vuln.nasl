@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_sanpham_mult_sql_inj_vuln.nasl 10704 2018-08-01 10:06:44Z ckuersteiner $
+# $Id: gb_joomla_com_sanpham_mult_sql_inj_vuln.nasl 11425 2018-09-17 09:11:30Z asteins $
 #
 # Joomla Sanpham Component Multiple SQL Injection Vulnerabilities
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802568");
-  script_version("$Revision: 10704 $");
+  script_version("$Revision: 11425 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 12:06:44 +0200 (Wed, 01 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:11:30 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 15:38:16 +0530 (Mon, 23 Jan 2012)");
 
   script_name("Joomla Sanpham Component Multiple SQL Injection Vulnerabilities");
 
-  script_xref(name: "URL", value: "http://packetstormsecurity.org/files/108916/joomlasanpham-sql.txt");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/108916/joomlasanpham-sql.txt");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_active");
@@ -47,19 +47,19 @@ if(description)
   script_require_ports("Services/www", 80);
   script_require_keys("joomla/installed");
 
-  script_tag(name: "impact", value: "Successful exploitation will let attackers to manipulate SQL queries by
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL queries by
 injecting arbitrary SQL code.");
 
-  script_tag(name: "affected", value: "Joomla Sanpham Component");
+  script_tag(name:"affected", value:"Joomla Sanpham Component");
 
-  script_tag(name: "insight", value: "The flaws are due to input passed via the 'kindid', 'cid',and 'modelsid'
+  script_tag(name:"insight", value:"The flaws are due to input passed via the 'kindid', 'cid', and 'modelsid'
 parameters to 'index.php' is not properly sanitised before being used in a SQL query.");
 
-  script_tag(name: "solution", value: "No known solution was made available for at least one year since the
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
 disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
 a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name: "summary", value: "This host is running Joomla Sanpham component and is prone to multiple SQL
+  script_tag(name:"summary", value:"This host is running Joomla Sanpham component and is prone to multiple SQL
 injection vulnerabilities.");
 
   script_tag(name:"solution_type", value:"WillNotFix");

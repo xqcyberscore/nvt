@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwik_backdoor_11_12.nasl 7576 2017-10-26 10:01:33Z cfischer $
+# $Id: gb_piwik_backdoor_11_12.nasl 11425 2018-09-17 09:11:30Z asteins $
 #
 # Backdoor in Piwik analytics software
 #
@@ -29,33 +29,35 @@ CPE = "cpe:/a:piwik:piwik";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103611");
- script_version ("$Revision: 7576 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_name("Backdoor in Piwik analytics software");
- script_xref(name : "URL" , value : "http://piwik.org/blog/2012/11/security-report-piwik-org-webserver-hacked-for-a-few-hours-on-2012-nov-26th/");
- script_xref(name : "URL" , value : "http://forum.piwik.org/read.php?2,97666");
+  script_oid("1.3.6.1.4.1.25623.1.0.103611");
+  script_version("$Revision: 11425 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("Backdoor in Piwik analytics software");
+  script_xref(name:"URL", value:"http://piwik.org/blog/2012/11/security-report-piwik-org-webserver-hacked-for-a-few-hours-on-2012-nov-26th/");
+  script_xref(name:"URL", value:"http://forum.piwik.org/read.php?2, 97666");
 
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:01:33 +0200 (Thu, 26 Oct 2017) $");
- script_tag(name:"creation_date", value:"2012-11-27 13:36:59 +0100 (Tue, 27 Nov 2012)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("sw_piwik_detect.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("piwik/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:11:30 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2012-11-27 13:36:59 +0100 (Tue, 27 Nov 2012)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("sw_piwik_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("piwik/installed");
 
- script_tag(name : "solution" , value : "See the References.");
- script_tag(name : "insight" , value : "The Backdoor is in 'core/Loader.php' and create also the files:
+  script_tag(name:"solution", value:"See the References.");
+  script_tag(name:"insight", value:"The Backdoor is in 'core/Loader.php' and create also the files:
 
  lic.log
  core/DataTable/Filter/Megre.php");
- script_tag(name : "summary" , value : "A backdoor has been added to the web server analytics Piwik which
+  script_tag(name:"summary", value:"A backdoor has been added to the web server analytics Piwik which
  allows attackers to take control of a system.");
 
- script_tag(name:"qod_type", value:"remote_app");
- exit(0);
+  script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  exit(0);
 }
 
 include("misc_func.inc");

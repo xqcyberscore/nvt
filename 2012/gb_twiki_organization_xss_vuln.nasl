@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_organization_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_twiki_organization_xss_vuln.nasl 11430 2018-09-17 10:16:03Z cfischer $
 #
 # TWiki 'organization' Cross-Site Scripting Vulnerability
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802391");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11430 $");
   script_bugtraq_id(51731);
   script_cve_id("CVE-2012-0979");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:16:03 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-20 12:04:55 +0530 (Tue, 20 Mar 2012)");
   script_name("TWiki 'organization' Cross-Site Scripting Vulnerability");
-  script_category(ACT_ATTACK);
+  script_category(ACT_DESTRUCTIVE_ATTACK); # Stored XSS
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_twiki_detect.nasl");
@@ -70,21 +70,16 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-
-## Stored XSS (Not a safe check)
-if(safe_checks()){
-  exit(0);
-}
 
 if( ! twikiPort = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:twikiPort ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
+useragent = get_http_user_agent();
 host = http_host_name(port:twikiPort);
 
 url = dir + "/register/Main/WebHome";
@@ -98,12 +93,10 @@ postdata = "crypttoken=ad240d2a0504042701980e88c85bbc33&Twk1FirstName=ccc&Twk1" 
 
 req = string("POST ", url, " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(postdata), "\r\n",
              "\r\n", postdata);
-
-## Send XSS attack
 res = http_keepalive_send_recv(port:twikiPort, data:req);
 
 if (res)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ajaxplorer_51960.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_ajaxplorer_51960.nasl 11425 2018-09-17 09:11:30Z asteins $
 #
 # AjaXplorer 'doc_file' Parameter Local File Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103422");
   script_bugtraq_id(51960);
-  script_version ("$Revision: 7577 $");
+  script_version("$Revision: 11425 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_name("AjaXplorer 'doc_file' Parameter Local File Disclosure Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:11:30 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 12:40:42 +0100 (Wed, 15 Feb 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -46,21 +46,13 @@ if(description)
   script_xref(name:"URL", value:"http://ajaxplorer.info/ajaxplorer-4-0-2/");
   script_xref(name:"URL", value:"http://www.ajaxplorer.info");
 
-  tag_summary = "AjaXplorer is prone to a local file-disclosure vulnerability because
-  it fails to adequately validate user-supplied input.";
-
-  tag_impact = "Exploiting this vulnerability would allow an attacker to obtain
+  script_tag(name:"impact", value:"Exploiting this vulnerability would allow an attacker to obtain
   potentially sensitive information from local text files on computers
-  running the vulnerable application. This may aid in further attacks.";
-
-  tag_affected = "AjaXplorer 4.0.1 is vulnerable; other versions are also affected.";
-
-  tag_solution = "Updates are available. Please see the references for more details.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  running the vulnerable application. This may aid in further attacks.");
+  script_tag(name:"affected", value:"AjaXplorer 4.0.1 is vulnerable, other versions are also affected.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more details.");
+  script_tag(name:"summary", value:"AjaXplorer is prone to a local file-disclosure vulnerability because
+  it fails to adequately validate user-supplied input.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -72,7 +64,7 @@ include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
@@ -84,7 +76,7 @@ foreach file( keys( files ) ) {
 
   if( dir == "/" ) dir = "";
 
-  url = string(dir, "/index.php?get_action=display_doc&doc_file=",crap(data:"../",length:6*9),files[file],"%00"); 
+  url = string(dir, "/index.php?get_action=display_doc&doc_file=",crap(data:"../",length:6*9),files[file],"%00");
 
   if( http_vuln_check( port:port, url:url, pattern:file ) ) {
     report = report_vuln_url( port:port, url:url );

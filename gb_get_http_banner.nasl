@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_get_http_banner.nasl 11367 2018-09-13 07:22:06Z ckuersteiner $
+# $Id: gb_get_http_banner.nasl 11432 2018-09-17 11:59:28Z cfischer $
 #
 # HTTP Banner
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140170");
-  script_version("$Revision: 11367 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 09:22:06 +0200 (Thu, 13 Sep 2018) $");
+  script_version("$Revision: 11432 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:59:28 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -375,5 +375,6 @@ set_mandatory_key( key:"tplink_httpd", regex: "Server: TP-LINK HTTPD/", banner:b
 set_mandatory_key( key:"Boa_or_micro_httpd", regex:"Server: (Boa/|micro_httpd)", banner:banner ); # For gb_dlink_dsl_detect.nasl
 set_mandatory_key( key:"monit", regex: "Server: monit", banner:banner );
 set_mandatory_key( key:"CirCarLife", regex: "Server: CirCarLife Scada", banner:banner );
+set_mandatory_key( key:"mt-daapd", regex: "Server: mt-daapd", banner:banner );
 
 exit( 0 );

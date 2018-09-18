@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cyclope_employee_surveillance_lfi_vuln.nasl 11355 2018-09-12 10:32:04Z asteins $
+# $Id: gb_cyclope_employee_surveillance_lfi_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
 #
 # Cyclope Employee Surveillance Solution Local File Inclusion Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802934");
-  script_version("$Revision: 11355 $");
+  script_version("$Revision: 11429 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-16 12:28:45 +0530 (Thu, 16 Aug 2012)");
   script_name("Cyclope Employee Surveillance Solution Local File Inclusion Vulnerability");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/20545/");
@@ -64,10 +64,6 @@ include("host_details.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:7879);
-if(!port){
-  exit(0);
-}
-
 if(!can_host_php(port:port)){
   exit(0);
 }

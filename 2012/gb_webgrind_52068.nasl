@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webgrind_52068.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_webgrind_52068.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # webgrind 'dataFile' Parameter Cross Site Scripting Vulnerability
 #
@@ -25,18 +25,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103432");
   script_bugtraq_id(52068);
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11435 $");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
   script_name("webgrind 'dataFile' Parameter Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52068");
   script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5073.php");
   script_xref(name:"URL", value:"http://code.google.com/p/webgrind/");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-22 14:32:37 +0100 (Wed, 22 Feb 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -73,9 +73,9 @@ foreach dir( make_list_unique( "/webgrind", cgi_dirs( port:port ) ) ) {
 
   if( "<title>webgrind</title>" >< buf ) {
 
-    url = dir + "/index.php?dataFile=<script>alert(/openvas-xss-test/)</script>&op=function_list";
+    url = dir + "/index.php?dataFile=<script>alert(/xss-test/)</script>&op=function_list";
 
-    if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/openvas-xss-test/\)</script>", check_header:TRUE ) ) {
+    if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/xss-test/\)</script>", check_header:TRUE ) ) {
       report = report_vuln_url( port:port, url:url );
       security_message( port:port, data:report );
       exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_veritas_backup_exec_agent_browser_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_veritas_backup_exec_agent_browser_bof_vuln.nasl 11425 2018-09-17 09:11:30Z asteins $
 #
 # VERITAS Backup Exec Agent Browser Remote Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802981");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11425 $");
   script_cve_id("CVE-2004-1172");
   script_bugtraq_id(11974);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:11:30 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-11 13:42:29 +0530 (Thu, 11 Oct 2012)");
   script_name("VERITAS Backup Exec Agent Browser Remote Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -80,7 +80,6 @@ if(!hostname){
   exit(0);
 }
 
-## open socket
 soc = open_sock_tcp (port);
 if(!soc){
   exit (0);

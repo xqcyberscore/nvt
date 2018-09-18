@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xampp_webdav_php_upload_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_xampp_webdav_php_upload_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # XAMPP WebDAV PHP Upload Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802293");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11435 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-17 12:12:12 +0530 (Tue, 17 Jan 2012)");
   script_name("XAMPP WebDAV PHP Upload Vulnerability");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/72397");
@@ -60,22 +60,27 @@ A Workaround is to delete or change the default webdav password file. For
 details refer, http://serverpress.com/topic/xammp-webdav-security-patch/");
   script_tag(name:"summary", value:"This host is running XAMPP and prone to PHP upload
 vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default:80);
 if (! xamppVer = get_kb_item("www/" + port + "/XAMPP")){
   exit(0);
 }
 
+vtstring = get_vt_string( lowercase:TRUE );
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 ## Send Request Without Authorization
-url = "/webdav/openvastest" + rand() + ".php";
+url = "/webdav/" + vtstring + "_test" + rand() + ".php";
 req = http_put(item:url, port:port);
 res = http_keepalive_send_recv(port:port, data:req);
 
@@ -96,12 +101,11 @@ response = hexstr(MD5(string(ha1,":",nonce,":",nc,":",cnonce,":",qop,":",ha2)));
 data = "<?php phpinfo();?>";
 req = string("PUT ", url, " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              'Authorization: Digest username="wampp", realm="XAMPP with WebDAV",',
              'nonce="',nonce,'",', 'uri="',url,'", algorithm=MD5,',
              'response="', response,'", qop=', qop,', nc=',nc,', cnonce="',cnonce,'"',"\r\n",
              "Content-Length: ", strlen(data), "\r\n\r\n", data);
-
 res = http_keepalive_send_recv(port:port, data:req);
 
 if(res =~ "HTTP/1.. 201")

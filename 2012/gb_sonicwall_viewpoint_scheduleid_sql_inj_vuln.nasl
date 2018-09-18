@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonicwall_viewpoint_scheduleid_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_sonicwall_viewpoint_scheduleid_sql_inj_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
 #
 # SonicWall Viewpoint 'scheduleID' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803033");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11429 $");
   script_cve_id("CVE-2011-5169");
   script_bugtraq_id(49906);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-25 15:47:29 +0530 (Tue, 25 Sep 2012)");
   script_name("SonicWall Viewpoint 'scheduleID' Parameter SQL Injection Vulnerability");
 
@@ -43,6 +43,8 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL queries by
   injecting arbitrary SQL code.");
   script_tag(name:"affected", value:"SonicWALL Viewpoint 6.0 SP2 and prior versions");
@@ -64,9 +66,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
 sndReq = http_get(item:"/sgms/login", port:port);
 rcvRes = http_send_recv(port:port, data:sndReq);

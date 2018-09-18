@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_http_resp_splitting_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_adobe_coldfusion_http_resp_splitting_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # Adobe ColdFusion HTTP Response Splitting Vulnerability
 #
@@ -23,17 +23,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:adobe:coldfusion";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802660");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11435 $");
   script_bugtraq_id(53941);
   script_cve_id("CVE-2012-2041");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-23 14:14:14 +0530 (Mon, 23 Jul 2012)");
   script_name("Adobe ColdFusion HTTP Response Splitting Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49517");
@@ -57,7 +58,9 @@ if(description)
   http://helpx.adobe.com/coldfusion/kb/coldfusion-security-hotfix-apsb12-15.html");
   script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is prone to response
   splitting vulnerability.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -68,7 +71,7 @@ if(! port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-header = string("X-OpenVAS_Header:", unixtime());
+header = string("X-VT_Header:", unixtime());
 req = string("/CFIDE/adminapi/base.cfc/%0d%0a", header);
 req = http_get(item: req, port:port);
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_showcase_java_method_exec_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_apache_struts_showcase_java_method_exec_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
 #
 # Apache Struts2 Showcase Arbitrary Java Method Execution vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802425");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11431 $");
   script_cve_id("CVE-2012-0838");
   script_bugtraq_id(49728);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-13 14:59:53 +0530 (Tue, 13 Mar 2012)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts2 Showcase Arbitrary Java Method Execution vulnerability");
@@ -68,6 +68,7 @@ if(description)
   script_mandatory_keys("ApacheStruts/installed");
   script_family("Web application abuses");
   script_require_ports("Services/www", 8080);
+
   exit(0);
 }
 
@@ -83,6 +84,7 @@ if(!dir = get_app_location(cpe:CPE, port:asport)){
   exit(0);
 }
 
+useragent = get_http_user_agent();
 host = http_host_name(port:asport);
 
 asreq = http_get(item:string(dir,"/showcase.action"), port:asport);
@@ -99,9 +101,9 @@ if(">Showcase</" >< asres && ">Struts Showcase<" >< asres) {
 
   url = dir + "/validation/submitFieldValidatorsExamples.action";
 
-  asReq = string("POST ", url," HTTP/1.1\r\n",
+  asReq = string("POST ", url, " HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
-                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                 "User-Agent: ", useragent, "\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
                  "Content-Length: ", strlen(postdata), "\r\n",
                  "\r\n", postdata);

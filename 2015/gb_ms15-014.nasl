@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-014.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-014.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # Microsoft Windows Group Policy Security Feature Bypass Vulnerability (3004361)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805273");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-0009");
   script_bugtraq_id(72476);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 09:15:59 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft Windows Group Policy Security Feature Bypass Vulnerability (3004361)");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote
   attackers to modify domain controller responses to client requests and revert
-  the Group Policy settings on a system back to default.
-
-  Impact Level: System");
+  the Group Policy settings on a system back to default.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows Server 2012/R2

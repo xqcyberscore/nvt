@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alpha_networks_adsl_26555.nasl 11049 2018-08-20 08:53:50Z asteins $
+# $Id: gb_alpha_networks_adsl_26555.nasl 11429 2018-09-17 10:08:59Z cfischer $
 #
 # Alpha Networks ADSL2/2+ Wireless Router version ASL-26555 Password Information Disclosure Vulnerability
 #
@@ -28,14 +28,14 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103543");
-  script_version("$Revision: 11049 $");
+  script_version("$Revision: 11429 $");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Alpha Networks ADSL2/2+ Wireless Router version ASL-26555 Password Information Disclosure Vulnerability");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/115663/Alpha-Networks-ADSL2-2-Wireless-Router-ASL-26555-Password-Disclosure.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-19 12:46:01 +0200 (Sun, 19 Aug 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -63,7 +63,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:8000);
-if(!get_port_state(port))exit(0);
 
 url = '/';
 
@@ -72,12 +71,9 @@ if(http_vuln_check(url:url, pattern:"<TITLE>ASL-26555", port:port)) {
   url = '/APIS/returnJSON.htm';
 
   if(http_vuln_check(url:url, pattern:'"USERNAME":', port:port,extra_check:make_list('"PASSWORD":','"USER":','"RETURN":'))) {
-
     security_message(port:port);
     exit(0);
-
   }
-
 }
 
 exit(0);

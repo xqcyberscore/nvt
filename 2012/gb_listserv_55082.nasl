@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_listserv_55082.nasl 11355 2018-09-12 10:32:04Z asteins $
+# $Id: gb_listserv_55082.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # LISTSERV 'SHOWTPL' Parameter Cross Site Scripting Vulnerability
 #
@@ -25,17 +25,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103545");
   script_bugtraq_id(55082);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11355 $");
+  script_version("$Revision: 11435 $");
   script_name("LISTSERV 'SHOWTPL' Parameter Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55082");
   script_xref(name:"URL", value:"http://www.lsoft.com/products/default.asp?item=listserv");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-20 10:41:31 +0200 (Mon, 20 Aug 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -54,7 +54,9 @@ site. This may let the attacker steal cookie-based authentication
 credentials and launch other attacks.");
 
   script_tag(name:"affected", value:"LISTSERV 16 is vulnerable, other versions may also be affected.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -66,9 +68,9 @@ port = get_http_port( default:80 );
 foreach dir( make_list_unique( "/cgi-bin/listserv", "/listserv", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = dir + '/wa.exe?SHOWTPL=<script>alert(/openvas-xss-test/)</script>';
+  url = dir + '/wa.exe?SHOWTPL=<script>alert(/xss-test/)</script>';
 
-  if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/openvas-xss-test/\)</script>", check_header:TRUE, extra_check:"template could not be found" ) ) {
+  if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/xss-test/\)</script>", check_header:TRUE, extra_check:"template could not be found" ) ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

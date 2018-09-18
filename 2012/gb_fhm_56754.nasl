@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fhm_56754.nasl 11058 2018-08-20 14:18:06Z asteins $
+# $Id: gb_fhm_56754.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # Free Hosting Manager 'id' Parameter SQL Injection Vulnerability
 #
@@ -25,17 +25,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103618");
   script_bugtraq_id(56754);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_version("$Revision: 11058 $");
+  script_version("$Revision: 11435 $");
   script_name("Free Hosting Manager 'id' Parameter SQL Injection Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56754");
   script_xref(name:"URL", value:"http://www.fhm-script.com/index.php");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-04 11:39:15 +0100 (Tue, 04 Dec 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -77,9 +77,9 @@ foreach dir( make_list_unique( "/fhm", "/hostingmanager", cgi_dirs( port:port ) 
 
   if( buf =~ "<title>.*Free Hosting Manager</title>" ) {
 
-    url = dir + "/clients/packages.php?id=-1'+UNION+ALL+SELECT+1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374+from+adminusers%23";
+    url = dir + "/clients/packages.php?id=-1'+UNION+ALL+SELECT+1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,0x53514c2d496e6a656374696f6e2d54657374+from+adminusers%23";
 
-    if( http_vuln_check( port:port, url:url, pattern:"OpenVAS-SQL-Injection-Test" ) ) {
+    if( http_vuln_check( port:port, url:url, pattern:"SQL-Injection-Test" ) ) {
       report = report_vuln_url( port:port, url:url );
       security_message( port:port, data:report );
       exit( 0 );

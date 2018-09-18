@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_diagnostics_server_magentservice_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_hp_diagnostics_server_magentservice_bof_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
 #
 # HP Diagnostics Server 'magentservice.exe' Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802386");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11429 $");
   script_cve_id("CVE-2011-4789");
   script_bugtraq_id(51398);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-01 14:14:14 +0530 (Wed, 01 Feb 2012)");
   script_name("HP Diagnostics Server 'magentservice.exe' Buffer Overflow Vulnerability");
 
@@ -46,8 +46,8 @@ if(description)
   script_family("Buffer overflow");
   script_tag(name:"solution_type", value:"VendorFix");
   script_dependencies("gb_hp_diagnostics_server_detect.nasl");
-  script_require_ports("Services/www", 2006, 23472);
-  script_require_keys("hpdiagnosticsserver/installed");
+  script_require_ports("Services/www", 2006);
+  script_mandatory_keys("hpdiagnosticsserver/installed");
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to execute
 arbitrary code within the context of the application or cause a denial of service
 condition.");
@@ -62,23 +62,14 @@ For updates refer to http://www.hp.com/ ");
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 
-## HP Diagnostics Server and magentservice port
 hpdsPort = get_http_port(default:2006);
-magentPort = 23472;
-
-if(!get_port_state(hpdsPort) || !get_port_state(magentPort)){
-  exit(0);
-}
-
 hpdsVer = get_kb_item("www/" + hpdsPort+ "/HP/Diagnostics_Server/Ver");
-
 if(hpdsVer)
 {
   if(version_is_equal(version:hpdsVer, test_version:"9.00")){
-    security_message(magentPort);
+    security_message(port:hpdsPort);
   }
 }

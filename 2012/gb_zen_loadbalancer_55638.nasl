@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zen_loadbalancer_55638.nasl 11135 2018-08-27 13:39:29Z asteins $
+# $Id: gb_zen_loadbalancer_55638.nasl 11429 2018-09-17 10:08:59Z cfischer $
 #
 # ZEN Load Balancer Multiple Security Vulnerabilities
 #
@@ -31,13 +31,13 @@ if (description)
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_bugtraq_id(55638);
-  script_version("$Revision: 11135 $");
+  script_version("$Revision: 11429 $");
 
   script_name("ZEN Load Balancer Multiple Security Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55638");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-24 10:00:04 +0200 (Mon, 24 Sep 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -71,17 +71,13 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-
 port = get_http_port(default:444);
-if(!get_port_state(port))exit(0);
 
 url = '/config/global.conf';
 
 if(http_vuln_check(port:port, url:url,pattern:"Zen",extra_check:make_list("\$configdir","\$logdir"))) {
-
   security_message(port:port);
   exit(0);
-
 }
 
 exit(0);

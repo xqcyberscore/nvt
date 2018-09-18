@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_STHS_51991.nasl 11266 2018-09-06 10:59:26Z cfischer $
+# $Id: gb_STHS_51991.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # STHS v2 Web Portal 'team' parameter Multiple SQL Injection Vulnerabilities
 #
@@ -30,7 +30,7 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103421");
   script_bugtraq_id(51991);
   script_cve_id("CVE-2012-1217");
-  script_version("$Revision: 11266 $");
+  script_version("$Revision: 11435 $");
   script_name("STHS v2 Web Portal 'team' parameter Multiple SQL Injection Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51991");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/73154");
@@ -39,7 +39,7 @@ if(description)
 
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 11:22:27 +0100 (Wed, 15 Feb 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -82,9 +82,9 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( buf =~ "Site powered by.*SIMHL.net" ) {
 
-    url = dir + "/prospects.php?team=-1%20union%20select%20openvas_sqli_test,saf,3,4,5,6,7,8,9,10,11,12";
+    url = dir + "/prospects.php?team=-1%20union%20select%20sqli_test,saf,3,4,5,6,7,8,9,10,11,12";
 
-    if( http_vuln_check( port:port, url:url, pattern:"Unknown column 'openvas_sqli_test' in 'field list'" ) ) {
+    if( http_vuln_check( port:port, url:url, pattern:"Unknown column 'sqli_test' in 'field list'" ) ) {
       report = report_vuln_url( port:port, url:url );
       security_message( port:port, data:report );
       exit( 0 );

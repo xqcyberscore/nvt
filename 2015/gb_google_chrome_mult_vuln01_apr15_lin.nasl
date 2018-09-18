@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805360");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-1234", "CVE-2015-1233");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-06 14:45:55 +0530 (Mon, 06 Apr 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Apr15 (Linux)");
 
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass sandbox protection mechanisms and execute arbitrary code
-  and or cause a denial-of-service condition.
-
-  Impact Level: System/Application");
+  and or cause a denial-of-service condition.");
 
   script_tag(name:"affected", value:"Google Chrome version prior to
   41.0.2272.118 on Linux.");

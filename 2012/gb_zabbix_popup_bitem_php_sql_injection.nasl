@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_popup_bitem_php_sql_injection.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_zabbix_popup_bitem_php_sql_injection.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # ZABBIX popup_bitem.php 'itemid' Parameter SQL Injection Vulnerability
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:zabbix:zabbix";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103525");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11435 $");
   script_name("ZABBIX popup_bitem.php 'itemid' Parameter SQL Injection Vulnerabilit");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-25 11:34:16 +0100 (Wed, 25 Jul 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -67,8 +67,8 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-url = dir + '/popup_bitem.php?itemid=1+union+select+1,2,3,4,5,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,7,8,9,10,11,12,13,14,15,16,17,18,19,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1%23&dstfrm=1';
-if( http_vuln_check( port:port, url:url, pattern:"OpenVAS-SQL-Injection-Test" ) ) {
+url = dir + '/popup_bitem.php?itemid=1+union+select+1,2,3,4,5,0x53514c2d496e6a656374696f6e2d54657374,7,8,9,10,11,12,13,14,15,16,17,18,19,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1%23&dstfrm=1';
+if( http_vuln_check( port:port, url:url, pattern:"SQL-Injection-Test" ) ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );

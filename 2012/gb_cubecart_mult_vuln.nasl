@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cubecart_mult_vuln.nasl 11355 2018-09-12 10:32:04Z asteins $
+# $Id: gb_cubecart_mult_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
 #
 # CubeCart Multiple Vulnerabilities
 #
@@ -29,9 +29,9 @@ CPE = "cpe:/a:cubecart:cubecart";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803090");
-  script_version("$Revision: 11355 $");
+  script_version("$Revision: 11431 $");
   script_bugtraq_id(57031);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-25 15:26:41 +0530 (Tue, 25 Dec 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -58,7 +58,9 @@ if(description)
   For updates refer to http://www.cubecart.com");
   script_tag(name:"summary", value:"This host is installed with CubeCart and is prone to multiple
   vulnerabilities.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -69,12 +71,13 @@ include("http_keepalive.inc");
 if(!ccPort = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port: ccPort))exit(0);
 
+useragent = get_http_user_agent();
 host = http_host_name(port:ccPort);
 
 url = dir + '/cart.php?act=cart';
 ccReq = string('GET ', url, ' HTTP/1.1\r\n',
                'Host: ', host, '\r\n',
-               'User-Agent: ', OPENVAS_HTTP_USER_AGENT, '\r\n',
+               'User-Agent: ', useragent, '\r\n',
                'Referer: "/><script>alert(document.cookie)</script>\r\n\r\n');
 
 ccRes = http_keepalive_send_recv(port:ccPort, data:ccReq);

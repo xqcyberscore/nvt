@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_imanager_jclient_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_novell_imanager_jclient_bof_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
 #
 # Novell iManager jclient 'EnteredAttrName' Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802852");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11429 $");
   script_bugtraq_id(40485, 40480);
   script_cve_id("CVE-2011-4188");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-11 18:09:51 +0530 (Fri, 11 May 2012)");
   script_name("Novell iManager jclient 'EnteredAttrName' Buffer Overflow Vulnerability");
 
@@ -49,6 +49,8 @@ if (description)
   script_family("Buffer overflow");
   script_dependencies("novell_imanager_detect.nasl");
   script_require_ports("Services/www", 8080, 8443);
+  script_mandatory_keys("novellimanager/installed");
+
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to execute arbitrary code
   within the context of the application or cause a denial of service condition.");
   script_tag(name:"affected", value:"Novell iManager version prior to 2.7.4 before patch 4");
@@ -71,9 +73,6 @@ include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:8080);
-if(!get_port_state(port)){
-  exit(0);
-}
 
 imanVer = get_kb_item(string("www/", port, "/imanager"));
 if(!imanVer){

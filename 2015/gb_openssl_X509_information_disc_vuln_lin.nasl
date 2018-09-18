@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_X509_information_disc_vuln_lin.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_openssl_X509_information_disc_vuln_lin.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # OpenSSL 'X509_ATTRIBUTE' Information Disclosure Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806656");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-3195");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-23 12:41:42 +0530 (Wed, 23 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL 'X509_ATTRIBUTE' Information Disclosure Vulnerability (Linux)");
@@ -47,9 +47,7 @@ if(description)
   'ASN1_TFLG_COMBINE' implementation within crypto/asn1/tasn_dec.c script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to gain access to potentially sensitive information.
-
-  Impact Level: Application");
+  attacker to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"OpenSSL versions before 0.9.8zh, 1.0.0 before
   1.0.0t, 1.0.1 before 1.0.1q, and 1.0.2 before 1.0.2e Linux");

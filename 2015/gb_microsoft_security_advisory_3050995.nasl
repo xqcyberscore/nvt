@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3050995.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_microsoft_security_advisory_3050995.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # Microsoft Digital Certificates Security Advisory (3050995)
 #
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805507");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11445 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 18:58:02 +0530 (Wed, 25 Mar 2015)");
   script_name("Microsoft Digital Certificates Security Advisory (3050995)");
 
@@ -44,9 +44,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to spoof content, perform phishing attacks, or perform
-  man-in-the-middle attacks.
-
-  Impact Level: Application");
+  man-in-the-middle attacks.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Service Pack 2 and prior.");
 

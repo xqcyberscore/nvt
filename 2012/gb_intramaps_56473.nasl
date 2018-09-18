@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intramaps_56473.nasl 11396 2018-09-14 16:36:30Z cfischer $
+# $Id: gb_intramaps_56473.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # Intramaps Multiple Security Vulnerabilities
 #
@@ -31,9 +31,9 @@ if(description)
   script_bugtraq_id(56473);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11396 $");
+  script_version("$Revision: 11435 $");
   script_name("Intramaps Multiple Security Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 18:36:30 +0200 (Fri, 14 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-12 10:40:31 +0100 (Mon, 12 Nov 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -93,9 +93,9 @@ foreach dir( make_list_unique( "/IntraMaps", "/intramaps75", "/IntraMaps70", cgi
 
     if( http_vuln_check( port:port, url:url, pattern:"<title>IntraMaps" ) ) {
 
-      url = dir + subdir + "/Application.aspx?project=NAME</script><script>alert('openvas-xss-test')</script>";
+      url = dir + subdir + "/Application.aspx?project=NAME</script><script>alert('xss-test')</script>";
 
-      if(http_vuln_check(port:port, url:url, pattern:"<script>alert\('openvas-xss-test'\)</script>", check_header:TRUE ) ) {
+      if(http_vuln_check(port:port, url:url, pattern:"<script>alert\('xss-test'\)</script>", check_header:TRUE ) ) {
         report = report_vuln_url( port:port, url:url );
         security_message( port:port, data:report );
         exit( 0 );

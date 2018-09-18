@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuuo_devices_web_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_nuuo_devices_web_detect.nasl 11439 2018-09-18 03:16:57Z ckuersteiner $
 #
 # NUUO Device Detection
 #
@@ -30,8 +30,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105855");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11439 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 05:16:57 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-08 18:28:02 +0200 (Mon, 08 Aug 2016)");
 
   script_name("NUUO Device Detection");
@@ -58,7 +58,8 @@ port = get_http_port( default:80 );
 
 buf = http_get_cache( port:port, item:"/" );
 
-if( buf !~ "<title>(NUUO)?Network Video Recorder Login</title>" && 'var VENDOR_NAME "NUUO"' >!< buf ) exit( 0 );
+if( buf !~ "<title>(NUUO )?Network Video Recorder Login</title>" && 'var VENDOR_NAME "NUUO"' >!< buf )
+  exit( 0 );
 
 set_kb_item( name:"nuuo/web/detected", value:TRUE );
 
@@ -85,11 +86,28 @@ if( _vers )
   vers = _vers;
   cpe += ':' + vers;
 }
+else {
+  url = '/upgrade_handle.php?cmd=getcurrentinfo';
+  req = http_get(port: port, item: url);
+  res = http_keepalive_send_recv(port: port, data: req);
+  version = eregmatch(pattern: "<Titan>([0-9.]+)", string: res);
+  if (!isnull(version[1])) {
+    _v = split( version[1], sep:".", keep:TRUE );
+    foreach v ( _v ) {
+      v = ereg_replace( string:v, pattern:"^0+([0-9]+)", replace:"\1" );
+      _vers += v;
+    }
+
+    vers = _vers;
+    concUrl = url;
+    cpe += ':' + vers;
+  }
+}
 
 register_product( cpe:cpe, location:"/", port:port, service:"www" );
 
 log_message( data:build_detection_report( app:"NUUO Network Video Recorder", version:vers, install:"/", cpe:cpe,
-                                          concluded:version[0] ),
+                                          concluded:version[0], concludedUrl: concUrl ),
              port:port);
 
 exit( 0 );

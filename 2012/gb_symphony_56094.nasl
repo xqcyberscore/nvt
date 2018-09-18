@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symphony_56094.nasl 11355 2018-09-12 10:32:04Z asteins $
+# $Id: gb_symphony_56094.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # Symphony Multiple Remote Security Vulnerabilities
 #
@@ -33,8 +33,8 @@ if(description)
   script_bugtraq_id(56094);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11355 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 11435 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-06 13:03:17 +0100 (Tue, 06 Nov 2012)");
   script_name("Symphony Multiple Remote Security Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -68,13 +68,12 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
@@ -94,13 +93,11 @@ req = string("POST ", url," HTTP/1.1\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: 101\r\n",
              "\r\n",
-             "email=%22%3E%3Cscript%3Ealert%28%27openvas-xss-test%27%29%3C%2Fscript%3E&action%5Breset%5D=Send+Email\r\n");
-
+             "email=%22%3E%3Cscript%3Ealert%28%27xss-test%27%29%3C%2Fscript%3E&action%5Breset%5D=Send+Email\r\n");
 result = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-
 if( result !~ "HTTP/1.. 200" ) exit( 0 );
 
-if( "<script>alert('openvas-xss-test')</script>" >< result && "Send Email" >< result ) {
+if( "<script>alert('xss-test')</script>" >< result && "Send Email" >< result ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );

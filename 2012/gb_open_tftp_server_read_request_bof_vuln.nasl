@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_tftp_server_read_request_bof_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_open_tftp_server_read_request_bof_vuln.nasl 11425 2018-09-17 09:11:30Z asteins $
 #
 # OpenTFTP Server Read Request Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802555");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11425 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:11:30 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-12 19:12:13 +0530 (Thu, 12 Jan 2012)");
   script_name("OpenTFTP Server Read Request Buffer Overflow Vulnerability");
 
@@ -69,7 +69,6 @@ if(!port){
   port = 69;
 }
 
-## open socket for udp port
 soc = open_sock_udp(port);
 if(!soc){
   exit(0);

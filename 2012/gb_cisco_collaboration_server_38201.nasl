@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_collaboration_server_38201.nasl 11266 2018-09-06 10:59:26Z cfischer $
+# $Id: gb_cisco_collaboration_server_38201.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # Cisco Collaboration Server 'LoginPage.jhtml' Cross Site Scripting Vulnerability
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103404");
   script_bugtraq_id(38201);
-  script_version("$Revision: 11266 $");
+  script_version("$Revision: 11435 $");
   script_cve_id("CVE-2010-0641");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38201");
   script_xref(name:"URL", value:"http://www.cisco.com/en/US/products/sw/custcosw/ps747/prod_eol_notice09186a008032d4d0.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-27 13:46:02 +0100 (Fri, 27 Jan 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -67,7 +67,7 @@ NOTE: The vendor has discontinued this product.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -80,9 +80,9 @@ url = "/webline/html/admin/wcs/LoginPage.jhtml?oper=login&dest=%2Fadmin%2FCiscoA
 
 if(http_vuln_check(port:port, url:url,pattern:"Cisco Administration Log In")) {
 
-  url = '/webline/html/admin/wcs/LoginPage.jhtml?oper=&dest="><script>alert(/openvas-xss-test/)</script>';
+  url = '/webline/html/admin/wcs/LoginPage.jhtml?oper=&dest="><script>alert(/xss-test/)</script>';
 
-  if(http_vuln_check(port:port, url:url,pattern:"script>alert\(/openvas-xss-test/\)</script>",check_header:TRUE)) {
+  if(http_vuln_check(port:port, url:url, pattern:"script>alert\(/xss-test/\)</script>", check_header:TRUE)) {
     security_message(port:port);
     exit(0);
   }

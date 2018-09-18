@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xwiki_enterprise_mult_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_xwiki_enterprise_mult_xss_vuln.nasl 11430 2018-09-17 10:16:03Z cfischer $
 #
 # XWiki Enterprise Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802397");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11430 $");
   script_bugtraq_id(51867);
   script_cve_id("CVE-2012-1019");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:16:03 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-09 11:12:00 +0530 (Fri, 09 Mar 2012)");
   script_name("XWiki Enterprise Multiple Cross-Site Scripting Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47885");
@@ -41,7 +41,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/109447/XWiki-Enterprise-3.4-Cross-Site-Scripting.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_category(ACT_ATTACK);
+  script_category(ACT_DESTRUCTIVE_ATTACK); # Stored XSS
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
   script_dependencies("gb_xwiki_enterprise_detect.nasl");
@@ -78,15 +78,12 @@ include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
-if(safe_checks()){
-  exit(0);
-}
-
 xwikiPort = get_http_port(default:8080);
 if(!dir = get_dir_from_kb(port:xwikiPort, app:"XWiki")){
   exit(0);
 }
 
+useragent = get_http_user_agent();
 host = http_host_name( port:xwikiPort );
 
 url = dir + "/bin/register/XWiki/Register";
@@ -109,7 +106,7 @@ postdata = "form_token="+ tokenValue[1] +"&register_first_name=ppp&"        +
 
 req = string("POST ", url, " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              "Referer: http://", host, url, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(postdata), "\r\n",

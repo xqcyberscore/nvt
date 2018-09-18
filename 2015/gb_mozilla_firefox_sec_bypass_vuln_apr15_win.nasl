@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_sec_bypass_vuln_apr15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mozilla_firefox_sec_bypass_vuln_apr15_win.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # Mozilla Firefox SSL Certificate Verification Bypass Vulnerability- Apr15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805528");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-0799");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-06 16:40:14 +0530 (Mon, 06 Apr 2015)");
   script_name("Mozilla Firefox SSL Certificate Verification Bypass Vulnerability- Apr15 (Windows)");
 
@@ -46,9 +46,7 @@ if(description)
   not properly validated when handling an Alt-Svc header in an HTTP/2 response.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to conduct man-in-the-middle attack.
-
-  Impact Level: Application");
+  attacker to conduct man-in-the-middle attack.");
 
   script_tag(name:"affected", value:"Mozilla Firefox before version 37.0.1
   on Windows");

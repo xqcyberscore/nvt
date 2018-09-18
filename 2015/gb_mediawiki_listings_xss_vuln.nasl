@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_listings_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mediawiki_listings_xss_vuln.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # MediaWiki Listings extension Cross-site scripting Vulnerability - Jan15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805326");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2014-9477");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 12:37:41 +0530 (Fri, 23 Jan 2015)");
   script_name("MediaWiki Listings extension Cross-site scripting Vulnerability - Jan15");
 
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   remote attacker to execute arbitrary script code in a user's browser
-  session within the trust relationship between their browser and the server.
-
-  Impact Level: Application");
+  session within the trust relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"Listings extension version before 1.2.0 for Mediawiki");
 

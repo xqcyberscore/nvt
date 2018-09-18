@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_openredirect_vuln_sep15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mantisbt_openredirect_vuln_sep15_win.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # MantisBT Open Redirect Vulnerability September15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805972");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-1042");
   script_bugtraq_id(71988);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-07 12:56:25 +0530 (Mon, 07 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("MantisBT Open Redirect Vulnerability September15 (Windows)");
@@ -50,9 +50,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to create a specially crafted URL, that if clicked, would redirect
   a victim from the intended legitimate web site to an arbitrary web site of the
-  attacker's choosing.
-
-  Impact Level: Application");
+  attacker's choosing.");
 
   script_tag(name:"affected", value:"MantisBT versions 1.2.0a3 through 1.2.18
   on Windows");

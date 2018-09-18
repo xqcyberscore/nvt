@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_nov15_macosx.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_mozilla_firefox_mult_vuln_nov15_macosx.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities - Nov15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806551");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-7200", "CVE-2015-7199", "CVE-2015-7198", "CVE-2015-7197",
                 "CVE-2015-7196", "CVE-2015-7195", "CVE-2015-7194", "CVE-2015-7193",
                 "CVE-2015-7189", "CVE-2015-7188", "CVE-2015-7187", "CVE-2015-4518",
@@ -38,7 +38,7 @@ if(description)
   script_bugtraq_id(77412, 77415, 77416);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-09 15:45:29 +0530 (Mon, 09 Nov 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - Nov15 (Mac OS X)");
 
@@ -90,9 +90,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service, bypass security restrictions, to
   obtain sensitive information, execute arbitrary script code in a user's
-  browser session and some unspecified impacts.
-
-  Impact Level: System/Application");
+  browser session and some unspecified impacts.");
 
   script_tag(name:"affected", value:"Mozilla Firefox version before 42.0 on
   Mac OS X");

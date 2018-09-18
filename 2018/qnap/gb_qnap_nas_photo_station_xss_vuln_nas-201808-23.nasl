@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_nas_photo_station_xss_vuln_nas-201808-23.nasl 11151 2018-08-29 03:47:27Z ckuersteiner $
+# $Id: gb_qnap_nas_photo_station_xss_vuln_nas-201808-23.nasl 11446 2018-09-18 09:05:56Z ckuersteiner $
 #
 # QNAP NAS Photo Station XSS Vulnerability (nas-201808-23)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112366");
-  script_version("$Revision: 11151 $");
+  script_version("$Revision: 11446 $");
   script_cve_id("CVE-2017-0715");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 05:47:27 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 11:05:56 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-28 13:11:11 +0200 (Tue, 28 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("QNAP NAS Photo Station XSS Vulnerability (nas-201808-23)");
@@ -56,30 +56,26 @@ if(description)
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Web application abuses");
   script_dependencies("gb_qnap_nas_photo_station_detect.nasl");
   script_mandatory_keys("QNAP/QTS/PhotoStation/detected");
   script_require_ports("Services/www", 80, 8080);
   exit(0);
 }
 
-include( "host_details.inc" );
-include( "version_func.inc" );
+include("host_details.inc");
+include("version_func.inc");
 
-CPE = "cpe:/o:qnap:qts_photo_station";
+CPE = "cpe:/a:qnap:photo_station";
 
-if( isnull( port = get_app_port( cpe: CPE ) ) ) {
+if (!port = get_app_port( cpe: CPE ))
   exit(0);
-}
 
-if( ! infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE  ) ) {
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
-}
-version = infos['version'];
-path = infos['location'];
 
-if( version_is_less( version: version, test_version: "5.7.1" ) ) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "5.7.1", install_path: path);
+if (version_is_less( version: version, test_version: "5.7.1" )) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "5.7.1");
   security_message(data: report, port: port);
   exit( 0 );
 }

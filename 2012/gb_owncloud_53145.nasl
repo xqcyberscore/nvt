@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_53145.nasl 10821 2018-08-07 14:52:02Z cfischer $
+# $Id: gb_owncloud_53145.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # ownCloud Multiple Input Validation Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103473");
-  script_version("$Revision: 10821 $");
+  script_version("$Revision: 11435 $");
   script_bugtraq_id(53145);
   script_cve_id("CVE-2012-2269", "CVE-2012-2270", "CVE-2012-2397", "CVE-2012-2398");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:52:02 +0200 (Tue, 07 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-19 12:17:59 +0200 (Thu, 19 Apr 2012)");
   script_name("ownCloud Multiple Input Validation Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -81,9 +81,9 @@ include("http_keepalive.inc");
 if(!port = get_app_port(cpe:CPE)) exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port)) exit(0);
 if(dir == "/") dir = "";
-url = string(dir, '/index.php?redirect_url=1"><script>alert(/openvas-xss-test/)</script><l="');
+url = string(dir, '/index.php?redirect_url=1"><script>alert(/xss-test/)</script><l="');
 
-if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>", check_header:TRUE, extra_check:"Powered by ownCloud")) {
+if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/xss-test/\)</script>", check_header:TRUE, extra_check:"Powered by ownCloud")) {
   report = report_vuln_url(port:port, url:url);
   security_message(port:port, data:report);
   exit(0);

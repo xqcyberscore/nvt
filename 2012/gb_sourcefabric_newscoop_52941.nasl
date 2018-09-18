@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sourcefabric_newscoop_52941.nasl 11049 2018-08-20 08:53:50Z asteins $
+# $Id: gb_sourcefabric_newscoop_52941.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # Sourcefabric Newscoop Multiple Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103461");
   script_bugtraq_id(52941);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11049 $");
+  script_version("$Revision: 11435 $");
   script_cve_id("CVE-2012-1934");
   script_name("Sourcefabric Newscoop Multiple Cross Site Scripting and SQL Injection Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52941");
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.sourcefabric.org/en/products/newscoop_release/570/Newscoop-352-is-out!.htm");
   script_xref(name:"URL", value:"http://dev.sourcefabric.org/browse/CS-4181");
   script_xref(name:"URL", value:"http://www.sourcefabric.org/en/newscoop/latestrelease/1141/Newscoop-355-and-Newscoop-4-RC4-security-releases.htm");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-10 10:02:36 +0200 (Tue, 10 Apr 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -77,9 +77,9 @@ if( ! can_host_php( port:port ) ) exit( 0 );
 foreach dir( make_list_unique( "/newscoop", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = dir + "/admin/password_check_token.php?f_email=1&token=%22%3E%3Cscript%3Ealert%28/openvas-xss-test/%29;%3C/script%3E";
+  url = dir + "/admin/password_check_token.php?f_email=1&token=%22%3E%3Cscript%3Ealert%28/xss-test/%29;%3C/script%3E";
 
-  if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/openvas-xss-test/\);</script>", check_header:TRUE, extra_check:"Bad input parameters" ) ) {
+  if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/xss-test/\);</script>", check_header:TRUE, extra_check:"Bad input parameters" ) ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

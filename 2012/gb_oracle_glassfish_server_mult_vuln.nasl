@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_server_mult_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_oracle_glassfish_server_mult_vuln.nasl 11425 2018-09-17 09:11:30Z asteins $
 #
 # Oracle GlassFish Server Multiple XSS and CSRF Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:oracle:glassfish_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802624");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11425 $");
   script_bugtraq_id(53118, 53136);
   script_cve_id("CVE-2012-0550", "CVE-2012-0551");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:11:30 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-07 16:16:16 +0530 (Mon, 07 May 2012)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -63,11 +63,11 @@ and script code, which will be executed in a user's browser session in the conte
 
   script_tag(name:"insight", value:"Multiple flaws are due to
 
-- Input passed via multiple parameters to various scripts is not properly sanitised before being returned to the
+  - Input passed via multiple parameters to various scripts is not properly sanitised before being returned to the
 user. This can be exploited to execute arbitrary HTML and script code in a user's browser session in context of an
 affected site.
 
-- The application allows users to perform certain actions via HTTP requests without performing proper validity
+  - The application allows users to perform certain actions via HTTP requests without performing proper validity
 checks to verify the requests.");
 
   script_tag(name:"summary", value:"This host is running Oracle GlassFish Server and is prone to multiple

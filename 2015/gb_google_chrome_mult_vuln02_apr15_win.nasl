@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_apr15_win.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_google_chrome_mult_vuln02_apr15_win.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-02 Apr15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805457");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-3335", "CVE-2015-3334", "CVE-2015-3333", "CVE-2015-1249",
                 "CVE-2015-1247", "CVE-2015-1246", "CVE-2015-1244", "CVE-2015-1242",
                 "CVE-2015-1241", "CVE-2015-1240", "CVE-2015-1238", "CVE-2015-1237",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(72715, 74227, 74225, 74221);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-21 18:18:54 +0530 (Tue, 21 Apr 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Apr15 (Windows)");
 
@@ -89,9 +89,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass security restrictions, conduct row-hammer attacks,
   obtain sensitive data, trigger unintended UI actions via crafted dimension,
-  cause a denial of service and other unspecified impacts.
-
-  Impact Level: System/Application");
+  cause a denial of service and other unspecified impacts.");
 
   script_tag(name:"affected", value:"Google Chrome version prior to
   42.0.2311.90 on Windows.");

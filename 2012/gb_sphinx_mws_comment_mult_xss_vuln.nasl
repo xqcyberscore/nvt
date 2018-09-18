@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sphinx_mws_comment_mult_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_sphinx_mws_comment_mult_xss_vuln.nasl 11430 2018-09-17 10:16:03Z cfischer $
 #
 # Sphinx Mobile Web Server 'comment' Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802390");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11430 $");
   script_cve_id("CVE-2012-1005");
   script_bugtraq_id(51820);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:16:03 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-02 14:49:35 +0530 (Thu, 02 Feb 2012)");
   script_name("Sphinx Mobile Web Server 'comment' Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -42,7 +42,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18451/");
   script_xref(name:"URL", value:"http://secpod.org/advisories/SecPod_SPHINX_SOFT_Mobile_Web_Server_Mul_Persistence_XSS_Vulns.txt");
 
-  script_category(ACT_ATTACK);
+  script_category(ACT_DESTRUCTIVE_ATTACK); # Stored XSS
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("gb_get_http_banner.nasl");
@@ -70,7 +70,6 @@ General solution options are to upgrade to a newer release, disable respective f
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -81,12 +80,6 @@ if("Server: MobileWebServer/" >!< banner){
   exit(0);
 }
 
-## Stored XSS (Not a safe check)
-if(safe_checks()){
-  exit(0);
-}
-
-## Make list of vulnerable pages
 pages = make_list("/MyFirstBlog.txt", "/AboutSomething.txt");
 
 foreach page (pages)
@@ -94,7 +87,6 @@ foreach page (pages)
   url1 = "/Blog" + page + "?comment=<script>alert(document.cookie)" +
                           "</script>&submit=Add+Comment";
 
-  ## Send XSS attack
   sndReq = http_get(item: url1, port:mwsPort);
   http_keepalive_send_recv(port:mwsPort, data:sndReq);
 

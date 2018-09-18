@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-093.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_ms15-093.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # Microsoft Internet Explorer RCE vulnerability (3088903)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805959");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-2502");
   script_bugtraq_id(76403);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-19 17:04:11 +0530 (Wed, 19 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer RCE vulnerability (3088903)");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to corrupt memory and potentially execute arbitrary code in the
-  context of the current user.
-
-  Impact Level: System/Application");
+  context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Internet Explorer version
   7.x/8.x/9.x/10.x/11.x");

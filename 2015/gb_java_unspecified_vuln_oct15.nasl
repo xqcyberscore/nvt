@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_unspecified_vuln_oct15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_java_unspecified_vuln_oct15.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # Oracle Java SE JRE Unspecified Vulnerability Oct 2015 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806519");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-4871");
   script_bugtraq_id(77238);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-29 09:37:58 +0530 (Thu, 29 Oct 2015)");
   script_name("Oracle Java SE JRE Unspecified Vulnerability Oct 2015 (Windows)");
 
@@ -46,9 +46,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an unspecified error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to have an impact on confidentiality, integrity, and via unknown vectors.
-
-  Impact Level: System/Application");
+  to have an impact on confidentiality, integrity, and via unknown vectors.");
 
   script_tag(name:"affected", value:"Oracle Java SE 7 update 85 and prior on
   Windows.");

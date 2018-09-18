@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-099_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-099_macosx.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # Microsoft Office Multiple Remote Code Execution Vulnerabilities-3089664 (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806115");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-2520", "CVE-2015-2523");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 12:42:28 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Remote Code Execution Vulnerabilities-3089664 (Mac OS X)");
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to run arbitrary code in the context of the current user and
-  to perform actions in the security context of the current user.
-
-  Impact Level: System/Application");
+  to perform actions in the security context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Office 2011 on Mac OS X");
 

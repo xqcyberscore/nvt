@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typsoft_ftp_server_mult_cmd_dos_vuln.nasl 11355 2018-09-12 10:32:04Z asteins $
+# $Id: gb_typsoft_ftp_server_mult_cmd_dos_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # TYPSoft FTP Server Multiple Commands Remote Denial of Service Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802605");
-  script_version("$Revision: 11355 $");
+  script_version("$Revision: 11435 $");
   script_bugtraq_id(51891);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-08 12:12:12 +0530 (Wed, 08 Feb 2012)");
   script_name("TYPSoft FTP Server Multiple Commands Remote Denial of Service Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51891");
@@ -59,17 +59,9 @@ denial of service vulnerabilities.");
   exit(0);
 }
 
-
 include("ftp_func.inc");
 
-ftpPort = get_kb_item("Services/ftp");
-if(! ftpPort){
-  ftpPort = 21;
-}
-
-if(! get_port_state(ftpPort)){
-  exit(0);
-}
+ftpPort = get_ftp_port(default:21);
 
 banner = get_ftp_banner(port:ftpPort);
 if(! banner || "TYPSoft FTP Server" >!< banner){
@@ -86,7 +78,7 @@ pass = get_kb_item("ftp/password");
 
 if(! user){
   user = "anonymous";
-  pass = "openvas@";
+  pass = "user@";
 }
 
 login_details = ftp_log_in(socket:soc, user:user, pass:pass);

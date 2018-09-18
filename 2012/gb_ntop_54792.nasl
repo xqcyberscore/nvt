@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntop_54792.nasl 11058 2018-08-20 14:18:06Z asteins $
+# $Id: gb_ntop_54792.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # ntop 'arbfile' Parameter Cross Site Scripting Vulnerability
 #
@@ -33,9 +33,9 @@ if(description)
   script_bugtraq_id(54792);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11058 $");
+  script_version("$Revision: 11435 $");
   script_name("ntop 'arbfile' Parameter Cross Site Scripting Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-07 11:41:07 +0200 (Tue, 07 Aug 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -71,10 +71,10 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-url = dir + '/plugins/rrdPlugin?action=arbreq&which=graph&arbfile=TEST"><script>alert(/openvas-xss-test/)</script>&arbiface=eth0&start=1343344529&end=1343348129&counter=&title=Active+End+Nodes&mode=zoom';
+url = dir + '/plugins/rrdPlugin?action=arbreq&which=graph&arbfile=TEST"><script>alert(/xss-test/)</script>&arbiface=eth0&start=1343344529&end=1343348129&counter=&title=Active+End+Nodes&mode=zoom';
 
 if( http_vuln_check( port:port, url:url, check_header:TRUE,
-                     pattern:"<script>alert\(/openvas-xss-test/\)</script>" ) ) {
+                     pattern:"<script>alert\(/xss-test/\)</script>" ) ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );

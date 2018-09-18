@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_cookbook_n_exmp_mul_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_apache_struts_cookbook_n_exmp_mul_xss_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
 #
 # Apache Struts CookBook/Examples Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802423");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11431 $");
   script_bugtraq_id(51900);
   script_cve_id("CVE-2012-1007");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-08 17:33:28 +0530 (Wed, 08 Feb 2012)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts CookBook/Examples Multiple Cross-Site Scripting Vulnerabilities");
@@ -57,9 +57,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow an
   attacker to execute arbitrary HTML code in a user's browser session in the
-  context of a vulnerable application.
-
-  .");
+  context of a vulnerable application.");
 
   script_tag(name:"affected", value:"Apache Struts (cookbook, examples) version 1.3.10 and prior.");
 
@@ -76,17 +74,13 @@ if(description)
   script_mandatory_keys("ApacheStruts/installed");
   script_family("Web application abuses");
   script_require_ports("Services/www", 8080);
+
   exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-
-asport = 0;
-asreq = NULL;
-asres = NULL;
-asRes = NULL;
 
 if(!asport = get_app_port(cpe:CPE)){
  exit(0);
@@ -96,9 +90,9 @@ if(!dir = get_app_location(cpe:CPE, port:asport)){
   exit(0);
 }
 
+useragent = get_http_user_agent();
 host = http_host_name(port:asport);
 
-## Make list index pages
 foreach indexpage (make_list("/", "/welcome.do"))
 {
   asreq = http_get(item:string(dir, indexpage), port:asport);
@@ -115,13 +109,12 @@ foreach indexpage (make_list("/", "/welcome.do"))
 
         asReq = string("POST ", dir, "/processSimple.do HTTP/1.1\r\n",
                      "Host: ", host, "\r\n",
-                     "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                     "User-Agent: ", useragent, "\r\n",
                      "Content-Type: application/x-www-form-urlencoded\r\n",
                      "Content-Length: ", strlen(postdata), "\r\n",
                      "\r\n", postdata);
         asRes = http_keepalive_send_recv(port:asport, data:asReq);
 
-        ##  Confirm the exploit
         if(asRes =~ "HTTP/1\.. 200" && "<script>alert(document.cookie)</script>" >< asRes &&
            ">Simple ActionForm Example<" >< asRes)
         {
@@ -144,7 +137,7 @@ foreach indexpage (make_list("/", "/welcome.do"))
 
         asReq = string("POST ", dir, "/upload/upload-submit.do?queryParam=Successful HTTP/1.1\r\n",
                        "Host: ", host, "\r\n",
-                       "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                       "User-Agent: ", useragent, "\r\n",
                        "Content-Type: multipart/form-data; boundary=---" +
                        "------------------------7559840272055538773136052934\r\n",
                        "Content-Type: application/x-www-form-urlencoded\r\n",

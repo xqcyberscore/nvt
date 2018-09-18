@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_winword_ms15-012.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms_winword_ms15-012.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities (3032328)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805044");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-0064", "CVE-2015-0065");
   script_bugtraq_id(72463, 72465);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 10:47:57 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities (3032328)");
 
@@ -47,9 +47,7 @@ if(description)
   in memory while parsing specially crafted Office files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code on the affected system.
-
-  Impact Level: System/Application");
+  attackers to execute arbitrary code on the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Word 2007 SP3 and prior
   Microsoft Word 2010 Service Pack 2 and prior");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_arbitrary_code_exec_vuln_june16.nasl 7431 2017-10-13 13:02:56Z cfischer $
+# $Id: gb_apache_activemq_arbitrary_code_exec_vuln_june16.nasl 11426 2018-09-17 09:38:26Z asteins $
 #
 # Apache ActiveMQ Arbitrary Code Execution Vulnerability June16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808146");
-  script_version("$Revision: 7431 $");
+  script_version("$Revision: 11426 $");
   script_cve_id("CVE-2016-3088");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 15:02:56 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-06 16:11:05 +0530 (Mon, 06 Jun 2016)");
   script_name("Apache ActiveMQ Arbitrary Code Execution Vulnerability June16");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -48,18 +48,15 @@ if(description)
   script_tag(name:"summary", value:"This host is running Apache ActiveMQ and is
   prone to arbitrary code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists due to an error in 
-  'fileserver' web application, which does not validate 
+  script_tag(name:"insight", value:"The flaw exists due to an error in
+  'fileserver' web application, which does not validate
   'HTTP PUT' and 'HTTP MOVE' requests properly.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to replace web application files with malicious code and perform
-  remote code execution on the system.
-
-  Impact Level: Application");
+  remote code execution on the system.");
 
   script_tag(name:"affected", value:"Apache ActiveMQ Version 5.x to 5.13.2.");
 

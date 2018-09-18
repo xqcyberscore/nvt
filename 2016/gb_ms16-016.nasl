@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-016.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_ms16-016.nasl 11426 2018-09-17 09:38:26Z asteins $
 #
 # Microsoft Windows WebDAV Elevation Of Privilege Vulnerability (3136041)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806863");
-  script_version("$Revision: 5588 $");
+  script_version("$Revision: 11426 $");
   script_cve_id("CVE-2016-0051");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 10:51:05 +0530 (Wed, 10 Feb 2016)");
   script_name("Microsoft Windows WebDAV Elevation Of Privilege Vulnerability (3136041)");
 
@@ -45,12 +45,9 @@ if(description)
   of input in the Microsoft Web Distributed Authoring and Versioning (WebDAV).");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker to execute arbitrary code with elevated permissions.
+  attacker to execute arbitrary code with elevated permissions.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8.1 x32/x64 Edition
+  script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
   Microsoft Windows Server 2012/2012R2
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
@@ -67,14 +64,15 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3136041");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3124280");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-016");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3136041");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3124280");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-016");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -85,23 +83,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-sysVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2, win8:1,
                    win8x64:1, win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of Ntoskrnl.exe
 sysVer = fetch_file_version(sysPath, file_name:"System32\Drivers\Mrxdav.sys");
 if(!sysVer){
   exit(0);
@@ -135,49 +126,39 @@ else if (sysVer =~ "^(10\.0\.10586)"){
   Vulnerable_range = "10.0.10586.0 - 10.0.10586.102";
 }
 
-## Windows Vista and Server 2008
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Mrxdav.sys version
   if(version_is_less(version:sysVer, test_version:"6.0.6002.19576")||
      version_in_range(version:sysVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23885")){
      VULN = TRUE ;
   }
 }
 
-## Windows 7 and Windows Server 2008 R2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Mrxdav.sys version
   if(version_is_less(version:sysVer, test_version:"6.1.7601.19113") ||
      version_in_range(version:sysVer, test_version:"6.1.7601.23000", test_version2:"6.1.7601.23316")){
      VULN = TRUE ;
   }
 }
 
-## Windows Server 2012
 else if(hotfix_check_sp(win2012:1) > 0)
 {
-  ## Check for Mrxdav.sys version
   if(version_is_less(version:sysVer, test_version:"6.2.9200.17619") ||
      version_in_range(version:sysVer, test_version:"6.2.9200.21000", test_version2:"6.2.9200.21737")){
      VULN = TRUE ;
   }
 }
 
-## Windows 8.1 and Server 2012 R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Mrxdav.sys version
   if(version_is_less(version:sysVer, test_version:"6.3.9600.18189")){
      VULN = TRUE ;
   }
 }
 
-## Windows 10
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Windows 10
   ## Check for Mrxdav.sys version
   if(version_is_less(version:sysVer, test_version:"10.0.10240.16683") ||
      version_in_range(version:sysVer, test_version:"10.0.10586.0", test_version2:"10.0.10586.102")){

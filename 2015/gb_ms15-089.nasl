@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805732");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-2476");
   script_bugtraq_id(76234);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 09:06:10 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft WebDAV Client Information Disclosure Vulnerability (3076949)");
@@ -48,9 +48,7 @@ if(description)
   encrypted traffic.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to disclose certain sensitive information.
-
-  Impact Level: Application");
+  attackers to disclose certain sensitive information.");
 
   script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior

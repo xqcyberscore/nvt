@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_3ctftpsvc_tftp_server_mode_bof_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_3ctftpsvc_tftp_server_mode_bof_vuln.nasl 11425 2018-09-17 09:11:30Z asteins $
 #
 # 3CTftpSvc TFTP Server Long Mode Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802658");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11425 $");
   script_cve_id("CVE-2006-6183");
   script_bugtraq_id(21301, 21322);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:11:30 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-10 15:15:15 +0530 (Tue, 10 Jul 2012)");
   script_name("3CTftpSvc TFTP Server Long Mode Buffer Overflow Vulnerability");
 
@@ -79,7 +79,6 @@ if(! tftp_alive(port:port)){
   exit(0);
 }
 
-## Open UDP Socket
 soc = open_sock_udp(port);
 if(!soc){
   exit(0);

@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 17 Sep 2018 10:54:22 +0200
+# Automatically created on:  Tue, 18 Sep 2018 11:42:38 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39064,6 +39064,9 @@
 2018/debian/deb_4291.nasl: GPLv2+
 2018/debian/deb_4292.nasl: GPLv2+
 2018/debian/deb_4293.nasl: GPLv2+
+2018/debian/deb_4294.nasl: GPLv2+
+2018/debian/deb_4295.nasl: GPLv2+
+2018/debian/deb_4296.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -40800,6 +40803,9 @@
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-07_lin.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-07_macosx.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-07_win.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-09_11_lin.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-09_11_macosx.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-09_11_win.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-09_lin.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-09_macosx.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-09_win.nasl: GPLv2+
@@ -40955,6 +40961,8 @@
 2018/microsoft/gb_dotnet_core_sdk_dos_vuln_may18_win.nasl: GPLv2+
 2018/microsoft/gb_dotnet_core_sdk_dos_vuln_sep18_win.nasl: GPLv2+
 2018/microsoft/gb_flash_player_for_ie_edge_apsb18-05.nasl: GPLv2+
+2018/microsoft/gb_microsoft_azure_iot_sdk_spoofing_vuln_sep18_win.nasl: GPLv2+
+2018/microsoft/gb_microsoft_data_odata_dos_vuln_sep18_win.nasl: GPLv2+
 2018/microsoft/gb_microsoft_windows_unquoted_path_vulnerabilities.nasl: GPLv2+
 2018/microsoft/gb_microsoft_wireless_display_adapter_cmd_inj_vuln.nasl: GPLv2+
 2018/microsoft/gb_ms_defender_malware_prot_eng_rce_vuln_apr18.nasl: GPLv2+
@@ -41388,14 +41396,17 @@
 2018/ntp/gb_ntp_ntpq_n_ntpdc_local_bof_vuln.nasl: GPLv2+
 2018/ntp/gb_ntp_protocol_engine_dos_vuln.nasl: GPLv2+
 2018/nucom/gb_nucom_cve-2018-8755.nasl: GPLv2+
+2018/nuuo/gb_nuuo_nvr_backdoor_active.nasl: GPLv2+
 2018/nuuo/gb_nuuo_nvr_default_credentials.nasl: GPLv2+
 2018/nuuo/gb_nuuo_nvrmini2_file_upload_vuln.nasl: GPLv2+
+2018/nuuo/gb_nuuo_nvr_mult_vuln.nasl: GPLv2+
 2018/nuuo/gb_nuuo_nvr_rce_vuln.nasl: GPLv2+
 2018/ocs_inventory/gb_ocs_inventory_ng_mult_vuln.nasl: GPLv2+
 2018/odoo/gb_odoo_backup_db_action_auth_bypass_vuln.nasl: GPLv2+
 2018/oicgroup/gb_exponent_cms_file_upload_vuln.nasl: GPLv2+
 2018/oicgroup/gb_exponent_cms_mult_vuln.nasl: GPLv2+
 2018/oicgroup/gb_exponent_cms_priv_esc_vuln.nasl: GPLv2+
+2018/openafs/gb_openafs_sa-2018-001-003_win.nasl: GPLv2+
 2018/openaudit/gb_open_audit_attribute_fun_xss_vuln.nasl: GPLv2+
 2018/openaudit/gb_open_audit_groups_page_xss_vuln.nasl: GPLv2+
 2018/opencart/gb_opencart_mult_vuln.nasl: GPLv2+
@@ -41825,6 +41836,7 @@
 2018/python/gb_python_heap_buffer_overflow_vuln_aug18_win.nasl: GPLv2+
 2018/python/gb_python_mult_dos_vuln_june18_macosx.nasl: GPLv2+
 2018/python/gb_python_mult_dos_vuln_june18_win.nasl: GPLv2+
+2018/qnap/gb_qnap_nas_musicstation_rce_vuln.nasl: GPLv2+
 2018/qnap/gb_qnap_nas_photo_station_xss_vuln_nas-201804-23.nasl: GPLv2+
 2018/qnap/gb_qnap_nas_photo_station_xss_vuln_nas-201808-23.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_20171222.nasl: GPLv2+
@@ -41876,6 +41888,7 @@
 2018/sangoma/gb_sangoma_nsc_rce_vuln.nasl: GPLv2+
 2018/sanyo/gb_sanyo_network_camera_default_credentials.nasl: GPLv2+
 2018/seagate/gb_seagate_personalcloud_dir_trav_vuln.nasl: GPLv2+
+2018/seagate/gb_seagate_personalcloud_info_discl_vuln.nasl: GPLv2+
 2018/seagate/gb_seagate_personalcloud_rce_vuln.nasl: GPLv2+
 2018/seagate/gb_seagate_personalcloud_sql_inj_vuln.nasl: GPLv2+
 2018/sensiolabs/gb_sensiolabs_symfony_eol.nasl: GPLv2+
@@ -43312,6 +43325,7 @@ gb_master_ip_camera01_detect.nasl: GPLv2+
 gb_matomo_detect.nasl: GPLv2+
 gb_matrixssl_detect.nasl: GPLv2+
 gb_matterircd_detect.nasl: GPLv2+
+gb_mattermost_webapp_detect.nasl: GPLv2+
 gb_mautic_detect.nasl: GPLv2+
 gb_maxthon_detect.nasl: GPLv2+
 gb_mcafee_agent_detect.nasl: GPLv2+
@@ -43484,6 +43498,7 @@ gb_nucom_device_detect.nasl: GPLv2+
 gb_nullftp_server_detect.nasl: GPLv2+
 gb_nulllogic_groupware_detect_win.nasl: GPLv2+
 gb_nuralstorm_webmail_detect.nasl: GPLv2+
+gb_nutanix_prism_web_detect.nasl: GPLv2+
 gb_nuuo_devices_web_detect.nasl: GPLv2+
 gb_nuxeo_platform_detect.nasl: GPLv2+
 gb_observium_detect.nasl: GPLv2+
@@ -43636,6 +43651,7 @@ gb_powershell_core_detect_win.nasl: GPLv2+
 gb_pqi_air_pen_express_remote_detect.nasl: GPLv2+
 gb_prestashop_detect.nasl: GPLv2+
 gb_printeron_detect.nasl: GPLv2+
+gb_processmaker_detect.nasl: GPLv2+
 gb_proconos_detect.nasl: GPLv2+
 gb_projectsend_remote_detect.nasl: GPLv2+
 gb_prtg_network_monitor_detect.nasl: GPLv2+
@@ -43650,6 +43666,7 @@ gb_python_detect_win.nasl: GPLv2+
 gb_qip_detect.nasl: GPLv2+
 gb_qmtp_relay.nasl: GPLv2+
 gb_qnap_nas_detect.nasl: GPLv2+
+gb_qnap_nas_musicstation_detect.nasl: GPLv2+
 gb_qnap_nas_photo_station_detect.nasl: GPLv2+
 gb_qnap_qcenter_detect.nasl: GPLv2+
 gb_qradar_version.nasl: GPLv2+
@@ -59248,6 +59265,7 @@ gsf/2018/advantech/gb_advantech_webaccess_CVE-2017-16720.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_hmi_designer_mult_vuln.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_mult_vuln_jan18.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_mult_vuln_may18.nasl: GPLv2+
+gsf/2018/advantech/gb_advantech_webaccess_rce_vuln_active.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_rce_vuln.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_sql_inj_vuln.nasl: GPLv2+
 gsf/2018/arista/gb_arista_eos_0029.nasl: GPLv2+
@@ -60129,6 +60147,7 @@ gsf/2018/pfsense/gb_pfsense_webgui_xss_vuln03.nasl: GPLv2+
 gsf/2018/phusion/gb_phusion_passenger_info_discl_vuln.nasl: GPLv2+
 gsf/2018/phusion/gb_phusion_passenger_mult_vuln.nasl: GPLv2+
 gsf/2018/printeron/gb_printeron_mult_vuln.nasl: GPLv2+
+gsf/2018/processmaker/gb_processmaker_mult_vuln.nasl: GPLv2+
 gsf/2018/pruftechnik/gb_vibnode_eol.nasl: GPLv2+
 gsf/2018/puppet/gb_puppet_enterprise_cert_auth_rev_prox_vuln.nasl: GPLv2+
 gsf/2018/puppet/gb_puppet_enterprise_cve-2018-6512.nasl: GPLv2+

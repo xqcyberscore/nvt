@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_store_locator_plus_mult_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_wordpress_store_locator_plus_mult_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # WordPress Google Maps Via Store Locator Plus Plugin Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802644");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11435 $");
   script_bugtraq_id(53795);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 12:12:12 +0530 (Thu, 21 Jun 2012)");
   script_name("WordPress Google Maps Via Store Locator Plus Plugin Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49391");
@@ -91,10 +91,10 @@ req = string(
        "------------------------------7e0b3991dc3a\r\n",
        'Content-Disposition: form-data; name="query"',"\r\n",
        "\r\n",
-       "SELECT concat(0x4f70656e564153,0x3a,user_login,0x3a,0x4f70656e564153) FROM wp_users\r\n",
+       "SELECT concat(0x53514c692d54657374,0x3a,user_login,0x3a,0x53514c692d54657374) FROM wp_users\r\n",
        "------------------------------7e0b3991dc3a--\r\n\r\n" );
 res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 
-if(res && res =~ "OpenVAS:(.+):OpenVAS"){
+if(res && res =~ "SQLi-Test:(.+):SQLi-Test"){
   security_message(port);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_52578.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_nginx_52578.nasl 11429 2018-09-17 10:08:59Z cfischer $
 #
 # nginx 'ngx_cpystrn()' Information Disclosure Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11429 $");
 
   script_name("nginx 'ngx_cpystrn()' Information Disclosure Vulnerability");
 
@@ -43,7 +43,7 @@ if (description)
   script_xref(name:"URL", value:"http://nginx.org/");
   script_xref(name:"URL", value:"http://trac.nginx.org/nginx/changeset/4530/nginx");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-17 10:03:32 +0200 (Tue, 17 Apr 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
@@ -65,21 +65,18 @@ include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!port || !get_port_state(port)) {
-  exit(0);
-}
 
 if(!vers = get_kb_item(string("nginx/", port, "/version")))exit(0);
 if(!isnull(vers) && vers >!< "unknown") {
 
-  if(vers =~ "1\.1") {
+  if(vers =~ "^1\.1") {
     if(version_is_less(version:vers, test_version:"1.1.17")) {
       security_message(port:port);
       exit(0);
     }
   }
 
-  if(vers =~ "1\.0") {
+  if(vers =~ "^1\.0") {
     if(version_is_less(version:vers, test_version:"1.0.14")) {
       security_message(port:port);
       exit(0);

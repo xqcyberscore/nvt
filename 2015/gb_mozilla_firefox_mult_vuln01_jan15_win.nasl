@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_jan15_win.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_mozilla_firefox_mult_vuln01_jan15_win.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 Jan15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805248");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2014-8643", "CVE-2014-8642", "CVE-2014-8641", "CVE-2014-8640",
                 "CVE-2014-8639", "CVE-2014-8638", "CVE-2014-8637", "CVE-2014-8636",
                 "CVE-2014-8635", "CVE-2014-8634");
@@ -37,7 +37,7 @@ if(description)
                     72050, 72049);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-20 12:51:45 +0530 (Tue, 20 Jan 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Jan15 (Windows)");
 
@@ -76,9 +76,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to disclose potentially sensitive information, bypass certain security
-  restrictions, and compromise a user's system.
-
-  Impact Level: System/Application");
+  restrictions, and compromise a user's system.");
 
   script_tag(name:"affected", value:"Mozilla Firefox before version 35.0 on Windows");
 

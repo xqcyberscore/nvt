@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vertrigo_serv_ext_param_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_vertrigo_serv_ext_param_xss_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
 #
 # VertrigoServ 'ext' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802556");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11429 $");
   script_cve_id("CVE-2012-5102");
   script_bugtraq_id(51293);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-09 12:11:55 +0530 (Mon, 09 Jan 2012)");
   script_name("VertrigoServ 'ext' Parameter Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47469/");
@@ -69,9 +69,6 @@ include("version_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
 if(!can_host_php(port:port)){
   exit(0);

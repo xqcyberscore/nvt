@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_management_center_cisco-sa-20160907-fsss.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_cisco_firesight_management_center_cisco-sa-20160907-fsss.nasl 11426 2018-09-17 09:38:26Z asteins $
 #
 # Cisco FireSIGHT System Software Cross-Site Scripting Vulnerability
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/a:cisco:firesight_management_center";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106231");
- script_cve_id("CVE-2016-6395");
- script_tag(name:"cvss_base", value:"3.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
- script_version ("$Revision: 5568 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106231");
+  script_cve_id("CVE-2016-6395");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_version("$Revision: 11426 $");
 
- script_name("Cisco FireSIGHT System Software Cross-Site Scripting Vulnerability");
+  script_name("Cisco FireSIGHT System Software Cross-Site Scripting Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160907-fsss");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160907-fsss");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the web-based management interface of Cisco FireSIGHT
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the web-based management interface of Cisco FireSIGHT
 System Software could allow an authenticated, remote attacker to conduct a cross-site scripting (XSS) attack
 against a user of the web-based management interface of an affected device.
 
@@ -54,16 +54,16 @@ context of the interface or allow the attacker to access sensitive browser-based
 Cisco has released software updates that address this vulnerability. There are no workarounds that address
 this vulnerability.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-09-08 10:15:39 +0700 (Thu, 08 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_firesight_management_center_version.nasl", "gb_cisco_firesight_management_center_http_detect.nasl");
- script_mandatory_keys("cisco_firesight_management_center/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-08 10:15:39 +0700 (Thu, 08 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_firesight_management_center_version.nasl", "gb_cisco_firesight_management_center_http_detect.nasl");
+  script_mandatory_keys("cisco_firesight_management_center/version");
  exit(0);
 }
 
@@ -72,7 +72,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'5.1.0',
 		'5.1.0.1',
 		'5.1.0.2',

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_vuln02_feb15_lin.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_oracle_virtualbox_mult_vuln02_feb15_lin.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # Oracle Virtualbox Multiple Vulnerabilities Feb15 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805433");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-0427", "CVE-2014-6595", "CVE-2014-6590", "CVE-2014-6589",
                 "CVE-2014-6588");
   script_bugtraq_id(72216, 72206, 72213, 72202, 72196);
   script_tag(name:"cvss_base", value:"3.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-02 10:11:39 +0530 (Mon, 02 Feb 2015)");
   script_name("Oracle Virtualbox Multiple Vulnerabilities Feb15 (Linux)");
 
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
   attackers to cause a DoS (Denial of Service) and disclose potentially
-  sensitive information.
-
-  Impact Level: Application");
+  sensitive information.");
 
   script_tag(name:"affected", value:"VirtualBox versions 4.3.x before 4.3.20
   on Linux.");

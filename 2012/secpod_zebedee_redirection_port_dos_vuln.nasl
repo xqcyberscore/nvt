@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_zebedee_redirection_port_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_zebedee_redirection_port_dos_vuln.nasl 11425 2018-09-17 09:11:30Z asteins $
 #
 # Zebedee Allowed Redirection Port Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903028");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11425 $");
   script_cve_id("CVE-2005-2904");
   script_bugtraq_id(14796);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:11:30 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-24 11:08:06 +0530 (Thu, 24 May 2012)");
   script_name("Zebedee Allowed Redirection Port Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -67,7 +67,6 @@ if(!get_port_state(port)){
   exit(0);
 }
 
-# Open the TCP socket.
 soc = open_sock_tcp(port);
 
 if(!soc){

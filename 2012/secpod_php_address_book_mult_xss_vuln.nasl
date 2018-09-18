@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_address_book_mult_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_php_address_book_mult_xss_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
 #
 # PHP Address Book Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902838");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11429 $");
   script_bugtraq_id(53598);
   script_cve_id("CVE-2012-2903");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-24 15:15:15 +0530 (Thu, 24 May 2012)");
   script_name("PHP Address Book Multiple Cross Site Scripting Vulnerabilities");
 
@@ -42,7 +42,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_php_address_book_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("PHP-Address-Book/installed");
+  script_mandatory_keys("PHP-Address-Book/installed");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
 arbitrary HTML and script code, which will be executed in a user's browser
 session in the context of an affected site.");
@@ -64,19 +64,11 @@ cross site scripting vulnerabilities.");
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
-
-if(!can_host_php(port:port)){
-  exit(0);
-}
 
 if(!dir = get_dir_from_kb(port:port, app:"PHP-Address-Book")){
   exit(0);

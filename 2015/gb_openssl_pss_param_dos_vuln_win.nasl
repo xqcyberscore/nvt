@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_pss_param_dos_vuln_win.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_openssl_pss_param_dos_vuln_win.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # OpenSSL 'PSS' parameter Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806651");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-3194");
   script_bugtraq_id(78623);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-18 08:22:17 +0530 (Fri, 18 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL 'PSS' parameter Denial of Service Vulnerability (Windows)");
@@ -50,9 +50,7 @@ if(description)
   the RSA PSS algorithm and absent mask generation function parameter.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to cause a denial of service condition.
-
-  Impact Level: Application");
+  attacker to cause a denial of service condition.");
 
   script_tag(name:"affected", value:"OpenSSL versions 1.0.1 before 1.0.1q and
   1.0.2 before 1.0.2e on Windows");

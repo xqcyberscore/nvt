@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_built_in_web_srv_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_php_built_in_web_srv_dos_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
 #
 # PHP Built-in WebServer 'Content-Length' Denial of Service Vulnerability
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902822");
   script_bugtraq_id(52704);
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11429 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-26 15:15:15 +0530 (Mon, 26 Mar 2012)");
   script_name("PHP Built-in WebServer 'Content-Length' Denial of Service Vulnerability");
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=61461");
@@ -46,6 +46,8 @@ if(description)
   script_family("Web Servers");
   script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"affected", value:"PHP version 5.4.0");
   script_tag(name:"insight", value:"The flaw is due to an error when processing HTTP request with a large
   'Content-Length' header value and can be exploited to cause a denial of
@@ -67,9 +69,6 @@ if(description)
 include("http_func.inc");
 
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
 if(!can_host_php(port:port)){
   exit(0);

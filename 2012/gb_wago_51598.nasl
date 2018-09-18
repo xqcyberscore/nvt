@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wago_51598.nasl 11055 2018-08-20 12:23:58Z asteins $
+# $Id: gb_wago_51598.nasl 11429 2018-09-17 10:08:59Z cfischer $
 #
 # WAGO Multiple Remote Vulnerabilities
 #
@@ -35,13 +35,13 @@ if (description)
   script_xref(name:"URL", value:"http://www.wago.com/");
   script_oid("1.3.6.1.4.1.25623.1.0.103396");
   script_bugtraq_id(51598);
-  script_version("$Revision: 11055 $");
+  script_version("$Revision: 11429 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_name("WAGO Multiple Remote Vulnerabilities");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 14:23:58 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 15:14:54 +0100 (Mon, 23 Jan 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -73,9 +73,9 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 url = string("/webserv/index.ssi");
+host = http_host_name(port:port);
 
 if(http_vuln_check(port:port, url:url,pattern:"WAGO Ethernet Web-Based Management")) {
 
@@ -88,23 +88,17 @@ if(http_vuln_check(port:port, url:url,pattern:"WAGO Ethernet Web-Based Managemen
     url = "/webserv/cplcfg/security.ssi";
 
     req = string("GET ", url," HTTP/1.1\r\n",
-                 "Host: ", get_host_name(),"\r\n",
+                 "Host: ", host,"\r\n",
                  "Authorization: Basic ",userpass64,"\r\n",
                  "\r\n");
-
     buf = http_keepalive_send_recv(port:port, data:req);
 
     if("<caption>Webserver Security" >< buf && "Webserver and FTP User configuration" >< buf) {
-
         desc = string("It was possible to login with the following credentials\n\nURL:User:Password\n\n",url,":",credential,"\n");
-
         security_message(port:port,data:desc);
         exit(0);
-
     }
-
   }
-
 }
 
 exit(0);

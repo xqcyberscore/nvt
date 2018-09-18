@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zenphoto_51916.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_zenphoto_51916.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # Zenphoto Multiple Security Vulnerabilities
 #
@@ -25,10 +25,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103412");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11435 $");
   script_bugtraq_id(51916);
   script_cve_id("CVE-2011-4448", "CVE-2012-0993", "CVE-2012-0995");
   script_tag(name:"cvss_base", value:"7.5");
@@ -38,7 +38,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.zenphoto.org/news/zenphoto-1.4.2.1");
   script_xref(name:"URL", value:"http://www.zenphoto.org/");
   script_xref(name:"URL", value:"https://www.htbridge.ch/advisory/HTB23070");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-09 12:57:10 +0100 (Thu, 09 Feb 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -79,9 +79,9 @@ if( ! can_host_php( port:port ) ) exit( 0 );
 foreach dir( make_list_unique( "/zenphoto", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = dir + "/zp-core/admin.php?a=&quot;&gt;&lt;script&gt;alert(/openvas-xss-test/)&lt;/script&gt;";
+  url = dir + "/zp-core/admin.php?a=&quot;&gt;&lt;script&gt;alert(/xss-test/)&lt;/script&gt;";
 
-  if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/openvas-xss-test/\)</script>", check_header:TRUE, extra_check:"zen-logo.png" ) ) {
+  if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/xss-test/\)</script>", check_header:TRUE, extra_check:"zen-logo.png" ) ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

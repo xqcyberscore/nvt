@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mapserver4win_53737.nasl 10323 2018-06-26 07:32:48Z cfischer $
+# $Id: gb_mapserver4win_53737.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # Mapserver for Windows Local File Include Vulnerability
 #
@@ -30,11 +30,11 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103602");
   script_bugtraq_id(53737);
   script_cve_id("CVE-2012-2950");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 09:32:48 +0200 (Tue, 26 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 10:11:35 +0100 (Fri, 02 Nov 2012)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_version("$Revision: 10323 $");
+  script_version("$Revision: 11435 $");
   script_name("Mapserver for Windows Local File Include Vulnerability");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -66,9 +66,12 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
+
+vtstring = get_vt_string( lowercase:TRUE );
 host = http_host_name( port:port );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
@@ -99,7 +102,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
     if(!path || strlen(path) < 1)exit(0);
 
-    file = 'openvas_' + rand() + '.php';
+    file = vtstring + '_' + rand() + '.php';
     php = "<?php file_put_contents('../htdocs/" + file +"', '<?php phpinfo();?>'); ?>";
 
     req = string("HEAD ", php, dir, "/ HTTP/1.1\r\n",

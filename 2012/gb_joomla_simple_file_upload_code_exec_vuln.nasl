@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_simple_file_upload_code_exec_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_joomla_simple_file_upload_code_exec_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
 #
 # Joomla Simple File Upload Module Remote Code Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802560");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11431 $");
   script_bugtraq_id(51214);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-06 20:03:12 +0530 (Fri, 06 Jan 2012)");
   script_name("Joomla Simple File Upload Module Remote Code Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -47,9 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18287/");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to upload PHP scripts
-  and execute arbitrary commands on a web server.
-
-  .");
+  and execute arbitrary commands on a web server.");
 
   script_tag(name:"affected", value:"Joomla Simple File Upload Module version 1.3.5");
 
@@ -86,6 +84,7 @@ if(ver[1] == NULL){
   exit(0);
 }
 
+useragent = get_http_user_agent();
 host = http_host_name(port:joomlaPort);
 
 ## Create a file called 'ttst_img00117799.php5' and write the data into file
@@ -103,7 +102,7 @@ content = string("-----------------------------1933563624\r\n",
 
 header = string("POST " + joomlaDir + "/index.php HTTP/1.1\r\n",
                 "Host: " + host + "\r\n",
-                "User-Agent: " + OPENVAS_HTTP_USER_AGENT + "\r\n",
+                "User-Agent: " + useragent + "\r\n",
                 "Connection: Close\r\n",
                 "Content-Type: multipart/form-data; boundary=---------------------------1933563624\r\n",
                 "Content-Length: " +  strlen(content) + "\r\n\r\n");

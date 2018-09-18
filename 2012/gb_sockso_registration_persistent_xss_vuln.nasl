@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sockso_registration_persistent_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_sockso_registration_persistent_xss_vuln.nasl 11430 2018-09-17 10:16:03Z cfischer $
 #
 # Sockso Registration Persistent Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802853");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11430 $");
   script_cve_id("CVE-2012-4267");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:16:03 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-14 13:06:50 +0530 (Mon, 14 May 2012)");
   script_name("Sockso Registration Persistent Cross Site Scripting Vulnerability");
 
@@ -39,7 +39,7 @@ if(description)
   script_xref(name:"URL", value:"http://smwyg.com/blog/#sockso-persistant-xss-attack");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/112647/sockso-xss.txt");
 
-  script_category(ACT_ATTACK);
+  script_category(ACT_DESTRUCTIVE_ATTACK); # Stored XSS
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");
@@ -65,14 +65,8 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Stored XSS (Not a safe check)
-if(safe_checks()){
-  exit(0);
-}
 
 port = get_http_port(default:4444);
 
@@ -87,7 +81,6 @@ postdata = "todo=register&name="+ rand() + "<script>alert(document.cookie)" +
 
 req = http_post(item:url, port:port, data:postdata);
 
-## Send crafted request and receive the response
 res = http_keepalive_send_recv(port:port, data:req);
 
 if(res && res =~ "HTTP/1\.[0-9]+ 200" &&

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfile_51982.nasl 11135 2018-08-27 13:39:29Z asteins $
+# $Id: gb_pfile_51982.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # pfile Multiple Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -32,9 +32,9 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2012-1210", "CVE-2012-1211");
-  script_version("$Revision: 11135 $");
+  script_version("$Revision: 11435 $");
   script_name("pfile Multiple Cross Site Scripting and SQL Injection Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-23 12:58:18 +0100 (Thu, 23 Feb 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -70,9 +70,9 @@ if( ! can_host_php( port:port ) ) exit( 0 );
 foreach dir( make_list_unique( "/pfile", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = dir + '/kommentar.php?filecat="><script>alert(/openvas-xss-test/)</script>&fileid=0';
+  url = dir + '/kommentar.php?filecat="><script>alert(/xss-test/)</script>&fileid=0';
 
-  if( http_vuln_check( port:port, url:url, pattern:'ACTION="kommentar.php\\?fileid=.&filecat="><script>alert\\(/openvas-xss-test/\\)</script>', check_header:TRUE ) ) {
+  if( http_vuln_check( port:port, url:url, pattern:'ACTION="kommentar.php\\?fileid=.&filecat="><script>alert\\(/xss-test/\\)</script>', check_header:TRUE ) ) {
     report = report_vuln_url( port:port, url:url  );
     security_message( port:port, data:report );
     exit( 0 );

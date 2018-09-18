@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-040.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-040.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # MS Active Directory Federation Services Information Disclosure Vulnerability (3045711)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805164");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-1638");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 12:47:54 +0530 (Wed, 15 Apr 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Active Directory Federation Services Information Disclosure Vulnerability (3045711)");
@@ -46,9 +46,7 @@ if(description)
   Federation Services (AD FS) fails to properly log off a user.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain access to users sensitive information.
-
-  Impact Level: System/Application");
+  attackers to gain access to users sensitive information.");
 
   script_tag(name:"affected", value:"Active Directory Federation Services
   3.0 on Windows Server 2012 R2");

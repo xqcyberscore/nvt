@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_iframe_admin_pages_plugin_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wordpress_iframe_admin_pages_plugin_xss_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
 #
 # WordPress iFrame Admin Pages Plugin 'url' Parameter XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802855");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11431 $");
   script_bugtraq_id(53522);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-16 15:26:57 +0530 (Wed, 16 May 2012)");
   script_name("WordPress iFrame Admin Pages Plugin 'url' Parameter XSS Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53522");
@@ -61,6 +61,7 @@ General solution options are to upgrade to a newer release, disable respective f
   script_tag(name:"summary", value:"This host is running WordPress with iFrame Admin Pages Plugin and
 is prone to cross site scripting vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
@@ -72,9 +73,9 @@ include("host_details.inc");
 if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
-## Path of Vulnerable Page
 url = dir + '/wp-content/plugins/iframe-admin-pages/main_page.php';
 
 postdata = 'url="><script>alert(document.cookie)</script>&newiframe=' +
@@ -82,12 +83,10 @@ postdata = 'url="><script>alert(document.cookie)</script>&newiframe=' +
 
 ifReq = string("POST ", url, " HTTP/1.1\r\n",
                "Host: ", host, "\r\n",
-               "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+               "User-Agent: ", useragent, "\r\n",
                "Content-Type: application/x-www-form-urlencoded\r\n",
                "Content-Length: ", strlen(postdata), "\r\n",
                "\r\n", postdata);
-
-## Send attack and receive the response
 ifRes = http_keepalive_send_recv(port:port, data: ifReq);
 
 if(ifRes && ifRes =~ "HTTP/1\.[0-9]+ 200" &&

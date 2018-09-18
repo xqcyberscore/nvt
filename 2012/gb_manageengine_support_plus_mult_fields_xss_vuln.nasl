@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_support_plus_mult_fields_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_manageengine_support_plus_mult_fields_xss_vuln.nasl 11430 2018-09-17 10:16:03Z cfischer $
 #
 # Zoho ManageEngine Support Center Plus Multiple Fields XSS Vulnerabilities
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802839");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11430 $");
   script_bugtraq_id(53019);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:16:03 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-24 13:18:35 +0530 (Tue, 24 Apr 2012)");
   script_name("Zoho ManageEngine Support Center Plus Multiple Fields XSS Vulnerabilities");
   script_xref(name:"URL", value:"http://1337day.com/exploits/18057");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/74873");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18745/");
 
-  script_category(ACT_ATTACK);
+  script_category(ACT_DESTRUCTIVE_ATTACK); # Stored XSS
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_require_ports("Services/www", 8080);
@@ -61,15 +61,8 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
-
-
-## Stored XSS (Not a safe check)
-if(safe_checks()){
-  exit(0);
-}
 
 port = get_http_port(default:8080);
 

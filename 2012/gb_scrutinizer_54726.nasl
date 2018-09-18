@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrutinizer_54726.nasl 11148 2018-08-28 14:25:49Z asteins $
+# $Id: gb_scrutinizer_54726.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # Scrutinizer Arbitrary File Upload Vulnerability
 #
@@ -34,8 +34,8 @@ if(description)
   script_cve_id("CVE-2012-2627", "CVE-2012-2626");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:C");
-  script_version("$Revision: 11148 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
+  script_version("$Revision: 11435 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-02 10:24:13 +0200 (Thu, 02 Aug 2012)");
   script_name("Scrutinizer Arbitrary File Upload Vulnerability");
   script_category(ACT_ATTACK);
@@ -51,41 +51,45 @@ if(description)
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
   script_tag(name:"summary", value:"Scrutinizer is prone to multiple vulnerabilities.
 
- 1. A vulnerability that lets attackers upload arbitrary files. The issue occurs
- because the application fails to adequately sanitize user-supplied input.
+  1. A vulnerability that lets attackers upload arbitrary files. The issue occurs
+  because the application fails to adequately sanitize user-supplied input.
 
- An attacker may leverage this issue to upload arbitrary files to the
- affected computer, this can result in arbitrary code execution within
- the context of the vulnerable application.
+  An attacker may leverage this issue to upload arbitrary files to the
+  affected computer, this can result in arbitrary code execution within
+  the context of the vulnerable application.
 
- 2. A security-bypass vulnerability.
- Successful attacks can allow an attacker to gain access to the affected application using
- the default authentication credentials.");
+  2. A security-bypass vulnerability.
+  Successful attacks can allow an attacker to gain access to the affected application using
+  the default authentication credentials.");
   script_tag(name:"affected", value:"Scrutinizer 9.5.0 is vulnerable, other versions may also be affected.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
+useragent = get_http_user_agent();
+vtstring = get_vt_string( lowercase:TRUE );
+vtstring_up = get_vt_string();
 host = http_host_name( port:port );
-file = "openvas_" + rand() + ".txt";
+file = vtstring + "_" + rand() + ".txt";
 len = 195 + strlen( file );
 
 if( dir == "/" ) dir = "";
 url = dir + "/d4d/uploader.php";
 
 req = string("POST ", url, " HTTP/1.0\r\n",
-             "Host: ", host,"\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT,"\r\n",
+             "Host: ", host, "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              "Content-Type: multipart/form-data; boundary=_Part_949_3365333252_3066945593\r\n",
              "Content-Length: ",len,"\r\n",
              "\r\n\r\n",
@@ -94,10 +98,9 @@ req = string("POST ", url, " HTTP/1.0\r\n",
              'name="uploadedfile"; filename="', file,'"',"\r\n",
              "Content-Type: application/octet-stream\r\n",
              "\r\n",
-             "OpenVAS\r\n",
+             vtstring_up, "\r\n",
              "\r\n",
              "--_Part_949_3365333252_3066945593--\r\n\r\n");
-
 result = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( '"success":1' >< result && file >< result ) {

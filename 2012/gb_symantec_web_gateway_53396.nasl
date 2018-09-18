@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_53396.nasl 11322 2018-09-11 10:15:07Z asteins $
+# $Id: gb_symantec_web_gateway_53396.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # Symantec Web Gateway 'l' Parameter Cross Site Scripting Vulnerability
 #
@@ -24,13 +24,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:symantec:web_gateway";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103484");
   script_bugtraq_id(53396);
-  script_version("$Revision: 11322 $");
+  script_version("$Revision: 11435 $");
   script_cve_id("CVE-2012-0296");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -41,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.symantec.com/business/web-gateway");
   script_xref(name:"URL", value:"https://support.symantec.com/en_US/article.SYMSA1250.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-07 14:02:06 +0200 (Mon, 07 May 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -72,9 +73,9 @@ include("host_details.inc");
 if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
-url = string(dir, "/spywall/timer.php?d=0&l=0'<script>alert(/openvas-xss-test/)</script>&profile=0");
+url = string(dir, "/spywall/timer.php?d=0&l=0'<script>alert(/xss-test/)</script>&profile=0");
 
-if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>", check_header:TRUE)) {
+if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/xss-test/\)</script>", check_header:TRUE)) {
 
   security_message(port:port);
   exit(0);

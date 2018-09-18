@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brainkeeper_enterprise_wiki_search_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_brainkeeper_enterprise_wiki_search_xss_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
 #
 # Brainkeeper Enterprise Wiki 'search.php' Cross-Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802394");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11431 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-08 12:53:59 +0530 (Wed, 08 Feb 2012)");
   script_name("Brainkeeper Enterprise Wiki 'search.php' Cross-Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/109469/brainkeeper-xss.txt");
@@ -60,19 +60,19 @@ if(description)
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 brainkPort = get_http_port(default:80);
-
 if(!can_host_php(port:brainkPort)) {
   exit(0);
 }
 
+useragent = get_http_user_agent();
 host = http_host_name(port:brainkPort);
 
 foreach dir (make_list_unique("/brainkeeper", "/brainkeeper_enterprise_wiki", cgi_dirs(port:brainkPort)))
@@ -85,7 +85,7 @@ foreach dir (make_list_unique("/brainkeeper", "/brainkeeper_enterprise_wiki", cg
   if("BrainKeeper Enterprise Wiki" >< rcvRes &&
      "BrainKeeper, Inc" >< rcvRes)
   {
-    ## Path of Vulnerable Page
+
     url = dir + '/corp/search.php';
 
     postdata = "CorpSearchQuery=%22%3Cscript%3Ealert%28" +
@@ -93,12 +93,10 @@ foreach dir (make_list_unique("/brainkeeper", "/brainkeeper_enterprise_wiki", cg
 
     brainkReq = string("POST ", url, " HTTP/1.1\r\n",
                       "Host: ", host, "\r\n",
-                      "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                      "User-Agent: ", useragent, "\r\n",
                       "Content-Type: application/x-www-form-urlencoded\r\n",
                       "Content-Length: ", strlen(postdata), "\r\n",
                       "\r\n", postdata);
-
-    ## Send post request and Receive the response
     brainkRes = http_keepalive_send_recv(port:brainkPort, data:brainkReq);
 
     if(brainkRes =~ "HTTP/1\.. 200" && "<script>alert(document.cookie)</script>" >< brainkRes)

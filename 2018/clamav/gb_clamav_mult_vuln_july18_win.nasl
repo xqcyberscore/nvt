@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_mult_vuln_july18_win.nasl 10618 2018-07-25 13:51:14Z cfischer $
+# $Id: gb_clamav_mult_vuln_july18_win.nasl 11444 2018-09-18 07:17:07Z cfischer $
 #
 # ClamAV Multiple Vulnerabilities July18 (Windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813577");
-  script_version("$Revision: 10618 $");
+  script_version("$Revision: 11444 $");
   script_cve_id("CVE-2018-0360", "CVE-2018-0361");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 15:51:14 +0200 (Wed, 25 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 09:17:07 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 13:50:22 +0530 (Tue, 17 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ClamAV Multiple Vulnerabilities July18 (Windows)");

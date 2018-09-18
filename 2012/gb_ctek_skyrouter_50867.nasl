@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ctek_skyrouter_50867.nasl 11135 2018-08-27 13:39:29Z asteins $
+# $Id: gb_ctek_skyrouter_50867.nasl 11431 2018-09-17 11:54:52Z cfischer $
 #
 # Ctek SkyRouter 4200 and 4300 Series Routers Remote Arbitrary Command Execution Vulnerability
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103479");
   script_bugtraq_id(50867);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11135 $");
+  script_version("$Revision: 11431 $");
   script_cve_id("CVE-2011-5010");
 
   script_name("Ctek SkyRouter 4200 and 4300 Series Routers Remote Arbitrary Command Execution Vulnerability");
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50867");
   script_xref(name:"URL", value:"http://www.ctekproducts.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-25 15:07:13 +0200 (Wed, 25 Apr 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -65,7 +65,6 @@ Likely none will be provided anymore. General solution options are to upgrade to
 
 include("http_func.inc");
 
-
 port = get_http_port(default:80);
 
 req = http_get(item:"/apps/a3/cfg_ethping.cgi", port:port);
@@ -73,11 +72,12 @@ res = http_send_recv(port:port, data:req);
 
 if("Ctek" >!< res && "SkyRouter" >!< res)exit(0);
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 req = string("POST /apps/a3/cfg_ethping.cgi HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: 63\r\n",
              "\r\n",
@@ -88,6 +88,5 @@ if(egrep(pattern:"uid=[0-9]+.*gid=[0-9]+.*", string:res)) {
   security_message(port:port);
   exit(0);
 }
-
 
 exit(0);

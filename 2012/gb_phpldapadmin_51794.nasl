@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpldapadmin_51794.nasl 11144 2018-08-28 11:37:19Z asteins $
+# $Id: gb_phpldapadmin_51794.nasl 11435 2018-09-17 13:44:25Z cfischer $
 #
 # phpLDAPadmin 'server_id' Parameter Cross Site Scripting Vulnerabilities
 #
@@ -26,11 +26,11 @@
 ###############################################################################
 
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103406");
   script_bugtraq_id(51794);
-  script_version("$Revision: 11144 $");
+  script_version("$Revision: 11435 $");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
 
@@ -40,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://packages.debian.org/lenny/phpldapadmin");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/521450");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 13:37:19 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-02 11:00:37 +0100 (Thu, 02 Feb 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -77,10 +77,9 @@ port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
 if(!dir = get_dir_from_kb(port:port,app:"phpldapadmin"))exit(0);
-url = string(dir, "/index.php?server_id=<script>alert('openvas-xss-test')</script>&redirect=false");
+url = string(dir, "/index.php?server_id=<script>alert('xss-test')</script>&redirect=false");
 
-if(http_vuln_check(port:port, url:url,pattern:"<script>alert\('openvas-xss-test'\)</script>",check_header:TRUE)) {
-
+if(http_vuln_check(port:port, url:url,pattern:"<script>alert\('xss-test'\)</script>",check_header:TRUE)) {
   security_message(port:port);
   exit(0);
 }

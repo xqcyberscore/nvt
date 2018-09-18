@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln03_feb15.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_java_mult_unspecified_vuln03_feb15.nasl 11445 2018-09-18 08:09:39Z mmartin $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-03 Feb 2015 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805265");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11445 $");
   script_cve_id("CVE-2015-0412", "CVE-2015-0406", "CVE-2015-0403", "CVE-2015-0400",
                 "CVE-2014-6601", "CVE-2014-6587");
   script_bugtraq_id(72136, 72154, 72148, 72159, 72132, 72168);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-02 13:08:03 +0530 (Mon, 02 Feb 2015)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-03 Feb 2015 (Windows)");
 
@@ -60,9 +60,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to gain escalated privileges, conduct a denial of service attack, bypass
-  sandbox restrictions and execute arbitrary code.
-
-  Impact Level: System/Application");
+  sandbox restrictions and execute arbitrary code.");
 
   script_tag(name:"affected", value:"Oracle Java SE 6 update 85 and prior,
   7 update 72 and prior, and 8 update 25 and prior on Windows.");

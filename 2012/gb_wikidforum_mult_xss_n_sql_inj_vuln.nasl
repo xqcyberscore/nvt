@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wikidforum_mult_xss_n_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wikidforum_mult_xss_n_sql_inj_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
 #
 # Wikidforum Multiple XSS and SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802710");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11431 $");
   script_cve_id("CVE-2012-6520", "CVE-2012-2099");
   script_bugtraq_id(52425);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-16 13:30:44 +0530 (Fri, 16 Mar 2012)");
   script_name("Wikidforum Multiple XSS and SQL Injection Vulnerabilities");
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2012/q2/75");
@@ -47,7 +47,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -67,6 +67,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
+
   exit(0);
 }
 
@@ -74,11 +75,11 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
 if(!can_host_php(port:port)){
   exit(0);
 }
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 foreach dir (make_list_unique("/", "/wiki", "/wikidforum", cgi_dirs(port:port)))
@@ -96,7 +97,7 @@ foreach dir (make_list_unique("/", "/wiki", "/wikidforum", cgi_dirs(port:port)))
                 "document.cookie%29%3C%2Fscript%3E";
     req = string("POST ", dir, "/index.php?action=search&mode=search HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
-                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                 "User-Agent: ", useragent, "\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
                  "Content-Length: ", strlen(postdata), "\r\n",
                  "\r\n", postdata);

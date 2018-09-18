@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sit_mult_sql_inj_and_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_sit_mult_sql_inj_and_xss_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
 #
 # Support Incident Tracker SiT! Multiple SQL Injection And XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802388");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11429 $");
   script_cve_id("CVE-2011-5071", "CVE-2011-5072", "CVE-2011-5073", "CVE-2011-5074",
                 "CVE-2011-5075");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-01 15:15:30 +0530 (Wed, 01 Feb 2012)");
   script_name("Support Incident Tracker SiT! Multiple SQL Injection And XSS Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46019");
@@ -67,16 +67,13 @@ include("version_func.inc");
 include("http_keepalive.inc");
 
 sitPort = get_http_port(default:80);
-if(!sitPort){
-  exit(0);
-}
 
 dir = get_dir_from_kb(port:sitPort,app:"support_incident_tracker");
 if(!dir){
   exit(0);
 }
 
-host = get_host_name();
+host = http_host_name(port:sitPort);
 
 url = dir + "/forgotpwd.php?userid=1&action=sendpwd";
 req = string("GET ", url, " HTTP/1.1\r\n",

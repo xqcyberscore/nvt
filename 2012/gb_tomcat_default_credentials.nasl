@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tomcat_default_credentials.nasl 10726 2018-08-02 07:46:22Z cfischer $
+# $Id: gb_tomcat_default_credentials.nasl 11431 2018-09-17 11:54:52Z cfischer $
 #
 # Apache Tomcat Manager Remote Unauthorized Access Vulnerability
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103550");
-  script_version("$Revision: 10726 $");
+  script_version("$Revision: 11431 $");
   script_name("Apache Tomcat Manager Remote Unauthorized Access Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 09:46:22 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-22 17:19:15 +0200 (Wed, 22 Aug 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -98,6 +98,7 @@ if( isnull ( authRequireUrls ) ) exit( 0 );
 # Sort to not report changes on delta reports if just the order is different
 authRequireUrls = sort( authRequireUrls );
 
+useragent = get_http_user_agent();
 host = http_host_name( port:port );
 
 foreach url( authRequireUrls ) {
@@ -114,9 +115,9 @@ foreach url( authRequireUrls ) {
     userpass = string( user, ":", pass );
     userpass64 = base64( str:userpass );
 
-    req = string( "GET ", url," HTTP/1.1\r\n",
+    req = string( "GET ", url, " HTTP/1.1\r\n",
                   "Host: ", host, "\r\n",
-                  "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                  "User-Agent: ", useragent, "\r\n",
                   "Authorization: Basic ", userpass64, "\r\n",
                   "\r\n" );
     res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );

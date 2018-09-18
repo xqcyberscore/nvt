@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_count_per_day_plugin_stored_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wordpress_count_per_day_plugin_stored_xss_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
 #
 # WordPress Count per Day Plugin 'note' Parameter Persistent XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803009");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11431 $");
   script_bugtraq_id(55231);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-28 12:46:18 +0530 (Tue, 28 Aug 2012)");
   script_name("WordPress Count per Day Plugin 'note' Parameter Persistent XSS Vulnerability");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/20862/");
@@ -58,7 +58,9 @@ in a user's browser session in the context of an affected site.");
 For updates refer to http://wordpress.org/extend/plugins/count-per-day");
   script_tag(name:"summary", value:"This host is running WordPress with Count per Day plugin and is
 prone to cross site scripting vulnerability.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -75,6 +77,7 @@ if(!dir = get_app_location(cpe:CPE, port:port)){
   exit(0);
 }
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 url = dir + '/wp-content/plugins/count-per-day/notes.php';
@@ -87,7 +90,7 @@ if(http_vuln_check(port:port, url:url, check_header:TRUE,
 
   cdReq = string("POST ", url, " HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
-                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                 "User-Agent: ", useragent, "\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
                  "Content-Length: ", strlen(postdata), "\r\n",
                  "\r\n", postdata);
