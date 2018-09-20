@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3033929.nasl 6513 2017-07-04 09:59:28Z teissa $
+# $Id: gb_microsoft_security_advisory_3033929.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # MS Windows SHA-2 Code Signing Support Vulnerability (3033929)
 #
@@ -27,45 +27,43 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805354");
-  script_version("$Revision: 6513 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-0073", "CVE-2015-0075");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-20 17:53:39 +0530 (Fri, 20 Mar 2015)");
   script_name("MS Windows SHA-2 Code Signing Support Vulnerability (3033929)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Advisory 3033929.");
 
-  script_tag(name: "vuldetect" , value: "Get the vulnerable file version and
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value: "The flaw is due to an error within the
+  script_tag(name:"insight", value:"The flaw is due to an error within the
   WebDAV kernel-mode driver (Winload.exe).");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote
-  attackers to bypass security and gain restricted privileges
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to bypass security and gain restricted privileges.");
 
-  Impact Level: System");
-
-  script_tag(name: "affected" , value:"
-  Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+  script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
 
-  script_tag(name: "solution" , value: "Run Windows Update and update the
+  script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
   https://technet.microsoft.com/library/security/3033929");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/294871");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/3033929");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/294871");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/3033929");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -76,16 +74,10 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win7:2, win7x64:2,win2008r2:2) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
@@ -98,13 +90,11 @@ if(!dllVer){
   exit(0);
 }
 
-## Windows 7 and Windows Server 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Winload.exe version
   if(version_is_less(version:dllVer, test_version:"6.1.7601.18649") ||
      version_in_range(version:dllVer, test_version:"6.1.7601.22000", test_version2:"6.1.7601.22853")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }

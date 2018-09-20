@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_buffer_overflow_vuln_jan15.nasl 10456 2018-07-09 06:10:17Z cfischer $
+# $Id: gb_php_mult_buffer_overflow_vuln_jan15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # PHP Multiple Buffer Overflow Vulnerabilities - Jan15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805410");
-  script_version("$Revision: 10456 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-8626");
   script_bugtraq_id(70928);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-06 17:55:40 +0530 (Tue, 06 Jan 2015)");
   script_name("PHP Multiple Buffer Overflow Vulnerabilities - Jan15");
 
@@ -52,9 +52,7 @@ if(description)
     encoding.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause a denial of service or possibly execute arbitrary code.
-
-  Impact Level: Application");
+  attackers to cause a denial of service or possibly execute arbitrary code.");
 
   script_tag(name:"affected", value:"PHP versions 5.2.x before 5.2.7");
 

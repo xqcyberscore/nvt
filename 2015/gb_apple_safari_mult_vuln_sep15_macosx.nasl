@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_sep15_macosx.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_apple_safari_mult_vuln_sep15_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Apple Safari Multiple Vulnerabilities-01 Sep15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805968");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-3729", "CVE-2015-3730", "CVE-2015-3731", "CVE-2015-3732",
                 "CVE-2015-3733", "CVE-2015-3734", "CVE-2015-3735", "CVE-2015-3736",
                 "CVE-2015-3737", "CVE-2015-3738", "CVE-2015-3739", "CVE-2015-3740",
@@ -40,7 +40,7 @@ if(description)
   script_bugtraq_id(76342, 76338, 76341, 76339, 76344);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-01 11:47:05 +0530 (Tue, 01 Sep 2015)");
   script_name("Apple Safari Multiple Vulnerabilities-01 Sep15 (Mac OS X)");
 
@@ -82,9 +82,7 @@ if(description)
   or arbitrary code execution, trigger plaintext requests to an origin under HTTP
   Strict Transport Security, load image out of accordance with Content Security
   Policy directive, gain access to sensitive information, exfiltrate image data
-  cross-origin and reveal private browsing history.
-
-  Impact Level: System/Application");
+  cross-origin and reveal private browsing history.");
 
   script_tag(name:"affected", value:"Apple Safari versions before 6.2.8, 7.x
   before 7.1.8, and 8.x before 8.0.8");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_revive_adserver_mult_vuln_oct15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_revive_adserver_mult_vuln_oct15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Revive Adserver Multiple Vulnerabilities Oct15
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:revive:adserver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806508");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-7364", "CVE-2015-7365", "CVE-2015-7366", "CVE-2015-7367",
                 "CVE-2015-7368", "CVE-2015-7369", "CVE-2015-7370", "CVE-2015-7371",
                 "CVE-2015-7372", "CVE-2015-7373");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-20 15:41:06 +0530 (Tue, 20 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Revive Adserver Multiple Vulnerabilities Oct15");
@@ -46,20 +46,28 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to:
+
   - Some plugin actions (e.g. enabling, disabling) could be performed via GET
     without any CSRF protection mechanism.
+
   - 'account-user-*.php' scripts not checking the CSRF token sent via POST
     request.
+
   - Insufficient restriction on accessing cached copies of pages visited in
     Revive Adserver's admin UI.
+
   - Default Flash cross-domain policy (crossdomain.xml) does not restrict
     access cross domain access
+
   - Insufficient sanitization of user-supplied input via 'id' and 'data-file'
     parameters in 'open-flash-chart.swf' script.
+
   - 'run-mpe.php' script used by the admin UI lacks proper authentication and
     access control.
+
   - Insufficient sanitization of user-supplied input via 'layerstyle' parameter
     in 'al.php' script.
+
   - 'magic-macros' feature in Revive Adserver does not sanitize user supplied
     input via different GET parameters.");
 
@@ -69,9 +77,7 @@ if(description)
   corrupt information, to conduct cross domain attacks, to cause a denial of
   service, include and execute arbitrary local files and to perform some
   unspecified actions and allow local attackers to obtain sensitive
-  information.
-
-  Impact Level: Application");
+  information.");
 
   script_tag(name:"affected", value:"Revive Adserver versions before 3.2.2");
 

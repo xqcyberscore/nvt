@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuuo_nvr_mult_vuln.nasl 11439 2018-09-18 03:16:57Z ckuersteiner $
+# $Id: gb_nuuo_nvr_mult_vuln.nasl 11478 2018-09-19 15:33:19Z cfischer $
 #
 # NUUO NVR < 3.9.1 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:nuuo:nuuo";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141484");
-  script_version("$Revision: 11439 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 05:16:57 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 11478 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 17:33:19 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-18 08:45:02 +0700 (Tue, 18 Sep 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,7 @@ if (description)
 
   script_tag(name:"insight", value:"NUUO Network Video Recorder (NVR) is prone to multiple vulnerabilities:
 
-  - Unauthenticated Stack Buffer Overflow (CVE-2018-1149)
+  - Unauthenticated Stack Buffer Overflow (CVE-2018-1149) dubbed 'Peekaboo'
 
   - Backdoor functionality (CVE-2018-1150)");
 

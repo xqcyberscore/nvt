@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_knot_dns_tsig_auth_vuln.nasl 6764 2017-07-20 05:30:52Z cfischer $
+# $Id: gb_knot_dns_tsig_auth_vuln.nasl 11474 2018-09-19 11:38:50Z mmartin $
 #
-# KNOT DNS Server Security Bypass Vulnerability 
+# KNOT DNS Server Security Bypass Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,17 +30,17 @@ CPE = "cpe:/a:knot:dns";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106938");
-  script_version("$Revision: 6764 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-20 07:30:52 +0200 (Thu, 20 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-11 11:31:58 +0700 (Tue, 11 Jul 2017)");
+  script_version("$Revision: 11474 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-11 11:31:58 +0700 (Tue, 11 Jul 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-11104");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("KNOT DNS Server Security Bypass Vulnerability");
 
@@ -51,17 +51,17 @@ if (description)
   script_dependencies("gb_knot_dns_version_detect.nasl");
   script_mandatory_keys("KnotDNS/installed");
 
-  script_tag(name: "summary", value: "A flaw was found in the way KNOT handled TSIG authentication for dynamic
+  script_tag(name:"summary", value:"A flaw was found in the way KNOT handled TSIG authentication for dynamic
 updates. A remote attacker able to communicate with an authoritative KNOT server could use this flaw to
 manipulate the contents of a zone, by forging a valid TSIG or SIG(0) signature for a dynamic update request.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "KNOT DNS Server prior to version 2.4.5 and 2.5.2.");
+  script_tag(name:"affected", value:"KNOT DNS Server prior to version 2.4.5 and 2.5.2.");
 
-  script_tag(name: "solution", value: "Update to version 2.4.5, 2.5.2 or later.");
+  script_tag(name:"solution", value:"Update to version 2.4.5, 2.5.2 or later.");
 
-  script_xref(name: "URL", value: "https://lists.nic.cz/pipermail/knot-dns-users/2017-June/001144.html");
+  script_xref(name:"URL", value:"https://lists.nic.cz/pipermail/knot-dns-users/2017-June/001144.html");
 
   exit(0);
 }

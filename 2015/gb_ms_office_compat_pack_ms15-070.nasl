@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_compat_pack_ms15-070.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_ms_office_compat_pack_ms15-070.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Office Compatibility Pack Multiple Vulnerabilities (3072620)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805813");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-2376", "CVE-2015-2377", "CVE-2015-2415", "CVE-2015-2378");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 12:01:38 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Compatibility Pack Multiple Vulnerabilities (3072620)");
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to run arbitrary code and corrupt memory in the context of the
-  current user.
-
-  Impact Level: System/Application");
+  current user.");
 
   script_tag(name:"affected", value:"Microsoft Office Compatibility Pack Service Pack 3 and prior.");
 

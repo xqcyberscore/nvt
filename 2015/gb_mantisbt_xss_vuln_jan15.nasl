@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln_jan15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mantisbt_xss_vuln_jan15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # MantisBT 'adm_config_report.php' Cross-Site Scripting Vulnerability - January15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805236");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-8986");
   script_bugtraq_id(71197);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-08 18:58:08 +0530 (Thu, 08 Jan 2015)");
   script_name("MantisBT 'adm_config_report.php' Cross-Site Scripting Vulnerability - January15");
 
@@ -50,9 +50,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to execute arbitrary script code in a user's browser
   session within the trust relationship between their browser and the
-  server.
-
-  Impact Level: Application");
+  server.");
 
   script_tag(name:"affected", value:"MantisBT version 1.2.13 through 1.2.17");
 

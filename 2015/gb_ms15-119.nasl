@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-119.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_ms15-119.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # MS Windows Winsock Elevation of Privilege Vulnerability (3104521)
 #
@@ -27,30 +27,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805774");
-  script_version("$Revision: 6415 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-2478");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 08:52:04 +0530 (Wed, 11 Nov 2015)");
   script_name("MS Windows Winsock Elevation of Privilege Vulnerability (3104521)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-119.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"Flaw is due to a double-free error in the
+  script_tag(name:"insight", value:"Flaw is due to a double-free error in the
   Ancillary Function Driver within 'afd.sys'.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
-  to gain elevated privileges of an affected system.
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
+  to gain elevated privileges of an affected system.");
 
-  Impact Level: System");
-
-  script_tag(name: "affected" , value:"
-  Microsoft Windows 8 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows 8.1 x32/x64
   Microsoft Windows Server 2012
   Microsoft Windows Server 2012 R2
@@ -61,7 +58,7 @@ if(description)
   Microsoft Windows 7 x32/x64 Service Pack 1 and prior
   Microsoft Windows Server 2008 R2 x64 Service Pack 1 and prior");
 
-  script_tag(name: "solution" , value:"Run Windows Update and update the listed
+  script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
   below link,
   https://technet.microsoft.com/library/security/ms15-119");
@@ -70,12 +67,13 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3092601");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms15-119");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3092601");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms15-119");
   script_category(ACT_GATHER_INFO);
   script_family("Windows : Microsoft Bulletins");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -86,34 +84,25 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-##Variable Initialization
-sysPath = "";
-afdSysVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3,  win2008r2:2,
                    win8:1, win8x64:1, win2012:1,  win8_1:1, win8_1x64:1,
                    win2012R2:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath){
   exit(0);
 }
 
-## Get Version
 afdSysVer = fetch_file_version(sysPath, file_name:"system32\Drivers\afd.sys");
 if(!afdSysVer){
   exit(0);
 }
 
-## Windows Vista and Windows Server 2008
 ## Currently not supporting for Vista and Windows Server 2008 64 bit
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Afd.sys version
   if(version_is_less(version:afdSysVer, test_version:"6.0.6002.19513"))
   {
     Vulnerable_range = "Less than 6.0.6002.19513";
@@ -126,10 +115,8 @@ if(hotfix_check_sp(winVista:3, win2008:3) > 0)
   }
 }
 
-## Windows 7 and Windows 2008 R2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Afd.sys version
   if(version_is_less(version:afdSysVer, test_version:"6.1.7601.19031"))
   {
     Vulnerable_range = "less than 6.1.7601.19031";
@@ -145,7 +132,6 @@ else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 ## Win 8 and 2012
 else if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 {
-  ## Check for Afd.sys version
   if(version_is_less(version:afdSysVer, test_version:"6.2.9200.17540"))
   {
     Vulnerable_range = "Less than  6.2.9200.17540";
@@ -161,7 +147,6 @@ else if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 ## Win 8.1 and win2012R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Afd.sys version
   if(version_is_less(version:afdSysVer, test_version:"6.3.9600.18089"))
   {
     Vulnerable_range = "Less than 6.3.9600.18089";
@@ -169,19 +154,14 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
   }
 }
 
-## Windows 10
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Check for Afd.sys version
-  ## Windows 10 Core
   if(version_is_less(version:afdSysVer, test_version:"10.0.10240.16590"))
   {
     Vulnerable_range = "Less than 10.0.10240.16590";
     VULN = TRUE ;
   }
 
-  ## Check for Afd.sys version
-  ## Windows 10 version 1511
   else if(version_in_range(version:afdSysVer, test_version:"10.0.10586.0", test_version2:"10.0.10586.2"))
   {
     Vulnerable_range = "10.0.10586.0 - 10.0.10586.2";

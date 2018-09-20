@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_7zip_udf_code_execution_vuln_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_7zip_udf_code_execution_vuln_win.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # 7Zip UDF CInArchive::ReadFileItem Code Execution Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:7-zip:7-zip";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808160");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11493 $");
   script_cve_id("CVE-2016-2335");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-13 16:27:54 +0530 (Mon, 13 Jun 2016)");
   script_name("7Zip UDF CInArchive::ReadFileItem Code Execution Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
   read error in the 'CInArchive::ReadFileItem method' functionality.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause a denial of service or code execution.
-
-  Impact Level: Application");
+  attackers to cause a denial of service or code execution.");
 
   script_tag(name:"affected", value:"7Zip version 9.20 and 15.05 beta.");
 
@@ -59,8 +57,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://www.talosintel.com/reports/TALOS-2016-0094/");
-  script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-updates/2016-06/msg00004.html");
+  script_xref(name:"URL", value:"http://www.talosintel.com/reports/TALOS-2016-0094/");
+  script_xref(name:"URL", value:"http://lists.opensuse.org/opensuse-updates/2016-06/msg00004.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

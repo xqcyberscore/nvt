@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vdg_security_sense_mult_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
+# $Id: gb_vdg_security_sense_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # VDG Security Sense Multiple Security Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805033");
-  script_version("$Revision: 11188 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-9451", "CVE-2014-9452");
   script_bugtraq_id(71736);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-06 15:11:26 +0530 (Tue, 06 Jan 2015)");
   script_name("VDG Security Sense Multiple Security Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -75,9 +75,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow
   attacker to read arbitrary files, bypass authentication mechanisms and cause
   a stack-based buffer overflow, resulting in a denial of service or potentially
-  allowing the execution of arbitrary code.
-
-  Impact Level: System/Application");
+  allowing the execution of arbitrary code.");
 
   script_tag(name:"affected", value:"VDG Security SENSE (formerly DIVA) 2.3.13");
 

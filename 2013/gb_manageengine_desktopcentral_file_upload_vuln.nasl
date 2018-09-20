@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_desktopcentral_file_upload_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_manageengine_desktopcentral_file_upload_vuln.nasl 11497 2018-09-20 10:31:54Z mmartin $
 #
 # ManageEngine Desktop Central Arbitrary File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803777");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11497 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-20 12:28:14 +0530 (Wed, 20 Nov 2013)");
   script_name("ManageEngine Desktop Central Arbitrary File Upload Vulnerability");
   script_category(ACT_ATTACK);
@@ -67,6 +67,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
@@ -74,10 +75,11 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 if( dir == "/" ) dir = "";
 
 host = http_host_name( port:port );
+vtstring = get_vt_string( lowercase:TRUE );
 
-postdata = "This file is uploaded by OpenVAS scanner for vulnerability testing";
+postdata = "This file is uploaded by a " + vtstring + " for vulnerability testing";
 
-file = 'openvas_' + rand() + '.jsp';
+file = vtstring + '_' + rand() + '.jsp';
 
 url = dir + "/agentLogUploader?computerName=DesktopCentral&domainName=webapps&custom" +
             "erId=1&filename=" + file;
@@ -90,7 +92,7 @@ sndReq = string( "POST ", url, " HTTP/1.1\r\n",
 ## Send post request and Receive the response
 rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
-if( rcvRes && rcvRes =~ "HTTP/1\.[0-9]+ 200" && "X-dc-header: yes" >< rcvRes ) {
+if( rcvRes && rcvRes =~ "^HTTP/1\.[01] 200" && "X-dc-header: yes" >< rcvRes ) {
   report  = 'It was possible to upload the file "' + dir + '/' + file + '". Please delete this file.';
   report += '\n' + report_vuln_url( url:url, port:port );
   security_message( port:port, data:report );

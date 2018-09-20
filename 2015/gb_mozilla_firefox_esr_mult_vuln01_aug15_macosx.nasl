@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_aug15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_aug15_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities - Aug15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806023");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-4473", "CVE-2015-4475", "CVE-2015-4478", "CVE-2015-4479",
                 "CVE-2015-4480", "CVE-2015-4482", "CVE-2015-4484", "CVE-2015-4485",
                 "CVE-2015-4486", "CVE-2015-4487", "CVE-2015-4488", "CVE-2015-4489",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(76294, 76297);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-19 11:54:33 +0530 (Wed, 19 Aug 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities - Aug15 (Mac OS X)");
 
@@ -47,30 +47,41 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - The 'mozilla::AudioSink' function in Mozilla Firefox mishandles inconsistent
     sample formats within MP3 audio data.
+
   - Not imposing certain ECMAScript 6 requirements on JavaScript object
     properties.
+
   - Multiple integer overflows in libstagefright.
+
   - Vulnerability in 'mar_read.c' script in the Updater.
+
   - Vulnerability in 'js::jit::AssemblerX86Shared::lock_addl' function in the
     JavaScript implementation.
+
   - Heap-based buffer overflow in the 'resize_context_buffers' function in
     libvpx.
+
   - Vulnerability in decrease_ref_count function in libvpx.
+
   - Overflow vulnerability in 'nsTSubstring::ReplacePrep' function.
+
   - Use-after-free vulnerability in the 'StyleAnimationValue' class.
+
   - Vulnerability in 'nsTArray_Impl' class in Mozilla Firefox.
+
   - Use-after-free vulnerability in the 'XMLHttpRequest::Open' implementation.
+
   - Heap-based buffer overflow in the 'stagefright::ESDS::parseESDescriptor'
     function in libstagefright.
+
   - Multiple unspecified vulnerabilities.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
   and remote attackers to cause a denial of service or possibly execute arbitrary
-  code, gain privileges and some unspecified impacts.
-
-  Impact Level: System/Application");
+  code, gain privileges and some unspecified impacts.");
 
   script_tag(name:"affected", value:"Mozilla Firefox ESR version 38.x before
   38.2 on Mac OS X");

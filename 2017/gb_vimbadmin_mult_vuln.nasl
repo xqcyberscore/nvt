@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vimbadmin_mult_vuln.nasl 10198 2018-06-14 11:26:36Z asteins $
+# $Id: gb_vimbadmin_mult_vuln.nasl 11472 2018-09-19 11:20:06Z mmartin $
 #
 # ViMbAdmin Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:vimbadmin:vimbadmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106872");
-  script_version("$Revision: 10198 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-14 13:26:36 +0200 (Thu, 14 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2017-06-14 11:20:52 +0700 (Wed, 14 Jun 2017)");
-  script_tag(name: "cvss_base", value: "6.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11472 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-14 11:20:52 +0700 (Wed, 14 Jun 2017)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-5870", "CVE-2017-6086");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("ViMbAdmin Multiple Vulnerabilities");
 
@@ -51,23 +51,23 @@ if (description)
   script_dependencies("gb_vimbadmin_detect.nasl");
   script_mandatory_keys("vimbadmin/installed");
 
-  script_tag(name: "summary", value: "ViMbAdmin is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"ViMbAdmin is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "ViMbAdmin is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"ViMbAdmin is prone to multiple vulnerabilities:
 
-- Multiple XSS vulnerabilities (CVE-2017-5870)
+  - Multiple XSS vulnerabilities (CVE-2017-5870)
 
-- Multiple CSRF vulnerabilities (CVE-2017-6086)");
+  - Multiple CSRF vulnerabilities (CVE-2017-6086)");
 
-  script_tag(name: "affected", value: "ViMbAdmin version 3.0.15 and prior.");
+  script_tag(name:"affected", value:"ViMbAdmin version 3.0.15 and prior.");
 
-  script_tag(name: "solution", value: "No known solution was made available for at least one year since the disclosure of this vulnerability.
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
   Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name: "URL", value: "https://sysdream.com/news/lab/2017-05-03-cve-2017-5870-multiple-xss-vulnerabilities-in-vimbadmin/");
-  script_xref(name: "URL", value: "https://sysdream.com/news/lab/2017-05-03-cve-2017-6086-multiple-csrf-vulnerabilities-in-vimbadmin-version-3-0-15/");
+  script_xref(name:"URL", value:"https://sysdream.com/news/lab/2017-05-03-cve-2017-5870-multiple-xss-vulnerabilities-in-vimbadmin/");
+  script_xref(name:"URL", value:"https://sysdream.com/news/lab/2017-05-03-cve-2017-6086-multiple-csrf-vulnerabilities-in-vimbadmin-version-3-0-15/");
 
   exit(0);
 }

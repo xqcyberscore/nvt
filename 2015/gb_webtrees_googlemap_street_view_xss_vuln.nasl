@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webtrees_googlemap_street_view_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_webtrees_googlemap_street_view_xss_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Webtrees wt_v3_street_view.php Cross-site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805140");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11492 $");
   script_cve_id("CVE-2014-100006");
   script_bugtraq_id(65517);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-18 15:28:52 +0530 (Wed, 18 Feb 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Webtrees wt_v3_street_view.php Cross-site Scripting Vulnerability");
@@ -48,9 +48,7 @@ if(description)
   before returning it to users.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to execute arbitrary HTML and script code in the context of an affected site.
-
-  Impact Level: Application");
+  to execute arbitrary HTML and script code in the context of an affected site.");
 
   script_tag(name:"affected", value:"webtrees version before 1.5.2");
 
@@ -99,10 +97,11 @@ foreach dir (make_list_unique("/", "/webtrees", cgi_dirs(port:http_port)))
   }
 
   ## Send the request with session id to confirm App
+  useragent = get_http_user_agent();
   url = dir + "/login.php?url=index.php%3F";
   sndReq = string('GET ', url,' HTTP/1.1\r\n',
                   'Host: ', host,'\r\n',
-                  'User-Agent: ', OPENVAS_HTTP_USER_AGENT, '\r\n',
+                  'User-Agent: ', useragent, 'r\n',
                   'Cookie: WT_SESSION=', cookie[1], '\r\n\r\n');
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 

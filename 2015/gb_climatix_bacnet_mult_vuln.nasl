@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_climatix_bacnet_mult_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_climatix_bacnet_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Climatix BACnet/IP Communication Module Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805713");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-4174");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-03 16:04:22 +0530 (Fri, 03 Jul 2015)");
   script_name("Climatix BACnet/IP Communication Module Multiple Vulnerabilities");
 
@@ -49,9 +49,7 @@ if(description)
   - The application allow unrestricted upload of files");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to execute arbitrary HTML and script code in the context of an affected site.
-
-  Impact Level: Application");
+  to execute arbitrary HTML and script code in the context of an affected site.");
 
   script_tag(name:"affected", value:"Climatix BACnet/IP communication module
   before v10.34.");

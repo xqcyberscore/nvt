@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln01_july15_lin.nasl 9064 2018-03-09 09:14:44Z cfischer $
+# $Id: gb_java_mult_unspecified_vuln01_july15_lin.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-01 July 2015 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108395");
-  script_version("$Revision: 9064 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-4760", "CVE-2015-4749", "CVE-2015-4748", "CVE-2015-4733",
                 "CVE-2015-4732", "CVE-2015-4731", "CVE-2015-2664", "CVE-2015-2638",
                 "CVE-2015-2637", "CVE-2015-2621", "CVE-2015-2625", "CVE-2015-2627",
@@ -38,28 +38,25 @@ if(description)
                     75874, 75895, 75893, 75796, 75861, 75867, 75818);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-09 10:14:44 +0100 (Fri, 09 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-20 17:10:19 +0530 (Mon, 20 Jul 2015)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-01 July 2015 (Linux)");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
+  script_tag(name:"summary", value:"The host is installed with Oracle Java SE
   JRE and is prone to multiple unspecified vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple errors exist due to unspecified
+  script_tag(name:"insight", value:"Multiple errors exist due to unspecified
   flaws related to multiple unspecified vectors.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
-  to have an impact on confidentiality, integrity, and availability.
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
+  to have an impact on confidentiality, integrity, and availability.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Oracle Java SE 6 update 95, 7 update 80,
+  script_tag(name:"affected", value:"Oracle Java SE 6 update 95, 7 update 80,
   8 update 45 on Linux.");
 
-  script_tag(name: "solution" , value:"Apply the patch from below link,
+  script_tag(name:"solution", value:"Apply the patch from below link,
 
   http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html");
 
@@ -67,7 +64,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_burning_board_46501.nasl 10795 2018-08-06 14:09:55Z cfischer $
+# $Id: gb_burning_board_46501.nasl 11449 2018-09-18 10:04:42Z mmartin $
 #
 # Woltlab Burning Board 'hilfsmittel.php' SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:woltlab:burning_board";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103089");
-  script_version("$Revision: 10795 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 16:09:55 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 11449 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-02-23 13:14:43 +0100 (Wed, 23 Feb 2011)");
   script_bugtraq_id(46501);
   script_tag(name:"cvss_base", value:"7.5");
@@ -73,8 +73,8 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
-url = dir + "/hilfsmittel.php?action=read&katid=5%27/**/UNION/**/SELECT/**/1,2,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,4,5,6,7,8,9,10/**/FROM/**/bb1_users/*";
-if( http_vuln_check( port:port, url:url, pattern:"OpenVAS-SQL-Injection-Test" ) ) {
+url = dir + "/hilfsmittel.php?action=read&katid=5%27/**/UNION/**/SELECT/**/1,2,0x53514c2d496e6a656374696f6e2d54657374,4,5,6,7,8,9,10/**/FROM/**/bb1_users/*";
+if( http_vuln_check( port:port, url:url, pattern:"SQL-Injection-Test" ) ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );

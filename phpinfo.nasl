@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpinfo.nasl 10552 2018-07-20 10:33:43Z cfischer $
+# $Id: phpinfo.nasl 11457 2018-09-18 12:24:49Z cfischer $
 #
 # phpinfo() output accessible
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11229");
-  script_version("$Revision: 10552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 12:33:43 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 11457 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 14:24:49 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -79,6 +79,8 @@ port = get_http_port( default:80 );
 # nb: Don't use can_host_php() here as this NVT is reporting PHP as well
 # and can_host_php() could fail if no PHP was detected before
 
+host = http_host_name( dont_add_port:TRUE );
+
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
@@ -92,7 +94,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
     if( "<title>phpinfo()</title>" >< res ) {
       vuln = TRUE;
       report += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE );
-      set_kb_item( name:"phpinfo/" + port + "/found", value:url );
+      set_kb_item( name:"php/phpinfo/" + host + "/" + port + "/detected_urls", value:url );
       if( ! phpversion ) {
         phpversion = get_php_version( data:res );
       }
@@ -101,7 +103,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 }
 
 if( ! isnull( phpversion ) )
-  set_kb_item( name:'php/phpinfo/phpversion/' + port, value:phpversion );
+  set_kb_item( name:"php/phpinfo/" + host + "/" + port + "/detected_versions", value:phpversion );
 
 if( vuln ) {
   security_message( port:port, data:report );

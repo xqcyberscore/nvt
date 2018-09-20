@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol21485342.nasl 5104 2017-01-25 12:03:53Z antu123 $
+# $Id: gb_f5_big_ip_sol21485342.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # F5 BIG-IP - SOL21485342 - Configuration utility CSRF vulnerability
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140053");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5104 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140053");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11493 $");
 
- script_name("F5 BIG-IP - SOL21485342 - Configuration utility CSRF vulnerability");
+  script_name("F5 BIG-IP - SOL21485342 - Configuration utility CSRF vulnerability");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/21/sol21485342.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/21/sol21485342.html");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary", value:"When an authenticated Configuration utility user visits a specially crafted web page, the user's current session can be logged out and unknowingly logged in to the Configuration utility using a different user account.");
- script_tag(name: "impact", value:"When exploited, the authenticated Configuration utility user's login session is replaced by another user account without the targeted user's knowledge. To exploit this cross-site request forgery (CSRF) vulnerability, an attacker must already know the login credentials of a legitimate Configuration utility user account.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"When an authenticated Configuration utility user visits a specially crafted web page, the user's current session can be logged out and unknowingly logged in to the Configuration utility using a different user account.");
+  script_tag(name:"impact", value:"When exploited, the authenticated Configuration utility user's login session is replaced by another user account without the targeted user's knowledge. To exploit this cross-site request forgery (CSRF) vulnerability, an attacker must already know the login credentials of a legitimate Configuration utility user account.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-25 13:03:53 +0100 (Wed, 25 Jan 2017) $");
- script_tag(name:"creation_date", value:"2016-11-09 15:02:57 +0100 (Wed, 09 Nov 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-09 15:02:57 +0100 (Wed, 09 Nov 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

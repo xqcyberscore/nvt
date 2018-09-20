@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_export_rsa_freak_attack.nasl 4781 2016-12-16 09:12:08Z cfi $
+# $Id: gb_openssl_export_rsa_freak_attack.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # SSL/TLS: RSA Temporary Key Handling 'RSA_EXPORT' Downgrade Issue (FREAK)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805142");
-  script_version("$Revision: 4781 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-0204");
   script_bugtraq_id(71936);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-16 10:12:08 +0100 (Fri, 16 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 16:42:13 +0530 (Fri, 06 Mar 2015)");
   script_name("SSL/TLS: RSA Temporary Key Handling 'RSA_EXPORT' Downgrade Issue (FREAK)");
   script_category(ACT_GATHER_INFO);
@@ -57,9 +57,7 @@ if(description)
   attacker to downgrade the security of a session to use 'RSA_EXPORT' cipher suites,
   which are significantly weaker than non-export cipher suites. This may allow a
   man-in-the-middle attacker to more easily break the encryption and monitor
-  or tamper with the encrypted stream.
-
-  Impact Level: Application");
+  or tamper with the encrypted stream.");
 
   script_tag(name:"affected", value:"- Hosts accepting 'RSA_EXPORT' cipher suites
 

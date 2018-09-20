@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-027.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_ms16-027.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Microsoft Windows Media Remote Code Execution Vulnerabilities (3143146)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806897");
-  script_version("$Revision: 5527 $");
+  script_version("$Revision: 11493 $");
   script_cve_id("CVE-2016-0098", "CVE-2016-0101");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-03-09 09:44:08 +0530 (Wed, 09 Mar 2016)");
   script_name("Microsoft Windows Media Remote Code Execution Vulnerabilities (3143146)");
 
@@ -45,12 +45,9 @@ if(description)
   handling of resources in the media library.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow  an
-  remote attacker to take control of an affected system remotely.
+  remote attacker to take control of an affected system remotely.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8.1 x32/x64 Edition
+  script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
   Microsoft Windows Server 2012/2012R2
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.
@@ -65,14 +62,15 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3138962");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3138910");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-027");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3138962");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3138910");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-027");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -83,24 +81,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-sysVer1 = "";
-sysVer2 = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2,
                    win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of vulnerable files
 sysVer1 = fetch_file_version(sysPath, file_name:"System32\Wmp.dll");
 sysVer2 = fetch_file_version(sysPath, file_name:"System32\Mfds.dll");
 
@@ -108,12 +98,10 @@ if(!sysVer1 && !sysVer2){
   exit(0);
 }
 
-## Windows 7 and Windows Server 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
   if(sysVer1)
   {
-    ## Check for wmp.dll version
     if(version_is_less(version:sysVer1, test_version:"12.0.7601.19148"))
     {
       Vulnerable_range1 = "Less than 12.0.7601.19148";
@@ -128,12 +116,11 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 
   if(sysVer2)
   {
-    ## Check for Mfds.dll version
     if(version_is_less(version:sysVer2, test_version:"12.0.7601.19145"))
     {
       Vulnerable_range2 = "Less than 12.0.7601.19145";
       VULN2 = TRUE;
-    }     
+    }
     else if(version_in_range(version:sysVer2, test_version:"12.0.7601.23000", test_version2:"12.0.7601.23345"))
     {
       Vulnerable_range2 = "12.0.7601.23000 - 12.0.7601.23345";
@@ -142,17 +129,14 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
   }
 }
 
-## Windows 8.1 and Server 2012 R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for wmp.dll version
   if(sysVer1 && version_is_less(version:sysVer1, test_version:"12.0.9600.18229"))
   {
     Vulnerable_range1 = "Less than 12.0.9600.18229";
     VULN1 = TRUE;
   }
 
-  ## Check for Mfds.dll version
   if(sysVer2 && version_is_less(version:sysVer2, test_version:"12.0.9600.18228"))
   {
     Vulnerable_range2 = "Less than 12.0.9600.18228";
@@ -160,12 +144,10 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
   }
 }
 
-## Windows 2012
 else if(hotfix_check_sp(win2012:1) > 0)
 {
   if(sysVer1)
   {
-    ## Check for wmp.dll version
     if(version_is_less(version:sysVer1, test_version:"12.0.9200.17648"))
     {
       Vulnerable_range1 = "Less than 12.0.9200.17648";
@@ -179,7 +161,6 @@ else if(hotfix_check_sp(win2012:1) > 0)
   }
   if(sysVer2)
   {
-    ## Check for Mfds.dll version
     if(version_is_less(version:sysVer2, test_version:"12.0.9200.17647"))
     {
       Vulnerable_range2 = "Less than 12.0.9200.17647";
@@ -193,17 +174,13 @@ else if(hotfix_check_sp(win2012:1) > 0)
   }
 }
 
-## Windows 10
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && sysVer1)
 {
-  ## Check for Wmp.dll version
   if(version_is_less(version:sysVer1, test_version:"12.0.10240.16724"))
   {
     Vulnerable_range1 = "Less than 12.0.10240.16724";
     VULN1 = TRUE ;
   }
-  ## Windows 10 version 1511
-  ## Check for Wmp.dll version
   else if(version_in_range(version:sysVer1, test_version:"12.0.10586.0", test_version2:"12.0.10586.161"))
   {
     Vulnerable_range1 = "12.0.10586.0 - 12.0.10586.161";

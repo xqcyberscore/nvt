@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_GDL_44786.nasl 8250 2017-12-27 07:29:15Z teissa $
+# $Id: gb_GDL_44786.nasl 11449 2018-09-18 10:04:42Z mmartin $
 #
 # GDL 'id' Parameter SQL Injection Vulnerability
 #
@@ -24,7 +24,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "GDL (Ganesha Digital Library) is prone to an SQL-injection
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100906");
+  script_version("$Revision: 11449 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2010-11-16 13:35:09 +0100 (Tue, 16 Nov 2010)");
+  script_bugtraq_id(44786);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("GDL 'id' Parameter SQL Injection Vulnerability");
+
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/44786");
+  script_xref(name:"URL", value:"http://kmrg.itb.ac.id/");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"Reports indicate that this issue has been fixed by the vendor but
+Symantec has not confirmed it. Please contact the vendor for more
+information.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"GDL (Ganesha Digital Library) is prone to an SQL-injection
 vulnerability because it fails to sufficiently sanitize user-supplied
 data before using it in an SQL query.
 
@@ -32,35 +57,7 @@ Exploiting this issue could allow an attacker to compromise the
 application, access or modify data, or exploit latent vulnerabilities
 in the underlying database.
 
-GDL 4.2 is vulnerable; other versions may also be affected.";
-
-tag_solution = "Reports indicate that this issue has been fixed by the vendor but
-Symantec has not confirmed it. Please contact the vendor for more
-information.";
-
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100906");
- script_version("$Revision: 8250 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
- script_tag(name:"creation_date", value:"2010-11-16 13:35:09 +0100 (Tue, 16 Nov 2010)");
- script_bugtraq_id(44786);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("GDL 'id' Parameter SQL Injection Vulnerability");
-
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/44786");
- script_xref(name : "URL" , value : "http://kmrg.itb.ac.id/");
-
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+GDL 4.2 is vulnerable; other versions may also be affected.");
  exit(0);
 }
 
@@ -73,9 +70,9 @@ if(!can_host_php(port:port))exit(0);
 foreach dir( make_list_unique( "/gdl", "/gdl42", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = string(dir,"/download.php?id=-1+union+select+1,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374"); 
+  url = string(dir,"/download.php?id=-1+union+select+1,0x53514c2d496e6a656374696f6e2d54657374");
 
-  if(http_vuln_check(port:port, url:url,pattern:"OpenVAS-SQL-Injection-Test")) {
+  if(http_vuln_check(port:port, url:url,pattern:"SQL-Injection-Test")) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

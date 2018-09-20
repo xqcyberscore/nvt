@@ -26,12 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871405");
-  script_version("$Revision: 6689 $");
-  script_cve_id("CVE-2014-9297", "CVE-2014-9298", "CVE-2015-1798",
-                "CVE-2015-1799", "CVE-2015-3405");
+  script_version("$Revision: 11484 $");
+  script_cve_id("CVE-2014-9750", "CVE-2014-9751", "CVE-2015-1799", "CVE-2015-3405");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:50:06 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 05:38:48 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 06:26:09 +0200 (Thu, 23 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for ntp RHSA-2015:1459-01");
@@ -58,13 +57,13 @@ or server. (CVE-2015-3405)
 
 A stack-based buffer overflow was found in the way the NTP autokey protocol
 was implemented. When an NTP client decrypted a secret received from an NTP
-server, it could cause that client to crash. (CVE-2014-9297)
+server, it could cause that client to crash. (CVE-2014-9750)
 
 It was found that ntpd did not check whether a Message Authentication Code
 (MAC) was present in a received packet when ntpd was configured to use
 symmetric cryptographic keys. A man-in-the-middle attacker could use this
 flaw to send crafted packets that would be accepted by a client or a peer
-without the attacker knowing the symmetric key. (CVE-2015-1798)
+without the attacker knowing the symmetric key. (CVE-2014-9751)
 
 The CVE-2015-1798 and CVE-2015-1799 issues were discovered by Miroslav
 Lichvar of Red Hat.

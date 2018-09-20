@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln01_dec15_lin.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_openssl_mult_vuln01_dec15_lin.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # OpenSSL Multiple Vulnerabilities -01 Dec15 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806654");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-3193", "CVE-2015-1794");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-18 08:55:30 +0530 (Fri, 18 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Multiple Vulnerabilities -01 Dec15 (Linux)");
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to conduct denial of service attack and gain access to potentially
-  sensitive information.
-
-  Impact Level: Application");
+  sensitive information.");
 
   script_tag(name:"affected", value:"OpenSSL versions 1.0.2 before 1.0.2e on
   Linux");

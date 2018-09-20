@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_dec15_windows.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_adobe_air_mult_vuln01_dec15_windows.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Adobe Air Multiple Vulnerabilities -01 Dec15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807015");
-  script_version("$Revision: 11299 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-8459", "CVE-2015-8460", "CVE-2015-8634", "CVE-2015-8635",
                 "CVE-2015-8636", "CVE-2015-8638", "CVE-2015-8639", "CVE-2015-8640",
                 "CVE-2015-8641", "CVE-2015-8642", "CVE-2015-8643", "CVE-2015-8644",
@@ -37,7 +37,7 @@ if(description)
                 "CVE-2015-8649", "CVE-2015-8650", "CVE-2015-8651");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-29 15:01:36 +0530 (Tue, 29 Dec 2015)");
   script_name("Adobe Air Multiple Vulnerabilities -01 Dec15 (Windows)");
 
@@ -57,9 +57,7 @@ if(description)
   - Multiple memory corruption vulnerabilities.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to execute arbitrary code on the affected system.
-
-  Impact Level: System/Application.");
+  to execute arbitrary code on the affected system.");
 
   script_tag(name:"affected", value:"Adobe Air version before 20.0.0.233
   on Windows.");

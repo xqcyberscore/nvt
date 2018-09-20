@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_jan16_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_mult_vuln_jan16_win.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities Jan16 (Windows)
 #
@@ -29,42 +29,42 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806929");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11473 $");
   script_cve_id("CVE-2015-8664", "CVE-2015-6792");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-05 13:05:38 +0530 (Tue, 05 Jan 2016)");
   script_name("Google Chrome Multiple Vulnerabilities Jan16 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - An Integer overflow in the 'WebCursor::Deserialize' function in
     'content/common/cursors/webcursor.cc' script
+
   - An error in the MIDI subsystem does not properly handle the
     sending of data.");
 
-  script_tag(name: "impact" , value:"Successful exploitation would allow a attacker
+  script_tag(name:"impact", value:"Successful exploitation would allow a attacker
   to execute arbitrary code or cause a denial of service or possibly have unspecified
-  other impact.
+  other impact.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Google Chrome versions prior to 47.0.2526.106
+  script_tag(name:"affected", value:"Google Chrome versions prior to 47.0.2526.106
   on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   47.0.2526.106 or later, For updates refer to http://www.google.com/chrome");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2015/12/stable-channel-update_15.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2015/12/stable-channel-update_15.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

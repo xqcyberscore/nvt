@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_rce_11_14.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_centreon_rce_11_14.nasl 11497 2018-09-20 10:31:54Z mmartin $
 #
 # Centreon Remote Code Execution
 #
@@ -32,9 +32,9 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105125");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 11497 $");
   script_name("Centreon Remote Code Execution ");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-29 11:50:21 +0100 (Sat, 29 Nov 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -104,10 +104,11 @@ if( ! port ) exit( 0 );
 dir = get_app_location( cpe:CPE, port:port );
 if( ! dir ) exit( 0 );
 
+vtstring = get_vt_string( lowercase:TRUE );
 useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
-file = 'openvas_' + rand() + '.txt';
+file = vtstring + '_' + rand() + '.txt';
 ex = 'id > ./' + file;
 
 _exploit( ex:ex, host:host, useragent:useragent );

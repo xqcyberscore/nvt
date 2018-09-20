@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_xss_templatesandbox_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_mediawiki_xss_templatesandbox_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # MediaWiki TemplateSandbox extension Cross-site scripting Vulnerability - Jan15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805328");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-9479");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-27 17:16:42 +0530 (Tue, 27 Jan 2015)");
   script_name("MediaWiki TemplateSandbox extension Cross-site scripting Vulnerability - Jan15");
 
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   remote attacker to execute arbitrary script code in a user's browser
-  session within the trust relationship between their browser and the server.
-
-  Impact Level: Application");
+  session within the trust relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"TemplateSandbox extension version before 1.24 for Mediawiki");
 
@@ -59,8 +57,8 @@ if(description)
   or later. For updates refer to http://www.mediawiki.org/wiki/Special:ExtensionDistributor/TemplateSandbox");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://phabricator.wikimedia.org/T77625");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2015/01/03/13");
+  script_xref(name:"URL", value:"https://phabricator.wikimedia.org/T77625");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/01/03/13");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -76,29 +74,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-req = "";
-res = "";
-dir = "";
-reqwiki = "";
-reswiki = "";
-wikiPort = "";
-
 if(!wikiPort = get_app_port(cpe:CPE)) exit(0);
 if(!dir = get_app_location(cpe:CPE, port:wikiPort)) exit(0);
 
 reqwiki = http_get(item:string(dir, "/index.php/Special:Version"), port:wikiPort);
 reswiki = http_keepalive_send_recv(port:wikiPort, data:reqwiki);
 
-## confirm the plugin
 if (reswiki =~">TemplateSandbox<") {
 
-   ## Vulnerable Url
    url =dir+"/index.php?title=Extension:TemplateSandbox&action=submit";
    reqwiki = http_get(item:url, port:wikiPort);
    reswiki = http_keepalive_send_recv(port:wikiPort, data:reqwiki);
 
-   ## Get the session id
    wpStarttime = eregmatch(pattern:'value="([0-9]*)" name="wpStarttime"', string:reswiki);
    if(!wpStarttime[1]){
       exit(0);
@@ -120,7 +107,6 @@ if (reswiki =~">TemplateSandbox<") {
 
    host = http_host_name(port:wikiPort);
 
-   ## Construct the attack request
    postData = string('-----------------------------7523421607973306651860038372\r\n',
                      'Content-Disposition: form-data; name="wpAntispam"\r\n\r\n\r\n',
                      '-----------------------------7523421607973306651860038372\r\n',
@@ -162,7 +148,6 @@ if (reswiki =~">TemplateSandbox<") {
    sndReq = http_get(item:url, port:wikiPort);
    rcvRes = http_keepalive_send_recv(port:wikiPort, data:sndReq);
 
-   #Confirm Exploit
    if (rcvRes =~ "HTTP/1\.. 200" && "javascript:alert(document.cookie)" >< rcvRes)
    {
     security_message(wikiPort);

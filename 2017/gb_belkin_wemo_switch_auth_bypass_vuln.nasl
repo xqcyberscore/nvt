@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_belkin_wemo_switch_auth_bypass_vuln.nasl 10128 2018-06-08 03:58:14Z ckuersteiner $
+# $Id: gb_belkin_wemo_switch_auth_bypass_vuln.nasl 11474 2018-09-19 11:38:50Z mmartin $
 #
 # Belkin WeMo Switch Access Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:belkin:wemo_home_automation_firmware';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140283");
-  script_version("$Revision: 10128 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-08 05:58:14 +0200 (Fri, 08 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2017-08-08 13:57:04 +0700 (Tue, 08 Aug 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11474 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-08 13:57:04 +0700 (Tue, 08 Aug 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("Belkin WeMo Switch Access Vulnerability");
 
@@ -49,17 +49,17 @@ if (description)
   script_dependencies("gb_belkin_wemo_detect.nasl");
   script_mandatory_keys("belkin_wemo/detected", "belkin_wemo/model");
 
-  script_tag(name: "summary", value: "It is possible for an unauthenticated remote attacker to switch the Belkin
+  script_tag(name:"summary", value:"It is possible for an unauthenticated remote attacker to switch the Belkin
 WeMo Switch on and off.");
 
-  script_tag(name: "vuldetect", value: "Check the firmware version.");
+  script_tag(name:"vuldetect", value:"Check the firmware version.");
 
-  script_tag(name: "insight", value: "An unauthenticated remote attacker may change the state (ON/OFF) of the WeMo
+  script_tag(name:"insight", value:"An unauthenticated remote attacker may change the state (ON/OFF) of the WeMo
 Switch by sending a crafted SOAP request to '/upnp/control/basicevent1'.");
 
-  script_tag(name: "affected", value: "Belkin WeMo Switch firmware 2.00.10966 and prior.");
+  script_tag(name:"affected", value:"Belkin WeMo Switch firmware 2.00.10966 and prior.");
 
-  script_tag(name: "solution", value: "No known solution is available as of 04th June, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
 this issue will be updated once solution details are available.");
 
   exit(0);

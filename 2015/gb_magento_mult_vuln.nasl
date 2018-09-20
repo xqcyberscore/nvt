@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_mult_vuln.nasl 6243 2017-05-30 09:04:14Z teissa $
+# $Id: gb_magento_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Magento Web E-Commerce Platform Multiple Vulnerabilities
 #
@@ -29,49 +29,50 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805372");
-  script_version("$Revision: 6243 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1397", "CVE-2015-1398", "CVE-2015-1399", "CVE-2015-3457",
                 "CVE-2015-3458");
-  script_bugtraq_id(74298,74420,74412);
+  script_bugtraq_id(74298, 74420, 74412);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-29 17:25:37 +0530 (Wed, 29 Apr 2015)");
   script_name("Magento Web E-Commerce Platform Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with Magento Web
+  script_tag(name:"summary", value:"The host is installed with Magento Web
   E-Commerce Platform and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with
-  the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The admin session are not properly validated, It fails to detect controller
     injection technique.
+
   - The admin templates filters are not properly validated before being returned
     to the user.
+
   - The 'from' and 'to' keys are not properly validated before being returned
     to the user. ");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code on the affected system.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to execute arbitrary code on the affected system.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Magento version 1.9.1.0 CE.");
 
-  script_tag(name: "affected" , value:"Magento version 1.9.1.0 CE.");
-
-  script_tag(name: "solution" , value:"Apply the patch manually from below link,
+  script_tag(name:"solution", value:"Apply the patch manually from below link,
   https://www.magentocommerce.com/products/downloads/magento
 
-  -----
+  - ----
   NOTE: Please ignore this warning, if the patch is already applied.
-  ----- "); 
+
+  - ---- ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "http://blog.checkpoint.com/2015/04/20/analyzing-magento-vulnerability/");
+  script_xref(name:"URL", value:"http://blog.checkpoint.com/2015/04/20/analyzing-magento-vulnerability/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -86,17 +87,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-magVer = "";
-report = "";
-http_port = "";
-
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# Get MovableType Version
 if(!magVer = get_app_version(cpe:CPE, port:http_port)){
   exit(0);
 }

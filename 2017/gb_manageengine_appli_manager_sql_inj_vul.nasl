@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_appli_manager_sql_inj_vul.nasl 10128 2018-06-08 03:58:14Z ckuersteiner $
+# $Id: gb_manageengine_appli_manager_sql_inj_vul.nasl 11472 2018-09-19 11:20:06Z mmartin $
 #
 # ManageEngine Applications Manager SQL Injection Vulnerability
 #
@@ -30,18 +30,18 @@ CPE = "cpe:/a:manageengine:applications_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107251");
-  script_version("$Revision: 10128 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-08 05:58:14 +0200 (Fri, 08 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2017-11-07 15:43:15 +0700 (Tue, 07 Nov 2017)");
+  script_version("$Revision: 11472 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-07 15:43:15 +0700 (Tue, 07 Nov 2017)");
 
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
-  script_cve_id("CVE-2017-16542", "CVE-2017-16543" );
+  script_cve_id("CVE-2017-16542", "CVE-2017-16543");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("ManageEngine Applications Manager SQL Injection Vulnerability");
 
@@ -52,21 +52,21 @@ if (description)
   script_dependencies("gb_manage_engine_appli_manager_detect.nasl");
   script_mandatory_keys("ManageEngine/Applications/Manager/Installed");
 
-  script_tag(name: "summary", value: "ManageEngine Applications Manager is prone to a SQL injection
+  script_tag(name:"summary", value:"ManageEngine Applications Manager is prone to a SQL injection
 vulnerability.");
 
-  script_tag(name: "insight", value: "ManageEngine Applications Manager is vulnerable to SQL injection via the
+  script_tag(name:"insight", value:"ManageEngine Applications Manager is vulnerable to SQL injection via the
 name parameter in a manageApplications.do request and via GraphicalView.do, as demonstrated by a
 crafted viewProps yCanvas field or viewid parameter.");
 
-  script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "affected", value: "ManageEngine Applications Manager 13.");
+  script_tag(name:"affected", value:"ManageEngine Applications Manager 13.");
 
-  script_tag(name: "solution", value: "No known solution is available as of 04th June, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
 this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "https://code610.blogspot.de/2017/11/sql-injection-in-manageengine.html");
+  script_xref(name:"URL", value:"https://code610.blogspot.de/2017/11/sql-injection-in-manageengine.html");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantom_dos_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_foxit_phantom_dos_vuln.nasl 11475 2018-09-19 12:12:13Z cfischer $
 #
 # Foxit PhantomPDF Denial of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805363");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11475 $");
   script_cve_id("CVE-2015-2790");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 14:12:13 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-14 18:11:48 +0530 (Tue, 14 Apr 2015)");
   script_name("Foxit PhantomPDF Denial of Service Vulnerability");
 
@@ -66,15 +66,15 @@ if(description)
   script_family("General");
   script_dependencies("gb_foxit_phantom_reader_detect.nasl");
   script_mandatory_keys("foxit/phantompdf/ver");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
 if(!foxitVer = get_app_version(cpe:CPE)){
-  exit(-1);
+  exit(0);
 }
 
 if(version_is_less(version:foxitVer, test_version:"7.1.0.0"))
@@ -84,3 +84,5 @@ if(version_is_less(version:foxitVer, test_version:"7.1.0.0"))
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807406");
-  script_version("$Revision: 11044 $");
+  script_version("$Revision: 11473 $");
   script_cve_id("CVE-2016-0763");
   script_bugtraq_id(83326);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:12:40 +0200 (Sat, 18 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-25 11:25:47 +0530 (Thu, 25 Feb 2016)");
   script_name("Apache Tomcat Security Manager Bypass Vulnerability - Feb16 (Windows)");
 
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   authenticated users to bypass intended SecurityManager restrictions and read
-  or write to arbitrary application data, or cause a denial of service.
-
-  Impact Level: Application");
+  or write to arbitrary application data, or cause a denial of service.");
 
   script_tag(name:"affected", value:"Apache Tomcat 7.0.0 before 7.0.68,
   8.0.0.RC1 before 8.0.31, and 9.0.0.M1 before 9.0.0.M2 on Windows.");

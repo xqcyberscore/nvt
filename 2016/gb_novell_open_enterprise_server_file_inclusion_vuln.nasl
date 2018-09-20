@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_open_enterprise_server_file_inclusion_vuln.nasl 10734 2018-08-02 10:35:39Z asteins $
+# $Id: gb_novell_open_enterprise_server_file_inclusion_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Novell Open Enterprise Server File Inclusion Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:novell:open_enterprise_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809480");
-  script_version("$Revision: 10734 $");
+  script_version("$Revision: 11493 $");
   script_cve_id("CVE-2016-5763");
   script_bugtraq_id(94348);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 12:35:39 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-25 10:29:09 +0530 (Fri, 25 Nov 2016)");
   script_name("Novell Open Enterprise Server File Inclusion Vulnerability");
 
@@ -47,12 +47,9 @@ if(description)
   incorrectly named der files in '/var/lib/novell-lum'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow authenticated
-  remote attackers to gain unauthorized file access and perform modification.
+  remote attackers to gain unauthorized file access and perform modification.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name:"affected", value:"
-  Novell OES2015 SP1 before Scheduled Maintenance Update 10992,
+  script_tag(name:"affected", value:"Novell OES2015 SP1 before Scheduled Maintenance Update 10992,
   Novell OES2015 before Scheduled Maintenance Update 10990,
   Novell OES11 SP3 before Scheduled Maintenance Update 10991,
   Novell OES11 SP2 before Scheduled Maintenance Update 10989.");

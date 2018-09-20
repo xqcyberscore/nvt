@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_kanboard_admin_default_credentials.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: sw_kanboard_admin_default_credentials.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Kanboard admin default credentials
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:kanboard:kanboard';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111064");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11492 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Kanboard admin default credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-04 13:00:00 +0100 (Fri, 04 Dec 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -89,6 +89,7 @@ foreach controller ( controllers ) {
   csrftoken = eregmatch( pattern:'name="csrf_token" value="([0-9a-z]+)"', string:res );
 
   host = http_host_name( port:port );
+  useragent = get_http_user_agent();
 
   if( isnull( csrftoken[1] ) ) {
     data = string( "username=admin&password=admin&remember_me=0" );
@@ -100,7 +101,7 @@ foreach controller ( controllers ) {
 
   req = 'POST ' + controller + '&action=check HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT +'\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Language: en-US,en;q=0.5\r\n' +
         'Cookie: ' + cookie[0] + '\r\n' +
@@ -112,7 +113,7 @@ foreach controller ( controllers ) {
 
   req = 'GET ' + dir + '/?controller=config&action=index HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT +'\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Language: en-US,en;q=0.5\r\n' +
         'Cookie: ' + cookie[0] + '\r\n' +

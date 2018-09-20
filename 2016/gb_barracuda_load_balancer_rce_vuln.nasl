@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_load_balancer_rce_vuln.nasl 8598 2018-01-31 09:59:32Z cfischer $
+# $Id: gb_barracuda_load_balancer_rce_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Barracuda Load Balancer Remote Command Execution Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:barracuda:load_balancer';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106152");
-  script_version("$Revision: 8598 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-31 10:59:32 +0100 (Wed, 31 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2016-07-25 13:42:49 +0700 (Mon, 25 Jul 2016)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11493 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-25 13:42:49 +0700 (Mon, 25 Jul 2016)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Barracuda Load Balancer Remote Command Execution Vulnerability");
 
@@ -49,22 +49,22 @@ if (description)
   script_dependencies("gb_barracuda_load_balancer_detect.nasl");
   script_mandatory_keys("barracuda_lb/installed");
 
-  script_tag(name: "summary", value: "Barracuda Load Balancer is prone to a remote code exectuion
+  script_tag(name:"summary", value:"Barracuda Load Balancer is prone to a remote code exectuion
 vulnerability.");
 
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "By sending a specially crafted request an authenticated attacker may
+  script_tag(name:"insight", value:"By sending a specially crafted request an authenticated attacker may
 inject system commands while escalating to root do to relaxed sudo configurations on the appliances.");
 
-  script_tag(name: "impact", value: "An authenticated attacker may execute arbitrary system commands.");
+  script_tag(name:"impact", value:"An authenticated attacker may execute arbitrary system commands.");
 
-  script_tag(name: "affected", value: "Version <= 5.4.0.004");
+  script_tag(name:"affected", value:"Version <= 5.4.0.004");
 
-  script_tag(name: "solution", value: "Upgrade to Version 6.0.0.004 or later");
+  script_tag(name:"solution", value:"Upgrade to Version 6.0.0.004 or later");
 
-  script_xref(name: "URL", value: "https://packetstormsecurity.com/files/138020/Barracuda-Web-App-Firewall-Load-Balancer-Remote-Root.html");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/138020/Barracuda-Web-App-Firewall-Load-Balancer-Remote-Root.html");
 
   exit(0);
 }

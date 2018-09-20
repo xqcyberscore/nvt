@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_rockmongo_admin_default_credentials.nasl 6453 2017-06-28 09:59:05Z teissa $
+# $Id: sw_rockmongo_admin_default_credentials.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Rockmongo admin default credentials
 #
@@ -29,33 +29,33 @@ CPE = 'cpe:/a:rockmongo:rockmongo';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.111030");
- script_version("$Revision: 6453 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("Rockmongo admin default credentials");
- script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-08-21 18:00:00 +0200 (Fri, 21 Aug 2015)");
- script_category(ACT_ATTACK);
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
- script_dependencies("sw_rockmongo_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("rockmongo/installed");
+  script_oid("1.3.6.1.4.1.25623.1.0.111030");
+  script_version("$Revision: 11492 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Rockmongo admin default credentials");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-08-21 18:00:00 +0200 (Fri, 21 Aug 2015)");
+  script_category(ACT_ATTACK);
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
+  script_dependencies("sw_rockmongo_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("rockmongo/installed");
 
- script_tag(name: "summary" , value: 'The remote Rockmongo web interface is prone to a default account
+  script_tag(name:"summary", value: 'The remote Rockmongo web interface is prone to a default account
  authentication bypass vulnerability.');
 
- script_tag(name: "impact" , value: 'This issue may be exploited by a remote attacker to gain
+  script_tag(name:"impact", value: 'This issue may be exploited by a remote attacker to gain
  access to sensitive information.');
 
- script_tag(name: "vuldetect" , value: 'Try to login with default credentials.');
- script_tag(name: "insight" , value: 'It was possible to login with default credentials: admin/admin');
- script_tag(name: "solution" , value: 'Change the password.');
+  script_tag(name:"vuldetect", value: 'Try to login with default credentials.');
+  script_tag(name:"insight", value: 'It was possible to login with default credentials: admin/admin');
+  script_tag(name:"solution", value: 'Change the password.');
 
- script_tag(name : "solution_type", value : "Workaround");
+  script_tag(name:"solution_type", value:"Workaround");
 
- script_tag(name: "qod_type", value: "remote_app");
+  script_tag(name:"qod_type", value:"remote_app");
 
  exit(0);
 }
@@ -73,10 +73,10 @@ host = http_host_name( port:port );
 
 data = string( "more=0&host=0&username=admin&password=admin&db=&lang=en_us&expire=3" );
 len = strlen( data );
-
+useragent = get_http_user_agent();
 req = 'POST ' + dir + '/index.php?action=login.index HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT +'\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Language: en-US,en;q=0.5\r\n' +
       'Content-Type: application/x-www-form-urlencoded\r\n' +
@@ -91,7 +91,7 @@ if( isnull( cookie[1] ) ) exit( 0 );
 
 req = 'GET ' + dir + '/index.php?action=admin.index&host=0 HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Language: en-US,en;q=0.5\r\n' +
       'Cookie: PHPSESSID=' + cookie[1] + '\r\n' +

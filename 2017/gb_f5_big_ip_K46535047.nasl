@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K46535047.nasl 5851 2017-04-04 09:21:55Z teissa $
+# $Id: gb_f5_big_ip_K46535047.nasl 11472 2018-09-19 11:20:06Z mmartin $
 #
 # F5 BIG-IP - TCP IPv6 vulnerability CVE-2016-9252
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140222");
- script_cve_id("CVE-2016-9252","CVE-2016-9244","CVE-2015-8240");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5851 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140222");
+  script_cve_id("CVE-2016-9252", "CVE-2016-9244", "CVE-2015-8240");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11472 $");
 
- script_name("F5 BIG-IP - TCP IPv6 vulnerability CVE-2016-9252");
+  script_name("F5 BIG-IP - TCP IPv6 vulnerability CVE-2016-9252");
 
- script_xref(name:"URL", value:"https://support.f5.com/csp/article/K46535047");
+  script_xref(name:"URL", value:"https://support.f5.com/csp/article/K46535047");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary", value:"The Traffic Management Microkernel (TMM) in F5 BIG-IP systems before 11.5.4 HF3, 11.6.x before 11.6.1 HF2, and 12.x.x before 12.1.2 do not properly handle minimum path MTU options for IPv6, which allows remote attackers to cause a denial of service (DoS) through unspecified vectors. ");
- script_tag(name: "impact", value:"When this vulnerability is exploited, the system may experience a denial-of-service (DoS) attack, which can cause the TMM process to restart.");
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The Traffic Management Microkernel (TMM) in F5 BIG-IP systems before 11.5.4 HF3, 11.6.x before 11.6.1 HF2, and 12.x.x before 12.1.2 do not properly handle minimum path MTU options for IPv6, which allows remote attackers to cause a denial of service (DoS) through unspecified vectors. ");
+  script_tag(name:"impact", value:"When this vulnerability is exploited, the system may experience a denial-of-service (DoS) attack, which can cause the TMM process to restart.");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:21:55 +0200 (Tue, 04 Apr 2017) $");
- script_tag(name:"creation_date", value:"2017-03-27 12:42:55 +0200 (Mon, 27 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-27 12:42:55 +0200 (Mon, 27 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

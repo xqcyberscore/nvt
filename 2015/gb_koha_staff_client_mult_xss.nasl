@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_koha_staff_client_mult_xss.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_koha_staff_client_mult_xss.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Koha Multiple XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805355");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-9446");
   script_bugtraq_id(71803);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-27 19:14:22 +0530 (Fri, 27 Mar 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Koha Multiple XSS Vulnerabilities");
@@ -51,9 +51,7 @@ if(description)
     not validated before returning it to users.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to execute arbitrary HTML and script code in the context of an affected site.
-
-  Impact Level: Application");
+  to execute arbitrary HTML and script code in the context of an affected site.");
 
   script_tag(name:"affected", value:"Koha before 3.16.6 and 3.18.x before 3.18.2");
 

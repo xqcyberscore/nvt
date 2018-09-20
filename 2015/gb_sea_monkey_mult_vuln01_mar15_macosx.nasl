@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sea_monkey_mult_vuln01_mar15_macosx.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_sea_monkey_mult_vuln01_mar15_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # SeaMonkey Multiple Vulnerabilities -01 Mar15 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:seamonkey";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805513");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-0817", "CVE-2015-0818");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-27 14:54:29 +0530 (Fri, 27 Mar 2015)");
   script_name("SeaMonkey Multiple Vulnerabilities -01 Mar15 (Mac OS X)");
 
@@ -43,15 +43,15 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An out-of-bounds access error in asmjs/AsmJSValidate.cpp within the JavaScript
   Just-in-time Compilation (JIT).
+
   - An error in docshell/base/nsDocShell.cpp within the SVG format content navigation
   functionality.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain elevated privileges and conduct arbitrary code execution.
-
-  Impact Level: System/Application");
+  attackers to gain elevated privileges and conduct arbitrary code execution.");
 
   script_tag(name:"affected", value:"SeaMonkey version before 2.33.1 on Mac OS X.");
 

@@ -26,13 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842504");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 11484 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 05:38:48 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-28 07:18:08 +0100 (Wed, 28 Oct 2015)");
-  script_cve_id("CVE-2015-5146", "CVE-2015-5194", "CVE-2015-5195", "CVE-2015-5196",
-                "CVE-2015-7703", "CVE-2015-5219", "CVE-2015-5300", "CVE-2015-7691",
-                "CVE-2015-7692", "CVE-2015-7702", "CVE-2015-7701", "CVE-2015-7704",
-                "CVE-2015-7705", "CVE-2015-7850", "CVE-2015-7852", "CVE-2015-7853",
+  script_cve_id("CVE-2015-5146", "CVE-2015-5194", "CVE-2015-5195", "CVE-2015-7703", "CVE-2015-5219",
+                "CVE-2015-5300", "CVE-2015-7691", "CVE-2015-7692", "CVE-2015-7702", "CVE-2015-7701",
+                "CVE-2015-7704", "CVE-2015-7705", "CVE-2015-7850", "CVE-2015-7852", "CVE-2015-7853",
                 "CVE-2015-7855", "CVE-2015-7871");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -58,7 +57,7 @@ of service. (CVE-2015-5195)
 Miroslav Lichvar discovered that NTP incorrectly handled certain file
 paths. In a non-default configuration, a remote authenticated attacker
 could possibly use this issue to cause NTP to crash, resulting in a denial
-of service, or overwrite certain files. (CVE-2015-5196, CVE-2015-7703)
+of service, or overwrite certain files. (CVE-2015-7703)
 
 Miroslav Lichvar discovered that NTP incorrectly handled certain packets.
 A remote attacker could possibly use this issue to cause NTP to hang,
@@ -93,10 +92,7 @@ Yves Younan and Aleksander Nikolich discovered that NTP incorrectly handled
 ascii conversion. A remote attacker could possibly  ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name:"affected", value:"ntp on Ubuntu 15.10,
-  Ubuntu 15.04,
-  Ubuntu 14.04 LTS,
-  Ubuntu 12.04 LTS");
+  script_tag(name:"affected", value:"ntp on Ubuntu 15.10, Ubuntu 15.04, Ubuntu 14.04 LTS, Ubuntu 12.04 LTS");
   script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_xref(name:"USN", value:"2783-1");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2783-1/");

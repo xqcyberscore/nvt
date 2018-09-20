@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_excel_service_ms15-110.nasl 9317 2018-04-05 07:37:07Z cfischer $
+# $Id: gb_sharepoint_server_excel_service_ms15-110.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # MS SharePoint Server Excel Services Multiple Vulnerabilities (3096440)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805991");
-  script_version("$Revision: 9317 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-2555", "CVE-2015-2558", "CVE-2015-6037");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 09:37:07 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 10:12:27 +0530 (Wed, 14 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server Excel Services Multiple Vulnerabilities (3096440)");
@@ -53,9 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to corrupt memory, execute arbitrary code on
-  affected system and perform cross-site scripting attacks.
-
-  Impact Level: System/Application");
+  affected system and perform cross-site scripting attacks.");
 
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2007 Service Pack 3 Excel Services,
 
@@ -71,16 +69,17 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3054994");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3085596");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3085568");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3085595");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/ms15-110.aspx");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3054994");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3085596");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3085568");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3085595");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/ms15-110.aspx");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/SharePoint/Server/Ver");
   exit(0);
 }
@@ -150,7 +149,7 @@ if(shareVer =~ "^15\..*")
       report = 'File checked:     ' + path + "xlsrv.dll" + '\n' +
                'File version:     ' + dllVer  + '\n' +
                'Vulnerable range: ' + "15.0 - 15.0.4763.999" + '\n' ;
-      
+
       security_message(data:report);
       exit(0);
     }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudera_manager_mult_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
+# $Id: gb_cloudera_manager_mult_vuln.nasl 11474 2018-09-19 11:38:50Z mmartin $
 #
 # Cloudera Manager Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:cloudera:cloudera_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106639");
-  script_version("$Revision: 5933 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2017-03-09 15:29:25 +0700 (Thu, 09 Mar 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11474 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-09 15:29:25 +0700 (Thu, 09 Mar 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-4948", "CVE-2016-4949", "CVE-2016-4950");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cloudera Manager Multiple Vulnerabilities");
 
@@ -51,23 +51,23 @@ if (description)
   script_dependencies("gb_cloudera_manager_detect.nasl");
   script_mandatory_keys("cloudera_manager/installed");
 
-  script_tag(name: "summary", value: "Cloudera Manager is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Cloudera Manager is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Cloudera Manager is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Cloudera Manager is prone to multiple vulnerabilities:
 
-- Multiple cross-site scripting (XSS) vulnerabilities (CVE-2016-4948)
+  - Multiple cross-site scripting (XSS) vulnerabilities (CVE-2016-4948)
 
-- Obtain sensitive information via a stderr.log or stdout.log (CVE-2016-4949)
+  - Obtain sensitive information via a stderr.log or stdout.log (CVE-2016-4949)
 
-- Enumeration of user sessions via a request to /api/v11/users/sessions (CVE-2016-4950)");
+  - Enumeration of user sessions via a request to /api/v11/users/sessions (CVE-2016-4950)");
 
-  script_tag(name: "affected", value: "Cloudera 5.5.0 and previous.");
+  script_tag(name:"affected", value:"Cloudera 5.5.0 and previous.");
 
-  script_tag(name: "solution", value: "Update to 5.5.1 or newer versions.");
+  script_tag(name:"solution", value:"Update to 5.5.1 or newer versions.");
 
-  script_xref(name: "URL", value: "http://2016.hack.lu/archive/2016/Wavestone%20-%20Hack.lu%202016%20-%20Hadoop%20safari%20-%20Hunting%20for%20vulnerabilities%20-%20v1.0.pdf");
+  script_xref(name:"URL", value:"http://2016.hack.lu/archive/2016/Wavestone%20-%20Hack.lu%202016%20-%20Hadoop%20safari%20-%20Hunting%20for%20vulnerabilities%20-%20v1.0.pdf");
 
   exit(0);
 }

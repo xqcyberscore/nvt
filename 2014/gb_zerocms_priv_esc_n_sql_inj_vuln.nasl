@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zerocms_priv_esc_n_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_zerocms_priv_esc_n_sql_inj_vuln.nasl 11449 2018-09-18 10:04:42Z mmartin $
 #
 # ZeroCMS Privilege Escalation & SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804640");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11449 $");
   script_cve_id("CVE-2014-4034", "CVE-2014-4195", "CVE-2014-4194", "CVE-2014-4710");
   script_bugtraq_id(67953, 68246, 68134, 68935);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-16 13:03:02 +0530 (Mon, 16 Jun 2014)");
   script_name("ZeroCMS Privilege Escalation & SQL Injection Vulnerabilities");
 
@@ -96,10 +96,10 @@ foreach dir (make_list_unique("/", "/cms", "/zerocms", "/ZeroCMS", cgi_dirs(port
   if (">ZeroCMS<" >< rcvRes && ">Login<" >< rcvRes)
   {
     url = dir + "/zero_view_article.php?article_id=1337+union+select+concat" +
-           "(0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374),1,1,1,1,1" ;
+           "(0x53514c2d496e6a656374696f6e2d54657374),1,1,1,1,1" ;
 
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-       pattern:"OpenVAS-SQL-Injection-Test<",
+       pattern:"SQL-Injection-Test<",
        extra_check: make_list(">Login<", ">ZeroCMS<")))
     {
       security_message(port:http_port);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20170405-cfpw.nasl 5975 2017-04-19 07:43:02Z teissa $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20170405-cfpw.nasl 11472 2018-09-19 11:20:06Z mmartin $
 #
 # Cisco Firepower Detection Engine SSL Denial of Service Vulnerability
 #
@@ -29,42 +29,42 @@ CPE = "cpe:/a:cisco:firepower_management_center";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106719");
- script_cve_id("CVE-2017-3885");
- script_tag(name:"cvss_base", value:"7.1");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 5975 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106719");
+  script_cve_id("CVE-2017-3885");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11472 $");
 
- script_name("Cisco Firepower Detection Engine SSL Denial of Service Vulnerability");
+  script_name("Cisco Firepower Detection Engine SSL Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170405-cfpw");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170405-cfpw");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value: "A vulnerability in the detection engine reassembly of Secure Sockets Layer
+  script_tag(name:"summary", value:"A vulnerability in the detection engine reassembly of Secure Sockets Layer
 (SSL) packets for Cisco Firepower System Software could allow an unauthenticated, remote attacker to cause a
 denial of service (DoS) condition because the Snort process consumes a high level of CPU resources.");
 
- script_tag(name: "insight", value: "The vulnerability is due to improper handling of an SSL packet stream. An
+  script_tag(name:"insight", value:"The vulnerability is due to improper handling of an SSL packet stream. An
 attacker could exploit this vulnerability by sending a crafted SSL packet stream to the detection engine on the
 targeted device.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause a DoS condition because the
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause a DoS condition because the
 Snort process consumes a high level of CPU resources. The device must be manually reloaded to recover from this
 condition.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-04-19 09:43:02 +0200 (Wed, 19 Apr 2017) $");
- script_tag(name: "creation_date", value: "2017-04-07 09:19:25 +0200 (Fri, 07 Apr 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_firepower_management_center_version.nasl");
- script_mandatory_keys("cisco_firepower_management_center/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-07 09:19:25 +0200 (Fri, 07 Apr 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_firepower_management_center_version.nasl");
+  script_mandatory_keys("cisco_firepower_management_center/version");
 
  exit(0);
 }

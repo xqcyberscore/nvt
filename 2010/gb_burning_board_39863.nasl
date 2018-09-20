@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_burning_board_39863.nasl 10795 2018-08-06 14:09:55Z cfischer $
+# $Id: gb_burning_board_39863.nasl 11498 2018-09-20 10:34:34Z jschulte $
 #
 # Woltlab Burning Board Arbitrary File Upload Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:woltlab:burning_board_lite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100629");
-  script_version("$Revision: 10795 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 16:09:55 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 11498 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:34:34 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-05-06 13:19:12 +0200 (Thu, 06 May 2010)");
   script_bugtraq_id(39863);
   script_tag(name:"cvss_base", value:"6.8");
@@ -74,7 +74,7 @@ if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:
 vers = infos['version'];
 path = infos['location'];
 
-if( version_is_equal( version:vers, test_version:"1.0.2" ) ) {
+if( version_is_less_equal( version:vers, test_version:"1.0.2" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"WillNotFix", install_path:path );
   security_message( port:port, data:report );
   exit( 0 );

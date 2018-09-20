@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_mult_vuln01_sep15.nasl 7879 2017-11-23 07:43:08Z asteins $
+# $Id: gb_pfsense_mult_vuln01_sep15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # pfSense Multiple Vulnerabilities - 01 Sep15
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:pfsense:pfsense";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805970");
-  script_version("$Revision: 7879 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-4687", "CVE-2014-4688", "CVE-2014-4689", "CVE-2014-4690",
                 "CVE-2014-4691", "CVE-2014-4692");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 08:43:08 +0100 (Thu, 23 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-04 14:53:21 +0530 (Fri, 04 Sep 2015)");
   script_name("pfSense Multiple Vulnerabilities - 01 Sep15");
 
@@ -74,9 +74,7 @@ if (description)
   attackers to hijack users session, gain access to sensitive files, execute
   arbitrary HTML and script code in a user's browser session in the context of
   an affected site and get elevated privileges, read arbitrary files, execute
-  commands, or have other impact on the system.
-
-  Impact Level: System/Application");
+  commands, or have other impact on the system.");
 
   script_tag(name:"affected", value:"pfSense before version 2.1.4");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_axis2_admin_default_credentials.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: sw_apache_axis2_admin_default_credentials.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Apache Axis2 axis2-admin default credentials
 #
@@ -30,13 +30,13 @@ CPE = 'cpe:/a:apache:axis2';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111006");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11492 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_bugtraq_id(44055);
   script_cve_id("CVE-2010-0219");
   script_name("Apache Axis2 axis2-admin default credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-18 08:00:00 +0100 (Wed, 18 Mar 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -73,13 +73,14 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 host = http_host_name(port:port);
+useragent = get_http_user_agent();
 
 data = string( "userName=admin&password=axis2&submit=+Login+" );
 len = strlen( data );
 
 req = 'POST ' + dir + '/axis2-admin/login HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT +'\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Language: en-US,en;q=0.5\r\n' +
       'Content-Type: application/x-www-form-urlencoded\r\n' +
@@ -105,7 +106,7 @@ if( isnull( cookie[1] ) ) exit( 0 );
 
 req = 'GET ' + dir + '/admin.jsp HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Language: en-US,en;q=0.5\r\n' +
       'Cookie: JSESSIONID=' + cookie[1] + '\r\n' +

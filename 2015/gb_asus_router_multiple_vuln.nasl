@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asus_router_multiple_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_asus_router_multiple_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # ASUS Router Multiple Vulnerabilities Aug-2015
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805945");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_bugtraq_id(73294);
   script_cve_id("CVE-2015-2676");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-05 13:27:24 +0530 (Wed, 05 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ASUS Router Multiple Vulnerabilities Aug-2015");
@@ -51,9 +51,7 @@ if(description)
   context-dependent attacker to create a specially crafted request that would
   execute arbitrary script code in a user's browser session within the trust
   relationship between their browser and the server and also to conduct CSRF
-  attacks.
-
-  Impact Level: Application");
+  attacks.");
 
   script_tag(name:"affected", value:"ASUS RT-G32 with firmware 2.0.2.6 and
   2.0.3.2, other firmware may also be affected.");

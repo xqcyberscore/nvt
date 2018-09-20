@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arkeia_west_dig_rce.nasl 9978 2018-05-28 08:52:24Z cfischer $
+# $Id: gb_arkeia_west_dig_rce.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # Western Digital Arkeia <= v11.0.12 Remote Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:arkeia:western_digital_arkeia";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107041");
-  script_version("$Revision: 9978 $");
+  script_version("$Revision: 11473 $");
   script_cve_id("CVE-2015-7709");
 
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-16 13:16:06 +0200 (Tue, 16 Aug 2016)");
 
   script_name("Western Digital Arkeia <= v11.0.12 Remote Code Execution Vulnerability");
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Western Digital Arkeia 11.0.12 and below.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary commands with root or SYSTEM privileges.");
 
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_active");
 
   exit(0);
@@ -82,6 +82,10 @@ if( ! port = get_app_port( cpe:CPE, service: 'arkeiad' ) ) exit( 0 );
 
 soc = open_sock_tcp( port );
 if ( ! soc ) exit ( 0 );
+
+# Used to confirm the vulnerability
+vtstring = get_vt_string();
+vtcheck = "__" + vtstring + "__";
 
 req = raw_string( 0x00, 0x41, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70 )
 	+ crap ( data: raw_string(0) , length: 12)
@@ -137,7 +141,7 @@ if ( host_runs( "Windows") == "yes")
   win = TRUE;
 }
 else
-  command = 'ping -c 5 -p 5f5f4f70656e5641535f5f ' + this_host();
+  command = 'ping -c 5 -p ' + hexstr(vtcheck) + ' ' + this_host();
 
 cmdlen = raw_string(strlen( command ));
 
@@ -156,7 +160,7 @@ for ( i = 0; i< 3; i++)
   res5 = send_capture ( socket:soc, data: "", timeout:2,
                         pcap_filter: string( "icmp and icmp[0] = 8 and dst host ", this_host(), " and src host ", get_host_ip() ) );
 
-  if( res5 && ( win || "___OpenVAS__" >< res5 ) ) {
+  if( res5 && ( win || vtcheck >< res5 ) ) {
     close ( soc );
     report = 'By sending a special request it was possible to execute `' +  command + '` on the remote host\nReceived answer:\n\n' + hexdump(ddata:( res5 ) );
     security_message( port:port, data:report );

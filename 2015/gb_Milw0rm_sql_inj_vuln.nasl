@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805397");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-4137");
   script_bugtraq_id(74745);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-02 17:26:49 +0530 (Tue, 02 Jun 2015)");
   script_name("Milw0rm Clone Script SQL Injection Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database,
-  allowing for the manipulation or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  allowing for the manipulation or disclosure of arbitrary data.");
 
   script_tag(name:"affected", value:"Milw0rm Clone Script 1.0");
 

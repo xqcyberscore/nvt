@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_iox_cisco-sa-20170322-caf1.nasl 5806 2017-03-31 07:21:48Z teissa $
+# $Id: gb_cisco_iox_cisco-sa-20170322-caf1.nasl 11474 2018-09-19 11:38:50Z mmartin $
 #
 # Cisco Application-Hosting Framework Directory Traversal Vulnerability
 #
@@ -29,40 +29,40 @@ CPE = "cpe:/a:cisco:iox";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106691");
- script_cve_id("CVE-2017-3851");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 5806 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106691");
+  script_cve_id("CVE-2017-3851");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11474 $");
 
- script_name("Cisco Application-Hosting Framework Directory Traversal Vulnerability");
+  script_name("Cisco Application-Hosting Framework Directory Traversal Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170322-caf1");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170322-caf1");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "Update to version 1.2.4.2");
+  script_tag(name:"solution", value:"Update to version 1.2.4.2");
 
- script_tag(name: "summary", value: "A vulnerability in the web framework code of the Cisco application-hosting
+  script_tag(name:"summary", value:"A vulnerability in the web framework code of the Cisco application-hosting
 framework (CAF) component of the Cisco IOx application environment could allow an unauthenticated, remote
 attacker to read any file from the CAF in the virtual instance running on the affected device.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient input validation. An attacker could
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient input validation. An attacker could
 exploit this vulnerability by submitting crafted requests to the CAF web interface.");
 
- script_tag(name: "impact", value: "The impacts of a successful exploit are limited to the scope of the virtual
+  script_tag(name:"impact", value:"The impacts of a successful exploit are limited to the scope of the virtual
 instance and do not impact the router that is hosting Cisco IOx.");
 
- script_tag(name: "qod_type", value: "remote_banner");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-31 09:21:48 +0200 (Fri, 31 Mar 2017) $");
- script_tag(name: "creation_date", value: "2017-03-23 09:56:15 +0700 (Thu, 23 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_iox_web_detect.nasl");
- script_mandatory_keys("cisco_iox/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-23 09:56:15 +0700 (Thu, 23 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_iox_web_detect.nasl");
+  script_mandatory_keys("cisco_iox/installed");
  exit(0);
 }
 

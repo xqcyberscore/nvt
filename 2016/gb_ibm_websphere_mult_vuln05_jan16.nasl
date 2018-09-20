@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mult_vuln05_jan16.nasl 8597 2018-01-31 08:42:52Z cfischer $
+# $Id: gb_ibm_websphere_mult_vuln05_jan16.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # IBM Websphere Apllication Server Multiple Vulnerabilities -05 Jan16
 #
@@ -29,43 +29,42 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806829");
-  script_version("$Revision: 8597 $");
-  script_cve_id("CVE-2013-6323","CVE-2014-0859");
-  script_bugtraq_id(67720,67335);
+  script_version("$Revision: 11493 $");
+  script_cve_id("CVE-2013-6323", "CVE-2014-0859");
+  script_bugtraq_id(67720, 67335);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-19 13:56:59 +0530 (Tue, 19 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Apllication Server Multiple Vulnerabilities -05 Jan16");
 
-  script_tag(name: "summary" , value:"This host is installed with IBM Websphere
+  script_tag(name:"summary", value:"This host is installed with IBM Websphere
   apllication server and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"Multiple flaws are due to
+  script_tag(name:"insight", value:"Multiple flaws are due to
+
   - insufficient validation of user supplied input by Administration Console.
+
   - An error in web server plugin when is configured to retry failed POST
     requests.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to inject arbitrary web script or HTML and also to cause a
-  denial of service (daemon crash).
+  denial of service (daemon crash).");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"IBM WebSphere Application Server (WAS)
+  script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS)
   7.x before 7.0.0.33, 8.x before 8.0.0.9, and 8.5.x before 8.5.5.2");
 
-  script_tag(name: "solution" , value:"Upgrade to IBM WebSphere Application
+  script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
   Server (WAS) version 7.0.0.33 or 8.0.0.9 or 8.5.5.2 or later,
   For updates refer to http://www-03.ibm.com/software/products/en/appserv-was");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21669554");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21669554");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

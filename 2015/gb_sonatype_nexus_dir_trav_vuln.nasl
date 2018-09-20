@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonatype_nexus_dir_trav_vuln.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: gb_sonatype_nexus_dir_trav_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Sonatype Nexus OSS/Pro Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:sonatype:nexus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805325");
-  script_version("$Revision: 6333 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-9389");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-20 13:00:12 +0530 (Tue, 20 Jan 2015)");
   script_name("Sonatype Nexus OSS/Pro Directory Traversal Vulnerability -Jan15");
 
@@ -47,9 +47,7 @@ if(description)
   verified before being used to read files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to disclose sensitive information.
-
-  Impact Level: Application");
+  attackers to disclose sensitive information.");
 
   script_tag(name:"affected", value:"Nexus OSS/Pro versions prior to 2.11.1-01");
 
@@ -58,8 +56,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/61134");
-  script_xref(name : "URL" , value : "http://www.sonatype.org/advisories/archive/2014-12-23-Nexus/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/61134");
+  script_xref(name:"URL", value:"http://www.sonatype.org/advisories/archive/2014-12-23-Nexus/");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -70,21 +68,13 @@ if(description)
   exit(0);
 }
 
-##Code starts from here##
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-http_port = "";
-nexusVer= "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# Get Version
 if(!nexusVer = get_app_version(cpe:CPE, port:http_port)){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20151104-aos.nasl 6243 2017-05-30 09:04:14Z teissa $
+# $Id: gb_cisco_esa_cisco-sa-20151104-aos.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Cisco Email Security Appliance AsyncOS TCP Flood Denial of Service Vulnerability
 #
@@ -29,35 +29,35 @@ CPE = "cpe:/h:cisco:email_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105437");
- script_cve_id("CVE-2015-6321");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 6243 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105437");
+  script_cve_id("CVE-2015-6321");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11452 $");
 
- script_name("Cisco Email Security Appliance AsyncOS TCP Flood Denial of Service Vulnerability");
+  script_name("Cisco Email Security Appliance AsyncOS TCP Flood Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151104-aos");
- script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCus79774");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151104-aos");
+  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCus79774");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "insight" , value:"The vulnerability is due to improper handling of TCP packets sent at a high rate. An attacker could exploit this vulnerability by sending crafted TCP packets to the affected system.");
- script_tag(name: "solution" , value:"See Vendor advisory.");
- script_tag(name: "summary" , value:"A vulnerability in the network stack of Cisco AsyncOS for Email Security Appliance could allow an
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"insight", value:"The vulnerability is due to improper handling of TCP packets sent at a high rate. An attacker could exploit this vulnerability by sending crafted TCP packets to the affected system.");
+  script_tag(name:"solution", value:"See Vendor advisory.");
+  script_tag(name:"summary", value:"A vulnerability in the network stack of Cisco AsyncOS for Email Security Appliance could allow an
 unauthenticated, remote attacker to exhaust all available memory, preventing the affected device from accepting new TCP connections.");
 
- script_tag(name: "affected" , value:"See Vendor advisory.");
+  script_tag(name:"affected", value:"See Vendor advisory.");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
- script_tag(name:"creation_date", value:"2015-11-06 15:21:08 +0100 (Fri, 06 Nov 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_esa_version.nasl");
- script_mandatory_keys("cisco_esa/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-11-06 15:21:08 +0100 (Fri, 06 Nov 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_esa_version.nasl");
+  script_mandatory_keys("cisco_esa/installed");
 
  exit(0);
 }

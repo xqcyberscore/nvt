@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bullguard_pp_priv_escal_vuln_feb15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_bullguard_pp_priv_escal_vuln_feb15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # BullGuard Premium Protection 'BdAgent.sys' Driver Privilege Escalation Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:bullguard:premium_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805277");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-9642");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-13 12:27:54 +0530 (Fri, 13 Feb 2015)");
   script_name("BullGuard Premium Protection 'BdAgent.sys' Driver Privilege Escalation Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
   attacker to write data to an arbitrary memory location, leading to code
-  execution with kernel-level privileges.
-
-  Impact Level: System/Application");
+  execution with kernel-level privileges.");
 
   script_tag(name:"affected", value:"BullGuard Premium Protection before
   version 15.0.288");

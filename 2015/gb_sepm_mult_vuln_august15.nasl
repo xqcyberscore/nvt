@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sepm_mult_vuln_august15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_sepm_mult_vuln_august15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Symantec Endpoint Protection Manager Multiple Vulnerabilities August15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806004");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1492", "CVE-2015-1491", "CVE-2015-1490", "CVE-2015-1489",
                 "CVE-2015-1488", "CVE-2015-1487", "CVE-2015-1486");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-14 12:49:14 +0530 (Fri, 14 Aug 2015)");
   script_name("Symantec Endpoint Protection Manager Multiple Vulnerabilities August15");
 
@@ -44,17 +44,19 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Untrusted search path vulnerability in the client in SEP.
+
   - SQL injection vulnerability in the management console in SEPM.
+
   - Directory traversal vulnerability in the management console in SEPM.
+
   - Some other vulnerabilities in SEPM.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   local and remote users to gain privileges and remote authenticated users to
   execute arbitrary commands, to read arbitrary files, to write to arbitrary
-  files and to bypass authentication.
-
-  Impact Level: System/Application.");
+  files and to bypass authentication.");
 
   script_tag(name:"affected", value:"Symantec Endpoint Protection Manager
   versions 12.1 before 12.1-RU6-MP1.");

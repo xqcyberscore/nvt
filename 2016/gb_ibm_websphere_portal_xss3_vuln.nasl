@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_portal_xss3_vuln.nasl 3988 2016-09-07 10:44:51Z ckuerste $
+# $Id: gb_ibm_websphere_portal_xss3_vuln.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # IBM WebSphere Portal Multiple XSS Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:ibm:websphere_portal';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106227");
-  script_version("$Revision: 3988 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-07 12:44:51 +0200 (Wed, 07 Sep 2016) $");
-  script_tag(name: "creation_date", value: "2016-09-07 15:24:46 +0700 (Wed, 07 Sep 2016)");
+  script_version("$Revision: 11473 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-07 15:24:46 +0700 (Wed, 07 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2015-4993", "CVE-2015-4998");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("IBM WebSphere Portal Multiple XSS Vulnerabilities");
 
@@ -51,23 +51,23 @@ if (description)
   script_dependencies("gb_ibm_websphere_portal_detect.nasl");
   script_mandatory_keys("ibm_websphere_portal/installed");
 
-  script_tag(name: "summary", value: "IBM WebSphere Portal is prone to multiple cross-site scripting
+  script_tag(name:"summary", value:"IBM WebSphere Portal is prone to multiple cross-site scripting
 vulnerabilities.");
 
-  script_tag(name: "insight", value: "IBM WebSphere Portal is vulnerable to cross-site scripting, caused by
+  script_tag(name:"insight", value:"IBM WebSphere Portal is vulnerable to cross-site scripting, caused by
 improper validation of user-supplied input. A remote attacker could exploit this vulnerability to execute script
 in a victim's Web browser within the security context of the hosting Web site, once the URL is clicked.");
 
-  script_tag(name: "impact", value: "An attacker could use this vulnerability to steal the victim's cookie-based
+  script_tag(name:"impact", value:"An attacker could use this vulnerability to steal the victim's cookie-based
 authentication credentials.");
 
-  script_tag(name: "affected", value: "WebSphere Portal 6.1, 7, 8.0 and 8.5");
+  script_tag(name:"affected", value:"WebSphere Portal 6.1, 7, 8.0 and 8.5");
 
-  script_tag(name: "solution", value: "Check the vendor's advisory for sulutions.");
+  script_tag(name:"solution", value:"Check the vendor's advisory for sulutions.");
 
-  script_xref(name: "URL", value: "https://www-01.ibm.com/support/docview.wss?uid=swg21970176");
+  script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg21970176");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   exit(0);
 }

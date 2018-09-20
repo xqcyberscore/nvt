@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805701");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-7810");
   script_bugtraq_id(74665);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-16 15:04:10 +0530 (Tue, 16 Jun 2015)");
   script_name("Apache Tomcat SecurityManager Security Bypass Vulnerability - Jun15 (Linux)");
 
@@ -48,9 +48,7 @@ if(description)
   implemented by an inaccessible class.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to bypass certain authentication and obtain sensitive information.
-
-  Impact Level: Application");
+  attackers to bypass certain authentication and obtain sensitive information.");
 
   script_tag(name:"affected", value:"Apache Tomcat 6.x before 6.0.44,
   7.x before 7.0.58, and 8.x before 8.0.16 on Linux.");

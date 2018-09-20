@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_stageshow_plugin_open_redirect_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
+# $Id: gb_wp_stageshow_plugin_open_redirect_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Wordpress StageShow Plugin Open Redirect Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805901");
-  script_version("$Revision: 11321 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-07 13:33:29 +0530 (Tue, 07 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress StageShow Plugin Open Redirect Vulnerability");
@@ -50,9 +50,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to create a specially crafted URL, that if clicked, would redirect
   a victim from the intended legitimate web site to an arbitrary web site of the
-  attacker's choosing.
-
-  Impact Level: Application");
+  attacker's choosing.");
 
   script_tag(name:"affected", value:"Wordpress StageShow Plugin version 5.0.8
   and probably prior.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SonicWALL_rce_01_13.nasl 11219 2018-09-04 11:52:00Z cfischer $
+# $Id: gb_SonicWALL_rce_01_13.nasl 11497 2018-09-20 10:31:54Z mmartin $
 #
 # Multiple SonicWALL Products Authentication Bypass Vulnerability
 #
@@ -32,7 +32,7 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_bugtraq_id(57445);
   script_cve_id("CVE-2013-1359", "CVE-2013-1360");
-  script_version("$Revision: 11219 $");
+  script_version("$Revision: 11497 $");
 
   script_name("Multiple SonicWALL Products Authentication Bypass Vulnerability");
 
@@ -40,7 +40,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.sonicwall.com/");
   script_xref(name:"URL", value:"http://sotiriu.de/adv/NSOADV-2013-001.txt");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-18 13:01:11 +0100 (Fri, 18 Jan 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -70,6 +70,7 @@ GMS/ViewPoint 5.0.x GMS/ViewPoint 4.1.x");
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default:80);
 
@@ -79,6 +80,7 @@ buf = http_get_cache(item:url, port:port);
 if("<title>sonicwall" >!< tolower(buf))exit(0);
 
 useragent = get_http_user_agent();
+vtstring = get_vt_string( lowercase:TRUE );
 host = http_host_name(port:port);
 
 req = string(
@@ -118,9 +120,9 @@ else {
   gms_path = gms_path + 'webapps\\appliance\\';
 }
 
-file = 'openvas_' + rand() +  '.jsp';
+file = vtstring + '_' + rand() +  '.jsp';
 
-jsp_print = 'openvas_' + rand();;
+jsp_print = vtstring + '_' + rand();;
 jsp = '<% out.println( "' + jsp_print  + '" ); %>';
 
 len = 325 + strlen(jsp) + strlen(gms_path) + strlen(file);

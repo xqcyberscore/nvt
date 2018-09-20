@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-018.nasl 10017 2018-05-30 07:17:29Z cfischer $
+# $Id: gb_ms17-018.nasl 11474 2018-09-19 11:38:50Z mmartin $
 #
 # Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (4013083)
 #
@@ -27,35 +27,33 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810594");
-  script_version("$Revision: 10017 $");
+  script_version("$Revision: 11474 $");
   script_cve_id("CVE-2017-0024", "CVE-2017-0026", "CVE-2017-0056", "CVE-2017-0078",
                 "CVE-2017-0079", "CVE-2017-0080", "CVE-2017-0081", "CVE-2017-0082");
   script_bugtraq_id(96029, 96032, 96630, 96631, 96632, 96633, 96634, 96635);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 08:10:02 +0530 (Wed, 15 Mar 2017)");
   script_name("Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (4013083)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS17-018.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists when the Windows
+  script_tag(name:"insight", value:"Multiple flaws exists when the Windows
   kernel-mode driver fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to run arbitrary code in kernel mode. An attacker could then:
 
   - install programs
-  
+
   - view, change, or delete data
 
-  - create new accounts with full user rights.
-
-  Impact Level: System");
+  - create new accounts with full user rights.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
 
@@ -85,12 +83,13 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/4013083");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS17-018");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/4013083");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS17-018");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
   exit(0);
@@ -119,7 +118,6 @@ if(!winVer && !gdiVer){
   exit(0);
 }
 
-## Windows 7 and Windows 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && gdiVer)
 {
   ## Presently GDR information is not available.
@@ -130,7 +128,6 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && gdiVer)
   }
 }
 
-## Windows Vista and Windows Server 2008
 else if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0 && winVer)
 {
   if(version_is_less(version:winVer, test_version:"6.0.6002.19741"))
@@ -146,7 +143,6 @@ else if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0 
   }
 }
 
-## Windows 2012 x64
 else if(hotfix_check_sp(win2012:1) > 0 && gdiVer)
 {
   if(version_is_less(version:gdiVer, test_version:"6.2.9200.22082"))
@@ -168,7 +164,6 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && gdiVer)
 
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && gdiVer)
 {
-  ## Windows 10
   if(version_is_less(version:gdiVer, test_version:"10.0.10240.17319"))
   {
     Vulnerable_range1 = "Less than 10.0.10240.17319";
@@ -190,7 +185,6 @@ else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && gdiVer)
 
 else if(hotfix_check_sp(win2016:1) > 0 && gdiVer)
 {
-  ## Windows 2016 Server
   if(version_in_range(version:gdiVer, test_version:"10.0.14393.0", test_version2:"10.0.14393.205"))
   {
     Vulnerable_range1 = "10.0.14393.0 - 10.0.14393.205";

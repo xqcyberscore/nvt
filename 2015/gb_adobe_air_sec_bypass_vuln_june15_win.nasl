@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_sec_bypass_vuln_june15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_adobe_air_sec_bypass_vuln_june15_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Adobe Air Security Bypass Vulnerability - June15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805590");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-3097");
   script_bugtraq_id(75090);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-15 13:30:22 +0530 (Mon, 15 Jun 2015)");
   script_name("Adobe Air Security Bypass Vulnerability - June15 (Windows)");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass certain security restrictions and execute arbitrary code on
-  affected system.
-
-  Impact Level: System/Application.");
+  affected system.");
 
   script_tag(name:"affected", value:"Adobe Air versions before 18.0.0.180 on
   Windows.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortigate_FG-IR-14-018.nasl 9415 2018-04-10 06:55:50Z cfischer $
+# $Id: gb_fortigate_FG-IR-14-018.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # FortiOS: Multiple Vulnerabilities in OpenSSL
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/h:fortinet:fortigate";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105203");
- script_cve_id("CVE-2014-0224","CVE-2014-0221","CVE-2014-0195");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9415 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105203");
+  script_cve_id("CVE-2014-0224", "CVE-2014-0221", "CVE-2014-0195");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11452 $");
 
- script_name("FortiOS: Multiple Vulnerabilities in OpenSSL");
+  script_name("FortiOS: Multiple Vulnerabilities in OpenSSL");
 
- script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-14-018");
+  script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-14-018");
 
- script_tag(name: "impact" , value:"CVE-2014-0224 may allow an attacker with a privileged network position (man-in-the-middle) to decrypt SSL encrypted
+  script_tag(name:"impact", value:"CVE-2014-0224 may allow an attacker with a privileged network position (man-in-the-middle) to decrypt SSL encrypted
 communications.
 
 CVE-2014-0221 may allow an attacker to crash a DTLS client with an invalid handshake.
@@ -55,23 +55,23 @@ does not affect Fortinet products.
 CVE-2014-0076 can be used to discover ECDSA nonces on multi-user systems by exploiting timing attacks in CPU L3 caches. This does not apply
 to Fortinet products. ");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Upgrade to FortiGate 4.3.16 (build 686),5.2.0 (build 589),5.0.8 (build 291) or higher.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Upgrade to FortiGate 4.3.16 (build 686), 5.2.0 (build 589), 5.0.8 (build 291) or higher.");
 
- script_tag(name: "summary" , value:"Multiple Vulnerabilities in OpenSSL");
+  script_tag(name:"summary", value:"Multiple Vulnerabilities in OpenSSL");
 
- script_tag(name: "affected" , value:"FortiGate < 4.3.16 (build 686),5.2.0 (build 589),5.0.8 (build 291)");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"FortiGate < 4.3.16 (build 686), 5.2.0 (build 589), 5.0.8 (build 291)");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
- script_tag(name:"creation_date", value:"2015-02-11 12:17:13 +0100 (Wed, 11 Feb 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("FortiOS Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_fortigate_version.nasl");
- script_mandatory_keys("fortigate/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-02-11 12:17:13 +0100 (Wed, 11 Feb 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("FortiOS Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_fortigate_version.nasl");
+  script_mandatory_keys("fortigate/version");
 
  exit(0);
 }

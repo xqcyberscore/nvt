@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_agent_dir_trav_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mcafee_agent_dir_trav_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # McAfee Agent (MA) Log Viewing Functionality Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:mcafee_agent";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806638");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-7237");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-02 11:14:16 +0530 (Wed, 02 Dec 2015)");
   script_name("McAfee Agent (MA) Log Viewing Functionality Directory Traversal Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
   functionality where the inputs passed to the URL are not completely validated.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to gain access to potentially sensitive information.;
-
-  Impact Level: Application");
+  attacker to gain access to potentially sensitive information.;.");
 
   script_tag(name:"affected", value:"McAfee Agent (MA) version 5.x before
   5.0.2");

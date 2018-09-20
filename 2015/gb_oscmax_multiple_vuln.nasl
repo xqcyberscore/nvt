@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oscmax_multiple_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
+# $Id: gb_oscmax_multiple_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # osCMax e-commerce/shopping-cart Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oscmax:oscmax";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805566");
-  script_version("$Revision: 11321 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2012-1665", "CVE-2012-1664");
   script_bugtraq_id(52886);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-27 13:56:19 +0530 (Wed, 27 May 2015)");
   script_name("osCMax e-commerce/shopping-cart Multiple Vulnerabilities");
 
@@ -69,9 +69,7 @@ if(description)
   attackers to inject or manipulate SQL queries in the back-end database, allowing
   for the manipulation or disclosure of arbitrary data and also create a specially
   crafted URL that would execute arbitrary script code in a user's browser within
-  the trust relationship between their browser and the server.
-
-  Impact Level: Application");
+  the trust relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"osCMax before version 2.5.1");
 

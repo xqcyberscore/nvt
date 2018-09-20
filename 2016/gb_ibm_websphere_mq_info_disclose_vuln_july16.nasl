@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_info_disclose_vuln_july16.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_ibm_websphere_mq_info_disclose_vuln_july16.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # IBM WebSphere MQ Information Disclosure Vulnerability - July16
 #
@@ -29,29 +29,26 @@ CPE = "cpe:/a:ibm:websphere_mq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808619");
-  script_version("$Revision: 5675 $");
+  script_version("$Revision: 11493 $");
   script_cve_id("CVE-2015-7462");
   script_bugtraq_id(91073);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-15 18:17:58 +0530 (Fri, 15 Jul 2016)");
   script_name("IBM WebSphere MQ Information Disclosure Vulnerability - July16");
 
   script_tag(name:"summary", value:"This host is installed with IBM WebSphere MQ
   and is prone to an information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to the mqcertck tool
   which was newly added in MQ could trace certificate keystore passwords.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows local users
   to discover cleartext certificate-keystore passwords within MQ trace output by
-  leveraging administrator privileges to execute the mqcertck program.
-
-  Impact Level: Application");
+  leveraging administrator privileges to execute the mqcertck program.");
 
   script_tag(name:"affected", value:"IBM WebSphere MQ version 8.0.0.4");
 
@@ -63,7 +60,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21984557");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21984557");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -77,10 +74,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-mqVer = "";
-
-## Get version
 if(!mqVer = get_app_version(cpe:CPE)){
   exit(0);
 }

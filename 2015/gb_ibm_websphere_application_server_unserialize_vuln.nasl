@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_application_server_unserialize_vuln.nasl 10847 2018-08-09 02:37:37Z ckuersteiner $
+# $Id: gb_ibm_websphere_application_server_unserialize_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # IBM WebSphere Application Server Unserialize Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806624");
-  script_version("$Revision: 10847 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-7450");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 04:37:37 +0200 (Thu, 09 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-17 17:28:17 +0530 (Tue, 17 Nov 2015)");
   script_name("IBM WebSphere Application Server Unserialize Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -55,9 +55,7 @@ if(description)
   of a deserialization error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code on the affected system.
-
-  Impact Level: System/Application");
+  attackers to execute arbitrary code on the affected system.");
 
   script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS)
   8.5.5.7 and prior.");

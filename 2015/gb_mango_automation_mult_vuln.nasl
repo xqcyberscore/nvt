@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mango_automation_mult_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mango_automation_mult_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Mango Automation Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:infinite_automation_systems:mango_automation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806065");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11492 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-01 12:11:26 +0530 (Thu, 01 Oct 2015)");
   script_name("Mango Automation Multiple Vulnerabilities");
 
@@ -43,13 +43,18 @@ if(description)
   check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Mango Automation contains default configuration for debugging enabled in the
     '/WEB-INF./web.xml' file (debug=true).
+
   - Improper verification of uploaded image files in
     'graphicalViewsBackgroundUpload' script via the 'backgroundImage' POST
      parameter.
+
   - Input sanitization error in '/sqlConsole.shtm' script.
+
   - Improper verification of provided credentials by 'login.htm' script.
+
   - The POST parameter 'c0-param0' in the testProcessCommand.dwr method is not
     properly sanitised before being used to execute commands.");
 
@@ -57,9 +62,7 @@ if(description)
   remote attackers to gain extra privilges, to gain access to sensitive
   information, to inject and execute arbitrary os commands, execute arbitrary
   script code in a users browser session, to execute arbitrary SQL commands
-  with administrative privileges.
-
-  Impact Level: Application");
+  with administrative privileges.");
 
   script_tag(name:"affected", value:"Mango Automation versions 2.5.2 and
   2.6.0 beta (build 327).");
@@ -102,6 +105,8 @@ if(!dir = get_app_location(cpe:CPE, port:mangoPort)){
 url = string(dir, "/login.htm");
 req = http_get (item: url, port:mangoPort);
 res = http_keepalive_send_recv(port:mangoPort,data:req);
+useragent = get_http_user_agent();
+
 
 if('content="Mango Automation' >< res && 'id="loginForm' >< res)
 {
@@ -111,7 +116,7 @@ if('content="Mango Automation' >< res && 'id="loginForm' >< res)
 
   req = string("POST ", url, " HTTP/1.1\r\n",
                "Host: ", http_host_name(port:mangoPort), "\r\n",
-               "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n" ,
+               "User-Agent: ", useragent, "\r\n",
                "Content-Type: application/x-www-form-urlencoded\r\n",
                "Content-Length: ", strlen(postData), "\r\n\r\n",
                 postData);

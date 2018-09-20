@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_JSA10669.nasl 6207 2017-05-24 09:04:07Z teissa $
+# $Id: gb_junos_JSA10669.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Junos Multiple libxml2 Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
   script_bugtraq_id(48056, 56684, 52107, 61050, 58180);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version ("$Revision: 6207 $");
+  script_version("$Revision: 11452 $");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -44,24 +44,24 @@ if (description)
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10669");
 
-  script_tag(name: "summary", value: "Multiple vulnerabilities in the libxml version used by Junos OS.");
+  script_tag(name:"summary", value:"Multiple vulnerabilities in the libxml version used by Junos OS.");
 
-  script_tag(name: "impact", value: "The vulnerabilities may lead to DoS attacks or arbitrary code
+  script_tag(name:"impact", value:"The vulnerabilities may lead to DoS attacks or arbitrary code
 execution.");
 
-  script_tag(name: "insight", value :"libxml2 has been updated from 2.7.6 to 2.9.1 in Junos OS to
+  script_tag(name:"insight", value:"libxml2 has been updated from 2.7.6 to 2.9.1 in Junos OS to
 address multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
-  script_tag(name: "affected", value: "Junos OS 11.4, 12.1, 12.2, 12.3, 13.1, 13.3 and 14.1");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"affected", value:"Junos OS 11.4, 12.1, 12.2, 12.3, 13.1, 13.3 and 14.1");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 10:32:34 +0700 (Fri, 23 Jan 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version");
 
   exit(0);

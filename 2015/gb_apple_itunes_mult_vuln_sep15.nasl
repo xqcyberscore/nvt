@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_sep15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_apple_itunes_mult_vuln_sep15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Apple iTunes Multiple Vulnerabilities Sep15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806063");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1157", "CVE-2015-3686", "CVE-2015-3687", "CVE-2015-3688",
                 "CVE-2015-5755", "CVE-2015-5761", "CVE-2015-5874", "CVE-2014-8146",
                 "CVE-2015-1205", "CVE-2010-3190", "CVE-2015-1152", "CVE-2015-1153",
@@ -49,7 +49,7 @@ if(description)
                 "CVE-2015-5821", "CVE-2015-5822");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-01 10:34:38 +0530 (Thu, 01 Oct 2015)");
   script_name("Apple iTunes Multiple Vulnerabilities Sep15 (Windows)");
 
@@ -59,17 +59,20 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Multiple memory corruption issues in the processing of unicode strings.
+
   - Multiple memory corruption issues in the processing of text files.
+
   - A security issue in Microsoft Foundation Class's handling of library loading.
+
   - Multiple memory corruption issues in WebKit.
+
   - A redirection issue in the handling of certain network connections.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   attacker to obtain encrypted SMB credentials, to cause unexpected application
-  termination or arbitrary code execution, .
-
-  Impact Level: System/Application.");
+  termination or arbitrary code execution, .");
 
   script_tag(name:"affected", value:"Apple iTunes versions before 12.3 on Windows.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_svg_xss.nasl 6081 2017-05-08 12:36:22Z cfi $
+# $Id: gb_roundcube_svg_xss.nasl 11472 2018-09-19 11:20:06Z mmartin $
 #
 # Roundcube Webmail 'Crafted SVG' Cross Site Scripting Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:roundcube:webmail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108153");
-  script_version("$Revision: 6081 $");
+  script_version("$Revision: 11472 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 14:36:22 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-05-08 10:00:00 +0200 (Mon, 08 May 2017)");
   script_cve_id("CVE-2015-8864", "CVE-2016-4068");
   script_name("Roundcube Webmail 'Crafted SVG' Cross Site Scripting Vulnerabilities");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script
   code in the browser of an unsuspecting user in the context of the affected site. This may allow
-  the attacker to steal cookie-based authentication credentials and to launch other attacks.
-
-  Impact Level: Application");
+  the attacker to steal cookie-based authentication credentials and to launch other attacks.");
 
   script_tag(name:"affected", value:"Roundcube Webmail versions prior to 1.0.9 and 1.1.x
   versions prior to 1.1.5.");

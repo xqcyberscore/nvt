@@ -29,33 +29,32 @@ CPE = "cpe:/a:apache:archiva";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808280");
-  script_version("$Revision: 5759 $");
+  script_version("$Revision: 11473 $");
   script_cve_id("CVE-2016-4469", "CVE-2016-5005");
   script_bugtraq_id(91707, 91703);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-02 19:48:44 +0530 (Tue, 02 Aug 2016)");
   script_name("Apache Archiva Cross Site Scripting And CSRF Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is installed with Apache Archiva
-  and is prone to cross-site request forgery and cross-site scripting 
+  and is prone to cross-site request forgery and cross-site scripting
   vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
-  - An insufficient validation of user supplied input via HTTP POST parameter 
+
+  - An insufficient validation of user supplied input via HTTP POST parameter
    'connector.sourceRepoId' to 'admin/addProxyConnector_commit.action'.
-  - The application lacks a Cross-Site Request Forgery protection to certain 
+
+  - The application lacks a Cross-Site Request Forgery protection to certain
     HTTP POST-based functions");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to perform sensitive administrative actions and to inject arbitrary 
-  web script or HTML.
-
-  Impact Level: Application");
+  attackers to perform sensitive administrative actions and to inject arbitrary
+  web script or HTML.");
 
   script_tag(name:"affected", value:"Apache Archiva version 1.3.9 and prior.");
 
@@ -65,9 +64,9 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name : "URL" , value :"https://packetstormsecurity.com/files/137870");
-  script_xref(name : "URL" , value :"https://packetstormsecurity.com/files/137869");
-  script_xref(name : "URL" , value :"http://www.securityfocus.com/archive/1/archive/1/538877/100/0/threaded");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/137870");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/137869");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/538877/100/0/threaded");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -79,21 +78,13 @@ if(description)
 }
 
 
-## Code starts from here
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-arPort = "";
-arVer= "";
-
-## Get HTTP Port
 if(!arPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# Get Version
 if(!arVer = get_app_version(cpe:CPE, port:arPort)){
   exit(0);
 }

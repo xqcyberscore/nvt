@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-052.nasl 6513 2017-07-04 09:59:28Z teissa $
+# $Id: gb_ms15-052.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Windows Kernel Security Feature Bypass Vulnerability (3050514)
 #
@@ -27,36 +27,33 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805382");
-  script_version("$Revision: 6513 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1674");
   script_bugtraq_id(74488);
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-13 11:36:27 +0530 (Wed, 13 May 2015)");
   script_name("Microsoft Windows Kernel Security Feature Bypass Vulnerability (3050514)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-052.");
 
-  script_tag(name: "vuldetect" , value: "Get the vulnerable file version and
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value: "The flaw is due to the system failing to
+  script_tag(name:"insight", value:"The flaw is due to the system failing to
   validate a memory address, which can help to bypass Kernel Address Space Layout
   Randomization (KASLR).");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow a local
-  attacker to use a compromised process to gain access to the address of cng.sys
+  script_tag(name:"impact", value:"Successful exploitation will allow a local
+  attacker to use a compromised process to gain access to the address of cng.sys.");
 
-  Impact Level: System");
-
-  script_tag(name: "affected" , value:"
-  Microsoft Windows 8 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows Server 2012/R2
   Microsoft Windows 8.1 x32/x64 Edition");
 
-  script_tag(name: "solution" , value: "Run Windows Update and update the
+  script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
   https://technet.microsoft.com/library/security/MS15-052");
@@ -65,13 +62,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3050514");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-052");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3050514");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-052");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -82,17 +80,11 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win8:1, win8x64:1, win2012:1, win2012R2:1,
                    win8_1:1, win8_1x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
@@ -103,13 +95,11 @@ if(!dllVer){
   exit(0);
 }
 
-## Windows 8 and Windows Server 2012
 if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 {
-  ## Check for Lsasrv.dll version
   if(version_is_less(version:dllVer, test_version:"6.2.9200.17231") ||
      version_in_range(version:dllVer, test_version:"6.2.9200.20000", test_version2:"6.2.9200.21344")){
-     security_message(0);
+     security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
@@ -117,9 +107,8 @@ if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 ## Win 8.1 and win2012R2
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Lsasrv.dll version
   if(version_is_less(version:dllVer, test_version:"6.3.9600.17784")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }

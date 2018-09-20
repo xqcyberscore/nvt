@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-112.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_ms15-112.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (3104517)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805773");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-2427", "CVE-2015-6064", "CVE-2015-6065", "CVE-2015-6066",
                 "CVE-2015-6068", "CVE-2015-6069", "CVE-2015-6070", "CVE-2015-6071",
                 "CVE-2015-6072", "CVE-2015-6073", "CVE-2015-6074", "CVE-2015-6075",
@@ -39,7 +39,7 @@ if(description)
                 "CVE-2015-6089");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 08:52:04 +0530 (Wed, 11 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (3104517)");
@@ -51,16 +51,16 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Multiple improper memory object handling errors.
+
   - An error in the way that the JScript and VBScript engines render when handling
   objects in memory in Internet Explorer");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to sensitive information, bypass security restrictions,
   corrupt memory and potentially execute arbitrary code in the context of the
-  current user.
-
-  Impact Level: System/Application");
+  current user.");
 
   script_tag(name:"affected", value:"Microsoft Internet Explorer version
   7.x/8.x/9.x/10.x/11.x");

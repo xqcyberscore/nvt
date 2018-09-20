@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln01_apr15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_mysql_unspecified_vuln01_apr15_win.nasl 11475 2018-09-19 12:12:13Z cfischer $
 #
 # Oracle MySQL Multiple Unspecified vulnerabilities-01 Apr15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805170");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11475 $");
   script_cve_id("CVE-2015-2575");
   script_bugtraq_id(74075);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 14:12:13 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-22 11:23:47 +0530 (Wed, 22 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle MySQL Multiple Unspecified vulnerabilities-01 Apr15 (Windows)");
@@ -65,9 +65,9 @@ if(description)
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed", "Host/runs_windows");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
@@ -77,7 +77,7 @@ if(!sqlPort = get_app_port(cpe:CPE)){
 }
 
 if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort)){
-  exit(-1);
+  exit(0);
 }
 
 if(mysqlVer =~ "^(5\.1)")
@@ -89,3 +89,5 @@ if(mysqlVer =~ "^(5\.1)")
     exit(0);
   }
 }
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_h2o_http_server_crlf_injection_vuln.nasl 8965 2018-02-27 11:35:42Z cfischer $
+# $Id: gb_h2o_http_server_crlf_injection_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # H2O HTTP Server CRLF Injection Vulnerability
 #
@@ -29,28 +29,25 @@ CPE = "cpe:/a:h2o_project:h2o";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806994");
-  script_version("$Revision: 8965 $");
+  script_version("$Revision: 11493 $");
   script_cve_id("CVE-2016-1133");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-27 12:35:42 +0100 (Tue, 27 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-25 15:37:05 +0530 (Mon, 25 Jan 2016)");
   script_name("H2O HTTP Server CRLF Injection Vulnerability");
 
   script_tag(name:"summary", value:"This host is running H2O HTTP Server
   and is prone to CRLF Injection Vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to insufficient validation
   of user supplied input by 'on_req function' in 'lib/handler/redirect.c' script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to inject arbitrary HTTP headers and conduct HTTP response
-  splitting attacks.
-
-  Impact Level: Application");
+  splitting attacks.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -85,7 +82,6 @@ if (!h2oVer = get_app_version(cpe:CPE, port:h2oPort))
 ## some versions contains '-' in version
 h2oVer = ereg_replace(string:h2oVer, pattern:"-", replace:".");
 
-## Checking for vulnerable version
 if(version_is_less(version:h2oVer, test_version:"1.6.2"))
 {
   fix = "1.6.2";

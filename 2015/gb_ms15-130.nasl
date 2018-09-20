@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-130.nasl 6453 2017-06-28 09:59:05Z teissa $
+# $Id: gb_ms15-130.nasl 11475 2018-09-19 12:12:13Z cfischer $
 #
 # Microsoft Windows Uniscribe Remote Code Execution Vulnerability (3108670)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806172");
-  script_version("$Revision: 6453 $");
+  script_version("$Revision: 11475 $");
   script_cve_id("CVE-2015-6130");
   script_bugtraq_id(78500);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 14:12:13 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 09:39:22 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft Windows Uniscribe Remote Code Execution Vulnerability (3108670)");
 
@@ -47,57 +47,49 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to execute arbitrary code in the context of the vulnerable application. Failed
-  exploit attempts will result in a denial-of-service condition.
+  exploit attempts will result in a denial-of-service condition.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://technet.microsoft.com/library/security/MS15-130");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-130");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3108670#bookmark-fileinfo");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-130");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3108670#bookmark-fileinfo");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-sysVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
-  exit(-1);
+  exit(0);
 }
 
-## Get Version from Usp10.dll
 dllVer = fetch_file_version(sysPath, file_name:"system32\Usp10.dll");
 if(dllVer)
 {
@@ -109,10 +101,8 @@ if(dllVer)
   }
 }
 
-## Windows 7 and Server 2008r2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Usp10.dll version
   if(version_in_range(version:dllVer, test_version:"1.626.7601.18000", test_version2:"1.626.7601.19053")||
      version_in_range(version:dllVer, test_version:"1.626.7601.22000", test_version2:"1.626.7601.23258"))
   {
@@ -123,3 +113,5 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
     exit(0);
   }
 }
+
+exit(99);

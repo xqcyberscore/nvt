@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-016.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_ms15-016.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Graphics Component Information Disclosure Vulnerability (3029944)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805137");
-  script_version("$Revision: 11299 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-0061");
   script_bugtraq_id(72456);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 11:58:29 +0530 (Wed, 11 Feb 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Graphics Component Information Disclosure Vulnerability (3029944)");
@@ -47,9 +47,7 @@ if(description)
   memory when parsing certain, specially crafted TIFF image format files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to disclose certain sensitive information.
-
-  Impact Level: System");
+  attackers to disclose certain sensitive information.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tcpbx_voip_lfi_vuln.nasl 6264 2017-06-01 12:53:37Z cfischer $
+# $Id: gb_tcpbx_voip_lfi_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # tcPbX 'tcpbx_lang' Parameter Local File Inclusion Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:tcpbx:tcpbx_voip";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809009");
-  script_version("$Revision: 6264 $");
+  script_version("$Revision: 11493 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-01 14:53:37 +0200 (Thu, 01 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-23 16:18:17 +0530 (Tue, 23 Aug 2016)");
   script_name("tcPbX 'tcpbx_lang' Parameter Local File Inclusion Vulnerability");
 
@@ -42,14 +42,12 @@ if(description)
   script_tag(name:"vuldetect", value:"Send the crafted http GET request
   and check whether it is able to get password information or not.");
 
-  script_tag(name:"insight", value:"The flaw exists due to 'tcpbx_lang' 
+  script_tag(name:"insight", value:"The flaw exists due to 'tcpbx_lang'
   parameter isn't sanitized before being proceeded in the file
   'var/www/html/tcpbx/index.php'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to read any file system including file configurations.
-
-  Impact Level: Application");
+  attacker to read any file system including file configurations.");
 
   script_tag(name:"affected", value:"tcPbX versions prior to 1.2.1.");
 
@@ -60,8 +58,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40278");
-  script_xref(name : "URL" , value : "http://www.tcpbx.org/index.php/en/resources/updates");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40278");
+  script_xref(name:"URL", value:"http://www.tcpbx.org/index.php/en/resources/updates");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -77,23 +75,17 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-##Variable initialize
-iqPort = 0;
-
-# Get HTTP Port
 if(!iqPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-#Construct url
 url = "/tcpbx/";
 
 ## Condtruct crafted cookie parameter
 cookie = "tcpbx_lang=../../../../../../../../../../etc/passwd%00; PHPSESSID=7rmen68sn4op8cgkc49l86pfu4";
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:iqPort, url:url, check_header:TRUE,
-   pattern:"root:.*:0:[01]:", cookie: cookie, 
+   pattern:"root:.*:0:[01]:", cookie: cookie,
    extra_check:make_list(">www.tcpbx.org", "<title>tcPbX</title>")))
 {
   report = report_vuln_url(port:iqPort, url:url);

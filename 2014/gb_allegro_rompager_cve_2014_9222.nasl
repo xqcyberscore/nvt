@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_allegro_rompager_cve_2014_9222.nasl 11106 2018-08-24 13:20:47Z mmartin $
+# $Id: gb_allegro_rompager_cve_2014_9222.nasl 11497 2018-09-20 10:31:54Z mmartin $
 #
 # Allegro RomPager `Misfortune Cookie` Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-9222");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11106 $");
+  script_version("$Revision: 11497 $");
 
   script_name("Allegro RomPager `Misfortune Cookie` Vulnerability");
 
@@ -46,7 +46,7 @@ if (description)
 
   script_tag(name:"affected", value:"RomPager services with versions before 4.34");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 15:20:47 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-23 10:22:44 +0100 (Tue, 23 Dec 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -64,11 +64,13 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
+
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-
+vtstring = get_vt_string();
 url = '/tr069';
-rand = '/OpenVAS_' + rand();
+rand = '/' + vtstring +'_' + rand();
 cookie = 'C107373883=' + rand;
 
 if( http_vuln_check( port:port, url:url, pattern:rand, extra_check:'was not found on the RomPager', cookie:cookie ) )

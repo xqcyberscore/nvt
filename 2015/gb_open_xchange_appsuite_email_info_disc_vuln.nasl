@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_email_info_disc_vuln.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_open_xchange_appsuite_email_info_disc_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Open-Xchange AppSuite Email Configuration Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806081");
-  script_version("$Revision: 11299 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-2078");
   script_bugtraq_id(71888);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-09 15:08:44 +0530 (Fri, 09 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange AppSuite Email Configuration Information Disclosure Vulnerability");
@@ -49,9 +49,7 @@ if(description)
   auto configuration.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to gain unauthorised access to other users data e.g. mail addresses.
-
-  Impact Level: Application");
+  to gain unauthorised access to other users data e.g. mail addresses.");
 
   script_tag(name:"affected", value:"Open-Xchange (OX) AppSuite version 7.4.2");
 

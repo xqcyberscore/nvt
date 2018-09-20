@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_space_webui_default_credentials.nasl 10984 2018-08-15 12:54:14Z mmartin $
+# $Id: gb_junos_space_webui_default_credentials.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Junos Space Web Management Interface Default Credentials
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105412");
-  script_version("$Revision: 10984 $");
+  script_version("$Revision: 11492 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Junos Space Web Management Interface Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-19 12:48:28 +0200 (Mon, 19 Oct 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -74,7 +74,7 @@ if( isnull( cookie[1] ) ) exit( 0 );
 co = cookie[1];
 
 if( "Junos Space Login</title>" >!< buf || "j_username" >!< buf ) exit( 0 );
-
+useragent = get_http_user_agent();
 user = 'super';
 pass = 'juniper123';
 
@@ -97,7 +97,7 @@ host = http_host_name( port:port );
 
 req = 'POST /mainui/j_security_check HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Language: de,en-US;q=0.7,en;q=0.3\r\n' +
       'Accept-Encoding: identity\r\n' +
@@ -114,7 +114,7 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
 req = 'GET /mainui/ HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Encoding: identity\r\n' +
       'DNT: 1\r\n' +
@@ -136,7 +136,7 @@ url = '/mainui/?bid=' + bid;
 
 req = 'GET ' + url + ' HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Encoding: identity\r\n' +
       'DNT: 1\r\n' +

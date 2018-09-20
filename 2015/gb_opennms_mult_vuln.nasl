@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opennms_mult_vuln.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: gb_opennms_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # OpenNMS Default Credentials and XXE Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:opennms:opennms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806531");
-  script_version("$Revision: 6159 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-7856", "CVE-2015-0975");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-04 13:01:47 +0530 (Wed, 04 Nov 2015)");
   script_name("OpenNMS Default Credentials and XXE Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -52,14 +52,14 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP POST and
   check whether it is able to bypass authentication or not.");
   script_tag(name:"insight", value:"Multiple flaws exists as,
+
   - It is possible to login with default credentials: rtc/rtc.
+
   - The OpenNMS is vulnerable to XML External Entity Injection in the Real-Time
     Console interface.");
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to obtain access by leveraging knowledge of the credentials and
-  launch further attacks including XML External Entity Injection.
-
-  Impact Level: Application");
+  launch further attacks including XML External Entity Injection.");
   script_tag(name:"affected", value:"OpenNMS versions prior to 14.0.3");
   script_tag(name:"solution", value:"Upgrade to OpenNMS version 14.0.3 or later.
   For updates refer to http://www.opennms.org");
@@ -79,7 +79,6 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-## Get host name or IP
 host = http_host_name( port:port );
 
 url = dir + "/login.jsp";
@@ -104,7 +103,6 @@ if( "OpenNMS Group, Inc." >< buf ) {
         post_data;
   buf = http_keepalive_send_recv( port:port, data:req );
 
-  ## check the redirection
   if( "HTTP/1.1 302 Found" >< buf  && "?login_error=1" >!<  buf &&
       buf =~ "Location:.*/index.jsp" ) {
 
@@ -113,7 +111,6 @@ if( "OpenNMS Group, Inc." >< buf ) {
           'Cookie: JSESSIONID=' + cookie[1] + '; ' + 'JSESSIONID=' + cookie[1] + '\r\n' + '\r\n';
     buf = http_keepalive_send_recv( port:port, data:req );
 
-    ## confirm login
     if( ">Statistics<" >< buf && ">Dashboard<" >< buf &&
         ">Change Password<" >< buf && ">Log Out<"  >< buf &&
         ">The OpenNMS Group, Inc." >< buf ) {

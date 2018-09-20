@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exponent_cms_mult_xss_vuln_feb15.nasl 5227 2017-02-08 07:26:04Z cfi $
+# $Id: gb_exponent_cms_mult_xss_vuln_feb15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Exponent CMS Multiple XSS Vulnerabilities - Feb15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:exponentcms:exponent_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805139");
-  script_version("$Revision: 5227 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-8690");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 08:26:04 +0100 (Wed, 08 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-16 13:11:02 +0530 (Mon, 16 Feb 2015)");
   script_name("Exponent CMS Multiple XSS Vulnerabilities - Feb15");
   script_category(ACT_ATTACK);
@@ -56,9 +56,7 @@ if(description)
   'Last Name' fields before returning it to users.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to execute arbitrary HTML and script code in the context of an affected site.
-
-  Impact Level: Application");
+  to execute arbitrary HTML and script code in the context of an affected site.");
 
   script_tag(name:"affected", value:"Exponent CMS version 2.3.1, Prior versions
   may also be affected.");

@@ -29,45 +29,47 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808623");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 11493 $");
   script_cve_id("CVE-2016-3552", "CVE-2016-3587", "CVE-2016-3598", "CVE-2016-3610");
   script_bugtraq_id(91904, 91918, 92000, 91930);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-25 11:28:15 +0530 (Mon, 25 Jul 2016)");
   script_name("Oracle Java SE Multiple Unspecified Vulnerabilities-03 July 2016 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
+  script_tag(name:"summary", value:"The host is installed with Oracle Java SE
   and is prone to multiple unspecified vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - A flaw in the Hotspot component.
+
   - A flaw in the JavaFX component.
+
   - A flaw in the Install component.
+
   - A flaw in the Libraries component");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote user
+  script_tag(name:"impact", value:"Successful exploitation will allow remote user
   to access and modify data on the target system, can cause denial of service
   conditions on the target system, a remote or local user can obtain elevated
   privileges on the  target system, also a local user can modify data on the
-  target system.
+  target system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Oracle Java SE 8 update 92 and prior
+  script_tag(name:"affected", value:"Oracle Java SE 8 update 92 and prior
   on Windows.");
 
-  script_tag(name: "solution" , value:"Apply the patch from below link,
+  script_tag(name:"solution", value:"Apply the patch from below link,
   http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sony_ip_cam_backdoor_vul.nasl 9564 2018-04-23 09:32:17Z asteins $
+# $Id: gb_sony_ip_cam_backdoor_vul.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # Sony IPELA Engine IP Cameras Backdoor Vulnerability
 #
@@ -29,28 +29,26 @@ CPE = "cpe:/h:sony:sony_network_camera_snc";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107106");
-  script_version("$Revision: 9564 $");
+  script_version("$Revision: 11473 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-23 11:32:17 +0200 (Mon, 23 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-09 16:11:25 +0530 (Fri, 09 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Sony IPELA Engine IP Cameras Backdoor Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is running on a Sony IPELA Engine IP Camera
+  script_tag(name:"summary", value:"The host is running on a Sony IPELA Engine IP Camera
   and is prone to a backdoor vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of the
+  script_tag(name:"vuldetect", value:"Get the installed version with the help of the
   detection NVT and check if the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an improper validation of
+  script_tag(name:"insight", value:"The flaw is due to an improper validation of
   web requests passed via GET the parameter.");
 
-  script_tag(name: "impact" , value:"Successful exploitation may allows an attacker to run arbitrary code on the affected IP cameras.
+  script_tag(name:"impact", value:"Successful exploitation may allows an attacker to run arbitrary code on the affected IP cameras.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"According to Sony, at least the following products are affected:
+  script_tag(name:"affected", value:"According to Sony, at least the following products are affected:
 
 SNC-CH115, SNC-CH120, SNC-CH160, SNC-CH220, SNC-CH260, SNC-DH120,
 
@@ -81,11 +79,11 @@ SNC-WR602, SNC-WR602C, SNC-WR630, SNC-WR632, SNC-WR632C, SNC-XM631,
 SNC-XM632, SNC-XM636, SNC-XM637, SNC-VB600L, SNC-VM600L, SNC-XM631L,
 SNC-WR602CL");
 
-  script_tag(name: "solution" , value:"The vendor provided the following URL to download firmware updates for the affected devices. Updates should be installed immediately:
+  script_tag(name:"solution", value:"The vendor provided the following URL to download firmware updates for the affected devices. Updates should be installed immediately:
 
 https://www.sony.co.uk/pro/article/sony-new-firmware-for-network-cameras");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20161206-0_Sony_IPELA_Engine_IP_Cameras_Backdoors_v10.txt");
+  script_xref(name:"URL", value:"https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20161206-0_Sony_IPELA_Engine_IP_Cameras_Backdoors_v10.txt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");

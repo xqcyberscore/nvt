@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_multiple_vuln_apr16.nasl 6883 2017-08-09 09:44:10Z cfischer $
+# $Id: gb_hp_data_protector_multiple_vuln_apr16.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # HP Data Protector Multiple Vulnerabilities - Apr16
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807814");
-  script_version("$Revision: 6883 $");
+  script_version("$Revision: 11493 $");
   script_cve_id("CVE-2016-2004", "CVE-2016-2005", "CVE-2016-2006", "CVE-2016-2007",
                 "CVE-2016-2008", "CVE-2015-2808");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-09 11:44:10 +0200 (Wed, 09 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-26 18:03:24 +0530 (Tue, 26 Apr 2016)");
   script_name("HP Data Protector Multiple Vulnerabilities - Apr16");
 
   script_tag(name:"summary", value:"This host is installed with HP Data
   Protector and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as,
 
@@ -55,9 +54,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code on the affected system and also gain
-  access to potentially sensitive information.
-
-  Impact Level: System/Application");
+  access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"HP Data Protector before 7.03_108, 8.x
   before 8.15, and 9.x before 9.06");
@@ -90,21 +87,18 @@ if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 build = get_kb_item( "hp_data_protector/" + port + "/build" );
 
-##Check for version less than 9.x before 9.06
 if( vers =~ "^09\.") {
   if( version_is_less( version:vers, test_version:"09.06" ) ) {
     fix = '09.06';
     VULN = TRUE;
   }
 
-##Check for version less than 8.x before 8.15
 } else if( vers =~ "^08\." ) {
   if( version_is_less( version:vers, test_version:"08.15" ) ) {
     fix = '08.15';
     VULN = TRUE;
   }
 
-## Check for version less than 7.03_108
 ## 7.03_108 = 7.03 Build 108, https://www.data-protector.org/wordpress/
 } else if( build && vers =~ "^07\.03" ) {
   if( version_is_less( version:build, test_version:"108" ) ) {
@@ -113,7 +107,6 @@ if( vers =~ "^09\.") {
     exit(0);
   }
 
-####Check for version less than 7.03
 } else if( version_is_less( version:vers, test_version:"07.03" ) ) {
   fix = '07.03_108';
   VULN = TRUE;

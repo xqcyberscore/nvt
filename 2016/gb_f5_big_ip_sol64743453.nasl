@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol64743453.nasl 5104 2017-01-25 12:03:53Z antu123 $
+# $Id: gb_f5_big_ip_sol64743453.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # F5 BIG-IP - SOL64743453 - NAT64 vulnerability CVE-2016-5745
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140008");
- script_cve_id("CVE-2016-5745");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5104 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140008");
+  script_cve_id("CVE-2016-5745");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11473 $");
 
- script_name("F5 BIG-IP - SOL64743453 - NAT64 vulnerability CVE-2016-5745");
+  script_name("F5 BIG-IP - SOL64743453 - NAT64 vulnerability CVE-2016-5745");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/64/sol64743453.html?sr=58084219");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/64/sol64743453.html?sr=58084219");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"BIG-IP devices using NAT64 are vulnerable to an unauthenticated remote attack that may allow modification of the BIG-IP system configuration.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"BIG-IP devices using NAT64 are vulnerable to an unauthenticated remote attack that may allow modification of the BIG-IP system configuration.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-25 13:03:53 +0100 (Wed, 25 Jan 2017) $");
- script_tag(name:"creation_date", value:"2016-10-24 14:14:05 +0200 (Mon, 24 Oct 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-24 14:14:05 +0200 (Mon, 24 Oct 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_detect.nasl 11021 2018-08-17 07:48:11Z cfischer $
+# $Id: gb_dotcms_detect.nasl 11458 2018-09-18 13:10:59Z jschulte $
 #
 # dotCMS Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106114");
-  script_version("$Revision: 11021 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:48:11 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11458 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 15:10:59 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-05 08:55:18 +0700 (Tue, 05 Jul 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,7 +64,7 @@ include("misc_func.inc");
 
 port = get_http_port(default: 80);
 
-foreach dir (make_list_unique("/", "/dotcms", "/dotCMS", cgi_dirs(port: port))) {
+foreach dir (make_list_unique("/", "/dotcms", "/dotCMS", "/dotAdmin", cgi_dirs(port: port))) {
   install = dir;
   if (dir == "/")
     dir = "";
@@ -130,7 +130,6 @@ foreach dir (make_list_unique("/", "/dotcms", "/dotCMS", cgi_dirs(port: port))) 
         concUrl = url;
     }
 
-
     if (found) {
       set_kb_item(name: "dotCMS/installed", value: TRUE);
 
@@ -149,6 +148,36 @@ foreach dir (make_list_unique("/", "/dotcms", "/dotCMS", cgi_dirs(port: port))) 
       log_message(data: build_detection_report(app: "dotCMS", version: version, install: install, cpe: cpe,
                                              concluded: ver[0], concludedUrl: concUrl),
                   port: port);
+      exit(0);
+    }
+  }
+
+  # detection >= 5.0.0
+  foreach location(make_list_unique("/", "/api", "/api/v1", "/api/v2", "/api/v3", cgi_dirs(port: port))) {
+    dir = location;
+    if(dir == "/")
+      dir = "";
+    url = dir + "/appconfiguration";
+    buf = http_get_cache(item: url, port: port);
+    if( buf =~ 'dotcms.websocket' ) {
+      set_kb_item(name: "dotCMS/installed", value: TRUE);
+
+      version = "unknown";
+      ver = eregmatch(string: buf, pattern: '"version":"([0-9.]+)"', icase: TRUE);
+      if(!isnull(ver[1])) {
+        version = ver[1];
+        set_kb_item(name: "dotCMS/version", value: version);
+      }
+
+      register_and_report_cpe(app: "dotCMS",
+                              ver: version,
+                              concluded: ver[0],
+                              base: "cpe:/a:dotcms:dotcms:",
+                              expr: '([0-9.]+)',
+                              insloc: location,
+                              regPort: port,
+                              conclUrl: url);
+
       exit(0);
     }
   }

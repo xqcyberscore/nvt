@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_apr15_macosx.nasl 6214 2017-05-26 09:04:01Z teissa $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_apr15_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-01 Apr15 (Mac OS X)
 #
@@ -29,37 +29,38 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805525");
-  script_version("$Revision: 6214 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-0816", "CVE-2015-0815", "CVE-2015-0807", "CVE-2015-0801");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-06 15:26:29 +0530 (Mon, 06 Apr 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 Apr15 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox ESR and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Improper restriction of resource: URLs.
+
   - Multiple unspecified errors.
+
   - An error in 'navigator.sendBeacon' implementation.
+
   - An error allowing to bypass the Same Origin Policy.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary JavaScript code, conduct cross-site request
   forgery (CSRF) attacks, conduct denial of service (memory corruption and
-  application crash) attack and possibly execute arbitrary code.
+  application crash) attack and possibly execute arbitrary code.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR 31.x before 31.6 on
+  script_tag(name:"affected", value:"Mozilla Firefox ESR 31.x before 31.6 on
   Mac OS X");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version 31.6
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 31.6
   or later, For updates refer to https://www.mozilla.org/en-US/firefox/organizations");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -82,16 +83,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
-if(ffVer =~ "^(31)\.")
+if(ffVer =~ "^31\.")
 {
   if((version_in_range(version:ffVer, test_version:"31.0", test_version2:"31.5")))
   {

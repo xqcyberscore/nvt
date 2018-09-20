@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCut52679.nasl 6329 2017-06-13 15:39:42Z teissa $
+# $Id: gb_cisco_asa_CSCut52679.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Cisco ASA OSPFv2 DoS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106027");
-  script_version("$Revision: 6329 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
-  script_tag(name : "creation_date", value : "2015-07-15 12:04:27 +0700 (Wed, 15 Jul 2015)");
-  script_tag(name : "cvss_base", value : "6.1");
-  script_tag(name : "cvss_base_vector", value : "AV:A/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11452 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-07-15 12:04:27 +0700 (Wed, 15 Jul 2015)");
+  script_tag(name:"cvss_base", value:"6.1");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
   script_mandatory_keys("cisco_asa/version");
 
-  script_tag(name : "summary", value : "Cisco ASA is prone to a OSPFv2 Denial of Service vulnerability.");
+  script_tag(name:"summary", value:"Cisco ASA is prone to a OSPFv2 Denial of Service vulnerability.");
 
-  script_tag(name : "vuldetect", value : "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name : "insight", value : "The vulnerability is due to improper handling of OSPFv2 packets.
+  script_tag(name:"insight", value:"The vulnerability is due to improper handling of OSPFv2 packets.
 An unauthenticated attacker could exploit this vulnerability by sending crafted packets to the affected
 system.");
 
-  script_tag(name : "impact", value : "A successful exploit could cause the system to crash, resulting
+  script_tag(name:"impact", value:"A successful exploit could cause the system to crash, resulting
 in a DoS condition.");
 
-  script_tag(name : "affected", value : "Version 9.3");
+  script_tag(name:"affected", value:"Version 9.3");
 
-  script_tag(name : "solution", value : "Apply the appropriate updates from Cisco.");
+  script_tag(name:"solution", value:"Apply the appropriate updates from Cisco.");
 
-  script_xref(name : "URL", value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=39641");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=39641");
 
   exit(0);
 }

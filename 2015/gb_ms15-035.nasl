@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-035.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-035.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Windows Graphics Component Remote Code Execution Vulnerability (3046306)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805534");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1645");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 10:40:36 +0530 (Wed, 15 Apr 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Graphics Component Remote Code Execution Vulnerability (3046306)");
@@ -46,9 +46,7 @@ if(description)
   when handling a specially crafted enhanced metafile (EMF) image format file.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code and compromise a user's system.
-
-  Impact Level: System");
+  attackers to execute arbitrary code and compromise a user's system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1
   Microsoft Windows 2003 x32/x64 Edition Service Pack 2

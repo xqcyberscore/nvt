@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apexis_ip_cam_info_disc_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_apexis_ip_cam_info_disc_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Apexis IP CAM Information Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805070");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-17 11:22:32 +0530 (Wed, 17 Jun 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Apexis IP CAM Information Disclosure Vulnerability");
@@ -45,9 +45,7 @@ if(description)
   restricting some files which are containing sensitive information.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to gain access to potentially sensitive information.
-
-  Impact Level: Application");
+  to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"Apexis IP CAM models,
   APM-H602-MPC

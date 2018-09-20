@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_excel_service_ms16-148.nasl 9316 2018-04-05 07:06:02Z cfischer $
+# $Id: gb_sharepoint_server_excel_service_ms16-148.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # MS SharePoint Server Excel Services Information Disclosure Vulnerability (3204068)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809756");
-  script_version("$Revision: 9316 $");
+  script_version("$Revision: 11473 $");
   script_cve_id("CVE-2016-7265");
   script_bugtraq_id(94721);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 09:06:02 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-14 12:47:22 +0530 (Wed, 14 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server Excel Services Information Disclosure Vulnerability (3204068)");
@@ -49,9 +49,7 @@ if(description)
   reads out of bound memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain access to potentially sensitive information.
-
-  Impact Level: System/Application");
+  attackers to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2007 Service Pack 3 Excel Services.
 
@@ -62,13 +60,14 @@ if(description)
   https://technet.microsoft.com/library/security/ms16-148");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3127892");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3128029");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms16-148");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3127892");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3128029");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms16-148");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/SharePoint/Server/Ver");
   exit(0);
 }

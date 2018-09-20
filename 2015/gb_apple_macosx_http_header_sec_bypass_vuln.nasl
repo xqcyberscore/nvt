@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_http_header_sec_bypass_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_apple_macosx_http_header_sec_bypass_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Apple Mac OS X Web Service component (HTTP header) Security Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/o:apple:os_x_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806127");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-7031");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-29 13:05:48 +0530 (Thu, 29 Oct 2015)");
   script_name("Apple Mac OS X Web Service component (HTTP header) Security Bypass Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
   Service component it omits an unspecified HTTP header configuration.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to  bypass intended access restrictions via unknown vectors.
-
-  Impact Level: System/Application");
+  to  bypass intended access restrictions via unknown vectors.");
 
   script_tag(name:"affected", value:"Apple Mac OS X Server versions before 5.0.15");
 

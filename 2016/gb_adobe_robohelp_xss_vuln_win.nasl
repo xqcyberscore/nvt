@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_robohelp_xss_vuln_win.nasl 4821 2016-12-21 07:18:13Z antu123 $
+# $Id: gb_adobe_robohelp_xss_vuln_win.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Adobe RoboHelp Cross Site Scripting Vulnerability (Windows)
 #
@@ -29,39 +29,36 @@ CPE = "cpe:/a:adobe:robohelp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809840");
-  script_version("$Revision: 4821 $");
+  script_version("$Revision: 11493 $");
   script_cve_id("CVE-2016-7891");
   script_bugtraq_id(94878);
   script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N"); 
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 08:18:13 +0100 (Wed, 21 Dec 2016) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-15 16:08:47 +0530 (Thu, 15 Dec 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe RoboHelp Cross Site Scripting Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Adobe RoboHelp
+  script_tag(name:"summary", value:"This host is installed with Adobe RoboHelp
   server and is prone to cross-site scripting vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The flaw is due to an improper sanitization of
+  script_tag(name:"insight", value:"The flaw is due to an improper sanitization of
   user-supplied input.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers to
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to
   execute arbitrary script code in the context of the affected website. This may
   allow the attacker to steal cookie-based authentication credentials and to launch
-  other attacks.
+  other attacks.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Adobe RoboHelp 11 and prior on Windows.");
 
-  script_tag(name: "affected" , value:"Adobe RoboHelp 11 and prior on Windows.");
-
-  script_tag(name: "solution" , value:"Apply the hotfix for Adobe RoboHelp.
+  script_tag(name:"solution", value:"Apply the hotfix for Adobe RoboHelp.
   https://helpx.adobe.com/security/products/robohelp/apsb16-46.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/robohelp/apsb16-46.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/robohelp/apsb16-46.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
@@ -74,15 +71,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-roboVer = "";
-
-## Get version
 if(!roboVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check Adobe RoboHelp Server vulnerable version
 if(version_is_less_equal(version:roboVer, test_version:"11.0"))
 {
   report = report_fixed_ver(installed_version:roboVer, fixed_version:"Apply the Hotfix");

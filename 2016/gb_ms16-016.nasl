@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-016.nasl 11426 2018-09-17 09:38:26Z asteins $
+# $Id: gb_ms16-016.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # Microsoft Windows WebDAV Elevation Of Privilege Vulnerability (3136041)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806863");
-  script_version("$Revision: 11426 $");
+  script_version("$Revision: 11473 $");
   script_cve_id("CVE-2016-0051");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 10:51:05 +0530 (Wed, 10 Feb 2016)");
   script_name("Microsoft Windows WebDAV Elevation Of Privilege Vulnerability (3136041)");
 
@@ -159,7 +159,6 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Check for Mrxdav.sys version
   if(version_is_less(version:sysVer, test_version:"10.0.10240.16683") ||
      version_in_range(version:sysVer, test_version:"10.0.10586.0", test_version2:"10.0.10586.102")){
      VULN = TRUE ;

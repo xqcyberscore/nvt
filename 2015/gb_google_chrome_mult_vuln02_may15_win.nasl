@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_may15_win.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_google_chrome_mult_vuln02_may15_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities - 02 - May15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805631");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1251", "CVE-2015-1252", "CVE-2015-1253", "CVE-2015-1254",
                 "CVE-2015-1255", "CVE-2015-1256", "CVE-2015-1257", "CVE-2015-1258",
                 "CVE-2015-1259", "CVE-2015-1260", "CVE-2015-1262", "CVE-2015-1263",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(74723);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-27 09:42:43 +0530 (Wed, 27 May 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Google Chrome Multiple Vulnerabilities - 02 - May15 (Windows)");
@@ -94,9 +94,7 @@ if(description)
   URL bar or deliver misleading popup content, bypass the Same Origin Policy and
   a sandbox protection mechanism, execute arbitrary code and allow
   man-in-the-middle attackers to deliver incorrect spelling suggestions or
-  possibly have unspecified other impact via crafted dimensions.
-
-  Impact Level: System/Application");
+  possibly have unspecified other impact via crafted dimensions.");
 
   script_tag(name:"affected", value:"Google Chrome version prior to
   43.0.2357.65 on Windows.");

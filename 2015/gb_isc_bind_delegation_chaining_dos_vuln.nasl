@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_delegation_chaining_dos_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_isc_bind_delegation_chaining_dos_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # ISC BIND Delegation Handling Denial of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806080");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-8500");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-07 15:17:54 +0530 (Wed, 07 Oct 2015)");
   script_name("ISC BIND Delegation Handling Denial of Service Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -50,9 +50,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to ISC BIND does not handle
   delegation chaining properly.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to cause denial of service to clients.
-
-  Impact Level: Application");
+  to cause denial of service to clients.");
   script_tag(name:"affected", value:"ISC BIND versions 9.0.x through 9.8.x,
   9.9.0 through 9.9.6, and 9.10.0 through 9.10.1");
   script_tag(name:"solution", value:"Upgrade to ISC BIND version 9.9.6-p1 or

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_revslider_mult_vuln.nasl 6313 2017-06-12 09:33:47Z teissa $
+# $Id: gb_wordpress_revslider_mult_vuln.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # Wordpress Revslider Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808202");
-  script_version("$Revision: 6313 $");
+  script_version("$Revision: 11473 $");
   script_cve_id("CVE-2015-5151");
   script_bugtraq_id(68692);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-12 11:33:47 +0200 (Mon, 12 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-23 17:16:21 +0530 (Mon, 23 May 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Revslider Multiple Vulnerabilities");
@@ -46,26 +46,29 @@ if(description)
   and check whether it is able to arbitrary file or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
-  - An insufficient validation of user supplied input via 'client_action' 
+
+  - An insufficient validation of user supplied input via 'client_action'
     parameter in a revslider_ajax_action action to 'wp-admin/admin-ajax.php' script.
+
   - Insecure direct request to 'revslider_admin.php' script.
+
   - An insufficient validation of user supplied input via 'img' parameter
     to 'wp-admin/admin-ajax.php' script");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary script code in a user's browser session 
-  within the trust relationship between their browser and the server and 
-  to obtain sensitive information.
-
-  Impact Level: Application");
+  attackers to execute arbitrary script code in a user's browser session
+  within the trust relationship between their browser and the server and
+  to obtain sensitive information.");
 
   script_tag(name:"affected", value:"Wordpress Revslider version 4.2.2");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132366");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/132366");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -81,25 +84,16 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Vulnerable URL
 url = dir + '/wp-admin/admin-ajax.php?action=revslider_ajax_action&client_action=get_captions_css';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
                    pattern:'success":true',
                    extra_check:make_list('message":', 'data":')))

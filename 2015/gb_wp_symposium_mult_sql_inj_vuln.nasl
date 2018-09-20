@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_symposium_mult_sql_inj_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_wp_symposium_mult_sql_inj_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # WordPress WP Symposium Multiple SQL Injection Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806026");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-24 15:13:35 +0530 (Mon, 24 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("WordPress WP Symposium Multiple SQL Injection Vulnerabilities");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database,
-  allowing for the manipulation or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  allowing for the manipulation or disclosure of arbitrary data.");
 
   script_tag(name:"affected", value:"Wordpress WP Symposium Plugin version
   15.5.1 and probably all existing previous versions may also be affected.");

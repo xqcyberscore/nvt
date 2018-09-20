@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_70964.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_70964.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Trend Micro InterScan Web Security Virtual Appliance Multiple Information Disclosure Vulnerabilities
 #
@@ -29,44 +29,44 @@ CPE = "cpe:/a:trendmicro:interscan_web_security_virtual_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105247");
- script_bugtraq_id(70964);
- script_cve_id("CVE-2014-8510");
- script_tag(name:"cvss_base", value:"4.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
- script_version ("$Revision: 6404 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105247");
+  script_bugtraq_id(70964);
+  script_cve_id("CVE-2014-8510");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_version("$Revision: 11452 $");
 
- script_name("Trend Micro InterScan Web Security Virtual Appliance Multiple Information Disclosure Vulnerabilities");
+  script_name("Trend Micro InterScan Web Security Virtual Appliance Multiple Information Disclosure Vulnerabilities");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/70964");
- script_xref(name:"URL", value:"http://www.trend.com");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/70964");
+  script_xref(name:"URL", value:"http://www.trend.com");
 
- script_tag(name: "impact" , value:"Attackers can exploit these issues to obtain potentially sensitive
+  script_tag(name:"impact", value:"Attackers can exploit these issues to obtain potentially sensitive
 information that may lead to further attacks.");
 
- script_tag(name: "vuldetect" , value:"Check the version/build.");
+  script_tag(name:"vuldetect", value:"Check the version/build.");
 
- script_tag(name: "insight" , value:"The AdminUI in Trend Micro InterScan Web Security Virtual Appliance (IWSVA)
+  script_tag(name:"insight", value:"The AdminUI in Trend Micro InterScan Web Security Virtual Appliance (IWSVA)
 allows remote authenticated users to read arbitrary files via vectors related to configuration input when saving
 filters.");
 
- script_tag(name: "solution" , value:"Update to 6.0 HF build 1244 or higher.");
+  script_tag(name:"solution", value:"Update to 6.0 HF build 1244 or higher.");
 
- script_tag(name: "summary" , value:"Trend Micro InterScan Web Security Virtual Appliance is prone to
+  script_tag(name:"summary", value:"Trend Micro InterScan Web Security Virtual Appliance is prone to
 multiple information-disclosure vulnerabilities.");
 
- script_tag(name: "affected" , value:"Trend Micro InterScan Web Security Virtual Appliance (IWSVA) before 6.0 HF build 1244");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"Trend Micro InterScan Web Security Virtual Appliance (IWSVA) before 6.0 HF build 1244");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-04-08 10:22:02 +0200 (Wed, 08 Apr 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_trend_micro_interscan_web_security_virtual_appliance_version.nasl");
- script_mandatory_keys("IWSVA/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-04-08 10:22:02 +0200 (Wed, 08 Apr 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_trend_micro_interscan_web_security_virtual_appliance_version.nasl");
+  script_mandatory_keys("IWSVA/version");
 
  exit(0);
 }
@@ -91,7 +91,7 @@ if( vers == "6.0" && int(build) < 1244 )
 
 if( vuln )
 {
-  report = 'Installed Version: ' + vers + '\n' + 
+  report = 'Installed Version: ' + vers + '\n' +
            'Installed Build:   ' + build + '\n\n' +
            'Fixed Version:     6.0\n' +
            'Fixed Build:       1244';

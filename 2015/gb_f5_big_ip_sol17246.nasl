@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17246.nasl 6376 2017-06-20 10:00:24Z teissa $
+# $Id: gb_f5_big_ip_sol17246.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # F5 BIG-IP - SOL17246 - Linux kernel vulnerability CVE-2015-3636
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105360");
- script_cve_id("CVE-2015-3636");
- script_tag(name:"cvss_base", value:"4.9");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 6376 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105360");
+  script_cve_id("CVE-2015-3636");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11452 $");
 
- script_name("F5 BIG-IP - SOL17246 - Linux kernel vulnerability CVE-2015-3636");
+  script_name("F5 BIG-IP - SOL17246 - Linux kernel vulnerability CVE-2015-3636");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/17000/200/sol17246.html?sr=48315203");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/17000/200/sol17246.html?sr=48315203");
 
- script_tag(name: "impact" , value:"A locally authenticated user, with a role that allows advanced shell access, may be able to escalate privileges or cause a denial-of-service (DoS) attack.");
+  script_tag(name:"impact", value:"A locally authenticated user, with a role that allows advanced shell access, may be able to escalate privileges or cause a denial-of-service (DoS) attack.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"The ping_unhash function in net/ipv4/ping.c in the Linux kernel before 4.0.3 does not initialize a certain list data structure during an unhash operation, which allows local users to gain privileges or cause a denial of service (use-after-free and system crash) by leveraging the ability to make a SOCK_DGRAM socket system call for the IPPROTO_ICMP or IPPROTO_ICMPV6 protocol, and then making a connect system call after a disconnect. (CVE-2015-3636)");
+  script_tag(name:"insight", value:"The ping_unhash function in net/ipv4/ping.c in the Linux kernel before 4.0.3 does not initialize a certain list data structure during an unhash operation, which allows local users to gain privileges or cause a denial of service (use-after-free and system crash) by leveraging the ability to make a SOCK_DGRAM socket system call for the IPPROTO_ICMP or IPPROTO_ICMPV6 protocol, and then making a connect system call after a disconnect. (CVE-2015-3636)");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-09-18 14:36:57 +0200 (Fri, 18 Sep 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-09-18 14:36:57 +0200 (Fri, 18 Sep 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

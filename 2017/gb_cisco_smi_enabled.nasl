@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_smi_enabled.nasl 5317 2017-02-17 07:05:34Z cfi $
+# $Id: gb_cisco_smi_enabled.nasl 11474 2018-09-19 11:38:50Z mmartin $
 #
 # Cisco Smart Install Protocol Misuse
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140162");
-  script_version("$Revision: 5317 $");
+  script_version("$Revision: 11474 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 08:05:34 +0100 (Fri, 17 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-02-16 11:39:34 +0100 (Thu, 16 Feb 2017)");
   script_name("Cisco Smart Install Protocol Misuse");
   script_category(ACT_ATTACK);
@@ -53,7 +53,7 @@ the Cisco Smart Install feature within customer infrastructures.");
   # it seems we are not able to distinguish between Director and Client. As director is not affected,
   # use a lower QOd but high enough so it's shown by default.
   script_tag(name:"qod", value:"76");
-  script_tag(name: "solution_type", value: "Workaround");
+  script_tag(name:"solution_type", value:"Workaround");
 
   script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityResponse/cisco-sr-20170214-smi");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/540130");

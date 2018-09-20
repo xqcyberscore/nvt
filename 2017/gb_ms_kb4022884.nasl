@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022884.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_ms_kb4022884.nasl 11472 2018-09-19 11:20:06Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4022884)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811150");
-  script_version("$Revision: 7585 $");
-  script_cve_id("CVE-2017-8527", "CVE-2017-8528", "CVE-2017-0282", "CVE-2017-8531", 
-                "CVE-2017-0283", "CVE-2017-0284", "CVE-2017-8532", "CVE-2017-8533", 
-                "CVE-2017-0285", "CVE-2017-0287", "CVE-2017-8534", "CVE-2017-0288", 
+  script_version("$Revision: 11472 $");
+  script_cve_id("CVE-2017-8527", "CVE-2017-8528", "CVE-2017-0282", "CVE-2017-8531",
+                "CVE-2017-0283", "CVE-2017-0284", "CVE-2017-8532", "CVE-2017-8533",
+                "CVE-2017-0285", "CVE-2017-0287", "CVE-2017-8534", "CVE-2017-0288",
                 "CVE-2017-0289");
   script_bugtraq_id(98933, 98949, 98885, 98819, 98920, 98918, 98820, 98821, 98914,
                     98922, 98822, 98923, 98929);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 08:23:45 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4022884)");
 
@@ -47,11 +47,11 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaw exists,
-  
+
   - When the Windows GDI component improperly discloses the contents of its memory.
 
   - When Windows Uniscribe improperly discloses the contents of its memory.
- 
+
   - When the Windows font library improperly handles specially crafted
     embedded fonts.");
 
@@ -59,9 +59,7 @@ if(description)
   could obtain information to further compromise the user's system. There are
   multiple ways an attacker could exploit the vulnerability, such as by convincing
   a user to open a specially crafted document, or by convincing a user to visit an
-  untrusted webpage.
-
-  Impact Level: System");
+  untrusted webpage.");
 
   script_tag(name:"affected", value:"Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2");
 
@@ -72,11 +70,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4022884");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4022884");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -87,28 +86,20 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-fileVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2008:3, win2008x64:3) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of 'Gdi32.dll'
 fileVer = fetch_file_version(sysPath, file_name:"Gdi32.dll");
 if(!fileVer){
   exit(0);
 }
 
-## Check for Gdi32.dll version
 if(version_is_less(version:fileVer, test_version:"6.0.6002.19787"))
 {
   Vulnerable_range = "Less than 6.0.6002.19787";

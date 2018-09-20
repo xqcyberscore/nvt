@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openoffice_mult_vuln01_may15_macosx.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_apache_openoffice_mult_vuln01_may15_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Apache OpenOffice Multiple Vulnerabilities -01 May15 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805610");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-3575", "CVE-2014-3524");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-01 12:23:19 +0530 (Mon, 01 Jun 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Apache OpenOffice Multiple Vulnerabilities -01 May15 (Mac OS X)");
@@ -44,16 +44,16 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An error in application due to the way the it generates OLE previews when
     handling a specially crafted document that is distributed to other parties.
+
   - An error in application that is triggered when handling specially
     crafted Calc spreadsheets.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to gain access to potentially sensitive information
-  and to execute arbitrary commands.
-
-  Impact Level: System/Application");
+  and to execute arbitrary commands.");
 
   script_tag(name:"affected", value:"Apache OpenOffice before 4.1.1 on Mac OS X.");
 

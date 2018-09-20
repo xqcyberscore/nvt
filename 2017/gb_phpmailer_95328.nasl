@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmailer_95328.nasl 5099 2017-01-25 11:00:33Z cfi $
+# $Id: gb_phpmailer_95328.nasl 11485 2018-09-20 06:25:34Z cfischer $
 #
 # PHPMailer < 5.2.22 Local Information Disclosure Vulnerability
 #
@@ -8,7 +8,7 @@
 # Christian Fischer <christian.fischer@greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2017 Greenbone Networks GmbH
+# Copyright (C) 2017 Greenbone Networks GmbH
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -24,33 +24,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:phpmailer:phpmailer";
+CPE = "cpe:/a:phpmailer_project:phpmailer";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108051");
-  script_version("$Revision: 5099 $");
+  script_version("$Revision: 11485 $");
   script_cve_id("CVE-2017-5223");
   script_bugtraq_id(95130);
   script_tag(name:"cvss_base", value:"2.1");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N"); 
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:00:33 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 08:25:34 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-01-25 11:00:00 +0100 (Wed, 25 Jan 2017)");
   script_name("PHPMailer < 5.2.22 Local Information Disclosure Vulnerability");
-  script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_phpmailer_detect.nasl");
-  script_mandatory_keys("phpmailer/Installed");
-  script_require_ports("Services/www", 80);
+  script_mandatory_keys("phpmailer/detected");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/95328");
+  script_xref(name:"URL", value:"https://github.com/PHPMailer/PHPMailer/blob/master/SECURITY.md");
 
   script_tag(name:"summary", value:"This host is running PHPMailer and is prone
   to a local information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists because PHPMailer's msgHTML method applies
   transformations to an HTML document to make it usable as an email message body. One of the
@@ -59,11 +58,9 @@ if(description)
   image URLs get treated as absolute local file paths and added as attachments. To form a
   remote vulnerability, the msgHTML method must be called, passed an unfiltered, user-supplied
   HTML document, and must not set a base directory.");
- 
-  script_tag(name:"impact", value:"Attackers can exploit this issue to obtain sensitive information
-  that may aid in launching further attacks.
 
-  Impact Level: System/Application");
+  script_tag(name:"impact", value:"Attackers can exploit this issue to obtain sensitive information
+  that may aid in launching further attacks.");
 
   script_tag(name:"affected", value:"PHPMailer versions 5.0.0 through 5.2.20 are vulnerable. ");
 
@@ -80,10 +77,12 @@ include("version_func.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );
+version  = infos['version'];
+location = infos['location'];
 
-if( version_in_range( version:vers, test_version:"5.0.0", test_version2:"5.2.20" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"5.2.22" );
+if( version_in_range( version:version, test_version:"5.0.0", test_version2:"5.2.20" ) ) {
+  report = report_fixed_ver( installed_version:version, fixed_version:"5.2.22", install_url:location );
   security_message( port:port, data:report );
   exit( 0 );
 }

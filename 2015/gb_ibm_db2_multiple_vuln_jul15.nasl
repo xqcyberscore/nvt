@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_multiple_vuln_jul15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ibm_db2_multiple_vuln_jul15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # IBM DB2 Multiple Vulnerabilities - July15
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805940");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1935", "CVE-2015-1922", "CVE-2015-1883", "CVE-2015-0157",
                 "CVE-2014-8910");
   script_bugtraq_id(75908, 75911, 75946, 75947, 75949);
   script_tag(name:"cvss_base", value:"8.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-29 14:18:25 +0530 (Wed, 29 Jul 2015)");
   script_name("IBM DB2 Multiple Vulnerabilities - July15");
 
@@ -61,9 +61,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to bypass security restrictions, gain access to sensitive data and cause the
   server to terminate abnormally causing a denial of service or potentially
-  execute arbitrary code.
-
-  Impact Level: System/Application");
+  execute arbitrary code.");
 
   script_tag(name:"affected", value:"IBM DB2 versions 9.7 through FP10
 

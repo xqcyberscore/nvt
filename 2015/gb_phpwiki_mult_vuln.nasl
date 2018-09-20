@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpwiki_mult_vuln.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_phpwiki_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # PhpWiki Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:phpwiki:phpwiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806034");
-  script_version("$Revision: 11299 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-02 11:34:10 +0530 (Wed, 02 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("PhpWiki Multiple Vulnerabilities");
@@ -44,16 +44,16 @@ if(description)
   check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple flwas are due,
+
   - An improper inpuit sanitization of GET or POST 'pagename' parameter in
    'user preferences'.
+
   - An improper inpuit sanitization of GET or POST 'source' parameter in
    'file load section'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary script code in a user's browser session, read
-  arbitrary files and to trigger specific actions.
-
-  Impact Level: Application");
+  arbitrary files and to trigger specific actions.");
 
   script_tag(name:"affected", value:"PhpWiki version 1.5.4");
 

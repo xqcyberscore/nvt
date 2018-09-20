@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_dhcpv6_relay_dos_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_cisco_asa_dhcpv6_relay_dos_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Cisco ASA Software DHCPv6 Relay Denial of Service Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:cisco:asa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806529");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2015-0578");
   script_bugtraq_id(72718);
   script_tag(name:"cvss_base", value:"5.7");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-20 12:27:12 +0530 (Fri, 20 Nov 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("Cisco ASA Software DHCPv6 Relay Denial of Service Vulnerability");
@@ -53,9 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   unauthenticated, remote attacker to cause an affected device to reload,
-  resulting in a denial of service condition.
-
-  Impact Level: Application");
+  resulting in a denial of service condition.");
 
   script_tag(name:"affected", value:"Cisco ASA Software versions 7.2 before
   8.2(5.58), 8.3 before 8.4(7.29), 8.5 before 9.0(4.37), 8.7 before 8.7(1.17),

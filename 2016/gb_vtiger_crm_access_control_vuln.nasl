@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_access_control_vuln.nasl 8597 2018-01-31 08:42:52Z cfischer $
+# $Id: gb_vtiger_crm_access_control_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Vtiger CRM Access Control Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:vtiger:vtiger_crm';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106148");
-  script_version("$Revision: 8597 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2016-07-21 09:24:27 +0700 (Thu, 21 Jul 2016)");
-  script_tag(name: "cvss_base", value: "5.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_version("$Revision: 11493 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-21 09:24:27 +0700 (Thu, 21 Jul 2016)");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
 
   script_cve_id("CVE-2016-4834");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Vtiger CRM Access Control Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_vtiger_crm_detect.nasl");
   script_mandatory_keys("vtiger/installed");
 
-  script_tag(name: "summary", value: "Vtiger CRM is prone to an access control vulnerability.");
+  script_tag(name:"summary", value:"Vtiger CRM is prone to an access control vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Vtiger CRM contains a vulnerability where it does not properly restrict
+  script_tag(name:"insight", value:"Vtiger CRM contains a vulnerability where it does not properly restrict
 access to user information data.");
 
-  script_tag(name: "impact", value: "A user with user privileges may create new users or alter existing user
+  script_tag(name:"impact", value:"A user with user privileges may create new users or alter existing user
 information.");
 
-  script_tag(name: "affected", value: "Vtiger CRM 6.4.0 and earlier");
+  script_tag(name:"affected", value:"Vtiger CRM 6.4.0 and earlier");
 
-  script_tag(name: "solution", value: "Upgrade to Version 6.5.0 or later");
+  script_tag(name:"solution", value:"Upgrade to Version 6.5.0 or later");
 
-  script_xref(name: "URL", value: "https://jvn.jp/en/jp/JVN01956993/");
+  script_xref(name:"URL", value:"https://jvn.jp/en/jp/JVN01956993/");
 
   exit(0);
 }

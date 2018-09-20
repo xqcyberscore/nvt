@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netcat_cms_mul_vul.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_netcat_cms_mul_vul.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # NetCat CMS Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805346");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-03 17:44:58 +0530 (Tue, 03 Mar 2015)");
   script_name("NetCat CMS Multiple Vulnerabilities");
 
@@ -42,15 +42,16 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws are due to input
   passed via,
+
   - 'redirect_url' parameter to 'netshop/post.php' is not properly validated.
+
   - 'site' parameter to 'modules/redir/?' is not properly validated.
+
   - 'url' parameter to 'redirect.php?' is not properly validated.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to arbitrary URL redirection, disclosure or modification of sensitive
-  data.
-
-  Impact Level: Application");
+  data.");
 
   script_tag(name:"affected", value:"NetCat CMS version 5.01, 3.12, 3.0, 2.4,
   2.3, 2.2, 2.1, 2.0 and 1.1");

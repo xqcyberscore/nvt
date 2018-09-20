@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_ms15-012.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms_excel_ms15-012.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Office Excel Remote Code Execution Vulnerability (3032328)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805042");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-0063");
   script_bugtraq_id(72460);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 10:12:07 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft Office Excel Remote Code Execution Vulnerability (3032328)");
 
@@ -47,9 +47,7 @@ if(description)
   in memory while parsing specially crafted Office files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code on the affected system.
-
-  Impact Level: System/Application");
+  attackers to execute arbitrary code on the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Excel 2013
   Microsoft Excel 2007 Service Pack 3 and prior

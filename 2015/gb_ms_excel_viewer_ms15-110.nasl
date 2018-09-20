@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_viewer_ms15-110.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_ms_excel_viewer_ms15-110.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Windows Excel Viewer Remote Code Execution Vulnerabilities (3096440)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806122");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-2558");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 10:49:22 +0530 (Wed, 14 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Excel Viewer Remote Code Execution Vulnerabilities (3096440)");
@@ -43,15 +43,16 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists when,
+
   - Microsoft Excel improperly handles the loading of dynamic link library
     (DLL) files.
+
   - Error when memory is released in an unintended manner.
+
   - Improper handling of files in the memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
-  context-dependent attacker to execute remote code.
-
-  Impact Level: System/Application");
+  context-dependent attacker to execute remote code.");
 
   script_tag(name:"affected", value:"Microsoft Excel Viewer 2007 Service Pack 3 and prior.");
 

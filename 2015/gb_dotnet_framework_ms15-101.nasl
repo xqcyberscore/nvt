@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms15-101.nasl 6505 2017-07-03 09:58:27Z teissa $
+# $Id: gb_dotnet_framework_ms15-101.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft .NET Framework Privilege Elevation Vulnerabilities (3089662)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805978");
-  script_version("$Revision: 6505 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-2504", "CVE-2015-2526");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 09:48:35 +0530 (Wed, 09 Sep 2015)");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerabilities (3089662)");
 
@@ -42,18 +42,17 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - An unspecified error in the way that the .NET Framework validates the number
     of objects in memory before copying those objects into an array.
+
   - Application fails to properly handle certain specially crafted requests.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to conduct denial-of-service attack and take complete control of an affected
-  system.
+  system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft .NET Framework 2.0 Service Pack 2
+  script_tag(name:"affected", value:"Microsoft .NET Framework 2.0 Service Pack 2
   Microsoft .NET Framework 3.5
   Microsoft .NET Framework 3.5.1
   Microsoft .NET Framework 4
@@ -69,13 +68,13 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3089662");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms15-101");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3089662");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms15-101");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
   exit(0);
@@ -88,32 +87,21 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-key = "";
-item = "";
-path = "";
-dllVer = "";
-sysVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3,
    win2008r2:2, win8:1, win8x64:1, win8_1:1, win8_1x64:1, win2012:1, win2012R2:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Confirm .NET
 key = "SOFTWARE\Microsoft\ASP.NET\";
 if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-# Try to Get Version
 foreach item (registry_enum_keys(key:key))
 {
   path = registry_get_sz(key:key + item, item:"Path");
   if(path && "\Microsoft.NET\Framework" >< path)
   {
-    ## Get version from System.Drawing.dll file
     dllVer = fetch_file_version(sysPath:path, file_name:"System.Drawing.dll");
     if(dllVer)
     {
@@ -225,7 +213,6 @@ foreach item (registry_enum_keys(key:key))
       }
 
       ##.NET Framework 4.5, 4.5.1, and 4.5.2 on Windows 7 Service Pack 1, Windows Server 2008 R2 Service Pack 1,
-      ## Windows Vista Service Pack 2, and Windows Server 2008 Service Pack 2
       if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, winVista:3, win2008:3) > 0)
       {
         if(version_in_range(version:dllVer, test_version:"4.0.30319.30000", test_version2:"4.0.30319.34269"))
@@ -289,7 +276,6 @@ foreach item (registry_enum_keys(key:key))
       }
     }
 
-    ## Get version from System.ComponentModel.DataAnnotations.dll file
     dllVer2 = fetch_file_version(sysPath:path, file_name:"System.ComponentModel.DataAnnotations.dll");
     if(dllVer2)
     {

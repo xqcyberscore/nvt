@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_embedthis_appweb_dos_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_embedthis_appweb_dos_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Embedthis Appweb Web Server Remote Denial of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805157");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11492 $");
   script_cve_id("CVE-2014-9708");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-01 17:00:37 +0530 (Wed, 01 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Embedthis Appweb Web Server Remote Denial of Service Vulnerability");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to cause the application to crash, creating a denial-of-service
-  condition.
-
-  Impact Level: Application");
+  condition.");
 
   script_tag(name:"affected", value:"Embedthis Appweb version before 4.6.6
   and 5.x before 5.2.1");
@@ -79,11 +77,13 @@ http_port = get_http_port(default:80);
 
 rcvRes = http_get_cache(item: "/",  port:http_port);
 
+useragent = get_http_user_agent();
+
 if(">Embedthis" >< rcvRes && ">Appweb" >< rcvRes)
 {
   sndReq = 'GET / HTTP/1.1\r\n' +
            'Host: ' +  http_host_name(port:http_port) + '\r\n' +
-           'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+           'User-Agent: ' + useragent + '\r\n' +
            'Range: x=,\r\n' +
            '\r\n';
 

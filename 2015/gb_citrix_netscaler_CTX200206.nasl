@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX200206.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
+# $Id: gb_citrix_netscaler_CTX200206.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Citrix NetScaler Arbitrary Code Execution Vulnerability (CTX200206)
 #
@@ -29,39 +29,39 @@ CPE = "cpe:/a:citrix:netscaler";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105273");
- script_bugtraq_id(70696);
- script_cve_id("CVE-2014-7140");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 8384 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105273");
+  script_bugtraq_id(70696);
+  script_cve_id("CVE-2014-7140");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11452 $");
 
- script_name("Citrix NetScaler Arbitrary Code Execution Vulnerability (CTX200206)");
+  script_name("Citrix NetScaler Arbitrary Code Execution Vulnerability (CTX200206)");
 
- script_xref(name:"URL", value:"https://support.citrix.com/article/CTX200206");
+  script_xref(name:"URL", value:"https://support.citrix.com/article/CTX200206");
 
- script_tag(name: "impact" , value:"A vulnerability has been identified in the management interface
+  script_tag(name:"impact", value:"A vulnerability has been identified in the management interface
 of Citrix NetScaler Application Delivery Controller (ADC) and Citrix NetScaler Gateway that
 could allow an unauthenticated attacker to execute arbitrary code on the appliance.");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Update to 10.5-50.10 / 10.1-129.11 or newer.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Update to 10.5-50.10 / 10.1-129.11 or newer.");
 
- script_tag(name: "summary" , value:"The remote Citrix Netscaler is prone to a remote code execution
+  script_tag(name:"summary", value:"The remote Citrix Netscaler is prone to a remote code execution
 vulnerability.");
 
- script_tag(name: "affected" , value:"Citrix NetScaler before 10.5-50.10 / 10.1-129.11");
+  script_tag(name:"affected", value:"Citrix NetScaler before 10.5-50.10 / 10.1-129.11");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
- script_tag(name:"creation_date", value:"2015-05-12 13:11:00 +0200 (Tue, 12 May 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_citrix_netscaler_version.nasl");
- script_mandatory_keys("citrix_netscaler/detected");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-05-12 13:11:00 +0200 (Tue, 12 May 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_citrix_netscaler_version.nasl");
+  script_mandatory_keys("citrix_netscaler/detected");
 
  exit(0);
 }

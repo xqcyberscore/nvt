@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_server_mult_info_disc_vuln.nasl 9940 2018-05-23 15:46:09Z cfischer $
+# $Id: gb_apple_macosx_server_mult_info_disc_vuln.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # Apple OS X Server Information Disclosure And Security Bypass Vulnerabilities
 #
@@ -29,39 +29,40 @@ CPE = "cpe:/o:apple:os_x_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810233");
-  script_version("$Revision: 9940 $");
+  script_version("$Revision: 11473 $");
   script_cve_id("CVE-2014-3566", "CVE-2015-1150", "CVE-2015-1151");
   script_bugtraq_id(70574, 74356, 74355);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 17:46:09 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-05 14:52:33 +0530 (Mon, 05 Dec 2016)");
   script_name("Apple OS X Server Information Disclosure And Security Bypass Vulnerabilities");
 
-  script_tag(name: "summary" , value:"This host is installed with Apple OS X Server
+  script_tag(name:"summary", value:"This host is installed with Apple OS X Server
   and is prone to information disclosure and security bypass vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - The SSL protocol 3.0 uses nondeterministic CBC padding.
+
   - The Firewall component uses an incorrect pathname in configuration files.
+
   - The access controls for the Activity and People wiki pages were not enforced
     on iPad clients");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
-  to obtain sensitive information and to bypass security restrictions.
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
+  to obtain sensitive information and to bypass security restrictions.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Apple OS X Server before 4.1");
 
-  script_tag(name: "affected" , value:"Apple OS X Server before 4.1");
-
-  script_tag(name: "solution" , value:"Upgrade to Apple OS X Server 4.1 or
+  script_tag(name:"solution", value:"Upgrade to Apple OS X Server 4.1 or
   later. For updates refer to http://www.apple.com.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT204201");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT204201");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
@@ -70,8 +71,6 @@ if(description)
   exit(0);
 }
 
-
-# Code starts from here
 
 include("version_func.inc");
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_live_meeting_ms15-044.nasl 6600 2017-07-07 09:58:31Z teissa $
+# $Id: gb_ms_live_meeting_ms15-044.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Live Meeting Remote Code Execution Vulnerability (3057110)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_live_meeting";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805558");
-  script_version("$Revision: 6600 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1671");
   script_bugtraq_id(74490);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-14 10:44:26 +0530 (Thu, 14 May 2015)");
   script_name("Microsoft Live Meeting Remote Code Execution Vulnerability (3057110)");
 
@@ -48,9 +48,7 @@ if(description)
   TrueType fonts.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
-  remote attacker to execute arbitrary code on the affected system.
-
-  Impact Level: System/Application");
+  remote attacker to execute arbitrary code on the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Live Meeting 2007 Console");
 
@@ -63,13 +61,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3057110");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-044");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3057110");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-044");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_live_meeting_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/OfficeLiveMeeting/Ver");
   exit(0);
 }
@@ -80,25 +79,18 @@ include("version_func.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-appPath = "";
-dllVer = "";
-
-## get the Install Location
 appPath = get_app_location(cpe:CPE);
 if(!appPath ||  "Couldn find the install location" >< appPath){
   exit(0);
 }
 
-## Get Version from Ogl.dll
 dllVer = fetch_file_version(sysPath:appPath, file_name:"Ogl.dll");
 if(!dllVer){
   exit(0);
 }
 
-## Check for Ogl.dll version
 if(version_is_less(version:dllVer, test_version:"12.0.6719.5000"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_faq_sql_inj_vuln.nasl 11026 2018-08-17 08:52:26Z cfischer $
+# $Id: gb_otrs_faq_sql_inj_vuln.nasl 11464 2018-09-19 08:52:50Z cfischer $
 #
 # OTRS FAQ Package Multiple SQL Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106290");
-  script_version("$Revision: 11026 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11464 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 10:52:50 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-09-27 11:26:32 +0700 (Tue, 27 Sep 2016)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -108,8 +108,8 @@ if ("Latest created FAQ articles" >< res) {
                       add_headers: make_array("Content-Type","application/x-www-form-urlencoded"));
     res = http_keepalive_send_recv(port: port, data: req);
 
-    if ("No FAQ data found" >!< res) {
-      report = "It was possible to conduct a blind SQL-Injection into the 'LanguageIDs' parameter\n";
+    if (res && res =~ "^HTTP/1\.[01] 200" && "<title>Search FAQ" >< res && "No FAQ data found" >!< res ) {
+      report = 'It was possible to conduct a blind SQL-Injection into the "LanguageIDs" parameter via a crafted POST request to the following URL:\n\n' + report_vuln_url(url: url, port: port, url_only: TRUE);
       security_message(port: port, data: report);
       exit(0);
     }
@@ -133,7 +133,7 @@ stop = unixtime();
 
 time = stop - start;
 if (time >= 5 && time <= (5 + latency)) {
-  report = "It was possible to conduct a blind SQL-Injection (MySQL: sleep) into the 'LanguageIDs' parameter.\n";
+  report = 'It was possible to conduct a blind SQL-Injection (MySQL: sleep) into the "LanguageIDs" parameter via a crafted POST request to the following URL:\n\n' + report_vuln_url(url: url, port: port, url_only: TRUE);
   security_message(port: port, data: report);
   exit(0);
 }
@@ -154,11 +154,9 @@ stop = unixtime();
 
 time = stop - start;
 if (time >= 5 && time <= (5 + latency)) {
-  report = "It was possible to conduct a blind SQL-Injection (PostgreSQL: pg_sleep) into the 'LanguageIDs'
-parameter.\n";
+  report = 'It was possible to conduct a blind SQL-Injection (PostgreSQL: pg_sleep) into the "LanguageIDs" parameter via a crafted POST request to the following URL:\n\n' + report_vuln_url(url: url, port: port, url_only: TRUE);
   security_message(port: port, data: report);
   exit(0);
 }
 
-
-exit(0);
+exit(99);

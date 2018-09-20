@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_code_exec_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_manage_engine_desktop_central_code_exec_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # ManageEngine Desktop Central MSP Arbitrary Code Execution Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805716");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-08 18:54:23 +0530 (Wed, 08 Jul 2015)");
 
   script_name("ManageEngine Desktop Central MSP Arbitrary Code Execution Vulnerability");
@@ -47,9 +47,7 @@ if (description)
   does not sanitize user input.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to execute arbitrary code.
-
-  Impact Level: System/Application");
+  attacker to execute arbitrary code.");
 
   script_tag(name:"affected", value:"ManageEngine Desktop Central MSP
   before 90075.");

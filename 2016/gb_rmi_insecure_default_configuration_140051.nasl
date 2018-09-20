@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rmi_insecure_default_configuration_140051.nasl 4422 2016-11-04 17:27:35Z mime $
+# $Id: gb_rmi_insecure_default_configuration_140051.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Java RMI Server Insecure Default Configuration Remote Code Execution Vulnerability
 #
@@ -27,29 +27,29 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140051");
- script_version ("$Revision: 4422 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.140051");
+  script_version("$Revision: 11493 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
- script_name("Java RMI Server Insecure Default Configuration Remote Code Execution Vulnerability");
+  script_name("Java RMI Server Insecure Default Configuration Remote Code Execution Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/viewAlert.x?alertId=23665");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/viewAlert.x?alertId=23665");
 
- script_tag(name: "impact" , value:"");
- script_tag(name: "vuldetect" , value:"Check if the target tries to load a Java class via a remote HTTP URL.");
- script_tag(name: "insight" , value:"The vulnerability exists because of an incorrect default configuration of the Remote Method Invocation (RMI) Server in the affected software. An unauthenticated, remote attacker could exploit the vulnerability by transmitting crafted packets to the affected software.  When the packets are processed, the attacker could execute arbitrary code on the system with elevated privileges.");
- script_tag(name: "solution" , value:"Disable class-loading.");
- script_tag(name: "summary" , value:"Multiple Java products that implement the RMI Server contain a vulnerability that could allow an unauthenticated, remote attacker to execute arbitrary code on a targeted system with elevated privileges.");
- script_tag(name:"solution_type", value: "Workaround");
- script_tag(name:"qod_type", value:"remote_active");
- script_tag(name:"last_modification", value:"$Date: 2016-11-04 18:27:35 +0100 (Fri, 04 Nov 2016) $");
- script_tag(name:"creation_date", value:"2016-11-04 14:34:52 +0100 (Fri, 04 Nov 2016)");
- script_category(ACT_ATTACK);
- script_family("General");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_rmi_registry_detect.nasl");
- script_require_ports("Services/rmi_registry");
+  script_tag(name:"impact", value:"");
+  script_tag(name:"vuldetect", value:"Check if the target tries to load a Java class via a remote HTTP URL.");
+  script_tag(name:"insight", value:"The vulnerability exists because of an incorrect default configuration of the Remote Method Invocation (RMI) Server in the affected software. An unauthenticated, remote attacker could exploit the vulnerability by transmitting crafted packets to the affected software.  When the packets are processed, the attacker could execute arbitrary code on the system with elevated privileges.");
+  script_tag(name:"solution", value:"Disable class-loading.");
+  script_tag(name:"summary", value:"Multiple Java products that implement the RMI Server contain a vulnerability that could allow an unauthenticated, remote attacker to execute arbitrary code on a targeted system with elevated privileges.");
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-04 14:34:52 +0100 (Fri, 04 Nov 2016)");
+  script_category(ACT_ATTACK);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_rmi_registry_detect.nasl");
+  script_require_ports("Services/rmi_registry");
 
  exit(0);
 }

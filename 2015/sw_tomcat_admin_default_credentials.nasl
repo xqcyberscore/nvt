@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_tomcat_admin_default_credentials.nasl 4355 2016-10-26 13:50:18Z cfi $
+# $Id: sw_tomcat_admin_default_credentials.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Apache Tomcat Server Administration Unauthorized Access Vulnerability
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111013");
-  script_version("$Revision: 4355 $");
+  script_version("$Revision: 11492 $");
   script_name("Apache Tomcat Server Administration Unauthorized Access Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-26 15:50:18 +0200 (Wed, 26 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-10 15:00:00 +0200 (Fri, 10 Apr 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -81,7 +81,7 @@ if( "Tomcat Server Administration" >< res ) {
   credentials = make_list( "tomcat:tomcat", "tomcat:none", "ADMIN:ADMIN", "admin:admin", "manager:manager", "admin:password", "ovwebusr:OvW*busr1", "j2deployer:j2deployer", "tomcat:s3cret", "cxsdk:kdsxc", "xampp:xampp", "QCC:QLogic66", "root:owaspbwa", "role1:tomcat", "both:tomcat", "root:changethis", "admin:changethis" );
 
   host = http_host_name( port:port );
-
+  useragent = get_http_user_agent();
   foreach credential( credentials ) {
 
     user_pass = split( credential, sep:":", keep:FALSE );
@@ -96,7 +96,7 @@ if( "Tomcat Server Administration" >< res ) {
 
     req = 'POST /admin/j_security_check;jsessionid=' + cookie[1] + ' HTTP/1.1\r\n' +
           'Host: ' + host + '\r\n' +
-          'User-Agent: ' + OPENVAS_HTTP_USER_AGENT +'\r\n' +
+          'User-Agent: ' + useragent + '\r\n' +
           'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
           'Accept-Language: en-US,en;q=0.5\r\n' +
           'Referer: http://' + host + '/admin/\r\n' +
@@ -112,7 +112,7 @@ if( "Tomcat Server Administration" >< res ) {
 
       req = 'GET /admin/ HTTP/1.1\r\n' +
             'Host: ' + host + '\r\n' +
-            'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+            'User-Agent: ' + useragent + '\r\n' +
             'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
             'Accept-Language: en-US,en;q=0.5\r\n' +
             'Referer: http://' + host + '/admin/\r\n' +
@@ -123,7 +123,7 @@ if( "Tomcat Server Administration" >< res ) {
 
       req = 'GET /admin/banner.jsp HTTP/1.1\r\n' +
             'Host: ' + host + '\r\n' +
-            'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+            'User-Agent: ' + useragent + '\r\n' +
             'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
             'Accept-Language: en-US,en;q=0.5\r\n' +
             'Referer: http://' + host + '/admin/\r\n' +

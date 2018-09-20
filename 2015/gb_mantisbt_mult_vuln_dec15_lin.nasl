@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_vuln_dec15_lin.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mantisbt_mult_vuln_dec15_lin.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # MantisBT Multiple Vulnerabilities December15 (Linux)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806641");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-9270", "CVE-2014-9279", "CVE-2014-9269");
   script_bugtraq_id(71372, 71359, 71368);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-03 16:05:34 +0530 (Thu, 03 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("MantisBT Multiple Vulnerabilities December15 (Linux) (Linux)");
@@ -44,19 +44,20 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist as,
+
   - the function 'projax_array_serialize_for_autocomplete' within
   core/projax_api.php script doesn't validate input passed by the user.
+
   - the unattended upgrade script retrieved DB connection settings from POST
   parameters allows an attacker to get the script to connect to their host with
   the current DB config credentials.
+
   - the input passed via project cookie to helper_api.php script is not validated
   before returning it to user.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject arbitrary web script or HTML via the 'profile/Platform'
-  field and gain access to sensitive information.
-
-  Impact Level: Application");
+  field and gain access to sensitive information.");
 
   script_tag(name:"affected", value:"MantisBT versions 1.1.0a3 through 1.2.x
   before 1.2.18");

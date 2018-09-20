@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20160727-esa.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_cisco_esa_cisco-sa-20160727-esa.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # Cisco Email Security Appliance File Type Filtering Vulnerability
 #
@@ -29,23 +29,23 @@ CPE = "cpe:/h:cisco:email_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106158");
- script_cve_id("CVE-2016-1461");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5867 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106158");
+  script_cve_id("CVE-2016-1461");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11473 $");
 
- script_name("Cisco Email Security Appliance File Type Filtering Vulnerability");
+  script_name("Cisco Email Security Appliance File Type Filtering Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160727-esa");
- 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160727-esa");
 
- script_tag(name: "solution" , value:"Upgrade to Cisco ESA version 9.1.1-038 or 
- later. For updates refer to 
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"Upgrade to Cisco ESA version 9.1.1-038 or
+ later. For updates refer to
  http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160727-esa.");
 
- script_tag(name: "summary" , value:"A vulnerability in the email message filtering feature of Cisco AsyncOS
+  script_tag(name:"summary", value:"A vulnerability in the email message filtering feature of Cisco AsyncOS
 for Cisco Email Security Appliance (ESA) could allow an unauthenticated, remote attacker to cause an ESA to
 fail to detect and act upon a specific type of file that is attached to an email message.
 
@@ -54,16 +54,16 @@ a specific type of file and are submitted to an affected appliance. An attacker 
 by sending an email message with a crafted attachment to an affected appliance. A successful exploit could allow
 the attacker to cause the ESA to fail to detect and act upon possible malware in the email attachment.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
- script_tag(name:"creation_date", value:"2016-07-29 11:42:15 +0700 (Fri, 29 Jul 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_esa_version.nasl");
- script_mandatory_keys("cisco_esa/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-29 11:42:15 +0700 (Fri, 29 Jul 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_esa_version.nasl");
+  script_mandatory_keys("cisco_esa/installed");
  exit(0);
 }
 
@@ -72,7 +72,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'7.1.0',
 		'7.1.1',
 		'7.1.2',

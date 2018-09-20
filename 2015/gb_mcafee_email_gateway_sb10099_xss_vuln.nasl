@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_email_gateway_sb10099_xss_vuln.nasl 10977 2018-08-15 11:13:28Z jschulte $
+# $Id: gb_mcafee_email_gateway_sb10099_xss_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # McAfee Email Gateway Secure Web Mail Client UI Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:email_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805290");
-  script_version("$Revision: 10977 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1619");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 13:13:28 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-02 11:56:43 +0530 (Mon, 02 Mar 2015)");
   script_name("McAfee Email Gateway Secure Web Mail Client UI Cross-Site Scripting Vulnerability");
 
@@ -50,9 +50,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to create a specially crafted request that would execute arbitrary
   script code in a user's browser session within the trust relationship between
-  their browser and the server.
-
-  Impact Level: Application");
+  their browser and the server.");
 
   script_tag(name:"affected", value:"McAfee Email Gateway 7.6.x before 7.6.3.2,
   7.5.x before 7.5.6, 7.0.x through 7.0.5, 5.6 and prior.");

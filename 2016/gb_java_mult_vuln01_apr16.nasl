@@ -29,47 +29,49 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807551");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 11473 $");
   script_cve_id("CVE-2016-0695", "CVE-2016-0687", "CVE-2016-0686", "CVE-2016-3443",
                 "CVE-2016-3427", "CVE-2016-3425", "CVE-2016-3422", "CVE-2016-3449");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-22 10:41:22 +0530 (Fri, 22 Apr 2016)");
   script_name("Oracle Java SE Multiple Vulnerabilities April 2016 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
+  script_tag(name:"summary", value:"The host is installed with Oracle Java SE
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws are due to,
+  script_tag(name:"insight", value:"The multiple flaws are due to,
+
   - The Security component in 'OpenJDK' failed to check the digest algorithm
     strength when generating DSA signatures.
+
   - The JAXP component in 'OpenJDK' failed to properly handle Unicode surrogate
     pairs used as part of the XML attribute values.
+
   - The RMI server implementation in the JMX component in 'OpenJDK' did not
     restrict which classes can be deserialized when deserializing authentication
     credentials.
+
   - Multiple unspecified vulnerabilities.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to have an impact on confidentiality, integrity and availability via different
-  vectors.
+  vectors.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Oracle Java SE 6 update 113 and prior,
+  script_tag(name:"affected", value:"Oracle Java SE 6 update 113 and prior,
   7 update 99 and prior and 8 update 77 and prior on Windows.");
 
-  script_tag(name: "solution" , value:"Apply the patch from below link,
+  script_tag(name:"solution", value:"Apply the patch from below link,
   http://www.oracle.com/technetwork/security-advisory/cpuapr2016v3-2985753.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuapr2016v3-2985753.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuapr2016v3-2985753.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

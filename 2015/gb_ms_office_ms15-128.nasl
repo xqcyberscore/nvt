@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms15-128.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: gb_ms_office_ms15-128.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (3104503)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806179");
-  script_version("$Revision: 6194 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-6106", "CVE-2015-6107", "CVE-2015-6108");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 16:03:44 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (3104503)");
 
@@ -45,12 +45,9 @@ if(description)
   TrueType fonts.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker to execute arbitrary code on the affected system.
+  attacker to execute arbitrary code on the affected system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft Office 2007 Service Pack 3
+  script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3
   Microsoft Office 2010 Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -62,9 +59,9 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3085616");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3085612");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-128");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3085616");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3085612");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-128");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -81,11 +78,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-path = "";
-dllVer = "";
-offPath = "";
-
 ## MS Office 2007/2010
 if(!get_kb_item("MS/Office/Ver") =~ "^[12|14].*"){
   exit(0);
@@ -97,16 +89,15 @@ if(path)
 {
   foreach ver (make_list("OFFICE12", "OFFICE14"))
   {
-    ## Get Version from Ogl.dll
     offPath = path + "\Microsoft Shared\" + ver;
     dllVer = fetch_file_version(sysPath:offPath, file_name:"Ogl.dll");
 
     if(dllVer)
     {
-      if(dllVer =~ "^(12)"){
+      if(dllVer =~ "^12"){
         Vulnerable_range  =  "12.0 - 12.0.6738.4999";
       }
-      else if(dllVer =~ "^(14)"){
+      else if(dllVer =~ "^14"){
         Vulnerable_range  =  "14 - 14.0.7164.4999";
       }
 

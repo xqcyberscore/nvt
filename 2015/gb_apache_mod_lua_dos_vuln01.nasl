@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_lua_dos_vuln01.nasl 7834 2017-11-20 14:48:51Z cfischer $
+# $Id: gb_apache_mod_lua_dos_vuln01.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Apache HTTP Server Mod_Lua Denial of service Vulnerability -01 May15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805616");
-  script_version("$Revision: 7834 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-0228");
   script_bugtraq_id(73041);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 15:48:51 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-18 13:29:48 +0530 (Mon, 18 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); # Only vulnerable if mod_lua is enabled
   script_name("Apache HTTP Server Mod_Lua Denial of service Vulnerability -01 May15");
@@ -42,16 +42,13 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apache HTTP Server
   and is prone to denial of service  vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw is due to vulnerability in
   lua_websocket_read function in lua_request.c in the mod_lua module.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attackers to cause a denial of service via some crafted dimension.
-
-  Impact Level: Application");
+  attackers to cause a denial of service via some crafted dimension.");
 
   script_tag(name:"affected", value:"Apache HTTP Server versions through
   2.4.12.");
@@ -61,8 +58,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://bugs.mageia.org/show_bug.cgi?id=15428");
-  script_xref(name : "URL" , value : "http://svn.apache.org/repos/asf/httpd/httpd/branches/2.4.x/CHANGES");
+  script_xref(name:"URL", value:"https://bugs.mageia.org/show_bug.cgi?id=15428");
+  script_xref(name:"URL", value:"http://svn.apache.org/repos/asf/httpd/httpd/branches/2.4.x/CHANGES");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -77,21 +74,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-httpd_port = 0;
-httpd_ver = "";
-
-## Get HTTP Port
 if(!httpd_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!httpd_ver = get_app_version(cpe:CPE, port:httpd_port)){
   exit(0);
 }
 
-## Checking for Vulnerable version
 if(version_is_less_equal(version:httpd_ver, test_version:"2.4.12"))
 {
   report = 'Installed version: ' + httpd_ver + '\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_web_server_41389.nasl 11122 2018-08-26 14:41:54Z cfischer $
+# $Id: gb_sun_java_web_server_41389.nasl 11498 2018-09-20 10:34:34Z jschulte $
 #
 # Sun Java System Web Server Admin Interface Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100703");
-  script_version("$Revision: 11122 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-26 16:41:54 +0200 (Sun, 26 Aug 2018) $");
+  script_version("$Revision: 11498 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:34:34 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-07-07 12:47:04 +0200 (Wed, 07 Jul 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -72,7 +72,7 @@ port = get_http_port( default:8989 );
 if( ! version = get_kb_item( "Sun/JavaSysWebServ/" + port + "/Ver" ) ) exit( 0 );
 
 vers = str_replace( find:"U", string:version, replace:"." );
-if( version_is_equal( version:vers, test_version:"7.0.7" ) ) {
+if( version_in_range( version:vers, test_version: "7.0.0", test_version2:"7.0.7" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"WillNotFix" );
   security_message( port:port, data:report );
   exit( 0 );

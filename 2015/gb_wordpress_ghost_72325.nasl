@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ghost_72325.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_wordpress_ghost_72325.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # GNU glibc Remote Heap Buffer Overflow Vulnerability (Wordpress)
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-0235");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11492 $");
 
   script_name("GNU glibc Remote Heap Buffer Overflow Vulnerability (Wordpress)");
 
@@ -52,7 +52,7 @@ vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-31 15:37:56 +0100 (Sat, 31 Jan 2015)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -88,10 +88,10 @@ function _test( boom, port, dir, host ) {
         ' </methodCall>';
 
   len = strlen( xml );
-
+  useragent = get_http_user_agent();
   req = 'POST ' + dir + '/xmlrpc.php HTTP/1.1\r\n' +
         'Accept: */*\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Host: ' + host + '\r\n' +
         'Content-Length: ' + len + '\r\n' +
         'Content-Type: application/x-www-form-urlencoded\r\n' +

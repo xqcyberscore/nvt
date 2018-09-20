@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zerocms_mul_sql_vuln_feb15.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_zerocms_mul_sql_vuln_feb15.nasl 11449 2018-09-18 10:04:42Z mmartin $
 #
 # ZeroCMS Multiple SQL Injection Vulnerabilities - Feb 2015
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805331");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11449 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-03 10:44:23 +0530 (Tue, 03 Feb 2015)");
   script_name("ZeroCMS Multiple SQL Injection Vulnerabilities - Feb 2015");
 
@@ -94,11 +94,11 @@ foreach dir (make_list_unique("/", "/cms", "/zerocms", "/ZeroCMS", cgi_dirs(port
   if (">zeroCMS<" >< rcvRes && "Login" >< rcvRes)
   {
     url = dir + "/views/zero_view_article.php?article_id=-1+union%20select%20"
-              + "concat(0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374)"
+              + "concat(0x53514c2d496e6a656374696f6e2d54657374)"
               + "%2C2%2C3%2C4%2C5%2C6%20--%20";
 
     if(http_vuln_check(port:zeroPort, url:url, check_header:TRUE,
-       pattern:"OpenVAS-SQL-Injection-Test<",
+       pattern:"SQL-Injection-Test<",
        extra_check: make_list("Login", ">zeroCMS<")))
     {
       report = report_vuln_url( port:zeroPort, url:url );

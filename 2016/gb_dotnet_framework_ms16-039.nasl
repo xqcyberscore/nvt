@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807663");
-  script_version("$Revision: 5782 $");
+  script_version("$Revision: 11493 $");
   script_cve_id("CVE-2016-0145");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-13 13:08:50 +0530 (Wed, 13 Apr 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (3148522)");
@@ -39,20 +39,17 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-039");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Gets the vulnerable file version and
+  checks if the appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"Flaw is due to improper handling of specially
-  crafted embedded fonts in windows font library.");
+  script_tag(name:"insight", value:"The flaw is due to improper handling of specially
+  crafted embedded fonts in the windows font library.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to install programs; view, change, or delete data; or create new
-  accounts with full user rights.
+  attackers to install programs, view, change, or delete data, or create new
+  accounts with full user rights.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft .NET Framework 3.0 SP2
+  script_tag(name:"affected", value:"Microsoft .NET Framework 3.0 SP2
   Microsoft .NET Framework 3.5 and 3.5.1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -61,16 +58,16 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3142042");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3142043");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3142041");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3142045");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-039");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3142042");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3142043");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3142041");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3142045");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-039");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
   exit(0);
@@ -82,20 +79,11 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-key = "";
-item = "";
-path = "";
-dllVer = "";
-sysVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win2012:1, win8_1:1, win8_1x64:1,
   win2012R2:1, winVista:3, win2008:3) <= 0){
   exit(0);
 }
 
-## Confirm .NET
 key = "SOFTWARE\Microsoft\ASP.NET";
 if(!registry_key_exists(key:key)){
   exit(0);
@@ -118,22 +106,22 @@ if(dllVer)
   ## MS16-039: Description of the security update for the .NET Framework 3.5.1 in Windows 7
   ## Service Pack 1 and Windows Server 2008 R2 Service Pack 1: April 12, 2016
   if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win2012:1, win8_1:1, win8_1x64:1, win2012R2:1) > 0)
-  {   
+  {
     if(version_in_range(version:dllVer, test_version:"3.0.6920.8700", test_version2:"3.0.6920.8711"))
     {
       VULN = TRUE ;
-      vulnerable_range = "3.0.6920.8700 - 3.0.6920.8711";      
+      vulnerable_range = "3.0.6920.8700 - 3.0.6920.8711";
     }
   }
   ##MS16-039: Description of the security update for the .NET Framework 3.0 Service Pack 2
   ## in Windows Vista Service Pack 2 and Windows Server 2008 Service Pack 2: April 12, 2016
   else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
-  { 
+  {
     if(version_in_range(version:dllVer, test_version:"3.0.6920.4000", test_version2:"3.0.6920.4234"))
     {
       VULN = TRUE ;
       vulnerable_range = "3.0.6920.4000 - 3.0.6920.4234";
-    }       
+    }
 
     else if(version_in_range(version:dllVer, test_version:"3.0.6920.8000", test_version2:"3.0.6920.8711"))
     {

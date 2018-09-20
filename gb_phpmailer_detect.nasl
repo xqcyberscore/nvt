@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmailer_detect.nasl 8814 2018-02-14 16:51:31Z cfischer $
+# $Id: gb_phpmailer_detect.nasl 11485 2018-09-20 06:25:34Z cfischer $
 #
 # PHPMailer Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809841");
-  script_version("$Revision: 8814 $");
+  script_version("$Revision: 11485 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-14 17:51:31 +0100 (Wed, 14 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 08:25:34 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-27 15:57:31 +0530 (Tue, 27 Dec 2016)");
   script_name("PHPMailer Detection");
   script_category(ACT_GATHER_INFO);
@@ -55,109 +55,140 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-port = get_http_port(default:80);
-if(!can_host_php(port:port)) exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-foreach dir(make_list_unique("/PHPMailer-master", "/PHPMailer", "/phpmailer", cgi_dirs(port:port)))
-{
+foreach dir( make_list_unique( "/PHPMailer-master", "/PHPMailer", "/phpmailer", cgi_dirs( port:port ) ) ) {
+
   install = dir;
-  if(dir == "/") dir = "";
+  if( dir == "/" ) dir = "";
+  mailer   = FALSE;
+  conclUrl = NULL;
 
-  foreach path (make_list("", "/lib"))
-  {
-    rcvRes = http_get_cache(item: dir + path + "/composer.json", port:port);
+  foreach path( make_list( "", "/lib" ) ) {
 
-    if(rcvRes =~ "^HTTP/1\.[01] 200" && '"name": "phpmailer/phpmailer"' >< rcvRes
-                                     && 'class.phpmailer.php' >< rcvRes)
-    {
+    url = dir + path + "/composer.json";
+    res = http_get_cache( item:url, port:port );
+
+    if( res =~ "^HTTP/1\.[01] 200" && '"name": "phpmailer/phpmailer"' >< res && 'class.phpmailer.php' >< res ) {
+
+      conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
       mailer = TRUE;
 
-      foreach file (make_list("/VERSION", "/version"))
-      {
-        rcvRes1 = http_get_cache(item: dir + path + file, port:port);
+      foreach file( make_list( "/VERSION", "/version" ) ) {
 
-        if(rcvRes1 =~ "^HTTP/1\.[01] 200")
-        {
-          version = eregmatch(pattern:'\n([0-9.]+)', string: rcvRes1);
-          if(version[1])
-          {
-            version = version[1];
+        url = dir + path + file;
+        res = http_get_cache( item:url, port:port );
+
+        if( res =~ "^HTTP/1\.[01] 200" ) {
+          vers = eregmatch( pattern:'\n([0-9.]+)', string:res );
+          if( vers[1] ) {
+            conclUrl += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE );
+            version = vers[1];
             break;
           }
         }
       }
     }
-    if(version){
+
+    if( version ) {
       break;
     } else {
       continue;
     }
   }
 
-  if(!version)
-  {
-    rcvRes = http_get_cache(item: dir + "/README", port:port);
+  if( ! version ) {
 
-    if(rcvRes =~ "^HTTP/1\.[01] 200" && 'class.phpmailer.php' >< rcvRes
-                                     && 'PHPMailer!' >< rcvRes)
-    {
+    foreach file( make_list( "/README", "/README.md" ) ) {
+
+      url = dir + file;
+      res = http_get_cache( item:url, port:port );
+
+      if( res =~ "^HTTP/1\.[01] 200" &&
+          ( 'class.phpmailer.php' >< res && 'PHPMailer!' >< res ) ||
+          ( "PHPMailer" >< res && ( "A full-featured email creation and transfer class for PHP" >< res || "Full Featured Email Transfer Class for PHP" >< res ) ) ) {
+
+        conclUrl += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE );
+        mailer = TRUE;
+
+        # nb: Quite agend versions like 1.7.x or 2.2.x had ChangeLog.txt, around 5.1.x had changelog.txt
+        # and newer had switched to changelog.md
+        foreach file( make_list( "/changelog.txt", "/ChangeLog.txt", "/changelog.md" ) ) {
+
+          url = dir + file;
+          res = http_get_cache( item:url, port:port );
+
+          # The typo/regex in the public release text is expected as this typo exists in the changelog.txt
+          # and ChangeLog.txt but was fixed in the newer changelog.md
+          if( res =~ "^HTTP/1\.[01] 200" && res =~ "Change ?Log" && res =~ "\* Ini?tial public release" ) {
+
+            # ## Version 6.0.5 (March 27th 2018)
+            # ## Version 5.2.26 (November 4th 2017)
+            # Version 5.0.0 (April 02, 2009)
+            # Version 5.1 (October 20, 2009)
+            # Version 1.73 (Sun, Jun 10 2005)
+            vers = eregmatch( pattern:'Version ([0-9.]+)', string:res );
+            if( vers[1] ) {
+              conclUrl += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE );
+              version = vers[1];
+              break;
+            }
+          }
+        }
+      }
+      if( version ) {
+        break;
+      } else {
+        continue;
+      }
+    }
+  }
+
+  if( ! version ) {
+
+    url = dir + "/extras";
+    res = http_get_cache( item:url, port:port);
+
+    if( res =~ "^HTTP/1\.[01] 200" && res =~ "title>Index of.*extras" && '"EasyPeasyICS.php' >< res ) {
+
+      conclUrl += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE );
       mailer = TRUE;
-      rcvRes1 = http_get_cache(item: dir + "/changelog.txt", port:port);
+      url = dir + "/VERSION";
+      res = http_get_cache( item:url, port:port );
 
-      # The "Intial" typo is expected as this typo exists in the changelog.txt
-      if(rcvRes1 =~ "^HTTP/1\.[01] 200" && "Intial public release" >< rcvRes1) {
-        version = eregmatch(pattern:'Version ([0-9.]+)', string: rcvRes1);
-        if(version[1]){
-          version = version[1];
+      if( res =~ "^HTTP/1\.[01] 200" ) {
+        vers = eregmatch( pattern:'\n([0-9.]+)', string:res );
+        if( vers[1] ) {
+          conclUrl += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE );
+          version = vers[1];
         }
       }
     }
   }
 
-  if(!version)
-  {
-    rcvRes = http_get_cache(item: dir + "/extras", port:port);
+  if( mailer ) {
 
-    if(rcvRes =~ "^HTTP/1\.[01] 200" && rcvRes =~ "title>Index of.*extras"
-                                     && '"EasyPeasyICS.php' >< rcvRes)
-    {
-      mailer = TRUE;
-      rcvRes1 = http_get_cache(item: dir + "/VERSION", port:port);
+    if( ! version )
+      version = "unknown";
 
-      if(rcvRes1 =~ "^HTTP/1\.[01] 200")
-      {
-        version = eregmatch(pattern:'\n([0-9.]+)', string: rcvRes1);
-        if(version[1]){
-          version = version[1];
-        }
-      }
-    }
-  }
+    set_kb_item( name:"www/" + port + "/phpmailer", value:version );
+    set_kb_item( name:"phpmailer/detected", value:TRUE );
 
-  if(mailer && !version){
-    version = "unknown";
-  }
-
-  if(version)
-  {
-    set_kb_item(name:"www/" + port + "/phpmailer", value:version);
-    set_kb_item(name:"phpmailer/Installed", value:TRUE);
-
-    # CPE not registered yet
-    cpe = build_cpe( value:version, exp:"([0-9.]+)", base:"cpe:/a:phpmailer:phpmailer:" );
+    cpe = build_cpe( value:version, exp:"([0-9.]+)", base:"cpe:/a:phpmailer_project:phpmailer:" );
     if( isnull( cpe ) )
-      cpe = 'cpe:/a:phpmailer:phpmailer';
+      cpe = "cpe:/a:phpmailer_project:phpmailer";
 
-    register_product(cpe:cpe, location:install, port:port);
+    register_product( cpe:cpe, location:install, port:port, service:"www" );
 
     log_message( data:build_detection_report( app:"PHPMailer",
                                               version:version,
                                               install:install,
                                               cpe:cpe,
-                                              concluded:version),
-                                              port:port);
-    exit(0);
+                                              concludedUrl:conclUrl,
+                                              concluded:vers[0] ),
+                                              port:port );
   }
 }
 
-exit(0);
+exit( 0 );

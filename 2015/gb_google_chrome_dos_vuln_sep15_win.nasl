@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_dos_vuln_sep15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_google_chrome_dos_vuln_sep15_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Google Chrome Denial of Service Vulnerability September15 (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806054");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-07 12:19:25 +0530 (Mon, 07 Sep 2015)");
   script_name("Google Chrome Denial of Service Vulnerability September15 (Windows)");
 
@@ -45,9 +45,7 @@ if(description)
   does not properly sanitize user supplied input.");
 
   script_tag(name:"impact", value:"Successful exploitation could allow
-  attackers to crash the application.
-
-  Impact Level: Application");
+  attackers to crash the application.");
 
   script_tag(name:"affected", value:"Google Chrome version 45.0.2454.93 and
   prior on Windows.");

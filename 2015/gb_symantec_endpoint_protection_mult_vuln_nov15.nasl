@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_endpoint_protection_mult_vuln_nov15.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_symantec_endpoint_protection_mult_vuln_nov15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Symantec Endpoint Protection Multiple Vulnerabilities Nov15
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806571");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-8113", "CVE-2015-6555", "CVE-2015-6554");
   script_bugtraq_id(77494, 77495, 77585);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-16 12:41:11 +0530 (Mon, 16 Nov 2015)");
   script_name("Symantec Endpoint Protection Multiple Vulnerabilities Nov15");
 
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
   attacker to gain privileges, and an unauthenticated, remote attacker to do
-  OS command execution, Java code execution with elevated application privileges.
-
-  Impact Level: Application.");
+  OS command execution, Java code execution with elevated application privileges.");
 
   script_tag(name:"affected", value:"Symantec Endpoint Protection (SEP) before
   version 12.1-RU6-MP3");

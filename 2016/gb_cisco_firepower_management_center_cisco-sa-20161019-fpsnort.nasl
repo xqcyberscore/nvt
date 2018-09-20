@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20161019-fpsnort.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20161019-fpsnort.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Cisco Firepower Detection Engine HTTP Denial of Service Vulnerability
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/a:cisco:firepower_management_center";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.107064");
- script_cve_id("CVE-2016-6439");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5534 $");
- script_name("Cisco Firepower Detection Engine HTTP Denial of Service Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.107064");
+  script_cve_id("CVE-2016-6439");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11493 $");
+  script_name("Cisco Firepower Detection Engine HTTP Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161019-fpsnort");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161019-fpsnort");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the detection engine reassembly of HTTP packets for Cisco Firepower System
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the detection engine reassembly of HTTP packets for Cisco Firepower System
 Software could allow an unauthenticated, remote attacker to cause a denial of service (DoS)
 condition due to the Snort process unexpectedly restarting.
 
@@ -58,16 +58,16 @@ address this vulnerability.
 
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161019-fpsnort");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-10-20 14:31:59 +0200 (Thu, 20 Oct 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_firepower_management_center_version.nasl");
- script_mandatory_keys("cisco_firepower_management_center/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-20 14:31:59 +0200 (Thu, 20 Oct 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_firepower_management_center_version.nasl");
+  script_mandatory_keys("cisco_firepower_management_center/version");
  exit(0);
 }
 
@@ -76,7 +76,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
                 '5.3.0',
                 '5.3.0.2',
                 '5.3.0.3',

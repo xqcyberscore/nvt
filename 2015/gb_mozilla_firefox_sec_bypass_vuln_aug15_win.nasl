@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_sec_bypass_vuln_aug15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mozilla_firefox_sec_bypass_vuln_aug15_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Mozilla Firefox Security Bypass Vulnerability - Aug15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806005");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-4495");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-10 15:41:41 +0530 (Mon, 10 Aug 2015)");
   script_name("Mozilla Firefox Security Bypass Vulnerability - Aug15 (Windows)");
 
@@ -47,9 +47,7 @@ if(description)
   and Firefox PDF Viewer.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to read and steal sensitive local files on the victim's computer.
-
-  Impact Level: System/Application");
+  attackers to read and steal sensitive local files on the victim's computer.");
 
   script_tag(name:"affected", value:"Mozilla Firefox version before 39.0.3 on
   Windows");

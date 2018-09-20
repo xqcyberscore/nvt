@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_storage_manager_authentication_bypass_09_14.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_solarwinds_storage_manager_authentication_bypass_09_14.nasl 11497 2018-09-20 10:31:54Z mmartin $
 #
 # SolarWinds Storage Manager AuthenticationFilter Remote Code Execution Vulnerability
 #
@@ -30,7 +30,7 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105090");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 11497 $");
 
   script_name("SolarWinds Storage Manager AuthenticationFilter Remote Code Execution Vulnerability");
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-14-299/");
@@ -50,7 +50,7 @@ in the AuthenticationFilter class.");
 
   script_tag(name:"affected", value:"Storage Manager Server before 5.7.2 is vulnerable.");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-16 15:55:12 +0200 (Tue, 16 Sep 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -66,14 +66,16 @@ in the AuthenticationFilter class.");
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:9000 );
 buf = http_get_cache( item:"/", port:port );
 
 if( "<title>SolarWinds - Storage Manager" >!< buf ) exit( 0 );
 
-rand_str = "OpenVAS " + rand();
-file = '_OpenVAS_.jsp';
+vtstring = get_vt_string();
+rand_str = vtstring + " " + rand();
+file = '_' + vtstring + '_.jsp';
 
 useragent = get_http_user_agent();
 host = http_host_name(port:port);
@@ -103,7 +105,7 @@ result = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( "Upload Successful" >!< result ) exit( 99 );
 
-url = '/images/../_OpenVAS_.jsp';
+url = '/images/../' +file;
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 

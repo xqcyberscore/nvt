@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805367");
-  script_version("$Revision: 5819 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1562");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-13 10:15:43 +0530 (Mon, 13 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Saurus CMS Multiple XSS Vulnerabilities");
@@ -43,15 +43,16 @@ if(description)
   check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple errors exist as input passed via,
+
   - 'search' parameter to the 'user_management.php' script,
+
   - 'data_search' parameter to the 'profile_data.php' script,
+
   - 'filter' parameter to the 'error_log.ph' script,
   are not validated before returning it to users.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to execute arbitrary HTML and script code in the context of an affected site.
-
-  Impact Level: Application");
+  to execute arbitrary HTML and script code in the context of an affected site.");
 
   script_tag(name:"affected", value:"Saurus CMS version 4.7, Prior versions
   may also be affected.");
@@ -61,7 +62,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Jan/112");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Jan/112");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -75,14 +76,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
 http_port = get_http_port(default:80);
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/cms", "/sauruscms", cgi_dirs(port:http_port)))
 {
 
@@ -90,14 +85,11 @@ foreach dir (make_list_unique("/", "/cms", "/sauruscms", cgi_dirs(port:http_port
 
   rcvRes = http_get_cache(item:string(dir, "/admin/"),  port:http_port);
 
-  ## Confirm Application
   if(">Saurus CMS" >< rcvRes)
   {
-    ## Construct Attack Request
     url = dir + '/admin/profile_data.php?data_search=%22%3E%3Cscript%3E'
               +'alert(document.cookie)%3C/script%3E%3C!--&profile_search=&profile_id=0';
 
-    ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
        pattern:"alert\(document\.cookie\)"))
     {

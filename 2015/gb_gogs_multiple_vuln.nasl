@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gogs_multiple_vuln.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: gb_gogs_multiple_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Gogs Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:gogits:gogs';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105952");
-  script_version("$Revision: 6194 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
-  script_tag(name : "creation_date", value : "2015-02-06 14:11:04 +0700 (Fri, 06 Feb 2015)");
-  script_tag(name : "cvss_base", value : "7.5");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11452 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-02-06 14:11:04 +0700 (Fri, 06 Feb 2015)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2014-8681", "CVE-2014-8682", "CVE-2014-8683");
   script_bugtraq_id(71188, 71187, 71186);
@@ -49,11 +49,11 @@ if (description)
   script_dependencies("gb_gogs_detect.nasl");
   script_mandatory_keys("gogs/installed");
 
-  script_tag(name : "summary", value : "Gogs (Go Git Service) is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Gogs (Go Git Service) is prone to multiple vulnerabilities.");
 
-  script_tag(name : "vuldetect", value : "Check the version");
+  script_tag(name:"vuldetect", value:"Check the version");
 
-  script_tag(name : "insight", value : "The installed Gogs version is prone to the following vulnerabilities:
+  script_tag(name:"insight", value:"The installed Gogs version is prone to the following vulnerabilities:
 
 CVE-2014-8681:
 SQL injection vulnerability in the GetIssues function in models/issue.go.
@@ -64,17 +64,17 @@ Multiple SQL injection vulnerabilities in the q parameter of api/v1/repos/search
 CVE-2014-8683:
 Cross-site scripting (XSS) vulnerability in models/issue.go.");
 
-  script_tag(name : "impact", value : "Unauthenicated attackers can exploit this vulnerabilities to perfom
+  script_tag(name:"impact", value:"Unauthenicated attackers can exploit this vulnerabilities to perfom
 an XSS attack or execute arbitrary SQL commands which may lead to a complete compromise of the database.");
 
-  script_tag(name : "affected", value : "Gogs (aka Go Git Service) 0.3.1-9 through 0.5.x before 0.5.8");
+  script_tag(name:"affected", value:"Gogs (aka Go Git Service) 0.3.1-9 through 0.5.x before 0.5.8");
 
-  script_tag(name : "solution", value : "Update to version 0.5.8 or later.");
+  script_tag(name:"solution", value:"Update to version 0.5.8 or later.");
 
-  script_xref(name : "URL", value : "http://gogs.io/docs/intro/change_log.html");
-  script_xref(name : "URL", value : "http://packetstormsecurity.com/files/129116/Gogs-Label-Search-Blind-SQL-Injection.html");
-  script_xref(name : "URL", value : "http://packetstormsecurity.com/files/129117/Gogs-Repository-Search-SQL-Injection.html");
-  script_xref(name : "URL", value : "http://packetstormsecurity.com/files/129118/Gogs-Markdown-Renderer-Cross-Site-Scripting.html");
+  script_xref(name:"URL", value:"http://gogs.io/docs/intro/change_log.html");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/129116/Gogs-Label-Search-Blind-SQL-Injection.html");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/129117/Gogs-Repository-Search-SQL-Injection.html");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/129118/Gogs-Markdown-Renderer-Cross-Site-Scripting.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

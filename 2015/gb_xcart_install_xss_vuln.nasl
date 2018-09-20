@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xcart_install_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_xcart_install_xss_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # X_CART Installation Script Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:qualiteam:x-cart";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806059");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11492 $");
   script_cve_id("CVE-2015-5455");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-05 11:33:14 +0530 (Mon, 05 Oct 2015)");
   script_name("X_CART Installation Script Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -55,9 +55,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to create a specially crafted request that would
   execute arbitrary script code in a user's browser session within the trust
-  relationship between their browser and the server.
-
-  Impact Level: Application");
+  relationship between their browser and the server.");
   script_tag(name:"affected", value:"XCART versions 4.5.0 and possibly earlier.");
   script_tag(name:"solution", value:"For a workaround, websites running X-Cart
   version 4.5.0 (and possibly below) remove their /install/ directory once it is
@@ -84,6 +82,7 @@ url = dir + "/install.php";
 
 sndReq = http_get( item:url, port:port );
 rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
+useragent = get_http_user_agent();
 
 if( rcvRes && rcvRes =~ "HTTP/1.. 200" ) {
 
@@ -100,7 +99,7 @@ if( rcvRes && rcvRes =~ "HTTP/1.. 200" ) {
   #Send Attack Request
   sndReq = string("POST ", url, " HTTP/1.1\r\n",
                   "Host: ", host, "\r\n",
-                  "User-Agent: ", OPENVAS_HTTP_USER_AGENT , "\r\n" ,
+                  "User-Agent: ", useragent, "\r\n",
                   "Content-Type: application/x-www-form-urlencoded", "\r\n",
                   "Content-Length: ", strlen(postData), "\r\n\r\n",
                   "\r\n", postData, "\r\n");

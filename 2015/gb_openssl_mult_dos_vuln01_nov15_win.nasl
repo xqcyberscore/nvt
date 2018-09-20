@@ -1,6 +1,6 @@
 ###############################################################################
 #OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_dos_vuln01_nov15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_openssl_mult_dos_vuln01_nov15_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # OpenSSL Multiple Denial of Service Vulnerabilities -01 Nov15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806730");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-0292", "CVE-2014-8176");
   script_bugtraq_id(73228, 75159);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-24 18:49:30 +0530 (Tue, 24 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Multiple Denial of Service Vulnerabilities -01 Nov15 (Windows)");
@@ -45,14 +45,14 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Integer underflow in the 'EVP_DecodeUpdate' function in 'crypto/evp/encode.c' script in the
     base64-decoding implementation.
+
   - Memory corruption vulnerability while handling data structures.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an remote
-  attackers to cause a denial of service or possibly have unspecified other impact.
-
-  Impact Level: Application");
+  attackers to cause a denial of service or possibly have unspecified other impact.");
 
   script_tag(name:"affected", value:"OpenSSL versions before 0.9.8za, 1.0.0
   before 1.0.0m, and 1.0.1 before 1.0.1h on Windows");

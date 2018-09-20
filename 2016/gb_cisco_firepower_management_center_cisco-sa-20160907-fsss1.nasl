@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20160907-fsss1.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20160907-fsss1.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Cisco Firepower Management Center Malware Bypass Vulnerability
 #
@@ -29,43 +29,43 @@ CPE = "cpe:/a:cisco:firepower_management_center";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106232");
- script_cve_id("CVE-2016-6396");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 5505 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106232");
+  script_cve_id("CVE-2016-6396");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11493 $");
 
- script_name("Cisco Firepower Management Center Malware Bypass Vulnerability");
+  script_name("Cisco Firepower Management Center Malware Bypass Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160907-fsss1");
- 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160907-fsss1");
 
- script_tag(name: "solution" , value:"Upgrade to version 6.1");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "summary" , value:"A vulnerability in the malicious file detection and blocking features of
+  script_tag(name:"solution", value:"Upgrade to version 6.1");
+
+  script_tag(name:"summary", value:"A vulnerability in the malicious file detection and blocking features of
 Cisco Firepower Management Center could allow an unauthenticated, remote attacker to bypass malware detection
 mechanisms on an affected system.");
 
-script_tag(name: "insight", value: "The vulnerability is due to improper input validation of fields in HTTP
+  script_tag(name: "insight", value: "The vulnerability is due to improper input validation of fields in HTTP
 headers. An attacker could exploit this vulnerability by crafting specific file content on a server or
 persuading a user to click a specific link.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to bypass malicious file
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to bypass malicious file
 detection or blocking policies that are configured for the system, which could allow malware to pass through
 the system undetected.");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-09-08 10:11:15 +0700 (Thu, 08 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_firepower_management_center_version.nasl");
- script_mandatory_keys("cisco_firepower_management_center/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-08 10:11:15 +0700 (Thu, 08 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_firepower_management_center_version.nasl");
+  script_mandatory_keys("cisco_firepower_management_center/version");
  exit(0);
 }
 

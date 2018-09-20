@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_object_prop_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_open_xchange_appsuite_object_prop_xss_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Open-Xchange (OX) AppSuite Object Properties Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806525");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-5375");
   script_bugtraq_id(76837);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-02 12:36:19 +0530 (Mon, 02 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Object Properties Cross Site Scripting Vulnerability");
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject arbitrary web script or HTML in the browser of an
-  unsuspecting user in the context of the affected site.
-
-  Impact Level: Application");
+  unsuspecting user in the context of the affected site.");
 
   script_tag(name:"affected", value:"Open-Xchange (OX) AppSuite versions
   before 6.22.8-rev8, 6.22.9 before 6.22.9-rev15, 7.x before 7.6.1-rev25, and

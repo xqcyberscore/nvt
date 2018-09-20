@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20150923-sshpk.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_cisco_ios_xe_cisco-sa-20150923-sshpk.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Cisco IOS and IOS XE Software SSH Version 2 RSA-Based User Authentication Bypass Vulnerability
 #
@@ -29,50 +29,49 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105674");
- script_cve_id("CVE-2015-6280");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5557 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105674");
+  script_cve_id("CVE-2015-6280");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11493 $");
 
- script_name("Cisco IOS and IOS XE Software SSH Version 2 RSA-Based User Authentication Bypass Vulnerability");
+  script_name("Cisco IOS and IOS XE Software SSH Version 2 RSA-Based User Authentication Bypass Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150923-sshpk");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150923-sshpk");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20150923-bundle");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=40938");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20150923-bundle");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=40938");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20150923-bundle");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=40938");
- 
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the SSH version 2 (SSHv2) protocol implementation  of Cisco IOS and IOS XE Software could allow an
-unauthenticated, remote attacker to bypass user authentication. 
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the SSH version 2 (SSHv2) protocol implementation  of Cisco IOS and IOS XE Software could allow an
+unauthenticated, remote attacker to bypass user authentication.
 
 Successful exploitation could allow the attacker to log in with the privileges of the user or the privileges configured for the Virtual Teletype (VTY) line. Depending on the configuration of the user and of the vty line, the attacker may obtain administrative privileges on the system. The attacker cannot use this vulnerability to elevate privileges.
 
 The attacker must know a valid username configured for Rivest, Shamir, and Adleman (RSA)-based user authentication and the public key configured for that user to exploit this vulnerability. This vulnerability
-affects only devices configured for public key authentication method, also known as an RSA-based user authentication feature. 
+affects only devices configured for public key authentication method, also known as an RSA-based user authentication feature.
 
 Cisco has released software updates that address this vulnerability. Workarounds for this vulnerability are not available; however administrators could temporarily disable RSA-based user authentication to avoid exploitation. This advisory is available at the following link:
 
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150923-sshpk
 
 Note: The September 23, 2015, release of the Cisco IOS and IOS XE Software Security Advisory bundled publication includes three Cisco Security Advisories. All the advisories address vulnerabilities in Cisco IOS Software and Cisco IOS XE Software. Individual publication links are in Cisco Event Response: September 2015 Semiannual Cisco IOS and IOS XE Software Security Advisory Bundled Publication at the following link:
-http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_sep15.html
-");
+http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_sep15.html");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-10 10:45:39 +0200 (Tue, 10 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-10 10:45:39 +0200 (Tue, 10 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
  exit(0);
 }
 
@@ -81,7 +80,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'3.6.0E',
 		'3.6.0E',
 		'3.6.0E',

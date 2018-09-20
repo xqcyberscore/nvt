@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_dashboard_xss_vuln_feb15.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_splunk_dashboard_xss_vuln_feb15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Splunk Dashboard Cross-Site Scripting Vulnerability - Feb15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:splunk:splunk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805334");
-  script_version("$Revision: 11299 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-8302");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-05 12:04:16 +0530 (Thu, 05 Feb 2015)");
   script_name("Splunk Dashboard Cross-Site Scripting Vulnerability - Feb15");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to execute arbitrary HTML and script code in a user's
-  browser session in the context of an affected site.
-
-  Impact Level: Application");
+  browser session in the context of an affected site.");
 
   script_tag(name:"affected", value:"Splunk version 5.0.x before 5.0.10
   and 6.0.x before 6.0.6 and 6.1.x before 6.1.4");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wanscam_onvif_dos_vuln.nasl 11022 2018-08-17 07:57:39Z cfischer $
+# $Id: gb_wanscam_onvif_dos_vuln.nasl 11470 2018-09-19 09:45:56Z cfischer $
 #
 # Wanscam HW0021 ONVIF Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113222");
-  script_version("$Revision: 11022 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11470 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 11:45:56 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-03 11:23:57 +0200 (Tue, 03 Jul 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -53,11 +53,16 @@ if(description)
 
   CAUTION: If the device is vulnerable, the ONVIF service will crash during the test.
   A manual restart of the service or the device will be necessary.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+
   script_tag(name:"insight", value:"An invalid SOAP-request to the ONVIF-SOAP interface will cause the ONVIF service to crash.");
+
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to deny users access to the ONVIF interface,
   until the service is manually restarted.");
+
   script_tag(name:"affected", value:"Wanscam HW0021. Other devices using ONVIF may be affected, too.");
+
   script_tag(name:"solution", value:"No known solution is available as of 03rd July, 2018.
   Information regarding this issue will be updated once solution details are available.");
 
@@ -72,10 +77,10 @@ include("misc_func.inc");
 port = get_http_port( default: 8080 );
 
 res = http_get_cache( port: port, item: "/" );
-
 if( res !~ 'www.onvif.org' ) exit( 0 );
 
-req = http_post_req( port: port, url: "/", add_headers: make_array("SOAPAction", "greenbone" ) );
+vtstring = get_vt_string(lowercase:TRUE);
+req = http_post_req( port: port, url: "/", add_headers: make_array("SOAPAction", vtstring ) );
 
 # We can't use receive here, because if vulnerable, the service will crash, and a receive would cause the NVT to timeout.
 soc = http_open_socket( port );

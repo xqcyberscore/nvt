@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_polycom_soundstation_ip_web_default_credentials.nasl 6700 2017-07-12 12:16:21Z cfischer $
+# $Id: sw_polycom_soundstation_ip_web_default_credentials.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Polycom SoundStation/SoundPoint IP Webinterface Default Credentials
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111059");
-  script_version("$Revision: 6700 $");
+  script_version("$Revision: 11492 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Polycom SoundStation/SoundPoint IP Webinterface Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-24 15:00:00 +0100 (Tue, 24 Nov 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -41,18 +41,18 @@ if (description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Polycom_SoundPoint/banner");
 
-  script_tag(name: "summary" , value: 'The remote Polycom SoundStation IP Webinterface is prone to a
+  script_tag(name:"summary", value: 'The remote Polycom SoundStation IP Webinterface is prone to a
   default account authentication bypass vulnerability.');
 
-  script_tag(name: "impact" , value: 'This issue may be exploited by a remote attacker to gain
+  script_tag(name:"impact", value: 'This issue may be exploited by a remote attacker to gain
   access to sensitive information.');
 
-  script_tag(name: "vuldetect" , value: 'Try to login with default credentials.');
-  script_tag(name : "insight" , value : 'It was possible to login with default credentials Polycom:456');
-  script_tag(name: "solution" , value: 'Change the password.');
+  script_tag(name:"vuldetect", value: 'Try to login with default credentials.');
+  script_tag(name:"insight", value : 'It was possible to login with default credentials Polycom:456');
+  script_tag(name:"solution", value: 'Change the password.');
 
-  script_tag(name : "solution_type", value : "Workaround");
-  script_tag(name: "qod_type", value: "remote_app");
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);
 }
@@ -63,8 +63,9 @@ include("misc_func.inc");
 
 port = get_http_port(default:80);
 banner = get_http_banner( port:port );
+useragent = get_http_user_agent();
 
-if( "erver: Polycom SoundPoint IP" >!< banner ) exit( 0 ); 
+if( "erver: Polycom SoundPoint IP" >!< banner ) exit( 0 );
 
 auth = base64( str:'Polycom:456' );
 
@@ -72,12 +73,13 @@ host = http_host_name( port:port );
 
 req = 'GET /index.htm HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Language: en-US,en;q=0.5\r\n' +
       'Authorization: Basic ' + auth + '\r\n' +
       '\r\n';
 res = http_keepalive_send_recv( port:port, data:req );
+
 
 if( "SoundStation IP Configuration" >< res ||
     "SoundPoint IP Configuration" >< res ||

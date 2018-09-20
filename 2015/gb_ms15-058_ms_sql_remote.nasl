@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-058_ms_sql_remote.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: gb_ms15-058_ms_sql_remote.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft SQL Server Multiple Vulnerabilities (3065718) - Remote
 #
@@ -29,32 +29,30 @@ CPE = "cpe:/a:microsoft:sql_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805815");
-  script_version("$Revision: 6431 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1761", "CVE-2015-1762", "CVE-2015-1763");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 12:57:38 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Microsoft SQL Server Multiple Vulnerabilities (3065718) - Remote");
 
-  script_tag(name: "summary" , value:"This host is missing an important
+  script_tag(name:"summary", value:"This host is missing an important
   security update according to Microsoft Bulletin MS15-058.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Flaws exist due to,
+  script_tag(name:"insight", value:"Flaws exist due to,
+
   - An improperly casts pointers to an incorrect class.
+
   - An incorrectly handling internal function calls to uninitialized memory.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to elevate the privileges or execute arbitrary code remotely.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to elevate the privileges or execute arbitrary code remotely.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"
-  Microsoft SQL Server 2008 for x86/x64 Edition Service Pack 3,
+  script_tag(name:"affected", value:"Microsoft SQL Server 2008 for x86/x64 Edition Service Pack 3,
   Microsoft SQL Server 2008 for x86/x64 Edition Service Pack 4,
   Microsoft SQL Server 2008 R2 for x86/x64 Edition Service Pack 2,
   Microsoft SQL Server 2008 R2 for x86/x64 Edition Service Pack 3,
@@ -62,14 +60,14 @@ if(description)
   Microsoft SQL Server 2012 for x86/x64 Edition Service Pack 2,
   Microsoft SQL Server 2014 for x86/x64 Edition.");
 
-  script_tag(name: "solution" , value:"Run Windows Update and update the
+  script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from this link, https://technet.microsoft.com/library/security/MS15-058");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3065718");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-058");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3065718");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-058");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -84,16 +82,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-mssqlVer = "";
-mssqlPort = "";
-
-## Get Port
 if(!mssqlPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!mssqlVer = get_app_version(cpe:CPE, port:mssqlPort)){
   exit(0);
 }
@@ -104,7 +96,7 @@ if(mssqlVer =~ "^12\.0")
   if(version_in_range(version:mssqlVer, test_version:"12.0.2000.80", test_version2:"12.0.2268.0") ||
      version_in_range(version:mssqlVer, test_version:"12.0.2300", test_version2:"12.0.2547"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -115,7 +107,7 @@ if(mssqlVer =~ "^11\.0")
   if(version_in_range(version:mssqlVer, test_version:"11.00.3000.00", test_version2:"11.0.3155") ||
      version_in_range(version:mssqlVer, test_version:"11.0.3300", test_version2:"11.0.3512"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -126,7 +118,7 @@ if(mssqlVer =~ "^11\.0")
   if(version_in_range(version:mssqlVer, test_version:"11.0.5058.0", test_version2:"11.0.5342") ||
      version_in_range(version:mssqlVer, test_version:"11.0.5600", test_version2:"11.0.5612"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -137,7 +129,7 @@ if(mssqlVer =~ "^10\.50")
   if(version_in_range(version:mssqlVer, test_version:"10.50.4000.0", test_version2:"10.50.4041") ||
      version_in_range(version:mssqlVer, test_version:"10.50.4300", test_version2:"10.50.4338"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -148,7 +140,7 @@ if(mssqlVer =~ "^10\.50")
   if(version_in_range(version:mssqlVer, test_version:"10.50.6000.34", test_version2:"10.50.6219") ||
      version_in_range(version:mssqlVer, test_version:"10.50.6500", test_version2:"10.50.6528"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -159,7 +151,7 @@ if(mssqlVer =~ "^10\.0")
   if(version_in_range(version:mssqlVer, test_version:"10.00.5500.00", test_version2:"10.0.5537") ||
      version_in_range(version:mssqlVer, test_version:"10.0.5750", test_version2:"10.0.5889"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -170,7 +162,7 @@ if(mssqlVer =~ "^10\.0")
   if(version_in_range(version:mssqlVer, test_version:"10.00.6000.29", test_version2:"10.0.6240") ||
      version_in_range(version:mssqlVer, test_version:"10.0.6500", test_version2:"10.0.6534"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

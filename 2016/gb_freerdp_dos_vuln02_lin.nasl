@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freerdp_dos_vuln02_lin.nasl 4744 2016-12-12 12:02:31Z cfi $
+# $Id: gb_freerdp_dos_vuln02_lin.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # FreeRDP Denial of Service Vulnerability-02 (Linux)
 #
@@ -28,38 +28,35 @@ CPE = "cpe:/a:freerdp_project:freerdp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809739");
-  script_version("$Revision: 4744 $");
+  script_version("$Revision: 11493 $");
   script_cve_id("CVE-2013-4119");
   script_bugtraq_id(61072);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-12 13:02:31 +0100 (Mon, 12 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-01 17:47:04 +0530 (Thu, 01 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("FreeRDP Denial of Service Vulnerability-02 (Linux)");
-  script_tag(name: "summary" , value:"The host is installed with FreeRDP and is
+  script_tag(name:"summary", value:"The host is installed with FreeRDP and is
   prone to denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to NULL pointer
+  script_tag(name:"insight", value:"The flaw is due to NULL pointer
   dereference error within the application.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a remote
-  attackers to cause a denial of service condition.
+  script_tag(name:"impact", value:"Successful exploitation will allow a remote
+  attackers to cause a denial of service condition.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"FreeRDP version before 1.1.0-beta+2013071101
+  script_tag(name:"affected", value:"FreeRDP version before 1.1.0-beta+2013071101
   on Linux.");
 
-  script_tag(name: "solution" , value:"Upgrade to FreeRDP 1.1.0-beta+2013071101
+  script_tag(name:"solution", value:"Upgrade to FreeRDP 1.1.0-beta+2013071101
   or later. For updates refer to http://www.freerdp.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2013/07/12/2");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2013/07/11/12");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2013/07/12/2");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2013/07/11/12");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -72,11 +69,6 @@ include("version_func.inc");
 include("revisions-lib.inc");
 include("host_details.inc");
 
-## Variable Initialization
-installVer = "";
-report = "";
-
-## Get version
 if(!installVer = get_app_version(cpe:CPE)){
   exit(0);
 }

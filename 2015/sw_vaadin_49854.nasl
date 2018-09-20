@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_vaadin_49854.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: sw_vaadin_49854.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Vaadin Framework < 6.6.7 / 6.7.0 Multiple Vulnerabilities
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:vaadin:vaadin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105179");
-  script_version("$Revision: 6194 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+  script_version("$Revision: 11452 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-22 12:00:00 +0100 (Thu, 22 Jan 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,25 +48,32 @@ if(description)
   script_require_ports("Services/www", 8888);
   script_mandatory_keys("vaadin/installed");
 
-  script_tag(name : "summary" , value : "This web application is running with the Vaadin Framework which
+  script_tag(name:"summary", value:"This web application is running with the Vaadin Framework which
   is prone to multiple cross-site scripting, information-disclosure, and security-bypass issues
   because the application fails to properly sanitize user-supplied input.");
-  script_tag(name : "vuldetect" , value : "Check the version.");
-  script_tag(name : "insight" , value : "Multiple flaws exists due to,
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - A directory traversal vulnerability through AbstractApplicationServlet.serveStaticResourcesInVAADIN()
+
   - CSRF/XSS vulnerability through separator injection
+
   - Contributory XSS: Possibility to inject HTML/javascript in system error messages
+
   - Contributory XSS: possibility for injection in certain components");
-  script_tag(name : "impact" , value : "Successful exploitation could allow:
+  script_tag(name:"impact", value:"Successful exploitation could allow:
+
   - A remote attacker to leverage the cross-site scripting issues to execute arbitrary script code
   in the browser of an unsuspecting user in the context of the affected site.
-  This may allow the attacker to steal cookie-based authentication credentials and launch other attacks. 
+  This may allow the attacker to steal cookie-based authentication credentials and launch other attacks.
+
   - Exploiting the information-disclosure issues allows the attacker to view local
   files within the context of the Web server process.
+
   - Exploiting the security-bypass vulnerability allows attackers to bypass security restrictions
   and obtain sensitive information or perform unauthorized actions.");
-  script_tag(name : "affected" , value : "Vaadin Framework versions from 6.0.0 up to 6.6.6");
-  script_tag(name : "solution" , value : "Upgrade to Vaadin Framework version 6.6.7 or later / 6.7.0 or later
+  script_tag(name:"affected", value:"Vaadin Framework versions from 6.0.0 up to 6.6.6");
+  script_tag(name:"solution", value:"Upgrade to Vaadin Framework version 6.6.7 or later / 6.7.0 or later
   For updates refer to http://www.vaadin.com/releases");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49854");
@@ -92,6 +99,6 @@ if( version_in_range( version:vers, test_version:"6.0.0", test_version2:"6.6.6" 
            'Fixed version:     ' + "6.6.7/6.7.0" + '\n';
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

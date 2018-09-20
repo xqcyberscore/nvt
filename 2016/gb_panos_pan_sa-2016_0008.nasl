@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0008.nasl 8721 2018-02-08 13:40:24Z cfischer $
+# $Id: gb_panos_pan_sa-2016_0008.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Palo Alto PAN-OS PAN-SA-2016-0008
 #
@@ -29,34 +29,34 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105793");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 8721 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105793");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11493 $");
 
- script_name("Palo Alto PAN-OS PAN-SA-2016-0008");
+  script_name("Palo Alto PAN-OS PAN-SA-2016-0008");
 
- script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/41");
+  script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/41");
 
- script_tag(name: "summary" , value:"Palo Alto Networks firewalls offer an API to query and modify the configuration of the device. While access to this API is protected by the use of an API key, an issue was recently identified leading to a potential unauthenticated denial of service attack. (Ref #91728)");
+  script_tag(name:"summary", value:"Palo Alto Networks firewalls offer an API to query and modify the configuration of the device. While access to this API is protected by the use of an API key, an issue was recently identified leading to a potential unauthenticated denial of service attack. (Ref #91728)");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
- script_tag(name: "solution" , value:"Update to PAN-OS 7.0.8 or later");
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"solution", value:"Update to PAN-OS 7.0.8 or later");
 
- script_tag(name: "impact" , value:"The API is hosted on a dedicated management interface and, while this issue can result in a DoS attack of the API, it doesn't compromise the security functionality of the device.");
+  script_tag(name:"impact", value:"The API is hosted on a dedicated management interface and, while this issue can result in a DoS attack of the API, it doesn't compromise the security functionality of the device.");
 
- script_tag(name:"affected" , value:"PAN-OS 7.0.1 to PAN-OS 7.0.7");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"PAN-OS 7.0.1 to PAN-OS 7.0.7");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:40:24 +0100 (Thu, 08 Feb 2018) $");
- script_tag(name:"creation_date", value:"2016-07-05 16:55:13 +0200 (Tue, 05 Jul 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("Palo Alto PAN-OS Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_palo_alto_panOS_version.nasl");
- script_mandatory_keys("palo_alto_pan_os/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-05 16:55:13 +0200 (Tue, 05 Jul 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Palo Alto PAN-OS Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_palo_alto_panOS_version.nasl");
+  script_mandatory_keys("palo_alto_pan_os/version");
 
  exit(0);
 }

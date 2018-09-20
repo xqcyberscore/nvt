@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_rsaauth_auth_bypass_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_typo3_rsaauth_auth_bypass_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # TYPO3 'rsaauth' extension Authentication Bypass Vulnerability (SA-2015-001)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805295");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-2047");
   script_bugtraq_id(72763);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-02 18:06:26 +0530 (Mon, 02 Mar 2015)");
   script_name("TYPO3 'rsaauth' extension Authentication Bypass Vulnerability (SA-2015-001)");
 
@@ -47,9 +47,7 @@ if(description)
   frontend in rsaauth that is triggered when handling logins");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  remote attackers to authenticate as a frontend user whose login name is known.
-
-  Impact Level: Application.");
+  remote attackers to authenticate as a frontend user whose login name is known.");
 
   script_tag(name:"affected", value:"TYPO3 versions 4.3.0 through 4.3.14, 4.4.0
   through 4.4.15, 4.5.0 through 4.5.39, and 4.6.0 through 4.6.18");

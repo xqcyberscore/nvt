@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bullguard_av_auth_bypass_vuln_may15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_bullguard_av_auth_bypass_vuln_may15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # BullGuard Antivirus Authentication Bypass Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:bullguard:antivirus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805623");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-20 12:26:57 +0530 (Wed, 20 May 2015)");
   script_name("BullGuard Antivirus Authentication Bypass Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
   attacker to bypass implemented password protection mechanism in the applications
-  management console.
-
-  Impact Level: Application");
+  management console.");
 
   script_tag(name:"affected", value:"BullGuard Antivirus version 15.0.297");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170322-xeci.nasl 5678 2017-03-23 04:08:39Z ckuerste $
+# $Id: gb_cisco_ios_xe_cisco-sa-20170322-xeci.nasl 11474 2018-09-19 11:38:50Z mmartin $
 #
 # Cisco IOS XE Software HTTP Command Injection Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106689");
- script_cve_id("CVE-2017-3858");
- script_tag(name: "cvss_base", value: "9.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version("$Revision: 5678 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106689");
+  script_cve_id("CVE-2017-3858");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11474 $");
 
- script_name("Cisco IOS XE Software HTTP Command Injection Vulnerability");
+  script_name("Cisco IOS XE Software HTTP Command Injection Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170322-xeci");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170322-xeci");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the web framework of Cisco IOS XE Software could allow an
+  script_tag(name:"summary", value:"A vulnerability in the web framework of Cisco IOS XE Software could allow an
 authenticated, remote attacker to inject arbitrary commands that are executed with root privileges.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient input validation of HTTP parameters
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient input validation of HTTP parameters
 supplied by the user. An attacker could exploit this vulnerability by authenticating to the device and submitting
 crafted input to the affected web page parameter. The user must be authenticated to access the affected
 parameter.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to execute commands with root
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to execute commands with root
 privileges.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-23 05:08:39 +0100 (Thu, 23 Mar 2017) $");
- script_tag(name: "creation_date", value: "2017-03-23 10:22:28 +0700 (Thu, 23 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-23 10:22:28 +0700 (Thu, 23 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
 
  exit(0);
 }

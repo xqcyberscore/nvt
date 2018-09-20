@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_articlefr_cms_mult_vuln_jan15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_articlefr_cms_mult_vuln_jan15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # ArticleFR CMS Multiple Vulnerabilities - Jan15
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805262");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1364", "CVE-2015-1363");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-29 16:47:29 +0530 (Thu, 29 Jan 2015)");
   script_name("ArticleFR CMS Multiple Vulnerabilities - Jan15");
 
@@ -48,9 +48,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database and execute
   arbitrary HTML and script code in a users browser session in the context of an
-  affected site.
-
-  Impact Level: Application");
+  affected site.");
 
   script_tag(name:"affected", value:"ArticleFR CMS version 3.0.5, Prior
   versions may also be affected.");

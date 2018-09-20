@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_cisco-sa-20160120-ucsm.nasl 9437 2018-04-11 10:24:03Z cfischer $
+# $Id: gb_cisco_ucs_cisco-sa-20160120-ucsm.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Cisco Unified Computing System Manager Remote Command Execution Vulnerability
 #
@@ -29,33 +29,33 @@ CPE = 'cpe:/a:cisco:unified_computing_system_software';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105526");
- script_cve_id("CVE-2015-6435");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 9437 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105526");
+  script_cve_id("CVE-2015-6435");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11493 $");
 
- script_name("Cisco Unified Computing System Manager Remote Command Execution Vulnerability");
+  script_name("Cisco Unified Computing System Manager Remote Command Execution Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160120-ucsm");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160120-ucsm");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2016-01-25 15:34:07 +0100 (Mon, 25 Jan 2016)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"solution_type", value:"VendorFix");
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ucs_manager_detect.nasl");
- script_require_ports("Services/www", 443);
- script_mandatory_keys("cisco_ucs_manager/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-01-25 15:34:07 +0100 (Mon, 25 Jan 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ucs_manager_detect.nasl");
+  script_require_ports("Services/www", 443);
+  script_mandatory_keys("cisco_ucs_manager/installed");
 
- script_tag(name:"impact",    value: "An exploit could allow the attacker to execute arbitrary commands on the Cisco UCS Manager or the Cisco Firepower 9000 Series appliance.");
- script_tag(name:"vuldetect", value: "Check the version");
- script_tag(name:"insight",   value: "The vulnerability is due to unprotected calling of shell commands in the CGI script. An attacker could exploit this vulnerability by sending a crafted HTTP request to the Cisco UCS Manager appliance.");
- script_tag(name:"solution",  value: "Updates are available");
- script_tag(name:"summary",   value: "A vulnerability in a CGI script in the Cisco Unified Computing System (UCS) Manager and the Cisco Firepower 9000 Series appliance could allow an unauthenticated, remote attacker to execute arbitrary commands on the Cisco UCS Manager or the Cisco Firepower 9000 Series appliance.");
- script_tag(name:"affected",  value: "The first fixed releases of Cisco UCS Manager are 2.2(4b), 2.2(5a), and 3.0(2e). Earlier versions of 2.2.x are affected by this vulnerability.");
+  script_tag(name:"impact", value:"An exploit could allow the attacker to execute arbitrary commands on the Cisco UCS Manager or the Cisco Firepower 9000 Series appliance.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"insight", value:"The vulnerability is due to unprotected calling of shell commands in the CGI script. An attacker could exploit this vulnerability by sending a crafted HTTP request to the Cisco UCS Manager appliance.");
+  script_tag(name:"solution", value:"Updates are available");
+  script_tag(name:"summary", value:"A vulnerability in a CGI script in the Cisco Unified Computing System (UCS) Manager and the Cisco Firepower 9000 Series appliance could allow an unauthenticated, remote attacker to execute arbitrary commands on the Cisco UCS Manager or the Cisco Firepower 9000 Series appliance.");
+  script_tag(name:"affected", value:"The first fixed releases of Cisco UCS Manager are 2.2(4b), 2.2(5a), and 3.0(2e). Earlier versions of 2.2.x are affected by this vulnerability.");
 
  exit(0);
 }

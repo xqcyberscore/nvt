@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_diskstation_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_synology_diskstation_xss_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Synology DiskStation Manager Cross-Site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/o:synology:dsm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805391");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-28 13:19:38 +0530 (Thu, 28 May 2015)");
   script_tag(name:"qod", value:"50"); # Prone to false positives and doesn't match existing qod_types
   script_name("Synology DiskStation Manager Cross-Site Scripting Vulnerability");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to execute arbitrary HTML and script code in a user's browser session in the
-  context of an affected site.
-
-  Impact Level: Application");
+  context of an affected site.");
 
   script_tag(name:"affected", value:"Synology DiskStation Manager 5.2-5565");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_mult_dos_vuln_aug15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_clamav_mult_dos_vuln_aug15_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # ClamAV Multiple Denial of Service Vulnerabilities August15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806016");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-2668", "CVE-2015-2222", "CVE-2015-2221", "CVE-2015-2170");
   script_bugtraq_id(74472, 74443);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-17 12:16:12 +0530 (Mon, 17 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ClamAV Multiple Denial of Service Vulnerabilities August15 (Windows)");
@@ -45,19 +45,21 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - an error that is triggered when handling a specially crafted xz archive file,
   which can cause an infinite loops.
+
   - an error in the 'cli_scanpe' function in pe.c script that is triggered when
   handling petite packed files.
+
   - an error in the 'yc_poly_emulator' function in yc.c script that is
   triggered when handling a specially crafted y0da cryptor file.
+
   - an error in the 'pefromupx' function of the UPX decoder that is
   triggered when handling specially crafted files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to crash the application.
-
-  Impact Level: Application");
+  attacker to crash the application.");
 
   script_tag(name:"affected", value:"ClamAV versions before 0.98.7 on Windows");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-032.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_ms15-032.nasl 11475 2018-09-19 12:12:13Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (3038314)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805163");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11475 $");
   script_cve_id("CVE-2015-1652", "CVE-2015-1657", "CVE-2015-1659", "CVE-2015-1660",
                 "CVE-2015-1661", "CVE-2015-1662", "CVE-2015-1665", "CVE-2015-1666",
                 "CVE-2015-1667", "CVE-2015-1668");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 14:12:13 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 08:46:55 +0530 (Wed, 15 Apr 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (3038314)");
@@ -72,9 +72,9 @@ if(description)
   script_dependencies("gb_ms_ie_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -95,12 +95,12 @@ if(!ieVer || !(ieVer =~ "^(6|7|8|9|10|11)")){
 
 sysPath = smb_get_systemroot();
 if(!sysPath ){
-  exit(-1);
+  exit(0);
 }
 
 dllVer = fetch_file_version(sysPath, file_name:"system32\Mshtml.dll");
 if(!dllVer){
-  exit(-1);
+  exit(0);
 }
 
 if(hotfix_check_sp(win2003:3, win2003x64:3) > 0)
@@ -156,3 +156,5 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
   }
   exit(0);
 }
+
+exit(99);

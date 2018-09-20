@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_indusoft_web_studio_ntwebserver_dir_trav_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_indusoft_web_studio_ntwebserver_dir_trav_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # InduSoft Web Studio 'NTWebServer' Directory Traversal Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:schneider_electric:indusoft_web_studio";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806642");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-0780");
   script_bugtraq_id(67056);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-07 13:44:29 +0530 (Mon, 07 Dec 2015)");
   script_name("InduSoft Web Studio 'NTWebServer' Directory Traversal Vulnerability (Windows)");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   an attacker to read files outside the web root and possibly perform arbitrary
-  code execution.
-
-  Impact Level: System/Application");
+  code execution.");
 
   script_tag(name:"affected", value:"InduSoft Web Studio version 7.1
   before SP2 Patch 4 on Windows.");

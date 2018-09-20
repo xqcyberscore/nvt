@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_csrf_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_mantisbt_csrf_vuln_lin.nasl 11472 2018-09-19 11:20:06Z mmartin $
 #
 # MantisBT CSRF Vulnerability (Linux)
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:mantisbt:mantisbt';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106823");
-  script_version("$Revision: 7543 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-05-23 10:37:27 +0700 (Tue, 23 May 2017)");
+  script_version("$Revision: 11472 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-23 10:37:27 +0700 (Tue, 23 May 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-7620");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("MantisBT CSRF Vulnerability (Linux)");
 
@@ -49,22 +49,22 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("mantis_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("mantisbt/installed","Host/runs_unixoide");
+  script_mandatory_keys("mantisbt/installed", "Host/runs_unixoide");
 
-  script_tag(name: "summary", value: "MantisBT is prone to a cross-site request forgery (CSRF) vulnerability.");
+  script_tag(name:"summary", value:"MantisBT is prone to a cross-site request forgery (CSRF) vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "MantisBT omits a backslash check in string_api.php and consequently has
+  script_tag(name:"insight", value:"MantisBT omits a backslash check in string_api.php and consequently has
 conflicting interpretations of an initial \/ substring as introducing either a local pathname or a remote
 hostname, which leads to arbitrary Permalink Injection via CSRF attacks on a permalink_page.php?url= URI and
 an open redirect via a login_page.php?return= URI.");
 
-  script_tag(name: "affected", value: "MantisBT version prior 1.3.11, 2.x before 2.3.3 and 2.4.x before 2.4.1.");
+  script_tag(name:"affected", value:"MantisBT version prior 1.3.11, 2.x before 2.3.3 and 2.4.x before 2.4.1.");
 
-  script_tag(name: "solution", value: "Update to MantisBT 1.3.11, 2.3.3, 2.4.1 or later.");
+  script_tag(name:"solution", value:"Update to MantisBT 1.3.11, 2.3.3, 2.4.1 or later.");
 
-  script_xref(name: "URL", value: "https://mantisbt.org/bugs/view.php?id=22702");
+  script_xref(name:"URL", value:"https://mantisbt.org/bugs/view.php?id=22702");
 
   exit(0);
 }

@@ -29,13 +29,13 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805650");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-4148", "CVE-2015-4147", "CVE-2015-2787", "CVE-2015-2348",
                 "CVE-2015-2331");
   script_bugtraq_id(73357, 73431, 73434);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-16 18:45:49 +0530 (Tue, 16 Jun 2015)");
   script_name("PHP Multiple Vulnerabilities - 01 - Jun15 (Windows)");
 
@@ -64,9 +64,7 @@ if(description)
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to obtain sensitive information by providing crafted
   serialized data with an int data type and to execute arbitrary code by
-  providing crafted serialized data with an unexpected data type.
-
-  Impact Level: Application");
+  providing crafted serialized data with an unexpected data type.");
 
   script_tag(name:"affected", value:"PHP versions before 5.4.39, 5.5.x before
   5.5.23, and 5.6.x before 5.6.7");

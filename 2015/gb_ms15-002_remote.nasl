@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-002_remote.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-002_remote.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Windows Telnet Service RCE Vulnerability-Remote (3020393)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805039");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-0014");
   script_bugtraq_id(71968);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-21 13:55:47 +0530 (Wed, 21 Jan 2015)");
   script_name("Microsoft Windows Telnet Service RCE Vulnerability-Remote (3020393)");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -48,9 +48,7 @@ if(description)
   potentially allowing the execution of arbitrary code.");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote
-  attackers to compromise the affected system.
-
-  Impact Level: System");
+  attackers to compromise the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows Server 2012/R2

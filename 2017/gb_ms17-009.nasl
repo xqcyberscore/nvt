@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-009.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_ms17-009.nasl 11472 2018-09-19 11:20:06Z mmartin $
 #
 # Microsoft Windows PDF Library Memory Corruption Vulnerability (4010319)
 #
@@ -27,33 +27,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810622");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11472 $");
   script_cve_id("CVE-2017-0023");
   script_bugtraq_id(96075);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 08:29:25 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows PDF Library Memory Corruption Vulnerability (4010319)");
 
-  script_tag(name: "summary" , value:"This host is missing a critical security
+  script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS17-009");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exists as Microsoft Windows PDF
+  script_tag(name:"insight", value:"The flaw exists as Microsoft Windows PDF
   Library improperly handles objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to corrupt memory in a way that enables an attacker to execute arbitrary code
-  in the context of the current user.
+  in the context of the current user.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8.1 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64
   Microsoft Windows Server 2012/2012R2
   Microsoft Windows 10 x32/x64
   Microsoft Windows 10 Version 1511 x32/x64
@@ -67,13 +64,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4010319");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS17-009");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4010319");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS17-009");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -84,23 +82,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012:1, win2012R2:1, win10:1,
                    win10x64:1, win2016:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-## Fetch the version
 pdfVer = fetch_file_version(sysPath, file_name:"system32\Windows.data.pdf.dll");
 pdfVer1 = fetch_file_version(sysPath, file_name:"system32\Win32k.sys");
 edgeVer = fetch_file_version(sysPath, file_name:"system32\Edgehtml.dll");
@@ -110,7 +101,6 @@ if(!pdfVer && !pdfVer1 && !edgeVer){
 
 if( pdfVer && (hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0))
 {
-  ## Check for Windows.data.pdf.dll version
   if(version_is_less(version:pdfVer, test_version:"6.3.9600.18569"))
   {
     Vulnerable_range = "Less than 6.3.9600.18569";
@@ -129,24 +119,20 @@ else if( pdfVer1 && (hotfix_check_sp(win2012:1) > 0))
   }
 }
 
-## Windows 10
 else if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) > 0 && edgeVer)
 {
-  ## Check for Edgehtml.dll version
   if(version_is_less(version:edgeVer, test_version:"11.0.10240.17319"))
   {
     Vulnerable_range = "Less than 11.0.10240.17319";
     VULN3 = TRUE ;
   }
 
-  ## Windows 10 Version 1511
   else if(version_in_range(version:edgeVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.838"))
   {
     Vulnerable_range = "11.0.10586.0 - 11.0.10586.839";
     VULN3 = TRUE ;
   }
 
-  ## Windows 10 version 1607 and Windows Server 2016
   else if(version_in_range(version:edgeVer, test_version:"11.0.14393.0", test_version2:"11.0.14393.952"))
   {
     Vulnerable_range = "11.0.14393.0 - 11.0.14393.952";

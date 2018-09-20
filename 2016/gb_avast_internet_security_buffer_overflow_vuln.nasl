@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_internet_security_buffer_overflow_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_avast_internet_security_buffer_overflow_vuln.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # Avast Internet Security Heap-Based Buffer Overflow Vulnerability
 #
@@ -29,28 +29,25 @@ CPE = "cpe:/a:avast:avast_internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808055");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11473 $");
   script_cve_id("CVE-2015-8620");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 18:38:06 +0530 (Fri, 03 Jun 2016)");
   script_name("Avast Internet Security Heap-Based Buffer Overflow Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with Avast Internet
   Security and is prone to heap-based buffer overflow vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists in avast virtualization
   driver (aswSnx.sys) that handles 'Sandbox' and 'DeepScreen' functionality
   improperly.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to elevate privileges from any account type and execute code as SYSTEM.
-
-  Impact Level: Application");
+  to elevate privileges from any account type and execute code as SYSTEM.");
 
   script_tag(name:"affected", value:"Avast Internet Security version before
   11.1.2253");
@@ -63,7 +60,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Feb/94");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Feb/94");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -75,10 +72,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-avastVer = "";
-
-## Get version
 if(!avastVer = get_app_version(cpe:CPE)){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160804-wedge.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_cisco_ios_xe_cisco-sa-20160804-wedge.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Cisco IOS XE Software Crafted Network Time Protocol Packets Denial of Service Vulnerability
 #
@@ -29,21 +29,21 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106175");
- script_cve_id("CVE-2016-1478");
- script_tag(name: "cvss_base", value: "7.8");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5568 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106175");
+  script_cve_id("CVE-2016-1478");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11493 $");
 
- script_name("Cisco IOS XE Software Crafted Network Time Protocol Packets Denial of Service Vulnerability");
+  script_name("Cisco IOS XE Software Crafted Network Time Protocol Packets Denial of Service Vulnerability");
 
- script_xref(name: "URL", value: "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160804-wedge");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160804-wedge");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value: "A vulnerability in the processing of Network Time Protocol (NTP)
+  script_tag(name:"summary", value:"A vulnerability in the processing of Network Time Protocol (NTP)
 packets by Cisco IOS XE could allow an unauthenticated, remote attacker to cause an interface wedge and an
 eventual denial of service (DoS) condition on the affected device.
 
@@ -55,16 +55,16 @@ interface wedge and an eventual denial of service (DoS) condition on the affecte
 Cisco has released software updates that address this vulnerability. There are no workarounds that
 address this vulnerability; however, there is a mitigation for this vulnerability.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-08-10 15:45:16 +0700 (Wed, 10 Aug 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-10 15:45:16 +0700 (Wed, 10 Aug 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
  exit(0);
 }
 
@@ -73,7 +73,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'3.16.3S',
 		'3.17.2S',
 		'3.18.1S' );

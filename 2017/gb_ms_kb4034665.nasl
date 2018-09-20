@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4034665.nasl 6959 2017-08-18 07:24:59Z asteins $
+# $Id: gb_ms_kb4034665.nasl 11472 2018-09-19 11:20:06Z mmartin $
 #
 # Microsoft Windows Server 2012 Multiple Vulnerabilities (KB4034665)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811605");
-  script_version("$Revision: 6959 $");
-  script_cve_id("CVE-2017-0174", "CVE-2017-0250", "CVE-2017-0293", "CVE-2017-8591", 
-                "CVE-2017-8593", "CVE-2017-8620", "CVE-2017-8624", "CVE-2017-8633", 
-                "CVE-2017-8635", "CVE-2017-8636", "CVE-2017-8641", "CVE-2017-8651", 
+  script_version("$Revision: 11472 $");
+  script_cve_id("CVE-2017-0174", "CVE-2017-0250", "CVE-2017-0293", "CVE-2017-8591",
+                "CVE-2017-8593", "CVE-2017-8620", "CVE-2017-8624", "CVE-2017-8633",
+                "CVE-2017-8635", "CVE-2017-8636", "CVE-2017-8641", "CVE-2017-8651",
                 "CVE-2017-8653", "CVE-2017-8664", "CVE-2017-8666", "CVE-2017-8668");
   script_bugtraq_id(100038, 98100, 100039, 99430, 100032, 100034, 100061, 100069,
                     100055, 100056, 100057, 100058, 100059, 100085, 100089, 100092);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-08-09 08:53:58 +0530 (Wed, 09 Aug 2017)");
   script_name("Microsoft Windows Server 2012 Multiple Vulnerabilities (KB4034665)");
 
@@ -47,35 +47,33 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
-  
+
   - The Win32k component fails to properly handle objects in memory.
- 
-  - Input Method Editor (IME) when IME improperly handles parameters in 
+
+  - Input Method Editor (IME) when IME improperly handles parameters in
     a method of a DCOM class.
- 
+
   - When Microsoft browsers improperly access objects in memory.
 
   - When handling objects in memory in microsoft browsers.
- 
-  - When Windows Hyper-V on a host server fails to properly validate input from an 
+
+  - When Windows Hyper-V on a host server fails to properly validate input from an
     authenticated user on a guest operating system.
 
   - Microsoft JET Database Engine that could allow remote code execution on an
-    affected system. 
+    affected system.
 
   - When Windows Search handles objects in memory.
 
-  - The way that Microsoft browser JavaScript engines render content when 
-    handling objects in memory. 
+  - The way that Microsoft browser JavaScript engines render content when
+    handling objects in memory.
 
   - When Internet Explorer improperly accesses objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to
   run arbitrary code in kernel mode, gain access to sensitive information and system
-  functionality, also can gain the same user rights as the current user and obtain 
-  information to further compromise the user's system.
-
-  Impact Level: System");
+  functionality, also can gain the same user rights as the current user and obtain
+  information to further compromise the user's system.");
 
   script_tag(name:"affected", value:"Microsoft Windows Server 2012");
 
@@ -86,11 +84,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4034665");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4034665");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -101,28 +100,20 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-fileVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2012:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of 'tdx.sys'
 fileVer = fetch_file_version(sysPath, file_name:"drivers\tdx.sys");
 if(!fileVer){
   exit(0);
 }
 
-## Check for tdx.sys version
 if(version_is_less(version:fileVer, test_version:"6.2.9200.22244"))
 {
   report = 'File checked:     ' + sysPath + "\drivers\tdx.sys" + '\n' +

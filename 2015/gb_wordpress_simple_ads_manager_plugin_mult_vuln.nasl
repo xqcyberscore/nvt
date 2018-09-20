@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_simple_ads_manager_plugin_mult_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
+# $Id: gb_wordpress_simple_ads_manager_plugin_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Wordpress Simple Ads Manager Plugin Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805520");
-  script_version("$Revision: 11321 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-2824", "CVE-2015-2826");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-14 11:59:52 +0530 (Tue, 14 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Simple Ads Manager Plugin Multiple Vulnerabilities");
@@ -58,9 +58,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to inject or manipulate SQL queries in the back-end database,
   allowing for the manipulation or disclosure of arbitrary data and gain
-  access to potentially sensitive information.
-
-  Impact Level: Application");
+  access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"Wordpress Simple Ads Manager versions 2.5.94
   and 2.6.96");

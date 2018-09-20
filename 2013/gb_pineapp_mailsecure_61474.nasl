@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pineapp_mailsecure_61474.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_pineapp_mailsecure_61474.nasl 11497 2018-09-20 10:31:54Z mmartin $
 #
 # PineApp Mail-SeCure 'ldapsyncnow.php' Remote Command Injection Vulnerability
 #
@@ -29,7 +29,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103758");
   script_bugtraq_id(61474);
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11497 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -37,7 +37,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61474");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-13 11:34:56 +0200 (Tue, 13 Aug 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -80,7 +80,9 @@ if("PineApp" >!< resp) {
   exit(0);
 }
 
-file = 'openvas_' + rand() + '.txt';
+vtstring = get_vt_string( lowercase:TRUE );
+
+file = vtstring + '_' + rand() + '.txt';
 
 # create new file
 req = http_get(item:"/admin/ldapsyncnow.php?sync_now=1&shell_command=id>./" + file + ";", port:port);

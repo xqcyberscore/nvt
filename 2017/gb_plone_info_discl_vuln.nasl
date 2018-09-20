@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plone_info_discl_vuln.nasl 5431 2017-02-27 10:13:57Z ckuerste $
+# $Id: gb_plone_info_discl_vuln.nasl 11474 2018-09-19 11:38:50Z mmartin $
 #
 # Plone CMS Information Disclosure Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:plone:plone";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106622");
-  script_version("$Revision: 5431 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-27 11:13:57 +0100 (Mon, 27 Feb 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-27 14:16:45 +0700 (Mon, 27 Feb 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11474 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-27 14:16:45 +0700 (Mon, 27 Feb 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-4042");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Plone CMS Information Disclosure Vulnerability");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_plone_detect.nasl");
   script_mandatory_keys("plone/installed");
 
-  script_tag(name: "summary", value: "Plone CMS is prone to a information disclosure vulnerability.");
+  script_tag(name:"summary", value:"Plone CMS is prone to a information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Plone allows remote attackers to obtain information about the ID of
+  script_tag(name:"insight", value:"Plone allows remote attackers to obtain information about the ID of
 sensitive content via unspecified vectors.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may gain information about private site
+  script_tag(name:"impact", value:"An unauthenticated attacker may gain information about private site
 content.");
 
-  script_tag(name: "affected", value: "Plone CMS version 3.3.x, 4.x and 5.x");
+  script_tag(name:"affected", value:"Plone CMS version 3.3.x, 4.x and 5.x");
 
-  script_tag(name: "solution", value: "Apply the hotfix 20160419 or update to version 5.0.5 or later.");
+  script_tag(name:"solution", value:"Apply the hotfix 20160419 or update to version 5.0.5 or later.");
 
-  script_xref(name: "URL", value: "https://plone.org/security/hotfix/20160419/unauthorized-disclosure-of-site-content");
-  script_xref(name: "URL", value: "https://plone.org/security/hotfix/20160419");
+  script_xref(name:"URL", value:"https://plone.org/security/hotfix/20160419/unauthorized-disclosure-of-site-content");
+  script_xref(name:"URL", value:"https://plone.org/security/hotfix/20160419");
 
   exit(0);
 }

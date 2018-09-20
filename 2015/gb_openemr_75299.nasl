@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_75299.nasl 9442 2018-04-11 12:22:50Z cfischer $
+# $Id: gb_openemr_75299.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # OpenEMR 'interface/globals.php' Authentication Bypass Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/a:open-emr:openemr";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105316");
- script_bugtraq_id(75299);
- script_cve_id("CVE-2015-4453");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 9442 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105316");
+  script_bugtraq_id(75299);
+  script_cve_id("CVE-2015-4453");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11452 $");
 
- script_name("OpenEMR 'interface/globals.php' Authentication Bypass Vulnerability");
+  script_name("OpenEMR 'interface/globals.php' Authentication Bypass Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/75299");
- script_xref(name:"URL", value:"http://www.open-emr.org/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/75299");
+  script_xref(name:"URL", value:"http://www.open-emr.org/");
 
- script_tag(name: "impact" , value:"An attacker can exploit this issue to bypass the authentication
+  script_tag(name:"impact", value:"An attacker can exploit this issue to bypass the authentication
 mechanism and perform unauthorized actions. This may aid in further attacks.");
 
- script_tag(name: "vuldetect" , value:"Send a special crafted HTTP GET request and check the response");
- script_tag(name: "insight" , value:"A bug in OpenEMR's implementation of 'fake register_globals' in
+  script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response");
+  script_tag(name:"insight", value:"A bug in OpenEMR's implementation of 'fake register_globals' in
 interface/globals.php allows an attacker to bypass authentication by sending ignoreAuth=1 as a GET or
 POST request parameter.");
 
- script_tag(name: "solution" , value:"Updates are available.");
- script_tag(name: "summary" , value:"OpenEMR is prone to a authentication-bypass vulnerability.");
- script_tag(name: "affected" , value:"OpenEMR versions 2.8.3 through 4.2.0 patch 1 are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"summary", value:"OpenEMR is prone to a authentication-bypass vulnerability.");
+  script_tag(name:"affected", value:"OpenEMR versions 2.8.3 through 4.2.0 patch 1 are vulnerable.");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2015-07-08 13:23:01 +0200 (Wed, 08 Jul 2015)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_openemr_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("openemr/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-07-08 13:23:01 +0200 (Wed, 08 Jul 2015)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_openemr_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("openemr/installed");
 
  exit(0);
 }

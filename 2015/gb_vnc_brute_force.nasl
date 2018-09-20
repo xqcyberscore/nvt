@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vnc_brute_force.nasl 4472 2016-11-11 08:32:06Z cfi $
+# $Id: gb_vnc_brute_force.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # VNC Brute Force Login
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106056");
-  script_version("$Revision: 4472 $");
-  script_tag(name:"last_modification", value: "$Date: 2016-11-11 09:32:06 +0100 (Fri, 11 Nov 2016) $");
-  script_tag(name:"creation_date", value: "2015-12-10 09:59:19 +0700 (Thu, 10 Dec 2015)");
-  script_tag(name:"cvss_base", value: "9.0");
-  script_tag(name:"cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:P/A:P");
+  script_version("$Revision: 11452 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-12-10 09:59:19 +0700 (Thu, 10 Dec 2015)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
   script_name("VNC Brute Force Login");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
@@ -63,7 +63,7 @@ if(description)
 }
 
 include("misc_func.inc");
-include("global_settings.inc");
+
 include("network_func.inc");
 
 if( ! defined_func( "DES" ) ) exit( 0 );
@@ -120,7 +120,6 @@ foreach password( pw_list ) {
     exit( 0 );
   }
 
-  # Check if we got blacklisted
   if( "Too many security failures" >< res ) {
     log_message( data:blockedReport, port:port );
     close( soc );
@@ -198,7 +197,6 @@ foreach password( pw_list ) {
       send( socket:soc, data:raw_string( 0x02 ) );
     }
 
-    # Get the challenge
     challenge = recv( socket:soc, min:16, length:16 );
 
     if( strlen( challenge != 16 ) ) {
@@ -206,7 +204,6 @@ foreach password( pw_list ) {
       exit( 0 );
     }
 
-    # Check again if we got blacklisted (Older VNC server are responding later with an authentication failure)
     if( "Too many aut" >< challenge ) {
       log_message( data:blockedReport, port:port );
       close( soc );

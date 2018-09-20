@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_xss_vuln_june15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ibm_domino_xss_vuln_june15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # IBM Domino Cross-Site Scripting Vulnerability - June15
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805579");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-02 11:37:07 +0530 (Tue, 02 Jun 2015)");
   script_name("IBM Domino Cross-Site Scripting Vulnerability - June15");
 
@@ -46,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to execute arbitrary HTML and script code in a user's browser session in the
-  context of an affected site.
-
-  Impact Level: Application");
+  context of an affected site.");
 
   script_tag(name:"affected", value:"IBM Domino 8.5.x through 8.5.4
   and 9.x through 9.0.1");

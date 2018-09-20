@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln_aug15_lin.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_drupal_mult_vuln_aug15_lin.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Drupal Multiple Vulnerabilities - August15 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805965");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-6661", "CVE-2015-6660", "CVE-2015-6658");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-28 12:25:16 +0530 (Fri, 28 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal Multiple Vulnerabilities - August15 (Linux)");
@@ -54,9 +54,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to sensitive information, execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site and
-  conduct CSRF attacks.
-
-  Impact Level: Application");
+  conduct CSRF attacks.");
 
   script_tag(name:"affected", value:"Drupal 6.x before 6.37 and 7.x before 7.39
   on Linux.");

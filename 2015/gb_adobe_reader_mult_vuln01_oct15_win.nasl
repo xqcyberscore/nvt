@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln01_oct15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_adobe_reader_mult_vuln01_oct15_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Adobe Reader Multiple Vulnerabilities - 01 October15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806503");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-5583", "CVE-2015-5586", "CVE-2015-6683", "CVE-2015-6684",
                 "CVE-2015-6685", "CVE-2015-6686", "CVE-2015-6687", "CVE-2015-6688",
                 "CVE-2015-6689", "CVE-2015-6690", "CVE-2015-6691", "CVE-2015-6692",
@@ -47,7 +47,7 @@ if(description)
                 "CVE-2015-7829", "CVE-2015-8458");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-20 10:15:23 +0530 (Tue, 20 Oct 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 October15 (Windows)");
@@ -79,9 +79,7 @@ if(description)
   attackers to conduct a denial of service, unauthorized disclosure of information,
   unauthorized modification, disruption of service, bypass certain access restrictions
   and execution restrictions, to delete arbitrary files, to obtain sensitive
-  information, execute arbitrary code and compromise a user's system.
-
-  Impact Level: System/Application");
+  information, execute arbitrary code and compromise a user's system.");
 
   script_tag(name:"affected", value:"Adobe Reader 10.1.x before 10.1.16
   and 11.x before 11.0.13 on Windows.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_office_suite_ms15-046.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_office_suite_ms15-046.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Office Suite Remote Code Execution Vulnerability (3057181)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805180");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1682", "CVE-2015-1683");
   script_bugtraq_id(74481, 74484);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-13 14:51:10 +0530 (Wed, 13 May 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Suite Remote Code Execution Vulnerability (3057181)");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to corrupt memory and potentially
-  execute arbitrary code.
-
-  Impact Level: System/Application");
+  execute arbitrary code.");
 
   script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3 and prior
   Microsoft Office 2010 Service Pack 2 and prior

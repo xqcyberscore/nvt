@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jetty_shared_buffers_info_leak_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_jetty_shared_buffers_info_leak_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Jetty Shared Buffers Information Leakage Vulnerability
 #
@@ -30,11 +30,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805051");
   script_cve_id("CVE-2015-2080");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_bugtraq_id(72768);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-02 14:50:23 +0530 (Mon, 02 Mar 2015)");
 
   script_name("Jetty Shared Buffers Information Leakage Vulnerability");
@@ -48,9 +48,7 @@ leakage vulnerability.");
 allow a remote attacker to gain access to potentially sensitive information in the memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to  obtain sensitive
-information that may aid in further attacks.
-
-Impact Level: Application");
+information that may aid in further attacks.");
 
   script_tag(name:"affected", value:"Jetty versions 9.2.3 to 9.2.8 and beta releases of 9.3.x");
 

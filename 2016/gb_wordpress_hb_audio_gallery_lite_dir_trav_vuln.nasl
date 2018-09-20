@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_hb_audio_gallery_lite_dir_trav_vuln.nasl 9998 2018-05-29 08:15:38Z cfischer $
+# $Id: gb_wordpress_hb_audio_gallery_lite_dir_trav_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Wordpress HB Audio Gallery Lite Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807529");
-  script_version("$Revision: 9998 $");
+  script_version("$Revision: 11493 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 10:15:38 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:26 +0530 (Fri, 01 Apr 2016)");
   script_name("Wordpress HB Audio Gallery Lite Directory Traversal Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
   of input via 'file_path' parameter to 'gallery/audio-download.php' script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to download arbitrary files.
-
-  Impact Level: Application");
+  attackers to download arbitrary files.");
 
   script_tag(name:"affected", value:"Wordpress Plugin HB Audio Gallery Lite
   version 1.0.0");
@@ -59,7 +57,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/39589");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39589");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

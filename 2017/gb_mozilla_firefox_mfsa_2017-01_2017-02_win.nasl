@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2017-01_2017-02_win.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: gb_mozilla_firefox_mfsa_2017-01_2017-02_win.nasl 11472 2018-09-19 11:20:06Z mmartin $
 #
 # Mozilla Firefox Security Updates(mfsa_2017-01_2017-02)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809875");
-  script_version("$Revision: 10965 $");
+  script_version("$Revision: 11472 $");
   script_cve_id("CVE-2017-5375", "CVE-2017-5376", "CVE-2017-5377", "CVE-2017-5378",
 		"CVE-2017-5379", "CVE-2017-5380", "CVE-2017-5390", "CVE-2017-5389",
 		"CVE-2017-5396", "CVE-2017-5381", "CVE-2017-5382", "CVE-2017-5383",
@@ -38,7 +38,7 @@ if(description)
 		"CVE-2017-5387");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-01-27 12:06:41 +0530 (Fri, 27 Jan 2017)");
   script_name("Mozilla Firefox Security Updates(mfsa_2017-01_2017-02)-Windows");
 
@@ -48,32 +48,49 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The multiple flaws exists due to,
+
   - Excessive JIT code allocation allows bypass of ASLR and DEP.
+
   - Use-after-free in XSL.
+
   - Memory corruption with transforms to create gradients in Skia.
+
   - Pointer and frame data leakage of Javascript objects.
+
   - Use-after-free in Web Animations.
+
   - Potential use-after-free during DOM manipulations.
+
   - Insecure communication methods in Developer Tools JSON viewer.
+
   - WebExtensions can install additional add-ons via modified host requests.
+
   - Use-after-free with Media Decoder.
+
   - Certificate Viewer exporting can be used to navigate and save to arbitrary filesystem locations.
+
   - Feed preview can expose privileged content errors and exceptions.
+
   - Location bar spoofing with unicode characters.
+
   - Information disclosure via Proxy Auto-Config (PAC).
+
   - Data sent in multipart channels ignores referrer-policy response headers.
+
   - WebExtensions can use data: protocol to affect other extensions.
+
   - Content about: pages can load privileged about: pages.
+
   - Remove addons.mozilla.org CDN from whitelist for mozAddonManager.
+
   - Disclosure of local file existence through TRACK tag error messages.
+
   - WebRTC can be used to generate a large amount of UDP traffic for DDOS attacks.");
 
   script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allow remote attackers to execute arbitrary code, to delete arbitrary files
   by leveraging certain local file execution, to obtain sensitive information,
-  and to cause a denial of service.
-
-  Impact Level: Application.");
+  and to cause a denial of service.");
 
   script_tag(name:"affected", value:"Mozilla Firefox version before
   51 on Windows.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_access_bypass_vuln.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_cisco_apic_access_bypass_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Cisco Application Policy Infrastructure Controller Access Bypass Vulnerability
 #
@@ -32,41 +32,38 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.809051");
   script_cve_id("CVE-2015-6424");
   script_bugtraq_id(79410);
-  script_version ("$Revision: 5675 $");
+  script_version("$Revision: 11493 $");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-09-21 19:23:26 +0530 (Wed, 21 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cisco Application Policy Infrastructure Controller Access Bypass Vulnerability");
 
-  script_tag(name:"summary", value:"This host is running Cisco 
-  Application Policy Infrastructure Controller and is prone to access bypass 
+  script_tag(name:"summary", value:"This host is running Cisco
+  Application Policy Infrastructure Controller and is prone to access bypass
   vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw is due to an an improper 
-  implementation of access controls in the APIC system and an attacker could 
+  script_tag(name:"insight", value:"The flaw is due to an an improper
+  implementation of access controls in the APIC system and an attacker could
   exploit this vulnerability by accessing the boot manager of the APIC.");
 
-  script_tag(name:"impact", value:"Successful exploitation allow an 
-  unauthenticated, local attacker to access the APIC as the root user and 
-  perform root-level commands in single-user mode.
+  script_tag(name:"impact", value:"Successful exploitation allow an
+  unauthenticated, local attacker to access the APIC as the root user and
+  perform root-level commands in single-user mode.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"Cisco Application Policy Infrastructure 
+  script_tag(name:"affected", value:"Cisco Application Policy Infrastructure
   Controller running software version 1.1(0.920a)");
 
-  script_tag(name: "solution" , value:"Upgrade to Cisco Application Policy 
+  script_tag(name:"solution", value:"Upgrade to Cisco Application Policy
   Infrastructure Controller software version as mentioned in vendor link.
   For updates refer to http://www.cisco.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151216-apic");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151216-apic");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("CISCO");
@@ -79,17 +76,14 @@ if (description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Get port
-if(!ciscoPort = get_app_port(cpe:CPE)){ 
+if(!ciscoPort = get_app_port(cpe:CPE)){
   exit( 0 );
 }
 
-## Get version 
 if(!vers = get_app_version(cpe:CPE, port:ciscoPort)){
   exit( 0 );
 }
 
-## Check for vulnerable version
 if(version_is_equal(version:vers, test_version:'1.1(0.920a)'))
 {
   report = report_fixed_ver(installed_version:vers, fixed_version:"See vendor advisory");

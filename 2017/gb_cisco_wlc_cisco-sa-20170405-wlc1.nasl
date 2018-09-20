@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_cisco-sa-20170405-wlc1.nasl 5890 2017-04-07 11:51:34Z ckuerste $
+# $Id: gb_cisco_wlc_cisco-sa-20170405-wlc1.nasl 11472 2018-09-19 11:20:06Z mmartin $
 #
 # Cisco Wireless LAN Controller RADIUS Change of Authorization Denial of Service Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/o:cisco:wireless_lan_controller_software";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106728");
- script_cve_id("CVE-2016-9195");
- script_tag(name: "cvss_base", value: "5.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 5890 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106728");
+  script_cve_id("CVE-2016-9195");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11472 $");
 
- script_name("Cisco Wireless LAN Controller RADIUS Change of Authorization Denial of Service Vulnerability");
+  script_name("Cisco Wireless LAN Controller RADIUS Change of Authorization Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170405-wlc1");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170405-wlc1");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in RADIUS Change of Authorization (CoA) request processing in
+  script_tag(name:"summary", value:"A vulnerability in RADIUS Change of Authorization (CoA) request processing in
 the Cisco Wireless LAN Controller (WLC) could allow an unauthenticated, remote attacker to cause a denial of
 service (DoS) condition by disconnecting a single connection.");
 
- script_tag(name: "insight", value: "The vulnerability is due to lack of proper input validation of the RADIUS CoA
+  script_tag(name:"insight", value:"The vulnerability is due to lack of proper input validation of the RADIUS CoA
 packet header. An attacker could exploit this vulnerability by sending a crafted RADIUS CoA packet to a targeted
 device.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to disconnect a connection
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to disconnect a connection
 through the WLC unexpectedly.");
 
- script_tag(name: "qod_type", value: "remote_banner");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-04-07 13:51:34 +0200 (Fri, 07 Apr 2017) $");
- script_tag(name: "creation_date", value: "2017-04-07 11:49:59 +0200 (Fri, 07 Apr 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_wlc_version.nasl");
- script_mandatory_keys("cisco_wlc/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-07 11:49:59 +0200 (Fri, 07 Apr 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_wlc_version.nasl");
+  script_mandatory_keys("cisco_wlc/version");
 
  exit(0);
 }

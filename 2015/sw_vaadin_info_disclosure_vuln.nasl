@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_vaadin_info_disclosure_vuln.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: sw_vaadin_info_disclosure_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Vaadin Framework Portlet Information Disclosure Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:vaadin:vaadin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105182");
-  script_version("$Revision: 6194 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+  script_version("$Revision: 11452 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-22 12:00:00 +0100 (Thu, 22 Jan 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -46,14 +46,14 @@ if(description)
   script_require_ports("Services/www", 8888);
   script_mandatory_keys("vaadin/installed");
 
-  script_tag(name : "summary" , value : "This web application is running with the Vaadin Framework which
+  script_tag(name:"summary", value:"This web application is running with the Vaadin Framework which
   is prone to information-disclosure because the application fails to properly sanitize user-supplied input.");
-  script_tag(name : "vuldetect" , value : "Check the version.");
-  script_tag(name : "insight" , value : "This flaw exists due to an existing unused code from AbstractApplicationPortlet.");
-  script_tag(name : "impact" , value : "A remote user who has access to a portlet on the portal could be able to read files
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"insight", value:"This flaw exists due to an existing unused code from AbstractApplicationPortlet.");
+  script_tag(name:"impact", value:"A remote user who has access to a portlet on the portal could be able to read files
   in the portlet deployment directory using specially crafted resource requests provided the attacker knows the file name.");
-  script_tag(name : "affected" , value : "Vaadin Framework versions from 6.2.0 up to 6.8.9 / from 7.0.0 up to 7.0.3");
-  script_tag(name : "solution" , value : "Upgrade to Vaadin Framework version 6.8.10 or later / 7.0.4 or later
+  script_tag(name:"affected", value:"Vaadin Framework versions from 6.2.0 up to 6.8.9 / from 7.0.0 up to 7.0.3");
+  script_tag(name:"solution", value:"Upgrade to Vaadin Framework version 6.8.10 or later / 7.0.4 or later
   For updates refer to http://www.vaadin.com/releases");
 
   script_xref(name:"URL", value:"http://www.vaadin.com/download/release/7.0/7.0.4/release-notes.html");
@@ -78,6 +78,6 @@ if( version_in_range( version:vers, test_version:"6.2.0", test_version2:"6.8.9" 
            'Fixed version:     ' + "6.8.10/7.0.4" + '\n';
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

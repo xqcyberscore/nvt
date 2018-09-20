@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_fckeditor_file_upload.nasl 6007 2017-04-21 14:22:35Z cfi $
+# $Id: sw_fckeditor_file_upload.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # 'fckeditor' Connectors Arbitrary File Upload Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111022");
-  script_version("$Revision: 6007 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 16:22:35 +0200 (Fri, 21 Apr 2017) $");
+  script_version("$Revision: 11492 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-17 13:24:40 +0200 (Fri, 17 Jul 2015)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
@@ -87,6 +87,8 @@ dirs = make_list_unique( "/", "/fckeditor", "/FCKeditor", "/inc/fckeditor", "/in
                          "/modules/fckeditor", "/plugins/fckeditor", "/admin/fckeditor", "/HTMLEditor", "/admin/htmleditor",
                          "/sites/all/modules/fckeditor/fckeditor", cgi_dirs( port:port ) );
 
+useragent = get_http_user_agent();
+
 foreach dir( dirs ) {
 
   if( dir == "/" ) dir = "";
@@ -103,13 +105,13 @@ foreach dir( dirs ) {
       if( '<Connector command="GetFolders" resourceType="File">' >< recv ) {
 
         host = http_host_name( port:port );
-        upload_file = string( "openvas-upload-test-delete-me-" , rand() , ".php" );
+        upload_file = string( "upload-test-delete-me-" , rand() , ".php" );
 
         url = dir + "/editor/filemanager/connectors/php/connector.php?Command=FileUpload&Type=File&CurrentFolder=%2F";
 
         req = string("POST ", url, " HTTP/1.1\r\n",
                      "Host: ", host ,"\r\n",
-                     "User-Agent: ", OPENVAS_HTTP_USER_AGENT ,"\r\n",
+                     "User-Agent: ", useragent, "\r\n",
                      "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                      "Accept-Language: de-de,de;q=0.8,en-us;q=0.5,en;q=0.3\r\n",
                      "Accept-Encoding: gzip, deflate\r\n",
@@ -122,7 +124,7 @@ foreach dir( dirs ) {
                      'Content-Disposition: form-data; name="NewFile"; filename="',upload_file,'"\r\n',
                      "Content-Type: text/plain\r\n",
                      "\r\n",
-                     "OpenVAS-Upload-Test\r\n",
+                     "Upload-Test\r\n",
                      "-----------------------------1179981022663023650735134601--\r\n",
                      "\r\n\r\n");
         recv = http_keepalive_send_recv( data:req, port:port, bodyonly:TRUE );
@@ -135,7 +137,7 @@ foreach dir( dirs ) {
           req2 = http_get( item:url, port:port );
           recv = http_keepalive_send_recv( data:req2, port:port, bodyonly:TRUE );
 
-          if( "OpenVAS-Upload-Test" >< recv ) {
+          if( "Upload-Test" >< recv ) {
             report = 'It was possible to upload the file:\n\n' +
                      file_location[1] + upload_file +
                      '\n\nby using the connector:\n\n' +

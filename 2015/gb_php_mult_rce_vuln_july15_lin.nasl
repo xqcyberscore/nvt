@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805685");
-  script_version("$Revision: 10456 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-0273", "CVE-2014-9705");
   script_bugtraq_id(73031, 72701);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 13:10:57 +0530 (Thu, 23 Jul 2015)");
   script_name("PHP Multiple Remote Code Execution Vulnerabilities - Jul15 (Linux)");
 
@@ -51,9 +51,7 @@ if(description)
   'ext/enchant/enchant.c' script.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
-  remote attackers to execute arbitrary code via some crafted dimensions.
-
-  Impact Level: Application");
+  remote attackers to execute arbitrary code via some crafted dimensions.");
 
   script_tag(name:"affected", value:"PHP versions before 5.4.38, 5.5.x before
   5.5.22, and 5.6.x before 5.6.6");

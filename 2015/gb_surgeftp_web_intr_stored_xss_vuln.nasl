@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_surgeftp_web_intr_stored_xss_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
+# $Id: gb_surgeftp_web_intr_stored_xss_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Surgeftp Web Interface Multiple Stored XSS Vulnerabilities
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806805");
-  script_version("$Revision: 11321 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-18 09:54:55 +0530 (Fri, 18 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Surgeftp Web Interface Multiple Stored XSS Vulnerabilities");
@@ -49,9 +49,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
  attacker to create a specially crafted request that would execute arbitrary
  script code in a user's browser session within the trust relationship between
- their browser and the server.
-
- Impact Level: Application");
+ their browser and the server.");
 
   script_tag(name:"affected", value:"SurgeFTP 23d6");
 

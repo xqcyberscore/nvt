@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_complete_gallery_file_upload_09_13.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_wordpress_complete_gallery_file_upload_09_13.nasl 11497 2018-09-20 10:31:54Z mmartin $
 #
 # Wordpress Plugin Complete Gallery Manager 3.3.3 - Arbitrary File Upload Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103790");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11497 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-19 11:10:11 +0200 (Thu, 19 Sep 2013)");
   script_name("Wordpress Plugin Complete Gallery Manager 3.3.3 - Arbitrary File Upload Vulnerability");
   script_category(ACT_ATTACK);
@@ -73,13 +73,15 @@ if(description)
 
 include("http_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
+vtstring = get_vt_string( lowercase:TRUE );
 
 if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
-file = 'openvas_' + rand() +'.php';
-str  = 'ovas_' + rand();
+file = vtstring + '_' + rand() +'.php';
+str  = vtstring + '_' + rand();
 
 ex = '------------------------------69c0e1752093\r\n' +
      'Content-Disposition: form-data; name="qqfile"; filename="' + file + '"\r\n' +
@@ -109,7 +111,7 @@ while(x = recv(socket:soc, length:1024)) {
    buf += x;
 }
 
-if(buf !~ "HTTP/1.1 100 Continue") {
+if(buf !~ "^HTTP/1\.[01] 100") {
   close(soc);
   exit(99);
 }

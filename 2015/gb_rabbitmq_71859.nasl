@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rabbitmq_71859.nasl 11220 2018-09-04 11:57:09Z mmartin $
+# $Id: gb_rabbitmq_71859.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # RabbitMQ 'rabbit_mgmt_util.erl' Security Bypass Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2014-9494");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11220 $");
+  script_version("$Revision: 11492 $");
   script_name("RabbitMQ 'rabbit_mgmt_util.erl' Security Bypass Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-22 16:55:31 +0100 (Thu, 22 Jan 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -76,12 +76,12 @@ include("http_keepalive.inc");
 if( islocalhost() ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE, service: "www" ) ) exit( 0 );
-
+useragent = get_http_user_agent();
 host = http_host_name( port:port );
 
 req = 'GET /api/whoami HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Language: de,en-US;q=0.7,en;q=0.3\r\n' +
       'Accept-Encoding: identity\r\n' +
@@ -95,7 +95,7 @@ if( 'User can only log in via localhost' >!< buf || "401 Unauthorized" >!< buf )
 
 req = 'GET /api/whoami HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Language: de,en-US;q=0.7,en;q=0.3\r\n' +
       'Accept-Encoding: identity\r\n' +

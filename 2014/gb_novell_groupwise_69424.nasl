@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_groupwise_69424.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_novell_groupwise_69424.nasl 11497 2018-09-20 10:31:54Z mmartin $
 #
 # Novell Groupwise 'FileUploadServlet' Arbitrary File Access Vulnerability
 #
@@ -34,7 +34,7 @@ if(description)
   script_cve_id("CVE-2014-0600");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 11497 $");
 
   script_tag(name:"qod_type", value:"remote_app");
 
@@ -58,7 +58,7 @@ for more information.");
   script_tag(name:"summary", value:"Novell Groupwise is prone to an arbitrary file-access vulnerability.");
   script_tag(name:"affected", value:"Novell GroupWise 2014 before SP1");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-03 15:23:42 +0200 (Wed, 03 Sep 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -72,14 +72,17 @@ for more information.");
 
 include("http_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
+
+vtstring = get_vt_string();
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 
-test = '------------------------OpenVAS\r\n' +
+test = '------------------------' + vtstring +'\r\n' +
 'Content-Disposition: form-data; name="poLibMaintenanceFileSave"\r\n' +
 '\r\n' +
-'OpenVAS_' + rand() + '_OpenVAS\r\n' +
-'------------------------OpenVAS--';
+vtstring + '_' + rand() + '_' + vtstring + '\r\n' +
+'------------------------' + vtstring + '--';
 
 len = strlen( test ) + 2;
 
@@ -91,7 +94,7 @@ req = 'POST /gwadmin-console/gwAdminConsole/fileUpload HTTP/1.1\r\n' +
       'Accept: */*\r\n' +
       'User-Agent: ' + useragent + '\r\n' +
       'Connection: Close\r\n' +
-      'Content-Type: multipart/form-data; boundary=----------------------OpenVAS\r\n' +
+      'Content-Type: multipart/form-data; boundary=----------------------' + vtstring +'\r\n' +
       'Content-Length: ' + len + '\r\n' +
       '\r\n' +
       test;

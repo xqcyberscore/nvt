@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_may15_macosx.nasl 6497 2017-06-30 09:58:54Z teissa $
+# $Id: gb_adobe_flash_player_mult_vuln01_may15_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Adobe Flash Player Multiple Vulnerabilities - 01 May15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805618");
-  script_version("$Revision: 6497 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-3077", "CVE-2015-3078", "CVE-2015-3079", "CVE-2015-3080",
                 "CVE-2015-3081", "CVE-2015-3082", "CVE-2015-3083", "CVE-2015-3084",
                 "CVE-2015-3085", "CVE-2015-3086", "CVE-2015-3087", "CVE-2015-3088",
@@ -38,50 +38,56 @@ if(description)
   script_bugtraq_id(74614, 74605, 74612, 74608, 74613, 74610, 74616, 74609, 74617);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-15 12:35:31 +0530 (Fri, 15 May 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Flash Player Multiple Vulnerabilities - 01 May15 (Mac OS X)");
 
-  script_tag(name: "summary" , value: "This host is installed with Adobe Flash
+  script_tag(name:"summary", value:"This host is installed with Adobe Flash
   Player and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - Improper validation of user supplied input.
+
   - A flaw in the Broker that is due to the BrokerCreateFile method not properly
     sanitizing user input.
+
   - An integer overflow condition that is triggered as user-supplied input is
     not properly validated.
+
   - An overflow condition that is triggered as user-supplied input is not
     properly validated.
+
   - Multiple unspecified memory disclosure flaws in Adobe Flash Player.
+
   - Multiple unspecified type confusion flaws in Adobe Flash Player.
+
   - Multiple unspecified flaws in Adobe Flash Player.
+
   - A a use-after-free error Adobe Flash Player.
+
   - An unspecified TOCTOU flaw in Adobe Flash Player.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow a
+  script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to corrupt memory and potentially execute arbitrary
   code, bypass security restrictions and gain access to sensitive information,
   bypass protected mode, bypass validation mechanisms and write arbitrary data,
   bypass the sandbox when chained with another vulnerability, bypass ASLR
-  protection mechanisms.
+  protection mechanisms.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Adobe Flash Player versions before
+  script_tag(name:"affected", value:"Adobe Flash Player versions before
   13.0.0.289 and 14.x through 17.x before 17.0.0.188 on Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Adobe Flash Player version
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
   13.0.0.289 or 17.0.0.188 or later. For updates refer to
   http://get.adobe.com/flashplayer");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "URL" , value : "https://helpx.adobe.com/security/products/flash-player/apsb15-09.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb15-09.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
@@ -94,22 +100,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-playerVer = "";
-
-## Get version
 if(!playerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:playerVer, test_version:"13.0.0.289"))
 {
   fix = "13.0.0.289";
   VULN = TRUE;
 }
 
-## Grep for vulnerable version
 if(version_in_range(version:playerVer, test_version:"14.0", test_version2:"17.0.0.169"))
 {
   fix = "17.0.0.188";

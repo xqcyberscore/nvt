@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_mult_vuln.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_dotcms_mult_vuln.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # dotCMS Multiple Vulnerabilities
 #
@@ -30,18 +30,18 @@ CPE = "cpe:/a:dotcms:dotcms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106116");
-  script_version("$Revision: 5759 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2016-07-05 08:55:18 +0700 (Tue, 05 Jul 2016)");
+  script_version("$Revision: 11473 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-05 08:55:18 +0700 (Tue, 05 Jul 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-2355", "CVE-2016-3688", "CVE-2016-3971", "CVE-2016-3972", "CVE-2016-4040",
                 "CVE-2016-4803");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("dotCMS Multiple Vulnerabilities");
 
@@ -52,11 +52,11 @@ if (description)
   script_dependencies("gb_dotcms_detect.nasl");
   script_mandatory_keys("dotCMS/installed");
 
-  script_tag(name: "summary", value: "dotCMS is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"dotCMS is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "dotCMS is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"dotCMS is prone to multiple vulnerabilities:
 
 A SQL injection attack is possible via the Content REST api if the api is set to allow for anonymous
 content saving (which is the shipped default). (CVE-2016-2355)
@@ -76,17 +76,17 @@ SQL commands via the orderby parameter. (CVE-2016-4040)
 A CRLF injection vulnerability in the send email functionality allows remote attackers to inject arbitrary
 email headers via CRLF sequences in the subject. (CVE-2016-4803)");
 
-  script_tag(name: "impact", value: "An attacker may access sensitive information in the dotcms database.");
+  script_tag(name:"impact", value:"An attacker may access sensitive information in the dotcms database.");
 
-  script_tag(name: "affected", value: "Version 3.3.1 and previous versions.");
+  script_tag(name:"affected", value:"Version 3.3.1 and previous versions.");
 
-  script_tag(name: "solution", value: "Update to 3.3.2 or later versions.");
+  script_tag(name:"solution", value:"Update to 3.3.2 or later versions.");
 
-  script_xref(name: "URL", value: "http://dotcms.com/security/SI-32");
-  script_xref(name: "URL", value: "http://dotcms.com/security/SI-33");
-  script_xref(name: "URL", value: "http://dotcms.com/security/SI-34");
-  script_xref(name: "URL", value: "http://dotcms.com/security/SI-35");
-  script_xref(name: "URL", value: "http://dotcms.com/security/SI-36");
+  script_xref(name:"URL", value:"http://dotcms.com/security/SI-32");
+  script_xref(name:"URL", value:"http://dotcms.com/security/SI-33");
+  script_xref(name:"URL", value:"http://dotcms.com/security/SI-34");
+  script_xref(name:"URL", value:"http://dotcms.com/security/SI-35");
+  script_xref(name:"URL", value:"http://dotcms.com/security/SI-36");
 
 
   exit(0);

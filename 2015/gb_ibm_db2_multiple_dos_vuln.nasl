@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_multiple_dos_vuln.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_ibm_db2_multiple_dos_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # IBM DB2 Multiple Denial of Service Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805035");
-  script_version("$Revision: 11299 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-6209", "CVE-2014-8901");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-08 13:04:41 +0530 (Thu, 08 Jan 2015)");
   script_name("IBM DB2 Multiple Denial of Service Vulnerabilities");
 
@@ -44,15 +44,15 @@ if(description)
   with the help of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"The flaws are due to
+
   - An error during the handling of a specially crafted ALTER TABLE statement
     on an identity column.
+
   - An error when handling a specially crafted XML query, which can result in
     a consumption of CPU resources.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to cause the server to terminate abnormally and cause a denial of service.
-
-  Impact Level: Application");
+  to cause the server to terminate abnormally and cause a denial of service.");
 
   script_tag(name:"affected", value:"IBM DB2 versions 9.5 through FP10
   IBM DB2 versions 9.7 through FP10

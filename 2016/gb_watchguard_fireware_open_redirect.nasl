@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_watchguard_fireware_open_redirect.nasl 8602 2018-01-31 12:19:39Z cfischer $
+# $Id: gb_watchguard_fireware_open_redirect.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # WatchGuard Fireware XTM Web UI Open Redirect Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/o:watchguard:fireware';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106080");
-  script_version("$Revision: 8602 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-31 13:19:39 +0100 (Wed, 31 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2016-05-20 11:08:44 +0700 (Fri, 20 May 2016)");
-  script_tag(name: "cvss_base", value: "4.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:H/Au:N/C:P/I:P/A:N");
+  script_version("$Revision: 11493 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-20 11:08:44 +0700 (Fri, 20 May 2016)");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WatchGuard Fireware XTM Web UI Open Redirect Vulnerability");
 
@@ -49,23 +49,23 @@ if (description)
   script_dependencies("gb_snmp_os_detection.nasl", "gb_watchguard_fireware_detect.nasl");
   script_mandatory_keys("watchguard_fireware/installed");
 
-  script_tag(name: "summary", value: "WatchGuard Fireware XMT Web UI is prone to a open redirect
+  script_tag(name:"summary", value:"WatchGuard Fireware XMT Web UI is prone to a open redirect
 vulnerability");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "An open redirect vulnerability has been detected in the login form.");
+  script_tag(name:"insight", value:"An open redirect vulnerability has been detected in the login form.");
 
-  script_tag(name: "impact", value: "A remote user can create a URL that, when loaded by the target user,
+  script_tag(name:"impact", value:"A remote user can create a URL that, when loaded by the target user,
 will exploit an input validation flaw in the management Web UI authentication form and redirect the target
 user's browser to an arbitrary site.");
 
-  script_tag(name: "affected", value: "Version prior to 11.10.7.");
+  script_tag(name:"affected", value:"Version prior to 11.10.7.");
 
-  script_tag(name: "solution", value: "Upgrade to version 11.10.7 or later");
+  script_tag(name:"solution", value:"Upgrade to version 11.10.7 or later");
 
-  script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2016/Apr/22");
-  script_xref(name: "URL", value: "https://www.watchguard.com/support/release-notes/fireware/11/en-US/#Fireware/en-US/resolved_issues.html?TocPath=_____11");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Apr/22");
+  script_xref(name:"URL", value:"https://www.watchguard.com/support/release-notes/fireware/11/en-US/#Fireware/en-US/resolved_issues.html?TocPath=_____11");
 
   exit(0);
 }

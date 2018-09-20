@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverstripe_cms_mult_vuln_jun15.nasl 5789 2017-03-30 11:42:46Z cfi $
+# $Id: gb_silverstripe_cms_mult_vuln_jun15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # SilverStripe CMS Multiple Vulnerabilities - June15
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805592");
-  script_version("$Revision: 5789 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-5063", "CVE-2015-5062");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 13:42:46 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-22 12:00:20 +0530 (Mon, 22 Jun 2015)");
   script_name("SilverStripe CMS Multiple Vulnerabilities - June15");
 
@@ -41,19 +41,19 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP POST request
   and check whether it is able to read cookie or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - Insufficient validation of input passed via 'admin_username' and
   'admin_password' POST parameter to install.php script.
+
   - Application does not validate the 'returnURL' GET parameter upon submission
   to the /dev/build script.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to create a specially crafted URL, that if clicked, would redirect
   a victim from the intended legitimate web site to an arbitrary web site of the
   attacker's choosing, and execute arbitrary HTML and script code in the context
-  of an affected site.
-
-  Impact Level: Application");
+  of an affected site.");
 
   script_tag(name:"affected", value:"SilverStripe CMS version 3.1.13");
 
@@ -64,9 +64,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2015/Jun/44");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132223");
-  script_xref(name : "URL" , value : "http://hyp3rlinx.altervista.org/advisories/AS-SILVERSTRIPE0607.txt");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2015/Jun/44");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/132223");
+  script_xref(name:"URL", value:"http://hyp3rlinx.altervista.org/advisories/AS-SILVERSTRIPE0607.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -79,11 +79,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
 
 http_port = get_http_port(default:80);
 
@@ -100,11 +95,9 @@ foreach dir (make_list_unique("/", "/Silverstripe-cms", "/Silverstripe", "/cms",
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
-  ## Confirm Application
   if("<title>Home" >< rcvRes && 'content="SilverStripe' >< rcvRes)
   {
 
-    ## Construct Attack Request
     url = dir + "/install.php";
     postData = 'admin[username]="><script>alert(document.cookie)</script>&ad' +
                'min[password]="><script>alert(document.cookie)</script>';
@@ -118,7 +111,6 @@ foreach dir (make_list_unique("/", "/Silverstripe-cms", "/Silverstripe", "/cms",
 
     rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-    ##Confirm Exploit
     if(rcvRes =~ "HTTP/1\.. 200" && "><script>alert(document.cookie)</script>" >< rcvRes
               && "<title>SilverStripe CMS" >< rcvRes)
     {

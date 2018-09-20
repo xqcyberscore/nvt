@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-038.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-038.nasl 11475 2018-09-19 12:12:13Z cfischer $
 #
 # Microsoft Windows Privilege Elevation Vulnerabilities (3049576)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805065");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11475 $");
   script_cve_id("CVE-2015-1643", "CVE-2015-1644");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 14:12:13 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 08:57:02 +0530 (Wed, 15 Apr 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Privilege Elevation Vulnerabilities (3049576)");
@@ -53,9 +53,7 @@ if(description)
     to gain elevated privileges.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow local users
-  to gain privileges via a crafted application.
-
-  Impact Level: System");
+  to gain privileges via a crafted application.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
 
@@ -76,6 +74,7 @@ if(description)
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://technet.microsoft.com/library/security/MS15-038");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -88,9 +87,9 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -105,7 +104,7 @@ if(hotfix_check_sp(win2003:3, win2003x64:3, winVista:3, win7:2, win7x64:2,
 
 sysPath = smb_get_systemroot();
 if(!sysPath ){
-  exit(-1);
+  exit(0);
 }
 
 dllVer = fetch_file_version(sysPath, file_name:"System32\Clfsw32.dll");
@@ -173,3 +172,5 @@ if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
   }
   exit(0);
 }
+
+exit(99);

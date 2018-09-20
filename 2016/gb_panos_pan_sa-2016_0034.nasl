@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0034.nasl 8721 2018-02-08 13:40:24Z cfischer $
+# $Id: gb_panos_pan_sa-2016_0034.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Palo Alto PAN-OS Local Privilege Escalation (PAN-SA-2016-0034)
 #
@@ -29,33 +29,33 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140074");
- script_cve_id("CVE-2016-9151");
- script_tag(name:"cvss_base", value:"4.6");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 8721 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140074");
+  script_cve_id("CVE-2016-9151");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11493 $");
 
- script_name("Palo Alto PAN-OS Local Privilege Escalation (PAN-SA-2016-0034)");
+  script_name("Palo Alto PAN-OS Local Privilege Escalation (PAN-SA-2016-0034)");
 
- script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/67");
+  script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/67");
 
- script_tag(name: "summary" , value:"Palo Alto Networks firewalls do not properly validate certain environment variables which can potentially allow executing code with higher privileges. A potential attacker with local shell access could manipulate arbitrary environment variables which could result in a process running with higher privileges.");
+  script_tag(name:"summary", value:"Palo Alto Networks firewalls do not properly validate certain environment variables which can potentially allow executing code with higher privileges. A potential attacker with local shell access could manipulate arbitrary environment variables which could result in a process running with higher privileges.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
- script_tag(name: "solution" , value:"Update to PAN-OS 5.0.20 and later, PAN-OS 5.1.13 and later, PAN-OS 6.0.15 and later, PAN-OS 6.1.15 and later, PAN-OS 7.0.11 and later, PAN-OS 7.1.6 and later");
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"solution", value:"Update to PAN-OS 5.0.20 and later, PAN-OS 5.1.13 and later, PAN-OS 6.0.15 and later, PAN-OS 6.1.15 and later, PAN-OS 7.0.11 and later, PAN-OS 7.1.6 and later");
 
- script_tag(name:"affected" , value:"PAN-OS 5.0.19 and earlier, PAN-OS 5.1.12 and earlier, PAN-OS 6.0.14 and earlier, PAN-OS 6.1.14 and earlier, PAN-OS 7.0.10 and earlier, PAN-OS 7.1.5 and earlier");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"PAN-OS 5.0.19 and earlier, PAN-OS 5.1.12 and earlier, PAN-OS 6.0.14 and earlier, PAN-OS 6.1.14 and earlier, PAN-OS 7.0.10 and earlier, PAN-OS 7.1.5 and earlier");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:40:24 +0100 (Thu, 08 Feb 2018) $");
- script_tag(name:"creation_date", value:"2016-11-21 11:18:24 +0100 (Mon, 21 Nov 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("Palo Alto PAN-OS Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_palo_alto_panOS_version.nasl");
- script_mandatory_keys("palo_alto_pan_os/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-21 11:18:24 +0100 (Mon, 21 Nov 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Palo Alto PAN-OS Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_palo_alto_panOS_version.nasl");
+  script_mandatory_keys("palo_alto_pan_os/version");
 
  exit(0);
 }

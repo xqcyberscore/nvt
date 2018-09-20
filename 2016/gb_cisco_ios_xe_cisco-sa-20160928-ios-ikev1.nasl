@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160928-ios-ikev1.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_cisco_ios_xe_cisco-sa-20160928-ios-ikev1.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # Cisco IOS XE Software Internet Key Exchange Version 1 Fragmentation Denial of Service Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106308");
- script_cve_id("CVE-2016-6381");
- script_tag(name:"cvss_base", value:"7.1");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5534 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106308");
+  script_cve_id("CVE-2016-6381");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11473 $");
 
- script_name("Cisco IOS XE Software Internet Key Exchange Version 1 Fragmentation Denial of Service Vulnerability");
+  script_name("Cisco IOS XE Software Internet Key Exchange Version 1 Fragmentation Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-ios-ikev1");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-ios-ikev1");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"A vulnerability in the Internet Key Exchange version 1 (IKEv1) fragmentation
+  script_tag(name:"summary", value:"A vulnerability in the Internet Key Exchange version 1 (IKEv1) fragmentation
 code of Cisco IOS XE Software could allow an unauthenticated, remote attacker to cause an exhaustion of available
 memory or a reload of the affected system.");
 
- script_tag(name: "insight", value: "The vulnerability is due to the improper handling of crafted, fragmented
+  script_tag(name:"insight", value:"The vulnerability is due to the improper handling of crafted, fragmented
 IKEv1 packets. An attacker could exploit this vulnerability by sending crafted UDP packets to the affected
 system.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause a reload of the affected
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause a reload of the affected
 system.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-09-29 15:13:38 +0700 (Thu, 29 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-29 15:13:38 +0700 (Thu, 29 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
  exit(0);
 }
 
@@ -72,7 +72,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'3.18.0S',
 		'3.8.0E',
 		'3.8.1E',

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17119920.nasl 9860 2018-05-16 09:27:39Z asteins $
+# $Id: gb_f5_big_ip_sol17119920.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # F5 BIG-IP - SOL17119920 - BIG-IP ASM Proactive Bot Defense vulnerability CVE-2016-7472
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140056");
- script_cve_id("CVE-2016-7472");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 9860 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140056");
+  script_cve_id("CVE-2016-7472");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11493 $");
 
- script_name("F5 BIG-IP - SOL17119920 - BIG-IP ASM Proactive Bot Defense vulnerability CVE-2016-7472");
+  script_name("F5 BIG-IP - SOL17119920 - BIG-IP ASM Proactive Bot Defense vulnerability CVE-2016-7472");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/17/sol17119920.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/17/sol17119920.html");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary", value:"When Proactive Bot Defense is configured, BIG-IP ASM 12.1.0 and 12.1.1 systems may allow remote attackers to cause a denial of service (DoS) via a crafted HTTP header. (CVE-2016-7472)");
- script_tag(name: "impact", value:"The BIG-IP ASM system may temporarily fail to process traffic as it recovers from the Traffic Management Microkernel (TMM) restarting, and failover may occur if you've configured the system as part of a high availability (HA) group.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"When Proactive Bot Defense is configured, BIG-IP ASM 12.1.0 and 12.1.1 systems may allow remote attackers to cause a denial of service (DoS) via a crafted HTTP header. (CVE-2016-7472)");
+  script_tag(name:"impact", value:"The BIG-IP ASM system may temporarily fail to process traffic as it recovers from the Traffic Management Microkernel (TMM) restarting, and failover may occur if you've configured the system as part of a high availability (HA) group.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-16 11:27:39 +0200 (Wed, 16 May 2018) $");
- script_tag(name:"creation_date", value:"2016-11-14 14:09:42 +0100 (Mon, 14 Nov 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-14 14:09:42 +0100 (Mon, 14 Nov 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

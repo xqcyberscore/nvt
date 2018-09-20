@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_ms16-121.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_ms_word_ms16-121.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # Microsoft Office Word Remote Code Execution Vulnerability (3194063)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809700");
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 11473 $");
   script_cve_id("CVE-2016-7193");
   script_bugtraq_id(93372);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 09:26:18 +0530 (Wed, 12 Oct 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Remote Code Execution Vulnerability (3194063)");
@@ -47,12 +47,9 @@ if(description)
   properly handle RTF files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to run arbitrary code in the context of the current user.
+  attacker to run arbitrary code in the context of the current user.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft Word 2007 Service Pack 3 and prior,
+  script_tag(name:"affected", value:"Microsoft Word 2007 Service Pack 3 and prior,
   Microsoft Word 2010 Service Pack 2 and prior,
   Microsoft Word 2013 Service Pack 1 and prior,
   Microsoft Word 2016 Service Pack 1 and prior.");
@@ -64,10 +61,10 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3118308");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3118312");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3118345");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3118331");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/3118308");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/3118312");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/3118345");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/3118331");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -80,10 +77,6 @@ if(description)
 
 include("version_func.inc");
 
-## variable Initialization
-exeVer = "";
-exePath = "";
-
 ##word 2007, 2010, 2013, 2016
 exeVer = get_kb_item("SMB/Office/Word/Version");
 exePath = get_kb_item("SMB/Office/Word/Install/Path");
@@ -93,16 +86,16 @@ if(!exePath){
 
 if(exeVer && exeVer =~ "^(12|14|15|16).*")
 {
-  if(exeVer =~ "^(12)"){
+  if(exeVer =~ "^12"){
     Vulnerable_range  =  "12 - 12.0.6758.4999";
   }
-  else if(exeVer =~ "^(14)"){
+  else if(exeVer =~ "^14"){
     Vulnerable_range  =  "14 - 14.0.7174.5000";
   }
-  else if(exeVer =~ "^(15)"){
+  else if(exeVer =~ "^15"){
     Vulnerable_range  =  "15 - 15.0.4867.1001";
   }
-  else if(exeVer =~ "^(16)"){
+  else if(exeVer =~ "^16"){
     Vulnerable_range  =  "16 - 16.0.4444.1002";
   }
 

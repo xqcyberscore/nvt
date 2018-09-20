@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wideimage_demo_code_xss_vuln.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_wideimage_demo_code_xss_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # WideImage Demo Code Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wideimage:wideimage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805683");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-5519");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-03 12:38:23 +0530 (Mon, 03 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("WideImage Demo Code Cross Site Scripting Vulnerability");
@@ -51,9 +51,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to create a specially crafted request that would
   execute arbitrary script code in a user's browser session within the trust
-  relationship between their browser and the server.
-
-  Impact Level: Application");
+  relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"WideImage version 11.02.19");
 

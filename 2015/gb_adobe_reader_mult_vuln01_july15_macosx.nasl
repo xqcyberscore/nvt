@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805680");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-5115", "CVE-2015-5114", "CVE-2015-5113", "CVE-2015-5111",
                 "CVE-2015-5110", "CVE-2015-5109", "CVE-2015-5108", "CVE-2015-5107",
                 "CVE-2015-5106", "CVE-2015-5105", "CVE-2015-5104", "CVE-2015-5103",
@@ -46,7 +46,7 @@ if(description)
                     75738, 75743, 75737, 75735, 75402);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-21 11:27:48 +0530 (Tue, 21 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 July15 (Mac OS X)");
@@ -57,18 +57,21 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Multiple memory corruption vulnerabilities.
+
   - Multiple use-after-free vulnerabilities.
+
   - Multiple integer over flow vulnerabilities.
+
   - Multiple buffer over flow vulnerabilities.
+
   - Some unspecified vulnerabilities.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to conduct a denial of service, bypass certain security restrictions,
   to obtain sensitive information, execute arbitrary code and compromise a
-  user's system.
-
-  Impact Level: System/Application");
+  user's system.");
 
   script_tag(name:"affected", value:"Adobe Reader 10.x before 10.1.15
   and 11.x before 11.0.12 on Mac OS X.");

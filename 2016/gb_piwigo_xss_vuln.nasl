@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_xss_vuln.nasl 7791 2017-11-16 13:18:39Z jschulte $
+# $Id: gb_piwigo_xss_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Piwigo XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:piwigo:piwigo';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106437");
-  script_version("$Revision: 7791 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-16 14:18:39 +0100 (Thu, 16 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2016-12-08 09:38:25 +0700 (Thu, 08 Dec 2016)");
-  script_tag(name:"cvss_base", value: "4.3");
-  script_tag(name:"cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11493 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-08 09:38:25 +0700 (Thu, 08 Dec 2016)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2016-9751");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Piwigo XSS Vulnerability");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("gb_piwigo_detect.nasl");
   script_mandatory_keys("piwigo/installed");
 
-  script_tag(name: "summary", value: "Piwigo is prone to a cross-site scripting vulnerability.");
+  script_tag(name:"summary", value:"Piwigo is prone to a cross-site scripting vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Cross-site scripting (XSS) vulnerability in the search results front end
+  script_tag(name:"insight", value:"Cross-site scripting (XSS) vulnerability in the search results front end
 allows remote attackers to inject arbitrary web script or HTML via the search parameter.");
 
-  script_tag(name: "impact", value: "An attacker may inject arbitrary web script or HTML code.");
+  script_tag(name:"impact", value:"An attacker may inject arbitrary web script or HTML code.");
 
-  script_tag(name: "affected", value: "Piwigo 2.8.3");
+  script_tag(name:"affected", value:"Piwigo 2.8.3");
 
-  script_tag(name: "solution", value: "Update Piwigo to version 2.9.1 or above.");
+  script_tag(name:"solution", value:"Update Piwigo to version 2.9.1 or above.");
 
-  script_xref(name: "URL", value: "https://github.com/Piwigo/Piwigo/issues/559");
+  script_xref(name:"URL", value:"https://github.com/Piwigo/Piwigo/issues/559");
 
   exit(0);
 }

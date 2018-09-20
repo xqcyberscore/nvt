@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln04_feb15.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_java_mult_unspecified_vuln04_feb15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-04 Feb 2015 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805266");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-0410", "CVE-2015-0408", "CVE-2015-0407", "CVE-2015-0395",
                 "CVE-2015-0383", "CVE-2014-6593", "CVE-2014-6591", "CVE-2014-6585");
   script_bugtraq_id(72165, 72140, 72162, 72142, 72155, 72169, 72175, 72173);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-02 14:08:03 +0530 (Mon, 02 Feb 2015)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-04 Feb 2015 (Windows)");
 
@@ -70,9 +70,7 @@ if(description)
   to conduct a denial of service attack, man-in-the-middle attack, potentially
   disclose memory contents, remove or overwrite arbitrary files on the system,
   disclose certain directory information, bypass sandbox restrictions and
-  potentially execute arbitrary code.
-
-  Impact Level: System/Application");
+  potentially execute arbitrary code.");
 
   script_tag(name:"affected", value:"Oracle Java SE 5 update 75 and prior, 6
   update 85 and prior, 7 update 72 and prior, and 8 update 25 and prior on

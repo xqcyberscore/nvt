@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_vuln01.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_cloudbees_jenkins_mult_vuln01.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # CloudBees Jenkins Multiple Vulnerabilities -01 December15
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807012");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-2068", "CVE-2014-2066", "CVE-2014-2065", "CVE-2014-2064",
                 "CVE-2014-2063", "CVE-2014-2062", "CVE-2014-2061", "CVE-2014-2060",
                 "CVE-2014-2058");
   script_bugtraq_id(65694, 65720);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-21 15:34:06 +0530 (Mon, 21 Dec 2015)");
   script_name("CloudBees Jenkins Multiple Vulnerabilities -01 December15");
 
@@ -72,9 +72,7 @@ if(description)
   attackers to obtain sensitive information, hijack web sessions, conduct
   clickjacking attacks, inject arbitrary web script or HTML, bypass the
   protection mechanism, gain elevated privileges, bypass intended access
-  restrictions and execute arbitrary code.
-
-  Impact Level: System/Application");
+  restrictions and execute arbitrary code.");
 
   script_tag(name:"affected", value:"CloudBees Jenkins LTS before 1.532.2 on
   Windows");

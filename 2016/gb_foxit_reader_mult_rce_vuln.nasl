@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_rce_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_reader_mult_rce_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Foxit Reader Multiple Remote Code Execution Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807556");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 11493 $");
   script_cve_id("CVE-2016-4059", "CVE-2016-4060", "CVE-2016-4061", "CVE-2016-4062",
                 "CVE-2016-4063", "CVE-2016-4064", "CVE-2016-4065");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-25 16:44:43 +0530 (Mon, 25 Apr 2016)");
   script_name("Foxit Reader Multiple Remote Code Execution Vulnerabilities");
 
@@ -63,9 +63,7 @@ if(description)
     PhantomPDF/Reader caused by the re-layout underlying XFA.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause a denial of service (application crash).
-
-  Impact Level: System/Application");
+  attackers to cause a denial of service (application crash).");
 
   script_tag(name:"affected", value:"Foxit Reader version 7.3.0.118 and
   earlier.");

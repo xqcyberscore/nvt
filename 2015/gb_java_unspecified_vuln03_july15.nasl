@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805728");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-2596");
   script_bugtraq_id(75887);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-20 17:10:19 +0530 (Mon, 20 Jul 2015)");
   script_name("Oracle Java SE JRE Unspecified Vulnerability-03 July 2015 (Windows)");
 
@@ -47,9 +47,7 @@ if(description)
   flaws related to unspecified vectors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to have an impact on integrity.
-
-  Impact Level: System/Application");
+  to have an impact on integrity.");
 
   script_tag(name:"affected", value:"Oracle Java SE 7 update 80 on Windows.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms15-118.nasl 6453 2017-06-28 09:59:05Z teissa $
+# $Id: gb_dotnet_framework_ms15-118.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft .NET Framework Privilege Elevation Vulnerabilities (3104507)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806614");
-  script_version("$Revision: 6453 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-6096", "CVE-2015-6099", "CVE-2015-6115");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 09:47:24 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerabilities (3104507)");
 
@@ -42,9 +42,12 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - An error in the .NET Framework DTD parsing of certain specially crafted XML
   files.
+
   - ASP.NET improperly validates values in HTTP requests.
+
   - An error in the .NET Framework component which does not properly implement the
   Address Space Layout Randomization (ASLR) security feature.");
 
@@ -53,12 +56,9 @@ if(description)
   additional malicious code, inject client-side script into a users browser and
   ultimately modify or spoof content, conduct phishing activities, disclose
   information, or perform any action on the vulnerable website that the target
-  user has permission to perform.
+  user has permission to perform.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft .NET Framework 2.0 Service Pack 2
+  script_tag(name:"affected", value:"Microsoft .NET Framework 2.0 Service Pack 2
   Microsoft .NET Framework 3.5
   Microsoft .NET Framework 3.5.1
   Microsoft .NET Framework 4
@@ -74,13 +74,13 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3104507");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-118");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3104507");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-118");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
   exit(0);
@@ -93,26 +93,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-key = "";
-item = "";
-path = "";
-dllVer = "";
-sysVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3,
    win2008r2:2, win8:1, win8x64:1, win8_1:1, win8_1x64:1, win2012:1, win2012R2:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Confirm .NET
 key = "SOFTWARE\Microsoft\ASP.NET\";
 if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-# Try to Get Version
 foreach item (registry_enum_keys(key:key))
 {
   ##Reset flags for next iteration
@@ -123,7 +113,6 @@ foreach item (registry_enum_keys(key:key))
   path = registry_get_sz(key:key + item, item:"Path");
   if(path && "\Microsoft.NET\Framework" >< path)
   {
-    ## Get version from System.Deployment.dll file
     dllVer = fetch_file_version(sysPath:path, file_name:"System.Deployment.dll");
 
     if(dllVer)
@@ -239,7 +228,6 @@ foreach item (registry_enum_keys(key:key))
       }
 
       ##.NET Framework 4.6 and 4.6 RC on Windows 8, and Windows Server 2012
-      ## Windows 8.1, and Windows Server 2012 R2
       ## For KBS: https://support.microsoft.com/en-us/kb/3097999 and
       ## https://support.microsoft.com/en-us/kb/3098000
       if(hotfix_check_sp(win8:1, win8x64:1, win2012:1, win8_1:1, win8_1x64:1, win2012R2:1) > 0)
@@ -263,10 +251,8 @@ foreach item (registry_enum_keys(key:key))
       }
     }
 
-    ##Get path for Setupengine.dll
     dllpath = path + "\SetupCache";
 
-    ## Get version from Setupengine.dll file
     dllVer2 = fetch_file_version(sysPath:dllpath, file_name:"Setupengine.dll");
 
     if(dllVer2)
@@ -274,7 +260,6 @@ foreach item (registry_enum_keys(key:key))
       ##Not Considering https://support.microsoft.com/en-us/kb/3097994
       ##as it is superseeded by https://support.microsoft.com/en-us/kb/3098778
       ##Taking only https://support.microsoft.com/en-us/kb/3098778 and
-      ##Check version < 10.0.30319.1040
 
       ## .NET Framework 4 on Windows Vista,Windows Server 2008, Windows 7, and Windows Server 2008 R2
       ## For KB: https://support.microsoft.com/en-us/kb/3098778
@@ -315,7 +300,6 @@ foreach item (registry_enum_keys(key:key))
       }
     }
 
-    ## Get version from System.web.dll
     dllVer3 = fetch_file_version(sysPath:path, file_name:"System.web.dll");
     if(dllVer3)
     {
@@ -339,7 +323,6 @@ foreach item (registry_enum_keys(key:key))
       }
 
       ##.NET Framework 4.6 and 4.6 RC on Windows 8 and Windows Server 2012
-      ## Windows 8.1 and Windows Server 2012 R2
       ## For KBS: https://support.microsoft.com/en-us/kb/3098784 and
       ## https://support.microsoft.com/en-us/kb/3098785
       if(hotfix_check_sp(win8:1, win8x64:1, win2012:1, win8_1:1, win8_1x64:1, win2012R2:1) > 0)

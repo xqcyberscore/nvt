@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_aug15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_adobe_air_mult_vuln01_aug15_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Adobe Air Multiple Vulnerabilities-01 Aug15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805958");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-5124", "CVE-2015-5125", "CVE-2015-5127", "CVE-2015-5129",
                 "CVE-2015-5130", "CVE-2015-5131", "CVE-2015-5132", "CVE-2015-5133",
                 "CVE-2015-5134", "CVE-2015-5539", "CVE-2015-5540", "CVE-2015-5541",
@@ -42,7 +42,7 @@ if(description)
   script_bugtraq_id(75959, 76291, 76282, 76282, 76283, 76283, 76289, 76288, 76287);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-18 10:04:52 +0530 (Tue, 18 Aug 2015)");
   script_name("Adobe Air Multiple Vulnerabilities-01 Aug15 (Mac OS X)");
 
@@ -58,9 +58,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct denial of service attack, execute arbitrary code in the
-  context of the affected user and possibly have other unspecified impact.
-
-  Impact Level: System/Application.");
+  context of the affected user and possibly have other unspecified impact.");
 
   script_tag(name:"affected", value:"Adobe Air versions before 18.0.0.199 on
   Mac OS X.");

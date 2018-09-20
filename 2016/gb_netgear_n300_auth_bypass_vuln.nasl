@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_n300_auth_bypass_vuln.nasl 6700 2017-07-12 12:16:21Z cfischer $
+# $Id: gb_netgear_n300_auth_bypass_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Netgear N300 Wireless Router Authentication Bypass Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806850");
-  script_version("$Revision: 6700 $");
+  script_version("$Revision: 11493 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-04 15:00:14 +0530 (Thu, 04 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Netgear N300 Wireless Router Authentication Bypass Vulnerability");
@@ -48,14 +48,14 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to gain access to the administration interface of the router
-  and manipulate the device's settings.
-
-  Impact Level: Application");
+  and manipulate the device's settings.");
 
   script_tag(name:"affected", value:"NetGear N300 wireless router firmware
   version 1.1.0.24 - 1.1.0.31");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one. ");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39356");
@@ -75,19 +75,16 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 netport = get_http_port(default:8080);
 
 banner = get_http_banner(port:netport);
 
-##Confirm the application
 if('Basic realm="NETGEAR' >!< banner){
   exit(0);
 }
 
 buf = http_get_cache( item:'/', port:netport );
 
-## confirm the authentication  before exploit
 if('HTTP/1.1 401 Unauthorized' >!< buf){
   exit(0);
 }
@@ -103,7 +100,6 @@ for( i=0; i<=5; i++)
     req2 = http_get( item:'/', port:netport );
     buf2 = http_keepalive_send_recv( port:netport, data:req2, bodyonly:FALSE);
 
-    ## confirm the exploit
     if( "NETGEAR" >< buf2 && "firstpage_var" >< buf2 && "enable_action" >< buf2)
     {
       report = report_vuln_url( port:netport, url:"/");

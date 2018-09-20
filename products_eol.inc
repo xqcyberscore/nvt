@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 10791 2018-08-06 11:52:23Z asteins $
+# $Id: products_eol.inc 11488 2018-09-20 07:47:27Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10791 $
+# $Revision: 11488 $
 #
 ###############################################################################
 
@@ -284,7 +284,7 @@ eol_cpes[ 'cpe:/a:owncloud:owncloud' ] = make_array(
 # https://lists.pfsense.org/pipermail/list/2012-April/002017.html
 # EOL date is mainly the release date of the next release
 eol_cpes[ 'cpe:/a:pfsense:pfsense' ] = make_array(
-  'versions',      '2.2:2016-04-12;2.1:2015-01-23;2.0:2013-09-15;1.2:2011-09-17;1.1:2008-02-25;1.0:unknown;',
+  'versions',      '2.2:2016-04-12;2.1:2015-01-23;2.0:2013-09-15;1.2:2011-09-17;1.1:2008-02-25;1.0:unknown',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
@@ -292,6 +292,15 @@ eol_cpes[ 'cpe:/a:pfsense:pfsense' ] = make_array(
 eol_cpes[ 'cpe:/a:php:php' ] = make_array(
   'versions',      '7.2:2020-11-30;7.1:2019-12-01;7.0:2018-12-03;5.6:2018-12-31;5.5:2016-07-21;5.4:2015-09-03;5.3:2014-08-14;5.2:2011-01-06;5.1:2006-08-24;5.0:2005-09-05;4.4:2008-08-07;4.3:2005-03-31;4.2:2002-09-06;4.1:2002-03-12;4.0:2001-06-23;3.0:2000-10-20',
   'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
+# https://github.com/PHPMailer/PHPMailer#legacy-versions
+# Currently everything from https://github.com/PHPMailer/PHPMailer/blob/master/changelog.md < 5.2 is EOL
+# nb: Up to 1.73 PHPMailer used no patch level and started to use one with 2.0.0 so the version_regex
+# below is just grabbing one digit of the minor version for now.
+eol_cpes[ 'cpe:/a:phpmailer_project:phpmailer' ] = make_array(
+  'versions',      '5.1:unknown;5.0:unknown;2.3:unknown;2.2:unknown;2.1:unknown;2.0:unknown;1.7:unknown;1.6:unknown;1.5:unknown;1.4:unknown;1.2:unknown;1.1:unknown;1.0:unknown;0.9:unknown',
+  'version_regex', '^([0-9]+\\.[0-9])'
 );
 
 # EOL basically means all branches like 4.2 listed at https://www.phpmyadmin.net/files/
@@ -411,6 +420,7 @@ function product_reached_eol( cpe, version, debug ) {
       if( debug ) display( "DEBUG: Passed version_regex: " + eol_array[ 'version_regex' ] + " doesn't match version : " + version + " . No EOL version identified." );
       return;
     } else {
+      if( debug ) display( "DEBUG: Passed version_regex: " + eol_array[ 'version_regex' ] + " is matching : " + version + " ." );
       version = v[0];
     }
   }
@@ -420,6 +430,8 @@ function product_reached_eol( cpe, version, debug ) {
     if( debug ) display( "DEBUG: versions of " + cpe + " couldn't be split into an array." );
     return;
   }
+
+  if( debug ) display( "DEBUG: versions/dates of " + cpe + " used for this test: " + test_versions );
 
   foreach tv( test_versions ) {
 
@@ -434,6 +446,7 @@ function product_reached_eol( cpe, version, debug ) {
 
     test_version = v_d[1];
     eol_date     = v_d[2];
+    if( debug ) display( "DEBUG: Current product version: '" + version + "' tested with an exact match against EOL version '" + test_version + "' and EOL date '" + eol_date + "' (unknown means instantly EOL)" );
 
     if( version == test_version )
       if( eol_date_reached( eol_date:eol_date ) )

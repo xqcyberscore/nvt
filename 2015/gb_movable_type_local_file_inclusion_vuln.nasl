@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_movable_type_local_file_inclusion_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_movable_type_local_file_inclusion_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Movable Type Local File Inclusion Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:sixapart:movable_type";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805357");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1592");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-10 15:04:37 +0530 (Fri, 10 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Movable Type Local File Inclusion Vulnerability");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   unauthenticated remote attacker to upload files and execute arbitrary code
-  in an affected site.
-
-  Impact Level: Application");
+  in an affected site.");
 
   script_tag(name:"affected", value:"Movable Type before 5.2.12.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_accellion_fta_file_discl_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_accellion_fta_file_discl_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Accellion FTA File Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/h:accellion:secure_file_transfer_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106031");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 11492 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-28 09:48:42 +0700 (Tue, 28 Jul 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -101,10 +101,11 @@ else {
   host = http_host_name(port: port);
   url = dir + '/intermediate_login.html';
   cookie = 'statecode=../../../../../etc/passwd%00';
+  useragent = get_http_user_agent();
 
   req = 'GET ' + url + ' HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User/Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Cookie: ' + cookie + '\r\n\r\n';
 
   buf = http_keepalive_send_recv(port: port, data: req);

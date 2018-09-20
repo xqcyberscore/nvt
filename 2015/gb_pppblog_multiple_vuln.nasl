@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pppblog_multiple_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_pppblog_multiple_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # pppBLOG Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805647");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-09 10:40:36 +0530 (Tue, 09 Jun 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("pppBLOG Multiple Vulnerabilities");
@@ -51,9 +51,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to potentially sensitive information and execute
   arbitrary script code in a user's browser within the trust relationship
-  between their browser and the server.
-
-  Impact Level: System/Application");
+  between their browser and the server.");
 
   script_tag(name:"affected", value:"pppBLOG version 0.3.11");
 

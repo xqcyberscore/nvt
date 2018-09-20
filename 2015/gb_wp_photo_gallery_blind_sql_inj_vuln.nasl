@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_photo_gallery_blind_sql_inj_vuln.nasl 9998 2018-05-29 08:15:38Z cfischer $
+# $Id: gb_wp_photo_gallery_blind_sql_inj_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Wordpress Photo Gallery Blind SQL injection Vulnerability
 #
@@ -29,42 +29,40 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805127");
-  script_version("$Revision: 9998 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1055");
   script_bugtraq_id(72015);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 10:15:38 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-20 11:04:59 +0530 (Tue, 20 Jan 2015)");
   script_name("Wordpress Photo Gallery Blind SQL injection Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with Wordpress
+  script_tag(name:"summary", value:"The host is installed with Wordpress
   Photo Gallery plugin and is prone to blind sql injection vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted request via HTTP GET and
+  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to execute sql query or not.");
 
-  script_tag(name: "insight" , value:"Flaw is due to the wp-admin/admin-ajax.php
+  script_tag(name:"insight", value:"Flaw is due to the wp-admin/admin-ajax.php
   script not properly sanitizing user-supplied input to the 'order_by' parameter.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database,
-  allowing for the manipulation or disclosure of arbitrary data.
+  allowing for the manipulation or disclosure of arbitrary data.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Wordpress Photo Gallery plugin version
+  script_tag(name:"affected", value:"Wordpress Photo Gallery plugin version
   1.2.7, other versions may also be affected.");
 
-  script_tag(name: "solution" , value:"Update to version 1.2.8 or later,
+  script_tag(name:"solution", value:"Update to version 1.2.8 or later,
   For updates refer to https://wordpress.org/plugins/photo-gallery");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_analysis");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/99922");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/129927");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Jan/36");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/99922");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/129927");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Jan/36");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

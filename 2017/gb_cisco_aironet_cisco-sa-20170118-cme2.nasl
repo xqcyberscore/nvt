@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_aironet_cisco-sa-20170118-cme2.nasl 5463 2017-03-02 08:17:34Z ckuerste $
+# $Id: gb_cisco_aironet_cisco-sa-20170118-cme2.nasl 11472 2018-09-19 11:20:06Z mmartin $
 #
 # Cisco Mobility Express 2800 and 3800 Denial of Service Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/o:cisco:wireless_lan_controller_software";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106626");
- script_cve_id("CVE-2016-9221");
- script_tag(name: "cvss_base", value: "3.3");
- script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 5463 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106626");
+  script_cve_id("CVE-2016-9221");
+  script_tag(name:"cvss_base", value:"3.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11472 $");
 
- script_name("Cisco Mobility Express 2800 and 3800 802.11 Denial of Service Vulnerability");
+  script_name("Cisco Mobility Express 2800 and 3800 802.11 Denial of Service Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170118-cme2");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170118-cme2");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in 802.11 ingress connection authentication handling for the
+  script_tag(name:"summary", value:"A vulnerability in 802.11 ingress connection authentication handling for the
 Cisco Mobility Express 2800 and 3800 Access Points could allow an unauthenticated, adjacent attacker to cause
 authentication to fail.");
 
- script_tag(name: "insight", value: "The vulnerability is due to improper error handling for 802.11 authentication
+  script_tag(name:"insight", value:"The vulnerability is due to improper error handling for 802.11 authentication
 requests that do not complete. An attacker could exploit this vulnerability by sending a crafted 802.11 frame to
 the targeted device.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to impact the availability of the device
+  script_tag(name:"impact", value:"An exploit could allow the attacker to impact the availability of the device
 due to authentication failures.");
 
- script_tag(name: "qod_type", value: "remote_banner");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-02 09:17:34 +0100 (Thu, 02 Mar 2017) $");
- script_tag(name: "creation_date", value: "2017-03-02 11:11:21 +0700 (Thu, 02 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_wlc_version.nasl");
- script_mandatory_keys("cisco_wlc/version", "cisco_wlc/model");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-02 11:11:21 +0700 (Thu, 02 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_wlc_version.nasl");
+  script_mandatory_keys("cisco_wlc/version", "cisco_wlc/model");
 
  exit(0);
 }

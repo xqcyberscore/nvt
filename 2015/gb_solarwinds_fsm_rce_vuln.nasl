@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_fsm_rce_vuln.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_solarwinds_fsm_rce_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Solarwinds FSM Remote Code Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:solarwinds:firewall_security_manager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106014");
-  script_version("$Revision: 11296 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_version("$Revision: 11492 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-30 10:54:34 +0700 (Tue, 30 Jun 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -89,6 +89,7 @@ url = dir + '/userlogin.jsp?username=admin';
 
 req = http_get(item: url, port: port);
 res = http_keepalive_send_recv(port: port, data: req, bodyonly: FALSE);
+useragent = get_http_user_agent();
 
 # Authentication bypass
 if (res =~ "HTTP/1\.. 200" && res =~ "Set-Cookie: JSESSIONID=" && res =~ "Authentication Not implemented yet") {
@@ -99,7 +100,7 @@ if (res =~ "HTTP/1\.. 200" && res =~ "Set-Cookie: JSESSIONID=" && res =~ "Authen
   url = dir + '/requesthome.jsp';
   req = 'GET ' + url + ' HTTP/1.1\r\n' +
         'Host: ' + http_host_name(port: port) + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Cookie: ' + sessionid[0] + '\r\n\r\n';
   res = http_keepalive_send_recv(port: port, data: req);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_crowd_ldap_inj_vuln.nasl 4798 2016-12-19 09:23:30Z antu123 $
+# $Id: gb_atlassian_crowd_ldap_inj_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Atlassian Crowd LDAP Java Object Injection Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:atlassian:crowd";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106375");
-  script_version("$Revision: 4798 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-12-19 10:23:30 +0100 (Mon, 19 Dec 2016) $");
-  script_tag(name: "creation_date", value: "2016-11-04 14:37:33 +0700 (Fri, 04 Nov 2016)");
+  script_version("$Revision: 11493 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-04 14:37:33 +0700 (Fri, 04 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-6496");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Atlassian Crowd LDAP Java Object Injection Vulnerability");
 
@@ -51,24 +51,24 @@ if (description)
   script_dependencies("gb_atlassian_crowd_detect.nasl");
   script_mandatory_keys("atlassian_crowd/installed");
 
-  script_tag(name: "summary", value: "Atlassian Crowd is prone to a LDAP Java object injection vulnerability.");
+  script_tag(name:"summary", value:"Atlassian Crowd is prone to a LDAP Java object injection vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The Crowd LDAP directory connector allowed an attacker to gain remote code
+  script_tag(name:"insight", value:"The Crowd LDAP directory connector allowed an attacker to gain remote code
 execution in Crowd by injecting malicious attributes in LDAP entries. To exploit this issue, attackers need to
 modify an entry in your LDAP directory or successfully execute a Man-in-The-Middle attack between an LDAP server
 and Crowd. Crowd installations configured to communicate with an LDAP server using the LDAPS protocol with the
 Secure SSL option enabled are immune to this attack vector only (unless an attacker is able to obtain the private
 key of the SSL/TLS certificate used to secure the communication).");
 
-  script_tag(name: "impact", value: "An attacker may execute remote code.");
+  script_tag(name:"impact", value:"An attacker may execute remote code.");
 
-  script_tag(name: "affected", value: "Crowd from 1.4.1 before 2.8.8 and from 2.9.0 before 2.9.5");
+  script_tag(name:"affected", value:"Crowd from 1.4.1 before 2.8.8 and from 2.9.0 before 2.9.5");
 
-  script_tag(name: "solution", value: "Update to 2.8.8, 2.9.5 or later.");
+  script_tag(name:"solution", value:"Update to 2.8.8, 2.9.5 or later.");
 
-  script_xref(name: "URL", value: "https://jira.atlassian.com/browse/CWD-4790?src=confmacro");
+  script_xref(name:"URL", value:"https://jira.atlassian.com/browse/CWD-4790?src=confmacro");
 
   exit(0);
 }

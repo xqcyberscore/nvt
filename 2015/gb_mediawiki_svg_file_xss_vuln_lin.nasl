@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_svg_file_xss_vuln_lin.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mediawiki_svg_file_xss_vuln_lin.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # MediaWiki 'SVG File' Cross Site Scripting Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806635");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-7199");
   script_bugtraq_id(70153);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-26 17:50:31 +0530 (Thu, 26 Nov 2015)");
   script_name("MediaWiki 'SVG File' Cross Site Scripting Vulnerability (Linux)");
 
@@ -47,9 +47,7 @@ if(description)
   filtering in SVG files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to inject arbitrary web script or HTML via a crafted SVG file.
-
-  Impact Level: Application");
+  attackers to inject arbitrary web script or HTML via a crafted SVG file.");
 
   script_tag(name:"affected", value:"MediaWiki before 1.19.19, 1.22.x before
   1.22.11, and 1.23.x before 1.23.4 on Linux.");

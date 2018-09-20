@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_and_compat_pack_ms15-033.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms_office_and_compat_pack_ms15-033.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3048019)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805063");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1641", "CVE-2015-1650", "CVE-2015-1649", "CVE-2015-1651");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 11:22:19 +0530 (Wed, 15 Apr 2015)");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3048019)");
 
@@ -42,16 +42,16 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are exists when,
+
   - The Office software improperly handles objects in memory while parsing
     specially crafted Office files.
+
   - The Office software fails to properly handle rich text format files in
     memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to run arbitrary code in the context of the current user and
-  to perform actions in the security context of the current user.
-
-  Impact Level: System/Application");
+  to perform actions in the security context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Office Compatibility Pack Service Pack 3");
 

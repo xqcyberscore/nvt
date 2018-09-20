@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_mult_vuln_jan15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mcafee_epolicy_orchestrator_mult_vuln_jan15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # McAfee ePolicy Orchestrator Multiple Vulnerabilities - Jan15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:epolicy_orchestrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805238");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-0922", "CVE-2015-0921");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-12 20:02:18 +0530 (Mon, 12 Jan 2015)");
   script_name("McAfee ePolicy Orchestrator Multiple Vulnerabilities - Jan15");
 
@@ -43,14 +43,14 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists as,
+
   - an incorrectly configured XML parser accepting XML external entities from an
   untrusted source.
+
   - application uses the same secret key across different customers installation.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to obtain the administrator password and gain access to arbitrary files.
-
-  Impact Level: Application");
+  to obtain the administrator password and gain access to arbitrary files.");
 
   script_tag(name:"affected", value:"McAfee ePolicy Orchestrator version before
   4.6.9 and 5.x before 5.1.2");

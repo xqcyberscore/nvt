@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_soap_wmi_info_disclosure.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_dell_soap_wmi_info_disclosure.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Dell Foundation Services SOAP WMI API Information Disclosure
 #
@@ -30,8 +30,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105476");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 11492 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-03 11:32:22 +0100 (Thu, 03 Dec 2015)");
   script_name("Dell Foundation Services 'SOAP WMI API' Remote Information Disclosure");
 
@@ -68,7 +68,7 @@ if( "Microsoft-HTTPAPI" >!< banner || "404 Not Found" >!< banner ) exit( 0 );
 
 host = http_host_name( port:port );
 query = 'SELECT Caption FROM Win32_OperatingSystem';
-
+useragent = get_http_user_agent();
 soap = '<?xml version="1.0" encoding="UTF-8"?>' +
        '<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://tempuri.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ' +
        'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">' +
@@ -79,7 +79,7 @@ len = strlen( soap );
 req = 'POST /Dell%20Foundation%20Services/ISystemInfoCapabilitiesApi HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
       'Connection: close\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Content-Type: text/xml;\r\n' +
       'SOAPAction: "http://tempuri.org/ISystemInfoCapabilitiesApi/GetWmiCollection"\r\n' +
       'Content-Length: ' + len + '\r\n' +

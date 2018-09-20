@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_sql_injection_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_open_xchange_appsuite_sql_injection_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Open-Xchange (OX) AppSuite SQL Injection Vulnerability Oct15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806069");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-7871");
   script_bugtraq_id(70982);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-05 16:02:56 +0530 (Mon, 05 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite SQL Injection Vulnerability Oct15");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   authenticated users to execute arbitrary SQL commands via a crafted
-  'jslob API call'.
-
-  Impact Level: Application");
+  'jslob API call'.");
 
   script_tag(name:"affected", value:"Open-Xchange (OX) AppSuite versions before
   7.4.2-rev36 and 7.6.x before 7.6.0-rev23");

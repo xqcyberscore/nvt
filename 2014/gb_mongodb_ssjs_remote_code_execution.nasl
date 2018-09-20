@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_ssjs_remote_code_execution.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_mongodb_ssjs_remote_code_execution.nasl 11497 2018-09-20 10:31:54Z mmartin $
 #
 # MongoDB REST Interface Remote Code Execution Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mongodb:mongodb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103870");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11497 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://en.securitylab.ru/lab/PT-2012-40");
   script_xref(name:"URL", value:"http://blog.ptsecurity.com/2012/11/attacking-mongodb.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-08 13:56:18 +0100 (Wed, 08 Jan 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -66,13 +66,14 @@ fails to properly sanitize user-supplied input.");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-
+include("misc_func.inc");
+vtstring = get_vt_string();
 
 port = get_kb_item("mongodb/webadmin/port");
 if ( ! port ) port = 28017;
 if ( ! get_port_state( port ) ) exit( 0 );
 
-extra_check = '_OpenVAS_' + rand();
+extra_check = '_' + vtstring + '_' + rand();
 
 url = '/admin/$cmd/?filter_eval=function%28%29%20{%20val=db.version%28%29;%20bar=val%2b%27' + extra_check  + '%27;%20return%20bar;%20}&limit=1';
 req = http_get( item:url, port:port );

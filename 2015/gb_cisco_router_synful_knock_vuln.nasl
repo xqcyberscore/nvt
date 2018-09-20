@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_router_synful_knock_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_cisco_router_synful_knock_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Cisco Router SYNful Knock Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805740");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-23 12:30:00 +0530 (Wed, 23 Sep 2015)");
   script_name("Cisco Router SYNful Knock Vulnerability");
   script_category(ACT_ATTACK);
@@ -54,9 +54,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain control of an affected device and compromise its integrity
-  with a modified Cisco IOS software image.
-
-  Impact Level: Application");
+  with a modified Cisco IOS software image.");
 
   script_tag(name:"affected", value:"Cisco 1841
   Cisco 2811

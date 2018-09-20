@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaseya_vsa_mult_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_kaseya_vsa_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Kaseya Virtual System Administrator Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = 'cpe:/a:kaseya:virtual_system_administrator';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805927");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-2862", "CVE-2015-2863");
   script_bugtraq_id(75727, 75730);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-17 11:50:12 +0530 (Fri, 17 Jul 2015)");
   script_name("Kaseya Virtual System Administrator Multiple Vulnerabilities");
 
@@ -52,9 +52,7 @@ if (description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to download any arbitrary file, and create a specially crafted URL,
   that if clicked, would redirect  a victim from the intended legitimate web site
-  to an arbitrary web site of the attacker's choosing.
-
-  Impact Level: System/Application");
+  to an arbitrary web site of the attacker's choosing.");
 
   script_tag(name:"affected", value:"Kaseya Virtual System Administrator
   versions 7.x before patch level 7.0.0.29, 8.x before patch level 8.0.0.18,

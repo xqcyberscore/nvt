@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_TELNET_Cisco_Voice.nasl 10616 2018-07-25 13:37:26Z cfischer $
+# $Id: GSHB_TELNET_Cisco_Voice.nasl 11470 2018-09-19 09:45:56Z cfischer $
 #
 # List reject Rule on Cisco Voip Devices over Telnet
 #
@@ -9,7 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96107");
-  script_version("$Revision: 10616 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 15:37:26 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 11470 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 11:45:56 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-06-10 15:20:25 +0200 (Thu, 10 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,9 +56,6 @@ if (!telnet_port) telnet_port = 23;
 
 login = script_get_preference("Telnet Testuser Name");
 password = script_get_preference("Telnet Testuser Password");
-
-#login = "admin";
-#password = "greenbone";
 
 if (!login || login == "UserName" || login == "" || !password || password == "PassWord" || password == ""){
   set_kb_item(name: "GSHB/Voice", value:"no credentials set");

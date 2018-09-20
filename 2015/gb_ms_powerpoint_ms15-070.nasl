@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powerpoint_ms15-070.nasl 6523 2017-07-04 15:46:12Z cfischer $
+# $Id: gb_ms_powerpoint_ms15-070.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Office PowerPoint Remote Code Execution Vulnerability (3072620)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805810");
-  script_version("$Revision: 6523 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-2424");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:46:12 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 10:27:38 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office PowerPoint Remote Code Execution Vulnerability (3072620)");
@@ -46,12 +46,9 @@ if(description)
   in the memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to run arbitrary code in the context of the current user.
+  attackers to run arbitrary code in the context of the current user.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft PowerPoint 2007 Service Pack 3 and prior,
+  script_tag(name:"affected", value:"Microsoft PowerPoint 2007 Service Pack 3 and prior,
   Microsoft PowerPoint 2010 Service Pack 2 and prior,
   Microsoft PowerPoint 2013 Service Pack 1 and prior.");
 
@@ -61,15 +58,16 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/2965283");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3054963");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3054999");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-070");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/2965283");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3054963");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3054999");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS15-070");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Ver", "SMB/Office/PowerPnt/Version");
   exit(0);
 }
@@ -80,13 +78,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable initialization
-offPath = "";
-pptVer = "";
-dllVer = "";
-path = "";
-
-## Get Powerpoint Version
 pptVer = get_kb_item("SMB/Office/PowerPnt/Version");
 if(!pptVer){
   exit(0);
@@ -101,7 +92,6 @@ if(!path){
 
 foreach ver (make_list("\OFFICE12", "\OFFICE14", "\OFFICE15"))
 {
-  ## Get Version from Ppcore.dll
   offPath = path + "\Microsoft Office" + ver ;
   dllVer = fetch_file_version(sysPath:offPath, file_name:"ppcore.dll");
 
@@ -111,7 +101,7 @@ foreach ver (make_list("\OFFICE12", "\OFFICE14", "\OFFICE15"))
        version_in_range(version:dllVer, test_version:"14.0", test_version2:"14.0.7153.5001") ||
        version_in_range(version:dllVer, test_version:"15.0", test_version2:"15.0.4737.1002"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }

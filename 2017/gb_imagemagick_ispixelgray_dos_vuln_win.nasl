@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_ispixelgray_dos_vuln_win.nasl 8173 2017-12-19 11:45:56Z cfischer $
+# $Id: gb_imagemagick_ispixelgray_dos_vuln_win.nasl 11474 2018-09-19 11:38:50Z mmartin $
 #
 # ImageMagick 'IsPixelGray' Function Denial of Service Vulnerability (Windows)
 #
@@ -29,37 +29,34 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810556");
-  script_version("$Revision: 8173 $");
+  script_version("$Revision: 11474 $");
   script_cve_id("CVE-2016-9773");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 12:45:56 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-02-20 15:05:25 +0530 (Mon, 20 Feb 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick 'IsPixelGray' Function Denial of Service Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with ImageMagick
+  script_tag(name:"summary", value:"The host is installed with ImageMagick
   and is prone to denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to a heap-based buffer overflow
+  script_tag(name:"insight", value:"The flaw is due to a heap-based buffer overflow
   error in the 'IsPixelGray' function in MagickCore/pixel-accessor.h script.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allows remote
-  attackers to cause a denial of service (out-of-bounds heap read).
+  script_tag(name:"impact", value:"Successful exploitation will allows remote
+  attackers to cause a denial of service (out-of-bounds heap read).");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"ImageMagick version 7.0.3-8 on Windows.");
 
-  script_tag(name: "affected" , value:"ImageMagick version 7.0.3-8 on Windows.");
-
-  script_tag(name: "solution" , value:"Update to version 7.0.3-9 or later. For updates refer to http://www.imagemagick.org");
+  script_tag(name:"solution", value:"Update to version 7.0.3-9 or later. For updates refer to http://www.imagemagick.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2016/12/02/11");
-  script_xref(name : "URL" , value : "https://blogs.gentoo.org/ago/2016/12/01/imagemagick-heap-based-buffer-overflow-in-ispixelgray-pixel-accessor-h-incomplete-fix-for-cve-2016-9556");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2016/12/02/11");
+  script_xref(name:"URL", value:"https://blogs.gentoo.org/ago/2016/12/01/imagemagick-heap-based-buffer-overflow-in-ispixelgray-pixel-accessor-h-incomplete-fix-for-cve-2016-9556");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -72,16 +69,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-imVer = "";
-report = "";
-
-## Get version
 if(!imVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(imVer == "7.0.3.8")
 {
   report = report_fixed_ver(installed_version:imVer, fixed_version:'7.0.3-9');

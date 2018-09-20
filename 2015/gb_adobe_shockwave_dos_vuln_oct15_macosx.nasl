@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_dos_vuln_oct15_macosx.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_adobe_shockwave_dos_vuln_oct15_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Adobe Shockwave Player Denial of Service Vulnerability Oct15 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:shockwave_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806521");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-7649");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-30 12:40:17 +0530 (Fri, 30 Oct 2015)");
   script_name("Adobe Shockwave Player Denial of Service Vulnerability Oct15 (Mac OS X)");
 
@@ -46,9 +46,7 @@ if(description)
   vulnerability.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code or cause a denial of service.
-
-  Impact Level: System/Application.");
+  attackers to execute arbitrary code or cause a denial of service.");
 
   script_tag(name:"affected", value:"Adobe Shockwave Player version before
   12.2.1.171 on Mac OS X.");

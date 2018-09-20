@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln_win5.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_mantisbt_xss_vuln_win5.nasl 11472 2018-09-19 11:20:06Z mmartin $
 #
 # MantisBT Multiple Cross Site Scripting Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108119");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11472 $");
   script_cve_id("CVE-2017-7241", "CVE-2017-7309");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-04-05 09:33:23 +0200 (Wed, 05 Apr 2017)");
   script_name("MantisBT Multiple Cross Site Scripting Vulnerabilities (Windows)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -49,15 +49,12 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with MantisBT
   and is prone to multiple cross-site scripting vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Successfully exploitation will allow remote
   attacker to execute arbitrary script code in the browser of an unsuspecting user
   in the context of the affected site. This may allow the attacker to steal
-  cookie-based authentication credentials and to launch other attacks.
-
-  Impact Level: Application");
+  cookie-based authentication credentials and to launch other attacks.");
 
   script_tag(name:"affected", value:"MantisBT versions before 1.3.9, 2.0.x/2.1.x before 2.1.3 and 2.2.x before 2.2.3");
 

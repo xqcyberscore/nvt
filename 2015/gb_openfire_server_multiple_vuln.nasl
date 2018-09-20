@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openfire_server_multiple_vuln.nasl 11348 2018-09-12 07:38:26Z cfischer $
+# $Id: gb_openfire_server_multiple_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # OpenFire Server Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:igniterealtime:openfire";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806061");
-  script_version("$Revision: 11348 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-6972", "CVE-2015-6973", "CVE-2015-7707");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-19 15:36:42 +0530 (Mon, 19 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenFire Server Multiple Vulnerabilities");
@@ -61,9 +61,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to execute arbitrary HTML and script code in a user's browser session in the
   context of an affected site and upload and download of arbitrary files, and
-  to take malicious actions against the application.
-
-  Impact Level: Application");
+  to take malicious actions against the application.");
 
   script_tag(name:"affected", value:"Openfire Server version 3.10.2");
 

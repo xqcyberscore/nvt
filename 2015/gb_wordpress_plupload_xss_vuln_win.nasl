@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_plupload_xss_vuln_win.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_wordpress_plupload_xss_vuln_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # WordPress plupload Cross-Site Scripting Vulnerability (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805985");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-3439");
   script_bugtraq_id(74269);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-12 13:03:09 +0530 (Mon, 12 Oct 2015)");
   script_name("WordPress plupload Cross-Site Scripting Vulnerability (Windows)");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary script code in a user's browser session within
-  the trust relationship between their browser and the server.
-
-  Impact Level: Application");
+  the trust relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"Wordpress version 3.9.x, 4.0.x, and 4.1.x
   before 4.1.2 on Windows.");

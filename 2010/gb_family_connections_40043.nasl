@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_family_connections_40043.nasl 9689 2018-05-02 09:58:46Z ckuersteiner $
+# $Id: gb_family_connections_40043.nasl 11498 2018-09-20 10:34:34Z jschulte $
 #
 # Family Connections 2.2.3 Multiple SQL Injection Vulnerabilities
 #
@@ -28,29 +28,29 @@ CPE = 'cpe:/a:haudenschilt:family_connections_cms';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100634");
- script_version("$Revision: 9689 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-02 11:58:46 +0200 (Wed, 02 May 2018) $");
- script_tag(name:"creation_date", value:"2010-05-11 20:07:01 +0200 (Tue, 11 May 2010)");
- script_bugtraq_id(40043);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.100634");
+  script_version("$Revision: 11498 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:34:34 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2010-05-11 20:07:01 +0200 (Tue, 11 May 2010)");
+  script_bugtraq_id(40043);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_name("Family Connections 2.2.3 Multiple SQL Injection Vulnerabilities");
+  script_name("Family Connections 2.2.3 Multiple SQL Injection Vulnerabilities");
 
- script_xref(name: "URL", value: "http://www.securityfocus.com/bid/40043");
- script_xref(name: "URL", value: "http://www.familycms.com/index.php");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/40043");
+  script_xref(name:"URL", value:"http://www.familycms.com/index.php");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("family_connections_detect.nasl");
- script_mandatory_keys("family_connections/installed");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("family_connections_detect.nasl");
+  script_mandatory_keys("family_connections/installed");
 
- script_tag(name: "summary", value: "Family Connections is prone to multiple SQL-injection vulnerabilities because
+  script_tag(name:"summary", value:"Family Connections is prone to multiple SQL-injection vulnerabilities because
 it fails to sufficiently sanitize user-supplied data before using it in an SQL query.
 
 Exploiting these issues could allow an attacker to compromise the application, access or modify data, or exploit
@@ -70,7 +70,7 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version_is_equal(version: version, test_version: "2.2.3")) {
+if (version_in_range(version: version, test_version: "2.0.0", test_version2: "2.2.3")) {
   security_message(port:port);
   exit(0);
 }

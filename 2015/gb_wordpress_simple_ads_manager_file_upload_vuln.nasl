@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_simple_ads_manager_file_upload_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
+# $Id: gb_wordpress_simple_ads_manager_file_upload_vuln.nasl 11466 2018-09-19 09:23:32Z cfischer $
 #
 # Wordpress Simple Ads Manager Plugin File Upload Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805530");
-  script_version("$Revision: 11321 $");
+  script_version("$Revision: 11466 $");
   script_cve_id("CVE-2015-2825");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 11:23:32 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-08 18:02:38 +0530 (Wed, 08 Apr 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress Simple Ads Manager Plugin File Upload Vulnerability");
@@ -49,9 +49,7 @@ if(description)
   the 'path' parameter.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  unauthenticated remote attacker to upload files in an affected site.
-
-  Impact Level: Application");
+  unauthenticated remote attacker to upload files in an affected site.");
 
   script_tag(name:"affected", value:"Wordpress Simple Ads Manager Plugin
   version 2.5.94");
@@ -78,6 +76,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
@@ -96,10 +95,11 @@ if(wpRes && wpRes =~ "HTTP/1.. 200 OK")
 {
   url = dir + "/wp-content/plugins/simple-ads-manager/sam-ajax-admin.php";
 
+  vtstring = get_vt_string();
   useragent = get_http_user_agent();
   host = http_host_name(port:http_port);
 
-  fileName = 'openvas_' + rand() + '.php';
+  fileName = vtstring + '_' + rand() + '.php';
 
   postData = string('-----------------------------18047369202321924582120237505\r\n',
                     'Content-Disposition: form-data; name="path"\r\n\r\n\r\n',

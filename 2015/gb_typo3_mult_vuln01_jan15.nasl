@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_vuln01_jan15.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: gb_typo3_mult_vuln01_jan15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # TYPO3 Multiple Vulnerabilities-01 Jan-2015 (SA-2014-003)
 #
@@ -29,41 +29,40 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805247");
-  script_version("$Revision: 6431 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-9508", "CVE-2014-9509");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-19 12:19:42 +0530 (Mon, 19 Jan 2015)");
   script_name("TYPO3 Multiple Vulnerabilities-01 Jan-2015 (SA-2014-003)");
 
-  script_tag(name: "summary" , value: "This host is installed with TYPO3 and
+  script_tag(name:"summary", value:"This host is installed with TYPO3 and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - Certain input passed to the homepage is not properly sanitised before being
     used to generate anchor links.
+
   - An error related to the 'config.prefixLocalAnchors' configuration option.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow
-  remote attackers to poison the cache and conduct spoofing attacks.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  remote attackers to poison the cache and conduct spoofing attacks.");
 
-  Impact Level: Application.");
-
-  script_tag(name: "affected" , value:"TYPO3 versions 4.5.x before 4.5.39, 4.6.x
+  script_tag(name:"affected", value:"TYPO3 versions 4.5.x before 4.5.39, 4.6.x
   through 6.2.x before 6.2.9, and 7.x before 7.0.2");
 
-  script_tag(name: "solution" , value:"Upgrade to TYPO3 version 4.5.39 or 6.2.9
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.5.39 or 6.2.9
   or 7.0.2 or later. For updates refer to http://typo3.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "URL" , value : "http://secunia.com/advisories/60371");
-  script_xref(name: "URL" , value : "http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2014-003");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/60371");
+  script_xref(name:"URL", value:"http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2014-003");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -77,23 +76,16 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable initialisation
-typoPort = "";
-typoVer = "";
-
-## Get Application HTTP Port
 if(!typoPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Get Typo3 version
 if(!typoVer = get_app_version(cpe:CPE, port:typoPort)){
   exit(0);
 }
 
 if( typoVer !~ "[0-9]+\.[0-9]+\.[0-9]+" ) exit( 0 ); # Version is not exact enough
 
-## Check for version
 if(version_in_range(version:typoVer, test_version:"4.5.0", test_version2:"4.5.38") ||
    version_in_range(version:typoVer, test_version:"4.6.0", test_version2:"6.2.8") ||
    version_in_range(version:typoVer, test_version:"7.0.0", test_version2:"7.0.1"))

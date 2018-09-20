@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_remote_code_exec_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_jboss_remote_code_exec_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # JBoss Application Server Remote Code Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805373");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11492 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-30 14:34:53 +0530 (Thu, 30 Apr 2015)");
   script_name("JBoss Application Server Remote Code Execution Vulnerability");
 
@@ -82,6 +82,7 @@ include("http_keepalive.inc");
 
 http_port = get_http_port(default:8080);
 host = http_host_name( port:http_port );
+useragent = get_http_user_agent();
 
 foreach dir (make_list_unique("/", "/jboss", "/jbossas", cgi_dirs()))
 {
@@ -95,7 +96,7 @@ foreach dir (make_list_unique("/", "/jboss", "/jbossas", cgi_dirs()))
     url = "/jbossass/jbossass.jsp?ppp=id";
     req = string("GET ",url," HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
-                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n\r\n");
+                 "User-Agent: ", useragent, "\r\n\r\n");
     res = http_send_recv(port:http_port, data:req, bodyonly:FALSE);
 
     #Extra Check is Not Possible

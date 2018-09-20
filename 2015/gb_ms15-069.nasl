@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-069.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_ms15-069.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Windows Remote Code Execution (3072631)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:rdp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805721");
-  script_version("$Revision: 11299 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-2368", "CVE-2015-2369");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 12:14:36 +0530 (Wed, 15 Jul 2015)");
   script_name("Microsoft Windows Remote Code Execution (3072631)");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass security, gain elevated privileges and execute arbitrary
-  code on affected system.
-
-  Impact Level: System");
+  code on affected system.");
 
   script_tag(name:"affected", value:"Microsoft Windows Server 2012 R2
 

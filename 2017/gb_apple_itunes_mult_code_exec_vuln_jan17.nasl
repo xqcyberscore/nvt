@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_code_exec_vuln_jan17.nasl 8169 2017-12-19 08:42:31Z cfischer $
+# $Id: gb_apple_itunes_mult_code_exec_vuln_jan17.nasl 11472 2018-09-19 11:20:06Z mmartin $
 #
 # Apple iTunes Multiple Code Execution Vulnerabilities Jan17 (Windows)
 #
@@ -28,41 +28,38 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810526");
-  script_version("$Revision: 8169 $");
+  script_version("$Revision: 11472 $");
   script_cve_id("CVE-2017-2354", "CVE-2017-2355", "CVE-2017-2356", "CVE-2017-2366");
   script_bugtraq_id(95736, 95733);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-01-30 13:20:32 +0530 (Mon, 30 Jan 2017)");
   script_name("Apple iTunes Multiple Code Execution Vulnerabilities Jan17 (Windows)");
 
-  script_tag(name: "summary" , value: "This host is installed with Apple iTunes
+  script_tag(name:"summary", value:"This host is installed with Apple iTunes
   and is prone to multiple code execution vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Multiple flaws are due to multiple memory
+  script_tag(name:"insight", value:"Multiple flaws are due to multiple memory
   corruption and initialization errors.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code. Failed exploit attempts may result in a 
-  denial-of-service condition.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to execute arbitrary code. Failed exploit attempts may result in a
+  denial-of-service condition.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Apple iTunes versions before 12.5.5
+  script_tag(name:"affected", value:"Apple iTunes versions before 12.5.5
   on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple iTunes 12.5.5 or later,
+  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.5.5 or later,
   For updates refer to http://www.apple.com/itunes");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "https://support.apple.com/en-us/HT207486");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT207486");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -76,10 +73,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ituneVer= "";
-
-## Get version
 if(!ituneVer = get_app_version(cpe:CPE)){
   exit(0);
 }

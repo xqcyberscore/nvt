@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigace_cms_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_bigace_cms_xss_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # BigAce CMS Cross-Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805564");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-20 15:59:54 +0530 (Wed, 20 May 2015)");
   script_name("BigAce CMS Cross-Site Scripting Vulnerability");
 
@@ -44,9 +44,7 @@ if(description)
   validate input before returning it to users.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to execute arbitrary HTML and script code in the context of an affected site.
-
-  Impact Level: Application");
+  to execute arbitrary HTML and script code in the context of an affected site.");
 
   script_tag(name:"affected", value:"BigAce CMS version 3.0, prior versions may
   also be affected.");

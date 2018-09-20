@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_94281_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_cloudbees_jenkins_94281_win.nasl 11474 2018-09-19 11:38:50Z mmartin $
 #
 # CloudBees Jenkins 'Java Deserialization' Remote Code Execution Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108062");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11474 $");
   script_cve_id("CVE-2016-9299");
   script_bugtraq_id(94281);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-01-30 13:00:00 +0100 (Mon, 30 Jan 2017)");
   script_name("CloudBees Jenkins 'Java Deserialization' Remote Code Execution Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -59,9 +59,7 @@ if(description)
   to code execution, bypassing existing protection mechanisms.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allows attackers to execute arbitrary code in the context of
-  the affected application. Failed exploits will result in denial-of-service conditions. 
-
-  Impact Level: System/Application");
+  the affected application. Failed exploits will result in denial-of-service conditions.");
 
   script_tag(name:"affected", value:"CloudBees Jenkins LTS 2.19.2 and prior, Jenkins 2.31 and prior.");
 

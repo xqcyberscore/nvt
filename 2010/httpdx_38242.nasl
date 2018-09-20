@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: httpdx_38242.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: httpdx_38242.nasl 11498 2018-09-20 10:34:34Z jschulte $
 #
 # httpdx 'MKD' Command Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100496");
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 11498 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:34:34 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-02-17 20:53:20 +0100 (Wed, 17 Feb 2010)");
   script_bugtraq_id(38242);
   script_tag(name:"cvss_base", value:"7.5");
@@ -49,6 +49,11 @@ if(description)
   directories outside the FTP root directory, which may lead to other attacks.");
   script_tag(name:"affected", value:"This issue affects httpdx 1.5; other versions may also be affected.");
 
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
@@ -65,7 +70,7 @@ if( "httpdx" >!< banner ) exit( 0 );
 version = eregmatch( pattern:"httpdx/([0-9.]+)", string:banner );
 
 if( ! isnull( version[1] ) ) {
-  if(version_is_equal( version:version[1], test_version: "1.5" ) ) {
+  if(version_is_less_equal( version:version[1], test_version: "1.5" ) ) {
     security_message( port:port );
     exit( 0 );
   }

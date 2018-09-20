@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geovision_geohttpserver_dir_trav_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
+# $Id: gb_geovision_geohttpserver_dir_trav_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # GeoVision GeoHttpServer WebCams Directory Traversal Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805072");
-  script_version("$Revision: 11188 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-25 15:49:40 +0530 (Thu, 25 Jun 2015)");
   script_name("GeoVision GeoHttpServer WebCams Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -52,9 +52,7 @@ if(description)
   download arbitrary files through path traversal.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  remote attackers to read arbitrary files on the target system.
-
-  Impact Level: Application");
+  remote attackers to read arbitrary files on the target system.");
 
   script_tag(name:"affected", value:"GeoVision GeoHttpServer 8.3.3.0");
 

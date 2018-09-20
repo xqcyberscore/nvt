@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol15220.nasl 6534 2017-07-05 09:58:29Z teissa $
+# $Id: gb_f5_big_ip_sol15220.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # F5 BIG-IP - iControl vulnerability
 #
@@ -29,38 +29,38 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105232");
- script_cve_id("CVE-2014-2928");
- script_tag(name:"cvss_base", value:"7.1");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 6534 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105232");
+  script_cve_id("CVE-2014-2928");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11452 $");
 
- script_name("F5 BIG-IP - iControl vulnerability");
+  script_name("F5 BIG-IP - iControl vulnerability");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/15000/200/sol15220.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/15000/200/sol15220.html");
 
- script_tag(name: "impact" , value:"Users may be able to run arbitrary commands on a BIG-IP system using an authenticated iControl connection.");
+  script_tag(name:"impact", value:"Users may be able to run arbitrary commands on a BIG-IP system using an authenticated iControl connection.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-script_tag(name: "insight" , value:"The iControl API in F5 BIG-IP allows remote administrators to execute arbitrary commands via shell metacharacters
+  script_tag(name:"insight", value:"The iControl API in F5 BIG-IP allows remote administrators to execute arbitrary commands via shell metacharacters
 in the hostname element in a SOAP request.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"F5 Big-IP is prone to an authenticated code execution vulnerability");
- script_tag(name: "affected" , value:"F5 BIG-IP before 11.6.0");
+  script_tag(name:"summary", value:"F5 Big-IP is prone to an authenticated code execution vulnerability");
+  script_tag(name:"affected", value:"F5 BIG-IP before 11.6.0");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"last_modification", value:"$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
- script_tag(name:"creation_date", value:"2015-03-09 12:19:05 +0100 (Mon, 09 Mar 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-09 12:19:05 +0100 (Mon, 09 Mar 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

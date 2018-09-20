@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-115.nasl 6486 2017-06-29 09:59:06Z teissa $
+# $Id: gb_ms15-115.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Windows Remote Code Execution Vulnerabilities (3105864)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806157");
-  script_version("$Revision: 6486 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-6100", "CVE-2015-6101", "CVE-2015-6102", "CVE-2015-6103",
                 "CVE-2015-6104", "CVE-2015-6109", "CVE-2015-6113");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 10:53:23 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft Windows Remote Code Execution Vulnerabilities (3105864)");
 
@@ -43,25 +43,26 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - The way that Windows handles objects in memory. An attacker who successfully
-    exploited the vulnerabilities could run arbitrary code in kernel mode. 
+    exploited the vulnerabilities could run arbitrary code in kernel mode.
+
   - The Windows fails to properly initialize memory addresses, allowing an
     attacker to retrieve information that could lead to a Kernel Address Space
     Layout Randomization (KASLR) bypass.
+
   - The Adobe Type Manager Library in Windows improperly handles specially
     crafted embedded fonts.
+
   - The Windows kernel fails to properly validate permissions, allowing an
     attacker to inappropriately interact with the filesystem from low
     integrity level user-mode applications.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to do Kernel Address Space Layout Randomization (KASLR) bypass and execute
-  arbitrary code taking complete control of the affected system.
+  arbitrary code taking complete control of the affected system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8/8.1 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8/8.1 x32/x64
   Microsoft Edge on Windows 10 x32/x64
   Microsoft Windows Server 2012/R2
   Microsoft Windows 10 Version 1511 x32/x64
@@ -78,14 +79,15 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3097877");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3101746");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms15-115");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3097877");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3101746");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms15-115");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -95,24 +97,17 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2,
                    win2008:3, win2008r2:2, win8:1, win8x64:1, win2012:1,
                    win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Get file versions
 dllVer = fetch_file_version(sysPath, file_name:"system32\Win32k.sys");
 exeVer = fetch_file_version(sysPath, file_name:"system32\Ntoskrnl.exe");
 if(!dllVer && !exeVer){
@@ -124,14 +119,12 @@ if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
   if(dllVer)
   {
-    ## Check for Win32k.sys version
     if(version_is_less(version:dllVer, test_version:"6.0.6002.19525"))
     {
       VULN2 = TRUE ;
       Vulnerable_range = "Less than 6.0.6002.19525";
     }
 
-    ## Check for Win32k.sys version
     else if(version_in_range(version:dllVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23834"))
     {
       VULN2 = TRUE ;
@@ -141,14 +134,12 @@ if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 
   if(exeVer)
   {
-    ## Check for Ntoskrnl.exe
     if(version_is_less(version:exeVer, test_version:"6.0.6002.19514"))
     {
       VULN3 = TRUE ;
       Vulnerable_range = "Less than 6.0.6002.19514";
     }
 
-    ## Check for Ntoskrnl.exe
     else if(version_in_range(version:exeVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23823"))
     {
       VULN3 = TRUE ;
@@ -157,19 +148,16 @@ if(hotfix_check_sp(winVista:3, win2008:3) > 0)
   }
 }
 
-## Windows 7 and Windows Server 2008 R2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
   if(dllVer)
   {
-    ## Check for Win32k.sys version
     if(version_is_less(version:dllVer, test_version:"6.1.7601.19044"))
     {
       VULN2 = TRUE ;
       Vulnerable_range = "Less than 6.1.7601.19044";
     }
 
-    ## Check for Win32k.sys version
     else if(version_in_range(version:dllVer, test_version:"6.1.7601.22000", test_version2:"6.1.7601.23249"))
     {
       VULN2 = TRUE ;
@@ -179,14 +167,12 @@ else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 
   if(exeVer)
   {
-    ## Check for Ntoskrnl.exe version
     if(version_is_less(version:exeVer, test_version:"6.1.7601.19045"))
     {
       VULN3 = TRUE ;
       Vulnerable_range = "Less than 6.1.7601.19045";
     }
 
-    ## Check for Ntoskrnl.exe version
     else if(exeVer && version_in_range(version:exeVer, test_version:"6.1.7601.22000", test_version2:"6.1.7601.23249"))
     {
       VULN3 = TRUE ;
@@ -195,19 +181,16 @@ else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
   }
 }
 
-## Windows 8 and Windows Server 2012
 else if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 {
   if(dllVer)
   {
-    ## Check for Win32k.sys version
     if(version_is_less(version:dllVer, test_version:"6.2.9200.17554"))
     {
       VULN2 = TRUE ;
       Vulnerable_range = "Less than 6.2.9200.17554";
     }
 
-    ## Check for Win32k.sys version
     else if(version_in_range(version:dllVer, test_version:"6.2.9200.20000", test_version2:"6.2.9200.21670"))
     {
       VULN2 = TRUE ;
@@ -217,14 +200,12 @@ else if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 
   if(exeVer)
   {
-    ## Check for Ntoskrnl.exe version
     if(version_is_less(version:exeVer, test_version:"6.2.9200.17557"))
     {
       VULN3 = TRUE ;
       Vulnerable_range = "Less than 6.2.9200.17557";
     }
 
-    ## Check for Ntoskrnl.exe version
     else if(version_in_range(version:exeVer, test_version:"6.2.9200.20000", test_version2:"6.2.9200.21673"))
     {
       VULN3 = TRUE ;
@@ -236,14 +217,12 @@ else if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 ## Win 8.1 and win2012R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Win32k.sys version
   if(dllVer && version_is_less(version:dllVer, test_version:"6.3.9600.18093"))
   {
     VULN2 = TRUE ;
     Vulnerable_range = "Less than 6.3.9600.18093";
   }
 
-  ## Check for Ntoskrnl.exe version
   else if(exeVer && version_is_less(version:exeVer, test_version:"6.3.9600.18090"))
   {
     VULN3 = TRUE ;
@@ -251,19 +230,14 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
   }
 }
 
-## Windows 10
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && dllVer)
 {
-  ## Check for Win32k.sys version
-  ## Windows 10 Core
   if(version_is_less(version:dllVer, test_version:"10.0.10240.16384"))
   {
     Vulnerable_range = "Less than 10.0.10240.16384";
     VULN2 = TRUE ;
   }
 
-  ## Check for Win32k.sys version
-  ## Windows 10 version 1511
   else if(version_in_range(version:dllVer, test_version:"10.0.10586.0", test_version2:"10.0.10586.2"))
   {
     Vulnerable_range = "10.0.10586.0 - 10.0.10586.2";

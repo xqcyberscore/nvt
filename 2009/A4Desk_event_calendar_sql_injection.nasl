@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: A4Desk_event_calendar_sql_injection.nasl 10721 2018-08-02 03:07:04Z ckuersteiner $
+# $Id: A4Desk_event_calendar_sql_injection.nasl 11449 2018-09-18 10:04:42Z mmartin $
 #
 # A4Desk Event Calendar 'eventid' Parameter SQL Injection
 # Vulnerability
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100006");
-  script_version("$Revision: 10721 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 05:07:04 +0200 (Thu, 02 Aug 2018) $");
+  script_version("$Revision: 11449 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-03-02 16:07:07 +0100 (Mon, 02 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -72,9 +72,9 @@ if( ! can_host_php( port:port ) ) exit( 0 );
 foreach dir( make_list_unique( "/", "/calendar", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = dir + "/admin/index.php?eventid=-1+union+all+select+1,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,3,4,5,6--";
+  url = dir + "/admin/index.php?eventid=-1+union+all+select+1,0x53514c2d496e6a656374696f6e2d54657374,3,4,5,6--";
 
-  if( http_vuln_check( port:port, url:url, pattern:"OpenVAS-SQL-Injection-Test" ) ) {
+  if( http_vuln_check( port:port, url:url, pattern:"SQL-Injection-Test" ) ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_may15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_may15_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-01 May15 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805627");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-0797", "CVE-2015-2708", "CVE-2015-2710", "CVE-2015-2713",
                 "CVE-2015-2716", "CVE-2011-3079");
   script_bugtraq_id(74611, 74615, 53309);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-21 18:31:24 +0530 (Thu, 21 May 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 May15 (Windows)");
 
@@ -45,19 +45,23 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Buffer overflow in the XML parser in Mozilla Firefox.
+
   - Use-after-free vulnerability in the SetBreaks function in Mozilla Firefox.
+
   - Heap-based buffer overflow in the SVGTextFrame class in Mozilla Firefox.
+
   - Multiple unspecified vulnerabilities in the browser engine in Mozilla Firefox.
+
   - Flaw in GStreamer in Mozilla Firefox.
+
   - Flaw in Inter-process Communication (IPC) implementation.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to execute arbitrary code, gain unauthorized access
   to sensitive information, cause the server to crash and gain elevated
-  privileges.
-
-  Impact Level: System/Application");
+  privileges.");
 
   script_tag(name:"affected", value:"Mozilla Firefox ESR 31.x before 31.7 on
   Windows");

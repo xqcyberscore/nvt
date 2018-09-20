@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-028.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_ms15-028.nasl 11475 2018-09-19 12:12:13Z cfischer $
 #
 # Microsoft Windows Task Scheduler security Feature Bypass Vulnerability (3030377)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805144");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11475 $");
   script_cve_id("CVE-2015-0084");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 14:12:13 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-11 10:27:42 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Task Scheduler security Feature Bypass Vulnerability (3030377)");
@@ -49,9 +49,13 @@ if(description)
   attacker to gain elevated privileges.");
 
   script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
+
   Microsoft Windows 8 x32/x64
+
   Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows Server 2012/R2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -69,9 +73,9 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -85,12 +89,12 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win8:1, win8x64:1,
 
 sysPath = smb_get_systemroot();
 if(!sysPath ){
-  exit(-1);
+  exit(0);
 }
 
 dllVer = fetch_file_version(sysPath, file_name:"system32\Ubpm.dll");
 if(!dllVer){
-  exit(-1);
+  exit(0);
 }
 
 if (dllVer =~ "^(6\.1\.7601\.2)"){
@@ -141,3 +145,5 @@ if(VULN)
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

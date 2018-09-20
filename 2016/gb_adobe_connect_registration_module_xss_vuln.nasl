@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_connect_registration_module_xss_vuln.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_adobe_connect_registration_module_xss_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Adobe Connect 'registration module' Cross-Site Scripting Vulnerability
 #
@@ -29,29 +29,26 @@ CPE = "cpe:/a:adobe:connect";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809471");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 11493 $");
   script_cve_id("CVE-2016-7851");
   script_bugtraq_id(94152);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-15 13:01:25 +0530 (Tue, 15 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe Connect 'registration module' Cross-Site Scripting Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with Adobe Connect
+  script_tag(name:"summary", value:"The host is installed with Adobe Connect
   and is prone to cross-site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists as adobe connect does
+  script_tag(name:"insight", value:"The flaw exists as adobe connect does
   not adequately validate user inputs in the events registration module.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause cross-site scripting attack.
-
-  Impact Level: Application");
+  attackers to cause cross-site scripting attack.");
 
   script_tag(name:"affected", value:"Adobe Connect versions before 9.5.7 on
   Windows.");
@@ -61,7 +58,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/connect/apsb16-35.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/connect/apsb16-35.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -72,29 +69,17 @@ if(description)
   exit(0);
 }
 
-##
-### Code Starts Here
-##
-
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-acPort = "";
-acVer = "";
-dir = "";
-
-## Get HTTP Port
 if(!acPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!acVer = get_app_version(cpe:CPE, port:acPort)){
   exit(0);
 }
 
-## Check for vulnerable version
 if(version_is_less(version:acVer, test_version:"9.5.7"))
 {
   report = report_fixed_ver(installed_version:acVer, fixed_version:"9.5.7");

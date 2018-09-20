@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_files_external_info_disc_vuln.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_owncloud_files_external_info_disc_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # ownCloud 'files_external' RSA Key Validation Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805283");
-  script_version("$Revision: 11299 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-5341");
   script_bugtraq_id(70039);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-19 17:25:47 +0530 (Thu, 19 Feb 2015)");
   script_name("ownCloud 'files_external' RSA Key Validation Information Disclosure Vulnerability");
 
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct man-in-the-middle attack and spoof a valid host key
-  bypassing authentication.
-
-  Impact Level: Application");
+  bypassing authentication.");
 
   script_tag(name:"affected", value:"ownCloud Server 6.x before 6.0.5");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-076.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_ms16-076.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # Microsoft Windows Netlogon Remote Code Execution Vulnerability (3167691)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808227");
-  script_version("$Revision: 5588 $");
+  script_version("$Revision: 11473 $");
   script_cve_id("CVE-2016-3228");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-15 08:30:23 +0530 (Wed, 15 Jun 2016)");
   script_name("Microsoft Windows Netlogon Remote Code Execution Vulnerability (3167691)");
 
@@ -41,17 +41,14 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaw occurs when windows improperly 
+  script_tag(name:"insight", value:"The flaw occurs when windows improperly
   handles objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to execute arbitrary code in the context of the currently logged-in user. 
-  Failed exploit attempts will likely result in denial of service conditions.
+  to execute arbitrary code in the context of the currently logged-in user.
+  Failed exploit attempts will likely result in denial of service conditions.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows Server 2012/2012R2
+  script_tag(name:"affected", value:"Microsoft Windows Server 2012/2012R2
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.");
 
@@ -64,13 +61,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3167691");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-076");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3167691");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-076");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -81,32 +79,23 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2008:3, win2008r2:2, win2012:1, win2012R2:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of Wdigest.dll and Cng.sys
 wgdllVer = fetch_file_version(sysPath, file_name:"System32\Wdigest.dll");
 cngsysVer = fetch_file_version(sysPath, file_name:"System32\drivers\Cng.sys");
 if(!wgdllVer && !cngsysVer){
   exit(0);
 }
 
-## Windows Server 2008
 if(hotfix_check_sp(win2008:3) > 0 && wgdllVer)
 {
-  ## Check for Wdigest.dll version
   if(version_is_less(version:wgdllVer, test_version:"6.0.6002.19659"))
   {
     Vulnerable_range = "Less than 6.0.6002.19659";
@@ -119,10 +108,8 @@ if(hotfix_check_sp(win2008:3) > 0 && wgdllVer)
   }
 }
 
-## Windows Server 2008 R2
 else if(hotfix_check_sp(win2008r2:2) > 0 && cngsysVer)
 {
-  ## Check for cng.sys version
   if(version_is_less(version:cngsysVer, test_version:"6.1.7601.23451"))
   {
     Vulnerable_range = "Less than 6.1.7601.23451";
@@ -130,10 +117,8 @@ else if(hotfix_check_sp(win2008r2:2) > 0 && cngsysVer)
   }
 }
 
-## Windows Server 2012
 else if(hotfix_check_sp(win2012:1) > 0 && cngsysVer)
 {
-  ## Check for cng.sys version
   if(version_is_less(version:cngsysVer, test_version:"6.2.9200.21637"))
   {
      Vulnerable_range = "Less than 6.2.9200.21637";
@@ -141,10 +126,8 @@ else if(hotfix_check_sp(win2012:1) > 0 && cngsysVer)
   }
 }
 
-## Windows Server 2012 R2
 else if(hotfix_check_sp(win2012R2:1) > 0 && cngsysVer)
 {
-  ## Check for cng.sys version
   if(version_is_less(version:cngsysVer, test_version:"6.3.9600.18340"))
   {
     Vulnerable_range = "Less than 6.3.9600.18340";
@@ -155,7 +138,6 @@ else if(hotfix_check_sp(win2012R2:1) > 0 && cngsysVer)
 ## Server 2012 R2
 else if(hotfix_check_sp(win2012R2:1) > 0 && wgdllVer)
 {
-  ## Check for Wdigest.dll version
   if(version_is_less(version:wgdllVer, test_version:"6.3.9600.18334"))
   {
     Vulnerable_range = "Less than 6.3.9600.18334";

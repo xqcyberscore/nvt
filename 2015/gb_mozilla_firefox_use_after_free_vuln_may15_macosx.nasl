@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_use_after_free_vuln_may15_macosx.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_mozilla_firefox_use_after_free_vuln_may15_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Mozilla Firefox Plugin Initialization Use-after-free Vulnerability-Apr15 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805545");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-2706");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-04 14:39:13 +0530 (Mon, 04 May 2015)");
   script_name("Mozilla Firefox Plugin Initialization Use-after-free Vulnerability- Apr15 (Mac OS X)");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to conduct denial-of-service attack and potentially execute arbitrary
-  code.
-
-  Impact Level: System/Application");
+  code.");
 
   script_tag(name:"affected", value:"Mozilla Firefox before version 37.0.2
   on Mac OS X");

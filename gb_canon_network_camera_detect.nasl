@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_canon_network_camera_detect.nasl 11358 2018-09-12 11:45:21Z tpassfeld $
+# $Id: gb_canon_network_camera_detect.nasl 11450 2018-09-18 10:48:31Z tpassfeld $
 #
 # Canon Network Camera Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114031");
-  script_version("$Revision: 11358 $");
+  script_version("$Revision: 11450 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 13:45:21 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:48:31 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-11 12:04:27 +0200 (Tue, 11 Sep 2018)");
   script_name("Canon Network Camera Remote Detection");
   script_category(ACT_GATHER_INFO);
@@ -85,7 +85,7 @@ if("hardware:=" >< res || "type:=" >< res || "firmware:=" >< res || ('<a href="/
   else if(mod[2]) model = mod[2];
   else if(mod[3]) model = mod[3];
 
-  set_kb_item(name: "canon/network_camera/model", value: model);
+  if(model) set_kb_item(name: "canon/network_camera/model", value: model);
 
   cpe = "cpe:/a:canon:network_camera:";
 

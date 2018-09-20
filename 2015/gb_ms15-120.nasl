@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-120.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-120.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # MS Windows IPSec Denial of Service Vulnerability (3102939)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805775");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-6111");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 08:52:04 +0530 (Wed, 11 Nov 2015)");
   script_name("MS Windows IPSec Denial of Service Vulnerability (3102939)");
 
@@ -45,9 +45,7 @@ if(description)
   Security (IPSec) service improperly handles encryption negotiation.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to conduct denial-of-service attacks.
-
-  Impact Level: System");
+  to conduct denial-of-service attacks.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows 8.1 x32/x64

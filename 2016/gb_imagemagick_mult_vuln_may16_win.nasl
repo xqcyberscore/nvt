@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_vuln_may16_win.nasl 8173 2017-12-19 11:45:56Z cfischer $
+# $Id: gb_imagemagick_mult_vuln_may16_win.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # ImageMagick Multiple Vulnerabilities May16 (Windows)
 #
@@ -29,48 +29,50 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807568");
-  script_version("$Revision: 8173 $");
+  script_version("$Revision: 11493 $");
   script_cve_id("CVE-2016-3714", "CVE-2016-3715", "CVE-2016-3716", "CVE-2016-3717",
                 "CVE-2016-3718");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 12:45:56 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-05 14:06:00 +0530 (Thu, 05 May 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick Multiple Vulnerabilities May16 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with ImageMagick
+  script_tag(name:"summary", value:"The host is installed with ImageMagick
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws are due to,
+  script_tag(name:"insight", value:"The multiple flaws are due to,
+
   - Insufficient filtering for filename passed to delegate's command.
+
   - An error in ImageMagick's ephemeral pseudoprotocol.
+
   - An error in ImageMagick's msl pseudo protocol.
+
   - An error in ImageMagick's label pseudo protocol.
+
   - An SSRF vulnerability.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow 
-  attackers to execute arbitrary code, to delete arbitrary files, to move image 
-  files to file with any extension in any folder, to get content of the files 
-  from the server.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  attackers to execute arbitrary code, to delete arbitrary files, to move image
+  files to file with any extension in any folder, to get content of the files
+  from the server.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"ImageMagick versions before 6.9.3-10 
+  script_tag(name:"affected", value:"ImageMagick versions before 6.9.3-10
   and 7.x before 7.0.1-1 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to ImageMagick version
-  6.9.3-10 or 7.0.1-1 or later, 
+  script_tag(name:"solution", value:"Upgrade to ImageMagick version
+  6.9.3-10 or 7.0.1-1 or later,
   For updates refer to http://www.imagemagick.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.imagemagick.org/discourse-server/viewtopic.php?f=4&t=29588");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2016/05/03/18");
-  script_xref(name : "URL" , value : "https://imagetragick.com");
+  script_xref(name:"URL", value:"https://www.imagemagick.org/discourse-server/viewtopic.php?f=4&t=29588");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2016/05/03/18");
+  script_xref(name:"URL", value:"https://imagetragick.com");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -82,16 +84,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-imVer = "";
-report = "";
-
-## Get version
 if(!imVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:imVer, test_version:"6.9.3.10"))
 {
   fix = "6.9.3.10";

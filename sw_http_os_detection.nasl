@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 11382 2018-09-14 08:36:05Z cfischer $
+# $Id: sw_http_os_detection.nasl 11453 2018-09-18 11:25:31Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 11382 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 10:36:05 +0200 (Fri, 14 Sep 2018) $");
+  script_version("$Revision: 11453 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:25:31 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -793,11 +793,13 @@ function check_http_banner( port, banner ) {
 
 function check_php_banner( port, host ) {
 
-  local_var port, host, phpList, phpFiles, phpinfoBanner, banner_type;
+  local_var port, host, phpList, phpFiles, phpinfoBanners, banner_type;
 
   phpList = get_http_kb_file_extensions( port:port, host:host, ext:"php" );
   if( phpList ) phpFiles = make_list( phpList );
-  phpinfoBanner = get_kb_item( "php/phpinfo/phpversion/" + port );
+
+  # TODO: This was unused but we should try to use this info as well...
+  # phpinfoBanners = get_kb_list( "php/phpinfo/" + host + "/" + port + "/detected_versions" );
 
   if( phpFiles[0] ) {
     phpBanner = get_http_banner( port:port, file:phpFiles[0] );

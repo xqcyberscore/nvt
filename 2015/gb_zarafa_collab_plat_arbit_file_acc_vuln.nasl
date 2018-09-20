@@ -30,10 +30,10 @@ CPE = "cpe:/a:zarafa:zarafa_collaboration_platform";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805708");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"6.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-03 15:19:25 +0530 (Fri, 03 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_cve_id("CVE-2015-3436");
@@ -51,9 +51,7 @@ if (description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to retrieve or delete arbitrary files, which may aid in further
-  attacks.
-
-  Impact Level: Application");
+  attacks.");
 
   script_tag(name:"affected", value:"Zarafa Collaboration Platform (ZCP)
   before 7.1.13 and 7.2.x before 7.2.1");

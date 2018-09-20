@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_picasa_camp_section_bof_vuln_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_google_picasa_camp_section_bof_vuln_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Google Picasa 'CAMF' Section Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:google:picasa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806630");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-8221");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-26 13:18:12 +0530 (Thu, 26 Nov 2015)");
   script_name("Google Picasa 'CAMF' Section Buffer Overflow Vulnerability (Mac OS X)");
 
@@ -45,9 +45,7 @@ if(description)
   error when processing CAMF section in FOVb images.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code on the affected system.
-
-  Impact Level: System/Application");
+  attackers to execute arbitrary code on the affected system.");
 
   script_tag(name:"affected", value:"Google Picasa before version 3.9.140
   build 259 on MAc OS X");

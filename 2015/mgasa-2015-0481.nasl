@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0481.nasl 6563 2017-07-06 12:23:47Z cfischer $
+# $Id: mgasa-2015-0481.nasl 11484 2018-09-20 03:38:48Z ckuersteiner $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -21,43 +21,59 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
+
 if(description)
- {
-script_oid("1.3.6.1.4.1.25623.1.0.131159");
-script_version("$Revision: 6563 $");
-script_tag(name:"creation_date", value:"2015-12-21 14:43:00 +0200 (Mon, 21 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:23:47 +0200 (Thu, 06 Jul 2017) $");
-script_name("Mageia Linux Local Check: mgasa-2015-0481");
-script_tag(name: "insight", value: "An error in the parsing of incoming responses allows some records with an incorrect class to be accepted by BIND instead of being rejected as malformed. This can trigger a REQUIRE assertion failure when those records are subsequently cached. Intentional exploitation of this condition is possible and could be used as a denial-of-service vector against servers performing recursive queries (CVE-2015-8500)."); 
-script_tag(name : "solution", value : "update software");
-script_tag(name : "solution_type", value : "VendorFix");
-script_xref(name : "URL" , value : "https://advisories.mageia.org/MGASA-2015-0481.html");
-script_cve_id("CVE-2015-8500");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-script_tag(name:"qod_type", value:"package");
-script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
-script_category(ACT_GATHER_INFO);
-script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0481");
-script_copyright("Eero Volotinen");
-script_family("Mageia Linux Local Security Checks");
-exit(0);
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.131159");
+  script_version("$Revision: 11484 $");
+  script_tag(name:"creation_date", value:"2015-12-21 14:43:00 +0200 (Mon, 21 Dec 2015)");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 05:38:48 +0200 (Thu, 20 Sep 2018) $");
+
+  script_name("Mageia Linux Local Check: mgasa-2015-0481");
+
+  script_tag(name: "insight", value: "An error in the parsing of incoming responses allows some records with an
+incorrect class to be accepted by BIND instead of being rejected as malformed. This can trigger a REQUIRE
+assertion failure when those records are subsequently cached. Intentional exploitation of this condition is
+possible and could be used as a denial-of-service vector against servers performing recursive queries
+(CVE-2015-8000)."); 
+
+  script_tag(name:"solution", value:"update software");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"https://advisories.mageia.org/MGASA-2015-0481.html");
+  script_cve_id("CVE-2015-8000");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"qod_type", value:"package");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"summary", value:"Mageia Linux Local Security Checks mgasa-2015-0481");
+  script_copyright("Eero Volotinen");
+
+  script_family("Mageia Linux Local Security Checks");
+
+  exit(0);
 }
+
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
+
 release = get_kb_item("ssh/login/release");
+
 res = "";
+
 if(release == NULL)
 {
  exit(0);
 }
+
 if(release == "MAGEIA5")
 {
-if ((res = isrpmvuln(pkg:"bind", rpm:"bind~9.10.3.P2~1.mga5", rls:"MAGEIA5")) != NULL) {
-  security_message(data:res);
-  exit(0);
+  if ((res = isrpmvuln(pkg:"bind", rpm:"bind~9.10.3.P2~1.mga5", rls:"MAGEIA5")) != NULL) {
+    security_message(data:res);
+    exit(0);
 }
+
 if (__pkg_match) exit(99); #Not vulnerable
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_badWPAD.nasl 3805 2016-08-05 15:43:58Z mime $
+# $Id: gb_badWPAD.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # badWPAD
 #
@@ -27,28 +27,33 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105845");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 3805 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-05 17:43:58 +0200 (Fri, 05 Aug 2016) $");
- script_tag(name:"creation_date", value:"2016-08-05 14:58:54 +0200 (Fri, 05 Aug 2016)");
- script_name("badWPAD");
+  script_oid("1.3.6.1.4.1.25623.1.0.105845");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11473 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-05 14:58:54 +0200 (Fri, 05 Aug 2016)");
+  script_name("badWPAD");
 
- script_tag(name: "summary" , value: "The remote host is serving a Web Proxy Auto-Discovery Protocol config file.
+  script_tag(name:"summary", value:"The remote host is serving a Web Proxy Auto-Discovery Protocol config file.
 The Web Proxy Auto-Discovery Protocol (WPAD) is a method used by clients to locate the URL of a configuration file using DHCP and/or DNS discovery methods.
 Once detection and download of the configuration file is complete, it can be executed to determine the proxy for a specified URL.
 
 There are known security issues with WPAD. See http://www.trendmicro.co.uk/media/misc/wp-badwpad.pdf for more information.");
 
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution", value:"Apply the mentioned steps in the referenced advisory to mitigate the issue.");
 
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"Mitigation");
+
+  script_xref(name:"URL", value:"http://www.trendmicro.co.uk/media/misc/wp-badwpad.pdf");
+
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
  exit(0);
 }
 

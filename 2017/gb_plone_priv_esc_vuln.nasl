@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plone_priv_esc_vuln.nasl 5471 2017-03-03 07:01:03Z cfi $
+# $Id: gb_plone_priv_esc_vuln.nasl 11474 2018-09-19 11:38:50Z mmartin $
 #
 # Plone CMS Privilege Escalation Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:plone:plone";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106621");
-  script_version("$Revision: 5471 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-03 08:01:03 +0100 (Fri, 03 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-27 14:16:45 +0700 (Mon, 27 Feb 2017)");
+  script_version("$Revision: 11474 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-27 14:16:45 +0700 (Mon, 27 Feb 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-4041");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Plone CMS Privilege Escalation Vulnerability");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_plone_detect.nasl");
   script_mandatory_keys("plone/installed");
 
-  script_tag(name: "summary", value: "Plone CMS is prone to a privilege escalation vulnerability in WebDAV
+  script_tag(name:"summary", value:"Plone CMS is prone to a privilege escalation vulnerability in WebDAV
 requests.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Plone does not have security declarations for Dexterity content-related
+  script_tag(name:"insight", value:"Plone does not have security declarations for Dexterity content-related
 WebDAV requests, which allows remote attackers to gain webdav access via unspecified vectors.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may gain webdav access.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may gain webdav access.");
 
-  script_tag(name: "affected", value: "Plone CMS version 4.x and 5.x");
+  script_tag(name:"affected", value:"Plone CMS version 4.x and 5.x");
 
-  script_tag(name: "solution", value: "Apply the hotfix 20160419 or update to version 5.0.5 or later.");
+  script_tag(name:"solution", value:"Apply the hotfix 20160419 or update to version 5.0.5 or later.");
 
-  script_xref(name: "URL", value: "https://plone.org/security/hotfix/20160419/privilege-escalation-in-webdav");
-  script_xref(name: "URL", value: "https://plone.org/security/hotfix/20160419");
+  script_xref(name:"URL", value:"https://plone.org/security/hotfix/20160419/privilege-escalation-in-webdav");
+  script_xref(name:"URL", value:"https://plone.org/security/hotfix/20160419");
 
   exit(0);
 }

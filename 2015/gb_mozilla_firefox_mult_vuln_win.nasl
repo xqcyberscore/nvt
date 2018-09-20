@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_win.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_mozilla_firefox_mult_vuln_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805099");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-4497", "CVE-2015-4498");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-31 16:06:00 +0530 (Mon, 31 Aug 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities (Windows)");
 
@@ -43,19 +43,19 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - A use-after-free vulnerability with a '<canvas>' element on a page. This
   occurs when a resize event is triggered in concert with style changes but
   the canvas references have been recreated in the meantime, destroying the
   originally referenced context. This results in an exploitable crash.
+
   - A vulnerablity in the way Firefox handles installation of add-ons.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code by leveraging improper interaction between
   resize events and changes to Cascading Style Sheets (CSS) token sequences for
   a CANVAS element and to bypass an intended user-confirmation requirement by
-  constructing a crafted data.
-
-  Impact Level: System/Application");
+  constructing a crafted data.");
 
   script_tag(name:"affected", value:"Mozilla Firefox version before 40.0.3 on
   Windows");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openoffice_mult_vuln_apr15_win.nasl 6497 2017-06-30 09:58:54Z teissa $
+# $Id: gb_apache_openoffice_mult_vuln_apr15_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Apache OpenOffice Multiple Vulnerabilities Apr15 (Windows)
 #
@@ -29,42 +29,41 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805463");
-  script_version("$Revision: 6497 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-3575", "CVE-2014-3524");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-09 13:09:07 +0530 (Thu, 09 Apr 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Apache OpenOffice Multiple Vulnerabilities Apr15 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Apache
+  script_tag(name:"summary", value:"The host is installed with Apache
   OpenOffice and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An error in application due to the way the it generates OLE previews when
     handling a specially crafted document that is distributed to other parties.
+
   - An error in application that is triggered when handling specially
     crafted Calc spreadsheets.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a
+  script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to gain access to potentially sensitive information
-  and to execute arbitrary commands.
+  and to execute arbitrary commands.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Apache OpenOffice before 4.1.1 on Windows.");
 
-  script_tag(name: "affected" , value:"Apache OpenOffice before 4.1.1 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Apache OpenOffice version
+  script_tag(name:"solution", value:"Upgrade to Apache OpenOffice version
   4.1.1 or later, For updates refer to http://www.openoffice.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1030755");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1030754");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1030755");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1030754");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -77,16 +76,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-openoffcVer = "";
-report = "";
-
-## Get version
 if(!openoffcVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 ## Appache OpenOffice version 4.1.1 is equal to 4.11.9775
 if(version_is_less(version:openoffcVer, test_version:"4.11.9775"))
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_excel_service_ms17-014.nasl 9313 2018-04-05 06:23:26Z cfischer $
+# $Id: gb_sharepoint_server_excel_service_ms17-014.nasl 11474 2018-09-19 11:38:50Z mmartin $
 #
 # MS SharePoint Server Excel Services Multiple Vulnerabilities (4013241)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810709");
-  script_version("$Revision: 9313 $");
+  script_version("$Revision: 11474 $");
   script_cve_id("CVE-2017-0006", "CVE-2017-0052", "CVE-2017-0027");
   script_bugtraq_id(96740, 96741, 96043);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 13:33:17 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server Excel Services Multiple Vulnerabilities (4013241)");
@@ -55,9 +55,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to run arbitrary code in the context of the current user and gain
-  access to potentially sensitive information.
-
-  Impact Level: System/Application");
+  access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"Excel Services on SharePoint Server 2013
 
@@ -70,14 +68,15 @@ if(description)
   https://technet.microsoft.com/library/security/ms17-014");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3178678");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3178685");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3172431");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms17-014");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3178678");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3178685");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3172431");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms17-014");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/SharePoint/Server/Ver");
   exit(0);
 }

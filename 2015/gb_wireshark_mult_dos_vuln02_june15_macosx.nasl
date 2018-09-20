@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805395");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-3814", "CVE-2015-3812", "CVE-2015-3811");
   script_bugtraq_id(74637, 74635, 74631);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-02 09:54:32 +0530 (Tue, 02 Jun 2015)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-02 June15 (Mac OS X)");
 
@@ -44,17 +44,18 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The X11 dissector that is triggered when handling a specially crafted
   packet, which can result in a memory leak.
+
   - 'epan/dissectors/packet-wcp.c' in the WCP dissector improperly refers to
   previously processed bytes.
+
   - The IEEE 802.11 dissector that is triggered when handling a malformed
   packet, which can result in an infinite loop.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct denial of service attack.
-
-  Impact Level: Application");
+  attackers to conduct denial of service attack.");
 
   script_tag(name:"affected", value:"Wireshark version 1.10.x before 1.10.14
   and 1.12.x before 1.12.5 on Mac OS X");

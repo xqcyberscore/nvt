@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_bigfix_web_reports_94155.nasl 9437 2018-04-11 10:24:03Z cfischer $
+# $Id: gb_ibm_bigfix_web_reports_94155.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # IBM BigFix Platform  Remote Command Injection Vulnerability
 #
@@ -29,35 +29,35 @@ CPE = "cpe:/a:ibm:bigfix_webreports";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140070");
- script_bugtraq_id(94155);
- script_cve_id("CVE-2016-0396");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9437 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140070");
+  script_bugtraq_id(94155);
+  script_cve_id("CVE-2016-0396");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11473 $");
 
- script_name("IBM BigFix Platform  Remote Command Injection Vulnerability");
+  script_name("IBM BigFix Platform  Remote Command Injection Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/94155");
- script_xref(name:"URL", value:"http://www.ibm.com/");
- script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21993206");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/94155");
+  script_xref(name:"URL", value:"http://www.ibm.com/");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21993206");
 
- script_tag(name: "impact" , value:"Remote attackers can exploit this issue to execute arbitrary commands within the context of the application.");
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Updates are available. Please see the references or vendor advisory for more information.");
- script_tag(name: "summary" , value:"IBM BigFix Platform is prone to a remote command-injection vulnerability.");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"impact", value:"Remote attackers can exploit this issue to execute arbitrary commands within the context of the application.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
+  script_tag(name:"summary", value:"IBM BigFix Platform is prone to a remote command-injection vulnerability.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod", value:"50"); # There are Workarounds and Mitigations. Relying on the version would result in FPs...
+  script_tag(name:"qod", value:"50"); # There are Workarounds and Mitigations. Relying on the version would result in FPs...
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2016-11-21 10:40:03 +0100 (Mon, 21 Nov 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ibm_bigfix_web_reports_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("ibm/bigfix_web_reports/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-21 10:40:03 +0100 (Mon, 21 Nov 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_ibm_bigfix_web_reports_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("ibm/bigfix_web_reports/version");
 
  exit(0);
 }

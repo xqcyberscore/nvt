@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_unspecified_vuln01_nov15_lin.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_oracle_virtualbox_mult_unspecified_vuln01_nov15_lin.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Oracle Virtualbox Multiple Unspecified Vulnerabilities-01 Nov15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806604");
-  script_version("$Revision: 11299 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-4896", "CVE-2015-4813");
   script_bugtraq_id(77198, 77185);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-02 13:04:44 +0530 (Mon, 02 Nov 2015)");
   script_name("Oracle Virtualbox Multiple Unspecified Vulnerabilities-01 Nov15 (Linux)");
 
@@ -47,9 +47,7 @@ if(description)
   unspecified errors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to have an impact on availability.
-
-  Impact Level: Application");
+  to have an impact on availability.");
 
   script_tag(name:"affected", value:"VirtualBox versions prior to 4.0.34,
   4.1.42, 4.2.34, 4.3.32, and 5.0.8 on Linux.");

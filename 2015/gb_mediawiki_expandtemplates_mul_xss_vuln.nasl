@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_expandtemplates_mul_xss_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_mediawiki_expandtemplates_mul_xss_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # MediaWiki ExpandTemplates extension Multiple Vulnerabilities - Jan15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805327");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-9276", "CVE-2014-9478");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 12:37:41 +0530 (Fri, 23 Jan 2015)");
   script_name("MediaWiki ExpandTemplates extension Multiple Vulnerabilities - Jan15");
 
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   remote attacker to execute arbitrary script code in a user's browser
-  session within the trust relationship between their browser and the server.
-
-  Impact Level: Application");
+  session within the trust relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"ExpandTemplates version before 1.24
   extension for MediaWiki.");

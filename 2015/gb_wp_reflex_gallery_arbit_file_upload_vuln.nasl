@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_reflex_gallery_arbit_file_upload_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_wp_reflex_gallery_arbit_file_upload_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Wordpress Reflex Gallery Arbitrary File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805154");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11492 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-17 16:10:09 +0530 (Tue, 17 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Reflex Gallery Arbitrary File Upload Vulnerability");
@@ -71,6 +71,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
@@ -84,10 +85,12 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
 url = dir + '/wp-content/plugins/reflex-gallery/reflex-gallery.php';
 wpReq = http_get(item: url,  port:http_port);
 wpRes = http_keepalive_send_recv(port:http_port, data:wpReq, bodyonly:FALSE);
+useragent = get_http_user_agent();
+vtstring = get_vt_string();
 
 if(wpRes && wpRes =~ "HTTP/1.. 200 OK")
 {
-  fileName = 'OpenVAS_' + rand() + '.php';
+  fileName = vtstring + '_' + rand() + '.php';
 
   url = dir + '/wp-content/plugins/reflex-gallery/admin/scripts/FileUploader/php.php?Year=2015&Month=03';
 
@@ -101,14 +104,14 @@ if(wpRes && wpRes =~ "HTTP/1.. 200 OK")
 
   sndReq = string("POST ", url, " HTTP/1.1\r\n",
                   "Host: ", get_host_name(), "\r\n",
-                  "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                  "User-Agent: ", useragent, "\r\n",
                   "Content-Length: ", strlen(postData), "\r\n",
                   "Content-Type: multipart/form-data; boundary=----------7nLRJ4OOOKgWZky9bsIqMS\r\n\r\n",
                   postData, "\r\n");
 
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  if('success":true' >< rcvRes && 'OpenVAS_' >< rcvRes)
+  if('success":true' >< rcvRes && vtstring + '_' >< rcvRes)
   {
     ## Uploaded file URL
     url = dir + '/wp-content/uploads/2015/03/' + fileName;
@@ -117,7 +120,7 @@ if(wpRes && wpRes =~ "HTTP/1.. 200 OK")
        pattern:">phpinfo\(\)<", extra_check:">System"))
     {
       if(http_vuln_check(port:http_port, url:url,
-         check_header:FALSE, pattern:"HTTP/1.. 200 OK"))
+         check_header:FALSE, pattern:"^HTTP/1\.[01] 200"))
       {
         report = "\nUnable to Delete the uploaded File at " + url + "\n";
       }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-105.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-105.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # MS Windows Hyper-V Security Feature Bypass Vulnerability (3091287)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806046");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-2534");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 12:21:46 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Hyper-V Security Feature Bypass Vulnerability (3091287)");
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   attacker to bypass network access control lists, allowing the attacker
-  to gain unauthorized access to network resources.
-
-  Impact Level: System");
+  to gain unauthorized access to network resources.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8.1 x64
   Microsoft Windows 10 x64

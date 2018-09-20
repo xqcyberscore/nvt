@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_sling_adobe_aem_info_disc_vuln.nasl 10833 2018-08-08 10:35:26Z cfischer $
+# $Id: gb_apache_sling_adobe_aem_info_disc_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Apache Sling Framework (Adobe AEM) Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:experience_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807066");
-  script_version("$Revision: 10833 $");
+  script_version("$Revision: 11493 $");
   script_cve_id("CVE-2016-0956");
   script_bugtraq_id(83119);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-11 14:43:49 +0530 (Thu, 11 Feb 2016)");
   script_name("Apache Sling Framework (Adobe AEM) Information Disclosure Vulnerability");
   script_category(ACT_ATTACK);
@@ -59,9 +59,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   unauthenticated users to enumerate local system files/folders that are not
-  accessible publicly to unauthenticated users.
-
-  Impact Level: Application");
+  accessible publicly to unauthenticated users.");
 
   script_tag(name:"affected", value:"Apache Sling Framework version 2.3.6 as used in
   Adobe Experience Manager 5.6.1, 6.0.0, and 6.1.0");

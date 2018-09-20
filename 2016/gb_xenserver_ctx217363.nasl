@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx217363.nasl 5595 2017-03-16 17:32:19Z mime $
+# $Id: gb_xenserver_ctx217363.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # Citrix XenServer Security Update for CVE-2016-7777 (CTX217363)
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/a:citrix:xenserver";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140014");
- script_cve_id("CVE-2016-7777");
- script_tag(name:"cvss_base", value:"3.3");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 5595 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140014");
+  script_cve_id("CVE-2016-7777");
+  script_tag(name:"cvss_base", value:"3.3");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:N");
+  script_version("$Revision: 11473 $");
 
- script_name("Citrix XenServer Security Update for CVE-2016-7777 (CTX217363)");
+  script_name("Citrix XenServer Security Update for CVE-2016-7777 (CTX217363)");
 
- script_xref(name:"URL", value:"http://support.citrix.com/article/CTX217363");
+  script_xref(name:"URL", value:"http://support.citrix.com/article/CTX217363");
 
- script_tag(name: "vuldetect" , value:"Check the installed hotfixes");
- script_tag(name: "solution" , value:"Apply the hotfix referenced in the advisory");
+  script_tag(name:"vuldetect", value:"Check the installed hotfixes");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory");
 
- script_tag(name: "summary" , value:"A security vulnerability has been identified in Citrix XenServer that may allow malicious user code within an HVM guest VM to read or modify the contents of certain registers belonging to other tasks within that same guest VM.");
- script_tag(name: "affected" , value:"This vulnerability affects all currently supported versions of Citrix XenServer up to and including Citrix XenServer 7.0.");
+  script_tag(name:"summary", value:"A security vulnerability has been identified in Citrix XenServer that may allow malicious user code within an HVM guest VM to read or modify the contents of certain registers belonging to other tasks within that same guest VM.");
+  script_tag(name:"affected", value:"This vulnerability affects all currently supported versions of Citrix XenServer up to and including Citrix XenServer 7.0.");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 18:32:19 +0100 (Thu, 16 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-10-25 10:24:27 +0200 (Tue, 25 Oct 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("Citrix Xenserver Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_xenserver_version.nasl");
- script_mandatory_keys("xenserver/product_version","xenserver/patches");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-25 10:24:27 +0200 (Tue, 25 Oct 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Citrix Xenserver Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_xenserver_version.nasl");
+  script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
  exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_heap_buf_ov_vuln_win.nasl 9494 2018-04-16 09:16:25Z asteins $
+# $Id: gb_imagemagick_heap_buf_ov_vuln_win.nasl 11474 2018-09-19 11:38:50Z mmartin $
 #
 # ImageMagick CVE-2017-14224 Heap Buffer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107241");
-  script_version("$Revision: 9494 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 11:16:25 +0200 (Mon, 16 Apr 2018) $");
+  script_version("$Revision: 11474 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-09-12 14:49:44 +0200 (Tue, 12 Sep 2017)");
   script_cve_id("CVE-2017-14224");
   script_bugtraq_id(100702);
@@ -40,19 +40,19 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ImageMagick CVE-2017-14224 Heap Buffer Overflow Vulnerability");
-  script_tag(name: "summary", value: "ImageMagick is prone to a heap-based buffer-overflow vulnerability");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check
+  script_tag(name:"summary", value:"ImageMagick is prone to a heap-based buffer-overflow vulnerability");
+  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check
   if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "ImageMagick is prone to a heap-based buffer-overflow vulnerability
+  script_tag(name:"insight", value:"ImageMagick is prone to a heap-based buffer-overflow vulnerability
   because it fails to adequately bounds-check user-supplied data before copying it into an insufficiently
   sized buffer.");
-  script_tag(name: "impact" , value: "Attackers can exploit this issue to execute arbitrary code within the
+  script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary code within the
   context of the affected application. Failed exploit attempts will likely cause a denial-of-service condition.");
-  script_tag(name: "affected", value: "ImageMagick version 7.0.6-8");
+  script_tag(name:"affected", value:"ImageMagick version 7.0.6-8");
 
-  script_tag(name: "solution", value: "Updates are available. Refer to http://www.imagemagick.org/download/beta/.");
+  script_tag(name:"solution", value:"Updates are available. Refer to http://www.imagemagick.org/download/beta/.");
 
-  script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/100702");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/100702");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

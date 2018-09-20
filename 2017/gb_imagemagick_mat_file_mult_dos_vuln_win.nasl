@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mat_file_mult_dos_vuln_win.nasl 8173 2017-12-19 11:45:56Z cfischer $
+# $Id: gb_imagemagick_mat_file_mult_dos_vuln_win.nasl 11472 2018-09-19 11:20:06Z mmartin $
 #
 # ImageMagick Mat File Multiple Denial of Service Vulnerabilities (Windows)
 #
@@ -29,41 +29,38 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810506");
-  script_version("$Revision: 8173 $");
+  script_version("$Revision: 11472 $");
   script_cve_id("CVE-2016-10070", "CVE-2016-10071");
   script_bugtraq_id(95221, 95222);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 12:45:56 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-01-16 15:59:02 +0530 (Mon, 16 Jan 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick Mat File Multiple Denial of Service Vulnerabilities (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with ImageMagick
+  script_tag(name:"summary", value:"This host is installed with ImageMagick
   and is prone to multiple denial of service vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to multiple
+  script_tag(name:"insight", value:"Multiple flaws are due to multiple
   out of bound errors in mat file.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
-  attackers to cause a denial-of-service condition.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  attackers to cause a denial-of-service condition.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"ImageMagick versions before 6.9.4-0
+  script_tag(name:"affected", value:"ImageMagick versions before 6.9.4-0
   on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to ImageMagick version
+  script_tag(name:"solution", value:"Upgrade to ImageMagick version
   6.9.4-0 or later. For updates refer to http://www.imagemagick.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2016/q4/758");
-  script_xref(name : "URL" , value : "https://github.com/ImageMagick/ImageMagick/commit/b173a352397877775c51c9a0e9d59eb6ce24c455");
-  script_xref(name : "URL" , value : "https://github.com/ImageMagick/ImageMagick/commit/f3b483e8b054c50149912523b4773687e18afe25");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2016/q4/758");
+  script_xref(name:"URL", value:"https://github.com/ImageMagick/ImageMagick/commit/b173a352397877775c51c9a0e9d59eb6ce24c455");
+  script_xref(name:"URL", value:"https://github.com/ImageMagick/ImageMagick/commit/f3b483e8b054c50149912523b4773687e18afe25");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -76,16 +73,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-imVer = "";
-report = "";
-
-## Get version
 if(!imVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:imVer, test_version:"6.9.4.0"))
 {
   report = report_fixed_ver(installed_version:imVer, fixed_version:'6.9.4.0');

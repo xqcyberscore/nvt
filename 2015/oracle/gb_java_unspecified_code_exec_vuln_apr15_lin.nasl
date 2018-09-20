@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_unspecified_code_exec_vuln_apr15_lin.nasl 9064 2018-03-09 09:14:44Z cfischer $
+# $Id: gb_java_unspecified_code_exec_vuln_apr15_lin.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Oracle Java SE JRE Unspecified Code Execution Vulnerability Apr 2015 (Linux)
 #
@@ -29,33 +29,30 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108404");
-  script_version("$Revision: 9064 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-0458");
   script_bugtraq_id(74141);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-09 10:14:44 +0100 (Fri, 09 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-21 17:49:11 +0530 (Tue, 21 Apr 2015)");
   script_name("Oracle Java SE JRE Unspecified Code Execution Vulnerability Apr 2015 (Linux)");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
+  script_tag(name:"summary", value:"The host is installed with Oracle Java SE
   JRE and is prone to arbitrary code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to error related to the
+  script_tag(name:"insight", value:"The flaw is due to error related to the
   Deployment subcomponent.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
-  to execute arbitrary code on affected system.
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
+  to execute arbitrary code on affected system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Oracle Java SE 6 update 91 and prior, 7
+  script_tag(name:"affected", value:"Oracle Java SE 6 update 91 and prior, 7
   update 76 and prior, 8 update 40 and prior on Linux.");
 
-  script_tag(name: "solution" , value:"Apply the patch from below link,
+  script_tag(name:"solution", value:"Apply the patch from below link,
 
   http://www.oracle.com/technetwork/topics/security/cpuapr2015-2365600.html");
 
@@ -63,7 +60,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuapr2015-2365600.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuapr2015-2365600.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

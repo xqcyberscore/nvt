@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_visio_ms15-116.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_ms_visio_ms15-116.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Visio Privilege Elevation Vulnerability (3104540)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806167");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-2503");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 16:50:44 +0530 (Wed, 11 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Visio Privilege Elevation Vulnerability (3104540)");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain elevated privileges and break out of the Internet Explorer
-  sandbox.
-
-  Impact Level: System/Application");
+  sandbox.");
 
   script_tag(name:"affected", value:"Microsoft Visio 2007
   Microsoft Visio 2010

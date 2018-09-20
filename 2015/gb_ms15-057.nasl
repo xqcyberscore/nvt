@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-057.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-057.nasl 11475 2018-09-19 12:12:13Z cfischer $
 #
 # Microsoft Windows Media Player Remote Code Execution Vulnerability (3033890)
 #
@@ -24,16 +24,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805649");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11475 $");
   script_cve_id("CVE-2015-1728");
   script_bugtraq_id(75029);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 14:12:13 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-10 08:37:49 +0530 (Wed, 10 Jun 2015)");
   script_name("Microsoft Windows Media Player Remote Code Execution Vulnerability (3033890)");
 
@@ -49,19 +48,22 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow a
   an unauthenticated, remote attacker to execute arbitrary code with the
   privileges of the user, which can compromise the application and possibly the
-  system.
-
-  Impact Level: System/Application");
+  system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
+
   Microsoft Windows Vista x32/x64 Service Pack 2 and prior
+
   Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://technet.microsoft.com/library/security/MS15-057");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -77,6 +79,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
 
@@ -99,7 +102,7 @@ if(!sysPath ){
 
 dllVer = fetch_file_version(sysPath, file_name:"system32\wmp.dll");
 if(!dllVer){
-  exit(-1);
+  exit(0);
 }
 
 if(hotfix_check_sp(win2003x64:3,win2003:3) > 0)
@@ -130,3 +133,4 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
   exit(0);
 }
 
+exit(99);

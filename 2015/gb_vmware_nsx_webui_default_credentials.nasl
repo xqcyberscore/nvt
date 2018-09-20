@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_nsx_webui_default_credentials.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_vmware_nsx_webui_default_credentials.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Vmware NSX Web Management Interface Default Credentials
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105423");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11492 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Vmware NSX Web Management Interface Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-27 16:29:45 +0100 (Tue, 27 Oct 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -72,13 +72,14 @@ data = 'j_username=admin&j_password=default&submit=';
 len = strlen( data );
 
 host = http_host_name( port:port );
+useragent = get_http_user_agent();
 
 req = 'POST /j_spring_security_check HTTP/1.1\r\n' +
       'Connection: Close\r\n' +
       'Host: ' + host + '\r\n' +
       'Pragma: no-cache\r\n' +
       'Cache-Control: no-cache\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*\r\n' +
       'Accept-Language: en\r\n' +
       'Accept-Charset: iso-8859-1,*,utf-8\r\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_doc_man_65775.nasl 11186 2018-09-03 09:12:42Z mmartin $
+# $Id: gb_open_doc_man_65775.nasl 11449 2018-09-18 10:04:42Z mmartin $
 #
 # OpenDocMan 'ajax_udf.php' Multiple SQL Injection Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-1945");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11186 $");
+  script_version("$Revision: 11449 $");
 
   script_name("OpenDocMan 'ajax_udf.php' Multiple SQL Injection Vulnerabilities");
 
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65775");
   script_xref(name:"URL", value:"http://opendocman.sourceforge.net/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-11 15:18:54 +0100 (Tue, 11 Mar 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -73,9 +73,9 @@ include("http_keepalive.inc");
 if( ! port = get_app_port( cpe:CPE) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-url = dir + '/ajax_udf.php?q=1&add_value=odm_user%20UNION%20SELECT%201,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,3,4,5,6,7,8,9';
+url = dir + '/ajax_udf.php?q=1&add_value=odm_user%20UNION%20SELECT%201,0x53514c2d496e6a656374696f6e2d54657374,3,4,5,6,7,8,9';
 
-if( http_vuln_check(port:port, url:url, pattern:"OpenVAS-SQL-Injection-Test" ) )
+if( http_vuln_check(port:port, url:url, pattern:"SQL-Injection-Test" ) )
 {
   security_message(port:port);
   exit(0);

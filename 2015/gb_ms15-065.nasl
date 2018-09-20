@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805720");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-1729", "CVE-2015-1733", "CVE-2015-1767", "CVE-2015-2372",
                 "CVE-2015-2383", "CVE-2015-2384", "CVE-2015-2385", "CVE-2015-2389",
                 "CVE-2015-2390", "CVE-2015-2391", "CVE-2015-2397", "CVE-2015-2398",
@@ -40,7 +40,7 @@ if(description)
                 "CVE-2015-1738");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 12:14:36 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (3076321)");
@@ -57,9 +57,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to corrupt memory and potentially execute arbitrary code in the
-  context of the current user.
-
-  Impact Level: System/Application");
+  context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Internet Explorer version
   6.x/7.x/8.x/9.x/10.x/11.x and VBScript 5.8 on 8.x/9.x/10.x/11.x");

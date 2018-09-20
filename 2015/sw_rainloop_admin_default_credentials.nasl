@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_rainloop_admin_default_credentials.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: sw_rainloop_admin_default_credentials.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # RainLoop Webmail admin default credentials
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:rainloop:rainloop';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111011");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11492 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("RainLoop Webmail admin default credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-30 15:30:00 +0200 (Mon, 30 Mar 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -82,16 +82,16 @@ if( '"Token":"' >< res) {
   if( isnull( xtoken[1] ) ) exit( 0 );
 
   host = http_host_name( port:port );
-
+  useragent = get_http_user_agent();
   data = string( "Login=admin&Password=12345&Action=AdminLogin&XToken="+xtoken[1] );
   len = strlen( data );
 
   req = 'POST ' + dir + '/?/Ajax/&q[]=/0/ HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT +'\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Language: en-US,en;q=0.5\r\n' +
-	'Cookie: rltoken=' + cookie[1] + '\r\n' +
+      	'Cookie: rltoken=' + cookie[1] + '\r\n' +
         'Content-Type: application/x-www-form-urlencoded\r\n' +
         'Content-Length: ' + len + '\r\n' +
         '\r\n' +

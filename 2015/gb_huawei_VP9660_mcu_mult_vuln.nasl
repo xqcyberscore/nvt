@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_VP9660_mcu_mult_vuln.nasl 9384 2018-04-06 12:20:19Z cfischer $
+# $Id: gb_huawei_VP9660_mcu_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Huawei VP9660 Multi-Point Control Unit Multiple Vulnerabilities
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/o:huawei:vp_9660_firmware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806637");
-  script_version("$Revision: 9384 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-8227");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-01 12:03:03 +0530 (Tue, 01 Dec 2015)");
   script_name("Huawei VP9660 Multi-Point Control Unit Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is running Huawei VP9660 Multi-Point
   Control Unit and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist as the server of the
   Huawei VP9660 does not validate the input when using build-in web server.");
@@ -49,9 +48,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to log in to the device as an business administrator, graft a message
   to change the specific information, and send them to the server to inject
-  malicious commands, leading to information leakage or device unavailability.
-
-  Impact Level: Application");
+  malicious commands, leading to information leakage or device unavailability.");
 
   script_tag(name:"affected", value:"Huawei VP9660 Multi-Point Control Unit
   versions V200R001C01, V200R001C02 and V200R001C30 are affected.");
@@ -63,7 +60,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www1.huawei.com/en/security/psirt/security-bulletins/security-advisories/hw-461216.htm");
+  script_xref(name:"URL", value:"http://www1.huawei.com/en/security/psirt/security-bulletins/security-advisories/hw-461216.htm");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

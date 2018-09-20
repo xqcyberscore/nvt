@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810763");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11474 $");
   script_cve_id("CVE-2017-5647");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-04-21 15:43:38 +0530 (Fri, 21 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat 'pipelined' Requests Information Disclosure Vulnerability (Linux)");
@@ -41,20 +41,16 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apache Tomcat
   and is prone to information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A bug in the handling of the pipelined
   requests when send file was used resulted in the pipelined request being
   lost when send file processing of the previous request completed.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote
-  attackers to obtain sensitive information from requests other then their own.
+  attackers to obtain sensitive information from requests other then their own.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"
-  Apache Tomcat versions 9.0.0.M1 to 9.0.0.M18,
+  script_tag(name:"affected", value:"Apache Tomcat versions 9.0.0.M1 to 9.0.0.M18,
   Apache Tomcat versions 8.5.0 to 8.5.12,
   Apache Tomcat versions 8.0.0.RC1 to 8.0.42,
   Apache Tomcat versions 7.0.0 to 7.0.76 and
@@ -74,7 +70,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ApacheTomcat/installed","Host/runs_unixoide");
+  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 8080);
   exit(0);
 }
@@ -83,23 +79,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-tomPort = "";
-appVer = "";
-
-## get the port
 if(!tomPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!appVer = get_app_version(cpe:CPE, port:tomPort)){
   exit(0);
 }
 
 if(appVer =~ "^(6|7|8|9)")
 {
-  ## Grep for vulnerable version
   if(version_in_range(version:appVer, test_version:"6.0.0", test_version2:"6.0.52"))
   {
     fix = "6.0.53";

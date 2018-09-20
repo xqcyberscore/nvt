@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms17-014_kb3212218_macosx.nasl 5955 2017-04-13 18:33:58Z veerendragg $
+# $Id: gb_ms_office_ms17-014_kb3212218_macosx.nasl 11474 2018-09-19 11:38:50Z mmartin $
 #
 # Microsoft Office Information Disclosure Vulnerability-4013241 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810695");
-  script_version("$Revision: 5955 $");
+  script_version("$Revision: 11474 $");
   script_cve_id("CVE-2017-0027");
   script_bugtraq_id(96043);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 20:33:58 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-04-13 15:05:06 +0530 (Thu, 13 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Information Disclosure Vulnerability-4013241 (Mac OS X)");
@@ -49,19 +49,16 @@ if(description)
   improperly discloses the contents of its memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain access to potentially sensitive information.
+  attackers to gain access to potentially sensitive information.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft Office 2011 on Mac OS X");
+  script_tag(name:"affected", value:"Microsoft Office 2011 on Mac OS X");
 
   script_tag(name:"solution", value:"Apply the patch from below link,
   https://technet.microsoft.com/library/security/MS17-014");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3212218");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS17-014");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3212218");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS17-014");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
@@ -73,17 +70,12 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-offVer = "";
-
-## Get the version from KB
 if(!offVer = get_kb_item("MS/Office/MacOSX/Ver")){
   exit(0);
 }
 
-## Check for Office Version (14.7.2)
 if(offVer =~ "^(14\.)" && version_is_less(version:offVer, test_version:"14.7.3"))
-{ 
+{
   report = 'File version:     ' + offVer   + '\n' +
            'Vulnerable range: 14.1.0 - 14.7.2' + '\n' ;
   security_message(data:report);

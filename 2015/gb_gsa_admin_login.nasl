@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsa_admin_login.nasl 9128 2018-03-19 07:45:38Z cfischer $
+# $Id: gb_gsa_admin_login.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # GSA Default Admin Credentials
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:greenbone:greenbone_security_assistant";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105354");
-  script_version("$Revision: 9128 $");
+  script_version("$Revision: 11492 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("GSA Default Admin Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-19 08:45:38 +0100 (Mon, 19 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-14 14:47:11 +0200 (Mon, 14 Sep 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -76,7 +76,7 @@ creds = make_array( "admin",  "admin", # OpenVAS Virtual Appliance
 host   = http_host_name( port:port );
 vuln   = FALSE;
 report = "It was possible to login using the following credentials:";
-
+useragent = get_http_user_agent();
 foreach cred( keys( creds ) ) {
 
   bound = rand();
@@ -103,7 +103,7 @@ foreach cred( keys( creds ) ) {
 
   req = 'POST ' + url + ' HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Language: de,en-US;q=0.7,en;q=0.3\r\n' +
         'Accept-Encoding: identity\r\n' +

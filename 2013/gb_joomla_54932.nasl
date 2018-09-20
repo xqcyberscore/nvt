@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_54932.nasl 11158 2018-08-29 10:04:27Z ckuersteiner $
+# $Id: gb_joomla_54932.nasl 11449 2018-09-18 10:04:42Z mmartin $
 #
 # Joomla S5 Clan Roster com_s5clanroster 'id' Parameter SQL Injection Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:joomla:joomla";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103713");
-  script_version("$Revision: 11158 $");
+  script_version("$Revision: 11449 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
 
@@ -40,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.shape5.com/product_details/club_extensions/s5_clan_roster.html");
   script_xref(name:"URL", value:"http://www.joomla.org");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:04:27 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-17 11:02:29 +0200 (Fri, 17 May 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -76,9 +76,9 @@ if(!dir = get_app_location(cpe:CPE, port:port))
 if (dir == "/")
   dir = "";
 
-url = dir + "/index.php?option=com_s5clanroster&view=s5clanroster&layout=category&task=category&id=77777777777'%20union+select+1,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374'%20--";
+url = dir + "/index.php?option=com_s5clanroster&view=s5clanroster&layout=category&task=category&id=77777777777'%20union+select+1,0x53514c2d496e6a656374696f6e2d54657374'%20--";
 
-if(http_vuln_check(port:port, url:url,pattern:"OpenVAS-SQL-Injection-Test")) {
+if(http_vuln_check(port:port, url:url,pattern:"SQL-Injection-Test")) {
   report = report_vuln_url(port:port, url:url);
   security_message(port:port, data:report);
   exit(0);

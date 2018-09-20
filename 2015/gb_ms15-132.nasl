@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-132.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-132.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Windows Remote Code Execution Vulnerability (3116162)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806645");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-6128", "CVE-2015-6132", "CVE-2015-6133");
   script_bugtraq_id(78612, 78614, 78615);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 09:32:19 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft Windows Remote Code Execution Vulnerability (3116162)");
 
@@ -46,9 +46,7 @@ if(description)
   which improperly validates input before loading libraries.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to take complete control of an affected system.
-
-  Impact Level: System");
+  to take complete control of an affected system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
 

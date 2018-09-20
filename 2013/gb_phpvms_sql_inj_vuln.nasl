@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpvms_sql_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_phpvms_sql_inj_vuln.nasl 11449 2018-09-18 10:04:42Z mmartin $
 #
 # phpVMS Virtual Airline Administration SQL injection Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803476");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11449 $");
   script_bugtraq_id(59057);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-17 10:51:22 +0530 (Wed, 17 Apr 2013)");
   script_name("phpVMS Virtual Airline Administration SQL injection Vulnerability");
 
@@ -81,10 +81,10 @@ foreach dir (make_list_unique("/", "/php-vms", "/phpvms", cgi_dirs(port:port)))
                    (">phpVMS<" >< rcvRes))
   {
     url = dir + "/index.php/PopUpNews/popupnewsitem/?itemid=123+union+select+1"+
-                ",0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,2,3,4--";
+                ",0x53514c2d496e6a656374696f6e2d54657374,2,3,4--";
 
     if(http_vuln_check(port:port, url:url, check_header:TRUE,
-          pattern:"OpenVAS-SQL-Injection-Test"))
+          pattern:"SQL-Injection-Test"))
     {
       security_message(port:port);
       exit(0);

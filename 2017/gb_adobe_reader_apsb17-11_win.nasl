@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_apsb17-11_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
+# $Id: gb_adobe_reader_apsb17-11_win.nasl 11474 2018-09-19 11:38:50Z mmartin $
 #
 # Adobe Reader Security Updates(apsb17-11)-Windows
 #
@@ -29,32 +29,31 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810870");
-  script_version("$Revision: 8210 $");
-  script_cve_id("CVE-2017-3011", "CVE-2017-3012", "CVE-2017-3013", "CVE-2017-3014", 
-                "CVE-2017-3015", "CVE-2017-3018", "CVE-2017-3019", "CVE-2017-3020", 
-                "CVE-2017-3021", "CVE-2017-3022", "CVE-2017-3024", "CVE-2017-3025", 
-                "CVE-2017-3026", "CVE-2017-3027", "CVE-2017-3028", "CVE-2017-3030", 
-                "CVE-2017-3031", "CVE-2017-3032", "CVE-2017-3033", "CVE-2017-3034", 
-                "CVE-2017-3036", "CVE-2017-3037", "CVE-2017-3038", "CVE-2017-3039", 
-                "CVE-2017-3040", "CVE-2017-3042", "CVE-2017-3043", "CVE-2017-3044", 
-                "CVE-2017-3045", "CVE-2017-3046", "CVE-2017-3048", "CVE-2017-3049", 
-                "CVE-2017-3050", "CVE-2017-3051", "CVE-2017-3052", "CVE-2017-3054", 
-                "CVE-2017-3055", "CVE-2017-3056", "CVE-2017-3057", "CVE-2017-3065", 
-                "CVE-2017-3035", "CVE-2017-3047", "CVE-2017-3017", "CVE-2017-3023", 
-                "CVE-2017-3041", "CVE-2017-3029", "CVE-2017-3053" );
+  script_version("$Revision: 11474 $");
+  script_cve_id("CVE-2017-3011", "CVE-2017-3012", "CVE-2017-3013", "CVE-2017-3014",
+                "CVE-2017-3015", "CVE-2017-3018", "CVE-2017-3019", "CVE-2017-3020",
+                "CVE-2017-3021", "CVE-2017-3022", "CVE-2017-3024", "CVE-2017-3025",
+                "CVE-2017-3026", "CVE-2017-3027", "CVE-2017-3028", "CVE-2017-3030",
+                "CVE-2017-3031", "CVE-2017-3032", "CVE-2017-3033", "CVE-2017-3034",
+                "CVE-2017-3036", "CVE-2017-3037", "CVE-2017-3038", "CVE-2017-3039",
+                "CVE-2017-3040", "CVE-2017-3042", "CVE-2017-3043", "CVE-2017-3044",
+                "CVE-2017-3045", "CVE-2017-3046", "CVE-2017-3048", "CVE-2017-3049",
+                "CVE-2017-3050", "CVE-2017-3051", "CVE-2017-3052", "CVE-2017-3054",
+                "CVE-2017-3055", "CVE-2017-3056", "CVE-2017-3057", "CVE-2017-3065",
+                "CVE-2017-3035", "CVE-2017-3047", "CVE-2017-3017", "CVE-2017-3023",
+                "CVE-2017-3041", "CVE-2017-3029", "CVE-2017-3053");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-04-14 12:38:23 +0530 (Fri, 14 Apr 2017)");
   script_name("Adobe Reader Security Updates(apsb17-11)-Windows");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Reader
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - use-after-free vulnerabilities.
 
@@ -64,12 +63,10 @@ if(description)
 
   - integer overflow vulnerabilities.");
 
-  script_tag(name:"impact" , value:"Successful exploitation of this vulnerability
-  will allow remote attackers to conduct code execution attacks.
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
+  will allow remote attackers to conduct code execution attacks.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Adobe Reader version 11.x before
+  script_tag(name:"affected", value:"Adobe Reader version 11.x before
   11.0.20 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Reader version
@@ -78,7 +75,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/acrobat/apsb17-11.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/acrobat/apsb17-11.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");

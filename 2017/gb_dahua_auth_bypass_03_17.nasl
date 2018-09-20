@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dahua_auth_bypass_03_17.nasl 9436 2018-04-11 09:39:34Z cfischer $
+# $Id: gb_dahua_auth_bypass_03_17.nasl 11472 2018-09-19 11:20:06Z mmartin $
 #
 # Dahua Devices Authentication Bypass Vulnerability
 #
@@ -29,39 +29,40 @@ CPE = 'cpe:/a:dahua:nvr';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140185");
- script_version ("$Revision: 9436 $");
- script_cve_id("CVE-2017-6343", "CVE-2017-7253", "CVE-2017-7927", "CVE-2017-7925",
+  script_oid("1.3.6.1.4.1.25623.1.0.140185");
+  script_version("$Revision: 11472 $");
+  script_cve_id("CVE-2017-6343", "CVE-2017-7253", "CVE-2017-7927", "CVE-2017-7925",
                "CVE-2017-6432", "CVE-2017-6341", "CVE-2017-6342");
- script_bugtraq_id(96449, 96454, 96456, 98312, 98312, 97263);
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_bugtraq_id(96449, 96454, 96456, 98312, 98312, 97263);
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
- script_name("Dahua Devices Authentication Bypass Vulnerability");
+  script_name("Dahua Devices Authentication Bypass Vulnerability");
 
- script_xref(name:"URL", value:"http://www.dahuasecurity.com/en/us/uploads/Dahua%20Technology%20Vulnerability%20030617v2.pdf");
- script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Mar/7");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/96449");
- script_xref(name:"URL", value:"https://nullku7.github.io/stuff/exposure/dahua/2017/02/24/dahua-nvr.html");
+  script_xref(name:"URL", value:"http://www.dahuasecurity.com/en/us/uploads/Dahua%20Technology%20Vulnerability%20030617v2.pdf");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Mar/7");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/96449");
+  script_xref(name:"URL", value:"https://nullku7.github.io/stuff/exposure/dahua/2017/02/24/dahua-nvr.html");
 
- script_tag(name: "impact" , value:"An attacker can exploit this issue to bypass authentication mechanism and perform unauthorized actions. This may lead to further attacks.");
- script_tag(name: "vuldetect" , value:"Try to login into the remote device.");
- script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to bypass authentication mechanism and perform unauthorized actions. This may lead to further attacks.");
+  script_tag(name:"vuldetect", value:"Try to login into the remote device.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
- script_tag(name: "summary" , value:"The remote Dahua device is prone to an authentication-bypass vulnerability.");
- script_tag(name:"solution_type", value: "WillNotFix");
+  script_tag(name:"summary", value:"The remote Dahua device is prone to an authentication-bypass vulnerability.");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
- script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 11:39:34 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2017-03-14 14:30:19 +0100 (Tue, 14 Mar 2017)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_dahua_devices_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("dahua/device");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-14 14:30:19 +0100 (Tue, 14 Mar 2017)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_dahua_devices_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("dahua/device");
 
  exit(0);
 }
@@ -182,7 +183,7 @@ function do_gen_3_login( buf )
 function do_gen_2_login( buf )
 {
   local_var user, pass, lines, line, ld, id, pdata, req, recv, s, session;
-  if( ! buf ) 
+  if( ! buf )
     return;
 
   lines = split( buf );

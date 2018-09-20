@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-148_macosx.nasl 4770 2016-12-14 13:44:16Z antu123 $
+# $Id: gb_ms_office_ms16-148_macosx.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Microsoft Office Multiple Vulnerabilities-3204068(Mac OS X)
 #
@@ -28,14 +28,14 @@ CPE = "cpe:/a:microsoft:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809759");
-  script_version("$Revision: 4770 $");
+  script_version("$Revision: 11493 $");
   script_cve_id("CVE-2016-7263", "CVE-2016-7264", "CVE-2016-7268", "CVE-2016-7266",
                 "CVE-2016-7257", "CVE-2016-7290", "CVE-2016-7291", "CVE-2016-7276",
                 "CVE-2016-7298");
   script_bugtraq_id(94769, 94668, 94662, 94672, 94670, 94671, 94755, 94720);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-14 14:44:16 +0100 (Wed, 14 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-14 13:38:09 +0530 (Wed, 14 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Vulnerabilities-3204068(Mac OS X)");
@@ -47,19 +47,19 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists as,
+
   - Office software fails to properly handle objects in memory.
+
   - Microsoft Office software reads out of bound memory.
+
   - Microsoft Office improperly checks registry settings when an attempt is
     made to run embedded content.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to gain access to potentially sensitive information and run arbitrary
-  code in the context of the current user.
+  code in the context of the current user.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft Office 2011 on Mac OS X
+  script_tag(name:"affected", value:"Microsoft Office 2011 on Mac OS X
   Microsoft Office 2016 on Mac OS X");
 
   script_tag(name:"solution", value:"Apply the patch from below link,
@@ -67,9 +67,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3198808");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3198800");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms16-148");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3198808");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3198800");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms16-148");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -82,20 +82,14 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-offVer = "";
-
-## Get the version from KB
 if(!offVer = get_kb_item("MS/Office/MacOSX/Ver")){
   exit(0);
 }
 
-## check the version
 if(!(offVer =~ "^(14\.)") && !(offVer =~ "^(15\.)")){
   exit(0);
 }
 
-## Check for Office Version (14.7.1)
 if(offVer =~ "^(14\.)" && version_is_less(version:offVer, test_version:"14.7.1"))
 {
   report = 'File version:     ' + offVer   + '\n' +

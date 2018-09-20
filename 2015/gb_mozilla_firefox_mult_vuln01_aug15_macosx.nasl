@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_aug15_macosx.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: gb_mozilla_firefox_mult_vuln01_aug15_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities - Aug15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806021");
-  script_version("$Revision: 6211 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-4473", "CVE-2015-4474", "CVE-2015-4475", "CVE-2015-4477",
                 "CVE-2015-4478", "CVE-2015-4479", "CVE-2015-4480", "CVE-2015-4482",
                 "CVE-2015-4483", "CVE-2015-4484", "CVE-2015-4485", "CVE-2015-4486",
@@ -38,49 +38,61 @@ if(description)
   script_bugtraq_id(76294, 76297);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-19 11:25:22 +0530 (Wed, 19 Aug 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - Aug15 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - The 'mozilla::AudioSink' function in Mozilla Firefox mishandles inconsistent
     sample formats within MP3 audio data.
+
   - Use-after-free vulnerability in the MediaStream playback feature.
+
   - Not imposing certain ECMAScript 6 requirements on JavaScript object
     properties.
+
   - Multiple integer overflows in libstagefright.
+
   - Vulnerability in 'mar_read.c' script in the Updater.
+
   - Vulnerability in 'js::jit::AssemblerX86Shared::lock_addl' function in the
     JavaScript implementation.
+
   - Heap-based buffer overflow in the 'resize_context_buffers' function in
     libvpx.
+
   - Vulnerability in decrease_ref_count function in libvpx.
+
   - Overflow vulnerability in 'nsTSubstring::ReplacePrep' function.
+
   - Use-after-free vulnerability in the 'StyleAnimationValue' class.
+
   - Vulnerability in 'nsTArray_Impl' class in Mozilla Firefox.
+
   - Improper implemntation of Content Security Policy by 'nsCSPHostSrc::permits'
     function in 'dom/security/nsCSPUtils.cpp' script.
+
   - Use-after-free vulnerability in the 'XMLHttpRequest::Open' implementation.
+
   - Heap-based buffer overflow in the 'stagefright::ESDS::parseESDescriptor'
     function in libstagefright.
+
   - Multiple unspecified vulnerabilities.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow local
+  script_tag(name:"impact", value:"Successful exploitation will allow local
   and remote attackers to cause a denial of service or possibly execute arbitrary
-  code, gain privileges and some unspecified impacts.
+  code, gain privileges and some unspecified impacts.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 40.0 on
+  script_tag(name:"affected", value:"Mozilla Firefox version before 40.0 on
   Mac OS X");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 40.0
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 40.0
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -102,15 +114,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"40.0"))
 {
   report = 'Installed version: ' + ffVer + '\n' +

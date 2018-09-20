@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netsweeper_mult_vuln_aug15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_netsweeper_mult_vuln_aug15.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Netsweeper Multiple Vulnerabilities - Aug15
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:netsweeper:netsweeper";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805962");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2014-9612", "CVE-2014-9605", "CVE-2014-9610", "CVE-2014-9619");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-25 14:52:59 +0530 (Tue, 25 Aug 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Netsweeper Multiple Vulnerabilities - Aug15");
@@ -44,17 +44,18 @@ if(description)
   check whether it is able to execute sql query or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exist as,
+
   - Input passed via 'server' parameter to load_logfiles.php script is not
   validated before returning to users.
+
   - The application does not validate input against crafted requests.
+
   - Unspecified errors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database
   allowing for the manipulation or disclosure of arbitrary data, allowing
-  arbitrary file upload and execution, and authentication bypass.
-
-  Impact Level: Application");
+  arbitrary file upload and execution, and authentication bypass.");
 
   script_tag(name:"affected", value:"Netsweeper before versions 3.1.10, 4.0.9 and
   4.1.2.");

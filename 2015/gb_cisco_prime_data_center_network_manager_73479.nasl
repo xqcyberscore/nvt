@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prime_data_center_network_manager_73479.nasl 9442 2018-04-11 12:22:50Z cfischer $
+# $Id: gb_cisco_prime_data_center_network_manager_73479.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Cisco Data Center Network Manager Directory Traversal Vulnerability
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/a:cisco:prime_data_center_network_manager";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105256");
- script_bugtraq_id(73479);
- script_cve_id("CVE-2015-0666");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_version ("$Revision: 9442 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105256");
+  script_bugtraq_id(73479);
+  script_cve_id("CVE-2015-0666");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_version("$Revision: 11452 $");
 
- script_name("Cisco Data Center Network Manager Directory Traversal Vulnerability");
+  script_name("Cisco Data Center Network Manager Directory Traversal Vulnerability");
 
- script_tag(name: "impact" , value:"Exploiting this issue can allow an attacker to gain read access to
+  script_tag(name:"impact", value:"Exploiting this issue can allow an attacker to gain read access to
 arbitrary files. Information harvested may aid in launching further attacks.");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "insight" , value:"This issue is being tracked by Cisco Bug ID CSCus00241.");
- script_tag(name: "solution" , value:"Update to 7.1(1) or higher.");
- script_tag(name: "summary" , value:"Cisco Data Center Network Manager is prone to a directory-traversal
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"insight", value:"This issue is being tracked by Cisco Bug ID CSCus00241.");
+  script_tag(name:"solution", value:"Update to 7.1(1) or higher.");
+  script_tag(name:"summary", value:"Cisco Data Center Network Manager is prone to a directory-traversal
 vulnerability.");
- script_tag(name: "affected" , value:"Cisco Prime DCNM releases 6.3(1) and later, prior to release 7.1(1).");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"Cisco Prime DCNM releases 6.3(1) and later, prior to release 7.1(1).");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2015-04-14 14:19:43 +0200 (Tue, 14 Apr 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_prime_data_center_network_manager_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("cisco_prime_dcnm/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-04-14 14:19:43 +0200 (Tue, 14 Apr 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_prime_data_center_network_manager_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("cisco_prime_dcnm/version");
 
  exit(0);
 }

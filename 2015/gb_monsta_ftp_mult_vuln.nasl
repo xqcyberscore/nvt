@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monsta_ftp_mult_vuln.nasl 9442 2018-04-11 12:22:50Z cfischer $
+# $Id: gb_monsta_ftp_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Monsta FTP Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:monsta:ftp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806050");
-  script_version("$Revision: 9442 $");
+  script_version("$Revision: 11452 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-15 09:23:14 +0530 (Tue, 15 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Monsta FTP Multiple Vulnerabilities");
@@ -52,17 +52,15 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary script code in a user's browser session within
   the trust relationship between their browser and allowing arbitrary deletion
-  of files on the monstaftp server.
-
-  Impact Level: Application");
+  of files on the monstaftp server.");
 
   script_tag(name:"affected", value:"Monsta FTP version 1.6.2.");
 
-  script_tag(name: "solution" , value:"Upgrade to Monsta FTP version 1.6.3
+  script_tag(name:"solution", value:"Upgrade to Monsta FTP version 1.6.3
   or later, For updates refer to http://www.monstaftp.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38148");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38148");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

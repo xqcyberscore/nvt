@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_zebra_web_default_password.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: sw_zebra_web_default_password.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Zebra PrintServer Webinterface Default Password
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111060");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11492 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Zebra PrintServer Webinterface Default Password");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-25 11:00:00 +0100 (Wed, 25 Nov 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -72,13 +72,13 @@ if( "Zebra Technologies" >< res || "Internal Wired PrintServer" >< res || "ENTER
   vuln = 0;
   host = http_host_name( port:port );
   report = '';
-
+  useragent = get_http_user_agent();
   data = string( "0=1234" );
   len = strlen( data );
 
   req = 'POST /authorize HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT +'\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Language: en-US,en;q=0.5\r\n' +
         'Content-Type: application/x-www-form-urlencoded\r\n' +

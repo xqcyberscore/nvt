@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-087.nasl 11426 2018-09-17 09:38:26Z asteins $
+# $Id: gb_ms16-087.nasl 11473 2018-09-19 11:21:09Z asteins $
 #
 # Microsoft Windows Print Spooler Components Multiple Vulnerabilities (3170005)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808194");
-  script_version("$Revision: 11426 $");
+  script_version("$Revision: 11473 $");
   script_cve_id("CVE-2016-3238", "CVE-2016-3239");
   script_bugtraq_id(91609, 91612);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-13 08:01:45 +0530 (Wed, 13 Jul 2016)");
   script_name("Microsoft Windows Print Spooler Components Multiple Vulnerabilities (3170005)");
 
@@ -161,7 +161,6 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Check for Win32spl.dll version
   if(version_is_less(version:sysVer, test_version:"10.0.10240.17022") ||
      version_in_range(version:sysVer, test_version:"10.0.10586.0", test_version2:"10.0.10586.493")){
      VULN = TRUE ;

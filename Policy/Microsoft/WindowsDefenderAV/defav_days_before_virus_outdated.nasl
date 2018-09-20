@@ -1,8 +1,9 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: defav_days_before_virus_outdated.nasl 10136 2018-06-08 12:19:06Z emoss $
+# $Id: defav_days_before_virus_outdated.nasl 11495 2018-09-20 10:06:25Z emoss $
 #
-# Check value for Windows Defender AV: Define the number of days before virus definitions are considered out of date
+# Check value for Windows Defender AV: Define the number of days before virus
+# definitions are considered out of date
 #
 # Authors:
 # Emanuel Moss <emanuel.moss@greenbone.net>
@@ -27,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109201");
-  script_version("$Revision: 10136 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:19:06 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11495 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:06:25 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-07 16:25:55 +0200 (Thu, 07 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,16 +39,17 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_add_preference(name:"Value", type:"entry", value:"14");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Define the number of days before virus definitions are considered out of date' 
+  script_tag(name:"summary", value:"This test checks the setting for policy
+'Define the number of days before virus definitions are considered out of date'
 on Windows hosts (at least Windows 8.1).
 
-The policy setting defines the number of days that must pass before virus 
+The policy setting defines the number of days that must pass before virus
 definitions are considered out of date. By default, this value is set to 14 days.
-If enabled, virus definitions will be considered out of date after the number of 
+If enabled, virus definitions will be considered out of date after the number of
 days specified have passed without an update.
-If disabled or not configured, virus definitions will be considered out of date 
+If disabled or not configured, virus definitions will be considered out of date
 after the default number of days have passed without an update.");
   exit(0);
 }
@@ -62,7 +64,7 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.3"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 8.1 system. 
+  policy_logging(text:'Host is not at least a Microsoft Windows 8.1 system.
 Older versions of Windows do not supported this setting.');
   exit(0);
 }
@@ -72,16 +74,27 @@ type = 'HKLM';
 key = 'Software\\Policies\\Microsoft\\Windows Defender\\Signature Updates';
 item = 'AVSignatureDue';
 fixtext = 'Set following UI path accordingly:
-Computer Configuration/Administrative Templates/Windows Components/Windows Defender Antivirus/Signature Updates/Define the number of days before virus definitions are considered out of date';
-
+Computer Configuration/Administrative Templates/Windows Components/Windows Defender Antivirus/Signature
+Updates/' + title;
 value = registry_get_dword(key:key, item:item, type:type);
-if( value == ''){
-  value = 'none';
+default = script_get_preference('Value');
+
+if(value == ''){
+  value = '14';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(value == default){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_glassfish_admin_default_credentials.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: sw_glassfish_admin_default_credentials.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Oracle GlassFish Admin Default Credentials
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111073");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11492 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-17 15:00:00 +0100 (Thu, 17 Dec 2015)");
   script_name("Oracle GlassFish Admin Default Credentials");
 
@@ -74,6 +74,7 @@ if( isnull( cookie[1] ) ) exit( 0 );
 credentials = make_list( "admin:admin","admin:none" );
 
 host = http_host_name( port:port );
+useragent = get_http_user_agent();
 
 foreach credential( credentials ) {
 
@@ -89,7 +90,7 @@ foreach credential( credentials ) {
 
   req = 'POST /j_security_check HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT +'\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Language: en-US,en;q=0.5\r\n' +
         'Referer: http://' + host + '/\r\n' +
@@ -108,7 +109,7 @@ foreach credential( credentials ) {
 
     req = 'GET / HTTP/1.1\r\n' +
           'Host: ' + host + '\r\n' +
-          'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+          'User-Agent: ' + useragent + '\r\n' +
           'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
           'Accept-Language: en-US,en;q=0.5\r\n' +
           'Referer: http://' + host + '/\r\n' +
@@ -119,7 +120,7 @@ foreach credential( credentials ) {
 
     req = 'GET /common/index.jsf HTTP/1.1\r\n' +
           'Host: ' + host + '\r\n' +
-          'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+          'User-Agent: ' + useragent + '\r\n' +
           'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
           'Accept-Language: en-US,en;q=0.5\r\n' +
           'Referer: http://' + host + '/\r\n' +

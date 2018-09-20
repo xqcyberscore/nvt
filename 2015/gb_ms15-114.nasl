@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-114.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-114.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Microsoft Windows Journal Remote Code Execution Vulnerability (3100213)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806554");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2015-6097");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 08:24:04 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft Windows Journal Remote Code Execution Vulnerability (3100213)");
 
@@ -46,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to conduct denial-of-service attack or execute arbitrary code in the context
-  of the currently logged-in user and compromise a user's system.
-
-  Impact Level: System");
+  of the currently logged-in user and compromise a user's system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
 

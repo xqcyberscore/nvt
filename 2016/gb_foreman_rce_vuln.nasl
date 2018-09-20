@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foreman_rce_vuln.nasl 4641 2016-11-29 06:07:56Z antu123 $
+# $Id: gb_foreman_rce_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
 #
 # Foreman Remote Code Execution Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:theforeman:foreman';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106423");
-  script_version("$Revision: 4641 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-11-29 07:07:56 +0100 (Tue, 29 Nov 2016) $");
-  script_tag(name: "creation_date", value: "2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
+  script_version("$Revision: 11493 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-3728");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Foreman Remote Code Execution Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("gb_foreman_detect.nasl");
   script_mandatory_keys("foreman/installed");
 
-  script_tag(name: "summary", value: "Foreman is prone to a remote code execution vulnerability.");
+  script_tag(name:"summary", value:"Foreman is prone to a remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The smart proxy TFTP API is vulnerable to arbitrary remote code execution,
+  script_tag(name:"insight", value:"The smart proxy TFTP API is vulnerable to arbitrary remote code execution,
 as it passes untrusted user input (the PXE template type) to the eval() function causing it to be executed.");
 
-  script_tag(name: "affected", value: "Version 0.2 until 1.11.1 except 1.10.4");
+  script_tag(name:"affected", value:"Version 0.2 until 1.11.1 except 1.10.4");
 
-  script_tag(name: "solution", value: "Upgrade to 1.10.4, 1.11.2 or later.");
+  script_tag(name:"solution", value:"Upgrade to 1.10.4, 1.11.2 or later.");
 
-  script_xref(name: "URL", value: "https://theforeman.org/security.html#2016-3728");
+  script_xref(name:"URL", value:"https://theforeman.org/security.html#2016-3728");
 
   exit(0);
 }

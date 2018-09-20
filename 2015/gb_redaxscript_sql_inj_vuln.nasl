@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redaxscript_sql_inj_vuln.nasl 11230 2018-09-05 06:06:53Z emoss $
+# $Id: gb_redaxscript_sql_inj_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # Redaxscript SQL Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:redaxscript:redaxscript';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105954");
-  script_version("$Revision: 11230 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 08:06:53 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 11492 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-06 14:11:04 +0700 (Fri, 06 Feb 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -97,10 +97,11 @@ else {
   if( ! dir ) exit(0);
 
   host = http_host_name( port:port );
+  useragent = get_http_user_agent();
 
   req = 'GET / HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Language: en-US,en;q=0.5\r\n\r\n';
 
@@ -117,7 +118,7 @@ else {
 
   req = 'POST ' + dir + ' HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Language: en-US,en;q=0.5\r\n' +
         'Cookie: PHPSESSID=' + cookie[1] + '\r\n' +
@@ -135,7 +136,7 @@ else {
 
     req = 'POST ' + dir + ' HTTP/1.1\r\n' +
           'Host: ' + host + '\r\n' +
-          'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+          'User-Agent: ' + useragent + '\r\n' +
           'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
           'Accept-Language: en-US,en;q=0.5\r\n' +
           'Cookie: PHPSESSID=' + cookie[1] + '\r\n' +

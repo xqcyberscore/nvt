@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_cloud_plugin_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_foxit_reader_cloud_plugin_vuln.nasl 11475 2018-09-19 12:12:13Z cfischer $
 #
 # Foxit Reader Cloud Plugin Windows Search Path Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805364");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11475 $");
   script_cve_id("CVE-2015-2789");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 14:12:13 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-07 18:04:50 +0530 (Tue, 07 Apr 2015)");
   script_name("Foxit Reader Cloud Plugin Windows Search Path Vulnerability");
 
@@ -66,15 +66,15 @@ if(description)
   script_family("General");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("foxit/reader/ver");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
 if(!foxitVer = get_app_version(cpe:CPE)){
-  exit(-1);
+  exit(0);
 }
 
 if(version_in_range(version:foxitVer, test_version:"6.1", test_version2:"7.0.6.1126"))
@@ -84,3 +84,5 @@ if(version_in_range(version:foxitVer, test_version:"6.1", test_version2:"7.0.6.1
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

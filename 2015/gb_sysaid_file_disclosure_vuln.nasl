@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_file_disclosure_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_sysaid_file_disclosure_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # SysAid Server Arbitrary File Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:sysaid:sysaid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105938");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 11492 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-13 16:45:50 +0700 (Tue, 13 Jan 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -86,6 +86,7 @@ if (dir == "/")
 
 req = http_get(item:string(dir, "/Login.jsp"), port:port);
 res = http_keepalive_send_recv(port:port, data:req);
+useragent = get_http_user_agent();
 
 sessionid = eregmatch(string:res, pattern:"JSESSIONID=([^;]+)");
 if (isnull(sessionid[1]))
@@ -94,7 +95,7 @@ if (isnull(sessionid[1]))
 url = dir + '/getRdsLogFile?fileName=/etc/passwd';
 req = 'GET ' + url + ' HTTP/1.1\r\n' +
       'Host: ' + http_host_name(port: port) + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Language: en-US,en;q=0.5\r\n' +
       'Accept-Encoding: gzip, deflate\r\n' +

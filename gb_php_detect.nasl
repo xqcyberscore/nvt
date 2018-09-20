@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
+# $Id: gb_php_detect.nasl 11481 2018-09-19 16:50:14Z cfischer $
 #
 # PHP Version Detection (Remote)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800109");
-  script_version("$Revision: 10896 $");
+  script_version("$Revision: 11481 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-19 18:50:14 +0200 (Wed, 19 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-10-07 16:11:33 +0200 (Tue, 07 Oct 2008)");
   script_name("PHP Version Detection (Remote)");
   script_category(ACT_GATHER_INFO);
@@ -51,25 +51,29 @@ if(description)
 }
 
 include("http_func.inc");
-
 include("cpe.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 checkFiles = make_list();
 
 port = get_http_port( default:80 );
 host = http_host_name( dont_add_port:TRUE );
 
-phpinfoBanner = get_kb_item( "php/phpinfo/phpversion/" + port );
-
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
-
   if( dir == "/" ) dir = "";
   checkFiles = make_list( checkFiles, dir + "/", dir + "/index.php" );
 }
 
 phpFilesList = get_http_kb_file_extensions( port:port, host:host, ext:"php" );
-if( phpFilesList ) checkFiles = make_list_unique( checkFiles, phpFilesList );
+if( is_array( phpFilesList ) ) {
+  count = 0;
+  foreach phpFile( phpFilesList ) {
+    count++;
+    checkFiles = make_list_unique( checkFiles, phpFile );
+    if( count >= 10 ) break; # TBD: Should be enough files to check, maybe we could even lower this to 5...
+  }
+}
 
 foreach checkFile( checkFiles ) {
 
@@ -90,8 +94,21 @@ foreach checkFile( checkFiles ) {
 }
 
 if( isnull( phpVer ) || phpVer == "" ) {
-  phpVer  = phpinfoBanner;
-  phpInfo = phpinfoBanner;
+  phpinfoBanners = get_kb_list( "php/phpinfo/" + host + "/" + port + "/detected_versions" );
+  if( phpinfoBanners && is_array( phpinfoBanners ) ) {
+    foreach phpinfoBanner( phpinfoBanners ) {
+      phpVer   = phpinfoBanner;
+      phpInfo  = phpinfoBanner;
+      phpUrls  = get_kb_list( "php/phpinfo/" + host + "/" + port + "/detected_urls" );
+      if( phpUrls && is_array( phpUrls ) ) {
+        foreach phpUrl( phpUrls ) {
+          conclUrl = report_vuln_url( port:port, url:phpUrl, url_only:TRUE ) + " (phpinfo() output)";
+          break;
+        }
+      }
+      break;
+    }
+  }
 }
 
 if( phpVer || phpSessId ) {
@@ -115,6 +132,7 @@ if( phpVer || phpSessId ) {
                                             version:phpVer,
                                             install:location,
                                             cpe:cpe,
+                                            concludedUrl:conclUrl,
                                             concluded:phpInfo ),
                                             port:port );
 }

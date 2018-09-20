@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_mult_vuln03.nasl 9384 2018-04-06 12:20:19Z cfischer $
+# $Id: gb_open_xchange_appsuite_mult_vuln03.nasl 11452 2018-09-18 11:24:16Z mmartin $
 #
 # Open-Xchange (OX) AppSuite Multiple Vulnerabilities -03 Nov15
 #
@@ -29,29 +29,26 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806522");
-  script_version("$Revision: 9384 $");
+  script_version("$Revision: 11452 $");
   script_cve_id("CVE-2013-5200", "CVE-2013-5935", "CVE-2013-5936", "CVE-2013-5934");
   script_bugtraq_id(62311);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-02 10:34:36 +0530 (Mon, 02 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Multiple Vulnerabilities -03 Nov15");
 
-  script_tag(name: "summary" , value:"This host is installed with
+  script_tag(name:"summary", value:"This host is installed with
   Open-Xchange (OX) AppSuite and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to error in
+  script_tag(name:"insight", value:"Multiple flaws exist due to error in
   the Hazelcast based cluster API implementation at the Open-Xchange backend.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to bypass access restriction and to obtain sensitive information.
-
-  Impact Level: Application");
+  to bypass access restriction and to obtain sensitive information.");
 
   script_tag(name:"affected", value:"Open-Xchange (OX) AppSuite versions
   7.0.x before 7.0.2-rev15 and 7.2.x before 7.2.2-rev16");
@@ -63,7 +60,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2013-09/0032.html");
+  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2013-09/0032.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -93,7 +90,6 @@ if(oxRev)
   ## Updating version with revision number
   oxVer = oxVer + "." + oxRev;
 
-  ##Check for vulnerable version
   if(version_in_range(version:oxVer, test_version:"7.0", test_version2:"7.0.2.14"))
   {
     fix = "7.0.2-rev15";

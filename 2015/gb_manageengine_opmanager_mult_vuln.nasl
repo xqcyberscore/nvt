@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_opmanager_mult_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_manageengine_opmanager_mult_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
 #
 # ManageEngine OpManager Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806053");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11492 $");
   script_cve_id("CVE-2015-7765", "CVE-2015-7766");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-16 11:10:46 +0530 (Wed, 16 Sep 2015)");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -86,7 +86,7 @@ if(!host){
 }
 
 url = "jsp/Login.do";
-
+useragent = get_http_user_agent();
 postData = 'clienttype=html&isCookieADAuth=&domainName=NULL&authType=localUser'+
            'Login&webstart=&ScreenWidth=1295&ScreenHeight=637&loginFromCookie'+
            'Data=&userName=IntegrationUser&password=plugin&uname=';
@@ -95,7 +95,7 @@ len = strlen( postData );
 
 req = 'POST ' + url + ' HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Content-Type: application/x-www-form-urlencoded\r\n' +
       'Content-Length: ' + len + '\r\n' +
       '\r\n' +
