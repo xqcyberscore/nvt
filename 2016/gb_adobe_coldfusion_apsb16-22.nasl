@@ -29,29 +29,26 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808165");
-  script_version("$Revision: 7573 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-4159");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-16 12:39:02 +0530 (Thu, 16 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Security Update APSB16-22");
 
-  script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is 
+  script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is
   prone to reflected cross site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an improper input
   validation issue that could be used in reflected cross-site scripting
   attacks.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct cross-site scripting attacks.
-
-  Impact Level: Application");
+  attackers to conduct cross-site scripting attacks.");
 
   script_tag(name:"affected", value:"ColdFusion 10 before Update 20 and
   11 before Update 9");
@@ -77,21 +74,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-cfPort = 0;
-cfdVer = "";
-
-## Get HTTP Port
 if(!cfPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!cfdVer = get_app_version(cpe:CPE, port:cfPort)){
   exit(0);
 }
 
-## Checking for Vulnerable version
 if(version_in_range(version:cfdVer, test_version:"10.0", test_version2:"10.0.20.299201"))
 {
   fix = "10.0.20.299202";

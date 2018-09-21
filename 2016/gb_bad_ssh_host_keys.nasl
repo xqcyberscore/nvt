@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bad_ssh_host_keys.nasl 10533 2018-07-17 18:58:21Z cfischer $
+# $Id: gb_bad_ssh_host_keys.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Known SSH Host Key
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105497");
-  script_version("$Revision: 10533 $");
+  script_version("$Revision: 11516 $");
   script_name("Known SSH Host Key");
   script_cve_id("CVE-2015-6358", "CVE-2015-7255", "CVE-2015-7256", "CVE-2015-7276", "CVE-2015-8251",
                 "CVE-2015-8260", "CVE-2009-4510", "CVE-2008-0166");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-17 20:58:21 +0200 (Tue, 17 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-05 13:21:28 +0100 (Tue, 05 Jan 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -59,7 +59,7 @@ if(description)
   script_tag(name:"insight", value:"The list of known SSH host keys used by this plugin is a gathered from various
   sources:
 
-  - Top 1,000 Duplicate SSH Fingerprints on the Internet collected via the search engine Shodan in 2015.
+  - Top 1, 000 Duplicate SSH Fingerprints on the Internet collected via the search engine Shodan in 2015.
   The most common fingerprint was found to be shared among 245.000 installations where the least common was
   still present 321 times.
 

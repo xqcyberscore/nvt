@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3203392.nasl 6351 2017-06-15 14:46:32Z cfischer $
+# $Id: gb_ms_kb3203392.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # Microsoft Office Suite Remote Code Execution Vulnerability (KB3203392)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810798");
-  script_version("$Revision: 6351 $");
+  script_version("$Revision: 11501 $");
   script_cve_id("CVE-2017-8510");
   script_bugtraq_id(98813);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-15 16:46:32 +0200 (Thu, 15 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 15:01:43 +0530 (Wed, 14 Jun 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Suite Remote Code Execution Vulnerability (KB3203392)");
@@ -44,13 +44,11 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"The flaws exist in Microsoft Office software
-  when the software fails to properly handle objects in memory."); 
+  when the software fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to run arbitrary code in the context of the current user on an
-  affected system.
-
-  Impact Level: System/Application");
+  affected system.");
 
   script_tag(name:"affected", value:"Microsoft Office 2013 Service Pack 2");
 
@@ -60,7 +58,7 @@ if(description)
   https://support.microsoft.com/en-us/help/3118310");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3203392/");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3203392/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -75,31 +73,24 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable initialization
-offVer = "";
-filePath = "";
-fileVer = "";
-path = "";
-
 ## MS Office
 offVer = get_kb_item("MS/Office/Ver");
 if(!offVer){
   exit(0);
 }
 
-## Get Office File Path
 path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                             item:"CommonFilesDir");
 if(!path){
   exit(0);
 }
 
-if(offVer =~ "^(15)\..*")
+if(offVer =~ "^15\..*")
 {
   filePath = path + "\Microsoft Shared\TextConv";
 
   fileVer = fetch_file_version(sysPath:filePath, file_name:"wpequ532.dll");
-  if(fileVer =~ "^(2012)")
+  if(fileVer =~ "^2012")
   {
     if(version_in_range(version:fileVer, test_version:"2012", test_version2:"2012.1500.4454.0999"))
     {

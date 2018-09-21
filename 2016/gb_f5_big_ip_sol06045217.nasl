@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol06045217.nasl 5104 2017-01-25 12:03:53Z antu123 $
+# $Id: gb_f5_big_ip_sol06045217.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # F5 BIG-IP - SOL06045217 - TMM vulnerability CVE-2016-5022
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140006");
- script_cve_id("CVE-2016-5022");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5104 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140006");
+  script_cve_id("CVE-2016-5022");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11516 $");
 
- script_name("F5 BIG-IP - SOL06045217 - TMM vulnerability CVE-2016-5022");
+  script_name("F5 BIG-IP - SOL06045217 - TMM vulnerability CVE-2016-5022");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/06/sol06045217.html?sr=58084159");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/06/sol06045217.html?sr=58084159");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"An unauthenticated remote attacker maybe be able to disrupt services on the BIG-IP system with maliciously crafted network traffic. This vulnerability affects virtual servers of all types and for all protocols. Self IP addresses may also be exposed to this vulnerability. The management interface is not affected.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"An unauthenticated remote attacker maybe be able to disrupt services on the BIG-IP system with maliciously crafted network traffic. This vulnerability affects virtual servers of all types and for all protocols. Self IP addresses may also be exposed to this vulnerability. The management interface is not affected.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-25 13:03:53 +0100 (Wed, 25 Jan 2017) $");
- script_tag(name:"creation_date", value:"2016-10-24 14:10:07 +0200 (Mon, 24 Oct 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-24 14:10:07 +0200 (Mon, 24 Oct 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

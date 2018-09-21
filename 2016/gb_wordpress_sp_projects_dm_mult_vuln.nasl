@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_sp_projects_dm_mult_vuln.nasl 11008 2018-08-16 13:26:16Z cfischer $
+# $Id: gb_wordpress_sp_projects_dm_mult_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Wordpress SP Projects And Document Manager Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807612");
-  script_version("$Revision: 11008 $");
+  script_version("$Revision: 11516 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-03-16 10:39:38 +0530 (Wed, 16 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress SP Projects And Document Manager Multiple Vulnerabilities");
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow registered
   users to perform arbitrary file upload and code execution, and remote attackers
-  to perform sql injections, information leakage and xss.
-
-  Impact Level: System/Application");
+  to perform sql injections, information leakage and xss.");
 
   script_tag(name:"affected", value:"Wordpress Sp client document manager plugin
   version 2.5.9.6.");

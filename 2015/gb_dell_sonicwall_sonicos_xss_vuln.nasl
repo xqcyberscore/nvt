@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_sonicos_xss_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_dell_sonicwall_sonicos_xss_vuln.nasl 11503 2018-09-20 12:26:46Z cfischer $
 #
 # Dell SonicWALL SonicOS 'macIpSpoofView.html' Cross Site Scripting Vulnerability
 #
@@ -27,10 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805067");
-  script_version("$Revision: 11492 $");
+  script_version("$Revision: 11503 $");
+  script_cve_id("CVE-2015-3447");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:26:46 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-29 12:50:10 +0530 (Wed, 29 Apr 2015)");
   script_name("Dell SonicWALL SonicOS 'macIpSpoofView.html' Cross Site Scripting Vulnerability");
 
@@ -52,8 +53,8 @@ if(description)
   script_tag(name:"affected", value:"Dell SonicWall SonicOS 7.5.0.12 and 6.x");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
-Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"exploit");
@@ -69,7 +70,6 @@ General solution options are to upgrade to a newer release, disable respective f
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -88,18 +88,18 @@ url = '/macIpSpoofView.html?mainFrameYAxis=0&startItem=0&startItemIpDet=0' +
 useragent = get_http_user_agent();
 host = http_host_name(port:http_port);
 
-## send the attack request
 sndReq = string("GET ", url, " HTTP/1.1\r\n",
                 "Host: ", host, "\r\n",
                 "User-Agent: ", useragent, "\r\n",
                 "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n\r\n");
-
 rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-if(rcvRes =~ "HTTP/1\.. 200" && "><iframe src=a onload=alert(document.cookie)" >< rcvRes  &&
+if(rcvRes =~ "^HTTP/1\.[01] 200" && "><iframe src=a onload=alert(document.cookie)" >< rcvRes  &&
    "MAC-IP Anti-Spoof" >< rcvRes && "Spoof Detection" >< rcvRes)
 {
   report = report_vuln_url( port:http_port, url:url );
   security_message(port:http_port, data:report);
   exit(0);
 }
+
+exit(99);

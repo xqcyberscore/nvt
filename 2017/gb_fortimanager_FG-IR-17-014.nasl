@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortimanager_FG-IR-17-014.nasl 6828 2017-08-01 09:56:41Z ckuersteiner $
+# $Id: gb_fortimanager_FG-IR-17-014.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # FortiManager Open Redirect Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/h:fortinet:fortimanager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140263");
-  script_version("$Revision: 6828 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-01 11:56:41 +0200 (Tue, 01 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-01 16:24:31 +0700 (Tue, 01 Aug 2017)");
-  script_tag(name: "cvss_base", value: "5.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_version("$Revision: 11501 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-01 16:24:31 +0700 (Tue, 01 Aug 2017)");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
 
   script_cve_id("CVE-2017-3126");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("FortiManager Open Redirect Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("gb_fortimanager_version.nasl");
   script_mandatory_keys("fortimanager/version");
 
-  script_tag(name: "summary", value: "The FortiManager WebUI accept a user-controlled input that specifies a link
+  script_tag(name:"summary", value:"The FortiManager WebUI accept a user-controlled input that specifies a link
 to an external site, and uses that link in a redirect.");
 
-  script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "impact", value: "Open redirect");
+  script_tag(name:"impact", value:"Open redirect");
 
-  script_tag(name: "affected", value: "FortiManager versions 5.4.0 to 5.4.2.");
+  script_tag(name:"affected", value:"FortiManager versions 5.4.0 to 5.4.2.");
 
-  script_tag(name: "solution", value: "Upgrade to version 5.4.3 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 5.4.3 or later.");
 
-  script_xref(name: "URL", value: "https://fortiguard.com/psirt/FG-IR-17-014");
+  script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-17-014");
 
   exit(0);
 }

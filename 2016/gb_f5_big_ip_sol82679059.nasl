@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol82679059.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_f5_big_ip_sol82679059.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # F5 BIG-IP - SOL82679059 - BIG-IP APM SSO vulnerability CVE-2016-3686
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105607");
- script_cve_id("CVE-2016-3686");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5732 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105607");
+  script_cve_id("CVE-2016-3686");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11516 $");
 
- script_name("F5 BIG-IP - SOL82679059 - BIG-IP APM SSO vulnerability CVE-2016-3686");
+  script_name("F5 BIG-IP - SOL82679059 - BIG-IP APM SSO vulnerability CVE-2016-3686");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/82/sol82679059.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/82/sol82679059.html");
 
- script_tag(name: "impact" , value:"There is a theoretical risk that a user could obtain unauthorized access to the system, causing a security breach.");
+  script_tag(name:"impact", value:"There is a theoretical risk that a user could obtain unauthorized access to the system, causing a security breach.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"Cleartext SessionID is visible in URL query parameters under some conditions.");
+  script_tag(name:"insight", value:"Cleartext SessionID is visible in URL query parameters under some conditions.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-04-18 11:30:39 +0200 (Mon, 18 Apr 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-04-18 11:30:39 +0200 (Mon, 18 Apr 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

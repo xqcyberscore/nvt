@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ccleaner_cloud_ccleaner_exe_backdoor_vuln.nasl 7202 2017-09-20 12:47:53Z santu $
+# $Id: gb_ccleaner_cloud_ccleaner_exe_backdoor_vuln.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # CCleaner Cloud 'CCleaner.exe' Backdoor Trojan Vulnerability (Windows)
 #
@@ -29,37 +29,34 @@ CPE = "cpe:/a:piriform:ccleaner_cloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811780");
-  script_version("$Revision: 7202 $");
+  script_version("$Revision: 11501 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 14:47:53 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-09-19 13:28:32 +0530 (Tue, 19 Sep 2017)");
   script_name("CCleaner Cloud 'CCleaner.exe' Backdoor Trojan Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with CCleaner Cloud
+  script_tag(name:"summary", value:"The host is installed with CCleaner Cloud
   agent and is prone to backdoor trojan installation vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an unauthorized
+  script_tag(name:"insight", value:"The flaw exists due to an unauthorized
   modification of the 'CCleaner.exe' binary resulted in an insertion of a two-stage
   backdoor.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker
-  to take complete control of system and run code on affected system.
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
+  to take complete control of system and run code on affected system.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"CCleaner Cloud Agent version 1.07.3191");
 
-  script_tag(name: "affected" , value:"CCleaner Cloud Agent version 1.07.3191");
-
-  script_tag(name: "solution" , value:"Upgrade to CCleaner Cloud version 
+  script_tag(name:"solution", value:"Upgrade to CCleaner Cloud version
   1.7.0.3214 or later.For updates refer to https://www.piriform.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value:"http://blog.talosintelligence.com/2017/09/avast-distributes-malware.html");
-  script_xref(name : "URL" , value:"http://www.piriform.com/news/blog/2017/9/18/security-notification-for-ccleaner-v5336162-and-ccleaner-cloud-v1073191-for-32-bit-windows-users");
+  script_xref(name:"URL", value:"http://blog.talosintelligence.com/2017/09/avast-distributes-malware.html");
+  script_xref(name:"URL", value:"http://www.piriform.com/news/blog/2017/9/18/security-notification-for-ccleaner-v5336162-and-ccleaner-cloud-v1073191-for-32-bit-windows-users");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -73,10 +70,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ccVer = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 
 ## Only 32-bit platform is affected
@@ -84,12 +77,10 @@ if((!os_arch) || ("x86" >!< os_arch)){
   exit(0);
 }
 
-## Get version
 if(!ccVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check for vulnerable version, 1.07.3191
 ## 1.07.3191 = 1.7.0.3191
 if(ccVer == "1.7.0.3191")
 {

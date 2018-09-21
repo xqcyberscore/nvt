@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_dos_vuln07.nasl 4446 2016-11-08 13:55:32Z cfi $
+# $Id: gb_isc_bind_dos_vuln07.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # ISC BIND AXFR Response Denial of Service Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:isc:bind";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106118");
-  script_version("$Revision: 4446 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-11-08 14:55:32 +0100 (Tue, 08 Nov 2016) $");
-  script_tag(name: "creation_date", value: "2016-07-08 10:27:46 +0700 (Fri, 08 Jul 2016)");
+  script_version("$Revision: 11516 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-08 10:27:46 +0700 (Fri, 08 Jul 2016)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_cve_id("CVE-2016-6170");
 
-  script_tag(name: "solution_type", value: "Workaround");
+  script_tag(name:"solution_type", value:"Workaround");
 
   script_name("ISC BIND AXFR Response Denial of Service Vulnerability");
 
@@ -51,30 +51,30 @@ if (description)
   script_dependencies("bind_version.nasl");
   script_mandatory_keys("ISC BIND/installed");
 
-  script_tag(name: "summary", value: "ISC BIND is prone to a denial of service vulnerability.");
+  script_tag(name:"summary", value:"ISC BIND is prone to a denial of service vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Primary DNS servers may cause a denial of service (secondary DNS server
+  script_tag(name:"insight", value:"Primary DNS servers may cause a denial of service (secondary DNS server
 crash) via a large AXFR response, and possibly allows IXFR servers to cause a denial of service (IXFR client
 crash) via a large IXFR response and allows remote authenticated users to cause a denial of service (primary
 DNS server crash) via a large UPDATE message");
 
-  script_tag(name: "impact", value: "An authenticated remote attacker may cause a denial of service
+  script_tag(name:"impact", value:"An authenticated remote attacker may cause a denial of service
 condition.");
 
-  script_tag(name: "affected", value: "Version <= 9.10.4-P1");
+  script_tag(name:"affected", value:"Version <= 9.10.4-P1");
 
-  script_tag(name: "solution", value: "As a workaround operators of servers which 
-  accept untrusted zone data can mitigate their risk by operating an intermediary 
-  server whose role it is to receive zone data and then (if successful) 
-  re-distribute it to client-facing servers.  Successful exploitation of the 
-  attack against the intermediary server may still occur but denial of service 
-  against the client-facing servers is significantly more difficult to achieve 
+  script_tag(name:"solution", value:"As a workaround operators of servers which
+  accept untrusted zone data can mitigate their risk by operating an intermediary
+  server whose role it is to receive zone data and then (if successful)
+  re-distribute it to client-facing servers.  Successful exploitation of the
+  attack against the intermediary server may still occur but denial of service
+  against the client-facing servers is significantly more difficult to achieve
   in this scenario.");
 
-  script_xref(name: "URL", value: "http://www.openwall.com/lists/oss-security/2016/07/06/3");
-  script_xref(name: "URL", value: "https://lists.dns-oarc.net/pipermail/dns-operations/2016-July/015058.html");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2016/07/06/3");
+  script_xref(name:"URL", value:"https://lists.dns-oarc.net/pipermail/dns-operations/2016-July/015058.html");
 
   exit(0);
 }

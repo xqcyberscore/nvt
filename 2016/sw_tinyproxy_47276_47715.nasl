@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_tinyproxy_47276_47715.nasl 5712 2017-03-24 10:00:49Z teissa $
+# $Id: sw_tinyproxy_47276_47715.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Tinyproxy < 1.8.3 Multiple Security Bypass Vulnerabilities
 #
@@ -29,29 +29,26 @@ CPE = "cpe:/a:banu:tinyproxy";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111082");
-  script_version("$Revision: 5712 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2011-1499", "CVE-2011-1843");
   script_bugtraq_id(47276, 47715);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-01 11:00:00 +0100 (Mon, 01 Feb 2016)");
   script_name("Tinyproxy < 1.8.3 Multiple Security Bypass Vulnerabilities");
 
   script_tag(name:"summary", value:"Tinyproxy is prone to multiple security-bypass vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"impact", value:"Successful exploits will allow attackers to bypass certain security
-  restrictions and gain unauthorized access to the application. This may aid in further attacks.
-
-  Impact Level: Application");
+  restrictions and gain unauthorized access to the application. This may aid in further attacks.");
   script_tag(name:"affected", value:"Tinyproxy versions before 1.8.3");
   script_tag(name:"solution", value:"Upgrade to Tinyproxy 1.8.3 or newer. For updates refer to https://tinyproxy.github.io/");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/47276");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/47715");
   script_xref(name:"URL", value:"https://tinyproxy.github.io/");
-  
+
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

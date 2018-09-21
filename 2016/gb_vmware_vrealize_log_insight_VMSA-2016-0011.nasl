@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_log_insight_VMSA-2016-0011.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_vmware_vrealize_log_insight_VMSA-2016-0011.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # VMSA-2016-0011: VMware vRealize Log Insight update addresses directory traversal vulnerability.
 #
@@ -29,32 +29,32 @@ CPE = 'cpe:/a:vmware:vrealize_log_insight';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105870");
- script_cve_id("CVE-2016-5332");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5534 $");
- script_name("VMSA-2016-0011: VMware vRealize Log Insight update addresses directory traversal vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.105870");
+  script_cve_id("CVE-2016-5332");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11516 $");
+  script_name("VMSA-2016-0011: VMware vRealize Log Insight update addresses directory traversal vulnerability");
 
- script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0011.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0011.html");
 
- script_tag(name: "vuldetect" , value:"Check the version");
+  script_tag(name:"vuldetect", value:"Check the version");
 
- script_tag(name: "solution" , value:"Apply the missing patch(es).");
+  script_tag(name:"solution", value:"Apply the missing patch(es).");
 
- script_tag(name: "summary" , value:"vRealize Log Insight contains a vulnerability that may allow for a directory traversal attack. Exploitation of this issue may lead to a partial information disclosure. There are no known workarounds for this issue.");
+  script_tag(name:"summary", value:"vRealize Log Insight contains a vulnerability that may allow for a directory traversal attack. Exploitation of this issue may lead to a partial information disclosure. There are no known workarounds for this issue.");
 
- script_tag(name: "affected" , value:"VMware vRealize Log Insight prior to 3.6.0");
+  script_tag(name:"affected", value:"VMware vRealize Log Insight prior to 3.6.0");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-08-15 14:43:37 +0200 (Mon, 15 Aug 2016)");
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_vrealize_log_insight_version.nasl");
- script_mandatory_keys("vmware/vrealize_log_insight/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-15 14:43:37 +0200 (Mon, 15 Aug 2016)");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_vrealize_log_insight_version.nasl");
+  script_mandatory_keys("vmware/vrealize_log_insight/version");
 
  exit(0);
 

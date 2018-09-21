@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_service_manager_mult_vuln.nasl 8596 2018-01-31 08:17:43Z cfischer $
+# $Id: gb_hp_service_manager_mult_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # HP Service Manager Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:hp:service_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106126");
-  script_version("$Revision: 8596 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-31 09:17:43 +0100 (Wed, 31 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2016-07-11 15:18:31 +0700 (Mon, 11 Jul 2016)");
-  script_tag(name: "cvss_base", value: "6.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_version("$Revision: 11516 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-11 15:18:31 +0700 (Mon, 11 Jul 2016)");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-4371");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("HP Service Manager Multiple Vulnerabilities");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_hp_service_manager_detect.nasl");
   script_mandatory_keys("hp_service_manager/installed");
 
-  script_tag(name: "summary", value: "HP Service Manager is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"HP Service Manager is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Remote authenticated users may obtain sensitive information, modify data,
+  script_tag(name:"insight", value:"Remote authenticated users may obtain sensitive information, modify data,
 and conduct server-side request forgery (SSRF) attacks via unspecified vectors.");
 
-  script_tag(name: "impact", value: "Authenticated attackers may optain sensitive information, modify data
+  script_tag(name:"impact", value:"Authenticated attackers may optain sensitive information, modify data
 or conduct server-side request forgery attacks.");
 
-  script_tag(name: "affected", value: "Versions 9.30, 9.31, 9.32, 9.33, 9.34, 9.35, 9.40, and 9.41");
+  script_tag(name:"affected", value:"Versions 9.30, 9.31, 9.32, 9.33, 9.34, 9.35, 9.40, and 9.41");
 
-  script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
-  script_xref(name: "URL", value: "https://h20566.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05167176");
+  script_xref(name:"URL", value:"https://h20566.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05167176");
 
 
   exit(0);

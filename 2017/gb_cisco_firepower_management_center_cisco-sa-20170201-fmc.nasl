@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20170201-fmc.nasl 5160 2017-02-02 05:57:12Z ckuerste $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20170201-fmc.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # Cisco Firepower Management Center Incomplete Rule Set Vulnerability
 #
@@ -29,39 +29,39 @@ CPE = "cpe:/a:cisco:firepower_management_center";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106556");
- script_cve_id("CVE-2017-3809");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 5160 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106556");
+  script_cve_id("CVE-2017-3809");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11501 $");
 
- script_name("Cisco Firepower Management Center Incomplete Rule Set Vulnerability");
+  script_name("Cisco Firepower Management Center Incomplete Rule Set Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170201-fmc");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170201-fmc");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"A vulnerability in the Policy deployment module of the Cisco Firepower
+  script_tag(name:"summary", value:"A vulnerability in the Policy deployment module of the Cisco Firepower
 Management Center (FMC) could allow an unauthenticated, remote attacker to prevent deployment of a complete and
 accurate rule base.");
 
- script_tag(name: "insight", value: "The vulnerability is due to a lack of condition checks in the rules engine.
+  script_tag(name:"insight", value:"The vulnerability is due to a lack of condition checks in the rules engine.
 An attacker could exploit this vulnerability by spoofing certain Object IDs of Port objects.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to push an incomplete rule set.");
+  script_tag(name:"impact", value:"An exploit could allow the attacker to push an incomplete rule set.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-02 06:57:12 +0100 (Thu, 02 Feb 2017) $");
- script_tag(name:"creation_date", value:"2017-02-02 12:29:03 +0700 (Thu, 02 Feb 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_firepower_management_center_version.nasl");
- script_mandatory_keys("cisco_firepower_management_center/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-02 12:29:03 +0700 (Thu, 02 Feb 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_firepower_management_center_version.nasl");
+  script_mandatory_keys("cisco_firepower_management_center/version");
 
  exit(0);
 }
@@ -71,7 +71,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'6.1.0',
 		'6.2.0' );
 

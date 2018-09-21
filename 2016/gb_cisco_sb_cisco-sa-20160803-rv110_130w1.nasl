@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sb_cisco-sa-20160803-rv110_130w1.nasl 3849 2016-08-17 08:27:51Z antu123 $
+# $Id: gb_cisco_sb_cisco-sa-20160803-rv110_130w1.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Cisco RV110W, RV130W, and RV215W Routers Command Shell Injection Vulnerability
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:cisco:small_business";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105846");
- script_cve_id("CVE-2015-6396");
- script_tag(name:"cvss_base", value:"7.2");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3849 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105846");
+  script_cve_id("CVE-2015-6396");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11516 $");
 
- script_name("Cisco RV110W, RV130W, and RV215W Routers Command Shell Injection Vulnerability");
+  script_name("Cisco RV110W, RV130W, and RV215W Routers Command Shell Injection Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160803-rv110_130w1");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160803-rv110_130w1");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"This vulnerability is fixed in the following firmware versions.
+  script_tag(name:"solution", value:"This vulnerability is fixed in the following firmware versions.
 
 RV110W Wireless-N VPN Firewall, Release 1.2.1.7
 RV130W Wireless-N Multifunction VPN Router, Release 1.0.3.16
 RV215W Wireless-N VPN Router, Release 1.3.0.8");
 
- script_tag(name: "summary" , value:"A vulnerability in the command-line interface (CLI) command parser of the Cisco RV110W Wireless-N VPN Firewall, Cisco RV130W Wireless-N Multifunction VPN Router, and Cisco RV215W Wireless-N VPN Router could allow an authenticated, local attacker to inject arbitrary shell commands that are executed by the device. The commands are executed with full administrator privileges.");
+  script_tag(name:"summary", value:"A vulnerability in the command-line interface (CLI) command parser of the Cisco RV110W Wireless-N VPN Firewall, Cisco RV130W Wireless-N Multifunction VPN Router, and Cisco RV215W Wireless-N VPN Router could allow an authenticated, local attacker to inject arbitrary shell commands that are executed by the device. The commands are executed with full administrator privileges.");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-17 10:27:51 +0200 (Wed, 17 Aug 2016) $");
- script_tag(name:"creation_date", value:"2016-08-05 15:23:41 +0200 (Fri, 05 Aug 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_small_business_devices_snmp_detect.nasl");
- script_mandatory_keys("cisco/small_business/model","cisco/small_business/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-05 15:23:41 +0200 (Fri, 05 Aug 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_small_business_devices_snmp_detect.nasl");
+  script_mandatory_keys("cisco/small_business/model", "cisco/small_business/version");
 
  exit(0);
 }

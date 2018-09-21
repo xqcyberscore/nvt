@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms16-015.nasl 9316 2018-04-05 07:06:02Z cfischer $
+# $Id: gb_ms_office_web_apps_ms16-015.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Microsoft Office Web Apps Memory Corruption Vulnerabilities (3134226)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807306");
-  script_version("$Revision: 9316 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-0022", "CVE-2016-0052", "CVE-2016-0053", "CVE-2016-0039");
   script_bugtraq_id(82508, 82652, 82787, 82512);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 09:06:02 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 12:30:50 +0530 (Wed, 10 Feb 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Web Apps Memory Corruption Vulnerabilities (3134226)");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to perform cross-site scripting attacks on
-  affected systems and run script in the security context of the current user.
-
-  Impact Level: Application");
+  affected systems and run script in the security context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Office Web Apps 2010 Service Pack 2 and prior,
 
@@ -64,14 +62,15 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3114338");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3114407");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-015");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3114338");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3114407");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-015");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_office_web_apps_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Web/Apps/Ver");
   exit(0);
 }

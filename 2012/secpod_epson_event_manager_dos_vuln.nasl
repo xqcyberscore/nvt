@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_epson_event_manager_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_epson_event_manager_dos_vuln.nasl 11504 2018-09-20 12:55:48Z cfischer $
 #
 # Epson EventManager 'x-protocol-version' Denial of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902824");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11504 $");
   script_bugtraq_id(52511);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:55:48 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-28 15:15:15 +0530 (Wed, 28 Mar 2012)");
   script_name("Epson EventManager 'x-protocol-version' Denial of Service Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48382");
@@ -43,35 +43,35 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Denial of Service");
-  script_require_ports("Services/www", 2968);
-  script_dependencies("find_service.nasl", "httpver.nasl");
+  script_require_ports(2968);
+  script_dependencies("find_service.nasl");
+
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause the
-application to crash, creating a denial of service condition.");
+  application to crash, creating a denial of service condition.");
+
   script_tag(name:"affected", value:"Epson EventManager 2.50 and prior");
+
   script_tag(name:"insight", value:"The flaw is caused  due to an error in the Net Scan Monitor
-component when handling HTTP requests. This can be exploited to cause a crash
-via a specially crafted request sent to TCP port 2968.");
+  component when handling HTTP requests. This can be exploited to cause a crash
+  via a specially crafted request sent to TCP port 2968.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
-since the disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.");
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective
+  features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running Epson EventManager and is prone to denial of
-service vulnerability.");
+  service vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 
 port = 2968;
-
 if(!get_port_state(port)){
-  exit(0);
-}
-
-host = get_host_name();
-if(!host){
   exit(0);
 }
 
@@ -79,7 +79,6 @@ req1 = string( 'GET / HTTP/1.1\r\n',
                'x-uid: 0000000000000000000\r\n',
                'x-protocol-version : 1.00\r\n',
                'x-protocol-name: Epson Network Service Protocol\r\n\r\n' );
-
 res = http_send_recv(port:port, data:req1);
 
 if(!res || "Server : Epson Net Scan Monitor" >!< res){

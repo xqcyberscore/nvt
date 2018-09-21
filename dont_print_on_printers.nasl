@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dont_print_on_printers.nasl 10600 2018-07-25 08:04:18Z cfischer $
+# $Id: dont_print_on_printers.nasl 11509 2018-09-20 13:56:59Z cfischer $
 #
 # Do not print on AppSocket and socketAPI printers
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
-  script_version("$Revision: 10600 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 10:04:18 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 11509 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:56:59 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -389,12 +389,12 @@ foreach port( ports ) {
 
   # TODO: Re-verify these URLs and the banners below
   foreach url( make_list( "/", "/main.asp", "/index.asp",
-                          "/index.html", "/index.htm" ) ) {
+                          "/index.html", "/index.htm", "/default.html" ) ) {
 
     buf = http_get_cache( item:url, port:port );
 
     # Dell
-    if( "Dell Laser Printer " >< banner || "Server: EWS-NIC5/" >< banner ) {
+    if( "Dell Laser Printer " >< banner || "Server: EWS-NIC5/" >< banner || "Dell Laser MFP " >< banner ) {
       is_printer = TRUE;
       reason     = "Dell Banner on port " + port + "/tcp: " + banner;
       break;
@@ -441,13 +441,13 @@ exit( 0 );
 #foreach p (keys(ports))
 #{
 #  p = int(p - "Ports/tcp/");
-#  if (	   p == 35		# AppSocket for QMS
-#	|| p == 2000		# Xerox
-#	|| p == 2501		# AppSocket for Xerox
-#	|| (p >= 3001 && p <= 3005)	# Lantronix - several ports
-#	|| (p >= 9100 && p <= 9300)	# AppSocket - several ports
-#       || p == 10000 		# Lexmark
-#	|| p == 10001)		# Xerox - programmable :-(
+#  if (	   p == 35                  # AppSocket for QMS
+#       || p == 2000                # Xerox
+#       || p == 2501                # AppSocket for Xerox
+#       || (p >= 3001 && p <= 3005) # Lantronix - several ports
+#       || (p >= 9100 && p <= 9300) # AppSocket - several ports
+#       || p == 10000               # Lexmark
+#       || p == 10001)              # Xerox - programmable :-(
 #    appsocket = 1;
 # Look for common non-printer ports
 #	 else if (

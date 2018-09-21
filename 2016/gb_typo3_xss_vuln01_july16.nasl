@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_xss_vuln01_july16.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_typo3_xss_vuln01_july16.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # TYPO3 'mso/idna-convert' Library Cross Site Scripting Vulnerability July16
 #
@@ -29,38 +29,35 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808273");
-  script_version("$Revision: 5850 $");
+  script_version("$Revision: 11516 $");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-27 10:28:48 +0530 (Wed, 27 Jul 2016)");
   script_name("TYPO3 'mso/idna-convert' Library Cross Site Scripting Vulnerability July16");
 
-  script_tag(name: "summary" , value:"This host is installed with TYPO3 and
+  script_tag(name:"summary", value:"This host is installed with TYPO3 and
   is prone to a cross site scripting vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an insufficient 
+  script_tag(name:"insight", value:"The flaw is due to an insufficient
   validation of user supplied input by mso/idna-convert library.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
-  remote attackers to execute arbitrary script code in a user's browser session.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  remote attackers to execute arbitrary script code in a user's browser session.");
 
-  Impact Level: Application.");
+  script_tag(name:"affected", value:"TYPO3 versions 7.6.0 to 7.6.9 and 8.0.0 to 8.2.0");
 
-  script_tag(name: "affected" , value:"TYPO3 versions 7.6.0 to 7.6.9 and 8.0.0 to 8.2.0");
-
-  script_tag(name: "solution" , value:"Upgrade to TYPO3 version 7.6.10 or 8.2.1 
-  or later. 
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 7.6.10 or 8.2.1
+  or later.
   For updates refer to https://typo3.org/typo3-cms");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name: "URL" , value : "https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-020");
+  script_xref(name:"URL", value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-020");
 
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -75,23 +72,16 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable initialization
-typoPort = "";
-typoVer = "";
-
-## Get Application HTTP Port
 if(!typoPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Get Typo3 version
 if(!typoVer = get_app_version(cpe:CPE, port:typoPort)){
   exit(0);
 }
 
 if(typoVer !~ "[0-9]+\.[0-9]+\.[0-9]+") exit(0); # Version is not exact enough
 
-## Check for version 7.6.0 to 7.6.9
 if(typoVer =~ "7\.6")
 {
   if(version_in_range(version:typoVer, test_version:"7.6.0", test_version2:"7.6.9"))
@@ -101,7 +91,6 @@ if(typoVer =~ "7\.6")
   }
 }
 
-## Check for version 8.0.0 to 8.2.0
 else if(typoVer =~ "^8\.")
 {
   if(version_in_range(version:typoVer, test_version:"8.0", test_version2:"8.2.0"))

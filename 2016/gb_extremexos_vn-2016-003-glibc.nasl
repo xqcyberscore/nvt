@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_extremexos_vn-2016-003-glibc.nasl 4642 2016-11-29 07:17:44Z ckuerste $
+# $Id: gb_extremexos_vn-2016-003-glibc.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Extreme ExtremeXOS glibc Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:extreme:extremexos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106427");
-  script_version("$Revision: 4642 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-11-29 08:17:44 +0100 (Tue, 29 Nov 2016) $");
-  script_tag(name: "creation_date", value: "2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
+  script_version("$Revision: 11516 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2015-7547");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Extreme ExtremeXOS glibc Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_extremeos_snmp_detect.nasl");
   script_mandatory_keys("extremexos/detected");
 
-  script_tag(name: "summary", value: "Extreme ExtremeXOS is prone to a vulnerability in glibc.");
+  script_tag(name:"summary", value:"Extreme ExtremeXOS is prone to a vulnerability in glibc.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "ExtremeXOS has a vulnerable version of glibc installed which suffers from
+  script_tag(name:"insight", value:"ExtremeXOS has a vulnerable version of glibc installed which suffers from
 a stack buffer overflow.");
 
-  script_tag(name: "impact", value: "An attacker may cause a denial of service condition or execute arbitrary
+  script_tag(name:"impact", value:"An attacker may cause a denial of service condition or execute arbitrary
 code.");
 
-  script_tag(name: "affected", value: "Version 15.3 until 16.1.");
+  script_tag(name:"affected", value:"Version 15.3 until 16.1.");
 
-  script_tag(name: "solution", value: "Upgrade to 15.7.4, 16.2.1 or later.");
+  script_tag(name:"solution", value:"Upgrade to 15.7.4, 16.2.1 or later.");
 
-  script_xref(name: "URL", value: "https://gtacknowledge.extremenetworks.com/articles/Vulnerability_Notice/VN-2016-003-glibc");
+  script_xref(name:"URL", value:"https://gtacknowledge.extremenetworks.com/articles/Vulnerability_Notice/VN-2016-003-glibc");
 
   exit(0);
 }

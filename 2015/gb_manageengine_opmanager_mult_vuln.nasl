@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_opmanager_mult_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_manageengine_opmanager_mult_vuln.nasl 11506 2018-09-20 13:32:45Z cfischer $
 #
 # ManageEngine OpManager Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806053");
-  script_version("$Revision: 11492 $");
+  script_version("$Revision: 11506 $");
   script_cve_id("CVE-2015-7765", "CVE-2015-7766");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:32:45 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-16 11:10:46 +0530 (Wed, 16 Sep 2015)");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -41,16 +41,16 @@ if(description)
   script_name("ManageEngine OpManager Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is installed with ManageEngine OpManager and is prone to multiple
-vulnerabilities.");
+  vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP POST and check whether it is able to login
-with default credentials.");
+  with default credentials.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to it was possible to login with default credentials:
-IntegrationUser/plugin.");
+  IntegrationUser/plugin.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute SQL queries on
-the backend PostgreSQL instance with administrator rights and access shell with SYSTEM privileges.");
+  the backend PostgreSQL instance with administrator rights and access shell with SYSTEM privileges.");
 
   script_tag(name:"affected", value:"ManageEngine OpManager versions 11.6 and earlier.");
 
@@ -80,11 +80,6 @@ include("http_keepalive.inc");
 if(!opmngrPort = get_app_port(cpe:CPE))
   exit(0);
 
-host = http_host_name(port:opmngrPort);
-if(!host){
-  exit(0);
-}
-
 url = "jsp/Login.do";
 useragent = get_http_user_agent();
 postData = 'clienttype=html&isCookieADAuth=&domainName=NULL&authType=localUser'+
@@ -92,6 +87,8 @@ postData = 'clienttype=html&isCookieADAuth=&domainName=NULL&authType=localUser'+
            'Data=&userName=IntegrationUser&password=plugin&uname=';
 
 len = strlen( postData );
+
+host = http_host_name(port:opmngrPort);
 
 req = 'POST ' + url + ' HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
@@ -102,7 +99,7 @@ req = 'POST ' + url + ' HTTP/1.1\r\n' +
       postData;
 res = http_keepalive_send_recv( port:opmngrPort, data:req, bodyonly:FALSE );
 
-if( res =~ "HTTP/1.1 302" && "index.jsp" >< res )
+if( res =~ "^HTTP/1\.[01] 302" && "index.jsp" >< res )
 {
   cookie = eregmatch( pattern:"JSESSIONID=([0-9a-zA-Z]+);", string:res );
   if(!cookie[1]){
@@ -122,4 +119,4 @@ if( res =~ "HTTP/1.1 302" && "index.jsp" >< res )
   }
 }
 
-exit(0);
+exit(99);

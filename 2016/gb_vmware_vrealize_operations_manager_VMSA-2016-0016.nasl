@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_operations_manager_VMSA-2016-0016.nasl 9592 2018-04-24 15:29:35Z cfischer $
+# $Id: gb_vmware_vrealize_operations_manager_VMSA-2016-0016.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # VMSA-2016-0016: vRealize Operations (vROps) Privilege Escalation Vulnerability
 #
@@ -29,33 +29,33 @@ CPE = 'cpe:/a:vmware:vrealize_operations_manager';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140064");
- script_cve_id("CVE-2016-7457");
- script_tag(name:"cvss_base", value:"8.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
- script_version ("$Revision: 9592 $");
- script_name("VMSA-2016-0016: vRealize Operations (vROps) Privilege Escalation Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.140064");
+  script_cve_id("CVE-2016-7457");
+  script_tag(name:"cvss_base", value:"8.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
+  script_version("$Revision: 11516 $");
+  script_name("VMSA-2016-0016: vRealize Operations (vROps) Privilege Escalation Vulnerability");
 
- script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0016.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0016.html");
 
- script_tag(name: "vuldetect" , value:"Check the version");
+  script_tag(name:"vuldetect", value:"Check the version");
 
- script_tag(name: "solution" , value:"Updates are available");
+  script_tag(name:"solution", value:"Updates are available");
 
- script_tag(name: "summary" , value:"vRealize Operations (vROps) updates address privilege escalation vulnerability.");
- script_tag(name: "insight" , value:"vROps contains a privilege escalation vulnerability. Exploitation of this issue may allow a vROps user who has been assigned a low-privileged role to gain full access over the application. In addition it may be possible to stop and delete Virtual Machines managed by vCenter.");
+  script_tag(name:"summary", value:"vRealize Operations (vROps) updates address privilege escalation vulnerability.");
+  script_tag(name:"insight", value:"vROps contains a privilege escalation vulnerability. Exploitation of this issue may allow a vROps user who has been assigned a low-privileged role to gain full access over the application. In addition it may be possible to stop and delete Virtual Machines managed by vCenter.");
 
- script_tag(name: "affected" , value:"vRealize Operations 6.x");
+  script_tag(name:"affected", value:"vRealize Operations 6.x");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-24 17:29:35 +0200 (Tue, 24 Apr 2018) $");
- script_tag(name:"creation_date", value:"2016-11-16 15:54:11 +0100 (Wed, 16 Nov 2016)");
- script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"solution_type", value:"VendorFix");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_vrealize_operations_manager_web_detect.nasl");
- script_mandatory_keys("vmware/vrealize/operations_manager/version", "vmware/vrealize/operations_manager/build");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-16 15:54:11 +0100 (Wed, 16 Nov 2016)");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_vrealize_operations_manager_web_detect.nasl");
+  script_mandatory_keys("vmware/vrealize/operations_manager/version", "vmware/vrealize/operations_manager/build");
 
  exit(0);
 

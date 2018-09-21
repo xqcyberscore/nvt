@@ -1,12 +1,12 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_arbi_code_exec_vuln.nasl 4890 2016-12-30 13:26:31Z antu123 $
+# $Id: gb_apache_hadoop_arbi_code_exec_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Apache Hadoop Arbitrary Command Execution Vulnerability
 #
 # Authors:
 # Tushar Khelge <ktushar@secpod.com>
-# 
+#
 # Copyright:
 # Copyright (C) 2016 Greenbone Networks GmbH, http://www.greenbone.net
 #
@@ -29,29 +29,26 @@ CPE = "cpe:/a:apache:hadoop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810318");
-  script_version("$Revision: 4890 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-5393");
-   script_bugtraq_id(94574);
+  script_bugtraq_id(94574);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 14:26:31 +0100 (Fri, 30 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-23 15:26:24 +0530 (Fri, 23 Dec 2016)");
   script_name("Apache Hadoop Arbitrary Command Execution Vulnerability");
 
   script_tag(name:"summary", value:"The host is installed with Apache Hadoop
   and is prone to an arbitrary command execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to some unspecified error
   within the application allowing a remote user who can authenticate with the HDFS
   NameNode can possibly run arbitrary commands as the hdfs user.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to execute arbitrary commands on affected system.
-
-  Impact Level: System/Application");
+  attacker to execute arbitrary commands on affected system.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -77,20 +74,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-#Variable initialize
-hadoopPort = "";
-hadoopVer = "";
-
 if(!hadoopPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!hadoopVer = get_app_version(cpe:CPE, port:hadoopPort)){
   exit(0);
 }
 
-## Checking for vulnerable version
 if(hadoopVer =~ "^(2\.(6|7))")
 {
   if(version_in_range(version:hadoopVer, test_version:"2.6.0", test_version2:"2.6.4"))

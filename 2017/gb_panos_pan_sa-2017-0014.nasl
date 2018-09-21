@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017-0014.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_panos_pan_sa-2017-0014.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # Palo Alto Networks PAN-OS CVE-2017-7945 Brute Force Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107176");
-  script_version("$Revision: 9381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11501 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-05-19 12:42:40 +0200 (Fri, 19 May 2017)");
 
   script_cve_id("CVE-2017-7945");
@@ -41,17 +41,17 @@ if(description)
   script_tag(name:"qod_type", value:"package");
 
   script_name("Palo Alto Networks PAN-OS CVE-2017-7945 Brute Force Vulnerability");
-  script_tag(name: "summary", value: "A vulnerability exists in PAN-OS GlobalProtect external interface that could allow for an attacker to brute force a username on PAN-OS GlobalProtect external Interface.");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"summary", value:"A vulnerability exists in PAN-OS GlobalProtect external interface that could allow for an attacker to brute force a username on PAN-OS GlobalProtect external Interface.");
+  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
 
-  script_tag(name: "insight", value:"The vulnerability is caused by PAN-OS provided different responses when supplying login credentials. ");
+  script_tag(name:"insight", value:"The vulnerability is caused by PAN-OS provided different responses when supplying login credentials. ");
 
-  script_tag(name: "impact" , value: "Successfully exploiting this issue would require an attacker to be authenticated.");
-  script_tag(name: "affected", value: "PAN-OS 6.1.16 and earlier, PAN-OS 7.0.14 and earlier, PAN-OS 7.1.8 and earlier, PAN-OS 8.0.1 and earlier");
+  script_tag(name:"impact", value:"Successfully exploiting this issue would require an attacker to be authenticated.");
+  script_tag(name:"affected", value:"PAN-OS 6.1.16 and earlier, PAN-OS 7.0.14 and earlier, PAN-OS 7.1.8 and earlier, PAN-OS 8.0.1 and earlier");
 
-  script_tag(name: "solution", value: "Update to PAN-OS 6.1.17 and later, PAN-OS 7.0.15 and later, PAN-OS 7.1.9 and later, PAN-OS 8.0.2 and later");
+  script_tag(name:"solution", value:"Update to PAN-OS 6.1.17 and later, PAN-OS 7.0.15 and later, PAN-OS 7.1.9 and later, PAN-OS 8.0.2 and later");
 
-  script_xref(name: "URL", value: "https://securityadvisories.paloaltonetworks.com/Home/Detail/84");
+  script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/84");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

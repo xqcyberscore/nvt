@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bamboo_mult_vuln.nasl 8597 2018-01-31 08:42:52Z cfischer $
+# $Id: gb_atlassian_bamboo_mult_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Atlassian Bamboo Multiple Vulnerabilities Feb16
 #
@@ -29,43 +29,42 @@ CPE = "cpe:/a:atlassian:bamboo";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807266");
-  script_version("$Revision: 8597 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2015-8361", "CVE-2014-9757");
   script_bugtraq_id(83104, 83107);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-19 10:03:11 +0530 (Fri, 19 Feb 2016)");
   script_name("Atlassian Bamboo Multiple Vulnerabilities Feb16");
 
-  script_tag(name: "summary" , value:"The host is installed with Atlassian Bamboo
+  script_tag(name:"summary", value:"The host is installed with Atlassian Bamboo
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - The Ignite Realtime Smack XMPP API does not validate serialized data
     in an XMPP message.
+
   - The multiple unspecified services do not require authentication.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary java code, and to obtain sensitive information,
-  modify settings, or manage build agents.
+  modify settings, or manage build agents.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Atlassian Bamboo 2.4 through 5.9.9");
 
-  script_tag(name: "affected" , value:"Atlassian Bamboo 2.4 through 5.9.9");
-
-  script_tag(name: "solution" , value:"Upgrade to version 5.9.9 or later
+  script_tag(name:"solution", value:"Upgrade to version 5.9.9 or later
   For updates refer to https://www.atlassian.com/software/bamboo");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "https://jira.atlassian.com/browse/BAM-17102");
-  script_xref(name : "URL" , value : "https://jira.atlassian.com/browse/BAM-17099");
+  script_xref(name:"URL", value:"https://jira.atlassian.com/browse/BAM-17102");
+  script_xref(name:"URL", value:"https://jira.atlassian.com/browse/BAM-17099");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

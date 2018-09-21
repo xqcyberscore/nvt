@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_server_dos_vuln_jul16.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_apache_server_dos_vuln_jul16.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Apache HTTP Server Denial of Service Vulnerability - Jul16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807854");
-  script_version("$Revision: 5745 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-1546");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-08 18:36:25 +0530 (Fri, 08 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server Denial of Service Vulnerability - Jul16");
@@ -41,16 +41,13 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apache HTTP Server
   and is prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as application does not restrict
   number of concurrent stream workers per connection.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause a denial of service condition.
-
-  Impact Level: Application");
+  attackers to cause a denial of service condition.");
 
   script_tag(name:"affected", value:"Apache HTTP Server 2.4.17 and 2.4.18,
   when mod_http2 is enabled");
@@ -60,8 +57,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.apache.org/dist/httpd/CHANGES_2.4");
-  script_xref(name : "URL" , value : "http://httpd.apache.org/security/vulnerabilities_24.html");
+  script_xref(name:"URL", value:"http://www.apache.org/dist/httpd/CHANGES_2.4");
+  script_xref(name:"URL", value:"http://httpd.apache.org/security/vulnerabilities_24.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -76,22 +73,15 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-httpd_port = 0;
-httpd_ver = "";
-
-## Get HTTP Port
 if(!httpd_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!httpd_ver = get_app_version(cpe:CPE, port:httpd_port)){
   exit(0);
 }
 
 ## For when mod_http2 and mod_ssl are enabled --> using qod as remote_banner_unreliable
-## Checking for Vulnerable version
 if(version_in_range(version:httpd_ver, test_version:"2.4.17", test_version2:"2.4.18"))
 {
   report = report_fixed_ver(installed_version:httpd_ver, fixed_version:"2.4.20");

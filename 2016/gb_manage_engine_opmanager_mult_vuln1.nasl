@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_opmanager_mult_vuln1.nasl 11300 2018-09-10 10:52:15Z mmartin $
+# $Id: gb_manage_engine_opmanager_mult_vuln1.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # ManageEngine OpManager Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:zohocorp:manageengine_opmanager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106402");
-  script_version("$Revision: 11300 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:52:15 +0200 (Mon, 10 Sep 2018) $");
+  script_version("$Revision: 11516 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-22 11:33:23 +0700 (Tue, 22 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -55,10 +55,10 @@ if (description)
 
   script_tag(name:"insight", value:"Multiple vulnerabilities were found in ManageEngine OpManager:
 
-- Denial of Service: When certain characters are in the EncryptPassword value the server process will go into an
+  - Denial of Service: When certain characters are in the EncryptPassword value the server process will go into an
 infinite loop.
 
-- Multiple Cross-Site Scripting vulnerabilities: The User Defined DNS Names table in System Settings -> DNS fails
+  - Multiple Cross-Site Scripting vulnerabilities: The User Defined DNS Names table in System Settings -> DNS fails
 to sanitize user input. The ping and traceroute buttons on the MonitoringDevice page fail to sanitize the name of
 the host being monitored.");
 

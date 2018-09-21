@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2016-39_2016-48_2_macosx.nasl 9341 2018-04-06 05:27:04Z cfischer $
+# $Id: gb_mozilla_firefox_esr_mfsa_2016-39_2016-48_2_macosx.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Mozilla Firefox Esr Security Updates( mfsa_2016-39_2016-48 2)-MAC OS X
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807683");
-  script_version("$Revision: 9341 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-2808", "CVE-2016-2814", "CVE-2016-2807", "CVE-2016-2806");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 07:27:04 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-02 13:12:33 +0530 (Mon, 02 May 2016)");
   script_name("Mozilla Firefox Esr Security Updates( mfsa_2016-39_2016-48 2)-MAC OS X");
 
-  script_tag(name: "summary" , value:"This host is installed with 
+  script_tag(name:"summary", value:"This host is installed with
   Mozilla Firefox Esr and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
+
   - Multiple unspecified vulnerabilities in the browser engine.
+
   - An error in the JavaScript engine.
+
   - Heap-based buffer overflow in the stagefright::SampleTable::parseSampleCencInfo
     function in libstagefright.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to cause a denial of service,
-  and to execute arbitrary code.
+  and to execute arbitrary code.");
 
-  Impact Level: Application.");
-
-  script_tag(name: "affected" , value:"Mozilla Firefox Esr version 45.x before 
+  script_tag(name:"affected", value:"Mozilla Firefox Esr version 45.x before
   45.1 on MAC OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox Esr version 45.1
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox Esr version 45.1
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -80,15 +80,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_equal(version:ffVer, test_version:"45.0"))
 {
   report = report_fixed_ver(installed_version:ffVer, fixed_version:"45.1");

@@ -23,36 +23,40 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:openwebanalytics:open_web_analytics";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803795");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11504 $");
   script_cve_id("CVE-2014-1206");
   script_bugtraq_id(64774);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:55:48 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 13:34:38 +0530 (Tue, 21 Jan 2014)");
   script_name("Open Web Analytics 'owa_email_address' SQL Injection Vulnerability");
 
-
   script_tag(name:"summary", value:"This host is installed with Open Web Analytics and is prone to sql injection
-vulnerabilities.");
+  vulnerabilities.");
+
   script_tag(name:"vuldetect", value:"Get the installed location with the help of detect NVT and check sql injection
-is possible.");
+  is possible.");
+
   script_tag(name:"insight", value:"Input passed via the 'owa_email_address' parameter to index.php
-(when 'owa_do' is set to 'base.passwordResetForm' and 'owa_action' is set to
-'base.passwordResetRequest') is not properly sanitised before being used in
-a SQL query.");
+  (when 'owa_do' is set to 'base.passwordResetForm' and 'owa_action' is set to 'base.passwordResetRequest')
+  is not properly sanitised before being used in a SQL query.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to manipulate SQL queries
-in the back-end database, allowing for the manipulation or disclosure
-of arbitrary data.");
+  in the back-end database, allowing for the manipulation or disclosure of arbitrary data.");
+
   script_tag(name:"affected", value:"Open Web Analytics version 1.5.4 and prior.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"solution", value:"Upgrade to Open Web Analytics 1.5.5 or later,
-For updates refer to http://downloads.openwebanalytics.com");
+  For updates refer to http://downloads.openwebanalytics.com");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/56350");
   script_xref(name:"URL", value:"http://www.secureworks.com/advisories/SWRX-2014-001/SWRX-2014-001.pdf");
@@ -63,9 +67,9 @@ For updates refer to http://downloads.openwebanalytics.com");
   script_dependencies("gb_open_web_analytics_detect.nasl");
   script_mandatory_keys("OpenWebAnalytics/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
@@ -74,13 +78,10 @@ include("http_keepalive.inc");
 
 owaPort = get_app_port(cpe:CPE);
 if(!owaPort){
-  owaPort = 80;
-}
-
-host = get_host_name();
-if(!host){
   exit(0);
 }
+
+host = http_host_name(port:owaPort);
 
 if(!dir = get_app_location(cpe:CPE, port:owaPort)){
   exit(0);
@@ -97,7 +98,6 @@ owaReq = string("POST ", dir, "/index.php?owa_do=base.passwordResetForm HTTP/1.1
                 "Content-Type: application/x-www-form-urlencoded\r\n",
                 "Content-Length: ", strlen(postdata), "\r\n\r\n",
                  postdata);
-
 owaRes = http_keepalive_send_recv(port:owaPort, data:owaReq);
 
 if(owaRes && owaRes =~ "Invalid address:.*sql-inj-test")

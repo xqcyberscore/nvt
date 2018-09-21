@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_rce_vuln.nasl 7651 2017-11-03 13:41:18Z cfischer $
+# $Id: gb_zabbix_rce_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Zabbix Remote Code Execution Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106181");
-  script_version("$Revision: 7651 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-03 14:41:18 +0100 (Fri, 03 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2016-08-17 11:04:27 +0700 (Wed, 17 Aug 2016)");
-  script_tag(name: "cvss_base", value: "8.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:N");
+  script_version("$Revision: 11516 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-17 11:04:27 +0700 (Wed, 17 Aug 2016)");
+  script_tag(name:"cvss_base", value:"8.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:N");
 
   script_cve_id("CVE-2016-9140");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Zabbix Remote Code Execution Vulnerability");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("zabbix_web_detect.nasl");
   script_mandatory_keys("Zabbix/installed");
 
-  script_tag(name: "summary", value: "Zabbix is prone to a remote code execution vulnerability.");
+  script_tag(name:"summary", value:"Zabbix is prone to a remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Zabbix is prone to an authenticated remote code execution vulnerability
+  script_tag(name:"insight", value:"Zabbix is prone to an authenticated remote code execution vulnerability
 in api_jsonrpc.php.");
 
-  script_tag(name: "impact", value: "An authenticated attacker may execute arbitrary commands.");
+  script_tag(name:"impact", value:"An authenticated attacker may execute arbitrary commands.");
 
-  script_tag(name: "affected", value: "Zabbix version 2.2.x until 3.0.3");
+  script_tag(name:"affected", value:"Zabbix version 2.2.x until 3.0.3");
 
-  script_tag(name: "solution", value: "Update to 3.0.4 or newer versions.");
+  script_tag(name:"solution", value:"Update to 3.0.4 or newer versions.");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/39937/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39937/");
 
 
   exit(0);

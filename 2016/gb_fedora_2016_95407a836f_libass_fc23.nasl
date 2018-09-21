@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810126");
-  script_version("$Revision: 11484 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 05:38:48 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 11513 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 05:48:51 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-02 14:05:33 +0100 (Fri, 02 Dec 2016)");
   script_cve_id("CVE-2016-7969", "CVE-2016-7970", "CVE-2016-7972");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libass FEDORA-2016-95407a836f");
   script_tag(name: "summary", value: "Check the version of libass");

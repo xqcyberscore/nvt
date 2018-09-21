@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prime_collaboration_assurance_xss_vuln.nasl 6292 2017-06-08 06:36:42Z ckuersteiner $
+# $Id: gb_cisco_prime_collaboration_assurance_xss_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Cisco Prime Collaboration Assurance Cross-Site Scripting Vulnerability
 #
@@ -29,29 +29,26 @@ CPE = "cpe:/a:cisco:prime_collaboration_assurance";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809770");
-  script_version("$Revision: 6292 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-9200");
   script_bugtraq_id(94806);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-08 08:36:42 +0200 (Thu, 08 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-22 19:49:38 +0530 (Thu, 22 Dec 2016)");
   script_name("Cisco Prime Collaboration Assurance Cross-Site Scripting Vulnerability");
 
   script_tag(name:"summary", value:"This host is running cisco prime collaboration
   assurance and is prone to cross site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to insufficient input validation
   of some parameters that are passed to the web server.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to execute arbitrary script code in the context of the affected site
-  or allow the attacker to access sensitive browser-based information.
-
-  Impact Level: Application");
+  or allow the attacker to access sensitive browser-based information.");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -82,7 +79,6 @@ if(!version = get_app_version(cpe:CPE)) exit(0);
 
 if(version =~ "^(10\.(5|6))")
 {
-  ## Checking for vulnerable version
   if(version_is_equal(version:version, test_version:"10.5.1")||
      version_is_equal(version:version, test_version:"10.6.0"))
   {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sugarcrm_mult_vuln_jun16.nasl 8598 2018-01-31 09:59:32Z cfischer $
+# $Id: gb_sugarcrm_mult_vuln_jun16.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # SugarCRM Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:sugarcrm:sugarcrm";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106123");
-  script_version("$Revision: 8598 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-31 10:59:32 +0100 (Wed, 31 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2016-07-08 15:37:30 +0700 (Fri, 08 Jul 2016)");
-  script_tag(name: "cvss_base", value: "5.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_version("$Revision: 11516 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-08 15:37:30 +0700 (Fri, 08 Jul 2016)");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("SugarCRM Multiple Vulnerabilities");
 
@@ -49,11 +49,11 @@ if (description)
   script_dependencies("gb_sugarcrm_detect.nasl");
   script_mandatory_keys("sugarcrm/installed");
 
-  script_tag(name: "summary", value: "SugarCRM is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"SugarCRM is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "SugarCRM is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"SugarCRM is prone to multiple vulnerabilities:
 
 The application fails to properly check whether the user has administrator privileges within the following
 scripts: /modules/Administration/ImportCustomFieldStructure.php, /modules/Administration/UpgradeWizard_commit.php,
@@ -67,15 +67,15 @@ User input passed through the 'type_module' request parameter isn't properly san
 to instantiate a new DashletRssFeedTitle object, and this could be exploited to carry out certain attacks
 because of the DashletRssFeedTitle::readFeed() method (user input passed directly to the 'fopen()' function).");
 
-  script_tag(name: "impact", value: "An authenticated attacker may execute arbitrary OS commands.");
+  script_tag(name:"impact", value:"An authenticated attacker may execute arbitrary OS commands.");
 
-  script_tag(name: "affected", value: "Version <= 6.5.18");
+  script_tag(name:"affected", value:"Version <= 6.5.18");
 
-  script_tag(name: "solution", value: "Update to 6.5.19 or newer.");
+  script_tag(name:"solution", value:"Update to 6.5.19 or newer.");
 
-  script_xref(name: "URL", value: "http://karmainsecurity.com/KIS-2016-04");
-  script_xref(name: "URL", value: "http://karmainsecurity.com/KIS-2016-05");
-  script_xref(name: "URL", value: "http://karmainsecurity.com/KIS-2016-06");
+  script_xref(name:"URL", value:"http://karmainsecurity.com/KIS-2016-04");
+  script_xref(name:"URL", value:"http://karmainsecurity.com/KIS-2016-05");
+  script_xref(name:"URL", value:"http://karmainsecurity.com/KIS-2016-06");
 
 
   exit(0);

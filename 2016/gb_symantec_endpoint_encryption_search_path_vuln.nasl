@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_endpoint_encryption_search_path_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_symantec_endpoint_encryption_search_path_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Symantec Endpoint Encryption Unquoted Windows Search Path Vulnerability
 #
@@ -29,39 +29,36 @@ CPE= "cpe:/a:symantec:endpoint_encryption";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808070");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2015-8156");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 13:01:24 +0530 (Tue, 07 Jun 2016)");
   script_name("Symantec Endpoint Encryption Unquoted Windows Search Path Vulnerability");
 
-  script_tag(name: "summary" , value: "This host is installed with Symantec
+  script_tag(name:"summary", value:"This host is installed with Symantec
   Endpoint Encryption (SEE) and is prone to unquoted windows search path
   vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The flaw exists due to an improper
+  script_tag(name:"insight", value:"The flaw exists due to an improper
   validation of an unquoted search path in EEDService.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow local
-  users to gain privileges and insert arbitrary code in the root path.
+  script_tag(name:"impact", value:"Successful exploitation will allow local
+  users to gain privileges and insert arbitrary code in the root path.");
 
-  Impact Level: Application.");
-
-  script_tag(name: "affected" , value:"Symantec Endpoint Encryption (SEE) version
+  script_tag(name:"affected", value:"Symantec Endpoint Encryption (SEE) version
   11.x before 11.1.1.");
 
-  script_tag(name: "solution" , value:"Update to Symantec Endpoint Encryption (SEE)
+  script_tag(name:"solution", value:"Update to Symantec Endpoint Encryption (SEE)
   version 11.1.1 or later. For updates refer to http://www.symantec.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&amp;pvid=security_advisory&amp;suid=20160506_00");
+  script_xref(name:"URL", value:"https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&amp;pvid=security_advisory&amp;suid=20160506_00");
 
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -74,15 +71,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-seeVer= "";
-
-## Get version
 if(!seeVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check vulnerable versions
 if(version_in_range(version:seeVer, test_version:"11.0", test_version2:"11.1.0"))
 {
   report = report_fixed_ver(installed_version:seeVer, fixed_version: "11.1.1");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0481.nasl 11484 2018-09-20 03:38:48Z ckuersteiner $
+# $Id: mgasa-2015-0481.nasl 11513 2018-09-21 03:48:51Z ckuersteiner $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -25,9 +25,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131159");
-  script_version("$Revision: 11484 $");
+  script_version("$Revision: 11513 $");
   script_tag(name:"creation_date", value:"2015-12-21 14:43:00 +0200 (Mon, 21 Dec 2015)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 05:38:48 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 05:48:51 +0200 (Fri, 21 Sep 2018) $");
 
   script_name("Mageia Linux Local Check: mgasa-2015-0481");
 
@@ -41,8 +41,8 @@ possible and could be used as a denial-of-service vector against servers perform
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://advisories.mageia.org/MGASA-2015-0481.html");
   script_cve_id("CVE-2015-8000");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");

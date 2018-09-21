@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_code_exec_vuln.nasl 8169 2017-12-19 08:42:31Z cfischer $
+# $Id: gb_apple_itunes_code_exec_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Apple iTunes Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -28,42 +28,39 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810208");
-  script_version("$Revision: 8169 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-1742");
   script_bugtraq_id(90688);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:42:31 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-22 11:05:47 +0530 (Tue, 22 Nov 2016)");
   script_name("Apple iTunes Arbitrary Code Execution Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value: "This host is installed with Apple iTunes
+  script_tag(name:"summary", value:"This host is installed with Apple iTunes
   and is prone to arbitrary code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The flaw is due to a dynamic library 
+  script_tag(name:"insight", value:"The flaw is due to a dynamic library
   loading issue in iTunes setup.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to local users to gain privileges via a Trojan horse DLL in the 
-  current working directory.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to local users to gain privileges via a Trojan horse DLL in the
+  current working directory.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Apple iTunes versions before 12.4
+  script_tag(name:"affected", value:"Apple iTunes versions before 12.4
   on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple iTunes 12.4 or later,
+  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.4 or later,
   For updates refer to http://www.apple.com/itunes");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "https://support.apple.com/en-us/HT206379");
-  script_xref(name: "URL" , value : "http://lists.apple.com/archives/security-announce/2016/May/msg00006.html");
+  script_xref(name:"URL", value:"https://support.apple.com/en-us/HT206379");
+  script_xref(name:"URL", value:"http://lists.apple.com/archives/security-announce/2016/May/msg00006.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
@@ -76,10 +73,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ituneVer= "";
-
-## Get version
 if(!ituneVer = get_app_version(cpe:CPE)){
   exit(0);
 }

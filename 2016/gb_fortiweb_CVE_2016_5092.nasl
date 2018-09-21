@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortiweb_CVE_2016_5092.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_fortiweb_CVE_2016_5092.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # FortiWeb path traversal vulnerability
 #
@@ -29,35 +29,35 @@ CPE = "cpe:/a:fortinet:fortiweb";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105796");
- script_cve_id("CVE-2016-5092", "CVE-2016-4066");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9381 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105796");
+  script_cve_id("CVE-2016-5092", "CVE-2016-4066");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11516 $");
 
- script_name("FortiWeb path traversal vulnerability");
+  script_name("FortiWeb path traversal vulnerability");
 
- script_xref(name:"URL", value:"http://fortiguard.com/advisory/fortiweb-path-traversal-vulnerability");
+  script_xref(name:"URL", value:"http://fortiguard.com/advisory/fortiweb-path-traversal-vulnerability");
 
- script_tag(name:"impact", value:"Information disclosure");
+  script_tag(name:"impact", value:"Information disclosure");
 
- script_tag(name:"vuldetect", value:"Check the version");
- script_tag(name:"solution", value:"Upgrade to FortiWeb 5.5.3 or higher.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Upgrade to FortiWeb 5.5.3 or higher.");
 
- script_tag(name:"summary", value:"A path traversal vulnerability allows an administrator account with read and write privileges to read arbitrary files using the autolearn feature.");
+  script_tag(name:"summary", value:"A path traversal vulnerability allows an administrator account with read and write privileges to read arbitrary files using the autolearn feature.");
 
- script_tag(name:"affected", value:"FortWeb 4.4.6 to 5.5.2 with the autolearn feature configured.");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"affected", value:"FortWeb 4.4.6 to 5.5.2 with the autolearn feature configured.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2016-07-05 19:08:43 +0200 (Tue, 05 Jul 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("FortiOS Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_fortiweb_version.nasl");
- script_mandatory_keys("fortiweb/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-05 19:08:43 +0200 (Tue, 05 Jul 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("FortiOS Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_fortiweb_version.nasl");
+  script_mandatory_keys("fortiweb/version");
 
  exit(0);
 }

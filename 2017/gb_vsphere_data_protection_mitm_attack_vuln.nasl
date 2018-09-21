@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vsphere_data_protection_mitm_attack_vuln.nasl 5941 2017-04-12 12:01:06Z antu123 $
+# $Id: gb_vsphere_data_protection_mitm_attack_vuln.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # VMware vSphere Data Protection (VDP) Man-in-the-Middle Attack Vulnerability
 #
@@ -28,41 +28,38 @@ CPE = "cpe:/a:vmware:vsphere_data_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810683");
-  script_version("$Revision: 5941 $");
+  script_version("$Revision: 11501 $");
   script_cve_id("CVE-2014-4632");
   script_bugtraq_id(72367);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 14:01:06 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-04-11 12:14:20 +0530 (Tue, 11 Apr 2017)");
   script_tag(name:"qod_type", value:"package");
   script_name("VMware vSphere Data Protection (VDP) Man-in-the-Middle Attack Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with  VMware vSphere
+  script_tag(name:"summary", value:"This host is installed with  VMware vSphere
   Data Protection (VDP) and is prone to a man in the middle attack vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with
-  the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to improper verification
   of X.509 certificates from vCenter Server SSL servers.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to spoof servers, and bypass intended backup and restore access
-  restrictions, via a crafted certificate.
+  restrictions, via a crafted certificate.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"VMware vSphere Data Protection (VDP) 5.1,
+  script_tag(name:"affected", value:"VMware vSphere Data Protection (VDP) 5.1,
   5.5 before 5.5.9, and 5.8 before 5.8.1");
 
-  script_tag(name: "solution" , value:"Upgrade to VMware vSphere Data Protection
+  script_tag(name:"solution", value:"Upgrade to VMware vSphere Data Protection
   (VDP) 5.5.9 or 5.8.1 or later. For updates refer to http://www.vmware.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2015-0002.html");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1031664");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2015-0002.html");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1031664");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -75,11 +72,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-appVer = "";
-report = "";
-
-## Get the version
 if(!appVer = get_app_version(cpe:CPE)){
   exit(0);
 }

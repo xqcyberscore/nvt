@@ -28,12 +28,12 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.867855");
-  script_version("$Revision: 9373 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:57:18 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11513 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 05:48:51 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-17 09:45:34 +0530 (Tue, 17 Jun 2014)");
   script_cve_id("CVE-2014-2330", "CVE-2014-2331", "CVE-2014-2329", "CVE-2014-2332", "CVE-2014-0243");
-  script_tag(name:"cvss_base", value:"7.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:P/A:N");
+  script_tag(name:"cvss_base", value:"8.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
   script_name("Fedora Update for check-mk FEDORA-2014-6818");
 
   tag_insight = "check-mk is a general purpose Nagios-plugin for retrieving data. It adopts a

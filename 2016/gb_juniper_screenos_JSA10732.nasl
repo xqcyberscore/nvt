@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_JSA10732.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_juniper_screenos_JSA10732.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Multiple Security issues with ScreenOS (JSA10732/JSA10733)
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/o:juniper:screenos";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105605");
- script_cve_id("CVE-2015-1789", "CVE-2015-1790","CVE-2015-1791","CVE-2015-3195","CVE-2016-1268");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5557 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105605");
+  script_cve_id("CVE-2015-1789", "CVE-2015-1790", "CVE-2015-1791", "CVE-2015-3195", "CVE-2016-1268");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11516 $");
 
- script_name("Multiple Security issues with ScreenOS (JSA10732/JSA10733)");
+  script_name("Multiple Security issues with ScreenOS (JSA10732/JSA10733)");
 
- script_xref(name:"URL", value:"http://kb.juniper.net/InfoCenter/index?page=content&id=JSA10732&actp=RSS");
- script_xref(name:"URL", value:"http://kb.juniper.net/InfoCenter/index?page=content&id=JSA10733&actp=RSS");
+  script_xref(name:"URL", value:"http://kb.juniper.net/InfoCenter/index?page=content&id=JSA10732&actp=RSS");
+  script_xref(name:"URL", value:"http://kb.juniper.net/InfoCenter/index?page=content&id=JSA10733&actp=RSS");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"A specially crafted malformed packet received on any interface targeted to the device's administrative web services interface may cause loss of administrative access to the system and can reboot the system causing a complete denial of service.");
+  script_tag(name:"insight", value:"A specially crafted malformed packet received on any interface targeted to the device's administrative web services interface may cause loss of administrative access to the system and can reboot the system causing a complete denial of service.");
 
- script_tag(name:  "solution" , value:"Update to ScreenOS 6.3.0r22 or newer");
+  script_tag(name:"solution", value:"Update to ScreenOS 6.3.0r22 or newer");
 
- script_tag(name: "summary" , value:"ScreenOS: Multiple Vulnerabilities in OpenSSL / Malformed SSL/TLS packet causes Denial of Service");
- script_tag(name: "affected" , value:"These issues can affect any product or platform running ScreenOS prior to 6.3.0r22");
+  script_tag(name:"summary", value:"ScreenOS: Multiple Vulnerabilities in OpenSSL / Malformed SSL/TLS packet causes Denial of Service");
+  script_tag(name:"affected", value:"These issues can affect any product or platform running ScreenOS prior to 6.3.0r22");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-04-15 14:21:00 +0200 (Fri, 15 Apr 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_screenos_version.nasl");
- script_mandatory_keys("ScreenOS/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-04-15 14:21:00 +0200 (Fri, 15 Apr 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_screenos_version.nasl");
+  script_mandatory_keys("ScreenOS/version");
 
  exit(0);
 }

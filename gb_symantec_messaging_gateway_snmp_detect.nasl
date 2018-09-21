@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_snmp_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_symantec_messaging_gateway_snmp_detect.nasl 11499 2018-09-20 10:38:00Z ckuersteiner $
 #
 # Symantec Messaging Gateway Detection (SNMP)
 #
@@ -30,8 +30,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105718");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11499 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:38:00 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-17 12:13:39 +0200 (Tue, 17 May 2016)");
   script_name("Symantec Messaging Gateway Detection (SNMP)");
 
@@ -58,7 +58,9 @@ if (!infos = snmp_get_sw_oid(pattern: "sms-appliance-release", port: port))
 
 package = infos['package'];
 
-set_kb_item(name: "smg/installed", value: TRUE);
+set_kb_item(name: "symantec_smg/detected", value: TRUE);
+set_kb_item(name: "symantec_smg/snmp/detected", value: TRUE);
+set_kb_item(name: "symantec_smg/snmp/port", value: port);
 
 vers = eregmatch(pattern: 'sms-appliance-release-([0-9+][^ $\r\n"]+)', string: package);
 if (!isnull(vers[1])) {
@@ -76,11 +78,10 @@ if (!isnull(vers[1])) {
   }
 
   if (version)
-    set_kb_item(name: "symantec_messaging_gateway/version/snmp", value: version);
+    set_kb_item(name: "symantec_smg/snmp/" + port + "/version", value: version);
 
   if (patch)
-    set_kb_item(name: "symantec_messaging_gateway/patch/snmp", value: patch);
+    set_kb_item(name: "symantec_smg/snmp/" + port + "/patch", value: patch);
 }
 
 exit(0);
-

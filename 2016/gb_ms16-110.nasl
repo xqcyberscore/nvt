@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-110.nasl 5813 2017-03-31 09:01:08Z teissa $
+# $Id: gb_ms16-110.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Microsoft Windows Multiple Vulnerabilities (3178467)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809041");
-  script_version("$Revision: 5813 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-3346", "CVE-2016-3352", "CVE-2016-3368", "CVE-2016-3369");
   script_bugtraq_id(92846, 92852, 92847, 92850);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-09-14 08:01:49 +0530 (Wed, 14 Sep 2016)");
   script_name("Microsoft Windows Multiple Vulnerabilities (3178467)");
 
@@ -43,21 +43,21 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"The multiple flaws are due to,
-  - An elevation of privilege vulnerability exists in the way that Windows 
+
+  - An elevation of privilege vulnerability exists in the way that Windows
     enforces permissions if an attacker loads a specially crafted DLL.
-  - An information disclosure vulnerability exists when Windows fails to properly 
-    validate NT LAN Manager (NTLM) Single Sign-On (SSO) requests during Microsoft 
+
+  - An information disclosure vulnerability exists when Windows fails to properly
+    validate NT LAN Manager (NTLM) Single Sign-On (SSO) requests during Microsoft
     Account (MSA) login sessions.
-  - An improper handling of objects in memory."); 
+
+  - An improper handling of objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to run arbitrary code as a system administrator, to brute force a 
-  user's NTLM password hash and to cause denial of service condition.
+  attacker to run arbitrary code as a system administrator, to brute force a
+  user's NTLM password hash and to cause denial of service condition.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 10 x32/x64.
+  script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64.
   Microsoft Windows 8.1 x32/x64 Edition.
   Microsoft Windows Server 2012/2012R2.
   Microsoft Windows 10 Version 1511 x32/x64.
@@ -75,13 +75,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3178467");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/ms16-110");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3178467");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/ms16-110");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -92,24 +93,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-ntVer = "";
-lsVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2, winVistax64:3, win2008x64:3,
                    win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of vulnerable file
 lsVer = fetch_file_version(sysPath, file_name:"System32\Lsasrv.dll");
 ntVer = fetch_file_version(sysPath, file_name:"System32\Ntdsai.dll");
 EdgeVer = fetch_file_version(sysPath, file_name:"System32\Edgehtml.dll");
@@ -117,10 +110,8 @@ if(!lsVer && !ntVer && !EdgeVer){
   exit(0);
 }
 
-##Windows Vista and Windows Server 2008
 if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0 && ntVer)
 {
-  ## Check for Ntdsai.dll version
   if(version_is_less(version:ntVer, test_version:"6.0.6002.19686"))
   {
     Vulnerable_range = "Less than 6.0.6002.19686";
@@ -133,10 +124,8 @@ if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0 && nt
   }
 }
 
-## Windows 7 and Windows 2008 R2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && ntVer)
 {
-  ## Check for Ntdsai.dll version
   if(version_is_less(version:ntVer, test_version:"6.1.7601.23535"))
   {
     Vulnerable_range = "Less than 6.1.7601.23535";
@@ -144,10 +133,8 @@ else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && ntVer)
   }
 }
 
-# Windows server 2012
 else if(hotfix_check_sp(win2012:1) > 0 && ntVer)
-{ 
-  ## Check for Ntdsai.dll version
+{
   if(version_is_less(version:ntVer, test_version:"6.2.9200.21953"))
   {
      Vulnerable_range = "Less than 6.2.9200.21953";
@@ -155,10 +142,8 @@ else if(hotfix_check_sp(win2012:1) > 0 && ntVer)
   }
 }
 
-## Windows Server 2012R2
 else if(hotfix_check_sp(win2012R2:1) > 0 && ntVer)
 {
-  ## Check for Ntdsai.dll version
   if(version_is_less(version:ntVer, test_version:"6.3.9600.18435"))
   {
     Vulnerable_range = "Less than 6.3.9600.18435";
@@ -166,10 +151,8 @@ else if(hotfix_check_sp(win2012R2:1) > 0 && ntVer)
   }
 }
 
-## Windows 8.1
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1) > 0)
 {
-  ## Check for Ntdsai.dll version
   if(ntVer)
   {
     if(version_is_less(version:ntVer, test_version:"6.3.9600.18435"))
@@ -180,7 +163,6 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1) > 0)
   }
   else if(lsVer)
   {
-    ## Check for Lsasrv.dll version
     if(version_is_less(version:lsVer, test_version:"6.3.9600.18454"))
     {
       Vulnerable_range = "Less than 6.3.9600.18454";
@@ -189,16 +171,13 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1) > 0)
   }
 }
 
-##Windows 10
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Check for Edgehtml.dll version
   if(version_is_less(version:EdgeVer, test_version:"11.0.10240.17113"))
   {
     Vulnerable_range = "Less than 11.0.10240.17113";
     VULN3 = TRUE ;
   }
-  ##Windows 10 Version 1511
   else if(version_in_range(version:EdgeVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.588"))
   {
     Vulnerable_range = "11.0.10586.0 - 11.0.10586.588";
@@ -210,7 +189,7 @@ if(VULN1)
 {
   report = 'File checked:     ' + sysPath + "\system32\Ntdsai.dll"+ '\n' +
            'File version:     ' + ntVer  + '\n' +
-           'Vulnerable range: ' + Vulnerable_range + '\n' ;   
+           'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
   exit(0);
 }

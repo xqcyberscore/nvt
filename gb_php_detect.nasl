@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_detect.nasl 11481 2018-09-19 16:50:14Z cfischer $
+# $Id: gb_php_detect.nasl 11512 2018-09-20 20:11:16Z cfischer $
 #
 # PHP Version Detection (Remote)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800109");
-  script_version("$Revision: 11481 $");
+  script_version("$Revision: 11512 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 18:50:14 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 22:11:16 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-10-07 16:11:33 +0200 (Tue, 07 Oct 2008)");
   script_name("PHP Version Detection (Remote)");
   script_category(ACT_GATHER_INFO);
@@ -66,7 +66,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 }
 
 phpFilesList = get_http_kb_file_extensions( port:port, host:host, ext:"php" );
-if( is_array( phpFilesList ) ) {
+if( phpFilesList && is_array( phpFilesList ) ) {
   count = 0;
   foreach phpFile( phpFilesList ) {
     count++;

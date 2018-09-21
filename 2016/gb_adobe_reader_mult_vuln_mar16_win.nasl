@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln_mar16_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
+# $Id: gb_adobe_reader_mult_vuln_mar16_win.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Adobe Reader Multiple Vulnerabilities March16 (Windows)
 #
@@ -29,41 +29,38 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807471");
-  script_version("$Revision: 8210 $");
-  script_cve_id("CVE-2016-1007", "CVE-2016-1008", "CVE-2016-1009");  
+  script_version("$Revision: 11516 $");
+  script_cve_id("CVE-2016-1007", "CVE-2016-1008", "CVE-2016-1009");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-03-10 11:12:19 +0530 (Thu, 10 Mar 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Reader Multiple Vulnerabilities March16 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Adobe Reader
+  script_tag(name:"summary", value:"This host is installed with Adobe Reader
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"Multiple flaws are due to
+  script_tag(name:"insight", value:"Multiple flaws are due to
 
   - Some memory leak vulnerabilities.
 
   - An untrusted search path vulnerability in Adobe Download Manager");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
-  remote attackers to execute arbitrary code.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  remote attackers to execute arbitrary code.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Adobe Reader 11.x before 11.0.15 on Windows.");
 
-  script_tag(name: "affected" , value:"Adobe Reader 11.x before 11.0.15 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Adobe Reader version 11.0.15
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 11.0.15
   or later.
   For updates refer to http://www.adobe.com/");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/acrobat/apsb16-09.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/acrobat/apsb16-09.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_multi_vuln.nasl 9462 2018-04-12 13:12:54Z cfischer $
+# $Id: gb_hp_ilo_multi_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # HP Integrated Lights-Out Multiple Vulnerabilities
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106182");
-  script_version("$Revision: 9462 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-12 15:12:54 +0200 (Thu, 12 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2016-08-18 10:47:20 +0700 (Thu, 18 Aug 2016)");
+  script_version("$Revision: 11516 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-18 10:47:20 +0700 (Thu, 18 Aug 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-4375");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("HP Integrated Lights-Out Multiple Vulnerabilities");
 
@@ -49,20 +49,20 @@ if (description)
   script_dependencies("ilo_detect.nasl");
   script_mandatory_keys("HP_ILO/installed");
 
-  script_tag(name: "summary", value: "HP Integrated Lights-Out is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"HP Integrated Lights-Out is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Potential security vulnerabilities have been identified in HPE
+  script_tag(name:"insight", value:"Potential security vulnerabilities have been identified in HPE
 Integrated Lights Out. The vulnerabilities could lead to multiple remote vulnerabilities.");
 
-  script_tag(name: "affected", value: "HPE Integrated Lights-Out 3 (iLO 3), Firmware for ProLiant G7 Servers
+  script_tag(name:"affected", value:"HPE Integrated Lights-Out 3 (iLO 3), Firmware for ProLiant G7 Servers
 prior to v1.88 and HPE Integrated Lights-Out 4 (iLO 4), prior to v2.44 ");
 
-  script_tag(name: "solution", value: "HPE has provided firmware updates to resolve this vulnerability. iLO 3
+  script_tag(name:"solution", value:"HPE has provided firmware updates to resolve this vulnerability. iLO 3
 version v1.88 or subsequent, iLO 4 version v2.44 or subsequent");
 
-  script_xref(name: "URL", value: "https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05236950");
+  script_xref(name:"URL", value:"https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05236950");
 
   exit(0);
 }

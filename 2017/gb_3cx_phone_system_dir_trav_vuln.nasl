@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_3cx_phone_system_dir_trav_vuln.nasl 7860 2017-11-22 09:16:07Z cfischer $
+# $Id: gb_3cx_phone_system_dir_trav_vuln.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # 3CX Phone System Directory Traversal Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:3cx:phone_system';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140437");
-  script_version("$Revision: 7860 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-22 10:16:07 +0100 (Wed, 22 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2017-10-18 15:51:00 +0700 (Wed, 18 Oct 2017)");
-  script_tag(name: "cvss_base", value: "4.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_version("$Revision: 11501 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-10-18 15:51:00 +0700 (Wed, 18 Oct 2017)");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-15359");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("3CX Phone System Directory Traversal Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("gb_3cx_phone_system_detect.nasl");
   script_mandatory_keys("3cx_phone_system/installed");
 
-  script_tag(name: "summary", value: "3CX Phone System is prone to a directory traversal attack where an
+  script_tag(name:"summary", value:"3CX Phone System is prone to a directory traversal attack where an
 authenticated attacker may read arbitrary files.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "3CX Phone System version 15.5.3849.1 and prior.");
+  script_tag(name:"affected", value:"3CX Phone System version 15.5.3849.1 and prior.");
 
-  script_tag(name: "solution", value: "Update 3CX Phone System to version 15.5 Update 2 or later.");
+  script_tag(name:"solution", value:"Update 3CX Phone System to version 15.5 Update 2 or later.");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/42991/");
-  script_xref(name: "URL", value: "https://www.3cx.com/blog/releases/pbx-update/");
-  script_xref(name: "URL", value: "https://www.3cx.com/blog/change-log/phone-system-change-log/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42991/");
+  script_xref(name:"URL", value:"https://www.3cx.com/blog/releases/pbx-update/");
+  script_xref(name:"URL", value:"https://www.3cx.com/blog/change-log/phone-system-change-log/");
 
   exit(0);
 }

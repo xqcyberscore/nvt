@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160413-nms.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_cisco_ios_cisco-sa-20160413-nms.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Cisco Catalyst Switches Network Mobility Services Protocol Port Information Disclosure Vulnerability
 #
@@ -29,21 +29,21 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106210");
- script_cve_id("CVE-2016-1378");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5527 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106210");
+  script_cve_id("CVE-2016-1378");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11516 $");
 
- script_name("Cisco Catalyst Switches Network Mobility Services Protocol Port Information Disclosure Vulnerability");
+  script_name("Cisco Catalyst Switches Network Mobility Services Protocol Port Information Disclosure Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160413-nms");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160413-nms");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"Cisco Catalyst Switches running Cisco IOS Software releases prior
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"Cisco Catalyst Switches running Cisco IOS Software releases prior
 to 15.2(2)E1 may allow an unauthenticated, remote attacker to retrieve version information about the software
 release running on the device by accessing the Network Mobility Services Protocol (NMSP) port.
 
@@ -54,16 +54,16 @@ software releases to map the network and gather information for further attacks.
 Cisco has released software updates that address this vulnerability. Workarounds that address this
 vulnerability are not available.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-08-26 13:05:32 +0700 (Fri, 26 Aug 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version", "cisco_ios/model");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-26 13:05:32 +0700 (Fri, 26 Aug 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version", "cisco_ios/model");
  exit(0);
 }
 
@@ -78,7 +78,7 @@ if (model !~ "^WS\-C[0-9]" || model =~ "WS\-C60")
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'15.1(1)SG',
 		'15.1(1)SG1',
 		'15.1(1)SG2',

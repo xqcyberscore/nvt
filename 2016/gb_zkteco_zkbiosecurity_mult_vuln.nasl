@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zkteco_zkbiosecurity_mult_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_zkteco_zkbiosecurity_mult_vuln.nasl 11503 2018-09-20 12:26:46Z cfischer $
 #
 # ZKTeco ZKBioSecurity Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:zkteco:zkbiosecurity";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809335");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11503 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:26:46 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-06 14:18:22 +0530 (Thu, 06 Oct 2016)");
   script_name("ZKTeco ZKBioSecurity Multiple Vulnerabilities");
 
@@ -51,7 +51,7 @@ if(description)
   - An improper vareification of input passed to 'xmlPath' parameter.
 
   - The way visLogin.jsp script processes the login request via the
-    'EnvironmentUtil.getClientIp(request)' method.");
+  'EnvironmentUtil.getClientIp(request)' method.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to bypass local authentication, to read arbitrary files, and also leads
@@ -64,7 +64,6 @@ if(description)
   release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
-
   script_tag(name:"qod_type", value:"remote_vul");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40324");
@@ -78,18 +77,13 @@ if(description)
   script_dependencies("gb_zkteco_zkbiosecurity_detect.nasl");
   script_mandatory_keys("ZKTeco/ZKBioSecurity/Installed");
   script_require_ports("Services/www", 8088);
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-
-##Variable initializatiom
-vanPort = 0;
-dir = "";
-url = "";
 
 if(!vanPort = get_app_port(cpe:CPE)){
   exit(0);
@@ -104,18 +98,14 @@ if(dir == "/"){
 }
 
 url = dir + "/manager/";
+host = http_host_name( port:vanPort);
 
-if(!host = http_host_name( port:vanPort)){
-  exit(0);
-}
-
-req =   'GET '+url+' HTTP/1.1\r\n' +
-        'Host: '+host+'\r\n' +
+req =   'GET ' + url + ' HTTP/1.1\r\n' +
+        'Host: ' + host + '\r\n' +
 	'Connection: keep-alive\r\n' +
 	'Authorization: Basic emt0ZWNvOnprdDEyMw==\r\n' +
         'Upgrade-Insecure-Requests: 1\r\n' +
 	'\r\n';
-
 res = http_keepalive_send_recv(port:vanPort, data:req);
 
 if(!ver = eregmatch( pattern:'Location: http://'+host+'/manager/html;jsessionid=(.*CSRF_NONCE=[0-9A-Z]{32})', string:res)){
@@ -128,14 +118,13 @@ if(!ses = eregmatch( pattern:'Location: http://'+host+'/manager/html;jsessionid=
 
 url2 = dir + "/manager/jmxproxy/?j2eeType=Servlet";
 
-req2 = 'GET '+url2+' HTTP/1.1\r\n' +
-       'Host: '+host+'\r\n' +
+req2 = 'GET ' + url2 + ' HTTP/1.1\r\n' +
+       'Host: ' + host + '\r\n' +
        'Cookie: JSESSIONID='+ses[1]+'\r\n' +
        'Authorization: Basic emt0ZWNvOnprdDEyMw==\r\n' +
        'Connection: keep-alive\r\n'+
        'Upgrade-Insecure-Requests: 1\r\n' +
        '\r\n';
-
 resp = http_keepalive_send_recv(port:vanPort, data:req2);
 
 if('OK - Number of results:' >< resp && 'Name: Catalina:' >< resp &&
@@ -145,3 +134,5 @@ if('OK - Number of results:' >< resp && 'Name: Catalina:' >< resp &&
   security_message(port:vanPort, data:report);
   exit(0);
 }
+
+exit(99);

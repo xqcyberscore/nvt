@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sb_cisco-sa-20160615-rv3.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: gb_cisco_sb_cisco-sa-20160615-rv3.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Cisco RV110W, RV130W, and RV215W Routers HTTP Request Buffer Overflow Vulnerability
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/h:cisco:small_business";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105771");
- script_cve_id("CVE-2016-1398");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
- script_version ("$Revision: 5513 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105771");
+  script_cve_id("CVE-2016-1398");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_version("$Revision: 11516 $");
 
- script_name("Cisco RV110W, RV130W, and RV215W Routers HTTP Request Buffer Overflow Vulnerability");
+  script_name("Cisco RV110W, RV130W, and RV215W Routers HTTP Request Buffer Overflow Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160615-rv3");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160615-rv3");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the web-based management interface of Cisco RV110W Wireless-N VPN Firewalls,
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the web-based management interface of Cisco RV110W Wireless-N VPN Firewalls,
 Cisco RV130W Wireless-N Multifunction VPN Routers, and Cisco RV215W Wireless-N VPN Routers could
 allow an authenticated, remote attacker to cause a buffer overflow on a targeted system, resulting
 in a denial of service (DoS) condition.
@@ -54,16 +54,16 @@ contains configuration commands with a crafted payload. A successful exploit cou
 attacker to cause a buffer overflow on the targeted system, which could cause the device to reload
 unexpectedly and result in a DoS condition.");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-06-17 13:59:21 +0200 (Fri, 17 Jun 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_small_business_devices_snmp_detect.nasl");
- script_mandatory_keys("cisco/small_business/model","cisco/small_business/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-17 13:59:21 +0200 (Fri, 17 Jun 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_small_business_devices_snmp_detect.nasl");
+  script_mandatory_keys("cisco/small_business/model", "cisco/small_business/version");
 
  exit(0);
 }

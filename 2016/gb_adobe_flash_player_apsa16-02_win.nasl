@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsa16-02_win.nasl 8178 2017-12-19 13:42:38Z cfischer $
+# $Id: gb_adobe_flash_player_apsa16-02_win.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Adobe Flash Player Security Updates( apsa16-02 )-Windows
 #
@@ -29,45 +29,48 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807698");
-  script_version("$Revision: 8178 $");
-  script_cve_id("CVE-2016-1096", "CVE-2016-1097", "CVE-2016-1098", "CVE-2016-1099", 
-		"CVE-2016-1100", "CVE-2016-1101", "CVE-2016-1102", "CVE-2016-1103", 
-		"CVE-2016-1104", "CVE-2016-1105", "CVE-2016-1106", "CVE-2016-1107", 
-		"CVE-2016-1108", "CVE-2016-1109", "CVE-2016-1110", "CVE-2016-4108", 
-		"CVE-2016-4109", "CVE-2016-4110", "CVE-2016-4111", "CVE-2016-4112", 
-		"CVE-2016-4113", "CVE-2016-4114", "CVE-2016-4115", "CVE-2016-4116", 
+  script_version("$Revision: 11516 $");
+  script_cve_id("CVE-2016-1096", "CVE-2016-1097", "CVE-2016-1098", "CVE-2016-1099",
+		"CVE-2016-1100", "CVE-2016-1101", "CVE-2016-1102", "CVE-2016-1103",
+		"CVE-2016-1104", "CVE-2016-1105", "CVE-2016-1106", "CVE-2016-1107",
+		"CVE-2016-1108", "CVE-2016-1109", "CVE-2016-1110", "CVE-2016-4108",
+		"CVE-2016-4109", "CVE-2016-4110", "CVE-2016-4111", "CVE-2016-4112",
+		"CVE-2016-4113", "CVE-2016-4114", "CVE-2016-4115", "CVE-2016-4116",
 		"CVE-2016-4117", "CVE-2016-4120", "CVE-2016-4121", "CVE-2016-4160",
         "CVE-2016-4161", "CVE-2016-4162", "CVE-2016-4163");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-12 15:58:15 +0530 (Thu, 12 May 2016)");
   script_name("Adobe Flash Player Security Updates( apsa16-02 )-Windows");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to,
+  script_tag(name:"insight", value:"The flaw exists due to,
+
   - Multiple type confusion vulnerabilities.
+
   - Multiple use-after-free vulnerabilities.
+
   - A heap buffer overflow vulnerability.
+
   - A buffer overflow vulnerability.
+
   - Multiple memory corruption vulnerabilities.
+
   - A vulnerability in the directory search path used to find resources.");
 
-  script_tag(name:"impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to execute arbitrary code and
-  also some unknown impact.
+  also some unknown impact.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Adobe Flash Player version before 
+  script_tag(name:"affected", value:"Adobe Flash Player version before
   18.0.0.352 and 20.x before 21.0.0.242 on Windows.");
 
-  script_tag(name: "solution", value:"Upgrade to Adobe Flash Player version
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
   18.0.0.352, or 21.0.0.242, or later.
   For updates refer to http://get.adobe.com/flashplayer");
 
@@ -75,8 +78,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/flash-player/apsa16-02.html");
-  script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/flash-player/apsb16-15.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsa16-02.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb16-15.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -90,15 +93,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-playerVer = "";
-
-## Get version
 if(!playerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_in_range(version:playerVer, test_version:"20", test_version2:"21.0.0.241"))
 {
   fix = "21.0.0.242";

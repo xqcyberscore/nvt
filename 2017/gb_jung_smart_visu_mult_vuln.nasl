@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jung_smart_visu_mult_vuln.nasl 5229 2017-02-08 09:47:57Z ckuerste $
+# $Id: gb_jung_smart_visu_mult_vuln.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # JUNG Smart Visu Server Multiple Vulnerabilities
 #
@@ -28,15 +28,15 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106577");
-  script_version("$Revision: 5229 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-08 10:47:57 +0100 (Wed, 08 Feb 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-08 12:16:13 +0700 (Wed, 08 Feb 2017)");
-  script_tag(name: "cvss_base", value: "9.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:N");
+  script_version("$Revision: 11501 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-08 12:16:13 +0700 (Wed, 08 Feb 2017)");
+  script_tag(name:"cvss_base", value:"9.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("JUNG Smart Visu Server Multiple Vulnerabilities");
 
@@ -48,26 +48,26 @@ if (description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name: "summary", value: "JUNG Smart Visu Server is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"JUNG Smart Visu Server is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Tries to obtain /etc/passwd.");
+  script_tag(name:"vuldetect", value:"Tries to obtain /etc/passwd.");
 
-  script_tag(name: "insight", value: "JUNG Smart Visu Server is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"JUNG Smart Visu Server is prone to multiple vulnerabilities:
 
-- Path Traversal Vulnerability: The Smart Visu Server runs with root privileges and is vulnerable to path
+  - Path Traversal Vulnerability: The Smart Visu Server runs with root privileges and is vulnerable to path
 traversal. This leads to full information disclosure of all files on the system.
 
-- Backdoor Accounts: Two undocumented operating system user accounts are present on the appliance. They can be
+  - Backdoor Accounts: Two undocumented operating system user accounts are present on the appliance. They can be
 used to gain access to the Smart Visu Server via SSH.
 
-- Group Address (GA) unlock without Password: As protection functionality, the KNX group address can be locked
+  - Group Address (GA) unlock without Password: As protection functionality, the KNX group address can be locked
 with a user-defined password. This password can be removed by using a single PUT request. An attacker can
 completely change the configuration of the connected devices (e.g. a light switch in the kitchen can be swapped
 with the air conditioner).");
 
-  script_tag(name: "solution", value: "Upgrade to firmware version 1.0.900 or newer.");
+  script_tag(name:"solution", value:"Upgrade to firmware version 1.0.900 or newer.");
 
-  script_xref(name: "URL", value: "https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20170207_JUNG_Smart_Visu_Server_Multiple_vulnerabilities_v10.txt");
+  script_xref(name:"URL", value:"https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20170207_JUNG_Smart_Visu_Server_Multiple_vulnerabilities_v10.txt");
 
   exit(0);
 }

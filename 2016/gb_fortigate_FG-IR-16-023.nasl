@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortigate_FG-IR-16-023.nasl 9413 2018-04-10 06:19:20Z cfischer $
+# $Id: gb_fortigate_FG-IR-16-023.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # FortiOS: Cookie Parser Buffer Overflow Vulnerability
 #
@@ -29,25 +29,25 @@ CPE = "cpe:/h:fortinet:fortigate";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105875");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 9413 $");
- script_cve_id("CVE-2016-6909");
+  script_oid("1.3.6.1.4.1.25623.1.0.105875");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11516 $");
+  script_cve_id("CVE-2016-6909");
 
- script_name("FortiOS: Cookie Parser Buffer Overflow Vulnerability");
+  script_name("FortiOS: Cookie Parser Buffer Overflow Vulnerability");
 
- script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-16-023");
+  script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-16-023");
 
- script_tag(name: "impact" , value:"This vulnerability, when exploited by a crafted HTTP request, can result in execution control being taken over.");
+  script_tag(name:"impact", value:"This vulnerability, when exploited by a crafted HTTP request, can result in execution control being taken over.");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Upgrade to release 5.x.
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Upgrade to release 5.x.
 Upgrade to release 4.3.9 or above for models not compatible with FortiOS 5.x.");
 
- script_tag(name: "summary" , value:"FortiGate firmware (FOS) released before Aug 2012 has a cookie parser buffer overflow vulnerability.");
+  script_tag(name:"summary", value:"FortiGate firmware (FOS) released before Aug 2012 has a cookie parser buffer overflow vulnerability.");
 
- script_tag(name: "affected" , value:"FortiGate (FOS):
+  script_tag(name:"affected", value:"FortiGate (FOS):
 
 4.3.8 and below
 
@@ -55,16 +55,16 @@ Upgrade to release 4.3.9 or above for models not compatible with FortiOS 5.x.");
 
 4.1.10 and below");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:19:20 +0200 (Tue, 10 Apr 2018) $");
- script_tag(name:"creation_date", value:"2016-08-18 11:05:04 +0200 (Thu, 18 Aug 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("FortiOS Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_fortigate_version.nasl");
- script_mandatory_keys("fortigate/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-18 11:05:04 +0200 (Thu, 18 Aug 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("FortiOS Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_fortigate_version.nasl");
+  script_mandatory_keys("fortigate/version");
 
  exit(0);
 }

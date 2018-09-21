@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln05_july16_lin.nasl 10455 2018-07-09 05:52:14Z cfischer $
+# $Id: gb_php_mult_vuln05_july16_lin.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # PHP Multiple Vulnerabilities - 05 - Jul16 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808634");
-  script_version("$Revision: 10455 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-6288", "CVE-2016-6289", "CVE-2016-6290", "CVE-2016-6291",
                 "CVE-2016-6292", "CVE-2016-6294", "CVE-2016-6295", "CVE-2016-6296",
                 "CVE-2016-6297");
@@ -37,7 +37,7 @@ if(description)
                     92099);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:52:14 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-29 11:54:44 +0530 (Fri, 29 Jul 2016)");
   script_name("PHP Multiple Vulnerabilities - 05 - Jul16 (Linux)");
 
@@ -77,9 +77,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue may allow
   attackers to cause a denial of service obtain sensitive information from process
-  memory, or possibly have unspecified other impact.
-
-  Impact Level: Application");
+  memory, or possibly have unspecified other impact.");
 
   script_tag(name:"affected", value:"PHP versions before 5.5.38, 5.6.x before
   5.6.24, and 7.x before 7.0.9 on Linux");

@@ -1,11 +1,11 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update_8-2016-03_lin.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: gb_google_chrome_stable-channel-update_8-2016-03_lin.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Google Chrome Security Updates( stable-channel-update_8-2016-03 )-Linux
 #
 # Authors:
-# kashinath T <tkashinath@secpod.com> 
+# kashinath T <tkashinath@secpod.com>
 #
 # Copyright:
 # Copyright (C) 2016 Greenbone Networks GmbH, http://www.greenbone.net
@@ -29,36 +29,36 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807616");
-  script_version("$Revision: 5505 $");
-  script_cve_id("CVE-2016-1643", "CVE-2016-1644", "CVE-2016-1645" );
+  script_version("$Revision: 11516 $");
+  script_cve_id("CVE-2016-1643", "CVE-2016-1644", "CVE-2016-1645");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-03-16 16:13:14 +0530 (Wed, 16 Mar 2016)");
   script_name("Google Chrome Security Updates( stable-channel-update_8-2016-03 )-Linux");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to
+  script_tag(name:"insight", value:"The multiple flaws exists due to
+
   - Type confusion in Blink.
+
   - Use-after-free in Blink.
+
   - Out-of-bounds write in PDFium.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to cause a denial of service
   (use-after-free) or possibly have unspecified other impact via a
-  crafted HTML document.
+  crafted HTML document.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Google Chrome version 
+  script_tag(name:"affected", value:"Google Chrome version
   prior to 49.0.2623.87 on Linux");
 
-  script_tag(name: "solution", value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   49.0.2623.87 or later.
   For updates refer to http://www.google.com/chrome");
 
@@ -66,7 +66,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2016/03/stable-channel-update_8.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2016/03/stable-channel-update_8.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -79,15 +79,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-chr_ver = "";
-
-## Get version
 if(!chr_ver = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:chr_ver, test_version:"49.0.2623.87"))
 {
   report = report_fixed_ver(installed_version:chr_ver, fixed_version:"49.0.2623.87");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exchange_server_ms16-010.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: gb_exchange_server_ms16-010.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Microsoft Exchange Server Address Spoofing Vulnerabilities (3124557)
 #
@@ -29,50 +29,48 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806187");
-  script_version("$Revision: 5689 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-0029", "CVE-2016-0030", "CVE-2016-0031", "CVE-2016-0032");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-13 09:19:57 +0530 (Wed, 13 Jan 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Exchange Server Address Spoofing Vulnerabilities (3124557)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-010.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"Multiple spoofing vulnerabilities exist
+  script_tag(name:"insight", value:"Multiple spoofing vulnerabilities exist
   in Microsoft Exchange Server when Outlook Web Access (OWA) fails to properly
   handle web requests.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to perform script or content injection attacks, and attempt to trick
-  the user into disclosing sensitive information.
+  the user into disclosing sensitive information.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"
-  Microsoft Exchange Server 2016,
+  script_tag(name:"affected", value:"Microsoft Exchange Server 2016,
   Microsoft Exchange Server 2013 SP1,
   Microsoft Exchange Server 2013 Cumulative Update 10 and
   Microsoft Exchange Server 2013 Cumulative Update 11");
 
-  script_tag(name: "solution" , value:"Run Windows Update and update the listed
+  script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
   link, https://technet.microsoft.com/library/security/MS16-010");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-010");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3124557#bookmark-fileinfo");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-010");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3124557#bookmark-fileinfo");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_exchange_server_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/Exchange/Server/Ver");
   exit(0);
 }
@@ -82,18 +80,11 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-ExVer = "";
-exeVer = "";
-path = "";
-
-## Get the installed path
 exchangePath = get_app_location(cpe:CPE);
 if(!exchangePath || "Could not find the install location" >< exchangePath){
   exit(0);
 }
 
-## Get Version from ExSetup.exe file version
 exeVer = fetch_file_version(sysPath:exchangePath, file_name:"Bin\ExSetup.exe");
 if(!exeVer){
   exit(0);

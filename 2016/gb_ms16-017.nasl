@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-017.nasl 8208 2017-12-21 07:33:41Z cfischer $
+# $Id: gb_ms16-017.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Microsoft Windows Remote Desktop Elevation of Privilege Vulnerability (3134700)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:rdp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807064");
-  script_version("$Revision: 8208 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-0036");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:33:41 +0100 (Thu, 21 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 09:02:28 +0530 (Wed, 10 Feb 2016)");
   script_name("Microsoft Windows Remote Desktop Elevation of Privilege Vulnerability (3134700)");
 
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
   attackers to execute arbitrary code with elevated privileges. Failed exploit
-  attempts will result in a denial of service condition.
-
-  Impact Level: System");
+  attempts will result in a denial of service condition.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64
 
@@ -73,8 +71,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3134700");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-017");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3134700");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-017");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -92,40 +90,28 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-RdpVer = "";
-edition = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win7:2, win7x64:2, win2012:1, win2012R2:1, win8_1:1,
                    win8_1x64:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath){
   exit(0);
 }
 
-## Get Version from Rdpcorets.dll file
 RdpVer = fetch_file_version(sysPath, file_name:"\system32\Rdpcorets.dll");
 if(!RdpVer){
   exit(0);
 }
 
-## Get rdp version
 mstsVer = get_app_version(cpe:CPE);
 
-## Windows 7
 if(hotfix_check_sp(win7:2, win7x64:2) > 0)
-{ 
+{
 
-  ## Checking RDP 8.0 is present or not
   if(version_in_range(version:mstsVer, test_version:"6.2.9200.00000", test_version2:"6.2.9200.99999"))
   {
-    ## Check for Rdpcorets.dll version
     if(version_is_less(version:RdpVer, test_version:"6.2.9200.17395"))
     {
       Vulnerable_range = "Less than 6.2.9200.17395";
@@ -139,10 +125,8 @@ if(hotfix_check_sp(win7:2, win7x64:2) > 0)
   }
 }
 
-## Windows 2012
 else if(hotfix_check_sp(win2012:1) > 0)
 {
-  ## Check for Rdpcorets.dll version
   if(version_is_less(version:RdpVer, test_version:"6.2.9200.17610"))
   {
     Vulnerable_range = "Less than 6.2.9200.17610";
@@ -155,10 +139,8 @@ else if(hotfix_check_sp(win2012:1) > 0)
   }
 }
 
-## Windows 8.1 and Server 2012 R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Rdpcorets.dll version
   if(version_is_less(version:RdpVer, test_version:"6.3.9600.18167"))
   {
     Vulnerable_range = "Less than 6.3.9600.18167";
@@ -166,11 +148,8 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
   }
 }
 
-## Windows 10
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Check for Rdpcorets.dll version
-  ## Windows 10 Core
   if(version_is_less(version:RdpVer, test_version:"10.0.10240.16683"))
   {
     Vulnerable_range = "Less than 10.0.10240.16603";

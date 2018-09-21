@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmailer_eol.nasl 11485 2018-09-20 06:25:34Z cfischer $
+# $Id: gb_phpmailer_eol.nasl 11508 2018-09-20 13:44:58Z cfischer $
 #
 # PHPMailer End Of Life Detection
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:phpmailer_project:phpmailer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108466");
-  script_version("$Revision: 11485 $");
+  script_version("$Revision: 11508 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 08:25:34 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:44:58 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-20 07:40:47 +0200 (Thu, 20 Sep 2018)");
   script_name("PHPMailer End Of Life Detection");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_phpmailer_detect.nasl");
-  script_mandatory_keys("phpmailer/Installed");
+  script_mandatory_keys("phpmailer/detected");
 
   script_xref(name:"URL", value:"https://github.com/PHPMailer/PHPMailer#legacy-versions");
 

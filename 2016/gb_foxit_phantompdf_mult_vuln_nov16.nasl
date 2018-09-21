@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_mult_vuln_nov16.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_phantompdf_mult_vuln_nov16.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Foxit PhantomPDF Multiple Vulnerabilities Nov16
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809304");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-8878", "CVE-2016-8879", "CVE-2016-8877", "CVE-2016-8876",
                 "CVE-2016-8875");
   script_bugtraq_id(93608);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-03 14:36:41 +0530 (Thu, 03 Nov 2016)");
   script_name("Foxit PhantomPDF Multiple Vulnerabilities Nov16");
 
@@ -58,9 +58,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to leak sensitive information, execute remote code and also to cause a
-  denial of service condition(application crash).
-
-  Impact Level: System/Application");
+  denial of service condition(application crash).");
 
   script_tag(name:"affected", value:"Foxit PhantomPDF version prior to 8.1.");
 

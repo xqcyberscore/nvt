@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-049.nasl 10017 2018-05-30 07:17:29Z cfischer $
+# $Id: gb_ms16-049.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Microsoft Windows 'HTTP.sys' Denial of Service Vulnerability (3148795)
 #
@@ -27,28 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807314");
-  script_version("$Revision: 10017 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-0150");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-13 09:22:17 +0530 (Wed, 13 Apr 2016)");
   script_name("Microsoft Windows 'HTTP.sys' Denial of Service Vulnerability (3148795)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-049.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"A denial of service flaw exists in the HTTP
+  script_tag(name:"insight", value:"A denial of service flaw exists in the HTTP
   2.0 protocol stack (HTTP.sys) when HTTP.sys improperly parses specially crafted
   HTTP 2.0 requests.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker to cause a Denial of Service.
-
-  Impact Level: System");
+  attacker to cause a Denial of Service.");
 
   script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64
 
@@ -62,13 +60,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3147461");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3147458");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS16-049");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/3147461");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/3147458");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS16-049");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
   exit(0);
@@ -93,7 +92,6 @@ if(!sysVer){
   exit(0);
 }
 
-##Windows 10
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
   if(version_is_less(version:sysVer, test_version:"10.0.10240.16724"))
@@ -101,7 +99,6 @@ if(hotfix_check_sp(win10:1, win10x64:1) > 0)
     Vulnerable_range = "Less than 10.0.10240.16724";
     VULN = TRUE ;
   }
-  ##Windows 10 Version 1511
   else if(version_in_range(version:sysVer, test_version:"10.0.10586.0", test_version2:"10.0.10586.161"))
   {
     Vulnerable_range = "10.0.10586.0 - 10.0.10586.161";

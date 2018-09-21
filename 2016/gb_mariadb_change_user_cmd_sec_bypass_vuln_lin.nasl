@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_change_user_cmd_sec_bypass_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_mariadb_change_user_cmd_sec_bypass_vuln_lin.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # MariaDB 'COM_CHANGE_USER' Command Insecure Salt Generation Security Bypass Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808154");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2012-5627");
   script_bugtraq_id(56837);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 19:33:35 +0530 (Tue, 07 Jun 2016)");
   script_name("MariaDB 'COM_CHANGE_USER' Command Insecure Salt Generation Security Bypass Vulnerability (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -47,24 +47,22 @@ if(description)
   script_tag(name:"summary", value:"This host is running MariaDB and is
   prone to security bypass vulnerability.");
 
-  script_tag(name:"vuldetect" , value:"Get the installed version of MariaDB
+  script_tag(name:"vuldetect", value:"Get the installed version of MariaDB
   with the help of detect NVT and check it is vulnerable or not.");
 
-  script_tag(name:"solution" , value:"Upgrade to MariaDB version 5.2.14,
+  script_tag(name:"solution", value:"Upgrade to MariaDB version 5.2.14,
   5.3.12, 5.5.29 or later, For updates refer to  https://mariadb.org");
 
-  script_tag(name:"insight" , value:"Flaw that is triggered when a remote
+  script_tag(name:"insight", value:"Flaw that is triggered when a remote
   attacker attempts to login to a user's account via the COM_CHANGE_USER command.
   This command fails to properly disconnect the attacker from the server upon a
   failed login attempt.");
 
-  script_tag(name:"affected" , value:"MariaDB versions 5.5.x before 5.5.29,
+  script_tag(name:"affected", value:"MariaDB versions 5.5.x before 5.5.29,
   5.3.x before 5.3.12, and 5.2.x before 5.2.14 on Linux");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow remote
-  attackers to more easily gain access to a user's account via a brute-force attack.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to more easily gain access to a user's account via a brute-force attack.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/52015");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2012/Dec/58");
@@ -79,22 +77,15 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-mariadbPort = "";
-mariadbVer = "";
-
-## Get MariaDB port
 if(!mariadbPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the MariaDB version
 mariadbVer = get_app_version(cpe:CPE, port:mariadbPort);
 if(isnull(mariadbVer) ||  !(mariadbVer =~ "^(5.2|5.3|5.5)")){
   exit(0);
 }
 
-## Check for vulnerable MariaDB versions
 if(version_in_range(version:mariadbVer, test_version:"5.2", test_version2:"5.2.13") ||
    version_in_range(version:mariadbVer, test_version:"5.3", test_version2:"5.3.11") ||
    version_in_range(version:mariadbVer, test_version:"5.5", test_version2:"5.5.28"))

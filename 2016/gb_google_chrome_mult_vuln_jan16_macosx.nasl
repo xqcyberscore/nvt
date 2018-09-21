@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_jan16_macosx.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_google_chrome_mult_vuln_jan16_macosx.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities Jan16 (Mac OS X)
 #
@@ -29,43 +29,42 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806930");
-  script_version("$Revision: 5527 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2015-8664", "CVE-2015-6792");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-05 13:05:38 +0530 (Tue, 05 Jan 2016)");
   script_name("Google Chrome Multiple Vulnerabilities Jan16 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - An Integer overflow in the 'WebCursor::Deserialize' function in
     'content/common/cursors/webcursor.cc' script
+
   - An error in the MIDI subsystem does not properly handle the
     sending of data.");
 
-  script_tag(name: "impact" , value:"Successful exploitation would allow a attacker
+  script_tag(name:"impact", value:"Successful exploitation would allow a attacker
   to execute arbitrary code or cause a denial of service or possibly have unspecified
-  other impact.
+  other impact.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Google Chrome versions prior to 47.0.2526.106
+  script_tag(name:"affected", value:"Google Chrome versions prior to 47.0.2526.106
   on Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   47.0.2526.106 or later, For updates refer to http://www.google.com/chrome");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2015/12/stable-channel-update_15.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2015/12/stable-channel-update_15.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -78,15 +77,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-chromeVer = "";
-
-## Get version
 if(!chromeVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:chromeVer, test_version:"47.0.2526.106"))
 {
   report = 'Installed version: ' + chromeVer + '\n' +

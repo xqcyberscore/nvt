@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_55137.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: gb_symantec_messaging_gateway_55137.nasl 11499 2018-09-20 10:38:00Z ckuersteiner $
 #
 # Symantec Messaging Gateway  Cross Site Request Forgery Vulnerability
 #
@@ -24,6 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:symantec:messaging_gateway";
 
 if (description)
@@ -33,31 +34,33 @@ if (description)
   script_cve_id("CVE-2012-0308");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11499 $");
 
   script_name("Symantec Messaging Gateway  Cross Site Request Forgery Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55137");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:38:00 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-03 10:22:01 +0100 (Mon, 03 Dec 2012)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("gb_symantec_messaging_gateway_detect.nasl");
-  script_mandatory_keys("/Symantec/Messaging/Gateway/installed");
+  script_mandatory_keys("symantec_smg/detected");
+
   script_tag(name:"solution", value:"Vendor updates are available. Please see the reference for more
 details.");
+
   script_tag(name:"summary", value:"Symantec Messaging Gateway is prone to a cross-site request-forgery
 vulnerability.");
 
   script_tag(name:"impact", value:"Exploiting this issue may allow a remote attacker to perform certain
-unauthorized actions and gain access to the affected application.
-Other attacks are also possible.");
+unauthorized actions and gain access to the affected application. Other attacks are also possible.");
 
   script_tag(name:"affected", value:"Symantec Messaging Gateway versions before 10.0 are vulnerable.");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -70,7 +73,6 @@ if(vers =  get_app_version(cpe:CPE, nofork:TRUE)) {
       security_message(port:0, data:report);
       exit(0);
   }
-
 }
 
 exit(0);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_extremexos_vn-2016-001-openssh.nasl 4642 2016-11-29 07:17:44Z ckuerste $
+# $Id: gb_extremexos_vn-2016-001-openssh.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Extreme ExtremeXOS OpenSSH Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:extreme:extremexos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106425");
-  script_version("$Revision: 4642 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-11-29 08:17:44 +0100 (Tue, 29 Nov 2016) $");
-  script_tag(name: "creation_date", value: "2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
+  script_version("$Revision: 11516 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-0777", "CVE-2016-0778");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Extreme ExtremeXOS OpenSSH Vulnerabilities");
 
@@ -51,25 +51,25 @@ if (description)
   script_dependencies("gb_extremeos_snmp_detect.nasl");
   script_mandatory_keys("extremexos/detected");
 
-  script_tag(name: "summary", value: "Extreme ExtremeXOS is prone to multiple OpenSSH vulnerabilities.");
+  script_tag(name:"summary", value:"Extreme ExtremeXOS is prone to multiple OpenSSH vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Roaming is enabled by default in the OpenSSH client, and contains two
+  script_tag(name:"insight", value:"Roaming is enabled by default in the OpenSSH client, and contains two
 vulnerabilities that can be exploited by a malicious SSH server (or a trusted but compromised server):
 
-- An information leak (memory disclosure). (CVE-2016-0777)
+  - An information leak (memory disclosure). (CVE-2016-0777)
 
-- A buffer overflow(heap-based). (CVE-2016-0778)");
+  - A buffer overflow(heap-based). (CVE-2016-0778)");
 
-  script_tag(name: "impact", value: "An attacker may obtain sensitive information or cause a denial of service
+  script_tag(name:"impact", value:"An attacker may obtain sensitive information or cause a denial of service
 condition.");
 
-  script_tag(name: "affected", value: "Version 15.7 and later.");
+  script_tag(name:"affected", value:"Version 15.7 and later.");
 
-  script_tag(name: "solution", value: "Upgrade to 15.7.3 Patch 1-8, 16.2.1, 16.1.3, 22.1.1 or later.");
+  script_tag(name:"solution", value:"Upgrade to 15.7.3 Patch 1-8, 16.2.1, 16.1.3, 22.1.1 or later.");
 
-  script_xref(name: "URL", value: "https://gtacknowledge.extremenetworks.com/articles/Vulnerability_Notice/VN-2016-001-OpenSSH");
+  script_xref(name:"URL", value:"https://gtacknowledge.extremenetworks.com/articles/Vulnerability_Notice/VN-2016-001-OpenSSH");
 
   exit(0);
 }

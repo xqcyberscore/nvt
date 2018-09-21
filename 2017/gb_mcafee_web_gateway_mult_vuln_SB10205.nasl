@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_web_gateway_mult_vuln_SB10205.nasl 6813 2017-07-31 08:25:50Z santu $
+# $Id: gb_mcafee_web_gateway_mult_vuln_SB10205.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # McAfee Web Gateway Multiple Vulnerabilities (SB10205)
 #
@@ -29,48 +29,50 @@ CPE = "cpe:/a:mcafee:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811258");
-  script_version("$Revision: 6813 $");
+  script_version("$Revision: 11501 $");
   script_cve_id("CVE-2012-6706", "CVE-2017-1000364", "CVE-2017-1000366",
                 "CVE-2017-1000368");
   script_bugtraq_id(98838, 99127, 99130);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-31 10:25:50 +0200 (Mon, 31 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-07-28 12:24:03 +0530 (Fri, 28 Jul 2017)");
   script_name("McAfee Web Gateway Multiple Vulnerabilities (SB10205)");
 
-  script_tag(name: "summary" , value:"This host is installed with McAfee Web
+  script_tag(name:"summary", value:"This host is installed with McAfee Web
   Gateway and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version of McAfee Web
+  script_tag(name:"vuldetect", value:"Get the installed version of McAfee Web
   Gateway with the help of detect NVT and check the version is vulnerable or
   not.");
 
-  script_tag(name: "insight" , value: "Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An integer overflow error in 'DataSize+CurChannel' which results in a negative
     value of the 'DestPos' variable allowing to write out of bounds when setting
     Mem[DestPos].
+
   - An error in the size of the stack guard page on Linux, specifically a 4k stack
     guard page which is not sufficiently large and can be 'jumped' over (the stack
     guard page is bypassed).
+
   - An error in the glibc which allows specially crafted 'LD_LIBRARY_PATH' values
     to manipulate the heap/stack, causing them to alias.
+
   - An input validation (embedded newlines) error in the 'get_process_ttyname'
     function.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute an arbitrary code and gain privileged access to affected
-  system.
+  system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value: "McAfee Web Gateway before 7.6.2.15 and
+  script_tag(name:"affected", value:"McAfee Web Gateway before 7.6.2.15 and
   7.7.x before 7.7.2.3");
 
-  script_tag(name: "solution" , value: "Upgrade to McAfee Web Gateway version
+  script_tag(name:"solution", value:"Upgrade to McAfee Web Gateway version
   7.6.2.15 or 7.7.2.3 or later, For updates refer to http://www.mcafee.com/us");
 
-  script_xref(name : "URL" , value : "https://kc.mcafee.com/corporate/index?page=content&id=SB10205");
+  script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10205");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -89,16 +91,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable initialization
-mwgPort = "";
-mwgVer = "";
-
-## Get Application HTTP Port
 if(!mwgPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get application version
 mwgVer = get_app_version(cpe:CPE, port:mwgPort);
 if(!mwgVer){
   exit(0);

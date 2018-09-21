@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_mult_vuln_kb4015217.nasl 6106 2017-05-11 10:32:49Z antu123 $
+# $Id: gb_ms_mult_vuln_kb4015217.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4015217)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810926");
-  script_version("$Revision: 6106 $");
+  script_version("$Revision: 11501 $");
   script_cve_id("CVE-2013-6629", "CVE-2017-0058", "CVE-2017-0093", "CVE-2017-0156",
                 "CVE-2017-0158", "CVE-2017-0159", "CVE-2017-0160", "CVE-2017-0162",
                 "CVE-2017-0163", "CVE-2017-0164", "CVE-2017-0166", "CVE-2017-0167",
@@ -38,50 +38,62 @@ if(description)
                 "CVE-2017-0205", "CVE-2017-0208", "CVE-2017-0210", "CVE-2017-0211");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 12:32:49 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-04-13 10:05:40 +0530 (Thu, 13 Apr 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4015217)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Security update KB4015217.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists,
+  script_tag(name:"insight", value:"Multiple flaws exists,
+
   - Microsoft Windows OLE when it fails an integrity-level check.
+
   - Internet Explorer does not properly enforce cross-domain policies.
+
   - Chakra scripting engine does not properly handle objects in memory.
+
   - Microsoft Edge improperly accesses objects in memory.
-  - Edge Content Security Policy (CSP) fails to properly validate certain 
+
+  - Edge Content Security Policy (CSP) fails to properly validate certain
     specially crafted documents.
-  - Adobe Type Manager Font Driver (ATMFD.dll)  when it fails to properly 
+
+  - Adobe Type Manager Font Driver (ATMFD.dll)  when it fails to properly
     handle objects in memory.
+
   - Windows kernel-mode driver fails to properly handle objects in memory.
+
   - win32k component improperly provides kernel information.
-  - Microsoft Hyper-V Network Switch on a host server fails to properly 
+
+  - Microsoft Hyper-V Network Switch on a host server fails to properly
     validate input from a privileged user on a guest operating system.
+
   - LDAP request buffer lengths are improperly calculated.
-  - Microsoft .NET Framework fails to properly validate input before loading 
+
+  - Microsoft .NET Framework fails to properly validate input before loading
     libraries.
-  - ADFS incorrectly treats requests coming from Extranet clients as Intranet 
+
+  - ADFS incorrectly treats requests coming from Extranet clients as Intranet
     requests.
+
   - An error in the way that the Scripting Engine renders when handling objects
     in memory in Microsoft browsers.
+
   - Microsoft Graphics Component fails to properly handle objects in memory.
-  - open-source libjpeg image-processing library fails to properly handle 
+
+  - open-source libjpeg image-processing library fails to properly handle
     objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to obtain information to further compromise the user's system, execute
   arbitrary code in the context of the current user, gain the same user rights as
   the current user, could take control of an affected system and cause a host
-  machine to crash.
+  machine to crash.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 10 Version 1607 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 10 Version 1607 x32/x64
   Windows Server 2016.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -91,12 +103,13 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-gb/help/4015217");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-gb/help/4015217");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -107,11 +120,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-edgeVer = "";
-
-## check for OS and Service Pack
 if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) <= 0){
   exit(0);
 }
@@ -121,17 +129,13 @@ if(!sysPath ){
   exit(0);
 }
 
-## Fetch the version of 'Edgehtml.dll'
 edgeVer = fetch_file_version(sysPath, file_name:"Edgehtml.dll");
 if(!edgeVer){
   exit(0);
 }
 
-## Windows 10
 if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) > 0)
 {
-  ## Check for Edgehtml.dll version
-  ## Windows 10 Version 1607 and  Server 2016 
   if(version_in_range(version:edgeVer, test_version:"11.0.14393.0", test_version2:"11.0.14393.1065"))
   {
     report = 'File checked:     ' + sysPath + "\Edgehtml.dll" + '\n' +

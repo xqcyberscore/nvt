@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx205496.nasl 6928 2017-08-16 02:41:07Z ckuersteiner $
+# $Id: gb_xenserver_ctx205496.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Citrix XenServer Security Update for CVE-2016-1571 (CTX205496)
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/a:citrix:xenserver";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105527");
- script_cve_id("CVE-2016-1571");
- script_tag(name:"cvss_base", value:"4.7");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 6928 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105527");
+  script_cve_id("CVE-2016-1571");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11516 $");
 
- script_name("Citrix XenServer Security Update for CVE-2016-1571 (CTX205496)");
+  script_name("Citrix XenServer Security Update for CVE-2016-1571 (CTX205496)");
 
- script_xref(name:"URL", value:"http://support.citrix.com/article/CTX205496");
+  script_xref(name:"URL", value:"http://support.citrix.com/article/CTX205496");
 
- script_tag(name: "vuldetect" , value:"Check the installed hotfixes");
- script_tag(name: "solution" , value:"Apply the hotfix referenced in the advisory");
+  script_tag(name:"vuldetect", value:"Check the installed hotfixes");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory");
 
- script_tag(name: "summary" , value:"A security vulnerability has been identified in Citrix XenServer that could, if exploited, allow a malicious administrator of a guest VM to crash the host in certain deployments");
- script_tag(name: "affected" , value:"Citrix XenServer up to and including Citrix XenServer 6.5 Service Pack 1");
+  script_tag(name:"summary", value:"A security vulnerability has been identified in Citrix XenServer that could, if exploited, allow a malicious administrator of a guest VM to crash the host in certain deployments");
+  script_tag(name:"affected", value:"Citrix XenServer up to and including Citrix XenServer 6.5 Service Pack 1");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-16 04:41:07 +0200 (Wed, 16 Aug 2017) $");
- script_tag(name:"creation_date", value:"2016-01-26 12:16:17 +0100 (Tue, 26 Jan 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("Citrix Xenserver Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_xenserver_version.nasl");
- script_mandatory_keys("xenserver/product_version","xenserver/patches");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-01-26 12:16:17 +0100 (Tue, 26 Jan 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Citrix Xenserver Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_xenserver_version.nasl");
+  script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
  exit(0);
 }

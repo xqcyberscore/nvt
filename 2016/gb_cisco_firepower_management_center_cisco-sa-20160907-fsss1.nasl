@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20160907-fsss1.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20160907-fsss1.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Cisco Firepower Management Center Malware Bypass Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-6396");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11516 $");
 
   script_name("Cisco Firepower Management Center Malware Bypass Vulnerability");
 
@@ -47,7 +47,7 @@ if (description)
 Cisco Firepower Management Center could allow an unauthenticated, remote attacker to bypass malware detection
 mechanisms on an affected system.");
 
-  script_tag(name: "insight", value: "The vulnerability is due to improper input validation of fields in HTTP
+  script_tag(name:"insight", value:"The vulnerability is due to improper input validation of fields in HTTP
 headers. An attacker could exploit this vulnerability by crafting specific file content on a server or
 persuading a user to click a specific link.");
 
@@ -59,7 +59,7 @@ the system undetected.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-09-08 10:11:15 +0700 (Thu, 08 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");

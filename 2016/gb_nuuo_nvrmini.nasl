@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuuo_nvrmini.nasl 9600 2018-04-25 08:48:41Z asteins $
+# $Id: gb_nuuo_nvrmini.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # NUUO NVRmini 2 3.0.8 - Remote Root Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = 'cpe:/a:nuuo:nuuo';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107042");
-  script_version("$Revision: 9600 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-5674", "CVE-2016-5675", "CVE-2016-5676", "CVE-2016-5677",
                 "CVE-2016-5678", "CVE-2016-5679", "CVE-2016-5680");
   script_bugtraq_id(92318);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 10:48:41 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-23 13:16:06 +0200 (Tue, 23 Aug 2016)");
   script_name("NUUO NVRmini 2 3.0.8 - Remote Root Vulnerability");
 
@@ -64,15 +64,15 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to execute arbitrary code as the root user and send
-  a specially crafted request to stack-based buffer overflow.
-
-  Impact Level: Application");
+  a specially crafted request to stack-based buffer overflow.");
 
   script_tag(name:"affected", value:"NUUO NVRmini Versions 2.3.0.8 and below");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value: "WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_active");
 

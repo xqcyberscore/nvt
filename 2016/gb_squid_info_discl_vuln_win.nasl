@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_info_discl_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_squid_info_discl_vuln_win.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Squid Information Disclosure Vulnerability (Windows)
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:squid-cache:squid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106478");
-  script_version("$Revision: 7545 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2016-12-19 14:15:02 +0700 (Mon, 19 Dec 2016)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11516 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-19 14:15:02 +0700 (Mon, 19 Dec 2016)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-10002");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Squid Information Disclosure Vulnerability (Windows)");
 
@@ -49,24 +49,24 @@ if (description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_squid_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("squid_proxy_server/installed","Host/runs_windows");
+  script_mandatory_keys("squid_proxy_server/installed", "Host/runs_windows");
 
-  script_tag(name: "summary", value: "Squid is prone an information disclosure vulnerability.");
+  script_tag(name:"summary", value:"Squid is prone an information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Due to incorrect HTTP conditional request handling Squid can deliver
+  script_tag(name:"insight", value:"Due to incorrect HTTP conditional request handling Squid can deliver
 responses containing private data to clients it should not have reached.");
 
-  script_tag(name: "impact", value: "A remote attacker may discover private and sensitive information about
+  script_tag(name:"impact", value:"A remote attacker may discover private and sensitive information about
 another clients browsing session. Potentially including credentials which allow access to further sensitive
 resources.");
 
-  script_tag(name: "affected", value: "Squid 3.1 until 3.5.22, 4.0 until 4.0.16 on Windows.");
+  script_tag(name:"affected", value:"Squid 3.1 until 3.5.22, 4.0 until 4.0.16 on Windows.");
 
-  script_tag(name: "solution", value: "Upgrade to 3.5.23, 4.0.17 or later.");
+  script_tag(name:"solution", value:"Upgrade to 3.5.23, 4.0.17 or later.");
 
-  script_xref(name: "URL", value: "http://www.squid-cache.org/Advisories/SQUID-2016_11.txt");
+  script_xref(name:"URL", value:"http://www.squid-cache.org/Advisories/SQUID-2016_11.txt");
 
   exit(0);
 }

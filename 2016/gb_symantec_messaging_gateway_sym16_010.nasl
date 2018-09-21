@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_sym16_010.nasl 10881 2018-08-10 10:27:02Z mmartin $
+# $Id: gb_symantec_messaging_gateway_sym16_010.nasl 11499 2018-09-20 10:38:00Z ckuersteiner $
 #
 # Symantec Messaging Gateway Decomposer Engine Multiple Parsing Vulnerabilities
 #
@@ -29,16 +29,17 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105783");
-  script_version("$Revision: 10881 $");
-  script_cve_id("CVE-2016-2207","CVE-2016-2209","CVE-2016-2210","CVE-2016-2211","CVE-2016-3644","CVE-2016-3645","CVE-2016-3646");
+  script_version("$Revision: 11499 $");
+  script_cve_id("CVE-2016-2207", "CVE-2016-2209", "CVE-2016-2210", "CVE-2016-2211", "CVE-2016-3644", "CVE-2016-3645", "CVE-2016-3646");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:27:02 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:38:00 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-29 15:43:27 +0200 (Wed, 29 Jun 2016)");
   script_name("Symantec Messaging Gateway Decomposer Engine Multiple Parsing Vulnerabilities)");
 
   script_tag(name:"summary", value:' Parsing of maliciously-formatted container files may cause memory corruption, integer overflow or buffer overflow in Symantecs Decomposer engine. Successful exploitation of these vulnerabilities typically results in an application-level denial of service but could result in arbitrary code execution. An attacker could potentially run arbitrary code by sending a specially crafted file to a user.
 In the TNEF unpacker, the overflow does not result in any detrimental actions due to underlying code. However this was an exposure due to improper implementation that could potentially be leveraged further, at some point, by a malicious individual. As such, it also was addressed in the engine update.');
+
   script_tag(name:"vuldetect", value:'Check the version');
   script_tag(name:"affected", value:' SMG 10.6.1-3 and prior');
   script_tag(name:"solution", value:'Update to SMG 10.6.1-4');
@@ -50,10 +51,10 @@ In the TNEF unpacker, the overflow does not result in any detrimental actions du
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_symantec_messaging_gateway_detect.nasl");
-  script_mandatory_keys("/Symantec/Messaging/Gateway/installed");
+  script_mandatory_keys("symantec_smg/detected");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
@@ -64,7 +65,7 @@ if( version_is_less( version:version, test_version:"10.6.1" ) ) VULN = TRUE;
 
 if( version == "10.6.1" )
 {
-  if( patch = get_kb_item( "smg/patch" ) )
+  if( patch = get_kb_item( "symantec_smg/patch" ) )
     if( int( patch ) < 4 ) VULN = TRUE;
 }
 

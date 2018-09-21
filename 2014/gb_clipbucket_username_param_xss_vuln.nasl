@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clipbucket_username_param_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_clipbucket_username_param_xss_vuln.nasl 11504 2018-09-20 12:55:48Z cfischer $
 #
 # ClipBucket 'Username' Parameter Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:clipbucket_project:clipbucket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804641");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11504 $");
   script_cve_id("CVE-2014-4187");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:55:48 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-18 11:17:33 +0530 (Wed, 18 Jun 2014)");
   script_name("ClipBucket 'Username' Parameter Cross-Site Scripting Vulnerability");
 
@@ -60,6 +60,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+
   exit(0);
 }
 
@@ -77,9 +78,7 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
 
 if( dir == "/" ) dir = "";
 
-if(!host = http_host_name(port:http_port)){
-  exit(0);
-}
+host = http_host_name(port:http_port);
 
 url = dir + "/signup.php";
 postData = 'username="><script>alert(document.cookie)</script>';
@@ -89,10 +88,9 @@ sndReq = string("POST ", url, " HTTP/1.1\r\n",
                 "Content-Type: application/x-www-form-urlencoded\r\n",
                 "Content-Length: ", strlen(postData), "\r\n",
                 "\r\n", postData, "\r\n");
-
 rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-if(rcvRes =~ "HTTP/1\.. 200" && '><script>alert(document.cookie)</script>' >< rcvRes
+if(rcvRes =~ "^HTTP/1\.[01] 200" && '><script>alert(document.cookie)</script>' >< rcvRes
    && '>Clipbucket' >< rcvRes)
 {
   report = report_vuln_url(port:http_port, url:url);

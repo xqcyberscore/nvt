@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_smbxcli_base_mima_vuln.nasl 10398 2018-07-04 12:11:48Z cfischer $
+# $Id: gb_samba_smbxcli_base_mima_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Samba 'libcli/smb/smbXcli_base.c' Man In The Middle (MIMA) Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807345");
-  script_version("$Revision: 10398 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-2119");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-12 12:51:22 +0530 (Tue, 12 Jul 2016)");
   script_name("Samba 'libcli/smb/smbXcli_base.c' Man In The Middle (MIMA) Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -58,9 +58,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to bypass a client-signing protection mechanism, and consequently
-  spoof SMB2 and SMB3 servers.
-
-  Impact Level: Application");
+  spoof SMB2 and SMB3 servers.");
 
   script_tag(name:"affected", value:"Samba versions 4.x before 4.2.14,
   4.3.x before 4.3.11, and 4.4.x before 4.4.5.");

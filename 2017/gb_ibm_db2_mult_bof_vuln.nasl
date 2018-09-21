@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_mult_bof_vuln.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_ibm_db2_mult_bof_vuln.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # IBM DB2 Multiple Buffer OVerflow Vulnerabilities
 #
@@ -29,39 +29,36 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811403");
-  script_version("$Revision: 7571 $");
+  script_version("$Revision: 11501 $");
   script_cve_id("CVE-2017-1297");
   script_bugtraq_id(99264);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-06-29 13:12:55 +0530 (Thu, 29 Jun 2017)");
   script_name("IBM DB2 Command Line Processor Buffer Overflow Vulnerability Jun17");
 
-  script_tag(name: "summary" , value:"This host is running IBM DB2 and is
+  script_tag(name:"summary", value:"This host is running IBM DB2 and is
   prone to buffer overflow vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version of IBM DB2
+  script_tag(name:"vuldetect", value:"Get the installed version of IBM DB2
   with the help of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an improper
+  script_tag(name:"insight", value:"The flaw exists due to an improper
   bounds checking.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a local
-  attacker to execute arbitrary code.
+  script_tag(name:"impact", value:"Successful exploitation will allow a local
+  attacker to execute arbitrary code.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"
-  IBM DB2 versions 9.7 before FP11
+  script_tag(name:"affected", value:"IBM DB2 versions 9.7 before FP11
   IBM DB2 versions 10.1 before FP6
   IBM DB2 versions 10.5 before FP8
   IBM DB2 versions 11.1.2 before FP2");
 
-  script_tag(name: "solution" , value:"Apply the appropriate fix from below links,
+  script_tag(name:"solution", value:"Apply the appropriate fix from below links,
   http://www-01.ibm.com/support/docview.wss?uid=swq22004878");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg22004878");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg22004878");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -76,10 +73,6 @@ if(description)
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
-
-## Variable Initialization
-ibmVer  = "";
-ibmPort = "";
 
 if(!ibmPort = get_app_port(cpe:CPE)){
   exit(0);

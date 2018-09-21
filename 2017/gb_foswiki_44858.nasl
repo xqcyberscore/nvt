@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foswiki_44858.nasl 5132 2017-01-30 07:08:27Z antu123 $
+# $Id: gb_foswiki_44858.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # Foswiki Topic Settings Remote Privilege Escalation Vulnerability
 #
@@ -29,9 +29,9 @@ CPE = "cpe:/a:foswiki:foswiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108059");
-  script_version("$Revision: 5132 $");
+  script_version("$Revision: 11501 $");
   script_bugtraq_id(44858);
-  script_tag(name:"last_modification", value:"$Date: 2017-01-30 08:08:27 +0100 (Mon, 30 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-01-27 13:41:11 +0100 (Fri, 27 Jan 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -46,20 +46,12 @@ if(description)
 
   script_xref(name:"URL", value:"http://foswiki.org/Support/SecurityAlert-CVE-2010-4215");
 
-  tag_impact = "Remote attackers with the ability to edit topic settings can exploit this
-  issue to gain administrative privileges. This may aid in further attacks.";
-
-  tag_affected = "Foswiki 1.1.0 and 1.1.1 are vulnerable.";
-
-  tag_solution = "Upgrade to version 1.1.2 or later,
-  http://foswiki.org/Download";
-
-  tag_summary = "Foswiki is prone to a remote privilege-escalation vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"Remote attackers with the ability to edit topic settings can exploit this
+  issue to gain administrative privileges. This may aid in further attacks.");
+  script_tag(name:"affected", value:"Foswiki 1.1.0 and 1.1.1 are vulnerable.");
+  script_tag(name:"solution", value:"Upgrade to version 1.1.2 or later,
+  http://foswiki.org/Download");
+  script_tag(name:"summary", value:"Foswiki is prone to a remote privilege-escalation vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

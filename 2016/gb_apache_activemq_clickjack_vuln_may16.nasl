@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_clickjack_vuln_may16.nasl 7431 2017-10-13 13:02:56Z cfischer $
+# $Id: gb_apache_activemq_clickjack_vuln_may16.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Apache ActiveMQ Clickjacking Vulnerability May16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807971");
-  script_version("$Revision: 7431 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-0734");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 15:02:56 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-05 17:11:01 +0530 (Thu, 05 May 2016)");
   script_name("Apache ActiveMQ Clickjacking Vulnerability May16");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -48,17 +48,14 @@ if(description)
   script_tag(name:"summary", value:"This host is running Apache ActiveMQ and is
   prone to clickjacking vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as the web-based
   administration console does not set an X-Frame-Options header in HTTP
   responses.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct clickjacking attacks via a crafted web page.
-
-  Impact Level: Application");
+  attackers to conduct clickjacking attacks via a crafted web page.");
 
   script_tag(name:"affected", value:"Apache ActiveMQ Version 5.x before 5.13.2.");
 

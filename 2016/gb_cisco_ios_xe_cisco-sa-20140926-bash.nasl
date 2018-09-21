@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20140926-bash.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_cisco_ios_xe_cisco-sa-20140926-bash.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # GNU Bash Environment Variable Command Injection Vulnerability
 #
@@ -29,15 +29,22 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105684");
- script_cve_id("CVE-2014-6271");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5759 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105684");
+  script_cve_id("CVE-2014-6271");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11516 $");
 
- script_name("GNU Bash Environment Variable Command Injection Vulnerability");
+  script_name("GNU Bash Environment Variable Command Injection Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140926-bash");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140926-bash");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAMBAlert.x?alertId=35836");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35880");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35845");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35879");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35860");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35861");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35816");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAMBAlert.x?alertId=35836");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35880");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35845");
@@ -45,19 +52,12 @@ if (description)
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35860");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35861");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35816");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAMBAlert.x?alertId=35836");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35880");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35845");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35879");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35860");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35861");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35816");
- 
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"On September 24, 2014, a vulnerability in the Bash shell was publicly announced. The vulnerability is related to the way in which shell functions are passed though environment variables. The vulnerability may allow an attacker to inject commands into a Bash shell, depending on how the shell is invoked. The Bash shell may be invoked by a number of processes including, but not limited to, telnet, SSH, DHCP, and scripts hosted on web servers.
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"On September 24, 2014, a vulnerability in the Bash shell was publicly announced. The vulnerability is related to the way in which shell functions are passed though environment variables. The vulnerability may allow an attacker to inject commands into a Bash shell, depending on how the shell is invoked. The Bash shell may be invoked by a number of processes including, but not limited to, telnet, SSH, DHCP, and scripts hosted on web servers.
 
 All versions of GNU Bash starting with version 1.14 are affected by this vulnerability and the specific impact is determined by the characteristics of the process using the Bash shell. In the worst case, an unauthenticated remote attacker would be able to execute commands on an affected server. However, in most cases involving Cisco products, authentication is required before exploitation could be attempted.
 
@@ -65,16 +65,16 @@ A number of Cisco products ship with or use an affected version of the Bash shel
 
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140926-bash");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-10 11:04:49 +0200 (Tue, 10 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-10 11:04:49 +0200 (Tue, 10 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
  exit(0);
 }
 
@@ -83,7 +83,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'2.1.0',
 		'2.1.1',
 		'2.1.2',

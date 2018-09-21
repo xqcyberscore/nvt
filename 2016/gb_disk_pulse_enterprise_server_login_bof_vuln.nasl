@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_disk_pulse_enterprise_server_login_bof_vuln.nasl 11300 2018-09-10 10:52:15Z mmartin $
+# $Id: gb_disk_pulse_enterprise_server_login_bof_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Disk Pulse Enterprise Server Buffer Overflow Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:diskpulse:diskpulse_enterprise_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809484");
-  script_version("$Revision: 11300 $");
+  script_version("$Revision: 11516 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:52:15 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-02 15:54:40 +0530 (Fri, 02 Dec 2016)");
   script_name("Disk Pulse Enterprise Server Buffer Overflow Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -60,9 +60,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to cause the application to crash, creating a denial-of-service
-  condition.
-
-  Impact Level: Application");
+  condition.");
 
   script_tag(name:"affected", value:"Disk Pulse Enterprise version 9.1.16 and prior.");
 

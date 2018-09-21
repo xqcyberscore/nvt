@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_excel_services_kb3191840.nasl 9313 2018-04-05 06:23:26Z cfischer $
+# $Id: gb_sharepoint_server_excel_services_kb3191840.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # MS SharePoint Server Excel Services Elevation of Privilege Vulnerability (3191840)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810857");
-  script_version("$Revision: 9313 $");
+  script_version("$Revision: 11501 $");
   script_cve_id("CVE-2017-0195");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-04-12 16:20:26 +0530 (Wed, 12 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server Excel Services Elevation of Privilege Vulnerability (3191840)");
@@ -51,9 +51,7 @@ if(description)
   vulnerability by sending a specially crafted request to an affected Office Web
   Apps server. The attacker who successfully exploited this vulnerability could then
   perform cross-site scripting attacks on affected systems and run script in the
-  security context of the current user. 
-
-  Impact Level: System/Application");
+  security context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2013 Service Pack 1");
 
@@ -62,11 +60,12 @@ if(description)
   https://support.microsoft.com/en-us/help/3191840/description-of-the-security-update-for-excel-services-on-sharepoint-se");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3191840/description-of-the-security-update-for-excel-services-on-sharepoint-se");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3191840/description-of-the-security-update-for-excel-services-on-sharepoint-se");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/SharePoint/Server/Ver");
   exit(0);
 }

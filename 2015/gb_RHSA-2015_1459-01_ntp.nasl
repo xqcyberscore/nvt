@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871405");
-  script_version("$Revision: 11484 $");
+  script_version("$Revision: 11513 $");
   script_cve_id("CVE-2014-9750", "CVE-2014-9751", "CVE-2015-1799", "CVE-2015-3405");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 05:38:48 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 05:48:51 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 06:26:09 +0200 (Thu, 23 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for ntp RHSA-2015:1459-01");

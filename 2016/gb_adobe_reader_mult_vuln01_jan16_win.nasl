@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln01_jan16_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
+# $Id: gb_adobe_reader_mult_vuln01_jan16_win.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Adobe Reader Multiple Vulnerabilities - 01 January16 (Windows)
 #
@@ -29,26 +29,25 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806820");
-  script_version("$Revision: 8210 $");
-  script_cve_id("CVE-2016-0931", "CVE-2016-0932", "CVE-2016-0933", "CVE-2016-0934", 
-		"CVE-2016-0935", "CVE-2016-0936", "CVE-2016-0937", "CVE-2016-0938", 
-		"CVE-2016-0939", "CVE-2016-0940", "CVE-2016-0941", "CVE-2016-0942", 
-		"CVE-2016-0943", "CVE-2016-0944", "CVE-2016-0945", "CVE-2016-0946", 
-		"CVE-2016-0947", "CVE-2016-1111" );
+  script_version("$Revision: 11516 $");
+  script_cve_id("CVE-2016-0931", "CVE-2016-0932", "CVE-2016-0933", "CVE-2016-0934",
+		"CVE-2016-0935", "CVE-2016-0936", "CVE-2016-0937", "CVE-2016-0938",
+		"CVE-2016-0939", "CVE-2016-0940", "CVE-2016-0941", "CVE-2016-0942",
+		"CVE-2016-0943", "CVE-2016-0944", "CVE-2016-0945", "CVE-2016-0946",
+		"CVE-2016-0947", "CVE-2016-1111");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-18 14:04:08 +0530 (Mon, 18 Jan 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 January16 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Adobe Reader
+  script_tag(name:"summary", value:"This host is installed with Adobe Reader
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"Multiple flaws are due to:
+  script_tag(name:"insight", value:"Multiple flaws are due to:
 
   - Untrusted search path vulnerability in Adobe Download Manager
 
@@ -64,20 +63,18 @@ if(description)
 
   - Some Javascript API execution restriction bypass vulnerabilities.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to bypass certain access restrictions and execute arbitrary
-  code and compromise a user's system.
+  code and compromise a user's system.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Adobe Reader version 11.x before 11.0.14 on Windows.");
 
-  script_tag(name: "affected" , value:"Adobe Reader version 11.x before 11.0.14 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Adobe Reader version 11.0.14 or later.
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 11.0.14 or later.
   For updates refer http://get.adobe.com/reader");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/acrobat/apsb16-02.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/acrobat/apsb16-02.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

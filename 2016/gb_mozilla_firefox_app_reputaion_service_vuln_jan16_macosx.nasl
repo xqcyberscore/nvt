@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_app_reputaion_service_vuln_jan16_macosx.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_mozilla_firefox_app_reputaion_service_vuln_jan16_macosx.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Mozilla Firefox Application Reputation Service Vulnerability - Jan16 (Mac OS X)
 #
@@ -29,34 +29,31 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807049");
-  script_version("$Revision: 5850 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-1947");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-29 10:26:04 +0530 (Fri, 29 Jan 2016)");
   script_name("Mozilla Firefox Application Reputation Service Vulnerability - Jan16 (Mac OS X");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox and is prone to application reputation service disabling
   vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to disabling of
+  script_tag(name:"insight", value:"The flaw is due to disabling of
   Application Reputation service that leads to removal of the ability of Safe
   browsing to warn against potentially malicious downloads.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
-  an attacker to do potentially malicious downloads.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  an attacker to do potentially malicious downloads.");
 
-  Impact Level: System");
-
-  script_tag(name: "affected" , value:"Mozilla Firefox versions 43.x on
+  script_tag(name:"affected", value:"Mozilla Firefox versions 43.x on
   Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 44
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 44
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -77,16 +74,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
-if(ffVer =~ "^(43)")
+if(ffVer =~ "^43")
 {
   if(version_is_less(version:ffVer, test_version:"44.0"))
   {

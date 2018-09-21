@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nextgen_gallery_dir_trav_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_wordpress_nextgen_gallery_dir_trav_vuln.nasl 11504 2018-09-20 12:55:48Z cfischer $
 #
 # WordPress NextGEN Gallery 'jqueryFileTree.php' Directory Traversal Vulnerability
 #
@@ -23,37 +23,44 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804510");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11504 $");
   script_bugtraq_id(65637);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:55:48 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-07 17:46:21 +0530 (Fri, 07 Mar 2014)");
   script_name("WordPress NextGEN Gallery 'jqueryFileTree.php' Directory Traversal Vulnerability");
 
-
   script_tag(name:"summary", value:"This host is installed with Wordpress NextGEN Gallery Plugin and is prone
-to directory traversal vulnerability.");
+  to directory traversal vulnerability.");
+
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to read
-local directory list or not.");
+  local directory list or not.");
+
   script_tag(name:"insight", value:"Flaw is due to the 'jquery.filetree/connectors/jqueryFileTree.php' script not
-properly sanitizing user input, specifically absolute paths passed via 'file'
-POST parameters.");
+  properly sanitizing user input, specifically absolute paths passed via 'file' POST parameters.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to read arbitrary file
-details on the target system.");
+  details on the target system.");
+
   script_tag(name:"affected", value:"WordPress NextGEN Gallery Plugin version 2.0.0, Other versions may also be
-affected.");
+  affected.");
+
   script_tag(name:"solution", value:"Upgrade to WordPress NextGEN Gallery version 2.0.7 or later,
-For updates refer to http://wordpress.org/plugins/nextgen-gallery");
+  For updates refer to http://wordpress.org/plugins/nextgen-gallery");
+
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125285");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Feb/171");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39100/");
+
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -61,9 +68,9 @@ For updates refer to http://wordpress.org/plugins/nextgen-gallery");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -77,10 +84,7 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-host = get_host_name();
-if(!host){
-  exit(0);
-}
+host = http_host_name(port:http_port);
 
 foreach postdata (make_list("dir=%2Fetc%2F", "dir=C%3A%5CWindows%5C"))
 {
@@ -93,7 +97,6 @@ foreach postdata (make_list("dir=%2Fetc%2F", "dir=C%3A%5CWindows%5C"))
                "Content-Type: application/x-www-form-urlencoded\r\n",
                "Content-Length: ", strlen(postdata), "\r\n\r\n",
                 postdata);
-
   res = http_keepalive_send_recv(port:http_port, data:req);
 
   if("/etc/init" >< res || "C:\Windows\system32" >< res)
@@ -102,3 +105,5 @@ foreach postdata (make_list("dir=%2Fetc%2F", "dir=C%3A%5CWindows%5C"))
     exit(0);
   }
 }
+
+exit(0);

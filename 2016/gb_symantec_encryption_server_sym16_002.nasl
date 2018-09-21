@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_encryption_server_sym16_002.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_symantec_encryption_server_sym16_002.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Symantec Encryption Management Server Multiple Security Issues
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/a:symantec:encryption_management_server";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105553");
- script_bugtraq_id(83268,83269,83270,83271);
- script_cve_id("CVE-2015-8151","CVE-2015-8150","CVE-2015-8149","CVE-2015-8148");
- script_tag(name:"cvss_base", value:"6.3");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:M/C:C/I:C/A:C");
- script_version ("$Revision: 9381 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105553");
+  script_bugtraq_id(83268, 83269, 83270, 83271);
+  script_cve_id("CVE-2015-8151", "CVE-2015-8150", "CVE-2015-8149", "CVE-2015-8148");
+  script_tag(name:"cvss_base", value:"6.3");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:M/C:C/I:C/A:C");
+  script_version("$Revision: 11516 $");
 
- script_name("Symantec Encryption Management Server Server Multiple Security Issues");
+  script_name("Symantec Encryption Management Server Server Multiple Security Issues");
 
- script_xref(name:"URL", value:"http://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2016&suid=20160218_00");
+  script_xref(name:"URL", value:"http://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2016&suid=20160218_00");
 
- script_tag(name: "vuldetect" , value:"Check the version");
+  script_tag(name:"vuldetect", value:"Check the version");
 
- script_tag(name: "insight" , value:"Symantec Encryption Management Server's web administration interface was susceptible to command execution on the underlying operating system when an authorized but less-privileged administrator has console access. Input fields available through the server console did not properly filter arbitrary user input which could allow OS command execution with elevated privileges.
+  script_tag(name:"insight", value:"Symantec Encryption Management Server's web administration interface was susceptible to command execution on the underlying operating system when an authorized but less-privileged administrator has console access. Input fields available through the server console did not properly filter arbitrary user input which could allow OS command execution with elevated privileges.
 
 By leveraging the successful exploitation above, an unauthorized user could have scheduled arbitrary commands to run through existing batch files on the underlying operating system that normally run with root privileges. This could have resulted in additional privileged access to the server.
 
@@ -50,21 +50,21 @@ The LDAP service provided by Symantec Encryption Management Server was susceptib
 
 By successfully manipulating an LDAP request, it was possible for a user able to access the LDAP server to gather information on valid administrator accounts on the server. This information could potentially be used for further attempts to gain unauthorized access to the server or network. ");
 
- script_tag(name: "solution" , value:"Update to SEMS 3.3.2 MP12");
+  script_tag(name:"solution", value:"Update to SEMS 3.3.2 MP12");
 
- script_tag(name: "summary" , value:"The management console for Symantec Encryption Management Server (SEMS) is susceptible to potential OS command execution, local access elevation of privilege, a heap-based memory corruption resulting in a service crash and potential information disclosure of management console logon/account information.");
- script_tag(name: "affected" , value:"Symantec Encryption Management Server 3.3.2 before MP12");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"summary", value:"The management console for Symantec Encryption Management Server (SEMS) is susceptible to potential OS command execution, local access elevation of privilege, a heap-based memory corruption resulting in a service crash and potential information disclosure of management console logon/account information.");
+  script_tag(name:"affected", value:"Symantec Encryption Management Server 3.3.2 before MP12");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2016-02-22 13:40:03 +0100 (Mon, 22 Feb 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_symantec_encryption_server_version.nasl");
- script_mandatory_keys("symantec_encryption_server/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-02-22 13:40:03 +0100 (Mon, 22 Feb 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_symantec_encryption_server_version.nasl");
+  script_mandatory_keys("symantec_encryption_server/version");
 
  exit(0);
 }

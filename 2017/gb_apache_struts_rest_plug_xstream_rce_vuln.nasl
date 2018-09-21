@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_rest_plug_xstream_rce_vuln.nasl 10724 2018-08-02 06:39:54Z cfischer $
+# $Id: gb_apache_struts_rest_plug_xstream_rce_vuln.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # Apache Struts 'REST Plugin With XStream Handler' RCE Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811730");
-  script_version("$Revision: 10724 $");
+  script_version("$Revision: 11501 $");
   script_cve_id("CVE-2017-9805");
   script_bugtraq_id(100609);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 08:39:54 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-09-07 16:39:09 +0530 (Thu, 07 Sep 2017)");
   script_name("Apache Struts 'REST Plugin With XStream Handler' RCE Vulnerability");
   script_category(ACT_ATTACK);
@@ -59,9 +59,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue may allow
   an attacker to execute arbitrary code in the context of the affected application.
-  Failed exploit attempts will likely result in denial-of-service conditions.
-
-  Impact Level: System/Application");
+  Failed exploit attempts will likely result in denial-of-service conditions.");
 
   script_tag(name:"affected", value:"Apache Struts versions 2.5 through 2.5.12,
   2.1.2 through 2.3.33.");
@@ -77,12 +75,13 @@ if(description)
 
 include("http_func.inc");
 include("misc_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
 
 port = get_http_port(default:8080);
 
 host = http_host_name(dont_add_port:TRUE);
+vtstring = get_vt_string();
 
 foreach ext(make_list("action", "do", "jsp")){
   exts = get_http_kb_file_extensions(port:port, host:host, ext:ext);
@@ -106,7 +105,7 @@ if(host_runs("Windows") == "yes"){
   win = TRUE;
 }else{
   ##For Linux and Unix platform
-  check = "__OpenVAS__" + rand_str(length:4);
+  check = "__" + vtstring + "__" + rand_str(length:4);
   pattern = hexstr(check);
   COMMAND = '<string>ping</string><string>-c</string><string>3</string><string>-p</string><string>' + pattern + '</string><string>'+ this_host() + '</string>';
 }

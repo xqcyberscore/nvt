@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_player_VMSA-2017-0008_win.nasl 9327 2018-04-05 10:30:41Z asteins $
+# $Id: gb_vmware_workstation_player_VMSA-2017-0008_win.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # VMware Workstation VMSA-2017-0008.2 Multiple Security Vulnerabilities (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:vmware:player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107208");
-  script_version("$Revision: 9327 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 12:30:41 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 11501 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-05-29 18:50:37 +0200 (Mon, 29 May 2017)");
   script_cve_id("CVE-2017-4912", "CVE-2017-4908", "CVE-2017-4909", "CVE-2017-4910",
                 "CVE-2017-4911", "CVE-2017-4913", "CVE-2017-4900", "CVE-2017-4899",
@@ -41,31 +41,31 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_name("VMware Workstation VMSA-2017-0008.2 Multiple Security Vulnerabilities (Windows)");
 
-  script_tag(name: "summary", value: "VMware Workstation updates resolve multiple
+  script_tag(name:"summary", value:"VMware Workstation updates resolve multiple
   security vulnerabilities (Windows)");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of
+  script_tag(name:"vuldetect", value:"Get the installed version with the help of
   the detect NVT and check if the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to multiple heap
+  script_tag(name:"insight", value:"Multiple flaws are due to multiple heap
   buffer-overflow vulnerabilities in JPEG2000 and TrueType Font (TTF) parsers in
   the TPView.dll. Also there exists a DLL loading vulnerability that occurs due to
   the 'vmware-vmx' process loading DLLs from a path defined in the local
   environment-variable. Also a security vulnerability and a NULL pointer dereference
   vulnerability exist in the SVGA driver.");
 
-  script_tag(name: "impact" , value: "Successfully exploiting this issue allows
+  script_tag(name:"impact", value:"Successfully exploiting this issue allows
   attackers to execute arbitrary code in the context of the affected application.
   Failed exploits will result in denial-of-service conditions. Also successful
   exploitation of this issue may allow normal users to escalate privileges to
   System in the host machine.");
 
-  script_tag(name: "affected", value: "VMware Workstation 12.x versions prior to 12.5.3 ");
-  script_tag(name: "solution", value: "Update to Workstation 12.5.3.");
+  script_tag(name:"affected", value:"VMware Workstation 12.x versions prior to 12.5.3 ");
+  script_tag(name:"solution", value:"Update to Workstation 12.5.3.");
 
-  script_xref(name: "URL" , value: "http://www.vmware.com/security/advisories/VMSA-2017-0008.html");
-  script_xref(name: "URL" , value: "https://www.vmware.com/security/advisories/VMSA-2017-0003.html");
-  script_xref(name: "URL" , value: "https://www.vmware.com/security/advisories/VMSA-2017-0015.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2017-0008.html");
+  script_xref(name:"URL", value:"https://www.vmware.com/security/advisories/VMSA-2017-0003.html");
+  script_xref(name:"URL", value:"https://www.vmware.com/security/advisories/VMSA-2017-0015.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

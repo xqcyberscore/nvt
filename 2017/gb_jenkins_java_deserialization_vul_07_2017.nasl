@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_java_deserialization_vul_07_2017.nasl 9475 2018-04-13 10:10:45Z asteins $
+# $Id: gb_jenkins_java_deserialization_vul_07_2017.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # Jenkins Deserialization Vulnerability - CVE-2016-0792
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107230");
-  script_version("$Revision: 9475 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 12:10:45 +0200 (Fri, 13 Apr 2018) $");
+  script_version("$Revision: 11501 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-08-10 12:09:09 +0200 (Thu, 10 Aug 2017)");
   script_cve_id("CVE-2016-0792");
 
@@ -41,21 +41,21 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name: "summary", value: "Jenkins is prone to a Java deserialization vulnerability.");
+  script_tag(name:"summary", value:"Jenkins is prone to a Java deserialization vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Send a serialized object which execute a ping against the scanner.");
+  script_tag(name:"vuldetect", value:"Send a serialized object which execute a ping against the scanner.");
 
-  script_tag(name: "insight", value: "Multiple unspecified API endpoints in Jenkins allow remote authenticated users to execute arbitrary code via serialized data in an XML file, related to XStream and groovy.util.Expando");
+  script_tag(name:"insight", value:"Multiple unspecified API endpoints in Jenkins allow remote authenticated users to execute arbitrary code via serialized data in an XML file, related to XStream and groovy.util.Expando");
 
-  script_tag(name: "impact" , value: "Successfully exploiting this issue allows attackers to execute arbitrary code in the context of the affected application.");
+  script_tag(name:"impact", value:"Successfully exploiting this issue allows attackers to execute arbitrary code in the context of the affected application.");
 
-  script_tag(name: "affected", value: "All Jenkins main line releases up to and including 1.649, All Jenkins LTS releases up to and including 1.642.1");
+  script_tag(name:"affected", value:"All Jenkins main line releases up to and including 1.649, All Jenkins LTS releases up to and including 1.642.1");
 
-  script_tag(name: "solution", value: "Jenkins main line users should update to 1.650, Jenkins LTS users should update to 1.642.2");
+  script_tag(name:"solution", value:"Jenkins main line users should update to 1.650, Jenkins LTS users should update to 1.642.2");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/42394/");
-  script_xref(name: "URL", value: "https://github.com/jpiechowka/jenkins-cve-2016-0792/");
-  script_xref(name: "URL", value: "https://jenkins.io/security/advisory/2016-02-24/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42394/");
+  script_xref(name:"URL", value:"https://github.com/jpiechowka/jenkins-cve-2016-0792/");
+  script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2016-02-24/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -71,7 +71,6 @@ if(description)
 
 include("host_details.inc");
 include("http_func.inc");
-include("http_keepalive.inc");
 include("misc_func.inc");
 
 if(!Port = get_app_port(cpe:CPE)){
@@ -82,7 +81,9 @@ soc = open_sock_tcp( Port );
 
 if( ! soc ) exit( 0 );
 
-check = "__OpenVAS__" + rand_str( length:4 );
+vtstring = get_vt_string();
+
+check = "__" + vtstring + "__" + rand_str( length:4 );
 
 pattern = hexstr( check );
 

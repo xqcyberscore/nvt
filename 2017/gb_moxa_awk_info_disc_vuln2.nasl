@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_awk_info_disc_vuln2.nasl 9453 2018-04-12 06:30:01Z cfischer $
+# $Id: gb_moxa_awk_info_disc_vuln2.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # Moxa AWK Series serviceAgent Information Disclosure Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/h:moxa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106742");
-  script_version("$Revision: 9453 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-12 08:30:01 +0200 (Thu, 12 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-04-11 14:59:45 +0200 (Tue, 11 Apr 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11501 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-11 14:59:45 +0200 (Tue, 11 Apr 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-8724");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("Moxa AWK Series serviceAgent Information Disclosure Vulnerability");
 
@@ -51,23 +51,22 @@ if (description)
   script_dependencies("gb_moxa_awk_detect.nasl");
   script_mandatory_keys("moxa_awk/detected");
 
-  script_tag(name: "summary", value: "Moxa AWK series wireless access points are prone to an information
+  script_tag(name:"summary", value:"Moxa AWK series wireless access points are prone to an information
 disclosure vulnerability in the serviceAgent.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted request and checks the response.");
 
-  script_tag(name: "insight", value: "An exploitable information disclosure vulnerability exists in the
+  script_tag(name:"insight", value:"An exploitable information disclosure vulnerability exists in the
 serviceAgent functionality of Moxa AWK Series Industrial devices. A specially crafted TCP query will allow an
 attacker to retrieve potentially sensitive information, such as firmware version.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may obtain sentive information.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may obtain sentive information.");
 
-  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since
-disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
-upgrade to a newer release, disable respective features, remove the product or replace the product by
-another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name: "URL", value: "http://www.talosintelligence.com/reports/TALOS-2016-0238/");
+  script_xref(name:"URL", value:"http://www.talosintelligence.com/reports/TALOS-2016-0238/");
 
   exit(0);
 }

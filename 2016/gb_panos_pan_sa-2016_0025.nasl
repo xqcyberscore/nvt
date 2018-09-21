@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0025.nasl 8722 2018-02-08 13:57:53Z cfischer $
+# $Id: gb_panos_pan_sa-2016_0025.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Palo Alto PAN-OS Kernel Vulnerabilities (PAN-SA-2016-0025)
 #
@@ -29,32 +29,32 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140016");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 8722 $");
- script_cve_id("CVE-2015-5364", "CVE-2015-5366");
- script_name("Palo Alto PAN-OS Kernel Vulnerabilities (PAN-SA-2016-0025)");
+  script_oid("1.3.6.1.4.1.25623.1.0.140016");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11516 $");
+  script_cve_id("CVE-2015-5364", "CVE-2015-5366");
+  script_name("Palo Alto PAN-OS Kernel Vulnerabilities (PAN-SA-2016-0025)");
 
- script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/58");
+  script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/58");
 
- script_tag(name: "summary" , value:"The kernel in use by the Management Plane of PAN-OS is vulnerable to CVE-2015-5364 and CVE-2015-5366.");
+  script_tag(name:"summary", value:"The kernel in use by the Management Plane of PAN-OS is vulnerable to CVE-2015-5364 and CVE-2015-5366.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
- script_tag(name: "solution" , value:"Update to PAN-OS 5.0.20 and later, PAN-OS 5.1.13 and later, PAN-OS 6.0.15 and later, PAN-OS 7.0.11 and later, PAN-OS 7.1.5 and later");
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"solution", value:"Update to PAN-OS 5.0.20 and later, PAN-OS 5.1.13 and later, PAN-OS 6.0.15 and later, PAN-OS 7.0.11 and later, PAN-OS 7.1.5 and later");
 
- script_tag(name:"affected" , value:"PAN-OS 5.0.19 and earlier, PAN-OS 5.1.12 and earlier, PAN-OS 6.0.14 and earlier, PAN-OS 6.1.X, PAN-OS 7.0.10 and prior, PAN-OS 7.1.4 and earlier");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"PAN-OS 5.0.19 and earlier, PAN-OS 5.1.12 and earlier, PAN-OS 6.0.14 and earlier, PAN-OS 6.1.X, PAN-OS 7.0.10 and prior, PAN-OS 7.1.4 and earlier");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:57:53 +0100 (Thu, 08 Feb 2018) $");
- script_tag(name:"creation_date", value:"2016-10-25 14:26:55 +0200 (Tue, 25 Oct 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("Palo Alto PAN-OS Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_palo_alto_panOS_version.nasl");
- script_mandatory_keys("palo_alto_pan_os/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-25 14:26:55 +0200 (Tue, 25 Oct 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Palo Alto PAN-OS Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_palo_alto_panOS_version.nasl");
+  script_mandatory_keys("palo_alto_pan_os/version");
 
  exit(0);
 }
@@ -66,7 +66,7 @@ if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
 model = get_kb_item( "palo_alto_pan_os/model" );
 
-if( version =~ "^5.0" )
+if( version =~ "^5\.0" )
   fix = '5.0.20';
 else if( version =~ "^5\.1" )
   fix = '5.1.13';

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln02_june_win.nasl 6302 2017-06-10 17:10:53Z cfischer $
+# $Id: gb_wireshark_mult_dos_vuln02_june_win.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # Wireshark Multiple Denial-of-Service Vulnerabilities-02 June17 (Windows)
 #
@@ -29,22 +29,21 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811072");
-  script_version("$Revision: 6302 $");
-  script_cve_id("CVE-2017-9348","CVE-2017-9347", "CVE-2017-9353");
+  script_version("$Revision: 11501 $");
+  script_cve_id("CVE-2017-9348", "CVE-2017-9347", "CVE-2017-9353");
   script_bugtraq_id(98801, 98800, 98805);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-10 19:10:53 +0200 (Sat, 10 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-06-02 16:48:52 +0530 (Fri, 02 Jun 2017)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-02 June17 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Wireshark
+  script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - An error in the epan/dissectors/packet-ipv6.c script within the IPv6
     dissector which could crash.
@@ -55,24 +54,22 @@ if(description)
   - An error in the epan/dissectors/packet-dof.c script within the DOF dissector
     which could read past the end of a buffer.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow attacker
-  to crash wireshark and result in denial-of-service condition.
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
+  to crash wireshark and result in denial-of-service condition.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value: "Wireshark version 2.2.0 through 2.2.6
+  script_tag(name:"affected", value:"Wireshark version 2.2.0 through 2.2.6
   on Windows");
 
-  script_tag(name: "solution" , value: "Upgrade to Wireshark version 2.2.7 or
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 2.2.7 or
   later. For updates refer to https://www.wireshark.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-23.html");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-31.html");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2017-33.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-23.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-31.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2017-33.html");
 
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -86,16 +83,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-wirversion = "";
-report = "";
-
-## Get the version
 if(!wirversion = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check the vulnerable version
 if(wirversion =~ "^(2\.2)" && version_is_less(version:wirversion, test_version:"2.2.7"))
 {
   report = report_fixed_ver(installed_version:wirversion, fixed_version:"2.2.7");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_jackrabbit_csrf_vuln_lin.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_apache_jackrabbit_csrf_vuln_lin.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Apache Jackrabbit Cross-Site Request Forgery (CSRF) Vulnerability (Linux)
 #
@@ -31,10 +31,10 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.807898");
   script_cve_id("CVE-2016-6801");
   script_bugtraq_id(92966);
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 11516 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-06 16:01:40 +0530 (Thu, 06 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Jackrabbit Cross-Site Request Forgery (CSRF) Vulnerability (Linux)");
@@ -42,8 +42,7 @@ if (description)
   script_tag(name:"summary", value:"This host is running Apache Jackrabbit
   and is prone to a cross-site request forgery vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to error in content-type
   check for POST requests which does not handle missing Content-Type header
@@ -51,22 +50,20 @@ if (description)
   optional parameters.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct CSRF attacks.
-
-  Impact Level: Application");
+  attackers to conduct CSRF attacks.");
 
   script_tag(name:"affected", value:"Apache Jackrabbit 2.4.x before 2.4.6, 2.6.x
   before 2.6.6, 2.8.x before 2.8.3, 2.10.x before 2.10.4, 2.12.x before 2.12.4,
   and 2.13.x before 2.13.3 on linux.");
 
-  script_tag(name: "solution" , value:"Upgrade to Apache Jackrabbit 2.4.6 or
+  script_tag(name:"solution", value:"Upgrade to Apache Jackrabbit 2.4.6 or
   2.6.6 or 2.8.3 or 2.10.4 or 2.12.4 or 2.13.3 or later. For updates refer to
   http://jackrabbit.apache.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://issues.apache.org/jira/browse/JCR-4009");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2016/09/14/6");
+  script_xref(name:"URL", value:"https://issues.apache.org/jira/browse/JCR-4009");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2016/09/14/6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -77,10 +74,6 @@ if (description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-##Variable Initialization
-jackPort = "";
-version = "";
 
 
 if(!jackPort = get_app_port(cpe:CPE)){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_mult_vuln_may16.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_apache_subversion_mult_vuln_may16.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Apache Subversion Multiple Vulnerabilities May-16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807684");
-  script_version("$Revision: 5732 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2015-5343");
   script_tag(name:"cvss_base", value:"8.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-02 15:57:20 +0530 (Mon, 02 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Subversion Multiple Vulnerabilities May-16");
@@ -41,18 +41,15 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apache Subversion
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The multiple flaws exists due to an integer 
-  overflow in 'util.c' script in mod_dav_svn when parsing skel-encoded request 
+  script_tag(name:"insight", value:"The multiple flaws exists due to an integer
+  overflow in 'util.c' script in mod_dav_svn when parsing skel-encoded request
   bodies.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to cause a denial of service and to possibly execute arbitrary code
-  under the context of the httpd process.
-
-  Impact Level: Application");
+  under the context of the httpd process.");
 
   script_tag(name:"affected", value:"Apache subversion version 1.7.0 to 1.8.14,
   and 1.9.0 through 1.9.2");
@@ -77,21 +74,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-sub_port = 0;
-subver = "";
-
-## Get subversion Port
 if(!sub_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# Get Version
 if(!subver = get_app_version(cpe:CPE, port:sub_port)){
   exit(0);
 }
 
-# Checking for Vulnerable version
 if(version_in_range(version:subver, test_version:"1.9.0", test_version2:"1.9.2"))
 {
   fix = "1.9.3";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_e107_mult_vuln.nasl 11330 2018-09-11 12:46:14Z asteins $
+# $Id: gb_e107_mult_vuln.nasl 11510 2018-09-20 14:12:59Z cfischer $
 #
 # e107 <= 2.1.8 Multiple Vulnerabilities
 #
@@ -28,15 +28,15 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112373");
-  script_version("$Revision: 11330 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:46:14 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 11510 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 16:12:59 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-11 14:34:11 +0200 (Tue, 11 Sep 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_cve_id("CVE-2018-15901", "CVE-2018-16381");
 

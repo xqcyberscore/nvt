@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20140326-nat.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_cisco_ios_cisco-sa-20140326-nat.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Cisco IOS Software Network Address Translation Vulnerabilities
 #
@@ -29,45 +29,45 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105651");
- script_cve_id("CVE-2014-2111","CVE-2014-2109");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5588 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105651");
+  script_cve_id("CVE-2014-2111", "CVE-2014-2109");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11516 $");
 
- script_name("Cisco IOS Software Network Address Translation Vulnerabilities");
+  script_name("Cisco IOS Software Network Address Translation Vulnerabilities");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140326-nat");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20140326-bundle");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=33347");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=33349");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140326-nat");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20140326-bundle");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=33347");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=33349");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The Cisco IOS Software implementation of the Network Address Translation (NAT) feature contains two vulnerabilities when translating IP packets that could allow an unauthenticated, remote attacker to cause a denial of service condition.
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The Cisco IOS Software implementation of the Network Address Translation (NAT) feature contains two vulnerabilities when translating IP packets that could allow an unauthenticated, remote attacker to cause a denial of service condition.
 
 Cisco has released software updates that address these vulnerabilities. There are no workarounds to mitigate these vulnerabilities.
 
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140326-nat
 
-Note: The March 26, 2014, Cisco IOS Software Security Advisory bundled publication includes six Cisco Security Advisories. All advisories address vulnerabilities in Cisco IOS Software. Each Cisco IOS Software Security Advisory lists the Cisco IOS Software releases that correct the vulnerability or vulnerabilities detailed in the advisory as well as the Cisco IOS Software releases that correct all Cisco IOS Software vulnerabilities in the March 2014 bundled publication. 
+Note: The March 26, 2014, Cisco IOS Software Security Advisory bundled publication includes six Cisco Security Advisories. All advisories address vulnerabilities in Cisco IOS Software. Each Cisco IOS Software Security Advisory lists the Cisco IOS Software releases that correct the vulnerability or vulnerabilities detailed in the advisory as well as the Cisco IOS Software releases that correct all Cisco IOS Software vulnerabilities in the March 2014 bundled publication.
 
-Individual publication links are in Cisco Event Response: Semiannual Cisco IOS Software Security Advisory Bundled Publication at the following link: 
+Individual publication links are in Cisco Event Response: Semiannual Cisco IOS Software Security Advisory Bundled Publication at the following link:
 
 http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_mar14.html");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-04 18:51:08 +0200 (Wed, 04 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-04 18:51:08 +0200 (Wed, 04 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version");
  exit(0);
 }
 
@@ -76,7 +76,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'12.1(2)',
 		'12.1(2a)',
 		'12.1(2b)',

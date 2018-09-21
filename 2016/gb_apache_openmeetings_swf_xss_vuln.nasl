@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openmeetings_swf_xss_vuln.nasl 8995 2018-03-01 10:16:04Z cfischer $
+# $Id: gb_apache_openmeetings_swf_xss_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Apache OpenMeetings < 3.1.2 Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:apache:openmeetings";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808658");
-  script_version("$Revision: 8995 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-3089", "CVE-2016-8736");
   script_bugtraq_id(92442, 94145);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 11:16:04 +0100 (Thu, 01 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-23 15:09:03 +0530 (Tue, 23 Aug 2016)");
   script_name("Apache OpenMeetings < 3.1.2 Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -66,9 +66,7 @@ if (description)
   - arbitrary script code in a user's browser session within
   the trust relationship between their browser and the server.
 
-  - remote commands via RMI attacks against the server.
-
-  Impact Level: Application/System");
+  - remote commands via RMI attacks against the server.");
 
   script_tag(name:"affected", value:"Apache OpenMeetings prior to 3.1.2");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4294.nasl 11443 2018-09-18 07:10:58Z cfischer $
+# $Id: deb_4294.nasl 11510 2018-09-20 14:12:59Z cfischer $
 #
 # Auto-generated from advisory DSA 4294-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704294");
-  script_version("$Revision: 11443 $");
+  script_version("$Revision: 11510 $");
   script_cve_id("CVE-2018-16509", "CVE-2018-16802");
   script_name("Debian Security Advisory DSA 4294-1 (ghostscript - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 09:10:58 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 16:12:59 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-16 00:00:00 +0200 (Sun, 16 Sep 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -61,7 +61,7 @@ We recommend that you upgrade your ghostscript packages.
 For the detailed security status of ghostscript please refer to
 its security tracker page at:
 https://security-tracker.debian.org/tracker/ghostscript");
-  script_tag(name:"summary",  value:"Tavis Ormandy discovered multiple vulnerabilites in Ghostscript, an
+  script_tag(name:"summary",  value:"Tavis Ormandy discovered multiple vulnerabilities in Ghostscript, an
 interpreter for the PostScript language, which could result in the
 execution of arbitrary code if a malformed Postscript file is processed
 (despite the dSAFER sandbox being enabled).");

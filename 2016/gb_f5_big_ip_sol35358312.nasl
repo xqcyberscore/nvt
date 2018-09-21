@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol35358312.nasl 5813 2017-03-31 09:01:08Z teissa $
+# $Id: gb_f5_big_ip_sol35358312.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # F5 BIG-IP - SOL35358312 - TCP vulnerability CVE-2015-8099
 #
@@ -29,35 +29,35 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105716");
- script_cve_id("CVE-2015-8099");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5813 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105716");
+  script_cve_id("CVE-2015-8099");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11516 $");
 
- script_name("F5 BIG-IP - SOL35358312 - TCP vulnerability CVE-2015-8099");
+  script_name("F5 BIG-IP - SOL35358312 - TCP vulnerability CVE-2015-8099");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/35/sol35358312.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/35/sol35358312.html");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"Under limited conditions, an invalid TCP segment can lead to a Denial of Service for the High-Speed Bridge (HSB)
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"Under limited conditions, an invalid TCP segment can lead to a Denial of Service for the High-Speed Bridge (HSB)
 on the following platforms: 3900, 6900, 8900, 8950, 11000, 11050, PB100 or PB200. This issue is only exposed on virtual servers while
 Software SYN cookies are configured for use and currently engaged. The scope of the exposure is limited to the BIG-IP data plane. The
 access vector is network based and authentication is not a requirement for attack. There is no control plane exposure to this issue.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-17 10:59:01 +0200 (Tue, 17 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-17 10:59:01 +0200 (Tue, 17 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

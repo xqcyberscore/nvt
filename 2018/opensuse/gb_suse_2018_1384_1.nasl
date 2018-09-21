@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1384_1.nasl 9962 2018-05-25 13:08:04Z santu $
+# $Id: gb_suse_2018_1384_1.nasl 11513 2018-09-21 03:48:51Z ckuersteiner $
 #
 # SuSE Update for pdns openSUSE-SU-2018:1384-1 (pdns)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851757");
-  script_version("$Revision: 9962 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 15:08:04 +0200 (Fri, 25 May 2018) $");
+  script_version("$Revision: 11513 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 05:48:51 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-05-24 05:47:44 +0200 (Thu, 24 May 2018)");
   script_cve_id("CVE-2018-1046");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for pdns openSUSE-SU-2018:1384-1 (pdns)");
   script_tag(name:"summary", value:"Check the version of pdns");

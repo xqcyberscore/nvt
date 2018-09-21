@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_vse_resource_access_bypass_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_mcafee_vse_resource_access_bypass_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # McAfee VirusScan Enterprise Resource Access Bypass Vulnerability
 #
@@ -29,28 +29,25 @@ CPE = "cpe:/a:mcafee:virusscan_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809974");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-3984");
   script_tag(name:"cvss_base", value:"3.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-10 14:30:14 +0530 (Tue, 10 May 2016)");
   script_name("McAfee VirusScan Enterprise Resource Access Bypass Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with McAfee VirusScan
   Enterprise and is prone to resource access bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as the McAfee VirusScan
   Console (mcconsol.exe) does not properly check the password.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
   Windows administrator to bypass the security restrictions and disable the
-  antivirus engine without knowing the correct management password.
-
-  Impact Level: Application");
+  antivirus engine without knowing the correct management password.");
 
   script_tag(name:"affected", value:"McAfee VirusScan Enterprise versions before
   8.8 Patch 7.");
@@ -62,7 +59,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://kc.mcafee.com/corporate/index?page=content&amp;id=SB10151");
+  script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&amp;id=SB10151");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -74,15 +71,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-mcafVer = "";
-
-## Get version
 if(!mcafVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check for McAfee VirusScan Enterprise Version less than 8.8 patch 7(8.8.0.1528)
 ## https://kc.mcafee.com/resources/sites/MCAFEE/content/live/PRODUCT_DOCUMENTATION/26000/PD26382/en_US/vse_887_rn_0-00_en-us.pdf
 
 if(version_is_less(version:mcafVer, test_version:"8.8.0.1528"))

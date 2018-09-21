@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_esr_spoofing_vuln_jan16_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_esr_spoofing_vuln_jan16_win.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Mozilla ESR Spoofing Vulnerability - Jan16 (Windows)
 #
@@ -29,31 +29,29 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806954");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2015-7575");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-14 10:52:36 +0530 (Thu, 14 Jan 2016)");
   script_name("Mozilla ESR Spoofing Vulnerability - Jan16 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox ESR and is prone to spoofing vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to Server Key Exchange messages
+  script_tag(name:"insight", value:"The flaw exists due to Server Key Exchange messages
   in TLS 1.2 Handshake Protocol traffic does not reject MD5 signatures.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to spoof servers by triggering a collision.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to spoof servers by triggering a collision.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR version before 38.5.2 on
+  script_tag(name:"affected", value:"Mozilla Firefox ESR version before 38.5.2 on
   Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version 38.5.2
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 38.5.2
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

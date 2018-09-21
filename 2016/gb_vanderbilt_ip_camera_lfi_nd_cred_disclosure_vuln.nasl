@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vanderbilt_ip_camera_lfi_nd_cred_disclosure_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_vanderbilt_ip_camera_lfi_nd_cred_disclosure_vuln.nasl 11503 2018-09-20 12:26:46Z cfischer $
 #
 # Vanderbilt IP-Camera Local File Disclosure and Credential Disclosure Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:vanderbilt:vanderbilt_ip_camera";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807353");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11503 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:26:46 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-23 16:18:17 +0530 (Tue, 23 Aug 2016)");
   script_name("Vanderbilt IP-Camera Local File Disclosure and Credential Disclosure Vulnerabilities");
 
@@ -56,7 +56,9 @@ if(description)
   script_tag(name:"affected", value:"Vanderbilt IP-Camera types CCPW3025-IR,
   CVMW3025-IR.");
 
-  script_tag(name:"solution", value:"According to vendor: these vulnerabilities were closed in the new Firmware Versions which you can find for all camera models via the home page. Just search for your model and you will find the latest FW. https://is.spiap.com/");
+  script_tag(name:"solution", value:"According to vendor: these vulnerabilities were closed in the new Firmware Versions
+  which you can find for all camera models via the home page. Just search for your model and you will find the latest
+  FW. https://is.spiap.com/");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +73,7 @@ if(description)
   script_dependencies("gb_vanderbilt_ip_camera_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("Vanderbilt/IP_Camera/Installed");
   script_require_ports("Services/www", 443);
+
   exit(0);
 }
 
@@ -78,11 +81,6 @@ include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-
-##Variable initializatiom
-vanPort = 0;
-dir = "";
-url = "";
 
 if(!vanPort = get_app_port(cpe:CPE)){
   exit(0);
@@ -109,3 +107,5 @@ foreach file (keys(files))
     exit(0);
   }
 }
+
+exit(99);

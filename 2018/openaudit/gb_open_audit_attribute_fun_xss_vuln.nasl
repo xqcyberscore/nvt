@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_audit_attribute_fun_xss_vuln.nasl 11243 2018-09-05 12:22:39Z mmartin $
+# $Id: gb_open_audit_attribute_fun_xss_vuln.nasl 11499 2018-09-20 10:38:00Z ckuersteiner $
 #
 # Open-AudIT Community 'Attributes' Functionality Cross Site Scripting Vulnerability
 #
@@ -29,42 +29,40 @@ CPE = "cpe:/a:opmantek:open-audit";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813675");
-  script_version("$Revision: 11243 $");
+  script_version("$Revision: 11499 $");
   script_cve_id("CVE-2018-11124");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 14:22:39 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:38:00 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-16 12:35:38 +0530 (Mon, 16 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
   script_name("Open-AudIT Community 'Attributes' Functionality Cross Site Scripting Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with Open-AudIT
+  script_tag(name:"summary", value:"The host is installed with Open-AudIT
   and is prone to cross site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an insufficient sanitization
+  script_tag(name:"insight", value:"The flaw is due to an insufficient sanitization
   of attribute name of an Attribute.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to inject arbitrary web script or HTML.
-
-  Impact Level: Application");
+  attackers to inject arbitrary web script or HTML.");
 
   script_tag(name:"affected", value:"Open-AudIT Community versions prior to 2.2.2");
 
-  script_tag(name:"solution", value:"Upgrade to Open-AudIT Community version 2.2.2 
+  script_tag(name:"solution", value:"Upgrade to Open-AudIT Community version 2.2.2
   or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://docs.google.com/document/d/1dJP1CQupHGXjsMWthgPGepOkcnxYA4mDfdjOE46nrhM");
-  script_xref(name : "URL" , value : "https://opmantek.com");
+  script_xref(name:"URL", value:"https://docs.google.com/document/d/1dJP1CQupHGXjsMWthgPGepOkcnxYA4mDfdjOE46nrhM");
+  script_xref(name:"URL", value:"https://opmantek.com");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_open_audit_detect.nasl");
-  script_mandatory_keys("open-audit/installed");
+  script_mandatory_keys("open-audit/detected");
   script_require_ports("Services/www", 80, 443, 8080);
   exit(0);
 }
@@ -72,18 +70,16 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if(!oaePort = get_app_port(cpe:CPE)){
+if (!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if (!version = get_app_version(cpe:CPE, port:port))
+  exit(0);
+
+if(version_is_less(version:version, test_version:"2.2.2")) {
+  report = report_fixed_ver(installed_version:version, fixed_version:"2.2.2");
+  security_message(data:report, port:port);
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, port:oaePort, exit_no_version:TRUE);
-oaeVer = infos['version'];
-oaePath = infos['location'];
-
-if(version_is_less(version:oaeVer, test_version:"2.2.2"))
-{
-  report = report_fixed_ver(installed_version:oaeVer, fixed_version:"2.2.2", install_path:oaePath);
-  security_message(data:report, port:oaePort);
-  exit(0);
-}
 exit(0);

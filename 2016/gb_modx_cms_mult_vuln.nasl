@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_cms_mult_vuln.nasl 5872 2017-04-05 14:13:06Z cfi $
+# $Id: gb_modx_cms_mult_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # MODX CMS Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:modx:revolution';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106459");
-  script_version("$Revision: 5872 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-05 16:13:06 +0200 (Wed, 05 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2016-12-09 11:42:44 +0700 (Fri, 09 Dec 2016)");
-  script_tag(name:"cvss_base", value: "7.5");
-  script_tag(name:"cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11516 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-09 11:42:44 +0700 (Fri, 09 Dec 2016)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-10037", "CVE-2016-10038", "CVE-2016-10039");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("MODX CMS Multiple Vulnerabilities");
 
@@ -52,31 +52,31 @@ if (description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("modx_cms/installed");
 
-  script_tag(name: "summary", value: "MODX Revolution CMS is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"MODX Revolution CMS is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "MODX Revolution CMS is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"MODX Revolution CMS is prone to multiple vulnerabilities:
 
-- Critical settings visible in MODx.config
+  - Critical settings visible in MODx.config
 
-- Local file inclusion/traversal/manipulation
+  - Local file inclusion/traversal/manipulation
 
-- Unauthenticated access to processors
+  - Unauthenticated access to processors
 
-- Path traversal in modConnectorResponse action param");
+  - Path traversal in modConnectorResponse action param");
 
-  script_tag(name: "impact", value: "An attacker access or manipulate files on the system.");
+  script_tag(name:"impact", value:"An attacker access or manipulate files on the system.");
 
-  script_tag(name: "affected", value: "Version 2.5.1 and prior.");
+  script_tag(name:"affected", value:"Version 2.5.1 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 2.5.2");
+  script_tag(name:"solution", value:"Update to version 2.5.2");
 
-  script_xref(name: "URL", value: "https://raw.githubusercontent.com/modxcms/revolution/v2.5.2-pl/core/docs/changelog.txt");
-  script_xref(name: "URL", value: "https://github.com/modxcms/revolution/pull/13170");
-  script_xref(name: "URL", value: "https://github.com/modxcms/revolution/pull/13176");
-  script_xref(name: "URL", value: "https://github.com/modxcms/revolution/pull/13175");
-  script_xref(name: "URL", value: "https://github.com/modxcms/revolution/pull/13173");
+  script_xref(name:"URL", value:"https://raw.githubusercontent.com/modxcms/revolution/v2.5.2-pl/core/docs/changelog.txt");
+  script_xref(name:"URL", value:"https://github.com/modxcms/revolution/pull/13170");
+  script_xref(name:"URL", value:"https://github.com/modxcms/revolution/pull/13176");
+  script_xref(name:"URL", value:"https://github.com/modxcms/revolution/pull/13175");
+  script_xref(name:"URL", value:"https://github.com/modxcms/revolution/pull/13173");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_matrixssl_mult_vuln.nasl 5526 2017-03-09 09:46:12Z ckuerste $
+# $Id: gb_matrixssl_mult_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # MatrixSSL Multiple Vulnerabilities
 #
@@ -30,18 +30,18 @@ CPE = "cpe:/a:peersec_networks:matrixssl";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106347");
-  script_version("$Revision: 5526 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-09 10:46:12 +0100 (Thu, 09 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2016-10-12 11:13:38 +0700 (Wed, 12 Oct 2016)");
+  script_version("$Revision: 11516 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-12 11:13:38 +0700 (Wed, 12 Oct 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-6890", "CVE-2016-6891", "CVE-2016-6892", "CVE-2016-6882", "CVE-2016-6883",
 "CVE-2016-6884");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("MatrixSSL Multiple Vulnerabilities");
 
@@ -52,33 +52,33 @@ if (description)
   script_dependencies("gb_matrixssl_detect.nasl");
   script_mandatory_keys("matrixssl/installed");
 
-  script_tag(name: "summary", value: "MatrixSSL is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"MatrixSSL is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "MatrixSSL is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"MatrixSSL is prone to multiple vulnerabilities:
 
-- Heap-based Buffer Overflow: The Subject Alt Name field of X.509 certificates is not properly parsed. A
+  - Heap-based Buffer Overflow: The Subject Alt Name field of X.509 certificates is not properly parsed. A
 specially crafted certificate may result in a heap-based buffer overflow and arbitrary code execution.
 (CVE-2016-6890)
 
-- Improper Restriction of Operations within the Bounds of a Memory Buffer: The ASN.1 Bit Field is not properly
+  - Improper Restriction of Operations within the Bounds of a Memory Buffer: The ASN.1 Bit Field is not properly
 parsed. A specially crafted certificate may lead to a denial of service condition due to an out of bounds read
 in memory. (CVE-2016-6891)
 
-- Free of Memory not on the Heap: The x509FreeExtensions() function does not properly parse X.509 certificates.
+  - Free of Memory not on the Heap: The x509FreeExtensions() function does not properly parse X.509 certificates.
 A specially crafted certificate may cause a free operation on unallocated memory, resulting in a denial of
 service condition. (CVE-2016-6892)");
 
-  script_tag(name: "impact", value: "A remote, unauthenticated attacker may be able to create a denial of
+  script_tag(name:"impact", value:"A remote, unauthenticated attacker may be able to create a denial of
 service condition or execute arbitrary code in the context of the SSL stack.");
 
-  script_tag(name: "affected", value: "MatrixSSL 3.8.5 and prior.");
+  script_tag(name:"affected", value:"MatrixSSL 3.8.5 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 3.8.6 or later.");
+  script_tag(name:"solution", value:"Update to version 3.8.6 or later.");
 
-  script_xref(name: "URL", value: "https://www.kb.cert.org/vuls/id/396440");
-  script_xref(name: "URL", value: "http://www.tripwire.com/state-of-security/security-data-protection/cyber-security/flawed-matrixssl-code-highlights-need-for-better-iot-update-practices/");
+  script_xref(name:"URL", value:"https://www.kb.cert.org/vuls/id/396440");
+  script_xref(name:"URL", value:"http://www.tripwire.com/state-of-security/security-data-protection/cyber-security/flawed-matrixssl-code-highlights-need-for-better-iot-update-practices/");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   exit(0);
 }

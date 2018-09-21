@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortimanager_cve_2015_7363.nasl 4294 2016-10-18 11:48:46Z antu123 $
+# $Id: gb_fortimanager_cve_2015_7363.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # FortiManager XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/h:fortinet:fortimanager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106344");
-  script_version("$Revision: 4294 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-10-18 13:48:46 +0200 (Tue, 18 Oct 2016) $");
-  script_tag(name: "creation_date", value: "2016-10-11 12:51:08 +0700 (Tue, 11 Oct 2016)");
+  script_version("$Revision: 11516 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-11 12:51:08 +0700 (Tue, 11 Oct 2016)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2015-7363");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("FortiManager XSS Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_fortimanager_version.nasl");
   script_mandatory_keys("fortimanager/version");
 
-  script_tag(name: "summary", value: "FortiManager is prone to a XSS vulnerability.");
+  script_tag(name:"summary", value:"FortiManager is prone to a XSS vulnerability.");
 
-  script_tag(name: "insight", value: "A cross-site-scripting vulnerablity in FortiManager in advanced settings
+  script_tag(name:"insight", value:"A cross-site-scripting vulnerablity in FortiManager in advanced settings
 page could allow an administrator to inject scripts in the add filter field.");
 
-  script_tag(name: "impact", value: "An administrator could inject inject arbitrary web scripts.");
+  script_tag(name:"impact", value:"An administrator could inject inject arbitrary web scripts.");
 
-  script_tag(name: "affected", value: "FortiManager 5.0.x, 5.2.x");
+  script_tag(name:"affected", value:"FortiManager 5.0.x, 5.2.x");
 
-  script_tag(name: "solution", value: "Update to FortiManager 5.4.0 and above, 5.0.12 and above or 5.2.3 and
+  script_tag(name:"solution", value:"Update to FortiManager 5.4.0 and above, 5.0.12 and above or 5.2.3 and
 above");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_xref(name: "URL", value: "http://fortiguard.com/advisory/fortianalyzer-and-fortimanager-stored-xss-vulnerability-in-report-filters");
+  script_xref(name:"URL", value:"http://fortiguard.com/advisory/fortianalyzer-and-fortimanager-stored-xss-vulnerability-in-report-filters");
 
   exit(0);
 }

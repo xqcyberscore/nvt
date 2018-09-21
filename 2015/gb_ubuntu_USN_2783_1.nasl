@@ -26,15 +26,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842504");
-  script_version("$Revision: 11484 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 05:38:48 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 11513 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 05:48:51 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-28 07:18:08 +0100 (Wed, 28 Oct 2015)");
   script_cve_id("CVE-2015-5146", "CVE-2015-5194", "CVE-2015-5195", "CVE-2015-7703", "CVE-2015-5219",
                 "CVE-2015-5300", "CVE-2015-7691", "CVE-2015-7692", "CVE-2015-7702", "CVE-2015-7701",
                 "CVE-2015-7704", "CVE-2015-7705", "CVE-2015-7850", "CVE-2015-7852", "CVE-2015-7853",
                 "CVE-2015-7855", "CVE-2015-7871");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for ntp USN-2783-1");
   script_tag(name:"summary", value:"Check the version of ntp");

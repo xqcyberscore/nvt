@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_mult_vuln_nov16_1.nasl 5070 2017-01-24 10:05:10Z antu123 $
+# $Id: gb_ntp_mult_vuln_nov16_1.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # NTP.org 'ntp' Multiple Vulnerabilities (Nov-2016)
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106405");
-  script_version("$Revision: 5070 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-24 11:05:10 +0100 (Tue, 24 Jan 2017) $");
-  script_tag(name: "creation_date", value: "2016-06-03 11:18:33 +0700 (Fri, 03 Jun 2016)");
+  script_version("$Revision: 11516 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-03 11:18:33 +0700 (Fri, 03 Jun 2016)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2016-7428", "CVE-2016-7427");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("NTP.org 'ntp' Multiple Vulnerabilities");
 
@@ -50,21 +50,21 @@ if (description)
   script_mandatory_keys("NTP/Installed", "NTP/Linux/Ver");
   script_require_udp_ports(123);
 
-  script_tag(name: "summary", value: "NTP.org's reference implementation of NTP server, ntpd, contains
+  script_tag(name:"summary", value:"NTP.org's reference implementation of NTP server, ntpd, contains
 multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "ntpd contains multiple vulnerabilities:
+  script_tag(name:"insight", value:"ntpd contains multiple vulnerabilities:
 
-- The broadcast mode of NTP is expected to only be used in a trusted network. If the broadcast network is
+  - The broadcast mode of NTP is expected to only be used in a trusted network. If the broadcast network is
 accessible to an attacker, a potentially exploitable denial of service vulnerability in ntpd's broadcast mode
 replay prevention functionality can be abused. An attacker with access to the NTP broadcast domain can
 periodically inject specially crafted broadcast mode NTP packets into the broadcast domain which, while being
 logged by ntpd, can cause ntpd to reject broadcast mode packets from legitimate NTP broadcast servers.
 (CVE-2016-7427)
 
-- The broadcast mode of NTP is expected to only be used in a trusted network. If the broadcast network is
+  - The broadcast mode of NTP is expected to only be used in a trusted network. If the broadcast network is
 accessible to an attacker, a potentially exploitable denial of service vulnerability in ntpd's broadcast mode
 poll interval enforcement functionality can be abused. To limit abuse, ntpd restricts the rate at which each
 broadcast association will process incoming packets. ntpd will reject broadcast mode packets that arrive before
@@ -73,14 +73,14 @@ broadcast domain can send specially crafted broadcast mode NTP packets to the br
 being logged by ntpd, will cause ntpd to reject broadcast mode packets from legitimate NTP broadcast servers.
 (CVE-2016-7428)");
 
-  script_tag(name: "impact", value: "A remote unauthenticated attacker may be able to perform a denial of
+  script_tag(name:"impact", value:"A remote unauthenticated attacker may be able to perform a denial of
 service on ntpd.");
 
-  script_tag(name: "affected", value: "Version 4.2.8p6 until 4.2.8p8, 4.3.90 until 4.3.93");
+  script_tag(name:"affected", value:"Version 4.2.8p6 until 4.2.8p8, 4.3.90 until 4.3.93");
 
-  script_tag(name: "solution", value: "Upgrade to NTP version 4.2.8p9, 4.3.94 or later.");
+  script_tag(name:"solution", value:"Upgrade to NTP version 4.2.8p9, 4.3.94 or later.");
 
-  script_xref(name: "URL", value: "https://www.kb.cert.org/vuls/id/633847");
+  script_xref(name:"URL", value:"https://www.kb.cert.org/vuls/id/633847");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_action_pack_remote_code_exec_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_ruby_on_rails_action_pack_remote_code_exec_vuln_lin.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Ruby on Rails Action Pack Remote Code Execution Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809353");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-2098");
   script_bugtraq_id(83725);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-14 16:40:26 +0530 (Fri, 14 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Ruby on Rails Action Pack Remote Code Execution Vulnerability (Linux)");
@@ -42,21 +42,17 @@ if(description)
   script_tag(name:"summary", value:"This host is running Ruby on Rails and is
   prone to remote code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an improper sanitization
-  of user supplied inputs to the 'render' method in a controller or view by 
+  of user supplied inputs to the 'render' method in a controller or view by
   'Action Pack'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to control the arguments of the render method in a controller or a view,
-  resulting in the possibility of executing arbitrary ruby code.
+  resulting in the possibility of executing arbitrary ruby code.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"
-  Ruby on Rails before 3.2.22.2,
+  script_tag(name:"affected", value:"Ruby on Rails before 3.2.22.2,
   Ruby on Rails 4.x before 4.1.14.2 and
   Ruby on Rails 4.2.x before 4.2.5.2 on Linux.");
 
@@ -65,8 +61,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.debian.org/security/2016/dsa-3509");
-  script_xref(name : "URL" , value : "https://groups.google.com/forum/message/raw?msg=rubyonrails-security/ly-IH-fxr_Q/WLoOhcMZIAAJ");
+  script_xref(name:"URL", value:"https://www.debian.org/security/2016/dsa-3509");
+  script_xref(name:"URL", value:"https://groups.google.com/forum/message/raw?msg=rubyonrails-security/ly-IH-fxr_Q/WLoOhcMZIAAJ");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -78,35 +74,23 @@ if(description)
 }
 
 
-##
-### Code Starts Here
-##
-
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-RubyonRailPort = "";
-RubyonRailVer = "";
-
-## Get HTTP Port
 if(!RubyonRailPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!RubyonRailVer = get_app_version(cpe:CPE, port:RubyonRailPort)){
   exit(0);
 }
 
-##Check for version before 3.2.22.2
 if(version_is_less(version:RubyonRailVer, test_version:"3.2.22.2"))
 {
   fix = "3.2.22.2";
   VULN = TRUE;
 }
 
-## Check for version 4.1 before 4.1.14.2
 else if(RubyonRailVer =~ "^(4\.1)")
 {
   if(version_is_less(version:RubyonRailVer, test_version:"4.1.14.2"))
@@ -116,7 +100,6 @@ else if(RubyonRailVer =~ "^(4\.1)")
   }
 }
 
-## Check for version 4.2 before 4.2.5.2
 else if(RubyonRailVer =~ "^(4\.2)")
 {
   if(version_is_less(version:RubyonRailVer, test_version:"4.2.5.2"))

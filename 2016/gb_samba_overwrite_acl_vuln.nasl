@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_overwrite_acl_vuln.nasl 10398 2018-07-04 12:11:48Z cfischer $
+# $Id: gb_samba_overwrite_acl_vuln.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Samba Overwrite ACLs Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807711");
-  script_version("$Revision: 10398 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2015-7560");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:53 +0530 (Wed, 06 Apr 2016)");
   script_name("Samba Overwrite ACLs Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -48,13 +48,11 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an improper handling
-  of the request,a UNIX SMB1 call, to create a symlink.");
+  of the request, a UNIX SMB1 call, to create a symlink.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to gain access to an arbitrary file or directory by overwriting its
-  ACL.
-
-  Impact Level: Application");
+  ACL.");
 
   script_tag(name:"affected", value:"Samba versions 3.2.x and 4.x before 4.1.23,
   4.2.x before 4.2.9, 4.3.x before 4.3.6 and 4.4.x before 4.4.0rc4.");

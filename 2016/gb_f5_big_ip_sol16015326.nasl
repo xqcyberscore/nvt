@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16015326.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_f5_big_ip_sol16015326.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # F5 BIG-IP - SOL16015326 - libtar vulnerability CVE-2013-4397
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105539");
- script_cve_id("CVE-2013-4397");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5650 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105539");
+  script_cve_id("CVE-2013-4397");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11516 $");
 
- script_name("F5 BIG-IP - SOL16015326 - libtar vulnerability CVE-2013-4397");
+  script_name("F5 BIG-IP - SOL16015326 - libtar vulnerability CVE-2013-4397");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/16/sol16015326.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/16/sol16015326.html");
 
- script_tag(name: "impact" , value:"A remote attacker may be able to cause a denial-of-service (DoS) or execute arbitrary code on the BIG-IP system.");
+  script_tag(name:"impact", value:"A remote attacker may be able to cause a denial-of-service (DoS) or execute arbitrary code on the BIG-IP system.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"Multiple integer overflows in the th_read function in lib/block.c in libtar before 1.2.20 allow remote attackers to cause a denial of service (crash) and possibly execute arbitrary code via a long (1) name or (2) link in an archive, which triggers a heap-based buffer overflow.");
+  script_tag(name:"insight", value:"Multiple integer overflows in the th_read function in lib/block.c in libtar before 1.2.20 allow remote attackers to cause a denial of service (crash) and possibly execute arbitrary code via a long (1) name or (2) link in an archive, which triggers a heap-based buffer overflow.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-02-11 18:30:55 +0100 (Thu, 11 Feb 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-02-11 18:30:55 +0100 (Thu, 11 Feb 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

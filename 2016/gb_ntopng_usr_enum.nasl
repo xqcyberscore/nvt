@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntopng_usr_enum.nasl 9600 2018-04-25 08:48:41Z asteins $
+# $Id: gb_ntopng_usr_enum.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # ntopng Username Enumeration Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:ntop:ntopng";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107111");
-  script_version("$Revision: 9600 $");
+  script_version("$Revision: 11516 $");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 10:48:41 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-20 06:40:16 +0200 (Tue, 20 Dec 2016)");
   script_name("ntopng Username Enumeration Vulnerability");
 
@@ -42,9 +42,7 @@ if(description)
   of a detection NVT and check if the version is vulnerable or not.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  attackers to enumerate usernames.
-
-  Impact Level: System");
+  attackers to enumerate usernames.");
 
   script_tag(name:"affected", value:"ntopng 2.5.160805");
 

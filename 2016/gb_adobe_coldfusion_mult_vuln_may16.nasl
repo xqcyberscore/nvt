@@ -29,32 +29,32 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807588");
-  script_version("$Revision: 7573 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-1113", "CVE-2016-1114", "CVE-2016-1115");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-16 13:44:30 +0530 (Mon, 16 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Multiple Vulnerabilities(may-2016)");
 
-  script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is 
+  script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is
   prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An insufficient validation of user supplied input via unspecified vectors.
-  - An important Java deserialization vulnerability in 
+
+  - An important Java deserialization vulnerability in
     Apache Commons Collections library.
+
   - The mishandling of wildcards in name fields of X.509 certificates.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject arbitrary web script or HTML via unspecified vectors
-  and allow man-in-the-middle attackers to spoof servers.
-
-  Impact Level: Application");
+  and allow man-in-the-middle attackers to spoof servers.");
 
   script_tag(name:"affected", value:"ColdFusion 10 before Update 19 and
   11 before Update 8");
@@ -80,22 +80,15 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-cfPort = 0;
-cfdVer = "";
-
-## Get HTTP Port
 if(!cfPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 cfdVer = get_app_version(cpe:CPE, port:cfPort);
 if(!cfdVer || "unknown" >< cfdVer){
   exit(0);
 }
 
-## Checking for Vulnerable version
 if(version_in_range(version:cfdVer, test_version:"10.0", test_version2:"10.0.19.298510"))
 {
   fix = "10.0.19.298511";

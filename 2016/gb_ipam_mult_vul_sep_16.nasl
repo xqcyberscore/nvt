@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipam_mult_vul_sep_16.nasl 9116 2018-03-16 13:04:55Z cfischer $
+# $Id: gb_ipam_mult_vul_sep_16.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # phpIPAM <= 1.2.1 Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpipam:phpipam";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107047");
-  script_version("$Revision: 9116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:04:55 +0100 (Fri, 16 Mar 2018) $");
+  script_version("$Revision: 11516 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-09-12 06:40:16 +0200 (Mon, 12 Sep 2016)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -45,20 +45,12 @@ if(description)
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/138603/PHPIPAM-1.2.1-Cross-Site-Scripting-SQL-Injection.html");
   script_xref(name:"URL", value:"https://phpipam.net/documents/changelog/");
 
-  tag_insight = "phpIPAM version 1.2.1 suffers from cross site scripting and remote SQL injection vulnerabilities.";
-
-  tag_impact = "Allows unauthorized disclosure of information; Allows unauthorized modification; Allows disruption of service .";
-
-  tag_affected = "phpIPAM 1.2.1 and earlier.";
-
-  tag_summary = "phpIPAM is prone to multiple vulnerabilities.";
-
   tag_solution = "Update to phpIPAM 1.3 or later, see http://phpipam.net for more information.";
 
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"summary", value:"phpIPAM is prone to multiple vulnerabilities.");
+  script_tag(name:"insight", value:"phpIPAM version 1.2.1 suffers from cross site scripting and remote SQL injection vulnerabilities.");
+  script_tag(name:"impact", value:"Allows unauthorized disclosure of information, allows unauthorized modification and allows disruption of service.");
+  script_tag(name:"affected", value:"phpIPAM 1.2.1 and earlier.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_unspecified_vuln_jan16_lin.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_oracle_virtualbox_unspecified_vuln_jan16_lin.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Oracle Virtualbox Unspecified Vulnerability Jan16 (Linux)
 #
@@ -29,39 +29,36 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806990");
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-0602");
   script_tag(name:"cvss_base", value:"6.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-22 16:46:52 +0530 (Fri, 22 Jan 2016)");
   script_name("Oracle Virtualbox Unspecified Vulnerability Jan16 (Linux)");
 
-  script_tag(name: "summary" , value:"This host is installed with Oracle VM
+  script_tag(name:"summary", value:"This host is installed with Oracle VM
   VirtualBox and is prone to unspecified vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to some unspecified
+  script_tag(name:"insight", value:"The flaw exists due to some unspecified
   error.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow local
-  attackers to have an impact on confidentiality, integrity, and availability.
+  script_tag(name:"impact", value:"Successful exploitation will allow local
+  attackers to have an impact on confidentiality, integrity, and availability.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"VirtualBox versions prior to 5.0.14
+  script_tag(name:"affected", value:"VirtualBox versions prior to 5.0.14
   on Linux.");
 
-  script_tag(name: "solution" , value:"Upgrade to Oracle VirtualBox version
+  script_tag(name:"solution", value:"Upgrade to Oracle VirtualBox version
   5.0.14 or later on Linux. For updates refer to https://www.virtualbox.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -74,15 +71,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-virtualVer = "";
-
-## Get version
 if(!virtualVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_in_range(version:virtualVer, test_version:"5.0.0", test_version2:"5.0.13"))
 {
   report = report_fixed_ver(installed_version:virtualVer, fixed_version:"5.0.14");

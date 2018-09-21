@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_forti_80581.nasl 7940 2017-11-30 10:04:48Z cfischer $
+# $Id: gb_forti_80581.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # Fortinet FortiOS SSH Undocumented Interactive Login Security Bypass Vulnerability
 #
@@ -27,35 +27,35 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140239");
- script_bugtraq_id(80581);
- script_cve_id("CVE-2016-1909");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 7940 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140239");
+  script_bugtraq_id(80581);
+  script_cve_id("CVE-2016-1909");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11501 $");
 
- script_name("Fortinet FortiOS SSH Undocumented Interactive Login Security Bypass Vulnerability");
+  script_name("Fortinet FortiOS SSH Undocumented Interactive Login Security Bypass Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/80581");
- script_xref(name:"URL", value:"http://www.fortinet.com/products/fortigate_overview.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/80581");
+  script_xref(name:"URL", value:"http://www.fortinet.com/products/fortigate_overview.html");
 
- script_tag(name: "impact" , value:"Attackers can exploit this issue to bypass certain security restrictions to perform unauthorized actions. This may aid in
+  script_tag(name:"impact", value:"Attackers can exploit this issue to bypass certain security restrictions to perform unauthorized actions. This may aid in
 further attacks.");
- script_tag(name: "vuldetect" , value:"Try to login as user `Fortimanager_Access`");
- script_tag(name: "solution" , value:"Updates are available. Please see the references or vendor advisory for more information.");
- script_tag(name: "summary" , value:"FortiGate running FortiOS is prone to a security-bypass vulnerability.");
- script_tag(name: "affected" , value:"FortiOS 4.3.0 through 4.3.16, and 5.0.0 through 5.0.7 are vulnerable.");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"vuldetect", value:"Try to login as user `Fortimanager_Access`");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
+  script_tag(name:"summary", value:"FortiGate running FortiOS is prone to a security-bypass vulnerability.");
+  script_tag(name:"affected", value:"FortiOS 4.3.0 through 4.3.16, and 5.0.0 through 5.0.7 are vulnerable.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2017-11-30 11:04:48 +0100 (Thu, 30 Nov 2017) $");
- script_tag(name:"creation_date", value:"2017-04-07 16:08:03 +0200 (Fri, 07 Apr 2017)");
- script_category(ACT_ATTACK);
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("ssh_detect.nasl");
- script_require_ports("Services/ssh", 22);
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-07 16:08:03 +0200 (Fri, 07 Apr 2017)");
+  script_category(ACT_ATTACK);
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("ssh_detect.nasl");
+  script_require_ports("Services/ssh", 22);
 
  exit(0);
 }

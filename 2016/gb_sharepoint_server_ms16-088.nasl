@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_ms16-088.nasl 9316 2018-04-05 07:06:02Z cfischer $
+# $Id: gb_sharepoint_server_ms16-088.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # Microsoft SharePoint Server RCE Vulnerability (3170008)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807865");
-  script_version("$Revision: 9316 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-3282");
   script_bugtraq_id(91589);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 09:06:02 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-13 14:52:26 +0530 (Wed, 13 Jul 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft SharePoint Server RCE Vulnerability (3170008)");
@@ -50,13 +50,11 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to corrupt memory and potentially
-  execute arbitrary code.
-
-  Impact Level: System/Application");
+  execute arbitrary code.");
 
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2016
 
-  Microsoft SharePoint Foundation 2010 Service Pack 1 
+  Microsoft SharePoint Foundation 2010 Service Pack 1
 
   Microsoft SharePoint Foundation 2013 Service Pack 1");
 
@@ -67,14 +65,15 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3114890");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115299");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115294");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-088");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3114890");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3115299");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3115294");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-088");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/SharePoint/Server/Ver");
   exit(0);
 }

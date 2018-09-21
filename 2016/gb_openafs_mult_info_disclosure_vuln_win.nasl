@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openafs_mult_info_disclosure_vuln_win.nasl 8209 2017-12-21 08:12:18Z cfischer $
+# $Id: gb_openafs_mult_info_disclosure_vuln_win.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # OpenAFS Multiple Information Disclosure Vulnerabilities (Windows)
 #
@@ -29,44 +29,43 @@ CPE= "cpe:/a:openafs:openafs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808073");
-  script_version("$Revision: 8209 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2015-7763", "CVE-2015-7762");
   script_bugtraq_id(77407);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 09:12:18 +0100 (Thu, 21 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-08 13:06:35 +0530 (Wed, 08 Jun 2016)");
   script_name("OpenAFS Multiple Information Disclosure Vulnerabilities (Windows)");
 
-  script_tag(name: "summary" , value: "This host is installed with OpenAFS and
+  script_tag(name:"summary", value:"This host is installed with OpenAFS and
   is prone to multiple information disclosure vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The multiple flaw exist due to,
+  script_tag(name:"insight", value:"The multiple flaw exist due to,
+
   - 'rx/rx.c' in OpenAFS does not properly initialize padding at the end of an Rx
     acknowledgement (ACK) packet.
+
   - 'rx/rx.c' in OpenAFS does not properly initialize the padding of a data structure
     when constructing an Rx acknowledgement (ACK) packet.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to obtain sensitive information by conducting a replay
-  attack or sniffing the network.
+  attack or sniffing the network.");
 
-  Impact Level: Application.");
-
-  script_tag(name: "affected" , value:"OpenAFS version prior to 1.4.16 and 1.5.75
+  script_tag(name:"affected", value:"OpenAFS version prior to 1.4.16 and 1.5.75
   through 1.5.78 and 1.6.X prior to 1.6.15, 1.7.x prior to 1.7.33 on Windows.");
 
-  script_tag(name: "solution" , value:"Update to OpenAFS version 1.7.33 or later.
+  script_tag(name:"solution", value:"Update to OpenAFS version 1.7.33 or later.
   For updates refer to https://www.openafs.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "https://www.openafs.org/dl/openafs/1.6.15/RELNOTES-1.6.15");
-  script_xref(name: "URL" , value : "https://www.openafs.org/pages/security/OPENAFS-SA-2015-007.txt");
+  script_xref(name:"URL", value:"https://www.openafs.org/dl/openafs/1.6.15/RELNOTES-1.6.15");
+  script_xref(name:"URL", value:"https://www.openafs.org/pages/security/OPENAFS-SA-2015-007.txt");
 
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -79,15 +78,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-afsVer= "";
-
-## Get version
 if(!afsVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check vulnerable versions
 if(version_is_less(version:afsVer, test_version:"1.4.16") ||
    version_in_range(version:afsVer, test_version:"1.5.75", test_version2:"1.5.78") ||
    version_in_range(version:afsVer, test_version:"1.6.0", test_version2:"1.6.14") ||

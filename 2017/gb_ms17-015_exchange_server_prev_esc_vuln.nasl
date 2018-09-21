@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-015_exchange_server_prev_esc_vuln.nasl 5683 2017-03-23 08:19:01Z teissa $
+# $Id: gb_ms17-015_exchange_server_prev_esc_vuln.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # Microsoft Exchange Server Remote Privilege Escalation Vulnerability (4013242)
 #
@@ -29,47 +29,45 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810705");
-  script_version("$Revision: 5683 $");
+  script_version("$Revision: 11501 $");
   script_cve_id("CVE-2017-0110");
   script_bugtraq_id(96621);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 09:19:01 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 11:17:25 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Exchange Server Remote Privilege Escalation Vulnerability (4013242)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS17-015.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exists in the way that Microsoft
-  Exchange Outlook Web Access (OWA) fails to properly handle web requests."); 
+  script_tag(name:"insight", value:"The flaw exists in the way that Microsoft
+  Exchange Outlook Web Access (OWA) fails to properly handle web requests.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   an attacker to perform script/content injection attacks, and attempt to trick
-  the user into disclosing sensitive information.
+  the user into disclosing sensitive information.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft Exchange Server 2013 Cumulative Update 14 
+  script_tag(name:"affected", value:"Microsoft Exchange Server 2013 Cumulative Update 14
   Microsoft Exchange Server 2016 Cumulative Update 3 ");
 
-  script_tag(name: "solution" , value:"Run Windows Update and update the listed
+  script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
   https://technet.microsoft.com/library/security/MS17-015");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/4012178");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS17-015");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/4012178");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS17-015");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_exchange_server_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/Exchange/Server/Ver");
   exit(0);
 }
@@ -80,12 +78,6 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-ExVer = "";
-dllVer = "";
-path = "";
-
-## Get the installed path
 exchangePath = get_app_location(cpe:CPE);
 if(!exchangePath || "Could not find the install location" >< exchangePath){
   exit(0);
@@ -93,7 +85,6 @@ if(!exchangePath || "Could not find the install location" >< exchangePath){
 
 cum_update = get_kb_item("MS/Exchange/Cumulative/Update/no");
 
-## Get Version from ExSetup.exe file version
 exeVer = fetch_file_version(sysPath:exchangePath, file_name:"Bin\ExSetup.exe");
 if(exeVer)
 {
@@ -103,7 +94,7 @@ if(exeVer)
     Vulnerable_range = "15.0 - 15.0.847.53";
     VULN = TRUE ;
   }
-  
+
   ## Exchange Server 2013 CU 14
   else if(exeVer =~ "^(15.0)" && "Cumulative Update 14" >< cum_update)
   {

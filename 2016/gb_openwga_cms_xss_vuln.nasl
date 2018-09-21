@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openwga_cms_xss_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_openwga_cms_xss_vuln.nasl 11506 2018-09-20 13:32:45Z cfischer $
 #
 # OpenWGA Content Manager Cross-site Scripting Vulnerability
 #
@@ -29,47 +29,46 @@ CPE = "cpe:/a:OpenWGA_CMS:openwga";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807687");
-  script_version("$Revision: 7585 $");
+  script_version("$Revision: 11506 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:32:45 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-03 16:40:17 +0530 (Tue, 03 May 2016)");
   script_name("OpenWGA Content Manager Cross-site Scripting Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with OpenWGA Content Manager
+  script_tag(name:"summary", value:"The host is installed with OpenWGA Content Manager
   and is prone to cross-site scripting vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted request via HTTP GET and
+  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether its able to read cookie value.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to the input passed
+  script_tag(name:"insight", value:"The flaw exists due to the input passed
   via the User-Agent HTTP header is not properly sanitized before being returned
   to the user.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to execute arbitrary HTML and script code in a user's browser session in context
-  of an affected site.
+  of an affected site.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"
-  OpenWGA Content Manager 7.1.9 (Build 230)
+  script_tag(name:"affected", value:"OpenWGA Content Manager 7.1.9 (Build 230)
   OpenWGA Admin Client 7.1.7 (Build 82)
   OpenWGA Server 7.1.9 Maintenance Release (Build 642)");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one. 
-");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/136681/ZSL-2016-5316.txt");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/136681/ZSL-2016-5316.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_openwga_cms_detect.nasl");
   script_mandatory_keys("OpenWGA/Installed");
+
   exit(0);
 }
 
@@ -77,43 +76,33 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-wgacmsVer = "";
-wgacmsPort = 0;
-
-##Get wgasms Port
 if(!wgacmsPort = get_app_port(cpe:CPE)){
-  exit(0); 
+  exit(0);
 }
 
-## get the installed directory
 if(!dir = get_app_location(cpe:CPE, port:wgacmsPort)){
   exit(0);
 }
 
-## Get host name or IP
 host = http_host_name(port:wgacmsPort);
-if(!host){
-  exit(0);
-}
 
-##Url
 url = dir + "plugin-contentmanager/html/contentstore.int.html";
 
-##Construct the request
-req1 =  'GET '+url+' HTTP/1.1\r\n' +
-        'Host: '+host+'\r\n' +
+req1 =  'GET ' + url + ' HTTP/1.1\r\n' +
+        'Host: ' + host + '\r\n' +
         'Accept: */*\r\n' +
         'Accept-Language: en\r\n' +
         'User-Agent: <script>alert(document.cookie)</script>\r\n' +
         'Connection: keep-alive\r\n' +
         '\r\n';
-
 res1 =  http_keepalive_send_recv(port:wgacmsPort, data:req1);
 
-if("<script>alert(document.cookie)</script>" >< res1 && 
-   res1 =~ "HTTP/1.1 200 OK" && res1 =~ "OpenWG.*Server")
+if("<script>alert(document.cookie)</script>" >< res1 &&
+   res1 =~ "^HTTP/1\.[01] 200" && res1 =~ "OpenWG.*Server")
 {
    report = report_vuln_url(port:wgacmsPort, url:url);
    security_message(port:wgacmsPort, data:report);
+   exit(0);
 }
+
+exit(99);

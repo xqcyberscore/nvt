@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_inotes_domino_xss_vuln_nov16.nasl 7575 2017-10-26 09:47:04Z cfischer $
+# $Id: gb_ibm_inotes_domino_xss_vuln_nov16.nasl 11516 2018-09-21 11:15:17Z asteins $
 #
 # IBM INotes and Domino Cross-site Scripting Vulnerability - Nov16
 #
@@ -29,28 +29,25 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809820");
-  script_version("$Revision: 7575 $");
+  script_version("$Revision: 11516 $");
   script_cve_id("CVE-2016-0282");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-25 17:07:04 +0530 (Fri, 25 Nov 2016)");
   script_name("IBM INotes and Domino Cross-site Scripting Vulnerability - Nov16");
 
   script_tag(name:"summary", value:"This host is installed with IBM Domino and
   is prone to cross-site scripting vulnerability");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an improper validation of
   user-supplied input.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to execute script in a victim's Web browser within the security context of the
-  hosting Web site, once the URL is clicked.
-
-  Impact Level: System/Application");
+  hosting Web site, once the URL is clicked.");
 
   script_tag(name:"affected", value:"IBM iNotes and Domino 8.5.x before 8.5.3 FP6
   IF2.");
@@ -62,7 +59,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21991722");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21991722");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -75,9 +72,6 @@ if(description)
 include("version_func.inc");
 include("revisions-lib.inc"); # Used in get_highest_app_version
 include("host_details.inc");
-
-## Variable Initialization
-domVer = "";
 
 if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);

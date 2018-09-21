@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_exchange_server_eol.nasl 6914 2017-08-14 05:49:18Z emoss $
+# $Id: gb_ms_exchange_server_eol.nasl 11501 2018-09-20 12:19:13Z mmartin $
 #
 # Microsoft Exchange Server End Of Life Detection
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108202");
-  script_version("$Revision: 6914 $");
+  script_version("$Revision: 11501 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-14 07:49:18 +0200 (Mon, 14 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-08-07 08:00:00 +0200 (Mon, 07 Aug 2017)");
   script_name("Microsoft Exchange Server End Of Life Detection");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -45,20 +45,12 @@ if(description)
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/lifecycle/search?alpha=Exchange%20Server");
   script_xref(name:"URL", value:"https://support.office.com/en-us/article/Exchange-2007-End-of-Life-Roadmap-c3024358-326b-404e-9fe6-b618e54d977d");
 
-  tag_summary = "The Microsoft Exchange Server version on the remote host has reached the end of life and should
-  not be used anymore.";
-
-  tag_impact = "An end of life version of Microsoft Exchange Server is not receiving any security updates from the vendor. Unfixed security vulnerabilities
-  might be leveraged by an attacker to compromise the security of this host.";
-
-  tag_solution = "Update the Microsoft Exchange Server version on the remote host to a newer version of Exchange on your on-premises servers or migrate to Office 365 using cutover, staged, or hybrid migration.";
-
-  tag_vuldetect = "Get the installed version with the help of the Exchange Server detection NVT and check if the version is unsupported.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
+  script_tag(name:"summary", value:"The Microsoft Exchange Server version on the remote host has reached the end of life and should
+  not be used anymore.");
+  script_tag(name:"impact", value:"An end of life version of Microsoft Exchange Server is not receiving any security updates from the vendor. Unfixed security vulnerabilities
+  might be leveraged by an attacker to compromise the security of this host.");
+  script_tag(name:"solution", value:"Update the Microsoft Exchange Server version on the remote host to a newer version of Exchange on your on-premises servers or migrate to Office 365 using cutover, staged, or hybrid migration.");
+  script_tag(name:"vuldetect", value:"Get the installed version with the help of the Exchange Server detection NVT and check if the version is unsupported.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
