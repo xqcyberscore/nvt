@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_xss_n_csrf_vuln.nasl 10674 2018-07-30 08:24:18Z asteins $
+# $Id: gb_moodle_xss_n_csrf_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Moodle Cross Site Scripting and Cross Site Request Forgery Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800798");
-  script_version("$Revision: 10674 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-30 10:24:18 +0200 (Mon, 30 Jul 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-07-12 09:42:32 +0200 (Mon, 12 Jul 2010)");
   script_cve_id("CVE-2010-2229", "CVE-2010-2228",
                 "CVE-2010-2231", "CVE-2010-2230");
@@ -45,7 +45,7 @@ if(description)
   script_dependencies("gb_moodle_cms_detect.nasl");
   script_family("Web application abuses");
   script_require_ports("Services/www", 80);
-  script_require_keys("Moodle/Version");
+  script_mandatory_keys("Moodle/Version");
   script_tag(name:"insight", value:"The flaws are due to,
 
   - Certain input passed to the 'MNET' access control interface is not properly
@@ -70,8 +70,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site
   and to gain knowledge of sensitive information or to conduct cross-site
-  request forgery attacks.
-  Impact Level: Application.");
+  request forgery attacks.");
   script_tag(name:"affected", value:"Moodle version 1.8.x prior to 1.8.13
   Moodle version 1.9.x prior to 1.9.9");
   script_tag(name:"solution_type", value:"VendorFix");

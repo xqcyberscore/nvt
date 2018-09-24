@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_mult_bof_vuln_mar12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_xnview_mult_bof_vuln_mar12_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # XnView Multiple Buffer Overflow Vulnerabilities - Mar12 (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802815");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_bugtraq_id(52405);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-15 12:56:44 +0530 (Thu, 15 Mar 2012)");
   script_name("XnView Multiple Buffer Overflow Vulnerabilities - Mar12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47388/");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_xnview_detect_win.nasl");
-  script_require_keys("XnView/Win/Ver");
+  script_mandatory_keys("XnView/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code on the
   system via a specially crafted files or cause a denial of service condition.");
   script_tag(name:"affected", value:"XnView versions 1.98.5 and prior on windows");

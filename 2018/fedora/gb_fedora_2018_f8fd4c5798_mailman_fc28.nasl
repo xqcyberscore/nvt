@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_f8fd4c5798_mailman_fc28.nasl 10637 2018-07-26 09:34:03Z santu $
+# $Id: gb_fedora_2018_f8fd4c5798_mailman_fc28.nasl 11561 2018-09-24 06:20:05Z cfischer $
 #
 # Fedora Update for mailman FEDORA-2018-f8fd4c5798
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874849");
-  script_version("$Revision: 10637 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 11:34:03 +0200 (Thu, 26 Jul 2018) $");
+  script_version("$Revision: 11561 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 08:20:05 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-24 06:10:11 +0200 (Tue, 24 Jul 2018)");
   script_cve_id("CVE-2018-0618");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mailman FEDORA-2018-f8fd4c5798");
   script_tag(name:"summary", value:"Check the version of mailman");

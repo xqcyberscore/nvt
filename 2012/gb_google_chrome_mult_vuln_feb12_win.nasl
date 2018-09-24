@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_feb12_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_google_chrome_mult_vuln_feb12_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - February 12 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802594");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2011-3960", "CVE-2011-3959", "CVE-2011-3958", "CVE-2011-3957",
                 "CVE-2011-3972", "CVE-2011-3956", "CVE-2011-3971", "CVE-2011-3955",
                 "CVE-2011-3970", "CVE-2011-3954", "CVE-2011-3969", "CVE-2011-3953",
@@ -36,7 +36,7 @@ if(description)
   script_bugtraq_id(51911);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-14 17:13:43 +0530 (Tue, 14 Feb 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - February 12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47938/");
@@ -47,7 +47,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
-  script_require_keys("GoogleChrome/Win/Ver");
+  script_mandatory_keys("GoogleChrome/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code in
   the context of the browser or cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 17.0.963.46 on Windows");

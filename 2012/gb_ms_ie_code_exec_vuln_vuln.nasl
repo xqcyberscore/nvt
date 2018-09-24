@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_code_exec_vuln_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_ms_ie_code_exec_vuln_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Microsoft Internet Explorer Remote Code Execution Vulnerability (2757760)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803028");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-1529", "CVE-2012-2546", "CVE-2012-2548", "CVE-2012-2557",
                 "CVE-2012-4969");
   script_bugtraq_id(55641, 55645, 55646, 55647, 55562);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-18 16:56:37 +0530 (Tue, 18 Sep 2012)");
   script_name("Microsoft Internet Explorer Remote Code Execution Vulnerability (2757760)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50626");
@@ -48,7 +48,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_ie_detect.nasl");
   script_require_ports(139, 445);
-  script_require_keys("MS/IE/Version");
+  script_mandatory_keys("MS/IE/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to gain sensitive
   information or execute arbitrary code in the context of the current user.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x");

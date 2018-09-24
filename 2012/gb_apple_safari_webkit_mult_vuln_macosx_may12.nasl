@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_macosx_may12.nasl 11355 2018-09-12 10:32:04Z asteins $
+# $Id: gb_apple_safari_webkit_mult_vuln_macosx_may12.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Apple Safari Webkit Multiple Vulnerabilities - May 12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802797");
-  script_version("$Revision: 11355 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2011-3046", "CVE-2011-3056", "CVE-2012-0672", "CVE-2012-0676");
   script_bugtraq_id(52369, 53407, 53404, 53446);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-18 19:42:59 +0530 (Fri, 18 May 2012)");
   script_name("Apple Safari Webkit Multiple Vulnerabilities - May 12 (Mac OS X)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5282");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
-  script_require_keys("AppleSafari/MacOSX/Version");
+  script_mandatory_keys("AppleSafari/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to conduct cross site
   scripting attacks, bypass certain security restrictions, and compromise
   a user's system.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_dh_weak_keysize_vuln.nasl 7578 2017-10-26 11:00:21Z cfischer $
+# $Id: gb_ssl_dh_weak_keysize_vuln.nasl 11524 2018-09-21 15:17:10Z cfischer $
 #
 # SSL/TLS: Diffie-Hellman Key Exchange Insufficient DH Group Strength Vulnerability
 #
@@ -28,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106223");
-  script_version("$Revision: 7578 $");
-  script_tag(name:"last_modification", value: "$Date: 2017-10-26 13:00:21 +0200 (Thu, 26 Oct 2017) $");
-  script_tag(name:"creation_date", value: "2016-09-06 12:25:58 +0700 (Tue, 06 Sep 2016)");
+  script_version("$Revision: 11524 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 17:17:10 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-06 12:25:58 +0700 (Tue, 06 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
   script_name("SSL/TLS: Diffie-Hellman Key Exchange Insufficient DH Group Strength Vulnerability");
@@ -117,11 +117,9 @@ foreach tlsv( tls_versions ) {
       if (!key_exch_data)
         continue;
 
-      # Get the length of p
       p_len = (ord(key_exch_data[4]) << 8) + ord(key_exch_data[5]);
-      # Get the length of g
       g_len = (ord(key_exch_data[6 + p_len]) << 8) + ord(key_exch_data[7 + p_len]);
-      # Get the public key size
+      # nb: Public key size
       raw_size = (ord(key_exch_data[8 + p_len + g_len]) << 8) + ord(key_exch_data[9 + p_len + g_len]);
       key_size = raw_size * 8;
     }

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_cisco-sa-20160406-remcode.nasl 8372 2018-01-11 10:19:36Z cfischer $
+# $Id: gb_cisco_pis_cisco-sa-20160406-remcode.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
-# Cisco Prime Infrastructure Remote Code Execution Vulnerability 
+# Cisco Prime Infrastructure Remote Code Execution Vulnerability
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -29,33 +29,33 @@ CPE = "cpe:/a:cisco:prime_infrastructure";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105615");
- script_cve_id("CVE-2016-1291");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 8372 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105615");
+  script_cve_id("CVE-2016-1291");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11569 $");
 
- script_name("Cisco Prime Infrastructure Remote Code Execution Vulnerability");
+  script_name("Cisco Prime Infrastructure Remote Code Execution Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160406-remcode");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160406-remcode");
 
- script_tag(name: "impact" , value:"An attacker could exploit this vulnerability by sending an HTTP POST with crafted deserialized user data. An exploit could allow the attacker to execute arbitrary code with root-level privileges on the affected system, which could be used to conduct further attacks.");
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "insight" , value:"The vulnerability is due to insufficient sanitization of HTTP user-supplied input. ");
- script_tag(name: "solution" , value:"Update to Cisco Prime Infrastructure 3.0.2 or newer");
- script_tag(name: "summary" , value:"A vulnerability in the web interface of Cisco Prime Infrastructure could allow an unauthenticated, remote attacker to execute arbitrary code on a targeted system.");
- script_tag(name: "affected" , value:"Cisco Prime Infrastructure prior to 3.0.2");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by sending an HTTP POST with crafted deserialized user data. An exploit could allow the attacker to execute arbitrary code with root-level privileges on the affected system, which could be used to conduct further attacks.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient sanitization of HTTP user-supplied input. ");
+  script_tag(name:"solution", value:"Update to Cisco Prime Infrastructure 3.0.2 or newer");
+  script_tag(name:"summary", value:"A vulnerability in the web interface of Cisco Prime Infrastructure could allow an unauthenticated, remote attacker to execute arbitrary code on a targeted system.");
+  script_tag(name:"affected", value:"Cisco Prime Infrastructure prior to 3.0.2");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:19:36 +0100 (Thu, 11 Jan 2018) $");
- script_tag(name:"creation_date", value:"2016-04-21 11:49:04 +0200 (Thu, 21 Apr 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_pis_version.nasl");
- script_mandatory_keys("cisco_pis/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-04-21 11:49:04 +0200 (Thu, 21 Apr 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_pis_version.nasl");
+  script_mandatory_keys("cisco_pis/version");
 
  exit(0);
 }

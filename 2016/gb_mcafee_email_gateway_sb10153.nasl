@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_email_gateway_sb10153.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_mcafee_email_gateway_sb10153.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # McAfee Email Gateway - Cross-Site Scripting (XSS) Vulnerability
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/a:mcafee:email_gateway";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105599");
- script_tag(name:"cvss_base", value:"6.4");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 5732 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105599");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_version("$Revision: 11523 $");
 
- script_name("McAfee Email Gateway - Cross-Site Scripting (XSS) Vulnerability");
+  script_name("McAfee Email Gateway - Cross-Site Scripting (XSS) Vulnerability");
 
- script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10153");
+  script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10153");
 
- script_tag(name: "vuldetect" , value:"Check the installed version and hotfixes");
- script_tag(name: "solution" , value:"Apply the hotfix referenced in the advisory");
+  script_tag(name:"vuldetect", value:"Check the installed version and hotfixes");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory");
 
- script_tag(name: "summary" , value:"McAfee Email Gateway is vulnerable to cross-site scripting (XSS) in the generation of HTML email alerts using SMTP.");
- script_tag(name: "insight" , value:"This issue is encountered when File Filtering is enabled with the action set to ESERVICES:REPLACE. With this configuration, when an email with an attachment is blocked and replaced with an alert, the corresponding alert displays the email attachment `as is` without it being XML/HTML escaped.");
- script_tag(name: "affected", value:"Email Gateway 7.6 < 7.6.404");
+  script_tag(name:"summary", value:"McAfee Email Gateway is vulnerable to cross-site scripting (XSS) in the generation of HTML email alerts using SMTP.");
+  script_tag(name:"insight", value:"This issue is encountered when File Filtering is enabled with the action set to ESERVICES:REPLACE. With this configuration, when an email with an attachment is blocked and replaced with an alert, the corresponding alert displays the email attachment `as is` without it being XML/HTML escaped.");
+  script_tag(name:"affected", value:"Email Gateway 7.6 < 7.6.404");
 
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-04-08 11:17:54 +0200 (Fri, 08 Apr 2016)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("General");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_mcafee_email_gateway_version.nasl");
- script_mandatory_keys("mcafee_email_gateway/product_version","mcafee_email_gateway/patches");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-04-08 11:17:54 +0200 (Fri, 08 Apr 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_mcafee_email_gateway_version.nasl");
+  script_mandatory_keys("mcafee_email_gateway/product_version", "mcafee_email_gateway/patches");
 
  exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_nov12_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_apple_safari_mult_vuln_nov12_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Apple Safari Multiple Vulnerabilities (APPLE-SA-2012-09-19-3)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802484");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-3748", "CVE-2012-5112");
   script_bugtraq_id(56362, 55867);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 15:21:30 +0530 (Fri, 02 Nov 2012)");
   script_name("Apple Safari Multiple Vulnerabilities (APPLE-SA-2012-09-19-3)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT1222");
@@ -44,7 +44,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
-  script_require_keys("AppleSafari/MacOSX/Version");
+  script_mandatory_keys("AppleSafari/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to bypass certain security
   restrictions and compromise a user's system.");
   script_tag(name:"affected", value:"Apple Safari versions prior to 6.0.2 Mac OS X");

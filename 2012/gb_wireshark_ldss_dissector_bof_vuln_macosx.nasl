@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ldss_dissector_bof_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wireshark_ldss_dissector_bof_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Wireshark LDSS Dissector Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802847");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2010-4300");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-04 18:49:10 +0530 (Fri, 04 May 2012)");
   script_name("Wireshark LDSS Dissector Buffer Overflow Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/42290");
@@ -42,7 +42,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_wireshark_detect_macosx.nasl");
-  script_require_keys("Wireshark/MacOSX/Version");
+  script_mandatory_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to crash the application.");
   script_tag(name:"affected", value:"Wireshark version 1.2.0 to 1.2.12 and 1.4.0 to 1.4.1");
   script_tag(name:"insight", value:"The flaw is due to heap based buffer overflow in

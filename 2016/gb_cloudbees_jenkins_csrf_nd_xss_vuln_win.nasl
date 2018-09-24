@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_csrf_nd_xss_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_cloudbees_jenkins_csrf_nd_xss_vuln_win.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Jenkins CSRF And XSS Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807349");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2013-2034", "CVE-2013-2033", "CVE-2013-1808");
   script_bugtraq_id(59631, 59634, 58257);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 13:00:47 +0530 (Thu, 14 Jul 2016)");
   script_name("Jenkins CSRF And XSS Vulnerabilities (Windows)");
 
@@ -42,21 +42,20 @@ if(description)
   Jenkins and is prone to cross-site request forgery and cross-site scripting
   vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
-  - A cross-site request forgery (CSRF) flaw in the Jenkins master, where an 
+
+  - A cross-site request forgery (CSRF) flaw in the Jenkins master, where an
     anonymous attacker can trick an administrator to execute arbitrary code on
     Jenkins master by having him open a specifically crafted attack URL.
+
   - The multiple input validation errors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code on Jenkins master by having him open a
-  specifically crafted attack URL and to execute JavaScript in the browser of 
-  other users.
-
-  Impact Level: Application");
+  specifically crafted attack URL and to execute JavaScript in the browser of
+  other users.");
 
   script_tag(name:"affected", value:"CloudBees Jenkins LTS before 1.509.1 on
   Windows");
@@ -68,32 +67,24 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "https://www.cloudbees.com/jenkins-security-advisory-2013-05-02");
+  script_xref(name:"URL", value:"https://www.cloudbees.com/jenkins-security-advisory-2013-05-02");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("jenkins/installed","Host/runs_windows");
+  script_mandatory_keys("jenkins/installed", "Host/runs_windows");
   script_require_ports("Services/www", 8080);
   exit(0);
 }
 
-## Code starts from here
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-jenkinPort = "";
-jenkinVer= "";
-
-## Get HTTP Port
 if(!jenkinPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# Get Version
 if(!jenkinVer = get_app_version(cpe:CPE, port:jenkinPort)){
   exit(0);
 }

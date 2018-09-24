@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# Id$
+# $Id: gb_mozilla_firefox_password_info_disc_vuln_macosx.nasl 11544 2018-09-21 20:30:26Z cfischer $
 #
 # Mozilla Firefox 'Password' Information Disclosure Vulnerability (MAC OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813893");
-  script_version("$Revision: 11273 $");
+  script_version("$Revision: 11544 $");
   script_cve_id("CVE-2018-12383");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 06:59:58 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:30:26 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-06 13:22:59 +0530 (Thu, 06 Sep 2018)");
   script_name("Mozilla Firefox 'Password' Information Disclosure Vulnerability (MAC OS X)");
 
@@ -47,9 +47,7 @@ if(description)
   post-Firefox 58 does not delete unencrypted previously stored passwords.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow the
-  exposure of stored password data outside of user expectations.
-
-  Impact Level: Application.");
+  exposure of stored password data outside of user expectations.");
 
   script_tag(name:"affected", value:"Mozilla Firefox version 58 through 61.0.2 on MAC OS X.");
 

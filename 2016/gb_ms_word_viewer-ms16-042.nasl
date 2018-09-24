@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_viewer-ms16-042.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_ms_word_viewer-ms16-042.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Microsoft Office Word Viewer Remote Code Execution Vulnerability (3148775)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807318");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2016-0127");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-13 10:55:39 +0530 (Wed, 13 Apr 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Viewer Remote Code Execution Vulnerability (3148775)");
@@ -39,16 +39,14 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS16-042");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
+  script_tag(name:"vuldetect", value:"Gets the vulnerable file version and checks if the
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"The flaw exists as office software fails
   to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to run arbitrary code in the context of the current user.
-
-  Impact Level: System/Application");
+  attackers to run arbitrary code in the context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Word Viewer 2007.");
 
@@ -58,8 +56,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3114987");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS16-042");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/3114987");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS16-042");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -71,13 +69,9 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initailization
-wordviewVer = "";
-
 wordviewVer = get_kb_item("SMB/Office/WordView/Version");
 if(wordviewVer)
 {
-  ## Check for Wordview.exe 11.0 < 11.0.8426
   if(version_in_range(version:wordviewVer, test_version:"11.0", test_version2:"11.0.8425"))
   {
     report = 'File checked:     Wordview.exe ' + '\n' +

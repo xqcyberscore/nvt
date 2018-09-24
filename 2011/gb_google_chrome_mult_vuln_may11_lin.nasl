@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_may11_lin.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_google_chrome_mult_vuln_may11_lin.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Google Chrome multiple vulnerabilities - May11 (Linux)
 #
@@ -24,50 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attackers to bypass certain security
-  restrictions, disclose potentially sensitive information, conduct spoofing
-  attacks, and potentially compromise a user's system.
-  Impact Level: Application";
-tag_affected = "Google Chrome version prior to 11.0.696.57 on Linux";
-tag_insight = "- An unspecified error related to a stale pointer exists within the handling
-    of floating objects.
-  - A linked-list race condition exists within the database handling.
-  - The MIME handling does not properly ensure thread safety.
-  - An extension with 'tabs' permission can gain access to local files.
-  - An integer overflow error exists within the float rendering.
-  - An error related to blobs can be exploited to violate the same origin
-    policy.
-  - An unspecified error can be exploited to cause an interference between
-    renderer processes.
-  - A use-after-free error exists within the handling of '<ruby>' tags and CSS.
-  - A casting error exists within then handling of floating select lists.
-  - An error related to mutation events can be exploited to corrupt node trees.
-  - An unspecified error related to stale pointers exists in the layering code.
-  - A race condition error exists within the sandbox launcher.
-  - Interrupted loads and navigation errors can be leveraged to spoof the URL
-    bar.
-  - An unspecified error related to a stale pointer exists within the handling
-    of drop-down lists.
-  - An unspecified error related to a stale pointer exists within the height
-    calculations.
-  - A use-after-free error exists within the handling of WebSockets.
-  - An error related to dangling pointers exists within the handling of file
-    dialogs.
-  - An error related to dangling pointers exists within the handling of DOM
-    id maps.
-  - Redirects and manual reloads can be exploited to spoof the URL bar.
-  - A use-after-free error exists within the handling of DOM ids.
-  - An error related to stale pointers exists within the handling of PDF forms.";
-tag_solution = "Upgrade to the Google Chrome 11.0.696.57 or later,
-  For updates refer to http://www.google.com/chrome";
-tag_summary = "The host is running Google Chrome and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801879");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-05-11 15:50:14 +0200 (Wed, 11 May 2011)");
   script_bugtraq_id(47604);
   script_cve_id("CVE-2011-1303", "CVE-2011-1304", "CVE-2011-1305", "CVE-2011-1434",
@@ -80,18 +41,70 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Google Chrome multiple vulnerabilities - May11 (Linux)");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.com/2011/04/chrome-stable-update.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.com/2011/04/chrome-stable-update.html");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
-  script_require_keys("Google-Chrome/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("Google-Chrome/Linux/Ver");
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to bypass certain security
+  restrictions, disclose potentially sensitive information, conduct spoofing
+  attacks, and potentially compromise a user's system.");
+  script_tag(name:"affected", value:"Google Chrome version prior to 11.0.696.57 on Linux");
+  script_tag(name:"insight", value:"- An unspecified error related to a stale pointer exists within the handling
+    of floating objects.
+
+  - A linked-list race condition exists within the database handling.
+
+  - The MIME handling does not properly ensure thread safety.
+
+  - An extension with 'tabs' permission can gain access to local files.
+
+  - An integer overflow error exists within the float rendering.
+
+  - An error related to blobs can be exploited to violate the same origin
+    policy.
+
+  - An unspecified error can be exploited to cause an interference between
+    renderer processes.
+
+  - A use-after-free error exists within the handling of '<ruby>' tags and CSS.
+
+  - A casting error exists within then handling of floating select lists.
+
+  - An error related to mutation events can be exploited to corrupt node trees.
+
+  - An unspecified error related to stale pointers exists in the layering code.
+
+  - A race condition error exists within the sandbox launcher.
+
+  - Interrupted loads and navigation errors can be leveraged to spoof the URL
+    bar.
+
+  - An unspecified error related to a stale pointer exists within the handling
+    of drop-down lists.
+
+  - An unspecified error related to a stale pointer exists within the height
+    calculations.
+
+  - A use-after-free error exists within the handling of WebSockets.
+
+  - An error related to dangling pointers exists within the handling of file
+    dialogs.
+
+  - An error related to dangling pointers exists within the handling of DOM
+    id maps.
+
+  - Redirects and manual reloads can be exploited to spoof the URL bar.
+
+  - A use-after-free error exists within the handling of DOM ids.
+
+  - An error related to stale pointers exists within the handling of PDF forms.");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 11.0.696.57 or later,
+  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"summary", value:"The host is running Google Chrome and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -100,13 +113,11 @@ if(description)
 
 include("version_func.inc");
 
-## Get the version from KB
 chromeVer = get_kb_item("Google-Chrome/Linux/Ver");
 if(!chromeVer){
   exit(0);
 }
 
-## Check for Google Chrome Version less than 11.0.696.57
 if(version_is_less(version:chromeVer, test_version:"11.0.696.57")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

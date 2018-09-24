@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_fileinfo_component_dos_vuln_lin.nasl 10455 2018-07-09 05:52:14Z cfischer $
+# $Id: gb_php_fileinfo_component_dos_vuln_lin.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # PHP Fileinfo Component Denial of Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808669");
-  script_version("$Revision: 10455 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2014-0236");
   script_bugtraq_id(90957);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:52:14 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-31 14:22:58 +0530 (Wed, 31 Aug 2016)");
   script_name("PHP Fileinfo Component Denial of Service Vulnerability (Linux)");
 
@@ -47,9 +47,7 @@ if(description)
   to zero root_storage value in a CDF file.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
-  remote attackers to cause a denial of service.
-
-  Impact Level: Application");
+  remote attackers to cause a denial of service.");
 
   script_tag(name:"affected", value:"PHP versions prior to 5.6.0 on Linux");
 

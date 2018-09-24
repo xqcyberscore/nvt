@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_dos_n_xss_vuln_jul09.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_apple_safari_dos_n_xss_vuln_jul09.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Apple Safari DoS or XSS Vulnerability - July09
 #
@@ -24,45 +24,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker execute arbitrary code and can
-  cause memory corruption, XSS attacks and can deny the service in the victim's
-  system.
-  Impact Level: Application";
-tag_affected = "Apple Safari version prior to 4.0.2 on Windows.";
-tag_insight = "- Error in 'WebKit' is allow user to inject arbitrary web script or HTML via
-    vectors related to parent and top objects.
-  - Error in 'WebKit' is fails to handle numeric character references via a
-    crafted HTML document.";
-tag_solution = "Upgrade to Safari version 4.0.2 (4.30.19.1)
-  http://www.apple.com/support/downloads";
-tag_summary = "This host is installed with Apple Safari Web Browser and is prone to Denial
-  of Service or Cross-Site Scripting vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800834");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-07-12 15:16:55 +0200 (Sun, 12 Jul 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-1724", "CVE-2009-1725");
   script_bugtraq_id(35441, 35607);
   script_name("Apple Safari DoS or XSS Vulnerability - July09");
-  script_xref(name : "URL" , value : "http://support.apple.com/kb/HT3666");
-  script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2009/Jul/msg00000.html");
+  script_xref(name:"URL", value:"http://support.apple.com/kb/HT3666");
+  script_xref(name:"URL", value:"http://lists.apple.com/archives/security-announce/2009/Jul/msg00000.html");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_apple_safari_detect_win_900003.nasl");
-  script_require_keys("AppleSafari/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("AppleSafari/Version");
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary code and can
+  cause memory corruption, XSS attacks and can deny the service in the victim's
+  system.");
+  script_tag(name:"affected", value:"Apple Safari version prior to 4.0.2 on Windows.");
+  script_tag(name:"insight", value:"- Error in 'WebKit' is allow user to inject arbitrary web script or HTML via
+    vectors related to parent and top objects.
+
+  - Error in 'WebKit' is fails to handle numeric character references via a
+    crafted HTML document.");
+  script_tag(name:"solution", value:"Upgrade to Safari version 4.0.2 (4.30.19.1)
+  http://www.apple.com/support/downloads");
+  script_tag(name:"summary", value:"This host is installed with Apple Safari Web Browser and is prone to Denial
+  of Service or Cross-Site Scripting vulnerability.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -74,7 +71,6 @@ if(!safariVer){
   exit(0);
 }
 
-# Check for Apple Safari Version < 4.0.2 (4.30.19.1)
 if(version_is_less(version:safariVer, test_version:"4.30.19.1")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

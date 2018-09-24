@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_yvhotels_sql_inj_vuln.nasl 10445 2018-07-06 14:56:56Z ckuersteiner $
+# $Id: gb_joomla_com_yvhotels_sql_inj_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Joomla com_yvhotels SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802124");
-  script_version("$Revision: 10445 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-06 16:56:56 +0200 (Fri, 06 Jul 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -46,7 +46,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL
 queries by injecting arbitrary SQL code.");

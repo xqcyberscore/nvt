@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_privilege_escalation_vuln.nasl 6044 2017-04-28 08:14:10Z teissa $
+# $Id: gb_vtiger_crm_privilege_escalation_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # VTiger CRM Privilege Escalation and Unrestricted File Upload Vulnerability
 #
@@ -29,23 +29,22 @@ CPE = "cpe:/a:vtiger:vtiger_crm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808752");
-  script_version("$Revision: 6044 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-4834", "CVE-2016-1713");
   script_bugtraq_id(92076);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 10:14:10 +0200 (Fri, 28 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-05 19:05:51 +0530 (Fri, 05 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("VTiger CRM Privilege Escalation and Unrestricted File Upload Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with VTiger CRM and is
+  script_tag(name:"summary", value:"The host is installed with VTiger CRM and is
   prone to a privilege escalation and unrestricted file upload vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to:
+  script_tag(name:"insight", value:"The flaw is due to:
 
   - 'modules/Users/actions/Save.php' script does not properly restrict user-save actions
 
@@ -54,9 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote
   authenticated users to execute arbitrary code or to create or modify user
-  accounts via unspecified vectors.
-
-  Impact Level: Application/System");
+  accounts via unspecified vectors.");
 
   script_tag(name:"affected", value:"VTiger CRM before version 6.5.0.");
 
@@ -65,7 +62,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://jvndb.jvn.jp/en/contents/2016/JVNDB-2016-000126.html");
+  script_xref(name:"URL", value:"http://jvndb.jvn.jp/en/contents/2016/JVNDB-2016-000126.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -78,21 +75,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-vtigerPort = "";
-vtigerVer = "";
-
-## Get HTTP Port
 if(!vtigerPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!vtigerVer = get_app_version(cpe:CPE, port:vtigerPort)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less_equal(version:vtigerVer, test_version:"6.4.0"))
 {
   report = report_fixed_ver(installed_version:vtigerVer, fixed_version:"6.5.0");

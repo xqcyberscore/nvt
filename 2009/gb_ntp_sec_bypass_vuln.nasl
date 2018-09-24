@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_sec_bypass_vuln.nasl 10881 2018-08-10 10:27:02Z mmartin $
+# $Id: gb_ntp_sec_bypass_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # NTP EVP_VerifyFinal() Security Bypass Vulnerability
 #
@@ -24,45 +24,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow remote attackers to bypass the certificate
-  validation checks and can cause spoofing attacks via signature checks on DSA
-  and ECDSA keys used with SSL/TLS.
-  Impact Level: System/Application";
-tag_affected = "NTP version 4.2.4 to 4.2.4p5 and 4.2.5 to 4.2.5p150 on Linux.";
-tag_insight = "The flaw is due to improper validation of return value in
-  EVP_VerifyFinal function of openssl.";
-tag_solution = "Upgrade to NTP version 4.2.4p6 or 4.2.5p151
-  http://www.ntp.org/downloads.html";
-tag_summary = "This host has NTP installed and is prone to security bypass
-  vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800408");
-  script_version("$Revision: 10881 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:27:02 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-01-15 16:11:17 +0100 (Thu, 15 Jan 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2009-0021");
   script_bugtraq_id(33150);
   script_name("NTP EVP_VerifyFinal() Security Bypass Vulnerability");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/499827");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/499855");
-  script_xref(name : "URL" , value : "http://www.ocert.org/advisories/ocert-2008-016.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/499827");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/499855");
+  script_xref(name:"URL", value:"http://www.ocert.org/advisories/ocert-2008-016.html");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_ntp_detect_lin.nasl");
-  script_require_keys("NTP/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("NTP/Linux/Ver");
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to bypass the certificate
+  validation checks and can cause spoofing attacks via signature checks on DSA
+  and ECDSA keys used with SSL/TLS.");
+  script_tag(name:"affected", value:"NTP version 4.2.4 to 4.2.4p5 and 4.2.5 to 4.2.5p150 on Linux.");
+  script_tag(name:"insight", value:"The flaw is due to improper validation of return value in
+  EVP_VerifyFinal function of openssl.");
+  script_tag(name:"solution", value:"Upgrade to NTP version 4.2.4p6 or 4.2.5p151
+  http://www.ntp.org/downloads.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This host has NTP installed and is prone to security bypass
+  vulnerability.");
   exit(0);
 }
 

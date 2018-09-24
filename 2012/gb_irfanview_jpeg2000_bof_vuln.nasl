@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_irfanview_jpeg2000_bof_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_irfanview_jpeg2000_bof_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # IrfanView JPEG-2000 Plugin Remote Stack Based Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802576");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-0897");
   script_bugtraq_id(51426);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-01 11:28:20 +0530 (Wed, 01 Feb 2012)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -46,7 +46,7 @@ if(description)
   script_family("Buffer overflow");
   script_dependencies("secpod_irfanview_detect.nasl");
   script_require_ports(139, 445);
-  script_require_keys("IrfanView/Ver");
+  script_mandatory_keys("IrfanView/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code.");
   script_tag(name:"affected", value:"IrfanView JPEG-2000 Plugin version prior to 4.33");
   script_tag(name:"insight", value:"The flaw is due to an error in the JPEG2000 plug-in when processing

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol40131068.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_f5_big_ip_sol40131068.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # F5 BIG-IP - SOL40131068 - GnuPG vulnerability CVE-2013-4402
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105558");
- script_cve_id("CVE-2013-4402");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5759 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105558");
+  script_cve_id("CVE-2013-4402");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11523 $");
 
- script_name("F5 BIG-IP - SOL40131068 - GnuPG vulnerability CVE-2013-4402");
+  script_name("F5 BIG-IP - SOL40131068 - GnuPG vulnerability CVE-2013-4402");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/40/sol40131068.html?sr=51723047");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/40/sol40131068.html?sr=51723047");
 
- script_tag(name: "impact" , value:"A remote attacker may exploit this flaw by way of a specially crafted OpenPGP message to cause a denial-of-service (DoS).");
+  script_tag(name:"impact", value:"A remote attacker may exploit this flaw by way of a specially crafted OpenPGP message to cause a denial-of-service (DoS).");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"The compressed packet parser in GnuPG 1.4.x before 1.4.15 and 2.0.x before 2.0.22 allows remote attackers to cause a denial of service (infinite recursion) via a crafted OpenPGP message.");
+  script_tag(name:"insight", value:"The compressed packet parser in GnuPG 1.4.x before 1.4.15 and 2.0.x before 2.0.22 allows remote attackers to cause a denial of service (infinite recursion) via a crafted OpenPGP message.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-02-23 10:41:29 +0100 (Tue, 23 Feb 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-02-23 10:41:29 +0100 (Tue, 23 Feb 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

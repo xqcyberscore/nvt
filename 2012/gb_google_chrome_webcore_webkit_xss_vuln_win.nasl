@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_webcore_webkit_xss_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_google_chrome_webcore_webkit_xss_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Google Chrome Webcore Webkit 'XSSAuditor.cpp' XSS Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802496");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-5851");
   script_bugtraq_id(56570);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-21 13:29:23 +0530 (Wed, 21 Nov 2012)");
   script_name("Google Chrome Webcore Webkit 'XSSAuditor.cpp' XSS Vulnerability (Windows)");
   script_xref(name:"URL", value:"https://bugs.webkit.org/show_bug.cgi?id=92692");
@@ -42,7 +42,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
-  script_require_keys("GoogleChrome/Win/Ver");
+  script_mandatory_keys("GoogleChrome/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass a cross-
 site scripting (XSS) protection mechanism via a crafted string.");
   script_tag(name:"affected", value:"Google Chrome version 4.x to 22 on Windows");

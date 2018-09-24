@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_win_dec10.nasl 10137 2018-06-08 12:38:04Z asteins $
+# $Id: gb_opera_mult_vuln_win_dec10.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Opera Browser Multiple Vulnerabilities December-10 (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801495");
-  script_version("$Revision: 10137 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-12-27 09:55:05 +0100 (Mon, 27 Dec 2010)");
   script_cve_id("CVE-2010-4579", "CVE-2010-4580", "CVE-2010-4581", "CVE-2010-4582",
                 "CVE-2010-4583", "CVE-2010-4584", "CVE-2010-4585", "CVE-2010-4586",
@@ -36,21 +36,20 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Opera Browser Multiple Vulnerabilities December-10 (Windows)");
-  script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/979/");
-  script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/977/");
-  script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/windows/1100/");
+  script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/979/");
+  script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/977/");
+  script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/windows/1100/");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_opera_detect_portable_win.nasl");
-  script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to obtain sensitive
-  information and cause a denial of service.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Opera Web Browser Version prior 11.00");
-  script_tag(name : "insight" , value : "Multiple flaws are caused due to:
+  script_mandatory_keys("Opera/Win/Version");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain sensitive
+  information and cause a denial of service.");
+  script_tag(name:"affected", value:"Opera Web Browser Version prior 11.00");
+  script_tag(name:"insight", value:"Multiple flaws are caused due to:
 
   - WAP fails to clear 'WML' form fields after manual navigation to a new web
     site, which allows remote attackers to obtain sensitive information.
@@ -73,10 +72,10 @@ if(description)
 
   - Enabling 'WebSockets' functionality, which has unspecified impact and
     remote attack vectors.");
-  script_tag(name : "solution" , value : "Upgrade to Opera Web Browser Version 11.00 or later,
+  script_tag(name:"solution", value:"Upgrade to Opera Web Browser Version 11.00 or later,
   For updates refer to http://www.opera.com/download/");
-  script_tag(name : "solution_type" , value : "VendorFix");
-  script_tag(name : "summary" , value : "The host is installed with Opera browser and is prone to multiple
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The host is installed with Opera browser and is prone to multiple
   vulnerabilities.");
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_project_server_kb3203399.nasl 6479 2017-06-29 07:59:07Z teissa $
+# $Id: gb_ms_project_server_kb3203399.nasl 11550 2018-09-22 12:21:31Z cfischer $
 #
 # Microsoft Project Server 2013 XSS Vulnerability (KB3203399)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:project_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810948");
-  script_version("$Revision: 6479 $");
+  script_version("$Revision: 11550 $");
   script_cve_id("CVE-2017-8551");
   script_bugtraq_id(98913);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:59:07 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:21:31 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-06-16 11:00:41 +0530 (Fri, 16 Jun 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Project Server 2013 XSS Vulnerability (KB3203399)");
@@ -45,16 +45,14 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaw exists when SharePoint Server does 
-  not properly sanitize a specially crafted web request to an affected 
+  script_tag(name:"insight", value:"The flaw exists when SharePoint Server does
+  not properly sanitize a specially crafted web request to an affected
   SharePoint server.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker who successfully exploited the vulnerability to perform 
-  cross-site scripting attacks on affected systems and run script in the 
-  security context of the current user.
-
-  Impact Level: System/Application");
+  attacker who successfully exploited the vulnerability to perform
+  cross-site scripting attacks on affected systems and run script in the
+  security context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Project Server 2013 Service Pack 1");
 
@@ -64,12 +62,14 @@ if(description)
   https://support.microsoft.com/en-us/help/3203399");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3203399");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3203399");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_project_server_detect.nasl");
-  script_require_keys("MS/ProjectServer/Server/Ver");
+  script_require_ports(139, 445);
+  script_mandatory_keys("MS/ProjectServer/Server/Ver");
+
   exit(0);
 }
 
@@ -79,12 +79,6 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-psVer = "";
-dllVer = "";
-path = "";
-
-## Get SharePoint Version
 psVer = get_app_version(cpe:CPE);
 if(!psVer){
   exit(0);

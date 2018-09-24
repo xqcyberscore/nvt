@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-034_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_ms12-034_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Microsoft Silverlight Code Execution Vulnerabilities - 2681578 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902678");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2011-3402", "CVE-2012-0159");
   script_bugtraq_id(50462, 53335);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-14 13:06:50 +0530 (Mon, 14 May 2012)");
   script_name("Microsoft Silverlight Code Execution Vulnerabilities - 2681578 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49121");
@@ -45,7 +45,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gb_ms_silverlight_detect_macosx.nasl");
-  script_require_keys("MS/Silverlight/MacOSX/Ver");
+  script_mandatory_keys("MS/Silverlight/MacOSX/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code by
   tricking a user into opening a specially crafted file.");
   script_tag(name:"affected", value:"Microsoft Silverlight versions 4 and 5");

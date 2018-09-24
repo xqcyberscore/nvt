@@ -1,5 +1,6 @@
-###################################################################
+##############################################################################
 # OpenVAS Vulnerability Test
+# $Id: ms07-016.nasl 11546 2018-09-22 11:30:16Z cfischer $
 #
 # Cumulative Security Update for Internet Explorer (928090)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102054");
-  script_version("$Revision: 10957 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:26:50 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 11546 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 13:30:16 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_cve_id("CVE-2006-4697", "CVE-2007-0217", "CVE-2007-0219");
   script_bugtraq_id(22486, 22489, 22504);
@@ -40,14 +41,18 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_ie_detect.nasl");
   script_require_ports(139, 445);
-  script_require_keys("MS/IE/EXE/Ver");
+  script_mandatory_keys("MS/IE/EXE/Ver");
+
   script_tag(name:"solution", value:"Microsoft has released an update to correct this issue,
   you can download it from the following web site:
   http://www.microsoft.com/technet/security/bulletin/ms07-016.mspx");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"summary", value:"Microsoft Internet Explorer is affected by multiple critical vulnerabilities.
   These vulnerabilities could allow remote code execution each via a different
   attack vector.");
+
   exit(0);
 }
 
@@ -70,8 +75,7 @@ if(hotfix_missing(name:"928090") == 0) {
   exit(0);
 }
 
-dllPath = registry_get_sz(item:"Install Path",
-                          key:"SOFTWARE\Microsoft\COM3\Setup");
+dllPath = registry_get_sz(item:"Install Path", key:"SOFTWARE\Microsoft\COM3\Setup");
 dllPath += "\mshtml.dll";
 share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
 file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:dllPath);
@@ -143,3 +147,4 @@ else if (hotfix_check_sp(win2003:3) > 0) {
     }
 }
 
+exit(99);

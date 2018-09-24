@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_3b782350ff_libxml2_fc28.nasl 10849 2018-08-09 07:20:42Z santu $
+# $Id: gb_fedora_2018_3b782350ff_libxml2_fc28.nasl 11520 2018-09-21 12:52:31Z cfischer $
 #
 # Fedora Update for libxml2 FEDORA-2018-3b782350ff
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874903");
-  script_version("$Revision: 10849 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 09:20:42 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 11520 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 14:52:31 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-07 06:05:24 +0200 (Tue, 07 Aug 2018)");
   script_cve_id("CVE-2018-14404", "CVE-2018-9251");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libxml2 FEDORA-2018-3b782350ff");
   script_tag(name:"summary", value:"Check the version of libxml2");

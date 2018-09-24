@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mysql_bof_vuln_lin.nasl 10017 2018-05-30 07:17:29Z cfischer $
+# $Id: secpod_mysql_bof_vuln_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # MySQL Server Buffer Overflow Vulnerability (Linux)
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901093");
-  script_version("$Revision: 10017 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-01-04 15:26:56 +0100 (Mon, 04 Jan 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-4484");
   script_name("MySQL Server Buffer Overflow Vulnerability (Linux)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/38364");
-  script_xref(name : "URL" , value : "http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-1.html");
-  script_xref(name : "URL" , value : "http://dev.mysql.com/doc/relnotes/mysql/5.1/en/news-5-1-43.html");
-  script_xref(name : "URL" , value : "http://dev.mysql.com/doc/relnotes/mysql/5.0/en/news-5-0-90.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/38364");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-1.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.1/en/news-5-1-43.html");
+  script_xref(name:"URL", value:"http://dev.mysql.com/doc/relnotes/mysql/5.0/en/news-5-0-90.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
@@ -47,19 +47,17 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_dependencies("mysql_version.nasl");
   script_require_ports("Services/mysql", 3306);
-  script_require_keys("MySQL/installed");
+  script_mandatory_keys("MySQL/installed");
 
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to execute
-arbitrary code.
-
-Impact Level: Application");
-  script_tag(name : "affected" , value : "MySQL Version 5.0.x before 5.0.90, MySQL version 5.1.x before
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute
+arbitrary code.");
+  script_tag(name:"affected", value:"MySQL Version 5.0.x before 5.0.90, MySQL version 5.1.x before
 5.1.43, MySQL 5.5.x through 5.5.0-m2 On Linux");
-  script_tag(name : "insight" , value : "The flaw is due to an error in application that allows remote
+  script_tag(name:"insight", value:"The flaw is due to an error in application that allows remote
 attackers to execute arbitrary code via unspecified vectors");
-  script_tag(name : "solution" , value : "Upgrade to MySQL Version 5.0.90 or 5.1.43 or 5.5.1 or later,
+  script_tag(name:"solution", value:"Upgrade to MySQL Version 5.0.90 or 5.1.43 or 5.5.1 or later,
   For updates refer to http://dev.mysql.com/downloads");
-  script_tag(name : "summary" , value : "The host is running MySQL and is prone to Buffer overflow
+  script_tag(name:"summary", value:"The host is running MySQL and is prone to Buffer overflow
   Vulnerability");
 
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_nikto.nasl 10616 2018-07-25 13:37:26Z cfischer $
+# $Id: GSHB_nikto.nasl 11531 2018-09-21 18:50:24Z cfischer $
 #
 # Starts nikto with Option -Tuning x016bc and write to KB
 #
@@ -9,8 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
-#
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -29,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96044");
-  script_version("$Revision: 10616 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 15:37:26 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 11531 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 20:50:24 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,7 +42,8 @@ if(description)
 
   script_tag(name:"summary", value:"This plugin uses nikto(1)to find weak CGI scripts
   and other known issues regarding web server security. It starts with the Option
-  -Tuning x016bc and writes only OSVDB issues to the KB.");
+
+  - Tuning x016bc and writes only OSVDB issues to the KB.");
 
   exit(0);
 }
@@ -62,7 +61,7 @@ else if (  find_in_path("nikto")  )
 else
 {
     text = 'Nikto could not be found in your system path.\n';
-    text += 'OpenVAS was unable to execute Nikto and to perform the scan you
+    text += 'The scanner was unable to execute Nikto and to perform the scan you
 requested.\nPlease make sure that Nikto is installed and that nikto.pl or nikto is
 available in the PATH variable defined for your environment.';
     log_message(port:0, proto: "IT-Grundschutz", data: text);

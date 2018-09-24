@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vmware_prdts_sec_bypass_vuln_lin_sep10.nasl 8338 2018-01-09 08:00:38Z teissa $
+# $Id: secpod_vmware_prdts_sec_bypass_vuln_lin_sep10.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # VMware Products Security Bypass Vulnerability (Linux) -Sep10
 #
@@ -24,50 +24,45 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Upgrade to player 3.1.2 build 301548
-  http://www.vmware.com/products/player/
-
-  Upgrade VMware Workstation 7.1.2 build 301548
-  http://www.vmware.com/download/ace/";
-
-tag_impact = "Successful exploitation allows attackers to display a malicious file if they
-  manage to get their file onto the system prior to installation.
-  Impact Level: Application";
-tag_affected = "VMware Player 3.0 before 3.1.2 build 301548
-  VMware Workstation 7.0 before 7.1.2 build 301548 on Linux.";
-tag_insight = "The vulnerability is due to an error in the 'installer', which will
-  load an 'index.htm' file located in the current working directory.";
-tag_summary = "The host is installed with VMWare product(s) which are vulnerable
-  to security bypass vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902261");
-  script_version("$Revision: 8338 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-09 09:00:38 +0100 (Tue, 09 Jan 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-10-01 08:36:34 +0200 (Fri, 01 Oct 2010)");
   script_cve_id("CVE-2010-3277");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
   script_name("VMware Products Security Bypass Vulnerability (Linux) -Sep10");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/41574");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2491");
-  script_xref(name : "URL" , value : "http://securitytracker.com/alerts/2010/Sep/1024481.html");
-  script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2010-0014.html");
-  script_xref(name : "URL" , value : "http://lists.vmware.com/pipermail/security-announce/2010/000105.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/41574");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2491");
+  script_xref(name:"URL", value:"http://securitytracker.com/alerts/2010/Sep/1024481.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2010-0014.html");
+  script_xref(name:"URL", value:"http://lists.vmware.com/pipermail/security-announce/2010/000105.html");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("General");
   script_dependencies("gb_vmware_prdts_detect_lin.nasl");
-  script_require_keys("VMware/Linux/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("VMware/Linux/Installed");
+  script_tag(name:"impact", value:"Successful exploitation allows attackers to display a malicious file if they
+  manage to get their file onto the system prior to installation.");
+  script_tag(name:"affected", value:"VMware Player 3.0 before 3.1.2 build 301548
+  VMware Workstation 7.0 before 7.1.2 build 301548 on Linux.");
+  script_tag(name:"insight", value:"The vulnerability is due to an error in the 'installer', which will
+  load an 'index.htm' file located in the current working directory.");
+  script_tag(name:"summary", value:"The host is installed with VMWare product(s) which are vulnerable
+  to security bypass vulnerability.");
+  script_tag(name:"solution", value:"Upgrade to player 3.1.2 build 301548
+  http://www.vmware.com/products/player/
+
+  Upgrade VMware Workstation 7.1.2 build 301548
+  http://www.vmware.com/download/ace/");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -84,7 +79,7 @@ if(vmpVer)
 {
   if(version_in_range(version:vmpVer, test_version:"3.0", test_version2:"3.1.1"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -94,6 +89,6 @@ vmwtnVer = get_kb_item("VMware/Workstation/Linux/Ver");
 if(vmwtnVer)
 {
   if(version_in_range(version:vmwtnVer, test_version:"7.0", test_version2:"7.1.1")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

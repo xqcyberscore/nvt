@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_light_mult_vuln.nasl 4105 2016-09-19 09:15:54Z ckuerste $
+# $Id: gb_splunk_light_mult_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Splunk Light Multiple Vulnerabilities
 #
@@ -30,18 +30,18 @@ CPE = 'cpe:/a:splunk:light';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106267");
-  script_version("$Revision: 4105 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-19 11:15:54 +0200 (Mon, 19 Sep 2016) $");
-  script_tag(name: "creation_date", value: "2016-09-19 11:58:34 +0700 (Mon, 19 Sep 2016)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11523 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-19 11:58:34 +0700 (Mon, 19 Sep 2016)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-2105", "CVE-2016-2106", "CVE-2016-2107", "CVE-2016-2108", "CVE-2016-2109",
 "CVE-2016-2176", "CVE-2016-1541", "CVE-2015-2304", "CVE-2013-0211", "CVE-2016-4858", "CVE-2016-4857");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Splunk Light Multiple Vulnerabilities");
 
@@ -52,11 +52,11 @@ if (description)
   script_dependencies("gb_splunk_light_detect.nasl");
   script_mandatory_keys("SplunkLight/installed");
 
-  script_tag(name: "summary", value: "Splunk Light is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Splunk Light is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Splunk Light is affected by multiple vulnerabilities:
+  script_tag(name:"insight", value:"Splunk Light is affected by multiple vulnerabilities:
 
 Multiple OpenSSL vulnerabilities (CVE-2016-2105, CVE-2016-2106, CVE-2016-2107, CVE-2016-2108, CVE-2016-2109,
 CVE-2016-2176).
@@ -67,11 +67,11 @@ Open redirect vulnerability (CVE-2016-4857).
 
 Cross-site scripting vulnerability (CVE-2016-4858).");
 
-  script_tag(name: "affected", value: "Splunk Light before 6.4.2");
+  script_tag(name:"affected", value:"Splunk Light before 6.4.2");
 
-  script_tag(name: "solution", value: "Update to version 6.4.2 or later.");
+  script_tag(name:"solution", value:"Update to version 6.4.2 or later.");
 
-  script_xref(name: "URL", value: "https://www.splunk.com/view/SP-CAAAPQM");
+  script_xref(name:"URL", value:"https://www.splunk.com/view/SP-CAAAPQM");
 
   exit(0);
 }

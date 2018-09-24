@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winamp_avi_mult_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_winamp_avi_mult_bof_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Winamp 'AVI' File Multiple Heap-based Buffer Overflow Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802926");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-4045");
   script_bugtraq_id(54131);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-02 18:57:35 +0530 (Thu, 02 Aug 2012)");
   script_name("Winamp 'AVI' File Multiple Heap-based Buffer Overflow Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46624");
@@ -44,7 +44,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_winamp_detect.nasl");
-  script_require_keys("Winamp/Version");
+  script_mandatory_keys("Winamp/Version");
   script_tag(name:"insight", value:"Errors in bmp.w5s,
 
   - when allocating memory using values from the 'strf' chunk to process BI_RGB

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20140926-bash.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_cisco_nx_os_cisco-sa-20140926-bash.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # GNU Bash Environment Variable Command Injection Vulnerability
 #
@@ -29,15 +29,22 @@ CPE = "cpe:/o:cisco:nx-os";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105693");
- script_cve_id("CVE-2014-6271");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5580 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105693");
+  script_cve_id("CVE-2014-6271");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11523 $");
 
- script_name("Cisco NX-OS: GNU Bash Environment Variable Command Injection Vulnerability");
+  script_name("Cisco NX-OS: GNU Bash Environment Variable Command Injection Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140926-bash");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140926-bash");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAMBAlert.x?alertId=35836");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35880");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35845");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35879");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35860");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35861");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35816");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAMBAlert.x?alertId=35836");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35880");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35845");
@@ -45,19 +52,12 @@ if (description)
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35860");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35861");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35816");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAMBAlert.x?alertId=35836");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35880");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35845");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35879");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35860");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35861");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35816");
- 
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"On September 24, 2014, a vulnerability in the Bash shell was publicly announced. The vulnerability
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"On September 24, 2014, a vulnerability in the Bash shell was publicly announced. The vulnerability
 is related to the way in which shell functions are passed though environment variables. The
 vulnerability may allow an attacker to inject commands into a Bash shell, depending on how the shell
 is invoked. The Bash shell may be invoked by a number of processes including, but not limited to,
@@ -81,16 +81,16 @@ this vulnerability. This advisory is available at the following link:
 
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140926-bash");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-12 15:45:58 +0200 (Thu, 12 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version","cisco_nx_os/model","cisco_nx_os/device");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-12 15:45:58 +0200 (Thu, 12 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_nx_os_version.nasl");
+  script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
 
  exit(0);
 }

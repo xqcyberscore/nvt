@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id $
+# $Id: gb_trendmicro_smart_protection_server_mult_vuln_1119385.nasl 11544 2018-09-21 20:30:26Z cfischer $
 #
 # Trend Micro Smart Protection Server Multiple Vulnerabilities (1119385)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:trendmicro:smart_protection_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812574");
-  script_version("$Revision: 9396 $");
+  script_version("$Revision: 11544 $");
   script_cve_id("CVE-2018-6231");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 06:18:59 +0200 (Mon, 09 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:30:26 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-03-20 10:56:21 +0530 (Tue, 20 Mar 2018)");
   script_name("Trend Micro Smart Protection Server Multiple Vulnerabilities (1119385)");
 
@@ -41,8 +41,7 @@ if(description)
   Protection Server and is prone to command injection  and authentication
   bypass vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaws exists within the handling
   of credentials provided at login. When parsing the username, the process
@@ -51,10 +50,8 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attackers to escalate privileges to resources normally protected from
-  the user.  
+  the user.");
 
-  Impact Level: Application");
- 
   script_tag(name:"affected", value:"Trend Micro Smart Protection Server (Standalone) 3.2 and prior.");
 
   script_tag(name:"solution", value:"Upgrade to Trend Micro Smart Protection
@@ -64,7 +61,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   ## Patch version is not available remotely
-  script_xref(name : "URL" , value : "https://success.trendmicro.com/solution/1119385");
+  script_xref(name:"URL", value:"https://success.trendmicro.com/solution/1119385");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
@@ -90,7 +87,7 @@ if(version_is_less_equal(version:tspsVer, test_version:"3.0")){
 }
 else if(tspsVer == "3.1"){
   fix = "3.1 CP1064";
-} 
+}
 else if(tspsVer == "3.2"){
   fix = "3.2 CP1090";
 }

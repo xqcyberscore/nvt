@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmis_mult_vuln.nasl 5975 2017-04-19 07:43:02Z teissa $
+# $Id: gb_nmis_mult_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Opmantek NMIS Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:opmantek:nmis';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106245");
-  script_version("$Revision: 5975 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-19 09:43:02 +0200 (Wed, 19 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2016-09-15 09:47:18 +0700 (Thu, 15 Sep 2016)");
+  script_version("$Revision: 11523 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-15 09:47:18 +0700 (Thu, 15 Sep 2016)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-5642", "CVE-2016-6534");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Opmantek NMIS Multiple Vulnerabilities");
 
@@ -51,11 +51,11 @@ if (description)
   script_dependencies("gb_opmantek_nmis_detect.nasl");
   script_mandatory_keys("opmantek_nmis/installed");
 
-  script_tag(name: "summary", value: "Opmantek NMIS is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Opmantek NMIS is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "NMIS is prone to two vulnerabilities:
+  script_tag(name:"insight", value:"NMIS is prone to two vulnerabilities:
 
 A stored server XSS vulnerability exists due to insufficient filtering of SNMP agent supplied data before the
 affected software stores and displays the data. The stored XSS payload is delivered to the affected software
@@ -66,14 +66,14 @@ validation. The command injection vulnerability exists in the tools.pl CGI scrip
 the 'act' parameter is set to 'tool_system_finger'. The user must be authenticated and granted the tls_finger
 permission, which does not appear to be enabled by default (CVE-2016-6534).");
 
-  script_tag(name: "impact", value: "A successful exploit could allow an attacker to execute arbitrary script
+  script_tag(name:"impact", value:"A successful exploit could allow an attacker to execute arbitrary script
 code in the context of the interface, or an authenticated attacker may execute arbitrary commands.");
 
-  script_tag(name: "affected", value: "NMIS version 4.x and 8.x.");
+  script_tag(name:"affected", value:"NMIS version 4.x and 8.x.");
 
-  script_tag(name: "solution", value: "Update to 4.3.7c, 8.5.12G or later");
+  script_tag(name:"solution", value:"Update to 4.3.7c, 8.5.12G or later");
 
-  script_xref(name: "URL", value: "https://community.rapid7.com/community/infosec/blog/2016/09/07/multiple-disclosures-for-multiple-network-management-systems-part-2");
+  script_xref(name:"URL", value:"https://community.rapid7.com/community/infosec/blog/2016/09/07/multiple-disclosures-for-multiple-network-management-systems-part-2");
 
   exit(0);
 }

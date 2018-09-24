@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_uselang_param_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_mediawiki_uselang_param_xss_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # MediaWiki 'uselang' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802910");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-2698");
   script_bugtraq_id(53998);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-09 13:41:49 +0530 (Mon, 09 Jul 2012)");
   script_name("MediaWiki 'uselang' Parameter Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49484");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_mediawiki_detect.nasl");
-  script_require_keys("mediawiki/installed");
+  script_mandatory_keys("mediawiki/installed");
   script_require_ports("Services/www", 80);
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# Id$
+# $Id: gb_mozilla_firefox_mfsa_2018-15_2018-17_win.nasl 11544 2018-09-21 20:30:26Z cfischer $
 #
 # Mozilla Firefox Security Updates(mfsa_2018-15_2018-17)-Windows
 #
@@ -29,25 +29,24 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813619");
-  script_version("$Revision: 10352 $");
-  script_cve_id("CVE-2018-12359", "CVE-2018-12360", "CVE-2018-5156", "CVE-2018-12370", 
+  script_version("$Revision: 11544 $");
+  script_cve_id("CVE-2018-12359", "CVE-2018-12360", "CVE-2018-5156", "CVE-2018-12370",
                 "CVE-2018-5186", "CVE-2018-5187", "CVE-2018-5188", "CVE-2018-12361",
                 "CVE-2018-12358", "CVE-2018-12362", "CVE-2018-12363", "CVE-2018-12364",
                 "CVE-2018-12365", "CVE-2018-12366", "CVE-2018-12367", "CVE-2018-12368",
                 "CVE-2018-12369", "CVE-2018-12361");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-28 09:09:51 +0200 (Thu, 28 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:30:26 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 16:01:13 +0530 (Wed, 27 Jun 2018)");
   script_name("Mozilla Firefox Security Updates(mfsa_2018-15_2018-17)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
 
   - Buffer overflow error using computed size of canvas element.
 
@@ -67,22 +66,20 @@ if(description)
 
   - Timing attack mitigation of PerformanceNavigationTiming.
 
-  - WebExtensions bundled with embedded experiments were not correctly checked 
+  - WebExtensions bundled with embedded experiments were not correctly checked
     for proper authorization.
 
   - In Reader View SameSite cookie protections are not checked on exiting.
 
   - Memory safety bugs.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote 
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to run arbitrary code, bypass CSRF protections, disclose sensitive
-  information and cause denial of service condition.
+  information and cause denial of service condition.");
 
-  Impact Level: Application.");
+  script_tag(name:"affected", value:"Mozilla Firefox version before 61 on Windows.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 61 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 61 or later,
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 61 or later,
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");

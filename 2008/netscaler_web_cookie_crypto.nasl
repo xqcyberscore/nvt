@@ -1,12 +1,12 @@
 # OpenVAS Vulnerability Test
-# $Id: netscaler_web_cookie_crypto.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
+# $Id: netscaler_web_cookie_crypto.nasl 11555 2018-09-22 15:24:22Z cfischer $
 # Description: NetScaler web management cookie cipher weakness
 #
 # Authors:
 # nnposter
 #
 # Copyright:
-# Copyright (C) 2007 nnposter
+# Copyright (C) 2008 nnposter
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -23,28 +23,29 @@
 #
 
 if (description) {
- script_oid("1.3.6.1.4.1.25623.1.0.80022");
- script_version("$Revision: 8384 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
- script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.80022");
+  script_version("$Revision: 11555 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:24:22 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
- script_name("NetScaler web management cookie cipher weakness");
+  script_name("NetScaler web management cookie cipher weakness");
 
- script_family("Web application abuses");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_vul");
- script_cve_id("CVE-2007-6192");
- script_copyright("This script is Copyright (c) 2007 nnposter");
- script_dependencies("netscaler_web_login.nasl");
- script_require_keys("citrix_netscaler/http/detected", "http/password");
- script_require_ports("Services/www",80);
+  script_family("Web application abuses");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_cve_id("CVE-2007-6192");
+  script_copyright("This script is Copyright (c) 2008 nnposter");
+  script_dependencies("netscaler_web_login.nasl");
+  script_mandatory_keys("citrix_netscaler/http/detected");
+  script_require_keys("http/password");
+  script_require_ports("Services/www", 80);
 
- script_tag(name: "solution", value: "Do not stay logged into the NetScaler web management interface while
+  script_tag(name:"solution", value:"Do not stay logged into the NetScaler web management interface while
 browsing other web sites.");
 
- script_tag(name: "summary", value: "The remote web server is prone to an information disclosure attack. 
+  script_tag(name:"summary", value:"The remote web server is prone to an information disclosure attack.
 
 Description :
 
@@ -53,9 +54,11 @@ remote host uses weak encryption for protecting the HTTP cookie
 content by XORing sensitive values, including the username and
 password, with a fixed key stream.");
 
- script_xref(name: "URL", value: "http://www.securityfocus.com/archive/1/484182/100/0/threaded");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/484182/100/0/threaded");
 
- exit(0);
+  script_tag(name:"solution_type", value:"Workaround");
+
+  exit(0);
 }
 
 include("misc_func.inc");

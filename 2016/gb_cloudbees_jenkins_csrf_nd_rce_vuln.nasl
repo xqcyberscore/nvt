@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_csrf_nd_rce_vuln.nasl 5684 2017-03-23 08:51:50Z teissa $
+# $Id: gb_cloudbees_jenkins_csrf_nd_rce_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Jenkins CSRF And Code Execution Vulnerabilities Aug16
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809025");
-  script_version("$Revision: 5684 $");
+  script_version("$Revision: 11523 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 09:51:50 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-31 12:50:25 +0530 (Wed, 31 Aug 2016)");
   script_name("Jenkins CSRF And Code Execution Vulnerabilities Aug16");
 
@@ -40,17 +40,14 @@ if(description)
   Jenkins and is prone to cross-site request forgery and code execution
   vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exist due to an improper session 
+  script_tag(name:"insight", value:"Multiple flaws exist due to an improper session
   management for most request.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to hijack the authentication of users for most request and to 
-  change specific settings or even execute code on os.
-
-  Impact Level: Application");
+  attackers to hijack the authentication of users for most request and to
+  change specific settings or even execute code on os.");
 
   script_tag(name:"affected", value:"CloudBees Jenkins version 1.626");
 
@@ -60,7 +57,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37999");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37999");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -71,21 +68,13 @@ if(description)
   exit(0);
 }
 
-## Code starts from here
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-jenkinPort = "";
-jenkinVer= "";
-
-## Get HTTP Port
 if(!jenkinPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# Get Version
 if(!jenkinVer = get_app_version(cpe:CPE, port:jenkinPort)){
   exit(0);
 }

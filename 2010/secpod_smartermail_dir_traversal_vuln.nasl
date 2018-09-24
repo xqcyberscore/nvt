@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_smartermail_dir_traversal_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_smartermail_dir_traversal_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # SmarterMail Directory Traversal Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:smartertools:smartermail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902259");
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-10-01 08:36:34 +0200 (Fri, 01 Oct 2010)");
   script_cve_id("CVE-2010-3486");
   script_bugtraq_id(43324);
@@ -47,12 +47,10 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_smartermail_detect.nasl");
   script_require_ports("Services/www", 80, 9998);
-  script_require_keys("SmarterMail/installed");
+  script_mandatory_keys("SmarterMail/installed");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote authenticated users to
-  read and write directories, files and perform malicious operations.
-
-  Impact Level: Application");
+  read and write directories, files and perform malicious operations.");
   script_tag(name:"affected", value:"SmarterTools SmarterMail 7.1.3876");
   script_tag(name:"insight", value:"The flaw is due to error in the 'FileStorageUpload.ashx', which
   fails to validate the input value passed to the 'name' parameter. This allows

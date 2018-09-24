@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_jun10.nasl 8356 2018-01-10 08:00:39Z teissa $
+# $Id: gb_apple_safari_mult_vuln_jun10.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Apple Safari Multiple Vulnerabilities (June-10)
 #
@@ -24,29 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "The multiple issues are caused by use-after-free, double free, integer
-  truncation, heap overflow, memory corruption, uninitialized memory access,
-  input validation and implementation errors in ColorSync and WebKit.
-
-  NOTE: For more information, refer to,
-
-  http://lists.apple.com/archives/security-announce/2010/Jun/msg00000.html";
-
-tag_impact = "Successful exploitation will allow attacker to bypass certain security
-  checks, gain knowledge of sensitive information or execute arbitrary code
-  by tricking a user into visiting a specially crafted web page.
-  Impact Level: Application";
-tag_affected = "Apple Safari version prior to 5.0(5.33.16.0) on Windows.";
-tag_solution = "Upgrade to Apple Safari version 5.0 or later,
-  For updates refer to http://www.apple.com/support/downloads";
-tag_summary = "This host is installed with Apple Safari Web Browser and is prone to
-  to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801362");
-  script_version("$Revision: 8356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-10 09:00:39 +0100 (Wed, 10 Jan 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-06-16 08:26:33 +0200 (Wed, 16 Jun 2010)");
   script_cve_id("CVE-2010-1385", "CVE-2010-1384", "CVE-2010-1390", "CVE-2010-1389",
                 "CVE-2010-1391", "CVE-2010-1393", "CVE-2010-1392", "CVE-2010-1394",
@@ -64,23 +46,36 @@ if(description)
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Apple Safari Multiple Vulnerabilities (June-10)");
-  script_xref(name : "URL" , value : "http://support.apple.com/kb/HT4196");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/40105");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/1373");
-  script_xref(name : "URL" , value : "http://securitytracker.com/alerts/2010/Jun/1024067.html");
-  script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2010/Jun/msg00000.html");
+  script_xref(name:"URL", value:"http://support.apple.com/kb/HT4196");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/40105");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/1373");
+  script_xref(name:"URL", value:"http://securitytracker.com/alerts/2010/Jun/1024067.html");
+  script_xref(name:"URL", value:"http://lists.apple.com/archives/security-announce/2010/Jun/msg00000.html");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_apple_safari_detect_win_900003.nasl");
-  script_require_keys("AppleSafari/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "insight" , value : tag_insight);
+  script_mandatory_keys("AppleSafari/Version");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to bypass certain security
+  checks, gain knowledge of sensitive information or execute arbitrary code
+  by tricking a user into visiting a specially crafted web page.");
+  script_tag(name:"affected", value:"Apple Safari version prior to 5.0(5.33.16.0) on Windows.");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 5.0 or later,
+  For updates refer to http://www.apple.com/support/downloads");
+  script_tag(name:"summary", value:"This host is installed with Apple Safari Web Browser and is prone to
+  to multiple vulnerabilities.");
+  script_tag(name:"insight", value:"The multiple issues are caused by use-after-free, double free, integer
+  truncation, heap overflow, memory corruption, uninitialized memory access,
+  input validation and implementation errors in ColorSync and WebKit.
+
+  NOTE: For more information, refer to,
+
+  http://lists.apple.com/archives/security-announce/2010/Jun/msg00000.html");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -92,7 +87,6 @@ if(!safariVer){
   exit(0);
 }
 
-# Check for Apple Safari Version 5.0(5.33.16.0) and prior.
 if(version_is_less(version:safariVer, test_version:"5.33.16.0")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

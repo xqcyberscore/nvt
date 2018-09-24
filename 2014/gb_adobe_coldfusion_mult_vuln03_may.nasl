@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_mult_vuln03_may.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_coldfusion_mult_vuln03_may.nasl 11536 2018-09-21 19:44:30Z cfischer $
 #
 # Adobe ColdFusion Multiple Vulnerabilities-03 May-2014
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804445");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11536 $");
   script_cve_id("CVE-2013-0625", "CVE-2013-0629");
   script_bugtraq_id(57164, 57165);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:44:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 16:22:22 +0530 (Tue, 06 May 2014)");
   script_name("Adobe ColdFusion Multiple Vulnerabilities-03 May-2014");
 
@@ -46,7 +46,7 @@ check the version is vulnerable or not.");
 
   - The CFIDE/componentutils/cfcexplorer.cfc script not properly sanitizing
   user input, specifically directory traversal attacks supplied via the
-  'path' parameter when 'method' is set to: 'getcfcinhtml' and 'name' is
+  'path' parameter when 'method' is set to:'getcfcinhtml' and 'name' is
    set to 'CFIDE.adminapi.administrator'.
 
   - The 'ScheduledURL' variable allows specifying an arbitrary resource to save

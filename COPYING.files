@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 21 Sep 2018 14:35:43 +0200
+# Automatically created on:  Mon, 24 Sep 2018 17:00:25 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -27058,7 +27058,6 @@
 2015/sw_apache_axis2_56408_55508.nasl: GPLv2+
 2015/sw_apache_axis2_admin_default_credentials.nasl: GPLv2+
 2015/sw_apc_default_telnet_credentials.nasl: GPLv2+
-2015/sw_apcu_info.nasl: GPLv2+
 2015/sw_apc_web_default_credentials.nasl: GPLv2+
 2015/sw_axway_securetransport_49355.nasl: GPLv2+
 2015/sw_comfy_admin_default_credentials.nasl: GPLv2+
@@ -39086,6 +39085,8 @@
 2018/debian/deb_4296.nasl: GPLv2+
 2018/debian/deb_4297.nasl: GPLv2+
 2018/debian/deb_4298.nasl: GPLv2+
+2018/debian/deb_4300.nasl: GPLv2+
+2018/debian/deb_4301.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39510,6 +39511,10 @@
 2018/debian/deb_dla_1509.nasl: GPLv2+
 2018/debian/deb_dla_1510.nasl: GPLv2+
 2018/debian/deb_dla_1512.nasl: GPLv2+
+2018/debian/deb_dla_1513.nasl: GPLv2+
+2018/debian/deb_dla_1514.nasl: GPLv2+
+2018/debian/deb_dla_1515.nasl: GPLv2+
+2018/debian/deb_dla_1516.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -41704,6 +41709,16 @@
 2018/opensuse/gb_suse_2018_2674_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_2694_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_2695_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_2712_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_2723_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_2728_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_2733_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_2736_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_2738_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_2740_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_2742_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_2754_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_2764_1.nasl: GPLv2+
 2018/openvpn/gb_openvpn_win_dos_vuln.nasl: GPLv2+
 2018/openwebanalytics/gb_open_web_analytics_php_obj_inj_vuln.nasl: GPLv2+
 2018/openxchange/gb_open_xchange_appsuite_content_spoof_vuln_june18.nasl: GPLv2+
@@ -61692,7 +61707,6 @@ Policy/Microsoft/Office2013/office2013_suppress_external_signature_menu.nasl: GP
 Policy/Microsoft/Office2013/office2013_telemetry_data_collection.nasl: GPLv2+
 Policy/Microsoft/Office2013/office2013_trust_bar_notifications.nasl: GPLv2+
 Policy/Microsoft/Office2013/office2013_vml_for_browser_graphics.nasl: GPLv2+
-Policy/Microsoft/Windows10/MSSecurityGuide/win_sg_defender_pua.nasl: GPLv2+
 Policy/Microsoft/Windows10/Network/win_autoconnect_allowed_oem.nasl: GPLv2+
 Policy/Microsoft/Windows10/SecurityOptions/win10_block_microsoft_accounts.nasl: GPLv2+
 Policy/Microsoft/Windows10/SecurityOptions/win10_limit_local_account_blank_password_console.nasl: GPLv2+
@@ -63731,6 +63745,7 @@ support_incident_tracker_detect.nasl: GPLv2+
 sw_apache_apr_remote_detect.nasl: GPLv2+
 sw_apache_axis2_services_detect.nasl: GPLv2+
 sw_apache_axis_detect.nasl: GPLv2+
+sw_apcu_info.nasl: GPLv2+
 sw_axway_securetransport_detect.nasl: GPLv2+
 sw_ckeditor_detect.nasl: GPLv2+
 sw_comfy_detect.nasl: GPLv2+

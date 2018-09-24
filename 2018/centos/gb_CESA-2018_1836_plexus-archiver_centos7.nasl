@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_1836_plexus-archiver_centos7.nasl 10247 2018-06-19 07:14:03Z santu $
+# $Id: gb_CESA-2018_1836_plexus-archiver_centos7.nasl 11520 2018-09-21 12:52:31Z cfischer $
 #
 # CentOS Update for plexus-archiver CESA-2018:1836 centos7 
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882911");
-  script_version("$Revision: 10247 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-19 09:14:03 +0200 (Tue, 19 Jun 2018) $");
+  script_version("$Revision: 11520 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 14:52:31 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-15 05:47:33 +0200 (Fri, 15 Jun 2018)");
   script_cve_id("CVE-2018-1002200");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for plexus-archiver CESA-2018:1836 centos7 ");
   script_tag(name:"summary", value:"Check the version of plexus-archiver");

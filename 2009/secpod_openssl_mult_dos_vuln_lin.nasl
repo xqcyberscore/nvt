@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openssl_mult_dos_vuln_lin.nasl 9369 2018-04-06 08:36:49Z cfischer $
+# $Id: secpod_openssl_mult_dos_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # OpenSSL DTLS Packets Multiple Denial of Service Vulnerabilities (Linux)
 #
@@ -27,16 +27,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to cause denial-of-service
-  conditions,crash the client,and exhaust all memory.
-
-  Impact Level: System/Application";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900653");
-  script_version("$Revision: 9369 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:36:49 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-05-28 07:14:08 +0200 (Thu, 28 May 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -44,14 +39,15 @@ if(description)
   script_bugtraq_id(35001);
   script_name("OpenSSL DTLS Packets Multiple Denial of Service Vulnerabilities (Linux)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"OpenSSL is prone to multiple Denial of Service Vulnerabilities");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_openssl_detect_lin.nasl");
-  script_require_keys("OpenSSL/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
+  script_mandatory_keys("OpenSSL/Linux/Ver");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause denial-of-service
+  conditions, crash the client, and exhaust all memory.");
 
   exit(0);
 }

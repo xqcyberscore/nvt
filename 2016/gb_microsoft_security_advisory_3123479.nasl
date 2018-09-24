@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3123479.nasl 6262 2017-06-01 11:47:33Z santu $
+# $Id: gb_microsoft_security_advisory_3123479.nasl 11533 2018-09-21 19:24:04Z cfischer $
 #
 # Microsoft Root Certificate Program SHA-1 Deprecation Advisory (3123479)
 #
@@ -23,43 +23,47 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806663");
-  script_version("$Revision: 6262 $");
+  script_version("$Revision: 11533 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-01 13:47:33 +0200 (Thu, 01 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:24:04 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-14 13:09:43 +0530 (Thu, 14 Jan 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Root Certificate Program SHA-1 Deprecation Advisory (3123479)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft advisory (3123479).");
 
-  script_tag(name: "vuldetect" , value: "Get the vulnerable file version and
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value: "An update is available that aims to warn
+  script_tag(name:"insight", value:"An update is available that aims to warn
   customers in assessing the risk of certain applications that use X.509 digital
   certificates that are signed using the SHA-1 hashing algorithm.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to take advantage of weakness of the SHA-1 hashing algorithm that
-  exposes it to collision attacks.
+  exposes it to collision attacks.");
 
-  Impact Level: System");
+  script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
 
-  script_tag(name: "affected" , value:"
-  Microsoft Windows 8 x32/x64
   Microsoft Windows 10 x32/x64
+
   Microsoft Windows 8.1 x32/x64
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 10 Version 1511 x32/x64.
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.");
 
-  script_tag(name: "solution" , value: "Run Windows Update and update the
+  script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
 
@@ -77,14 +81,16 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3123479");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/3123479");
-  script_xref(name : "URL" , value : "http://social.technet.microsoft.com/wiki/contents/articles/32288.windows-enforcement-of-authenticode-code-signing-and-timestamping.aspx");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/3123479");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/3123479");
+  script_xref(name:"URL", value:"http://social.technet.microsoft.com/wiki/contents/articles/32288.windows-enforcement-of-authenticode-code-signing-and-timestamping.aspx");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+
   exit(0);
 }
 
@@ -93,37 +99,28 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-##Check for OS
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win8:1, win8x64:1,
                    win2012:1, win2012R2:1, win8_1:1, win8_1x64:1,
                    win2008:3, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Follwing KBs already covered: KB3198585, KB3198586,
+## Following KBs already covered: KB3198585, KB3198586,
 ## KB3200970 in 2016/gb_ms16-129.nasl
 
 
 ## KB3197869, KB3197875
-## Get System Path
 sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch Win32k.sys version
 winVer = fetch_file_version(sysPath, file_name:"Win32k.sys");
 if(winVer)
 {
   ##https://support.microsoft.com/en-in/help/3197875
-  ## Windows 8.1 and Windows Server 2012 R2
   if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
   {
-    ## Check for win32k.sys version
     if(version_is_less(version:winVer, test_version:"6.3.9600.18524"))
     {
       Vulnerable_range = "Less than 6.3.9600.18524";
@@ -132,10 +129,8 @@ if(winVer)
   }
 
   ## https://support.microsoft.com/en-in/help/3197869
-  ## Windows 7 SP1 and Windows Server 2008 R2 SP1
   else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
   {
-    ## Check for win32k.sys version
     if(version_is_less(version:winVer, test_version:"6.1.7601.23584"))
     {
       Vulnerable_range = "Less than 6.1.7601.23584";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_code_exec_n_dos_vuln.nasl 11355 2018-09-12 10:32:04Z asteins $
+# $Id: gb_ms_ie_code_exec_n_dos_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Microsoft Internet Explorer Code Execution and DoS Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802708");
-  script_version("$Revision: 11355 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-1545");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-15 11:06:57 +0530 (Thu, 15 Mar 2012)");
   script_name("Microsoft Internet Explorer Code Execution and DoS Vulnerabilities");
   script_xref(name:"URL", value:"http://www.zdnet.com/blog/security/pwn2own-2012-ie-9-hacked-with-two-0day-vulnerabilities/10621");
@@ -42,7 +42,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_ms_ie_detect.nasl");
-  script_require_keys("MS/IE/Version");
+  script_mandatory_keys("MS/IE/Version");
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary
 code or cause denial of service.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer versions 6 through 9 and 10 Consumer Preview");

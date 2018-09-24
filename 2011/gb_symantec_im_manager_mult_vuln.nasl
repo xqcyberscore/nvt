@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_im_manager_mult_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_symantec_im_manager_mult_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Symantec IM Manager Multiple Vulnerabilities
 #
@@ -24,30 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to execute arbitrary script
-  code in the browser, compromise the application, access or modify data, or
-  exploit latent vulnerability in the underlying database.
-  Impact Level: Application";
-tag_affected = "Symantec IM Manager versions 8.4.17 and prior";
-tag_insight = "- Input passed to the 'refreshRateSetting' parameter in IMManager/Admin/
-    IMAdminSystemDashboard.asp, 'nav' and 'menuitem' parameters in
-    IMManager/Admin/IMAdminTOC_simple.asp, and 'action' parameter in
-    IMManager/Admin/IMAdminEdituser.asp is not properly sanitised before being
-    returned to the user. This can be exploited to execute arbitrary HTML and
-    script code in a user's browser session in context of an affected site.
-  - Input validation errors exist within the Administrator Console allows
-    remote attackers to execute arbitrary code or SQL commands via unspecified
-    vectors.";
-tag_solution = "Upgarade to Symantec IM Manager version 8.4.18 (build 8.4.1405) or later.
-  For updates refer to http://www.symantec.com/business/im-manager";
-tag_summary = "This host is installed with Symantec IM Manager and is prone to
-  multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802252");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-10-18 15:48:35 +0200 (Tue, 18 Oct 2011)");
   script_cve_id("CVE-2011-0552", "CVE-2011-0553", "CVE-2011-0554");
   script_bugtraq_id(49738, 49739, 49742);
@@ -55,34 +36,47 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Symantec IM Manager Multiple Vulnerabilities");
 
-
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_symantec_prdts_detect.nasl");
-  script_require_keys("Symantec/IM/Manager");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/43157");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1026130");
-  script_xref(name : "URL" , value : "http://www.symantec.com/business/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2011&suid=20110929_00");
+  script_mandatory_keys("Symantec/IM/Manager");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary script
+  code in the browser, compromise the application, access or modify data, or
+  exploit latent vulnerability in the underlying database.");
+  script_tag(name:"affected", value:"Symantec IM Manager versions 8.4.17 and prior");
+  script_tag(name:"insight", value:"- Input passed to the 'refreshRateSetting' parameter in IMManager/Admin/
+    IMAdminSystemDashboard.asp, 'nav' and 'menuitem' parameters in
+    IMManager/Admin/IMAdminTOC_simple.asp, and 'action' parameter in
+    IMManager/Admin/IMAdminEdituser.asp is not properly sanitised before being
+    returned to the user. This can be exploited to execute arbitrary HTML and
+    script code in a user's browser session in context of an affected site.
+
+  - Input validation errors exist within the Administrator Console allows
+    remote attackers to execute arbitrary code or SQL commands via unspecified
+    vectors.");
+  script_tag(name:"solution", value:"Upgarade to Symantec IM Manager version 8.4.18 (build 8.4.1405) or later.
+  For updates refer to http://www.symantec.com/business/im-manager");
+  script_tag(name:"summary", value:"This host is installed with Symantec IM Manager and is prone to
+  multiple vulnerabilities.");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/43157");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1026130");
+  script_xref(name:"URL", value:"http://www.symantec.com/business/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2011&suid=20110929_00");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Get Version from KB
 imVer = get_kb_item("Symantec/IM/Manager");
 if(!imVer){
   exit(0);
 }
 
-## Check for Symantec IM Manager versions prior to 8.4.18 (build 8.4.1405)
 if(version_is_less(version:imVer, test_version:"8.4.1405")) {
   security_message(port:0);
 }

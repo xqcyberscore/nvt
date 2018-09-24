@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_double_free_vuln_lin.nasl 10455 2018-07-09 05:52:14Z cfischer $
+# $Id: gb_php_double_free_vuln_lin.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # PHP Double Free Vulnerability - Jul16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808190");
-  script_version("$Revision: 10455 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2015-8880");
   script_bugtraq_id(90816);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:52:14 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 12:14:00 +0530 (Thu, 14 Jul 2016)");
   script_name("PHP Double Free Vulnerability  - Jul16 (Linux)");
 
@@ -47,9 +47,7 @@ if(description)
   in the format printer.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
-  remote attackers to have an unspecified impact.
-
-  Impact Level: Application");
+  remote attackers to have an unspecified impact.");
 
   script_tag(name:"affected", value:"PHP versions 7.x before 7.0.1");
 

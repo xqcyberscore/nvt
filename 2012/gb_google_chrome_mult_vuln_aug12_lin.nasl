@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_aug12_lin.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_google_chrome_mult_vuln_aug12_lin.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - August 12 (Linux)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802930");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-2847", "CVE-2012-2860", "CVE-2012-2858", "CVE-2012-2857",
                 "CVE-2012-2856", "CVE-2012-2855", "CVE-2012-2854", "CVE-2012-2853",
                 "CVE-2012-2852", "CVE-2012-2851", "CVE-2012-2850", "CVE-2012-2849",
@@ -35,7 +35,7 @@ if(description)
   script_bugtraq_id(54749);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-09 12:33:02 +0530 (Thu, 09 Aug 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - August 12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50105/");
@@ -45,7 +45,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
-  script_require_keys("Google-Chrome/Linux/Ver");
+  script_mandatory_keys("Google-Chrome/Linux/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to bypass certain security
   restrictions, execute arbitrary code in the context of the browser or
   cause a denial of service.");

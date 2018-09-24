@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_x509_cert_spoofing_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_opera_x509_cert_spoofing_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Opera 'X.509' Certificates Spoofing Vulnerability (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802435");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-1251");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-12 16:10:48 +0530 (Tue, 12 Jun 2012)");
   script_name("Opera 'X.509' Certificates Spoofing Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN39707339/index.html");
@@ -42,7 +42,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_opera_detect_portable_win.nasl");
-  script_require_keys("Opera/Win/Version");
+  script_mandatory_keys("Opera/Win/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to spoof servers and
   obtain sensitive information.");
   script_tag(name:"affected", value:"Opera version prior to 9.63 on Windows");

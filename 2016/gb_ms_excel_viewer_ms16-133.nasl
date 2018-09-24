@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_viewer_ms16-133.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_ms_excel_viewer_ms16-133.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Microsoft Windows Excel Viewer Multiple Remote Code Execution Vulnerabilities (3199168)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809721");
-  script_version("$Revision: 5534 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-7229", "CVE-2016-7231");
   script_bugtraq_id(93995, 93996);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 14:14:57 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Excel Viewer Multiple Remote Code Execution Vulnerabilities (3199168)");
@@ -48,12 +48,9 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code in the context of the currently logged-in
-  user.
+  user.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft Excel Viewer 2007 Service Pack 3.");
+  script_tag(name:"affected", value:"Microsoft Excel Viewer 2007 Service Pack 3.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
@@ -62,8 +59,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3127893");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-133");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/3127893");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-133");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -77,14 +74,10 @@ if(description)
 include("smb_nt.inc");
 include("version_func.inc");
 
-# Variable Initialization
-excelviewVer = "";
-
 ## Microsoft Office Excel Viewer 2007
 excelviewVer = get_kb_item("SMB/Office/XLView/Version");
 if(excelviewVer =~ "^12\..*")
 {
-  ## check for Xlview.exe  version
   if(version_in_range(version:excelviewVer, test_version:"12.0", test_version2:"12.0.6759.4999"))
   {
     report = 'File checked:     Xlview.exe' + '\n' +

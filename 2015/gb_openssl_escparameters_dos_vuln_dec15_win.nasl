@@ -1,6 +1,6 @@
 ###############################################################################
-#OpenVAS Vulnerability Test
-# $Id: gb_openssl_escparameters_dos_vuln_dec15_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# OpenVAS Vulnerability Test
+# $Id: gb_openssl_escparameters_dos_vuln_dec15_win.nasl 11542 2018-09-21 20:22:36Z cfischer $
 #
 # OpenSSL ECParameters Denial of Service Vulnerability Dec15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806746");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11542 $");
   script_cve_id("CVE-2015-1788");
   script_bugtraq_id(75158);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:22:36 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-01 09:41:47 +0530 (Tue, 01 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL ECParameters Denial of Service Vulnerability Dec15 (Windows)");

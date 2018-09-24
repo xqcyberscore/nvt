@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mult_sql_inj_vuln.nasl 10471 2018-07-09 15:14:32Z ckuersteiner $
+# $Id: gb_joomla_mult_sql_inj_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Joomla! Multiple SQL Injection Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801829");
-  script_version("$Revision: 10471 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 17:14:32 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-01-27 07:47:27 +0100 (Thu, 27 Jan 2011)");
   script_cve_id("CVE-2010-4166", "CVE-2010-4696");
   script_tag(name:"cvss_base", value:"7.5");
@@ -51,7 +51,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause SQL Injection attack and
 gain sensitive information.");

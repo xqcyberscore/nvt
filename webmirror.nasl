@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmirror.nasl 11275 2018-09-07 06:39:46Z emoss $
+# $Id: webmirror.nasl 11519 2018-09-21 12:40:00Z cfischer $
 #
 # WEBMIRROR 2.0
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10662");
-  script_version("$Revision: 11275 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 08:39:46 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 11519 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 14:40:00 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -924,7 +924,8 @@ function pre_parse( src_page, data, port, host ) {
   }
 
   if( "<title>phpinfo()</title>" >< data ) {
-    set_kb_item( name:"www/" + host + "/" + port + "/content/phpinfo_script", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
+    set_kb_item( name:"www/" + host + "/" + port + "/content/phpinfo_script/plain", value:src_page );
+    set_kb_item( name:"www/" + host + "/" + port + "/content/phpinfo_script/reporting", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
   }
 
   if( "Fatal" >< data || "Warning" >< data ) {

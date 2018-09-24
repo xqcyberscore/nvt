@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_indesign_server_memory_corruption_vuln_macosx.nasl 4855 2016-12-27 10:54:25Z antu123 $
+# $Id: gb_adobe_indesign_server_memory_corruption_vuln_macosx.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Adobe InDesign Server Memory Corruption Vulnerability (Mac OS X)
 #
@@ -29,32 +29,29 @@ CPE = "cpe:/a:adobe:indesign_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810243");
-  script_version("$Revision: 4855 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-7886");
   script_bugtraq_id(94868);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-27 11:54:25 +0100 (Tue, 27 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-15 12:59:49 +0530 (Thu, 15 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("Adobe InDesign Server Memory Corruption Vulnerability (Mac OS X)");
 
-  script_tag(name:"summary", value:"This host is running Adobe InDesign Server and is 
+  script_tag(name:"summary", value:"This host is running Adobe InDesign Server and is
   prone to a memory corruption vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw is due to an unspecified memory 
+  script_tag(name:"insight", value:"The flaw is due to an unspecified memory
   corruption error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code in the context of the user running the 
-  affected applications.
+  attackers to execute arbitrary code in the context of the user running the
+  affected applications.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"Adobe InDesign Server 11.0.0 and earlier 
+  script_tag(name:"affected", value:"Adobe InDesign Server 11.0.0 and earlier
   versions on macosx.");
 
   script_tag(name:"solution", value:"Upgrade to version 12.0.0 or later.
@@ -73,16 +70,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-desVer = "";
-
-## Get Version
 desVer = get_app_version(cpe:CPE);
 if(!desVer){
   exit(0);
 }
 
-## Checking for Vulnerable version
 if(version_is_less(version:desVer, test_version:"12.0.0"))
 {
   report = report_fixed_ver(installed_version:desVer, fixed_version:"12.0.0");

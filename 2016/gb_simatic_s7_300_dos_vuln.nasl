@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_300_dos_vuln.nasl 8602 2018-01-31 12:19:39Z cfischer $
+# $Id: gb_simatic_s7_300_dos_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Siemens SIMATIC S7-300 DoS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:siemens:simatic_s7_300';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106100");
-  script_version("$Revision: 8602 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-31 13:19:39 +0100 (Wed, 31 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2016-06-20 09:41:29 +0700 (Mon, 20 Jun 2016)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11523 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-20 09:41:29 +0700 (Mon, 20 Jun 2016)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_cve_id("CVE-2016-3949");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Siemens SIMATIC S7-300 DoS Vulnerability");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_simatic_s7_version.nasl");
   script_mandatory_keys("simatic_s7/detected");
 
-  script_tag(name: "summary", value: "Siemens SIMATIC S7-300 is prone to a denial of service
+  script_tag(name:"summary", value:"Siemens SIMATIC S7-300 is prone to a denial of service
 vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "An exploit of this vulnerability could cause the affected device
+  script_tag(name:"insight", value:"An exploit of this vulnerability could cause the affected device
 to go into defect mode, requiring a cold restart to recover the system.");
 
-  script_tag(name: "impact", value: "A remote attacker may cause a DoS condition.");
+  script_tag(name:"impact", value:"A remote attacker may cause a DoS condition.");
 
-  script_tag(name: "affected", value: "Version prior to 3.3.12");
+  script_tag(name:"affected", value:"Version prior to 3.3.12");
 
-  script_tag(name: "solution", value: "Upgrade to version 3.3.12 or later");
+  script_tag(name:"solution", value:"Upgrade to version 3.3.12 or later");
 
-  script_xref(name: "URL", value: "https://www.siemens.com/cert/pool/cert/siemens_security_advisory_ssa-818183.pdf");
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-16-161-01");
+  script_xref(name:"URL", value:"https://www.siemens.com/cert/pool/cert/siemens_security_advisory_ssa-818183.pdf");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-16-161-01");
 
   exit(0);
 }

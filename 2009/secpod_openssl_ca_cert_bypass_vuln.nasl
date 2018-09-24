@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openssl_ca_cert_bypass_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_openssl_ca_cert_bypass_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # OpenSSL CA Certificate Security Bypass Vulnerability
 #
@@ -24,22 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker spoof the SSL cerficate and
-  gain sensitive information of the remote user through inserting a malicious
-  URL in the contenxt of the openssl certificate.";
-tag_affected = "OpenSSL version 0.9.6 or prior.";
-tag_insight = "OpenSSL fails to verify the Basic Constraints for an intermediate CA-signed
-  certificate.";
-tag_solution = "Upgrade to OpenSSL version 1.0.0 or later,
-  For further updates refer, http://www.openssl.org/news";
-tag_summary = "This host is running OpenSSL and is prone to Security Bypass
-  Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900464");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-03-02 16:07:07 +0100 (Mon, 02 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,12 +40,20 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
   script_dependencies("gb_openssl_detect_lin.nasl");
-  script_require_keys("OpenSSL/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("OpenSSL/Linux/Ver");
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker spoof the SSL cerficate and
+  gain sensitive information of the remote user through inserting a malicious
+  URL in the contenxt of the openssl certificate.");
+  script_tag(name:"affected", value:"OpenSSL version 0.9.6 or prior.");
+  script_tag(name:"insight", value:"OpenSSL fails to verify the Basic Constraints for an intermediate CA-signed
+  certificate.");
+  script_tag(name:"solution", value:"Upgrade to OpenSSL version 1.0.0 or later,
+  For further updates refer, http://www.openssl.org/news");
+  script_tag(name:"summary", value:"This host is running OpenSSL and is prone to Security Bypass
+  Vulnerability.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -66,8 +63,7 @@ include ("version_func.inc");
 opensslVer = get_kb_item("OpenSSL/Linux/Ver");
 if(opensslVer != NULL)
 {
-  # Grep for OpenSSL version 0.9.6 or prior.
   if(version_is_less_equal(version:opensslVer, test_version:"0.9.6")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

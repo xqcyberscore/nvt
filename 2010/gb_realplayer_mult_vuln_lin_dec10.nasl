@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mult_vuln_lin_dec10.nasl 8287 2018-01-04 07:28:11Z teissa $
+# $Id: gb_realplayer_mult_vuln_lin_dec10.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities (Linux)- Dec 10
 #
@@ -24,39 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allows remote attackers to execute arbitrary
-  code or cause a denial of service.";
-tag_affected = "RealPlayer Version 11.0.2.1744 on Linux platform.";
-tag_insight = "The multiple flaws are due to,
-  - An error in the 'Cook' codec initialization function
-  - Heap-based buffer overflow when parsing of 'Cook' codec information in a
-    Real Audio file with many subbands
-  - Memory corruption error in parsing of a 'RV20' video stream
-  - Cross-site scripting in ActiveX control and several HTML files
-  - Heap-based buffer overflow errors in the cook codec functions
-  - Heap-based buffer overflow when parsing 'AAC', 'IVR', 'RealMedia',
-    'RA5' and 'SIPR' files
-  - Integer overflow in the handling of frame dimensions in a 'SIPR' stream
-  - Heap-based buffer overflow error when parsing a large Screen Width value
-    in the Screen Descriptor header of a GIF87a file in an RTSP stream
-  - An integer overflow in the pnen3260.dll module allows remote attackers to
-    execute arbitrary code via a crafted TIT2 atom in an AAC file
-  - An use-after-free error allows remote attackers to execute arbitrary code
-    or cause a denial of service via a crafted StreamTitle tag in an ICY
-    SHOUTcast stream, related to the SMIL file format
-  - An integer overflow errror allows remote attackers to execute arbitrary
-    code or cause a denial of service via a malformed MLLT atom in an AAC file
-  - Heap-based buffer overflow when handling of multi-rate audio streams";
-tag_solution = "Upgrade to RealPlayer version 11.0.2.2315 or later,
-  For updates refer to http://www.real.com/player";
-tag_summary = "This host is installed with RealPlayer which is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801676");
-  script_version("$Revision: 8287 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-04 08:28:11 +0100 (Thu, 04 Jan 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-12-29 07:31:27 +0100 (Wed, 29 Dec 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -68,20 +40,57 @@ if(description)
                 "CVE-2010-4389", "CVE-2010-4390", "CVE-2010-4392",
                 "CVE-2010-4395", "CVE-2010-4397");
   script_name("RealNetworks RealPlayer Multiple Vulnerabilities (Linux) - Dec 10");
-  script_xref(name : "URL" , value : "http://secunia.com/secunia_research/2010-5/");
-  script_xref(name : "URL" , value : "http://service.real.com/realplayer/security/08262010_player/en/");
+  script_xref(name:"URL", value:"http://secunia.com/secunia_research/2010-5/");
+  script_xref(name:"URL", value:"http://service.real.com/realplayer/security/08262010_player/en/");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_realplayer_detect_lin.nasl");
-  script_require_keys("RealPlayer/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("RealPlayer/Linux/Ver");
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary
+  code or cause a denial of service.");
+  script_tag(name:"affected", value:"RealPlayer Version 11.0.2.1744 on Linux platform.");
+  script_tag(name:"insight", value:"The multiple flaws are due to,
+
+  - An error in the 'Cook' codec initialization function
+
+  - Heap-based buffer overflow when parsing of 'Cook' codec information in a
+    Real Audio file with many subbands
+
+  - Memory corruption error in parsing of a 'RV20' video stream
+
+  - Cross-site scripting in ActiveX control and several HTML files
+
+  - Heap-based buffer overflow errors in the cook codec functions
+
+  - Heap-based buffer overflow when parsing 'AAC', 'IVR', 'RealMedia',
+    'RA5' and 'SIPR' files
+
+  - Integer overflow in the handling of frame dimensions in a 'SIPR' stream
+
+  - Heap-based buffer overflow error when parsing a large Screen Width value
+    in the Screen Descriptor header of a GIF87a file in an RTSP stream
+
+  - An integer overflow in the pnen3260.dll module allows remote attackers to
+    execute arbitrary code via a crafted TIT2 atom in an AAC file
+
+  - An use-after-free error allows remote attackers to execute arbitrary code
+    or cause a denial of service via a crafted StreamTitle tag in an ICY
+    SHOUTcast stream, related to the SMIL file format
+
+  - An integer overflow error allows remote attackers to execute arbitrary
+    code or cause a denial of service via a malformed MLLT atom in an AAC file
+
+  - Heap-based buffer overflow when handling of multi-rate audio streams");
+  script_tag(name:"solution", value:"Upgrade to RealPlayer version 11.0.2.2315 or later,
+  For updates refer to http://www.real.com/player");
+  script_tag(name:"summary", value:"This host is installed with RealPlayer which is prone to multiple
+  vulnerabilities.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -95,5 +104,5 @@ if(isnull(rpVer)){
 
 ## Realplayer version 11.0.2.2315
 if(version_is_equal(version:rpVer, test_version:"11.0.2.1744")) {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

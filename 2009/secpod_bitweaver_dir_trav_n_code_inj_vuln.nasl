@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_bitweaver_dir_trav_n_code_inj_vuln.nasl 8374 2018-01-11 10:55:51Z cfischer $
+# $Id: secpod_bitweaver_dir_trav_n_code_inj_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Bitweaver Directory Traversal And Code Injection Vulnerabilities
 #
@@ -24,30 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker to cause PHP code injection,
-  directory traversal, gain sensitive information, and can cause arbitrary
-  code execution inside the context of the web application.
-  Impact Level: Application";
-tag_affected = "Bitweaver version 2.6.0 and prior";
-tag_insight = "Multiple flaws are due to improper handling of user supplied input in saveFeed
-  function in rss/feedcreator.class.php file and it can cause following attacks.
-  - PHP code injection via placing PHP sequences into the account 'display name'
-    setting for authenticated users or in the HTTP Host header for remote users
-    by sending a request to boards/boards_rss.php.
-  - Directory traversal allow remote user to create or overwrite arbitrary file
-    via a .. (dot dot) in the version parameter to boards/boards_rss.php.";
-tag_solution = "Upgrade to Bitweaver version 2.6.1 or later
-  http://www.bitweaver.org/downloads/file/16337";
-tag_summary = "This host is running Bitweaver, which is prone to directory traversal and
-  code injection vulnerabilities.";
-
 CPE = "cpe:/a:bitweaver:bitweaver";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900356");
-  script_version("$Revision: 8374 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:55:51 +0100 (Thu, 11 Jan 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-05-26 15:05:11 +0200 (Tue, 26 May 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -60,15 +43,30 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_bitweaver_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("Bitweaver/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/35057");
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/8659");
-  script_xref(name : "URL" , value : "http://www.bitweaver.org/articles/121");
+  script_mandatory_keys("Bitweaver/installed");
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker to cause PHP code injection,
+  directory traversal, gain sensitive information, and can cause arbitrary
+  code execution inside the context of the web application.");
+  script_tag(name:"affected", value:"Bitweaver version 2.6.0 and prior");
+  script_tag(name:"insight", value:"Multiple flaws are due to improper handling of user supplied input in saveFeed
+  function in rss/feedcreator.class.php file and it can cause following attacks.
+
+  - PHP code injection via placing PHP sequences into the account 'display name'
+    setting for authenticated users or in the HTTP Host header for remote users
+    by sending a request to boards/boards_rss.php.
+
+  - Directory traversal allow remote user to create or overwrite arbitrary file
+    via a .. (dot dot) in the version parameter to boards/boards_rss.php.");
+  script_tag(name:"solution", value:"Upgrade to Bitweaver version 2.6.1 or later
+  http://www.bitweaver.org/downloads/file/16337");
+  script_tag(name:"summary", value:"This host is running Bitweaver, which is prone to directory traversal and
+  code injection vulnerabilities.");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/35057");
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/8659");
+  script_xref(name:"URL", value:"http://www.bitweaver.org/articles/121");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 

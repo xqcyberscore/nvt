@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openmediavault_default_login.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_openmediavault_default_login.nasl 11536 2018-09-21 19:44:30Z cfischer $
 #
 # OpenMediaVault Default Admin Credentials
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105089");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 11536 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("OpenMediaVault Default Admin Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:44:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-15 12:02:06 +0200 (Mon, 15 Sep 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -42,15 +42,15 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value: 'The remote OpenMediaVault web interface is prone to a default
+  script_tag(name:"summary", value:'The remote OpenMediaVault web interface is prone to a default
 account authentication bypass vulnerability.');
 
   script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain
 access to sensitive information or modify system configuration.');
 
-  script_tag(name:"vuldetect", value: 'Try to login with default credentials.');
-  script_tag(name:"insight", value: 'It was possible to login with default credentials admin/openmediavault');
-  script_tag(name:"solution", value: 'Change the password.');
+  script_tag(name:"vuldetect", value:'Try to login with default credentials.');
+  script_tag(name:"insight", value:'It was possible to login with default credentials admin/openmediavault');
+  script_tag(name:"solution", value:'Change the password.');
 
   script_tag(name:"solution_type", value:"Workaround");
 

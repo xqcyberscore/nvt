@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011186.nasl 10868 2018-08-10 05:36:57Z ckuersteiner $
+# $Id: gb_ms_kb4011186.nasl 11550 2018-09-22 12:21:31Z cfischer $
 #
 # Microsoft Publisher 2010 Service Pack 2 Privilege Elevation Vulnerability (KB4011186)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813249");
-  script_version("$Revision: 10868 $");
+  script_version("$Revision: 11550 $");
   script_cve_id("CVE-2018-8245");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 07:36:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:21:31 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-13 11:39:08 +0530 (Wed, 13 Jun 2018)");
   script_name("Microsoft Publisher 2010 Service Pack 2 Privilege Elevation Vulnerability (KB4011186)");
 
@@ -46,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   who successfully exploited the vulnerability could use a specially crafted file
-  to perform actions in the security context of the current user.
-
-  Impact Level: System/Application");
+  to perform actions in the security context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Publisher 2010 Service Pack 2");
 
@@ -63,10 +61,10 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
-  script_require_keys("SMB/Office/Publisher/Version");
+  script_mandatory_keys("SMB/Office/Publisher/Version");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -93,4 +91,5 @@ if(exeVer && exeVer =~ "^14.*")
      exit(0);
   }
 }
+
 exit(99);

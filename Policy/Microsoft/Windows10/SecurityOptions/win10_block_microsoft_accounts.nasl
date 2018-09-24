@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win10_block_microsoft_accounts.nasl 10649 2018-07-27 07:16:55Z emoss $
+# $Id: win10_block_microsoft_accounts.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
 # Check value for Accounts: Block Microsoft accounts (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109152");
-  script_version("$Revision: 10649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:16:55 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 11532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-05-04 13:41:05 +0200 (Fri, 04 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,23 +40,23 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Value", type:"radio", value:"0;1;3");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This setting prevents using the Settings 
-app to add a Microsoft account for single sign-on (SSO) authentication for 
-Microsoft services and some background services, or using a Microsoft account 
+  script_tag(name:"summary", value:"This setting prevents using the Settings
+app to add a Microsoft account for single sign-on (SSO) authentication for
+Microsoft services and some background services, or using a Microsoft account
 for single sign-on to other applications or services.
 
 There are two options if this setting is enabled:
 
-- Users can't add Microsoft accounts means that existing connected accounts 
-can still sign in to the device (and appear on the Sign in screen). However, 
-users cannot use the Settings app to add new connected accounts (or connect 
+  - Users can't add Microsoft accounts means that existing connected accounts
+can still sign in to the device (and appear on the Sign in screen). However,
+users cannot use the Settings app to add new connected accounts (or connect
 local accounts to Microsoft accounts).
 
-- Users can't add or log on with Microsoft accounts means that users cannot 
-add new connected accounts (or connect local accounts to Microsoft accounts) 
+  - Users can't add or log on with Microsoft accounts means that users cannot
+add new connected accounts (or connect local accounts to Microsoft accounts)
 or use existing connected accounts through Settings.
 
-If you disable or do not configure this policy (recommended), users will be able 
+If you disable or do not configure this policy (recommended), users will be able
 to use Microsoft accounts with Windows.");
   exit(0);
 }
@@ -73,7 +73,7 @@ to query the registry.');
 WindowsName = get_kb_item("SMB/WindowsName");
 if('windows 10' >!< tolower(WindowsName)){
   policy_logging(text:'Host is not a Microsoft Windows 10 System.');
-  exit(0); 
+  exit(0);
 }
 
 type = 'HKLM';

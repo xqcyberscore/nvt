@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_xml_dos_n_createvar_sec_bypass_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_ibm_db2_xml_dos_n_createvar_sec_bypass_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # IBM DB2 XML Feature DoS and CREATE VARIABLE Security Bypass Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802730");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-0712", "CVE-2012-0709");
   script_bugtraq_id(52326);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-03 10:41:54 +0530 (Tue, 03 Apr 2012)");
   script_name("IBM DB2 XML Feature DoS and CREATE VARIABLE Security Bypass Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48279/");
@@ -46,7 +46,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Databases");
   script_dependencies("gb_ibm_db2_remote_detect.nasl");
-  script_require_keys("IBM-DB2/Remote/ver");
+  script_mandatory_keys("IBM-DB2/Remote/ver");
   script_tag(name:"impact", value:"Successful exploitation allows remote users to cause denial of
 service, disclose sensitive information and bypass security restrictions.");
   script_tag(name:"affected", value:"IBM DB2 version 9.5 before FP9 and IBM DB2 version 9.7 before

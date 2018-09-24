@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tor_replay_attack_vuln_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_tor_replay_attack_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Tor Replay Attack Vulnerability (Linux)
 #
@@ -24,42 +24,33 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the remote attacker cause replay attacks
-  in the network and can compromise router functionalities.
-
-  Impact level: Network";
-
-tag_affected = "Tor version 0.2.0.34 and prior on Linux.";
-tag_insight = "Flaw is in the data flow at the end of the circuit which lets the attacker
-  to modify the relayed data.";
-tag_solution = "Upgrade to Tor version 0.2.1.25 or later,
-  For updates refer to https://www.torproject.org/download-unix.html.en";
-tag_summary = "This host is installed with Tor Anonymity Proxy and is prone
-  to replay attack vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900323");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-0654");
   script_name("Replay Attack Vulnerability in Tor (Linux)");
-  script_xref(name : "URL" , value : "http://blog.torproject.org/blog/one-cell-enough");
-  script_xref(name : "URL" , value : "http://www.blackhat.com/presentations/bh-dc-09/Fu/BlackHat-DC-09-Fu-Break-Tors-Anonymity.pdf");
+  script_xref(name:"URL", value:"http://blog.torproject.org/blog/one-cell-enough");
+  script_xref(name:"URL", value:"http://www.blackhat.com/presentations/bh-dc-09/Fu/BlackHat-DC-09-Fu-Break-Tors-Anonymity.pdf");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("General");
   script_dependencies("secpod_tor_detect_lin.nasl");
-  script_require_keys("Tor/Linux/Ver");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
+  script_mandatory_keys("Tor/Linux/Ver");
+  script_tag(name:"affected", value:"Tor version 0.2.0.34 and prior on Linux.");
+  script_tag(name:"insight", value:"Flaw is in the data flow at the end of the circuit which lets the attacker
+  to modify the relayed data.");
+  script_tag(name:"solution", value:"Upgrade to Tor version 0.2.1.25 or later,
+  For updates refer to https://www.torproject.org/download-unix.html.en");
+  script_tag(name:"summary", value:"This host is installed with Tor Anonymity Proxy and is prone
+  to replay attack vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will let the remote attacker cause replay attacks
+  in the network and can compromise router functionalities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -71,8 +62,7 @@ include("version_func.inc");
 torVer = get_kb_item("Tor/Linux/Ver");
 if(torVer != NULL)
 {
-  # Grep for version 0.2.0.34 and prior
   if(version_is_less_equal(version:torVer, test_version:"0.2.0.34")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

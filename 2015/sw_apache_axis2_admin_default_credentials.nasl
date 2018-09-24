@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_axis2_admin_default_credentials.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: sw_apache_axis2_admin_default_credentials.nasl 11536 2018-09-21 19:44:30Z cfischer $
 #
 # Apache Axis2 axis2-admin default credentials
 #
@@ -30,13 +30,13 @@ CPE = 'cpe:/a:apache:axis2';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111006");
-  script_version("$Revision: 11492 $");
+  script_version("$Revision: 11536 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_bugtraq_id(44055);
   script_cve_id("CVE-2010-0219");
   script_name("Apache Axis2 axis2-admin default credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:44:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-18 08:00:00 +0100 (Wed, 18 Mar 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -45,16 +45,16 @@ if (description)
   script_require_ports("Services/www", 8080, 8081);
   script_mandatory_keys("axis2/installed");
 
-  script_tag(name:"summary", value: 'The remote Apache Axi2 web interface is prone to a default account
+  script_tag(name:"summary", value:'The remote Apache Axi2 web interface is prone to a default account
  authentication bypass vulnerability.');
 
   script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain
  access to sensitive information, modify system configuration or execute code by uploading
  malicious webservices.');
 
-  script_tag(name:"vuldetect", value: 'Try to login with default credentials.');
-  script_tag(name:"insight", value: 'It was possible to login with default credentials: admin/axis2');
-  script_tag(name:"solution", value: 'Change the password.');
+  script_tag(name:"vuldetect", value:'Try to login with default credentials.');
+  script_tag(name:"insight", value:'It was possible to login with default credentials: admin/axis2');
+  script_tag(name:"solution", value:'Change the password.');
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/44055");
   script_xref(name:"URL", value:"http://ws.apache.org/axis2/");

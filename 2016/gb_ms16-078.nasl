@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-078.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_ms16-078.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Microsoft Windows Diagnostic Hub Elevation of Privilege Vulnerability (3165479)
 #
@@ -27,32 +27,29 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807339");
-  script_version("$Revision: 5836 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-3231");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-15 09:14:02 +0530 (Wed, 15 Jun 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Diagnostic Hub Elevation of Privilege Vulnerability (3165479)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-078.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and 
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"An elevation of privilege flaw exists
+  script_tag(name:"insight", value:"An elevation of privilege flaw exists
   when the Windows Diagnostics Hub Standard Collector Service fails to
   properly sanitize input, leading to an unsecure library loading behavior.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to run arbitrary code with elevated system privileges.
+  to run arbitrary code with elevated system privileges.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 10 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64
   Microsoft Windows 10 Version 1511 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -61,15 +58,16 @@ if(description)
   https://technet.microsoft.com/en-us/library/security/MS16-078");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3163017");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3163018");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-078");
+
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/3163017");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/3163018");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-078");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -80,37 +78,27 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of 'Edgehtml.dll'
 sysVer = fetch_file_version(sysPath, file_name:"System32\Edgehtml.dll");
 if(!sysVer){
   exit(0);
 }
 
-##Windows 10
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Check for Edgehtml.dll version
   if(version_is_less(version:sysVer, test_version:"11.0.10240.16942"))
   {
     Vulnerable_range = "Less than 11.0.10240.16942";
     VULN = TRUE ;
   }
-  ##Windows 10 Version 1511
   else if(version_in_range(version:sysVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.419"))  {
     Vulnerable_range = "11.0.10586.0 - 11.0.10586.419";
     VULN = TRUE ;

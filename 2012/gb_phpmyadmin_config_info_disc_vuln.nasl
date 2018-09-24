@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_config_info_disc_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_phpmyadmin_config_info_disc_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # phpMyAdmin 'show_config_errors.php' Information Disclosure Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802430");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_bugtraq_id(52858);
   script_cve_id("CVE-2012-1902");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-17 12:56:58 +0530 (Tue, 17 Apr 2012)");
   script_name("phpMyAdmin 'show_config_errors.php' Information Disclosure Vulnerability");
   script_xref(name:"URL", value:"http://english.securitylab.ru/nvd/422861.php");
@@ -47,7 +47,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("phpMyAdmin/installed");
+  script_mandatory_keys("phpMyAdmin/installed");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain sensitive
   information that could aid in further attacks.");
   script_tag(name:"affected", value:"phpMyAdmin Version 3.4.10.2 and prior");

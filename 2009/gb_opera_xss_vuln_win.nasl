@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_xss_vuln_win.nasl 10137 2018-06-08 12:38:04Z asteins $
+# $Id: gb_opera_xss_vuln_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Opera Web Browser 'Refresh' Header XSS Vulnerabilities (Windows)
 #
@@ -27,32 +27,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800651");
-  script_version("$Revision: 10137 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-07-09 10:58:23 +0200 (Thu, 09 Jul 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2009-2351");
   script_bugtraq_id(35571);
   script_name("Opera Web Browser 'Refresh' Header XSS Vulnerabilities (Windows)");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/504718/100/0/threaded");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/504718/100/0/threaded");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_opera_detect_portable_win.nasl");
-  script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : "Successful remote attack could execute arbitrary script code in the context
+  script_mandatory_keys("Opera/Win/Version");
+  script_tag(name:"impact", value:"Successful remote attack could execute arbitrary script code in the context
   of the user running the application and to steal cookie-based authentication
-  credentials and other sensitive data that may aid in further attacks.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Opera version 9.52 and prior on Windows.");
-  script_tag(name : "insight" , value : "Flaw is due to error in Refresh headers in HTTP responses. It does not block
+  credentials and other sensitive data that may aid in further attacks.");
+  script_tag(name:"affected", value:"Opera version 9.52 and prior on Windows.");
+  script_tag(name:"insight", value:"Flaw is due to error in Refresh headers in HTTP responses. It does not block
   javascript: URIs, while injecting a Refresh header or specifying the content
   of a Refresh header");
-  script_tag(name : "solution" , value : "Upgrade to Opera version 9.64 or later.
+  script_tag(name:"solution", value:"Upgrade to Opera version 9.64 or later.
   For updates refer to http://www.opera.com/download/");
-  script_tag(name : "summary" , value : "The host is installed with Opera Web Browser and is prone to
+  script_tag(name:"summary", value:"The host is installed with Opera Web Browser and is prone to
   Cross-Site Scripting Vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

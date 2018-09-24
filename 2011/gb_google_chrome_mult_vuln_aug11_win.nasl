@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_aug11_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_mult_vuln_aug11_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - August11 (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802316");
-  script_version("$Revision: 10133 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_cve_id("CVE-2011-2358", "CVE-2011-2359", "CVE-2011-2360", "CVE-2011-2361",
                 "CVE-2011-2783", "CVE-2011-2784", "CVE-2011-2785", "CVE-2011-2786",
@@ -42,23 +42,22 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Google Chrome Multiple Vulnerabilities - August11 (Windows)");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1025882");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.com/2011/08/stable-channel-update.html");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1025882");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.com/2011/08/stable-channel-update.html");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
-  script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to execute arbitrary code in
+  script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code in
   the context of the browser, inject scripts, bypass certain security
-  restrictions, or cause a denial-of-service condition.
-  Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Google Chrome version prior to 13.0.782.107 on Windows.");
-  script_tag(name : "insight" , value : "For more information on the vulnerabilities refer the below links.");
-  script_tag(name : "solution" , value : "Upgrade to the Google Chrome 13.0.782.107 or later,
+  restrictions, or cause a denial-of-service condition.");
+  script_tag(name:"affected", value:"Google Chrome version prior to 13.0.782.107 on Windows.");
+  script_tag(name:"insight", value:"For more information on the vulnerabilities refer the below links.");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 13.0.782.107 or later,
   For updates refer to http://www.google.com/chrome");
-  script_tag(name : "summary" , value : "The host is running Google Chrome and is prone to multiple
+  script_tag(name:"summary", value:"The host is running Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

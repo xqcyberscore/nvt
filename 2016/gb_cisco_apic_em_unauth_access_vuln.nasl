@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_em_unauth_access_vuln.nasl 9437 2018-04-11 10:24:03Z cfischer $
+# $Id: gb_cisco_apic_em_unauth_access_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Cisco APIC Enterprise Module Unauthorized Access Vulnerability
 #
@@ -30,28 +30,26 @@ CPE = "cpe:/a:cisco:application_policy_infrastructure_controller_enterprise_modu
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807836");
-  script_version("$Revision: 9437 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-1386");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-13 15:58:36 +0530 (Mon, 13 Jun 2016)");
   script_name("Cisco APIC Enterprise Module Unauthorized Access Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Cisco APIC Enterprise Module
   and is prone to unauthorized access vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Check for the vulnerable version of Cisco
+  script_tag(name:"vuldetect", value:"Check for the vulnerable version of Cisco
   APIC Enterprise Module.");
 
-  script_tag(name: "insight" , value:"The error exist due to insufficient protection
+  script_tag(name:"insight", value:"The error exist due to insufficient protection
   of API functions, which does not handle modified attribute-value pairs.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to create false system notifications for administrators and trick the
-  administrative users into performing a malicious task on behalf of the attacker.
-
-  Impact Level: Application");
+  administrative users into performing a malicious task on behalf of the attacker.");
 
   script_tag(name:"affected", value:"Cisco APIC-EM version 1.0(1) is affected.");
 
@@ -62,8 +60,8 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); # advisory is very vague about effected versions
 
-  script_xref(name : "URL" , value : "https://bst.cloudapps.cisco.com/bugsearch/bug/CSCux15521");
-  script_xref(name : "URL" , value : "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160428-apic");
+  script_xref(name:"URL", value:"https://bst.cloudapps.cisco.com/bugsearch/bug/CSCux15521");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160428-apic");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

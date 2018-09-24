@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_JSA10743.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_junos_JSA10743.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Junos Multiple cURL and libcurl Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106069");
-  script_version ("$Revision: 7585 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 11523 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-07 00:05:01 +0200 (Sat, 07 May 2016)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -50,26 +50,26 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version");
 
-  script_tag(name: "summary", value: "Junos OS is prone to multiple vulnerabilities in
+  script_tag(name:"summary", value:"Junos OS is prone to multiple vulnerabilities in
 cURL and libcurl.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value :"Multiple vulnerabilities in Junos OS have been
+  script_tag(name:"insight", value:"Multiple vulnerabilities in Junos OS have been
 resolved by updating cURL and libcurl library. These are used to support downloading
 updates or importing data into a Junos device.
 
 Libcurl and cURL were upgraded from 7.36.0 to 7.42.1");
 
-  script_tag(name: "impact", value: "The vulnerabilities range from denial of service attacks
+  script_tag(name:"impact", value:"The vulnerabilities range from denial of service attacks
 until information disclosure. Please check the according CVE resources for more details.");
 
-  script_tag(name: "affected", value: "Junos OS 12.1, 12.3, 13.2, 13.3, 14.1, 14.2 and 15.1");
+  script_tag(name:"affected", value:"Junos OS 12.1, 12.3, 13.2, 13.3, 14.1, 14.2 and 15.1");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10743");
 

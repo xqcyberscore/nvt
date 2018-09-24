@@ -1,12 +1,12 @@
 # OpenVAS Vulnerability Test
-# $Id: netscaler_web_xss.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
+# $Id: netscaler_web_xss.nasl 11555 2018-09-22 15:24:22Z cfischer $
 # Description: NetScaler web management XSS
 #
 # Authors:
 # nnposter
 #
 # Copyright:
-# Copyright (C) 2007 nnposter
+# Copyright (C) 2008 nnposter
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -25,8 +25,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80027");
-  script_version("$Revision: 8384 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
+  script_version("$Revision: 11555 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:24:22 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -41,20 +41,22 @@ if (description)
   script_bugtraq_id(26491);
   script_xref(name:"OSVDB", value:"39009");
 
-  script_copyright("This script is Copyright (c) 2007 nnposter");
+  script_copyright("This script is Copyright (c) 2008 nnposter");
   script_dependencies("netscaler_web_detect.nasl");
-  script_require_keys("citrix_netscaler/http/detected");
-  script_require_ports("Services/www",80);
+  script_mandatory_keys("citrix_netscaler/http/detected");
+  script_require_ports("Services/www", 80);
 
-  script_tag(name: "solution", value: "Unknown at this time.");
+  script_tag(name:"solution", value:"Unknown at this time.");
 
-  script_tag(name: "summary", value: "The remote web server is prone to cross-site scripting attacks. 
+  script_tag(name:"summary", value:"The remote web server is prone to cross-site scripting attacks.
 
 Description :
 
 The remote Citrix NetScaler web management interface is susceptible to cross-site scripting attacks.");
 
-  script_xref(name: "URL", value: "http://www.securityfocus.com/archive/1/483920/100/0/threaded");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/483920/100/0/threaded");
+
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   exit(0);
 }

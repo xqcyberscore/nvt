@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_glb_prot_esc_priv_cve_14_3450.nasl 11426 2018-09-17 09:38:26Z asteins $
+# $Id: gb_panda_glb_prot_esc_priv_cve_14_3450.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Privilege Escalation in Panda Global Protection 2014 CVE-2014-3450 (Windows)
 #
@@ -29,9 +29,9 @@ CPE = "cpe:/a:pandasecurity:panda_global_protection_2014";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107087");
-  script_version("$Revision: 11426 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2014-3450");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-21 09:18:47 +0100 (Mon, 21 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,9 +50,7 @@ process is located, it is possible to execute malicious code as Local System.");
   script_tag(name:"solution", value:"Install Panda Hotfix for this vulnerability, see the vendor advisory.");
   script_tag(name:"summary", value:"This host is running Panda Products and is prone to a Privilege
 Escalation Vulnerability.");
-  script_tag(name:"impact", value:"This vulnerability allows for privilege escalation on the local system.
-
-Impact level: System.");
+  script_tag(name:"impact", value:"This vulnerability allows for privilege escalation on the local system.");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }

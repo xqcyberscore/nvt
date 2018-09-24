@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3141537.nasl 7260 2017-09-26 06:48:48Z asteins $
+# $Id: gb_ms_kb3141537.nasl 11550 2018-09-22 12:21:31Z cfischer $
 #
 # Microsoft Publisher 2010 Service Pack 2 Remote Code Execution Vulnerability (KB3141537)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811756");
-  script_version("$Revision: 7260 $");
+  script_version("$Revision: 11550 $");
   script_cve_id("CVE-2017-8725");
   script_bugtraq_id(100758);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:21:31 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-09-13 11:48:30 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Publisher 2010 Service Pack 2 Remote Code Execution Vulnerability (KB3141537)");
 
@@ -47,38 +47,33 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   who successfully exploited the vulnerability could use a specially crafted file
-  to perform actions in the security context of the current user. 
-
-  Impact Level: System/Application");
+  to perform actions in the security context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Publisher 2010 Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
+
   https://support.microsoft.com/en-us/help/3141537");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3141537");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3141537");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
-  script_require_keys("SMB/Office/Publisher/Version");
+  script_mandatory_keys("SMB/Office/Publisher/Version");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-## Variable initialization
-exePath = "";
-exeVer = "";
 
 exeVer = get_kb_item("SMB/Office/Publisher/Version");
 if(!exeVer){
@@ -91,7 +86,7 @@ if(!exePath){
 }
 
 ##Microsoft Publisher 2010
-if(exeVer && exeVer =~ "^(14).*")
+if(exeVer && exeVer =~ "^14.*")
 {
   if(version_in_range(version:exeVer, test_version:"14.0", test_version2:"14.0.7188.4999"))
   {

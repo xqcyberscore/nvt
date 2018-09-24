@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_host_scanned_wmi.nasl 11392 2018-09-14 14:36:38Z cfischer $
+# $Id: gb_host_scanned_wmi.nasl 11538 2018-09-21 19:50:22Z cfischer $
 #
 # Leave information on scanned Windows hosts
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96171");
-  script_version("$Revision: 11392 $");
+  script_version("$Revision: 11538 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 16:36:38 +0200 (Fri, 14 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:50:22 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-03 10:37:58 +0100 (Sun, 03 Mar 2013)");
   script_name("Leave information on scanned Windows hosts");
   script_category(ACT_END);
@@ -53,7 +53,9 @@ if(description)
 
   The preference 'Message' may contain 3 placeholder where respective content
   will be inserted into the message when the message is finally created on the
-  target system: '::HOSTNAME::', '::SCAN_START::' and '::SCAN_STOP::'.
+  target system:
+
+  '::HOSTNAME::', '::SCAN_START::' and '::SCAN_STOP::'.
 
   At the end of the scan, the message will be written into the registry
   key 'SOFTWARE\VulScanInfo'.");

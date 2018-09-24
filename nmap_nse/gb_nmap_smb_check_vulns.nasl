@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_smb_check_vulns.nasl 10579 2018-07-23 13:27:53Z cfischer $
+# $Id: gb_nmap_smb_check_vulns.nasl 11528 2018-09-21 16:15:13Z cfischer $
 #
 # Wrapper for Nmap SMB Check Vulnerabilities NSE script.
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801287");
-  script_version("$Revision: 10579 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 11528 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 18:15:13 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-09-23 08:22:30 +0200 (Thu, 23 Sep 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -56,9 +56,13 @@ if(description)
   script_add_preference(name:"randomseed :", value:"", type:"entry");
 
   script_tag(name:"summary", value:"This script attempts to check the following vulnerabilities:
+
   - MS08-067, a Windows RPC vulnerability
+
   - Conficker, an infection by the Conficker worm
+
   - Unnamed regsvc DoS
+
   - SMBv2 exploit (CVE-2009-3103)
 
   This is a wrapper on the Nmap Security Scanner's (http://nmap.org) smb-check-vulns.nse.");

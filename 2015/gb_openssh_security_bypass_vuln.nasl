@@ -1,6 +1,6 @@
 ###############################################################################
-#OpenVAS Vulnerability Test
-# $Id: gb_openssh_security_bypass_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# OpenVAS Vulnerability Test
+# $Id: gb_openssh_security_bypass_vuln.nasl 11542 2018-09-21 20:22:36Z cfischer $
 #
 # OpenSSH Security Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806049");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11542 $");
   script_cve_id("CVE-2015-5352");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:22:36 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-10 14:36:41 +0530 (Thu, 10 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSH Security Bypass Vulnerability");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sophos_utm_reflected_xss_vuln.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_sophos_utm_reflected_xss_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Sophos UTM 'lang' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:sophos:utm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807074");
-  script_version("$Revision: 5527 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-2046");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-18 10:58:19 +0530 (Thu, 18 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Sophos UTM 'lang' Parameter Cross Site Scripting Vulnerability");
@@ -44,26 +44,24 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to read cookie or not.");
 
-  script_tag(name:"insight", value:"The flaw is due to an insufficient validation 
+  script_tag(name:"insight", value:"The flaw is due to an insufficient validation
   of user supplied input via the 'lang' parameter.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to execute arbitrary script code in a user's browser session within the trust
-  relationship between their browser and the server.
+  relationship between their browser and the server.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"Sophos UTM version 9.350-12 with pattern 
+  script_tag(name:"affected", value:"Sophos UTM version 9.350-12 with pattern
   version 92405 (potentially lower)");
 
-  script_tag(name: "solution" , value:"Upgrade to Sophos UTM 9.353 or later,
+  script_tag(name:"solution", value:"Upgrade to Sophos UTM 9.353 or later,
   For updates refer to https://www.sophos.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/135709");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Feb/60");
-  script_xref(name : "URL" , value : "http://www.halock.com/blog/cve-2016-2046-cross-site-scripting-sophos-utm-9");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/135709");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Feb/60");
+  script_xref(name:"URL", value:"http://www.halock.com/blog/cve-2016-2046-cross-site-scripting-sophos-utm-9");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -79,26 +77,16 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-# Variable Initialization
-dir = "";
-url = "";
-report = "";
-http_port = "";
-
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Application Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-##Construct Attack Request
 url = dir + '%3Flang%3Denglish%E2%80%9D%3Balert(document.cookie)%3B';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
    pattern:"alert\(document.cookie\)"))
 {

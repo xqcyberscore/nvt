@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_com_easyfaq_sql_inj_vuln.nasl 10754 2018-08-03 10:38:29Z ckuersteiner $
+# $Id: secpod_joomla_com_easyfaq_sql_inj_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Joomla 'com_easyfaq' Component Multiple SQL Injection Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902827");
-  script_version("$Revision: 10754 $");
+  script_version("$Revision: 11549 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 12:38:29 +0200 (Fri, 03 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-30 12:12:12 +0530 (Fri, 30 Mar 2012)");
 
   script_name("Joomla 'com_easyfaq' Component Multiple SQL Injection Vulnerabilities");
@@ -44,7 +44,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause SQL Injection
 attack and gain sensitive information.");

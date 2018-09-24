@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_mult_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_pidgin_mult_dos_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Pidgin Multiple Denial of Service Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802713");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-1178", "CVE-2011-4939");
   script_bugtraq_id(52475, 52476);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-19 17:45:29 +0530 (Mon, 19 Mar 2012)");
   script_name("Pidgin Multiple Denial of Service Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48303/");
@@ -45,7 +45,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_pidgin_detect_win.nasl");
-  script_require_keys("Pidgin/Win/Ver");
+  script_mandatory_keys("Pidgin/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to crash the affected
   application, denying service to legitimate users.");
   script_tag(name:"affected", value:"Pidgin version prior to 2.10.2 on Windows");

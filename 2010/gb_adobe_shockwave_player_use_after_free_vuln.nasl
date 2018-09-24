@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_use_after_free_vuln.nasl 8244 2017-12-25 07:29:28Z teissa $
+# $Id: gb_adobe_shockwave_player_use_after_free_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Adobe Shockwave Player Use-After-Free Vulnerability
 #
@@ -24,46 +24,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the user-assisted remote
-attackers to execute arbitrary code via a crafted web site related to the
-Shockwave Settings window and an unloaded library.
-
-Impact Level: System/Application.";
-
-tag_affected = "Adobe Shockwave Player Version 11.5.9.615 on Windows.";
-
-tag_insight = "The flaw is due to a use-after-free error in an automatically
-installed compatibility component.";
-
-tag_solution = "Upgrade to Adobe Shockwave Player Version 11.5.9.620,
-For updates refer to http://get.adobe.com/shockwave/otherversions/";
-
-tag_summary = "This host is installed with Adobe Shockwave Player and is prone
-to use-after-free vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801631");
-  script_version("$Revision: 8244 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-25 08:29:28 +0100 (Mon, 25 Dec 2017) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-11-12 15:34:28 +0100 (Fri, 12 Nov 2010)");
   script_cve_id("CVE-2010-4092");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Adobe Shockwave Player Use-After-Free Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/42112");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/42112");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_shockwave_player_detect.nasl");
-  script_require_keys("Adobe/ShockwavePlayer/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("Adobe/ShockwavePlayer/Ver");
+  script_tag(name:"impact", value:"Successful exploitation will let the user-assisted remote
+attackers to execute arbitrary code via a crafted web site related to the
+Shockwave Settings window and an unloaded library.");
+  script_tag(name:"affected", value:"Adobe Shockwave Player Version 11.5.9.615 on Windows.");
+  script_tag(name:"insight", value:"The flaw is due to a use-after-free error in an automatically
+installed compatibility component.");
+  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player Version 11.5.9.620,
+For updates refer to http://get.adobe.com/shockwave/otherversions/");
+  script_tag(name:"summary", value:"This host is installed with Adobe Shockwave Player and is prone
+to use-after-free vulnerability.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -75,7 +66,6 @@ if(!shockVer){
   exit(0);
 }
 
-## Check for Adobe Shockwave Player 11.5.9.615
 if(version_is_equal(version:shockVer, test_version:"11.5.9.615")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

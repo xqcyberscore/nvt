@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_mycloud_auth_bypass.nasl 10087 2018-06-06 05:55:17Z cfischer $
+# $Id: gb_wd_mycloud_auth_bypass.nasl 11547 2018-09-22 11:35:51Z cfischer $
 #
 # WD MyCloud Products Authentication Bypass and Remote Command Injection Vulnerability
 #
@@ -29,8 +29,10 @@ CPE = "cpe:/a:western_digital:mycloud_nas";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108305");
-  script_version("$Revision: 10087 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-06 07:55:17 +0200 (Wed, 06 Jun 2018) $");
+  script_version("$Revision: 11547 $");
+  script_cve_id("CVE-2018-17153");
+  script_bugtraq_id(105359);
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 13:35:51 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-11-30 08:00:00 +0100 (Thu, 30 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,8 +44,12 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("WD-MyCloud/www/detected");
 
-  script_xref(name:"URL", value:"http://support.wdc.com/downloads.aspx?lang=en#firmware");
+  script_xref(name:"URL", value:"https://support.wdc.com/downloads.aspx?lang=en#firmware");
+  script_xref(name:"URL", value:"https://support.wdc.com/knowledgebase/answer.aspx?ID=25952");
+  script_xref(name:"URL", value:"https://blog.westerndigital.com/western-digital-my-cloud-update/");
   script_xref(name:"URL", value:"https://www.exploitee.rs/index.php/Western_Digital_MyCloud");
+  script_xref(name:"URL", value:"https://securify.nl/nl/advisory/SFY20180102/authentication-bypass-vulnerability-in-western-digital-my-cloud-allows-escalation-to-admin-privileges.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/105359");
 
   script_tag(name:"summary", value:"Western Digital MyCloud Products are prone to an authentication bypass and
   multiple remote command injection vulnerabilities.");
@@ -53,13 +59,10 @@ if(description)
   script_tag(name:"impact", value:"Successful exploit allows an attacker to execute arbitrary commands with
   root privileges in context of the affected application.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 06th June, 2018. Information regarding
-  this issue will be updated once solution details are available.
+  script_tag(name:"solution", value:"The vendor has released firmware updates. Please see the references
+  for more information.");
 
-  Note: Even if there are newer firmware versions available since the disclosure of this vulnerability at
-  least the WD MyCloud Mirror Gen1 is still vulnerable in the latest firmware 2.11.176.");
-
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);

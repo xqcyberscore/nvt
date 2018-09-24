@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-125.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_ms16-125.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Microsoft Windows Diagnostics Hub Privilege Elevation Vulnerability (3193229)
 #
@@ -27,35 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809344");
-  script_version("$Revision: 5759 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-7188");
   script_bugtraq_id(93359);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 08:11:15 +0530 (Wed, 12 Oct 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Diagnostics Hub Privilege Elevation Vulnerability (3193229)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-125.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and 
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"An elevation of privilege vulnerability exists
+  script_tag(name:"insight", value:"An elevation of privilege vulnerability exists
   in the Windows Diagnostics Hub Standard Collector Service when the Windows
   Diagnostics Hub Standard Collector Service fails to properly sanitize input.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to run arbitrary code with elevated system privileges. An attacker could then
   install programs, view, change, or delete data, or create new accounts with
-  full user rights.
+  full user rights.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 10 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64
   Microsoft Windows 10 Version 1511 x32/x64
   Microsoft Windows 10 Version 1607 x32/x64");
 
@@ -65,16 +62,17 @@ if(description)
   https://technet.microsoft.com/en-us/library/security/MS16-125");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3194798");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3192441");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3192440");  
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-125");
+
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3194798");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3192441");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3192440");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-125");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -85,45 +83,33 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of 'Edgehtml.dll'
 sysVer = fetch_file_version(sysPath, file_name:"System32\Edgehtml.dll");
 if(!sysVer){
   exit(0);
 }
 
-##Windows 10
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Check for Edgehtml.dll version
   if(version_is_less(version:sysVer, test_version:"11.0.10240.17146"))
   {
     Vulnerable_range = "Less than 11.0.10240.17146";
     VULN = TRUE ;
   }
 
-  ##Windows 10 Version 1511
   else if(version_in_range(version:sysVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.632"))
   {
     Vulnerable_range = "11.0.10586.0 - 11.0.10586.632";
     VULN = TRUE ;
   }
-  ## Windows 10 version 1607
-  ## Check for edgehtml.dll version
   else if(version_in_range(version:sysVer, test_version:"11.0.14393.0", test_version2:"11.0.14393.320"))
   {
     Vulnerable_range = "11.0.14393.0 - 11.0.14393.320";

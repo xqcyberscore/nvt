@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ca_arcserve_backup_rpc_services_mult_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_ca_arcserve_backup_rpc_services_mult_vuln.nasl 11560 2018-09-24 06:18:38Z cfischer $
 #
 # CA ARCserve Backup RPC Services Multiple Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802677");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11560 $");
   script_cve_id("CVE-2012-2971", "CVE-2012-2972");
   script_bugtraq_id(56116);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 08:18:38 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-20 11:04:50 +0530 (Tue, 20 Nov 2012)");
   script_name("CA ARCserve Backup RPC Services Multiple Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51012/");
@@ -45,8 +45,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_rpc_portmap.nasl", "os_detection.nasl");
-  script_require_keys("rpc/portmap");
-  script_mandatory_keys("Host/runs_windows");
+  script_mandatory_keys("rpc/portmap", "Host/runs_windows");
 
   script_tag(name:"impact", value:"Successful exploitation will remote attackers to execute arbitrary code or
   cause a denial of service condition.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_operations_manager_VMSA-2016-0020.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_vmware_vrealize_operations_manager_VMSA-2016-0020.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # VMSA-2016-0020: vRealize Operations REST API Deserialization Vulnerability
 #
@@ -29,33 +29,33 @@ CPE = 'cpe:/a:vmware:vrealize_operations_manager';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140063");
- script_cve_id("CVE-2016-7462");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:C");
- script_version ("$Revision: 5598 $");
- script_name("VMSA-2016-0020: vRealize Operations REST API Deserialization Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.140063");
+  script_cve_id("CVE-2016-7462");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:C");
+  script_version("$Revision: 11523 $");
+  script_name("VMSA-2016-0020: vRealize Operations REST API Deserialization Vulnerability");
 
- script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0020.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0020.html");
 
- script_tag(name: "vuldetect" , value:"Check the version");
+  script_tag(name:"vuldetect", value:"Check the version");
 
- script_tag(name: "solution" , value:"Update to 6.4.0 or later");
+  script_tag(name:"solution", value:"Update to 6.4.0 or later");
 
- script_tag(name: "summary" , value:"vRealize Operations update addresses REST API deserialization vulnerability.");
- script_tag(name: "insight" , value:"vRealize Operations contains a deserialization vulnerability in its REST API implementation. This issue may result in a Denial of Service as it allows for writing of files with arbitrary content and moving existing files into certain folders. The name format of the destination files is predefined and their names cannot be chosen. Overwriting files is not feasible.");
+  script_tag(name:"summary", value:"vRealize Operations update addresses REST API deserialization vulnerability.");
+  script_tag(name:"insight", value:"vRealize Operations contains a deserialization vulnerability in its REST API implementation. This issue may result in a Denial of Service as it allows for writing of files with arbitrary content and moving existing files into certain folders. The name format of the destination files is predefined and their names cannot be chosen. Overwriting files is not feasible.");
 
- script_tag(name: "affected" , value:"vRealize Operations 6.x < 6.4.0");
+  script_tag(name:"affected", value:"vRealize Operations 6.x < 6.4.0");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-11-16 15:53:11 +0100 (Wed, 16 Nov 2016)");
- script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"solution_type", value:"VendorFix");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_vrealize_operations_manager_web_detect.nasl");
- script_mandatory_keys("vmware/vrealize/operations_manager/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-16 15:53:11 +0100 (Wed, 16 Nov 2016)");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_vrealize_operations_manager_web_detect.nasl");
+  script_mandatory_keys("vmware/vrealize/operations_manager/version");
 
  exit(0);
 

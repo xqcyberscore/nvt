@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_dos_vuln_jun16_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_mariadb_dos_vuln_jun16_lin.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # MariaDB Denial Of Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808153");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2013-1861");
   script_bugtraq_id(58511);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 19:15:05 +0530 (Tue, 07 Jun 2016)");
   script_name("MariaDB Denial Of Service Vulnerability (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -66,9 +66,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to crash the program via a crafted geometry feature that specifies a
-  large number of points. 
-
-  Impact Level: Application");
+  large number of points.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -80,22 +78,15 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-mariadbPort = "";
-mariadbVer = "";
-
-## Get MariaDB port
 if(!mariadbPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the MariaDB version
 mariadbVer = get_app_version(cpe:CPE, port:mariadbPort);
 if(isnull(mariadbVer) ||  !(mariadbVer =~ "^(5.1|5.2|5.3|5.5)")){
   exit(0);
 }
 
-## Check for vulnerable mariadb versions
 if(version_in_range(version:mariadbVer, test_version:"5.1", test_version2:"5.1.67") ||
    version_in_range(version:mariadbVer, test_version:"5.2", test_version2:"5.2.14") ||
    version_in_range(version:mariadbVer, test_version:"5.3", test_version2:"5.3.12") ||

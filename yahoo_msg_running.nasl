@@ -1,5 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
+# $Id: yahoo_msg_running.nasl 11543 2018-09-21 20:25:26Z cfischer $
 #
 # Yahoo Messenger Detection
 #
@@ -24,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102001");
-  script_version("$Revision: 10915 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11543 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:25:26 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:34:11 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

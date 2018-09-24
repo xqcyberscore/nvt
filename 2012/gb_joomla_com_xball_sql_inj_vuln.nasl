@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_xball_sql_inj_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_joomla_com_xball_sql_inj_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Joomla XBall Component SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802569");
-  script_version("$Revision: 11435 $");
+  script_version("$Revision: 11549 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 15:38:16 +0530 (Mon, 23 Jan 2012)");
 
   script_name("Joomla XBall Component SQL Injection Vulnerability");
@@ -45,7 +45,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL queries by
 injecting arbitrary SQL code.");

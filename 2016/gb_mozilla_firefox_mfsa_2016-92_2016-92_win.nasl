@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-92_2016-92_win.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: gb_mozilla_firefox_mfsa_2016-92_2016-92_win.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Mozilla Firefox Security Updates( mfsa_2016-92_2016-92 )-Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809825");
-  script_version("$Revision: 10965 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-9079");
   script_bugtraq_id(94591);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-01 12:07:25 +0530 (Thu, 01 Dec 2016)");
   script_name("Mozilla Firefox Security Updates( mfsa_2016-92_2016-92 )-Windows");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allow remote attackers to cause a denial of service via application crash,
-  or execute arbitrary code.
-
-  Impact Level: Application.");
+  or execute arbitrary code.");
 
   script_tag(name:"affected", value:"Mozilla Firefox version before
   50.0.2 on Windows.");

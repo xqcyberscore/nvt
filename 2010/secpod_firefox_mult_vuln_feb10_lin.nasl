@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_mult_vuln_feb10_lin.nasl 8258 2017-12-29 07:28:57Z teissa $
+# $Id: secpod_firefox_mult_vuln_feb10_lin.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Firefox Multiple Vulnerabilities Feb-10 (Linux)
 #
@@ -24,43 +24,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allows attackers to obtain sensitive information via
-  a crafted document.
-  Impact Level: Application.";
-tag_affected = "Firefox version prior to 3.6 on Linux.";
-tag_insight = "- The malformed stylesheet document and cross-origin loading of CSS
-    stylesheets even when the stylesheet download has an incorrect MIME type.
-  - IFRAME element allows placing the site&qts URL in the HREF attribute of a
-    stylesheet 'LINK' element, and then reading the 'document.styleSheets[0].href'
-    property value.";
-tag_solution = "Upgrade to Firefox version 3.6,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html";
-tag_summary = "The host is installed with Firefox Browser and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900743");
-  script_version("$Revision: 8258 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-02-22 13:34:53 +0100 (Mon, 22 Feb 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2010-0648", "CVE-2010-0654");
   script_name("Firefox Multiple Vulnerabilities Feb-10 (Linux)");
-  script_xref(name : "URL" , value : "http://code.google.com/p/chromium/issues/detail?id=9877");
-  script_xref(name : "URL" , value : "http://code.google.com/p/chromium/issues/detail?id=32309");
+  script_xref(name:"URL", value:"http://code.google.com/p/chromium/issues/detail?id=9877");
+  script_xref(name:"URL", value:"http://code.google.com/p/chromium/issues/detail?id=32309");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("General");
   script_dependencies("gb_firefox_detect_lin.nasl");
-  script_require_keys("Firefox/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("Firefox/Linux/Ver");
+  script_tag(name:"impact", value:"Successful exploitation allows attackers to obtain sensitive information via
+  a crafted document.");
+  script_tag(name:"affected", value:"Firefox version prior to 3.6 on Linux.");
+  script_tag(name:"insight", value:"- The malformed stylesheet document and cross-origin loading of CSS
+    stylesheets even when the stylesheet download has an incorrect MIME type.
+
+  - IFRAME element allows placing the site&qts URL in the HREF attribute of a
+    stylesheet 'LINK' element, and then reading the 'document.styleSheets[0].href'
+    property value.");
+  script_tag(name:"solution", value:"Upgrade to Firefox version 3.6,
+  For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"summary", value:"The host is installed with Firefox Browser and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -75,7 +69,6 @@ if(isnull(ffVer)){
   exit(0);
 }
 
-# Check for Firefox version less than 3.6
 if(version_is_less(version:ffVer, test_version:"3.6")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

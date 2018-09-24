@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4180.nasl 9642 2018-04-27 07:17:02Z cfischer $
+# $Id: deb_4180.nasl 11520 2018-09-21 12:52:31Z cfischer $
 #
 # Auto-generated from advisory DSA 4180-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704180");
-  script_version("$Revision: 9642 $");
+  script_version("$Revision: 11520 $");
   script_cve_id("CVE-2018-7602");
   script_name("Debian Security Advisory DSA 4180-1 (drupal7 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 09:17:02 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 14:52:31 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 00:00:00 +0200 (Wed, 25 Apr 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

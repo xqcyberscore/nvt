@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerberos5_kdc_dos_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_kerberos5_kdc_dos_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Kerberos5 KDC Cross Realm Referral Denial of Service Vulnerability
 #
@@ -24,30 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to cause a denial of service.
-
-  Impact level: Application";
-
-tag_solution = "Upgrade kerberos5 version 1.7.1 or Apply patch from below link,
-  http://web.mit.edu/kerberos/www/
-  http://web.mit.edu/kerberos/advisories/2009-003-patch.txt
-
-  *****
-  NOTE: Ignore this warning if above mentioned patch is already applied.
-  *****";
-
-tag_affected = "kerberos5 version prior to 1.7.1";
-tag_insight = "The flaw is caused by a NULL pointer dereference error in the KDC cross-realm
-  referral processing implementation, which could allow an unauthenticated remote
-  attacker to cause KDC to crash.";
-tag_summary = "This host is installed with Kerberos5 and is prone to Denial of
-  Service vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800441");
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-01-22 09:23:45 +0100 (Fri, 22 Jan 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -55,9 +36,9 @@ if(description)
   script_bugtraq_id(37486);
   script_name("Kerberos5 KDC Cross Realm Referral Denial of Service Vulnerability");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/37977");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/3652");
-  script_xref(name : "URL" , value : "http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2009-003.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/37977");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3652");
+  script_xref(name:"URL", value:"http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2009-003.txt");
 
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -66,12 +47,21 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_kerberos5_detect.nasl");
-  script_require_keys("Kerberos5/Ver");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "impact" , value : tag_impact);
+  script_mandatory_keys("Kerberos5/Ver");
+  script_tag(name:"affected", value:"kerberos5 version prior to 1.7.1");
+  script_tag(name:"insight", value:"The flaw is caused by a NULL pointer dereference error in the KDC cross-realm
+  referral processing implementation, which could allow an unauthenticated remote
+  attacker to cause KDC to crash.");
+  script_tag(name:"summary", value:"This host is installed with Kerberos5 and is prone to Denial of
+  Service vulnerability.");
+  script_tag(name:"solution", value:"Upgrade kerberos5 version 1.7.1 or Apply patch from below link,
+  http://web.mit.edu/kerberos/www/
+  http://web.mit.edu/kerberos/advisories/2009-003-patch.txt
+
+  *****
+  NOTE: Ignore this warning if above mentioned patch is already applied.
+  *****");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a denial of service.");
   exit(0);
 }
 
@@ -83,7 +73,6 @@ if(!krbVer){
   exit(0);
 }
 
-# Grep for Kerberos5 version 1.7 and prior.
 if(version_is_less(version:krbVer, test_version:"1.7.1")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

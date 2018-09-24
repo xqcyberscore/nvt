@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_click2run_mult_vuln_aug18.nasl 11017 2018-08-17 07:07:42Z santu $
+# $Id: gb_ms_office_click2run_mult_vuln_aug18.nasl 11559 2018-09-24 06:10:19Z cfischer $
 #
 # Microsoft Office 2016 Click-to-Run (C2R) Multiple Vulnerabilities-August18
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813780");
-  script_version("$Revision: 11017 $");
+  script_version("$Revision: 11559 $");
   script_cve_id("CVE-2018-8312", "CVE-2018-8375", "CVE-2018-8379", "CVE-2018-8382");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:07:42 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 08:10:19 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-16 12:00:48 +0530 (Thu, 16 Aug 2018)");
   script_name("Microsoft Office 2016 Click-to-Run (C2R) Multiple Vulnerabilities-August18");
 
@@ -45,7 +45,7 @@ if(description)
 
   - An error when Microsoft Access fails to properly handle objects in memory.
 
-  - Multiple errorr when Microsoft Excel software fails to properly handle objects
+  - Multiple error when Microsoft Excel software fails to properly handle objects
     in memory.
 
   - An error when Microsoft Excel improperly discloses the contents of its memory.
@@ -58,9 +58,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to run arbitrary code in the context of the current user, gain access to
-  potentially sensitive information and gain elevated privileges.
-
-  Impact Level: System/Application");
+  potentially sensitive information and gain elevated privileges.");
 
   script_tag(name:"affected", value:"Microsoft Office 2016 Click-to-Run");
 

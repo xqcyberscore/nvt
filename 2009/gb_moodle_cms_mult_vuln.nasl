@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_cms_mult_vuln.nasl 10674 2018-07-30 08:24:18Z asteins $
+# $Id: gb_moodle_cms_mult_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Moodle CMS Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800240");
-  script_version("$Revision: 10674 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-30 10:24:18 +0200 (Mon, 30 Jul 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
@@ -44,7 +44,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_moodle_cms_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("Moodle/Version");
+  script_mandatory_keys("Moodle/Version");
   script_tag(name:"affected", value:"Moodle version from 1.6 prior to 1.6.9,
   Moodle version from 1.7 prior to 1.7.7,
   Moodle version from 1.8 prior to 1.8.8 and
@@ -70,9 +70,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause Cross Site
   Scripting attacks, can gain sensitive information about the user or the
   remote host or can delete unauthorised posts through injecting malicious
-  web scripts.
-
-  Impact level: System/Application");
+  web scripts.");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }

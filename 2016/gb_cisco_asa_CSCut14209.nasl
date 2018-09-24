@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCut14209.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_cisco_asa_CSCut14209.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Cisco Adaptive Security Appliance XML Parser Denial of Service Vulnerability
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/a:cisco:asa";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106079");
- script_cve_id("CVE-2016-1385");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
- script_version ("$Revision: 5588 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106079");
+  script_cve_id("CVE-2016-1385");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_version("$Revision: 11569 $");
 
- script_name("Cisco Adaptive Security Appliance XML Parser Denial of Service Vulnerability");
+  script_name("Cisco Adaptive Security Appliance XML Parser Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160517-asa-xml");
- 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160517-asa-xml");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in XML parser code of Cisco Adaptive Security Appliance
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in XML parser code of Cisco Adaptive Security Appliance
 Software could allow an authenticated, remote attacker to cause system instability or a reload of the
 affected system.
 
@@ -56,16 +56,16 @@ could cause system instability, memory exhaustion, and in some cases lead to a r
 Cisco has released software updates that address this vulnerability. Workarounds that address this vulnerability
 are not available.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-19 09:47:55 +0700 (Thu, 19 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
- script_mandatory_keys("cisco_asa/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-19 09:47:55 +0700 (Thu, 19 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
+  script_mandatory_keys("cisco_asa/version");
  exit(0);
 }
 
@@ -75,7 +75,7 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE, nofork: TRUE ) ) exit( 0 );
 check_vers = ereg_replace(string:version, pattern:"\(([0-9.]+)\)", replace:".\1");
 
-affected = make_list( 
+affected = make_list(
 		'8.4.1',
 		'8.4.1.3',
 		'8.4.1.11',

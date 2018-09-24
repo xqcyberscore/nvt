@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_007.nasl 10623 2018-07-25 15:14:01Z cfischer $
+# $Id: GSHB_M4_007.nasl 11531 2018-09-21 18:50:24Z cfischer $
 #
 # IT-Grundschutz, 11. EL, Maßnahme 4.007
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.894007");
-  script_version("$Revision: 10623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 11531 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 20:50:24 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-06-08 16:42:11 +0200 (Tue, 08 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,9 +56,7 @@ if(description)
 
   Hinweis:
 
-  Test wird nur über SSH und Telnet ausgeführt.
-
-");
+  Test wird nur über SSH und Telnet ausgeführt.");
   script_tag(name:"deprecated", value:TRUE);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-105.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_ms16-105.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Microsoft Edge Multiple Vulnerabities (3183043)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809042");
-  script_version("$Revision: 5580 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-3247", "CVE-2016-3291", "CVE-2016-3294", "CVE-2016-3295",
                 "CVE-2016-3297", "CVE-2016-3325", "CVE-2016-3330", "CVE-2016-3350",
                 "CVE-2016-3351", "CVE-2016-3370", "CVE-2016-3374", "CVE-2016-3377");
   script_bugtraq_id(92828, 92834, 92789, 92830, 92829, 92832, 92807, 92793);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-09-14 08:01:49 +0530 (Wed, 14 Sep 2016)");
   script_name("Microsoft Edge Multiple Vulnerabities (3183043)");
 
@@ -45,22 +45,24 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"The multiple flaws exists due to,
+
   - The Microsoft Edge improperly handles objects in memory.
-  - The Chakra JavaScript engine renders when handling objects in memory in 
+
+  - The Chakra JavaScript engine renders when handling objects in memory in
     Microsoft Edge.
+
   - The Microsoft Edge improperly handles cross-origin requests.
+
   - Certain functions improperly handles objects in memory.
-  - The PDF Library and Microsoft Browser improperly handles objects in memory."); 
+
+  - The PDF Library and Microsoft Browser improperly handles objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to execute arbitrary code in the context of the current user, to
-  determine the origin of all of the web pages in the affected browser, and to 
-  obtain information to further compromise a target system.
+  determine the origin of all of the web pages in the affected browser, and to
+  obtain information to further compromise a target system.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 10 x32/x64.
+  script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64.
   Microsoft Windows 10 Version 1511 x32/x64.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -72,13 +74,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3183043");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/ms16-105");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3183043");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/ms16-105");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -89,36 +92,26 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-edgePath = "";
-edgeVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 edgePath = smb_get_systemroot();
 if(!edgePath){
   exit(0);
 }
 
-##Get the Packager.dll version
 if(!edgeVer = fetch_file_version(sysPath: edgePath, file_name:"system32\Edgehtml.dll")){;
   exit(0);
 }
 
-##Windows 10
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Check for Edgehtml.dll version
   if(version_is_less(version:edgeVer, test_version:"11.0.10240.17113"))
   {
     Vulnerable_range = "Less than 11.0.10240.17113";
     VULN = TRUE ;
   }
-  ##Windows 10 Version 1511
   else if(version_in_range(version:edgeVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.588"))
   {
     Vulnerable_range = "11.0.10586.0 - 11.0.10586.588";
@@ -130,7 +123,7 @@ if(VULN)
 {
   report = 'File checked:     ' + edgePath + "\system32\Edgehtml.dll"+ '\n' +
            'File version:     ' + edgeVer  + '\n' +
-           'Vulnerable range: ' + Vulnerable_range + '\n' ;   
+           'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
   exit(0);
 }

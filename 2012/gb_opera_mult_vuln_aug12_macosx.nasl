@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_aug12_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_opera_mult_vuln_aug12_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Opera Multiple Vulnerabilities - August12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803003");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_bugtraq_id(54782, 54788, 54780);
   script_cve_id("CVE-2012-4142", "CVE-2012-4143", "CVE-2012-4144", "CVE-2012-4145");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-08 10:50:33 +0530 (Wed, 08 Aug 2012)");
   script_name("Opera Multiple Vulnerabilities - August12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50044");
@@ -46,7 +46,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_opera_detect_macosx.nasl");
-  script_require_keys("Opera/MacOSX/Version");
+  script_mandatory_keys("Opera/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   script code, disclose sensitive information, or spoof the originating URL
   of a trusted web site and carry out phishing-style attacks.");

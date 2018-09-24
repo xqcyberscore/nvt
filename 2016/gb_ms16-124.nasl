@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-124.nasl 5712 2017-03-24 10:00:49Z teissa $
+# $Id: gb_ms16-124.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Microsoft Windows Registry Multiple Vulnerabilities (3193227)
 #
@@ -26,40 +26,44 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.809440") ;
-  script_version("$Revision: 5712 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.809440");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2016-0070", "CVE-2016-0073", "CVE-2016-0075", "CVE-2016-0079");
   script_bugtraq_id(93354, 93355, 93356, 93357);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 08:40:20 +0530 (Wed, 12 Oct 2016)");
   script_name("Microsoft Windows Registry Multiple Vulnerabilities (3193227)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-124");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Gets the vulnerable file version and
+  checks if the appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple elevation of privilege
   vulnerabilities exist in Microsoft Windows when a Windows kernel API
   improperly allows a user to access sensitive registry information.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to gain access to information not intended to be available to the user.
+  to gain access to information not intended to be available to the user.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows Vista x32/x64 Edition Service Pack 2
+  script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1
+
   Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 10 x32/x64
+
   Microsoft Windows 10 Version 1511 x32/x64
+
   Microsoft Windows 10 Version 1607 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -77,7 +81,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -87,24 +92,17 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-kerPath = "";
-kerVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, winVistax64:3, win2008:3, win2008x64:3,
                    win2008r2:2, win2012:1, win2012R2:1, win8_1:1, win8_1x64:1,
                    win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 kerPath = smb_get_systemroot();
 if(!kerPath ){
   exit(0);
 }
 
-##Fetch the version of Ntoskrnl.exe
 kerVer = fetch_file_version(sysPath: kerPath, file_name:"System32\Ntoskrnl.exe");
 edgeVer = fetch_file_version(sysPath: kerPath, file_name:"System32\Edgehtml.dll");
 if(!kerVer && !edgeVer){
@@ -130,57 +128,45 @@ else if (kerVer =~ "^(10\.0\.10240)"){
   Vulnerable_range = "Less than 10.0.10240.17146";
 }
 
-## Windows Vista and Server 2008
 if(hotfix_check_sp(winVista:3, winVistax64:3, win2008x64:3, win2008:3) > 0)
 {
-  ## Check for Ntoskrnl.exe version
   if(version_is_less(version:kerVer, test_version:"6.0.6002.19697")||
      version_in_range(version:kerVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.24019")){
     VULN = TRUE ;
   }
 }
 
-## Windows 7 and Windows Server 2008 R2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
   ## Presently GDR information is not available.
-  ## Check for Ntoskrnl.exe version
   if(version_is_less(version:kerVer, test_version:"6.1.7601.23564")){
     VULN = TRUE ;
   }
 }
 
-## Windows Server 2012
 else if(hotfix_check_sp(win2012:1) > 0)
 {
-  ## Presently GDR information is not available. 
-  ## Check for Ntoskrnl.exe version
+  ## Presently GDR information is not available.
   if(version_is_less(version:kerVer, test_version:"6.2.9200.22001")){
      VULN = TRUE ;
   }
 }
 
-## Windows 8.1 and Server 2012 R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Ntoskrnl.exe version
   if(version_is_less(version:kerVer, test_version:"6.3.9600.18505")){
     VULN = TRUE ;
   }
 }
 
-##Windows 10
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Windows 10 Core
-  ## Check for Ntoskrnl.exe version
   if(version_is_less(version:kerVer, test_version:"10.0.10240.17146"))
   {
     Vulnerable_range = "Less than 10.0.10240.17146";
     VULN = TRUE ;
   }
 
-  ##Windows 10 Version 1511
   else if(edgeVer)
   {
     if(version_in_range(version:edgeVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.632"))
@@ -188,8 +174,6 @@ if(hotfix_check_sp(win10:1, win10x64:1) > 0)
       Vulnerable_range2 = "11.0.10586.0 - 11.0.10586.632";
       VULN2 = TRUE ;
     }
-    ## Windows 10 version 1607
-    ## Check for edgehtml.dll version
     else if(version_in_range(version:edgeVer, test_version:"11.0.14393.0", test_version2:"11.0.14393.320"))
     {
       Vulnerable_range2 = "11.0.14393.0 - 11.0.14393.320";

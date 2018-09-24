@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_session_fixation_vuln.nasl 10674 2018-07-30 08:24:18Z asteins $
+# $Id: gb_moodle_session_fixation_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Moodle Session Fixation Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800767");
-  script_version("$Revision: 10674 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-30 10:24:18 +0200 (Mon, 30 Jul 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_cve_id("CVE-2010-1613", "CVE-2010-1616");
   script_tag(name:"cvss_base", value:"6.8");
@@ -43,21 +43,21 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_moodle_cms_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("Moodle/Version");
+  script_mandatory_keys("Moodle/Version");
   script_tag(name:"affected", value:"Moodle version 1.8.12 and prior
   Moodle version 1.9.x prior to 1.9.8");
   script_tag(name:"insight", value:"The flaws are exists due to:
+
   - failure to enable 'Regenerate session id during login', which can be
     exploited to conduct session fixation attacks.
+
   - creating new roles when restoring a course, which allows teachers to create
     new accounts if they do not have the 'moodle/user:create' capability.");
   script_tag(name:"solution", value:"Upgrade to latest version 1.9.8
   http://download.moodle.org/");
   script_tag(name:"summary", value:"This host is running Moodle and is prone to session fixation vulnerability");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct session
-  fixation attacks.
-
-  Impact level: System/Application");
+  fixation attacks.");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-91_2016-91_macosx.nasl 10778 2018-08-06 02:57:15Z ckuersteiner $
+# $Id: gb_mozilla_firefox_mfsa_2016-91_2016-91_macosx.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Mozilla Firefox Security Updates( mfsa_2016-91_2016-91 )-MAC OS X
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809824");
-  script_version("$Revision: 10778 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-9078");
   script_bugtraq_id(94569);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 04:57:15 +0200 (Mon, 06 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-01 12:05:00 +0530 (Thu, 01 Dec 2016)");
   script_name("Mozilla Firefox Security Updates( mfsa_2016-91_2016-91 )-MAC OS X");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allow remote attackers to redirect a URL maliciously, current data suggests
-  it does not have any capacity to impact the host system.
-
-  Impact Level: Application.");
+  it does not have any capacity to impact the host system.");
 
   script_tag(name:"affected", value:"Mozilla Firefox versions 49.0 and 50.0
   on MAC OS X.");

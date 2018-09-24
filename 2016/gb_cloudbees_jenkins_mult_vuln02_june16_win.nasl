@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_vuln02_june16_win.nasl 9311 2018-04-05 05:38:44Z cfischer $
+# $Id: gb_cloudbees_jenkins_mult_vuln02_june16_win.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # CloudBees Jenkins Multiple Vulnerabilities-02-June16 (Windows)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807344");
-  script_version("$Revision: 9311 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2015-1812", "CVE-2015-1813", "CVE-2015-1814");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 07:38:44 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-22 14:22:34 +0530 (Wed, 22 Jun 2016)");
   script_name("CloudBees Jenkins Multiple Vulnerabilities-02-June16 (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with CloudBees
   Jenkins and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -57,9 +56,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to obtain sensitive information, bypass the protection mechanism,
   gain elevated privileges, bypass intended access restrictions and execute
-  arbitrary code.
-
-  Impact Level: Application");
+  arbitrary code.");
 
   script_tag(name:"affected", value:"CloudBees Jenkins LTS before 1.596.2 on Windows");
 
@@ -70,14 +67,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=1205616");
-  script_xref(name : "URL" , value : "https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2015-03-23");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=1205616");
+  script_xref(name:"URL", value:"https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2015-03-23");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("jenkins/installed","Host/runs_windows");
+  script_mandatory_keys("jenkins/installed", "Host/runs_windows");
   script_require_ports("Services/www", 8080);
   exit(0);
 }

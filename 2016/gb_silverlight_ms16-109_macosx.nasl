@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms16-109_macosx.nasl 5712 2017-03-24 10:00:49Z teissa $
+# $Id: gb_silverlight_ms16-109_macosx.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Microsoft Silverlight Remote Code Execution Vulnerability (3182373) (MAC OS X)
 #
@@ -29,28 +29,26 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809323");
-  script_version("$Revision: 5712 $");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2016-3367");
   script_bugtraq_id(92837);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-09-21 16:02:13 +0530 (Wed, 21 Sep 2016)");
   script_name("Microsoft Silverlight Remote Code Execution Vulnerability (3182373) (MAC OS X)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-109.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Gets the vulnerable file version and
+  checks if the appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"The flaw exists due when Microsoft
   Silverlight improperly allows applications to access objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation could corrupt system
-  memory, which could allow an attacker to execute arbitrary code.
-
-  Impact Level: System/Application");
+  memory, which could allow an attacker to execute arbitrary code.");
 
   script_tag(name:"affected", value:"Microsoft Silverlight version 5 on MAC OS X.");
 
@@ -63,8 +61,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3182373");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-109");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3182373");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-109");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -78,16 +76,12 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-msl_ver = "";
-
-## Get the version
 if(!msl_ver = get_app_version(cpe:CPE)){
   exit(0);
 }
 
 if(msl_ver=~ "^5\.")
 {
-  ## Check for Silverlight version 5.0 < 5.1.50709.0
   if(version_is_less(version:msl_ver, test_version:"5.1.50709.0"))
   {
     report = ' Silverlight version:     ' + msl_ver  + '\n' +

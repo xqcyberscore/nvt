@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_security_bypass_vuln_macosx.nasl 11471 2018-09-19 11:17:08Z santu $
+# $Id: gb_lync_security_bypass_vuln_macosx.nasl 11550 2018-09-22 12:21:31Z cfischer $
 #
 # Microsoft Lync Security Feature Bypass Vulnerability (MAC OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:lync";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814214");
-  script_version("$Revision: 11471 $");
+  script_version("$Revision: 11550 $");
   script_cve_id("CVE-2018-8474");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:17:08 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:21:31 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-18 11:05:15 +0530 (Tue, 18 Sep 2018)");
   script_name("Microsoft Lync Security Feature Bypass Vulnerability (MAC OS X)");
 
@@ -65,7 +65,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gb_microsoft_lync_detect_macosx.nasl");
-  script_require_keys("Microsoft/Lync/MacOSX/Version");
+  script_mandatory_keys("Microsoft/Lync/MacOSX/Version");
+
   exit(0);
 }
 

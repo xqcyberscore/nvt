@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_may12_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_google_chrome_mult_vuln_may12_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities(02) - May 12 (Mac OS X)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903032");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2011-3103", "CVE-2011-3104", "CVE-2011-3105", "CVE-2011-3106",
                 "CVE-2011-3107", "CVE-2011-3108", "CVE-2011-3110", "CVE-2011-3111",
                 "CVE-2011-3112", "CVE-2011-3113", "CVE-2011-3114", "CVE-2011-3115");
   script_bugtraq_id(53679);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-25 16:25:17 +0530 (Fri, 25 May 2012)");
   script_name("Google Chrome Multiple Vulnerabilities(02) - May 12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49277/");
@@ -45,7 +45,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
-  script_require_keys("GoogleChrome/MacOSX/Version");
+  script_mandatory_keys("GoogleChrome/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to bypass certain security
   restrictions, execute arbitrary code in the context of the browser or
   cause a denial of service.");

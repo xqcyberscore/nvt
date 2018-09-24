@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_provisioning_services_soapserver_bof_vuln.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: gb_citrix_provisioning_services_soapserver_bof_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Citrix Provisioning Services SoapServer Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803000");
-  script_version("$Revision: 11372 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-4068");
   script_bugtraq_id(53330);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-02 18:48:06 +0530 (Thu, 02 Aug 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -46,7 +46,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_dependencies("gb_citrix_provisioning_services_detect.nasl");
   script_require_ports(139, 445);
-  script_require_keys("Citrix/Provisioning/Services/Ver");
+  script_mandatory_keys("Citrix/Provisioning/Services/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
   code on the target system.");
   script_tag(name:"affected", value:"Citrix Provisioning Services version 5.6 and prior, 6.0 and 6.1");

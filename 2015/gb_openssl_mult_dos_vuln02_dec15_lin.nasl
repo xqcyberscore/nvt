@@ -1,6 +1,6 @@
 ###############################################################################
-#OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_dos_vuln02_dec15_lin.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# OpenVAS Vulnerability Test
+# $Id: gb_openssl_mult_dos_vuln02_dec15_lin.nasl 11542 2018-09-21 20:22:36Z cfischer $
 #
 # OpenSSL Multiple Denial of Service Vulnerabilities -02 Dec15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806745");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11542 $");
   script_cve_id("CVE-2015-1789", "CVE-2015-1790", "CVE-2015-1791", "CVE-2015-1792");
   script_bugtraq_id(75156, 75157, 75161, 75154);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:22:36 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-01 09:41:47 +0530 (Tue, 01 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Multiple Denial of Service Vulnerabilities -02 Dec15 (Linux)");

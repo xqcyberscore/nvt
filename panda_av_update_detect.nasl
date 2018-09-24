@@ -1,5 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
+# $Id: panda_av_update_detect.nasl 11543 2018-09-21 20:25:26Z cfischer $
 #
 # Panda Antivirus Update Detect
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102048");
-  script_version("$Revision: 11279 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 11543 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:25:26 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");

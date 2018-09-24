@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_illustrator_mult_unspecified_vuln_macosx.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: gb_adobe_illustrator_mult_unspecified_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Adobe Illustrator Multiple Unspecified Vulnerabilities (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802788");
-  script_version("$Revision: 11372 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-2026", "CVE-2012-2025", "CVE-2012-2024", "CVE-2012-2023",
                 "CVE-2012-0780", "CVE-2012-2042");
   script_bugtraq_id(53422);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-16 17:55:09 +0530 (Wed, 16 May 2012)");
   script_name("Adobe Illustrator Multiple Unspecified Vulnerabilities (Mac OS X)");
 
@@ -45,7 +45,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_illustrator_detect_macosx.nasl");
-  script_require_keys("Adobe/Illustrator/MacOSX/Version");
+  script_mandatory_keys("Adobe/Illustrator/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code
   or cause denial of service.");
   script_tag(name:"affected", value:"Adobe Illustrator version CS5.5 (15.1) on Mac OS X");

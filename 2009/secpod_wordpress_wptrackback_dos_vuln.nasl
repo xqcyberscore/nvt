@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_wptrackback_dos_vuln.nasl 5148 2017-01-31 13:16:55Z teissa $
+# $Id: secpod_wordpress_wptrackback_dos_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # WordPress wp-trackback.php Denial of Service Vulnerability
 #
@@ -23,36 +23,22 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-tag_impact = "Successful exploitation will allow attacker to cause a Denial of Service
-  due to high CPU consumption.
-  Impact Level: System/Application";
-tag_affected = "WordPress version prior to 2.8.5 on all platforms.";
-tag_insight = "An error occurs in wp-trackbacks.php due to improper validation of user
-  supplied data passed into 'mb_convert_encoding()' function. This can be
-  exploited by sending multiple-source character encodings into the fuction.";
-tag_solution = "Upgrade to WordPress version 2.8.5 or later.
-  http://wordpress.org/download/";
-tag_summary = "The host is running WordPress and is prone to Denial of Service
-  vulnerability.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900968";
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 5148 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900968");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-10-29 07:53:15 +0100 (Thu, 29 Oct 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_cve_id("CVE-2009-3622");
   script_name("WordPress wp-trackback.php Denial of Service Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/37088/");
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/9431");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/53884");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/2986");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/37088/");
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/9431");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/53884");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2986");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -60,12 +46,20 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("wordpress/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("wordpress/installed");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a Denial of Service
+  due to high CPU consumption.");
+  script_tag(name:"affected", value:"WordPress version prior to 2.8.5 on all platforms.");
+  script_tag(name:"insight", value:"An error occurs in wp-trackbacks.php due to improper validation of user
+  supplied data passed into 'mb_convert_encoding()' function. This can be
+  exploited by sending multiple-source character encodings into the function.");
+  script_tag(name:"solution", value:"Upgrade to WordPress version 2.8.5 or later.
+  http://wordpress.org/download/");
+  script_tag(name:"summary", value:"The host is running WordPress and is prone to Denial of Service
+  vulnerability.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -74,12 +68,12 @@ include("http_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-wpPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID);
+wpPort = get_app_port(cpe:CPE);
 if(!wpPort){
   exit(0);
 }
 
-if(!ver = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:wpPort))exit(0);
+if(!ver = get_app_version(cpe:CPE, port:wpPort))exit(0);
 
 if(ver != NULL)
 {

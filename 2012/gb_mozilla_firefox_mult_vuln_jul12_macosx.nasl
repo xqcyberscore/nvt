@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_jul12_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_mozilla_firefox_mult_vuln_jul12_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities - July12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802892");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-1950", "CVE-2012-1965", "CVE-2012-1966");
   script_bugtraq_id(54585, 54579, 54577);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-23 18:31:44 +0530 (Mon, 23 Jul 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - July12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49965");
@@ -46,7 +46,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_require_keys("Mozilla/Firefox/MacOSX/Version");
+  script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts, bypass
   certain security restrictions, execute arbitrary code in the context of the
   browser.");

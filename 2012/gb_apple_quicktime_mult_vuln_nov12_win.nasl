@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_vuln_nov12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_apple_quicktime_mult_vuln_nov12_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Apple QuickTime Multiple Vulnerabilities - Nov12 (Windows)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803047");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2011-1374", "CVE-2012-3757", "CVE-2012-3751", "CVE-2012-3758",
                 "CVE-2012-3752", "CVE-2012-3753", "CVE-2012-3754", "CVE-2012-3755",
                 "CVE-2012-3756");
   script_bugtraq_id(56438);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-09 13:08:03 +0530 (Fri, 09 Nov 2012)");
   script_name("Apple QuickTime Multiple Vulnerabilities - Nov12 (Windows)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5581");
@@ -45,7 +45,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_apple_quicktime_detection_win_900124.nasl");
-  script_require_keys("QuickTime/Win/Ver");
+  script_mandatory_keys("QuickTime/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code or
   cause a buffer overflow condition.");
   script_tag(name:"affected", value:"QuickTime Player version prior to 7.7.3 on Windows");

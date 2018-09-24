@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win10_limit_local_account_blank_password_console.nasl 10649 2018-07-27 07:16:55Z emoss $
+# $Id: win10_limit_local_account_blank_password_console.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
 # Check value for Accounts: Limit local account use of blank passwords to console logon only (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109154");
-  script_version("$Revision: 10649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:16:55 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 11532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-05-04 14:20:46 +0200 (Fri, 04 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,12 +40,12 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "The Accounts: Limit local account use of 
-blank passwords to console logon only policy setting determines whether remote 
-interactive logons by network services such as Remote Desktop Services, Telnet, 
-and File Transfer Protocol (FTP) are allowed for local accounts that have blank 
-passwords. If this policy setting is enabled, a local account must have a 
-nonblank password to be used to perform an interactive or network logon from a 
+  script_tag(name:"summary", value:"The Accounts: Limit local account use of
+blank passwords to console logon only policy setting determines whether remote
+interactive logons by network services such as Remote Desktop Services, Telnet,
+and File Transfer Protocol (FTP) are allowed for local accounts that have blank
+passwords. If this policy setting is enabled, a local account must have a
+nonblank password to be used to perform an interactive or network logon from a
 remote client.");
   exit(0);
 }
@@ -62,7 +62,7 @@ to query the registry.');
 WindowsName = get_kb_item("SMB/WindowsName");
 if('windows 10' >!< tolower(WindowsName)){
   policy_logging(text:'Host is not a Microsoft Windows 10 System.');
-  exit(0); 
+  exit(0);
 }
 
 type = 'HKLM';

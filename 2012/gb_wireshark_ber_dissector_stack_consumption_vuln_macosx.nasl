@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ber_dissector_stack_consumption_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wireshark_ber_dissector_stack_consumption_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Wireshark BER Dissector Stack Consumption Vulnerability (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802845");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2010-3445");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-04 18:26:03 +0530 (Fri, 04 May 2012)");
   script_name("Wireshark BER Dissector Stack Consumption Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2010/10/12/1");
@@ -42,7 +42,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_wireshark_detect_macosx.nasl");
-  script_require_keys("Wireshark/MacOSX/Version");
+  script_mandatory_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to crash the application.");
   script_tag(name:"affected", value:"Wireshark version 1.4.x before 1.4.1 and 1.2.x before 1.2.12");
   script_tag(name:"insight", value:"The flaw is due to stack consumption error in the

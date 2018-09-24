@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_dir_server_info_disc_vuln_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_sun_java_dir_server_info_disc_vuln_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Sun Java Directory Server Information Disclosure Vulnerability (Windows)
 #
@@ -24,46 +24,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker execute arbitrary codes in the
-  context of the application and can gain sensitive information about the
-  presence of folders and files.
-
-  Impact level: Application";
-
-tag_affected = "Sun Java System Directory Server 5.2
-  Sun Java System Directory Server Enterprise 5.0";
-tag_insight = "This flaw is due to unspecified error which can be exploited to determine
-  the existence of a file on a system and disclose a single line of the file's
-  content.";
-tag_solution = "Upgrade to Sun Java Directory Server Enterprise 6.0 or later
-  http://www.sun.com/software/products/directory_srvr_ee/get.jsp";
-tag_summary = "This host is running Sun Java Directory Server and is prone to Information
-  Disclosure Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900497");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2009-1332");
   script_bugtraq_id(34548);
   script_name("Sun Java Directory Server Information Disclosure Vulnerability (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/34751");
-  script_xref(name : "URL" , value : "http://sunsolve.sun.com/search/document.do?assetkey=1-66-255848-1");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/34751");
+  script_xref(name:"URL", value:"http://sunsolve.sun.com/search/document.do?assetkey=1-66-255848-1");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
   script_dependencies("secpod_sun_java_dir_server_detect_win.nasl");
-  script_require_keys("Sun/JavaDirServer/Win/Ver");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
+  script_mandatory_keys("Sun/JavaDirServer/Win/Ver");
+  script_tag(name:"affected", value:"Sun Java System Directory Server 5.2
+  Sun Java System Directory Server Enterprise 5.0");
+  script_tag(name:"insight", value:"This flaw is due to unspecified error which can be exploited to determine
+  the existence of a file on a system and disclose a single line of the file's
+  content.");
+  script_tag(name:"solution", value:"Upgrade to Sun Java Directory Server Enterprise 6.0 or later
+  http://www.sun.com/software/products/directory_srvr_ee/get.jsp");
+  script_tag(name:"summary", value:"This host is running Sun Java Directory Server and is prone to Information
+  Disclosure Vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary codes in the
+  context of the application and can gain sensitive information about the
+  presence of folders and files.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -77,7 +68,6 @@ if(!appVer){
   exit(0);
 }
 
-# Grep for Directory Server version 5.2 or 5.0
 if(version_is_less_equal(version:appVer, test_version:"5.2")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

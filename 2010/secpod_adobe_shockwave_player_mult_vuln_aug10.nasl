@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_shockwave_player_mult_vuln_aug10.nasl 8440 2018-01-17 07:58:46Z teissa $
+# $Id: secpod_adobe_shockwave_player_mult_vuln_aug10.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities Aug-10
 #
@@ -24,21 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to execute arbitrary code in
-  the context of the affected application.
-  Impact Level: Application.";
-tag_affected = "Adobe Shockwave Player prior to 11.5.8.612 on Windows";
-tag_insight = "Multiple memory corruption vulnerabilities are present in the application.";
-tag_solution = "Upgrade to Adobe Shockwave Player 11.5.8.612
-  http://get.adobe.com/shockwave/otherversions/";
-tag_summary = "This host is installed with Adobe Shockwave Player and is prone
-  to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902237");
-  script_version("$Revision: 8440 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-17 08:58:46 +0100 (Wed, 17 Jan 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_cve_id("CVE-2010-2863", "CVE-2010-2864", "CVE-2010-2865", "CVE-2010-2866",
                 "CVE-2010-2867", "CVE-2010-2868", "CVE-2010-2869", "CVE-2010-2870",
@@ -48,25 +38,31 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities Aug-10");
-  script_xref(name : "URL" , value : "http://dvlabs.tippingpoint.com/advisory/TPTI-10-13");
-  script_xref(name : "URL" , value : "http://dvlabs.tippingpoint.com/advisory/TPTI-10-14");
-  script_xref(name : "URL" , value : "http://dvlabs.tippingpoint.com/advisory/TPTI-10-15");
-  script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-10-161/");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb10-20.html");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/513299/100/0/threaded");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/513334/100/0/threaded");
+  script_xref(name:"URL", value:"http://dvlabs.tippingpoint.com/advisory/TPTI-10-13");
+  script_xref(name:"URL", value:"http://dvlabs.tippingpoint.com/advisory/TPTI-10-14");
+  script_xref(name:"URL", value:"http://dvlabs.tippingpoint.com/advisory/TPTI-10-15");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-10-161/");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb10-20.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/513299/100/0/threaded");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/513334/100/0/threaded");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("General");
   script_dependencies("secpod_adobe_shockwave_player_detect.nasl");
-  script_require_keys("Adobe/ShockwavePlayer/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("Adobe/ShockwavePlayer/Ver");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code in
+  the context of the affected application.");
+  script_tag(name:"affected", value:"Adobe Shockwave Player prior to 11.5.8.612 on Windows");
+  script_tag(name:"insight", value:"Multiple memory corruption vulnerabilities are present in the application.");
+  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player 11.5.8.612
+  http://get.adobe.com/shockwave/otherversions/");
+  script_tag(name:"summary", value:"This host is installed with Adobe Shockwave Player and is prone
+  to multiple vulnerabilities.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -78,7 +74,6 @@ if(!shockVer){
   exit(0);
 }
 
-# Check for versions prior to 11.5.8.612
 if(version_is_less(version:shockVer, test_version:"11.5.8.612")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

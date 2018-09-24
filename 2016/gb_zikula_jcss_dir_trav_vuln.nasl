@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zikula_jcss_dir_trav_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
+# $Id: gb_zikula_jcss_dir_trav_vuln.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Zikula 'jcss.php' Directory Traversal Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:zikula:zikula_application_framework";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809746");
-  script_version("$Revision: 11321 $");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2016-9835");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-09 18:25:21 +0530 (Fri, 09 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Zikula 'jcss.php' Directory Traversal Vulnerability");
@@ -49,9 +49,7 @@ if(description)
   sanitization of input passed via 'f' parameter to 'jcss.php' script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to launch a PHP object injection by uploading a serialized file.
-
-  Impact Level: Application");
+  attackers to launch a PHP object injection by uploading a serialized file.");
 
   script_tag(name:"affected", value:"Zikula 1.3.x before 1.3.11 and 1.4.x
   before 1.4.4 on Windows.");

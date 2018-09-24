@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: invision_pwb.nasl 10212 2018-06-15 09:51:23Z ckuersteiner $
+# $Id: invision_pwb.nasl 11556 2018-09-22 15:37:40Z cfischer $
 # Description: Invision Power Board XSS
 #
 # Authors:
@@ -28,15 +28,15 @@ CPE = "cpe:/a:invision_power_services:invision_power_board";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15425");
-  script_version("$Revision: 10212 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 11:51:23 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 11556 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:37:40 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1578");
   script_bugtraq_id(11332);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Invision Power Board XSS");
 
@@ -48,11 +48,11 @@ if(description)
 
   script_dependencies("invision_power_board_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("invision_power_board/installed");
+  script_mandatory_keys("invision_power_board/installed");
 
-  script_tag(name: "solution", value: "Upgrade to the latest version of this software");
+  script_tag(name:"solution", value:"Upgrade to the latest version of this software");
 
-  script_tag(name: "summary", value: "The remote host is running Invision Power Board, a web-based bulletin-board
+  script_tag(name:"summary", value:"The remote host is running Invision Power Board, a web-based bulletin-board
 system written in PHP.
 
 This version of Invision Power Board is vulnerable to cross-site scripting attacks, which may allow an attacker to

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-026.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_ms12-026.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # MS Forefront Unified Access Gateway Information Disclosure Vulnerability (2663860)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903018");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-0146", "CVE-2012-0147");
   script_bugtraq_id(52909, 52903);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-12 16:00:48 +0530 (Thu, 12 Apr 2012)");
   script_name("MS Forefront Unified Access Gateway Information Disclosure Vulnerability (2663860)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48787");
@@ -47,10 +47,11 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_forefront_unified_access_gateway_detect.nasl");
   script_require_ports(139, 445);
-  script_require_keys("MS/Forefront/UAG/Ver");
+  script_mandatory_keys("MS/Forefront/UAG/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to obtain potentially sensitive
   information.");
   script_tag(name:"affected", value:"Microsoft Forefront Unified Access Gateway 2010 Service Pack 1
+
   Microsoft Forefront Unified Access Gateway 2010 Service Pack 1 Update 1");
   script_tag(name:"insight", value:"The flaws are due to an error,
 
@@ -65,9 +66,9 @@ if(description)
   Microsoft Bulletin MS12-026.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

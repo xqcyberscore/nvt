@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_cmd_inj_vuln.nasl 6012 2017-04-24 04:58:27Z teissa $
+# $Id: gb_symantec_web_gateway_cmd_inj_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Symantec Web Gateway OS Command Injection Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:symantec:web_gateway";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106342");
-  script_version("$Revision: 6012 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2016-10-07 10:41:48 +0700 (Fri, 07 Oct 2016)");
+  script_version("$Revision: 11523 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-07 10:41:48 +0700 (Fri, 07 Oct 2016)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-5313");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Symantec Web Gateway OS Command Injection Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_symantec_web_gateway_detect.nasl");
   script_mandatory_keys("symantec_web_gateway/installed");
 
-  script_tag(name: "summary", value: "Symantec Web Gateway is prone to a OS command injection vulnerability.");
+  script_tag(name:"summary", value:"Symantec Web Gateway is prone to a OS command injection vulnerability.");
 
-  script_tag(name: "insight", value: "The vulnerable code is located in the /spywall/new_whitelist.php script.
+  script_tag(name:"insight", value:"The vulnerable code is located in the /spywall/new_whitelist.php script.
 The vulnerability exists because the validation checks may be bypassed by setting the 'sid' POST parameter to a
 value different from zero. In this way, even though the 'white_ip' POST parameter is not a valid domain or IP
 address, it will be passed to the add_whitelist() function as its $url parameter.");
 
-  script_tag(name: "impact", value: "An authenticated attacker may execute arbitrary OS commands with the
+  script_tag(name:"impact", value:"An authenticated attacker may execute arbitrary OS commands with the
 privileges of the root user of the appliance.");
 
-  script_tag(name: "affected", value: "Symantec Web Gateway version 5.2.2 and prior.");
+  script_tag(name:"affected", value:"Symantec Web Gateway version 5.2.2 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 5.2.5 or later.");
+  script_tag(name:"solution", value:"Update to version 5.2.5 or later.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   exit(0);
 }

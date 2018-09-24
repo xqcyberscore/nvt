@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_meeting_server_cisco-sa-20161102-cms1.nasl 4639 2016-11-28 11:33:54Z mime $
+# $Id: gb_cisco_meeting_server_cisco-sa-20161102-cms1.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Cisco Meeting Server Session Description Protocol Media Lines Buffer Overflow Vulnerability
 #
@@ -29,40 +29,40 @@ CPE = "cpe:/a:cisco:meeting_server";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106371");
- script_cve_id("CVE-2016-6448");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 4639 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106371");
+  script_cve_id("CVE-2016-6448");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11569 $");
 
- script_name("Cisco Meeting Server Session Description Protocol Media Lines Buffer Overflow Vulnerability");
+  script_name("Cisco Meeting Server Session Description Protocol Media Lines Buffer Overflow Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161102-cms1");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161102-cms1");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"Update to version 2.0.3 or later.");
+  script_tag(name:"solution", value:"Update to version 2.0.3 or later.");
 
- script_tag(name: "summary" , value:"A vulnerability in the Session Description Protocol (SDP) parser of Cisco
+  script_tag(name:"summary", value:"A vulnerability in the Session Description Protocol (SDP) parser of Cisco
 Meeting Server could allow an unauthenticated, remote attacker to execute arbitrary code on an affected system.");
 
- script_tag(name: "insight", value: "The vulnerability exists because the affected software performs incomplete
+  script_tag(name:"insight", value:"The vulnerability exists because the affected software performs incomplete
 input validation of the size of media lines in session descriptions. An attacker could exploit this vulnerability
 by sending crafted packets to the SDP parser on an affected system.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to cause a buffer overflow
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to cause a buffer overflow
 condition on an affected system, which could allow the attacker to execute arbitrary code on the system.");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-11-28 12:33:54 +0100 (Mon, 28 Nov 2016) $");
- script_tag(name:"creation_date", value:"2016-11-03 14:19:37 +0700 (Thu, 03 Nov 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_meeting_server_snmp_detect.nasl");
- script_mandatory_keys("cisco/meeting_server/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-03 14:19:37 +0700 (Thu, 03 Nov 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_meeting_server_snmp_detect.nasl");
+  script_mandatory_keys("cisco/meeting_server/installed");
  exit(0);
 }
 
@@ -71,7 +71,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'1.8.0',
 		'1.8.15',
 		'1.9.0',

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_host_scanned_ssh.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_host_scanned_ssh.nasl 11538 2018-09-21 19:50:22Z cfischer $
 #
 # Leave information on scanned hosts
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103625");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11538 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:50:22 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-14 10:37:58 +0100 (Fri, 14 Dec 2012)");
   script_name("Leave information on scanned hosts");
   script_category(ACT_END);
@@ -48,39 +48,40 @@ if (description)
   script_add_preference(name:"Append to File", type:"checkbox", value: "no");
 
   script_add_preference(name:"Use Syslog", type:"checkbox", value: "no");
-  script_add_preference(name:"Syslog priority", type:"radio",
-   value: "info;debug;notice;warning;err;crit;alert;emerg");
+  script_add_preference(name:"Syslog priority", type:"radio", value: "info;debug;notice;warning;err;crit;alert;emerg");
   script_add_preference(name:"Syslog tag", type:"entry", value:"VulScan");
 
-  script_add_preference(name:"Message", type:"entry",
-   value:"Security Scan of ::HOSTNAME:: finished. Start: ::SCAN_START:: Stop: ::SCAN_STOP::");
+  script_add_preference(name:"Message", type:"entry", value:"Security Scan of ::HOSTNAME:: finished. Start: ::SCAN_START:: Stop: ::SCAN_STOP::");
 
   script_tag(name:"summary", value:"This routine stores information about the scan on the scanned host,
-provided it is a unixoid system offering ssh access with a standard shell.
+  provided it is a unixoid system offering ssh access with a standard shell.
 
-The information cover hostname, scan start time and scan end time.
-No details about the actual scan results are stored on the scanned host.
+  The information cover hostname, scan start time and scan end time.
+  No details about the actual scan results are stored on the scanned host.
 
-By default, this routine is disabled even it is selected to run. To activate
-it, it needs to be explictely enabled with its corresponding preference switch.
+  By default, this routine is disabled even it is selected to run. To activate
+  it, it needs to be explictely enabled with its corresponding preference switch.
 
-The preference 'Message' may contain 3 placeholder where respective content
-will be inserted into the message when the message is finally created on the
-target system: '::HOSTNAME::', '::SCAN_START::' and '::SCAN_STOP::'.
+  The preference 'Message' may contain 3 placeholder where respective content
+  will be inserted into the message when the message is finally created on the
+  target system:
 
-Two methods are offered (one or even both concurrently can be used):
+  '::HOSTNAME::', '::SCAN_START::' and '::SCAN_STOP::'.
 
-* Syslog: The utility 'logger' on the target system is used to issue the
-message. The message will appear in the standard log environment as configured
-on the corresponding target system. Error is reported in case the logger
-utility is not available.
+  Two methods are offered (one or even both concurrently can be used):
 
-* File: A filename under /tmp can be chosen where the message is left. It is
-configurable to either overwrite the file each time or to append new
-information. A token is added to this file to ensure only files created by
-this routine are used. Error is reported when the access rights are not
-sufficient or symbolic links detected.");
- exit(0);
+  * Syslog: The utility 'logger' on the target system is used to issue the
+  message. The message will appear in the standard log environment as configured
+  on the corresponding target system. Error is reported in case the logger
+  utility is not available.
+
+  * File: A filename under /tmp can be chosen where the message is left. It is
+  configurable to either overwrite the file each time or to append new
+  information. A token is added to this file to ensure only files created by
+  this routine are used. Error is reported when the access rights are not
+  sufficient or symbolic links detected.");
+
+  exit(0);
 }
 
 include("ssh_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_code_exe_vuln_may10.nasl 8438 2018-01-16 17:38:23Z teissa $
+# $Id: gb_adobe_shockwave_player_mult_code_exe_vuln_may10.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Adobe Shockwave Player Multiple Remote Code Execution Vulnerabilities May-10
 #
@@ -24,26 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to execute arbitrary code in
-  the context of the affected application by tricking a user into visiting a
-  specially crafted web page.
-  Impact Level: Application.";
-tag_affected = "Adobe Shockwave Player prior to 11.5.7.609 on Windows.";
-tag_insight = "Multiple flaws are caused by memory corruption errors, integer and buffer
-  overflows, array indexing, and signedness errors when processing malformed
-  'Shockwave' or 'Director' files, which could be exploited by attackers to
-  execute arbitrary code by tricking a user into visiting a specially crafted
-  web page.";
-tag_solution = "Upgrade to Adobe Shockwave Player 11.5.7.609
-  http://get.adobe.com/shockwave/otherversions/";
-tag_summary = "This host is installed with Adobe Shockwave Player and is prone
-  to multiple remote code execution vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801335");
-  script_version("$Revision: 8438 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-16 18:38:23 +0100 (Tue, 16 Jan 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_cve_id("CVE-2010-0127", "CVE-2010-0128", "CVE-2010-0129", "CVE-2010-0130",
                 "CVE-2010-1280", "CVE-2010-1281", "CVE-2010-1282", "CVE-2010-1283",
@@ -55,24 +40,35 @@ if(description)
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Adobe Shockwave Player Multiple Remote Code Execution Vulnerabilities May-10");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/38751");
-  script_xref(name : "URL" , value : "http://www.zeroscience.mk/codes/shockwave_mem.txt");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/1128");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb10-12.html");
-  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2010-4937.php");
-  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/fulldisclosure/2010-05/0139.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/38751");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/codes/shockwave_mem.txt");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/1128");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb10-12.html");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2010-4937.php");
+  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/fulldisclosure/2010-05/0139.html");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_shockwave_player_detect.nasl");
-  script_require_keys("Adobe/ShockwavePlayer/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("Adobe/ShockwavePlayer/Ver");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code in
+  the context of the affected application by tricking a user into visiting a
+  specially crafted web page.");
+  script_tag(name:"affected", value:"Adobe Shockwave Player prior to 11.5.7.609 on Windows.");
+  script_tag(name:"insight", value:"Multiple flaws are caused by memory corruption errors, integer and buffer
+  overflows, array indexing, and signedness errors when processing malformed
+  'Shockwave' or 'Director' files, which could be exploited by attackers to
+  execute arbitrary code by tricking a user into visiting a specially crafted
+  web page.");
+  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player 11.5.7.609
+  http://get.adobe.com/shockwave/otherversions/");
+  script_tag(name:"summary", value:"This host is installed with Adobe Shockwave Player and is prone
+  to multiple remote code execution vulnerabilities.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -84,7 +80,6 @@ if(!shockVer){
   exit(0);
 }
 
-# Check for versions prior to 11.5.7.609
 if(version_is_less(version:shockVer, test_version:"11.5.7.609")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

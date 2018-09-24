@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_omsa_dir_trav_vuln_apr16.nasl 6134 2017-05-16 10:18:35Z ckuerste $
+# $Id: gb_dell_omsa_dir_trav_vuln_apr16.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Dell OpenManage Server Administrator Directory Traversal Vulnerability - April16
 #
@@ -29,39 +29,36 @@ CPE = "cpe:/a:dell:openmanage_server_administrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807564");
-  script_version("$Revision: 6134 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-4004");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 12:18:35 +0200 (Tue, 16 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-27 10:47:16 +0530 (Wed, 27 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Dell OpenManage Server Administrator Directory Traversal Vulnerability - April16");
 
-  script_tag(name:"summary", value:"This host is installed with 
+  script_tag(name:"summary", value:"This host is installed with
   Dell OpenManage Server Administrator and is prone to directory traversal
   vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw is due to insufficient validation 
+  script_tag(name:"insight", value:"The flaw is due to insufficient validation
   of user supplied input via 'file' parameter to ViewFile.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  authenticated administrators to read arbitrary files on the affected system.
+  authenticated administrators to read arbitrary files on the affected system.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"Dell OpenManage Server Administrator 
+  script_tag(name:"affected", value:"Dell OpenManage Server Administrator
   version 8.4 and prior.");
 
   script_tag(name:"solution", value:"Update to version 8.5");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://vuldb.com/?id.82281");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/39486");
+  script_xref(name:"URL", value:"https://vuldb.com/?id.82281");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39486");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -76,21 +73,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-omsPort = 0;
-omsVer = "";
-
-## Get HTTP Port
 if(!omsPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# Get Version
 if(!omsVer = get_app_version(cpe:CPE, port:omsPort)){
   exit(0);
 }
 
-# Checking for Vulnerable version
 if(version_is_less(version:omsVer, test_version:"8.5"))
 {
   report = report_fixed_ver(installed_version:omsVer, fixed_version:"8.5");

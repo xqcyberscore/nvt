@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dropbear_ssh_crlf_injection_vuln.nasl 6281 2017-06-06 06:45:07Z cfischer $
+# $Id: gb_dropbear_ssh_crlf_injection_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Dropbear SSH CRLF Injection Vulnerability
 #
@@ -29,27 +29,24 @@ CPE = "cpe:/a:matt_johnston:dropbear_ssh_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807740");
-  script_version("$Revision: 6281 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-3116");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-06 08:45:07 +0200 (Tue, 06 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:50 +0530 (Wed, 06 Apr 2016)");
   script_name("Dropbear SSH CRLF Injection Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with Dropbear SSH
   and is prone to crlf injection vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to invalid processing
   of 'X11' forwarding input.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
-  remote authenticated users to inject commands to xauth..
-
-  Impact Level: Application");
+  remote authenticated users to inject commands to xauth..");
 
   script_tag(name:"affected", value:"Dropbear SSH before 2016.72");
 
@@ -74,16 +71,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-# Variable Initialization
-sshPort = "";
-sshVer = "";
-
-## get the port
 if(!sshPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!sshVer = get_app_version(cpe:CPE, port:sshPort)){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_oct11_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_mult_vuln_oct11_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - October11 (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802255");
-  script_version("$Revision: 10133 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-10-18 15:48:35 +0200 (Tue, 18 Oct 2011)");
   script_cve_id("CVE-2011-2876", "CVE-2011-2877", "CVE-2011-2878", "CVE-2011-2879",
                 "CVE-2011-2880", "CVE-2011-2881", "CVE-2011-3873");
@@ -36,33 +36,39 @@ if(description)
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Google Chrome Multiple Vulnerabilities - October11 (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/46308/");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.com/2011/10/stable-channel-update.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/46308/");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.com/2011/10/stable-channel-update.html");
 
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
-  script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to execute arbitrary code in
+  script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code in
   the context of the browser, cause denial-of-service conditions and bypass
-  the same-origin policy.
-  Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Google Chrome version prior to 14.0.835.202 on Windows");
-  script_tag(name : "insight" , value : "Multiple flaws are due to,
+  the same-origin policy.");
+  script_tag(name:"affected", value:"Google Chrome version prior to 14.0.835.202 on Windows");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - A use-after-free error exists in text line box handling.
+
   - An error in the SVG text handling can be exploited to reference a stale
     font.
+
   - An error exists within cross-origin access handling associated with a
     window prototype.
+
   - Some errors exist within audio node handling related to lifetime and
     threading.
+
   - A use-after-free error exists in the v8 bindings.
+
   - An error when handling v8 hidden objects can be exploited to corrupt memory.
+
   - An error in the shader translator can be exploited to corrupt memory.");
-  script_tag(name : "solution" , value : "Upgrade to the Google Chrome 14.0.835.202 or later,
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 14.0.835.202 or later,
   For updates refer to http://www.google.com/chrome");
-  script_tag(name : "summary" , value : "The host is installed with Google Chrome and is prone to multiple
+  script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

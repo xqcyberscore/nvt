@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: office2013_first_run_movie.nasl 9659 2018-04-27 11:55:11Z emoss $
+# $Id: office2013_first_run_movie.nasl 11535 2018-09-21 19:39:46Z cfischer $
 #
 # Check value for Disable First Run Movie
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109079");
-  script_version("$Revision: 9659 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 13:55:11 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11535 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:39:46 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 09:42:28 +0200 (Tue, 17 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,13 +38,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("secpod_ms_office_detection_900025.nasl");
-	script_require_keys("MS/Office/Ver");
+  script_require_keys("MS/Office/Ver");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: 'Check Setting "Disable First Run Movie" (Microsoft Office 2013).');
+  script_tag(name:"summary", value:'Check Setting "Disable First Run Movie" (Microsoft Office 2013).');
   exit(0);
 }
 
-include("smb_nt.inc"); 
+include("smb_nt.inc");
 include("policy_functions.inc");
 
 if(!get_kb_item("SMB/WindowsVersion")){

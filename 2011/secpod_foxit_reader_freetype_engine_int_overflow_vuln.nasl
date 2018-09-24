@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_foxit_reader_freetype_engine_int_overflow_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: secpod_foxit_reader_freetype_engine_int_overflow_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Foxit Reader Freetype Engine Integer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902605");
-  script_version("$Revision: 11356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_cve_id("CVE-2011-1908");
   script_bugtraq_id(48359);
@@ -44,10 +44,9 @@ if(description)
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
-  script_require_keys("foxit/reader/ver");
+  script_mandatory_keys("foxit/reader/ver");
   script_tag(name:"impact", value:"Successful exploitation will let attacker execute arbitrary code or crash an
-  affected application or gain the same user rights as the logged-on user.
-  Impact Level: System/Application");
+  affected application or gain the same user rights as the logged-on user.");
   script_tag(name:"affected", value:"Foxit Reader version prior to 4.0.0.0619");
   script_tag(name:"insight", value:"The flaw is due to an error in FreeType engine when handling certain
   invalid font type, which allows attackers to execute arbitrary code.");

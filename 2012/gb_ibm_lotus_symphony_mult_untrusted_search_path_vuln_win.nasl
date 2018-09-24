@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_symphony_mult_untrusted_search_path_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_ibm_lotus_symphony_mult_untrusted_search_path_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # IBM Lotus Symphony Multiple Untrusted Search Path Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:lotus_symphony";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802963");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2010-5204");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-17 15:01:39 +0530 (Mon, 17 Sep 2012)");
   script_name("IBM Lotus Symphony Multiple Untrusted Search Path Vulnerabilities (Windows)");
 
@@ -48,7 +48,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_ibm_lotus_symphony_detect_win.nasl");
   script_require_ports(139, 445);
-  script_require_keys("IBM/Lotus/Symphony/Win/Ver");
+  script_mandatory_keys("IBM/Lotus/Symphony/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
 code on the target system.");
   script_tag(name:"affected", value:"IBM Lotus Symphony version 1.3.0 Revision 20090908.0900");

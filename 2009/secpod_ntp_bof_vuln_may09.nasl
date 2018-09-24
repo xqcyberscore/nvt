@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ntp_bof_vuln_may09.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_ntp_bof_vuln_may09.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # NTP 'ntpd' Autokey Stack Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900652");
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-05-22 08:49:17 +0200 (Fri, 22 May 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Buffer overflow");
   script_dependencies("gb_ntp_detect_lin.nasl");
-  script_require_keys("NTP/Linux/Ver");
+  script_mandatory_keys("NTP/Linux/Ver");
 
   script_xref(name:"URL", value:"https://launchpad.net/bugs/cve/2009-1252");
   script_xref(name:"URL", value:"http://rhn.redhat.com/errata/RHSA-2009-1040.html");
@@ -55,9 +55,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running NTP Daemon and is prone to stack overflow vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker craft a specially malicious
   NTP request packet which can crash ntp daemon or can cause arbitrary code
-  execution in the affected machine with local user's privilege.
-
-  Impact level: Application.");
+  execution in the affected machine with local user's privilege.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

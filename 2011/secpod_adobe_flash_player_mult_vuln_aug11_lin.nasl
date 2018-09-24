@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_flash_player_mult_vuln_aug11_lin.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_adobe_flash_player_mult_vuln_aug11_lin.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities August-2011 (Linux)
 #
@@ -24,23 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let attackers to execute arbitrary code in the
-  context of the user running the affected application. Failed exploit attempts
-  will likely result in denial-of-service conditions.
-  Impact Level: System/Application";
-tag_affected = "Adobe Flash Player versions prior to 10.3.183.5";
-tag_insight = "Multiple flaws are caused by memory corruptions, cross-site information
-  disclosure, buffer overflow and integer overflow errors.";
-tag_solution = "Upgrade to Adobe Flash Player version 10.3.183.5
-  For updates refer to http://www.adobe.com";
-tag_summary = "This host is installed with Adobe Flash Player and is prone to
-  multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902710");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-08-31 10:37:30 +0200 (Wed, 31 Aug 2011)");
   script_cve_id("CVE-2011-2130", "CVE-2011-2134", "CVE-2011-2137",
                 "CVE-2011-2135", "CVE-2011-2136", "CVE-2011-2138",
@@ -58,31 +46,34 @@ if(description)
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
-  script_require_keys("AdobeFlashPlayer/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to execute arbitrary code in the
+  context of the user running the affected application. Failed exploit attempts
+  will likely result in denial-of-service conditions.");
+  script_tag(name:"affected", value:"Adobe Flash Player versions prior to 10.3.183.5");
+  script_tag(name:"insight", value:"Multiple flaws are caused by memory corruptions, cross-site information
+  disclosure, buffer overflow and integer overflow errors.");
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 10.3.183.5
+  For updates refer to http://www.adobe.com");
+  script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
+  multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb11-21.html");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb11-21.html");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Get Adobe Flash Player version from KB
 flashVer = get_kb_item("AdobeFlashPlayer/Linux/Ver");
 if(flashVer)
 {
   flashVer = ereg_replace(pattern:",", string:flashVer, replace: ".");
 
-  ## Check for Adobe flash player versions < 10.3.183.5
   if(version_is_less(version:flashVer, test_version:"10.3.183.5"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

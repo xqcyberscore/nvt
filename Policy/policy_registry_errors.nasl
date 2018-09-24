@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_registry_errors.nasl 10530 2018-07-17 14:15:42Z asteins $
+# $Id: policy_registry_errors.nasl 11533 2018-09-21 19:24:04Z cfischer $
 #
 # Windows Registry Check: Errors
 #
@@ -8,8 +8,7 @@
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2013 Greenbone Networks GmbH, http://www.greenbone.net
-#
+# Copyright (c) 2015 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105991");
-  script_version("$Revision: 10530 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
+  script_version("$Revision: 11533 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:24:04 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-22 15:06:15 +0700 (Fri, 22 May 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,7 +55,7 @@ if( general_errors ) {
   # Sort to not report changes on delta reports if just the order is different
   general_errors = sort( general_errors );
 
-  report += 'The following errors occured during the check:\n\n';
+  report += 'The following errors occurred during the check:\n\n';
 
   foreach error( general_errors ) {
     report += error + '\n';

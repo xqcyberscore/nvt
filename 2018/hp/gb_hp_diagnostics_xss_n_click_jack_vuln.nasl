@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_diagnostics_xss_n_click_jack_vuln.nasl 8952 2018-02-26 11:51:34Z santu $
+# $Id: gb_hp_diagnostics_xss_n_click_jack_vuln.nasl 11550 2018-09-22 12:21:31Z cfischer $
 #
 # HP Diagnostics Cross Site Scripting and Click Jacking Vulnerabilities
 #
@@ -29,36 +29,33 @@ CPE = "cpe:/a:hp:diagnostics_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812947");
-  script_version("$Revision: 8952 $");
+  script_version("$Revision: 11550 $");
   script_cve_id("CVE-2016-8521", "CVE-2016-8522");
   script_bugtraq_id(95427, 95427);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-26 12:51:34 +0100 (Mon, 26 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:21:31 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-02-23 13:48:49 +0530 (Fri, 23 Feb 2018)");
   script_name("HP Diagnostics Cross Site Scripting and Click Jacking Vulnerabilities");
 
-  script_tag(name:"summary" , value:"This host is running HP Diagnostics Server
+  script_tag(name:"summary", value:"This host is running HP Diagnostics Server
   and is prone to cross site scripting and click-jacking vulnerabilities.");
 
-  script_tag(name:"vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight" , value:"Multiple flaws exists due to multiple
+  script_tag(name:"insight", value:"Multiple flaws exists due to multiple
   unspecified errors in the application.");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to execute arbitrary script code in the browser of an unsuspecting user in the
   context of the affected site. This may let the attacker steal cookie-based
   authentication credentials and to gain unauthorized access to the affected
-  application or obtain sensitive information.
-
-  Impact Level: Application");
+  application or obtain sensitive information.");
 
   script_tag(name:"affected", value:"HP Diagnostics Server versions 9.24 IP1,
   9.26 and 9.26IP1");
 
-  script_tag(name: "solution", value: "Install the provided patches from vendor.
+  script_tag(name:"solution", value:"Install the provided patches from vendor.
   For details refer to,
   https://support.hpe.com/hpsc/doc/public/display?docId=emr_na-c05370100");
 
@@ -66,13 +63,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); ##Patch available as sol. Also IP level not able to detect
 
-  script_xref(name : "URL" , value : "https://support.hpe.com/hpsc/doc/public/display?docId=emr_na-c05370100");
+  script_xref(name:"URL", value:"https://support.hpe.com/hpsc/doc/public/display?docId=emr_na-c05370100");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_hp_diagnostics_server_detect.nasl");
-  script_require_keys("hpdiagnosticsserver/installed");
+  script_mandatory_keys("hpdiagnosticsserver/installed");
+
   exit(0);
 }
 

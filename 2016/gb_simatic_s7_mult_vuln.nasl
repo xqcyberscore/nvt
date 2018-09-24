@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_mult_vuln.nasl 8540 2018-01-26 06:25:05Z ckuersteiner $
+# $Id: gb_simatic_s7_mult_vuln.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Siemens SIMATIC S7-300/400 PLC Multiple Vulnerabilities
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106476");
-  script_version("$Revision: 8540 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-26 07:25:05 +0100 (Fri, 26 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2016-12-15 10:22:34 +0700 (Thu, 15 Dec 2016)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11569 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-15 10:22:34 +0700 (Thu, 15 Dec 2016)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_cve_id("CVE-2016-9158", "CVE-2016-9159");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Siemens SIMATIC S7-300/400 PLC Multiple Vulnerabilities");
 
@@ -49,27 +49,27 @@ if (description)
   script_dependencies("gb_simatic_s7_version.nasl");
   script_mandatory_keys("simatic_s7/detected", "simatic_s7/version");
 
-  script_tag(name: "summary", value: "Siemens SIMATIC S7-300 and S7-400 are prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Siemens SIMATIC S7-300 and S7-400 are prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks if a HTTP port or the COTP port is open.");
+  script_tag(name:"vuldetect", value:"Checks if a HTTP port or the COTP port is open.");
 
-  script_tag(name: "insight", value: "Siemens SIMATIC S7-300 and S7-400 are prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Siemens SIMATIC S7-300 and S7-400 are prone to multiple vulnerabilities:
 
-- Specially crafted packets sent to Port 80/TCP could cause the affected devices to go into defect mode.
+  - Specially crafted packets sent to Port 80/TCP could cause the affected devices to go into defect mode.
 (CVE-2016-9158)
 
-- An attacker with network access to Port 102/TCP (ISO-TSAP) could obtain credentials from the PLC if
+  - An attacker with network access to Port 102/TCP (ISO-TSAP) could obtain credentials from the PLC if
 Protection-level 2 is configured on the affected devices. (CVE-2016-9159)");
 
-  script_tag(name: "impact", value: "A remote attacker may cause a DoS condition or obtain credentials.");
+  script_tag(name:"impact", value:"A remote attacker may cause a DoS condition or obtain credentials.");
 
-  script_tag(name: "affected", value: "S7-300 CPU firmware version prior to 3.X.14, S7-400 PN V6 firmware version
+  script_tag(name:"affected", value:"S7-300 CPU firmware version prior to 3.X.14, S7-400 PN V6 firmware version
 prior to 6.0.6, S7-400 V7 firmware version prior to 7.0.2 and S7-CPU 410 CPU firmware version prior to 8.2.0.");
 
-  script_tag(name: "solution", value: "Siemens provides updated firmware versions.");
+  script_tag(name:"solution", value:"Siemens provides updated firmware versions.");
 
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-16-348-05");
-  script_xref(name: "URL", value: "https://www.siemens.com/cert/pool/cert/siemens_security_advisory_ssa-731239.pdf");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-16-348-05");
+  script_xref(name:"URL", value:"https://www.siemens.com/cert/pool/cert/siemens_security_advisory_ssa-731239.pdf");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20160519-ios-xr.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_cisco_ios_xr_cisco-sa-20160519-ios-xr.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Cisco IOS XR LPTS Denial of Service Vulnerability
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/o:cisco:ios_xr";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105729");
- script_cve_id("CVE-2016-1407");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5557 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105729");
+  script_cve_id("CVE-2016-1407");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11523 $");
 
- script_name("Cisco IOS XR LPTS Denial of Service Vulnerability");
+  script_name("Cisco IOS XR LPTS Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160519-ios-xr");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160519-ios-xr");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the Local Packet Transport Services (LPTS) network stack of Cisco IOS XR for
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the Local Packet Transport Services (LPTS) network stack of Cisco IOS XR for
 Cisco ASR 9000 Series Aggregation Services Routers could allow an unauthenticated, remote attacker
 to cause a limited denial of service (DoS) condition on an affected platform.
 
@@ -56,16 +56,16 @@ condition on an affected platform.
 Cisco has released software updates that address this vulnerability. Workarounds that address this
 vulnerability are not available.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-23 14:24:54 +0200 (Mon, 23 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xr_version.nasl");
- script_mandatory_keys("cisco/ios_xr/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-23 14:24:54 +0200 (Mon, 23 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xr_version.nasl");
+  script_mandatory_keys("cisco/ios_xr/version");
  exit(0);
 }
 
@@ -77,7 +77,7 @@ if( ! model = get_kb_item( "cisco/ios_xr/model" ) ) exit( 0 );
 
 if( "ASR9" >!< model ) exit( 99 );
 
-affected = make_list( 
+affected = make_list(
 		'2.0.0',
 		'3.0.0',
 		'3.0.1',

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_oct12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_google_chrome_mult_vuln01_oct12_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 Oct12 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802470");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-2900", "CVE-2012-5108", "CVE-2012-5109", "CVE-2012-5110",
                 "CVE-2012-5111");
   script_bugtraq_id(55830);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 11:14:26 +0530 (Mon, 15 Oct 2012)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Oct12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50872/");
@@ -44,7 +44,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
-  script_require_keys("GoogleChrome/Win/Ver");
+  script_mandatory_keys("GoogleChrome/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow the attackers to execute arbitrary code
   with the privileges of a local user and cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 22.0.1229.92 on Windows");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-004_win.nasl 9622 2018-04-26 09:01:06Z ckuersteiner $
+# $Id: gb_drupal_core_rce_vuln_SA-CORE-2018-004_win.nasl 11520 2018-09-21 12:52:31Z cfischer $
 #
 # Drupal Core Critical Remote Code Execution Vulnerability (SA-CORE-2018-004) - (Windows, Version Check)
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141029");
-  script_version("$Revision: 9622 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-26 11:01:06 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 11520 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-09-21 14:52:31 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name: "creation_date", value: "2018-04-26 09:02:14 +0700 (Thu, 26 Apr 2018)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-7602");
 

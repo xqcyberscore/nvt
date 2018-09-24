@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_dos_vuln_june12_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_opera_mult_dos_vuln_june12_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Opera Multiple Denial of Service Vulnerabilities - June12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802649");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-3562", "CVE-2012-3563", "CVE-2012-3564", "CVE-2012-3565",
                 "CVE-2012-3566", "CVE-2012-3567", "CVE-2012-3568");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 16:16:16 +0530 (Thu, 21 Jun 2012)");
   script_name("Opera Multiple Denial of Service Vulnerabilities - June12 (Windows)");
   script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/windows/1200b/");
@@ -41,7 +41,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_opera_detect_portable_win.nasl");
-  script_require_keys("Opera/Win/Version");
+  script_mandatory_keys("Opera/Win/Version");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker crash the browser leading to
   denial of service.");
   script_tag(name:"affected", value:"Opera version prior to 12.00 Beta on Windows");

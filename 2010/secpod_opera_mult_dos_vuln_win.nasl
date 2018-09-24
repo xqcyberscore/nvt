@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_mult_dos_vuln_win.nasl 10137 2018-06-08 12:38:04Z asteins $
+# $Id: secpod_opera_mult_dos_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Opera Browser Multiple Denial Of Service Vulnerability (Windows)
 #
@@ -27,40 +27,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902182");
-  script_version("$Revision: 10137 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1989", "CVE-2010-1993");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("Opera Browser Multiple Denial Of Service Vulnerability (Windows)");
-  script_xref(name : "URL" , value : "http://websecurity.com.ua/4206/");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/511327/100/0/threaded");
+  script_xref(name:"URL", value:"http://websecurity.com.ua/4206/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/511327/100/0/threaded");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_opera_detect_portable_win.nasl");
-  script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to cause
-a denial of service.
+  script_mandatory_keys("Opera/Win/Version");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause
+a denial of service.");
+  script_tag(name:"affected", value:"Opera version 9.52 and prior on Windows.");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 
-Impact Level: Application");
-  script_tag(name : "affected" , value : "Opera version 9.52 and prior on Windows.");
-  script_tag(name : "insight" , value : "Multiple flaws are due to,
- - Opera executes a mail application in situations where an 'IMG' element has
+  - Opera executes a mail application in situations where an 'IMG' element has
    a 'SRC' attribute that is a redirect to a mailto: URL, which allows remote
    attackers to launch excessive application via an HTML document with many
    images.
 
- - Improper handling of 'IFRAME' element with a mailto: URL in its 'SRC'
+  - Improper handling of 'IFRAME' element with a mailto: URL in its 'SRC'
    attribute, which allows remote attackers to consume resources via an HTML
    document with many IFRAME elements.");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "The host is installed with Opera Web Browser and is prone to
+  script_tag(name:"summary", value:"The host is installed with Opera Web Browser and is prone to
 Multiple Denial of Service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");

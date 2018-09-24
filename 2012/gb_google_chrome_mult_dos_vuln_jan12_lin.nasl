@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_dos_vuln_jan12_lin.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_google_chrome_mult_dos_vuln_jan12_lin.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Google Chrome Multiple Denial of Service Vulnerabilities - January12 (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802375");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2011-3919", "CVE-2011-3921", "CVE-2011-3922");
   script_bugtraq_id(51300);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-10 15:15:57 +0530 (Tue, 10 Jan 2012)");
   script_name("Google Chrome Multiple Denial of Service Vulnerabilities - January12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47449/");
@@ -42,7 +42,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
-  script_require_keys("Google-Chrome/Linux/Ver");
+  script_mandatory_keys("Google-Chrome/Linux/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code,
   cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 16.0.912.75 on Linux");

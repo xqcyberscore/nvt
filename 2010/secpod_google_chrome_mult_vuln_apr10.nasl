@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_apr10.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: secpod_google_chrome_mult_vuln_apr10.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities (win)
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902050");
-  script_version("$Revision: 10133 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-04-30 15:20:35 +0200 (Fri, 30 Apr 2010)");
   script_cve_id("CVE-2010-1502", "CVE-2010-1767", "CVE-2010-1500", "CVE-2010-1503",
                 "CVE-2010-1504", "CVE-2010-1505", "CVE-2010-1506", "CVE-2010-1767");
@@ -42,21 +42,21 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Google Chrome Multiple Vulnerabilities (win)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/39544");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.com/2010/04/stable-update-security-fixes.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/39544");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.com/2010/04/stable-update-security-fixes.html");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2010 SecPod");
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
-  script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to obtain sensitive information,
+  script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain sensitive information,
   execute arbitrary code in the context of the browser, bypass certain security
-  restrictions.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Google Chrome version prior to 4.1.249.1059 on windows");
-  script_tag(name : "insight" , value : "Multiple flaws are due to:
+  restrictions.");
+  script_tag(name:"affected", value:"Google Chrome version prior to 4.1.249.1059 on windows");
+  script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Type confusion error with 'forms'
 
   - An unspecified error in the handling of 'HTTP requests', which leads to
@@ -70,10 +70,10 @@ if(description)
   - Pages that might load with privileges of the 'New Tab page'.
 
   - An unspecified error in 'V8 bindings' causes a denial of service");
-  script_tag(name : "solution" , value : "Upgrade to the version 4.1.249.1059 or later,
+  script_tag(name:"solution", value:"Upgrade to the version 4.1.249.1059 or later,
   For updates refer to http://www.google.com/chrome");
-  script_tag(name : "solution_type" , value : "VendorFix");
-  script_tag(name : "summary" , value : "This host is installed with Google Chrome Web Browser and is prone
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host is installed with Google Chrome Web Browser and is prone
   to multiple vulnerabilities.");
   exit(0);
 }

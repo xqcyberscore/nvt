@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_register_plus_mult_vuln.nasl 5838 2017-04-03 10:26:36Z cfi $
+# $Id: gb_wordpress_register_plus_mult_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # WordPress Register Plus Plugin Multiple Vulnerabilities
 #
@@ -24,47 +24,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow an attacker to execute
-arbitrary HTML and script code in a user's browser session in the context
-of an affected site.
-
-Impact Level: Application";
-
-tag_affected = "WordPress Register Plus 3.5.1";
-
-tag_insight = "The flaws are due to,
-- Input passed via the 'firstname', 'lastname', 'website', 'aim', 'yahoo',
-  'jabber', 'about', 'pass1', and 'pass2' parameters to 'wp-login.php'
-  (when 'action' is set to 'register') is not properly sanitised before being
-  returned to the user.
-- A direct request to 'dash_widget.php' and 'register-plus.php' allows
-  remote attackers to obtain installation path in an error message.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "The host is running WordPress Register Plus Plugin and is prone
-  to multiple vulnerabilities.";
-
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801492");
-  script_version("$Revision: 5838 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-12-27 09:55:05 +0100 (Mon, 27 Dec 2010)");
   script_bugtraq_id(45057);
   script_cve_id("CVE-2010-4402", "CVE-2010-4403");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("WordPress Register Plus Plugin Multiple Vulnerabilities");
-  script_xref(name : "URL" , value : "http://websecurity.com.ua/4539");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/42360");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/96143/registerplus-xss.txt");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/514903/100/0/threaded");
+  script_xref(name:"URL", value:"http://websecurity.com.ua/4539");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/42360");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/96143/registerplus-xss.txt");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/514903/100/0/threaded");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
@@ -72,12 +48,25 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("wordpress/installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("wordpress/installed");
+  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute
+arbitrary HTML and script code in a user's browser session in the context
+of an affected site.");
+  script_tag(name:"affected", value:"WordPress Register Plus 3.5.1");
+  script_tag(name:"insight", value:"The flaws are due to,
+
+  - Input passed via the 'firstname', 'lastname', 'website', 'aim', 'yahoo',
+  'jabber', 'about', 'pass1', and 'pass2' parameters to 'wp-login.php'
+  (when 'action' is set to 'register') is not properly sanitised before being
+  returned to the user.
+
+  - A direct request to 'dash_widget.php' and 'register-plus.php' allows
+  remote attackers to obtain installation path in an error message.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running WordPress Register Plus Plugin and is prone
+  to multiple vulnerabilities.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -92,7 +81,6 @@ if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 if(dir != NULL)
 {
-  ## Try an exploit
   filename = string(dir + "/wp-login.php?action=register");
   host = http_host_name( port:port );
   authVariables = "user_login=abc&user_email=abc%40gmail&firstname=&lastname=" +
@@ -100,7 +88,6 @@ if(dir != NULL)
                   "%3Ealert%28document.cookie%29%3C%2Fscript%3E&pass2=%22%3E%" +
                   "3Cscript%3Ealert%28document.cookie%29%3C%2Fscript%3E";
 
-  ## Construct post request
   sndReq2 = string("POST ", filename, " HTTP/1.1\r\n",
                    "Host: ", host, "\r\n",
                    "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
@@ -118,7 +105,6 @@ if(dir != NULL)
 
   rcvRes2 = http_keepalive_send_recv(port:port, data:sndReq2);
 
-  ## Check the response to confirm vulnerability
   if(egrep(pattern:"^HTTP/.* 200 OK", string:rcvRes2) &&
             ("><script>alert(document.cookie)</script>" >< rcvRes2))
   {

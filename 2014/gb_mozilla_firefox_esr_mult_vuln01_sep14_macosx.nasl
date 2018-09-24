@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_sep14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_sep14_macosx.nasl 11559 2018-09-24 06:10:19Z cfischer $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-01 September14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804830");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11559 $");
   script_cve_id("CVE-2014-1562", "CVE-2014-1567");
   script_bugtraq_id(69519, 69520);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 08:10:19 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-05 17:30:31 +0530 (Fri, 05 Sep 2014)");
 
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 September14 (Mac OS X)");
@@ -48,7 +48,7 @@ if(description)
 
   - A use-after-free error when setting text directionality.
 
-  - An unspecified errorr.");
+  - An unspecified error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to disclose potentially sensitive information and compromise a user's system.");
@@ -69,6 +69,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox-ESR/MacOSX/Version");
+
   exit(0);
 }
 
@@ -88,3 +89,5 @@ if(ffVer =~ "^(24|31)\.")
     exit(0);
   }
 }
+
+exit(99);

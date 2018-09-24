@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_flash_player_code_exec_n_dos_vuln_lin.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_adobe_flash_player_code_exec_n_dos_vuln_lin.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Adobe Flash Player Code Execution and DoS Vulnerabilities (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903015");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-0772", "CVE-2012-0773", "CVE-2012-0724", "CVE-2012-0725");
   script_bugtraq_id(52748, 52916, 52914);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-30 11:21:49 +0530 (Fri, 30 Mar 2012)");
   script_name("Adobe Flash Player Code Execution and DoS Vulnerabilities (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48623/");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
-  script_require_keys("AdobeFlashPlayer/Linux/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   code or cause a denial of service (memory corruption) via unknown vectors.");
   script_tag(name:"affected", value:"Adobe Flash Player version prior to 10.3.183.18 and 11.x to 11.1.102.63 on Linux");

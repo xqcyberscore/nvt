@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_exprn_eval_sec_bypass_vuln.nasl 11058 2018-08-20 14:18:06Z asteins $
+# $Id: gb_oracle_glassfish_exprn_eval_sec_bypass_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Oracle GlassFish Server Expression Evaluation Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802927");
-  script_version("$Revision: 11058 $");
+  script_version("$Revision: 11549 $");
   script_bugtraq_id(50846);
   script_cve_id("CVE-2011-4358");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-07 13:44:27 +0530 (Tue, 07 Aug 2012)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -52,7 +52,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("GlassFish_detect.nasl");
-  script_require_keys("GlassFish/installed");
+  script_mandatory_keys("GlassFish/installed");
   script_require_ports("Services/www", 8080);
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_aug12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_adobe_shockwave_player_mult_vuln_aug12_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities - August 2012 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802938");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-2043", "CVE-2012-2044", "CVE-2012-2045", "CVE-2012-2046",
                 "CVE-2012-2047");
   script_bugtraq_id(55025, 55028, 55029, 55030, 55031);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-20 12:36:45 +0530 (Mon, 20 Aug 2012)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities - August 2012 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50283/");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_shockwave_player_detect.nasl");
-  script_require_keys("Adobe/ShockwavePlayer/Ver");
+  script_mandatory_keys("Adobe/ShockwavePlayer/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of service or
   execute arbitrary code by tricking a user into visiting a specially crafted
   web page.");

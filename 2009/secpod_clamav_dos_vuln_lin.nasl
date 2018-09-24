@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_clamav_dos_vuln_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_clamav_dos_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # ClamAV Denial of Service Vulnerability (Linux)
 #
@@ -24,24 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Attackers can exploit this issue by executing arbitrary code via a crafted
-  URL in the context of affected application, and can cause denial of service.
-  Impact Level: Application";
-tag_affected = "ClamAV before 0.95.1 on Linux.";
-tag_insight = "- Error in CLI_ISCONTAINED macro in libclamav/others.h while processing
-    malformed files packed with UPack.
-  - Buffer overflow error in cli_url_canon() function in libclamav/phishcheck.c
-    while handling specially crafted URLs.";
-tag_solution = "Upgrade to ClamAV 0.95.1
-  http://www.clamav.net/download";
-tag_summary = "The host is installed with ClamAV and is prone to Denial of Service
-  Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900545");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,16 +41,23 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_clamav_detect_lin.nasl");
-  script_require_keys("ClamAV/Lin/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("ClamAV/Lin/Ver");
+  script_tag(name:"impact", value:"Attackers can exploit this issue by executing arbitrary code via a crafted
+  URL in the context of affected application, and can cause denial of service.");
+  script_tag(name:"affected", value:"ClamAV before 0.95.1 on Linux.");
+  script_tag(name:"insight", value:"- Error in CLI_ISCONTAINED macro in libclamav/others.h while processing
+    malformed files packed with UPack.
+
+  - Buffer overflow error in cli_url_canon() function in libclamav/phishcheck.c
+    while handling specially crafted URLs.");
+  script_tag(name:"solution", value:"Upgrade to ClamAV 0.95.1
+  http://www.clamav.net/download");
+  script_tag(name:"summary", value:"The host is installed with ClamAV and is prone to Denial of Service
+  Vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/34612/");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/0985");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/34612/");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/0985");
   exit(0);
 }
 
@@ -76,5 +70,5 @@ if(avVer == NULL){
 }
 
 if(version_is_less(version:avVer, test_version:"0.95.1")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

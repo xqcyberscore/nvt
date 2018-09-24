@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_icewarp_mail_server_xml_inj_n_info_disc_vuln.nasl 7016 2017-08-29 03:14:59Z ckuersteiner $
+# $Id: secpod_icewarp_mail_server_xml_inj_n_info_disc_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # IceWarp Mail Server XML Entity Injection and Information Disclosure Vulnerability
 #
@@ -29,46 +29,46 @@ CPE = "cpe:/a:icewarp:mail_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902478");
-  script_version("$Revision: 7016 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-29 05:14:59 +0200 (Tue, 29 Aug 2017) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-09-27 17:29:53 +0200 (Tue, 27 Sep 2011)");
   script_cve_id("CVE-2011-3579", "CVE-2011-3580");
   script_bugtraq_id(49753);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
   script_name("IceWarp Mail Server XML Entity Injection and Information Disclosure Vulnerability");
-  script_xref(name: "URL" , value: "http://secunia.com/advisories/46135/");
-  script_xref(name: "URL" , value: "http://xforce.iss.net/xforce/xfdb/70026");
-  script_xref(name: "URL" , value: "http://xforce.iss.net/xforce/xfdb/70025");
-  script_xref(name: "URL" , value: "http://packetstormsecurity.org/files/view/105320/TWSL2011-013.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/46135/");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/70026");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/70025");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/105320/TWSL2011-013.txt");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");
   script_dependencies("gb_icewarp_web_detect.nasl");
-  script_require_keys("icewarp/installed");
+  script_mandatory_keys("icewarp/installed");
 
-  script_tag(name: "impact", value: "Successful exploitation will allow attacker to gain access to potentially
-sensitive information, and possibly cause denial-of-service conditions. Other attacks may also be possible.
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to gain access to potentially
+sensitive information, and possibly cause denial-of-service conditions. Other attacks may also be possible.");
 
-Impact Level: Application");
+  script_tag(name:"affected", value:"IceWarp Mail Server 10.3.2 and prior.");
 
-  script_tag(name: "affected", value: "IceWarp Mail Server 10.3.2 and prior.");
-
-  script_tag(name: "solution", value: "Upgrade to IceWarp Mail Server 10.3.3 or later, For updates refer to
+  script_tag(name:"solution", value:"Upgrade to IceWarp Mail Server 10.3.3 or later, For updates refer to
 http://www.icewarp.com");
 
-  script_tag(name: "summary", value: "The host is running IceWarp Mail Server and is prone to xml entity injection
+  script_tag(name:"summary", value:"The host is running IceWarp Mail Server and is prone to xml entity injection
 and information disclosure vulnerability.
 
 The flaws are due to:
 
-- Certain input passed via SOAP messages to 'server/webmail.php' is not properly verified before being used. This
+  - Certain input passed via SOAP messages to 'server/webmail.php' is not properly verified before being used. This
 can be exploited to disclose the contents of arbitrary files.
 
-- An unspecified script, which calls the 'phpinfo()' function, is stored with insecure permissions inside the web
+  - An unspecified script, which calls the 'phpinfo()' function, is stored with insecure permissions inside the web
 root. This can be exploited to gain knowledge of sensitive information.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -79,11 +79,9 @@ include("host_details.inc");
 if (!port = get_app_port(cpe: CPE, service: "www"))
   exit(0);
 
-## Get the version from kb
 if (!icewarp = get_app_version(cpe:CPE, port:port))
   exit(0);
 
-## Check for IceWarp Mail Server version < 10.3.3
 if (version_is_less(version: icewarp, test_version: "10.3.3")) {
   report = report_fixed_ver(installed_version: icewarp, fixed_version: "10.3.3");
   security_message(port: port, data: report);

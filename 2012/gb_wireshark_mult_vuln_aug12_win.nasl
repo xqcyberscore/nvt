@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_aug12_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wireshark_mult_vuln_aug12_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Wireshark Multiple Vulnerabilities - August 2012 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802944");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-4285", "CVE-2012-4296", "CVE-2012-4293", "CVE-2012-4292",
                 "CVE-2012-4291", "CVE-2012-4290", "CVE-2012-4289", "CVE-2012-4288");
   script_bugtraq_id(55035);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-21 13:48:05 +0530 (Tue, 21 Aug 2012)");
   script_name("Wireshark Multiple Vulnerabilities - August 2012 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50276/");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_wireshark_detect_win.nasl");
-  script_require_keys("Wireshark/Win/Ver");
+  script_mandatory_keys("Wireshark/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to denial of service or
   to consume excessive CPU resources.");
   script_tag(name:"affected", value:"Wireshark 1.4.x before 1.4.15, 1.6.x before 1.6.10,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_address_bar_spoofin_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_apple_safari_address_bar_spoofin_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Apple Safari 'setInterval()' Address Bar Spoofing Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802818");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2011-3844");
   script_bugtraq_id(52323);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-13 18:17:52 +0530 (Tue, 13 Mar 2012)");
   script_name("Apple Safari 'setInterval()' Address Bar Spoofing Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/44976");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_apple_safari_detect_win_900003.nasl");
-  script_require_keys("AppleSafari/Version");
+  script_mandatory_keys("AppleSafari/Version");
   script_tag(name:"impact", value:"Successful exploitation will let attackers to conduct spoofing attacks via a
   crafted HTML document.");
   script_tag(name:"affected", value:"Apple Safari version 5.0.5 on Windows");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_nodes_perm_weak_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_ibm_db2_nodes_perm_weak_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # IBM DB2 'nodes.reg' Permission Weakness Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802727");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-1797");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-03 10:43:50 +0530 (Tue, 03 Apr 2012)");
   script_name("IBM DB2 'nodes.reg' Permission Weakness Vulnerability");
 
@@ -42,7 +42,7 @@ if(description)
   script_family("Databases");
   script_tag(name:"solution_type", value:"VendorFix");
   script_dependencies("gb_ibm_db2_remote_detect.nasl");
-  script_require_keys("IBM-DB2/Remote/ver");
+  script_mandatory_keys("IBM-DB2/Remote/ver");
   script_tag(name:"impact", value:"Unknown impact.");
   script_tag(name:"affected", value:"IBM DB2 version 9.5");
   script_tag(name:"insight", value:"The flaw is due to the 'nodes.reg' file, which is having insecure

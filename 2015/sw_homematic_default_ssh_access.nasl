@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_homematic_default_ssh_access.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: sw_homematic_default_ssh_access.nasl 11536 2018-09-21 19:44:30Z cfischer $
 #
 # HomeMatic SSH Default Credentials
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111066");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11536 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("HomeMatic SSH Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:44:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 15:00:00 +0100 (Wed, 09 Dec 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -40,11 +40,11 @@ if (description)
   script_require_ports("Services/ssh", 22);
   script_dependencies("find_service.nasl");
 
-  script_tag(name:"summary", value: 'The remote HomeMatic device is prone to a default account authentication bypass vulnerability.');
+  script_tag(name:"summary", value:'The remote HomeMatic device is prone to a default account authentication bypass vulnerability.');
   script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
-  script_tag(name:"vuldetect", value: 'Try to login with default credentials.');
-  script_tag(name:"insight", value: 'It was possible to login with default credentials: root/MuZhlo9n%8!G');
-  script_tag(name:"solution", value: 'Change the password.');
+  script_tag(name:"vuldetect", value:'Try to login with default credentials.');
+  script_tag(name:"insight", value:'It was possible to login with default credentials: root/MuZhlo9n%8!G');
+  script_tag(name:"solution", value:'Change the password.');
 
   script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"Workaround");

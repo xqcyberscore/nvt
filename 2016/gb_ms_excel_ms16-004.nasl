@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_ms16-004.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_ms_excel_ms16-004.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Microsoft Office Excel Multiple Remote Code Execution Vulnerabilities (3124585)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806192");
-  script_version("$Revision: 5598 $");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2016-0012", "CVE-2016-0035");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-13 12:23:27 +0530 (Wed, 13 Jan 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Excel Multiple Remote Code Execution Vulnerabilities (3124585)");
@@ -39,25 +39,28 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS16-004.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
+  script_tag(name:"vuldetect", value:"Gets the vulnerable file version and checks if the
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists when,
+
   - Microsoft Excel improperly handles the loading of dynamic link library
     (DLL) files.
+
   - Error when memory is released in an unintended manner.
+
   - Improper handling of files in the memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to run arbitrary code in the context of the current user and
-  to perform actions in the security context of the current user.
+  to perform actions in the security context of the current user.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Microsoft Excel 2007 Service Pack 3 and prior,
 
-  script_tag(name:"affected", value:"
-  Microsoft Excel 2007 Service Pack 3 and prior,
   Microsoft Excel 2010 Service Pack 2 and prior,
+
   Microsoft Excel 2013 Service Pack 1 and prior,
+
   Microsoft Excel 2016 Service Pack 1 and prior");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
@@ -65,10 +68,10 @@ if(description)
   below link, https://technet.microsoft.com/en-us/security/bulletin/ms16-004");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3114540");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3114520");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3114504");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-004");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3114540");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3114520");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3114504");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-004");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -81,10 +84,6 @@ if(description)
 include("smb_nt.inc");
 include("version_func.inc");
 
-# Variable Initialization
-excelVer = "";
-
-## Check for Office Excel 2007/2010/2013/2016
 excelVer = get_kb_item("SMB/Office/Excel/Version");
 if(!excelVer){
   exit(0);
@@ -97,20 +96,19 @@ if(!excelPath){
 
 if(excelVer =~ "^(12|14|15|16)\..*")
 {
-  if(excelVer =~ "^(12)"){
+  if(excelVer =~ "^12"){
     Vulnerable_range  =  "12 - 12.0.6742.4999";
   }
-  else if(excelVer =~ "^(14)"){
+  else if(excelVer =~ "^14"){
     Vulnerable_range  =  "14 - 14.0.7165.5001";
   }
-  else if(excelVer =~ "^(15)"){
+  else if(excelVer =~ "^15"){
    Vulnerable_range  =  "15 - 15.0.4787.1001";
   }
-  else if(excelVer =~ "^(16)"){
+  else if(excelVer =~ "^16"){
    Vulnerable_range  =  "16 - 16.0.4324.1000";
   }
 
-  ## Check version Excel.exe
   if(version_in_range(version:excelVer, test_version:"12.0", test_version2:"12.0.6742.4999") ||
      version_in_range(version:excelVer, test_version:"14.0", test_version2:"14.0.7165.5001") ||
      version_in_range(version:excelVer, test_version:"15.0", test_version2:"15.0.4787.1001") ||

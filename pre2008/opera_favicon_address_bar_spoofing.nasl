@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: opera_favicon_address_bar_spoofing.nasl 10137 2018-06-08 12:38:04Z asteins $
+# $Id: opera_favicon_address_bar_spoofing.nasl 11556 2018-09-22 15:37:40Z cfischer $
 # Description: Opera web browser address bar spoofing weakness (2)
 #
 # Authors:
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14245");
-  script_version("$Revision: 10137 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11556 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:37:40 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-0537");
   script_bugtraq_id(10452);
@@ -42,10 +42,10 @@ if(description)
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Windows");
   script_dependencies("gb_opera_detect_portable_win.nasl");
-  script_require_keys("Opera/Win/Version");
-  script_tag(name : "solution" , value : "Install to Opera 7.51 or newer.");
-  script_tag(name : "solution_type" , value : "VendorFix");
-  script_tag(name : "summary" , value : "The remote host contains a web browser that is vulnerable to
+  script_mandatory_keys("Opera/Win/Version");
+  script_tag(name:"solution", value:"Install to Opera 7.51 or newer.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The remote host contains a web browser that is vulnerable to
   address bar spoofing attacks.
 
   Description :
@@ -60,8 +60,8 @@ if(description)
 
   This issue can be used to spoof information in the address bar, page
   bar and page/window cycler.");
-  script_xref(name : "URL" , value : "http://www.greymagic.com/security/advisories/gm007-op/");
-  script_xref(name : "URL" , value : "http://www.opera.com/windows/changelogs/751/");
+  script_xref(name:"URL", value:"http://www.greymagic.com/security/advisories/gm007-op/");
+  script_xref(name:"URL", value:"http://www.opera.com/windows/changelogs/751/");
   exit(0);
 }
 

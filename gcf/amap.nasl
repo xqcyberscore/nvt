@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: amap.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: amap.nasl 11529 2018-09-21 16:26:30Z cfischer $
 #
 # amap (NASL wrapper)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14663");
-  script_version("$Revision: 8138 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 11529 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 18:26:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -61,7 +61,6 @@ if(description)
 
 tmpnam = NULL;
 
-#get binary
 bin = get_kb_item("Tools/Present/amap/bin");
 
 function hex2raw(s)
@@ -95,7 +94,7 @@ function on_exit()
 
 ip = get_host_ip();
 esc_ip = ""; l = strlen(ip);
-for (i = 0; i < l; i ++) 
+for (i = 0; i < l; i ++)
   if (ip[i] == '.')
     esc_ip = strcat(esc_ip, "\.");
   else
@@ -137,7 +136,7 @@ for (udp_flag = 0; udp_flag <= udp_n; udp_flag ++)
 
  # As all UDP probes are declared harmful, -u is incompatible with -H
  # Amap exits immediately with a strange error.
- # I let it run just in case some "harmless" probes are added in a 
+ # I let it run just in case some "harmless" probes are added in a
  # future version
 
  if (safe_checks()) argv[i++] = "-H";
@@ -165,7 +164,7 @@ for (udp_flag = 0; udp_flag <= udp_n; udp_flag ++)
  pr = get_preference("port_range");
 
  if (! pr) pr = "1-65535";
-  
+
  foreach p (split(pr, sep: ',')) argv[i++] = p;
 
  res1 = pread(cmd: bin, argv: argv, cd: 1, nice: 5);
@@ -183,7 +182,7 @@ for (udp_flag = 0; udp_flag <= udp_n; udp_flag ++)
    proto = v[2];
    port = int(v[1]); ps = strcat(proto, ':', port);
    scanner_add_port(proto: proto, port: port);
-   # As amap sometimes give several results on a same port, we save 
+   # As amap sometimes give several results on a same port, we save
    # the outputs and remember the last one for every port
    # The arrays use a string index to save memory
    amap_ident[ps] = v[5];

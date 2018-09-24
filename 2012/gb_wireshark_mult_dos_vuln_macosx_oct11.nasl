@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_macosx_oct11.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_wireshark_mult_dos_vuln_macosx_oct11.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802625");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_bugtraq_id(49521, 49522, 49524);
   script_cve_id("CVE-2011-3482", "CVE-2011-3483", "CVE-2011-3484");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-02 12:12:12 +0530 (Wed, 02 May 2012)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/45927/");
@@ -44,7 +44,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_wireshark_detect_macosx.nasl");
-  script_require_keys("Wireshark/MacOSX/Version");
+  script_mandatory_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
   service.");
   script_tag(name:"affected", value:"Wireshark versions 1.6.x before 1.6.2 on Mac OS X");

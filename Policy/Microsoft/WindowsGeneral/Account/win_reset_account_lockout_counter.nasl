@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_reset_account_lockout_counter.nasl 10649 2018-07-27 07:16:55Z emoss $
+# $Id: win_reset_account_lockout_counter.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
 # Check value for Reset account lockout counter after (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109111");
-  script_version("$Revision: 10649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:16:55 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 11532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 13:08:49 +0200 (Wed, 25 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -41,10 +41,10 @@ if(description)
   script_add_preference(name:"Minimum", type:"entry", value:"15");
   script_mandatory_keys("Compliance/Launch");
   script_require_keys("WMI/access_successful");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Reset account lockout counter after' on Windows hosts (at least Windows 7).
 
-The policy setting determines the number of minutes that must elapse from the 
+The policy setting determines the number of minutes that must elapse from the
 time a user fails to log on before the failed logon attempt counter is reset to 0.");
   exit(0);
 }
@@ -59,8 +59,8 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 7 system. 
-Older versions of Windows are not supported any more. Please update the 
+  policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
+Older versions of Windows are not supported any more. Please update the
 Operating System.');
   exit(0);
 }

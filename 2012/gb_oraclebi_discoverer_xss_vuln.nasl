@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oraclebi_discoverer_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_oraclebi_discoverer_xss_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # OracleBI Discoverer 'node' Cross Site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:oracle:oraclebi_discoverer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803131");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-19 12:18:56 +0530 (Wed, 19 Dec 2012)");
   script_name("OracleBI Discoverer 'node' Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://ur0b0r0x.blogspot.com/");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_oraclebi_discoverer_detect.nasl");
-  script_require_keys("OracleBIDiscoverer/installed");
+  script_mandatory_keys("OracleBIDiscoverer/installed");
   script_require_ports("Services/www", 80);
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
 arbitrary HTML and script code, which will be executed in a user's browser

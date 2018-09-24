@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftpshell_cli_buf_ovr.nasl 9603 2018-04-25 10:35:13Z asteins $
+# $Id: gb_ftpshell_cli_buf_ovr.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # FTPShell Client 5.24 Buffer Overflow
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:ftpshell:ftpshell";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107083");
-  script_version("$Revision: 9603 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 12:35:13 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 11523 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-14 16:34:55 +0700 (Mon, 14 Nov 2016)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
@@ -46,8 +46,9 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will let the user execute local arbitrary code execution by overwriting several registers on the stack and controlling program execution flow.");
   script_tag(name:"affected", value:"FTPShell Client 5.24.");
   script_tag(name:"insight", value:"ftpshell.exe client has a buffer overflow entry point in the 'Address' input field used to connect to an FTP server.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability.
-  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is running FTPShell Client and is prone to a buffer
   overflow vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");

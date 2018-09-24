@@ -1,5 +1,7 @@
+##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ike-scan.nasl 9624 2018-04-26 09:24:50Z cfischer $
+# $Id: ike-scan.nasl 11529 2018-09-21 16:26:30Z cfischer $
+
 # Description: ike-scan (NASL wrapper)
 #
 # Authors:
@@ -24,7 +26,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
+
 # Adapted code by from Hackin9/Uncon, and ported to perl and then NASL.
 # Additional checks curtesy of NTA Monitor wiki at:
 # <http://www.nta-monitor.com/wiki/index.php/Ike-scan_User_Guide>
@@ -41,58 +44,51 @@
 # Tested against Racoon and Openswan and used as part of a live
 # penetration test against Checkpoint VPN-1 and Cisco VPN.
 
-tag_summary = "ike-scan (NASL wrapper)
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.80000");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 11529 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 18:26:30 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2008-08-31 23:34:05 +0200 (Sun, 31 Aug 2008)");
+  script_name("ike-scan (NASL wrapper)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_category(ACT_SCANNER);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("Port scanners");
+  script_copyright("(c) Tim Brown and Vlatko Kosturjak, 2008");
+  # Not sure how much value there is in supporting IKE v2
+  #  script_add_preference(name:"Use IKE v2", type:"checkbox", value:"no");
+  script_add_preference(name:"Source port number", type:"entry", value:"500");
+  script_add_preference(name:"Destination port number", type:"entry", value:"500");
+  script_add_preference(name:"Enable Aggressive Mode", type:"checkbox", value:"yes");
+  script_add_preference(name:"Enable Main Mode", type:"checkbox", value:"no");
+  script_add_preference(name:"Enable fingerprint using Aggressive Mode", type:"checkbox", value:"no");
+  script_add_preference(name:"Enable fingerprint using Main Mode", type:"checkbox", value:"no");
+  script_add_preference(name:"Group names", type:"entry", value:"vpn");
+  # (["1", "DES"], ["2", "IDEA"], ["3", "Blowfish"], ["4", "RC5"], ["5", "3DES"], ["6", "CAST"], ["7/128", "AES-128"], ["7/196", "AES-196"], ["7/256", "AES-256"], ["8", "Camellia"]);
+  script_add_preference(name:"Encryption algorithms", type:"entry", value:"1,2,3,4,5,6,7/128,7/196,7/256,8");
+  # (["1", "MD5"], ["2", "SHA1"], ["3", "Tiger"], ["4", "SHA2-256"], ["5", "SHA2-384"], ["6", "SHA2-512"]);
+  script_add_preference(name:"Hash algorithms", type:"entry", value:"1,2,3,4,5,6");
+  # (["1", "PSK"], ["2", "DSS-Signature"], ["3", "RSA-Signature"], ["4", "RSA-Encryption"], ["5", "Revised-RSA-Encryption"], ["6", "ElGamel-Encryption"], ["7", "Revised-ElGamel-Encryption"], ["8", "ECDSA-Signature"], ["64221", "Hybrid"], ["65001", "XAUTH"]);
+  script_add_preference(name:"Authentication methods", type:"entry", value:"1,2,3,4,5,6,7,8,64221,65001");
+  # (["1", "MODP-768"], ["2", "MODP-1024"], ["3", "EC2N-155"], ["4", "EC2N-185"], ["5", "MODP-1536"]);
+  # technically we should do 1-20 <http://www.nta-monitor.com/wiki/index.php/Ike-scan_User_Guide#Diffie-Hellman_Group_Values> but that's a bitch
+  script_add_preference(name:"Diffie-Hellman groups", type:"entry", value:"1,2,3,4,5");
+  script_add_preference(name:"Maximum retry", type:"entry", value:"3");
+  script_add_preference(name:"Maximum timeout", type:"entry", value:"");
+  script_dependencies("ping_host.nasl");
+  script_tag(name:"summary", value:"ike-scan (NASL wrapper)
 
 This plugin runs ike-scan to identify IPSEC VPN endpoints.  It will attempt to enumerate supported cipher suites,
-bruteforce valid groupnames and fingerprint any endpoint identified.";
-
-if (description)
-{
-	script_oid("1.3.6.1.4.1.25623.1.0.80000");
-	script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9624 $");
-	script_tag(name:"last_modification", value:"$Date: 2018-04-26 11:24:50 +0200 (Thu, 26 Apr 2018) $");
-	script_tag(name:"creation_date", value:"2008-08-31 23:34:05 +0200 (Sun, 31 Aug 2008)");
-	name = "ike-scan (NASL wrapper)";
-	script_name(name);
-    script_tag(name:"cvss_base", value:"0.0");
- 
-	summary = "Identifies IPSEC VPN endpoints";
-	script_category(ACT_SCANNER);
-  script_tag(name:"qod_type", value:"remote_banner");
-	family = "Port scanners";
-	script_family(family);
-	copyright = "(c) Tim Brown and Vlatko Kosturjak, 2008";
-	script_copyright(copyright);
-	# Not sure how much value there is in supporting IKE v2
-	#script_add_preference(name:"Use IKE v2", type:"checkbox", value:"no");
-	script_add_preference(name:"Source port number", type:"entry", value:"500");
-	script_add_preference(name:"Destination port number", type:"entry", value:"500");
-	script_add_preference(name:"Enable Aggressive Mode", type:"checkbox", value:"yes");
-	script_add_preference(name:"Enable Main Mode", type:"checkbox", value:"no");
-	script_add_preference(name:"Enable fingerprint using Aggressive Mode", type:"checkbox", value:"no");
-	script_add_preference(name:"Enable fingerprint using Main Mode", type:"checkbox", value:"no");
-	script_add_preference(name:"Group names", type:"entry", value:"vpn");
-	# (["1", "DES"], ["2", "IDEA"], ["3", "Blowfish"], ["4", "RC5"], ["5", "3DES"], ["6", "CAST"], ["7/128", "AES-128"], ["7/196", "AES-196"], ["7/256", "AES-256"], ["8", "Camellia"]);
-	script_add_preference(name:"Encryption algorithms", type:"entry", value:"1,2,3,4,5,6,7/128,7/196,7/256,8");
-	# (["1", "MD5"], ["2", "SHA1"], ["3", "Tiger"], ["4", "SHA2-256"], ["5", "SHA2-384"], ["6", "SHA2-512"]);
-	script_add_preference(name:"Hash algorithms", type:"entry", value:"1,2,3,4,5,6");
-	# (["1", "PSK"], ["2", "DSS-Signature"], ["3", "RSA-Signature"], ["4", "RSA-Encryption"], ["5", "Revised-RSA-Encryption"], ["6", "ElGamel-Encryption"], ["7", "Revised-ElGamel-Encryption"], ["8", "ECDSA-Signature"], ["64221", "Hybrid"], ["65001", "XAUTH"]);
-	script_add_preference(name:"Authentication methods", type:"entry", value:"1,2,3,4,5,6,7,8,64221,65001");
-	# (["1", "MODP-768"], ["2", "MODP-1024"], ["3", "EC2N-155"], ["4", "EC2N-185"], ["5", "MODP-1536"]);
-	# technically we should do 1-20 <http://www.nta-monitor.com/wiki/index.php/Ike-scan_User_Guide#Diffie-Hellman_Group_Values> but that's a bitch
-	script_add_preference(name:"Diffie-Hellman groups", type:"entry", value:"1,2,3,4,5");
-	script_add_preference(name:"Maximum retry", type:"entry", value:"3");
-	script_add_preference(name:"Maximum timeout", type:"entry", value:"");
-	script_dependencies("ping_host.nasl");
- script_tag(name : "summary" , value : tag_summary);
-	exit(0);
+bruteforce valid groupnames and fingerprint any endpoint identified.");
+  exit(0);
 }
 
 if (!find_in_path("ike-scan"))
 {
-	set_kb_item(name:"/tmp/UnableToRun/80000", value:TRUE);
-	exit(0);
+  set_kb_item(name:"/tmp/UnableToRun/80000", value:TRUE);
+  exit(0);
 }
 
 encryptionalgorithmname["1"] = "DES";
@@ -211,9 +207,9 @@ if(file_stat(lockfilename)) {
   ul = fread(lockfilename);
   if(start > (int(ul)+900)) { # If the lock file is older than 15 minutes remove it.
       unlink(lockfilename);
-  }  
+  }
 
-}  
+}
 
 while (file_stat(lockfilename) > 0)
 {
@@ -245,7 +241,7 @@ maximumretry = script_get_preference("Maximum retry");
 maximumtimeout = script_get_preference("Maximum timeout");
 destinationipaddress = get_host_ip();
 if (aggressivemodeflag == "yes")
-{	
+{
 	foreach groupname (split(groupnames, sep:",", keep:FALSE))
 	{
 		foreach encryptionalgorithm (split(encryptionalgorithms, sep:",", keep:FALSE))

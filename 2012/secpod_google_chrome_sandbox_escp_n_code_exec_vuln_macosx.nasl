@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_sandbox_escp_n_code_exec_vuln_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_google_chrome_sandbox_escp_n_code_exec_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Google Chrome Full Sandbox Escape and Code Execution Vulnerability (MAC OS X)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903009");
-  script_version("$Revision: 11357 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 11549 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-26 17:24:46 +0530 (Mon, 26 Mar 2012)");
   script_cve_id("CVE-2012-1846", "CVE-2012-1845");
   script_tag(name:"cvss_base", value:"10.0");
@@ -41,7 +41,7 @@ if(description)
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
-  script_require_keys("GoogleChrome/MacOSX/Version");
+  script_mandatory_keys("GoogleChrome/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute
 arbitrary code.");
   script_tag(name:"affected", value:"Google Chrome version 17.0.963.66 and prior on MAC OS X");

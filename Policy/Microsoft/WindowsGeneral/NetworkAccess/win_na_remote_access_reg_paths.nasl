@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_na_remote_access_reg_paths.nasl 10762 2018-08-03 14:03:15Z emoss $
+# $Id: win_na_remote_access_reg_paths.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
 # Check value for Network access: Remotely accessible registry paths
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109223");
-  script_version("$Revision: 10762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 16:03:15 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 11532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-11 12:07:28 +0200 (Mon, 11 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Paths", type:"entry", value:"System\CurrentControlSet\Control\ProductOptions, System\CurrentControlSet\Control\Server Applications, Software\Microsoft\Windows NT\CurrentVersion");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Network access: Remotely accessible registry paths' on Windows hosts (at least
 Windows 7).
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerio_control_9_1_3.nasl 6409 2017-06-22 16:09:11Z cfischer $
+# $Id: gb_kerio_control_9_1_3.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Kerio Control Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:kerio:control";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140068");
-  script_version("$Revision: 6409 $");
+  script_version("$Revision: 11523 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 18:09:11 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-17 12:58:24 +0100 (Thu, 17 Nov 2016)");
   script_tag(name:"qod", value:"80");
   script_name("Kerio Control Multiple Vulnerabilities");
@@ -62,7 +62,7 @@ See the referenced advisory for further information.");
   script_tag(name:"solution", value:"Update to Kerio Control 9.1.3 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20160922-0_Kerio_Control_Potential_backdoor_access_through_multiple_vulnerabilities_v10.txt");
+  script_xref(name:"URL", value:"https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20160922-0_Kerio_Control_Potential_backdoor_access_through_multiple_vulnerabilities_v10.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -76,13 +76,16 @@ See the referenced advisory for further information.");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
+
+vt_string = get_vt_string( lowercase:TRUE );
 
 if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
 if( ! dir = get_app_location( port:port, cpe:CPE ) ) exit( 0 );
 
-url = '/admin/internal/dologin.php?hash=%0D%0A%22%3E%3Cscript%3Ealert(/openvas-xss-test/);%3C/script%3E%3C!--';
+url = '/admin/internal/dologin.php?hash=%0D%0A%22%3E%3Cscript%3Ealert(/' + vt_string +'-xss-test/);%3C/script%3E%3C!--';
 
-if( http_vuln_check( port:port, url:url, pattern:'"><script>alert\\(/openvas-xss-test/\\);</script><!--</a>', extra_check:make_list( "302 Found" ), check_nomatch:make_list( "Location:" ) ) ) {
+if( http_vuln_check( port:port, url:url, pattern:'"><script>alert\\(/' + vt_string + '-xss-test/\\);</script><!--</a>', extra_check:make_list( "302 Found" ), check_nomatch:make_list( "Location:" ) ) ) {
   report = report_vuln_url( port:port, url:url);
   security_message( port:port, data:report );
   exit( 0 );

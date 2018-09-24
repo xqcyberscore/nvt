@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_72p2.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_openssh_72p2.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # OpenSSH <= 7.2p1 - Xauth Injection
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105581");
-  script_version("$Revision: 5745 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-3115");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-03-21 11:45:13 +0100 (Mon, 21 Mar 2016)");
   script_name("OpenSSH <= 7.2p1 - Xauth Injection");
 
   script_tag(name:"summary", value:"openssh xauth command injection may lead to forced-command and /bin/false bypass");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An authenticated user may inject arbitrary xauth commands by sending an x11 channel request that includes a newline character in the x11 cookie. The newline acts as a command separator to the xauth binary. This attack requires the server to have 'X11Forwarding yes' enabled. Disabling it, mitigates this vector.");
   script_tag(name:"impact", value:"By injecting xauth commands one gains limited* read/write arbitrary files, information leakage or xauth-connect capabilities.");
@@ -53,7 +53,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "http://www.openssh.com/txt/release-7.2p2");
+  script_xref(name:"URL", value:"http://www.openssh.com/txt/release-7.2p2");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

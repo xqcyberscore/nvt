@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win10_profile_single_process.nasl 10649 2018-07-27 07:16:55Z emoss $
+# $Id: win10_profile_single_process.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
 # Check value for Profile single process (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109145");
-  script_version("$Revision: 10649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:16:55 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 11532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-30 15:37:24 +0200 (Mon, 30 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -41,11 +41,11 @@ if(description)
   script_add_preference(name:"Value", type:"entry", value:"Administrators");
   script_mandatory_keys("Compliance/Launch");
   script_require_keys("WMI/access_successful");
-  script_tag(name: "summary", value: "This policy setting determines which users 
-can view a sample performance of an application process. Typically, you do not 
-need this user right to use the performance reporting tools included in the 
-operating system. However, you do need this user right if the systems monitor 
-components are configured to collect data through 
+  script_tag(name:"summary", value:"This policy setting determines which users
+can view a sample performance of an application process. Typically, you do not
+need this user right to use the performance reporting tools included in the
+operating system. However, you do need this user right if the systems monitor
+components are configured to collect data through
 Windows Management Instrumentation (WMI).");
   exit(0);
 }
@@ -62,7 +62,7 @@ to query the registry.');
 WindowsName = get_kb_item("SMB/WindowsName");
 if('windows 10' >!< tolower(WindowsName)){
   policy_logging(text:'Host is not a Microsoft Windows 10 System.');
-  exit(0); 
+  exit(0);
 }
 
 title = 'Profile single process';

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_info_disc_vuln_lin.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_opera_mult_info_disc_vuln_lin.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Opera Multiple Information Disclosure Vulnerabilities (Linux)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802833");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2010-5072", "CVE-2010-5068");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-09 16:45:20 +0530 (Mon, 09 Apr 2012)");
   script_name("Opera Multiple Information Disclosure Vulnerabilities (Linux)");
   script_xref(name:"URL", value:"http://w2spconf.com/2010/papers/p26.pdf");
@@ -40,7 +40,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_opera_detection_linux_900037.nasl");
-  script_require_keys("Opera/Linux/Version");
+  script_mandatory_keys("Opera/Linux/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain
 sensitive information about visited web pages by calling getComputedStyle
 method or via a crafted HTML document.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_dll_hijacking_vuln_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_putty_dll_hijacking_vuln_win.nasl 11545 2018-09-21 20:43:34Z cfischer $
 #
 # PuTTY DLL Hijacking Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:putty:putty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810541");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 11545 $");
   script_cve_id("CVE-2016-6167");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:43:34 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-02-09 14:25:24 +0530 (Thu, 09 Feb 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PuTTY DLL Hijacking Vulnerability (Windows)");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code in the context of the affected application.
-  Failed exploit attempts will result in a denial of service condition.
-
-  Impact Level: System/Application");
+  Failed exploit attempts will result in a denial of service condition.");
 
   script_tag(name:"affected", value:"PuTTY beta 0.67(Windows installers
   created by Inno Setup for version 0.67) on Windows.");
@@ -69,6 +67,7 @@ if(description)
   script_dependencies("gb_putty_portable_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("putty/version");
+
   exit(0);
 }
 
@@ -83,7 +82,7 @@ if(!puttyVer = get_app_version(cpe:CPE)){
 
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
-  exit(-1);
+  exit(0);
 }
 
 ## Only installer created by Inno Setup are vulnerable and Inno Setup
@@ -108,4 +107,5 @@ if(version_is_equal(version:puttyVer, test_version:"0.67"))
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

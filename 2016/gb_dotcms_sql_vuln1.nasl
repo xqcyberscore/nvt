@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_sql_vuln1.nasl 4407 2016-11-02 10:23:09Z ckuerste $
+# $Id: gb_dotcms_sql_vuln1.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # dotCMS SQL Injection Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:dotcms:dotcms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106365");
-  script_version("$Revision: 4407 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-11-02 11:23:09 +0100 (Wed, 02 Nov 2016) $");
-  script_tag(name: "creation_date", value: "2016-11-02 09:37:45 +0700 (Wed, 02 Nov 2016)");
-  script_tag(name: "cvss_base", value: "6.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_version("$Revision: 11523 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-02 09:37:45 +0700 (Wed, 02 Nov 2016)");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-4040");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("dotCMS SQL Injection Vulnerability");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("gb_dotcms_detect.nasl");
   script_mandatory_keys("dotCMS/installed");
 
-  script_tag(name: "summary", value: "dotCMS is prone to a SQL injection vulnerability.");
+  script_tag(name:"summary", value:"dotCMS is prone to a SQL injection vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "SQL injection vulnerability in the 'Workflow Screen' allows remote
+  script_tag(name:"insight", value:"SQL injection vulnerability in the 'Workflow Screen' allows remote
 administrators to execute arbitrary SQL commands via the _EXT_15_orderby parameter.");
 
-  script_tag(name: "impact", value: "An authenticated attacker may execute arbitrary SQL commands.");
+  script_tag(name:"impact", value:"An authenticated attacker may execute arbitrary SQL commands.");
 
-  script_tag(name: "affected", value: "dotCMS before 3.3.2");
+  script_tag(name:"affected", value:"dotCMS before 3.3.2");
 
-  script_tag(name: "solution", value: "Update to dotCMS 3.3.2 or later.");
+  script_tag(name:"solution", value:"Update to dotCMS 3.3.2 or later.");
 
-  script_xref(name: "URL", value: "https://security.elarlang.eu/multiple-sql-injection-vulnerabilities-in-dotcms-8x-cve-full-disclosure.html");
+  script_xref(name:"URL", value:"https://security.elarlang.eu/multiple-sql-injection-vulnerabilities-in-dotcms-8x-cve-full-disclosure.html");
 
   exit(0);
 }

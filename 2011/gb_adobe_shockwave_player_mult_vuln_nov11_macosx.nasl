@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_nov11_macosx.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_adobe_shockwave_player_mult_vuln_nov11_macosx.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities (MAC OS X)- Nov 2011
 #
@@ -24,41 +24,36 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to execute arbitrary code or
-  cause a denial of service.
-  Impact Level: Application/System";
-tag_affected = "Adobe Shockwave Player Versions prior to 11.6.3.633 on Mac Os X";
-tag_insight = "Multiple flaws are due to an error in,
-  - DIRAPI.dll and TextXtra.x32 when parsing Director file headers.
-  - DIRAPI.dll when parsing rcsl chunks within Director files.";
-tag_solution = "Upgrade to Adobe Shockwave Player version 11.6.3.633 or later,
-  For updates refer to http://get.adobe.com/shockwave/otherversions/";
-tag_summary = "This host is installed with Adobe Shockwave Player and is prone
-  to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802507");
-  script_version("$Revision: 9351 $");
+  script_version("$Revision: 11552 $");
   script_cve_id("CVE-2011-2446", "CVE-2011-2447", "CVE-2011-2448", "CVE-2011-2449");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-11-10 13:18:33 +0530 (Thu, 10 Nov 2011)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities (MAC OS X) - Nov 2011");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/46667/");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb11-27.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/46667/");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb11-27.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
-  script_require_keys("Adobe/Shockwave/Player/MacOSX/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("Adobe/Shockwave/Player/MacOSX/Version");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code or
+  cause a denial of service.");
+  script_tag(name:"affected", value:"Adobe Shockwave Player Versions prior to 11.6.3.633 on Mac Os X");
+  script_tag(name:"insight", value:"Multiple flaws are due to an error in,
+
+  - DIRAPI.dll and TextXtra.x32 when parsing Director file headers.
+
+  - DIRAPI.dll when parsing rcsl chunks within Director files.");
+  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player version 11.6.3.633 or later,
+  For updates refer to http://get.adobe.com/shockwave/otherversions/");
+  script_tag(name:"summary", value:"This host is installed with Adobe Shockwave Player and is prone
+  to multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -72,7 +67,6 @@ if(!shockVer){
   exit(0);
 }
 
-## Check for Adobe Shockwave Player versions prior to 11.6.3.633
 if(version_is_less(version:shockVer, test_version:"11.6.3.633")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

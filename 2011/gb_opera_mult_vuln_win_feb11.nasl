@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_win_feb11.nasl 10137 2018-06-08 12:38:04Z asteins $
+# $Id: gb_opera_mult_vuln_win_feb11.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Opera Browser Multiple Vulnerabilities Feb-11 (Windows)
 #
@@ -27,28 +27,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801728");
-  script_version("$Revision: 10137 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_cve_id("CVE-2011-0450", "CVE-2011-0682", "CVE-2011-0681", "CVE-2011-0683",
                 "CVE-2011-0684", "CVE-2011-0685", "CVE-2011-0687", "CVE-2011-0686");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Opera Browser Multiple Vulnerabilities Feb-11 (Windows)");
-  script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/985/");
-  script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/windows/1101/");
+  script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/985/");
+  script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/windows/1101/");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_opera_detect_portable_win.nasl");
-  script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary code
-  and cause a denial of service.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Opera Web Browser Version prior 11.01");
-  script_tag(name : "insight" , value : "Multiple flaws are caused due to:
+  script_mandatory_keys("Opera/Win/Version");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
+  and cause a denial of service.");
+  script_tag(name:"affected", value:"Opera Web Browser Version prior 11.01");
+  script_tag(name:"insight", value:"Multiple flaws are caused due to:
 
   - An error in determining the pathname of the filesystem-viewing application
 
@@ -66,10 +65,10 @@ if(description)
 
   - An error in the implementation of Wireless Application Protocol (WAP)
     dropdown lists.");
-  script_tag(name : "solution" , value : "Upgrade to Opera Web Browser Version 11.01 or later,
+  script_tag(name:"solution", value:"Upgrade to Opera Web Browser Version 11.01 or later,
   For updates refer to http://www.opera.com/download/");
-  script_tag(name : "solution_type" , value : "VendorFix");
-  script_tag(name : "summary" , value : "The host is installed with Opera browser and is prone to multiple
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The host is installed with Opera browser and is prone to multiple
   vulnerabilities.");
   exit(0);
 }

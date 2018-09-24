@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_sketchup_skp_file_mem_corruption_vuln_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_google_sketchup_skp_file_mem_corruption_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Google SketchUp '.SKP' File Memory Corruption Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803039");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-4894");
   script_bugtraq_id(55598);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-09 17:33:06 +0530 (Tue, 09 Oct 2012)");
   script_name("Google SketchUp '.SKP' File Memory Corruption Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50663");
@@ -42,7 +42,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_google_sketchup_detect_macosx.nasl");
-  script_require_keys("Google/SketchUp/MacOSX/Version");
+  script_mandatory_keys("Google/SketchUp/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow the attacker to execute arbitrary code in
   the context of the user running the application which can compromise the
   application and possibly the system.");

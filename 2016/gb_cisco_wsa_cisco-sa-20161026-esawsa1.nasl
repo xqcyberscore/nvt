@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20161026-esawsa1.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_cisco_wsa_cisco-sa-20161026-esawsa1.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Cisco Web Security Appliance Malformed MIME Header Vulnerability
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/h:cisco:web_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140032");
- script_cve_id("CVE-2016-1480");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5836 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140032");
+  script_cve_id("CVE-2016-1480");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11569 $");
 
- script_name("Cisco Web Security Appliance Malformed MIME Header Vulnerability");
+  script_name("Cisco Web Security Appliance Malformed MIME Header Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esawsa1");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esawsa1");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the Multipurpose Internet Mail Extensions (MIME) scanner of Cisco AsyncOS
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the Multipurpose Internet Mail Extensions (MIME) scanner of Cisco AsyncOS
 Software for Cisco Email Security Appliances (ESA) and Web Security Appliances (WSA) could allow an
 unauthenticated, remote attacker to bypass configured user filters on the device.
 
@@ -58,16 +58,16 @@ vulnerability are not available.
 
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esawsa1");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
- script_tag(name:"creation_date", value:"2016-10-27 14:57:45 +0200 (Thu, 27 Oct 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_wsa_version.nasl");
- script_mandatory_keys("cisco_wsa/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-27 14:57:45 +0200 (Thu, 27 Oct 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_wsa_version.nasl");
+  script_mandatory_keys("cisco_wsa/installed");
  exit(0);
 }
 
@@ -76,7 +76,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'8.0.0',
 		'8.0.1-023',
 		'8.5.0-000',

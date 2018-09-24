@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_mult_vuln_sep09_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_firefox_mult_vuln_sep09_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities - Sep09 (Linux)
 #
@@ -24,52 +24,48 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "A remote, unauthenticated attacker could execute arbitrary code or cause a
-  vulnerable application to crash.
-  Impact Level: System/Application";
-tag_affected = "Mozilla Firefox version prior to 3.0.14 and 3.5 before 3.5.3 on Linux.";
-tag_insight = "- Multiple errors in the browser and JavaScript engines can be exploited to
-    corrupt memory.
-  - An error exists when processing operations performed on the columns of a
-    XUL tree element. This can be exploited to dereference freed memory via a
-    pointer owned by a column of the XUL tree element.
-  - An error exists when displaying text in the location bar using the default
-    Windows font. This can be exploited to spoof the URL of a trusted site via
-    Unicode characters having a tall line-height.
-  - An error in the implementation of the 'BrowserFeedWriter' object can be
-    exploited to execute arbitrary JavaScript code with chrome privileges.";
-tag_solution = "Upgrade to Firefox version 3.0.14 or 3.5.3 or later
-  http://www.mozilla.com/en-US/firefox/all.html";
-tag_summary = "The host is installed with Firefox browser and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900847");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-09-11 18:01:06 +0200 (Fri, 11 Sep 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-3072", "CVE-2009-3077", "CVE-2009-3078", "CVE-2009-3079");
   script_bugtraq_id(36343);
   script_name("Mozilla Firefox Multiple Vulnerabilities - Sep09 (Linux)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/36671/");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2009/mfsa2009-47.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2009/mfsa2009-49.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2009/mfsa2009-50.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2009/mfsa2009-51.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/36671/");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2009/mfsa2009-47.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2009/mfsa2009-49.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2009/mfsa2009-50.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2009/mfsa2009-51.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_firefox_detect_lin.nasl");
-  script_require_keys("Firefox/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("Firefox/Linux/Ver");
+  script_tag(name:"impact", value:"A remote, unauthenticated attacker could execute arbitrary code or cause a
+  vulnerable application to crash.");
+  script_tag(name:"affected", value:"Mozilla Firefox version prior to 3.0.14 and 3.5 before 3.5.3 on Linux.");
+  script_tag(name:"insight", value:"- Multiple errors in the browser and JavaScript engines can be exploited to
+    corrupt memory.
+
+  - An error exists when processing operations performed on the columns of a
+    XUL tree element. This can be exploited to dereference freed memory via a
+    pointer owned by a column of the XUL tree element.
+
+  - An error exists when displaying text in the location bar using the default
+    Windows font. This can be exploited to spoof the URL of a trusted site via
+    Unicode characters having a tall line-height.
+
+  - An error in the implementation of the 'BrowserFeedWriter' object can be
+    exploited to execute arbitrary JavaScript code with chrome privileges.");
+  script_tag(name:"solution", value:"Upgrade to Firefox version 3.0.14 or 3.5.3 or later
+  http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"summary", value:"The host is installed with Firefox browser and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -84,8 +80,7 @@ if(!ffVer)
   exit(0);
 }
 
-# Grep for Firefox version < 3.0.14 and 3.5 < 3.5.3
 if(version_is_less(version:ffVer, test_version:"3.0.14") ||
    version_in_range(version:ffVer,test_version:"3.5", test_version2:"3.5.2")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_use_wu_statistic_server_path.nasl 9659 2018-04-27 11:55:11Z emoss $
+# $Id: win_use_wu_statistic_server_path.nasl 11535 2018-09-21 19:39:46Z cfischer $
 #
 # Check value for Set the intranet statistics server
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109077");
-  script_version("$Revision: 9659 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 13:55:11 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11535 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:39:46 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-17 09:42:28 +0200 (Tue, 17 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,11 +40,11 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_keys("SMB/WindowsVersion");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: 'Check Setting "Set the intranet statistics server" (Microsoft Windows).');
+  script_tag(name:"summary", value:'Check Setting "Set the intranet statistics server" (Microsoft Windows).');
   exit(0);
 }
 
-include("smb_nt.inc"); 
+include("smb_nt.inc");
 include("policy_functions.inc");
 
 type = 'HKLM';

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_mar12_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_apple_safari_webkit_mult_vuln_mar12_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Apple Safari Webkit Multiple Vulnerabilities - March12 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802814");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-0584", "CVE-2012-0585", "CVE-2011-3881", "CVE-2012-0586",
                 "CVE-2012-0587", "CVE-2012-0588", "CVE-2012-0589", "CVE-2011-3887",
                 "CVE-2012-0590", "CVE-2011-2825", "CVE-2011-2833", "CVE-2011-2846",
@@ -62,7 +62,7 @@ if(description)
                     52363, 52423, 52421);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-13 18:17:52 +0530 (Tue, 13 Mar 2012)");
   script_name("Apple Safari Webkit Multiple Vulnerabilities - March12 (Windows)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5190");
@@ -73,7 +73,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_apple_safari_detect_win_900003.nasl");
-  script_require_keys("AppleSafari/Version");
+  script_mandatory_keys("AppleSafari/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to disclose potentially
   sensitive information, conduct cross-site scripting and spoofing attacks,
   and compromise a user's system.");

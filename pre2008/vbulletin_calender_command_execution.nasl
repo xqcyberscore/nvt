@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: vbulletin_calender_command_execution.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: vbulletin_calender_command_execution.nasl 11556 2018-09-22 15:37:40Z cfischer $
 # Description: vBulletin's Calendar Command Execution Vulnerability
 #
 # Authors:
@@ -22,48 +22,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.11179");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_bugtraq_id(2474);
- script_cve_id("CVE-2001-0475");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("vBulletin's Calendar Command Execution Vulnerability");
- 
- 
- script_category(ACT_ATTACK);
+  script_oid("1.3.6.1.4.1.25623.1.0.11179");
+  script_version("$Revision: 11556 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:37:40 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_bugtraq_id(2474);
+  script_cve_id("CVE-2001-0475");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("vBulletin's Calendar Command Execution Vulnerability");
+  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
- 
- script_copyright("This script is Copyright (C) 2002 SecurITeam");
- script_family("Web application abuses");
- script_dependencies("http_version.nasl", "vbulletin_detect.nasl");
- script_require_ports("Services/www", 80);
- script_require_keys("vBulletin/installed");
- script_tag(name:"summary", value:"A vulnerability in vBulletin enables attackers to craft special URLs 
+
+  script_copyright("This script is Copyright (C) 2002 SecurITeam");
+  script_family("Web application abuses");
+  script_dependencies("http_version.nasl", "vbulletin_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("vBulletin/installed");
+  script_tag(name:"summary", value:"A vulnerability in vBulletin enables attackers to craft special URLs
 that will execute commands on the server through the vBulletin PHP
 script.
 For more information see: http://www.securiteam.com/securitynews/5IP0B203PI.html");
  exit(0);
 }
 
-# Check starts here
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 
-
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
-
-
-# Test an install.
 install = get_kb_item(string("www/", port, "/vBulletin"));
 if (isnull(install)) exit(0);
 matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");

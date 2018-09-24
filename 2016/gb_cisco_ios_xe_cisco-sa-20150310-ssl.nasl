@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20150310-ssl.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_cisco_ios_xe_cisco-sa-20150310-ssl.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Multiple Vulnerabilities in OpenSSL (January 2015) Affecting Cisco Products
 #
@@ -29,21 +29,21 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105679");
- script_cve_id("CVE-2014-3571","CVE-2015-0206","CVE-2014-3569","CVE-2014-3572","CVE-2015-0204","CVE-2015-0205","CVE-2014-8275","CVE-2014-3570");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5745 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105679");
+  script_cve_id("CVE-2014-3571", "CVE-2015-0206", "CVE-2014-3569", "CVE-2014-3572", "CVE-2015-0204", "CVE-2015-0205", "CVE-2014-8275", "CVE-2014-3570");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11523 $");
 
- script_name("Multiple Vulnerabilities in OpenSSL (January 2015) Affecting Cisco Products");
+  script_name("Multiple Vulnerabilities in OpenSSL (January 2015) Affecting Cisco Products");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150310-ssl");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150310-ssl");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"Multiple Cisco products incorporate a version of the OpenSSL package affected by one or more vulnerabilities that could allow an unauthenticated, remote attacker to cause a denial of service condition or perform a man-in-the-middle attack. On January 8, 2015, the OpenSSL Project released a security advisory detailing eight distinct vulnerabilities. The vulnerabilities are referenced in this document as follows:
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"Multiple Cisco products incorporate a version of the OpenSSL package affected by one or more vulnerabilities that could allow an unauthenticated, remote attacker to cause a denial of service condition or perform a man-in-the-middle attack. On January 8, 2015, the OpenSSL Project released a security advisory detailing eight distinct vulnerabilities. The vulnerabilities are referenced in this document as follows:
 
     CVE-2014-3571: OpenSSL DTLS Message Processing Denial of Service Vulnerability
     CVE-2015-0206: OpenSSL dtls1_buffer_record Function DTLS Message Processing Denial of Service Vulnerability
@@ -60,16 +60,16 @@ Workarounds that mitigate these vulnerabilities may be available.
 
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150310-ssl");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-10 10:55:20 +0200 (Tue, 10 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-10 10:55:20 +0200 (Tue, 10 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
  exit(0);
 }
 
@@ -78,7 +78,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'3.3.0S',
 		'3.3.1S',
 		'3.3.2S',

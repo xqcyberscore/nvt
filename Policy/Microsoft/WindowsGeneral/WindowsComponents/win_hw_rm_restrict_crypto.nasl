@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_hw_rm_restrict_crypto.nasl 10961 2018-08-14 14:21:06Z emoss $
+# $Id: win_hw_rm_restrict_crypto.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
 # Check value for Configure use of hardware-based encryption for removable
 # data drives: Restrict crypto algorithms or cipher suites to the following
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109421");
-  script_version("$Revision: 10961 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 16:21:06 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 11532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 12:20:38 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
-	script_add_preference(name:"Value", type:"entry", value:"2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42");
+  script_add_preference(name:"Value", type:"entry", value:"2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42");
   script_mandatory_keys("Compliance/Launch");
   script_tag(name:"summary", value:"This test checks the setting for policy
 'Configure use of hardware-based encryption for removable data drives: Restrict

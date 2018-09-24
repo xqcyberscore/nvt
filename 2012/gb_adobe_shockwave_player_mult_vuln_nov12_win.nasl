@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_nov12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_adobe_shockwave_player_mult_vuln_nov12_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities Nov-2012 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802485");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-4172", "CVE-2012-4173", "CVE-2012-4174", "CVE-2012-4175",
                 "CVE-2012-4176", "CVE-2012-5273");
   script_bugtraq_id(56194, 56195, 56190, 56193, 56188, 56187);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 15:48:07 +0530 (Fri, 02 Nov 2012)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities Nov-2012 (Windows)");
   script_xref(name:"URL", value:"http://seclists.org/cert/2012/108");
@@ -45,7 +45,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_shockwave_player_detect.nasl");
-  script_require_keys("Adobe/ShockwavePlayer/Ver");
+  script_mandatory_keys("Adobe/ShockwavePlayer/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to cause denial of service or
   execute arbitrary code by tricking a user into visiting a specially crafted
   web page.");

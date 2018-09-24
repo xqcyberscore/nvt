@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntopng_priv_esc.nasl 9600 2018-04-25 08:48:41Z asteins $
+# $Id: gb_ntopng_priv_esc.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # ntopng Privilege Escalation Vulnerability
 #
@@ -29,23 +29,20 @@ CPE = "cpe:/a:ntop:ntopng";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107110");
-  script_version("$Revision: 9600 $");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2015-8368");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 10:48:41 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-20 06:40:16 +0200 (Tue, 20 Dec 2016)");
   script_name("ntopng Privilege Escalation Vulnerability");
 
   script_tag(name:"summary", value:"The host is installed with ntopng and is prone to a privilege escalation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of a detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  local users to gain extra privileges.
-
-  Impact Level: System");
+  local users to gain extra privileges.");
 
   script_tag(name:"affected", value:"ntopng 2.0.151021 and below");
 

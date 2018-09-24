@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_smartermail_multiple_vuln_may11.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: secpod_smartermail_multiple_vuln_may11.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # SmarterMail Multiple Vulnerabilities May-11
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:smartertools:smartermail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902432");
-  script_version("$Revision: 7006 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-06-01 11:16:16 +0200 (Wed, 01 Jun 2011)");
   script_cve_id("CVE-2011-2148", "CVE-2011-2149", "CVE-2011-2150", "CVE-2011-2151",
                 "CVE-2011-2152", "CVE-2011-2153", "CVE-2011-2154", "CVE-2011-2155",
@@ -48,12 +48,10 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_smartermail_detect.nasl");
   script_require_ports("Services/www", 80, 9998);
-  script_require_keys("SmarterMail/installed");
+  script_mandatory_keys("SmarterMail/installed");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to conduct cross site scripting,
-  command execution and directory traversal attacks.
-
-  Impact Level: Application");
+  command execution and directory traversal attacks.");
   script_tag(name:"affected", value:"SmarterTools SmarterMail versions 6.0 and prior.");
   script_tag(name:"solution", value:"Upgrade to SmarterTools SmarterMail 8.0 or later,
   For updates refer to http://www.smartertools.com/smartermail/mail-server-software.aspx");
@@ -79,11 +77,9 @@ if(!smPort = get_app_port(cpe:CPE)) exit(0);
 url = "/Login.aspx?shortcutLink=autologin&txtSiteID" +
       "=admin&txtUser=admin&txtPass=admin";
 
-## Construct attack request
 sndReq = http_get(item:url, port:smPort);
 rcvRes = http_keepalive_send_recv(port:smPort, data:sndReq);
 
-## Check the working exploit
 if("txtUser=admin&" >< rcvRes && "txtPass=admin" >< rcvRes){
   report = report_vuln_url(port:smPort, url:url);
   security_message(port:smPort, data:report);

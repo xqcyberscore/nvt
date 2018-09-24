@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_bof_n_dos_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wireshark_bof_n_dos_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Wireshark Heap Based BOF and Denial of Service Vulnerabilities (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802767");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2011-4102", "CVE-2011-4101");
   script_bugtraq_id(50486, 50481);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-02 17:03:46 +0530 (Wed, 02 May 2012)");
   script_name("Wireshark Heap Based BOF and Denial of Service Vulnerabilities (Mac OS X)");
 
@@ -41,7 +41,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_wireshark_detect_macosx.nasl");
-  script_require_keys("Wireshark/MacOSX/Version");
+  script_mandatory_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to cause a denial of service via
   via a malformed packet.");
   script_tag(name:"affected", value:"Wireshark version 1.4.0 through 1.4.9 and 1.6.x before 1.6.3 on Mac OS X");

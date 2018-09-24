@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_mult_vuln_mar12_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_opera_mult_vuln_mar12_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Opera Multiple Vulnerabilities - March12 (MacOSX)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902667");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-1924", "CVE-2012-1925", "CVE-2012-1926", "CVE-2012-1927",
                 "CVE-2012-1928", "CVE-2012-1929");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-29 19:43:23 +0530 (Thu, 29 Mar 2012)");
   script_name("Opera Multiple Vulnerabilities - March12 (MacOSX)");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1009/");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (c) 2012 SecPod");
   script_family("General");
   script_dependencies("gb_opera_detect_macosx.nasl");
-  script_require_keys("Opera/MacOSX/Version");
+  script_mandatory_keys("Opera/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code in
   the context of the browser, inject scripts, bypass certain security
   restrictions, conduct spoofing attacks, or cause a denial of service

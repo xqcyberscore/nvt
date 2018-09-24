@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ntp_bof_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_ntp_bof_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # NTP Stack Buffer Overflow Vulnerability
 #
@@ -24,44 +24,40 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to execute arbitrary
-  code or to cause the application to crash.
-  Impact Level: Application.";
-tag_affected = "NTP versions prior to 4.2.4p7-RC2 on Linux.";
-tag_insight = "The flaw is due to a boundary error within the cookedprint()
-  function in ntpq/ntpq.c while processing malicious response from
-  a specially crafted remote time server.";
-tag_solution = "Upgrade to NTP version 4.2.4p7-RC2
-  http://www.ntp.org/downloads.html";
-tag_summary = "This host has NTP installed and is prone to stack buffer overflow
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900623");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-0159");
   script_bugtraq_id(34481);
   script_name("NTP Stack Buffer Overflow Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/34608");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/49838");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/0999");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/34608");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/49838");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/0999");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Buffer overflow");
   script_dependencies("gb_ntp_detect_lin.nasl");
-  script_require_keys("NTP/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("NTP/Linux/Ver");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
+  code or to cause the application to crash.");
+  script_tag(name:"affected", value:"NTP versions prior to 4.2.4p7-RC2 on Linux.");
+  script_tag(name:"insight", value:"The flaw is due to a boundary error within the cookedprint()
+  function in ntpq/ntpq.c while processing malicious response from
+  a specially crafted remote time server.");
+  script_tag(name:"solution", value:"Upgrade to NTP version 4.2.4p7-RC2
+  http://www.ntp.org/downloads.html");
+  script_tag(name:"summary", value:"This host has NTP installed and is prone to stack buffer overflow
+  vulnerabilities.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -77,7 +73,7 @@ if(!get_udp_port_state(ntpPort)){
 fullVer = get_kb_item("NTP/Linux/FullVer");
 if(fullVer && fullVer == "ntpd 4.2.4p4@1.1520-o Sun Nov 22 17:34:54 UTC 2009 (1)") {
   exit(0); # debian backport
-}  
+}
 
 ntpVer = get_kb_item("NTP/Linux/Ver");
 if(!ntpVer){

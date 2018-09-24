@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cpython_crlf_injection_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_cpython_crlf_injection_vuln_win.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Cpython CRLF Injection Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:python:python";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809218");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-5699");
   script_bugtraq_id(91226);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-09-12 14:53:53 +0530 (Mon, 12 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cpython CRLF Injection Vulnerability (Windows)");
@@ -42,16 +42,13 @@ if(description)
   script_tag(name:"summary", value:"This host is running Cpython and is
   prone to CRLF injection Vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists due to the httplib library 
+  script_tag(name:"insight", value:"The flaw exists due to the httplib library
   did not properly check 'HTTPConnection.putheader' function arguments.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote
-  attackers to inject arbitrary HTTP headers via CRLF sequences in a URL.
-
-  Impact Level: Application");
+  attackers to inject arbitrary HTTP headers via CRLF sequences in a URL.");
 
   script_tag(name:"affected", value:"Cpython before 2.7.10 and
   3.x before 3.4.4 on Windows.");
@@ -61,42 +58,34 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://hg.python.org/cpython/rev/1c45047c5102");
+  script_xref(name:"URL", value:"https://hg.python.org/cpython/rev/1c45047c5102");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_Python_detection.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("pyVer/installed","Host/runs_windows");
+  script_mandatory_keys("pyVer/installed", "Host/runs_windows");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-pythonPort = "";
-pythonVer = "";
-
-## Get HTTP Port
 if(!pythonPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!pythonVer = get_app_version(cpe:CPE, port:pythonPort)){
   exit(0);
 }
 
-## Check for version before 2.7.10
 if(version_is_less(version:pythonVer, test_version:"2.7.10"))
 {
   fix = '2.7.10';
   VULN = TRUE;
 }
 
-## Check for version 3.x before 3.4.4
 else if(pythonVer =~ "^(3\.)")
 {
   if(version_in_range(version:pythonVer, test_version:"3.0", test_version2:"3.4.3"))

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_excel_service_ms16-015.nasl 9316 2018-04-05 07:06:02Z cfischer $
+# $Id: gb_sharepoint_server_excel_service_ms16-015.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # MS SharePoint Server Excel Services Remote Code Execution Vulnerability (3134226)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807305");
-  script_version("$Revision: 9316 $");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2016-0054");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 09:06:02 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 11:07:49 +0530 (Wed, 10 Feb 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server Excel Services Remote Code Execution Vulnerability (3134226)");
@@ -41,7 +41,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS16-015.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
+  script_tag(name:"vuldetect", value:"Gets the vulnerable file version and checks if the
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"The flaw is due to memory corruption errors
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to corrupt memory, execute arbitrary code on
-  affected system and perform cross-site scripting attacks.
-
-  Impact Level: System/Application");
+  affected system and perform cross-site scripting attacks.");
 
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2007 Service Pack 3 Excel Services,
 
@@ -63,14 +61,15 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3114335");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3114432");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3114401");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/ms16-015");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3114335");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3114432");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3114401");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/ms16-015");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/SharePoint/Server/Ver");
   exit(0);
 }

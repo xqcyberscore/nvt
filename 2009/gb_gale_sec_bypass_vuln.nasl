@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gale_sec_bypass_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_gale_sec_bypass_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Gale EVP_VerifyFinal() Security Bypass Vulnerability
 #
@@ -24,46 +24,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow remote attackers to bypass the certificate
-  validation checks and can cause spoofing attacks via signature checks on DSA
-  and ECDSA keys used with SSL/TLS.
-  Impact Level: System/Application";
-tag_affected = "Gale version 0.99 and prior on Linux.";
-tag_insight = "The flaw is due to improper validation of return value in
-  EVP_VerifyFinal function of openssl.";
-tag_solution = "No solution or patch was made available for at least one year since disclosure
-  of this vulnerability. Likely none will be provided anymore. General solution
-  options are to upgrade to a newer release, disable respective features,
-  remove the product or replace the product by another one.
-  For updates refer to http://www.gale.org/";
-tag_summary = "The host is running Gale and is prone to security bypass
-  vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800340");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-01-19 13:47:40 +0100 (Mon, 19 Jan 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2009-0047");
   script_bugtraq_id(33150);
   script_name("Gale EVP_VerifyFinal() Security Bypass Vulnerability");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/499855");
-  script_xref(name : "URL" , value : "http://www.ocert.org/advisories/ocert-2008-016.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/499855");
+  script_xref(name:"URL", value:"http://www.ocert.org/advisories/ocert-2008-016.html");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_gale_detect.nasl");
-  script_require_keys("Gale/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("Gale/Linux/Ver");
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to bypass the certificate
+  validation checks and can cause spoofing attacks via signature checks on DSA
+  and ECDSA keys used with SSL/TLS.");
+  script_tag(name:"affected", value:"Gale version 0.99 and prior on Linux.");
+  script_tag(name:"insight", value:"The flaw is due to improper validation of return value in
+  EVP_VerifyFinal function of openssl.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running Gale and is prone to security bypass
+  vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }

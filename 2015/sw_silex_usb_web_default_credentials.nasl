@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_silex_usb_web_default_credentials.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: sw_silex_usb_web_default_credentials.nasl 11536 2018-09-21 19:44:30Z cfischer $
 #
 # Silex USB-device Webinterface Default Credentials
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111053");
-  script_version("$Revision: 11492 $");
+  script_version("$Revision: 11536 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Silex USB-device Webinterface Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:44:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-13 15:00:00 +0100 (Fri, 13 Nov 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -41,16 +41,16 @@ if (description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value: 'The remote Silex USB-device Webinterface is prone to a
+  script_tag(name:"summary", value:'The remote Silex USB-device Webinterface is prone to a
  default account authentication bypass vulnerability.');
 
-  script_tag(name:"impact", value: 'This issue may be exploited by a remote attacker to gain
+  script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain
  access to sensitive information.');
 
-  script_tag(name:"vuldetect", value: 'Try to login with default credentials.');
-  script_tag(name:"insight", value : 'It was possible to login with default credentials "root"
+  script_tag(name:"vuldetect", value:'Try to login with default credentials.');
+  script_tag(name:"insight", value:'It was possible to login with default credentials "root"
  and an empty password.');
-  script_tag(name:"solution", value: 'Change the password.');
+  script_tag(name:"solution", value:'Change the password.');
 
   script_tag(name:"solution_type", value:"Workaround");
 

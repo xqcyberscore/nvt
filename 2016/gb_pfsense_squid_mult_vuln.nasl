@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_squid_mult_vuln.nasl 7754 2017-11-14 11:15:34Z asteins $
+# $Id: gb_pfsense_squid_mult_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # pfSense Squid Multiple Vulnerabilities
 #
@@ -30,40 +30,38 @@ CPE = "cpe:/a:pfsense:pfsense";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808587");
-  script_version("$Revision: 7754 $");
+  script_version("$Revision: 11523 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-14 12:15:34 +0100 (Tue, 14 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-19 12:17:57 +0530 (Tue, 19 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("pfSense Squid Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with squid running on
+  script_tag(name:"summary", value:"The host is installed with squid running on
   pfSense and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to read cookie or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to improper
+  script_tag(name:"insight", value:"Multiple flaws exist due to improper
   escaping of variables in 'squid-monitor.php' and 'squid_clwarn.php' scripts.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary script code in a user's browser session within
-  the trust relationship between their browser as well as any administrators 
-  viewing the log files through the pfSense web-GUI.
+  the trust relationship between their browser as well as any administrators
+  viewing the log files through the pfSense web-GUI.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Squid Version 0.4.16_2 running on pfSense
+  script_tag(name:"affected", value:"Squid Version 0.4.16_2 running on pfSense
   Version 2.3.1-RELEASE-p1");
 
-  script_tag(name: "solution" , value:"Upgrade to Squid Version 0.4.18 or later,
+  script_tag(name:"solution", value:"Upgrade to Squid Version 0.4.18 or later,
   For updates refer to http://www.squid-cache.org/");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Jun/43");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/137526");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Jun/43");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/137526");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -88,14 +86,12 @@ res1 = http_send_recv(port:http_port, data:req1);
 
 if(res1 && res1 =~ "Powered by.*>SquidClamav")
 {
-  ## Construct Vulnerable URL
-  url = '/squid_clwarn.php?url=xyz&source=xyz&user=&virus=' + 
+  url = '/squid_clwarn.php?url=xyz&source=xyz&user=&virus=' +
         'stream:<script>alert(document.cookie)</script>';
 
-  ## Try attack and check the response to confirm vulnerability
   if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
      pattern:"Powered by.*>SquidClamav",
-     extra_check:make_list("<script>alert\(document.cookie\)</script>", 
+     extra_check:make_list("<script>alert\(document.cookie\)</script>",
                            "Virus detected", "Virus name")))
   {
     report = report_vuln_url(port:http_port, url:url);

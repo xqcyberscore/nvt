@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avocent_kvm_default_login.nasl 11219 2018-09-04 11:52:00Z cfischer $
+# $Id: gb_avocent_kvm_default_login.nasl 11534 2018-09-21 19:38:05Z cfischer $
 #
 # Avocent KVM Default Login
 #
@@ -29,8 +29,8 @@ if(description)
 {
 
   script_oid("1.3.6.1.4.1.25623.1.0.103767");
-  script_version("$Revision: 11219 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 11534 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:38:05 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-19 11:03:03 +0100 (Mon, 19 Aug 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,12 +42,12 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 443);
 
-  script_tag(name:"impact", value : 'This issue may be exploited by a remote attacker to gain access to
+  script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain access to
  sensitive information or modify system configuration without requiring authentication.');
-  script_tag(name:"vuldetect", value : 'This check tries to login into the remote KVM as Admin.');
-  script_tag(name:"insight", value : 'It was possible to login with username "Admin" and an empty password.');
-  script_tag(name:"solution", value : 'Set a password.');
-  script_tag(name:"summary", value : 'The remote Avocent KVM is prone to a default account
+  script_tag(name:"vuldetect", value:'This check tries to login into the remote KVM as Admin.');
+  script_tag(name:"insight", value:'It was possible to login with username "Admin" and an empty password.');
+  script_tag(name:"solution", value:'Set a password.');
+  script_tag(name:"summary", value:'The remote Avocent KVM is prone to a default account
  authentication bypass vulnerability.');
 
   script_tag(name:"solution_type", value:"Mitigation");

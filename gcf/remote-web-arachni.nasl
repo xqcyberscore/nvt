@@ -1,5 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
+# $Id: remote-web-arachni.nasl 11529 2018-09-21 16:26:30Z cfischer $
 #
 # Assess web security with arachni
 #
@@ -20,50 +21,44 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This plugin uses arachni ruby command line to find  
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.110001");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 11529 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 18:26:30 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2011-02-02 13:26:27 +0100 (Wed, 02 Feb 2011)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("arachni (NASL wrapper)");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2011 Michelangelo Sidagni");
+  script_family("Web application abuses");
+  script_add_preference(name: "Modules", type:"radio",value:"All;Audit;Recon");
+  script_add_preference(name: "Concurrent Request Limit", type: "entry", value: "60");
+  script_add_preference(name: "User Agent", type: "entry", value: "arachni");
+  script_add_preference(name: "Authorized by", type: "entry", value: "arachni");
+  script_add_preference(name: "Exclude URLs", type: "entry", value: "");
+  script_add_preference(name: "Include URLs", type: "entry", value: "");
+  script_add_preference(name: "Follow Subdomains", type:"checkbox", value: "no");
+  script_add_preference(name: "Obey robot.txt", type:"checkbox", value: "no");
+  script_add_preference(name: "Audit Headers", type:"checkbox", value: "no");
+  script_add_preference(name: "Autologin Login URL", type: "entry", value: "http://url/loginpage");
+  script_add_preference(name: "Autologin Login Parameters", type: "entry", value: "parameter-username=user&parameter-password=pass");
+  script_add_preference(name: "Seed URL", type: "entry", value: "");
+  script_add_preference(name: 'Report broken arachni installation', value: 'no', type: 'checkbox');
+  script_dependencies("find_service.nasl", "httpver.nasl", "http_login.nasl", "no404.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name:"summary", value:"This plugin uses arachni ruby command line to find
 web security issues.
 
 See the preferences section for arachni options.
 
-Note that OpenVAS is using limited set of arachni options.
+Note that the scanner is using limited set of arachni options.
 Therefore, for more complete web assessment, you should
-use standalone arachni tool for deeper/customized checks.";
-
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.110001");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9367 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:37:00 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-02-02 13:26:27 +0100 (Wed, 02 Feb 2011)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("arachni (NASL wrapper)");
- 
- script_tag(name:"qod_type", value:"remote_banner");
- 
- 
- script_category(ACT_GATHER_INFO);
- 
- script_copyright("This script is Copyright (C) 2011 Michelangelo Sidagni");
- script_family("Web application abuses");
- script_add_preference(name: "Modules", type:"radio",value:"All;Audit;Recon");
- script_add_preference(name: "Concurrent Request Limit", type: "entry", value: "60");
- script_add_preference(name: "User Agent", type: "entry", value: "arachni");
- script_add_preference(name: "Authorized by", type: "entry", value: "arachni");
- script_add_preference(name: "Exclude URLs", type: "entry", value: "");
- script_add_preference(name: "Include URLs", type: "entry", value: "");
- script_add_preference(name: "Follow Subdomains", type:"checkbox", value: "no");
- script_add_preference(name: "Obey robot.txt", type:"checkbox", value: "no");
- script_add_preference(name: "Audit Headers", type:"checkbox", value: "no");
- script_add_preference(name: "Autologin Login URL", type: "entry", value: "http://url/loginpage");
- script_add_preference(name: "Autologin Login Parameters", type: "entry", value: "parameter-username=user&parameter-password=pass");
- script_add_preference(name: "Seed URL", type: "entry", value: "");
- script_add_preference(name: 'Report broken arachni installation', value: 'no', type: 'checkbox');
- script_dependencies("find_service.nasl","httpver.nasl","http_login.nasl","no404.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
-
- script_tag(name : "summary" , value : tag_summary);
+use standalone arachni tool for deeper/customized checks.");
  exit(0);
 }
 
@@ -92,13 +87,13 @@ if (  find_in_path("arachni.rb")  )
 }
 else if (  find_in_path("arachni")  )
 {
-	arachni = "arachni";	
+	arachni = "arachni";
 }
 else
 {
     if( report_broken != 'yes' ) exit( 0 );
     text = 'Arachni could not be found in your system path.\n';
-    text += 'OpenVAS was unable to execute Arachni and to perform the scan you
+    text += 'The scanner was unable to execute Arachni and to perform the scan you
 requested.\nPlease make sure that Arachni is installed and that arachni is
 available in the PATH variable defined for your environment.';
     log_message(port: 0, data: text);
@@ -115,28 +110,28 @@ repfilename =  get_tmp_dir() + "openvas-arachni-" + rand() + "-" + get_host_ip()
 i = 0;
 argv[i++] = arachni;
 argv[i++] = "--report=txt:outfile=" + repfilename;
- 
+
 p = script_get_preference("Modules");
 
 if (p == "All") argv[i++] = "--mods=*";
 else if (p == "Audit") argv[i++] = "--mods=audit*";
 else if (p == "Recon") argv[i++] = "--mods=recon*";
- 
+
 p = script_get_preference("Concurrent Request Limit");
 if (p =~ '^[0-9]+$') { argv[i++] = "--http-req-limit=" + p; }
- 
+
 p = script_get_preference("User Agent");
 if (p =~ '^[0-9a-zA-Z]+$') { argv[i++] = "--user-agent=" + p; }
- 
+
 p = script_get_preference("Authorized by");
 if (p =~ '^[0-9a-zA-Z]+$') { argv[i++] = "--authed-by=" + p; }
- 
+
 p = script_get_preference("Exclude URLs");
 if (p =~ '^[0-9a-zA-Z]+$') { argv[i++] = "--exclude=" + p; }
- 
+
 p = script_get_preference("Include URLs");
 if (p =~ '^[0-9a-zA-Z]+$') { argv[i++] = "--include=" + p; }
- 
+
 p = script_get_preference("Follow Subdomains");
 if ("yes" >< p) argv[i++] = "--follow-subdomains";
 
@@ -175,7 +170,7 @@ if (seed)
     httpurl = httpurl + "/" + seed;
   }
 }
- 
+
 argv[i++] = httpurl;
 
 r = pread(cmd: arachni, argv: argv, cd: 1);
@@ -183,7 +178,7 @@ if (! r) exit(0);	# error
 
 function on_exit()
 {
-	if (file_stat (repfilename)) unlink(repfilename);	
+	if (file_stat (repfilename)) unlink(repfilename);
 }
 
 if (file_stat(repfilename)) {
@@ -206,7 +201,7 @@ if (file_stat(repfilename)) {
         if( report_broken != 'yes' ) exit( 0 );
 	text  = 'arachni report filename is empty. that could mean that\n';
 	text += 'wrong version of arachni is used or tmp dir is not accessible.\n';
-	text += 'In short: check installation of arachni and OpenVAS';
+	text += 'In short: check installation of arachni and the scanner';
 	log_message(port: port, data: text);
 }
 

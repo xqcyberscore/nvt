@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 11386 2018-09-14 11:15:22Z cfischer $
+# $Id: find_service1.nasl 11526 2018-09-21 15:24:10Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 11386 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 13:15:22 +0200 (Fri, 14 Sep 2018) $");
+  script_version("$Revision: 11526 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 17:24:10 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -932,6 +932,18 @@ if( r =~ "^:.* NOTICE AUTH :\*\*\* Looking up your hostname" ||
     ( r =~ "^ERROR :Closing Link:" && "(Throttled: Reconnecting too fast)" >< r ) ) {
   register_service( port:port, proto:"irc", message:"An IRC server seems to be running on this port." );
   log_message( port:port, data:"An IRC server seems to be running on this port." );
+  exit( 0 );
+}
+
+# rsh on 514/tcp if there is something wrong with the name resolution on the target host.
+# The "real" detection will happen in rsh.nasl as it won't response if working correctly...
+# 0x00:  01 67 65 74 6E 61 6D 65 69 6E 66 6F 3A 20 54 65    .getnameinfo: Te
+# 0x10:  6D 70 6F 72 61 72 79 20 66 61 69 6C 75 72 65 20    mporary failure # nb: Ending space...
+# 0x20:  69 6E 20 6E 61 6D 65 20 72 65 73 6F 6C 75 74 69    in name resoluti
+# 0x30:  6F 6E 0A                                           on.
+if( port == 514 && "getnameinfo: Temporary failure in name resolution" >< r ) {
+  register_service( port:port, proto:"rsh", message:"A rsh service seems to be running on this port." );
+  log_message( port:port, data:"A rsh service seems to be running on this port." );
   exit( 0 );
 }
 

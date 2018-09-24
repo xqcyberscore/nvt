@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_make_http_soap_request_info_disclose_vuln_lin.nasl 10457 2018-07-09 06:23:47Z cfischer $
+# $Id: gb_php_make_http_soap_request_info_disclose_vuln_lin.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # PHP 'make_http_soap_request' Information Disclosure Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808666");
-  script_version("$Revision: 10457 $");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2016-3185");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:23:47 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-31 12:31:36 +0530 (Wed, 31 Aug 2016)");
   script_name("PHP 'make_http_soap_request' Information Disclosure Vulnerability (Linux)");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to obtain sensitive information from process memory or
-  cause a denial of service.
-
-  Impact Level: Application");
+  cause a denial of service.");
 
   script_tag(name:"affected", value:"PHP versions prior to 5.4.44, 5.5.x before
   5.5.28, 5.6.x before 5.6.12, and 7.x before 7.0.4 on Linux");

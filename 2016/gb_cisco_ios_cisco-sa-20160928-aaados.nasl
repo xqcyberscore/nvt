@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160928-aaados.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_cisco_ios_cisco-sa-20160928-aaados.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Cisco IOS Software AAA Login Denial of Service Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106316");
- script_cve_id("CVE-2016-6393");
- script_tag(name:"cvss_base", value:"7.1");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5527 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106316");
+  script_cve_id("CVE-2016-6393");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11523 $");
 
- script_name("Cisco IOS Software AAA Login Denial of Service Vulnerability");
+  script_name("Cisco IOS Software AAA Login Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-aaados");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-aaados");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"A vulnerability in the Authentication, Authorization, and Accounting (AAA)
-service for remote Secure Shell Host (SSH) connections to the device for Cisco IOS Software could allow an 
+  script_tag(name:"summary", value:"A vulnerability in the Authentication, Authorization, and Accounting (AAA)
+service for remote Secure Shell Host (SSH) connections to the device for Cisco IOS Software could allow an
 unauthenticated, remote attacker to cause the vulnerable device to reload.");
 
- script_tag(name: "insight", value: "The vulnerability is due to an error log message when a remote SSH
+  script_tag(name:"insight", value:"The vulnerability is due to an error log message when a remote SSH
 connection to the device fails AAA authentication. An attacker could exploit this vulnerability by attempting
 to authenticate to the targeted device.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause a denial of service (DoS)
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause a denial of service (DoS)
 condition.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-09-29 15:56:34 +0700 (Thu, 29 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-29 15:56:34 +0700 (Thu, 29 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version");
  exit(0);
 }
 
@@ -72,7 +72,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'12.0(5)DA',
 		'12.0(5)DA1',
 		'12.0(6)DA',

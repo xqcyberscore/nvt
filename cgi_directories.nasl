@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 11000 2018-08-16 09:46:21Z cfischer $
+# $Id: cgi_directories.nasl 11519 2018-09-21 12:40:00Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 11000 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 11:46:21 +0200 (Thu, 16 Aug 2018) $");
+  script_version("$Revision: 11519 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 14:40:00 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -99,7 +99,7 @@ authRequireDirs  = get_http_kb_auth_required( port:port, host:host );
 cgiList          = get_kb_list( "www/" + host + "/" + port + "/content/cgis/cgis_reporting/*" );
 excludedCgiList  = get_kb_list( "www/" + host + "/" + port + "/content/excluded_cgis/*" );
 dirIndexList     = get_kb_list( "www/" + host + "/" + port + "/content/dir_index" );
-phpinfoList      = get_kb_list( "www/" + host + "/" + port + "/content/phpinfo_script" );
+phpinfoList      = get_kb_list( "www/" + host + "/" + port + "/content/phpinfo_script/reporting" );
 phpPathList      = get_kb_list( "www/" + host + "/" + port + "/content/php_physical_path" );
 guardianList     = get_kb_list( "www/" + host + "/" + port + "/content/guardian" );
 coffeecupList    = get_kb_list( "www/" + host + "/" + port + "/content/coffeecup" );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_sep12_lin.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_adobe_flash_player_mult_vuln_sep12_lin.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities - Sep12 (Linux)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803024");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-4163", "CVE-2012-4164", "CVE-2012-4165", "CVE-2012-4166",
                 "CVE-2012-4167", "CVE-2012-4168", "CVE-2012-4171", "CVE-2012-5054");
   script_bugtraq_id(55136, 55365);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-03 16:55:27 +0530 (Mon, 03 Sep 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - Sep12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50354/");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
-  script_require_keys("AdobeFlashPlayer/Linux/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   code on the target system or cause a denial of service (memory corruption)
   via unspecified vectors.");

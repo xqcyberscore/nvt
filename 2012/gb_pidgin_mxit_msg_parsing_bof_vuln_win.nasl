@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_mxit_msg_parsing_bof_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_pidgin_mxit_msg_parsing_bof_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Pidgin MXit Message Parsing Buffer Overflow Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803102");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-3374");
   script_bugtraq_id(54322);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-19 13:10:50 +0530 (Fri, 19 Oct 2012)");
   script_name("Pidgin MXit Message Parsing Buffer Overflow Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49831/");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_pidgin_detect_win.nasl");
-  script_require_keys("Pidgin/Win/Ver");
+  script_mandatory_keys("Pidgin/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a stack-based buffer
   overflow via a specially crafted RX message which may lead to the execution
   of arbitrary code in the context of the application or to denial-of-service.");

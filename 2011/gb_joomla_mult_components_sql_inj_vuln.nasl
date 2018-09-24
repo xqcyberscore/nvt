@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mult_components_sql_inj_vuln.nasl 10704 2018-08-01 10:06:44Z ckuersteiner $
+# $Id: gb_joomla_mult_components_sql_inj_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Joomla Multiple Components SQL Injection Vulnerabilities
 #
@@ -29,30 +29,30 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802196");
-  script_version("$Revision: 10704 $");
+  script_version("$Revision: 11552 $");
   script_cve_id("CVE-2010-4927", "CVE-2010-4928", "CVE-2010-4929", "CVE-2010-4937",
                 "CVE-2010-4945", "CVE-2010-4902", "CVE-2010-4865", "CVE-2010-4902");
-  script_bugtraq_id(43319, 33254, 43415, 42334, 42986, 43605,42986);
+  script_bugtraq_id(43319, 33254, 43415, 42334, 42986, 43605, 42986);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 12:06:44 +0200 (Wed, 01 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-11-03 15:42:01 +0200 (Thu, 03 Nov 2011)");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Joomla Multiple Components SQL Injection Vulnerabilities");
 
-  script_xref(name: "URL", value: "http://secunia.com/advisories/40932");
-  script_xref(name: "URL", value: "http://secunia.com/advisories/41322");
-  script_xref(name: "URL", value: "http://xforce.iss.net/xforce/xfdb/62151");
-  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/14530/");
-  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/14596/");
-  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/14530/");
-  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/15040/");
-  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/15157/");
-  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/14902/");
-  script_xref(name: "URL", value: "http://packetstormsecurity.org/files/92305/joomlacamelcitydb2-sql.txt");
-  script_xref(name: "URL", value: "http://packetstormsecurity.org/files/view/105704/joomlasgicatalog-sql.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/40932");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/41322");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/62151");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14530/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14596/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14530/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15040/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15157/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14902/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/92305/joomlacamelcitydb2-sql.txt");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/105704/joomlasgicatalog-sql.txt");
 
   script_tag(name:"qod_type", value:"remote_active");
   script_category(ACT_ATTACK);
@@ -60,21 +60,21 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
 
-  script_tag(name: "impact", value: "Successful exploitation will let attackers to manipulate SQL queries by
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL queries by
 injecting arbitrary SQL code.");
 
-  script_tag(name: "affected", value: "Joomla Joostina component, Joomla sgicatalog component, Joomla Amblog
+  script_tag(name:"affected", value:"Joomla Joostina component, Joomla sgicatalog component, Joomla Amblog
 component version 1.0, Joomla Clantools Component version 1.2.3, Joomla CamelcityDB component version 2.2, Joomla
 Clantools Component version 1.2.3, Joomla Restaurant Guide component version 1.0.0, Joomla Aardvertiser Component
 versions 2.1 and 2.1.1.");
 
-  script_tag(name: "insight", value: "For more information about vulnerability refer the references section.");
+  script_tag(name:"insight", value:"For more information about vulnerability refer the references section.");
 
-  script_tag(name: "solution", value: "Update the components.");
+  script_tag(name:"solution", value:"Update the components.");
 
-  script_tag(name: "summary", value: "This host is running Joomla with multiple components and is prone to SQL
+  script_tag(name:"summary", value:"This host is running Joomla with multiple components and is prone to SQL
 injection vulnerabilities.");
 
   exit(0);

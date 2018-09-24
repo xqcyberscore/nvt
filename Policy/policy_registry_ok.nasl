@@ -1,14 +1,14 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_registry_ok.nasl 10530 2018-07-17 14:15:42Z asteins $
+# $Id: policy_registry_ok.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
-# Windows Registry Check: OK 
+# Windows Registry Check: OK
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2013 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (c) 2015 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105989");
-  script_version("$Revision: 10530 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
+  script_version("$Revision: 11532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-22 12:45:19 +0700 (Fri, 22 May 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

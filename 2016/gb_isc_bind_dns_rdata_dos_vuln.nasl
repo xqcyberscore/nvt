@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_dns_rdata_dos_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_isc_bind_dns_rdata_dos_vuln.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # ISC BIND DNS RDATA Handling Remote Denial of Service Vulnerability - Jan16
 #
@@ -29,29 +29,26 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807203");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2012-5166");
   script_bugtraq_id(55852);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-28 12:39:11 +0530 (Thu, 28 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND DNS RDATA Handling Remote Denial of Service Vulnerability - Jan16");
 
-  script_tag(name: "summary" , value:"The host is installed with ISC BIND and is
+  script_tag(name:"summary", value:"The host is installed with ISC BIND and is
   prone to remote denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an error in DNS
+  script_tag(name:"insight", value:"The flaw exists due to an error in DNS
   RDATA Handling in ISC BIND.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to cause denial of service.
-
-  Impact Level: Application");
+  to cause denial of service.");
 
   script_tag(name:"affected", value:"ISC BIND versions 9.2.x through 9.6.x,
   9.4-ESV through 9.4-ESV-R5-P1, 9.6-ESV through 9.6-ESV-R7-P3, 9.7.0 through
@@ -63,7 +60,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://kb.isc.org/article/AA-00801");
+  script_xref(name:"URL", value:"https://kb.isc.org/article/AA-00801");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -82,7 +79,6 @@ if( ! infos = get_app_version_and_proto( cpe:CPE, port:bindPort ) ) exit( 0 );
 bindVer = infos["version"];
 proto = infos["proto"];
 
-##Check for vulnerable version
 if(version_in_range(version:bindVer, test_version:"9.2", test_version2:"9.6"))
 {
   fix = "9.7.7";

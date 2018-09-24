@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_mult_vuln.nasl 8372 2018-01-11 10:19:36Z cfischer $
+# $Id: gb_ibm_domino_mult_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # IBM Domino KeyView PDF Filter Buffer Overflow Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106112");
-  script_version("$Revision: 8372 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-11 11:19:36 +0100 (Thu, 11 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2016-07-04 08:56:27 +0700 (Mon, 04 Jul 2016)");
-  script_tag(name: "cvss_base", value: "6.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11523 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-04 08:56:27 +0700 (Mon, 04 Jul 2016)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-0277", "CVE-2016-0278", "CVE-2016-0279", "CVE-2016-0301");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("IBM Domino KeyView PDF Filter Buffer Overflow Vulnerabilities");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_lotus_domino_detect.nasl");
   script_mandatory_keys("Domino/Version");
 
-  script_tag(name: "summary", value: "IBM Domino is prone to multiple buffer overflow vulnerabilities in
+  script_tag(name:"summary", value:"IBM Domino is prone to multiple buffer overflow vulnerabilities in
 KeyView PDF filter.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "IBM Domino is prone to multiple heap-based buffer overflow vulnerabilities
+  script_tag(name:"insight", value:"IBM Domino is prone to multiple heap-based buffer overflow vulnerabilities
 in the KeyView PDF filter.");
 
-  script_tag(name: "impact", value: "Remote attackers may execute arbitrary code via a crafted PDF document.");
+  script_tag(name:"impact", value:"Remote attackers may execute arbitrary code via a crafted PDF document.");
 
-  script_tag(name: "affected", value: "IBM Domino 8.5.x before 8.5.3 FP6 IF13 and 9.x before 9.0.1 FP6");
+  script_tag(name:"affected", value:"IBM Domino 8.5.x before 8.5.3 FP6 IF13 and 9.x before 9.0.1 FP6");
 
-  script_tag(name: "solution", value: "Update to 8.5.3 FP6 IF13 or 9.0.1 FP6 or later versions.");
+  script_tag(name:"solution", value:"Update to 8.5.3 FP6 IF13 or 9.0.1 FP6 or later versions.");
 
-  script_xref(name: "URL", value: "https://www-01.ibm.com/support/docview.wss?uid=swg21983292");
+  script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg21983292");
 
   exit(0);
 }

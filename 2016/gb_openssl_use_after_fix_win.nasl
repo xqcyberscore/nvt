@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_use_after_fix_win.nasl 9585 2018-04-24 11:46:06Z asteins $
+# $Id: gb_openssl_use_after_fix_win.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # OpenSSL Use-After-Free Fix Vulnerability (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107055");
-  script_version("$Revision: 9585 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-6309");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 13:46:06 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"creation_date", value:"2016-09-26 06:40:16 +0200 (Mon, 26 Sep 2016)");
   script_tag(name:"cvss_base", value:"10.0");
@@ -45,7 +45,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed","Host/runs_windows");
+  script_mandatory_keys("OpenSSL/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
 
   script_tag(name:"summary", value:"This host is running OpenSSL and prone to denial of service or remote code execution vulnerability.");

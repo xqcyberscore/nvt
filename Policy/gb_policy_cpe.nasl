@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_cpe.nasl 7828 2017-11-20 11:35:04Z cfischer $
+# $Id: gb_policy_cpe.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
 # CPE-based Policy Check
 #
@@ -28,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103962");
-  script_version("$Revision: 7828 $");
+  script_version("$Revision: 11532 $");
   script_name("CPE Policy Check");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 12:35:04 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-06 11:30:32 +0700 (Mon, 06 Jan 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -121,7 +121,7 @@ foreach mycpe (mycpes) {
       found = TRUE;
     }
   }
-  
+
   if (!found) {
     missing += string(mycpe, "\n");
   }

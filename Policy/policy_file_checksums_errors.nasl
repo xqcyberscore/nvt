@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums_errors.nasl 10530 2018-07-17 14:15:42Z asteins $
+# $Id: policy_file_checksums_errors.nasl 11533 2018-09-21 19:24:04Z cfischer $
 #
 # List Files with checksum errors
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103943");
-  script_version("$Revision: 10530 $");
+  script_version("$Revision: 11533 $");
   script_name("File Checksums: Errors");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:24:04 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-13 13:33:56 +0200 (Tue, 13 Aug 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Policy");
@@ -75,7 +75,7 @@ if( general_errors ) {
   # Sort to not report changes on delta reports if just the order is different
   general_errors = sort( general_errors );
 
-  report += 'The following errors occured during the check:\n\n';
+  report += 'The following errors occurred during the check:\n\n';
 
   foreach error( general_errors ) {
     report += error + '\n';

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win10_prevent_onedrive_file_storage.nasl 10989 2018-08-15 14:57:51Z emoss $
+# $Id: win10_prevent_onedrive_file_storage.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
 # Check value for Prevent the usage of OneDrive for file storage
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109095");
-  script_version("$Revision: 10989 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 16:57:51 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 11532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-23 12:03:04 +0200 (Mon, 23 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -43,11 +43,16 @@ if(description)
   script_tag(name:"summary", value:"This policy setting lets you prevent apps and
 features from working with files on OneDrive.
 Enabling this feature prevents:
-- User access to OneDrive from OneDrive app and file picker
-- Windows Store apps access to OneDrive
-- OneDrive appearance in navigation pane in File Explorer
-- OneDrive files kept in sync with the cloud
-- User from automatically upload photos and videos from camera roll directory.");
+
+  - User access to OneDrive from OneDrive app and file picker
+
+  - Windows Store apps access to OneDrive
+
+  - OneDrive appearance in navigation pane in File Explorer
+
+  - OneDrive files kept in sync with the cloud
+
+  - User from automatically upload photos and videos from camera roll directory.");
   exit(0);
 }
 

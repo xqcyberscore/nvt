@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_registry.nasl 8073 2017-12-11 09:40:10Z cfischer $
+# $Id: policy_registry.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
 # Windows Registry Check
 #
@@ -8,8 +8,7 @@
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2013 Greenbone Networks GmbH, http://www.greenbone.net
-#
+# Copyright (c) 2015 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -28,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105988");
-  script_version("$Revision: 8073 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 10:40:10 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 11532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-22 12:17:31 +0700 (Fri, 22 May 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -117,7 +116,6 @@ for (i=0; i<max_index(valid_lines_list); i++) {
           ((present == "false") && key_exists))
         set_kb_item(name:"policy/registry/violation_list", value:hive + '\\' + key + ' | ' + present);
   }
-  # Check as well the content
   else {
     if (type == "REG_DWORD")
       reg_content = registry_get_dword(key:key, item:value);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackstratus_LOGStorm_mysql_htr_login.nasl 9978 2018-05-28 08:52:24Z cfischer $
+# $Id: gb_blackstratus_LOGStorm_mysql_htr_login.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Blackstratus LOGStorm default MySQL password for user `htr`
 #
@@ -26,24 +26,24 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140093");
- script_version("$Revision: 9978 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
- script_tag(name:"creation_date", value:"2016-12-05 17:47:01 +0100 (Mon, 05 Dec 2016)");
- script_tag(name:"cvss_base", value:"9.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_name("Blackstratus LOGStorm default MySQL password for user `htr`");
- script_category(ACT_ATTACK);
- script_family("Default Accounts");
- script_tag(name:"qod_type", value:"remote_active");
- script_tag(name:"solution_type", value:"Workaround");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("mysql_version.nasl");
- script_require_ports("Services/mysql", 3306);
- script_mandatory_keys("MySQL_MariaDB/installed");
+  script_oid("1.3.6.1.4.1.25623.1.0.140093");
+  script_version("$Revision: 11569 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-05 17:47:01 +0100 (Mon, 05 Dec 2016)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
+  script_name("Blackstratus LOGStorm default MySQL password for user `htr`");
+  script_category(ACT_ATTACK);
+  script_family("Default Accounts");
+  script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"solution_type", value:"Workaround");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("mysql_version.nasl");
+  script_require_ports("Services/mysql", 3306);
+  script_mandatory_keys("MySQL_MariaDB/installed");
 
- script_tag(name : "solution" , value : 'Change the password.');
- script_tag(name : "summary" , value : 'The remote MySQL service has the password `htr_pwd` for the user `htr`.');
+  script_tag(name:"solution", value:'Change the password.');
+  script_tag(name:"summary", value:'The remote MySQL service has the password `htr_pwd` for the user `htr`.');
  exit(0);
 }
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: invision_power_board_calendar_sql_injection.nasl 10212 2018-06-15 09:51:23Z ckuersteiner $
+# $Id: invision_power_board_calendar_sql_injection.nasl 11556 2018-09-22 15:37:40Z cfischer $
 # Description: Invision Power Board Calendar SQL Injection Vulnerability
 #
 # Authors:
@@ -27,15 +27,15 @@ CPE = "cpe:/a:invision_power_services:invision_power_board";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11977");
-  script_version("$Revision: 10212 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 11:51:23 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 11556 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:37:40 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9232);
   script_cve_id("CVE-2004-1785");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Invision Power Board Calendar SQL Injection Vulnerability");
 
@@ -47,11 +47,11 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl", "invision_power_board_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("invision_power_board/installed");
+  script_mandatory_keys("invision_power_board/installed");
 
-  script_tag(name: "solution", value: "Upgrade to the latest version of this software.");
+  script_tag(name:"solution", value:"Upgrade to the latest version of this software.");
 
-  script_tag(name: "summary", value: "The remote host is running Invision Power Board - a CGI suite designed to
+  script_tag(name:"summary", value:"The remote host is running Invision Power Board - a CGI suite designed to
 set up a bulletin board system on the remote web server.
 
 A vulnerability has been discovered in the sources/calendar.php file that allows unauthorized users to inject SQL
@@ -59,7 +59,7 @@ commands.
 
 An attacker may use this flaw to gain the control of the remote database");
 
-  script_xref(name: "URL", value: "http://www.invisionboard.com/download/index.php?act=dl&s=1&id=12&p=1");
+  script_xref(name:"URL", value:"http://www.invisionboard.com/download/index.php?act=dl&s=1&id=12&p=1");
 
   exit(0);
 }

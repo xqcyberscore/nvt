@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803419");
-  script_version("$Revision: 11045 $");
+  script_version("$Revision: 11525 $");
   script_bugtraq_id(57931, 57947);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-19 21:29:09 +0200 (Sun, 19 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 17:19:23 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-19 19:32:21 +0530 (Tue, 19 Feb 2013)");
   script_cve_id("CVE-2013-0640", "CVE-2013-0641");
   script_tag(name:"cvss_base", value:"9.3");
@@ -59,9 +59,7 @@ if(description)
   multiple unspecified vulnerabilities.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
-  code or cause a denial of service via a crafted PDF document.
-
-  Impact level: System/Application");
+  code or cause a denial of service via a crafted PDF document.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

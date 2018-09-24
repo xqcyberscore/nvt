@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_unspecified_vuln04_jan16.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_oracle_db_unspecified_vuln04_jan16.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Oracle Database Server Unspecified Vulnerability -04 Jan16
 #
@@ -28,28 +28,25 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807044");
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2015-2586");
   script_bugtraq_id(75865);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-25 14:59:25 +0530 (Mon, 25 Jan 2016)");
   script_name("Oracle Database Server Unspecified Vulnerability -04 Jan16");
 
   script_tag(name:"summary", value:"This host is running  Oracle Database Server
-  and is prone to unspecified vulnerability.");
+  and is prone to an unspecified vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an unspecified
   error in the Application Express component.");
 
   script_tag(name:"impact", value:"Successfully exploitation will allow remote
-  authenticated attackers to affect availability via unknown vectors.
-
-  Impact Level: Application");
+  authenticated attackers to affect availability via unknown vectors.");
 
   script_tag(name:"affected", value:"Oracle Database Server versions
   before 4.2.1");
@@ -61,7 +58,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
@@ -73,23 +70,16 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-include("global_settings.inc");
 
-## Variable Initialization
-dbPort = "";
-dbVer = "";
 
-## Get port
-if(!dbport = get_app_port(cpe:CPE)){
+if(!dbPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!dbVer = get_app_version(cpe:CPE, port:dbPort)){
   exit(0);
 }
 
-## Check for vulnerable version
 if(version_is_less(version:dbVer, test_version:"4.2.1"))
 {
   report = report_fixed_ver(installed_version:dbVer, fixed_version:"Apply the appropriate patch");

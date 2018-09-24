@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2016-08_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2016-08_win.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2016-08)-Windows
 #
@@ -29,39 +29,43 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807352");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2016-5141", "CVE-2016-5142", "CVE-2016-5139", "CVE-2016-5140",
                 "CVE-2016-5145", "CVE-2016-5143", "CVE-2016-5144", "CVE-2016-5146");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-04 15:10:25 +0530 (Thu, 04 Aug 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2016-08)-Windows");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
+
   - An address bar spoofing vulnerability.
+
   - An use-after-free error in Blink.
+
   - Multiple heap overflow errors in pdfium.
+
   - A same origin bypass error for images in Blink.
+
   - Parameter sanitization failure in DevTools.
+
   - The various fixes from internal audits, fuzzing and other initiatives.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to conduct spoofing attacks on a
   targeted system, to bypass security, to corrupt memory, to execute arbitrary
-  code and to cause denial of service condition.
+  code and to cause denial of service condition.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Google Chrome version prior to
+  script_tag(name:"affected", value:"Google Chrome version prior to
   52.0.2743.116 on Windows");
 
-  script_tag(name: "solution", value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   52.0.2743.116 or later.
   For updates refer to http://www.google.com/chrome");
 
@@ -69,7 +73,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2016/08/stable-channel-update-for-desktop.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2016/08/stable-channel-update-for-desktop.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 11453 2018-09-18 11:25:31Z cfischer $
+# $Id: sw_http_os_detection.nasl 11558 2018-09-23 08:25:04Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -8,7 +8,7 @@
 # Christian Fischer <info@schutzwerk.com>
 #
 # Copyright:
-# Copyright (c) 2015 SCHUTZWERK GmbH
+# Copyright (C) 2015 SCHUTZWERK GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 11453 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:25:31 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 11558 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-23 10:25:04 +0200 (Sun, 23 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -37,7 +37,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl",
+                      "sw_apcu_info.nasl", "phpinfo.nasl"); # nb: Both are setting a possible existing banner used by check_php_banner()
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -52,6 +53,7 @@ if(description)
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 SCRIPT_DESC = "HTTP OS Identification";
 
@@ -793,13 +795,10 @@ function check_http_banner( port, banner ) {
 
 function check_php_banner( port, host ) {
 
-  local_var port, host, phpList, phpFiles, phpinfoBanners, banner_type;
+  local_var port, host, phpList, phpFiles, phpBanner, phpscriptsUrls, phpscriptsUrl, _phpBanner, banner_type;
 
   phpList = get_http_kb_file_extensions( port:port, host:host, ext:"php" );
   if( phpList ) phpFiles = make_list( phpList );
-
-  # TODO: This was unused but we should try to use this info as well...
-  # phpinfoBanners = get_kb_list( "php/phpinfo/" + host + "/" + port + "/detected_versions" );
 
   if( phpFiles[0] ) {
     phpBanner = get_http_banner( port:port, file:phpFiles[0] );
@@ -807,11 +806,26 @@ function check_php_banner( port, host ) {
     phpBanner = get_http_banner( port:port, file:"/index.php" );
   }
 
-  if( phpBanner && phpBanner = egrep( pattern:"^X-Powered-By: PHP/.*$", string:phpBanner, icase:TRUE ) ) {
-
+  phpBanner = egrep( pattern:"^X-Powered-By: PHP/.*$", string:phpBanner, icase:TRUE );
+  if( ! phpBanner ) {
+    # nb: Currently set by sw_apcu_info.nasl and phpinfo.nasl but could be extended by other PHP scripts providing such info
+    phpscriptsUrls = get_kb_list( "php/banner/from_scripts/" + host + "/" + port + "/urls" );
+    if( phpscriptsUrls && is_array( phpscriptsUrls ) ) {
+      foreach phpscriptsUrl( phpscriptsUrls ) {
+        _phpBanner = get_kb_item( "php/banner/from_scripts/" + host + "/" + port + "/full_versions/" + phpscriptsUrl );
+        if( _phpBanner && _phpBanner =~ "[0-9.]+" ) {
+          banner_type = "phpinfo()/ACP(u) output";
+          phpBanner = _phpBanner;
+          break; # TBD: Don't stop after the first hit? But that could report the very same PHP version if multiple scripts where found.
+        }
+      }
+    }
+  } else {
     phpBanner = chomp( phpBanner );
-
     banner_type = "PHP Server banner";
+  }
+
+  if( phpBanner ) {
 
     # nb: The naming of the sury.org PHP banners have some special syntax like: PHP/7.1.7-1+0~20170711133844.5+jessie~1.gbp5284f4
     # Using it separately as this still a too common pattern

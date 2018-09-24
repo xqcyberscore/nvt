@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_sip_services_dos_vuln.nasl 8597 2018-01-31 08:42:52Z cfischer $
+# $Id: gb_ibm_was_sip_services_dos_vuln.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
-# IBM Websphere Application Server 'SIP Services' Denial of Service Vulnerability 
+# IBM Websphere Application Server 'SIP Services' Denial of Service Vulnerability
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -29,43 +29,40 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808651");
-  script_version("$Revision: 8597 $");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2016-2960");
   script_bugtraq_id(92354);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-16 10:35:15 +0530 (Tue, 16 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server 'SIP Services' Denial of Service Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with IBM Websphere 
+  script_tag(name:"summary", value:"This host is installed with IBM Websphere
   apllication server and is prone to Denial of Service vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The flaw is due to an error when using
+  script_tag(name:"insight", value:"The flaw is due to an error when using
   SIP services.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a remote
-  attacker to cause a denial of service with specially-crafted SIP messages.
-  
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow a remote
+  attacker to cause a denial of service with specially-crafted SIP messages.");
 
-  script_tag(name: "affected" , value:"IBM WebSphere Application Server (WAS)
+  script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS)
   7.x before 7.0.0.43, 8.0.0.x before 8.0.0.13, 8.5.0.x before 8.5.5.10,
   8.5.0.x and 16.0.0.x Liberty before Liberty Fix Pack 16.0.0.3 and 9.0.0.0");
 
-  script_tag(name: "solution" , value:"Upgrade to IBM WebSphere Application
+  script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
   Server (WAS) version 7.0.0.43 or 8.0.0.13 or 8.5.5.10 or Liberty Fix Pack
   16.0.0.3 or 9.0.0.1 or later.
   For updates refer to http://www-01.ibm.com/support/docview.wss?uid=swg21984796");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21984796");
-  
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21984796");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");
@@ -86,7 +83,6 @@ if(!wasVer = get_app_version(cpe:CPE, port:wasPort)){
   exit(0);
 }
 
-##Check Liberty profile is installed
 liberty = get_kb_item("ibm_websphere_application_server/liberty/profile/installed");
 
 if(liberty)
@@ -104,7 +100,7 @@ else
     fix = "7.0.0.43";
     VULN = TRUE;
   }
-  
+
   else if(version_in_range(version:wasVer, test_version:"8.0", test_version2:"8.0.0.12"))
   {
     fix = "8.0.0.13";

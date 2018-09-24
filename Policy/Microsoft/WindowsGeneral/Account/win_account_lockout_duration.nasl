@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_account_lockout_duration.nasl 10649 2018-07-27 07:16:55Z emoss $
+# $Id: win_account_lockout_duration.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
 # Check value for Account lockout duration (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109109");
-  script_version("$Revision: 10649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:16:55 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 11532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 12:49:31 +0200 (Wed, 25 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -41,12 +41,12 @@ if(description)
   script_add_preference(name:"Minimum", type:"entry", value:"15");
   script_mandatory_keys("Compliance/Launch");
   script_require_keys("WMI/access_successful");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Account lockout duration' on Windows hosts (at least Windows 7).
 
-The policy setting determines the number of minutes that a locked-out account 
-remains locked out before automatically becoming unlocked. The available range 
-is from 1 to 99,999 minutes. A value of 0 specifies that the account will 
+The policy setting determines the number of minutes that a locked-out account
+remains locked out before automatically becoming unlocked. The available range
+is from 1 to 99, 999 minutes. A value of 0 specifies that the account will
 be locked out until an administrator explicitly unlocks it.");
   exit(0);
 }
@@ -61,8 +61,8 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 7 system. 
-Older versions of Windows are not supported any more. Please update the 
+  policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
+Older versions of Windows are not supported any more. Please update the
 Operating System.');
   exit(0);
 }

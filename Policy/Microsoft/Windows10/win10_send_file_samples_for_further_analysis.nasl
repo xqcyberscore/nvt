@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win10_send_file_samples_for_further_analysis.nasl 9659 2018-04-27 11:55:11Z emoss $
+# $Id: win10_send_file_samples_for_further_analysis.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
 # Check value for Send file samples when further analysis is required
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109101");
-  script_version("$Revision: 9659 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 13:55:11 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-23 15:29:04 +0200 (Mon, 23 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -39,12 +39,16 @@ if(description)
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This policy setting configures behaviour of samples 
+  script_tag(name:"summary", value:"This policy setting configures behaviour of samples
 submission when opt-in for MAPS telemetry is set.
 Possible settings:
+
   - 0: Always prompt
+
   - 1: Send safe samples automatically
+
   - 2: Never send
+
   - 3: Send all samples automatically");
   exit(0);
 }
@@ -61,7 +65,7 @@ to query the registry.');
 WindowsName = get_kb_item("SMB/WindowsName");
 if('windows 10' >!< tolower(WindowsName)){
   policy_logging(text:'Host is not a Microsoft Windows 10 System.');
-  exit(0); 
+  exit(0);
 }
 
 type = 'HKLM';

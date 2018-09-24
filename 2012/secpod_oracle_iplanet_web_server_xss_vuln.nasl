@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_iplanet_web_server_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_oracle_iplanet_web_server_xss_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Oracle iPlanet Web Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:sun:iplanet_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902844");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_bugtraq_id(53133);
   script_cve_id("CVE-2012-0516");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-29 16:16:16 +0530 (Fri, 29 Jun 2012)");
   script_name("Oracle iPlanet Web Server Multiple Cross Site Scripting Vulnerabilities");
 
@@ -48,7 +48,7 @@ if(description)
   script_family("Web Servers");
   script_dependencies("gb_sun_java_sys_web_serv_detect.nasl");
   script_require_ports("Services/www", 8989);
-  script_require_keys("java_system_web_server/installed");
+  script_mandatory_keys("java_system_web_server/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML
   and script code, which will be executed in a user's browser session in the

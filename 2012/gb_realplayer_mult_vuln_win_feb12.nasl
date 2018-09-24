@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mult_vuln_win_feb12.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_realplayer_mult_vuln_win_feb12.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities (Windows) - Feb12
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802800");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-0922", "CVE-2012-0923", "CVE-2012-0924", "CVE-2012-0925",
                 "CVE-2012-0926", "CVE-2012-0927");
   script_bugtraq_id(51883, 51884, 51885, 51887, 51888, 51889);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 13:01:53 +0530 (Tue, 21 Feb 2012)");
   script_name("RealNetworks RealPlayer Multiple Vulnerabilities (Windows) - Feb12");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47896/");
@@ -45,7 +45,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_realplayer_detect_win.nasl");
-  script_require_keys("RealPlayer/Win/Ver");
+  script_mandatory_keys("RealPlayer/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary
   code.");
   script_tag(name:"affected", value:"RealPlayer versions 11.x and 14.x

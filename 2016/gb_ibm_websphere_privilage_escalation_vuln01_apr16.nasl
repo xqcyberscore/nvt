@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_privilage_escalation_vuln01_apr16.nasl 8597 2018-01-31 08:42:52Z cfischer $
+# $Id: gb_ibm_websphere_privilage_escalation_vuln01_apr16.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
-# IBM Websphere Apllication Server Privilage Escalation Vulnerability-01 Apr16
+# IBM Websphere Application Server Privilege Escalation Vulnerability-01 Apr16
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -29,40 +29,37 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807652");
-  script_version("$Revision: 8597 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2015-1927");
   script_bugtraq_id(75496);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-12 18:40:49 +0530 (Tue, 12 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name("IBM Websphere Apllication Server Privilage Escalation Vulnerability-01 Apr16");
+  script_name("IBM Websphere Application Server Privilege Escalation Vulnerability-01 Apr16");
 
-  script_tag(name: "summary" , value:"This host is installed with IBM Websphere 
-  application server and is prone to privilage escalation vulnerability.");
+  script_tag(name:"summary", value:"This host is installed with IBM Websphere
+  application server and is prone to a privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The flaw is due to an application not
+  script_tag(name:"insight", value:"The flaw is due to an application not
   having the correct serveServletsbyClassname setting");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to gain elevated privileges on the system.
- 
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to gain elevated privileges on the system.");
 
-  script_tag(name: "affected" , value:"IBM WebSphere Application Server (WAS)
+  script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS)
   7.0.0 before 7.0.0.39, 8.0.0 before 8.0.0.11, and 8.5 before 8.5.5.6.");
 
-  script_tag(name: "solution" , value:"Upgrade to IBM WebSphere Application 
+  script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
   Server (WAS) 7.0.0.39, or 8.0.0.11, or 8.5.5.6, or later.
   For updates refer to http://www-03.ibm.com/software/products/en/appserv-was");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21959083");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21959083");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

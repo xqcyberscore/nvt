@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerberos5_mult_int_underflow_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_kerberos5_mult_int_underflow_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Kerberos5 Multiple Integer Underflow Vulnerabilities
 #
@@ -24,39 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to cause a denial of service
-  or possibly execute arbitrary code.
-
-  Impact level: Application";
-
-tag_solution = "Apply patch from below link,
-  http://web.mit.edu/kerberos/advisories/2009-004-patch_1.7.txt
-  http://web.mit.edu/kerberos/advisories/2009-004-patch_1.6.3.txt
-
-  *****
-  NOTE: Ignore this warning if above mentioned patch is already applied.
-  *****";
-
-tag_affected = "kerberos5 version 1.3 to 1.6.3, and 1.7";
-tag_insight = "Multiple Integer Underflow due to errors within the 'AES' and 'RC4'
-  decryption functionality in the crypto library in MIT Kerberos when
-  processing ciphertext with a length that is too short to be valid.";
-tag_summary = "This host is installed with Kerberos5 and is prone to multiple
-  Integer Underflow vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800433");
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-01-20 08:21:11 +0100 (Wed, 20 Jan 2010)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-4212");
   script_name("Kerberos5 Multiple Integer Underflow Vulnerabilities");
 
-  script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=545015");
-  script_xref(name : "URL" , value : "http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2009-004.txt");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=545015");
+  script_xref(name:"URL", value:"http://web.mit.edu/kerberos/advisories/MITKRB5-SA-2009-004.txt");
 
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -65,12 +45,22 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_kerberos5_detect.nasl");
-  script_require_keys("Kerberos5/Ver");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "impact" , value : tag_impact);
+  script_mandatory_keys("Kerberos5/Ver");
+  script_tag(name:"affected", value:"kerberos5 version 1.3 to 1.6.3, and 1.7");
+  script_tag(name:"insight", value:"Multiple Integer Underflow due to errors within the 'AES' and 'RC4'
+  decryption functionality in the crypto library in MIT Kerberos when
+  processing ciphertext with a length that is too short to be valid.");
+  script_tag(name:"summary", value:"This host is installed with Kerberos5 and is prone to multiple
+  Integer Underflow vulnerability.");
+  script_tag(name:"solution", value:"Apply patch from below link,
+  http://web.mit.edu/kerberos/advisories/2009-004-patch_1.7.txt
+  http://web.mit.edu/kerberos/advisories/2009-004-patch_1.6.3.txt
+
+  *****
+  NOTE: Ignore this warning if above mentioned patch is already applied.
+  *****");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a denial of service
+  or possibly execute arbitrary code.");
   exit(0);
 }
 
@@ -82,8 +72,7 @@ if(!krbVer){
   exit(0);
 }
 
-# Grep for Kerberos5 version 1.3 to 1.6.3 and 1.7
 if(version_is_equal(version:krbVer, test_version:"1.7") ||
    version_in_range(version:krbVer, test_version:"1.3", test_version2:"1.6.3")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

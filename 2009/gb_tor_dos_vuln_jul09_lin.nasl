@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tor_dos_vuln_jul09_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_tor_dos_vuln_jul09_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Tor Denial Of Service Vulnerability - July09 (Linux)
 #
@@ -24,43 +24,34 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to cause Denial of Service.
-
-  Impact level: Application";
-
-tag_affected = "Tor version 0.2.x before 0.2.0.35 on Linux.";
-tag_insight = "Error exists while parsing certain malformed router descriptors and can be
-  exploited to crash Tor via specially crafted router descriptors.";
-tag_solution = "Upgrade to version 0.2.0.35 or later
-  http://www.torproject.org/download.html.en";
-tag_summary = "This host is installed with Tor and is prone to Denial Of Service
-  vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800841");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-07-17 12:47:28 +0200 (Fri, 17 Jul 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_cve_id("CVE-2009-2425");
   script_bugtraq_id(35505);
   script_name("Tor Denial Of Service Vulnerability - July09 (Linux)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/35546");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/51376");
-  script_xref(name : "URL" , value : "http://archives.seul.org/or/announce/Jun-2009/msg00000.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/35546");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/51376");
+  script_xref(name:"URL", value:"http://archives.seul.org/or/announce/Jun-2009/msg00000.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_tor_detect_lin.nasl");
-  script_require_keys("Tor/Linux/Ver");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
+  script_mandatory_keys("Tor/Linux/Ver");
+  script_tag(name:"affected", value:"Tor version 0.2.x before 0.2.0.35 on Linux.");
+  script_tag(name:"insight", value:"Error exists while parsing certain malformed router descriptors and can be
+  exploited to crash Tor via specially crafted router descriptors.");
+  script_tag(name:"solution", value:"Upgrade to version 0.2.0.35 or later
+  http://www.torproject.org/download.html.en");
+  script_tag(name:"summary", value:"This host is installed with Tor and is prone to Denial Of Service
+  vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause Denial of Service.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -76,7 +67,7 @@ foreach torPort (make_list(9050, 9051, 8118))
   {
     sndReq = string("GET / HTTP/1.1", "\r\n",
                     "Host: ", get_host_name(), "\r\n\r\n");
-  
+
     rcvRes = http_send_recv(port:torPort, data:sndReq);
 
     if(egrep(pattern:"<a\ href=?[^?]+:\/\/www\.torproject\.org",
@@ -88,7 +79,6 @@ foreach torPort (make_list(9050, 9051, 8118))
         exit(0);
       }
 
-      # Check for Tor version 0.2 < 0.2.0.35
       if(version_in_range(version:torVer, test_version:"0.2",
                                           test_version2:"0.2.0.34.alpha"))
       {

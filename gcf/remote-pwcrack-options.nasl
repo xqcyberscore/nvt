@@ -1,10 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: remote-pwcrack-options.nasl 11543 2018-09-21 20:25:26Z cfischer $
 #
 # Remote password cracking - common options
 #
 # Based on hydra scripts by Michel Arboi <arboi@alussinan.org>
-# 
+#
 # Authors:
 # Vlatko Kosturjak <kost@linux.hr>
 #
@@ -25,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80104");
-  script_version("$Revision: 7975 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-04 07:44:10 +0100 (Mon, 04 Dec 2017) $");
+  script_version("$Revision: 11543 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:25:26 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-08-10 08:41:48 +0200 (Mon, 10 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -90,7 +91,7 @@ p = script_get_preference_file_location("Passwords file : ");
 if (!p ) exit(0);
 set_kb_item(name: "Secret/pwcrack/passwords_file", value: p);
 
-# No login file is necessary for SNMP, VNC and Cisco; and a login file 
+# No login file is necessary for SNMP, VNC and Cisco; and a login file
 # may be made from other plugins results. So we do not exit if this
 # option is void.
 a = script_get_preference("Add accounts found by other plugins to login file");

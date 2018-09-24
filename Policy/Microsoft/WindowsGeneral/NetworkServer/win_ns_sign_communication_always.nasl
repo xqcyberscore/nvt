@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_ns_sign_communication_always.nasl 10740 2018-08-02 14:13:50Z emoss $
+# $Id: win_ns_sign_communication_always.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
 # Check value for Microsoft network server: Digitally sign communications (always)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109213");
-  script_version("$Revision: 10740 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 16:13:50 +0200 (Thu, 02 Aug 2018) $");
+  script_version("$Revision: 11532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-08 15:44:47 +0200 (Fri, 08 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Value", type:"radio", value:"1;0");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Microsoft network server: Digitally sign communications (always)' on Windows
 hosts (at least Windows 7).
 

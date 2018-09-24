@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_smartermail_multiple_vuln.nasl 7029 2017-08-31 11:51:40Z teissa $
+# $Id: secpod_smartermail_multiple_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # SmarterMail Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:smartertools:smartermail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901196");
-  script_version("$Revision: 7029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 13:51:40 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-03-25 15:52:06 +0100 (Fri, 25 Mar 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -46,11 +46,10 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_smartermail_detect.nasl");
   script_require_ports("Services/www", 80, 9998);
-  script_require_keys("SmarterMail/installed");
+  script_mandatory_keys("SmarterMail/installed");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to conduct cross site scripting,
-  shell upload and directory traversal attacks.
-  Impact Level: Application");
+  shell upload and directory traversal attacks.");
   script_tag(name:"affected", value:"SmarterTools SmarterMail versions 7.4 and prior.");
   script_tag(name:"insight", value:"Input passed in the 'path' parameter to Main/frmStoredFiles.aspx, the 'edit'
   parameter to UserControls/Popups/frmAddFileStorageFolder.aspx, the
@@ -79,7 +78,6 @@ include("version_func.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check for SmarterMail versions 7.4 and prior
 if( version_in_range( version:vers, test_version:"7.0", test_version2:"7.4" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"8.0" );
   security_message( port:port, data:report );

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_extremexos_vn-2016-002-openssl.nasl 4652 2016-12-01 10:17:24Z ckuerste $
+# $Id: gb_extremexos_vn-2016-002-openssl.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Extreme ExtremeXOS OpenSSL Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:extreme:extremexos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106426");
-  script_version("$Revision: 4652 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-12-01 11:17:24 +0100 (Thu, 01 Dec 2016) $");
-  script_tag(name: "creation_date", value: "2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
+  script_version("$Revision: 11523 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2015-3197");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Extreme ExtremeXOS OpenSSL Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_extremeos_snmp_detect.nasl");
   script_mandatory_keys("extremexos/detected");
 
-  script_tag(name: "summary", value: "Extreme ExtremeXOS is prone to an OpenSSL vulnerability.");
+  script_tag(name:"summary", value:"Extreme ExtremeXOS is prone to an OpenSSL vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "OpenSSL does not prevent use of disabled ciphers, which makes it easier
+  script_tag(name:"insight", value:"OpenSSL does not prevent use of disabled ciphers, which makes it easier
 for man-in-the-middle attackers to defeat cryptographic protection mechanisms by performing computations on
 SSLv2 traffic, related to the get_client_master_key and get_client_hello functions.");
 
-  script_tag(name: "impact", value: "An attacker may perform a man in the middle attack.");
+  script_tag(name:"impact", value:"An attacker may perform a man in the middle attack.");
 
-  script_tag(name: "affected", value: "Versions before 16.2.1 and 21.1.2.");
+  script_tag(name:"affected", value:"Versions before 16.2.1 and 21.1.2.");
 
-  script_tag(name: "solution", value: "Upgrade to 22.1.1, 21.1.2 and 16.2.1 or later.");
+  script_tag(name:"solution", value:"Upgrade to 22.1.1, 21.1.2 and 16.2.1 or later.");
 
-  script_xref(name: "URL", value: "https://gtacknowledge.extremenetworks.com/articles/Vulnerability_Notice/VN-2016-002-OpenSSL");
+  script_xref(name:"URL", value:"https://gtacknowledge.extremenetworks.com/articles/Vulnerability_Notice/VN-2016-002-OpenSSL");
 
   exit(0);
 }

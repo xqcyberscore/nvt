@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_support_assistant_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
+# $Id: gb_hp_support_assistant_detect.nasl 11573 2018-09-24 14:04:26Z cfischer $
 #
 # HP Support Assistant Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807804");
-  script_version("$Revision: 10898 $");
+  script_version("$Revision: 11573 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:04:26 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-20 16:08:25 +0530 (Wed, 20 Apr 2016)");
   script_name("HP Support Assistant Version Detection (Windows)");
 
@@ -75,8 +75,11 @@ if("x86" >< os_arch){
 }
 
 else if("x64" >< os_arch){
-  key =  "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
+  key = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
+
+else
+  exit(0);
 
 foreach item (registry_enum_keys(key:key))
 {

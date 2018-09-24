@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mp4_file_dos_vuln_win.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: gb_realplayer_mp4_file_dos_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # RealNetworks RealPlayer MP4 File Handling Denial of Service Vulnerability (Windows)
 #
@@ -31,12 +31,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802826");
-  script_version("$Revision: 11372 $");
+  script_version("$Revision: 11549 $");
   script_bugtraq_id(53555);
   script_cve_id("CVE-2012-1904", "CVE-2012-2406", "CVE-2012-2411");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-02 16:18:38 +0530 (Mon, 02 Apr 2012)");
   script_name("RealNetworks RealPlayer MP4 File Handling Denial of Service Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49193");
@@ -51,7 +51,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_realplayer_detect_win.nasl");
-  script_require_keys("RealPlayer/Win/Ver");
+  script_mandatory_keys("RealPlayer/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to execute arbitrary
   code, cause buffer overflow or cause the application to crash, creating a
   denial of service condition.");

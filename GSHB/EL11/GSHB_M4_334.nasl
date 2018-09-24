@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_334.nasl 10623 2018-07-25 15:14:01Z cfischer $
+# $Id: GSHB_M4_334.nasl 11531 2018-09-21 18:50:24Z cfischer $
 #
 # IT-Grundschutz, 11. EL, Maßnahme 4.334
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.894334");
-  script_version("$Revision: 10623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 11531 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 20:50:24 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-05-31 12:03:21 +0200 (Mon, 31 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-11");
   script_mandatory_keys("Compliance/Launch/GSHB-11", "Tools/Present/wmi");
-  script_dependencies("GSHB/GSHB_SSH_Samba.nasl","netbios_name_get.nasl");
+  script_dependencies("GSHB/GSHB_SSH_Samba.nasl", "netbios_name_get.nasl");
   script_tag(name:"summary", value:"IT-Grundschutz M4.334: SMB Message Signing und Samba
 
   ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde ersetzt durch

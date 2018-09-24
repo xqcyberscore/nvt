@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbrowser_double_free_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_greenbrowser_double_free_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # GreenBrowser iframe Handling Double Free Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803067");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-6041");
   script_bugtraq_id(51393);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-07 10:50:37 +0530 (Fri, 07 Dec 2012)");
   script_name("GreenBrowser iframe Handling Double Free Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47571");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_greenbrowser_detect_win.nasl");
-  script_require_keys("GreenBrowser/Win/Ver");
+  script_mandatory_keys("GreenBrowser/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary
 code on the system or cause a denial of service.");
   script_tag(name:"affected", value:"GreenBrowser version 6.0.1002 and prior");

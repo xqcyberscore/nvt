@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mldonkey_2_9_7_remote.nasl 11039 2018-08-17 12:26:47Z cfischer $
+# $Id: mldonkey_2_9_7_remote.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # MLdonkey HTTP Request Arbitrary File Download Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100057");
-  script_version("$Revision: 11039 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 14:26:47 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-03-17 18:51:21 +0100 (Tue, 17 Mar 2009)");
   script_bugtraq_id(33865);
   script_cve_id("CVE-2009-0753");
@@ -40,7 +40,7 @@ if(description)
   script_family("Peer-To-Peer File Sharing");
   script_dependencies("mldonkey_www.nasl");
   script_require_ports("Services/www", 4080);
-  script_require_keys("MLDonkey/www/port/");
+  script_mandatory_keys("MLDonkey/www/port/");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/33865");
 

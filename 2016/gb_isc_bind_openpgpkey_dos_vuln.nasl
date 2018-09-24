@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_openpgpkey_dos_vuln.nasl 4429 2016-11-07 13:14:21Z cfi $
+# $Id: gb_isc_bind_openpgpkey_dos_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # ISC BIND 'openpgpkey_61.c' Script Denial of Service Vulnerability - Jan16
 #
@@ -29,29 +29,26 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807201");
-  script_version("$Revision: 4429 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2015-5986");
   script_bugtraq_id(76618);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-07 14:14:21 +0100 (Mon, 07 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-27 15:07:28 +0530 (Wed, 27 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND 'openpgpkey_61.c' Script Denial of Service Vulnerability - Jan16");
 
-  script_tag(name: "summary" , value:"The host is installed with ISC BIND and is
+  script_tag(name:"summary", value:"The host is installed with ISC BIND and is
   prone to remote denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an error in
+  script_tag(name:"insight", value:"The flaw is due to an error in
   'openpgpkey_61.c' script in ISC BIND.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow remote 
-  attackers to cause denial of service.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to cause denial of service.");
 
   script_tag(name:"affected", value:"ISC BIND versions 9.9.7 before 9.9.7-P3
   and 9.10.x before 9.10.2-P4.");
@@ -61,7 +58,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://kb.isc.org/article/AA-01291");
+  script_xref(name:"URL", value:"https://kb.isc.org/article/AA-01291");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -80,7 +77,6 @@ if( ! infos = get_app_version_and_proto( cpe:CPE, port:bindPort ) ) exit( 0 );
 bindVer = infos["version"];
 proto = infos["proto"];
 
-##Check for vulnerable version
 if(version_in_range(version:bindVer, test_version:"9.9.7", test_version2:"9.9.7.P2"))
 {
   fix = "9.9.7-P3";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1858_1.nasl 10423 2018-07-05 13:03:28Z santu $
+# $Id: gb_suse_2018_1858_1.nasl 11561 2018-09-24 06:20:05Z cfischer $
 #
 # SuSE Update for mailman openSUSE-SU-2018:1858-1 (mailman)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851805");
-  script_version("$Revision: 10423 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 15:03:28 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 11561 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 08:20:05 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-01 05:47:18 +0200 (Sun, 01 Jul 2018)");
   script_cve_id("CVE-2018-0618");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for mailman openSUSE-SU-2018:1858-1 (mailman)");
   script_tag(name:"summary", value:"Check the version of mailman");

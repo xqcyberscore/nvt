@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_nov09.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: secpod_google_chrome_mult_vuln_nov09.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - Nov09
 #
@@ -27,31 +27,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900890");
-  script_version("$Revision: 10133 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-11-17 15:16:05 +0100 (Tue, 17 Nov 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-3931", "CVE-2009-3932", "CVE-2009-3933", "CVE-2009-3934");
   script_bugtraq_id(36947);
   script_name("Google Chrome Multiple Vulnerabilities - Nov09");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/37273/");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/3159");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.com/2009/11/stable-channel-update.html");
-  script_xref(name : "URL" , value : "http://securethoughts.com/2009/11/using-blended-browser-threats-involving-chrome-to-steal-files-on-your-computer/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/37273/");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3159");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.com/2009/11/stable-channel-update.html");
+  script_xref(name:"URL", value:"http://securethoughts.com/2009/11/using-blended-browser-threats-involving-chrome-to-steal-files-on-your-computer/");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
-  script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation will let the attacker execute arbitrary JavaScript code
+  script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary JavaScript code
   and disclose the content of local files, memory corruption or CPU consumption
-  and which may result in Denial of Service condition.
-  Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Google Chrome version prior to 3.0.195.32 on Windows.");
-  script_tag(name : "insight" , value : "Multiple flaws are due to,
+  and which may result in Denial of Service condition.");
+  script_tag(name:"affected", value:"Google Chrome version prior to 3.0.195.32 on Windows.");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - Error in 'browser/download/download_exe.cc', which fails to display a
     warning when a user downloads and opens '.svg', '.mht' or '.xml' files.
@@ -67,12 +66,12 @@ if(description)
 
   - Error in 'WebFrameLoaderClient::dispatchDidChangeLocationWithinPage' function
     in 'src/webkit/glue/webframeloaderclient_impl.cc' and which can be exploited
-    via a page-local link, related to an 'empty redirect chain,' as demonstrated
+    via a page-local link, related to an 'empty redirect chain, ' as demonstrated
     by a message in Yahoo! Mail.");
-  script_tag(name : "solution" , value : "Upgrade to version 3.0.195.32 or later.
+  script_tag(name:"solution", value:"Upgrade to version 3.0.195.32 or later.
   http://www.google.com/chrome");
-  script_tag(name : "solution_type" , value : "VendorFix");
-  script_tag(name : "summary" , value : "This host is installed with Google Chrome and is prone to multiple
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   exit(0);
 }

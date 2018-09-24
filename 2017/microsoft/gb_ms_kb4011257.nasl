@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011257.nasl 10967 2018-08-15 05:53:29Z cfischer $
+# $Id: gb_ms_kb4011257.nasl 11550 2018-09-22 12:21:31Z cfischer $
 #
 # Microsoft Project Server 2013 Elevation of Privilege Vulnerability (KB4011257)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:project_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812205");
-  script_version("$Revision: 10967 $");
+  script_version("$Revision: 11550 $");
   script_cve_id("CVE-2017-11876");
   script_bugtraq_id(101754);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:21:31 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 09:49:22 +0530 (Wed, 15 Nov 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Project Server 2013 Elevation of Privilege Vulnerability (KB4011257)");
@@ -51,9 +51,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to read content, use the victim's identity to take actions on the
   web application on behalf of the victim, such as change permissions and
-  delete content, and inject malicious content in the browser of the victim.
-
-  Impact Level: System/Application");
+  delete content, and inject malicious content in the browser of the victim.");
 
   script_tag(name:"affected", value:"Microsoft Project Server 2013 Service Pack 1");
 
@@ -68,19 +66,15 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_project_server_detect.nasl");
   script_require_ports(139, 445);
-  script_require_keys("MS/ProjectServer/Server/Ver");
+  script_mandatory_keys("MS/ProjectServer/Server/Ver");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-psVer = "";
-dllVer = "";
-path = "";
 
 psVer = get_app_version(cpe:CPE);
 if(!psVer){
@@ -110,3 +104,5 @@ if(psVer =~ "^15\..*")
     }
   }
 }
+
+exit(99);

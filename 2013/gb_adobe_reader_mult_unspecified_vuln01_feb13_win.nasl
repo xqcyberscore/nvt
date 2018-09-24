@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_unspecified_vuln01_feb13_win.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_adobe_reader_mult_unspecified_vuln01_feb13_win.nasl 11525 2018-09-21 15:19:23Z cfischer $
 #
 # Adobe Reader Multiple Unspecified Vulnerabilities -01 Feb13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803415");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11525 $");
   script_cve_id("CVE-2013-0640", "CVE-2013-0641");
   script_bugtraq_id(57931, 57947);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 17:19:23 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-19 18:24:49 +0530 (Tue, 19 Feb 2013)");
   script_name("Adobe Reader Multiple Unspecified Vulnerabilities -01 Feb13 (Windows)");
 
@@ -43,9 +43,7 @@ vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaws are due to unspecified errors.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code or cause
-a denial of service via a crafted PDF document.
-
-Impact level: System/Application");
+a denial of service via a crafted PDF document.");
   script_tag(name:"affected", value:"Adobe Reader Version 9.x prior to 9.5.4 on Windows
 
 Adobe Reader X Version 10.x prior to 10.1.6 on Windows

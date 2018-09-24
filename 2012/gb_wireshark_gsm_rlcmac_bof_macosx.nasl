@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_gsm_rlcmac_bof_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_wireshark_gsm_rlcmac_bof_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Wireshark GSM RLC MAC dissector Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803133");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-4297");
   script_bugtraq_id(55035);
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-28 14:46:17 +0530 (Fri, 28 Dec 2012)");
   script_name("Wireshark GSM RLC MAC dissector Buffer Overflow Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50276/");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_wireshark_detect_macosx.nasl");
-  script_require_keys("Wireshark/MacOSX/Version");
+  script_mandatory_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
   via a malformed packet.");
   script_tag(name:"affected", value:"Wireshark 1.6.x before 1.6.10 and 1.8.x before 1.8.2 on Mac OS X");

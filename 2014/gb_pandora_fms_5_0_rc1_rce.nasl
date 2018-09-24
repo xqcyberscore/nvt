@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pandora_fms_5_0_rc1_rce.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_pandora_fms_5_0_rc1_rce.nasl 11536 2018-09-21 19:44:30Z cfischer $
 #
 # Pandora FMS Remote Command Execution Vulnerability
 #
@@ -32,13 +32,13 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.103897");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11536 $");
 
   script_name("Pandora FMS Remote Command Execution Vulnerability");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124983/Pandora-FMS-5.0RC1-Code-Execution.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:44:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-30 13:13:42 +0100 (Thu, 30 Jan 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -50,7 +50,7 @@ if (description)
   script_tag(name:"impact", value:"Successful exploits will allow remote attackers to execute arbitrary
  commands within the context of the i'pandora' user.");
   script_tag(name:"vuldetect", value:"Try to execute a command on the remote Host by sending some special crafted HTTP requests.");
-  script_tag(name:"insight", value : 'The Pandora 4.0.3 / 4.1 / 5.0 RC1 appliances are prone to security
+  script_tag(name:"insight", value:'The Pandora 4.0.3 / 4.1 / 5.0 RC1 appliances are prone to security
  vulnerabilities. The Anytermd daemon used for the SSH/Telnet gateway on TCP port
  8022/8023 is vulnerable to command injection in the "p" POST parameter, which allows
  any unauthenticated attacker to execute arbitrary commands with the rights of the

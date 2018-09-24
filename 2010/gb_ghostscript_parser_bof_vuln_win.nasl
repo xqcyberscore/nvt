@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ghostscript_parser_bof_vuln_win.nasl 11498 2018-09-20 10:34:34Z jschulte $
+# $Id: gb_ghostscript_parser_bof_vuln_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Ghostscript Parser Buffer Overflow Vulnerabilities (Windows)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801336");
-  script_version("$Revision: 11498 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:34:34 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-05-19 14:50:39 +0200 (Wed, 19 May 2010)");
   script_cve_id("CVE-2010-1869", "CVE-2010-1628");
   script_tag(name:"cvss_base", value:"9.3");
@@ -44,7 +44,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_ghostscript_detect_win.nasl");
-  script_require_keys("Ghostscript/Win/Ver");
+  script_mandatory_keys("Ghostscript/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allows the attacker to execute arbitrary
 code in the context of the affected application and can cause denial of service.");
   script_tag(name:"affected", value:"Ghostscript version 8.70 and 8.64 on Windows.");

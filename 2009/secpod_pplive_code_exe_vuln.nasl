@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pplive_code_exe_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_pplive_code_exe_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # PPLive Multiple Argument Injection Vulnerabilities
 #
@@ -24,47 +24,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "By persuading a victim to click on a specially-crafted URI, attackers can
-  execute arbitrary script code by loading malicious files(dll) through the
-  UNC share pathname in the LoadModule argument.
-  Impact Level: Application";
-tag_affected = "PPLive version 1.9.21 and prior on Windows.";
-tag_insight = "Improper validation of user supplied input to the synacast://, Play://,
-  pplsv://, and ppvod:// URI handlers via a UNC share pathname in the
-  LoadModule argument leads to this injection attacks.";
-tag_solution = "No solution or patch was made available for at least one year since
-  disclosure of this vulnerability. Likely none will be provided anymore. General
-  solution options are to upgrade to a newer release, disable respective features,
-  remove the product or replace the product by another one
-  For updates refer to http://www.pplive.com/en/index.html";
-tag_summary = "This host has PPLive installed and is prone to multiple argument
-  injection vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900536");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-1087");
   script_bugtraq_id(34128);
   script_name("PPLive Multiple Argument Injection Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/34327");
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/8215");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/34327");
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/8215");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("General");
   script_dependencies("secpod_pplive_detect.nasl");
-  script_require_keys("PPLive/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("PPLive/Ver");
+  script_tag(name:"impact", value:"By persuading a victim to click on a specially-crafted URI, attackers can
+  execute arbitrary script code by loading malicious files(dll) through the
+  UNC share pathname in the LoadModule argument.");
+  script_tag(name:"affected", value:"PPLive version 1.9.21 and prior on Windows.");
+  script_tag(name:"insight", value:"Improper validation of user supplied input to the synacast://, Play://,
+  pplsv://, and ppvod:// URI handlers via a UNC share pathname in the
+  LoadModule argument leads to this injection attacks.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host has PPLive installed and is prone to multiple argument
+  injection vulnerabilities.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -77,7 +68,6 @@ if(!ppliveVer){
   exit(0);
 }
 
-# Check for PPLive version 1.9.21 and prior
 if(version_is_less_equal(version:ppliveVer, test_version:"1.9.21")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

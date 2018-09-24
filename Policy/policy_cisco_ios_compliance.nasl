@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_cisco_ios_compliance.nasl 7275 2017-09-26 11:46:31Z cfischer $
+# $Id: policy_cisco_ios_compliance.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
 # Cisco IOS Compliance Check
 #
@@ -25,16 +25,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106431");
-  script_version("$Revision: 7275 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-26 13:46:31 +0200 (Tue, 26 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2017-01-11 10:55:08 +0700 (Wed, 11 Jan 2017)");
+  script_version("$Revision: 11532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-11 10:55:08 +0700 (Wed, 11 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod", value: "98");
+  script_tag(name:"qod", value:"98");
 
   script_name("Cisco IOS Compliance Check");
 
@@ -45,8 +45,8 @@ if (description)
   script_dependencies("gb_cisco_ios_version_ssh.nasl");
   script_mandatory_keys("cisco_ios/detected");
 
-  script_tag(name: "summary", value: "Runs the Cisco IOS Compliance Check with the provided policy file and
-stores the results in the kb.");
+  script_tag(name:"summary", value:"Runs the Cisco IOS Compliance Check with the provided policy file and
+  stores the results in the kb.");
 
   script_add_preference(name: "Cisco IOS Policies", type: "file", value: "");
   script_add_preference(name: "Enable Password", type: "password", value: "");
@@ -59,12 +59,9 @@ include("ssh_func.inc");
 if (!get_kb_item("cisco_ios/detected"))
   exit(0);
 
-
-#
-# check the rules/sections for a certain pattern in the config
-#
+# nb: Check the rules/sections for a certain pattern in the config
 function check_rule(config, pattern, section, present) {
-  # Check for section
+  # nb: Check for section
   if (section) {
     ok = FALSE;
     for (i=0; i < max_index(config); i++) {
@@ -89,7 +86,7 @@ function check_rule(config, pattern, section, present) {
     return ok;
   }
 
-  # Check without section
+  # nb: Check without section
   foreach line (config) {
     match = eregmatch(pattern: pattern, string: line);
     if ((!isnull(match) && present == "true") || (isnull(match) && present == "false")) {
@@ -122,40 +119,40 @@ enable_password = script_get_preference("Enable Password");
 
 if (!isnull(enable_password)) {
   sess = ssh_session_id_from_sock(sock);
- 
+
   if (!sess) {
     close(sock);
     exit(0);
   }
- 
+
   shell = ssh_shell_open( sess );
 
   if (!shell) {
     close(sock);
     exit(0);
   }
- 
+
   ssh_shell_write(shell, cmd: 'enable\n');
- 
+
   buf = ssh_read_from_shell(sess: shell, pattern: "Password:");
- 
+
   if (!buf || "Password:" >!< buf) {
     close(sock);
     exit(0);
   }
- 
+
   ssh_shell_write(shell, cmd: enable_password + '\n');
- 
+
   buf = ssh_read_from_shell(sess: shell, pattern:"#");
- 
+
   if (!buf || "#" >!< buf) {
     close(sock);
     exit(0);
   }
- 
+
   ssh_shell_write(shell, cmd: 'terminal length 0\n');
   ssh_shell_write(shell, cmd: 'show running-config\n');
- 
+
   config = ssh_read_from_shell(sess: shell, pattern: "^end$", timeout:30, retry:10);
 }
 else {
@@ -165,7 +162,7 @@ else {
 if (sock)
   close(sock);
 
-# strip the comments and split every line 
+# strip the comments and split every line
 config = ereg_replace(pattern: "!..", string: config, replace: "");
 config = split(config, keep: FALSE);
 
@@ -208,7 +205,7 @@ for (r=0; r<max; r++) {
 
     section = "";
     fix = "";
-  }  
+  }
 }
 
 if (comp_pass)

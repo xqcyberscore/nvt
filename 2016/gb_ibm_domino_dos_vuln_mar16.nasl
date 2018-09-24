@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_dos_vuln_mar16.nasl 7575 2017-10-26 09:47:04Z cfischer $
+# $Id: gb_ibm_domino_dos_vuln_mar16.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # IBM Domino Denial of Service Vulnerability - Mar16
 #
@@ -29,28 +29,25 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807619");
-  script_version("$Revision: 7575 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2014-0822");
   script_bugtraq_id(65427);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-03-21 19:13:44 +0530 (Mon, 21 Mar 2016)");
   script_name("IBM Domino Denial of Service Vulnerability - Mar16");
 
   script_tag(name:"summary", value:"This host is installed with IBM Domino and
   is prone to denial of service vulnerability");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an unspecified
   error in IMAP server.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to cause denial of service.
-
-  Impact Level: System/Application");
+  to cause denial of service.");
 
   script_tag(name:"affected", value:"IBM Domino 8.5.x before 8.5.3 FP6 IF1 and
   9.0.x before 9.0.1 FP1");
@@ -63,7 +60,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21663023");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21663023");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -76,9 +73,6 @@ if(description)
 include("version_func.inc");
 include("revisions-lib.inc"); # Used in get_highest_app_version
 include("host_details.inc");
-
-## Variable Initialization
-domVer = "";
 
 if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);

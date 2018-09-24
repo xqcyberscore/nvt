@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCux00686.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_cisco_asa_CSCux00686.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Cisco ASA Software libSRTP Denial of Service Vulnerability
 #
@@ -29,21 +29,21 @@ CPE = "cpe:/a:cisco:asa";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106073");
- script_cve_id("CVE-2015-6360");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5527 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106073");
+  script_cve_id("CVE-2015-6360");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11569 $");
 
- script_name("Cisco ASA Software libSRTP Denial of Service Vulnerability");
+  script_name("Cisco ASA Software libSRTP Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160420-libsrtp");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160420-libsrtp");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"Cisco released version 1.5.3 of the Secure Real-Time Transport Protocol (SRTP
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"Cisco released version 1.5.3 of the Secure Real-Time Transport Protocol (SRTP
 library (libSRTP), which addresses a denial of service (DoS) vulnerability.
 
 The vulnerability is in the encryption processing subsystem of libSRTP and could allow an unauthenticated,
@@ -56,16 +56,16 @@ the impact on each product are outlined in the `Conditions` section of each Cisc
 
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160420-libsrtp");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-13 09:53:45 +0700 (Fri, 13 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
- script_mandatory_keys("cisco_asa/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-13 09:53:45 +0700 (Fri, 13 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
+  script_mandatory_keys("cisco_asa/version");
  exit(0);
 }
 
@@ -75,7 +75,7 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE, nofork: TRUE ) ) exit( 0 );
 check_vers = ereg_replace(string:version, pattern:"\(([0-9.]+)\)", replace:".\1");
 
-affected = make_list( 
+affected = make_list(
 		'8.1.0.104',
 		'8.2.0.45',
 		'8.2.1',

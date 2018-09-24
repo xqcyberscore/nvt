@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xvid_bof_vuln_jun09_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_xvid_bof_vuln_jun09_win.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Xvid Buffer Overflow Vulnerability (Windows)
 #
@@ -24,28 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Remote attackers may exploit this issue to cause multiple heap based buffer
-  overflow, execute arbitrary code and may cause denial of service.
-  Impact Level: System/Application";
-tag_affected = "Xvid before 1.2.2 on Windows.";
-tag_insight = "- Inadequate sanitation of user supplied data in 'decoder_iframe',
-    'decoder_pframe' and 'decoder_bframe' fuctions in xvidcore/src/decoder.c
-    and can be exploited by providing a crafted macroblock (aka MBlock) number
-    in a video stream in a crafted movie file.
-  - A boundary error in 'decoder_create' function n xvidcore/src/decoder.c
-    can be exploited via vectors involving the DirectShow (aka DShow) frontend
-    and improper handling of the XVID_ERR_MEMORY return code during processing
-    of a crafted movie file";
-tag_solution = "Upgrade to Xvid 1.2.2 or later
-  http://www.xvid.org/";
-tag_summary = "This host has Xvid installed, and is prone to Buffer Overflow
-  vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800580");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-06-09 08:37:33 +0200 (Tue, 09 Jun 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -58,17 +41,28 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_xvid_detect_win.nasl");
-  script_require_keys("Xvid/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("Xvid/Win/Ver");
+  script_tag(name:"impact", value:"Remote attackers may exploit this issue to cause multiple heap based buffer
+  overflow, execute arbitrary code and may cause denial of service.");
+  script_tag(name:"affected", value:"Xvid before 1.2.2 on Windows.");
+  script_tag(name:"insight", value:"- Inadequate sanitation of user supplied data in 'decoder_iframe',
+    'decoder_pframe' and 'decoder_bframe' functions in xvidcore/src/decoder.c
+    and can be exploited by providing a crafted macroblock (aka MBlock) number
+    in a video stream in a crafted movie file.
+
+  - A boundary error in 'decoder_create' function n xvidcore/src/decoder.c
+    can be exploited via vectors involving the DirectShow (aka DShow) frontend
+    and improper handling of the XVID_ERR_MEMORY return code during processing
+    of a crafted movie file");
+  script_tag(name:"solution", value:"Upgrade to Xvid 1.2.2 or later
+  http://www.xvid.org/");
+  script_tag(name:"summary", value:"This host has Xvid installed, and is prone to Buffer Overflow
+  vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/35274");
-  script_xref(name : "URL" , value : "http://cvs.xvid.org/cvs/viewvc.cgi/xvidcore/src/decoder.c");
-  script_xref(name : "URL" , value : "http://cvs.xvid.org/cvs/viewvc.cgi/xvidcore/src/decoder.c?r1=1.80&r2=1.81");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/35274");
+  script_xref(name:"URL", value:"http://cvs.xvid.org/cvs/viewvc.cgi/xvidcore/src/decoder.c");
+  script_xref(name:"URL", value:"http://cvs.xvid.org/cvs/viewvc.cgi/xvidcore/src/decoder.c?r1=1.80&r2=1.81");
   exit(0);
 }
 
@@ -81,5 +75,5 @@ if(xvidVer == NULL){
 }
 
 if(version_is_less(version:xvidVer, test_version:"1.2.2")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

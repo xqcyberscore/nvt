@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clipbucket_unspecified_xss_vuln.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: gb_clipbucket_unspecified_xss_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # ClipBucket Unspecified Cross Site Scripting Vulnerability
 #
@@ -29,30 +29,27 @@ CPE = "cpe:/a:clipbucket_project:clipbucket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809039");
-  script_version("$Revision: 5612 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-4848");
   script_bugtraq_id(92537);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-09-08 14:26:07 +0530 (Thu, 08 Sep 2016)");
   script_name("ClipBucket Unspecified Cross Site Scripting Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with ClipBucket
   and is prone to an unspecified cross site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with
-  the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an insufficient
   validation of user supplied input via unspecified vectors.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow remote 
-  attackers to execute arbitrary script code in the browser of an unsuspecting 
-  user in the context of the affected site. This may let the attacker steal 
-  cookie-based authentication credentials and launch other attacks.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to execute arbitrary script code in the browser of an unsuspecting
+  user in the context of the affected site. This may let the attacker steal
+  cookie-based authentication credentials and launch other attacks.");
 
   script_tag(name:"affected", value:"ClipBucket version before 2.8.1 RC2");
 
@@ -77,22 +74,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-report = "";
-clipPort = "";
-clipVer = "";
-
-## get the port
 if(!clipPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!clipVer = get_app_version(cpe:CPE, port:clipPort)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:clipVer, test_version:"2.8.1.RC.2"))
 {
   report = report_fixed_ver(installed_version:clipVer, fixed_version:"2.8.1 RC2");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_keygen_dos_vuln.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: secpod_google_chrome_keygen_dos_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Google Chrome 'KEYGEN' Element Denial Of Service Vulnerability
 #
@@ -27,32 +27,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900862");
-  script_version("$Revision: 10133 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-09-23 08:37:26 +0200 (Wed, 23 Sep 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_cve_id("CVE-2009-3268");
   script_name("Google Chrome 'KEYGEN' Element Denial Of Service Vulnerability");
-  script_xref(name : "URL" , value : "http://websecurity.com.ua/3194/");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/506328/100/100/threaded");
+  script_xref(name:"URL", value:"http://websecurity.com.ua/3194/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/506328/100/100/threaded");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
-  script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to cause Denial of
-  Service on the victim's system.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Google Chrome version 1.0.154.48 and prior on Windows.");
-  script_tag(name : "insight" , value : "Error exists via KEYGEN element in conjunction with a META element specifying
+  script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause Denial of
+  Service on the victim's system.");
+  script_tag(name:"affected", value:"Google Chrome version 1.0.154.48 and prior on Windows.");
+  script_tag(name:"insight", value:"Error exists via KEYGEN element in conjunction with a META element specifying
   automatic page refresh or a JavaScript onLoad event handler for a BODY element.");
-  script_tag(name : "solution" , value : "Upgrade to Google Chrome version 4.1.249.1064 or later.
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version 4.1.249.1064 or later.
   For updates refer to http://www.google.com/chrome");
-  script_tag(name : "solution_type" , value : "VendorFix");
-  script_tag(name : "summary" , value : "This host is installed with Google Chrome and is prone to Denial of
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to Denial of
   Service vulnerability.");
   exit(0);
 }

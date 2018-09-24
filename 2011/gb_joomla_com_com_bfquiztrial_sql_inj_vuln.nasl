@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_com_bfquiztrial_sql_inj_vuln.nasl 10238 2018-06-19 01:04:50Z ckuersteiner $
+# $Id: gb_joomla_com_com_bfquiztrial_sql_inj_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Joomla 'BF Quiz' Component 'catid' Parameter SQL Injection Vulnerability
 #
@@ -29,22 +29,22 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802535");
-  script_version("$Revision: 10238 $");
+  script_version("$Revision: 11552 $");
   script_cve_id("CVE-2010-5032");
   script_bugtraq_id(40435);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-19 03:04:50 +0200 (Tue, 19 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-12-06 13:16:11 +0530 (Tue, 06 Dec 2011)");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Joomla 'BF Quiz' Component 'catid' Parameter SQL Injection Vulnerability");
 
-  script_xref(name: "URL", value: "http://secunia.com/advisories/39960");
-  script_xref(name: "URL", value: "http://xforce.iss.net/xforce/xfdb/58979");
-  script_xref(name: "URL", value: "http://packetstormsecurity.org/files/90080/joomlabfquiz-sql.txt");
-  script_xref(name: "URL", value: "http://xenuser.org/documents/security/joomla_com_bfquiz_sqli.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/39960");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/58979");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/90080/joomlabfquiz-sql.txt");
+  script_xref(name:"URL", value:"http://xenuser.org/documents/security/joomla_com_bfquiz_sqli.txt");
 
   script_tag(name:"qod_type", value:"remote_active");
   script_category(ACT_ATTACK);
@@ -52,20 +52,20 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
 
-  script_tag(name: "impact", value: "Successful exploitation will let attackers to manipulate SQL queries by
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL queries by
 injecting arbitrary SQL code.");
 
-  script_tag(name: "affected", value: "Joomla BF Quiz (com_bfquiztrial) component prior to 1.3.1");
+  script_tag(name:"affected", value:"Joomla BF Quiz (com_bfquiztrial) component prior to 1.3.1");
 
-  script_tag(name: "insight", value: "The flaw is due to an input passed via the 'catid' parameter to 'index.php'
+  script_tag(name:"insight", value:"The flaw is due to an input passed via the 'catid' parameter to 'index.php'
 is not properly sanitised before being used in SQL queries.");
 
-  script_tag(name: "solution", value: "Upgrade to Joomla BF Quiz component version 1.3.1 or later. For updates
+  script_tag(name:"solution", value:"Upgrade to Joomla BF Quiz component version 1.3.1 or later. For updates
 refer to http://extensions.joomla.org/extensions/vertical-markets/education-a-culture/quiz/8142");
 
-  script_tag(name: "summary", value: "This host is running Joomla! with BF Quiz component and is prone to SQL
+  script_tag(name:"summary", value:"This host is running Joomla! with BF Quiz component and is prone to SQL
 injection vulnerability.");
 
   exit(0);

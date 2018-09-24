@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tor_unspecified_bof_lin.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_tor_unspecified_bof_lin.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Tor Unspecified Heap Based Buffer Overflow Vulnerability (Linux)
 #
@@ -24,45 +24,36 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary
-  code in the context of the user running the application. Failed exploit
-  attempts will likely result in denial-of-service conditions.
-
-  Impact level: Application";
-
-tag_affected = "Tor version prior to 0.2.1.28 and 0.2.2.x before 0.2.2.20-alpha on Linux.";
-tag_insight = "The issue is caused by an unknown heap overflow error when processing
-  user-supplied data, which can be exploited to cause a heap-based buffer
-  overflow.";
-tag_solution = "Upgrade to version 0.2.1.28 or 0.2.2.20-alpha or later
-  http://www.torproject.org/download/download.html.en";
-tag_summary = "This host is installed with Tor and is prone to heap based buffer overflow
-  vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902332");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-02-05 04:12:38 +0100 (Sat, 05 Feb 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2010-1676");
   script_bugtraq_id(45500);
   script_name("Tor Unspecified Heap Based Buffer Overflow Vulnerability (Linux)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/42536");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/3290");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/42536");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/3290");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");
   script_dependencies("secpod_tor_detect_lin.nasl");
-  script_require_keys("Tor/Linux/Ver");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
+  script_mandatory_keys("Tor/Linux/Ver");
+  script_tag(name:"affected", value:"Tor version prior to 0.2.1.28 and 0.2.2.x before 0.2.2.20-alpha on Linux.");
+  script_tag(name:"insight", value:"The issue is caused by an unknown heap overflow error when processing
+  user-supplied data, which can be exploited to cause a heap-based buffer
+  overflow.");
+  script_tag(name:"solution", value:"Upgrade to version 0.2.1.28 or 0.2.2.20-alpha or later
+  http://www.torproject.org/download/download.html.en");
+  script_tag(name:"summary", value:"This host is installed with Tor and is prone to heap based buffer overflow
+  vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
+  code in the context of the user running the application. Failed exploit
+  attempts will likely result in denial-of-service conditions.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -80,13 +71,13 @@ torVer = ereg_replace(pattern:"-", replace:".", string:torVer);
 
 if(version_is_less(version:torVer, test_version:"0.2.1.28"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }
 
 if(torVer =~ "^0\.2\.2.*")
 {
   if(version_is_less(version:torVer, test_version:"0.2.2.20.alpha")){
-    security_message(0);  
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

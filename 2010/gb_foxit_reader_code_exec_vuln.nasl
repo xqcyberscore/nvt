@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_code_exec_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_reader_code_exec_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Foxit Reader Arbitrary Command Execution Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801313");
-  script_version("$Revision: 11356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-1239");
   script_tag(name:"cvss_base", value:"9.3");
@@ -44,10 +44,9 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
-  script_require_keys("foxit/reader/ver");
+  script_mandatory_keys("foxit/reader/ver");
   script_tag(name:"impact", value:"Successful exploitation will let attacker to execute arbitrary code or crash an
-  affected application.
-  Impact Level: Application");
+  affected application.");
   script_tag(name:"affected", value:"Foxit Reader version prior to 3.2.1.0401");
   script_tag(name:"insight", value:"The flaw exists due to error in handling 'PDF' files which runs executable
   embedded program inside a PDF automatically without asking for user permission.");

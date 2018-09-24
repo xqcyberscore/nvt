@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_use_after_free_vuln_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: secpod_google_chrome_use_after_free_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Google Chrome Use-After-Free Vulnerability (Windows)
 #
@@ -27,33 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901190");
-  script_version("$Revision: 10133 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_cve_id("CVE-2011-1059");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_name("Google Chrome Use-After-Free Vulnerability (Windows)");
-  script_xref(name : "URL" , value : "https://bugs.webkit.org/show_bug.cgi?id=52819");
-  script_xref(name : "URL" , value : "http://code.google.com/p/chromium/issues/detail?id=70315");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.com/2011/02/dev-channel-update_17.html");
+  script_xref(name:"URL", value:"https://bugs.webkit.org/show_bug.cgi?id=52819");
+  script_xref(name:"URL", value:"http://code.google.com/p/chromium/issues/detail?id=70315");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.com/2011/02/dev-channel-update_17.html");
 
   script_copyright("Copyright (C) 2011 SecPod");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
-  script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to cause a denial of
-  service.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Google Chrome version prior to 11.0.672.2 on windows");
-  script_tag(name : "insight" , value : "An use-after-free error in WebCore in WebKit allows user-assisted remote
+  script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to cause a denial of
+  service.");
+  script_tag(name:"affected", value:"Google Chrome version prior to 11.0.672.2 on windows");
+  script_tag(name:"insight", value:"An use-after-free error in WebCore in WebKit allows user-assisted remote
   attackers to cause a denial of service or possibly have unspecified other
   impact via vectors that entice a user to resubmit a form, related to improper
   handling of provisional items by the HistoryController component.");
-  script_tag(name : "solution" , value : "Upgrade to the Google Chrome 11.0.672.2 or later,
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 11.0.672.2 or later,
   For updates refer to http://www.google.com/chrome");
-  script_tag(name : "summary" , value : "The host is running Google Chrome and is prone to use-after-free
+  script_tag(name:"summary", value:"The host is running Google Chrome and is prone to use-after-free
   vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

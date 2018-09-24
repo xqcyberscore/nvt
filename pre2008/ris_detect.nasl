@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ris_detect.nasl 6456 2017-06-28 11:19:33Z cfischer $
-# Description: RIS Installation Check
+# $Id: ris_detect.nasl 11545 2018-09-21 20:43:34Z cfischer $
+#
+# RIS Installation Check
 #
 # Authors:
 # Jeff Adams <jadams@netcentrics.com>
@@ -20,13 +22,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12231");
-  script_version("$Revision: 6456 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 11545 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:43:34 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -38,9 +40,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  tag_summary = "This plugin checks if the equipment was installed via RIS.";
-
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This plugin checks if the equipment was installed via RIS.");
 
   script_tag(name:"qod_type", value:"registry");
 
@@ -61,13 +61,13 @@ item = "SourcePath";
 value = registry_get_sz(key:key, item:item);
 
 if(!value) {
-        exit(-1);
+  exit(0);
 }
 
 if( match(string:value, pattern:'*RemInst*')  ){
-        report = "The remote host was installed using RIS (Remote Installation Service).";
-        log_message(port:port, data:report);
-        exit(1);
+  report = "The remote host was installed using RIS (Remote Installation Service).";
+  log_message(port:port, data:report);
+  exit(0);
 }
 
 exit(0);

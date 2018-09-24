@@ -1,12 +1,14 @@
+##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: packeteer_web_version.nasl 11015 2018-08-17 06:31:19Z cfischer $
-# Description: Packeteer Web Management Interface Version
+# $Id: packeteer_web_version.nasl 11551 2018-09-22 12:29:54Z cfischer $
+#
+# Packeteer Web Management Interface Version
 #
 # Authors:
 # nnposter
 #
 # Copyright:
-# Copyright (C) 2006-2007 nnposter
+# Copyright (C) 2008 nnposter
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -20,48 +22,40 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+##############################################################################
 
-if (description)
-    {
+if(description)
+{
   script_oid("1.3.6.1.4.1.25623.1.0.80033");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11551 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:29:54 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Packeteer Web Management Interface Version");
-
-
-    summary="Tests for Packeteer web interface version";
   script_family("Web application abuses");
-
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
-  script_copyright("This script is Copyright (c) 2006-2007 nnposter");
+  script_copyright("This script is Copyright (c) 2008 nnposter");
   script_dependencies("packeteer_web_login.nasl");
-  script_require_keys("bluecoat_packetshaper/installed");
   script_require_ports("Services/www", 80, 139, 445);
-  script_tag(name:"summary", value:"It is possible to determine the version of the remote web application.
+  script_mandatory_keys("bluecoat_packetshaper/installed");
 
-Description :
+  script_tag(name:"summary", value:"This script tries to determine the software version of the Packeteer web
+  management interface if running on the remote host.");
 
-OpenVAS was able to determine the software version of the Packeteer web
-management interface running on the remote host.");
-    exit(0);
-    }
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
+}
 
 # Notes:
 # - Info page is bigger than 8K and PacketShaper does not use Content-Length.
 #   The script uses custom http_send_recv_length() to retrieve the entire page.
 
-
 include("http_func.inc");
 include("misc_func.inc");
 
-
-if (!get_kb_item("bluecoat_packetshaper/installed")) exit(0);
-
+if(!get_kb_item("bluecoat_packetshaper/installed")) exit(0);
 
 function set_cookie (data,cookie)
 {

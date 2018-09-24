@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_project_server_ms15-036.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_project_server_ms15-036.nasl 11550 2018-09-22 12:21:31Z cfischer $
 #
 # Microsoft Project Server Elevation of Privilege Vulnerability (3052044)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:project_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805169");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11550 $");
   script_cve_id("CVE-2015-1640");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:21:31 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 17:17:21 +0530 (Wed, 15 Apr 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Project Server Elevation of Privilege Vulnerability (3052044)");
@@ -67,10 +67,10 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_project_server_detect.nasl");
   script_require_ports(139, 445);
-  script_require_keys("MS/ProjectServer/Server/Ver");
+  script_mandatory_keys("MS/ProjectServer/Server/Ver");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
@@ -127,3 +127,5 @@ if(psVer =~ "^15\..*")
     }
   }
 }
+
+exit(99);

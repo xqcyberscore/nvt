@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_libre_office_lwp_mult_bof_vuln_win.nasl 10138 2018-06-08 12:45:06Z asteins $
+# $Id: secpod_libre_office_lwp_mult_bof_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # LibreOffice LWP File Processing Multiple Buffer Overflow Vulnerabilities (Windows)
 #
@@ -27,31 +27,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902399");
-  script_version("$Revision: 10138 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:45:06 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_cve_id("CVE-2011-2685");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("LibreOffice LWP File Processing Multiple Buffer Overflow Vulnerabilities (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/44996/");
-  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/953183");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/44996/");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/953183");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Buffer overflow");
   script_dependencies("gb_libreoffice_detect_portable_win.nasl");
-  script_require_keys("LibreOffice/Win/Ver");
-  script_tag(name : "insight" , value : "The flaws are due to errors in the import filter when processing Lotus
+  script_mandatory_keys("LibreOffice/Win/Ver");
+  script_tag(name:"insight", value:"The flaws are due to errors in the import filter when processing Lotus
   Word Pro (LWP) files and can be exploited to cause a stack-based buffer
   overflow via a specially crafted file.");
-  script_tag(name : "solution" , value : "Upgrade to LibreOffice version 3.3.3 or 3.4.0 or later.
+  script_tag(name:"solution", value:"Upgrade to LibreOffice version 3.3.3 or 3.4.0 or later.
   For updates refer to http://www.libreoffice.org/download/");
-  script_tag(name : "summary" , value : "This host is installed with LibreOffice and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with LibreOffice and is prone to multiple
   buffer overflow vulnerabilities.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary code.
-  Impact Level: System/Application.");
-  script_tag(name : "affected" , value : "LibreOffice version prior to 3.3.3");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code.");
+  script_tag(name:"affected", value:"LibreOffice version prior to 3.3.3");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);

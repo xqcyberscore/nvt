@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_estateagent_sql_inj_vuln.nasl 10754 2018-08-03 10:38:29Z ckuersteiner $
+# $Id: gb_joomla_com_estateagent_sql_inj_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Joomla Estate Agent Component 'id' Parameter SQL Injection Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802745");
-  script_version("$Revision: 10754 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2011-4571");
   script_bugtraq_id(50024, 52963);
   script_tag(name:"cvss_base", value:"7.5");
@@ -37,7 +37,7 @@ if(description)
 
   script_name("Joomla Estate Agent Component 'id' Parameter SQL Injection Vulnerability");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 12:38:29 +0200 (Fri, 03 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-12 18:02:44 +0530 (Thu, 12 Apr 2012)");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/70444");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18728/");
@@ -51,7 +51,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL queries by
 injecting arbitrary SQL code.");

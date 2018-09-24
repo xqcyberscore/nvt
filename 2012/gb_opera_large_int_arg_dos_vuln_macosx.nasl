@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_large_int_arg_dos_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_opera_large_int_arg_dos_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Opera Large Integer Argument Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802396");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-1003");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-08 15:53:59 +0530 (Wed, 08 Feb 2012)");
   script_name("Opera Large Integer Argument Denial of Service Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/73027");
@@ -41,7 +41,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_opera_detect_macosx.nasl");
-  script_require_keys("Opera/MacOSX/Version");
+  script_mandatory_keys("Opera/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause
 a denial of service via a large integer argument.");
   script_tag(name:"affected", value:"Opera version 11.60 and prior.");

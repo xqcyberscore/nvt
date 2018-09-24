@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_java_jre_xml4j_unspecified_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_ibm_java_jre_xml4j_unspecified_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # IBM Runtimes for Java Technology XML4J Unspecified Vulnerability
 #
@@ -24,25 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Apply the following patch.
-  http://www-01.ibm.com/support/docview.wss?rs=71&uid=swg1IZ63920
-
-  *****
-  NOTE: Ignore this warning if above mentioned patch is already applied.
-  *****";
-
-tag_impact = "Unknown impact.";
-tag_affected = "IBM Runtimes for Java Technology 5.0.0 before SR10 on Linux.";
-tag_insight = "An unspecified error occurs in the 'XML4J' component while parsing XML
-  code.";
-tag_summary = "This host is installed with IBM Runtime for Java Technology and
-  is prone to unspecified vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800974");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-11-09 14:01:44 +0100 (Mon, 09 Nov 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -50,21 +36,31 @@ if(description)
   script_bugtraq_id(36894);
   script_name("IBM Runtimes for Java Technology XML4J Unspecified Vulnerability");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/37210");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/54069");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/3106");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/37210");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/54069");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3106");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_java_prdts_detect_lin.nasl");
-  script_require_keys("IBM/Java/JRE/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_mandatory_keys("IBM/Java/JRE/Linux/Ver");
+  script_tag(name:"impact", value:"Unknown impact.");
+  script_tag(name:"affected", value:"IBM Runtimes for Java Technology 5.0.0 before SR10 on Linux.");
+  script_tag(name:"insight", value:"An unspecified error occurs in the 'XML4J' component while parsing XML
+  code.");
+  script_tag(name:"summary", value:"This host is installed with IBM Runtime for Java Technology and
+  is prone to unspecified vulnerability.");
+  script_tag(name:"solution", value:"Apply the following patch.
+  http://www-01.ibm.com/support/docview.wss?rs=71&uid=swg1IZ63920
+
+  *****
+  NOTE: Ignore this warning if above mentioned patch is already applied.
+  *****");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -78,8 +74,7 @@ if(!jreVer){
 
 if(jreVer)
 {
-  # Check for version < 5.0.0 SR10 (1.5.0.SR10)
   if(version_in_range(version:jreVer, test_version:"1.5", test_version2:"1.5.0.SR9")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

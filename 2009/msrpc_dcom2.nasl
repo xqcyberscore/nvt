@@ -1,5 +1,6 @@
-###################################################################
+##############################################################################
 # OpenVAS Vulnerability Test
+# $Id: msrpc_dcom2.nasl 11546 2018-09-22 11:30:16Z cfischer $
 #
 # Microsoft RPC Interface Buffer Overrun (KB824146)
 #
@@ -26,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102015");
-  script_version("$Revision: 7293 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
+  script_version("$Revision: 11546 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 13:30:16 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-11-16 11:47:06 +0100 (Mon, 16 Nov 2009)");
   script_cve_id("CVE-2003-0715", "CVE-2003-0528", "CVE-2003-0605");
   script_bugtraq_id(8458, 8460);
@@ -40,19 +41,16 @@ if(description)
   script_name("Microsoft RPC Interface Buffer Overrun (KB824146)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 LSS");
-  script_family("Windows");
+  script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  tag_summary = "The remote host is running a version of Windows which has a flaw in
+  script_tag(name:"solution", value:"see http://www.microsoft.com/technet/security/bulletin/MS03-039.mspx");
+
+  script_tag(name:"summary", value:"The remote host is running a version of Windows which has a flaw in
   its RPC interface which may allow an attacker to execute arbitrary code
-  and gain SYSTEM privileges.";
-
-  tag_solution = "see http://www.microsoft.com/technet/security/bulletin/MS03-039.mspx";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  and gain SYSTEM privileges.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -67,7 +65,6 @@ if(hotfix_check_sp(xp:3, win2k:5, win2003:2) <= 0){
   exit(0);
 }
 
-# Check for update rollup
 rollUp = registry_key_exists(key:"SOFTWARE\Microsoft\Updates\Windows 2000\SP5\Update Rollup 1");
 if(rollUp){
   exit(0);
@@ -79,9 +76,8 @@ if(hotfix_missing(name:"828741") == 0 || hotfix_missing(name:"873333") == 0 ||
   exit(0);
 }
 
-# Check for Hotfix 824146 (MS03-039)
 if(hotfix_missing(name:"824146") == 1){
-  security_message(port:get_kb_item("SMB/transport"));
+  security_message(port:0);
   exit(0);
 }
 

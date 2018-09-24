@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win10_disable_mrt_install.nasl 9659 2018-04-27 11:55:11Z emoss $
+# $Id: win10_disable_mrt_install.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
 # Check value for Disable Malicious Software Removal Tool From Installing
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109099");
-  script_version("$Revision: 9659 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 13:55:11 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-23 14:52:04 +0200 (Mon, 23 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -39,10 +39,10 @@ if(description)
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This setting prevents Windows from 
+  script_tag(name:"summary", value:"This setting prevents Windows from
 installing the Malicious Software Removal Tool.
 
-If enabled, Microsofts Malicious Software Removal Tool is not being offered 
+If enabled, Microsofts Malicious Software Removal Tool is not being offered
 and installed on Windows Update.");
   exit(0);
 }
@@ -59,7 +59,7 @@ to query the registry.');
 WindowsName = get_kb_item("SMB/WindowsName");
 if('windows 10' >!< tolower(WindowsName)){
   policy_logging(text:'Host is not a Microsoft Windows 10 System.');
-  exit(0); 
+  exit(0);
 }
 
 type = 'HKLM';

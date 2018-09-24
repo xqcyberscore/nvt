@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1365.nasl 10474 2018-07-10 08:12:26Z cfischer $
+# $Id: deb_dla_1365.nasl 11520 2018-09-21 12:52:31Z cfischer $
 #
 # Auto-generated from advisory DLA 1365-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891365");
-  script_version("$Revision: 10474 $");
+  script_version("$Revision: 11520 $");
   script_cve_id("CVE-2018-7602");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1365-1] drupal7 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-10 10:12:26 +0200 (Tue, 10 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 14:52:31 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-27 00:00:00 +0200 (Fri, 27 Apr 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

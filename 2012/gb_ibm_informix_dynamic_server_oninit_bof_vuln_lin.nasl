@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_informix_dynamic_server_oninit_bof_vuln_lin.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_ibm_informix_dynamic_server_oninit_bof_vuln_lin.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # IBM Informix Dynamic Server 'oninit.exe' Buffer Overflow Vulnerability (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802291");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_bugtraq_id(44192);
   script_cve_id("CVE-2010-4053");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-12 17:17:17 +0530 (Thu, 12 Jan 2012)");
   script_name("IBM Informix Dynamic Server 'oninit.exe' Buffer Overflow Vulnerability (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/41913");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_ibm_informix_dynamic_server_detect_lin.nasl");
-  script_require_keys("IBM/Informix/Dynamic/Server/Lin/Ver");
+  script_mandatory_keys("IBM/Informix/Dynamic/Server/Lin/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
   code with SYSTEM-level privileges.");
   script_tag(name:"affected", value:"IBM Informix Dynamic Server (IDS) 11.10 before 11.10.xC2W2 and 11.50 before 11.50.xC1");

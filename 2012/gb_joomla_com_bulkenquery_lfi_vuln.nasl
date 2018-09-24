@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_bulkenquery_lfi_vuln.nasl 10754 2018-08-03 10:38:29Z ckuersteiner $
+# $Id: gb_joomla_com_bulkenquery_lfi_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Joomla Bulkenquery Component Local File Inclusion Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802573");
-  script_version("$Revision: 10754 $");
+  script_version("$Revision: 11549 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 12:38:29 +0200 (Fri, 03 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 17:45:34 +0530 (Mon, 23 Jan 2012)");
 
   script_name("Joomla Bulkenquery Component Local File Inclusion Vulnerability");
@@ -45,7 +45,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform directory traversal
 attacks and read arbitrary files on the affected application.");

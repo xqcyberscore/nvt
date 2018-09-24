@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_watch_folders_bof_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_realplayer_watch_folders_bof_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # RealPlayer Watch Folders Function Buffer Overflow Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803043");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-4987");
   script_bugtraq_id(56324);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-06 12:38:20 +0530 (Tue, 06 Nov 2012)");
   script_name("RealPlayer Watch Folders Function Buffer Overflow Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2012/Oct/189");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_realplayer_detect_win.nasl");
-  script_require_keys("RealPlayer/Win/Ver");
+  script_mandatory_keys("RealPlayer/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
 arbitrary code on the system.");
   script_tag(name:"affected", value:"RealPlayer version 15.0.5.109");

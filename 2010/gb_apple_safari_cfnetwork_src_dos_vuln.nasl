@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_cfnetwork_src_dos_vuln.nasl 8495 2018-01-23 07:57:49Z teissa $
+# $Id: gb_apple_safari_cfnetwork_src_dos_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Apple Safari 'SRC' Remote Denial Of Service Vulnerability
 #
@@ -24,43 +24,36 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker crash the affected browser,
-  resulting in a denial of service condition and can cause other attacks.
-  Impact Level: Application";
-tag_affected = "Apple Safari version 4.0.4(5.31.21.10)";
-tag_insight = "The flaw exists due to error in 'cfnetwork.dll' file in CFNetwork when, processing
-  'SRC' attribute of a 'IMG' or 'IFRAME' element via a long string.";
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-tag_summary = "This host is installed with Apple Safari Web Browser and is prone to
-  to Denial of Service vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800486");
-  script_version("$Revision: 8495 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-03-05 10:09:57 +0100 (Fri, 05 Mar 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_cve_id("CVE-2010-0925");
   script_name("Apple Safari 'SRC' Remote Denial Of Service Vulnerability");
-  script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/391341.php");
-  script_xref(name : "URL" , value : "http://nobytes.com/exploits/Safari_4.0.4_background_DoS_pl.txt");
+  script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/391341.php");
+  script_xref(name:"URL", value:"http://nobytes.com/exploits/Safari_4.0.4_background_DoS_pl.txt");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_apple_safari_detect_win_900003.nasl");
-  script_require_keys("AppleSafari/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_require_ports(139, 445);
+  script_mandatory_keys("AppleSafari/Version");
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker crash the affected browser,
+  resulting in a denial of service condition and can cause other attacks.");
+  script_tag(name:"affected", value:"Apple Safari version 4.0.4(5.31.21.10)");
+  script_tag(name:"insight", value:"The flaw exists due to error in 'cfnetwork.dll' file in CFNetwork when, processing
+  'SRC' attribute of a 'IMG' or 'IFRAME' element via a long string.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is installed with Apple Safari Web Browser and is prone to
+  to Denial of Service vulnerabilities.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -83,7 +76,6 @@ if(!safariVer){
   exit(0);
 }
 
-# Check for Apple Safari Version 4.0.4(5.31.21.10)
 if(version_is_equal(version:safariVer, test_version:"5.31.21.10"))
 {
   key = "SOFTWARE\Apple Computer, Inc.\Safari";
@@ -93,7 +85,6 @@ if(version_is_equal(version:safariVer, test_version:"5.31.21.10"))
     exeVer = find_version(filepath:asFile);
     if(!isnull(exeVer))
     {
-      # Check for Safari.exe Version 5.31.21.10
       if(version_is_equal(version:exeVer, test_version:"5.31.21.10"))
       {
         dllVer = find_version(filepath: asFile -"Safari.exe" + "cfnetwork.dll");
@@ -105,9 +96,8 @@ if(version_is_equal(version:safariVer, test_version:"5.31.21.10"))
 
         if(!isnull(dllVer))
         {
-          # Check for cfnetwork.dll Version 1.450.5.0
           if(version_is_equal(version:dllVer, test_version:"1.450.5.0")){
-            security_message(0);
+            security_message( port: 0, data: "The target host was found to be vulnerable" );
           }
         }
       }

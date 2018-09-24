@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_auth_bypass_vuln.nasl 4899 2017-01-02 07:35:17Z antu123 $
+# $Id: gb_asterisk_auth_bypass_vuln.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Asterisk Authentication Bypass Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106462");
-  script_version("$Revision: 4899 $");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2016-9938");
   script_bugtraq_id(94789);
-  script_tag(name: "last_modification", value: "$Date: 2017-01-02 08:35:17 +0100 (Mon, 02 Jan 2017) $");
-  script_tag(name: "creation_date", value: "2016-12-09 14:10:48 +0700 (Fri, 09 Dec 2016)");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-09 14:10:48 +0700 (Fri, 09 Dec 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Asterisk Authentication Bypass Vulnerability");
 
@@ -51,11 +51,11 @@ if (description)
   script_dependencies("secpod_asterisk_detect.nasl");
   script_mandatory_keys("Asterisk-PBX/Installed");
 
-  script_tag(name: "summary", value: "Asterisk is prone to an authentication bypass vulnerability.");
+  script_tag(name:"summary", value:"Asterisk is prone to an authentication bypass vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The chan_sip channel driver has a liberal definition for whitespace when
+  script_tag(name:"insight", value:"The chan_sip channel driver has a liberal definition for whitespace when
 attempting to strip the content between a SIP header name and a colon character. Headers such as 'Contact\x01:'
 will be seen as a valid Contact header.
 
@@ -69,15 +69,15 @@ authentication.
 If you do not use a proxy for authentication, or if your proxy is dialog-aware, or if you use chan_pjsip instead
 of chan_sip, then this issue does not affect you.");
 
-  script_tag(name: "impact", value: "An authenticated remote attacker may make calls without any authentication.");
+  script_tag(name:"impact", value:"An authenticated remote attacker may make calls without any authentication.");
 
-  script_tag(name: "affected", value: "Asterisk Open Source 11.x, 13.x, 14.x and Certified Asterisk 11.6 and
+  script_tag(name:"affected", value:"Asterisk Open Source 11.x, 13.x, 14.x and Certified Asterisk 11.6 and
 13.8.");
 
-  script_tag(name: "solution", value: "Upgrade to Version 11.25.1, 13.13.1, 14.2.1, 11.6-cert16, 13.8-cert4 or
+  script_tag(name:"solution", value:"Upgrade to Version 11.25.1, 13.13.1, 14.2.1, 11.6-cert16, 13.8-cert4 or
 later.");
 
-  script_xref(name: "URL", value: "http://downloads.asterisk.org/pub/security/AST-2016-009.html");
+  script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2016-009.html");
 
   exit(0);
 }

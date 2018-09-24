@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_url_param_uri_redirect_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_phpmyadmin_url_param_uri_redirect_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # phpMyAdmin 'url' Parameter URI Redirection Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802607");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_bugtraq_id(47943);
   script_cve_id("CVE-2011-1941");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-09 17:17:17 +0530 (Thu, 09 Feb 2012)");
   script_name("phpMyAdmin 'url' Parameter URI Redirection Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/44641");
@@ -48,7 +48,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("phpMyAdmin/installed");
+  script_mandatory_keys("phpMyAdmin/installed");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to redirect users to
   arbitrary web sites and conduct phishing attacks.");
   script_tag(name:"affected", value:"phpMyAdmin version 3.4.0");

@@ -1,11 +1,12 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
+# $Id: pnscan.nasl 11546 2018-09-22 11:30:16Z cfischer $
 #
-# NASL wrapper around pnscan portscanner 
+# NASL wrapper around pnscan portscanner
 #
 # Author:
 # Vlatko Kosturjak <kost@linux.hr>
-# 
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
 # (or any later version), as published by the Free Software Foundation.
@@ -20,48 +21,45 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 #
-# TODO: 
+# TODO:
 # - report back banners grabbed
-# 
-
-tag_summary = "This plugin runs pnscan to find open ports.
-Pnscan is a lite multi-threaded port scanner.";
+#
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.80001");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9349 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2008-08-31 23:34:05 +0200 (Sun, 31 Aug 2008)");
- script_tag(name:"cvss_base", value:"0.0");
- name = "pnscan (NASL wrapper)";
- script_name(name);
+  script_oid("1.3.6.1.4.1.25623.1.0.80001");
+  script_version("$Revision: 11546 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 13:30:16 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2008-08-31 23:34:05 +0200 (Sun, 31 Aug 2008)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("pnscan (NASL wrapper)");
+  script_category(ACT_SCANNER);
+  script_copyright("This script is Copyright (C) 2008 Vlatko Kosturjak");
+  script_family("Port scanners");
+  script_add_preference(name:"Pnscan Timeout", type:"entry", value: "");
+  script_add_preference(name:"Pnscan Concurrent worker threads", type:"entry", value: "");
+  script_dependencies("toolcheck.nasl", "ping_host.nasl");
+  script_mandatory_keys("Tools/Present/pnscan");
 
+  script_tag(name:"summary", value:"This plugin runs pnscan to find open ports.
+  Pnscan is a lite multi-threaded port scanner.");
 
- script_category(ACT_SCANNER);
   script_tag(name:"qod_type", value:"remote_banner");
-  script_copyright("This script is Copyright (C) 2008-2010 Vlatko Kosturjak");
- family = "Port scanners";
- script_family(family);
- script_add_preference(name:"Pnscan Timeout", type:"entry", value: "");
- script_add_preference(name:"Pnscan Concurrent worker threads", type:"entry", value: "");
- script_dependencies("toolcheck.nasl", "ping_host.nasl");
- script_mandatory_keys("Tools/Present/pnscan");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+
+  exit(0);
 }
 
 ip = get_host_ip();
 esc_ip = ""; l = strlen(ip);
-for (i = 0; i < l; i ++) 
+for (i = 0; i < l; i ++)
   if (ip[i] == '.')
     esc_ip = strcat(esc_ip, "\.");
   else
     esc_ip = strcat(esc_ip, ip[i]);
 
 prange = get_preference("port_range");
-if (! prange) prange = "1-65535"; 
+if (! prange) prange = "1-65535";
 
 portrangelist=split(prange,sep:",",keep:FALSE);
 
@@ -106,18 +104,18 @@ for (i=0; i<size; i++) {
 		}
 		portrangelist[i]=beg[0] + "-" + beg[1];
 	}
-	
+
 	for (j=i;j<size; j++) {
 		prs = split (portrangelist[j],sep:"-",keep:FALSE);
 		prsnext = split (portrangelist[j+1],sep:"-",keep:FALSE);
 		if (isnull(prs[1]) && isnull(prsnext[1])) {
-			if (prsnext[0] == (int(prs[0])+1)) {	
+			if (prsnext[0] == (int(prs[0])+1)) {
 				beg[1]=prsnext[0];
 				i++;
 			} else {
 				break;
 			}
-		} 
+		}
 		if (isnull(prs[1]) && (!isnull(prsnext[1]))) {
 			if (prsnext[0] == int(prs[0]+1)) {
 				beg[1]=prsnext[1];
@@ -125,7 +123,7 @@ for (i=0; i<size; i++) {
 			} else {
 				break;
 			}
-		} 
+		}
 		if ((!isnull(prs[1])) && isnull(prsnext[1])) {
 			if (prsnext[0] == int(prs[1]+1)) {
 				beg[1]=prsnext[0];
@@ -133,7 +131,7 @@ for (i=0; i<size; i++) {
 			} else {
 				break;
 			}
-		} 
+		}
 		if ((!isnull(prs[1])) && (!isnull(prsnext[1]))) {
 			if (prsnext[0] == int(prs[1]+1)) {
 				beg[1]=prsnext[1];

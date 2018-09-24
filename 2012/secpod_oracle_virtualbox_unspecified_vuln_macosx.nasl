@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_virtualbox_unspecified_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_oracle_virtualbox_unspecified_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Oracle VM VirtualBox Unspecified Vulnerability (MAC OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902789");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-0111");
   script_bugtraq_id(51465);
   script_tag(name:"cvss_base", value:"3.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-24 11:43:28 +0530 (Tue, 24 Jan 2012)");
   script_name("Oracle VM VirtualBox Unspecified Vulnerability (MAC OS X)");
 
@@ -44,7 +44,7 @@ if(description)
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("General");
   script_dependencies("secpod_oracle_virtualbox_detect_macosx.nasl");
-  script_require_keys("Oracle/VirtualBox/MacOSX/Version");
+  script_mandatory_keys("Oracle/VirtualBox/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation allows local users to affect confidentiality,
   integrity and availability via unknown vectors.");
   script_tag(name:"affected", value:"Oracle VM VirtualBox version 4.1");

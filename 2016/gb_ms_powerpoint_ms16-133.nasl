@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powerpoint_ms16-133.nasl 6523 2017-07-04 15:46:12Z cfischer $
+# $Id: gb_ms_powerpoint_ms16-133.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Microsoft Office PowerPoint Remote Code Execution Vulnerability (3199168)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809719");
-  script_version("$Revision: 6523 $");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2016-7230");
   script_bugtraq_id(94006);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 17:46:12 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 13:16:52 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office PowerPoint Remote Code Execution Vulnerability (3199168)");
@@ -40,7 +40,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-133.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
+  script_tag(name:"vuldetect", value:"Gets the vulnerable file version and checks if the
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"The flaw exists as Office software fails to
@@ -48,12 +48,9 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code in the context of the currently logged-in
-  user.
+  user.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft PowerPoint 2010 Service Pack 2 and prior.");
+  script_tag(name:"affected", value:"Microsoft PowerPoint 2010 Service Pack 2 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
@@ -62,13 +59,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3118378");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-133");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/3118378");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-133");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Ver", "SMB/Office/PowerPnt/Version");
   exit(0);
 }
@@ -79,13 +77,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable initialization
-offPath = "";
-pptVer = "";
-dllVer = "";
-path = "";
-
-## Get Powerpoint Version
 pptVer = get_kb_item("SMB/Office/PowerPnt/Version");
 if(!pptVer){
   exit(0);
@@ -98,11 +89,10 @@ if(!path){
 }
 
 # Office Power Point for 2010
-## Get Version from Ppcore.dll
 offPath = path + "\Microsoft Office\OFFICE14";
 
 exeVer  = fetch_file_version(sysPath:offPath, file_name:"ppcore.dll");
-if(exeVer && exeVer =~ "^(14).*")
+if(exeVer && exeVer =~ "^14.*")
 {
   if(version_in_range(version:exeVer, test_version:"14.0", test_version2:"14.0.7176.4999"))
   {

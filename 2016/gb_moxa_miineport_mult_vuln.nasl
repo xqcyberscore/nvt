@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_miineport_mult_vuln.nasl 4755 2016-12-13 11:19:47Z ckuerste $
+# $Id: gb_moxa_miineport_mult_vuln.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Moxa MiiNePort Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:moxa:miineport';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106468");
-  script_version("$Revision: 4755 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-12-13 12:19:47 +0100 (Tue, 13 Dec 2016) $");
-  script_tag(name: "creation_date", value: "2016-12-13 08:40:04 +0700 (Tue, 13 Dec 2016)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11569 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-13 08:40:04 +0700 (Tue, 13 Dec 2016)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-9344", "CVE-2016-9346");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Moxa MiiNePort Multiple Vulnerabilities");
 
@@ -51,28 +51,28 @@ if (description)
   script_dependencies("gb_moxa_miineport_telnet_detect.nasl");
   script_mandatory_keys("moxa/miineport/detected", "moxa/miineport/model");
 
-  script_tag(name: "summary", value: "Moxa MiiNePort is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Moxa MiiNePort is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Moxa MiiNePort is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Moxa MiiNePort is prone to multiple vulnerabilities:
 
-- Active session brute force. (CVE-2016-9344)
+  - Active session brute force. (CVE-2016-9344)
 
-- Cleartext storage of sensitive information. (CVE-2016-9346)");
+  - Cleartext storage of sensitive information. (CVE-2016-9346)");
 
-  script_tag(name: "impact", value: "An attacker may be able to brute force an active session cookie to be able
+  script_tag(name:"impact", value:"An attacker may be able to brute force an active session cookie to be able
 to download configuration files or read unencrypted sensitive data.");
 
-  script_tag(name: "affected", value: "MiiNePort E1 versions prior to 1.8, MiiNePort E2 versions prior to 1.4 and
+  script_tag(name:"affected", value:"MiiNePort E1 versions prior to 1.8, MiiNePort E2 versions prior to 1.4 and
 MiiNePort E3 versions prior to 1.1.");
 
-  script_tag(name: "solution", value: "Upgrade the firmware to 1.8, 1,4 or 1.1 depending on the model.");
+  script_tag(name:"solution", value:"Upgrade the firmware to 1.8, 1, 4 or 1.1 depending on the model.");
 
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-16-343-01");
-  script_xref(name: "URL", value: "http://www.moxa.com/support/download.aspx?type=support&id=1214");
-  script_xref(name: "URL", value: "http://www.moxa.com/support/download.aspx?type=support&id=263");
-  script_xref(name: "URL", value: "http://www.moxa.com/support/download.aspx?type=support&id=2058");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-16-343-01");
+  script_xref(name:"URL", value:"http://www.moxa.com/support/download.aspx?type=support&id=1214");
+  script_xref(name:"URL", value:"http://www.moxa.com/support/download.aspx?type=support&id=263");
+  script_xref(name:"URL", value:"http://www.moxa.com/support/download.aspx?type=support&id=2058");
 
   exit(0);
 }

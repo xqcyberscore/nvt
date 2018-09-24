@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_picasa_jpeg_img_code_exec_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_google_picasa_jpeg_img_code_exec_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Google Picasa JPEG Image Processing Remote Code Execution Vulnerability (Windows)
 #
@@ -24,23 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow remote attackers to execute arbitrary
-  code or cause a denial of service condition.
-  Impact Level: System/Application";
-tag_affected = "Google Picasa versions prior to 3.6 build 105.67";
-tag_insight = "The flaw is due to an unspecified error, when handling certain
-  properties of an image file and can be exploited via a specially crafted
-  JPEG image.";
-tag_solution = "Upgrade to the Google Picasa 3.6 build 105.67 or later,
-  For updates refer to http://picasa.google.com/thanks.html";
-tag_summary = "This host is installed with google picasa and is prone to remote
-  code execution vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802313");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-08-05 09:04:20 +0200 (Fri, 05 Aug 2011)");
   script_cve_id("CVE-2011-2747");
   script_bugtraq_id(48725);
@@ -53,30 +41,33 @@ if(description)
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_google_picasa_detect_win.nasl");
-  script_require_keys("Google/Picasa/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("Google/Picasa/Win/Ver");
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
+  code or cause a denial of service condition.");
+  script_tag(name:"affected", value:"Google Picasa versions prior to 3.6 build 105.67");
+  script_tag(name:"insight", value:"The flaw is due to an unspecified error, when handling certain
+  properties of an image file and can be exploited via a specially crafted
+  JPEG image.");
+  script_tag(name:"solution", value:"Upgrade to the Google Picasa 3.6 build 105.67 or later,
+  For updates refer to http://picasa.google.com/thanks.html");
+  script_tag(name:"summary", value:"This host is installed with google picasa and is prone to remote
+  code execution vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/45293");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/advisory/msvr11-008.mspx");
-  script_xref(name : "URL" , value : "http://picasa.google.com/support/bin/static.py?hl=en&page=release_notes.cs&from=53209&rd=1");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/45293");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/advisory/msvr11-008.mspx");
+  script_xref(name:"URL", value:"http://picasa.google.com/support/bin/static.py?hl=en&page=release_notes.cs&from=53209&rd=1");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Get the version from KB
 picVer = get_kb_item("Google/Picasa/Win/Ver");
 if(!picVer){
   exit(0);
 }
 
-## Check for Google Chrome Version less than 3.6 build 105.67
 if(version_is_less(version:picVer, test_version:"3.6.105.67")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

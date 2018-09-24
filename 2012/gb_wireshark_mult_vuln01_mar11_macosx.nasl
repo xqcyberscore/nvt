@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln01_mar11_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wireshark_mult_vuln01_mar11_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Wireshark Multiple Vulnerabilities-01 March 11 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802903");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2011-1140", "CVE-2011-1141");
   script_bugtraq_id(46626);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-27 15:40:58 +0530 (Wed, 27 Jun 2012)");
   script_name("Wireshark Multiple Vulnerabilities-01 March 11 (Mac OS X)");
   script_xref(name:"URL", value:"http://www.wireshark.org/security/wnpa-sec-2011-03.html");
@@ -44,7 +44,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_wireshark_detect_macosx.nasl");
-  script_require_keys("Wireshark/MacOSX/Version");
+  script_mandatory_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial of
   service.");
   script_tag(name:"affected", value:"Wireshark 1.0.x

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nopsec_php_5_2_7.nasl 10460 2018-07-09 07:50:03Z cfischer $
+# $Id: nopsec_php_5_2_7.nasl 11529 2018-09-21 16:26:30Z cfischer $
 #
 # PHP Version < 5.2.7 Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.110172");
-  script_version("$Revision: 10460 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:50:03 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 11529 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 18:26:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 11:43:12 +0100 (Thu, 21 Jun 2012)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -39,7 +39,7 @@ if(description)
                 "CVE-2008-5658");
   script_bugtraq_id(29796, 29797, 29829, 30087, 30649, 31612, 32383, 32625, 32688, 32948
                     # 33498         nb: retired 29-Jan-2009
-                    );
+);
   script_name("PHP Version < 5.2.7 Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

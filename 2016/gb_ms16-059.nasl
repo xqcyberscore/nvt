@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-059.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_ms16-059.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Microsoft Windows Media Center Remote Code Execution Vulnerability (3150220)
 #
@@ -27,51 +27,55 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807690");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2016-0185");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 08:11:30 +0530 (Wed, 11 May 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Media Center Remote Code Execution Vulnerability (3150220)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-059.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
+  script_tag(name:"vuldetect", value:"Gets the vulnerable file version and checks if the
   appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an error
+  script_tag(name:"insight", value:"The flaw exists due to an error
   in the Windows Media Center which does not sanitize the input passed
   via the crafted Media Center link (.mcl) file.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code in the context of the currently logged-in user. 
-  Failed exploit attempts will likely result in denial of service conditions.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to execute arbitrary code in the context of the currently logged-in user.
+  Failed exploit attempts will likely result in denial of service conditions.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Windows Media Center for
 
-  script_tag(name: "affected" , value:"Windows Media Center for
   - Microsoft Windows Vista x32/x64 Service Pack 2 and prior
+
   - Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
   - Microsoft Windows 8.1 x32/x64 Edition
+
   - Microsoft Windows server 2008 and server 2008 R2
+
   - Microsoft Windows server 2012 R2");
 
-  script_tag(name: "solution" , value:"Run Windows Update and update the listed
+  script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
   link, https://technet.microsoft.com/library/security/MS16-059");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3150220");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-059");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3150220");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-059");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -81,43 +85,31 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-mcPath = "";
-ehshell_ver="";
-media_center_ver="";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win7:2, win7x64:2, win8_1:1, win8_1x64:1, winVista:3,
                    win2012:1, win2012R2:1, win2008:3, win2008r2:2) <= 0){
   exit(0);
 }
 
-## Get System Path
 mcPath = smb_get_systemroot();
 if(!mcPath){
   exit(0);
 }
 
-## Confirm Windows Media Center TV Pack installed 
 media_center_ver = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\Current" +
                                        "Version\Media Center", item:"Ident");
 
-## Confirm Media Center is installed
 if(!media_center_ver){
   exit(0);
 }
 
-## Get File version
 ehshell_ver = fetch_file_version(sysPath:mcPath, file_name:"ehome\Ehshell.dll");
 if(!ehshell_ver){
   exit(0);
 }
 
-## Windows 7 and Windows Server 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
   ## after patch GDR version also upgrading to LDR version
-  ## Check for Ehshell.dll version 
   if(version_is_less(version:ehshell_ver, test_version:"6.1.7601.23434"))
   {
     Vulnerable_range = "Less than 6.1.7601.23434";
@@ -125,10 +117,8 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
   }
 }
 
-## Windows 8.1 and Windows Server 2012 R2 
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Ehshell.dll version
   if(version_is_less(version:ehshell_ver, test_version:"6.3.9600.18299"))
   {
     Vulnerable_range = "Less Than 6.3.9600.18299";
@@ -136,11 +126,9 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
   }
 }
 
-## Windows Vista and server 2008
 ## Currently not supporting for Vista 64 bit
 else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Ehshell.dll version
   if(version_is_less(version:ehshell_ver, test_version:"6.0.6002.19634"))
   {
     Vulnerable_range = "Less Than 6.0.6002.19634";

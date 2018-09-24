@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smbcl_getversion.nasl 6841 2017-08-03 11:59:21Z emoss $
+# $Id: smbcl_getversion.nasl 11529 2018-09-21 16:26:30Z cfischer $
 #
 # SMB Test with 'smbclient'
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.90011");
-  script_version("$Revision: 6841 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-03 13:59:21 +0200 (Thu, 03 Aug 2017) $");
+  script_version("$Revision: 11529 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 18:26:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-05-15 23:18:24 +0200 (Thu, 15 May 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -91,7 +91,7 @@ exit( 0 );
         smbFileversion = get_kb_item( "SMB/FILEVERSION/" + orig_filename );
         report += "Fileversion : C$ "+orig_filename + " "+v+string("\n");
         report += "KB Fileversion Getting SMB-KB File -> " + smbFileversion + '\n';
-        log_message(port:port, data:report);    
+        log_message(port:port, data:report);
       } else {
         smbError = get_kb_item("SMB/ERROR");
         report = "Error getting SMB-File -> " + smbError + '\n';

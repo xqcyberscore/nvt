@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win10_create_symbolic_links.nasl 10649 2018-07-27 07:16:55Z emoss $
+# $Id: win10_create_symbolic_links.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
 # Check value for Create symbolic links (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109125");
-  script_version("$Revision: 10649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:16:55 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 11532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-30 12:32:40 +0200 (Mon, 30 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -41,15 +41,15 @@ if(description)
   script_add_preference(name:"Value", type:"entry", value:"Administrators");
   script_mandatory_keys("Compliance/Launch");
   script_require_keys("WMI/access_successful");
-  script_tag(name: "summary", value: "This user right determines if users can 
+  script_tag(name:"summary", value:"This user right determines if users can
 create a symbolic link from the device they are logged on to.
 
-A symbolic link is a file-system object that points to another file-system 
-object. The object that is pointed to is called the target. Symbolic links are 
-transparent to users. The links appear as normal files or directories, and they 
-can be acted upon by the user or application in exactly the same manner. 
-Symbolic links are designed to aid in migration and application compatibility 
-with UNIX operating systems. Microsoft has implemented symbolic links to 
+A symbolic link is a file-system object that points to another file-system
+object. The object that is pointed to is called the target. Symbolic links are
+transparent to users. The links appear as normal files or directories, and they
+can be acted upon by the user or application in exactly the same manner.
+Symbolic links are designed to aid in migration and application compatibility
+with UNIX operating systems. Microsoft has implemented symbolic links to
 function just like UNIX links.");
   exit(0);
 }
@@ -66,7 +66,7 @@ to query the registry.');
 WindowsName = get_kb_item("SMB/WindowsName");
 if('windows 10' >!< tolower(WindowsName)){
   policy_logging(text:'Host is not a Microsoft Windows 10 System.');
-  exit(0); 
+  exit(0);
 }
 
 title = 'Create symbolic links';

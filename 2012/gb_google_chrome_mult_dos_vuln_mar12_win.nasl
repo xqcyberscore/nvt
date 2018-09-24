@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_dos_vuln_mar12_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_google_chrome_mult_dos_vuln_mar12_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Google Chrome Multiple Denial of Service Vulnerabilities - March12 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802807");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2011-3031", "CVE-2011-3032", "CVE-2011-3033", "CVE-2011-3034",
                 "CVE-2011-3035", "CVE-2011-3036", "CVE-2011-3037", "CVE-2011-3038",
                 "CVE-2011-3039", "CVE-2011-3040", "CVE-2011-3041", "CVE-2011-3042",
@@ -35,7 +35,7 @@ if(description)
   script_bugtraq_id(52271);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-08 15:19:55 +0530 (Thu, 08 Mar 2012)");
   script_name("Google Chrome Multiple Denial of Service Vulnerabilities - March12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48265");
@@ -46,7 +46,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
-  script_require_keys("GoogleChrome/Win/Ver");
+  script_mandatory_keys("GoogleChrome/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code or
   cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 17.0.963.65 on Windows");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpinfo.nasl 11457 2018-09-18 12:24:49Z cfischer $
+# $Id: phpinfo.nasl 11558 2018-09-23 08:25:04Z cfischer $
 #
 # phpinfo() output accessible
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11229");
-  script_version("$Revision: 11457 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 14:24:49 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 11558 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-23 10:25:04 +0200 (Sun, 23 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -59,53 +59,71 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
-function get_php_version( data ) {
+global_var isvuln, report, curr_phpinfo_list;
+curr_phpinfo_list = make_list();
 
-  local_var data, vers;
+function check_and_set_phpinfo( url, host, port ) {
 
-  if( isnull( data ) ) return;
+  local_var url, host, port, res;
 
-  vers = eregmatch( pattern:'>PHP Version ([^<]+)<', string:data );
-  if( isnull ( vers[1] ) ) return;
+  res = http_get_cache( item:url, port:port );
+  if( ! res ) return;
 
-  return vers[1];
+  if( res =~ "^HTTP/1\.[01] 200" && "<title>phpinfo()</title>" >< res ) {
+    isvuln  = TRUE;
+    report += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE );
+    curr_phpinfo_list = make_list( curr_phpinfo_list, url );
+    set_kb_item( name:"php/phpinfo/" + host + "/" + port + "/detected_urls", value:url );
+    set_kb_item( name:"www/" + host + "/" + port + "/content/phpinfo_script/plain", value:url );
+    set_kb_item( name:"www/" + host + "/" + port + "/content/phpinfo_script/reporting", value:report_vuln_url( port:port, url:url, url_only:TRUE ) );
+
+    # <h1 class="p">PHP Version 7.0.30-0+deb9u1</h1>
+    vers = eregmatch( pattern:">PHP Version ([.0-9A-Za-z]+).*<", string:res );
+    if( ! isnull( vers[1] ) ) {
+      # nb: For later use/evaluation in gb_php_detect.nasl in the case no PHP or its version was detected from the banner
+      set_kb_item( name:"php/banner/from_scripts/" + host + "/" + port + "/urls", value:url );
+      replace_kb_item( name:"php/banner/from_scripts/" + host + "/" + port + "/short_versions/" + url, value:vers[1] );
+      vers = eregmatch( pattern:">PHP Version ([^<]+)<", string:res );
+      if( ! isnull( vers[1] ) )
+        replace_kb_item( name:"php/banner/from_scripts/" + host + "/" + port + "/full_versions/" + url, value:vers[1] );
+    }
+  }
+  return;
 }
 
-report = 'The following files are calling the function phpinfo() which disclose potentially sensitive information to the remote attacker:\n';
-files = make_list( "/phpinfo.php", "/info.php", "/test.php", "/php_info.php", "/index.php", "/i.php", "/test.php?mode=phpinfo" );
+report = 'The following files are calling the function phpinfo() which disclose potentially sensitive information:\n';
+files  = make_list( "/phpinfo.php", "/info.php", "/test.php", "/php_info.php", "/index.php", "/i.php", "/test.php?mode=phpinfo" );
 
 port = get_http_port( default:80 );
 # nb: Don't use can_host_php() here as this NVT is reporting PHP as well
-# and can_host_php() could fail if no PHP was detected before
+# and can_host_php() could fail if no PHP was detected before...
 
 host = http_host_name( dont_add_port:TRUE );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-
   foreach file( files ) {
-
     url = dir + file;
+    check_and_set_phpinfo( url:url, host:host, port:port );
+  }
+}
 
-    res = http_get_cache( item:url, port:port );
+# nb: This is filled by webmirror.nasl, the code here makes sure that we're not reporting
+# the same script twice...
+kb_phpinfo_scripts = get_kb_list( "www/" + host + "/" + port + "/content/phpinfo_script/plain" );
 
-    if( "<title>phpinfo()</title>" >< res ) {
-      vuln = TRUE;
-      report += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE );
-      set_kb_item( name:"php/phpinfo/" + host + "/" + port + "/detected_urls", value:url );
-      if( ! phpversion ) {
-        phpversion = get_php_version( data:res );
-      }
+if( kb_phpinfo_scripts && is_array( kb_phpinfo_scripts ) ) {
+  foreach kb_phpinfo_script( kb_phpinfo_scripts ) {
+    if( curr_phpinfo_list && is_array( curr_phpinfo_list ) && ! in_array( search:kb_phpinfo_script, array:curr_phpinfo_list, part_match:FALSE ) ) {
+      check_and_set_phpinfo( url:kb_phpinfo_script, host:host, port:port );
     }
   }
 }
 
-if( ! isnull( phpversion ) )
-  set_kb_item( name:"php/phpinfo/" + host + "/" + port + "/detected_versions", value:phpversion );
-
-if( vuln ) {
+if( isvuln ) {
   security_message( port:port, data:report );
   exit( 0 );
 }

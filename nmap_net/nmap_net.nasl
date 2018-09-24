@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap_net.nasl 8141 2017-12-15 12:43:22Z cfischer $
+# $Id: nmap_net.nasl 11527 2018-09-21 15:59:27Z cfischer $
 #
 # Launch Nmap for Network Scanning (nmap_net system)
 #
@@ -24,30 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script controls the execution of Nmap for network-wide
-scanning. Depending on selections made, this may include port scanning, OS
-detection, service detection and the execution of NSE tests.";
-
-
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.104000";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 8141 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.104000");
+  script_version("$Revision: 11527 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 17:59:27 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-05-31 15:59:37 +0200 (Tue, 31 May 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Launch Nmap for Network Scanning");
-
-
-
   script_category(ACT_SCANNER);
-    script_tag(name:"qod_type", value:"remote_analysis");
+  script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Port scanners");
-
 
   # --- Host discovery ---
   script_add_preference(name:"Treat all hosts as online", type:"checkbox", value:"no");
@@ -90,7 +79,10 @@ if(description)
 
   script_mandatory_keys("Tools/Present/nmap5.51");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script controls the execution of Nmap for network-wide
+scanning. Depending on selections made, this may include port scanning, OS
+detection, service detection and the execution of NSE tests.");
+
   exit(0);
 }
 
@@ -137,7 +129,7 @@ function report_open_ports() {
             scanner_add_port(proto:"tcp", port:portno);
 
             # XXX Corresponding keys are already set by the C plugin
-            #register_service(port:portno, proto:svc_map[portno]);
+            # XXX register_service(port:portno, proto:svc_map[portno]);
         }
     }
 
@@ -151,7 +143,7 @@ function report_open_ports() {
             scanner_add_port(proto:"udp", port:portno);
 
             # XXX Corresponding keys are already set by the C plugin
-            #register_service(port:portno, proto:svc_map[portno]);
+            # XXX register_service(port:portno, proto:svc_map[portno], ipproto:"udp");
         }
     }
 }
@@ -177,9 +169,9 @@ function report_detected_versions() {
                     report += '\nCPE: ' + cpe + '\n';
                     if ('cpe:/a:' >< cpe) {
                         register_product(cpe:cpe, location:string(port, '/', proto),
-                                         nvt:SCRIPT_OID);
+                                         nvt:"1.3.6.1.4.1.25623.1.0.104000");
                     } else {
-                        register_host_detail(name:"OS", value:cpe, nvt:SCRIPT_OID);
+                        register_host_detail(name:"OS", value:cpe);
                     }
                 }
             }
@@ -196,7 +188,7 @@ function report_detected_os() {
     os = get_kb_item("Host/OS");
     if (!isnull(os)) {
         report += 'Nmap OS fingerprint result: ' + os + '\n\n';
-        register_host_detail(name:"OS", value:os, nvt:SCRIPT_OID);
+        register_host_detail(name:"OS", value:os);
     }
 
     # report OS CPEs
@@ -204,7 +196,7 @@ function report_detected_os() {
     if (!isnull(os)) {
         foreach cpe (os) {
             report += 'CPE: ' + cpe + '\n';
-            register_host_detail(name:"OS", value:cpe, nvt:SCRIPT_OID);
+            register_host_detail(name:"OS", value:cpe);
         }
     }
 
@@ -265,7 +257,7 @@ function report_traceroute() {
 phase = 0;
 
 if (defined_func("scan_phase")) {
-    phase = scan_phase();
+  phase = scan_phase();
 }
 
 if (phase == 1) {

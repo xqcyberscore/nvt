@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: flash_player_CB-A08-0059.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: flash_player_CB-A08-0059.nasl 11555 2018-09-22 15:24:22Z cfischer $
 # Description: Adobe Flash Player 9.0.115.0 and earlier vulnerability (Linux)
 #
 # Authors:
@@ -22,7 +22,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_impact = "CVE 2007-5275
+# $Revision: 11555 $
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.90018");
+  script_version("$Revision: 11555 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:24:22 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2008-09-03 22:30:27 +0200 (Wed, 03 Sep 2008)");
+  script_cve_id("CVE-2007-5275", "CVE-2007-6019", "CVE-2007-6243",
+                "CVE-2007-6637", "CVE-2008-1654", "CVE-2008-1655");
+  script_bugtraq_id(28697, 28696, 27034, 26966, 28694, 26930);
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_name("Adobe Flash Player 9.0.115.0 and earlier vulnerability (Linux)");
+
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"executable_version");
+  script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
+  script_family("General");
+  script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
+  script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
+  script_tag(name:"solution", value:"All Adobe Flash Player users should upgrade to the latest version:");
+  script_tag(name:"summary", value:"The remote host is probably affected by the vulnerabilities
+  described in CVE-2007-5275, CVE-2007-6019, CVE-2007-6243, CVE-2007-6637,
+  CVE-2008-1654, CVE-2008-1655");
+  script_tag(name:"impact", value:"CVE 2007-5275
     The Adobe Macromedia Flash 9 plug-in allows remote attackers to cause
     a victim machine to establish TCP sessions with arbitrary hosts via a
     Flash (SWF) movie, related to lack of pinning of a hostname to a single
@@ -55,40 +80,10 @@ tag_impact = "CVE 2007-5275
   CVE 2008-1655
     Unspecified vulnerability in Adobe Flash Player 9.0.115.0 and earlier,
     and 8.0.39.0 and earlier, makes it easier for remote attackers to
-    conduct DNS rebinding attacks via unknown vectors.";
+    conduct DNS rebinding attacks via unknown vectors.");
 
-tag_summary = "The remote host is probably affected by the vulnerabilities
-  described in CVE-2007-5275, CVE-2007-6019, CVE-2007-6243, CVE-2007-6637,
-  CVE-2008-1654, CVE-2008-1655";
+  script_tag(name:"solution_type", value:"VendorFix");
 
-tag_solution = "All Adobe Flash Player users should upgrade to the latest version:";
-
-# $Revision: 9349 $
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.90018");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2008-09-03 22:30:27 +0200 (Wed, 03 Sep 2008)");
-  script_cve_id("CVE-2007-5275", "CVE-2007-6019", "CVE-2007-6243",
-                "CVE-2007-6637", "CVE-2008-1654", "CVE-2008-1655");
-  script_bugtraq_id(28697, 28696, 27034, 26966, 28694, 26930);
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  name = "Adobe Flash Player 9.0.115.0 and earlier vulnerability (Linux)";
-  script_name(name);
-
-  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"executable_version");
-  script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
-  family = "General";
-  script_family(family);
-  script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
-  script_require_keys("AdobeFlashPlayer/Linux/Ver");
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
   exit(0);
 }
 
@@ -101,5 +96,5 @@ if(!flashVer){
 }
 
 if(version_is_less_equal(version:flashVer, test_version:"9,0,115,0")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

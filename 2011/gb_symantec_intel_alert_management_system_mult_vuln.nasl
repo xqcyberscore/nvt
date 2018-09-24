@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_intel_alert_management_system_mult_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_symantec_intel_alert_management_system_mult_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Symantec Intel Alert Management System Multiple Vulnerabilities
 #
@@ -24,61 +24,54 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to cause a denial of service
-  or compromise a vulnerable system.
-  Impact Level: Application";
-tag_affected = "Symantec Antivirus Corporate Edition (SAVCE) 10.x before 10.1 MR10";
-tag_insight = "Multiple flaws are caused by buffer overflow and input validation errors
-  in the Intel Alert Management System (AMS2) when processing user-supplied
-  packets, which could allow attackers or malicious users to trigger arbitrary
-  events (launching a program, sending an email), shutdown the service, or
-  execute arbitray code.";
-tag_solution = "Upgrade to Symantec Antivirus Corporate Edition 10.1 MR10 or later,
-  For updates refer to http://www.symantec.com/index.jsp";
-tag_summary = "This host is installed with Symantec AntiVirus Corporate Edition
-  and is prone to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801835");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_cve_id("CVE-2010-0110", "CVE-2010-0111", "CVE-2011-0688");
-  script_bugtraq_id(45935,45936);
+  script_bugtraq_id(45935, 45936);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Symantec Intel Alert Management System Multiple Vulnerabilities");
-
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_symantec_prdts_detect.nasl");
-  script_require_keys("Symantec/SAVCE/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/43099");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1024996");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0234");
-  script_xref(name : "URL" , value : "http://www.symantec.com/business/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2011&suid=20110126_00");
+  script_mandatory_keys("Symantec/SAVCE/Ver");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a denial of service
+  or compromise a vulnerable system.");
+  script_tag(name:"affected", value:"Symantec Antivirus Corporate Edition (SAVCE) 10.x before 10.1 MR10");
+  script_tag(name:"insight", value:"Multiple flaws are caused by buffer overflow and input validation errors
+  in the Intel Alert Management System (AMS2) when processing user-supplied
+  packets, which could allow attackers or malicious users to trigger arbitrary
+  events (launching a program, sending an email), shutdown the service, or
+  execute arbitrary code.");
+  script_tag(name:"solution", value:"Upgrade to Symantec Antivirus Corporate Edition 10.1 MR10 or later,
+  For updates refer to http://www.symantec.com/index.jsp");
+  script_tag(name:"summary", value:"This host is installed with Symantec AntiVirus Corporate Edition
+  and is prone to multiple vulnerabilities.");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/43099");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1024996");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/0234");
+  script_xref(name:"URL", value:"http://www.symantec.com/business/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2011&suid=20110126_00");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Get version from KB
 savceVer = get_kb_item("Symantec/SAVCE/Ver");
 if(!savceVer){
   exit(0);
 }
 
-## Check for vulnerable Symantec Antivirus Corporate Edition versions
 if(version_is_less_equal(version:savceVer,test_version:"10.1.8000.8")) {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

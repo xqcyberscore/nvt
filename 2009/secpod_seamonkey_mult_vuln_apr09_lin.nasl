@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_seamonkey_mult_vuln_apr09_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_seamonkey_mult_vuln_apr09_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Mozilla Seamonkey Multiple Vulnerabilities Apr-09 (Linux)
 #
@@ -24,23 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could result in Information Disclosure, XSS, Script
-  Injection, Memory Corruption, CSRF, Arbitrary JavaScript code execution or
-  can cause denial of service attacks.
-  Impact Level: System/Application";
-tag_affected = "Seamonkey version prior to 1.1.17 on Linux.";
-tag_insight = "For more information about vulnerabilities on Seamonkey, go through the links
-  mentioned in references.";
-tag_solution = "Upgrade to Seamonkey version 1.1.17
-  http://www.seamonkey-project.org/releases";
-tag_summary = "The host is installed with Mozilla Seamonkey and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900347");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -55,22 +43,27 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
   script_dependencies("gb_seamonkey_detect_lin.nasl");
-  script_require_keys("Seamonkey/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("Seamonkey/Linux/Ver");
+  script_tag(name:"impact", value:"Successful exploitation could result in Information Disclosure, XSS, Script
+  Injection, Memory Corruption, CSRF, Arbitrary JavaScript code execution or
+  can cause denial of service attacks.");
+  script_tag(name:"affected", value:"Seamonkey version prior to 1.1.17 on Linux.");
+  script_tag(name:"insight", value:"For more information about vulnerabilities on Seamonkey, go through the links
+  mentioned in references.");
+  script_tag(name:"solution", value:"Upgrade to Seamonkey version 1.1.17
+  http://www.seamonkey-project.org/releases");
+  script_tag(name:"summary", value:"The host is installed with Mozilla Seamonkey and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/34835");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2009/mfsa2009-14.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2009/mfsa2009-16.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2009/mfsa2009-17.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2009/mfsa2009-18.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2009/mfsa2009-19.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2009/mfsa2009-21.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2009/mfsa2009-22.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/34835");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2009/mfsa2009-14.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2009/mfsa2009-16.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2009/mfsa2009-17.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2009/mfsa2009-18.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2009/mfsa2009-19.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2009/mfsa2009-21.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2009/mfsa2009-22.html");
   exit(0);
 }
 
@@ -82,7 +75,6 @@ if(!smVer){
   exit(0);
 }
 
-# Grep for Seamonkey version prior to 1.1.17
 if(version_is_less(version:smVer, test_version:"1.1.17")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_obj_code_exec_vuln_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_adobe_flash_player_obj_code_exec_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Adobe Flash Player Object Confusion Remote Code Execution Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802773");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-0779");
   script_bugtraq_id(53395);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-08 14:44:50 +0530 (Tue, 08 May 2012)");
   script_name("Adobe Flash Player Object Confusion Remote Code Execution Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49096/");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
-  script_require_keys("Adobe/Flash/Player/MacOSX/Version");
+  script_mandatory_keys("Adobe/Flash/Player/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will let attackers to create crafted Flash content
   that, when loaded by the target user, will trigger an object confusion flaw
   and execute arbitrary code on the target system.");

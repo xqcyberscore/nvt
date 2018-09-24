@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_autoconnect_allowed_oem.nasl 11337 2018-09-11 14:23:53Z emoss $
+# $Id: win_autoconnect_allowed_oem.nasl 11538 2018-09-21 19:50:22Z cfischer $
 #
 # Check value for Allow Windows to automatically connect to suggested open
 # hotspots, to networks shared by contacts, and to hotspots offering paid services
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109339");
-  script_version("$Revision: 11337 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:23:53 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 11538 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:50:22 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-22 14:49:11 +0200 (Fri, 22 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -42,13 +42,15 @@ if(description)
   script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
   script_tag(name:"summary", value:"This test checks the setting for policy
-'Allow Windows to automatically connect to suggested open hotspots, to networks
-shared by contacts, and to hotspots offering paid services' on Windows hosts (at
-least Windows 10).
+  'Allow Windows to automatically connect to suggested open hotspots, to networks
+  shared by contacts, and to hotspots offering paid services' on Windows hosts (at
+  least Windows 10).
 
-The policy setting determines whether users can enable the following WLAN
-settings: 'Connect to suggested open hotspots, ' 'Connect to networks shared by
-my contacts, ' and 'Enable paid services'.");
+  The policy setting determines whether users can enable the following WLAN
+  settings:
+
+  'Connect to suggested open hotspots, ' 'Connect to networks shared by my contacts, ' and 'Enable paid services'.");
+
   exit(0);
 }
 

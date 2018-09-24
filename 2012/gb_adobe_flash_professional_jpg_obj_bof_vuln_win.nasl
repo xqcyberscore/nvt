@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_professional_jpg_obj_bof_vuln_win.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: gb_adobe_flash_professional_jpg_obj_bof_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Adobe Flash Professional JPG Object Processing BOF Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802781");
-  script_version("$Revision: 11372 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-0778");
   script_bugtraq_id(53419);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-15 13:58:42 +0530 (Tue, 15 May 2012)");
   script_name("Adobe Flash Professional JPG Object Processing BOF Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47116/");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_adobe_flash_professional_detect_win.nasl");
-  script_require_keys("Adobe/Flash/Prof/Win/Ver");
+  script_mandatory_keys("Adobe/Flash/Prof/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code.");
   script_tag(name:"affected", value:"Adobe Flash Professional version CS5.5.1 (11.5.1.349) and prior on Windows");
   script_tag(name:"insight", value:"The flaw is due to an error in 'Flash.exe' when allocating memory to

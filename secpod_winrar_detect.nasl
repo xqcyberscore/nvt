@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $ secpod_winrar_detect.nasl 4470 2009-09-15 13:10:24Z sep $
+# $Id: secpod_winrar_detect.nasl 11543 2018-09-21 20:25:26Z cfischer $
 #
 # WinRAR Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901021");
-  script_version("$Revision: 10901 $");
+  script_version("$Revision: 11543 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:25:26 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-09-16 15:34:19 +0200 (Wed, 16 Sep 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("WinRAR Version Detection");

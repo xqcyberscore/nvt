@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_git_privilege_escalation_vuln_win.nasl 10042 2018-05-31 12:56:04Z jschulte $
+# $Id: gb_git_privilege_escalation_vuln_win.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Git Privilege Escalation Vulnerability - Windows
 #
@@ -29,39 +29,37 @@ CPE = "cpe:/a:git_for_windows_project:git_for_windows";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809816");
-  script_version("$Revision: 10042 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-9274");
   script_bugtraq_id(94289);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:56:04 +0200 (Thu, 31 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-22 11:18:59 +0530 (Tue, 22 Nov 2016)");
   script_name("Git Privilege Escalation Vulnerability - Windows");
 
-  script_tag(name: "summary" , value:"The host is installed with Git
+  script_tag(name:"summary", value:"The host is installed with Git
   and is prone privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an untrusted search
+  script_tag(name:"insight", value:"The flaw exists due to an untrusted search
   path vulnerability.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow  local users to gain privileges via a Trojan horse
-  git.exe file in the current working directory.
+  git.exe file in the current working directory.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Git version prior to 2.0 on Windows");
 
-  script_tag(name: "affected" , value:"Git version prior to 2.0 on Windows");
-
-  script_tag(name: "solution", value:"Upgrade to Git version 2.0 or later
+  script_tag(name:"solution", value:"Upgrade to Git version 2.0 or later
   For updates refer to https://git-scm.com/download/win");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://github.com/git-for-windows/git/issues/944");
+  script_xref(name:"URL", value:"https://github.com/git-for-windows/git/issues/944");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

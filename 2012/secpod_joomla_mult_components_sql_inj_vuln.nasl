@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_mult_components_sql_inj_vuln.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: secpod_joomla_mult_components_sql_inj_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Joomla Jomdirectory and Advert Components SQL Injection Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902790");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11549 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-25 12:40:42 +0530 (Wed, 25 Jan 2012)");
 
   script_name("Joomla Jomdirectory and Advert Components SQL Injection Vulnerabilities");
@@ -46,7 +46,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL queries by
 injecting arbitrary SQL code.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yahoo_msg_cyimage_bof_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_yahoo_msg_cyimage_bof_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Yahoo Messenger JPG Photo Sharing Integer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802419");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-0268");
   script_bugtraq_id(51405);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 14:36:01 +0530 (Mon, 23 Jan 2012)");
   script_name("Yahoo Messenger JPG Photo Sharing Integer Overflow Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47041");
@@ -42,7 +42,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_yahoo_msg_detect.nasl");
-  script_require_keys("YahooMessenger/Ver");
+  script_mandatory_keys("YahooMessenger/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to a heap-based buffer
   overflow via a specially crafted JPG file.");
   script_tag(name:"affected", value:"Yahoo! Messenger version prior to 11.5.0.155 on Windows.");

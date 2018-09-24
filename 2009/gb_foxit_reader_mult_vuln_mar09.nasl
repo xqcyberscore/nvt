@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_vuln_mar09.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_reader_mult_vuln_mar09.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Foxit Reader Multiple Vulnerabilities Mar-09
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800537");
-  script_version("$Revision: 11356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-03-17 05:28:51 +0100 (Tue, 17 Mar 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -43,10 +43,9 @@ if(description)
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
-  script_require_keys("foxit/reader/ver");
+  script_mandatory_keys("foxit/reader/ver");
   script_tag(name:"impact", value:"Successful exploitation will let attacker execute arbitrary code via
-  relative and absolute paths and to dereference uninstalled memory.
-  Impact Level: Application");
+  relative and absolute paths and to dereference uninstalled memory.");
   script_tag(name:"affected", value:"Foxit Reader 2.3 before Build 3902 and 3.0 before Build 1506.");
   script_tag(name:"insight", value:"- application does not require user confirmation before performing dangerous
     actions

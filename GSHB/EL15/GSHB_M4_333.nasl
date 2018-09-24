@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_333.nasl 10396 2018-07-04 09:13:46Z cfischer $
+# $Id: GSHB_M4_333.nasl 11531 2018-09-21 18:50:24Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 4.333
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94240");
-  script_version("$Revision: 10396 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 11:13:46 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 11531 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 20:50:24 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +37,7 @@ if(description)
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
-  script_dependencies("gather-package-list.nasl", "GSHB/GSHB_SSH_fstab.nasl","GSHB/GSHB_SSH_Samba.nasl", "GSHB/GSHB_SSH_nsswitch.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
+  script_dependencies("gather-package-list.nasl", "GSHB/GSHB_SSH_fstab.nasl", "GSHB/GSHB_SSH_Samba.nasl", "GSHB/GSHB_SSH_nsswitch.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
 
   script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04333.html");
 

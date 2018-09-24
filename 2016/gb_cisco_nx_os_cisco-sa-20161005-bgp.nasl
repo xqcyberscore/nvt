@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20161005-bgp.nasl 5782 2017-03-30 09:01:05Z teissa $
+# $Id: gb_cisco_nx_os_cisco-sa-20161005-bgp.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Cisco NX-OS Border Gateway Protocol Denial of Service Vulnerability
 #
@@ -29,44 +29,44 @@ CPE = "cpe:/o:cisco:nx-os";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.107097");
- script_cve_id("CVE-2016-1454");
- script_tag(name:"cvss_base", value:"7.1");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5782 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.107097");
+  script_cve_id("CVE-2016-1454");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11523 $");
 
- script_name("Cisco NX-OS Border Gateway Protocol Denial of Service Vulnerability");
+  script_name("Cisco NX-OS Border Gateway Protocol Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161005-bgp");
- 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161005-bgp");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "summary" , value:"A vulnerability in the Border Gateway Protocol (BGP) implementation of
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+
+  script_tag(name:"summary", value:"A vulnerability in the Border Gateway Protocol (BGP) implementation of
 Cisco NX-OS System Software could allow an unauthenticated, remote attacker to cause a denial of service (DoS)
 condition due to the device unexpectedly reloading.");
 
- script_tag(name: "insight", value: "The vulnerability is due to incomplete input validation of the BGP update
+  script_tag(name:"insight", value:"The vulnerability is due to incomplete input validation of the BGP update
 messages. An attacker could exploit this vulnerability by sending a crafted BGP update message to the targeted
 device. To exploit this vulnerability, an attacker must be able to send the malicious packets over a TCP
 connection that appears to come from a trusted BGP peer, or inject malformed messages into the victim's BGP
 network.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause the switch to reload
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause the switch to reload
 unexpectedly.");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-10-06 09:39:36 +0700 (Thu, 06 Oct 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version","cisco_nx_os/model","cisco_nx_os/device");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-06 09:39:36 +0700 (Thu, 06 Oct 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_nx_os_version.nasl");
+  script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
 
  exit(0);
 }

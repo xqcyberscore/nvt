@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20150415-iosxr.nasl 5813 2017-03-31 09:01:08Z teissa $
+# $Id: gb_cisco_ios_xr_cisco-sa-20150415-iosxr.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Cisco IOS XR Software BVI Routed Packet Denial of Service Vulnerability
 #
@@ -29,21 +29,21 @@ CPE = "cpe:/o:cisco:ios_xr";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105688");
- script_cve_id("CVE-2015-0695");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5813 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105688");
+  script_cve_id("CVE-2015-0695");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11569 $");
 
- script_name("Cisco IOS XR Software BVI Routed Packet Denial of Service Vulnerability");
+  script_name("Cisco IOS XR Software BVI Routed Packet Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150415-iosxr");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150415-iosxr");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the packet-processing code of Cisco IOS XR Software for Cisco ASR 9000 Series Aggregation Services Routers (ASR) could allow an unauthenticated, remote attacker to cause a lockup and eventual reload of a network processor chip and the line card that is processing traffic. Only Typhoon-based line cards on Cisco ASR 9000 Series Aggregation Services Routers are affected by this vulnerability.
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the packet-processing code of Cisco IOS XR Software for Cisco ASR 9000 Series Aggregation Services Routers (ASR) could allow an unauthenticated, remote attacker to cause a lockup and eventual reload of a network processor chip and the line card that is processing traffic. Only Typhoon-based line cards on Cisco ASR 9000 Series Aggregation Services Routers are affected by this vulnerability.
 
 The vulnerability is due to improper processing of packets that are routed via the bridge-group virtual interface (BVI) when any of the following features are configured: Unicast Reverse Path Forwarding (uRPF), policy-based routing (PBR), quality of service (QoS), or access control lists (ACLs). An attacker could exploit this vulnerability by sending IPv4 packets through an affected device that is configured to route them via the BVI interface. A successful exploit could allow the attacker to cause a lockup and eventual reload of a network processor chip and the line card that is processing traffic, leading to a denial of service (DoS) condition.
 
@@ -51,16 +51,16 @@ Cisco has released software updates that address this vulnerability. There are n
 
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150415-iosxr");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-10 14:03:30 +0200 (Tue, 10 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xr_version.nasl");
- script_mandatory_keys("cisco/ios_xr/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-10 14:03:30 +0200 (Tue, 10 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xr_version.nasl");
+  script_mandatory_keys("cisco/ios_xr/version");
  exit(0);
 }
 
@@ -72,7 +72,7 @@ if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 if ( ! model = get_kb_item( "cisco/ios_xr/model" ) ) exit( 0 );
 if( "ASR9" >!< model ) exit( 99 );
 
-affected = make_list( 
+affected = make_list(
 		'4.3.0',
 		'4.3.1',
 		'4.3.2',

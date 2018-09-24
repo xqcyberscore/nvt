@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-62_2016-84_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2016-62_2016-84_win.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Mozilla Firefox Security Updates( mfsa_2016-62_2016-84 )-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808640");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-5250", "CVE-2016-5268", "CVE-2016-5266", "CVE-2016-2835",
 		"CVE-2016-5265", "CVE-2016-5264", "CVE-2016-5263", "CVE-2016-2837",
 		"CVE-2016-5262", "CVE-2016-5261", "CVE-2016-5260", "CVE-2016-5259",
@@ -38,30 +38,28 @@ if(description)
                 "CVE-2016-2830", "CVE-2016-2836");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-08 14:53:06 +0530 (Mon, 08 Aug 2016)");
   script_name("Mozilla Firefox Security Updates( mfsa_2016-62_2016-84 )-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with
+  script_tag(name:"summary", value:"This host is installed with
   Mozilla Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists. For details
+  script_tag(name:"insight", value:"Multiple flaws exists. For details
   refer links mentioned in reference.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allow remote attackers to spoof the address bar, to bypass the same origin
   policy, and conduct Universal XSS (UXSS) attacks, to read arbitrary files, to
   execute arbitrary code, to cause a denial of service, to discover cleartext
-  passwords by reading a session restoration file and to obtain sensitive information.
+  passwords by reading a session restoration file and to obtain sensitive information.");
 
-  Impact Level: Application.");
-
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 48 on
+  script_tag(name:"affected", value:"Mozilla Firefox version before 48 on
   Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 48
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 48
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

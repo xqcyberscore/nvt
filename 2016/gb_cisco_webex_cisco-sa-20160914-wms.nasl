@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_webex_cisco-sa-20160914-wms.nasl 4081 2016-09-16 10:16:48Z ckuerste $
+# $Id: gb_cisco_webex_cisco-sa-20160914-wms.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Cisco WebEx Meetings Server Denial of Service Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:cisco:webex_meetings_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106253");
-  script_version("$Revision: 4081 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-16 12:16:48 +0200 (Fri, 16 Sep 2016) $");
-  script_tag(name: "creation_date", value: "2016-09-16 12:38:55 +0700 (Fri, 16 Sep 2016)");
+  script_version("$Revision: 11523 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-16 12:38:55 +0700 (Fri, 16 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_cve_id("CVE-2016-1483");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cisco WebEx Meetings Server Denial of Service Vulnerability");
 
@@ -51,24 +51,24 @@ if (description)
   script_dependencies("gb_cisco_webex_meetings_server_detect.nasl");
   script_mandatory_keys("cisco/webex/detected");
 
-  script_tag(name: "summary", value: "A vulnerability in Cisco WebEx Meetings Server could allow an
+  script_tag(name:"summary", value:"A vulnerability in Cisco WebEx Meetings Server could allow an
 unauthenticated, remote attacker to cause a denial of service (DoS) condition on a targeted system.");
 
-  script_tag(name: "insight", value: "The vulnerability is due to improper validation of user accounts by
+  script_tag(name:"insight", value:"The vulnerability is due to improper validation of user accounts by
 specific services. An unauthenticated, remote attacker could exploit this vulnerability by repeatedly attempting
 to access a specific service, causing the system to perform computationally intensive tasks and resulting in a
 DoS condition.");
 
-  script_tag(name: "impact", value: "Successful exploitation could allow an attacker to cause a denial of service
+  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to cause a denial of service
 condition.");
 
-  script_tag(name: "affected", value: "Cisco WebEx Meetings Server version 2.6");
+  script_tag(name:"affected", value:"Cisco WebEx Meetings Server version 2.6");
 
-  script_tag(name: "solution", value: "Update to Cisco WebEx Meetings Server version 2.7 or later");
+  script_tag(name:"solution", value:"Update to Cisco WebEx Meetings Server version 2.7 or later");
 
-  script_xref(name: "URL", value: "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160914-wms");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160914-wms");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_web_script_exec_vuln_jun09.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: secpod_google_chrome_web_script_exec_vuln_jun09.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Google Chrome Web Script Execution Vulnerabilities - June09
 #
@@ -26,15 +26,15 @@
 
 if(description)
 {
-  script_xref(name : "URL" , value : "https://bugzilla.mozilla.org/show_bug.cgi?id=479880");
-  script_xref(name : "URL" , value : "http://code.google.com/p/chromium/issues/detail?id=7338");
-  script_xref(name : "URL" , value : "http://research.microsoft.com/apps/pubs/default.aspx?id=79323");
-  script_xref(name : "URL" , value : "http://research.microsoft.com/pubs/79323/pbp-final-with-update.pdf");
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=479880");
+  script_xref(name:"URL", value:"http://code.google.com/p/chromium/issues/detail?id=7338");
+  script_xref(name:"URL", value:"http://research.microsoft.com/apps/pubs/default.aspx?id=79323");
+  script_xref(name:"URL", value:"http://research.microsoft.com/pubs/79323/pbp-final-with-update.pdf");
   script_cve_id("CVE-2009-2060", "CVE-2009-2071", "CVE-2009-2068");
 
   script_oid("1.3.6.1.4.1.25623.1.0.900370");
-  script_version("$Revision: 10133 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-06-17 17:54:48 +0200 (Wed, 17 Jun 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -44,14 +44,12 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
-  script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary web script
+  script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary web script
   in an https site's context and spoof an arbitrary https site by letting a
-  browser obtain a valid certificate.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Google Chrome version through 3.0.187.1 on Windows.");
-  script_tag(name : "insight" , value : "Multiple flaws are due to,
+  browser obtain a valid certificate.");
+  script_tag(name:"affected", value:"Google Chrome version through 3.0.187.1 on Windows.");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - Displays a cached certificate for a '4xx' or '5xx' CONNECT response page
     returned by a proxy server, which can exploited by sending the browser a
@@ -67,10 +65,10 @@ if(description)
     https. This can be exploited by modifying an http page to include an https
     iframe that references a script file on an http site, related to
     'HTTP-Intended-but-HTTPS-Loadable (HPIHSL) pages.'");
-  script_tag(name : "solution" , value : "Upgrade to Google Chrome version 4.1.249.1064 or later.
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version 4.1.249.1064 or later.
   For updates refer to http://www.google.com/chrome");
-  script_tag(name : "solution_type" , value : "VendorFix");
-  script_tag(name : "summary" , value : "This host has Google Chrome installed and is prone to Web Script
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host has Google Chrome installed and is prone to Web Script
   Execution vulnerabilities.");
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bugzilla_code_injection_n_sec_bypass_vulns.nasl 11425 2018-09-17 09:11:30Z asteins $
+# $Id: gb_bugzilla_code_injection_n_sec_bypass_vulns.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Bugzilla LDAP Code Injection And Security Bypass Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:bugzilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.892672");
-  script_version("$Revision: 11425 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-4747", "CVE-2012-3981");
   script_bugtraq_id(55349);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:11:30 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-11 11:13:14 +0530 (Tue, 11 Sep 2012)");
 
   script_name("Bugzilla LDAP Code Injection And Security Bypass Vulnerabilities");
@@ -49,7 +49,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
   script_dependencies("bugzilla_detect.nasl");
-  script_require_keys("bugzilla/installed");
+  script_mandatory_keys("bugzilla/installed");
   script_require_ports("Services/www", 80);
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain sensitive

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4227.nasl 10170 2018-06-13 06:17:40Z cfischer $
+# $Id: deb_4227.nasl 11520 2018-09-21 12:52:31Z cfischer $
 #
 # Auto-generated from advisory DSA 4227-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704227");
-  script_version("$Revision: 10170 $");
+  script_version("$Revision: 11520 $");
   script_cve_id("CVE-2018-1002200");
   script_name("Debian Security Advisory DSA 4227-1 (plexus-archiver - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-13 08:17:40 +0200 (Wed, 13 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 14:52:31 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-12 00:00:00 +0200 (Tue, 12 Jun 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

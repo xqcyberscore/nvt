@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_dos_vuln_april16_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_squid_dos_vuln_april16_win.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Squid Denial of Service Vulnerability April16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807919");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-2390");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-21 16:02:44 +0530 (Thu, 21 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Squid Denial of Service Vulnerability April16 (Windows)");
@@ -41,17 +41,14 @@ if(description)
   script_tag(name:"summary", value:"This host is running Squid and is prone
   to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to the
   'FwdState::connectedToPeer' method in 'FwdState.cc' script does not properly
   handle SSL handshake errors when built with the --with-openssl option.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote
-  attackers to cause a denial of service.
-
-  Impact Level: Application");
+  attackers to cause a denial of service.");
 
   script_tag(name:"affected", value:"Squid version 3.5.13 and 4.0.4
   before 4.0.6 on Windows.");
@@ -61,14 +58,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://lists.squid-cache.org/pipermail/squid-announce/2016-February/000038.html");
-  script_xref(name : "URL" , value : "http://www.squid-cache.org/Advisories/SQUID-2016_1.txt");
+  script_xref(name:"URL", value:"http://lists.squid-cache.org/pipermail/squid-announce/2016-February/000038.html");
+  script_xref(name:"URL", value:"http://www.squid-cache.org/Advisories/SQUID-2016_1.txt");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("secpod_squid_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("squid_proxy_server/installed","Host/runs_windows");
+  script_mandatory_keys("squid_proxy_server/installed", "Host/runs_windows");
   script_require_ports("Services/www", 3128, 8080);
   exit(0);
 }
@@ -77,16 +74,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-squidPort = "";
-squidVer = "";
-
-## Get HTTP Port
 if(!squidPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!squidVer = get_app_version(cpe:CPE, port:squidPort)){
   exit(0);
 }

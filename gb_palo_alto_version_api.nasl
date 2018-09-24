@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_palo_alto_version_api.nasl 8741 2018-02-09 12:30:28Z cfischer $
+# $Id: gb_palo_alto_version_api.nasl 11533 2018-09-21 19:24:04Z cfischer $
 #
 # Palo Alto PAN-OS Version Detection (XML-API)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105262");
-  script_version("$Revision: 8741 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 13:30:28 +0100 (Fri, 09 Feb 2018) $");
+  script_version("$Revision: 11533 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:24:04 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-22 13:23:32 +0200 (Wed, 22 Apr 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -86,7 +86,7 @@ if( "success" >!< buf || "<key>" >!< buf ) {
   if( reason = egrep( pattern:"<msg>.*</msg>", string:buf ) ) {
     exit_and_report_fail( port:port, reason:reason );
   }
-  exit_and_report_fail( port:port, reason:"Unknown error occured while trying to generate an Access Key via '/api/?type=keygen'." );
+  exit_and_report_fail( port:port, reason:"Unknown error occurred while trying to generate an Access Key via '/api/?type=keygen'." );
 }
 
 match = eregmatch( pattern:'<key>([^<]+)</key>', string:buf );
@@ -104,7 +104,7 @@ if( "success" >!< buf || "<result>" >!< buf ) {
   if( reason = egrep( pattern:"<msg>.*</msg>", string:buf ) ) {
     exit_and_report_fail( port:port, reason:reason );
   }
-  exit_and_report_fail( port:port, reason:"Unknown error occured while trying to access '/api/?type=op' via the previously generated Access Key." );
+  exit_and_report_fail( port:port, reason:"Unknown error occurred while trying to access '/api/?type=op' via the previously generated Access Key." );
 }
 
 set_kb_item( name:"palo_alto/detected", value:TRUE );

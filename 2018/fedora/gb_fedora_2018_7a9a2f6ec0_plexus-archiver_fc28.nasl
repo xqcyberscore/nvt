@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_7a9a2f6ec0_plexus-archiver_fc28.nasl 10220 2018-06-15 12:17:34Z santu $
+# $Id: gb_fedora_2018_7a9a2f6ec0_plexus-archiver_fc28.nasl 11520 2018-09-21 12:52:31Z cfischer $
 #
 # Fedora Update for plexus-archiver FEDORA-2018-7a9a2f6ec0
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874676");
-  script_version("$Revision: 10220 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 14:17:34 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 11520 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 14:52:31 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-15 05:59:19 +0200 (Fri, 15 Jun 2018)");
   script_cve_id("CVE-2018-1002200");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for plexus-archiver FEDORA-2018-7a9a2f6ec0");
   script_tag(name:"summary", value:"Check the version of plexus-archiver");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-042_macosx.nasl 4564 2016-11-18 09:09:19Z antu123 $
+# $Id: gb_ms16-042_macosx.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Microsoft Office Muliple Remote Code Execution Vulnerabilities-3148775(Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807541");
-  script_version("$Revision: 4564 $");
+  script_version("$Revision: 11569 $");
   script_cve_id("CVE-2016-0139", "CVE-2016-0122");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-18 10:09:19 +0100 (Fri, 18 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-13 11:57:14 +0530 (Wed, 13 Apr 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Muliple Remote Code Execution Vulnerabilities-3148775(Mac OS X)");
@@ -39,17 +39,15 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-042");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
+  script_tag(name:"vuldetect", value:"Gets the vulnerable file version and checks if the
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to multiple memory
   corruption vulnerabilities.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code in the context of the currently 
-  logged-in user and could take control of the affected system.
-
-  Impact Level: System/Application");
+  attackers to execute arbitrary code in the context of the currently
+  logged-in user and could take control of the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Office 2011 on Mac OS X");
 
@@ -57,8 +55,8 @@ if(description)
   https://technet.microsoft.com/library/security/MS16-042");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3154208");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-042");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3154208");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-042");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
@@ -70,18 +68,12 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-offVer = "";
-
-## Get the version from KB
 offVer = get_kb_item("MS/Office/MacOSX/Ver");
 
-## check the version from KB
 if(!offVer || !(offVer =~ "^(14\.)")){
   exit(0);
 }
 
-## Check for Office Version < (14.6.3)
 if(version_in_range(version:offVer, test_version:"14.1.0", test_version2:"14.6.2"))
 {
   report = 'File version:     ' + offVer   + '\n' +

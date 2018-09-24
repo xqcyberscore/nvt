@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_018.nasl 10623 2018-07-25 15:14:01Z cfischer $
+# $Id: GSHB_M5_018.nasl 11531 2018-09-21 18:50:24Z cfischer $
 #
 # IT-Grundschutz, 11. EL, Maßnahme 5.018
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.895018");
-  script_version("$Revision: 10623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 11531 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 20:50:24 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-05-07 15:05:51 +0200 (Fri, 07 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,9 +50,7 @@ if(description)
   Grundschutz. Die detaillierte Beschreibung zu dieser Maßnahme findet sich unter
   nachfolgendem Verweis. Es ist zu beachten, dass der dortige Text sich immer auf
   die aktuellste Ergänzungslieferung bezieht. Titel und Inhalt können sich bei einer
-  Aktualisierung ändern, allerdings nicht die Kernthematik.
-
-");
+  Aktualisierung ändern, allerdings nicht die Kernthematik.");
   script_tag(name:"deprecated", value:TRUE);
   exit(0);
 }

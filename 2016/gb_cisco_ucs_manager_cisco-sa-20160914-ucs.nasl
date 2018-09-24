@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_manager_cisco-sa-20160914-ucs.nasl 4136 2016-09-23 05:14:41Z antu123 $
+# $Id: gb_cisco_ucs_manager_cisco-sa-20160914-ucs.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Cisco Unified Computing System Command Line Interface Privilege Escalation Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:cisco:unified_computing_system_software';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106254");
-  script_version("$Revision: 4136 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-23 07:14:41 +0200 (Fri, 23 Sep 2016) $");
-  script_tag(name: "creation_date", value: "2016-09-16 12:38:55 +0700 (Fri, 16 Sep 2016)");
+  script_version("$Revision: 11569 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-16 12:38:55 +0700 (Fri, 16 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-6402");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cisco Unified Computing System Command Line Interface Privilege Escalation Vulnerability");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_cisco_ucs_manager_detect.nasl");
   script_mandatory_keys("cisco_ucs_manager/installed");
 
-  script_tag(name: "summary", value: "A vulnerability in the command-line interface (CLI) of the Cisco Unified
+  script_tag(name:"summary", value:"A vulnerability in the command-line interface (CLI) of the Cisco Unified
 Computing System (UCS) Manager and UCS 6200 Series Fabric Interconnects could allow an authenticated, local
 attacker to access the underlying operating system with the privileges of the root user.");
 
-  script_tag(name: "insight", value: "The vulnerability is due to insufficient sanitization of user-supplied
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient sanitization of user-supplied
 input at the CLI.");
 
-  script_tag(name: "impact", value: "An attacker could exploit this vulnerability by bypassing policy
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by bypassing policy
 restrictions and executing commands on the underlying operating system. The user needs to log in to the device
 with valid user credentials to exploit this vulnerability.");
 
-  script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
-  script_xref(name: "URL", value: "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160914-ucs");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160914-ucs");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   exit(0);
 }
@@ -76,7 +76,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'2.2(1b)',
 		'2.2(1c)',
 		'2.2(1d)',

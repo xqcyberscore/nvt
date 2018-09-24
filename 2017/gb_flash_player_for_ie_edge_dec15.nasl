@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_for_ie_edge_dec15.nasl 11039 2018-08-17 12:26:47Z cfischer $
+# $Id: gb_flash_player_for_ie_edge_dec15.nasl 11550 2018-09-22 12:21:31Z cfischer $
 #
 # Microsoft IE And Microsoft Edge Multiple Flash Player Vulnerabilities (KB2755801)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811495");
-  script_version("$Revision: 11039 $");
+  script_version("$Revision: 11550 $");
   script_cve_id("CVE-2015-8459", "CVE-2015-8460", "CVE-2015-8634", "CVE-2015-8635",
                 "CVE-2015-8636", "CVE-2015-8638", "CVE-2015-8639", "CVE-2015-8640",
                 "CVE-2015-8641", "CVE-2015-8642", "CVE-2015-8643", "CVE-2015-8644",
@@ -37,7 +37,7 @@ if(description)
                 "CVE-2015-8649", "CVE-2015-8650", "CVE-2015-8651", "CVE-2016-0959");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 14:26:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:21:31 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-07-18 15:28:26 +0530 (Tue, 18 Jul 2017)");
   script_name("Microsoft IE And Microsoft Edge Multiple Flash Player Vulnerabilities (KB2755801)");
 
@@ -59,9 +59,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers execute remote code and can get
-  sensitive information which can lead to denial of service.
-
-  Impact Level: System/Application");
+  sensitive information which can lead to denial of service.");
 
   script_tag(name:"affected", value:"Windows 10 x32t/x64 Edition,
 
@@ -82,7 +80,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_flash_player_within_ie_edge_detect.nasl");
-  script_require_keys("AdobeFlash/IE_or_EDGE/Installed");
+  script_mandatory_keys("AdobeFlash/IE_or_EDGE/Installed");
 
   exit(0);
 }

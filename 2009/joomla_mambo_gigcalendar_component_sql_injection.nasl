@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: joomla_mambo_gigcalendar_component_sql_injection.nasl 10718 2018-08-01 16:10:44Z cfischer $
+# $Id: joomla_mambo_gigcalendar_component_sql_injection.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Joomla! and Mambo gigCalendar Component SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100004");
-  script_version("$Revision: 10718 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 18:10:44 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-02-26 04:52:45 +0100 (Thu, 26 Feb 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow the attacker to view username and password
   of a registered user.

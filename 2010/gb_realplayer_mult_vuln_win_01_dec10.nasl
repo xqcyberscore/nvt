@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mult_vuln_win_01_dec10.nasl 8168 2017-12-19 07:30:15Z teissa $
+# $Id: gb_realplayer_mult_vuln_win_01_dec10.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities (Windows) - Dec 10
 #
@@ -27,35 +27,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allows remote attackers to execute arbitrary
-  code or cause a denial of service.";
-tag_affected = "RealPlayer SP 1.0 to 1.1.4 (12.x)
-  RealNetworks RealPlayer SP 11.0 to 11.1 on Windows platform.";
-tag_insight = "The multiple flaws are due to,
-  - An error in the 'Cook' codec initialization function
-  - Heap-based buffer overflow errors when parsing 'SIPR', 'AAC', 'RealMedia',
-    'RA5' and 'SOUND' files
-  - Integer overflow in the handling of frame dimensions in a 'SIPR' stream
-  - An uninitialized pointer vulnerability exists in the CDDA URI ActiveX
-    Control.
-  - A stack-based buffer overflow in the RichFX component.
-  - Heap-based buffer overflow error via a crafted 'QCP' file.
-  - A parameter injection vulnerability in the RecordClip browser extension.
-  - rjrmrpln.dll does not properly validate file contents that are used during
-    interaction with a heap buffer.
-  - Multiple heap-based buffer overflows in an ActiveX control allow remote
-    attackers to execute arbitrary code via a long .smil argument to the tfile,
-    pnmm, cdda protocol handler.";
-tag_solution = "Upgrade to RealPlayer 14.0.1.609 (Build 12.0.1.609) or later,
-  For updates refer to http://www.real.com/player";
-tag_summary = "This host is installed with RealPlayer which is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801672");
-  script_version("$Revision: 8168 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-12-29 07:31:27 +0100 (Wed, 29 Dec 2010)");
   script_bugtraq_id(44144);
   script_tag(name:"cvss_base", value:"10.0");
@@ -67,21 +43,51 @@ if(description)
                 "CVE-2010-3749", "CVE-2010-3750", "CVE-2010-3751",
                 "CVE-2010-2578");
   script_name("RealNetworks RealPlayer Multiple Vulnerabilities (Windows) - Dec10");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/38550/");
-  script_xref(name : "URL" , value : "http://service.real.com/realplayer/security/12102010_player/en/");
-  script_xref(name : "URL" , value : "http://service.real.com/realplayer/security/10152010_player/en/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/38550/");
+  script_xref(name:"URL", value:"http://service.real.com/realplayer/security/12102010_player/en/");
+  script_xref(name:"URL", value:"http://service.real.com/realplayer/security/10152010_player/en/");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_realplayer_detect_win.nasl");
-  script_require_keys("RealPlayer/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("RealPlayer/Win/Ver");
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary
+  code or cause a denial of service.");
+  script_tag(name:"affected", value:"RealPlayer SP 1.0 to 1.1.4 (12.x)
+  RealNetworks RealPlayer SP 11.0 to 11.1 on Windows platform.");
+  script_tag(name:"insight", value:"The multiple flaws are due to,
+
+  - An error in the 'Cook' codec initialization function
+
+  - Heap-based buffer overflow errors when parsing 'SIPR', 'AAC', 'RealMedia',
+    'RA5' and 'SOUND' files
+
+  - Integer overflow in the handling of frame dimensions in a 'SIPR' stream
+
+  - An uninitialized pointer vulnerability exists in the CDDA URI ActiveX
+    Control.
+
+  - A stack-based buffer overflow in the RichFX component.
+
+  - Heap-based buffer overflow error via a crafted 'QCP' file.
+
+  - A parameter injection vulnerability in the RecordClip browser extension.
+
+  - rjrmrpln.dll does not properly validate file contents that are used during
+    interaction with a heap buffer.
+
+  - Multiple heap-based buffer overflows in an ActiveX control allow remote
+    attackers to execute arbitrary code via a long .smil argument to the tfile,
+    pnmm, cdda protocol handler.");
+  script_tag(name:"solution", value:"Upgrade to RealPlayer 14.0.1.609 (Build 12.0.1.609) or later,
+  For updates refer to http://www.real.com/player");
+  script_tag(name:"summary", value:"This host is installed with RealPlayer which is prone to multiple
+  vulnerabilities.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -96,5 +102,5 @@ if(isnull(rpVer)){
 ## Realplayer version 11.x, 1.x(12.x)
 if(version_in_range(version:rpVer, test_version:"11.0.0", test_version2:"11.0.0.674") ||
    version_in_range(version:rpVer, test_version:"12.0.0", test_version2:"12.0.0.873")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

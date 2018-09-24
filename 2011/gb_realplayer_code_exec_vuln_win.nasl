@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_code_exec_vuln_win.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: gb_realplayer_code_exec_vuln_win.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # RealNetworks RealPlayer 'OpenURLInDefaultBrowser()' Code Execution Vulnerability (Windows)
 #
@@ -24,46 +24,40 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allows remote attackers to execute arbitrary code
-  within the context of the affected application. Failed attacks may cause
-  denial-of-service conditions.";
-tag_affected = "RealPlayer versions 11.0 through 11.1
-  RealPlayer SP versions 1.0 through 1.1.5 (12.x)
-  RealPlayer versions 14.0.0 through 14.0.2";
-tag_insight = "The flaw is caused by an error within the 'OpenURLInDefaultBrowser()' method
-  when processing user-supplied parameters, which could allow an attacker to
-  execute arbitrary code via a specially crafted '.rnx' file.";
-tag_solution = "Upgrade to RealPlayer version 14.0.3 or later,
-  For updates refer to http://www.real.com/player";
-tag_summary = "This host is installed with RealPlayer which is prone to Code
-  Execution Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801779");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2011-1426");
   script_bugtraq_id(47335);
   script_name("RealNetworks RealPlayer 'OpenURLInDefaultBrowser()' Code Execution Vulnerability (Windows)");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1025351");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/66728");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0979");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/517470/100/0/threaded");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1025351");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/66728");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/0979");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/517470/100/0/threaded");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_realplayer_detect_win.nasl");
-  script_require_keys("RealPlayer/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("RealPlayer/Win/Ver");
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary code
+  within the context of the affected application. Failed attacks may cause
+  denial-of-service conditions.");
+  script_tag(name:"affected", value:"RealPlayer versions 11.0 through 11.1
+  RealPlayer SP versions 1.0 through 1.1.5 (12.x)
+  RealPlayer versions 14.0.0 through 14.0.2");
+  script_tag(name:"insight", value:"The flaw is caused by an error within the 'OpenURLInDefaultBrowser()' method
+  when processing user-supplied parameters, which could allow an attacker to
+  execute arbitrary code via a specially crafted '.rnx' file.");
+  script_tag(name:"solution", value:"Upgrade to RealPlayer version 14.0.3 or later,
+  For updates refer to http://www.real.com/player");
+  script_tag(name:"summary", value:"This host is installed with RealPlayer which is prone to Code
+  Execution Vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -77,9 +71,8 @@ if(isnull(rpVer)){
   exit(0);
 }
 
-## Check for Realplayer version
 if(version_in_range(version:rpVer, test_version:"11.0.0", test_version2:"11.0.2.2315") ||
    version_in_range(version:rpVer, test_version:"12.0.0", test_version2:"12.0.0.879") ||
    version_in_range(version:rpVer, test_version:"12.0.1", test_version2:"12.0.1.633")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

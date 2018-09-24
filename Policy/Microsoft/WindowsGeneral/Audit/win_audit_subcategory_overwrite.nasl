@@ -1,9 +1,9 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_audit_subcategory_overwrite.nasl 10649 2018-07-27 07:16:55Z emoss $
+# $Id: win_audit_subcategory_overwrite.nasl 11532 2018-09-21 19:07:30Z cfischer $
 #
-# Check value for Audit: Force audit policy subcategory settings (Windows Vista 
-# or later) to override audit policy category settings' on Windows hosts 
+# Check value for Audit: Force audit policy subcategory settings (Windows Vista
+# or later) to override audit policy category settings' on Windows hosts
 #
 # Authors:
 # Emanuel Moss <emanuel.moss@greenbone.net>
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109189");
-  script_version("$Revision: 10649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:16:55 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 11532 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-05-31 15:16:09 +0200 (Thu, 31 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -41,11 +41,11 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Audit: Force audit policy subcategory settings (Windows Vista or later) to 
+  script_tag(name:"summary", value:"This test checks the setting for policy
+'Audit: Force audit policy subcategory settings (Windows Vista or later) to
 override audit policy category settings' on Windows hosts (at least Windows 7).
 
-If enabled, it is possible to manage the audit policy in a more precise way by 
+If enabled, it is possible to manage the audit policy in a more precise way by
 using audit policy subcategories.");
   exit(0);
 }
@@ -60,8 +60,8 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 7 system. 
-Older versions of Windows are not supported any more. Please update the 
+  policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
+Older versions of Windows are not supported any more. Please update the
 Operating System.');
   exit(0);
 }

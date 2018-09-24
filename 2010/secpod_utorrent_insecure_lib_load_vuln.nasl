@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_utorrent_insecure_lib_load_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: secpod_utorrent_insecure_lib_load_vuln.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # uTorrent File Opening Insecure Library Loading Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902240");
-  script_version("$Revision: 11356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_cve_id("CVE-2010-3129");
   script_tag(name:"cvss_base", value:"9.3");
@@ -44,7 +44,7 @@ if(description)
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("General");
   script_dependencies("gb_utorrent_detect_portable_win.nasl");
-  script_require_keys("utorrent/win/version");
+  script_mandatory_keys("utorrent/win/version");
 
   script_tag(name:"insight", value:"The flaw is due to the application insecurely loading certain libraries
   from the current working directory, which could allow attackers to execute
@@ -54,9 +54,7 @@ if(description)
   script_tag(name:"summary", value:"uTorrent on this host is prone to insecure library
   loading vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow the attackers to execute arbitrary code and
-  conduct DLL hijacking attacks.
-
-  Impact Level: Application.");
+  conduct DLL hijacking attacks.");
   script_tag(name:"affected", value:"uTorrent version 2.0.3 and prior");
 
   exit(0);

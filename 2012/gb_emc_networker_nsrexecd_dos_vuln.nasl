@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_networker_nsrexecd_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_emc_networker_nsrexecd_dos_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # EMC NetWorker 'nsrexecd' RPC Packet Denial of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802831");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_bugtraq_id(52506);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-09 12:23:36 +0530 (Mon, 09 Apr 2012)");
   script_name("EMC NetWorker 'nsrexecd' RPC Packet Denial of Service Vulnerability");
   script_xref(name:"URL", value:"http://aluigi.org/poc/nsrexecd_1.dat");
@@ -45,7 +45,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_emc_networker_detect.nasl");
   script_require_ports("Services/emc_networker", 7938);
-  script_require_keys("emc_networker/port");
+  script_mandatory_keys("emc_networker/port");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of
 service condition.");
   script_tag(name:"affected", value:"EMC NetWorker version 7.6 SP3 and prior");

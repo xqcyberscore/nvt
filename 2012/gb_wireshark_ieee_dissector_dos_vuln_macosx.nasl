@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ieee_dissector_dos_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wireshark_ieee_dissector_dos_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Wireshark IEEE 802.11 Dissector Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802765");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-1594");
   script_bugtraq_id(52738);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-24 15:24:35 +0530 (Tue, 24 Apr 2012)");
   script_name("Wireshark IEEE 802.11 Dissector Denial of Service Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48548/");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_wireshark_detect_macosx.nasl");
-  script_require_keys("Wireshark/MacOSX/Version");
+  script_mandatory_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
   service.");
   script_tag(name:"affected", value:"Wireshark versions 1.6.x before 1.6.6 on Mac OS X");

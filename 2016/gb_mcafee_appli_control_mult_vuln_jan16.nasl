@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_appli_control_mult_vuln_jan16.nasl 8197 2017-12-20 12:50:38Z cfischer $
+# $Id: gb_mcafee_appli_control_mult_vuln_jan16.nasl 11545 2018-09-21 20:43:34Z cfischer $
 #
 # McAfee Application Control Multiple Vulnerabilities Jan16 (Windows)
 #
@@ -29,35 +29,32 @@ CPE = "cpe:/a:mcafee:application_control";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806980");
-  script_version("$Revision: 8197 $");
+  script_version("$Revision: 11545 $");
   script_cve_id("CVE-2016-1715");
   script_bugtraq_id(80167);
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:50:38 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:43:34 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-20 15:17:03 +0530 (Wed, 20 Jan 2016)");
   script_name("McAfee Application Control Multiple Vulnerabilities Jan16 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with McAfee Application
+  script_tag(name:"summary", value:"This host is installed with McAfee Application
   Control and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an error in
+  script_tag(name:"insight", value:"The flaw exists due to an error in
   swin.sys kernel driver.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a local
+  script_tag(name:"impact", value:"Successful exploitation will allow a local
   attacker to conduct denial of service and execute arbitrary code on the affected
-  system.
+  system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"McAfee Application Control 6.1.0 before
+  script_tag(name:"affected", value:"McAfee Application Control 6.1.0 before
   build 706, 6.1.1 before build 404, 6.1.2 before build 449, 6.1.3 before build
   441 and 6.2.0 before build 505 on 32-bit Windows platforms.");
 
-  script_tag(name: "solution" , value:"Upgrade to McAfee Application Control
+  script_tag(name:"solution", value:"Upgrade to McAfee Application Control
   versions 6.1.0 build 706 or later, or 6.1.1 build 404 or later, or 6.1.2 build
   449 or later, or 6.1.3 build 441 or later, or 6.2.0 build 505 or later.
   For updates refer to http://www.mcafee.com/in/products/application-control.aspx");
@@ -66,42 +63,34 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-16-007");
-  script_xref(name : "URL" , value : "https://kc.mcafee.com/corporate/index?page=content&amp;id=SB10145");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-16-007");
+  script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&amp;id=SB10145");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mcafee_application_control_detect.nasl");
   script_mandatory_keys("McAfee/Application/Control/Win/Installed");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-mcafeeVer = "";
-os_arch = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
-  exit(-1);
+  exit(0);
 }
 
-## Check for 64 bit platform, Only 32-bit Platform is affected
-## Exiting if not 32 bit Platform
 if("x64" >< os_arch){
   exit(0);
 }
 
-## Get version
 if(!mcafeeVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-##Check the Version
 if(version_in_range(version:mcafeeVer, test_version:"6.1.0", test_version2:"6.1.0.705"))
 {
   fix = "6.1.0 build 706";
@@ -138,3 +127,5 @@ if(VULN)
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

@@ -1,5 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
+# $Id: remote-web-w3af.nasl 11546 2018-09-22 11:30:16Z cfischer $
 #
 # Assess web security with w3af
 #
@@ -20,40 +21,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This plugin uses w3af (w3af_console to be exact) to find  
-web security issues.
-
-See the preferences section for w3af options.
-
-Note that OpenVAS is using limited set of w3af options.
-Therefore, for more complete web assessment, you should
-use standalone w3af tool for deeper/customized checks.";
-
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.80109");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9350 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-10-18 22:12:25 +0200 (Sun, 18 Oct 2009)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("w3af (NASL wrapper)");
- 
- 
- script_category(ACT_GATHER_INFO);
+  script_oid("1.3.6.1.4.1.25623.1.0.80109");
+  script_version("$Revision: 11546 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 13:30:16 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2009-10-18 22:12:25 +0200 (Sun, 18 Oct 2009)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("w3af (NASL wrapper)");
+  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
- 
- script_copyright("This script is Copyright (C) 2009 Vlatko Kosturjak");
- script_family("Web application abuses");
- script_add_preference(name: "Profile", type:"radio",value:"fast_scan;sitemap;web_infrastructure;OWASP_TOP10;audit_high_risk;bruteforce;full_audit");
- script_add_preference(name: "Seed URL", type: "entry", value: "");
- script_add_preference(name: 'Report broken w3af installation', value: 'no', type: 'checkbox');
- script_dependencies("find_service.nasl","httpver.nasl","http_login.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_copyright("This script is Copyright (C) 2009 Vlatko Kosturjak");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "httpver.nasl", "http_login.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_add_preference(name: "Profile", type:"radio",value:"fast_scan;sitemap;web_infrastructure;OWASP_TOP10;audit_high_risk;bruteforce;full_audit");
+  script_add_preference(name: "Seed URL", type: "entry", value: "");
+  script_add_preference(name: 'Report broken w3af installation', value: 'no', type: 'checkbox');
+
+  script_tag(name:"summary", value:"This plugin uses w3af (w3af_console to be exact) to find
+  web security issues.
+
+  See the preferences section for w3af options.
+
+  Note that the scanner is using limited set of w3af options.
+  Therefore, for more complete web assessment, you should
+  use standalone w3af tool for deeper/customized checks.");
+
+  exit(0);
 }
 
 include("http_func.inc");
@@ -102,7 +100,7 @@ cmddata = cmddata + 'plugins\n';
 # console doesn't work, so we use textFile
 # termios error: (25, 'Inappropriate ioctl for device')
 # cmddata = cmddata + 'output console\n';
-# cmddata = cmddata + 'output config console\n';  
+# cmddata = cmddata + 'output config console\n';
 cmddata = cmddata + 'output textFile\n';
 cmddata = cmddata + 'output config textFile\n';
 if (report_verbosity > 1) {
@@ -158,7 +156,7 @@ if ( ! find_in_path(cmdw3af) )
 {
     if( report_broken != 'yes' ) exit( 0 );
     text = 'w3af could not be found in your system path.\n';
-    text += 'OpenVAS was unable to execute w3af and to perform the scan you
+    text += 'The scanner was unable to execute w3af and to perform the scan you
 requested.\nPlease make sure that w3af is installed and that '+cmdw3af+' is
 available in the PATH variable defined for your environment.';
     log_message(port: port, data: text);
@@ -189,6 +187,6 @@ if (file_stat(repfilename)) {
         if( report_broken != 'yes' ) exit( 0 );
 	text  = 'w3af report filename is empty. that could mean that\n';
 	text += 'wrong version of w3af is used or tmp dir is not accessible.\n';
-	text += 'In short: check installation of w3af and OpenVAS';
+	text += 'In short: check installation of w3af and the scanner';
 	log_message(port: port, data: text);
 }

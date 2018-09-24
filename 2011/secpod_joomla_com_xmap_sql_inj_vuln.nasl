@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_com_xmap_sql_inj_vuln.nasl 10833 2018-08-08 10:35:26Z cfischer $
+# $Id: secpod_joomla_com_xmap_sql_inj_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # Joomla com_xmap SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902397");
-  script_version("$Revision: 10833 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_bugtraq_id(48658);
   script_tag(name:"cvss_base", value:"7.5");
@@ -41,7 +41,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/103010/joomlaxmap1211-sql.txt");
 

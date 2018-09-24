@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ebook_download_dir_trav_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
+# $Id: gb_wordpress_ebook_download_dir_trav_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Wordpress Ebook Download Plugin Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807624");
-  script_version("$Revision: 11188 $");
+  script_version("$Revision: 11523 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:32 +0530 (Fri, 01 Apr 2016)");
   script_name("Wordpress Ebook Download Plugin Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -54,9 +54,7 @@ if(description)
   of input to 'ebookdownloadurl' parameter in 'filedownload.php' file.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attckers
-  to read arbitrary files.
-
-  Impact Level: System/Application");
+  to read arbitrary files.");
 
   script_tag(name:"affected", value:"Wordpress Ebook Download plugin version
   version 1.1");

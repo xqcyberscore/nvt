@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_dec12_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wireshark_mult_dos_vuln_dec12_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Wireshark Multiple Dissector Multiple DoS Vulnerabilities - Dec12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803068");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-6053", "CVE-2012-6062", "CVE-2012-6061", "CVE-2012-6060",
                 "CVE-2012-6059", "CVE-2012-6058");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-07 18:39:59 +0530 (Fri, 07 Dec 2012)");
   script_name("Wireshark Multiple Dissector Multiple DoS Vulnerabilities - Dec12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51422");
@@ -47,7 +47,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_wireshark_detect_win.nasl");
-  script_require_keys("Wireshark/Win/Ver");
+  script_mandatory_keys("Wireshark/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to denial of service or
   to consume excessive CPU resources.");
   script_tag(name:"affected", value:"Wireshark 1.6.x before 1.6.12, 1.8.x before 1.8.4 on Windows");

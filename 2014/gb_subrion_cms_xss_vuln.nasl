@@ -1,6 +1,6 @@
 ###############################################################################
-#OpenVAS Vulnerability Test
-# $Id: gb_subrion_cms_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# OpenVAS Vulnerability Test
+# $Id: gb_subrion_cms_xss_vuln.nasl 11542 2018-09-21 20:22:36Z cfischer $
 #
 # Subrion CMS 'search' Functionality Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805400");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11542 $");
   script_cve_id("CVE-2014-9120");
   script_bugtraq_id(71655);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:22:36 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-17 16:59:56 +0530 (Wed, 17 Dec 2014)");
 
   script_name("Subrion CMS 'search' Functionality Cross Site Scripting Vulnerability");

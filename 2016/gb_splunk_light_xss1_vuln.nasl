@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_light_xss1_vuln.nasl 4105 2016-09-19 09:15:54Z ckuerste $
+# $Id: gb_splunk_light_xss1_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Splunk Light XSS Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:splunk:light';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106268");
-  script_version("$Revision: 4105 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-19 11:15:54 +0200 (Mon, 19 Sep 2016) $");
-  script_tag(name: "creation_date", value: "2016-09-19 11:58:34 +0700 (Mon, 19 Sep 2016)");
-  script_tag(name: "cvss_base", value: "4.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_version("$Revision: 11523 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-19 11:58:34 +0700 (Mon, 19 Sep 2016)");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Splunk Light XSS Vulnerability");
 
@@ -49,18 +49,18 @@ if (description)
   script_dependencies("gb_splunk_light_detect.nasl");
   script_mandatory_keys("SplunkLight/installed");
 
-  script_tag(name: "summary", value: "Splunk Light is prone to a cross-site scriptin vulnerability.");
+  script_tag(name:"summary", value:"Splunk Light is prone to a cross-site scriptin vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Splunk Light is affected by a cross-site scripting vulnerability
+  script_tag(name:"insight", value:"Splunk Light is affected by a cross-site scripting vulnerability
 in the Splunk Web.");
 
-  script_tag(name: "affected", value: "Splunk Light 6.4.x and 6.3.x");
+  script_tag(name:"affected", value:"Splunk Light 6.4.x and 6.3.x");
 
-  script_tag(name: "solution", value: "Update to version 6.4.1, 6.3.5 or later.");
+  script_tag(name:"solution", value:"Update to version 6.4.1, 6.3.5 or later.");
 
-  script_xref(name: "URL", value: "https://www.splunk.com/view/SP-CAAAPN9");
+  script_xref(name:"URL", value:"https://www.splunk.com/view/SP-CAAAPN9");
 
   exit(0);
 }

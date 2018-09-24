@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_oct2016-2881722_07_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_mysql_oct2016-2881722_07_win.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Oracle MySQL Security Updates (oct2016-2881722) 07 - Windows
 #
 # Authors:
-# Kashinath T <tkashinath@secpod.com> 
+# Kashinath T <tkashinath@secpod.com>
 #
 # Copyright:
 # Copyright (C) 2016 Greenbone Networks GmbH, http://www.greenbone.net
@@ -29,31 +29,28 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809382");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-5625", "CVE-2016-5632", "CVE-2016-8286");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-19 15:52:05 +0530 (Wed, 19 Oct 2016)");
   script_name("Oracle MySQL Security Updates (oct2016-2881722) 07 - Windows");
 
   script_tag(name:"summary", value:"This host is running Oracle MySQL and is
   prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to multiple
   unspecified errors within 'Server: Packaging', 'Server: Optimizer' and
   'Server: Security: Privileges' components.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of these
+  script_tag(name:"impact", value:"Successful exploitation of these
   vulnerabilities will allow a user to gain elevated privileges, cause
-  a denial of service condition and partially access data.
+  a denial of service condition and partially access data.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Oracle MySQL version 5.7.14 and earlier
+  script_tag(name:"affected", value:"Oracle MySQL version 5.7.14 and earlier
   on Windows");
 
   script_tag(name:"solution", value:"Apply the patch from below link,
@@ -63,7 +60,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -77,16 +74,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-mysqlVer = "";
-sqlPort = "";
-
-## Get Port
 if(!sqlPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort)){
   exit(0);
 }

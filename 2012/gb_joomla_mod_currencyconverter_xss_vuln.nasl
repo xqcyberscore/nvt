@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mod_currencyconverter_xss_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_joomla_mod_currencyconverter_xss_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Joomla! Currency Converter Module 'from' Parameter Cross-Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802588");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-1018");
   script_bugtraq_id(51804);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-09 12:55:09 +0530 (Thu, 09 Feb 2012)");
 
   script_name("Joomla! Currency Converter Module 'from' Parameter Cross-Site Scripting Vulnerability");
@@ -48,7 +48,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary HTML and
 script code in a user's browser session in the context of an affected site.");

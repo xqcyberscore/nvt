@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_disk_savvy_enterprise_server_login_bof_vuln.nasl 11300 2018-09-10 10:52:15Z mmartin $
+# $Id: gb_disk_savvy_enterprise_server_login_bof_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Disk Savvy Enterprise Server Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:disksavvy:disksavvy_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809486");
-  script_version("$Revision: 11300 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2017-6187");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:52:15 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-02 17:06:55 +0530 (Fri, 02 Dec 2016)");
   script_name("Disk Savvy Enterprise Server Buffer Overflow Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -62,9 +62,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to cause the application to crash, creating a denial-of-service
-  condition.
-
-  Impact Level: Application");
+  condition.");
 
   script_tag(name:"affected", value:"Disk Savvy Enterprise version 9.4.18 and prior.");
 

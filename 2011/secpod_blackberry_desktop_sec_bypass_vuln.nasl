@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_blackberry_desktop_sec_bypass_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_blackberry_desktop_sec_bypass_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
 #
 # BlackBerry Desktop Software Information Disclosure Vulnerability
 #
@@ -24,23 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to obtain sensitive information
-  that may lead to further attacks.
-  Impact Level: Application";
-tag_affected = "BlackBerry Desktop Software version 4.7 through 6.0";
-tag_insight = "The flaw is due to a 'weak password method' used in the BlackBerry
-  Desktop Software, which allows to conduct brute force guessing attacks to
-  decrypt the backup file.";
-tag_solution = "Upgrade to the BlackBerry Desktop Software version 6.0.1 or later,
-  For updates refer to http://uk.blackberry.com/services/desktop/desktop_pc.jsp";
-tag_summary = "This host is installed with BlackBerry Desktop Software and is prone
-  to Information Disclosure vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902329");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11552 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-02-01 16:46:08 +0100 (Tue, 01 Feb 2011)");
   script_cve_id("CVE-2010-2603");
   script_bugtraq_id(45434);
@@ -54,15 +42,23 @@ if(description)
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("General");
   script_dependencies("secpod_blackberry_desktop_software_detect_win.nasl");
-  script_require_keys("BlackBerry/Desktop/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/42657");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id?1024908");
-  script_xref(name : "URL" , value : "http://www.blackberry.com/btsc/search.do?cmd=displayKC&docType=kc&externalId=KB24764");
+  script_mandatory_keys("BlackBerry/Desktop/Win/Ver");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain sensitive information
+  that may lead to further attacks.");
+  script_tag(name:"affected", value:"BlackBerry Desktop Software version 4.7 through 6.0");
+  script_tag(name:"insight", value:"The flaw is due to a 'weak password method' used in the BlackBerry
+  Desktop Software, which allows to conduct brute force guessing attacks to
+  decrypt the backup file.");
+  script_tag(name:"solution", value:"Upgrade to the BlackBerry Desktop Software version 6.0.1 or later,
+  For updates refer to http://uk.blackberry.com/services/desktop/desktop_pc.jsp");
+  script_tag(name:"summary", value:"This host is installed with BlackBerry Desktop Software and is prone
+  to Information Disclosure vulnerability.");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/42657");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id?1024908");
+  script_xref(name:"URL", value:"http://www.blackberry.com/btsc/search.do?cmd=displayKC&docType=kc&externalId=KB24764");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -74,7 +70,6 @@ if(!bbdVer){
   exit(0);
 }
 
-# Check for BlackBerry Desktop Software version 4.7 through 6.0
 if(version_in_range(version:bbdVer, test_version:"4.7", test_version2:"6.0.0.43")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

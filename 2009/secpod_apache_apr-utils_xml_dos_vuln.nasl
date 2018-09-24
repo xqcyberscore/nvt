@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_apr-utils_xml_dos_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_apache_apr-utils_xml_dos_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Apache APR-Utils XML Parser Denial of Service Vulnerability
 #
@@ -24,22 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Attackers can exploit these issues to crash the application
-  resulting into a denial of service condition.
-  Impact Level: Application";
-tag_affected = "Apache APR-Utils version prior to 1.3.7 on Linux.";
-tag_insight = "An error in the 'expat XML' parser when processing crafted XML documents
-  containing a large number of nested entity references.";
-tag_solution = "Apply the patch or upgrade to Apache APR-Utils 1.3.7
-  http://apr.apache.org/download.cgi";
-tag_summary = "The host is installed with Apache APR-Utils and is prone to
-  Denial of Service Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900573");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-06-24 07:17:25 +0200 (Wed, 24 Jun 2009)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -53,14 +42,21 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("secpod_apache_apr-utils_detect.nasl");
-  script_require_keys("Apache/APR-Utils/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://www.apache.org/dist/apr/CHANGES-APR-UTIL-1.3");
-  script_xref(name : "URL" , value : "http://svn.apache.org/viewvc?view=rev&revision=781403");
+  script_mandatory_keys("Apache/APR-Utils/Ver");
+  script_tag(name:"impact", value:"Attackers can exploit these issues to crash the application
+  resulting into a denial of service condition.");
+  script_tag(name:"affected", value:"Apache APR-Utils version prior to 1.3.7 on Linux.");
+  script_tag(name:"insight", value:"An error in the 'expat XML' parser when processing crafted XML documents
+  containing a large number of nested entity references.");
+  script_tag(name:"solution", value:"Apply the patch or upgrade to Apache APR-Utils 1.3.7
+  http://apr.apache.org/download.cgi");
+  script_tag(name:"summary", value:"The host is installed with Apache APR-Utils and is prone to
+  Denial of Service Vulnerability.");
+  script_xref(name:"URL", value:"http://www.apache.org/dist/apr/CHANGES-APR-UTIL-1.3");
+  script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=rev&revision=781403");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -73,5 +69,5 @@ if(!utilsVer){
 }
 
 if(version_is_less(version:utilsVer, test_version:"1.3.7")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

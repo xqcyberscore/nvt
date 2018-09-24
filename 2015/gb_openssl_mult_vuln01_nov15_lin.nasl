@@ -1,6 +1,6 @@
 ###############################################################################
-#OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln01_nov15_lin.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# OpenVAS Vulnerability Test
+# $Id: gb_openssl_mult_vuln01_nov15_lin.nasl 11542 2018-09-21 20:22:36Z cfischer $
 #
 # OpenSSL Multiple Vulnerabilities -01 Nov15 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806729");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11542 $");
   script_cve_id("CVE-2015-1787", "CVE-2015-0290", "CVE-2015-0291", "CVE-2015-0285",
                 "CVE-2015-0208", "CVE-2015-0207");
   script_bugtraq_id(73238, 73226, 73235, 73234, 73229);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:22:36 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-24 18:49:30 +0530 (Tue, 24 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Multiple Vulnerabilities -01 Nov15 (Linux)");

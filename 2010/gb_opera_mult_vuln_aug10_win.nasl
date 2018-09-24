@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_aug10_win.nasl 10137 2018-06-08 12:38:04Z asteins $
+# $Id: gb_opera_mult_vuln_aug10_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Opera Browser Multiple Vulnerabilities August-10 (Windows)
 #
@@ -27,40 +27,42 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801257");
-  script_version("$Revision: 10137 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-08-16 09:09:42 +0200 (Mon, 16 Aug 2010)");
   script_cve_id("CVE-2010-3021", "CVE-2010-3020", "CVE-2010-3019", "CVE-2010-2576");
   script_bugtraq_id(42407);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Opera Browser Multiple Vulnerabilities August-10 (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/40120");
-  script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/966/");
-  script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/967/");
-  script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/968/");
-  script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/windows/1061/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/40120");
+  script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/966/");
+  script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/967/");
+  script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/968/");
+  script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/windows/1061/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_opera_detect_portable_win.nasl");
-  script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to bypass certain security
-  protections, execute arbitrary code, or cause denial-of-service conditions.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Opera Web Browser Version prior to 10.61");
-  script_tag(name : "insight" , value : "The multiple flaws are cause due to:
+  script_mandatory_keys("Opera/Win/Version");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass certain security
+  protections, execute arbitrary code, or cause denial-of-service conditions.");
+  script_tag(name:"affected", value:"Opera Web Browser Version prior to 10.61");
+  script_tag(name:"insight", value:"The multiple flaws are cause due to:
+
   - An error in the processing of painting operations on a canvas while
     certain transformations are being applied, which can be exploited to cause
     a heap-based buffer overflow.
+
   - An error when displaying the download dialog, which could allow attackers
     to trick a user into running downloaded executables.
+
   - An error when previewing a news feed, which can be exploited to execute
     script code and automatically subscribe the user to the feed.");
-  script_tag(name : "solution" , value : "Upgrade to Opera Web Browser Version 10.61 or later,
+  script_tag(name:"solution", value:"Upgrade to Opera Web Browser Version 10.61 or later,
   For updates refer to http://www.opera.com/download/");
-  script_tag(name : "summary" , value : "The host is installed with Opera Browser and is prone to multiple
+  script_tag(name:"summary", value:"The host is installed with Opera Browser and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

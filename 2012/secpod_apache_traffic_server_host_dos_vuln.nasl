@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_traffic_server_host_dos_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_apache_traffic_server_host_dos_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
 #
 # Apache Traffic Server HTTP Host Header Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902664");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11549 $");
   script_cve_id("CVE-2012-0256");
   script_bugtraq_id(52696);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-28 13:46:18 +0530 (Wed, 28 Mar 2012)");
   script_name("Apache Traffic Server HTTP Host Header Denial of Service Vulnerability");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1026847");
@@ -48,7 +48,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_apache_traffic_detect.nasl");
   script_require_ports("Services/http_proxy", 8080, 3128);
-  script_require_keys("apache_trafficserver/installed");
+  script_mandatory_keys("apache_trafficserver/installed");
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause the application
   to crash, creating a denial of service condition.");
   script_tag(name:"affected", value:"Apache Traffic Server 2.0.x, 3.0.x before 3.0.4, 3.1.x before 3.1.3");

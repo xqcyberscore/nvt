@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_home_ftp_server_dir_trav_n_dos_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_home_ftp_server_dir_trav_n_dos_vuln.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Home FTP Server DOS And Multiple Directory Traversal Vulnerabilities
 #
@@ -24,35 +24,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to to cause a Denial of Service
-  or directory traversal attacks on the affected application.
-  Impact Level: Application";
-tag_affected = "Home FTP Server version 1.10.1.139 and prior.";
-tag_insight = "- An error in the handling of multiple 'SITE INDEX' commands can be exploited
-    to stop the server.
-  - An input validation error when handling the MKD FTP command can be exploited
-    to create directories outside the FTP root or create files with any contents
-    in arbitrary directories via directory traversal sequences in a file upload
-    request.";
-tag_solution = "Upgrade to Home FTP Server version 1.10.3.144 or later.
-  For updates refer to http://downstairs.dnsalias.net/homeftpserver.html";
-tag_summary = "The host is running Home Ftp Server and is prone to Denial of Service and
-  Directory Traversal Vulnerabilities using invalid commands.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900260");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-11-30 15:32:46 +0100 (Mon, 30 Nov 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_cve_id("CVE-2009-4051", "CVE-2009-4053");
   script_bugtraq_id(37033);
   script_name("Home FTp Server DOS And Multiple Directory Traversal Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/37381");
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2009/Nov/111");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/3269");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/37381");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2009/Nov/111");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3269");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_MIXED_ATTACK);
@@ -61,12 +46,24 @@ if(description)
   script_dependencies("secpod_home_ftp_server_detect.nasl",
                       "secpod_ftp_anonymous.nasl");
   script_require_ports("Services/ftp", 21);
-  script_require_keys("HomeFTPServer/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("HomeFTPServer/Ver");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to to cause a Denial of Service
+  or directory traversal attacks on the affected application.");
+  script_tag(name:"affected", value:"Home FTP Server version 1.10.1.139 and prior.");
+  script_tag(name:"insight", value:"- An error in the handling of multiple 'SITE INDEX' commands can be exploited
+    to stop the server.
+
+  - An input validation error when handling the MKD FTP command can be exploited
+    to create directories outside the FTP root or create files with any contents
+    in arbitrary directories via directory traversal sequences in a file upload
+    request.");
+  script_tag(name:"solution", value:"Upgrade to Home FTP Server version 1.10.3.144 or later.
+  For updates refer to http://downstairs.dnsalias.net/homeftpserver.html");
+  script_tag(name:"summary", value:"The host is running Home Ftp Server and is prone to Denial of Service and
+  Directory Traversal Vulnerabilities using invalid commands.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 

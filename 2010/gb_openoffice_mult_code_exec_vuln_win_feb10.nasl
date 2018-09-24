@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openoffice_mult_code_exec_vuln_win_feb10.nasl 8495 2018-01-23 07:57:49Z teissa $
+# $Id: gb_openoffice_mult_code_exec_vuln_win_feb10.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # OpenOffice Multiple Remote Code Execution Vulnerabilities - Feb10
 #
@@ -24,58 +24,55 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation lets the attackers to cause a denial of service
-  or execute arbitrary code.
-  Impact Level: Application/System";
-tag_affected = "OpenOffice.org versions prior to 3.2";
-tag_insight = "- GIF Files in GIFLZWDecompressor:: GIFLZWDecompressor function in
-    filter.vcl/lgif/decode.cxx leading to heap overflow.
-  - XPM files in XPMReader::ReadXPM function in filter.vcl/ixpm/svt_xpmread.cxx
-    leading to an integer overflow.
-  - Microsoft Word document in filter/ww8/ww8par2.cxx leading to application
-    crash or execute arbitrary code via crafted sprmTSetBrc table property
-    in a Word document.";
-tag_solution = "Upgrade to OpenOffice.org version 3.2 or later,
-  http://download.openoffice.org/index.html";
-tag_summary = "This host has OpenOffice running which is prone to multiple
-  remote code execution vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800167");
-  script_version("$Revision: 8495 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-23 08:57:49 +0100 (Tue, 23 Jan 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-02-19 11:58:13 +0100 (Fri, 19 Feb 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_bugtraq_id(38218);
   script_cve_id("CVE-2009-2949", "CVE-2009-2950", "CVE-2009-3301", "CVE-2009-3302");
   script_name("OpenOffice Multiple Remote Code Execution Vulnerabilities - Feb10");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/38568");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/56236");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/56238");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/56240");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/56241");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/0366");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/38568");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/56236");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/56238");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/56240");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/56241");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/0366");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_openoffice_detect_win.nasl");
-  script_require_keys("OpenOffice/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("OpenOffice/Win/Ver");
+  script_tag(name:"impact", value:"Successful exploitation lets the attackers to cause a denial of service
+  or execute arbitrary code.");
+  script_tag(name:"affected", value:"OpenOffice.org versions prior to 3.2");
+  script_tag(name:"insight", value:"- GIF Files in GIFLZWDecompressor:: GIFLZWDecompressor function in
+    filter.vcl/lgif/decode.cxx leading to heap overflow.
+
+  - XPM files in XPMReader::ReadXPM function in filter.vcl/ixpm/svt_xpmread.cxx
+    leading to an integer overflow.
+
+  - Microsoft Word document in filter/ww8/ww8par2.cxx leading to application
+    crash or execute arbitrary code via crafted sprmTSetBrc table property
+    in a Word document.");
+  script_tag(name:"solution", value:"Upgrade to OpenOffice.org version 3.2 or later,
+  http://download.openoffice.org/index.html");
+  script_tag(name:"summary", value:"This host has OpenOffice running which is prone to multiple
+  remote code execution vulnerabilities.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Get the OpenOffice Version from the KB
 openOffVer = get_kb_item("OpenOffice/Win/Ver");
 if(!openOffVer){
   exit(0);
@@ -83,8 +80,7 @@ if(!openOffVer){
 
 if(openOffVer != NULL)
 {
-  ## Check for OpenOffice Version 3.2
   if(version_is_less(version:openOffVer, test_version:"3.2")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_info_disc_vuln_feb10_win.nasl 10137 2018-06-08 12:38:04Z asteins $
+# $Id: secpod_opera_info_disc_vuln_feb10_win.nasl 11553 2018-09-22 14:22:01Z cfischer $
 #
 # Opera Information Disclosure Vulnerability - (Windows)
 #
@@ -27,32 +27,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902122");
-  script_version("$Revision: 10137 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11553 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 16:22:01 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-02-22 13:34:53 +0100 (Mon, 22 Feb 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2010-0653");
   script_name("Opera Information Disclosure Vulnerability - (Windows)");
-  script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/390938.php");
-  script_xref(name : "URL" , value : "http://code.google.com/p/chromium/issues/detail?id=9877");
+  script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/390938.php");
+  script_xref(name:"URL", value:"http://code.google.com/p/chromium/issues/detail?id=9877");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("General");
   script_dependencies("gb_opera_detect_portable_win.nasl");
-  script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to obtain sensitive
-information via a crafted document.
-
-Impact Level: Application");
-  script_tag(name : "affected" , value : "Opera version prior to 10.10 on Windows.");
-  script_tag(name : "insight" , value : "- Opera permits cross-origin loading of CSS stylesheets even when the
+  script_mandatory_keys("Opera/Win/Version");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain sensitive
+information via a crafted document.");
+  script_tag(name:"affected", value:"Opera version prior to 10.10 on Windows.");
+  script_tag(name:"insight", value:"- Opera permits cross-origin loading of CSS stylesheets even when the
 stylesheet download has an incorrect MIME type and the stylesheet document
 is malformed.");
-  script_tag(name : "solution" , value : "Upgrade to Opera version 10.10.
+  script_tag(name:"solution", value:"Upgrade to Opera version 10.10.
 For updates refer to http://www.opera.com/download/");
-  script_tag(name : "summary" , value : "The host is installed with Opera Web Browser and is prone to
+  script_tag(name:"summary", value:"The host is installed with Opera Web Browser and is prone to
 Information Disclosure vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

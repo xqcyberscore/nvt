@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seamonkey_xsl_parsing_vuln_lin.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_seamonkey_xsl_parsing_vuln_lin.nasl 11554 2018-09-22 15:11:42Z cfischer $
 #
 # Mozilla Seamonkey XSL Parsing Vulnerability (Linux)
 #
@@ -24,45 +24,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker cause remote code execution
-  through a specially crafted malicious XSL file or can cause application
-  termination at runtime.
-  Impact Level: Application";
-tag_affected = "Mozilla Seamonkey version 1.0 to 1.1.15 on Linux.";
-tag_insight = "This flaw is due to improper handling of errors encountered when transforming
-  an XML document which can be exploited to cause memory corruption through a
-  specially crafted XSLT code.";
-tag_solution = "Upgrade to Seamonkey version 1.1.16 or later.
-  http://www.seamonkey-project.org/releases";
-tag_summary = "The host is installed with Mozilla Seamnkey and is prone to XSL
-  File Parsing Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800378");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11554 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-04-08 08:04:29 +0200 (Wed, 08 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-1169");
   script_bugtraq_id(34235);
   script_name("Mozilla Seamonkey XSL Parsing Vulnerability (Linux)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/34471");
-  script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/8285");
-  script_xref(name : "URL" , value : "http://securitytracker.com/alerts/2009/Mar/1021941.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2009/mfsa2009-12.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/34471");
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/8285");
+  script_xref(name:"URL", value:"http://securitytracker.com/alerts/2009/Mar/1021941.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2009/mfsa2009-12.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_seamonkey_detect_lin.nasl");
-  script_require_keys("Seamonkey/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("Seamonkey/Linux/Ver");
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker cause remote code execution
+  through a specially crafted malicious XSL file or can cause application
+  termination at runtime.");
+  script_tag(name:"affected", value:"Mozilla Seamonkey version 1.0 to 1.1.15 on Linux.");
+  script_tag(name:"insight", value:"This flaw is due to improper handling of errors encountered when transforming
+  an XML document which can be exploited to cause memory corruption through a
+  specially crafted XSLT code.");
+  script_tag(name:"solution", value:"Upgrade to Seamonkey version 1.1.16 or later.
+  http://www.seamonkey-project.org/releases");
+  script_tag(name:"summary", value:"The host is installed with Mozilla Seamnkey and is prone to XSL
+  File Parsing Vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -76,8 +69,7 @@ if(!smVer){
   exit(0);
 }
 
-# Grep for Seamonkey version 1.0 to 1.1.15
 if(version_in_range(version:smVer, test_version:"1.0",
                                    test_version2:"1.1.15")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

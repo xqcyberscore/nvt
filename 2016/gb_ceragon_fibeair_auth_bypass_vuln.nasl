@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ceragon_fibeair_auth_bypass_vuln.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_ceragon_fibeair_auth_bypass_vuln.nasl 11569 2018-09-24 10:29:54Z asteins $
 #
 # Ceragon IP-10 Authentication Bypass Vulnerability
 #
@@ -28,15 +28,15 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106103");
-  script_version("$Revision: 5850 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2016-06-21 11:09:47 +0700 (Tue, 21 Jun 2016)");
-  script_tag(name: "cvss_base", value: "9.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:N");
+  script_version("$Revision: 11569 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-21 11:09:47 +0700 (Tue, 21 Jun 2016)");
+  script_tag(name:"cvss_base", value:"9.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Ceragon IP-10 Authentication Bypass Vulnerability");
 
@@ -47,20 +47,20 @@ if (description)
   script_dependencies("find_service.nasl");
   script_require_ports("Services/www", 80);
 
-  script_tag(name: "summary", value: "Ceragon IP-10 is prone to an authentication bypass vulnerability");
+  script_tag(name:"summary", value:"Ceragon IP-10 is prone to an authentication bypass vulnerability");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "insight", value: "Ceragon FibeAir IP-10 devices do not properly ensure that a user
+  script_tag(name:"insight", value:"Ceragon FibeAir IP-10 devices do not properly ensure that a user
 has authenticated before granting them access to the web interface of the device.");
 
-  script_tag(name: "impact", value: "A remote attacker may gain administrative access to the web UI.");
+  script_tag(name:"impact", value:"A remote attacker may gain administrative access to the web UI.");
 
-  script_tag(name: "affected", value: "Version prior to 7.2.0");
+  script_tag(name:"affected", value:"Version prior to 7.2.0");
 
-  script_tag(name: "solution", value: "Upgrade to Version 7.2.0 or later");
+  script_tag(name:"solution", value:"Upgrade to Version 7.2.0 or later");
 
-  script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2016/Jun/34");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Jun/34");
 
   exit(0);
 }

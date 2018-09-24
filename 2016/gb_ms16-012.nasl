@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-012.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_ms16-012.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Microsoft Windows PDF Library Remote Code Execution Vulnerabilities (3138938)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806862");
-  script_version("$Revision: 5836 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-0058", "CVE-2016-0046");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 08:17:05 +0530 (Wed, 10 Feb 2016)");
   script_name("Microsoft Windows PDF Library Remote Code Execution Vulnerabilities (3138938)");
 
@@ -41,20 +41,17 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"
-  - A flaw exists in Microsoft Windows PDF Library when it improperly handles
+  script_tag(name:"insight", value:"- A flaw exists in Microsoft Windows PDF Library when it improperly handles
     application programming interface (API) calls.
+
   - A remote code execution vulnerability exists in Microsoft Windows when a
-    specially crafted file is opened in Windows Reader."); 
+    specially crafted file is opened in Windows Reader.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
   remote attacker to cause arbitrary code to execute in the context of the
-  current user, and also could gain the same user rights as the current user.
+  current user, and also could gain the same user rights as the current user.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8.1 x32/x64 Edition
+  script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
   Microsoft Windows Server 2012/2012R2
   Microsoft Windows 10 x32/x64");
 
@@ -67,14 +64,15 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3135174");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3138938");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-012");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3135174");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3138938");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-012");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -85,17 +83,11 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-sysVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2012:1, win2012R2:1, win8_1:1, win8_1x64:1,
                    win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
@@ -107,10 +99,8 @@ if(!dllVer1 && !dllVer2){
   exit(0);
 }
 
-# Windows server 2012
 if(hotfix_check_sp(win2012:1) > 0 && dllVer1)
 {
-  ## Check for Glcndfilter.dll version
   if(version_is_less(version:dllVer1, test_version:"6.2.9200.17642"))
   {
      Vulnerable_range = "Less than 6.2.9200.17642";
@@ -124,10 +114,8 @@ if(hotfix_check_sp(win2012:1) > 0 && dllVer1)
   }
 }
 
-## Windows 8.1 and Server 2012R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && dllVer1)
 {
-  ## Check for Glcndfilter.dll version
   if(version_is_less(version:dllVer1, test_version:"6.3.9600.18184"))
   {
     Vulnerable_range = "Less than 6.3.9600.18184";
@@ -135,11 +123,8 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && dllVer1)
   }
 }
 
-## Windows 10
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && dllVer2)
 {
-  ## Windows 10
-  ## Check for Windows.data.pdf.dll version
   if(version_is_less(version:dllVer2, test_version:"10.0.10240.16683"))
   {
      report = 'File checked:     ' + sysPath + "\system32\windows.data.pdf.dll"+ '\n' +

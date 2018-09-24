@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20140521-nxos.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: gb_cisco_nx_os_cisco-sa-20140521-nxos.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # Multiple Vulnerabilities in Cisco NX-OS-Based Products
 #
@@ -29,25 +29,25 @@ CPE = "cpe:/o:cisco:nx-os";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105713");
- script_cve_id("CVE-2014-2200","CVE-2014-3261","CVE-2013-1191","CVE-2014-2201");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5689 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105713");
+  script_cve_id("CVE-2014-2200", "CVE-2014-3261", "CVE-2013-1191", "CVE-2014-2201");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11523 $");
 
- script_name("Multiple Vulnerabilities in Cisco NX-OS-Based Products");
+  script_name("Multiple Vulnerabilities in Cisco NX-OS-Based Products");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140521-nxos");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=34245");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=34246");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=34248");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=34247");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140521-nxos");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=34245");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=34246");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=34248");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=34247");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"Cisco Nexus, Cisco Unified Computing System (UCS), and Cisco 1000 Series Connected Grid Routers
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"Cisco Nexus, Cisco Unified Computing System (UCS), and Cisco 1000 Series Connected Grid Routers
 (CGR) are all based on the Cisco NX-OS operating system. These products are affected by one or more
 of the following vulnerabilities: Cisco NX-OS Virtual Device Context SSH Privilege Escalation
 Vulnerability Cisco NX-OS Virtual Device Context SSH Key Privilege Escalation Vulnerability Cisco
@@ -58,16 +58,16 @@ Cisco has released software updates that address these vulnerabilities.
 
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140521-nxos");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-12 16:37:11 +0200 (Thu, 12 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version","cisco_nx_os/model","cisco_nx_os/device");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-12 16:37:11 +0200 (Thu, 12 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_nx_os_version.nasl");
+  script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
 
  exit(0);
 }

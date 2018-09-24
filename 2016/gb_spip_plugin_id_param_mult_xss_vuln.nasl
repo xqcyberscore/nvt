@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spip_plugin_id_param_mult_xss_vuln.nasl 5570 2017-03-14 10:37:44Z teissa $
+# $Id: gb_spip_plugin_id_param_mult_xss_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
 #
 # SPIP 'plugin' and 'id' Parameters Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -30,37 +30,34 @@ CPE = "cpe:/a:spip:spip";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809766");
-  script_version("$Revision: 5570 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-9998", "CVE-2016-9997");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:37:44 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-19 14:42:01 +0530 (Mon, 19 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("SPIP 'plugin' and 'id' Parameters Multiple Cross-Site Scripting Vulnerabilities");
 
-  script_tag(name: "summary" , value:"This host is installed with SPIP
+  script_tag(name:"summary", value:"This host is installed with SPIP
   and is prone to multiple cross-site scripting vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The flaw exists due to an insufficient
+  script_tag(name:"insight", value:"The flaw exists due to an insufficient
   validation of input passed via 'id' parameter to '/ecrire/exec/puce_statut.php'
   script and 'plugin' parameter to '/ecrire/exec/info_plugin.php' script.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary script code in a user's browser session within
-  the trust relationship between their browser and the server.
+  the trust relationship between their browser and the server.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"SPIP version 3.1.x through 3.1.3");
 
-  script_tag(name: "affected" , value:"SPIP version 3.1.x through 3.1.3");
-
-  script_tag(name: "solution" , value:"Update to 3.1.4. For updates refer to http://www.spip.net");
+  script_tag(name:"solution", value:"Update to 3.1.4. For updates refer to http://www.spip.net");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://core.spip.net/projects/spip/repository/revisions/23288");
+  script_xref(name:"URL", value:"https://core.spip.net/projects/spip/repository/revisions/23288");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -74,21 +71,14 @@ if (description)
 include("version_func.inc");
 include("host_details.inc");
 
-##Variable initialization
-sp_port = 0;
-sp_Ver = "";
-
-##Get Port
 if(!sp_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Get SPIP version
 if(!sp_Ver = get_app_version(cpe:CPE, port:sp_port)){
   exit(0);
 }
 
-##Check for Vulnerable Version
 if(version_in_range(version:sp_Ver, test_version:"3.1.0", test_version2:"3.1.3"))
 {
   report = report_fixed_ver(installed_version:sp_Ver, fixed_version:"3.1.4");

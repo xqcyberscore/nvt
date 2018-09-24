@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: horde_test_disclosure.nasl 9981 2018-05-28 11:16:52Z ckuersteiner $
+# $Id: horde_test_disclosure.nasl 11556 2018-09-22 15:37:40Z cfischer $
 # Description: Horde and IMP test disclosure
 #
 # Authors:
@@ -27,13 +27,13 @@ CPE = 'cpe:/a:horde:horde_groupware';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11617");
-  script_version("$Revision: 9981 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 13:16:52 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 11556 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:37:40 +0200 (Sat, 22 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
-  script_tag(name: "solution_type", value: "Workaround");
+  script_tag(name:"solution_type", value:"Workaround");
 
   script_name("Horde and IMP test disclosure");
 
@@ -44,12 +44,12 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("horde_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("horde/installed");
+  script_mandatory_keys("horde/installed");
 
-  script_tag(name: "solution", value: "test.php and imp/test.php should be deleted, or they should be made
+  script_tag(name:"solution", value:"test.php and imp/test.php should be deleted, or they should be made
 unreadable by the web server.");
 
-  script_tag(name: "summary", value: "The remote server is running Horde and/or IMP with test scripts available
+  script_tag(name:"summary", value:"The remote server is running Horde and/or IMP with test scripts available
 from the outside. The scripts may leak server-side information that is valuable to an attacker.");
 
   exit(0);

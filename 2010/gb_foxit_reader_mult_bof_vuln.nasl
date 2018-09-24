@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_bof_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_reader_mult_bof_vuln.nasl 11561 2018-09-24 06:20:05Z cfischer $
 #
 # Foxit Reader Multiple Buffer Overflow Vulnerabilities
 #
@@ -27,12 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801425");
-  script_version("$Revision: 11356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_cve_id("CVE-2010-1797");
+  script_version("$Revision: 11561 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 08:20:05 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-08-10 14:39:31 +0200 (Tue, 10 Aug 2010)");
   script_bugtraq_id(42241);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Foxit Reader Multiple Buffer Overflow Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/42241/");
   script_xref(name:"URL", value:"http://www.foxitsoftware.com/pdf/reader/security_bulletins.php#iphone");
@@ -43,11 +44,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
-  script_require_keys("foxit/reader/ver");
+  script_mandatory_keys("foxit/reader/ver");
   script_tag(name:"impact", value:"Successful exploitation could allow the attackers to execute arbitrary code
   in the context of an application that uses the affected library. Failed
-  exploit attempts will likely result in denial-of-service conditions.
-  Impact Level: Application");
+  exploit attempts will likely result in denial-of-service conditions.");
   script_tag(name:"affected", value:"Foxit Reader version prior to 4.1.1 (4.1.1.0805)");
   script_tag(name:"insight", value:"Multiple flaws are due to an error in the handling of 'PDF'
   documents. It is not properly rendering the PDF documents.");

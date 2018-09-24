@@ -29,29 +29,26 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809027");
-  script_version("$Revision: 7573 $");
+  script_version("$Revision: 11523 $");
   script_cve_id("CVE-2016-4264");
   script_bugtraq_id(92684);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-09-01 11:45:09 +0530 (Thu, 01 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion 'XML External Entity' Information Disclosure Vulnerability");
 
-  script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is 
+  script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is
   prone to an information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw is due to an error in parsing 
+  script_tag(name:"insight", value:"The flaw is due to an error in parsing
   crafted XML entities.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to obtain sensitive information about the application.
-
-  Impact Level: Application");
+  attackers to obtain sensitive information about the application.");
 
   script_tag(name:"affected", value:"ColdFusion 10 before Update 21 and
   11 before Update 10.");
@@ -77,21 +74,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-cfPort = 0;
-cfdVer = "";
-
-## Get HTTP Port
 if(!cfPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!cfdVer = get_app_version(cpe:CPE, port:cfPort)){
   exit(0);
 }
 
-## Checking for Vulnerable version
 ## https://helpx.adobe.com/coldfusion/kb/coldfusion-10-updates.html
 if(version_in_range(version:cfdVer, test_version:"10.0", test_version2:"10.0.20.299202"))
 {
