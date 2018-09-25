@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_ms16-039.nasl 6473 2017-06-29 06:07:30Z cfischer $
+# $Id: gb_lync_ms16-039.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # Microsoft Lync Remote Code Execution Vulnerability (3148522)
 #
@@ -27,30 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807802");
-  script_version("$Revision: 6473 $");
+  script_version("$Revision: 11596 $");
   script_cve_id("CVE-2016-0145");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 08:07:30 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-13 12:27:48 +0530 (Wed, 13 Apr 2016)");
   script_name("Microsoft Lync Remote Code Execution Vulnerability (3148522)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS16-039.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to error in font library
   while handling specially crafted embedded fonts.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker to execute arbitrary code on the affected system.
+  attacker to execute arbitrary code on the affected system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft Lync 2010
+  script_tag(name:"affected", value:"Microsoft Lync 2010
   Microsoft Lync 2013");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -62,10 +58,10 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3148522");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3114944");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3144427");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-039");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3148522");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3114944");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3144427");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-039");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -82,14 +78,8 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-lyncPath = "";
-commVer = "";
-
-## Check for Microsoft Lync 2010/2013
 if(get_kb_item("MS/Lync/Ver"))
 {
-  ## Get Installed Path
   lyncPath = get_kb_item("MS/Lync/path");
 
   ## For MS Lync Basic
@@ -101,18 +91,15 @@ if(get_kb_item("MS/Lync/Ver"))
   {
     foreach ver (make_list("", "OFFICE14", "OFFICE15"))
     {
-      ## Get Version from 'Rtmpltfm.dll'
       commVer = fetch_file_version(sysPath:lyncPath + ver, file_name:"Rtmpltfm.dll");
       if(commVer)
       {
-        if(commVer =~ "^(4)"){
+        if(commVer =~ "^4"){
            Vulnerable_range  =  "4.0.7577.4497";
         }
-        else if(commVer =~ "^(5)"){
-###Check this once by patching
+        else if(commVer =~ "^5"){
           Vulnerable_range  =  "5.0 - 5.0.8687.148";
         }
-###Check this once by patching 5 < 5.0.8687.149
         if(version_in_range(version:commVer, test_version:"5.0", test_version2:"5.0.8687.148") ||
            version_in_range(version:commVer, test_version:"4.0", test_version2:"4.0.7577.4497"))
         {

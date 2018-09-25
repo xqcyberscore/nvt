@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2712_1.nasl 11565 2018-09-24 08:00:39Z santu $
+# $Id: gb_suse_2018_2712_1.nasl 11578 2018-09-25 05:40:17Z cfischer $
 #
 # SuSE Update for python3 openSUSE-SU-2018:2712-1 (python3)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851890");
-  script_version("$Revision: 11565 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 10:00:39 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 11578 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:40:17 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-15 07:24:32 +0200 (Sat, 15 Sep 2018)");
   script_cve_id("CVE-2018-1060", "CVE-2018-1061");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for python3 openSUSE-SU-2018:2712-1 (python3)");
   script_tag(name:"summary", value:"Check the version of python3");

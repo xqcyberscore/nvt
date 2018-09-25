@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_version.nasl 10274 2018-06-20 14:12:57Z cfischer $
+# $Id: http_version.nasl 11585 2018-09-25 07:09:41Z cfischer $
 #
 # HTTP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10107");
-  script_version("$Revision: 10274 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-20 16:12:57 +0200 (Wed, 20 Jun 2018) $");
+  script_version("$Revision: 11585 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:09:41 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -119,7 +119,7 @@ report = 'The remote web server type is :\n\n';
 port = get_http_port( default:80 );
 
 # nb: Always keep http_get() before http_open_socket() as the first could
-# fork with multiple vhosts and the childs would share the same socket
+# fork with multiple vhosts and the child's would share the same socket
 # causing race conditions and similar.
 data = http_get( item:"/", port:port );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-042.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_ms14-042.nasl 11579 2018-09-25 05:43:52Z cfischer $
 #
 # Microsoft Windows Service Bus Denial of Service Vulnerability (2972621)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804474");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11579 $");
   script_cve_id("CVE-2014-2814");
   script_bugtraq_id(68393);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-09 15:14:23 +0530 (Wed, 09 Jul 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows Service Bus Denial of Service Vulnerability (2972621)");
@@ -40,8 +40,7 @@ if(description)
 
   script_tag(name:"summary", value:"This host is missing an moderate security update according to
 Microsoft Bulletin MS14-042");
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
-or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaw is due to an unspecified error when handling Advanced Message
 Queuing Protocol (AMQP) messages and can be exploited to cause Microsoft
 Service Bus to stop responding to incoming messages by sending specially

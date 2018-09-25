@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_was_ms14-017.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_sharepoint_server_was_ms14-017.nasl 11579 2018-09-25 05:43:52Z cfischer $
 #
 # Microsoft SharePoint Server WAS Memory Corruption Vulnerability (2949660)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804536");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11579 $");
   script_cve_id("CVE-2014-1761");
   script_bugtraq_id(66385);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 10:57:40 +0530 (Wed, 09 Apr 2014)");
   script_name("Microsoft SharePoint Server WAS Memory Corruption Vulnerability (2949660)");
 
   script_tag(name:"summary", value:"This host is missing an critical security update according to
 Microsoft Bulletin MS14-017.");
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
-or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaw is due to the way that Microsoft Word parses specially crafted files.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
 code and take complete control of the affected system.");

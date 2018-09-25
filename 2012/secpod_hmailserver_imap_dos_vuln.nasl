@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hmailserver_imap_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_hmailserver_imap_dos_vuln.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # hMailServer IMAP Remote Denial of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902929");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11580 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-29 13:43:35 +0530 (Mon, 29 Oct 2012)");
   script_name("hMailServer IMAP Remote Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -61,13 +61,7 @@ General solution options are to upgrade to a newer release, disable respective f
   exit(0);
 }
 
-
 include("imap_func.inc");
-
-port = "";
-soc = "";
-soc2 = "";
-res = "";
 
 port = get_kb_item("Services/imap");
 if(!port) {

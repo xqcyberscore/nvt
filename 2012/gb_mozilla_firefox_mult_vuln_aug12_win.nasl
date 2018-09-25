@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_aug12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_mozilla_firefox_mult_vuln_aug12_win.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities - August12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803017");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-3965", "CVE-2012-3973");
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 14:55:59 +0530 (Thu, 30 Aug 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - August12 (Windows)");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1027450");
@@ -67,13 +67,9 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
-
-ffVer = "";
 ffVer = get_kb_item("Firefox/Win/Ver");
-
 if(ffVer)
 {
   if(version_is_less(version:ffVer, test_version:"10.0")||

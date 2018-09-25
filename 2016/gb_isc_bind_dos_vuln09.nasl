@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_dos_vuln09.nasl 4429 2016-11-07 13:14:21Z cfi $
+# $Id: gb_isc_bind_dos_vuln09.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # ISC BIND lwresd Denial of Service Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:isc:bind";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106292");
-  script_version("$Revision: 4429 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-11-07 14:14:21 +0100 (Mon, 07 Nov 2016) $");
-  script_tag(name: "creation_date", value: "2016-09-28 09:42:23 +0700 (Wed, 28 Sep 2016)");
+  script_version("$Revision: 11596 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-28 09:42:23 +0700 (Wed, 28 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_cve_id("CVE-2016-2775");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("ISC BIND lwresd Denial of Service Vulnerability");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("bind_version.nasl");
   script_mandatory_keys("ISC BIND/installed");
 
-  script_tag(name: "summary", value: "ISC BIND is prone to a denial of service vulnerability.");
+  script_tag(name:"summary", value:"ISC BIND is prone to a denial of service vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The lwresd component in BIND (which is not enabled by default) could
+  script_tag(name:"insight", value:"The lwresd component in BIND (which is not enabled by default) could
 crash while processing an overlong request name. This could lead to a denial of service.");
 
-  script_tag(name: "impact", value: "An remote attacker may cause a denial of service condition.");
+  script_tag(name:"impact", value:"An remote attacker may cause a denial of service condition.");
 
-  script_tag(name: "affected", value: "BIND 9");
+  script_tag(name:"affected", value:"BIND 9");
 
-  script_tag(name: "solution", value: "Upgrade to 9.9.9-P1, 9.10.4-P1, 9.11.0b1 or later.");
+  script_tag(name:"solution", value:"Upgrade to 9.9.9-P1, 9.10.4-P1, 9.11.0b1 or later.");
 
-  script_xref(name: "URL", value: "https://kb.isc.org/article/AA-01393");
+  script_xref(name:"URL", value:"https://kb.isc.org/article/AA-01393");
 
   exit(0);
 }
@@ -101,7 +101,7 @@ if (version =~ "9\.9\.[3-9]\.S[0-9]") {
     exit(0);
   }
 
-  if ((revcomp(a: version, b: "9.11.0a3") >= 0) && (revcomp(a: version, b: "9.11.0b1") <= 0)) { 
+  if ((revcomp(a: version, b: "9.11.0a3") >= 0) && (revcomp(a: version, b: "9.11.0b1") <= 0)) {
     report = report_fixed_ver(installed_version: version, fixed_version: "9.11.0b2");
     security_message(port: port, data: report, proto: proto);
     exit(0);

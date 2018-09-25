@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_compat_pack_ms14-034.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_ms_compat_pack_ms14-034.nasl 11579 2018-09-25 05:43:52Z cfischer $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerability (2969261)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804458");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11579 $");
   script_cve_id("CVE-2014-2778");
   script_bugtraq_id(67896);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-11 08:46:24 +0530 (Wed, 11 Jun 2014)");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerability (2969261)");
 
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
 Microsoft Bulletin MS14-034.");
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
-or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaw is due to an unspecified error when processing embedded fonts,
 which can be exploited to execute arbitrary code.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary

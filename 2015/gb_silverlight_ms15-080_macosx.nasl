@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms15-080_macosx.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_silverlight_ms15-080_macosx.nasl 11583 2018-09-25 06:31:54Z cfischer $
 #
 # Microsoft Silverlight Remote Code Execution Vulnerability (3078662) (Mac OS X)
 #
@@ -29,21 +29,20 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806014");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11583 $");
   script_cve_id("CVE-2015-2435", "CVE-2015-2455", "CVE-2015-2456", "CVE-2015-2463",
                 "CVE-2015-2464");
   script_bugtraq_id(76238, 76216, 76241, 76239, 76240);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:31:54 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-13 11:13:34 +0530 (Thu, 13 Aug 2015)");
   script_name("Microsoft Silverlight Remote Code Execution Vulnerability (3078662) (Mac OS X)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-080.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to improper memory
   operations performed by the affected software while handling content with
@@ -75,11 +74,8 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-msl_ver = "";
 
 if(!msl_ver = get_app_version(cpe:CPE)){
   exit(0);

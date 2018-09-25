@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_broadlight_residential_gateway_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_broadlight_residential_gateway_mult_vuln.nasl 11584 2018-09-25 07:02:39Z cfischer $
 #
 # Broadlight Residential Gateway DI3124 Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805596");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11584 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-26 10:03:52 +0530 (Fri, 26 Jun 2015)");
   script_name("Broadlight Residential Gateway DI3124 Multiple Vulnerabilities");
 
@@ -41,7 +41,7 @@ if(description)
   and check whether it is able to read sensitive information or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists as no user
-  authentication is required for acessing multiple sensitive pages.");
+  authentication is required for accessing multiple sensitive pages.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to change DNS and gain access to potentially sensitive information.");
@@ -64,6 +64,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -79,7 +80,6 @@ if(rcvRes && "title>Broadlight Residential Gateway<" >< rcvRes)
 
   url = "/cgi-bin/getconf.cgi";
 
-  ## Send ATACK Request
   sndReq = http_get(item: url, port:gatePort);
   rcvRes = http_keepalive_send_recv(port:gatePort, data:sndReq);
 

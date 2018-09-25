@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-149.nasl 4855 2016-12-27 10:54:25Z antu123 $
+# $Id: gb_ms16-149.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # Microsoft Windows Information Disclosure And Elevation of Privilege Vulnerabilities (3205655)
 #
@@ -27,37 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810238");
-  script_version("$Revision: 4855 $");
+  script_version("$Revision: 11596 $");
   script_cve_id("CVE-2016-7219", "CVE-2016-7292");
   script_bugtraq_id(94768, 94764);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-27 11:54:25 +0100 (Tue, 27 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-14 08:20:30 +0530 (Wed, 14 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Information Disclosure And Elevation of Privilege Vulnerabilities (3205655)");
 
-  script_tag(name: "summary" , value:"This host is missing an critical security
+  script_tag(name:"summary", value:"This host is missing an critical security
   update according to Microsoft Bulletin MS16-149.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws are due to
-  - The windows Crypto driver running in kernel mode improperly handles objects 
+  script_tag(name:"insight", value:"The multiple flaws are due to
+
+  - The windows Crypto driver running in kernel mode improperly handles objects
     in memory.
-  - The windows Installer fails to properly sanitize input leading to an insecure 
+
+  - The windows Installer fails to properly sanitize input leading to an insecure
     library loading behavior.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers 
-  to obtain information to further compromise the user's system, run arbitrary 
-  code with elevated system privileges. An attacker could then install programs, 
-  view, change, or delete data or create new accounts with full user rights.
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
+  to obtain information to further compromise the user's system, run arbitrary
+  code with elevated system privileges. An attacker could then install programs,
+  view, change, or delete data or create new accounts with full user rights.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows Server 2016
+  script_tag(name:"affected", value:"Microsoft Windows Server 2016
   Microsoft Windows 8.1 x32/x64 Edition
   Microsoft Windows Server 2012/2012R2
   Microsoft Windows 10 x32/x64
@@ -75,13 +73,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3205655");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS16-149");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3205655");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS16-149");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -92,34 +91,25 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-egdeVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, winVistax64:3, win7:2, win7x64:2, win2008:3, win2008x64:3,
                    win2008r2:2, win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1,
                    win10x64:1, win2016:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch 'msi.dll' and 'lsasrv.dll' file version
 msiVer = fetch_file_version(sysPath, file_name:"system32\msi.dll");
 lsVer = fetch_file_version(sysPath, file_name:"system32\lsasrv.dll");
 if(!msiVer && !lsVer){
   exit(0);
 }
 
-## Windows Vista and Windows Server 2008
 if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0)
 {
-  ## Check for msi.dll version
   if(version_is_less(version:msiVer, test_version:"4.5.6002.19712") && msiVer)
   {
     Vulnerable_range1 = "Less than 4.5.6002.19712";
@@ -131,7 +121,6 @@ if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0)
     VULN1 = TRUE ;
   }
 
-  ## Check for lsasrv.dll version
   if(version_is_less(version:lsVer, test_version:"6.0.6002.19701") && lsVer)
   {
     Vulnerable_range2 = "Less than 6.0.6002.19701";
@@ -144,10 +133,8 @@ if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0)
   }
 }
 
-## Windows 7 and Windows Server 2008 R2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && msiVer)
 {
-  ## Check for msi.dll version
   if(version_is_less(version:msiVer, test_version:"5.0.7601.23593"))
   {
     Vulnerable_range1 = "Less than 5.0.7601.23593";
@@ -158,7 +145,6 @@ else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && msiVer)
 ## Win 8.1 and win2012R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && msiVer)
 {
-  ## Check for msi.dll version
   if(version_is_less(version:msiVer, test_version:"5.0.9600.18533"))
   {
     Vulnerable_range1 = "Less than 5.0.9600.18533";
@@ -166,10 +152,8 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && msiVer)
   }
 }
 
-## Windows Server 2012
 else if(hotfix_check_sp(win2012:1) > 0 && msiVer)
 {
-  ## Check for msi.dll version
   if(version_is_less(version:msiVer, test_version:"5.0.9200.22028"))
   {
      Vulnerable_range1 = "Less than 5.0.9200.17412";
@@ -177,23 +161,18 @@ else if(hotfix_check_sp(win2012:1) > 0 && msiVer)
   }
 }
 
-## Windows 10 and Windows Server 2016
 if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) > 0 && msiVer)
 {
-  ## Check for msi.dll version
-  ## Windows 10
   if(version_is_less(version:msiVer, test_version:"5.0.10240.17202"))
   {
     Vulnerable_range1 = "Less than 5.0.10240.17202";
     VULN1 = TRUE ;
   }
-  ## Windows 10 Version 1511
   else if(version_in_range(version:msiVer, test_version:"5.0.10586.0", test_version2:"5.0.10586.712"))
   {
     Vulnerable_range1 = "5.0.10586.0 - 5.0.10586.712";
     VULN1 = TRUE ;
   }
-  ## Windows 10 Version 1607 and Windows Server 2016
   else if(version_in_range(version:msiVer, test_version:"5.0.14393.0", test_version2:"5.0.14393.575"))
   {
     Vulnerable_range1 = "5.0.14393.0 - 5.0.14393.575";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-87_2016-87_macosx.nasl 10743 2018-08-03 02:50:31Z ckuersteiner $
+# $Id: gb_mozilla_firefox_mfsa_2016-87_2016-87_macosx.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # Mozilla Firefox Security Updates( mfsa_2016-87_2016-87 )-MAC OS X
 #
@@ -29,36 +29,35 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809391");
-  script_version("$Revision: 10743 $");
+  script_version("$Revision: 11596 $");
   script_cve_id("CVE-2016-5287", "CVE-2016-5288");
   script_bugtraq_id(93810);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 04:50:31 +0200 (Fri, 03 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-21 15:25:13 +0530 (Fri, 21 Oct 2016)");
   script_name("Mozilla Firefox Security Updates( mfsa_2016-87_2016-87 )-MAC OS X");
 
-  script_tag(name: "summary" , value:"This host is installed with 
+  script_tag(name:"summary", value:"This host is installed with
   Mozilla Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - Crash in nsTArray_base&lt;T&gt;::SwapArrayElements.
+
   - Web content can read cache entries");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to cause denial of service, and web
   content could access information in the HTTP cache which can reveal some
-  visited URLs and the contents of those pages.
+  visited URLs and the contents of those pages.");
 
-  Impact Level: Application.");
-
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 
+  script_tag(name:"affected", value:"Mozilla Firefox version before
   49.0.2 on MAC OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 49.0.2
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 49.0.2
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -78,15 +77,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"49.0.2"))
 {
   report = report_fixed_ver(installed_version:ffVer, fixed_version:"49.0.2");

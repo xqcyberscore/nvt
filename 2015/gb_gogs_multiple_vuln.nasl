@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gogs_multiple_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_gogs_multiple_vuln.nasl 11584 2018-09-25 07:02:39Z cfischer $
 #
 # Gogs Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 
 CPE = 'cpe:/a:gogits:gogs';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105952");
-  script_version("$Revision: 11452 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 11584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-06 14:11:04 +0700 (Fri, 06 Feb 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -55,17 +55,17 @@ if (description)
 
   script_tag(name:"insight", value:"The installed Gogs version is prone to the following vulnerabilities:
 
-CVE-2014-8681:
-SQL injection vulnerability in the GetIssues function in models/issue.go.
+  CVE-2014-8681:
+  SQL injection vulnerability in the GetIssues function in models/issue.go.
 
-CVE-2014-8682:
-Multiple SQL injection vulnerabilities in the q parameter of api/v1/repos/search, which is not properly handled in models/repo.go and in api/v1/users/search, which is not properly handled in models/user.go.
+  CVE-2014-8682:
+  Multiple SQL injection vulnerabilities in the q parameter of api/v1/repos/search, which is not properly handled in models/repo.go and in api/v1/users/search, which is not properly handled in models/user.go.
 
-CVE-2014-8683:
-Cross-site scripting (XSS) vulnerability in models/issue.go.");
+  CVE-2014-8683:
+  Cross-site scripting (XSS) vulnerability in models/issue.go.");
 
-  script_tag(name:"impact", value:"Unauthenicated attackers can exploit this vulnerabilities to perfom
-an XSS attack or execute arbitrary SQL commands which may lead to a complete compromise of the database.");
+  script_tag(name:"impact", value:"Unauthenicated attackers can exploit this vulnerabilities to perform
+  an XSS attack or execute arbitrary SQL commands which may lead to a complete compromise of the database.");
 
   script_tag(name:"affected", value:"Gogs (aka Go Git Service) 0.3.1-9 through 0.5.x before 0.5.8");
 

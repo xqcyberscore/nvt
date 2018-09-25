@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_iis_get_request_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_ms_iis_get_request_dos_vuln.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Microsoft IIS GET Request Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:microsoft:iis';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902914");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-1999-0229");
   script_bugtraq_id(2218);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-22 12:45:33 +0530 (Tue, 22 May 2012)");
   script_name("Microsoft IIS GET Request Denial of Service Vulnerability");
 
@@ -66,12 +66,8 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("host_details.inc");
-
-iisPort = "";
-res = "";
 
 if(!iisPort = get_app_port(cpe:CPE)) exit(0);
 

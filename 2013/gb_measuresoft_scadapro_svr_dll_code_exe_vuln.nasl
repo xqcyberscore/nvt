@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_measuresoft_scadapro_svr_dll_code_exe_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_measuresoft_scadapro_svr_dll_code_exe_vuln.nasl 11582 2018-09-25 06:26:12Z cfischer $
 #
 # Measuresoft ScadaPro Server DLL Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:measuresoft:scadapro_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803949");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11582 $");
   script_cve_id("CVE-2012-1824");
   script_bugtraq_id(53681);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-03 12:30:46 +0530 (Thu, 03 Oct 2013)");
   script_name("Measuresoft ScadaPro Server DLL Code Execution Vulnerability");
 
@@ -62,11 +62,8 @@ system via a specially-crafted library.");
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-scadaprosvrVer = "";
 
 if(!scadaprosvrVer = get_app_version(cpe:CPE)){
   exit(0);

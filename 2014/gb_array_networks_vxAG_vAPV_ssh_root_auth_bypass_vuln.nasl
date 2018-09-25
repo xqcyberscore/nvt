@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_array_networks_vxAG_vAPV_ssh_root_auth_bypass_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_array_networks_vxAG_vAPV_ssh_root_auth_bypass_vuln.nasl 11583 2018-09-25 06:31:54Z cfischer $
 #
 # Array Networks vxAG/xAPV Authentication Bypass Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804417");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11583 $");
   script_bugtraq_id(66299);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:31:54 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-20 12:13:13 +0530 (Thu, 20 Mar 2014)");
   script_name("Array Networks vxAG/xAPV Authentication Bypass Vulnerabilities");
 
@@ -67,16 +67,11 @@ access to affected devices and completely compromise the devices.");
   exit(0);
 }
 
-
 include("ssh_func.inc");
 
 userName = "mfg";
 pwd = "mfg";
-qdPort = "";
-qdSoc = "";
-loginCheck = "";
 
-## default port
 qdPort = get_kb_item("Services/ssh");
 if(!qdPort){
   qdPort = 22;
@@ -86,7 +81,6 @@ if(!get_port_state(qdPort)){
   exit(0);
 }
 
-## create the socket
 if(!qdSoc = open_sock_tcp(qdPort)){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sit_mult_sql_inj_and_xss_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
+# $Id: gb_sit_mult_sql_inj_and_xss_vuln.nasl 11591 2018-09-25 08:09:20Z asteins $
 #
 # Support Incident Tracker SiT! Multiple SQL Injection And XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802388");
-  script_version("$Revision: 11429 $");
+  script_version("$Revision: 11591 $");
   script_cve_id("CVE-2011-5071", "CVE-2011-5072", "CVE-2011-5073", "CVE-2011-5074",
                 "CVE-2011-5075");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 10:09:20 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-01 15:15:30 +0530 (Wed, 01 Feb 2012)");
   script_name("Support Incident Tracker SiT! Multiple SQL Injection And XSS Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46019");
@@ -51,27 +51,30 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of a vulnerable site
   and to cause SQL Injection attack to gain sensitive information.");
-  script_tag(name:"affected", value:"Support Incident Tracker before 3.65");
+  script_tag(name:"affected", value:"Support Incident Tracker before version 3.65.");
   script_tag(name:"insight", value:"The flaws are due to improper input validation errors in multiple
   scripts before being used in SQL queries and also allows attackers to
   execute arbitrary HTML.");
-  script_tag(name:"solution", value:"Upgrade to the Support Incident Tracker version 3.65 or later,
+  script_tag(name:"solution", value:"Upgrade to the Support Incident Tracker version 3.65 or later.
+
   For updates refer to http://sitracker.org/");
   script_tag(name:"summary", value:"This host is running Support Incident Tracker and is prone to
-  multiple sql injection and cross site scripting vulnerabilities.");
+  multiple sql injection and cross-site scripting vulnerabilities.");
   exit(0);
 }
 
 include("http_func.inc");
-include("version_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
+include("version_func.inc");
 
-sitPort = get_http_port(default:80);
+CPE = 'cpe:/a:sitracker:support_incident_tracker';
 
-dir = get_dir_from_kb(port:sitPort,app:"support_incident_tracker");
-if(!dir){
+if(!sitPort = get_app_port(cpe:CPE))
   exit(0);
-}
+
+if(!dir = get_app_location(cpe:CPE, port:sitPort))
+  exit(0);
 
 host = http_host_name(port:sitPort);
 
@@ -86,7 +89,7 @@ res = http_keepalive_send_recv(port:sitPort, data:req);
 if(ereg(pattern:"^HTTP/[0-9]\.[0-9] 200 .*", string:res) &&
    "<script>alert(document.cookie);</script>" >< res)
 {
-  security_message(port:sitPort, data:"The target host was found to be vulnerable");
+  security_message(port:sitPort, data:"The target host was found to be vulnerable.");
   exit(0);
 }
 

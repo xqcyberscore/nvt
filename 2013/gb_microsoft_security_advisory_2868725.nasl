@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2868725.nasl 10957 2018-08-14 13:26:50Z mmartin $
+# $Id: gb_microsoft_security_advisory_2868725.nasl 11576 2018-09-24 14:59:42Z cfischer $
 #
 # Microsoft RC4 Disabling Security Advisory (2868725)
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804142");
-  script_version("$Revision: 10957 $");
+  script_version("$Revision: 11576 $");
   script_tag(name:"cvss_base", value:"8.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:26:50 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-14 11:28:18 +0530 (Thu, 14 Nov 2013)");
   script_name("Microsoft RC4 Disabling Security Advisory (2868725)");
 
 
   script_tag(name:"summary", value:"This host is missing an important security update according to Microsoft
 advisory (2868725).");
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
-or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
 update mentioned hotfixes in the advisory from the below link,
 http://support.microsoft.com/kb/2868725");

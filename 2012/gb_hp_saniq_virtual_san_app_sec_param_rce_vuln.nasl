@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_saniq_virtual_san_app_sec_param_rce_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_hp_saniq_virtual_san_app_sec_param_rce_vuln.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # HP SAN/iQ Virtual SAN Appliance Second Parameter Command Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802454");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-4361");
   script_bugtraq_id(55132);
   script_tag(name:"cvss_base", value:"7.7");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-05 14:44:25 +0530 (Wed, 05 Sep 2012)");
   script_name("HP SAN/iQ Virtual SAN Appliance Second Parameter Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -88,12 +88,6 @@ function hydra_send_recv()
   data = recv(socket:socket,length:1024);
   return data;
 }
-
-port = "";
-soc = "";
-login = "";
-res = "";
-ping = "";
 
 port = get_unknown_port( default:13838 );
 soc = open_sock_tcp( port );

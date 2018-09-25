@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_jul12_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_mozilla_firefox_mult_vuln_jul12_macosx.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities - July12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802892");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-1950", "CVE-2012-1965", "CVE-2012-1966");
   script_bugtraq_id(54585, 54579, 54577);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-23 18:31:44 +0530 (Mon, 23 Jul 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - July12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49965");
@@ -72,8 +72,6 @@ if(description)
 
 include("version_func.inc");
 
-# Firefox Check
-ffVer = "";
 ffVer = get_kb_item("Mozilla/Firefox/MacOSX/Version");
 
 if(ffVer)

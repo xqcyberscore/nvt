@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol68785753.nasl 5644 2017-03-21 09:07:05Z teissa $
+# $Id: gb_f5_big_ip_sol68785753.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # F5 BIG-IP - SOL68785753 - ImageMagick vulnerability CVE-2015-8898
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140080");
- script_cve_id("CVE-2015-8898");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5644 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140080");
+  script_cve_id("CVE-2015-8898");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11596 $");
 
- script_name("F5 BIG-IP - SOL68785753 - ImageMagick vulnerability CVE-2015-8898");
+  script_name("F5 BIG-IP - SOL68785753 - ImageMagick vulnerability CVE-2015-8898");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/68/sol68785753.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/68/sol68785753.html");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary", value:"ImageMagick vulnerability CVE-2015-8898");
- script_tag(name: "impact", value:"BIG-IP systems that use a WebAcceleration profile configured with the Image Optimization settings (BIG-IP AAM and BIG-IP WebAccelerator) are vulnerable to this issue. An attacker using specially crafted image format files could cause memory corruption and, potentially, run arbitrary code with restricted user privileges, resulting in a denial- of -service (DoS) attack or an application restart.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"ImageMagick vulnerability CVE-2015-8898");
+  script_tag(name:"impact", value:"BIG-IP systems that use a WebAcceleration profile configured with the Image Optimization settings (BIG-IP AAM and BIG-IP WebAccelerator) are vulnerable to this issue. An attacker using specially crafted image format files could cause memory corruption and, potentially, run arbitrary code with restricted user privileges, resulting in a denial- of -service (DoS) attack or an application restart.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:07:05 +0100 (Tue, 21 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-11-29 09:59:41 +0100 (Tue, 29 Nov 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-29 09:59:41 +0100 (Tue, 29 Nov 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

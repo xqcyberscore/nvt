@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_jun12_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_mozilla_prdts_mult_vuln_jun12_macosx.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities - June12 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802866");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-1937", "CVE-2012-1940", "CVE-2012-1944", "CVE-2012-1945",
                 "CVE-2012-1946", "CVE-2012-1947", "CVE-2012-3105", "CVE-2012-1941",
                 "CVE-2012-0441", "CVE-2012-1938");
@@ -35,7 +35,7 @@ if(description)
                     53229, 53227, 53224, 53798, 53796);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-19 11:31:59 +0530 (Tue, 19 Jun 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - June12 (Mac OS X)");
 
@@ -101,8 +101,6 @@ if(description)
 
 include("version_func.inc");
 
-# Firefox Check
-ffVer = "";
 ffVer = get_kb_item("Mozilla/Firefox/MacOSX/Version");
 
 if(ffVer)
@@ -115,8 +113,6 @@ if(ffVer)
   }
 }
 
-# SeaMonkey Check
-seaVer = "";
 seaVer = get_kb_item("SeaMonkey/MacOSX/Version");
 
 if(seaVer)
@@ -128,8 +124,6 @@ if(seaVer)
   }
 }
 
-# Thunderbird Check
-tbVer = "";
 tbVer = get_kb_item("ThunderBird/MacOSX/Version");
 
 if(tbVer)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_jul12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_mozilla_prdts_mult_vuln_jul12_win.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities - July12 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802889");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-1948", "CVE-2012-1951", "CVE-2012-1952", "CVE-2012-1953",
                 "CVE-2012-1954", "CVE-2012-1955", "CVE-2012-1957", "CVE-2012-1958",
                 "CVE-2012-1959", "CVE-2012-1961", "CVE-2012-1962", "CVE-2012-1963",
@@ -36,7 +36,7 @@ if(description)
                     54575, 54582, 54573);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-23 17:31:44 +0530 (Mon, 23 Jul 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - July12 (Windows)");
 
@@ -96,13 +96,9 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
-
-ffVer = "";
 ffVer = get_kb_item("Firefox/Win/Ver");
-
 if(ffVer)
 {
   if(version_in_range(version:ffVer, test_version:"4.0", test_version2:"10.0.5")||
@@ -113,10 +109,7 @@ if(ffVer)
   }
 }
 
-# SeaMonkey Check
-seaVer = "";
 seaVer = get_kb_item("Seamonkey/Win/Ver");
-
 if(seaVer)
 {
   if(version_is_less(version:seaVer, test_version:"2.11"))
@@ -126,10 +119,7 @@ if(seaVer)
   }
 }
 
-# Thunderbird Check
-tbVer = "";
 tbVer = get_kb_item("Thunderbird/Win/Ver");
-
 if(tbVer)
 {
   if(version_in_range(version:tbVer, test_version:"5.0", test_version2:"10.0.5")||

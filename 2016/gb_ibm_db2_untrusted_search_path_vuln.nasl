@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_untrusted_search_path_vuln.nasl 9300 2018-04-04 11:55:01Z cfischer $
+# $Id: gb_ibm_db2_untrusted_search_path_vuln.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # IBM DB2 Untrusted Search Path Vulnerability
 #
@@ -29,41 +29,38 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809431");
-  script_version("$Revision: 9300 $");
+  script_version("$Revision: 11596 $");
   script_cve_id("CVE-2016-5995");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-04 17:08:20 +0530 (Tue, 04 Oct 2016)");
   script_name("IBM DB2 Untrusted Search Path Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is running IBM DB2 and is
+  script_tag(name:"summary", value:"This host is running IBM DB2 and is
   prone to untrusted search path vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version of IBM DB2
+  script_tag(name:"vuldetect", value:"Get the installed version of IBM DB2
   with the help of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to loading libraries
+  script_tag(name:"insight", value:"The flaw exists due to loading libraries
   from insecure locations.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow local
-  user to gain elevated privilege.
+  script_tag(name:"impact", value:"Successful exploitation will allow local
+  user to gain elevated privilege.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"
-  IBM DB2 versions 9.7 through FP11
+  script_tag(name:"affected", value:"IBM DB2 versions 9.7 through FP11
   IBM DB2 versions 10.1 through FP5
   IBM DB2 versions 10.5 through FP7");
 
-  script_tag(name: "solution" , value:"Apply the appropriate fix from below link,
+  script_tag(name:"solution", value:"Apply the appropriate fix from below link,
   http://www-01.ibm.com/support/docview.wss?uid=swg21990061");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21990061");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21990061");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -85,7 +82,6 @@ if(!ibmVer = get_app_version(cpe:CPE, port:ibmPort)){
   exit(0);
 }
 
-##Check for IBM DB2 9.7 through FP11
 if(ibmVer =~ "^0907\.*"){
   ## IBM DB2 9.7 through FP11
   ## IBM DB2 9.7 FP11 => 090711
@@ -96,7 +92,6 @@ if(ibmVer =~ "^0907\.*"){
 ##Only Enterprise Server Edition V9.8 is vulnerable
 ##Not considering that, as no way to confirm that
 
-##Check for IBM DB2 10.1 through FP5
 if(ibmVer =~ "^1001\.*"){
   ## IBM DB2 10.1 through FP5
   ## IBM DB2 10.1 FP5  => 10015
@@ -105,7 +100,6 @@ if(ibmVer =~ "^1001\.*"){
   }
 }
 
-##Check for IBM DB2 10.5 through FP7
 if(ibmVer =~ "^1005\.*"){
   ## IBM DB2 10.5 through FP7
   ## IBM DB2 10.5 FP7 => 10057

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-064.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_ms14-064.nasl 11579 2018-09-25 05:43:52Z cfischer $
 #
 # Microsoft Windows OLE Object Handling Code Execution Vulnerabilities (3011443)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805015");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11579 $");
   script_cve_id("CVE-2014-6332", "CVE-2014-6352");
   script_bugtraq_id(70952, 70690);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 10:12:10 +0530 (Wed, 12 Nov 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS14-064.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaws exists due to unspecified errors
   when handling OLE objects within Microsoft Office files and Internet Explorer.");

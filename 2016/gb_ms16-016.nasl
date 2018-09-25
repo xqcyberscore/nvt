@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-016.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_ms16-016.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # Microsoft Windows WebDAV Elevation Of Privilege Vulnerability (3136041)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806863");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11596 $");
   script_cve_id("CVE-2016-0051");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 10:51:05 +0530 (Wed, 10 Feb 2016)");
   script_name("Microsoft Windows WebDAV Elevation Of Privilege Vulnerability (3136041)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-016");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an improper validation
   of input in the Microsoft Web Distributed Authoring and Versioning (WebDAV).");

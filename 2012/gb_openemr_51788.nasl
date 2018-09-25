@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_51788.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_openemr_51788.nasl 11594 2018-09-25 09:00:11Z asteins $
 #
 # OpenEMR Local File Include and Command Injection Vulnerabilities
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2012-0991", "CVE-2012-0992");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11594 $");
 
   script_name("OpenEMR Local File Include and Command Injection Vulnerabilities");
 
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.open-emr.org/wiki/index.php/OpenEMR_Patches");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/521448");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:00:11 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-02 12:55:39 +0100 (Thu, 02 Feb 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -67,16 +67,20 @@ are also possible.");
   exit(0);
 }
 
-include("misc_func.inc");
-include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if (!can_host_php(port:port)) exit(0);
+CPE = 'cpe:/a:open-emr:openemr';
 
-if(!dir = get_dir_from_kb(port:port,app:"OpenEMR"))exit(0);
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
+
 files = traversal_files();
 
 foreach file (keys(files)) {
@@ -85,7 +89,6 @@ foreach file (keys(files)) {
   if(http_vuln_check(port:port, url:url, pattern:file)) {
     security_message(port:port);
   }
-
 }
 
 exit(0);

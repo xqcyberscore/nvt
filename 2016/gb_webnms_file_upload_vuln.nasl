@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webnms_file_upload_vuln.nasl 8006 2017-12-06 09:26:55Z cfischer $
+# $Id: gb_webnms_file_upload_vuln.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # WebNMS 5.2 / 5.2 SP1 Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:zohocorp:webnms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106242");
-  script_version("$Revision: 8006 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-06 10:26:55 +0100 (Wed, 06 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2016-09-13 17:11:16 +0700 (Tue, 13 Sep 2016)");
+  script_version("$Revision: 11596 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-13 17:11:16 +0700 (Tue, 13 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-6600", "CVE-2016-6601", "CVE-2016-6602", "CVE-2016-6603");
 
-  script_tag(name: "qod_type", value: "remote_analysis");
+  script_tag(name:"qod_type", value:"remote_analysis");
 
-  script_tag(name: "solution_type", value: "Mitigation");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   script_name("WebNMS 5.2 / 5.2 SP1 Multiple Vulnerabilities");
 
@@ -52,11 +52,11 @@ if (description)
   script_require_ports("Services/www", 9090);
   script_mandatory_keys("webnms/installed");
 
-  script_tag(name: "summary", value: "WebNMS Framework 5.2 / 5.2 SP1 is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"WebNMS Framework 5.2 / 5.2 SP1 is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks if FileUploadServlet is accessible.");
+  script_tag(name:"vuldetect", value:"Checks if FileUploadServlet is accessible.");
 
-  script_tag(name: "insight", value: "WebNMS Framework allows unauthenticated remote attackers to:
+  script_tag(name:"insight", value:"WebNMS Framework allows unauthenticated remote attackers to:
 
   - upload a JSP file by using a directory traversal attack on the FileUploadServlet servlet and gain remote code execution
   under the user which the WebNMS server is running.
@@ -67,15 +67,15 @@ if (description)
 
   - bypass authentication and impersonate arbitrary users via the UserName HTTP header.");
 
-  script_tag(name: "impact", value: "An unauthenticated remote attacker may execute arbitrary code under the
+  script_tag(name:"impact", value:"An unauthenticated remote attacker may execute arbitrary code under the
 user which the WebNMS server is running and to gain access to sensitive data on the host.");
 
-  script_tag(name: "affected", value: "WebNMS Framework Server 5.2 and 5.2 SP1");
+  script_tag(name:"affected", value:"WebNMS Framework Server 5.2 and 5.2 SP1");
 
-  script_tag(name: "solution", value: "See https://forums.webnms.com/topic/recent-vulnerabilities-in-webnms-and-how-to-protect-the-server-against-them for a mitigation procedure.");
+  script_tag(name:"solution", value:"See https://forums.webnms.com/topic/recent-vulnerabilities-in-webnms-and-how-to-protect-the-server-against-them for a mitigation procedure.");
 
-  script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/2712");
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40229/");
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/2712");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40229/");
 
   exit(0);
 }

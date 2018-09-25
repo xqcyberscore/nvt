@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms14-082.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_ms_office_ms14-082.nasl 11583 2018-09-25 06:31:54Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerability (3017349)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805022");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11583 $");
   script_cve_id("CVE-2014-6364");
   script_bugtraq_id(71474);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:31:54 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-10 09:17:13 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (3017349)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS14-082.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to a use-after-free error
   and can be exploited to corrupt memory.");
@@ -71,14 +70,11 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-sysPath = "";
-dllVer = "";
 
 ## MS Office 2007/2010/2013
 if(!get_kb_item("MS/Office/Ver") =~ "^[12|14|15].*"){

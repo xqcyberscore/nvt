@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_mult_vuln_nov16.nasl 5070 2017-01-24 10:05:10Z antu123 $
+# $Id: gb_ntp_mult_vuln_nov16.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # NTP.org 'ntp' Multiple Vulnerabilities (Nov-2016)
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106404");
-  script_version("$Revision: 5070 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-24 11:05:10 +0100 (Tue, 24 Jan 2017) $");
-  script_tag(name: "creation_date", value: "2016-06-03 11:18:33 +0700 (Fri, 03 Jun 2016)");
+  script_version("$Revision: 11596 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-03 11:18:33 +0700 (Fri, 03 Jun 2016)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
 
   script_cve_id("CVE-2016-9311", "CVE-2016-9310");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("NTP.org 'ntp' Multiple Vulnerabilities");
 
@@ -50,30 +50,30 @@ if (description)
   script_mandatory_keys("NTP/Installed", "NTP/Linux/Ver");
   script_require_udp_ports(123);
 
-  script_tag(name: "summary", value: "NTP.org's reference implementation of NTP server, ntpd, contains
+  script_tag(name:"summary", value:"NTP.org's reference implementation of NTP server, ntpd, contains
 multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "ntpd contains multiple vulnerabilities:
+  script_tag(name:"insight", value:"ntpd contains multiple vulnerabilities:
 
-- An exploitable configuration modification vulnerability exists in the control mode (mode 6) functionality of
+  - An exploitable configuration modification vulnerability exists in the control mode (mode 6) functionality of
 ntpd. If, against long-standing BCP recommendations, 'restrict default noquery ...' is not specified, a
 specially crafted control mode packet can set ntpd traps, providing information disclosure and DDoS
 amplification, and unset ntpd traps, disabling legitimate monitoring. (CVE-2016-9310)
 
-- ntpd does not enable trap service by default. If trap service has been explicitly enabled, an attacker can
+  - ntpd does not enable trap service by default. If trap service has been explicitly enabled, an attacker can
 send a specially crafted packet to cause a null pointer dereference that will crash ntpd, resulting in a denial
 of service. (CVE-2016-9311)");
 
-  script_tag(name: "impact", value: "A remote unauthenticated attacker may be able to perform a denial of
+  script_tag(name:"impact", value:"A remote unauthenticated attacker may be able to perform a denial of
 service on ntpd.");
 
-  script_tag(name: "affected", value: "Version 4.0.90 until 4.2.8p8, 4.3.0 until 4.3.93");
+  script_tag(name:"affected", value:"Version 4.0.90 until 4.2.8p8, 4.3.0 until 4.3.93");
 
-  script_tag(name: "solution", value: "Upgrade to NTP version 4.2.8p9, 4.3.94 or later.");
+  script_tag(name:"solution", value:"Upgrade to NTP version 4.2.8p9, 4.3.94 or later.");
 
-  script_xref(name: "URL", value: "https://www.kb.cert.org/vuls/id/633847");
+  script_xref(name:"URL", value:"https://www.kb.cert.org/vuls/id/633847");
 
   exit(0);
 }

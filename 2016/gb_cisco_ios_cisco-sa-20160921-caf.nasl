@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160921-caf.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_cisco_ios_cisco-sa-20160921-caf.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # Cisco IOS Software Application-Hosting Framework Unauthorized File Access Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106277");
- script_cve_id("CVE-2016-6410");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
- script_version ("$Revision: 5568 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106277");
+  script_cve_id("CVE-2016-6410");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
+  script_version("$Revision: 11596 $");
 
- script_name("Cisco IOS Software Application-Hosting Framework Unauthorized File Access Vulnerability");
+  script_name("Cisco IOS Software Application-Hosting Framework Unauthorized File Access Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160921-caf");
- 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160921-caf");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "summary" , value: "A vulnerability in the Cisco application-hosting framework (CAF) for
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+
+  script_tag(name:"summary", value:"A vulnerability in the Cisco application-hosting framework (CAF) for
 Cisco IOS Software with the IOx feature set could allow an authenticated, remote attacker to read arbitrary
 files on a targeted system.");
 
- script_tag(name: "insight" , value: "The vulnerability is due to insufficient input validation by the affected
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient input validation by the affected
 framework. An attacker could exploit this vulnerability by submitting specific, crafted input to the affected
 framework.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to read arbitrary files on
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to read arbitrary files on
 the targeted system.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-09-22 10:06:54 +0700 (Thu, 22 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-22 10:06:54 +0700 (Thu, 22 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version");
  exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_collabnet_sub_edge_mult_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_collabnet_sub_edge_mult_vuln.nasl 11583 2018-09-25 06:31:54Z cfischer $
 #
 # CollabNet Subversion Edge Management Frontend Multiple Vulnerabilities
 #
@@ -28,10 +28,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805710");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11583 $");
   script_tag(name:"cvss_base", value:"6.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:31:54 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-02 13:11:22 +0530 (Thu, 02 Jul 2015)");
   script_name("CollabNet Subversion Edge Management Frontend Multiple Vulnerabilities");
 
@@ -86,11 +86,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
 
-coll_Port = "";
-url = "";
-req = "";
-buf = "";
-
 coll_Port = get_http_port(default:3343);
 
 foreach dir (make_list_unique("/", "/csvn", cgi_dirs(port:coll_Port)))
@@ -98,9 +93,8 @@ foreach dir (make_list_unique("/", "/csvn", cgi_dirs(port:coll_Port)))
 
   if( dir == "/" ) dir = "";
 
-  req = http_get(item:dir + "/login/auth", port:coll_Port);
-  buf = http_keepalive_send_recv(port:coll_Port, data:req, bodyonly:FALSE);
-  if(buf == NULL )continue;
+  buf = http_get_cache(item:dir + "/login/auth", port:coll_Port);
+  if(!buf) continue;
 
   if(">CollabNet Subversion Edge Login<" >< buf)
   {

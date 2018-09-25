@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_smb_cortana_search.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms_smb_cortana_search.nasl 11584 2018-09-25 07:02:39Z cfischer $
 #
 # Check for Windows 10 Cortana Search
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96195");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 11584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:13:43 +0200 (Tue, 08 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -84,7 +84,7 @@ if( ! registry_key_exists( key:key1, type:"HKLM" ) &&
 }
 
 if( cortanaEnabled ) {
-  log_message( port:0, data:"Cortana Serach is enabled." );
+  log_message( port:0, data:"Cortana Search is enabled." );
   exit( 0 );
 }
 

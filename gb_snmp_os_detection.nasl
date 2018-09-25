@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_os_detection.nasl 8951 2018-02-26 11:47:22Z cfischer $
+# $Id: gb_snmp_os_detection.nasl 11585 2018-09-25 07:09:41Z cfischer $
 #
 # SNMP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103429");
-  script_version("$Revision: 8951 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-26 12:47:22 +0100 (Mon, 26 Feb 2018) $");
+  script_version("$Revision: 11585 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:09:41 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-17 10:17:12 +0100 (Fri, 17 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -174,7 +174,7 @@ if( sysdesc =~ "Microsoft Corp. Windows 98" || sysdesc =~ "Hardware:.*Software: 
     exit( 0 );
   }
 
-  # we dont't know the real windows version if we reached here. So just register windows.
+  # we don't know the real windows version if we reached here. So just register windows.
   register_and_report_os( os:'Windows', cpe:'cpe:/o:microsoft:windows', banner_type:BANNER_TYPE, port:port, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }

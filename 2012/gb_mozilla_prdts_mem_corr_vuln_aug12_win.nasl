@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mem_corr_vuln_aug12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_mozilla_prdts_mem_corr_vuln_aug12_win.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Mozilla Products Memory Corruption Vulnerabilities - August12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803013");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-1956", "CVE-2012-1971", "CVE-2012-3971", "CVE-2012-3975");
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 1:20:04 +0530 (Thu, 30 Aug 2012)");
   script_name("Mozilla Products Memory Corruption Vulnerabilities - August12 (Windows)");
 
@@ -81,13 +81,9 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
-
-ffVer = "";
 ffVer = get_kb_item("Firefox/Win/Ver");
-
 if(ffVer)
 {
   if(version_is_less(version:ffVer, test_version:"10.0")||
@@ -98,10 +94,7 @@ if(ffVer)
   }
 }
 
-# SeaMonkey Check
-seaVer = "";
 seaVer = get_kb_item("Seamonkey/Win/Ver");
-
 if(seaVer)
 {
   if(version_is_less(version:seaVer, test_version:"2.12"))
@@ -111,10 +104,7 @@ if(seaVer)
   }
 }
 
-# Thunderbird Check
-tbVer = "";
 tbVer = get_kb_item("Thunderbird/Win/Ver");
-
 if(tbVer)
 {
   if(version_is_less(version:tbVer, test_version:"10.0")||

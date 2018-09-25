@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_6015.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_junos_cve_2013_6015.nasl 11584 2018-09-25 07:02:39Z cfischer $
 #
 # Junos TCP Packet Handling Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103953");
-  script_version("$Revision: 11096 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_version("$Revision: 11584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-21 11:20:27 +0700 (Thu, 21 Nov 2013)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -62,7 +62,7 @@ to crash.");
 
   script_tag(name:"impact", value:"A remote attacker can cause a denial of service.");
 
-  script_tag(name:"affected", value:"Plattforms running Junos OS versions 10.4, 11.4, 12.1, 12.1X44,
+  script_tag(name:"affected", value:"Platforms running Junos OS versions 10.4, 11.4, 12.1, 12.1X44,
 or 12.1X45.");
 
   script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As

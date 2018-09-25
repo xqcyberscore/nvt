@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ca_uim_mult_vuln.nasl 5752 2017-03-29 04:01:01Z teissa $
+# $Id: gb_ca_uim_mult_vuln.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # CA Unified Infrastructure Management (UIM) Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:ca:unified_infrastructure_management";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106386");
-  script_version("$Revision: 5752 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2016-11-11 11:33:27 +0700 (Fri, 11 Nov 2016)");
+  script_version("$Revision: 11596 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-11 11:33:27 +0700 (Fri, 11 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-5803", "CVE-2016-9164", "CVE-2016-9165");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("CA Unified Infrastructure Management (UIM) Multiple Vulnerabilities");
 
@@ -51,25 +51,25 @@ if (description)
   script_dependencies("gb_ca_uim_detect.nasl");
   script_mandatory_keys("ca_uim/installed");
 
-  script_tag(name: "summary", value: "CA UIM is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"CA UIM is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "CA UIM is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"CA UIM is prone to multiple vulnerabilities:
 
-- Session ID Vulnerability (CVE-2016-9165)
+  - Session ID Vulnerability (CVE-2016-9165)
 
-- diag.jsp Path Traversal Vulnerability (CVE-2016-9164)
+  - diag.jsp Path Traversal Vulnerability (CVE-2016-9164)
 
-- download_lar.jsp Path Traversal Vulnerability (CVE-2016-5803)");
+  - download_lar.jsp Path Traversal Vulnerability (CVE-2016-5803)");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may gain sensitive information.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may gain sensitive information.");
 
-  script_tag(name: "affected", value: "CA UIM 8.47 and earlier.");
+  script_tag(name:"affected", value:"CA UIM 8.47 and earlier.");
 
-  script_tag(name: "solution", value: "Update to version 8.5.");
+  script_tag(name:"solution", value:"Update to version 8.5.");
 
-  script_xref(name: "URL", value: "http://www.ca.com/us/services-support/ca-support/ca-support-online/product-content/recommended-reading/security-notices/ca20161109-01-security-notice-for-ca-unified-infrastructure-mgmt.html");
+  script_xref(name:"URL", value:"http://www.ca.com/us/services-support/ca-support/ca-support-online/product-content/recommended-reading/security-notices/ca20161109-01-security-notice-for-ca-unified-infrastructure-mgmt.html");
 
   exit(0);
 }

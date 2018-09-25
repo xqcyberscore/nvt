@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20160914-wsa.nasl 7295 2017-09-27 09:02:50Z teissa $
+# $Id: gb_cisco_wsa_cisco-sa-20160914-wsa.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # Cisco Web Security Appliance HTTP Load Denial of Service Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/h:cisco:web_security_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106255");
-  script_version("$Revision: 7295 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-27 11:02:50 +0200 (Wed, 27 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2016-09-16 12:38:55 +0700 (Fri, 16 Sep 2016)");
+  script_version("$Revision: 11596 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-16 12:38:55 +0700 (Fri, 16 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2016-6407");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("Cisco Web Security Appliance HTTP Load Denial of Service Vulnerability");
 
@@ -51,23 +51,25 @@ if (description)
   script_dependencies("gb_cisco_wsa_version.nasl");
   script_mandatory_keys("cisco_wsa/installed");
 
-  script_tag(name: "summary", value: "A vulnerability in HTTP request forwarding with Cisco AsyncOS for
+  script_tag(name:"summary", value:"A vulnerability in HTTP request forwarding with Cisco AsyncOS for
 Cisco Web Security Appliance (WSA) could allow an unauthenticated, remote attacker to cause a denial of service
 (DoS) condition due to link saturation.");
 
-  script_tag(name: "insight", value: "The vulnerability is due to how HTTP data ranges are downloaded from the
+  script_tag(name:"insight", value:"The vulnerability is due to how HTTP data ranges are downloaded from the
 destination server. An attacker could exploit this vulnerability by sending multiple crafted HTTP requests to the
 targeted device.");
 
-  script_tag(name: "impact", value: "An exploit could allow the attacker to trigger multiple simultaneous
+  script_tag(name:"impact", value:"An exploit could allow the attacker to trigger multiple simultaneous
 downloads for the same HTTP data. This could cause a DoS condition due to heavy traffic on the connection to the
 server.");
 
-  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name: "URL", value: "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160914-wsa");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160914-wsa");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   exit(0);
 }
@@ -77,7 +79,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'5.6.0-623',
 		'6.0.0-000',
 		'7.1.0',

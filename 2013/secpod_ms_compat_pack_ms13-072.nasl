@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_compat_pack_ms13-072.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: secpod_ms_compat_pack_ms13-072.nasl 11576 2018-09-24 14:59:42Z cfischer $
 #
 # MS Office Compatibility Pack Remote Code Execution Vulnerabilities (2845537)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903404");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11576 $");
   script_cve_id("CVE-2013-3160", "CVE-2013-3847", "CVE-2013-3848", "CVE-2013-3849",
                 "CVE-2013-3850", "CVE-2013-3851", "CVE-2013-3852", "CVE-2013-3853",
                 "CVE-2013-3854", "CVE-2013-3855", "CVE-2013-3856", "CVE-2013-3857",
@@ -36,15 +36,14 @@ if(description)
                     62222, 62223, 62224, 62226);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 17:22:16 +0530 (Wed, 11 Sep 2013)");
   script_name("MS Office Compatibility Pack Remote Code Execution Vulnerabilities (2845537)");
 
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
 Microsoft Bulletin MS13-072.");
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
-or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
 mentioned hotfixes in the advisory from the below link,
 https://technet.microsoft.com/en-us/security/bulletin/ms13-072");

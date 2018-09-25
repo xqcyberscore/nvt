@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kamailio_cve_2016_2385.nasl 4879 2016-12-29 19:18:40Z cfi $
+# $Id: gb_kamailio_cve_2016_2385.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # Kamailio SEAS module encode_msg heap buffer overflow
 #
@@ -33,9 +33,9 @@ if(description)
   script_cve_id("CVE-2016-2385");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 4879 $");
+  script_version("$Revision: 11596 $");
   script_name("Kamailio SEAS module encode_msg heap buffer overflow");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 20:18:40 +0100 (Thu, 29 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-03-31 14:51:12 +0200 (Thu, 31 Mar 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -45,19 +45,19 @@ if(description)
 
   script_xref(name:"URL", value:"https://census-labs.com/news/2016/03/30/kamailio-seas-heap-overflow/");
 
-  script_tag(name:"impact" , value:"An attacker may exploit this issue to cause a denial-of-service condition.");
+  script_tag(name:"impact", value:"An attacker may exploit this issue to cause a denial-of-service condition.");
 
-  script_tag(name:"vuldetect" , value:"Check the version");
+  script_tag(name:"vuldetect", value:"Check the version");
 
-  script_tag(name:"insight" , value:"The heap overflow can be triggered if Kamailio is configured to use the SEAS module");
+  script_tag(name:"insight", value:"The heap overflow can be triggered if Kamailio is configured to use the SEAS module");
 
-  script_tag(name:"solution" , value:"Update to Kamailio 4.3.5 or newer");
+  script_tag(name:"solution", value:"Update to Kamailio 4.3.5 or newer");
 
-  script_tag(name:"summary" , value:"According to its self reported version, the remote Kamailio server is prone to a heap buffer overflow.");
+  script_tag(name:"summary", value:"According to its self reported version, the remote Kamailio server is prone to a heap buffer overflow.");
 
-  script_tag(name:"affected" , value:"Kamailio version below 4.3.5 with an enabled SEAS module");
+  script_tag(name:"affected", value:"Kamailio version below 4.3.5 with an enabled SEAS module");
 
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
@@ -68,7 +68,7 @@ include("version_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! infos = get_app_version_and_proto( cpe:CPE, port:port ) ) exit( 0 );
- 
+
 version = infos["version"];
 proto = infos["proto"];
 

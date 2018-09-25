@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_office_suite_ms15-116.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_office_suite_ms15-116.nasl 11583 2018-09-25 06:31:54Z cfischer $
 #
 # Microsoft Office Suite Remote Code Execution Vulnerabilities (3104540)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806158");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11583 $");
   script_cve_id("CVE-2015-6093", "CVE-2015-6092", "CVE-2015-6091");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:31:54 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 12:28:18 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft Office Suite Remote Code Execution Vulnerabilities (3104540)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS15-116.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists when,
 
@@ -79,18 +78,10 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-exeVer = "";
-InsPath = "";
-offsubver = "";
-ortVer = "";
-ortconVer = "";
-comPath = "";
 
 ## MS Office 2007,2010, 2015
 if(get_kb_item("MS/Office/Ver") =~ "^(12|14|15).*")

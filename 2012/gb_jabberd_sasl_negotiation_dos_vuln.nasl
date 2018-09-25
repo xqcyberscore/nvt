@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jabberd_sasl_negotiation_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_jabberd_sasl_negotiation_dos_vuln.nasl 11584 2018-09-25 07:02:39Z cfischer $
 #
 # Jabber Studio Jabberd Server SASL Negotiation Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802825");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11584 $");
   script_cve_id("CVE-2006-1329");
   script_bugtraq_id(17155);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-02 13:27:16 +0530 (Mon, 02 Apr 2012)");
   script_name("Jabber Studio Jabberd Server SASL Negotiation Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -90,7 +90,6 @@ if(resp && "jabber.org" >< resp && "xmpp-sasl" >< resp)
   ## A SASL'response' req
   req2 = "<response xmlns='urn:ietf:params:xml:ns:xmpp-sasl'> **** </response>";
 
-  ## Send the rquest
   send(socket:soc, data:req2);
   resp = recv(socket:soc, length:1024);
 }

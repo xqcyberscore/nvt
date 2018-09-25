@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2887505.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_microsoft_security_advisory_2887505.nasl 11576 2018-09-24 14:59:42Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (2879017)
 #
@@ -28,22 +28,21 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804004");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11576 $");
   script_cve_id("CVE-2013-3871", "CVE-2013-3872", "CVE-2013-3873", "CVE-2013-3874",
                 "CVE-2013-3875", "CVE-2013-3882", "CVE-2013-3885", "CVE-2013-3886",
                 "CVE-2013-3893", "CVE-2013-3897");
   script_bugtraq_id(62802, 62803, 62804, 62805, 62806, 62808, 62809, 62810, 62453, 62811);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-23 13:37:15 +0530 (Mon, 23 Sep 2013)");
   script_name("Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (2879017)");
 
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to Microsoft
 Bulletin MS13-080.");
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
-or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
 update mentioned hotfixes in the advisory from the below link,
 http://technet.microsoft.com/en-us/security/bulletin/ms13-080");

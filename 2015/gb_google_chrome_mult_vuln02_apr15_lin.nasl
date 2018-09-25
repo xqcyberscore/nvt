@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_apr15_lin.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_google_chrome_mult_vuln02_apr15_lin.nasl 11584 2018-09-25 07:02:39Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-02 Apr15 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805468");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11584 $");
   script_cve_id("CVE-2015-3335", "CVE-2015-3334", "CVE-2015-3333", "CVE-2015-1249",
                 "CVE-2015-1247", "CVE-2015-1246", "CVE-2015-1244", "CVE-2015-1242",
                 "CVE-2015-1241", "CVE-2015-1240", "CVE-2015-1238", "CVE-2015-1237",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(72715, 74227, 74225, 74221);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-21 18:46:52 +0530 (Tue, 21 Apr 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Apr15 (Linux)");
 
@@ -66,7 +66,7 @@ if(description)
   hydrogen-check-elimination.cc script related to HTransitionElementsKind
   handling.
 
-  - A Tap-Jacking flaw that is triggered as certain synthetic Tap events arent'
+  - A Tap-Jacking flaw that is triggered as certain synthetic Tap events aren't
   preceded by TapDown events.
 
   - An unspecified out-of-bounds read flaw in WebGL related to handling of ES3
@@ -108,9 +108,9 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");

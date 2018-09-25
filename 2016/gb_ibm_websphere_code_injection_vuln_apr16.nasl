@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_code_injection_vuln_apr16.nasl 8597 2018-01-31 08:42:52Z cfischer $
+# $Id: gb_ibm_websphere_code_injection_vuln_apr16.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # IBM WebSphere Application Server Code Injection Vulnerability
 #
@@ -29,33 +29,30 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807675");
-  script_version("$Revision: 8597 $");
+  script_version("$Revision: 11596 $");
   script_cve_id("CVE-2016-0283");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-21 12:11:03 +0530 (Thu, 21 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM WebSphere Application Server Code Injection Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with IBM Websphere 
+  script_tag(name:"summary", value:"This host is installed with IBM Websphere
   application server and is prone to code injection vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The flaw is due to an improper validation
+  script_tag(name:"insight", value:"The flaw is due to an improper validation
   of user-supplied input in the OpenID Connect (OIDC) client web application.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to inject arbitrary web script or HTML via a crafted URL.
- 
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to inject arbitrary web script or HTML via a crafted URL.");
 
-  script_tag(name: "affected" , value:"IBM WebSphere Application Server (WAS)
+  script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS)
   Liberty Profile 8.5.x before 8.5.5.9");
 
-  script_tag(name:"solution" , value:"Upgrade to IBM WebSphere Application 
+  script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
   Server (WAS) Liberty Profile version 8.5.5.9, or later,
   For updates refer to http://www-03.ibm.com/software/products/en/appserv-was");
 

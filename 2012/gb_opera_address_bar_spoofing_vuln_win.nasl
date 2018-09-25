@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_address_bar_spoofing_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_opera_address_bar_spoofing_vuln_win.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Opera Address Bar Spoofing Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802450");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11580 $");
   script_bugtraq_id(55345);
   script_cve_id("CVE-2012-4010");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-03 16:35:41 +0530 (Mon, 03 Sep 2012)");
   script_name("Opera Address Bar Spoofing Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN69880570/index.html");
@@ -61,8 +61,6 @@ if(description)
 }
 
 include("version_func.inc");
-
-operaVer = "";
 
 operaVer = get_kb_item("Opera/Win/Version");
 if(!operaVer){

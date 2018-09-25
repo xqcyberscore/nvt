@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monkey_httpd_host_header_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_monkey_httpd_host_header_bof_vuln.nasl 11582 2018-09-25 06:26:12Z cfischer $
 #
 # Monkey HTTPD Host Header Buffer Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803711");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11582 $");
   script_cve_id("CVE-2013-3843");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-05 11:55:02 +0530 (Wed, 05 Jun 2013)");
   script_name("Monkey HTTPD Host Header Buffer Overflow Vulnerability");
 
@@ -61,20 +61,13 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
-
-req = "";
-res = "";
-port = "";
 
 port = get_http_port(default:2001);
 
 banner = get_http_banner(port:port);
-
 if(http_is_dead(port:port)) exit(0);
-
 if("Server: Monkey" >!< banner){
   exit(0);
 }

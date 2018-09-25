@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_knet_web_server_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_knet_web_server_bof_vuln.nasl 11582 2018-09-25 06:26:12Z cfischer $
 #
 # KNet Web Server Long Request Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803186");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11582 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-27 12:21:22 +0530 (Wed, 27 Mar 2013)");
   script_name("KNet Web Server Long Request Buffer Overflow Vulnerability");
 
@@ -60,23 +60,14 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 
-
-req = "";
-res = "";
-port = "";
-banner = "";
-
 port = get_http_port(default:80);
-
 banner = get_http_banner(port: port);
 if("Server: KNet" >!< banner){
   exit(0);
 }
 
-## Send crafted data to server
 req = http_get(item:crap(data:"0x00", length:2048), port:port);
 res = http_send_recv(port:port, data:req);
 

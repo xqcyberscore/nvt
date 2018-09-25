@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_mult_vuln_nov12_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_mozilla_thunderbird_esr_mult_vuln_nov12_macosx.nasl 11582 2018-09-25 06:26:12Z cfischer $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities - November12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803633");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11582 $");
   script_cve_id("CVE-2012-4194", "CVE-2012-4195", "CVE-2012-4196");
   script_bugtraq_id(56301, 56302, 56306);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 16:08:12 +0530 (Fri, 02 Nov 2012)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities - November12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51144");
@@ -64,13 +64,9 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
-# Thunderbird Check
-tbVer = "";
 tbVer = get_kb_item("ThunderBird-ESR/MacOSX/Version");
-
 if(tbVer && tbVer =~ "^10\.0")
 {
   if(version_in_range(version:tbVer, test_version:"10.0", test_version2:"10.0.09"))

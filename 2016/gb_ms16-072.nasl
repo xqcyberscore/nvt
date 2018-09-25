@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-072.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_ms16-072.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # Microsoft Windows Group Policy Elevation of Privilege Vulnerability (3163622)
 #
@@ -27,31 +27,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808162");
-  script_version("$Revision: 5745 $");
+  script_version("$Revision: 11596 $");
   script_cve_id("CVE-2016-3223");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-15 08:50:23 +0530 (Wed, 15 Jun 2016)");
   script_name("Microsoft Windows Group Policy Elevation of Privilege Vulnerability (3163622)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-072");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An elevation of privilege flaw exists when
   Microsoft Windows processes group policy updates.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to
   potenially escalate permissions or perform additional privileged actions on the
-  target machine.
+  target machine.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8.1 x32/x64 Edition
+  script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
   Microsoft Windows Server 2012/2012R2
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
@@ -69,13 +65,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3159398");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-072");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3159398");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-072");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -86,23 +83,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-sysVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2, win8:1,
                    win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of Gpapi.dll
 sysVer = fetch_file_version(sysPath, file_name:"System32\Gpapi.dll");
 if(!sysVer){
   exit(0);
@@ -130,50 +120,39 @@ else if (sysVer =~ "^(10\.0\.10586)"){
   Vulnerable_range = "10.0.10586.0 - 10.0.10586.419";
 }
 
-## Windows Vista and Server 2008
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Gpapi.dll version
   if(version_is_less(version:sysVer, test_version:"6.0.6002.19657")||
      version_in_range(version:sysVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23971")){
     VULN = TRUE ;
   }
 }
 
-## Windows 7 and Windows Server 2008 R2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
   ## Presently GDR information is not available.
-  ## Check for Gpapi.dll version
   if(version_is_less(version:sysVer, test_version:"6.1.7601.23452")){
     VULN = TRUE ;
   }
 }
 
-## Windows Server 2012
 else if(hotfix_check_sp(win2012:1) > 0)
 {
-  ## Presently GDR information is not available. 
-  ## Check for Gpapi.dll version
+  ## Presently GDR information is not available.
   if(version_is_less(version:sysVer, test_version:"6.2.9200.21872")){
      VULN = TRUE ;
   }
 }
 
-## Windows 8.1 and Server 2012 R2 
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Gpapi.dll version
   if(version_is_less(version:sysVer, test_version:"6.3.9600.18339")){
     VULN = TRUE ;
   }
 }
 
-## Windows 10
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Windows 10
-  ## Check for Gpapi.dll version
   if(version_is_less(version:sysVer, test_version:"10.0.10240.16942") ||
      version_in_range(version:sysVer, test_version:"10.0.10586.0", test_version2:"10.0.10586.419")){
      VULN = TRUE ;

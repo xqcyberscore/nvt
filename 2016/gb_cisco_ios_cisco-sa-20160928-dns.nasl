@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160928-dns.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_cisco_ios_cisco-sa-20160928-dns.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # Cisco IOS Software DNS Forwarder Denial of Service Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106297");
- script_cve_id("CVE-2016-6380");
- script_tag(name:"cvss_base", value:"8.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:C");
- script_version ("$Revision: 5588 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106297");
+  script_cve_id("CVE-2016-6380");
+  script_tag(name:"cvss_base", value:"8.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:C");
+  script_version("$Revision: 11596 $");
 
- script_name("Cisco IOS Software DNS Forwarder Denial of Service Vulnerability");
+  script_name("Cisco IOS Software DNS Forwarder Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-dns");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-dns");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"A vulnerability in the DNS forwarder functionality of Cisco IOS Software
+  script_tag(name:"summary", value:"A vulnerability in the DNS forwarder functionality of Cisco IOS Software
 could allow an unauthenticated, remote attacker to cause the device to reload, corrupt the information present
 in the device's local DNS cache, or read part of the process memory.");
 
- script_tag(name: "insight", value: "The vulnerability is due to a flaw in handling crafted DNS response messages.
+  script_tag(name:"insight", value:"The vulnerability is due to a flaw in handling crafted DNS response messages.
 An attacker could exploit this vulnerability by intercepting and crafting a DNS response message to a client
 DNS query that was forwarded from the affected device to a DNS server.");
 
- script_tag(name: "impact", value: "A successful exploit could cause the device to reload, resulting in a denial
+  script_tag(name:"impact", value:"A successful exploit could cause the device to reload, resulting in a denial
 of service (DoS) condition or corruption of the local DNS cache information.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-09-29 14:03:37 +0700 (Thu, 29 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-29 14:03:37 +0700 (Thu, 29 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version");
  exit(0);
 }
 
@@ -72,7 +72,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'12.0(3)T',
 		'12.0(3)T1',
 		'12.0(3)T2',

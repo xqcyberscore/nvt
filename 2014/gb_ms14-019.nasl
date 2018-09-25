@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-019.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_ms14-019.nasl 11579 2018-09-25 05:43:52Z cfischer $
 #
 # Microsoft File Handling Component Remote Code Execution Vulnerability (2922229)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804375");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11579 $");
   script_cve_id("CVE-2014-0315");
   script_bugtraq_id(66619);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 08:14:46 +0530 (Wed, 09 Apr 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft File Handling Component Remote Code Execution Vulnerability (2922229)");
@@ -40,8 +40,7 @@ if(description)
 
   script_tag(name:"summary", value:"This host is missing an important security update according to Microsoft
 Bulletin MS14-019.");
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
-or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaw is due to an improper path restrictions when processing .bat and .cmd
 files related to the 'CreateProcess' function.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code and

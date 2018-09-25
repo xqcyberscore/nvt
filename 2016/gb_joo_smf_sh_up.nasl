@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joo_smf_sh_up.nasl 9603 2018-04-25 10:35:13Z asteins $
+# $Id: gb_joo_smf_sh_up.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # Joomla SmartFormer 2.4.1 Shell Upload Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107023");
-  script_version("$Revision: 9603 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 12:35:13 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 11596 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"creation_date", value:"2016-07-06 06:40:16 +0200 (Wed, 06 Jul 2016)");
   script_tag(name:"cvss_base", value:"4.3");
@@ -43,20 +43,20 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("joomla/installed");
 
-  script_tag(name: "insight", value: "The vulnerability is due to a Smartformer component which allows unauthorized
+  script_tag(name:"insight", value:"The vulnerability is due to a Smartformer component which allows unauthorized
   access to certain files.");
-  script_tag(name: "summary", value: "Detection of installed version of Joomla Smartformer.
+  script_tag(name:"summary", value:"Detects the installed version of Joomla Smartformer.
   The script detects the version of Joomla Smartformer component on remote host and tells whether it is vulnerable or not.");
-  script_tag(name: "impact", value: "Successful exploitation will allow an
+  script_tag(name:"impact", value:"Successful exploitation will allow an
   unauthenticated remote attacker to upload shell files in an affected site.");
-  script_tag(name: "affected", value: "Joomla Smartformer 2.4.1.");
-  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure
-  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"affected", value:"Joomla Smartformer 2.4.1.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name: "URL", value: "https://www.itoris.com/joomla-extensions/");
-  script_xref(name: "URL", value: "https://packetstormsecurity.com/files/137730/joomlasmartformer-shell.txt");
+  script_xref(name:"URL", value:"https://www.itoris.com/joomla-extensions/");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/137730/joomlasmartformer-shell.txt");
 
   exit(0);
 }

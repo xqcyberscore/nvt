@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_x509_cert_spoofing_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_opera_x509_cert_spoofing_vuln_macosx.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Opera 'X.509' Certificates Spoofing Vulnerability (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802437");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-1251");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-12 16:35:11 +0530 (Tue, 12 Jun 2012)");
   script_name("Opera 'X.509' Certificates Spoofing Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN39707339/index.html");
@@ -58,8 +58,6 @@ if(description)
 }
 
 include("version_func.inc");
-
-operaVer = "";
 
 operaVer = get_kb_item("Opera/MacOSX/Version");
 if(!operaVer){

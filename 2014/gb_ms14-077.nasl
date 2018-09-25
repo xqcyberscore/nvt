@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-077.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_ms14-077.nasl 11579 2018-09-25 05:43:52Z cfischer $
 #
 # MS Active Directory Federation Services Information Disclosure Vulnerability (3003381)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804792");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11579 $");
   script_cve_id("CVE-2014-6331");
   script_bugtraq_id(70938);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 15:02:25 +0530 (Wed, 12 Nov 2014)");
   script_name("MS Active Directory Federation Services Information Disclosure Vulnerability (3003381)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS14-077.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Vulnerability exists when Active Directory
   Federation Services (AD FS) fails to properly log off a user.");

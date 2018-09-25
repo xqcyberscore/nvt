@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_aug12_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_opera_mult_vuln_aug12_win.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Opera Multiple Vulnerabilities - August12 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803001");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11580 $");
   script_bugtraq_id(54782, 54788, 54780);
   script_cve_id("CVE-2012-4142", "CVE-2012-4143", "CVE-2012-4144",
                 "CVE-2012-4145", "CVE-2012-4146");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-08 10:50:33 +0530 (Wed, 08 Aug 2012)");
   script_name("Opera Multiple Vulnerabilities - August12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50044");
@@ -73,8 +73,6 @@ if(description)
 }
 
 include("version_func.inc");
-
-operaVer = "";
 
 operaVer = get_kb_item("Opera/Win/Version");
 if(!operaVer){

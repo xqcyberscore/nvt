@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms14-009.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: secpod_ms14-009.nasl 11579 2018-09-25 05:43:52Z cfischer $
 #
 # Microsoft .NET Framework Multiple Vulnerabilities (2916607)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903337");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11579 $");
   script_cve_id("CVE-2014-0253", "CVE-2014-0257", "CVE-2014-0295");
   script_bugtraq_id(65415, 65417, 65418);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-12 10:37:08 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft .NET Framework Multiple Vulnerabilities (2916607)");
 
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
 Microsoft Bulletin MS14-009.");
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
-or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws due to,
 
   - ASP.NET does not properly identify stale HTTP connections.

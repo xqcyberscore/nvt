@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-027.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_ms14-027.nasl 11579 2018-09-25 05:43:52Z cfischer $
 #
 # Microsoft Windows Shell Handler Privilege Escalation Vulnerability (2962488)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804295");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11579 $");
   script_cve_id("CVE-2014-1807");
   script_bugtraq_id(67276);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-14 08:27:46 +0530 (Wed, 14 May 2014)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Shell Handler Privilege Escalation Vulnerability (2962488)");
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS14-027.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw is due to an error in the 'ShellExecute'
   function within the Windows Shell API when handling file associations.");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_remote_cmd_exec_vuln.nasl 8258 2017-12-29 07:28:57Z teissa $
+# $Id: gb_apache_struts_remote_cmd_exec_vuln.nasl 11581 2018-09-25 06:12:55Z cfischer $
 #
 # Struts Remote Command Execution Vulnerability
 #
@@ -24,67 +24,63 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to manipulate server-side context
-  objects with the privileges of the user running the application.
-  Impact Level: Application.";
-tag_affected = "Struts version 2.0.0 through 2.1.8.1";
-
-tag_insight = "The flaw is due to an error in 'OGNL' extensive expression evaluation
-  capability in XWork in Struts, uses as permissive whitelist, which allows
-  remote attackers to modify server-side context objects and bypass the '#'
-  protection mechanism in ParameterInterceptors via various varibles.";
-tag_solution = "Upgrade to Struts version 2.2 or later
-  For updates refer to http://struts.apache.org/download.cgi";
-tag_summary = "This host is running Struts and is prone to remote command
-  execution vulnerability.";
+CPE = "cpe:/a:apache:struts";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801441");
-  script_version("$Revision: 8258 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-29 08:28:57 +0100 (Fri, 29 Dec 2017) $");
+  script_version("$Revision: 11581 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:12:55 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-09-10 16:37:50 +0200 (Fri, 10 Sep 2010)");
   script_cve_id("CVE-2010-1870");
   script_bugtraq_id(41592);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_name("Struts Remote Command Execution Vulnerability");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/14360/");
-  script_xref(name : "URL" , value : "http://struts.apache.org/2.2.1/docs/s2-005.html");
-  script_xref(name : "URL" , value : "http://blog.o0o.nu/2010/07/cve-2010-1870-struts2xwork-remote.html");
-
-  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
-  script_dependencies("gb_apache_struts2_detection.nasl");
   script_family("Web application abuses");
+  script_dependencies("gb_apache_struts2_detection.nasl");
   script_require_ports("Services/www", 8080);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_mandatory_keys("ApacheStruts/installed");
+
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14360/");
+  script_xref(name:"URL", value:"http://struts.apache.org/2.2.1/docs/s2-005.html");
+  script_xref(name:"URL", value:"http://blog.o0o.nu/2010/07/cve-2010-1870-struts2xwork-remote.html");
+
+  script_tag(name:"insight", value:"The flaw is due to an error in 'OGNL' extensive expression evaluation
+  capability in XWork in Struts, uses as permissive whitelist, which allows
+  remote attackers to modify server-side context objects and bypass the '#'
+  protection mechanism in ParameterInterceptors via various variables.");
+
+  script_tag(name:"solution", value:"Upgrade to Struts version 2.2 or later
+  For updates refer to http://struts.apache.org/download.cgi");
+
+  script_tag(name:"summary", value:"This host is running Struts and is prone to remote command
+  execution vulnerability.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to manipulate server-side context
+  objects with the privileges of the user running the application.");
+  script_tag(name:"affected", value:"Struts version 2.0.0 through 2.1.8.1");
+
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-		
 
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-## Get HTTP Port
-stPort = get_http_port(default:8080);
-if(!get_port_state(stPort)){
-  exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );
+ver = infos['version'];
+dir = infos['location'];
+
+if( version_in_range( version:ver, test_version:"2.0", test_version2:"2.1.8.1" ) ) {
+  report = report_fixed_ver( installed_version:ver, fixed_version:"2.2", install_path:dir );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-## GET the version from KB
-stVer = get_kb_item("www/" + stPort + "/Apache/Struts");
-stVer = eregmatch(pattern:"^(.+) under (/.*)$", string:stVer);
-
-## Check for the Struts version
-if(stVer[1] != NULL)
-{
-  if(version_in_range(version:stVer[1], test_version:"2.0", test_version2:"2.1.8.1")){
-   security_message(stPort);
-  }
-}
+exit( 99 );

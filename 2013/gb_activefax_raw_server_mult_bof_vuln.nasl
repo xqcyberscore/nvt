@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803169");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11582 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-11 17:46:45 +0530 (Mon, 11 Feb 2013)");
   script_name("ActiveFax RAW Server Multiple Buffer Overflow Vulnerabilities");
   script_category(ACT_DENIAL);
@@ -63,8 +63,6 @@ if(description)
   exit(0);
 }
 
-soc = "";
-res = "";
 actlport = 515;
 actrport = 5555;
 

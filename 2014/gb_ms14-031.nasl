@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-031.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: gb_ms14-031.nasl 11579 2018-09-25 05:43:52Z cfischer $
 #
 # Microsoft Windows TCP Protocol Denial of Service Vulnerability (2962478)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804636");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11579 $");
   script_cve_id("CVE-2014-1811");
   script_bugtraq_id(67888);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-11 12:45:39 +0530 (Wed, 11 Jun 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows TCP Protocol Denial of Service Vulnerability (2962478)");
@@ -40,8 +40,7 @@ if(description)
 
   script_tag(name:"summary", value:"This host is missing an important security update according to Microsoft
 Bulletin MS14-031.");
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
-or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaw is due to some error within the Windows TCP/IP networking protocol which
 allows processing of crafted packets.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of service

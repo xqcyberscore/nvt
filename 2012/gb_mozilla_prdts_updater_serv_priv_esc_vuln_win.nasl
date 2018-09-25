@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_updater_serv_priv_esc_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_mozilla_prdts_updater_serv_priv_esc_vuln_win.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Mozilla Products Updater Service Privilege Escalation Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802867");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-1942", "CVE-2012-1943");
   script_bugtraq_id(53803, 53807);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-19 12:31:59 +0530 (Tue, 19 Jun 2012)");
   script_name("Mozilla Products Updater Service Privilege Escalation Vulnerabilities (Windows)");
 
@@ -71,13 +71,9 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
-
-ffVer = "";
 ffVer = get_kb_item("Firefox/Win/Ver");
-
 if(ffVer)
 {
   if(version_is_equal(version:ffVer, test_version:"12.0"))
@@ -87,10 +83,7 @@ if(ffVer)
   }
 }
 
-# SeaMonkey Check
-seaVer = "";
 seaVer = get_kb_item("Seamonkey/Win/Ver");
-
 if(seaVer)
 {
   if(version_is_equal(version:seaVer, test_version:"2.9"))
@@ -100,10 +93,7 @@ if(seaVer)
   }
 }
 
-# Thunderbird Check
-tbVer = "";
 tbVer = get_kb_item("Thunderbird/Win/Ver");
-
 if(tbVer)
 {
   if(version_is_equal(version:tbVer, test_version:"12.0"))

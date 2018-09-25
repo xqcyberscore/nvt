@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_type_confusion_dos_vuln_lin.nasl 10455 2018-07-09 05:52:14Z cfischer $
+# $Id: gb_php_type_confusion_dos_vuln_lin.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # PHP 'type confusion' Denial of Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808673");
-  script_version("$Revision: 10455 $");
+  script_version("$Revision: 11596 $");
   script_cve_id("CVE-2015-4601");
   script_bugtraq_id(75246);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:52:14 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-31 14:59:18 +0530 (Wed, 31 Aug 2016)");
   script_name("PHP 'type confusion' Denial of Service Vulnerability (Linux)");
 
@@ -47,9 +47,7 @@ if(description)
   'ext/soap/php_encoding.c', 'ext/soap/php_http.c', and 'ext/soap/soap.c' scripts.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
-  remote attackers to cause a denial of service.
-
-  Impact Level: Application");
+  remote attackers to cause a denial of service.");
 
   script_tag(name:"affected", value:"PHP versions prior to 5.6.7 on Linux");
 

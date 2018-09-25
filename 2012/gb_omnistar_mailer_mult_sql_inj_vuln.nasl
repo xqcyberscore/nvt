@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_omnistar_mailer_mult_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_omnistar_mailer_mult_sql_inj_vuln.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Omnistar Mailer Software Multiple SQL Injection Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802464");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11580 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-04 10:42:09 +0530 (Thu, 04 Oct 2012)");
   script_name("Omnistar Mailer Software Multiple SQL Injection Vulnerabilities");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/21716/");
@@ -60,14 +60,8 @@ General solution options are to upgrade to a newer release, disable respective f
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
-
-port = "";
-dir = "";
-sndReq = "";
-rcvRes = "";
 
 port = get_http_port(default:80);
 
@@ -80,8 +74,7 @@ foreach dir (make_list_unique("/mailer", "/mailertest", "/", cgi_dirs(port:port)
 
   if(dir == "/") dir = "";
 
-  sndReq = http_get(item:string(dir, "/admin/index.php"), port:port);
-  rcvRes = http_keepalive_send_recv(port:port, data:sndReq, bodyonly:TRUE);
+  rcvRes = http_get_cache(item:string(dir, "/admin/index.php"), port:port);
 
   if("<title>OmniStar" >< rcvRes && ">Email Marketing Software<" >< rcvRes )
   {

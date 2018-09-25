@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_media_player_classic_webserver_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_media_player_classic_webserver_mult_vuln.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Media Player Classic (MPC) Webserver Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802494");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11580 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-16 16:43:52 +0530 (Fri, 16 Nov 2012)");
   script_name("Media Player Classic (MPC) Webserver Multiple Vulnerabilities");
 
@@ -63,15 +63,10 @@ General solution options are to upgrade to a newer release, disable respective f
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = "";
-banner = "";
-
 port = get_http_port(default:13579);
-
 banner = get_http_banner(port:port);
 if("Server: MPC-HC WebServer" >!< banner) {
   exit(0);

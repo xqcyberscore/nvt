@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms14-036.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_ms_office_ms14-036.nasl 11583 2018-09-25 06:31:54Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2967487)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804460");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11583 $");
   script_cve_id("CVE-2014-1817", "CVE-2014-1818");
   script_bugtraq_id(67897, 67904);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:31:54 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-11 12:17:32 +0530 (Wed, 11 Jun 2014)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2967487)");
 
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
 Microsoft Bulletin MS14-036.");
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
-or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaws are due to,
 
   - An error within Unicode Scripts Processor can be exploited to execute
@@ -73,15 +72,10 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-036");
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-path = "";
-dllVer = "";
-offPath = "";
 
 ## MS Office 2007/2010
 if(!get_kb_item("MS/Office/Ver") =~ "^[12|14].*"){

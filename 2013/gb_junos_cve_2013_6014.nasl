@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_6014.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_junos_cve_2013_6014.nasl 11584 2018-09-25 07:02:39Z cfischer $
 #
 # Junos Security issue with Proxy ARP enabled on unnumbered interface
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103952");
-  script_version("$Revision: 11096 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_version("$Revision: 11584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-18 12:34:58 +0700 (Mon, 18 Nov 2013)");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:C/A:N");
@@ -62,7 +62,7 @@ ARP message.");
   script_tag(name:"impact", value:"An attacker can either create a denial of service attack or
 might obtain some sensitive information.");
 
-  script_tag(name:"affected", value:"Plattforms running Junos OS 10.4, 11.4, 11.4X27, 12.1, 12.1X44,
+  script_tag(name:"affected", value:"Platforms running Junos OS 10.4, 11.4, 11.4X27, 12.1, 12.1X44,
 12.1X45, 12.2, 12.3, or 13.1");
 
   script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");

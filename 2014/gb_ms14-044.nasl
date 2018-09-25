@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-044.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_ms14-044.nasl 11583 2018-09-25 06:31:54Z cfischer $
 #
 # Microsoft SQL Server Elevation of Privilege Vulnerability (2984340)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802080");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11583 $");
   script_cve_id("CVE-2014-1820", "CVE-2014-4061");
   script_bugtraq_id(69071, 69088);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:31:54 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-13 17:35:15 +0530 (Wed, 13 Aug 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft SQL Server Elevation of Privilege Vulnerability (2984340)");
@@ -40,8 +40,7 @@ if(description)
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
 Microsoft Bulletin MS14-044");
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
-or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaws are due to when,
 
   - SQL Master Data Services (MDS) does not properly encode output.
@@ -68,14 +67,10 @@ https://technet.microsoft.com/library/security/MS14-044");
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-ms_sql_key = "";
-
 
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){

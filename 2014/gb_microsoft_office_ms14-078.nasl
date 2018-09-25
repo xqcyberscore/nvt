@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_office_ms14-078.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_microsoft_office_ms14-078.nasl 11579 2018-09-25 05:43:52Z cfischer $
 #
 # Microsoft Office IME (Japanese) Privilege Elevation Vulnerability (2992719)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804883");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11579 $");
   script_cve_id("CVE-2014-4077");
   script_bugtraq_id(70944);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-13 15:00:11 +0530 (Thu, 13 Nov 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Office IME (Japanese) Privilege Elevation Vulnerability (2992719)");
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a moderate security
   update according to Microsoft Bulletin MS14-078.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Error in 'IMJPDCT.EXE', which allow
   remote attackers to bypass a sandbox protection mechanism via a crafted PDF

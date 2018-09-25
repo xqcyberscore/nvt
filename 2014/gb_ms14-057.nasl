@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-057.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_ms14-057.nasl 11579 2018-09-25 05:43:52Z cfischer $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (3000414)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804777");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11579 $");
   script_cve_id("CVE-2014-4073", "CVE-2014-4121", "CVE-2014-4122");
   script_bugtraq_id(70313, 70351, 70312);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-15 11:15:20 +0530 (Wed, 15 Oct 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an critical security
   update according to Microsoft Bulletin MS14-057.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 

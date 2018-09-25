@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tvmobili_media_server_mult_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_tvmobili_media_server_mult_bof_vuln.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # TVMOBiLi Media Server HTTP Request Multiple BOF Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803125");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-5451");
   script_bugtraq_id(56853);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-10 10:36:49 +0530 (Mon, 10 Dec 2012)");
   script_name("TVMOBiLi Media Server HTTP Request Multiple BOF Vulnerabilities");
 
@@ -68,27 +68,18 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = "";
-banner = "";
-req = "";
-res = "";
-
 port = get_http_port(default:30888);
-
 banner = get_http_banner(port:port);
 if("Server: " >!< banner && "TVMOBiLi UPnP Server/" >!< banner){
   exit(0);
 }
 
-## Cross Check the application with response
 req = http_get(item:string("/__index"), port:port);
 res = http_keepalive_send_recv(port:port, data:req);
 
-## Exit if application confirmation fails
 if('>TVMOBiLi' >!< res && 'TVMOBiLi LTD' >!< res){
   exit(0);
 }

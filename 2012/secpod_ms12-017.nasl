@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-017.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_ms12-017.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Microsoft Windows DNS Server Denial of Service Vulnerability (2647170)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902906");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11580 $");
   script_bugtraq_id(52374);
   script_cve_id("CVE-2012-0006");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-14 08:31:02 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Windows DNS Server Denial of Service Vulnerability (2647170)");
   script_category(ACT_GATHER_INFO);
@@ -61,14 +61,10 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-sysPath = "";
-sysVer = "";
 
 if(hotfix_check_sp(win2003:3, win2008:3) <= 0){
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms15-118.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_dotnet_framework_ms15-118.nasl 11584 2018-09-25 07:02:39Z cfischer $
 #
 # Microsoft .NET Framework Privilege Elevation Vulnerabilities (3104507)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806614");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11584 $");
   script_cve_id("CVE-2015-6096", "CVE-2015-6099", "CVE-2015-6115");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 09:47:24 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerabilities (3104507)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-118.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 
@@ -258,7 +257,7 @@ foreach item (registry_enum_keys(key:key))
     if(dllVer2)
     {
       ##Not Considering https://support.microsoft.com/en-us/kb/3097994
-      ##as it is superseeded by https://support.microsoft.com/en-us/kb/3098778
+      ##as it is superseded by https://support.microsoft.com/en-us/kb/3098778
       ##Taking only https://support.microsoft.com/en-us/kb/3098778 and
 
       ## .NET Framework 4 on Windows Vista,Windows Server 2008, Windows 7, and Windows Server 2008 R2

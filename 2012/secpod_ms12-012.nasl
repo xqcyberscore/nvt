@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-012.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_ms12-012.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # MS Windows Color Control Panel Remote Code Execution Vulnerability (2643719)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902791");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11580 $");
   script_bugtraq_id(44157);
   script_cve_id("CVE-2010-5082");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 11:45:39 +0530 (Wed, 15 Feb 2012)");
   script_name("MS Windows Color Control Panel Remote Code Execution Vulnerability (2643719)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/41874/");
@@ -62,7 +62,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
@@ -76,10 +75,6 @@ if(hotfix_check_sp(win2008:3) <= 0){
 if(hotfix_missing(name:"2643719") == 0){
   exit(0);
 }
-
-## Variable Initiazation
-sysPath = "";
-exeVer = "";
 
 sysPath = smb_get_systemroot();
 if(!sysPath ){

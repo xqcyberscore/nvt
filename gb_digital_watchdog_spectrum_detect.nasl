@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_digital_watchdog_spectrum_detect.nasl 10609 2018-07-25 11:22:40Z jschulte $
+# $Id: gb_digital_watchdog_spectrum_detect.nasl 11577 2018-09-24 16:13:18Z tpassfeld $
 #
 # Digital Watchdog Spectrum Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113237");
-  script_version("$Revision: 10609 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:22:40 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 11577 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 18:13:18 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-25 12:00:00 +0200 (Wed, 25 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -43,7 +43,7 @@ if( description )
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 70001);
+  script_require_ports("Services/www", 7001);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Detects Digital Watchdog Products.");
@@ -74,13 +74,17 @@ foreach dir ( make_list_unique( "/", cgi_dirs( port: port ) ) ) {
   if( buf !~ '[Ss]erver: [Dd][Ww][ ]?[Ss]pectrum' && buf !~ '[Ss]erver:[^\r\n]*[Dd]igital [Ww]atch[Dd]og' )
     continue;
 
+  conclUrl = report_vuln_url( port: port, url: location, url_only: TRUE );
+
   set_kb_item( name: "digital_watchdog/detected", value: TRUE );
   set_kb_item( name: "digital_watchdog/http/port", value: port );
 
   version = "unknown";
   vers = eregmatch( string: buf, pattern: '[Ss]erver: [Dd][Ww][ ]?[Ss]pectrum/([0-9.]+)' );
-  if( ! isnull( vers[1] ) )
+  if( ! isnull( vers[1] ) ) {
     version = vers[1];
+    set_kb_item( name: "digital_watchdog/version", value: version );
+  }
 
   register_and_report_cpe( app: "Digital Watchdog Spectrum",
                            ver: version,
@@ -89,7 +93,7 @@ foreach dir ( make_list_unique( "/", cgi_dirs( port: port ) ) ) {
                            expr: '([0-9.]+)',
                            insloc: dir,
                            regPort: port,
-                           conclUrl: location );
+                           conclUrl: conclUrl );
   exit( 0 );
 }
 exit( 0 );

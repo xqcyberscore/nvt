@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-030.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_ms14-030.nasl 11579 2018-09-25 05:43:52Z cfischer $
 #
 # Microsoft Remote Desktop Tampering Vulnerability (2969259)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802077");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11579 $");
   script_cve_id("CVE-2014-0296");
   script_bugtraq_id(67865);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-11 08:26:33 +0530 (Wed, 11 Jun 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Remote Desktop Tampering Vulnerability (2969259)");
@@ -40,8 +40,7 @@ if(description)
 
   script_tag(name:"summary", value:"This host is missing an important security update according to Microsoft
 Bulletin MS14-030.");
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
-or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaw is due Remote Desktop does not use robust encryption for an RDP session.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker gain access to and modify
 potentially sensitive RDP information during an active session.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_host_id_tag_ssh.nasl 7822 2017-11-20 08:46:09Z cfischer $
+# $Id: gb_host_id_tag_ssh.nasl 11585 2018-09-25 07:09:41Z cfischer $
 #
 # Leave Host Identification Tag on scanned host (SSH)
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108157");
-  script_version("$Revision: 7822 $");
+  script_version("$Revision: 11585 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:46:09 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:09:41 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 09:37:58 +0200 (Wed, 10 May 2017)");
   script_name("Leave Host Identification Tag on scanned host (SSH)");
   script_category(ACT_END);
@@ -78,7 +78,7 @@ soc = ssh_login_or_reuse_connection();
 if( ! soc ) exit( 0 );
 
 # Security token for later use. This token makes sure we're not writing
-# into any files we havn't created with this NVT.
+# into any files we haven't created with this NVT.
 file_security_token = "I75k48ddvdbwxLfgZH5DASxpoEVDzV8v";
 
 file = "gvm_host_id_tag.txt";

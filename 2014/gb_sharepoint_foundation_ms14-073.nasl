@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_foundation_ms14-073.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_sharepoint_foundation_ms14-073.nasl 11579 2018-09-25 05:43:52Z cfischer $
 #
 # Microsoft SharePoint Foundation Privilege Elevation Vulnerability (3000431)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:microsoft:sharepoint_foundation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805014");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11579 $");
   script_cve_id("CVE-2014-4116");
   script_bugtraq_id(70980);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 09:52:30 +0530 (Wed, 12 Nov 2014)");
   script_name("Microsoft SharePoint Foundation Privilege Elevation Vulnerability (3000431)");
 
   script_tag(name:"summary", value:"This host is missing a important security
   update according to Microsoft Bulletin MS14-073.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Certain input related to page content in
   SharePoint lists is not properly sanitised before being used.");

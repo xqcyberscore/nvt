@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_mult_files_dos_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_libreoffice_mult_files_dos_vuln_macosx.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # LibreOffice Import Files Denial of Service Vulnerabilities (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803065");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-4233");
   script_bugtraq_id(56352);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 14:04:53 +0530 (Mon, 26 Nov 2012)");
   script_name("LibreOffice Import Files Denial of Service Vulnerabilities (Mac OS X)");
   script_xref(name:"URL", value:"http://securitytracker.com/id?1027727");
@@ -59,11 +59,7 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
-
-officeVer = "";
-buildVer = "";
 
 officeVer = get_kb_item("LibreOffice/MacOSX/Version");
 buildVer = get_kb_item("LibreOffice-Build/MacOSX/Version");

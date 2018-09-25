@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phlylabs_phlymail_lite_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_phlylabs_phlymail_lite_mult_vuln.nasl 11582 2018-09-25 06:26:12Z cfischer $
 #
 # phlyLabs phlyMail Lite Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803151");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11582 $");
   script_bugtraq_id(57303, 57304);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-15 12:12:35 +0530 (Tue, 15 Jan 2013)");
   script_name("phlyLabs phlyMail Lite Multiple Vulnerabilities");
 
@@ -71,13 +71,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = "";
-req = "";
-res = "";
-dir = "";
-
 port = get_http_port(default:80);
-
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -87,7 +81,7 @@ foreach dir (make_list_unique("/", "/phlymail/phlymail", cgi_dirs(port:port))) {
   if(dir == "/") dir = "";
   url = dir + "/index.php";
   res = http_get_cache( item:url, port:port );
-  if( isnull( res ) ) continue;
+  if( ! res ) continue;
 
   if( res =~ "HTTP/1.. 200" && ">phlyMail Lite<" >< res &&
       '>Passwort vergessen?' >< res && '>Passwort:<' >< res ) {

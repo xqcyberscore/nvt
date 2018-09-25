@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-009.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_ms12-009.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # MS Windows Ancillary Function Driver Privilege Elevation Vulnerabilities (2645640)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902424");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-0148", "CVE-2012-0149");
   script_bugtraq_id(51930, 51936);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 13:25:41 +0530 (Wed, 15 Feb 2012)");
   script_name("MS Windows Ancillary Function Driver Privilege Elevation Vulnerabilities (2645640)");
   script_category(ACT_GATHER_INFO);
@@ -60,7 +60,6 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
@@ -75,13 +74,11 @@ if((hotfix_missing(name:"2645640") == 0)){
   exit(0);
 }
 
-sysPath = "";
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-sysVer = "";
 sysVer = fetch_file_version(sysPath, file_name:"system32\drivers\afd.sys");
 if(!sysVer){
   exit(0);

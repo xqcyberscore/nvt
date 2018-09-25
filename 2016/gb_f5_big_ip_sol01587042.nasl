@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol01587042.nasl 5104 2017-01-25 12:03:53Z antu123 $
+# $Id: gb_f5_big_ip_sol01587042.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # F5 BIG-IP - SOL01587042 - BIG-IP SPDY and HTTP/2 profile vulnerability CVE-2016-7475
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140081");
- script_cve_id("CVE-2016-7475");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5104 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140081");
+  script_cve_id("CVE-2016-7475");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11596 $");
 
- script_name("F5 BIG-IP - SOL01587042 - BIG-IP SPDY and HTTP/2 profile vulnerability CVE-2016-7475");
+  script_name("F5 BIG-IP - SOL01587042 - BIG-IP SPDY and HTTP/2 profile vulnerability CVE-2016-7475");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/01/sol01587042.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/01/sol01587042.html");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary", value:"Under some circumstances, the Traffic Management Microkernel (TMM) may not properly clean-up pool member network connections when using SPDY or HTTP/2 virtual server profiles. (CVE-2016-7475)");
- script_tag(name: "impact", value:"In many cases, the pool members will tear down these network connections after a short Keep-Alive timeout. However, too many connections to a pool member may result in a disruption of service.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"Under some circumstances, the Traffic Management Microkernel (TMM) may not properly clean-up pool member network connections when using SPDY or HTTP/2 virtual server profiles. (CVE-2016-7475)");
+  script_tag(name:"impact", value:"In many cases, the pool members will tear down these network connections after a short Keep-Alive timeout. However, too many connections to a pool member may result in a disruption of service.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-25 13:03:53 +0100 (Wed, 25 Jan 2017) $");
- script_tag(name:"creation_date", value:"2016-11-29 10:03:30 +0100 (Tue, 29 Nov 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-29 10:03:30 +0100 (Tue, 29 Nov 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

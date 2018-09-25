@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln01_may16_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_drupal_mult_vuln01_may16_lin.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # Drupal Multiple Vulnerabilities01- May16 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808043");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 11596 $");
   script_cve_id("CVE-2016-3171", "CVE-2016-3167", "CVE-2016-3165", "CVE-2016-3166");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-18 15:57:00 +0530 (Wed, 18 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal Multiple Vulnerabilities01- May16 (Linux)");
@@ -41,24 +41,25 @@ if(description)
   script_tag(name:"summary", value:"This host is running Drupal and is prone
   to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exixts due to,
+
   - An error in session data truncation which can lead to unserialization of
     user provided data
+
   - The 'drupal_goto' function improperly decodes the contents of
     '$_REQUEST['destination']' before using it.
+
   - Form API ignores access restrictions on submit buttons.
+
   - An error in the 'drupal_set_header' function.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause remote code execution, initiate a redirect to an arbitrary
   external URL, bypass security restrictions and inject arbitrary HTTP
-  headers.
+  headers.");
 
-  Impact Level: System/Application");
-  
   script_tag(name:"affected", value:"Drupal 6.x before 6.38 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to version 6.38 or later.
@@ -72,7 +73,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("drupal_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("drupal/installed","Host/runs_unixoide");
+  script_mandatory_keys("drupal/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
   exit(0);
 }
@@ -80,16 +81,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-drupalPort= 0;
-drupalVer = "";
-
-## Get HTTP Port
 if(!drupalPort= get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!drupalVer = get_app_version(cpe:CPE, port:drupalPort, version_regex:"^[0-9]\.[0-9]+")){
   exit(0);
 }

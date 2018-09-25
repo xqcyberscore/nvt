@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_d_link_dsl_multiple_vulnerabilities_05_2013.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_d_link_dsl_multiple_vulnerabilities_05_2013.nasl 11584 2018-09-25 07:02:39Z cfischer $
 #
 # D-Link DSL-320B Multiple Security Vulnerabilities
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103706");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11584 $");
 
   script_name("D-Link DSL-320B Multiple Security Vulnerabilities");
   script_tag(name:"cvss_base", value:"9.0");
@@ -38,7 +38,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.dlink.com/de/de/home-solutions/connect/modems-and-gateways/dsl-320b-adsl-2-ethernet-modem");
   script_xref(name:"URL", value:"http://www.dlink.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-06 12:58:41 +0200 (Mon, 06 May 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -50,16 +50,19 @@ if (description)
   script_tag(name:"solution", value:"Firmware update is available.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"D-Link DSL-320B is prone to the following security
-vulnerabilities:
+  vulnerabilities:
 
-1. Access to the Config file without authentication
-2. Access to the logfile without authentication
-3. Stored XSS within parental contro
+  1. Access to the Config file without authentication
 
-An attacker can exploit these issues to gain access to potentially
-sensitive information, decrypt stored passwords, steal cookie-based
-authentication credentials.");
- exit(0);
+  2. Access to the logfile without authentication
+
+  3. Stored XSS within parental control");
+
+  script_tag(name:"impact", value:"An attacker can exploit these issues to gain access to
+  potentially sensitive information, decrypt stored passwords, steal cookie-based
+  authentication credentials.");
+
+  exit(0);
 }
 
 include("http_func.inc");

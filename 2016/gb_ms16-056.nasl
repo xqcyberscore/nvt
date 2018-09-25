@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-056.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_ms16-056.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # Microsoft Windows Journal Memory Corruption Vulnerability (3156761)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808019");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11596 $");
   script_cve_id("CVE-2016-0182");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 10:37:53 +0530 (Wed, 11 May 2016)");
   script_name("Microsoft Windows Journal Memory Corruption Vulnerability (3156761)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS16-056.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an unspecified error
   within Windows Journal while parsing Journal files.");

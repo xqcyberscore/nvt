@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_personal_file_share_http_server_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_personal_file_share_http_server_bof_vuln.nasl 11582 2018-09-25 06:26:12Z cfischer $
 #
 # Personal File Share HTTP Server Remote Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803196");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11582 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-02 13:34:27 +0530 (Thu, 02 May 2013)");
   script_name("Personal File Share HTTP Server Remote Buffer Overflow Vulnerability");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Apr/184");
@@ -55,25 +55,17 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
-
-req = "";
-res = "";
-port = "";
 
 port = get_http_port(default:8080);
 
 res = http_get_cache(item:"/", port:port);
-
-## ## Confirm the application before trying exploit
 if(">Files From" >!< res && ">Web File Explore<" >!< res &&
    ">srplab.cn" >!< res){
   exit(0);
 }
 
-## Send crafted data to server
 req = http_get(item:crap(data:"A", length:2500), port:port);
 res = http_keepalive_send_recv(port:port, data:req);
 

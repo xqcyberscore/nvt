@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_clickjacking_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_mozilla_prdts_clickjacking_vuln_win.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Mozilla Products Certificate Page Clickjacking Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802893");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-1964");
   script_bugtraq_id(54581);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-23 18:40:44 +0530 (Mon, 23 Jul 2012)");
   script_name("Mozilla Products Certificate Page Clickjacking Vulnerability (Windows)");
 
@@ -77,10 +77,7 @@ if(description)
 
 include("version_func.inc");
 
-
-ffVer = "";
 ffVer = get_kb_item("Firefox/Win/Ver");
-
 if(ffVer)
 {
   if(version_in_range(version:ffVer, test_version:"4.0", test_version2:"10.0.5")||
@@ -91,10 +88,7 @@ if(ffVer)
   }
 }
 
-# SeaMonkey Check
-seaVer = "";
 seaVer = get_kb_item("Seamonkey/Win/Ver");
-
 if(seaVer)
 {
   if(version_is_less(version:seaVer, test_version:"2.10"))
@@ -104,10 +98,7 @@ if(seaVer)
   }
 }
 
-# Thunderbird Check
-tbVer = "";
 tbVer = get_kb_item("Thunderbird/Win/Ver");
-
 if(tbVer)
 {
   if(version_in_range(version:tbVer, test_version:"5.0", test_version2:"10.0.5")||

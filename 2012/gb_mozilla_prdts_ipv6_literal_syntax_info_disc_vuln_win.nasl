@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_ipv6_literal_syntax_info_disc_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_mozilla_prdts_ipv6_literal_syntax_info_disc_vuln_win.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Mozilla Products IPv6 Literal Syntax Cross Domain Information Disclosure Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802579");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2011-3670");
   script_bugtraq_id(51786);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-03 17:51:59 +0530 (Fri, 03 Feb 2012)");
   script_name("Mozilla Products IPv6 Literal Syntax Cross Domain Information Disclosure Vulnerability (Windows)");
 
@@ -70,11 +70,8 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
-
-ffVer = NULL;
 ffVer = get_kb_item("Firefox/Win/Ver");
 if(!isnull(ffVer))
 {
@@ -86,10 +83,7 @@ if(!isnull(ffVer))
   }
 }
 
-# SeaMonkey Check
-seaVer = NULL;
 seaVer = get_kb_item("Seamonkey/Win/Ver");
-
 if(!isnull(seaVer))
 {
   if(version_is_less(version:seaVer, test_version:"2.4"))
@@ -99,10 +93,7 @@ if(!isnull(seaVer))
   }
 }
 
-# Thunderbird Check
-tbVer = NULL;
 tbVer = get_kb_item("Thunderbird/Win/Ver");
-
 if(!isnull(tbVer))
 {
   if(version_is_less(version:tbVer, test_version:"3.1.18") ||

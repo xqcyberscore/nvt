@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2977292.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_microsoft_security_advisory_2977292.nasl 11579 2018-09-25 05:43:52Z cfischer $
 #
 # Microsoft EAP Implementation TLS Information Disclosure Vulnerability (2977292)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804869");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11579 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-27 18:07:16 +0530 (Mon, 27 Oct 2014)");
 
   script_name("Microsoft EAP Implementation TLS Information Disclosure Vulnerability (2977292)");
@@ -38,8 +38,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Security Advisory 2977292.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The error exists due to use of lower
   versions of TLS allowing recovery of plaintext from encrypted sessions.");

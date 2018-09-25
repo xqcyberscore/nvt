@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms16-148.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_ms_office_web_apps_ms16-148.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # Microsoft Office Web Apps Multiple Information Disclosure Vulnerabilities (3204068)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809758");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11596 $");
   script_cve_id("CVE-2016-7268", "CVE-2016-7290", "CVE-2016-7291");
   script_bugtraq_id(94672, 94670, 94671);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-14 13:18:47 +0530 (Wed, 14 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Web Apps Multiple Information Disclosure Vulnerabilities (3204068)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing  critical security
   update according to Microsoft Bulletin MS16-148.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists as Microsoft Office
   software reads out of bound memory.");

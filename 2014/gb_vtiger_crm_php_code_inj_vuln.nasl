@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_php_code_inj_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_vtiger_crm_php_code_inj_vuln.nasl 11584 2018-09-25 07:02:39Z cfischer $
 #
 # vTiger CRM PHP Code Injection Vulnerability
 #
@@ -33,8 +33,8 @@ if(description)
   script_cve_id("CVE-2013-3214");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_version("$Revision: 11108 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 11584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-30 12:15:25 +0700 (Thu, 30 Jan 2014)");
 
   script_name("vTiger CRM PHP Code Injection Vulnerability");
@@ -50,14 +50,19 @@ if(description)
   script_require_ports("Services/www", 80);
 
   script_tag(name:"summary", value:"vTiger CRM PHP Code Injection Vulnerability");
+
   script_tag(name:"vuldetect", value:"Check the version.");
+
   script_tag(name:"solution", value:"Apply the patch from the link below or upgrade to version
   6.0 or later.");
+
   script_tag(name:"insight", value:"The installed vTiger CRM is prone to a PHP code injection
   vulnerability. The AddEmailAttachment SOAP method in /soap/vtigerolservice.php
   fails to properly validate input passed through the 'filedata' and 'filename'
-  parameters which are used to write an 'email attachement' in the storage direcory.");
+  parameters which are used to write an 'email attachement' in the storage directory.");
+
   script_tag(name:"affected", value:"vTiger CRM version 5.0.0 to 5.4.0.");
+
   script_tag(name:"impact", value:"A remote attacker can write (or overwrite) files with any content,
   resulting in execution of arbitrary PHP code.");
 

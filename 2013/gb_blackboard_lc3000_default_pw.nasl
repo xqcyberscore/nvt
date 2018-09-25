@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackboard_lc3000_default_pw.nasl 11077 2018-08-22 09:40:33Z mmartin $
+# $Id: gb_blackboard_lc3000_default_pw.nasl 11584 2018-09-25 07:02:39Z cfischer $
 #
 # Blackboard LC3000 Laundry Reader Default Telnet Password
 #
@@ -25,18 +25,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103843");
-  script_version("$Revision: 11077 $");
+  script_version("$Revision: 11584 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Blackboard LC3000 Laundry Reader Default Telnet Password");
 
-
   script_xref(name:"URL", value:"http://dariusfreamon.wordpress.com/2013/10/28/290/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-02 11:02:55 +0200 (Mon, 02 Dec 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -46,16 +45,20 @@ if (description)
   script_require_ports("Services/telnet", 23);
 
   script_tag(name:"impact", value:"Attackers can exploit these issues to gain unauthorized access to the
-affected device and perform certain administrative actions.");
+  affected device and perform certain administrative actions.");
+
   script_tag(name:"vuldetect", value:"Start a telnet session with the default password.");
+
   script_tag(name:"insight", value:"A user can login to the Telnet service using the default password
-'IPrdr4U'");
-  script_tag(name:"solution", value:"Chnage the password.");
+  'IPrdr4U'");
+
+  script_tag(name:"solution", value:"Change the password.");
+
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"summary", value:"The remote Blackboard LC3000 Laundry Reader is prone to a default
-credentials bypass vulnerability");
+  credentials bypass vulnerability");
 
- exit(0);
+  exit(0);
 }
 
 include("telnet_func.inc");

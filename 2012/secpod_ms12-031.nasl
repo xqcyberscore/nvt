@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-031.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_ms12-031.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Microsoft Office Visio Viewer Remote Code Execution Vulnerability (2597981)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902910");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-0018");
   script_bugtraq_id(53328);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 08:45:22 +0530 (Wed, 09 May 2012)");
   script_name("Microsoft Office Visio Viewer Remote Code Execution Vulnerability (2597981)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49113");
@@ -63,19 +63,12 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-vvVer ="";
-visioPath = "";
-visiovVer = "";
-dllPath = "";
-
 vvVer = get_kb_item("SMB/Office/VisioViewer/Ver");
-
 if(vvVer && vvVer =~ "^14\..*")
 {
   visioPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 11572 2018-09-24 13:56:39Z cfischer $
+# $Id: smb_nt.inc 11600 2018-09-25 11:20:01Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11572 $
+# $Revision: 11600 $
 #
 ###############################################################################
 
@@ -6201,11 +6201,14 @@ function registry_get_dword( key, item, type ) {
 
   r2 = registry_get_key( soc:soc, uid:uid, tid:tid, pipe:pipe, key:key, reply:r );
   if( r2 ) {
+
     r3 = registry_get_item_dword( soc:soc, uid:uid, tid:tid, pipe:pipe, item:item, reply:r2 );
+
     registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r2 );
     registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
 
-    if( r3 ) r3_value = registry_decode_dword( data:r3 );
+    if( r3 )
+      r3_value = registry_decode_dword( data:r3 );
 
     close( soc );
 
@@ -6216,6 +6219,8 @@ function registry_get_dword( key, item, type ) {
     }
     return r3_value;
   }
+
+  registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
   close( soc );
   return NULL;
 }
@@ -6353,13 +6358,19 @@ function registry_get_binary( key, item, type ) {
 
   r2 = registry_get_key( soc:soc, uid:uid, tid:tid, pipe:pipe, key:key, reply:r );
   if( r2 ) {
+
     r3 = registry_get_item_sz( soc:soc, uid:uid, tid:tid, pipe:pipe, item:item, reply:r2 );
+
     registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r2 );
     registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
+
     r3_value = registry_decode_binary( data:r3, uid:uid );
     close( soc );
+
     return r3_value;
   }
+
+  registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
   close( soc );
   return FALSE;
 }
@@ -6504,11 +6515,15 @@ function registry_get_sz( key, item, type ) {
 
   r2 = registry_get_key( soc:soc, uid:uid, tid:tid, pipe:pipe, key:key, reply:r );
   if( r2 ) {
+
     r3 =  registry_get_item_sz( soc:soc, uid:uid, tid:tid, pipe:pipe, item:item, reply:r2 );
+
     registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r2 );
     registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
 
-    if( r3 ) r3_value = registry_decode_sz( data:r3, uid:uid );
+    if( r3 )
+      r3_value = registry_decode_sz( data:r3, uid:uid );
+
     close( soc );
 
     # Place value into the KB
@@ -6519,6 +6534,8 @@ function registry_get_sz( key, item, type ) {
     }
     return r3_value;
   }
+
+  registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
   close( soc );
   return FALSE;
 }

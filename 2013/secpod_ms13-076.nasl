@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-076.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: secpod_ms13-076.nasl 11576 2018-09-24 14:59:42Z cfischer $
 #
 # MS Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2876315)
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902994");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11576 $");
   script_cve_id("CVE-2013-1341", "CVE-2013-1342", "CVE-2013-1343", "CVE-2013-1344",
                 "CVE-2013-3864", "CVE-2013-3865", "CVE-2013-3866");
   script_bugtraq_id(62180, 62193, 62195, 62196, 62197, 62198, 62199);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 08:37:33 +0530 (Wed, 11 Sep 2013)");
   script_name("MS Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2876315)");
 
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
 Microsoft Bulletin MS13-076.");
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
-or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
 mentioned hotfixes in the advisory from the below link,
 https://technet.microsoft.com/en-us/security/bulletin/ms13-076");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simple_groupware_export_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_simple_groupware_export_xss_vuln.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # SimpleGroupware 'export' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802589");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-1028");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-09 17:20:45 +0530 (Thu, 09 Feb 2012)");
   script_name("SimpleGroupware 'export' Parameter Cross Site Scripting Vulnerability");
 
@@ -59,18 +59,10 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Varible Initialisation
-port = 0;
-sndReq = "";
-rcvRes = "";
-url = "";
-
 port = get_http_port(default:80);
-
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -80,8 +72,7 @@ foreach dir (make_list_unique("/sgs/sgs_installer.php", "/sgs", cgi_dirs(port:po
 
   if(dir == "/") dir = "";
 
-  sndReq = http_get(item:string(dir, "/bin/index.php"), port:port);
-  rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/bin/index.php"), port:port);
 
   if(rcvRes && ">Powered by Simple Groupware" >< rcvRes)
   {

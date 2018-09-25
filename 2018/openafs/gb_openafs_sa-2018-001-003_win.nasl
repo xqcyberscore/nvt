@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openafs_sa-2018-001-003_win.nasl 11433 2018-09-17 12:14:48Z asteins $
+# $Id: gb_openafs_sa-2018-001-003_win.nasl 11597 2018-09-25 09:58:28Z asteins $
 #
 # OpenAFS < 1.6.22.4, 1.8.x through 1.8.1.1 Multiple Vulnerabilities (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112379");
-  script_version("$Revision: 11433 $");
+  script_version("$Revision: 11597 $");
   script_cve_id("CVE-2018-16947", "CVE-2018-16948", "CVE-2018-16949");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 14:14:48 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:58:28 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-17 14:02:22 +0200 (Mon, 17 Sep 2018)");
   script_name("OpenAFS < 1.6.22.4, 1.8.x through 1.8.1.1 Multiple Vulnerabilities (Windows)");
 
@@ -74,7 +74,6 @@ For more information refer to the security advisories provided by the vendor.");
   script_xref(name:"URL", value:"http://www.openafs.org/pages/security/OPENAFS-SA-2018-002.txt");
   script_xref(name:"URL", value:"http://www.openafs.org/pages/security/OPENAFS-SA-2018-003.txt");
 
-
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -88,18 +87,18 @@ include("host_details.inc");
 
 CPE = "cpe:/a:openafs:openafs";
 
-if(!ver = get_app_version(cpe:CPE)){
-  exit(0);
-}
+infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+vers = infos["version"];
+path = infos["location"];
 
-if(version_is_less_equal(version:ver, test_version:"1.6.23")) {
-  report = report_fixed_ver(installed_version:ver, fixed_version: "1.6.23");
+if(version_is_less_equal(version:vers, test_version:"1.6.23")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"1.6.23", install_path:path);
   security_message(data:report);
   exit(0);
 }
 
-if(version_in_range(version:ver, test_verison:"1.8.0", test_version2:"1.8.1.1")) {
-  report = report_fixed_ver(installed_version:ver, fixed_version: "1.8.2");
+if(version_in_range(version:vers, test_verison:"1.8.0", test_version2:"1.8.1.1")) {
+  report = report_fixed_ver(installed_version:vers, fixed_version:"1.8.2", install_path:path);
   security_message(data:report);
   exit(0);
 }

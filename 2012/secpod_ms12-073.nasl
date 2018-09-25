@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-073.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_ms12-073.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Microsoft Windows IIS FTP Service Information Disclosure Vulnerability (2761226)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902694");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-2531", "CVE-2012-2532");
   script_bugtraq_id(56440);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-14 10:33:22 +0530 (Wed, 14 Nov 2012)");
   script_name("Microsoft Windows IIS FTP Service Information Disclosure Vulnerability (2761226)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51235");
@@ -74,14 +74,10 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-sysPath = "";
-dllVer = "";
 
 if(hotfix_check_sp(winVista:3, win2008:3, win7:2, win2008r2:2) <= 0){
   exit(0);

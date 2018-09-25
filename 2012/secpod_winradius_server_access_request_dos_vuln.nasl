@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_winradius_server_access_request_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_winradius_server_access_request_dos_vuln.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # WinRadius Server Access Request Packet Parsing Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902918");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-3816");
   script_bugtraq_id(53702);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-29 15:19:56 +0530 (Fri, 29 Jun 2012)");
   script_name("WinRadius Server Access Request Packet Parsing Denial of Service Vulnerability");
 
@@ -67,10 +67,6 @@ if(description)
 }
 
 include("network_func.inc");
-
-port = "";
-soc = "";
-buf = "";
 
 port = get_kb_item("Services/udp/radius");
 if(!port){

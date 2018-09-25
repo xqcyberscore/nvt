@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_multiple_vuln04_nov12_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_oracle_mysql_multiple_vuln04_nov12_win.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Oracle MySQL Server Multiple Vulnerabilities-04 Nov12 (Windows)
 #
@@ -23,17 +23,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:mysql:mysql";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803114");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-3147", "CVE-2012-3149", "CVE-2012-3144");
   script_bugtraq_id(56022, 56006, 56008);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 17:58:56 +0530 (Mon, 26 Nov 2012)");
   script_name("Oracle MySQL Server Multiple Vulnerabilities-04 Nov12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51008/");
@@ -61,13 +62,9 @@ if(description)
   exit(0);
 }
 
-
 include("misc_func.inc");
 include("version_func.inc");
 include("host_details.inc");
-
-sqlPort = "";
-mysqlVer = "";
 
 sqlPort = get_app_port(cpe:CPE);
 if(!sqlPort){

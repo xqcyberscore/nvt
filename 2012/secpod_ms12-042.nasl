@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-042.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: secpod_ms12-042.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Microsoft Windows Kernel Privilege Elevation Vulnerabilities (2711167)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902916");
-  script_version("$Revision: 11372 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-0217", "CVE-2012-1515");
   script_bugtraq_id(53856, 52820);
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-13 09:21:39 +0530 (Wed, 13 Jun 2012)");
   script_name("Microsoft Windows Kernel Privilege Elevation Vulnerabilities (2711167)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49454/");
@@ -74,9 +74,6 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-sysPath = "";
-exeVer = "";
 
 if(hotfix_check_sp(xp:4 ,win2003:3, win7x64:2, win2008r2:2) <= 0){
   exit(0);

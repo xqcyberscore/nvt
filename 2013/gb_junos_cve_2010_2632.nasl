@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2010_2632.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_junos_cve_2010_2632.nasl 11584 2018-09-25 07:02:39Z cfischer $
 #
 # Junos GNU libc GLOB_LIMIT DoS Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103950");
-  script_version("$Revision: 11103 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 11584 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-14 13:05:18 +0700 (Thu, 14 Nov 2013)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -62,7 +62,7 @@ users to cause a denial of service via crafted glob expressions that do not matc
   script_tag(name:"impact", value:"Attacks against Junos OS with FTP services enabled can cause a
 partial DoS.");
 
-  script_tag(name:"affected", value:"Plattforms running Junos OS 10.4, 11.4, 12.1, 12.2, 12.3,
+  script_tag(name:"affected", value:"Platforms running Junos OS 10.4, 11.4, 12.1, 12.2, 12.3,
 13.1.");
 
   script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_xbl_bind_mem_crptn_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_mozilla_prdts_xbl_bind_mem_crptn_vuln_macosx.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Mozilla Products XBL Binding Memory Corruption Vulnerability - (MAC OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802593");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-0452");
   script_bugtraq_id(51975);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-14 15:40:12 +0530 (Tue, 14 Feb 2012)");
   script_name("Mozilla Products XBL Binding Memory Corruption Vulnerability - (MAC OS X)");
 
@@ -69,11 +69,7 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
-
-# Firefox Check
-ffVer = NULL;
 
 ffVer = get_kb_item("Mozilla/Firefox/MacOSX/Version");
 if(!isnull(ffVer))
@@ -85,9 +81,6 @@ if(!isnull(ffVer))
   }
 }
 
-# SeaMonkey Check
-seaVer = NULL;
-
 seaVer = get_kb_item("SeaMonkey/MacOSX/Version");
 if(!isnull(seaVer))
 {
@@ -97,9 +90,6 @@ if(!isnull(seaVer))
     exit(0);
   }
 }
-
-# Thunderbird Check
-tbVer = NULL;
 
 tbVer = get_kb_item("ThunderBird/MacOSX/Version");
 if(!isnull(tbVer))

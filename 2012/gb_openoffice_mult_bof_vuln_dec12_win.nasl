@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openoffice_mult_bof_vuln_dec12_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_openoffice_mult_bof_vuln_dec12_win.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # OpenOffice Multiple Buffer Overflow Vulnerabilities - Dec12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803083");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-1149", "CVE-2012-2665");
   script_bugtraq_id(53570, 54769);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-24 15:26:59 +0530 (Mon, 24 Dec 2012)");
   script_name("OpenOffice Multiple Buffer Overflow Vulnerabilities - Dec12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46992/");
@@ -65,10 +65,7 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
-
-officeVer = "";
 
 officeVer = get_kb_item("OpenOffice/Win/Ver");
 if(!officeVer){

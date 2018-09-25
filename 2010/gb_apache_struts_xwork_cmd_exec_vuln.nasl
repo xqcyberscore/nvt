@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_xwork_cmd_exec_vuln.nasl 6722 2017-07-14 08:54:37Z cfischer $
+# $Id: gb_apache_struts_xwork_cmd_exec_vuln.nasl 11581 2018-09-25 06:12:55Z cfischer $
 #
 # Apache Struts2/XWork Remote Command Execution Vulnerability
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801663");
-  script_version("$Revision: 6722 $");
+  script_version("$Revision: 11581 $");
   script_cve_id("CVE-2010-1870");
   script_bugtraq_id(41592);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 10:54:37 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:12:55 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-12-21 15:42:46 +0100 (Tue, 21 Dec 2010)");
   script_name("Apache Struts2/XWork Remote Command Execution Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
-  script_dependencies("gb_apache_struts2_detection.nasl");
-  script_mandatory_keys("ApacheStruts/installed");
   script_family("Web application abuses");
+  script_dependencies("gb_apache_struts2_detection.nasl");
   script_require_ports("Services/www", 8080);
+  script_mandatory_keys("ApacheStruts/installed");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14360/");
   script_xref(name:"URL", value:"http://struts.apache.org/2.2.1/docs/s2-005.html");
@@ -57,12 +57,10 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error in 'OGNL' extensive
   expression evaluation capability in XWork in Struts, uses as permissive whitelist,
   which allows remote attackers to modify server-side context objects and bypass the '#'
-  protection mechanism in ParameterInterceptors via various varibles.");
+  protection mechanism in ParameterInterceptors via various variables.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to
-  manipulate server-side context objects with the privileges of the user running the application.
-
-  Impact Level: Application.");
+  manipulate server-side context objects with the privileges of the user running the application.");
 
   script_tag(name:"affected", value:"Struts version 2.0.0 through 2.1.8.1");
 

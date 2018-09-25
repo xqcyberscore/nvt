@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_at_tftp_filename_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_at_tftp_filename_bof_vuln.nasl 11582 2018-09-25 06:26:12Z cfischer $
 #
 # AT-TFTP Server Long Filename BoF Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802065");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11582 $");
   script_bugtraq_id(21320);
   script_cve_id("CVE-2006-6184");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-26 11:32:51 +0530 (Tue, 26 Nov 2013)");
   script_name("AT-TFTP Server Long Filename BoF Vulnerability");
 
@@ -65,9 +65,6 @@ if(description)
 }
 
 include("tftp.inc");
-
-tftp_port = "";
-soc = "";
 
 tftp_port = get_kb_item("Services/udp/tftp");
 if(!tftp_port){

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exchange_server_ms14-075.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_exchange_server_ms14-075.nasl 11579 2018-09-25 05:43:52Z cfischer $
 #
 # Microsoft Exchange Server Multiple Vulnerabilities (3009712)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805115");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11579 $");
   script_cve_id("CVE-2014-6319", "CVE-2014-6325", "CVE-2014-6326", "CVE-2014-6336");
   script_bugtraq_id(71437, 71440, 71441, 71443);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-10 15:28:46 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft Exchange Server Multiple Vulnerabilities (3009712)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS14-075.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 

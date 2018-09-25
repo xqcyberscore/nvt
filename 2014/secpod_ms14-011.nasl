@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms14-011.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: secpod_ms14-011.nasl 11579 2018-09-25 05:43:52Z cfischer $
 #
 # Microsoft VBScript Remote Code Execution Vulnerability (2928390)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903229");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11579 $");
   script_cve_id("CVE-2014-0271");
   script_bugtraq_id(65395);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-12 09:18:06 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft VBScript Remote Code Execution Vulnerability (2928390)");
   script_category(ACT_GATHER_INFO);
@@ -51,8 +51,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an critical security update according to Microsoft
   Bulletin MS14-011.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
-  or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw is due to improper handling of memory objects in VBScript engine.");
 

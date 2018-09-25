@@ -1,9 +1,9 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_imc_mult_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_hp_imc_mult_vuln.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # HP Intelligent Management Center (iMC) Multiple Vulnerabilities
-# 
+#
 # Authors:
 # Tushar Khelge <ktushar@secpod.com>
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:hp:intelligent_management_center";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809283");
-  script_version("$Revision: 7573 $");
+  script_version("$Revision: 11596 $");
   script_cve_id("CVE-2012-5201", "CVE-2012-5202", "CVE-2012-5203", "CVE-2012-5204",
                 "CVE-2012-5205", "CVE-2012-5206", "CVE-2012-5207", "CVE-2012-5208",
                 "CVE-2012-5209", "CVE-2012-5210", "CVE-2012-5211", "CVE-2012-5212",
@@ -37,24 +37,21 @@ if(description)
   script_bugtraq_id(58673, 58675, 58672, 58676);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-09-22 18:02:02 +0530 (Thu, 22 Sep 2016)");
   script_name("HP Intelligent Management Center (iMC) Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is installed with HP Intelligent
   Management Center (iMC) and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to an unspecified
   vulnerability.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote
   attackers to obtain sensitive information, modify data, or cause a denial
-  of service or to execute arbitrary code.
-
-  Impact Level: System/Application.");
+  of service or to execute arbitrary code.");
 
   script_tag(name:"affected", value:"HP Intelligent Management Center (iMC)
   prior to 5.2 E0401");
@@ -79,15 +76,10 @@ include("version_func.inc");
 include("host_details.inc");
 include("revisions-lib.inc");
 
-## Variable Initialization
-hpVer= "";
-
-## Get version
 if(!hpVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check For Version less than 5.2 E0401
 if(revcomp(a: hpVer, b: "5.2.E0401") < 0)
 {
   report = report_fixed_ver(installed_version:hpVer, fixed_version:"5.2 E0401");

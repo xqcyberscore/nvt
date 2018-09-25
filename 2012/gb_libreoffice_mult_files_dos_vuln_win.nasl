@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_mult_files_dos_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_libreoffice_mult_files_dos_vuln_win.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # LibreOffice Import Files Denial of Service Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803064");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-4233");
   script_bugtraq_id(56352);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 13:04:53 +0530 (Mon, 26 Nov 2012)");
   script_name("LibreOffice Import Files Denial of Service Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://securitytracker.com/id?1027727");
@@ -59,10 +59,7 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
-
-officeVer = "";
 
 officeVer = get_kb_item("LibreOffice/Win/Ver");
 if(!officeVer){

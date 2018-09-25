@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2016-01_2016-15_macosx.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_mozilla_thunderbird_mfsa_2016-01_2016-15_macosx.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # Mozilla Thunderbird Security Updates( mfsa_2016-01_2016-15 )-MAC OS X
 #
@@ -29,34 +29,34 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808690");
-  script_version("$Revision: 5580 $");
+  script_version("$Revision: 11596 $");
   script_cve_id("CVE-2016-1935", "CVE-2016-1930", "CVE-2016-1931", "CVE-2016-1523");
   script_bugtraq_id(81952, 81953, 82991);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-09-07 12:07:55 +0530 (Wed, 07 Sep 2016)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2016-01_2016-15 )-MAC OS X");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - The Buffer overflow in the BufferSubData function.
+
   - Multiple unspecified Vulnerabilities.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to cause a denial of service
-  (memory corruption and application crash) or possibly execute arbitrary code.
-  Impact Level: System/Application.");
+  (memory corruption and application crash) or possibly execute arbitrary code.");
 
-  script_tag(name: "affected" , value:"Mozilla Thunderbird version before 
+  script_tag(name:"affected", value:"Mozilla Thunderbird version before
   38.6 on MAC OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version 38.6
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 38.6
   For updates refer https://www.mozilla.org/en-US/thunderbird");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -79,15 +79,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-tbVer = "";
-
-## Get version
 if(!tbVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:tbVer, test_version:"38.6"))
 {
   report = report_fixed_ver(installed_version:tbVer, fixed_version:"38.6");

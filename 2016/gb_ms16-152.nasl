@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-152.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_ms16-152.nasl 11596 2018-09-25 09:49:46Z asteins $
 #
 # Microsoft Windows Kernel Information Disclosure Vulnerability (3199709)
 #
@@ -26,32 +26,28 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.810309") ;
-  script_version("$Revision: 7174 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.810309");
+  script_version("$Revision: 11596 $");
   script_cve_id("CVE-2016-7258");
   script_bugtraq_id(94736);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-14 09:02:07 +0530 (Wed, 14 Dec 2016)");
   script_name("Microsoft Windows Kernel Information Disclosure Vulnerability (3199709)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-152");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to the Windows kernel
   fails to properly handle certain page fault system calls.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  attackers to disclose information from one process to another.
+  attackers to disclose information from one process to another.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 10 x32/x64.
+  script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64.
   Microsoft Windows Server 2016.
   Microsoft Windows 10 Version 1511 x32/x64.
   Microsoft Windows 10 Version 1607 x32/x64.");
@@ -68,7 +64,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -78,22 +75,15 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-kerPath = "";
-kerVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 kerPath = smb_get_systemroot();
 if(!kerPath ){
   exit(0);
 }
 
-##Fetch the version of Ntoskrnl.exe
 kerVer = fetch_file_version(sysPath: kerPath, file_name:"System32\Ntoskrnl.exe");
 if(!kerVer){
   exit(0);
@@ -101,22 +91,16 @@ if(!kerVer){
 
 if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) > 0)
 {
-  ## Windows 10 Core
-  ## Check for Ntoskrnl.exe version
   if(version_is_less(version:kerVer, test_version:"10.0.10240.17202"))
   {
     Vulnerable_range = "Less than 10.0.10240.17202";
     VULN = TRUE ;
   }
-  ## Windows 10 version 1511
-  ## Check for Ntoskrnl.exe version
   else if(version_in_range(version:kerVer, test_version:"10.0.10586.0", test_version2:"10.0.10586.671"))
   {
     Vulnerable_range = "10.0.10586.0 - 10.0.10586.671";
     VULN = TRUE ;
   }
-  ##Windows 10 Version 1607 and Windows Server 2016
-  ## Check for Ntoskrnl.exe version
   else if(version_in_range(version:kerVer, test_version:"10.0.14393.0", test_version2:"10.0.14393.575"))
   {
     Vulnerable_range = "10.0.14393.0 - 10.0.14393.575";

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_mult_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_symantec_messaging_gateway_mult_vuln.nasl 11580 2018-09-25 06:06:13Z cfischer $
 #
 # Symantec Messaging Gateway Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802453");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11580 $");
   script_cve_id("CVE-2012-0307", "CVE-2012-0308", "CVE-2012-3579", "CVE-2012-3580",
                 "CVE-2012-3581");
   script_bugtraq_id(55138, 55137, 55143, 55141, 55142);
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-04 17:27:04 +0530 (Tue, 04 Sep 2012)");
   script_name("Symantec Messaging Gateway Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -79,13 +79,7 @@ if(description)
   exit(0);
 }
 
-
 include("ssh_func.inc");
-
-soc = "";
-cmd = "";
-port = "";
-login = "";
 
 port = get_kb_item("Services/ssh");
 if(!port){
@@ -96,7 +90,6 @@ if(!get_port_state(port)){
   exit(0);
 }
 
-## Create SSH a socket
 if(!soc = open_sock_tcp(port)){
   exit(0);
 }
