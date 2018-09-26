@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_reg_enum.nasl 10915 2018-08-10 15:50:57Z cfischer $
+# $Id: secpod_reg_enum.nasl 11621 2018-09-26 10:00:23Z cfischer $
 #
 # Enumerates List of Windows Hotfixes
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900012");
-  script_version("$Revision: 10915 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11621 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 12:00:23 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -65,6 +65,9 @@ function crawlLevel(key, level, maxlevel, soc, uid, tid, pipe, handle){
   key_h = registry_get_key(soc:soc, uid:uid, tid:tid, pipe:pipe, key:key, reply:handle);
   if(key_h){
     entries = registry_enum_key(soc:soc, uid:uid, tid:tid, pipe:pipe, reply:key_h);
+  }
+
+  if(!isnull(key_h)){
     registry_close(soc:soc, uid:uid, tid:tid, pipe:pipe, reply:key_h);
   }
 

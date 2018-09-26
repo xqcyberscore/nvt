@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_multiple_vuln01_jan16.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_typo3_multiple_vuln01_jan16.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # TYPO3 Multiple Vulnerabilities-01 Jan16
 #
@@ -29,44 +29,43 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806664");
-  script_version("$Revision: 5527 $");
+  script_version("$Revision: 11607 $");
   script_cve_id("CVE-2015-8760", "CVE-2015-8756");
   script_bugtraq_id(79210);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-19 11:49:38 +0530 (Tue, 19 Jan 2016)");
   script_name("TYPO3 Multiple Vulnerabilities-01 Jan16");
 
-  script_tag(name: "summary" , value: "This host is installed with TYPO3 and
+  script_tag(name:"summary", value:"This host is installed with TYPO3 and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Multiple flaws exist as,
+  script_tag(name:"insight", value:"Multiple flaws exist as,
+
   - An error in flashplayer which misses to validate flash and image files,
+
   - An error in encoding editor input.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to conduct Cross-Site Flashing attacks and Cross-Site
-  Scripting attacks.
+  Scripting attacks.");
 
-  Impact Level: Application.");
+  script_tag(name:"affected", value:"TYPO3 versions 6.2.0 to 6.2.15");
 
-  script_tag(name: "affected" , value:"TYPO3 versions 6.2.0 to 6.2.15");
-
-  script_tag(name: "solution" , value:"Upgrade to TYPO3 version 6.2.16 or later.
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 6.2.16 or later.
   For updates refer to https://typo3.org/typo3-cms");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name: "URL" , value : "http://www.securitytracker.com/id/1034486");
-  script_xref(name: "URL" , value : "http://www.securitytracker.com/id/1034485");
-  script_xref(name: "URL" , value : "http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2015-015");
-  script_xref(name: "URL" , value : "http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2015-014");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1034486");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1034485");
+  script_xref(name:"URL", value:"http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2015-015");
+  script_xref(name:"URL", value:"http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2015-014");
 
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -81,23 +80,16 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable initialisation
-typoPort = "";
-typoVer = "";
-
-## Get Application HTTP Port
 if(!typoPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Get Typo3 version
 if(!typoVer = get_app_version(cpe:CPE, port:typoPort)){
   exit(0);
 }
 
 if(typoVer !~ "[0-9]+\.[0-9]+\.[0-9]+") exit(0); # Version is not exact enough
 
-## Check for version 6.2.0 to 6.2.15
 if(typoVer =~ "6\.2")
 {
   if(version_in_range(version:typoVer, test_version:"6.2.0", test_version2:"6.2.15"))

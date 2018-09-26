@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nghttp2_dos_vuln.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_nghttp2_dos_vuln.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # nghttp2 Denial of Service Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:nghttp2:nghttp2';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106172");
-  script_version("$Revision: 5867 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2016-08-08 11:13:25 +0700 (Mon, 08 Aug 2016)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11614 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-08 11:13:25 +0700 (Mon, 08 Aug 2016)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("nghttp2 Denial of Service Vulnerability");
 
@@ -49,22 +49,22 @@ if (description)
   script_dependencies("gb_nghttp2_detect.nasl");
   script_mandatory_keys("nghttp2/detected");
 
-  script_tag(name: "summary", value: "nghttp2 is prone to a denial of serice vulnerability.");
+  script_tag(name:"summary", value:"nghttp2 is prone to a denial of serice vulnerability.");
 
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "nghttpd is prone to a remote denial-of-service attack. A remote
+  script_tag(name:"insight", value:"nghttpd is prone to a remote denial-of-service attack. A remote
 attacker could exploit this issue by sending a crafted request that will induce a dependency cycle, causing
 the server to enter an infinite loop.");
 
-  script_tag(name: "impact", value: "A remote attacker may cause a denial of service condition.");
+  script_tag(name:"impact", value:"A remote attacker may cause a denial of service condition.");
 
-  script_tag(name: "affected", value: "Version prior to 1.7.0");
+  script_tag(name:"affected", value:"Version prior to 1.7.0");
 
-  script_tag(name: "solution", value: "Upgrade to Version 1.7.0 or later");
+  script_tag(name:"solution", value:"Upgrade to Version 1.7.0 or later");
 
-  script_xref(name: "URL", value: "http://www.imperva.com/docs/Imperva_HII_HTTP2.pdf");
+  script_xref(name:"URL", value:"http://www.imperva.com/docs/Imperva_HII_HTTP2.pdf");
 
   exit(0);
 }

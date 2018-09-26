@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_wordpress_kento_post_viewer_counter_plugin_mult_vuln.nasl 11026 2018-08-17 08:52:26Z cfischer $
+# $Id: sw_wordpress_kento_post_viewer_counter_plugin_mult_vuln.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Wordpress Kento Post Viewer Counter Plugin Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111105");
-  script_version("$Revision: 11026 $");
+  script_version("$Revision: 11607 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-13 16:12:12 +0200 (Mon, 13 Jun 2016)");
   script_name("Wordpress Kento Post Viewer Counter Plugin Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -66,9 +66,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attacker to execute arbitrary script code in a user's browser
-  session within the trust relationship.
-
-  Impact Level: Application");
+  session within the trust relationship.");
 
   script_tag(name:"affected", value:"Wordpress Kento Post Viewer Counter Plugin <= 2.8");
 

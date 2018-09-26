@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-125.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_ms16-125.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Microsoft Windows Diagnostics Hub Privilege Elevation Vulnerability (3193229)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809344");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-7188");
   script_bugtraq_id(93359);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 08:11:15 +0530 (Wed, 12 Oct 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Diagnostics Hub Privilege Elevation Vulnerability (3193229)");
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-125.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An elevation of privilege vulnerability exists
   in the Windows Diagnostics Hub Standard Collector Service when the Windows

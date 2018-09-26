@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms15-049_macosx.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_silverlight_ms15-049_macosx.nasl 11612 2018-09-26 05:47:26Z cfischer $
 #
 # Microsoft Silverlight Elevation of Privilege Vulnerability (3058985) (Mac OS X)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805555");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11612 $");
   script_cve_id("CVE-2015-1715");
   script_bugtraq_id(74503);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-13 13:46:39 +0530 (Wed, 13 May 2015)");
   script_name("Microsoft Silverlight Elevation of Privilege Vulnerability (3058985) (Mac OS X)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-049.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as the Silverlight improperly
   allows applications that are intended to run at a low integrity level (very

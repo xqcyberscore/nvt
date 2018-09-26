@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_92654.nasl 4701 2016-12-07 11:37:27Z cfi $
+# $Id: gb_roundcube_92654.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Roundcube Webmail < 1.1.5 Cross Site Request Forgery Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:roundcube:webmail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108024");
-  script_version("$Revision: 4701 $");
+  script_version("$Revision: 11607 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-07 12:37:27 +0100 (Wed, 07 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-07 13:00:00 +0100 (Wed, 07 Dec 2016)");
   script_bugtraq_id(92654);
   script_cve_id("CVE-2016-4069");
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Exploiting this issue may allow a remote attacker to perform
   certain unauthorized actions and gain access to the affected application. This may lead to
-  perform cross-site scripting attacks, Web cache poisoning, and other malicious activities.
-
-  Impact Level: Application");
+  perform cross-site scripting attacks, Web cache poisoning, and other malicious activities.");
 
   script_tag(name:"affected", value:"Roundcube Webmail versions prior to 1.1.5.");
 

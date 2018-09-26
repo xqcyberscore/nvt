@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_h2o_format_string_vuln.nasl 8965 2018-02-27 11:35:42Z cfischer $
+# $Id: gb_h2o_format_string_vuln.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # H2O HTTP Server Format String Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:h2o_project:h2o';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106247");
-  script_version("$Revision: 8965 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-27 12:35:42 +0100 (Tue, 27 Feb 2018) $");
-  script_tag(name: "creation_date", value: "2016-09-15 15:47:03 +0700 (Thu, 15 Sep 2016)");
+  script_version("$Revision: 11614 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-15 15:47:03 +0700 (Thu, 15 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2016-4864");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("H2O HTTP Server Format String Vulnerability");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_h2o_http_server_detect.nasl");
   script_mandatory_keys("h2o/installed");
 
-  script_tag(name: "summary", value: "H2O HTTP Server is prone to a format string vulnerability.");
+  script_tag(name:"summary", value:"H2O HTTP Server is prone to a format string vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "A format string vulnerability exists in H2O ,that can be used by remote
+  script_tag(name:"insight", value:"A format string vulnerability exists in H2O, that can be used by remote
 attackers to mount Denial-of-Service attacks.
 
 Users using one of the handlers (fastcgi, mruby, proxy, redirect, reproxy) of H2O may be affected by the issue.");
 
-  script_tag(name: "impact", value: "An unauthenticated remote attacker may cause a denial of service condition.");
+  script_tag(name:"impact", value:"An unauthenticated remote attacker may cause a denial of service condition.");
 
-  script_tag(name: "affected", value: "H2O version 2.0.3, 2.1.0-beta2 and prior.");
+  script_tag(name:"affected", value:"H2O version 2.0.3, 2.1.0-beta2 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 2.0.4, 2.1.0-beta3 or later.");
+  script_tag(name:"solution", value:"Update to version 2.0.4, 2.1.0-beta3 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/h2o/h2o/issues/1077");
+  script_xref(name:"URL", value:"https://github.com/h2o/h2o/issues/1077");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-005.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_ms15-005.nasl 11612 2018-09-26 05:47:26Z cfischer $
 #
 # MS Windows Network Location Awareness Service Security Bypass Vulnerability (3022777)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805036");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11612 $");
   script_cve_id("CVE-2015-0006");
   script_bugtraq_id(71930);
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-14 08:53:24 +0530 (Wed, 14 Jan 2015)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("MS Windows Network Location Awareness Service Security Bypass Vulnerability (3022777)");
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-005.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an error within the
   Network Location Awareness (NLA) service when validating if a domain-connected

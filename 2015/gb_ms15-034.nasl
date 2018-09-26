@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805370");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11612 $");
   script_cve_id("CVE-2015-1635");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 12:09:33 +0530 (Wed, 15 Apr 2015)");
   script_name("Microsoft Windows HTTP.sys Remote Code Execution Vulnerability (3042553)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-034.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw exists due to the HTTP protocol stack
   'HTTP.sys' that is triggered when parsing HTTP requests.");

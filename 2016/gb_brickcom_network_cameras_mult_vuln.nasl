@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brickcom_network_cameras_mult_vuln.nasl 10833 2018-08-08 10:35:26Z cfischer $
+# $Id: gb_brickcom_network_cameras_mult_vuln.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Brickcom Network Cameras Multiple Vulnerabilities
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808159");
-  script_version("$Revision: 10833 $");
+  script_version("$Revision: 11607 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-10 17:32:08 +0530 (Fri, 10 Jun 2016)");
   script_name("Brickcom Network Cameras Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -65,9 +65,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to
   access sensitive information stored in html page, gain administrative access,
-  execute cross-site scripting and cross-site request forgery attacks.
-
-  Impact Level: Application");
+  execute cross-site scripting and cross-site request forgery attacks.");
 
   script_tag(name:"affected", value:"For information on affected products and
   firmware versions, please refer to the link mentioned in reference.");

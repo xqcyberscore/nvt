@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0590_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_0590_1.nasl 11610 2018-09-26 02:42:29Z ckuersteiner $
 #
 # SuSE Update for util-linux openSUSE-SU-2017:0590-1 (util-linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851517");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 11610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 04:42:29 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-03-03 05:50:59 +0100 (Fri, 03 Mar 2017)");
   script_cve_id("CVE-2017-2616");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for util-linux openSUSE-SU-2017:0590-1 (util-linux)");
   script_tag(name: "summary", value: "Check the version of util-linux");

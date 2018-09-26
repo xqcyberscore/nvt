@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 11600 2018-09-25 11:20:01Z cfischer $
+# $Id: smb_nt.inc 11621 2018-09-26 10:00:23Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11600 $
+# $Revision: 11621 $
 #
 ###############################################################################
 
@@ -4608,19 +4608,60 @@ function registry_enum_value( soc, uid, tid, pipe, reply ) {
   return list;
 }
 
-#---------------------------------------------------------------------#
-# RegOpenKey()                                                        #
-#---------------------------------------------------------------------#
+# @brief Implementation of RegOpenKey() to open a specific registry key on the remote registry
+#        of the target. The function is mostly called internally by other functions like @ref registry_enum_keys
+#        or @ref registry_key_exists.
+#
+# @param soc   The TCP socket for the current connection
+# @param uid   TODO: ?
+# @param tid   TODO: ?
+# @param pipe  TODO: ?
+# @param key   The specific key to open, e.g. "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\"
+# @param reply TODO: ?
+#
+# @note Functions calling this function should close the handle via @ref registry_close in a form like:
+#
+#       r = registry_get_key( soc:soc, uid:uid, tid:tid, pipe:pipe, key:key, reply:handle );
+#       if( ! isnull( r ) registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
+#
+# @return The handle to the opened registry-key (in binary form) for later use within other functions,
+#         FALSE if the registry key doesn't exist and NULL if any of the mandatory function parameters
+#         are missing or the connection to the registry or opening the specific registry key failed
+#         due to e.g. connectivity issues or permission problems.
+#
 function registry_get_key( soc, uid, tid, pipe, key, reply ) {
 
   local_var soc, uid, tid, pipe, key, reply, res;
 
-  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_get_key" );
-  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_get_key" );
-  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry_get_key" );
-  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry_get_key" );
-  if( isnull( key ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#key#-#registry_get_key" );
-  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry_get_key" );
+  if( isnull( soc ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_get_key" );
+    return NULL;
+  }
+
+  if( isnull( uid ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_get_key" );
+    return NULL;
+  }
+
+  if( isnull( tid ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry_get_key" );
+    return NULL;
+  }
+
+  if( isnull( pipe ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry_get_key" );
+    return NULL;
+  }
+
+  if( isnull( key ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#key#-#registry_get_key" );
+    return NULL;
+  }
+
+  if( isnull( reply ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry_get_key" );
+    return NULL;
+  }
 
   if( strlen( uid ) == 8 ) {
     res = registry2_get_key( soc:soc, uid:uid, tid:tid, pipe:pipe, key:key, reply:reply );
@@ -4631,6 +4672,8 @@ function registry_get_key( soc, uid, tid, pipe, key, reply ) {
   }
 }
 
+# @brief internal function which shouldn't be called directly, please see @ref registry_get_key
+#        for a description.
 function registry1_get_key( soc, uid, tid, pipe, key, reply, write ) {
 
   # isSignActive, ntlmssp_flag, seq_number, s_sign_key, g_mlo, g_mhi and multiplex_id are global_vars!!!
@@ -4642,12 +4685,35 @@ function registry1_get_key( soc, uid, tid, pipe, key, reply, write ) {
   local_var magic1, req, magic, packet, r, server_resp, orig_sign, serv_sign;
   local_var _na_start, _na_cnt, _na_data;
 
-  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry1_get_key" );
-  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry1_get_key" );
-  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry1_get_key" );
-  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry1_get_key" );
-  if( isnull( key ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#key#-#registry1_get_key" );
-  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry1_get_key" );
+  if( isnull( soc ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry1_get_key" );
+    return NULL;
+  }
+
+  if( isnull( uid ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry1_get_key" );
+    return NULL;
+  }
+
+  if( isnull( tid ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry1_get_key" );
+    return NULL;
+  }
+
+  if( isnull( pipe ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry1_get_key" );
+    return NULL;
+  }
+
+  if( isnull( key ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#key#-#registry1_get_key" );
+    return NULL;
+  }
+
+  if( isnull( reply ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry1_get_key" );
+    return NULL;
+  }
 
   key_len = strlen( key ) + 1;
   key_len_hi = key_len / 256;
@@ -4700,16 +4766,16 @@ function registry1_get_key( soc, uid, tid, pipe, key, reply, write ) {
       req += raw_string( 0x03, 0x80 );
     }
   } else {
-    req += raw_string(0x03, 0x80);
+    req += raw_string( 0x03, 0x80 );
   }
 
   req += magic1 + raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                               0x00, 0x00,tid_low, tid_high );
+                              0x00, 0x00,tid_low, tid_high );
 
   if( ntlmssp_flag ) {
-    req+= raw_string(0x33, 0x0c);
+    req+= raw_string( 0x33, 0x0c );
   } else {
-     req+= raw_string(0x00, 0x28);
+    req+= raw_string( 0x00, 0x28 );
   }
 
   req += raw_string( uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00, 0x00, x_lo,
@@ -4723,7 +4789,7 @@ function registry1_get_key( soc, uid, tid, pipe, key, reply, write ) {
                      x_lo, x_hi, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00,
                      z_lo, z_hi, 0x00, 0x00, 0x00, 0x00, 0x0F, 0x00 );
 
-  if( strlen( reply ) < 85 ) return FALSE ;
+  if( strlen( reply ) < 85 ) return NULL;
 
   magic = raw_string( ord(reply[84] ) );
   for( i = 1; i < 20; i++ ) {
@@ -4747,13 +4813,13 @@ function registry1_get_key( soc, uid, tid, pipe, key, reply, write ) {
       seq_number += 1;
       packet = req;
       req = get_signature( key:s_sign_key, buf:packet, buflen:len, seq_number:seq_number );
-      if( isnull( req ) ) return FALSE;
+      if( isnull( req ) ) return NULL;
     }
   }
 
   send( socket:soc, data:req );
   r = smb_recv( socket:soc );
-  if( strlen( r ) < 10 ) return FALSE;
+  if( strlen( r ) < 10 ) return NULL;
 
   if( ntlmssp_flag ) {
     multiplex_id += 1;
@@ -4762,15 +4828,14 @@ function registry1_get_key( soc, uid, tid, pipe, key, reply, write ) {
       seq_number += 1;
       len = strlen( r );
       server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-      if( isnull( server_resp ) ) return FALSE;
-      if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
-        return FALSE;
+      if( isnull( server_resp ) || ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+        return NULL;
       }
 
       orig_sign = substr( r, 18, 23 );
       serv_sign = substr( server_resp, 18, 23 );
       if( orig_sign != serv_sign ) {
-        return FALSE;
+        return NULL;
       }
     }
   }
@@ -4778,7 +4843,7 @@ function registry1_get_key( soc, uid, tid, pipe, key, reply, write ) {
 
   len = ord( r[2] ) * 256;
   len = len + ord( r[3] );
-  if( len < 100 ) return FALSE;
+  if( len < 100 ) return NULL;
 
   # pull the last 4 bytes off the end
   _na_start = ( strlen( r ) - 4 );
@@ -4789,7 +4854,7 @@ function registry1_get_key( soc, uid, tid, pipe, key, reply, write ) {
   # access denied, returned by Windows XP+
   if( _na_data == raw_string( 0x05, 0x00, 0x00, 0x00 ) ||
       _na_data == raw_string( 0x02, 0x00, 0x00, 0x00 ) ) {
-    return FALSE;
+    return NULL;
   }
 
   if( ord( r[9] ) == 0 ) {
@@ -4799,7 +4864,8 @@ function registry1_get_key( soc, uid, tid, pipe, key, reply, write ) {
   }
 }
 
-##########SMB2 Registry get key################
+# @brief internal function for SMBv2 similar to @ref registry1_get_key which shouldn't be called directly,
+#        please see @ref registry_get_key for a description.
 function registry2_get_key( soc, uid, tid, pipe, key, reply, write ) {
 
   # isSignActive, ntlmssp_flag, seq_number, sign_key, g_mlo, g_mhi and multiplex_id are global_vars!!!
@@ -4812,12 +4878,35 @@ function registry2_get_key( soc, uid, tid, pipe, key, reply, write ) {
   local_var orig_sign, server_resp, serv_sign, len;
   local_var _na_start, _na_cnt, _na_data;
 
-  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry2_get_key" );
-  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry2_get_key" );
-  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry2_get_key" );
-  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry2_get_key" );
-  if( isnull( key ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#key#-#registry2_get_key" );
-  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry2_get_key" );
+  if( isnull( soc ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry2_get_key" );
+    return NULL;
+  }
+
+  if( isnull( uid ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry2_get_key" );
+    return NULL;
+  }
+
+  if( isnull( tid ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry2_get_key" );
+    return NULL;
+  }
+
+  if( isnull( pipe ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry2_get_key" );
+    return NULL;
+  }
+
+  if( isnull( key ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#key#-#registry2_get_key" );
+    return NULL;
+  }
+
+  if( isnull( reply ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry2_get_key" );
+    return NULL;
+  }
 
   key_len = strlen( key ) + 1;
   key_len_hi = key_len / 256;
@@ -4863,7 +4952,7 @@ function registry2_get_key( soc, uid, tid, pipe, key, reply, write ) {
   dcerpc_req2 = raw_string( 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x34, 0x00,
                             0x00, 0x00, 0x00, 0x00, 0x0f, 0x00 );
 
-  if( strlen( reply ) < 141 ) return FALSE ;
+  if( strlen( reply ) < 141 ) return NULL;
 
   magic = raw_string( ord( reply[140] ) );
   for( i = 1; i < 20; i++ ){
@@ -4901,7 +4990,7 @@ function registry2_get_key( soc, uid, tid, pipe, key, reply, write ) {
     sig = get_smb2_signature( buf:req, key:sign_key );
     if( isnull( sig ) ) {
       set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_get_key: buf or key passed to get_smb2_signature empty / too short" );
-      return FALSE;
+      return NULL;
     }
     req = raw_string( 0x00, 0x00, len_hi, len_lo ) + sig;
   } else {
@@ -4911,7 +5000,7 @@ function registry2_get_key( soc, uid, tid, pipe, key, reply, write ) {
   # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
   send( socket:soc, data:req );
   r = smb_recv( socket:soc );
-  if( strlen( r ) < 14 ) return FALSE;
+  if( strlen( r ) < 14 ) return NULL;
 
   ##If status is pending, wait for response
   status = ord( r[12] );
@@ -4919,7 +5008,7 @@ function registry2_get_key( soc, uid, tid, pipe, key, reply, write ) {
   while( status == 3 && status2 == 1 ) {
     ##PDU will arrive late
     r = smb_recv(socket:soc);
-    if( strlen( r ) < 14 ) return FALSE;
+    if( strlen( r ) < 14 ) return NULL;
     status = ord( r[12] );
     status2 = ord( r[13] );
   }
@@ -4931,17 +5020,16 @@ function registry2_get_key( soc, uid, tid, pipe, key, reply, write ) {
       seq_number += 1;
       r_head = substr( r, 0, 3 );
       r = substr( r, 4, strlen( r ) - 1 );
-      if( strlen( r ) < 64 ) return FALSE;
+      if( strlen( r ) < 64 ) return NULL;
 
       orig_sign = substr( r, 48, 63 );
       server_resp = get_smb2_signature( buf:r, key:sign_key );
-      if( isnull( server_resp ) ) return FALSE;
-      if( strlen( server_resp ) < 64 ) return FALSE;
+      if( isnull( server_resp ) || strlen( server_resp ) < 64 ) return NULL;
 
       serv_sign = substr( server_resp, 48, 63 );
 
       if( orig_sign != serv_sign ) {
-        return FALSE;
+        return NULL;
       } else {
         r = r_head + r;
       }
@@ -4951,7 +5039,7 @@ function registry2_get_key( soc, uid, tid, pipe, key, reply, write ) {
 
   len = ord( r[2] ) * 256;
   len = len + ord( r[3] );
-  if( len < 100 ) return FALSE;
+  if( len < 100 ) return NULL;
 
   # pull the last 4 bytes off the end
   _na_start = ( strlen( r ) - 4 );
@@ -4962,7 +5050,7 @@ function registry2_get_key( soc, uid, tid, pipe, key, reply, write ) {
   # access denied, returned by Windows XP+
   if( _na_data == raw_string( 0x05, 0x00, 0x00, 0x00 ) ||
       _na_data == raw_string( 0x02, 0x00, 0x00, 0x00 ) ) {
-    return FALSE;
+    return NULL;
   }
 
   ## 8 + BIOS-4bytes
@@ -5105,7 +5193,8 @@ function registry_key_exists( key, type ) {
   }
 
   r2 = registry_get_key( soc:soc, uid:uid, tid:tid, pipe:pipe, key:key, reply:r );
-  registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r2 );
+  if( ! isnull( r2 ) )
+    registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r2 );
   registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
 
   close( soc );
@@ -6220,6 +6309,8 @@ function registry_get_dword( key, item, type ) {
     return r3_value;
   }
 
+  if( ! isnull( r2 ) )
+    registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r2 );
   registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
   close( soc );
   return NULL;
@@ -6370,6 +6461,8 @@ function registry_get_binary( key, item, type ) {
     return r3_value;
   }
 
+  if( ! isnull( r2 ) )
+    registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r2 );
   registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
   close( soc );
   return FALSE;
@@ -6535,6 +6628,8 @@ function registry_get_sz( key, item, type ) {
     return r3_value;
   }
 
+  if( ! isnull( r2 ) )
+    registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r2 );
   registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
   close( soc );
   return FALSE;

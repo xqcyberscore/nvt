@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807311");
-  script_version("$Revision: 5650 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-0132");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-03-09 12:03:21 +0530 (Wed, 09 Mar 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET XML Validation Security Feature Bypass Vulnerability (3141780)");
@@ -39,8 +39,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-035");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw is due to improper handling of objects
   in memory by .NET's Windows Forms (WinForms) libraries and error when decrypting
@@ -48,12 +47,9 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain elevated privileges or disrupt the availability of
-  applications that use the .NET framework.
+  applications that use the .NET framework.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft .NET Framework 3.0
+  script_tag(name:"affected", value:"Microsoft .NET Framework 3.0
   Microsoft .NET Framework 4.5.2
   Microsoft .NET Framework 4.6 and 4.6.1
   Microsoft .NET Framework 3.5 and 3.5.1
@@ -65,13 +61,13 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3141780");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-035");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3141780");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-035");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
   exit(0);
@@ -83,26 +79,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-key = "";
-item = "";
-path = "";
-dllVer = "";
-sysVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2003:3, win2003x64:3, winVista:3, win7:2, win7x64:2, win2008:3,
    win2008r2:2, win8:1, win8x64:1, win8_1:1, win8_1x64:1, win2012:1, win2012R2:1) <= 0){
   exit(0);
 }
 
-## Confirm .NET
 key = "SOFTWARE\Microsoft\ASP.NET\";
 if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-## Try to Get Version
 foreach item (registry_enum_keys(key:key))
 {
   path = registry_get_sz(key:key + item, item:"Path");
@@ -114,13 +100,13 @@ foreach item (registry_enum_keys(key:key))
 
       ## .NET Framework 2.0 Service Pack 2 on Windows Vista Service Pack 2 and Windows Server 2008 Service Pack 2
       if(hotfix_check_sp(winVista:3, win2008:3) > 0)
-      { 
+      {
          if(version_in_range(version:dllVer2, test_version:"2.0.50727.4000", test_version2:"2.0.50727.4261"))
          {
            VULN = TRUE ;
            vulnerable_range = "2.0.50727.4000 - 2.0.50727.4261 ";
          }
-      
+
          if(version_in_range(version:dllVer2, test_version:"2.0.50727.8000", test_version2:"2.0.50727.8682"))
          {
            VULN = TRUE ;
@@ -134,13 +120,13 @@ foreach item (registry_enum_keys(key:key))
         if(version_in_range(version:dllVer2, test_version:"2.0.50727.6000", test_version2:"2.0.50727.6431"))
         {
           VULN = TRUE ;
-          vulnerable_range = "2.0.50727.6000 - 2.0.50727.6431"; 
+          vulnerable_range = "2.0.50727.6000 - 2.0.50727.6431";
         }
 
         if(version_in_range(version:dllVer2, test_version:"2.0.50727.8000", test_version2:"2.0.50727.8684"))
         {
           VULN = TRUE ;
-          vulnerable_range = "2.0.50727.8000 - 2.0.50727.8684";       
+          vulnerable_range = "2.0.50727.8000 - 2.0.50727.8684";
         }
       }
 
@@ -151,7 +137,7 @@ foreach item (registry_enum_keys(key:key))
         {
           VULN = TRUE ;
           vulnerable_range = "2.0.50727.8600 - 2.0.50727.8684";
-        } 
+        }
 
         if(version_in_range(version:dllVer2, test_version:"2.0.50727.8000", test_version2:"2.0.50727.8019"))
         {
@@ -166,7 +152,7 @@ foreach item (registry_enum_keys(key:key))
         if(version_in_range(version:dllVer2, test_version:"2.0.50727.5400", test_version2:"2.0.50727.5495"))
         {
           VULN = TRUE ;
-          vulnerable_range = "2.0.50727.5400 - 2.0.50727.5495";     
+          vulnerable_range = "2.0.50727.5400 - 2.0.50727.5495";
         }
 
         if(version_in_range(version:dllVer2, test_version:"2.0.50727.8000", test_version2:"2.0.50727.8683"))
@@ -177,24 +163,23 @@ foreach item (registry_enum_keys(key:key))
       }
 
       ##  NET Framework 4.5.2 in Windows Vista Service Pack 2, Windows Server 2008 Service Pack 2,
-      ## Windows 7 Service Pack 1, and Windows Server 2008 R2 Service Pack 1
       else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, winVista:3, win2008:3) > 0)
-      { 
+      {
         if(version_in_range(version:dllVer2, test_version:"4.0.30319.34000", test_version2:"4.0.30319.34290"))
         {
           VULN = TRUE ;
           vulnerable_range = "4.0.30319.34000 - 4.0.30319.34290";
         }
-      } 
+      }
 
       # .NET Framework 4.5.2 on Windows Server 2012
       else if((hotfix_check_sp(win2012:1) > 0) &&
          (version_in_range(version:dllVer2, test_version:"4.0.30319.34000", test_version2:"4.0.30319.34291")))
-      { 
+      {
         VULN = TRUE ;
         vulnerable_range = "4.0.30319.34000 - 4.0.30319.34291";
       }
-  
+
       ## .NET Framework 4.5.2 in Windows 8.1, Windows RT 8.1, and Windows Server 2012 R2
       ##  not supporting Windows Server 2012 R2
       else if((hotfix_check_sp(win8_1:1, win8_1x64:1) > 0) &&
@@ -203,7 +188,7 @@ foreach item (registry_enum_keys(key:key))
         VULN = TRUE ;
         vulnerable_range = "4.0.30319.34000 - 4.0.30319.36345";
       }
-     
+
       ## .NET Framework 4.6 and 4.6.1 in Windows 8.1, Windows RT 8.1, and Windows Server 2012 R2
       else if((hotfix_check_sp(win8_1:1, win8_1x64:1, win2012:1) > 0) &&
         (version_in_range(version:dllVer2, test_version:"4.6.1000.0", test_version2:"4.6.1072.0")))
@@ -213,9 +198,8 @@ foreach item (registry_enum_keys(key:key))
       }
 
       ## .NET Framework 4.6 and 4.6.1 in Windows Vista Service Pack 2, Windows Server 2008 Service Pack 2,
-      ## Windows 7 Service Pack 1, and Windows Server 2008 R2 Service Pack 1: March 8, 2016
       else if((hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, winVista:3, win2008:3) > 0) &&
-         (version_in_range(version:dllVer2, test_version:"4.6.1000.0", test_version2:"4.6.1070.0"))) 
+         (version_in_range(version:dllVer2, test_version:"4.6.1000.0", test_version2:"4.6.1070.0")))
       {
         VULN = TRUE ;
         vulnerable_range = "4.6.1000.0 - 4.6.1070.0";
@@ -241,11 +225,10 @@ foreach item (registry_enum_keys(key:key))
   path = registry_get_sz(key:key + item, item:"Path");
   if("\Microsoft.NET\Framework" >< path)
   {
-    ## Get version from System.printing.dll file
     dllVer = fetch_file_version(sysPath:path, file_name:"System.printing.dll");
     if(dllVer)
     {
-      ##NET Framework 3.5 in Windows 8.1 
+      ##NET Framework 3.5 in Windows 8.1
       if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012:1) > 0)
       {
         if(version_in_range(version:dllVer, test_version:"3.0.6920.8700", test_version2:"3.0.6920.8701"))
@@ -253,7 +236,7 @@ foreach item (registry_enum_keys(key:key))
           VULN1 = TRUE ;
           vulnerable_range = "3.0.6920.8700 - 3.0.6920.8701";
         }
- 
+
         if(version_in_range(version:dllVer, test_version:"3.0.6920.8000", test_version2:"3.0.6920.8009"))
         {
           VULN1 = TRUE ;
@@ -279,7 +262,7 @@ foreach item (registry_enum_keys(key:key))
 
       ## Framework 3.0 on Windows 7 Service Pack 1 and Windows Server 2008 R2 Service Pack 1
       else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
-      {   
+      {
         if(version_in_range(version:dllVer, test_version:"3.0.6920.5400", test_version2:"3.0.6920.5470"))
         {
           VULN1 = TRUE ;
@@ -289,19 +272,19 @@ foreach item (registry_enum_keys(key:key))
         if(version_in_range(version:dllVer, test_version:"3.0.6920.8600", test_version2:"3.0.6920.8698"))
         {
           VULN1 = TRUE ;
-          vulnerable_range = "3.0.6920.8600 - 3.0.6920.8698";      
+          vulnerable_range = "3.0.6920.8600 - 3.0.6920.8698";
         }
       }
 
       # .NET Framework 3.0 Service Pack 2 in Windows Vista Service Pack 2 and Windows Server 2008 Service Pack 2
       else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
-      { 
+      {
         if(version_in_range(version:dllVer, test_version:"3.0.6920.4000", test_version2:"3.0.6920.4230"))
         {
           VULN1 = TRUE ;
           vulnerable_range = "3.0.6920.4000 - 3.0.6920.4230";
-        }       
- 
+        }
+
         else if(version_in_range(version:dllVer, test_version:"3.0.6920.8000", test_version2:"3.0.6920.8701"))
         {
           VULN1 = TRUE ;

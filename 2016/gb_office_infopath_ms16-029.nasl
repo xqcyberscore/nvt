@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_office_infopath_ms16-029.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_office_infopath_ms16-029.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Microsoft InfoPath Memory Curruption Vulnerability (3141806)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807603");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2015-2503");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-03-09 14:51:16 +0530 (Wed, 09 Mar 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft InfoPath Memory Curruption Vulnerability (3141806)");
@@ -39,8 +39,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-029.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to Office software fails
   to properly handle objects in memory");

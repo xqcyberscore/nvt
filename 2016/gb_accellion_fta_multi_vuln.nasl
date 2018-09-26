@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_accellion_fta_multi_vuln.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_accellion_fta_multi_vuln.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Accellion FTA Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/h:accellion:secure_file_transfer_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106074");
-  script_version("$Revision: 5534 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2016-05-13 11:42:35 +0700 (Fri, 13 May 2016)");
-  script_tag(name: "cvss_base", value: "7.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11614 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-13 11:42:35 +0700 (Fri, 13 May 2016)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_cve_id("CVE-2016-2350", "CVE-2016-2351", "CVE-2016-2352", "CVE-2016-2353");
 
@@ -51,29 +51,29 @@ if (description)
   script_dependencies("gb_accellion_fta_detect.nasl");
   script_mandatory_keys("accellion_fta/installed");
 
-  script_tag(name: "summary", value: "Accellion FTA is prone to multiple vulnerabilities");
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"summary", value:"Accellion FTA is prone to multiple vulnerabilities");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Multiple vulnerabilities were found in Accellion File Transfer Appliance:
+  script_tag(name:"insight", value:"Multiple vulnerabilities were found in Accellion File Transfer Appliance:
 
-- Multiple cross-site scripting (XSS) vulnerabilities in getimageajax.php, move_partition_frame.html and 
+  - Multiple cross-site scripting (XSS) vulnerabilities in getimageajax.php, move_partition_frame.html and
 wmInfo.html (CVE-2016-2350).
 
-- SQL injection vulnerability in home/seos/courier/security_key2.api via the client_id parameter (CVE-2016-2351).
+  - SQL injection vulnerability in home/seos/courier/security_key2.api via the client_id parameter (CVE-2016-2351).
 
-- Execution of arbitrary commands by leveraging the YUM_CLIENT restricted-user role (CVE-2016-2352).
+  - Execution of arbitrary commands by leveraging the YUM_CLIENT restricted-user role (CVE-2016-2352).
 
-- Allowing local users to add an SSH key to an arbitrary group (CVE-2016-2353).");
+  - Allowing local users to add an SSH key to an arbitrary group (CVE-2016-2353).");
 
-  script_tag(name: "impact", value: "Remote unauthenticated attackers may inject arbitrary web scripts or
+  script_tag(name:"impact", value:"Remote unauthenticated attackers may inject arbitrary web scripts or
 execute arbitrary SQL commands. Remote authenticated attackers may execute arbitrary commands and local users
 gain privileges.");
 
-  script_tag(name: "affected", value: "Accellion FTA Version 9_11_210 and prior.");
+  script_tag(name:"affected", value:"Accellion FTA Version 9_11_210 and prior.");
 
-  script_tag(name: "solution", value: "Upgrade to version 9_12_40 or later");
+  script_tag(name:"solution", value:"Upgrade to version 9_12_40 or later");
 
-  script_xref(name: "URL", value: "http://devco.re/blog/2016/04/21/how-I-hacked-facebook-and-found-someones-backdoor-script-eng-ver/");
+  script_xref(name:"URL", value:"http://devco.re/blog/2016/04/21/how-I-hacked-facebook-and-found-someones-backdoor-script-eng-ver/");
 
   exit(0);
 }

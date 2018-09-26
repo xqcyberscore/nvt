@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-122.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_ms16-122.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Microsoft Video Control Remote Code Execution Vulnerability (3195360)
 #
@@ -26,34 +26,30 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.809063") ;
-  script_version("$Revision: 5557 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.809063");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-0142");
   script_bugtraq_id(93378);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 08:50:54 +0530 (Wed, 12 Oct 2016)");
   script_name("Microsoft Video Control Remote Code Execution Vulnerability (3195360)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS16-122");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists when Microsoft Video Control 
+  script_tag(name:"insight", value:"The flaw exists when Microsoft Video Control
   fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to run arbitrary code in the context of the current user and could
   take control of the affected system if the current user is logged on with
-  administrative user rights.
+  administrative user rights.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows Vista x32/x64 Edition Service Pack 2
+  script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
   Microsoft Windows 8.1 x32/x64 Edition
   Microsoft Windows 10 x32/x64
@@ -75,7 +71,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -86,24 +83,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-vidPath = "";
-vidVer = "";
-report = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, winVistax64:3, win8_1:1, win8_1x64:1,
                    win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 vidPath = smb_get_systemroot();
 if(!vidPath ){
   exit(0);
 }
 
-##Fetch the version of Ntoskrnl.exe
 vidVer = fetch_file_version(sysPath: vidPath, file_name:"System32\Msvidctl.dll");
 edgVer = fetch_file_version(sysPath: vidPath, file_name:"System32\Edgehtml.dll");
 if(!vidVer && !edgVer){
@@ -123,56 +112,43 @@ else if (vidVer =~ "^(6\.5\.9600\.1)"){
   Vulnerable_range = "Less than 6.5.9600.18464";
 }
 
-## Windows Vista
 if(hotfix_check_sp(winVista:3, winVistax64:3) > 0)
 {
-  ## Check for Msvidctl.dll version
   if(version_is_less(version:vidVer, test_version:"6.5.6002.19689")||
      version_in_range(version:vidVer, test_version:"6.5.6002.23000", test_version2:"6.5.6002.24013")){
     VULN = TRUE ;
   }
 }
 
-## Windows 7
 else if(hotfix_check_sp(win7:2, win7x64:2) > 0)
 {
   ## Presently GDR information is not available.
-  ## Check for Msvidctl.dll version
   if(version_is_less(version:vidVer, test_version:"6.5.7601.23544")){
     VULN = TRUE ;
   }
 }
 
-## Windows 8.1
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Msvidctl.dll version
   if(version_is_less(version:vidVer, test_version:"6.5.9600.18464")){
     VULN = TRUE ;
   }
 }
 
-##Windows 10
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Windows 10 Core
-  ## Check for Msvidctl.dll version
   if(version_is_less(version:edgVer, test_version:"11.0.10240.17146"))
   {
     Vulnerable_range1 = "Less than 11.0.10240.17146";
     VULN1 = TRUE ;
   }
 
-  ##Windows 10 Version 1511
-  ## Check for edgehtml.dll version
   else if(version_in_range(version:edgVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.632"))
   {
     Vulnerable_range1 = "11.0.10586.0 - 11.0.10586.632";
     VULN1 = TRUE ;
   }
 
-  ##Windows 10 Version 1607
-  ## Check for edgehtml.dll version
   else if(version_in_range(version:edgVer, test_version:"11.0.14393.0", test_version2:"11.0.14393.320"))
   {
     Vulnerable_range1 = "11.0.14393.0 - 11.0.14393.320";

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20161026-esawsa3.nasl 5813 2017-03-31 09:01:08Z teissa $
+# $Id: gb_cisco_esa_cisco-sa-20161026-esawsa3.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
-# Cisco Email Security Appliance JAR Advanced Malware Protection DoS Vulnerability 
+# Cisco Email Security Appliance JAR Advanced Malware Protection DoS Vulnerability
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -29,20 +29,20 @@ CPE = "cpe:/h:cisco:email_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140021");
- script_cve_id("CVE-2016-6360");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5813 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140021");
+  script_cve_id("CVE-2016-6360");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11614 $");
 
- script_name("Cisco Email Security Appliance JAR Advanced Malware Protection DoS Vulnerability ");
+  script_name("Cisco Email Security Appliance JAR Advanced Malware Protection DoS Vulnerability ");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esawsa3");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esawsa3");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in Advanced Malware Protection (AMP) for Cisco Email Security Appliances (ESA) and
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in Advanced Malware Protection (AMP) for Cisco Email Security Appliances (ESA) and
 Web Security Appliances (WSA) could allow an unauthenticated, remote attacker to cause a partial
 denial of service (DoS) condition due to the AMP process unexpectedly restarting.
 
@@ -57,16 +57,16 @@ vulnerability are not available.
 
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esawsa3");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-10-27 13:46:30 +0200 (Thu, 27 Oct 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_esa_version.nasl");
- script_mandatory_keys("cisco_esa/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-27 13:46:30 +0200 (Thu, 27 Oct 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_esa_version.nasl");
+  script_mandatory_keys("cisco_esa/installed");
  exit(0);
 }
 
@@ -75,7 +75,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'9.5.0-000',
 		'9.5.0-201',
 		'9.6.0-000',

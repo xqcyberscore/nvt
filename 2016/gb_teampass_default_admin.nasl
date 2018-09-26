@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teampass_default_admin.nasl 4763 2016-12-14 08:16:10Z cfi $
+# $Id: gb_teampass_default_admin.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # TeamPass Default Admin Credentials
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:teampass:teampass';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108025");
-  script_version("$Revision: 4763 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-14 09:16:10 +0100 (Wed, 14 Dec 2016) $");
+  script_version("$Revision: 11614 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-13 10:00:00 +0100 (Tue, 13 Dec 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -86,7 +86,6 @@ foreach posturl( make_list( "/sources/main.queries.php", "/sources/identify.php"
   csrfcookie = eregmatch( pattern:"Set-Cookie: ([a-z0-9]+=[a-z0-9;]+)", string:res );
   if( ! isnull( csrfcookie[1] ) ) cookie += " " + csrfcookie[1];
 
-  #Check if Client-Server exchanges are encrypted (default is on)
   encrypted = eregmatch( pattern:'id="encryptClientServer" value="([01]+)"', string:res );
   if( encrypted[1] == "1" ) continue; # TODO: We currently don't have AES CTR encrypt/decrypt support in the libs
 

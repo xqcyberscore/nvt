@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_compat_pack_ms16-029.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_ms_office_compat_pack_ms16-029.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerability (3134226)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807600");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11607 $");
   script_cve_id("CVE-2016-0134");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 12:44:50 +0530 (Wed, 10 Feb 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerability (3134226)");
@@ -39,8 +39,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important  security
   update according to Microsoft Bulletin MS16-015.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to Office software fails
   to properly handle objects in memory.");

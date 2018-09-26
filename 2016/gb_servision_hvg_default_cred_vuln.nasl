@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_servision_hvg_default_cred_vuln.nasl 8654 2018-02-05 08:19:22Z cfischer $
+# $Id: gb_servision_hvg_default_cred_vuln.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # SerVision HVG Default Credentials Vulnerability
 #
@@ -27,42 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807072");
-  script_version("$Revision: 8654 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2015-0930");
   script_bugtraq_id(72433);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-16 16:15:07 +0530 (Tue, 16 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("SerVision HVG Default Credentials Vulnerability");
 
-  script_tag(name:"summary", value:"This host is running SerVision HVG and is 
+  script_tag(name:"summary", value:"This host is running SerVision HVG and is
   prone to default Hard-Coded Password security bypass vulnerability.");
 
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP POST and
   check whether it is able to bypass authentication or not.");
 
-  script_tag(name:"insight", value:"The flaw is due to SerVision HVG contains 
-  a hardcoded password that enables a user to log into the web interface with 
+  script_tag(name:"insight", value:"The flaw is due to SerVision HVG contains
+  a hardcoded password that enables a user to log into the web interface with
   administrative rights.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow remote 
-  unauthenticated users to log into the web interface with administrative 
-  rights and gain administrative privileges on the device.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  unauthenticated users to log into the web interface with administrative
+  rights and gain administrative privileges on the device.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"SerVision HVG400 Video Gateway devices with 
+  script_tag(name:"affected", value:"SerVision HVG400 Video Gateway devices with
   firmware before 2.2.26a100");
 
-  script_tag(name:"solution", value:"Upgrade to SerVision HVG Video Gateway 
+  script_tag(name:"solution", value:"Upgrade to SerVision HVG Video Gateway
   devices with firmware 2.2.26a100 or later.
   For updates refer to http://www.servision.net");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://www.kb.cert.org/vuls/id/522460");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Feb/57");
+  script_xref(name:"URL", value:"https://www.kb.cert.org/vuls/id/522460");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Feb/57");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -88,7 +86,6 @@ if('user_username' >< buf && 'user_password' >< buf)
 
   host = http_host_name(port:hvgPort);
 
-  ## Construct the crafted data
   postData = string('user_username=admin&user_password=Bantham&LOADED=1&TO_LOAD=index.htm');
 
   #Send Attack Request and Receive response
@@ -99,23 +96,19 @@ if('user_username' >< buf && 'user_password' >< buf)
                "\r\n", postData, "\r\n");
   res = http_send_recv(port:hvgPort, data:req);
 
-  ##Grep for cookie
   cookie = eregmatch( pattern:"Set-Cookie: ([0-9a-zA-Z=]+);", string:res );
   if(!cookie[1]){
     exit(0);
   }
 
-  ##Check the login was successful
   if (res && res =~ "HTTP\/1\.[0-9] 201 OK")
   {
-    #Send Request and Receive response
     req = string("GET /top.htm HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
                  "Cookie: ", cookie[1], "\r\n",
                  "Connection: keep-alive\r\n\r\n");
     res = http_keepalive_send_recv(port:hvgPort, data:req);
-  
-    ##Check the response to confirm the vulnerability
+
     if(res =~ "HTTP\/1\.[0-9] 200 OK" && "Logout" >< res)
     {
       report = report_vuln_url( port:hvgPort, url:url );

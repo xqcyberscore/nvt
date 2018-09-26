@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805726");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11612 $");
   script_cve_id("CVE-2015-2426");
   script_bugtraq_id(75951);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-21 11:36:10 +0530 (Tue, 21 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Font Driver Remote Code Execution Vulnerability (3079904)");
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS15-078.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to the Windows Adobe Type
   Manager Library improperly handles specially crafted OpenType fonts.");

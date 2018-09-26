@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_cert_handling_dos_vuln_jun16_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_mongodb_cert_handling_dos_vuln_jun16_lin.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # MongoDB mongod Malformed X.509 Certificate Handling Remote DoS Vulnerability (Linux)
 #
@@ -29,37 +29,34 @@ CPE = "cpe:/a:mongodb:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808151");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 11607 $");
   script_cve_id("CVE-2014-3971");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 10:43:02 +0530 (Tue, 07 Jun 2016)");
   script_name("MongoDB mongod Malformed X.509 Certificate Handling Remote DoS Vulnerability (Linux)");
 
-  script_tag(name: "summary" , value:"The host is installed with MongoDB
+  script_tag(name:"summary", value:"The host is installed with MongoDB
   and is prone to remote denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Flaw is due to improper handling of
+  script_tag(name:"insight", value:"Flaw is due to improper handling of
   X.509 Certificate.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to cause a denial of service (application crash).
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to cause a denial of service (application crash).");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"MongoDB version 2.6.x before 2.6.2 on Linux");
 
-  script_tag(name: "affected" , value:"MongoDB version 2.6.x before 2.6.2 on Linux");
-
-  script_tag(name: "solution" , value:"Upgrade to MongoDB version 2.6.2 or later,
+  script_tag(name:"solution", value:"Upgrade to MongoDB version 2.6.2 or later,
   For updates refer to http://www.mongodb.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://jira.mongodb.org/browse/SERVER-13753");
-  script_xref(name : "URL" , value : "https://github.com/mongodb/mongo/commit/c151e0660b9736fe66b224f1129a16871165251b");
+  script_xref(name:"URL", value:"https://jira.mongodb.org/browse/SERVER-13753");
+  script_xref(name:"URL", value:"https://github.com/mongodb/mongo/commit/c151e0660b9736fe66b224f1129a16871165251b");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -67,7 +64,7 @@ if(description)
   script_family("Databases");
   script_dependencies("gb_mongodb_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/mongodb", 27017);
-  script_mandatory_keys("mongodb/installed","Host/runs_unixoide");
+  script_mandatory_keys("mongodb/installed", "Host/runs_unixoide");
   exit(0);
 }
 
@@ -75,17 +72,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable initialisation
-mbPort = "";
-ver = "";
-
-## Get the app port
 if(!mbPort = get_app_port(cpe:CPE)) exit(0);
 
-## Get the app version
 if(!ver = get_app_version(cpe:CPE, port:mbPort)) exit(0);
 
-## check the version
 if(ver =~ "(^2\.6)")
 {
   if(version_is_less(version:ver, test_version:"2.6.2"))

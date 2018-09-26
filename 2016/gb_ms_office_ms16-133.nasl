@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-133.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_ms_office_ms16-133.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Microsoft Office Suite Multiple Vulnerabilities (3199168)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809718");
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 11607 $");
   script_cve_id("CVE-2016-7232", "CVE-2016-7244", "CVE-2016-7245", "CVE-2016-7233",
                 "CVE-2016-7234", "CVE-2016-7235");
   script_bugtraq_id(94005, 94022, 94026, 94020, 94031, 94029);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 11:41:38 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Suite Multiple Vulnerabilities (3199168)");
@@ -41,21 +41,19 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important
   update according to Microsoft Bulletin MS16-133.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists as,
+
   - Office software fails to properly handle objects in memory.
+
   - Office or Word reads out of bound memory due to an uninitialized variable.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to run arbitrary code in the context of the current user, gain access
-  to potentially sensitive information and cause Office to stop responding.
+  to potentially sensitive information and cause Office to stop responding.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft Office 2007 Service Pack 3
+  script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3
   Microsoft Office 2010 Service Pack 2
   Microsoft Office 2013 Service Pack 1
   Microsoft Office 2016");
@@ -67,13 +65,13 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3127951");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3118396");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/2986253");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115120");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115153");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115135");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-133");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3127951");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3118396");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/2986253");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3115120");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3115153");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3115135");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-133");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -89,18 +87,12 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable initialization
-offVer = "";
-offPath = "";
-offexeVer = "";
-
 ## MS Office
 offVer = get_kb_item("MS/Office/Ver");
 if(!offVer){
   exit(0);
 }
 
-## Get Office File Path
 path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                             item:"CommonFilesDir");
 if(!path){
@@ -113,13 +105,11 @@ if(!path){
 #https://support.microsoft.com/en-us/kb/3118396
 if(offVer =~ "^12\..*")
 {
-  ## Get Version from Mso.dll
   offPath = path + "\Microsoft Shared\Office12" ;
 
   offexeVer = fetch_file_version(sysPath:offPath, file_name:"Mso.dll");
   if(offexeVer)
   {
-    ## Check for mso.dll version
     if(version_in_range(version:offexeVer, test_version:"12.0", test_version2:"12.0.6759.4999"))
     {
       report = 'File checked:     ' + offPath + "\Mso.dll" + '\n' +
@@ -135,12 +125,10 @@ if(offVer =~ "^12\..*")
 ## MS Office 2007
 if(offVer =~ "^12.*")
 {
-  ## Get CommonFilesDir path
   dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                 item:"CommonFilesDir");
   if(dllPath)
   {
-    ## Grep VBE6.DLL file version.
     dllVer6 = fetch_file_version(sysPath:dllPath, file_name:"Microsoft Shared\VBA\VBA6\VBE6.DLL");
     if(dllVer6)
     {
@@ -160,12 +148,10 @@ if(offVer =~ "^12.*")
 ## MS Office 2010
 if(offVer =~ "^14.*")
 {
-  ## Get CommonFilesDir path
   dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                 item:"CommonFilesDir");
   if(dllPath)
   {
-    ## Grep VBE7.dll
     vbVer = fetch_file_version(sysPath:dllPath, file_name:"Microsoft Shared\VBA\VBA7\VBE7.DLL");
     if(vbVer)
     {
@@ -185,13 +171,11 @@ if(offVer =~ "^14.*")
 ## MS Office 2013
 if(offVer =~ "^15.*")
 {
-  ## Get CommonFilesDir path
   dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                 item:"CommonFilesDir");
 
   if(dllPath)
   {
-    ## Grep vbeui.dll
     vbVer = fetch_file_version(sysPath:dllPath, file_name:"Microsoft Shared\VBA\VBA7.1\VBEUI.DLL");
     if(vbVer)
     {
@@ -211,13 +195,11 @@ if(offVer =~ "^15.*")
 ## MS Office 2016
 if(offVer =~ "^16.*")
 {
-  ## Get CommonFilesDir path
   dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                 item:"CommonFilesDir");
 
   if(dllPath)
   {
-    ## Grep vbeui.dll
     path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                               item:"ProgramFilesDir");
     if(path)

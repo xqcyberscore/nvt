@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_dos_vuln05.nasl 4429 2016-11-07 13:14:21Z cfi $
+# $Id: gb_isc_bind_dos_vuln05.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # ISC BIND Denial of Service Vulnerability - 05 - Jan16
 #
@@ -29,29 +29,26 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806999");
-  script_version("$Revision: 4429 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2015-1349");
   script_bugtraq_id(72673);
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-07 14:14:21 +0100 (Mon, 07 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-27 15:07:28 +0530 (Wed, 27 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND Denial of Service Vulnerability - 05 - Jan16");
 
-  script_tag(name: "summary" , value:"The host is installed with ISC BIND and is
+  script_tag(name:"summary", value:"The host is installed with ISC BIND and is
   prone to remote denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an error in
+  script_tag(name:"insight", value:"The flaw is due to an error in
   Trust Anchor Management that can cause named to crash.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers
-  to cause denial of service.
-
-  Impact Level: Application");
+  to cause denial of service.");
 
   script_tag(name:"affected", value:"ISC BIND versions 9.7.0 through 9.10.1-P1.");
 
@@ -60,7 +57,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://kb.isc.org/article/AA-01235");
+  script_xref(name:"URL", value:"https://kb.isc.org/article/AA-01235");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -79,7 +76,6 @@ if( ! infos = get_app_version_and_proto( cpe:CPE, port:bindPort ) ) exit( 0 );
 bindVer = infos["version"];
 proto = infos["proto"];
 
-##Check for vulnerable version
 if(version_in_range(version:bindVer, test_version:"9.7.0", test_version2:"9.10.1.P1"))
 {
   report = report_fixed_ver(installed_version:bindVer, fixed_version: "9.10.1-P2");

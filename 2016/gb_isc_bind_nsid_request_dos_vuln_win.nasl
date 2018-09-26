@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_nsid_request_dos_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_isc_bind_nsid_request_dos_vuln_win.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
-# ISC BIND NSID Request Denial of Service Vulnerability (Windows) 
+# ISC BIND NSID Request Denial of Service Vulnerability (Windows)
 #
 # Authors:
 # Tushar Khelge <ktushar@secpod.com>
@@ -29,31 +29,28 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809460");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 11607 $");
   script_cve_id("CVE-2016-2848");
   script_bugtraq_id(93814);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-24 18:23:32 +0530 (Mon, 24 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ISC BIND NSID Request Denial of Service Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with ISC BIND and is
+  script_tag(name:"summary", value:"The host is installed with ISC BIND and is
   prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to mishandling of 
-  packets with malformed options. A remote attacker could use this flaw to make 
-  named exit unexpectedly with an assertion failure via a specially crafted DNS 
+  script_tag(name:"insight", value:"The flaw exists due to mishandling of
+  packets with malformed options. A remote attacker could use this flaw to make
+  named exit unexpectedly with an assertion failure via a specially crafted DNS
   packet.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause a denial of service.
-
-  Impact Level: Application");
+  attackers to cause a denial of service.");
 
   script_tag(name:"affected", value:"ISC BIND versions 9.1.0 through 9.8.4-P2
   and 9.9.0 through 9.9.2-P2 on Windows.");
@@ -64,7 +61,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://kb.isc.org/article/AA-01433/74/CVE-2016-2848");
+  script_xref(name:"URL", value:"https://kb.isc.org/article/AA-01433/74/CVE-2016-2848");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -83,7 +80,6 @@ if( ! infos = get_app_version_and_proto( cpe:CPE, port:bindPort ) ) exit( 0 );
 bindVer = infos["version"];
 proto = infos["proto"];
 
-## Check for vulnerable version
 if(version_in_range(version:bindVer, test_version:"9.1.0", test_version2:"9.8.4.P2") ||
    version_in_range(version:bindVer, test_version:"9.9.0", test_version2:"9.9.2.P2"))
 {

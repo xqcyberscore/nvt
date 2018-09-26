@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_advisory_3155527.nasl 11426 2018-09-17 09:38:26Z asteins $
+# $Id: gb_ms_advisory_3155527.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Microsoft Windows Cipher Suites For FalseStart MiTM Vulnerability (3155527)
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807326");
-  script_version("$Revision: 11426 $");
+  script_version("$Revision: 11614 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 12:46:33 +0530 (Wed, 11 May 2016)");
   script_name("Microsoft Windows Cipher Suites For FalseStart MiTM Vulnerability (3155527)");
 
   script_tag(name:"summary", value:"This host is missing a security update
   according to Microsoft Security Advisory 3155527");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists in FalseStart which allows
   the TLS client to send application data before receiving and verifying the

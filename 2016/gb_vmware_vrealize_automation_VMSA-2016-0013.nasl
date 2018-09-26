@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_automation_VMSA-2016-0013.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_vmware_vrealize_automation_VMSA-2016-0013.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # VMSA-2016-0013: VMware vRealize Automation updates address multiple security issues
 #
@@ -29,37 +29,37 @@ CPE = 'cpe:/a:vmware:vrealize_automation';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105881");
- script_cve_id("CVE-2016-5335","CVE-2016-5336");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5867 $");
- script_name("VMSA-2016-0013: VMware vRealize Automation updates address multiple security issues");
+  script_oid("1.3.6.1.4.1.25623.1.0.105881");
+  script_cve_id("CVE-2016-5335", "CVE-2016-5336");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11614 $");
+  script_name("VMSA-2016-0013: VMware vRealize Automation updates address multiple security issues");
 
- script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0013.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0013.html");
 
- script_tag(name: "vuldetect" , value:"Check the version");
+  script_tag(name:"vuldetect", value:"Check the version");
 
- script_tag(name: "solution" , value:"Update to 7.1 or newer");
+  script_tag(name:"solution", value:"Update to 7.1 or newer");
 
- script_tag(name: "summary" , value:"VMware vRealize Automation updates address multiple security issues");
- script_tag(name: "insight" , value:"VMware vRealize Automation contain a vulnerability that may allow for a local privilege escalation. Exploitation of this issue may lead to
+  script_tag(name:"summary", value:"VMware vRealize Automation updates address multiple security issues");
+  script_tag(name:"insight", value:"VMware vRealize Automation contain a vulnerability that may allow for a local privilege escalation. Exploitation of this issue may lead to
 an attacker with access to a low-privileged account to escalate their privileges to that of root.
 
 vRealize Automation contains also a vulnerability that may allow for remote code execution. Exploitation of this issue may lead to an attacker gaining access to a
 low-privileged account on the appliance.");
 
- script_tag(name: "affected" , value:"vRealize Automation 7.0.x");
+  script_tag(name:"affected", value:"vRealize Automation 7.0.x");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
- script_tag(name:"creation_date", value:"2016-08-25 12:46:41 +0200 (Thu, 25 Aug 2016)");
- script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"solution_type", value:"VendorFix");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_vrealize_automation_web_detect.nasl");
- script_mandatory_keys("vmware/vrealize/automation/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-25 12:46:41 +0200 (Thu, 25 Aug 2016)");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_vrealize_automation_web_detect.nasl");
+  script_mandatory_keys("vmware/vrealize/automation/version");
 
  exit(0);
 
@@ -70,7 +70,7 @@ include("host_details.inc");
 
 if( ! version = get_app_version( cpe:CPE, nofork:TRUE ) ) exit( 0 );
 
-if( version =~ "^7\." ) 
+if( version =~ "^7\." )
 {
   if( version_is_less( version:version, test_version:"7.1.0" ) ) fix = '7.1.0';
 

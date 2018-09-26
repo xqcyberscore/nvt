@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_inotes_domino_xss_vuln_june16.nasl 7575 2017-10-26 09:47:04Z cfischer $
+# $Id: gb_ibm_inotes_domino_xss_vuln_june16.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # IBM INotes and Domino Cross-site Scripting Vulnerability - June16
 #
@@ -29,28 +29,25 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808111");
-  script_version("$Revision: 7575 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2014-0913");
   script_bugtraq_id(67297);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 17:28:31 +0530 (Fri, 03 Jun 2016)");
   script_name("IBM INotes and Domino Cross-site Scripting Vulnerability - June16");
 
   script_tag(name:"summary", value:"This host is installed with IBM Domino and
   is prone to cross-site scripting vulnerability");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to insufficient validation
   of user supplied input via an e-mail message.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to execute commands as the logged-in user and/or expose user personal data.
-
-  Impact Level: System/Application");
+  to execute commands as the logged-in user and/or expose user personal data.");
 
   script_tag(name:"affected", value:"IBM iNotes and Domino 8.5.3 FP6 before
   IF2 and 9.0.1 before FP1");
@@ -64,7 +61,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21671981");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21671981");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -77,9 +74,6 @@ if(description)
 include("version_func.inc");
 include("revisions-lib.inc"); # Used in get_highest_app_version
 include("host_details.inc");
-
-## Variable Initialization
-domVer = "";
 
 if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);

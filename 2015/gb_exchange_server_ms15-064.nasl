@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exchange_server_ms15-064.nasl 11422 2018-09-17 07:30:48Z mmartin $
+# $Id: gb_exchange_server_ms15-064.nasl 11612 2018-09-26 05:47:26Z cfischer $
 #
 # Microsoft Exchange Server Privilege Escalation Vulnerability (3062157)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805198");
-  script_version("$Revision: 11422 $");
+  script_version("$Revision: 11612 $");
   script_cve_id("CVE-2015-1764", "CVE-2015-1771", "CVE-2015-2359");
   script_bugtraq_id(75007, 75011, 75013);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-10 10:26:35 +0530 (Wed, 10 Jun 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Exchange Server Privilege Escalation Vulnerability (3062157)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-064.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw is due to Microsoft Exchange web
   applications when Exchange does not properly manage same-origin policy.");

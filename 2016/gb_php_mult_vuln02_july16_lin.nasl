@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln02_july16_lin.nasl 10457 2018-07-09 06:23:47Z cfischer $
+# $Id: gb_php_mult_vuln02_july16_lin.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # PHP Multiple Vulnerabilities - 02 - Jul16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808601");
-  script_version("$Revision: 10457 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-4344", "CVE-2016-4345", "CVE-2016-4346");
   script_bugtraq_id(84351);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:23:47 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 12:14:00 +0530 (Thu, 14 Jul 2016)");
   script_name("PHP Multiple Vulnerabilities - 02 - Jul16 (Linux)");
 
@@ -56,9 +56,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to cause a denial of service or possibly have unspecified
-  other impact.
-
-  Impact Level: Application");
+  other impact.");
 
   script_tag(name:"affected", value:"PHP versions prior to 7.0.4 on Linux");
 

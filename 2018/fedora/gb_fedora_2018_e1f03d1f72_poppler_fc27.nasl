@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_e1f03d1f72_poppler_fc27.nasl 11042 2018-08-18 06:42:47Z santu $
+# $Id: gb_fedora_2018_e1f03d1f72_poppler_fc27.nasl 11610 2018-09-26 02:42:29Z ckuersteiner $
 #
 # Fedora Update for poppler FEDORA-2018-e1f03d1f72
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874949");
-  script_version("$Revision: 11042 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 08:42:47 +0200 (Sat, 18 Aug 2018) $");
+  script_version("$Revision: 11610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 04:42:29 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 06:36:40 +0200 (Wed, 15 Aug 2018)");
   script_cve_id("CVE-2018-13988", "CVE-2017-18267", "CVE-2017-1000456", "CVE-2017-15565",
                 "CVE-2017-14926", "CVE-2017-14927", "CVE-2017-14928", "CVE-2017-14617",
                 "CVE-2017-14517", "CVE-2017-14518", "CVE-2017-14519", "CVE-2017-14929");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for poppler FEDORA-2018-e1f03d1f72");
   script_tag(name:"summary", value:"Check the version of poppler");

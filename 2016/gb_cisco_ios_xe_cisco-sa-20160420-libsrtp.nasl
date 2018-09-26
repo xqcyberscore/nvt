@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160420-libsrtp.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_cisco_ios_xe_cisco-sa-20160420-libsrtp.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Multiple Cisco Products libSRTP Denial of Service Vulnerability
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105661");
- script_cve_id("CVE-2015-6360");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5580 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105661");
+  script_cve_id("CVE-2015-6360");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11614 $");
 
- script_name("Multiple Cisco Products libSRTP Denial of Service Vulnerability");
+  script_name("Multiple Cisco Products libSRTP Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160420-libsrtp");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160420-libsrtp");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"Cisco released version 1.5.3 of the Secure Real-Time Transport Protocol (SRTP) library (libSRTP), which addresses a denial of service (DoS) vulnerability. Multiple Cisco products incorporate a vulnerable version of the libSRTP library.
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"Cisco released version 1.5.3 of the Secure Real-Time Transport Protocol (SRTP) library (libSRTP), which addresses a denial of service (DoS) vulnerability. Multiple Cisco products incorporate a vulnerable version of the libSRTP library.
 
 The vulnerability is in the encryption processing subsystem of libSRTP and could allow an unauthenticated, remote attacker to trigger a DoS condition. The vulnerability is due to improper input validation of certain fields of SRTP packets. An attacker could exploit this vulnerability by sending a crafted SRTP packet designed to trigger the issue to an affected device.
 
@@ -50,16 +50,16 @@ The impact of this vulnerability on Cisco products may vary depending on the aff
 
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160420-libsrtp");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-09 17:29:13 +0200 (Mon, 09 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-09 17:29:13 +0200 (Mon, 09 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
  exit(0);
 }
 
@@ -68,7 +68,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'3.10.0S',
 		'3.10.1S',
 		'3.10.1xbS',

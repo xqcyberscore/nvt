@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortigate_FG-IR-16-023_remote.nasl 9415 2018-04-10 06:55:50Z cfischer $
+# $Id: gb_fortigate_FG-IR-16-023_remote.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # FortiOS: Cookie Parser Buffer Overflow Vulnerability (remote check)
 #
@@ -27,24 +27,24 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105886");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 9415 $");
- script_cve_id("CVE-2016-6909");
- script_name("FortiOS: Cookie Parser Buffer Overflow Vulnerability (remote check)");
+  script_oid("1.3.6.1.4.1.25623.1.0.105886");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11614 $");
+  script_cve_id("CVE-2016-6909");
+  script_name("FortiOS: Cookie Parser Buffer Overflow Vulnerability (remote check)");
 
- script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-16-023");
+  script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-16-023");
 
- script_tag(name: "impact" , value:"This vulnerability, when exploited by a crafted HTTP request, can result in execution control being taken over.");
+  script_tag(name:"impact", value:"This vulnerability, when exploited by a crafted HTTP request, can result in execution control being taken over.");
 
- script_tag(name: "vuldetect" , value:"Check the Etag");
- script_tag(name: "solution" , value:"Upgrade to release 5.x.
+  script_tag(name:"vuldetect", value:"Check the Etag");
+  script_tag(name:"solution", value:"Upgrade to release 5.x.
 Upgrade to release 4.3.9 or above for models not compatible with FortiOS 5.x.");
 
- script_tag(name: "summary" , value:"FortiGate firmware (FOS) released before Aug 2012 has a cookie parser buffer overflow vulnerability.");
+  script_tag(name:"summary", value:"FortiGate firmware (FOS) released before Aug 2012 has a cookie parser buffer overflow vulnerability.");
 
- script_tag(name: "affected" , value:"FortiGate (FOS):
+  script_tag(name:"affected", value:"FortiGate (FOS):
 
 4.3.8 and below
 
@@ -52,25 +52,25 @@ Upgrade to release 4.3.9 or above for models not compatible with FortiOS 5.x.");
 
 4.1.10 and below");
 
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
- script_tag(name:"creation_date", value:"2016-09-06 11:28:49 +0200 (Tue, 06 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_require_ports("Services/www", 443);
- script_mandatory_keys("ETag/banner");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-06 11:28:49 +0200 (Tue, 06 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 443);
+  script_mandatory_keys("ETag/banner");
 
  exit(0);
 }
 
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("misc_func.inc");
 
 port = get_http_port( default:443 );

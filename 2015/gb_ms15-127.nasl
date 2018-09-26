@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-127.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_ms15-127.nasl 11612 2018-09-26 05:47:26Z cfischer $
 #
 # Microsoft Windows DNS Remote Code Execution Vulnerability (3100465)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806173");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11612 $");
   script_cve_id("CVE-2015-6125");
   script_bugtraq_id(78496);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 10:00:59 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft Windows DNS Remote Code Execution Vulnerability (3100465)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS15-127.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The remote code execution flaw exists in
   Windows Domain Name System (DNS) servers when they fail to properly parse

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-017.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_ms16-017.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Microsoft Windows Remote Desktop Elevation of Privilege Vulnerability (3134700)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:microsoft:rdp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807064");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-0036");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 09:02:28 +0530 (Wed, 10 Feb 2016)");
   script_name("Microsoft Windows Remote Desktop Elevation of Privilege Vulnerability (3134700)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-017.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to mishandling of
   objects in memory by RDP and that is triggered when an attacker logs on

@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843151");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 04:42:29 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-05-06 07:01:11 +0200 (Sat, 06 May 2017)");
   script_cve_id("CVE-2016-6252", "CVE-2017-2616");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for shadow USN-3276-1");
   script_tag(name:"summary", value:"Check the version of shadow");

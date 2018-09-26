@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1508.nasl 11487 2018-09-20 07:02:08Z cfischer $
+# $Id: deb_dla_1508.nasl 11610 2018-09-26 02:42:29Z ckuersteiner $
 #
 # Auto-generated from advisory DLA 1508-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891508");
-  script_version("$Revision: 11487 $");
+  script_version("$Revision: 11610 $");
   script_cve_id("CVE-2016-10728");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1508-1] suricata security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 09:02:08 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 04:42:29 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-20 00:00:00 +0200 (Thu, 20 Sep 2018)");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

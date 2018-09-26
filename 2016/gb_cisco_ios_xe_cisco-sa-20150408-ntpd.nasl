@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20150408-ntpd.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_cisco_ios_xe_cisco-sa-20150408-ntpd.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Multiple Vulnerabilities in ntpd (April 2015) Affecting Cisco Products
 #
@@ -29,44 +29,44 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105677");
- script_cve_id("CVE-2015-1799","CVE-2015-1798");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:P/A:P");
- script_version ("$Revision: 5836 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105677");
+  script_cve_id("CVE-2015-1799", "CVE-2015-1798");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:P/A:P");
+  script_version("$Revision: 11607 $");
 
- script_name("Multiple Vulnerabilities in ntpd (April 2015) Affecting Cisco Products");
+  script_name("Multiple Vulnerabilities in ntpd (April 2015) Affecting Cisco Products");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150408-ntpd");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150408-ntpd");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAMBAlert.x?alertId=36857");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAMBAlert.x?alertId=36857");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAMBAlert.x?alertId=36857");
- 
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"Multiple Cisco products incorporate a version of the ntpd package. Versions of this package are affected by one or more vulnerabilities that could allow an unauthenticated, remote attacker to bypass authentication controls or to create a denial of service (DoS) condition.
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"Multiple Cisco products incorporate a version of the ntpd package. Versions of this package are affected by one or more vulnerabilities that could allow an unauthenticated, remote attacker to bypass authentication controls or to create a denial of service (DoS) condition.
 
 On April 7, 2015, NTP.org and US-CERT released a security advisory dealing with two issues regarding bypass of authentication controls. These vulnerabilities are referenced in this document as follows:
     CVE-2015-1798: NTP Authentication bypass vulnerability
     CVE-2015-1799: NTP Authentication doesn't protect symmetric associations against DoS attacks
 
-Cisco has released software updates that address these vulnerabilities. 
+Cisco has released software updates that address these vulnerabilities.
 
 Workarounds that mitigate these vulnerabilities are available.
 
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150408-ntpd");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
- script_tag(name:"creation_date", value:"2016-05-10 10:51:31 +0200 (Tue, 10 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-10 10:51:31 +0200 (Tue, 10 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
  exit(0);
 }
 
@@ -75,7 +75,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'2.1.0',
 		'2.1.1',
 		'2.1.2',

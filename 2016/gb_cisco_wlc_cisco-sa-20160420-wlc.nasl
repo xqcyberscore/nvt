@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_cisco-sa-20160420-wlc.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: gb_cisco_wlc_cisco-sa-20160420-wlc.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Cisco Wireless LAN Controller Management Interface Denial of Service Vulnerability
 #
@@ -27,33 +27,33 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105742");
- script_cve_id("CVE-2016-1362");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5612 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-06-01 11:56:51 +0200 (Wed, 01 Jun 2016)");
- script_name("Cisco Wireless LAN Controller Management Interface Denial of Service Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.105742");
+  script_cve_id("CVE-2016-1362");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11614 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-01 11:56:51 +0200 (Wed, 01 Jun 2016)");
+  script_name("Cisco Wireless LAN Controller Management Interface Denial of Service Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160420-wlc");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160420-wlc");
 
- script_tag(name: "summary" , value: "A vulnerability in the web-based management interface of Cisco Wireless LAN Controller (WLC) devices running Cisco AireOS Softwar");
- script_tag(name: "impact" , value:"The vulnerability is due to the presence of unsupported URLs in the web-based device management interface provided by the affected software. An attacker could exploit this vulnerability by attempting to access a URL that is not generally accessible from and supported by the management interface. A successful exploit could allow the attacker to cause the device to reload, resulting in a DoS condition.");
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Updates are available");
- script_tag(name: "affected" , value:"Releases 4.1 through 7.4.120.0
+  script_tag(name:"summary", value:"A vulnerability in the web-based management interface of Cisco Wireless LAN Controller (WLC) devices running Cisco AireOS Softwar");
+  script_tag(name:"impact", value:"The vulnerability is due to the presence of unsupported URLs in the web-based device management interface provided by the affected software. An attacker could exploit this vulnerability by attempting to access a URL that is not generally accessible from and supported by the management interface. A successful exploit could allow the attacker to cause the device to reload, resulting in a DoS condition.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Updates are available");
+  script_tag(name:"affected", value:"Releases 4.1 through 7.4.120.0
 All 7.5 releases
 Release 7.6.100.0");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_wlc_version.nasl");
- script_mandatory_keys("cisco_wlc/version");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_wlc_version.nasl");
+  script_mandatory_keys("cisco_wlc/version");
  exit(0);
 }
 

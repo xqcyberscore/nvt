@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_netweaver_mult_vuln_jun16.nasl 8598 2018-01-31 09:59:32Z cfischer $
+# $Id: gb_sap_netweaver_mult_vuln_jun16.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # SAP NetWeaver Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:sap:netweaver';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106104");
-  script_version("$Revision: 8598 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-31 10:59:32 +0100 (Wed, 31 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2016-06-21 15:14:09 +0700 (Tue, 21 Jun 2016)");
-  script_tag(name: "cvss_base", value: "7.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11614 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-21 15:14:09 +0700 (Tue, 21 Jun 2016)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-3974", "CVE-2016-3975", "CVE-2016-3976");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("SAP NetWeaver Multiple Vulnerabilities");
 
@@ -51,11 +51,11 @@ if (description)
   script_dependencies("gb_sap_netweaver_detect.nasl");
   script_mandatory_keys("sap_netweaver/installed");
 
-  script_tag(name: "summary", value: "SAP NetWeaver is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"SAP NetWeaver is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "SAP NetWeaver contains multiple vulnerabilities:
+  script_tag(name:"insight", value:"SAP NetWeaver contains multiple vulnerabilities:
 
 An XML external entity (XXE) vulnerability in the Configuration Wizard allows remote attackers to cause a
 denial of service, conduct SMB Relay attacks, or access arbitrary files via a crafted XML request related
@@ -67,17 +67,17 @@ resource. (CVE-2016-3975)
 An authorized attacker can use a directory traversal attack to read files from the server and then escalate
 his or her privileges. (CVE-2016-3976)");
 
-  script_tag(name: "impact", value: "A remote attacker may cause a denial of service, access arbitrary files
+  script_tag(name:"impact", value:"A remote attacker may cause a denial of service, access arbitrary files
 or hijack user sessions. An authenticated remote attacker may read arbitrary files leading to privilege
 escalation.");
 
-  script_tag(name: "affected", value: "Version 7.1 - 7.5");
+  script_tag(name:"affected", value:"Version 7.1 - 7.5");
 
-  script_tag(name: "solution", value: "Check the references for solutions ");
+  script_tag(name:"solution", value:"Check the references for solutions ");
 
-  script_xref(name: "URL", value: "https://service.sap.com/sap/support/notes/2235994");
-  script_xref(name: "URL", value: "https://service.sap.com/sap/support/notes/2234971");
-  script_xref(name: "URL", value: "https://service.sap.com/sap/support/notes/2238375");
+  script_xref(name:"URL", value:"https://service.sap.com/sap/support/notes/2235994");
+  script_xref(name:"URL", value:"https://service.sap.com/sap/support/notes/2234971");
+  script_xref(name:"URL", value:"https://service.sap.com/sap/support/notes/2238375");
 
   exit(0);
 }

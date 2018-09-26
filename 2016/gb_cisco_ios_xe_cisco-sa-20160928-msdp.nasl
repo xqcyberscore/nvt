@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160928-msdp.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_cisco_ios_xe_cisco-sa-20160928-msdp.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Cisco IOS and IOS XE Software Multicast Routing Denial of Service Vulnerabilities
 #
@@ -29,25 +29,25 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106312");
- script_cve_id("CVE-2016-6392","CVE-2016-6382");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5732 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106312");
+  script_cve_id("CVE-2016-6392", "CVE-2016-6382");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11607 $");
 
- script_name("CiscoIOS XE Software Multicast Routing Denial of Service Vulnerabilities");
+  script_name("CiscoIOS XE Software Multicast Routing Denial of Service Vulnerabilities");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-msdp");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-msdp");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"Multiple vulnerabilities in the multicast subsystem of Cisco IOS XE
+  script_tag(name:"summary", value:"Multiple vulnerabilities in the multicast subsystem of Cisco IOS XE
 Software could allow an unauthenticated, remote attacker to create a denial of service (DoS) condition. The
 issues are in IPv4 Multicast Source Discovery Protocol (MSDP) and IPv6 Protocol Independent Multicast (PIM).");
 
- script_tag(name: "insight", value: "The first vulnerability (Cisco bug ID CSCud36767) is due to insufficient
+  script_tag(name:"insight", value:"The first vulnerability (Cisco bug ID CSCud36767) is due to insufficient
 checking of MSDP Source-Active (SA) messages received from a configured MSDP peer. An attacker who can send
 traffic to the IPv4 address of a device could exploit this vulnerability by sending a packet designed to
 trigger the issue to the affected device.
@@ -56,18 +56,18 @@ The second vulnerability (Cisco bug ID CSCuy16399) is due to insufficient checki
 in a PIM register message. An attacker who can send a malformed IPv6 PIM register packet to a PIM rendezvous
 point (RP) could exploit the vulnerability.");
 
- script_tag(name: "impact", value: "A successful exploit could cause the affected device to restart.");
+  script_tag(name:"impact", value:"A successful exploit could cause the affected device to restart.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-09-29 15:31:35 +0700 (Thu, 29 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-29 15:31:35 +0700 (Thu, 29 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
  exit(0);
 }
 
@@ -76,7 +76,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'3.2.0JA',
 		'3.8.0E',
 		'3.8.1E',

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-150.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_ms16-150.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Microsoft Windows Secure Kernel Mode Privilege Elevation Vulnerability (3205642)
 #
@@ -27,32 +27,28 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810236");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-7271");
   script_bugtraq_id(94734);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-14 08:20:30 +0530 (Wed, 14 Dec 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Secure Kernel Mode Privilege Elevation Vulnerability (3205642)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-150.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to the windows secure kernel
+  script_tag(name:"insight", value:"The flaw exists due to the windows secure kernel
   mode fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a locally
-  authenticated attacker to violate virtual trust levels (VTL).
+  authenticated attacker to violate virtual trust levels (VTL).");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows Server 2016
+  script_tag(name:"affected", value:"Microsoft Windows Server 2016
   Microsoft Windows 10 x32/x64
   Microsoft Windows 10 Version 1511 x32/x64
   Microsoft Windows 10 Version 1607 x32/x64");
@@ -64,13 +60,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3205642");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS16-150");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3205642");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS16-150");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -81,43 +78,31 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-egdeVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-## Fetch the version of 'Edgehtml.dll'
 if(!egdeVer = fetch_file_version(sysPath, file_name:"System32\Edgehtml.dll")){
   exit(0);
 }
 
-## Windows 10 and Windows Server 2016
 if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) > 0)
 {
-  ## Check for egdeVer version
-  ## Windows 10
   if(version_is_less(version:egdeVer, test_version:"11.0.10240.17202"))
   {
     Vulnerable_range = "Less than 11.0.10240.17202";
     VULN = TRUE ;
   }
-  ## Windows 10 Version 1511
   else if(version_in_range(version:egdeVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.712"))
   {
     Vulnerable_range = "11.0.10586.0 - 11.0.10586.712";
     VULN = TRUE ;
   }
-  ## Windows 10 Version 1607 and Windows Server 2016
   else if(version_in_range(version:egdeVer, test_version:"11.0.14393.0", test_version2:"11.0.14393.575"))
   {
     Vulnerable_range = "11.0.14393.0 - 11.0.14393.575";

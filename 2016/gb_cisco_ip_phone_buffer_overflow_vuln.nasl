@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_buffer_overflow_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_cisco_ip_phone_buffer_overflow_vuln.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Cisco IP Phone 8800 Series Web Application Buffer Overflow Vulnerability
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106111");
-  script_version("$Revision: 7573 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2016-06-27 14:59:12 +0700 (Mon, 27 Jun 2016)");
+  script_version("$Revision: 11614 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-27 14:59:12 +0700 (Mon, 27 Jun 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2016-1421");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cisco IP Phone 8800 Series Web Application Buffer Overflow Vulnerability");
 
@@ -49,21 +49,21 @@ if (description)
   script_dependencies("gb_cisco_ip_phone_detect.nasl");
   script_mandatory_keys("cisco/ip_phone/model");
 
-  script_tag(name: "summary", value: "Cisco IP Phone 8800 Series are prone to a buffer overflow vulnerability");
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"summary", value:"Cisco IP Phone 8800 Series are prone to a buffer overflow vulnerability");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The vulnerability exists because the affected software fails to check
+  script_tag(name:"insight", value:"The vulnerability exists because the affected software fails to check
 the bounds of input data. An attacker could exploit this vulnerability by sending a malicious request to
 the web server, which could cause the service to crash.");
 
-  script_tag(name: "impact", value: "A successful exploit could allow the attacker to trigger a buffer
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to trigger a buffer
 overflow and create a DoS condition on the targeted system.");
 
-  script_tag(name: "affected", value: "Cisco IP Phone 8800 Series phones running Release 11.0(1)");
+  script_tag(name:"affected", value:"Cisco IP Phone 8800 Series phones running Release 11.0(1)");
 
-  script_tag(name: "solution", value: "Update to Release 11.5(1) or later");
+  script_tag(name:"solution", value:"Update to Release 11.5(1) or later");
 
-  script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160609-ipp");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160609-ipp");
 
   exit(0);
 }

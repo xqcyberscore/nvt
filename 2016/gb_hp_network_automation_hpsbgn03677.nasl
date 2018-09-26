@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_network_automation_hpsbgn03677.nasl 4652 2016-12-01 10:17:24Z ckuerste $
+# $Id: gb_hp_network_automation_hpsbgn03677.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # HP Network Automation RCE Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:hp:network_automation';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106430");
-  script_version("$Revision: 4652 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-12-01 11:17:24 +0100 (Thu, 01 Dec 2016) $");
-  script_tag(name: "creation_date", value: "2016-12-01 11:55:23 +0700 (Thu, 01 Dec 2016)");
-  script_tag(name: "cvss_base", value: "7.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11614 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-01 11:55:23 +0700 (Thu, 01 Dec 2016)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-8511");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("HP Network Automation RCE Vulnerability");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_hp_network_automation_detect.nasl");
   script_mandatory_keys("hp/network_automation/installed");
 
-  script_tag(name: "summary", value: "HP Network Automation is prone to a remote code execution vulnerability.");
+  script_tag(name:"summary", value:"HP Network Automation is prone to a remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Potential security vulnerabilities in RPCServlet and Java deserialization
+  script_tag(name:"insight", value:"Potential security vulnerabilities in RPCServlet and Java deserialization
 were addressed by HPE Network Automation. The vulnerabilities could be remotely exploited to allow code
 execution.");
 
-  script_tag(name: "impact", value: "An attacker may execute arbitrary code.");
+  script_tag(name:"impact", value:"An attacker may execute arbitrary code.");
 
-  script_tag(name: "affected", value: "HP Network Automation Software v9.1x, v9.2x, v10.00, v10.00.01, v10.00.02,
+  script_tag(name:"affected", value:"HP Network Automation Software v9.1x, v9.2x, v10.00, v10.00.01, v10.00.02,
 v10.10, v10.11, v10.11.01, v10.20.");
 
-  script_tag(name: "solution", value: "Install the provided patches.");
+  script_tag(name:"solution", value:"Install the provided patches.");
 
-  script_xref(name: "URL", value: "https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05344849");
+  script_xref(name:"URL", value:"https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05344849");
 
   exit(0);
 }

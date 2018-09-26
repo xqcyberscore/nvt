@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_viewer_ms14-083.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_ms_excel_viewer_ms14-083.nasl 11612 2018-09-26 05:47:26Z cfischer $
 #
 # Microsoft Office Excel Viewer Remote Code Execution Vulnerability (3017347)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805049");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11612 $");
   script_cve_id("CVE-2014-6360");
   script_bugtraq_id(71500);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 14:08:25 +0530 (Wed, 11 Feb 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Excel Viewer Remote Code Execution Vulnerability (3017347)");
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS14-083.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaws are due to,
 

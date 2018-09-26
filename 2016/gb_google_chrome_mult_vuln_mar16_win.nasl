@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_mar16_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_mult_vuln_mar16_win.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities Mar16 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807457");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11607 $");
   script_cve_id("CVE-2016-2845", "CVE-2016-2844", "CVE-2016-2843", "CVE-2016-1642",
                 "CVE-2016-1641", "CVE-2016-1640", "CVE-2016-1639", "CVE-2016-1637",
                 "CVE-2016-1638", "CVE-2016-1636", "CVE-2016-1635", "CVE-2016-1634",
                 "CVE-2016-1633", "CVE-2016-1632", "CVE-2016-1631", "CVE-2016-1630");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-03-08 10:58:48 +0530 (Tue, 08 Mar 2016)");
   script_name("Google Chrome Multiple Vulnerabilities Mar16 (Windows)");
 
@@ -46,34 +46,43 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists as,
+
   - The Content Security Policy (CSP) implementation in Blink does not ignore
     a URL's path component in the case of a ServiceWorker fetch.
+
   - 'WebKit/Source/core/layout/LayoutBlock.cpp' script in Blink does not
     properly determine when anonymous block wrappers may exist.
+
   - Multiple unspecified vulnerabilities.
+
   - Use-after-free vulnerabilities.
+
   - The Web Store inline-installer implementation in the Extensions UI does not
     block installations upon deletion of an installation frame.
+
   - The 'SkATan2_255' function in 'effects/gradients/SkSweepGradient.cpp' script
     in Skia mishandles arctangent calculations.
+
   - Extensions subsystem does not properly validate the functions.
+
   - The 'PendingScript::notifyFinished' function in 'WebKit/Source/core/dom/PendingScript.cpp'
     script relies on memory-cache information about integrity-check
     occurrences instead of integrity-check successe.
+
   - 'extensions/renderer/render_frame_observer_natives.cc' script does not properly
     consider object lifetimes and re-entrancy issues during
     OnDocumentElementCreated handling.
+
   - The 'PPB_Flash_MessageLoop_Impl::InternalRun' function in 'content/renderer/pepper/ppb_flash_message_loop_impl.cc'
     script in the Pepper plugin mishandles nested message loops.
+
   - The 'ContainerNode::parserRemoveChild' function in 'WebKit/Source/core/dom/ContainerNode.cpp'
     script in Blink mishandles widget updates.");
 
   script_tag(name:"impact", value:"Successful exploitation would allow remote
   attacker to obtain sensitive information, to cause a denial of service, to bypass
   intended access restrictions, to bypass the Subresource Integrity (aka SRI)
-  protection mechanism and to bypass the Same Origin Policy.
-
-  Impact Level: Application");
+  protection mechanism and to bypass the Same Origin Policy.");
 
   script_tag(name:"affected", value:"Google Chrome versions prior to
   49.0.2623.75 on Windows.");

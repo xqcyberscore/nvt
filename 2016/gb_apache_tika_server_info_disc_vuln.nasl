@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tika_server_info_disc_vuln.nasl 11008 2018-08-16 13:26:16Z cfischer $
+# $Id: gb_apache_tika_server_info_disc_vuln.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Apache Tika Server 'fileUrl' Header Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tika";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810252");
-  script_version("$Revision: 11008 $");
+  script_version("$Revision: 11607 $");
   script_cve_id("CVE-2015-3271");
   script_bugtraq_id(9502);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-20 17:03:54 +0530 (Tue, 20 Dec 2016)");
   script_name("Apache Tika Server 'fileUrl' Header Information Disclosure Vulnerability");
   script_tag(name:"summary", value:"The host is installed with Apache Tika Server
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to read arbitrary files, this could be used to return sensitive content
-  from the server machine.
-
-  Impact Level: Application");
+  from the server machine.");
 
   script_tag(name:"affected", value:"Apache Tika Server 1.9");
 

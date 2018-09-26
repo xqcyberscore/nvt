@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bugzilla_mult_vuln.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_bugzilla_mult_vuln.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Bugzilla Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:mozilla:bugzilla';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106164");
-  script_version("$Revision: 5588 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2016-08-02 08:27:33 +0700 (Tue, 02 Aug 2016)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11614 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-02 08:27:33 +0700 (Tue, 02 Aug 2016)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_cve_id("CVE-2015-8508", "CVE-2015-8509");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Bugzilla Multiple Vulnerabilities");
 
@@ -51,12 +51,12 @@ if (description)
   script_dependencies("bugzilla_detect.nasl");
   script_mandatory_keys("bugzilla/installed");
 
-  script_tag(name: "summary", value: "Bugzilla is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Bugzilla is prone to multiple vulnerabilities.");
 
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Bugzilla is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Bugzilla is prone to multiple vulnerabilities:
 
 Cross-site scripting vulnerability in showdependencygraph.cgi when a local dot configuration is used, allows
 remote attackers to inject arbitrary web script or HTML via a crafted bug summary. (CVE-2015-8508)
@@ -64,15 +64,15 @@ remote attackers to inject arbitrary web script or HTML via a crafted bug summar
 Template.pm does not properly construct CSV files, which allows remote attackers to obtain sensitive
 information by leveraging a web browser that interprets CSV data as JavaScript code. (CVE-2015-8509)");
 
-  script_tag(name: "impact", value: "An attacker may obtain sensitive information or inject arbitrary web
+  script_tag(name:"impact", value:"An attacker may obtain sensitive information or inject arbitrary web
 script or HTML.");
 
-  script_tag(name: "affected", value: "Bugzilla 2.x, 3.x, and 4.x before 4.2.16, 4.3.x and 4.4.x before 4.4.11,
+  script_tag(name:"affected", value:"Bugzilla 2.x, 3.x, and 4.x before 4.2.16, 4.3.x and 4.4.x before 4.4.11,
 and 4.5.x and 5.0.x before 5.0.2");
 
-  script_tag(name: "solution", value: "Upgrade to Version 4.2.16, 4.4.11, 5.0.2 or later.");
+  script_tag(name:"solution", value:"Upgrade to Version 4.2.16, 4.4.11, 5.0.2 or later.");
 
-  script_xref(name: "URL", value: "http://seclists.org/bugtraq/2015/Dec/131");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2015/Dec/131");
 
   exit(0);
 }

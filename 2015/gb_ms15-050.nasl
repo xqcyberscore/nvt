@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-050.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_ms15-050.nasl 11612 2018-09-26 05:47:26Z cfischer $
 #
 # Microsoft Windows SCM Privilege_Escalation Vulnerability (3055642)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805615");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11612 $");
   script_cve_id("CVE-2015-1702");
   script_bugtraq_id(74492);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-13 11:46:24 +0530 (Wed, 13 May 2015)");
   script_name("Microsoft Windows SCM Privilege_Escalation Vulnerability (3055642)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-050.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw is due to an error in Service Control
   Manager (SCM) that is due to a failure to properly verify impersonation

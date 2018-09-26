@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_esc_priv_cve_14_3450.nasl 9188 2018-03-23 11:52:59Z jschulte $
+# $Id: gb_panda_esc_priv_cve_14_3450.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Privilege Escalation in Panda Gold Protection 2014 CVE-2014-3450 (Windows)
 #
@@ -26,44 +26,32 @@
 
 CPE = "cpe:/a:pandasecurity:panda_gold_protection";
 
-tag_impact = "This vulnerability allows for privilege escalation on the local system..
-
-Impact level: System.";
-
-tag_affected = "Panda Gold Protection v7.01.01";
-
-tag_insight = "As the USERS group has write permissions over the folder where the PSEvents.exe
-process is located, it is possible to execute malicious code as Local System.";
-
-tag_solution = "Install Panda Hotfix for this vulnerability, see the vendor advisory.";
-
-tag_summary = "This host is running Panda Products and is prone to a Privilege
-Escalation Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107091");
-  script_version("$Revision: 9188 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2014-3450");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 12:52:59 +0100 (Fri, 23 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-18 09:18:47 +0100 (Fri, 18 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Privilege Escalation in Panda Gold Protection 2014 CVE-2014-3450 (Windows)");
-  script_xref(name : "URL" , value : "http://www.anti-reversing.com/cve-2014-3450-privilege-escalation-in-panda-security/");
-  script_xref(name : "URL" , value : "https://www.portcullis-security.com/security-research-and-downloads/security-advisories/cve-2014-3450/");
+  script_xref(name:"URL", value:"http://www.anti-reversing.com/cve-2014-3450-privilege-escalation-in-panda-security/");
+  script_xref(name:"URL", value:"https://www.portcullis-security.com/security-research-and-downloads/security-advisories/cve-2014-3450/");
   script_tag(name:"qod", value:"30");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Privilege escalation");
   script_dependencies("gb_panda_prdts_detect.nasl");
   script_mandatory_keys("Panda/GoldProtection/Ver");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"Panda Gold Protection v7.01.01");
+  script_tag(name:"insight", value:"As the USERS group has write permissions over the folder where the PSEvents.exe
+process is located, it is possible to execute malicious code as Local System.");
+  script_tag(name:"solution", value:"Install Panda Hotfix for this vulnerability, see the vendor advisory.");
+  script_tag(name:"summary", value:"This host is running Panda Products and is prone to a Privilege
+Escalation Vulnerability.");
+  script_tag(name:"impact", value:"This vulnerability allows for privilege escalation on the local system..");
+  script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 

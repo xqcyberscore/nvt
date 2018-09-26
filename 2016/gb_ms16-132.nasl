@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-132.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_ms16-132.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Microsoft Graphics Component Multiple Vulnerabilities (3199120)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809466");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-7210", "CVE-2016-7205", "CVE-2016-7217", "CVE-2016-7256");
   script_bugtraq_id(94030, 94033, 94066, 94156);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 09:56:10 +0530 (Wed, 09 Nov 2016)");
   script_name("Microsoft Graphics Component Multiple Vulnerabilities (3199120)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS16-132.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 

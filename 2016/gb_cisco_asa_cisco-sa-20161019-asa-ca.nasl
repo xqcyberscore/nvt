@@ -1,12 +1,12 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_cisco-sa-20161019-asa-ca.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_cisco_asa_cisco-sa-20161019-asa-ca.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Cisco ASA Software Local Certificate Authority Denial of Service Vulnerability
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
-# 
+#
 #
 # Copyright:
 # Copyright (c) 2016 Greenbone Networks GmbH
@@ -30,17 +30,17 @@ CPE = "cpe:/a:cisco:asa";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.107065");
- script_cve_id("CVE-2016-6431");
- script_tag(name:"cvss_base", value:"7.1");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5650 $");
- script_name("Cisco ASA Software Local Certificate Authority Denial of Service Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.107065");
+  script_cve_id("CVE-2016-6431");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11607 $");
+  script_name("Cisco ASA Software Local Certificate Authority Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161019-asa-ca");
- script_tag(name: "vuldetect" , value:"Check the version.");
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the local Certificate Authority (CA) feature of Cisco ASA Software could allow an unauthenticated, remote attacker to cause a reload of the affected system.
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161019-asa-ca");
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the local Certificate Authority (CA) feature of Cisco ASA Software could allow an unauthenticated, remote attacker to cause a reload of the affected system.
 
 The vulnerability is due to improper handling of crafted packets during the enrollment operation. An attacker could exploit this vulnerability by sending a crafted enrollment request to the affected system. An exploit could allow the attacker to cause the reload of the affected system.
 
@@ -49,22 +49,22 @@ interface, where the local CA is allowing user enrollment, can be used to trigge
 vulnerability. This vulnerability affects
 systems configured in routed firewall mode and in single
 or
-multiple context mode. 
+multiple context mode.
 
 Cisco has released software updates that address this vulnerability. There are no workarounds that address this vulnerability.
 
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161019-asa-ca");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-10-20 13:35:43 +0200 (Thu, 20 Oct 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
- script_mandatory_keys("cisco_asa/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-20 13:35:43 +0200 (Thu, 20 Oct 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
+  script_mandatory_keys("cisco_asa/version");
  exit(0);
 }
 
@@ -74,7 +74,7 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE, nofork: TRUE ) ) exit( 0 );
 check_vers = ereg_replace(string:version, pattern:"\(([0-9.]+)\)", replace:".\1");
 
-affected = make_list( 
+affected = make_list(
                 '8.0.2.11',
                 '8.0.2.15',
                 '8.0.3',

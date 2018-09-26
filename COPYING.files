@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 25 Sep 2018 14:35:58 +0200
+# Automatically created on:  Wed, 26 Sep 2018 12:17:23 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39091,6 +39091,7 @@
 2018/debian/deb_4302.nasl: GPLv2+
 2018/debian/deb_4303.nasl: GPLv2+
 2018/debian/deb_4304.nasl: GPLv2+
+2018/debian/deb_4305.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39520,6 +39521,9 @@
 2018/debian/deb_dla_1515.nasl: GPLv2+
 2018/debian/deb_dla_1516.nasl: GPLv2+
 2018/debian/deb_dla_1517.nasl: GPLv2+
+2018/debian/deb_dla_1518.nasl: GPLv2+
+2018/debian/deb_dla_1519.nasl: GPLv2+
+2018/debian/deb_dla_1520.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -42859,6 +42863,7 @@ gb_cisco_unified_commu_manager_detect.nasl: GPLv2+
 gb_cisco_vcs_detect.nasl: GPLv2+
 gb_cisco_vcs_ssh_detect.nasl: GPLv2+
 gb_cisco_video_surveillance_detect.nasl: GPLv2+
+gb_cisco_vsom_detect.nasl: GPLv2+
 gb_cisco_webexarf_detect_win.nasl: GPLv2+
 gb_cisco_webex_meetings_server_detect.nasl: GPLv2+
 gb_cisco_webexwrf_detect_win.nasl: GPLv2+
@@ -59659,6 +59664,7 @@ gsf/2018/cisco/gb_cisco_ucs_director_cisco-sa-20180418-uscd.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ucs_director_cisco-sa-20180606-ucsdimcs.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ucs_manager_cisco-sa-20180620-nxos-cdp.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_vcs_cisco-sa-20180815-ucmimps-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_vsom_cisco-sa-20180921-vsm.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_webex_meeting_server_mult_rce_vuln_feb18.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_wlc_cisco-sa-20180502-aironet-auth.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_wlc_cisco-sa-20180502-wlc-id.nasl: GPLv2+
@@ -59748,6 +59754,8 @@ gsf/2018/f5/gb_f5_big_ip_K15526101.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16355.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16674.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16845.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K17113.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K17263.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K17403481.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K18015201.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K18174924.nasl: GPLv2+

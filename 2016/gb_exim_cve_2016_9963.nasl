@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exim_cve_2016_9963.nasl 5360 2017-02-20 11:43:30Z teissa $
+# $Id: gb_exim_cve_2016_9963.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
-# Exim Information Disclosure Vulnerability 
+# Exim Information Disclosure Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:exim:exim';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106485");
-  script_version("$Revision: 5360 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-20 12:43:30 +0100 (Mon, 20 Feb 2017) $");
-  script_tag(name: "creation_date", value: "2016-12-23 10:52:32 +0700 (Fri, 23 Dec 2016)");
+  script_version("$Revision: 11607 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-23 10:52:32 +0700 (Fri, 23 Dec 2016)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-9963");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Exim Information Disclosure Vulnerability");
 
@@ -52,20 +52,20 @@ if (description)
   script_require_ports("Services/smtp", 25);
   script_mandatory_keys("exim/installed");
 
-  script_tag(name: "summary", value: "Exim is prone to an information disclosure vulnerability.");
+  script_tag(name:"summary", value:"Exim is prone to an information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "If several conditions are met, Exim leaks private information to a remote
+  script_tag(name:"insight", value:"If several conditions are met, Exim leaks private information to a remote
 attacker.");
 
-  script_tag(name: "impact", value: "A remote attacker may obtain private information.");
+  script_tag(name:"impact", value:"A remote attacker may obtain private information.");
 
-  script_tag(name: "affected", value: "Exim 4.69 until 4.87.");
+  script_tag(name:"affected", value:"Exim 4.69 until 4.87.");
 
-  script_tag(name: "solution", value: "Update to Exim 4.87.1 or later.");
+  script_tag(name:"solution", value:"Update to Exim 4.87.1 or later.");
 
-  script_xref(name: "URL", value: "https://bugs.exim.org/show_bug.cgi?id=1996");
+  script_xref(name:"URL", value:"https://bugs.exim.org/show_bug.cgi?id=1996");
 
   exit(0);
 }

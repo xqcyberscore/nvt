@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-102.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_ms16-102.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Microsoft Windows PDF Library Remote Code Execution Vulnerability (3182248)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808647");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-3319");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-10 09:19:34 +0530 (Wed, 10 Aug 2016)");
   script_name("Microsoft Windows PDF Library Remote Code Execution Vulnerability (3182248)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-102");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to Windows PDF Library
   improperly handles objects in memory.");

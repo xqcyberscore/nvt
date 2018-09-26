@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805735");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11612 $");
   script_cve_id("CVE-2015-2468");
   script_bugtraq_id(76206);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-13 11:50:44 +0530 (Thu, 13 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft SharePoint Server WAS Remote Code Execution Vulnerability (3080790)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-081.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw exists as it fails to properly handle
   objects in memory.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms15-128.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_dotnet_framework_ms15-128.nasl 11612 2018-09-26 05:47:26Z cfischer $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerabilities (3104503)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806647");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11612 $");
   script_cve_id("CVE-2015-6108");
   script_bugtraq_id(78499);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 13:05:49 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerabilities (3104503)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS15-128.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaws exist due to an error in
   Windows font library which improperly handles specially crafted embedded

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_cpe_detect.nasl 11378 2018-09-13 13:32:03Z cfischer $
+# $Id: gb_windows_cpe_detect.nasl 11613 2018-09-26 07:07:19Z cfischer $
 #
 # Windows Application CPE Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96207");
-  script_version("$Revision: 11378 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 15:32:03 +0200 (Thu, 13 Sep 2018) $");
+  script_version("$Revision: 11613 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:07:19 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-04-26 12:54:47 +0200 (Tue, 26 Apr 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -1525,7 +1525,7 @@ if (OSVER == "6.2"){
       register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012:-", desc:SCRIPT_DESC);
     }
     if (OSSP == "1"){
-      # TDB: Really empty?
+      # TBD: Really empty?
     }
   }
   #SMB fallback. Is not so exactly as wmi.

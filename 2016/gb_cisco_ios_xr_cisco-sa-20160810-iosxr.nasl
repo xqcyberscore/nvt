@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20160810-iosxr.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_cisco_ios_xr_cisco-sa-20160810-iosxr.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Cisco IOS XR Software for Cisco ASR 9001 Aggregation Services Routers Fragmented Packet Denial of Service Vulnerability
 #
@@ -29,21 +29,21 @@ CPE = "cpe:/o:cisco:ios_xr";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106177");
- script_cve_id("CVE-2016-6355");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5850 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106177");
+  script_cve_id("CVE-2016-6355");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11614 $");
 
- script_name("Cisco IOS XR Software for Cisco ASR 9001 Aggregation Services Routers Fragmented Packet Denial of Service Vulnerability");
+  script_name("Cisco IOS XR Software for Cisco ASR 9001 Aggregation Services Routers Fragmented Packet Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160810-iosxr");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160810-iosxr");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the driver processing functions of Cisco IOS XR
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the driver processing functions of Cisco IOS XR
 Software for Cisco ASR 9001 Aggregation Services Routers could allow an unauthenticated, remote attacker to
 cause a memory leak on the route processor (RP) of an affected device, which could cause the device to drop
 all control-plane protocols and lead to a denial of service condition (DoS) on a targeted system.
@@ -57,16 +57,16 @@ plane protocols and eventually lead to a DoS condition on the targeted system.
 Cisco has released software updates that address this vulnerability. There are no workarounds that
 address this vulnerability. However, there are mitigations for this vulnerability.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
- script_tag(name:"creation_date", value:"2016-08-16 08:52:29 +0700 (Tue, 16 Aug 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xr_version.nasl");
- script_mandatory_keys("cisco/ios_xr/version", "cisco/ios_xr/model", "cisco_ios_xr/ssh/chassis");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-16 08:52:29 +0700 (Tue, 16 Aug 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xr_version.nasl");
+  script_mandatory_keys("cisco/ios_xr/version", "cisco/ios_xr/model", "cisco_ios_xr/ssh/chassis");
  exit(0);
 }
 
@@ -87,7 +87,7 @@ if ("ASR-9001" >!< chassis)
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'5.1.0',
 		'5.1.1',
 		'5.1.2',

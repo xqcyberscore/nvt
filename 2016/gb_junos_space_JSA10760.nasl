@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_space_JSA10760.nasl 5741 2017-03-28 05:13:03Z teissa $
+# $Id: gb_junos_space_JSA10760.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Junos Space Multiple Vulnerabilities
 #
@@ -30,18 +30,18 @@ CPE = "cpe:/a:juniper:junos_space";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106348");
-  script_version("$Revision: 5741 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-28 07:13:03 +0200 (Tue, 28 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2016-10-13 09:18:34 +0700 (Thu, 13 Oct 2016)");
+  script_version("$Revision: 11607 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-13 09:18:34 +0700 (Thu, 13 Oct 2016)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-4926", "CVE-2016-4927", "CVE-2016-4928", "CVE-2016-4929", "CVE-2016-4930",
 "CVE-2016-4931");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos Space Multiple Vulnerabilities");
 
@@ -52,36 +52,36 @@ if (description)
   script_dependencies("gb_junos_space_version.nasl");
   script_mandatory_keys("junos_space/installed");
 
-  script_tag(name: "summary", value: "Junos Space is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Junos Space is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "Junos Space is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Junos Space is prone to multiple vulnerabilities:
 
-- Insufficient authentication vulnerability in Junos Space may allow remote network based users with access to
+  - Insufficient authentication vulnerability in Junos Space may allow remote network based users with access to
 Junos Space web interface to perform certain administrative tasks without authentication. (CVE-2016-4926)
 
-- Insufficient validation of SSH keys in Junos Space may allow man-in-the-middle (MITM) type of attacks while a
+  - Insufficient validation of SSH keys in Junos Space may allow man-in-the-middle (MITM) type of attacks while a
 Space device is communicating with managed devices. (CVE-2016-4927)
 
-- Cross site request forgery vulnerability in Junos Space may allow remote attackers to perform certain
+  - Cross site request forgery vulnerability in Junos Space may allow remote attackers to perform certain
 administrative actions on Junos Space. (CVE-2016-4928)
 
-- Command injection vulnerability in Junos Space may allow unprivileged users to execute code as root user on
+  - Command injection vulnerability in Junos Space may allow unprivileged users to execute code as root user on
 the device. (CVE-2016-4929)
 
-- Cross site scripting vulnerability may allow remote attackers to steal sensitive information or perform certain
+  - Cross site scripting vulnerability may allow remote attackers to steal sensitive information or perform certain
 administrative actions on Junos Space. (CVE-2016-4930)
 
-- XML entity injection vulnerability may allow unprivileged users to cause a denial of service condition.
+  - XML entity injection vulnerability may allow unprivileged users to cause a denial of service condition.
 (CVE-2016-4931)");
 
-  script_tag(name: "affected", value: "This issue can affect any product or platform running Junos Space before
+  script_tag(name:"affected", value:"This issue can affect any product or platform running Junos Space before
 15.2R2.");
 
-  script_tag(name: "solution", value: "Update to version 15.2R2 or later.");
+  script_tag(name:"solution", value:"Update to version 15.2R2 or later.");
 
-  script_xref(name: "URL", value: "http://kb.juniper.net/JSA10760");
+  script_xref(name:"URL", value:"http://kb.juniper.net/JSA10760");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   exit(0);
 }

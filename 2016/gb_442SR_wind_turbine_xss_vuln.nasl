@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_442SR_wind_turbine_xss_vuln.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_442SR_wind_turbine_xss_vuln.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # XZERES 442SR Wind Turbine Web Interface Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/h:xzeres:442sr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807021");
-  script_version("$Revision: 5850 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2015-0985");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-04 13:19:12 +0530 (Mon, 04 Jan 2016)");
   script_name("XZERES 442SR Wind Turbine Web Interface Cross Site Scripting Vulnerability");
 
@@ -50,9 +50,7 @@ returning to the user.");
   script_tag(name:"impact", value:"Successful exploitation will allow a
 context-dependent attacker to create a specially crafted request that would
 execute arbitrary script code in a user's browser session within the trust
-relationship between their browser and the server.
-
-Impact Level: Application");
+relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"XZERES 442SR Wind Turbin.");
 
@@ -65,9 +63,9 @@ For updates refer to http://www.xzeres.com/wind-turbine-products");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Dec/116");
-  script_xref(name : "URL" , value : "https://ics-cert.us-cert.gov/advisories/ICSA-15-342-01");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/135067/xzeres-xss.txt");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Dec/116");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-15-342-01");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/135067/xzeres-xss.txt");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -82,24 +80,15 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-# Variable Initialization
-req = "";
-url = "";
-res = "";
-windPort = "0";
-
-# Get HTTP Port
 if(!windPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Construct vulnerable url
 url = '/details?object=Inverter&id=2<script>alert(document.cookie);</script>';
 
 req = http_get(item: url, port:windPort);
 res = http_keepalive_send_recv(port:windPort,data:req, bodyonly:FALSE);
 
-## Check the response to confirm vulnerability and application
 if(http_vuln_check(port:windPort, url:url, check_header:TRUE,
    pattern:"<script>alert\(document.cookie\);</script>",
    extra_check:make_list("VOLTAGE","CURRENT", "POWER")))

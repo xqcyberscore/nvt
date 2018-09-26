@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20140924-rsvp.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_cisco_ios_xe_cisco-sa-20140924-rsvp.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Cisco IOS Software RSVP Vulnerability
 #
@@ -29,23 +29,23 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105685");
- script_cve_id("CVE-2014-3354");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5527 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105685");
+  script_cve_id("CVE-2014-3354");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11614 $");
 
- script_name("Cisco IOS Software RSVP Vulnerability");
+  script_name("Cisco IOS Software RSVP Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140924-rsvp");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20140924-bundle");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35621");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140924-rsvp");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20140924-bundle");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35621");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the implementation of the Resource Reservation Protocol (RSVP) in Cisco IOS Software and Cisco IOS XE Software could allow an unauthenticated, remote attacker cause the device to reload. This vulnerability could be exploited repeatedly to cause an extended denial of service (DoS) condition.
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the implementation of the Resource Reservation Protocol (RSVP) in Cisco IOS Software and Cisco IOS XE Software could allow an unauthenticated, remote attacker cause the device to reload. This vulnerability could be exploited repeatedly to cause an extended denial of service (DoS) condition.
 
 Cisco has released software updates that address this vulnerability.
 
@@ -54,19 +54,18 @@ A workaround that mitigates this vulnerability is available.
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140924-rsvp
 
 Note: The September 24, 2014, Cisco IOS Software Security Advisory bundled publication includes six Cisco Security Advisories. All advisories address vulnerabilities in Cisco IOS Software. Individual publication links are in Cisco Event Response: Semiannual Cisco IOS Software Security Advisory Bundled Publication at the following link:
-http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_sep14.html
-");
+http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_sep14.html");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-10 11:06:48 +0200 (Tue, 10 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-10 11:06:48 +0200 (Tue, 10 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
  exit(0);
 }
 
@@ -75,7 +74,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'2.1.0',
 		'2.1.1',
 		'2.1.2',

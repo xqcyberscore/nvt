@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop_31-2016-08_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop_31-2016-08_win.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop_31-2016-08)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809032");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11607 $");
   script_cve_id("CVE-2016-5147", "CVE-2016-5148", "CVE-2016-5149", "CVE-2016-5150",
                 "CVE-2016-5151", "CVE-2016-5152", "CVE-2016-5153", "CVE-2016-5154",
                 "CVE-2016-5155", "CVE-2016-5156", "CVE-2016-5157", "CVE-2016-5158",
@@ -39,40 +39,49 @@ if(description)
   script_bugtraq_id(92717);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-09-06 14:41:40 +0530 (Tue, 06 Sep 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_31-2016-08)-Windows");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
+
   - An address bar spoofing vulnerability.
+
   - Multiple use-after-free errors in Blink.
+
   - Multiple heap overflow errors in pdfium.
+
   - Multiple universal xss errors in Blink.
+
   - A type confusion error in Blink.
+
   - A script injection error in DevTools.
+
   - An universal xss error in DevTools.
+
   - A smb relay Attack via Save Page As.
+
   - An extensions web accessible resources bypass
+
   - The SkPath.cpp in Skia does not properly validate the return values of
     ChopMonoAtY calls.
+
   - The various fixes from internal audits, fuzzing and other initiatives.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to conduct spoofing attacks on a
   targeted system, to bypass security, to corrupt memory, to execute arbitrary
-  code, to escalate privileges and to cause denial of service condition.
+  code, to escalate privileges and to cause denial of service condition.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Google Chrome version prior to
+  script_tag(name:"affected", value:"Google Chrome version prior to
   53.0.2785.89 on Windows");
 
-  script_tag(name: "solution", value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   53.0.2785.89 or later.
   For updates refer to http://www.google.com/chrome");
 
@@ -80,7 +89,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2016/08/stable-channel-update-for-desktop_31.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2016/08/stable-channel-update-for-desktop_31.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

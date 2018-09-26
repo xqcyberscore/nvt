@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-083.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_ms15-083.nasl 11612 2018-09-26 05:47:26Z cfischer $
 #
 # MS Windows Server Message Block (SMB) Remote Code Execution Vulnerability (3073921)
 #
@@ -30,11 +30,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805079");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11612 $");
   script_cve_id("CVE-2015-2474");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 09:25:26 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Server Message Block (SMB) Remote Code Execution Vulnerability (3073921)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-083.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An authenticated remote code execution
   vulnerability exists in Windows that is caused when Server Message Block

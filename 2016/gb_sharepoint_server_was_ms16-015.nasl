@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_was_ms16-015.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_sharepoint_server_was_ms16-015.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Microsoft SharePoint Server WAS Multiple RCE Vulnerabilities (3134226)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809707");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-0022", "CVE-2016-0052", "CVE-2016-0053");
   script_bugtraq_id(82508, 82652, 82787);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-19 14:18:21 +0530 (Wed, 19 Oct 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft SharePoint Server WAS Multiple RCE Vulnerabilities (3134226)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS16-015.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaws are exists as office software
   fails to properly handle objects in memory.");

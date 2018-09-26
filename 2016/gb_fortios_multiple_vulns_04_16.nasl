@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortios_multiple_vulns_04_16.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_fortios_multiple_vulns_04_16.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # FortiOS: Multiple Vulnerabilities
 #
@@ -27,44 +27,45 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105594");
- script_cve_id("CVE-2015-3626");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N"); 
- script_version ("$Revision: 7585 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105594");
+  script_cve_id("CVE-2015-3626");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11614 $");
 
- script_name("FortiOS: Multiple Vulnerabilities");
+  script_name("FortiOS: Multiple Vulnerabilities");
 
- script_xref(name:"URL", value:"http://fortiguard.com/advisory/dhcp-hostname-html-injection");
- script_xref(name:"URL", value:"http://fortiguard.com/advisory/fortios-open-redirect-vulnerability");
+  script_xref(name:"URL", value:"http://fortiguard.com/advisory/dhcp-hostname-html-injection");
+  script_xref(name:"URL", value:"http://fortiguard.com/advisory/fortios-open-redirect-vulnerability");
 
- script_tag(name: "impact" , value:"Open redirect/Cross Site Scripting");
+  script_tag(name:"impact", value:"Open redirect/Cross Site Scripting");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Upgrade to one the following FortiOS versions:
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Upgrade to one the following FortiOS versions:
 5.0 branch: 5.0.13 or above
 5.2 branch: 5.2.4 or above
 5.4 branch: 5.4.0 or above
 
 4.3 and lower branches are not affected by this vulnerability.");
 
- script_tag(name: "summary" , value:"FortiOS is prone to multiple vulnerabilities.
+  script_tag(name:"summary", value:"FortiOS is prone to multiple vulnerabilities.
 
-- It is possible to inject malicious script through the DHCP HOSTNAME option. The malicious script code is injected into the device's `DHCP Monitor` page (System->Monitor->DHCP Monitor) on the web-based interface which is accessible by the webui administrators.
-- The FortiOS webui accepts a user-controlled input that specifies a link to an external site, and uses that link in a redirect. The redirect input parameter is also prone to a cross site scripting.");
+  - It is possible to inject malicious script through the DHCP HOSTNAME option. The malicious script code is injected into the device's `DHCP Monitor` page (System->Monitor->DHCP Monitor) on the web-based interface which is accessible by the webui administrators.
 
- script_tag(name: "affected" , value:"5.0 branch: < 5.0.13
+  - The FortiOS webui accepts a user-controlled input that specifies a link to an external site, and uses that link in a redirect. The redirect input parameter is also prone to a cross site scripting.");
+
+  script_tag(name:"affected", value:"5.0 branch: < 5.0.13
 5.2 branch: < 5.2.4");
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
- script_tag(name:"creation_date", value:"2016-04-04 11:42:25 +0200 (Mon, 04 Apr 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("FortiOS Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("forti/FortiOS/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-04-04 11:42:25 +0200 (Mon, 04 Apr 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("FortiOS Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("forti/FortiOS/version");
 
  exit(0);
 }

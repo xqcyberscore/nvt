@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2016-96_2016-96_macosx.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: gb_mozilla_thunderbird_mfsa_2016-96_2016-96_macosx.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Mozilla Thunderbird Security Updates(mfsa_2016-96_2016-96)-MAC OS X
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809845");
-  script_version("$Revision: 10965 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-9899", "CVE-2016-9895", "CVE-2016-9897", "CVE-2016-9898",
                 "CVE-2016-9900", "CVE-2016-9904", "CVE-2016-9905", "CVE-2016-9893");
   script_bugtraq_id(94885, 94884);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-29 11:44:04 +0530 (Thu, 29 Dec 2016)");
   script_name("Mozilla Thunderbird Security Updates(mfsa_2016-96_2016-96)-MAC OS X");
 
@@ -45,22 +45,28 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The multiple flaws exist due to,
+
   - An Use-after-free while manipulating DOM events and audio elements.
+
   - A CSP bypass using marquee tag.
+
   - The Memory corruption in libGLES.
+
   - An Use-after-free in Editor while manipulating DOM subtrees.
+
   - A Restricted external resources can be loaded by SVG images through data URLs.
+
   - A Cross-origin information leak in shared atoms.
+
   - A Crash in EnumerateSubDocuments.
+
   - Other Memory Corruption Errors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to steal cookie-based authentication credentials, bypass certain
   security restrictions, obtain sensitive information and execute arbitrary
   code in the context of the affected application. Failed exploit attempts
-  will likely result in denial-of-service conditions.
-
-  Impact Level: System/Application.");
+  will likely result in denial-of-service conditions.");
 
   script_tag(name:"affected", value:"Mozilla Thunderbir version before 45.6 on MAC OS X.");
   script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird 45.6 or later,

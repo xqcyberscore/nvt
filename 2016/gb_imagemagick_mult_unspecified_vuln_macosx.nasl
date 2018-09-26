@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_unspecified_vuln_macosx.nasl 4846 2016-12-23 08:09:40Z antu123 $
+# $Id: gb_imagemagick_mult_unspecified_vuln_macosx.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # ImageMagick Multiple Unspecified Vulnerabilities (Mac OS X)
 #
@@ -29,42 +29,42 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810255");
-  script_version("$Revision: 4846 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-5690", "CVE-2016-5691", "CVE-2016-5689");
   script_bugtraq_id(91283);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-23 09:09:40 +0100 (Fri, 23 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-06 18:38:55 +0530 (Mon, 06 Jun 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("ImageMagick Multiple Unspecified Vulnerabilities (Mac OS X)");
 
-  script_tag(name: "summary" , value:"The host is installed with ImageMagick
+  script_tag(name:"summary", value:"The host is installed with ImageMagick
   and is prone to multiple unspecified vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws are due to,
-  - An error in ReadDCMImage function in DCM reader in computing the 
+  script_tag(name:"insight", value:"The multiple flaws are due to,
+
+  - An error in ReadDCMImage function in DCM reader in computing the
     pixel scaling table.
+
   - The lack of validation of pixel.red, pixel.green and pixel.blue by DCM reader.
+
   - The lack of NULL pointer checks by DCM reader.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
-  remote attackers to cause some unspecified impacts.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  remote attackers to cause some unspecified impacts.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"ImageMagick versions before 6.9.4-5 and 
+  script_tag(name:"affected", value:"ImageMagick versions before 6.9.4-5 and
   7.x before 7.0.1-7 on Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to ImageMagick version
+  script_tag(name:"solution", value:"Upgrade to ImageMagick version
   6.9.4-5 or 7.0.1-7 or later. For updates refer to http://www.imagemagick.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://blog.fuzzing-project.org/46-Various-invalid-memory-reads-in-ImageMagick-WPG,-DDS,-DCM.html");
+  script_xref(name:"URL", value:"https://blog.fuzzing-project.org/46-Various-invalid-memory-reads-in-ImageMagick-WPG, -DDS, -DCM.html");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -76,16 +76,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-imVer = "";
-report = "";
-
-## Get version
 if(!imVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:imVer, test_version:"6.9.4.5"))
 {
   fix = "6.9.4-5";

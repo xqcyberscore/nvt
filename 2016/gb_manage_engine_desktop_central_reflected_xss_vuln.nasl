@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_reflected_xss_vuln.nasl 10526 2018-07-17 10:24:27Z ckuersteiner $
+# $Id: gb_manage_engine_desktop_central_reflected_xss_vuln.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Manage Engine Desktop Central Reflected Cross Site Scripting Vulnerability
 #
@@ -30,32 +30,29 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807741");
-  script_version("$Revision: 10526 $");
+  script_version("$Revision: 11607 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-17 12:24:27 +0200 (Tue, 17 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-19 12:07:40 +0530 (Tue, 19 Apr 2016)");
 
   script_name("Manage Engine Desktop Central Reflected Cross Site Scripting Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with ManageEngine
+  script_tag(name:"summary", value:"This host is installed with ManageEngine
   Desktop Central and is prone to reflected cross site scripting vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists as input passed via 'To'
+  script_tag(name:"insight", value:"The flaw exists as input passed via 'To'
   parameter of 'Specify Delivery Format' is not validated properly.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to cause cross site scripting and steal the cookie of other active sessions.
+  to cause cross site scripting and steal the cookie of other active sessions.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"ManageEngine Desktop Central version 9.1.0
+  script_tag(name:"affected", value:"ManageEngine Desktop Central version 9.1.0
   Build 91099.");
 
-  script_tag(name: "solution" , value:"Upgrade to ManageEngine Desktop Central version
+  script_tag(name:"solution", value:"Upgrade to ManageEngine Desktop Central version
   92026 or later. For updates refer to https://www.manageengine.com");
 
   script_tag(name:"solution_type", value:"VendorFix");

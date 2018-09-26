@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-120.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_ms_office_ms16-120.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Microsoft Office Multiple Remote Code Execution Vulnerabilities (3192884)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807371");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-3209", "CVE-2016-3262", "CVE-2016-3263", "CVE-2016-3396", "CVE-2016-7182");
   script_bugtraq_id(93385, 93390, 93394, 93380, 93395);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 10:48:54 +0530 (Wed, 12 Oct 2016)");
   script_name("Microsoft Office Multiple Remote Code Execution Vulnerabilities (3192884)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS16-120.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to the windows
   True Type Font and  GDI+ libraries are improperly handles specially crafted

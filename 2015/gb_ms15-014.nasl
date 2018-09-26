@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-014.nasl 11445 2018-09-18 08:09:39Z mmartin $
+# $Id: gb_ms15-014.nasl 11612 2018-09-26 05:47:26Z cfischer $
 #
 # Microsoft Windows Group Policy Security Feature Bypass Vulnerability (3004361)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805273");
-  script_version("$Revision: 11445 $");
+  script_version("$Revision: 11612 $");
   script_cve_id("CVE-2015-0009");
   script_bugtraq_id(72476);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 09:15:59 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft Windows Group Policy Security Feature Bypass Vulnerability (3004361)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-014.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an error in the Group
   Policy application of Security Configuration policies.");

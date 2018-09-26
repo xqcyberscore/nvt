@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-130.nasl 11475 2018-09-19 12:12:13Z cfischer $
+# $Id: gb_ms15-130.nasl 11612 2018-09-26 05:47:26Z cfischer $
 #
 # Microsoft Windows Uniscribe Remote Code Execution Vulnerability (3108670)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806172");
-  script_version("$Revision: 11475 $");
+  script_version("$Revision: 11612 $");
   script_cve_id("CVE-2015-6130");
   script_bugtraq_id(78500);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 14:12:13 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 09:39:22 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft Windows Uniscribe Remote Code Execution Vulnerability (3108670)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS15-130.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists when Windows Uniscribe
   improperly parses specially crafted fonts.");

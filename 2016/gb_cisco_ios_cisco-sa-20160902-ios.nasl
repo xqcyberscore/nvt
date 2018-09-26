@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160902-ios.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_cisco_ios_cisco-sa-20160902-ios.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Cisco IOS Software Point-to-Point Tunneling Protocol Server Information Disclosure Vulnerability
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106222");
- script_cve_id("CVE-2016-6398");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5732 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106222");
+  script_cve_id("CVE-2016-6398");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11614 $");
 
- script_name("Cisco IOS Software Point-to-Point Tunneling Protocol Server Information Disclosure Vulnerability");
+  script_name("Cisco IOS Software Point-to-Point Tunneling Protocol Server Information Disclosure Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160902-ios");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160902-ios");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the implementation of Point-to-Point Tunneling
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the implementation of Point-to-Point Tunneling
 Protocol (PPTP) server functionality in Cisco IOS Software could allow an unauthenticated, remote attacker
 to access data from a packet buffer that was previously used.
 
@@ -58,16 +58,16 @@ attacker chooses.
 Cisco has not released software updates that address this vulnerability. There is a workaround that
 addresses this vulnerability.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"Workaround");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-09-05 09:36:53 +0700 (Mon, 05 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-05 09:36:53 +0700 (Mon, 05 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version");
  exit(0);
 }
 
@@ -76,7 +76,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'15.5(3)M' );
 
 foreach af ( affected )

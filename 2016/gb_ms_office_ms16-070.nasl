@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-070.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_ms_office_ms16-070.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Microsoft Office Remote Code Execution Vulnerability (3163610)
 #
@@ -27,27 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808228");
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 11607 $");
   script_cve_id("CVE-2016-0025");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-16 11:22:43 +0530 (Thu, 16 Jun 2016)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (3163610)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-070.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists due to office software 
+  script_tag(name:"insight", value:"The flaw exists due to office software
   fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attackers to run arbitrary code in the context of the current user.
-
-  Impact Level: System/Application");
+  attackers to run arbitrary code in the context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Office 2016");
 
@@ -60,8 +57,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3115144");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-070");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/3115144");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-070");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -77,13 +74,8 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-msPath = "";
-msdllVer = "";
-offPath = "";
-
 ## MS Office 2016
-if(get_kb_item("MS/Office/Ver") =~ "^(16).*")
+if(get_kb_item("MS/Office/Ver") =~ "^16.*")
 {
   msPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                            item:"ProgramFilesDir");
@@ -91,14 +83,12 @@ if(get_kb_item("MS/Office/Ver") =~ "^(16).*")
   {
     offsubver = "root\Office16";
 
-    ## Get Version from firstrun.exe
     offPath = msPath + "\Microsoft Office\" + offsubver;
- 
+
     exeVer = fetch_file_version(sysPath:offPath, file_name:"firstrun.exe");
 
-    if(exeVer && exeVer =~ "^(16)")
+    if(exeVer && exeVer =~ "^16")
     {
-      ## checking for vulnerable version
       if(version_in_range(version:exeVer, test_version:"16.0", test_version2:"16.0.4387.999"))
       {
         offPath = msPath + "\Microsoft Office" + "\\r" + offsubver;

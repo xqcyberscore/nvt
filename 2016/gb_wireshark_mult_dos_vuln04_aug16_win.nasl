@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln04_aug16_win.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_wireshark_mult_dos_vuln04_aug16_win.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities-04 August16 (Windows)
 #
@@ -29,41 +29,45 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809102");
-  script_version("$Revision: 5568 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-5357", "CVE-2016-5356", "CVE-2016-5355", "CVE-2016-5354",
                 "CVE-2016-5353", "CVE-2016-5351", "CVE-2016-5350");
   script_bugtraq_id(91140);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-12 09:53:38 +0530 (Fri, 12 Aug 2016)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities-04 August16 (Windows)");
-  
+
   script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to multiple denial of service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The multiple flaws are due to,
-  - The 'epan/dissectors/packet-dcerpc-spoolss.c' script omits in the SPOOLS 
+
+  - The 'epan/dissectors/packet-dcerpc-spoolss.c' script omits in the SPOOLS
     component mishandles unexpected offsets.
-  - The 'epan/crypt/airpdcap.c' in the IEEE 802.11 dissector mishandles the 
+
+  - The 'epan/crypt/airpdcap.c' in the IEEE 802.11 dissector mishandles the
     lack of an EAPOL_RSN_KEY.
-  - The 'epan/dissectors/packet-umts_fp.c' in the UMTS FP dissector mishandles 
+
+  - The 'epan/dissectors/packet-umts_fp.c' in the UMTS FP dissector mishandles
     the reserved C/T value.
+
   - The 'USB subsystem' mishandles class types.
-  - The 'wiretap/toshiba.c' in the Toshiba file parser mishandles sscanf 
+
+  - The 'wiretap/toshiba.c' in the Toshiba file parser mishandles sscanf
     unsigned-integer processing.
-  - The 'wiretap/cosine.c' in the CoSine file parser mishandles sscanf 
+
+  - The 'wiretap/cosine.c' in the CoSine file parser mishandles sscanf
     unsigned-integer processing.
-  - The 'wiretap/netscreen.c' in the NetScreen file parser mishandles sscanf 
+
+  - The 'wiretap/netscreen.c' in the NetScreen file parser mishandles sscanf
     unsigned-integer processing.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct denial of service attack.
-
-  Impact Level: Application");
+  attackers to conduct denial of service attack.");
 
   script_tag(name:"affected", value:"Wireshark version 2.0.x before 2.0.4
   and 1.12.x before 1.12.12 on Windows.");
@@ -93,22 +97,16 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-wirversion = "";
-
-## Get the version
 if(!wirversion = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check the vulnerable version is 1.12.x before 1.12.12
 if(version_in_range(version:wirversion, test_version:"1.12.0", test_version2:"1.12.11"))
 {
   fix = "1.12.12";
   VULN = TRUE ;
 }
 
-## Check the vulnerable version is 2.0.x before 2.0.4
 else if(version_in_range(version:wirversion, test_version:"2.0", test_version2:"2.0.3"))
 {
   fix = "2.0.4";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3753_2.nasl 11236 2018-09-05 09:02:10Z cfischer $
+# $Id: gb_ubuntu_USN_3753_2.nasl 11610 2018-09-26 02:42:29Z ckuersteiner $
 #
 # Ubuntu Update for linux-aws USN-3753-2
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843626");
-  script_version("$Revision: 11236 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:02:10 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 11610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 04:42:29 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-25 06:46:31 +0200 (Sat, 25 Aug 2018)");
   script_cve_id("CVE-2017-13168", "CVE-2018-10876", "CVE-2018-10879", "CVE-2018-10877", "CVE-2018-10878", "CVE-2018-10882", "CVE-2018-10881", "CVE-2018-12233", "CVE-2018-13094", "CVE-2018-13405", "CVE-2018-13406");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-aws USN-3753-2");
   script_tag(name:"summary", value:"Check the version of linux-aws");

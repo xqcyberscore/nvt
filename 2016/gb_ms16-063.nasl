@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-063.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_ms16-063.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (3163649)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807837");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-0199", "CVE-2016-0200", "CVE-2016-3202", "CVE-2016-3205",
                 "CVE-2016-3206", "CVE-2016-3207", "CVE-2016-3210", "CVE-2016-3211",
                 "CVE-2016-3212", "CVE-2016-3213");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-15 08:02:15 +0530 (Wed, 15 Jun 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (3163649)");
@@ -43,8 +43,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS16-063.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 

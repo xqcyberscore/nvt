@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_potential_info_disclose_vuln.nasl 8598 2018-01-31 09:59:32Z cfischer $
+# $Id: gb_ibm_was_potential_info_disclose_vuln.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # IBM Websphere Application Server Potential Information Disclosure Vulnerability
 #
@@ -29,35 +29,32 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809339");
-  script_version("$Revision: 8598 $");
+  script_version("$Revision: 11607 $");
   script_cve_id("CVE-2016-5986");
   script_bugtraq_id(93013);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 10:59:32 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-03 13:28:39 +0530 (Mon, 03 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server Potential Information Disclosure Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with IBM Websphere
+  script_tag(name:"summary", value:"This host is installed with IBM Websphere
   application server and is prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The flaw exists due to an improper handling of
+  script_tag(name:"insight", value:"The flaw exists due to an improper handling of
   responses under certain conditions.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a remote
-  attacker to gain server identification information.
+  script_tag(name:"impact", value:"Successful exploitation will allow a remote
+  attacker to gain server identification information.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"IBM WebSphere Application Server (WAS)
+  script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS)
   7.0 before 7.0.0.43, 8.0 before 8.0.0.13, 8.5 before 8.5.5.11, 9.0 before
   9.0.0.2, and Liberty before 16.0.0.3");
 
-  script_tag(name:"solution" , value:"Upgrade to IBM WebSphere Application
+  script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
   Server (WAS) to 7.0.0.43, or 8.0.0.13, or 8.5.5.11, or 9.0.0.2 or Liberty
   Fix 16.0.0.3 or later.
   For updates refer to http://www-03.ibm.com/software/products/en/appserv-was");
@@ -86,7 +83,6 @@ if(!wasVer = get_app_version(cpe:CPE, port:wasPort)){
   exit(0);
 }
 
-##Check Liberty profile is installed
 liberty = get_kb_item("ibm_websphere_application_server/liberty/profile/installed");
 
 if (liberty)
@@ -98,7 +94,7 @@ if (liberty)
   }
 }
 
-else 
+else
 {
   if(version_in_range(version:wasVer, test_version:"7.0", test_version2:"7.0.0.41"))
   {
@@ -117,7 +113,7 @@ else
     fix = "8.5.5.11";
     VULN = TRUE;
   }
- 
+
   else if(version_in_range(version:wasVer, test_version:"9.0", test_version2:"9.0.0.1"))
   {
     fix = "9.0.0.2";

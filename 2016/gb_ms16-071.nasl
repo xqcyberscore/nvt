@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-071.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_ms16-071.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Microsoft Windows DNS Server Remote Code Execution Vulnerability (3164065)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808161");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-3227");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-15 08:10:05 +0530 (Wed, 15 Jun 2016)");
   script_name("Microsoft Windows DNS Server Remote Code Execution Vulnerability (3164065)");
 
   script_tag(name:"summary", value:"This host is missing an critical security
   update according to Microsoft Bulletin MS16-071");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to improper handling of requests
   in Dns severs. ");

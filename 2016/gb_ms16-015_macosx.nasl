@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-015_macosx.nasl 11426 2018-09-17 09:38:26Z asteins $
+# $Id: gb_ms16-015_macosx.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities-3134226(Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807081");
-  script_version("$Revision: 11426 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-0022", "CVE-2016-0052", "CVE-2016-0054");
   script_bugtraq_id(82508, 82652, 82654);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-03-01 14:45:35 +0530 (Tue, 01 Mar 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities-3134226(Mac OS X)");
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-015");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to multiple memory
   corruption vulnerabilities.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_default_ssh_credentials_report.nasl 8628 2018-02-01 15:23:45Z cfischer $
+# $Id: gb_default_ssh_credentials_report.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # SSH Brute Force Logins With Default Credentials Reporting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103239");
-  script_version("$Revision: 8628 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-01 16:23:45 +0100 (Thu, 01 Feb 2018) $");
+  script_version("$Revision: 11607 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-02 11:47:00 +0100 (Wed, 02 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -84,7 +84,7 @@ if( reportTimeout == 'yes' ) {
                     "Consider raising the script_timeout value of the NVT " +
                     "'SSH Brute Force Logins with default Credentials' " +
                     "(OID: 1.3.6.1.4.1.25623.1.0.108013).";
-    log_message( port:port, data:timeoutReport );
+    log_message( port:port, data:timeoutReport);
   }
 }
 

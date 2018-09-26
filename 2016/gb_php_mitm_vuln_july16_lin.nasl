@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mitm_vuln_july16_lin.nasl 10455 2018-07-09 05:52:14Z cfischer $
+# $Id: gb_php_mitm_vuln_july16_lin.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # PHP Man-in-the-Middle Attack Vulnerability - Jul16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808628");
-  script_version("$Revision: 10455 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-5385", "CVE-2016-6128");
   script_bugtraq_id(91821, 91509);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:52:14 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-26 11:55:14 +0530 (Tue, 26 Jul 2016)");
   script_name("PHP Man-in-the-Middle Attack Vulnerability - Jul16 (Linux)");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -63,9 +63,7 @@ if(description)
   script_tag(name:"impact", value:"Successfully exploiting this issue may allow
   remote, unauthenticated to conduct MITM attacks on internal server subrequests
   or direct the server to initiate connections to arbitrary hosts or to cause a
-  denial of service.
-
-  Impact Level: Application");
+  denial of service.");
 
   script_tag(name:"affected", value:"PHP versions 5.x through 5.6.23 and 7.0.x through 7.0.8 on Linux");
 

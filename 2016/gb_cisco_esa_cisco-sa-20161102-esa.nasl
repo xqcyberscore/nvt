@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20161102-esa.nasl 4410 2016-11-03 09:23:27Z ckuerste $
+# $Id: gb_cisco_esa_cisco-sa-20161102-esa.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Cisco Email Security Appliance RAR File Attachment Scanner Bypass Vulnerability
 #
@@ -29,42 +29,42 @@ CPE = "cpe:/h:cisco:email_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106370");
- script_cve_id("CVE-2016-6458");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 4410 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106370");
+  script_cve_id("CVE-2016-6458");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11607 $");
 
- script_name("Cisco Email Security Appliance RAR File Attachment Scanner Bypass Vulnerability");
+  script_name("Cisco Email Security Appliance RAR File Attachment Scanner Bypass Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161102-esa");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161102-esa");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"A vulnerability in the content filtering functionality of Cisco AsyncOS
+  script_tag(name:"summary", value:"A vulnerability in the content filtering functionality of Cisco AsyncOS
 Software for Cisco Email Security Appliances could allow an unauthenticated, remote attacker to bypass content
 filters configured on an affected device. Email that should have been filtered could instead be forwarded by the
 device.");
 
- script_tag(name: "insight", value: "The vulnerability is due to incorrect validation of protected or encrypted
+  script_tag(name:"insight", value:"The vulnerability is due to incorrect validation of protected or encrypted
 email attachments that are Roshal Archive (RAR) format files. An attacker could exploit this vulnerability by
 sending an email message that has a crafted RAR file attachment through an affected device.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to bypass content filters that
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to bypass content filters that
 are configured to detect and act upon protected or encrypted email attachments.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-11-03 10:23:27 +0100 (Thu, 03 Nov 2016) $");
- script_tag(name:"creation_date", value:"2016-11-03 14:00:33 +0700 (Thu, 03 Nov 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_esa_version.nasl");
- script_mandatory_keys("cisco_esa/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-03 14:00:33 +0700 (Thu, 03 Nov 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_esa_version.nasl");
+  script_mandatory_keys("cisco_esa/installed");
  exit(0);
 }
 
@@ -73,7 +73,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'9.9.6-026',
 		'9.7.1-066',
 		'9.7.2-046',

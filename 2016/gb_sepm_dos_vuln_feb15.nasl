@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sepm_dos_vuln_feb15.nasl 9114 2018-03-15 16:06:15Z cfischer $
+# $Id: gb_sepm_dos_vuln_feb15.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Symantec Endpoint Protection 'ccSvcHst.exe' File Denial of Service Vulnerability Feb15
 #
@@ -29,39 +29,38 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807056");
-  script_version("$Revision: 9114 $");
+  script_version("$Revision: 11614 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-15 17:06:15 +0100 (Thu, 15 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-03-01 14:45:27 +0530 (Tue, 01 Mar 2016)");
   script_name("Symantec Endpoint Protection 'ccSvcHst.exe' File Denial of Service Vulnerability Feb15");
 
-  script_tag(name: "summary" , value: "This host is installed with Symantec
+  script_tag(name:"summary", value:"This host is installed with Symantec
   Endpoint Protection Manager and is prone to denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The flaw is due to insufficient
+  script_tag(name:"insight", value:"The flaw is due to insufficient
   validation of input in an unknown function of the file
   'Smc.exe/SmcGui.exe/ccSvcHst.exe'.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow
-  remote attackers to cause denial of service conditions.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  remote attackers to cause denial of service conditions.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Symantec Endpoint Protection version
+  script_tag(name:"affected", value:"Symantec Endpoint Protection version
   12.1.4013");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one. ");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "https://packetstormsecurity.com/files/135185");
-  script_xref(name: "URL" , value : "http://www.securityfocus.com/archive/1/535958");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/135185");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/535958");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -78,11 +77,8 @@ if(!sepVer = get_app_version(cpe:CPE)){
     exit(0);
 }
 
-## Get SEP Product type from KB to check for SEP SmallBusiness
 sepType = get_kb_item("Symantec/SEP/SmallBusiness");
 
-## Check for Symantec Endpoint Protection versions
-## Check for vulnerable version 12.1.4013
 ## https://support.symantec.com/en_US/article.TECH154475.html
 if(isnull(sepType) && sepVer =~ "^(12\.1)")
 {

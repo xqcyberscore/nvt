@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2972-01_httpd.nasl 7558 2017-10-25 10:46:31Z santu $
+# $Id: gb_RHSA-2017_2972-01_httpd.nasl 11610 2018-09-26 02:42:29Z ckuersteiner $
 #
 # RedHat Update for httpd RHSA-2017:2972-01
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812045");
-  script_version("$Revision: 7558 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 12:46:31 +0200 (Wed, 25 Oct 2017) $");
+  script_version("$Revision: 11610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 04:42:29 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-10-20 08:40:37 +0200 (Fri, 20 Oct 2017)");
   script_cve_id("CVE-2017-12171", "CVE-2017-9798");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for httpd RHSA-2017:2972-01");
   script_tag(name: "summary", value: "Check the version of httpd");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2016-16_2016-38_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_thunderbird_mfsa_2016-16_2016-38_win.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Mozilla Thunderbird Security Updates(mfsa_2016-16_2016-38)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807627");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11607 $");
   script_cve_id("CVE-2016-1977", "CVE-2016-2790", "CVE-2016-2791", "CVE-2016-2792",
 		"CVE-2016-2793", "CVE-2016-2794", "CVE-2016-2795", "CVE-2016-2796",
 		"CVE-2016-2797", "CVE-2016-2798", "CVE-2016-2799", "CVE-2016-2800",
@@ -39,37 +39,42 @@ if(description)
   script_bugtraq_id(84222, 84221, 84223, 84219, 84218);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:33 +0530 (Fri, 01 Apr 2016)");
   script_name("Mozilla Thunderbird Security Updates(mfsa_2016-16_2016-38)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exist due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
+
   - The 'nsScannerString::AppendUnicodeTo' function does not verify that memory
     allocation succeeds.
+
   - A memory corruption vulnerability in NPAPI plugin.
+
   - An use-after-free vulnerability in the 'AtomicBaseIncDec' function.
+
   - An use-after-free vulnerability in the 'nsHTMLDocument::SetBody' function in
     'dom/html/nsHTMLDocument.cpp' script.
+
   - Memory leak in libstagefright when deleting an array during MP4 processing.
+
   - The 'nsCSPContext::SendReports' function in 'dom/security/nsCSPContext.cpp'
     script does not prevent use of a non-HTTP report-uri for a (CSP) violation report.
+
   - The multiple unspecified vulnerabilities in the browser engine.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerabilities will allow remote attackers to cause a denial of service
-  (memory corruption and application crash) or possibly execute arbitrary code.
+  (memory corruption and application crash) or possibly execute arbitrary code.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Mozilla Thunderbird version before
+  script_tag(name:"affected", value:"Mozilla Thunderbird version before
   38.7 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version 38.7
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 38.7
   For updates refer https://www.mozilla.org/en-US/thunderbird");
 
   script_tag(name:"solution_type", value:"VendorFix");

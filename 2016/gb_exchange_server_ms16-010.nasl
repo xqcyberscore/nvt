@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exchange_server_ms16-010.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_exchange_server_ms16-010.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Microsoft Exchange Server Address Spoofing Vulnerabilities (3124557)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806187");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-0029", "CVE-2016-0030", "CVE-2016-0031", "CVE-2016-0032");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-13 09:19:57 +0530 (Wed, 13 Jan 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Exchange Server Address Spoofing Vulnerabilities (3124557)");
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-010.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple spoofing vulnerabilities exist
   in Microsoft Exchange Server when Outlook Web Access (OWA) fails to properly

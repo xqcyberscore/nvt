@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_dos_vuln01_july16_win.nasl 10457 2018-07-09 06:23:47Z cfischer $
+# $Id: gb_php_dos_vuln01_july16_win.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # PHP Denial of Service Vulnerability - 01 - Jul16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808612");
-  script_version("$Revision: 10457 $");
+  script_version("$Revision: 11607 $");
   script_cve_id("CVE-2015-8878");
   script_bugtraq_id(90837);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:23:47 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 12:14:00 +0530 (Thu, 14 Jul 2016)");
   script_name("PHP Denial of Service Vulnerability - 01 - Jul16 (Windows)");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow remote
   attackers to cause a denial of service (race condition and heap memory corruption)
-  by leveraging an application that performs many temporary-file accesses.
-
-  Impact Level: Application");
+  by leveraging an application that performs many temporary-file accesses.");
 
   script_tag(name:"affected", value:"PHP versions prior to 5.5.28 and 5.6.x
   before 5.6.12 on Windows");

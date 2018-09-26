@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: secpod_smb_func.inc 11571 2018-09-24 12:15:02Z cfischer $
+# $Id: secpod_smb_func.inc 11621 2018-09-26 10:00:23Z cfischer $
 #
 # SMB Functions
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11571 $
+# $Revision: 11621 $
 #
 ###############################################################################
 
@@ -260,12 +260,23 @@ function registry_enum_values( key, type ) {
 
   r = registry_get_key( soc:soc, uid:uid, tid:tid, pipe:pipe, key:key, reply:handle );
   if( ! r ) {
+
+    if( ! isnull( r ) )
+      registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
+
+    registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:handle );
+    
     # TBD: If the key doesn't exist this will return here. Save this as an empty list in the KB cache as well?
     close( soc );
     return list;
   }
 
+  # TODO: Evaluate if the handle here needs to be closed via registry_close as well...
   list = registry_enum_value( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
+
+  registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
+  registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:handle );
+
   close( soc );
 
   # Always return a list for the reasons explained above
@@ -415,12 +426,23 @@ function registry_enum_keys( key, type ) {
 
   r = registry_get_key( soc:soc, uid:uid, tid:tid, pipe:pipe, key:key, reply:handle );
   if( ! r ) {
+
+    if( ! isnull( r ) )
+      registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
+
+    registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:handle );
+
     # TBD: If the key doesn't exist this will return here. Save this as an empty list in the KB cache as well?
     close( soc );
     return list;
   }
 
+  # TODO: Evaluate if the handle here needs to be closed via registry_close as well...
   list = registry_enum_key( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
+
+  registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
+  registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:handle );
+
   close( soc );
 
   # Always return a list for the reasons explained above

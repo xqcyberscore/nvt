@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-126.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: gb_ms16-126.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # Microsoft Internet Messaging API Information Disclosure Vulnerability (3196067)
 #
@@ -27,32 +27,28 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809345");
-  script_version("$Revision: 5689 $");
+  script_version("$Revision: 11607 $");
   script_cve_id("CVE-2016-3298");
   script_bugtraq_id(93392);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 08:11:15 +0530 (Wed, 12 Oct 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Messaging API Information Disclosure Vulnerability (3196067)");
 
-  script_tag(name: "summary" , value:"This host is missing a moderate security
+  script_tag(name:"summary", value:"This host is missing a moderate security
   update according to Microsoft Bulletin MS16-126.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and 
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"An information disclosure vulnerability exists
+  script_tag(name:"insight", value:"An information disclosure vulnerability exists
   when the Microsoft Internet Messaging API improperly handles objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to
-  test for the presence of files on disk.
+  test for the presence of files on disk.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows Vista x32/x64 Edition Service Pack 2
+  script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1
@@ -68,14 +64,15 @@ if(description)
   https://technet.microsoft.com/en-us/library/security/MS16-126");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3196067");  
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-126");
+
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3196067");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-126");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -86,24 +83,17 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-sysVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, winVistax64:3, win7:2, win7x64:2, win2008:3, win2008x64:3,
                    win2008r2:2, win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1,
                    win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of 'Win32k.sys' and 'Inetcomm.dll'
 Win32Ver = fetch_file_version(sysPath, file_name:"System32\Win32k.sys");
 oleVer = fetch_file_version(sysPath, file_name:"System32\Inetcomm.dll");
 edgeVer = fetch_file_version(sysPath, file_name:"System32\edgehtml.dll");
@@ -111,10 +101,8 @@ if(!Win32Ver && !oleVer && !edgeVer){
   exit(0);
 }
 
-##Windows 7 and Windows Server 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && Win32Ver)
 {
-  ## Check for Win32k.sys version
   if(version_is_less(version:Win32Ver, test_version:"6.1.7601.23545"))
   {
     Vulnerable_range = "Less than 6.1.7601.23545";
@@ -122,10 +110,8 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && Win32Ver)
   }
 }
 
-##Windows Vista and Windows Server 2008
 else if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0 && oleVer)
 {
-  ## Check for 'Inetcomm.dll' version
   if(version_is_less(version:oleVer, test_version:"6.0.6002.19694"))
   {
     Vulnerable_range1 = "Less than 6.0.6002.19694";
@@ -138,10 +124,8 @@ else if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0 
   }
 }
 
-##Windows Server 2012
 else if(hotfix_check_sp(win2012:1) > 0 && Win32Ver)
 {
-  ## Check for Win32k.sys version
   if(version_is_less(version:Win32Ver, test_version:"6.2.9200.21977"))
   {
     Vulnerable_range = "Less than 6.2.9200.21977";
@@ -149,10 +133,8 @@ else if(hotfix_check_sp(win2012:1) > 0 && Win32Ver)
   }
 }
 
-##Windows 8.1 and server 2012 R2
 else if(hotfix_check_sp(win2012R2:1, win8_1:1, win8_1x64:1) > 0 && Win32Ver)
 {
-  ## Check for Win32k.sys version
   if(version_is_less(version:Win32Ver, test_version:"6.3.9600.18470"))
   {
     Vulnerable_range = "Less than 6.3.9600.18470";
@@ -160,23 +142,18 @@ else if(hotfix_check_sp(win2012R2:1, win8_1:1, win8_1x64:1) > 0 && Win32Ver)
   }
 }
 
-##Windows 10
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && edgeVer)
 {
-  ## Check for edgehtml.dll version
   if(version_is_less(version:edgeVer, test_version:"11.0.10240.17146"))
   {
     Vulnerable_range2 = "Less than 11.0.10240.17146";
     VULN2 = TRUE ;
   }
-  ##Windows 10 Version 1511
   else if(version_in_range(version:edgeVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.632"))
   {
     Vulnerable_range2 = "11.0.10586.0 - 11.0.10586.632";
     VULN2 = TRUE ;
   }
-  ## Windows 10 version 1607
-  ## Check for edgehtml.dll version
   else if(version_in_range(version:edgeVer, test_version:"11.0.14393.0", test_version2:"11.0.14393.320"))
   {
     Vulnerable_range2 = "11.0.14393.0 - 11.0.14393.320";

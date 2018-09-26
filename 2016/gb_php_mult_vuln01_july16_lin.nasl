@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln01_july16_lin.nasl 10457 2018-07-09 06:23:47Z cfischer $
+# $Id: gb_php_mult_vuln01_july16_lin.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # PHP Multiple Vulnerabilities - 01 - Jul16 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808199");
-  script_version("$Revision: 10457 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-4070", "CVE-2016-4071", "CVE-2016-4072", "CVE-2016-4073",
                 "CVE-2015-8865");
   script_bugtraq_id(85800, 85801, 85802, 85991, 85993);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:23:47 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 12:14:00 +0530 (Thu, 14 Jul 2016)");
   script_name("PHP Multiple Vulnerabilities - 01 - Jul16 (Linux)");
 
@@ -63,9 +63,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to cause a denial of service (buffer overflow and application
-  crash) or possibly execute arbitrary code.
-
-  Impact Level: Application");
+  crash) or possibly execute arbitrary code.");
 
   script_tag(name:"affected", value:"PHP versions prior to 5.5.34, 5.6.x before
   5.6.20, and 7.x before 7.0.5 on Linux");

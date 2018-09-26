@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_info_disc_vuln.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: gb_phpmyadmin_info_disc_vuln.nasl 11607 2018-09-25 13:53:15Z asteins $
 #
 # phpMyAdmin Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807055");
-  script_version("$Revision: 5612 $");
+  script_version("$Revision: 11607 $");
   script_cve_id("CVE-2015-8669");
   script_bugtraq_id(79691);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-02 12:01:15 +0530 (Tue, 02 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("phpMyAdmin Information Disclosure Vulnerability");
@@ -50,21 +50,19 @@ if(description)
   the recommendations given in the PHP manual for a production server.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to obtain sensitive information about the server.
-
-  Impact Level: Application");
+  attackers to obtain sensitive information about the server.");
 
   script_tag(name:"affected", value:"phpMyAdmin versions 4.0.x prior to 4.0.10.12,
   4.4.x prior to 4.4.15.2 and 4.5.x prior to 4.5.3.1");
 
-  script_tag(name: "solution" , value:"Upgrade to phpMyAdmin version 4.0.10.12 or
+  script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 4.0.10.12 or
   4.4.15.2 or 4.5.3.1 or later or apply patch from the link mentioned in reference.
   For updates refer to https://www.phpmyadmin.net");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.phpmyadmin.net/security/PMASA-2015-6");
-  script_xref(name : "URL" , value : "https://github.com/phpmyadmin/phpmyadmin/commit/c4d649325b25139d7c097e56e2e46cc7187fae45");
+  script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2015-6");
+  script_xref(name:"URL", value:"https://github.com/phpmyadmin/phpmyadmin/commit/c4d649325b25139d7c097e56e2e46cc7187fae45");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -80,27 +78,16 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-# Variable Initialization
-dir = "";
-url = "";
-report = "";
-http_port = 0;
-
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Application Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-##Construct Attack Request
 url = dir + '/libraries/config/messages.inc.php';
 
-## Try attack and check the response to confirm vulnerability
-## Check whether it is able to get full path of the directory where phpMyAdmin is installed
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
    pattern:"Fatal error.*PMA_fatalError.*messages.inc.php"))
 {

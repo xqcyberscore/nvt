@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_app_reputaion_service_vuln_jan16_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_app_reputaion_service_vuln_jan16_win.nasl 11614 2018-09-26 07:39:28Z asteins $
 #
 # Mozilla Firefox Application Reputation Service Vulnerability - Jan16 (Windows)
 #
@@ -29,33 +29,31 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807051");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11614 $");
   script_cve_id("CVE-2016-1947");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-29 09:21:18 +0530 (Fri, 29 Jan 2016)");
   script_name("Mozilla Firefox Application Reputation Service Vulnerability - Jan16 (Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox and is prone to application reputation service disabling
   vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to disabling of
+  script_tag(name:"insight", value:"The flaw is due to disabling of
   Application Reputation service that leads to removal of the ability of Safe
   browsing to warn against potentially malicious downloads.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
-  an attacker to do potentially malicious downloads.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  an attacker to do potentially malicious downloads.");
 
-  Impact Level: System");
-
-  script_tag(name: "affected" , value:"Mozilla Firefox versions 43.x on
+  script_tag(name:"affected", value:"Mozilla Firefox versions 43.x on
   Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 44
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 44
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -80,7 +78,7 @@ if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-if(ffVer =~ "^(43)")
+if(ffVer =~ "^43")
 {
   if(version_is_less(version:ffVer, test_version:"44.0"))
   {

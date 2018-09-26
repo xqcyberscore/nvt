@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mailup_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_wordpress_mailup_mult_vuln.nasl 11620 2018-09-26 09:10:24Z asteins $
 #
 # Wordpress MailUp Plugin Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803448");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11620 $");
   script_cve_id("CVE-2013-2640");
   script_bugtraq_id(58467);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 11:10:24 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-26 13:22:02 +0530 (Tue, 26 Mar 2013)");
   script_name("Wordpress MailUp Plugin Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51917");
@@ -62,14 +62,21 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc");
-include("version_func.inc");
-include("http_keepalive.inc");
+CPE = 'cpe:/a:wordpress:wordpress';
 
-port = get_http_port(default:80);
-if(!dir = get_dir_from_kb(port:port, app:"WordPress")){
+include("host_details.inc");
+include("http_func.inc");
+include("http_keepalive.inc");
+include("version_func.inc");
+
+if (!port = get_app_port(cpe: CPE))
   exit(0);
-}
+
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
+
+if (dir == "/")
+  dir = "";
 
 url = dir + "/wp-content/plugins/wp-mailup/ajax.functions.php?formData=save";
 
