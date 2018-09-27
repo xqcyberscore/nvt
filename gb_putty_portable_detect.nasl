@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_portable_detect.nasl 11376 2018-09-13 12:51:39Z cfischer $
+# $Id: gb_putty_portable_detect.nasl 11627 2018-09-26 15:05:38Z cfischer $
 #
 # PuTTY Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114006");
-  script_version("$Revision: 11376 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:51:39 +0200 (Thu, 13 Sep 2018) $");
+  script_version("$Revision: 11627 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 17:05:38 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 18:16:21 +0200 (Wed, 25 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,18 +60,11 @@ include("cpe.inc");
 include("host_details.inc");
 include("smb_nt.inc");
 
-host    = get_host_ip();
-usrname = kb_smb_login();
-passwd  = kb_smb_password();
+infos = kb_smb_wmi_connectinfo();
+if( ! infos ) exit( 0 );
 
-if( ! host || ! usrname || ! passwd ) exit( 0 );
-
-domain = kb_smb_domain();
-if( domain ) usrname = domain + '\\' + usrname;
-
-handle = wmi_connect( host:host, username:usrname, password:passwd );
+handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
-
 
 fileList = wmi_file_file_search( handle:handle, fileName:"putty", fileExtn:"exe", includeHeader:FALSE );
 if( ! fileList ) {

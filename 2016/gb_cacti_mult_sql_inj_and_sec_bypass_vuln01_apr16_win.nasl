@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_sql_inj_and_sec_bypass_vuln01_apr16_win.nasl 8674 2018-02-06 02:56:44Z ckuersteiner $
+# $Id: gb_cacti_mult_sql_inj_and_sec_bypass_vuln01_apr16_win.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Cacti Multiple SQL Injection And Security Bypass Vulnerabilities-01 Apr16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cacti:cacti";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807559");
-  script_version("$Revision: 8674 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2015-8604", "CVE-2015-8369", "CVE-2015-8377");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-06 03:56:44 +0100 (Tue, 06 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-26 10:28:01 +0530 (Tue, 26 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cacti Multiple SQL Injection And Security Bypass Vulnerabilities-01 Apr16 (Windows)");
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Cacti and is
   prone to multiple sql injection and a security bypass vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The multiple flaws are due to,
 
@@ -65,15 +64,15 @@ commands and to bypass intended access restrictions.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "URL", value: "http://bugs.cacti.net/view.php?id=2656");
-  script_xref(name: "URL", value: "http://packetstormsecurity.com/files/135191");
-  script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2015/Dec/8");
+  script_xref(name:"URL", value:"http://bugs.cacti.net/view.php?id=2656");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/135191");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Dec/8");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("cacti_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("cacti/installed","Host/runs_windows");
+  script_mandatory_keys("cacti/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
   exit(0);
 }

@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871424");
-  script_version("$Revision: 6690 $");
+  script_version("$Revision: 11647 $");
   script_cve_id("CVE-2015-4495");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:51:07 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:31:07 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-06 15:29:24 +0530 (Fri, 06 May 2016)");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for firefox RHSA-2015:1581-01");
@@ -39,22 +39,21 @@ if(description)
   of detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "insight", value: "Mozilla Firefox is an open source web
   browser. XULRunner provides the XUL
-Runtime environment for Mozilla Firefox.
+  Runtime environment for Mozilla Firefox.
 
-A flaw was discovered in Mozilla Firefox that could be used to violate the
-same-origin policy and inject web script into a non-privileged part of the
-built-in PDF file viewer (PDF.js). An attacker could create a malicious web
-page that, when viewed by a victim, could steal arbitrary files (including
-private SSH keys, the /etc/passwd file, and other potentially sensitive
-files) from the system running Firefox. (CVE-2015-4495)
+  A flaw was discovered in Mozilla Firefox that could be used to violate the
+  same-origin policy and inject web script into a non-privileged part of the
+  built-in PDF file viewer (PDF.js). An attacker could create a malicious web
+  page that, when viewed by a victim, could steal arbitrary files (including
+  private SSH keys, the /etc/passwd file, and other potentially sensitive
+  files) from the system running Firefox. (CVE-2015-4495)
 
-Red Hat would like to thank the Mozilla project for reporting this issue.
-Upstream acknowledges Cody Crews as the original reporter.
+  Red Hat would like to thank the Mozilla project for reporting this issue.
+  Upstream acknowledges Cody Crews as the original reporter.
 
-All Firefox users should upgrade to these updated packages, which contain
-Firefox version 38.1.1 ESR, which corrects this issue. After installing the
-update, Firefox must be restarted for the changes to take effect.
-");
+  All Firefox users should upgrade to these updated packages, which contain
+  Firefox version 38.1.1 ESR, which corrects this issue. After installing the
+  update, Firefox must be restarted for the changes to take effect.");
   script_tag(name: "affected", value: "firefox on Red Hat Enterprise Linux (v. 5 server),
   Red Hat Enterprise Linux Desktop (v. 6),
   Red Hat Enterprise Linux Server (v. 6),

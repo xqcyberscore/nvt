@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-035.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_ms15-035.nasl 11635 2018-09-27 06:07:37Z cfischer $
 #
 # Microsoft Windows Graphics Component Remote Code Execution Vulnerability (3046306)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805534");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11635 $");
   script_cve_id("CVE-2015-1645");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 10:40:36 +0530 (Wed, 15 Apr 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Graphics Component Remote Code Execution Vulnerability (3046306)");
@@ -39,8 +39,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS15-035.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw exists due to error that is triggered
   when handling a specially crafted enhanced metafile (EMF) image format file.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_confluence_xss_vuln.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_confluence_xss_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Atlassian Confluence XSS and Insecure Direct Object Reference Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:atlassian:confluence";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806815");
-  script_version("$Revision: 5732 $");
-  script_cve_id("CVE-2015-8398","CVE-2015-8399");
+  script_version("$Revision: 11640 $");
+  script_cve_id("CVE-2015-8398", "CVE-2015-8399");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-08 16:21:20 +0530 (Fri, 08 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Atlassian Confluence XSS and Insecure Direct Object Reference Vulnerabilities");
@@ -46,27 +46,27 @@ if(description)
   check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to
+
   - An improper sanitization of user supplied input via different parameters
     in the REST API.
+
   - An Insecure Direct Object Reference via parameter 'decoratorName'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary script code in a user's browser session
-  and to read configuration files from the application.
-
-  Impact Level: Application");
+  and to read configuration files from the application.");
 
   script_tag(name:"affected", value:"Confluence versions 5.9.1, 5.8.14
   5.8.15, 5.2
   For Updates refer to https://www.atlassian.com/software/confluence");
 
-  script_tag(name: "solution" , value:"Upgrade to Confluence version 5.8.17 or later");
+  script_tag(name:"solution", value:"Upgrade to Confluence version 5.8.17 or later");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/39170/");
-  script_xref(name:"URL" , value:"http://seclists.org/fulldisclosure/2016/Jan/5");
-  script_xref(name:"URL" , value:"https://packetstormsecurity.com/files/135130/confluence-xssdisclose.txt");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39170/");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Jan/5");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/135130/confluence-xssdisclose.txt");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -81,25 +81,16 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-# Variable Initialization
-url = "";
-dir = "";
-http_port = 0;
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Confluence Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-##Construct Attack Request
 url = dir + '/rest/prototype/1/session/check/something%3Cimg%20src%3da%20onerror%3dalert%28document.cookie%29%3E';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url,  pattern:"alert\(document.cookie\)", check_header:TRUE,
                   extra_check:"Expected user"))
 {

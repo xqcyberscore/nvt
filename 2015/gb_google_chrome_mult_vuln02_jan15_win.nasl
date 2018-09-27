@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_jan15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_google_chrome_mult_vuln02_jan15_win.nasl 11624 2018-09-26 12:00:34Z santu $
 #
 # Google Chrome Multiple Vulnerabilities -02 Jan15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805421");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11624 $");
   script_cve_id("CVE-2015-1346", "CVE-2015-1205", "CVE-2014-7948", "CVE-2014-7947",
                 "CVE-2014-7946", "CVE-2014-7945", "CVE-2014-7944", "CVE-2014-7943",
                 "CVE-2014-7942", "CVE-2014-7941", "CVE-2014-7940", "CVE-2014-7939",
@@ -38,11 +38,11 @@ if(description)
                 "CVE-2014-7930", "CVE-2014-7929", "CVE-2014-7928", "CVE-2014-7927",
                 "CVE-2014-7926", "CVE-2014-7925", "CVE-2014-7924", "CVE-2014-7923",
                 "CVE-2014-9648", "CVE-2014-9647", "CVE-2014-9646", "CVE-2015-1361",
-                "CVE-2015-1360", "CVE-2015-1359", "CVE-2015-1248");
+                "CVE-2015-1360", "CVE-2015-1359", "CVE-2015-1248", "CVE-2014-9654");
   script_bugtraq_id(72288);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 14:00:34 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-27 17:11:51 +0530 (Tue, 27 Jan 2015)");
   script_name("Google Chrome Multiple Vulnerabilities -02 Jan15 (Windows)");
 
@@ -85,14 +85,15 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-if(!chromeVer = get_app_version(cpe:CPE)){
-  exit(0);
-}
+infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
+chr_ver  = infos['version'];
+chrPath = infos['location'];
 
-if(version_is_less(version:chromeVer, test_version:"40.0.2214.91"))
+if(version_is_less(version:chr_ver, test_version:"40.0.2214.91"))
 {
-  report = 'Installed version: ' + chromeVer + '\n' +
-             'Fixed version:     40.0.2214.91'  + '\n';
+  report = report_fixed_ver(installed_version:chr_ver, fixed_version:"40.0.2214.91", install_path:chrPath);
   security_message(data:report);
   exit(0);
 }
+exit(0);
+

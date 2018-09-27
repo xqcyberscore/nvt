@@ -1,11 +1,11 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop_9-2016-11_lin.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop_9-2016-11_lin.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop_9-2016-11)-Linux
 #
 # Authors:
-# Rinu Kuriakose <krinu@secpod.com> 
+# Rinu Kuriakose <krinu@secpod.com>
 #
 # Copyright:
 # Copyright (C) 2016 Greenbone Networks GmbH, http://www.greenbone.net
@@ -29,36 +29,37 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809097");
-  script_version("$Revision: 5850 $");
-  script_cve_id("CVE-2016-5199", "CVE-2016-5200", "CVE-2016-5201", "CVE-2016-5202" );
+  script_version("$Revision: 11640 $");
+  script_cve_id("CVE-2016-5199", "CVE-2016-5200", "CVE-2016-5201", "CVE-2016-5202");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-16 17:47:43 +0530 (Wed, 16 Nov 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_9-2016-11)-Linux");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to
+  script_tag(name:"insight", value:"The multiple flaws exists due to
+
   - The heap corruption error in FFmpeg.
+
   - An out of bounds memory access error in V8.
+
   - An info leak error in extensions.
+
   - The various fixes from internal audits, fuzzing and other initiatives");
 
-  script_tag(name: "impact" , value:"Successful exploitation of these
+  script_tag(name:"impact", value:"Successful exploitation of these
   vulnerabilities will allow remote attackers to corrupt memory, to access
-  sensitive information and to cause the application crash.
+  sensitive information and to cause the application crash.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Google Chrome version 
+  script_tag(name:"affected", value:"Google Chrome version
   prior to 54.0.2840.100 on Linux");
 
-  script_tag(name: "solution", value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   54.0.2840.100 or later.
   For updates refer to http://www.google.com/chrome");
 
@@ -66,7 +67,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://googlechromereleases.blogspot.in/2016/11/stable-channel-update-for-desktop_9.html");
+  script_xref(name:"URL", value:"https://googlechromereleases.blogspot.in/2016/11/stable-channel-update-for-desktop_9.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -79,15 +80,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-chr_ver = "";
-
-## Get version
 if(!chr_ver = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:chr_ver, test_version:"54.0.2840.100"))
 {
   report = report_fixed_ver(installed_version:chr_ver, fixed_version:"54.0.2840.100");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_red_hat_jboss_eap_server_dos_vuln01_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_red_hat_jboss_eap_server_dos_vuln01_lin.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Red Hat JBoss EAP Server Denial of Service Vulnerability01 (Linux)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:redhat:jboss_enterprise_application_platform";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810314");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2015-5304");
   script_bugtraq_id(79788);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-16 19:22:06 +0530 (Fri, 16 Dec 2016)");
   script_name("Red Hat JBoss EAP Server Denial of Service Vulnerability01 (Linux)");
 
   script_tag(name:"summary", value:"This host is running Red Hat JBoss EAP Server
   and is prone to denial of service Vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to red hat JBoss
   enterprise application platform does not properly authorize access to shut
@@ -50,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   authenticated users with the monitor, deployer, or auditor role to cause a
-  denial of service.
-
-  Impact Level: Application");
+  denial of service.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
@@ -77,20 +74,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-#Variable initialize
-jbossPort = "";
-jbossVer = "";
-
 if(!jbossPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!jbossVer = get_app_version(cpe:CPE, port:jbossPort)){
   exit(0);
 }
 
-## Checking for vulnerable version
 if(version_is_less(version:jbossVer, test_version:"6.4.5"))
 {
   report = report_fixed_ver( installed_version:jbossVer, fixed_version:"6.4.5");

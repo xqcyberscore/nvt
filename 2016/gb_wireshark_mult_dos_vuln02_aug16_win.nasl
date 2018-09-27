@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln02_aug16_win.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_wireshark_mult_dos_vuln02_aug16_win.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities-02 August16 (Windows)
 #
@@ -29,45 +29,48 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808287");
-  script_version("$Revision: 5598 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2016-6511", "CVE-2016-6509", "CVE-2016-6510", "CVE-2016-6508",
                 "CVE-2016-6506", "CVE-2016-6505");
   script_bugtraq_id(92169, 92168, 92173, 92166, 92165, 92163);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-09 10:31:32 +0530 (Tue, 09 Aug 2016)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities-02 August16 (Windows)");
-  
+
   script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to multiple denial of service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The multiple flaws are due to,
-  - An error in 'epan/proto.c' script cause OpenFlow dissector 
+
+  - An error in 'epan/proto.c' script cause OpenFlow dissector
     (and possibly others) to go into a long loop.
-  - The 'epan/dissectors/packet-ldss.c' script in the LDSS dissector mishandles 
+
+  - The 'epan/dissectors/packet-ldss.c' script in the LDSS dissector mishandles
     conversations.
-  - An Off-by-one error in 'epan/dissectors/packet-rlc.c' script in the 
+
+  - An Off-by-one error in 'epan/dissectors/packet-rlc.c' script in the
     RLC dissector.
-  - The 'epan/dissectors/packet-rlc.c' in the RLC dissector uses an 
+
+  - The 'epan/dissectors/packet-rlc.c' in the RLC dissector uses an
     incorrect integer data type.
-  - An error in 'epan/dissectors/packet-wsp.c' script cause WSP dissector 
+
+  - An error in 'epan/dissectors/packet-wsp.c' script cause WSP dissector
     to go into a long loop.
-  - An error in 'epan/dissectors/packet-packetbb.c' script could cause a 
+
+  - An error in 'epan/dissectors/packet-packetbb.c' script could cause a
     divide-by-zero error in PacketBB dissector.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct denial of service attack.
+  attackers to conduct denial of service attack.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"Wireshark version 1.12.x before 1.12.13 and 
+  script_tag(name:"affected", value:"Wireshark version 1.12.x before 1.12.13 and
   2.0.x before 2.0.5 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.12.13 or 
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.12.13 or
   2.0.5 or later.
   For updates refer to https://www.wireshark.org");
 
@@ -92,22 +95,16 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-wirversion = "";
-
-## Get the version
 if(!wirversion = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check the vulnerable version is 1.12.x before 1.12.13
 if(version_in_range(version:wirversion, test_version:"1.12.0", test_version2:"1.12.12"))
 {
   fix = "1.12.13";
   VULN = TRUE ;
 }
 
-## Check the vulnerable version is 2.0.x before 2.0.5
 else if(version_in_range(version:wirversion, test_version:"2.0", test_version2:"2.0.4"))
 {
   fix = "2.0.5";

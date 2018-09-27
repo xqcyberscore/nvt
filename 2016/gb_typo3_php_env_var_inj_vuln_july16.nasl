@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_php_env_var_inj_vuln_july16.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_typo3_php_env_var_inj_vuln_july16.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # TYPO3 Environment Variable Injection Vulnerability July16
 #
@@ -29,42 +29,39 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808272");
-  script_version("$Revision: 5568 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2016-5385");
   script_bugtraq_id(91821);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-27 10:28:48 +0530 (Wed, 27 Jul 2016)");
   script_name("TYPO3 Environment Variable Injection Vulnerability July16");
 
-  script_tag(name: "summary" , value:"This host is installed with TYPO3 and
+  script_tag(name:"summary", value:"This host is installed with TYPO3 and
   is prone to a environment variable injection vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to PHP, when used as 
-  CGI, FPM or HHVM, exposes http headers also as environment variables starting 
+  script_tag(name:"insight", value:"The flaw is due to PHP, when used as
+  CGI, FPM or HHVM, exposes http headers also as environment variables starting
   with 'HTTP_'.TYPO3 is vulnerable through third party library guzzlehttp/guzzle
   which makes use of the environment variable 'HTTP_PROXY'.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
-  remote attackers to conduct MITM attacks on internal server subrequests 
-  or direct the server to initiate connections to arbitrary hosts.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  remote attackers to conduct MITM attacks on internal server subrequests
+  or direct the server to initiate connections to arbitrary hosts.");
 
-  Impact Level: Application.");
+  script_tag(name:"affected", value:"TYPO3 versions 8.0.0 to 8.2.0");
 
-  script_tag(name: "affected" , value:"TYPO3 versions 8.0.0 to 8.2.0");
-
-  script_tag(name: "solution" , value:"Upgrade to TYPO3 version 8.2.1 or later. 
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 8.2.1 or later.
   For updates refer to https://typo3.org/typo3-cms");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name: "URL" , value : "https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-019");
+  script_xref(name:"URL", value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-019");
 
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -79,16 +76,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable initialization
-typoPort = "";
-typoVer = "";
-
-## Get Application HTTP Port
 if(!typoPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Get Typo3 version
 if(!typoVer = get_app_version(cpe:CPE, port:typoPort)){
   exit(0);
 }

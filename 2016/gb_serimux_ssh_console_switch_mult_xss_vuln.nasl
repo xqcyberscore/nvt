@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serimux_ssh_console_switch_mult_xss_vuln.nasl 10916 2018-08-10 16:01:30Z cfischer $
+# $Id: gb_serimux_ssh_console_switch_mult_xss_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Serimux SSH Console Switch Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:serimux:serimux_console_switch";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807895");
-  script_version("$Revision: 10916 $");
+  script_version("$Revision: 11640 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 18:01:30 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-05 16:48:59 +0530 (Wed, 05 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Serimux SSH Console Switch Multiple Cross-Site Scripting Vulnerabilities");
@@ -48,9 +48,7 @@ if(description)
   'portcnfiguration.asp' and 'systeminfo.asp' scripts.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to inject arbitrary web script or HTML.
-
-  Impact Level: Application");
+  attackers to inject arbitrary web script or HTML.");
 
   script_tag(name:"affected", value:"Serimux SSH Console Switch versions 2.4, 2.3
   2.2 and 2.1");

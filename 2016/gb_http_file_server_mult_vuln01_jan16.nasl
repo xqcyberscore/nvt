@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_file_server_mult_vuln01_jan16.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_http_file_server_mult_vuln01_jan16.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # HTTP File Server Remote Command Execution Vulnerability-01 Jan16
 #
@@ -29,29 +29,26 @@ CPE = "cpe:/a:httpfilesever:hfs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806813");
-  script_version("$Revision: 5836 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2014-7226");
   script_bugtraq_id(70216);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-05 19:14:20 +0530 (Tue, 05 Jan 2016)");
   script_name("HTTP File Server Remote Command Execution Vulnerability-01 Jan16");
 
   script_tag(name:"summary", value:"This host is running HTTP File Server
   and is prone to remote command execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to the application does not
   properly validate uft-8 broken byte representation");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to execute arbitrary code by uploading a file with certain invalid
-  UTF-8 byte sequences that are interpreted as executable macro symbols.
-
-  Impact Level: Application");
+  UTF-8 byte sequences that are interpreted as executable macro symbols.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -75,23 +72,17 @@ if(description)
 
 include("http_func.inc");
 include("version_func.inc");
-include("http_keepalive.inc");
-include("host_details.inc");
 
-#Variable initialize
-hfsPort = "";
-hfsVer = "";
+include("host_details.inc");
 
 if(!hfsPort = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-## Get the version
 if(!hfsVer = get_app_version(cpe:CPE, port:hfsPort)){
  exit(0);
 }
 
-## Checking for vulnerable version
 if(version_is_less(version:hfsVer, test_version:"2.3d"))
 {
   report = 'Installed Version: ' + hfsVer + '\n' +

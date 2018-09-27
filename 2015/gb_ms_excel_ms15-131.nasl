@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_ms15-131.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_ms_excel_ms15-131.nasl 11635 2018-09-27 06:07:37Z cfischer $
 #
 # Microsoft Office Excel Remote Code Execution Vulnerabilities (3116111)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806176");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11635 $");
   script_cve_id("CVE-2015-6040", "CVE-2015-6122", "CVE-2015-6177");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 14:17:34 +0530 (Wed, 09 Dec 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Excel Remote Code Execution Vulnerabilities (3116111)");
@@ -39,8 +39,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS15-131.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists when,
 

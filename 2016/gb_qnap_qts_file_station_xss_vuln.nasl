@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_file_station_xss_vuln.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: gb_qnap_qts_file_station_xss_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # QNAP QTS File Station Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808247");
-  script_version("$Revision: 5689 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2015-5664");
   script_bugtraq_id(91474);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-05 16:44:34 +0530 (Tue, 05 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("QNAP QTS File Station Cross Site Scripting Vulnerability");
@@ -40,26 +40,24 @@ if(description)
   script_tag(name:"summary", value:"This host is running QNAP QTS File Station
   and is prone to cross site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of 
+  script_tag(name:"vuldetect", value:"Get the installed version with the help of
   detect nvt and check whether it is vulnerable or not.");
 
   script_tag(name:"insight", value:"The flaw is due to an insufficient validation
   of user supplied input via unspecified vectors in File Station.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to inject arbitrary web script or HTML via unspecified vectors.
-
-  Impact Level: Application");
+  attackers to inject arbitrary web script or HTML via unspecified vectors.");
 
   script_tag(name:"affected", value:"QNAP QTS versions prior to 4.2.0");
 
-  script_tag(name: "solution" , value:"Upgrade to QNAP QTS version 
+  script_tag(name:"solution", value:"Upgrade to QNAP QTS version
   4.2.1 Build 20160601 or later. For updates refer to
   https://www.qnap.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://jvn.jp/en/jp/JVN42930233/index.html");
-  script_xref(name : "URL" , value : "http://jvndb.jvn.jp/en/contents/2016/JVNDB-2016-000119.html");
+  script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN42930233/index.html");
+  script_xref(name:"URL", value:"http://jvndb.jvn.jp/en/contents/2016/JVNDB-2016-000119.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -74,18 +72,11 @@ include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-# Variable Initialization
-version = 0;
-qtsPort = 0;
-
-##Get port
 if(!qtsPort = get_kb_item("qnap/port")) exit(0);
 
-##Get version
 if(!version = get_kb_item("qnap/version")) exit(0);
 
 ## QNAP up to 4.1.x is affected according to the reference links
-## check for vulnerable version
 if(version_is_less(version:version, test_version:"4.2.0"))
 {
   report = report_fixed_ver(installed_version:version, fixed_version:"4.2.1 Build 20160601");

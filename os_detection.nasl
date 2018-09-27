@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 11412 2018-09-16 10:21:40Z cfischer $
+# $Id: os_detection.nasl 11638 2018-09-27 06:42:05Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 11412 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-16 12:21:40 +0200 (Sun, 16 Sep 2018) $");
+  script_version("$Revision: 11638 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:42:05 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -91,7 +91,7 @@ if(description)
   Furthermore it reports all previously collected information leading to this best matching OS. It also reports possible additional information
   which might help to improve the OS detection.
 
-  If any of this information is wrong or could be improved please consider to report these to openvas-plugins@wald.intevation.org.");
+  If any of this information is wrong or could be improved please consider to report these to https://community.greenbone.net/c/vulnerability-tests.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

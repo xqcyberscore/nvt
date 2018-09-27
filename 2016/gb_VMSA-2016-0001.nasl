@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2016-0001.nasl 9377 2018-04-06 10:03:08Z cfischer $
+# $Id: gb_VMSA-2016-0001.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # VMSA-2016-0001 VMware ESXi, Fusion, Player, and Workstation updates address important guest privilege escalation vulnerability
 #
@@ -27,25 +27,25 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105508");
- script_cve_id("CVE-2015-6933");
- script_tag(name:"cvss_base", value:"6.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
- script_version ("$Revision: 9377 $");
- script_name("VMSA-2016-0001 VMware ESXi, Fusion, Player, and Workstation updates address important guest privilege escalation vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.105508");
+  script_cve_id("CVE-2015-6933");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_version("$Revision: 11640 $");
+  script_name("VMSA-2016-0001 VMware ESXi, Fusion, Player, and Workstation updates address important guest privilege escalation vulnerability");
 
- script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0001.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0001.html");
 
- script_tag(name: "vuldetect" , value:"Checks for missing patches.");
+  script_tag(name:"vuldetect", value:"Checks for missing patches.");
 
- script_tag(name: "insight" , value:"Important Windows-based guest privilege escalation in VMware Tools
+  script_tag(name:"insight", value:"Important Windows-based guest privilege escalation in VMware Tools
 A kernel memory corruption vulnerability is present in the VMware Tools 'Shared Folders' (HGFS) feature running on Microsoft Windows. Successful exploitation of this issue could lead to an escalation of privilege in the guest operating system.");
 
- script_tag(name: "solution" , value:"Apply the missing patch(es).");
+  script_tag(name:"solution", value:"Apply the missing patch(es).");
 
- script_tag(name: "summary" , value:"VMware ESXi, Fusion, Player, and Workstation updates address important guest privilege escalation vulnerability");
+  script_tag(name:"summary", value:"VMware ESXi, Fusion, Player, and Workstation updates address important guest privilege escalation vulnerability");
 
- script_tag(name: "affected" , value:"VMware ESXi 6.0 without patch ESXi600-201512102-SG
+  script_tag(name:"affected", value:"VMware ESXi 6.0 without patch ESXi600-201512102-SG
 
 VMware ESXi 5.5 without patch ESXi550-201512102-SG
 
@@ -53,17 +53,17 @@ VMware ESXi 5.1 without patch ESXi510-201510102-SG
 
 VMware ESXi 5.0 without patch ESXi500-201510102-SG");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 12:03:08 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2016-01-14 10:44:54 +0100 (Thu, 14 Jan 2016)");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-01-14 10:44:54 +0100 (Thu, 14 Jan 2016)");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esxi_init.nasl");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
 
  exit(0);
 

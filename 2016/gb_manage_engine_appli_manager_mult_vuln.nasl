@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_appli_manager_mult_vuln.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_manage_engine_appli_manager_mult_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # ManageEngine Applications Manager Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:manageengine:applications_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808053");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 11640 $");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-23 11:29:35 +0530 (Mon, 23 May 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ManageEngine Applications Manager Multiple Vulnerabilities");
@@ -44,25 +44,25 @@ if(description)
   check whether it is able to obtain maintenance schedule.");
 
   script_tag(name:"insight", value:"Multiple flwas are due to,
+
   - An improper validation of authentication for some scripts.
+
   - The downTimeScheduler.do script is vulnerable to a Boolean based blind.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to complete unauthorized access to the back-end database, to allow
-  public access to sensitive data.
-
-  Impact Level: Application");
+  public access to sensitive data.");
 
   script_tag(name:"affected", value:"ManageEngine Applications Manager
   Build No 12700");
 
-  script_tag(name: "solution" , value:"Apply Vendor supplied patch build 12710
+  script_tag(name:"solution", value:"Apply Vendor supplied patch build 12710
   from below link,
   https://www.manageengine.com/products/applications_manager/release-notes.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/May/20");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/May/20");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -78,23 +78,14 @@ include("misc_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-# Variable Initialization
-dir = "";
-url = "";
-managePort = 0;
-
-##Get port
 if(!managePort = get_app_port(cpe:CPE)) exit(0);
 
-## Get directory
 if(!dir = get_app_location(cpe:CPE, port:managePort)) exit( 0 );
 
 if(dir == "/") dir = "";
 
-## Construct vulnerable url
 url = dir + "/downTimeScheduler.do?method=maintenanceTaskListView&tabtoLoad=downtimeSchedulersDiv";
 
-## Confirm the Exploit
 ## ManageEngine is product from Zoho Corp.
 if(http_vuln_check(port:managePort, url:url, check_header:TRUE,
    pattern:"Schedule Name", extra_check:make_list("Status", "Occurrence", "Zoho Corp")))

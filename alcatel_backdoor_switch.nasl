@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: alcatel_backdoor_switch.nasl 10896 2018-08-10 13:24:05Z cfischer $
+# $Id: alcatel_backdoor_switch.nasl 11636 2018-09-27 06:20:03Z cfischer $
 #
 # Alcatel OmniSwitch 7700/7800 switches backdoor
 #
@@ -31,24 +31,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-# This script was written by deepquest <deepquest@code511.com>
-# Modifications by rd:
-# -  added ref: http://www.cert.org/advisories/CA-2002-32.html
-# -  removed leftovers in the code (send(raw_string(0, 0))
-# -  added the use of telnet_init()
-# -  replaced open_sock_udp by open_sock_tcp()
-# -  added script id
-# -  attributed copyright properly to deepquest
-# -  merged some ideas from Georges Dagousset <georges.dagousset@alert4web.com>
-#    who wrote a duplicate of this script
 ###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11170");
-  script_version("$Revision: 10896 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11636 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:20:03 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(6220);
   script_tag(name:"cvss_base", value:"10.0");
@@ -63,16 +52,16 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.cert.org/advisories/CA-2002-32.html");
 
-  tag_impact = "An attacker can gain full access to any device
-  running AOS version 5.1.1, which can result in,
-  but is not limited to, unauthorized access,
-  unauthorized monitoring, information leakage,
-  or denial of service.";
-
   script_tag(name:"solution", value:"Block access to port 6778/TCP or update to
   AOS 5.1.1.R02 or AOS 5.1.1.R03.");
+
   script_tag(name:"summary", value:"The remote host seems to be a backdoored
   Alcatel OmniSwitch 7700/7800.");
+
+  script_tag(name:"impact", value:"An attacker can gain full access to any device
+  running AOS version 5.1.1, which can result in, but is not limited to,
+  unauthorized access, unauthorized monitoring, information leakage,
+  or denial of service.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -93,8 +82,7 @@ if( ! soc ) exit( 0 );
 data = get_telnet_banner( port:port );
 
 if( data ) {
-  log_message( port:port, data:string( "The banner:\n", data, "\nshould be reported to openvas-plugins@wald.intevation.org\n" ) );
-  security_message( port:port );
+  security_message( port:port, data:'Banner:\n' + data );
   register_service( port:port, proto:"aos" );
   exit( 0 );
 }

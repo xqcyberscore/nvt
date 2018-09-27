@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bmc_trackit_rce_vuln.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_bmc_trackit_rce_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # BMC Track-It! Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:bmc:bmc_track-it!";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106147");
-  script_version("$Revision: 5568 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2016-07-19 11:00:37 +0700 (Tue, 19 Jul 2016)");
-  script_tag(name:"cvss_base", value: "7.5");
-  script_tag(name:"cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11640 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-19 11:00:37 +0700 (Tue, 19 Jul 2016)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2015-8273", "CVE-2015-8274");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("BMC Track-It! Multiple Vulnerabilities");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_bmc_trackit_detect.nasl");
   script_mandatory_keys("bmctrackit/installed");
 
-  script_tag(name: "summary", value: "BMC Track-It! is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"BMC Track-It! is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "BMC Track-It! is prone to an arbitrary file upload and a execute
+  script_tag(name:"insight", value:"BMC Track-It! is prone to an arbitrary file upload and a execute
 any action without authentication via .NET Remoting request.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may upload arbitrary files and execute any
+  script_tag(name:"impact", value:"An unauthenticated attacker may upload arbitrary files and execute any
 action.");
 
-  script_tag(name: "affected", value: "BMC Track-It! versions prior 11.4 Hotfix 3 (11.4.0.440).");
+  script_tag(name:"affected", value:"BMC Track-It! versions prior 11.4 Hotfix 3 (11.4.0.440).");
 
-  script_tag(name: "solution", value: "Update to version 11.4 Hotfix 3 (11.4.0.440) or later.");
+  script_tag(name:"solution", value:"Update to version 11.4 Hotfix 3 (11.4.0.440) or later.");
 
-  script_xref(name: "URL", value: "https://communities.bmc.com/community/bmcdn/bmc_track-it/blog/2016/01/04/track-it-security-advisory-24-dec-2015");
-  script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/2713");
+  script_xref(name:"URL", value:"https://communities.bmc.com/community/bmcdn/bmc_track-it/blog/2016/01/04/track-it-security-advisory-24-dec-2015");
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/2713");
 
 
   exit(0);

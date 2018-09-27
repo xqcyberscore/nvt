@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 11488 2018-09-20 07:47:27Z cfischer $
+# $Id: products_eol.inc 11624 2018-09-26 12:00:34Z santu $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11488 $
+# $Revision: 11624 $
 #
 ###############################################################################
 
@@ -32,6 +32,18 @@ eol_cpes = make_array();
 eol_cpes[ 'cpe:/a:apache:http_server' ] = make_array(
   'versions',      '2.2:2017-12-31;2.0:2013-07-10;1.3:2010-02-03',
   'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
+# https://helpx.adobe.com/support/programs/eol-matrix.html
+eol_cpes[ 'cpe:/a:adobe:acrobat_reader' ] = make_array(
+  'versions',      '7:2009-12-28;8:2011-11-03;9:2013-06-26;10:2015-11-18;11:2017-10-15',
+  'version_regex', '^([0-9]+)'
+);
+
+# https://helpx.adobe.com/in/flash-player/kb/flash-player-9-support-discontinued.html
+eol_cpes[ 'cpe:/a:adobe:flash_player' ] = make_array(
+  'versions',      '9:2011-02-08',
+  'version_regex', '^([0-9]+)'
 );
 
 # https://tomcat.apache.org/whichversion.html

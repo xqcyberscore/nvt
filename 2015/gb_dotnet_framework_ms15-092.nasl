@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms15-092.nasl 11445 2018-09-18 08:09:39Z mmartin $
+# $Id: gb_dotnet_framework_ms15-092.nasl 11635 2018-09-27 06:07:37Z cfischer $
 #
 # Microsoft .NET Framework Privilege Elevation Vulnerability (3086251)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805952");
-  script_version("$Revision: 11445 $");
+  script_version("$Revision: 11635 $");
   script_cve_id("CVE-2015-2479", "CVE-2015-2480", "CVE-2015-2481");
   script_bugtraq_id(76268, 76269, 76270);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 12:08:40 +0530 (Wed, 12 Aug 2015)");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerability (3086251)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-092.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw exists due to error in RyuJIT compiler
   which improperly optimizes certain parameters resulting in a code generation

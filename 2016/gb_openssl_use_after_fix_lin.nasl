@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_use_after_fix_lin.nasl 9585 2018-04-24 11:46:06Z asteins $
+# $Id: gb_openssl_use_after_fix_lin.nasl 11640 2018-09-27 07:15:20Z asteins $
 # OpenSSL Use-After-Free Fix vulnerability (Linux)
 #
 # Authors:
@@ -28,10 +28,10 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107054");
-  script_version("$Revision: 9585 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2016-6309");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 13:46:06 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"creation_date", value:"2016-09-26 06:40:16 +0200 (Mon, 26 Sep 2016)");
   script_tag(name:"cvss_base", value:"10.0");
@@ -44,14 +44,14 @@ if(description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed","Host/runs_unixoide");
+  script_mandatory_keys("OpenSSL/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
 
   script_tag(name:"summary", value:"This host is running OpenSSL and prone to denial of service or remote code execution vulnerability.");
   script_tag(name:"insight", value:"OpenSSL suffers from the possibility of Remote Code Execution or DoS attack after a patch applied to fix the 'Use-After-Free' issue which enable attacker to write to the previously freed location.");
   script_tag(name:"impact", value:"Successful exploitation could result in service crash or execution of arbitrary code.");
   script_tag(name:"affected", value:"OpenSSL 1.1.0a.");
-  script_tag(name: "solution", value:"OpenSSL 1.1.0 users should upgrade to 1.1.0b.");
+  script_tag(name:"solution", value:"OpenSSL 1.1.0 users should upgrade to 1.1.0b.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);

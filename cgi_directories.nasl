@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 11519 2018-09-21 12:40:00Z cfischer $
+# $Id: cgi_directories.nasl 11638 2018-09-27 06:42:05Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 11519 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 14:40:00 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 11638 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:42:05 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -61,7 +61,7 @@ if(description)
     'Add historic /scripts and /cgi-bin to directories for CGI scanning' within the
     'Global variable settings' of the scan config in use
 
-  If you think any of these are wrong please report to openvas-plugins@wald.intevation.org");
+  If you think any of these are wrong please report to https://community.greenbone.net/c/vulnerability-tests.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

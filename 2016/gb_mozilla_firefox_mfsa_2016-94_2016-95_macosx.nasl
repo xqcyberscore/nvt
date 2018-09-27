@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-94_2016-95_macosx.nasl 10909 2018-08-10 15:03:01Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2016-94_2016-95_macosx.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Mozilla Firefox Security Updates(mfsa_2016-94_2016-95)-MAC OS X
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809837");
-  script_version("$Revision: 10909 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2016-9894", "CVE-2016-9899", "CVE-2016-9895", "CVE-2016-9896",
 		"CVE-2016-9897", "CVE-2016-9898", "CVE-2016-9900", "CVE-2016-9904",
 		"CVE-2016-9901", "CVE-2016-9902", "CVE-2016-9903", "CVE-2016-9080",
 		"CVE-2016-9893");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:03:01 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-15 13:39:52 +0530 (Thu, 15 Dec 2016)");
   script_name("Mozilla Firefox Security Updates( mfsa_2016-94_2016-95 )-MAC OS X");
 
@@ -46,24 +46,34 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The multiple flaws exists due to,
+
   - A buffer overflow error in SkiaGL.
+
   - An use-after-free error while manipulating DOM events and audio elements.
+
   - A CSP bypass error using marquee tag.
+
   - An Use-after-free error with WebVR.
+
   - A memory corruption error in libGLES.
+
   - An use-after-free error in Editor while manipulating DOM subtrees.
+
   - The restricted external resources can be loaded by SVG images through data URLs.
+
   - A cross-origin information leak error in shared atoms.
+
   - The data from Pocket server improperly sanitized before execution.
+
   - The pocket extension does not validate the origin of events.
+
   - A XSS injection vulnerability in add-ons SDK.
+
   - Some memory safety bugs.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause denial of service, gain sensitive information and also
-  could run arbitrary code.
-
-  Impact Level: Application.");
+  could run arbitrary code.");
 
   script_tag(name:"affected", value:"Mozilla Firefox version before
   50.1 on MAC OS X.");

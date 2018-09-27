@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_information_disclosure_vuln.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: gb_apache_ambari_information_disclosure_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Apache Ambari Information Disclosure Vulnerability
 #
@@ -29,31 +29,30 @@ CPE = "cpe:/a:apache:ambari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808650");
-  script_version("$Revision: 5612 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2016-0707", "CVE-2015-5210");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-09 18:48:58 +0530 (Tue, 09 Aug 2016)");
   script_name("Apache Ambari Information Disclosure Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Apache Ambari
   and is prone to information disclosure and open redirection vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The multiple flaws are due to,
-  - Weak permissions used for the '/var/lib/ambari-agent/data' and 
+
+  - Weak permissions used for the '/var/lib/ambari-agent/data' and
     '/var/lib/ambari-agent/keys' directories by the agent.
-  - An insufficient validation of user supplied input via 'targetURI' 
+
+  - An insufficient validation of user supplied input via 'targetURI'
     parameter in redirect and forward requests.");
 
-  script_tag(name:"impact", value:"Success exploitation will allow local users to 
-  obtain sensitive information by reading files in the directories and to redirect 
-  users to arbitrary web sites and conduct phishing attacks.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Success exploitation will allow local users to
+  obtain sensitive information by reading files in the directories and to redirect
+  users to arbitrary web sites and conduct phishing attacks.");
 
   script_tag(name:"affected", value:"Apache Ambari version 1.7 to 2.1.1");
 
@@ -65,7 +64,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "https://cwiki.apache.org/confluence/display/AMBARI/Ambari+Vulnerabilities");
+  script_xref(name:"URL", value:"https://cwiki.apache.org/confluence/display/AMBARI/Ambari+Vulnerabilities");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -78,21 +77,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-amb_Ver= "";
-amb_Port= 0;
-
-## Get HTTP Port
 if(!amb_Port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!amb_Ver = get_app_version(cpe:CPE, port:amb_Port)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_in_range(version:amb_Ver, test_version:"1.7", test_version2:"2.1.1"))
 {
   report =  report_fixed_ver(installed_version:amb_Ver, fixed_version:"2.1.2");

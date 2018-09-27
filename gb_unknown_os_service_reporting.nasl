@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unknown_os_service_reporting.nasl 9701 2018-05-03 06:24:12Z cfischer $
+# $Id: gb_unknown_os_service_reporting.nasl 11638 2018-09-27 06:42:05Z cfischer $
 #
 # Unknown OS and Service Banner Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108441");
-  script_version("$Revision: 9701 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-03 08:24:12 +0200 (Thu, 03 May 2018) $");
+  script_version("$Revision: 11638 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:42:05 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 10:53:41 +0200 (Wed, 02 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,7 +49,7 @@ if(description)
 
   - OS Detection Consolidation and Reporting (OID: 1.3.6.1.4.1.25623.1.0.105937)
 
-  If you know any of the information reported here, please send the full output to openvas-plugins@wald.intevation.org.");
+  If you know any of the information reported here, please send the full output to https://community.greenbone.net/c/vulnerability-tests.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -98,7 +98,7 @@ if( unknown_service_banners ) {
   foreach unknown_service_banner( keys( unknown_service_banners ) ) {
 
     report  = 'An unknown service is running on this port. If you know this service, please ';
-    report += 'report the following information to openvas-plugins@wald.intevation.org:\n\n';
+    report += 'report the following information to https://community.greenbone.net/c/vulnerability-tests:\n\n';
 
     tmp  = split( unknown_service_banner, sep:"/", keep:FALSE );
     port = tmp[2];

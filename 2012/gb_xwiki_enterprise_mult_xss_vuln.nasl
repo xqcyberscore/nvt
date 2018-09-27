@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xwiki_enterprise_mult_xss_vuln.nasl 11430 2018-09-17 10:16:03Z cfischer $
+# $Id: gb_xwiki_enterprise_mult_xss_vuln.nasl 11622 2018-09-26 10:34:07Z asteins $
 #
 # XWiki Enterprise Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802397");
-  script_version("$Revision: 11430 $");
+  script_version("$Revision: 11622 $");
   script_bugtraq_id(51867);
   script_cve_id("CVE-2012-1019");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:16:03 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 12:34:07 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-09 11:12:00 +0530 (Fri, 09 Mar 2012)");
   script_name("XWiki Enterprise Multiple Cross-Site Scripting Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47885");
@@ -74,14 +74,21 @@ scripting vulnerabilities.");
   exit(0);
 }
 
-include("http_func.inc");
-include("version_func.inc");
-include("http_keepalive.inc");
+CPE = 'cpe:/a:xwiki:xwiki';
 
-xwikiPort = get_http_port(default:8080);
-if(!dir = get_dir_from_kb(port:xwikiPort, app:"XWiki")){
+include("host_details.inc");
+include("http_func.inc");
+include("http_keepalive.inc");
+include("version_func.inc");
+
+if (!xwikiPort = get_app_port(cpe: CPE))
   exit(0);
-}
+
+if (!dir = get_app_location(cpe: CPE, port: xwikiPort))
+  exit(0);
+
+if (dir == "/")
+  dir = "";
 
 useragent = get_http_user_agent();
 host = http_host_name( port:xwikiPort );
@@ -121,7 +128,7 @@ if (res)
   if(http_vuln_check(port:xwikiPort, url:url, check_header: TRUE,
      pattern:"<script>alert\(document.cookie\)</script>"))
   {
-    security_message(xwikiPort);
+    security_message(port:xwikiPort);
     exit(0);
   }
 }

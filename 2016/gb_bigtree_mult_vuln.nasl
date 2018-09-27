@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_mult_vuln.nasl 9437 2018-04-11 10:24:03Z cfischer $
+# $Id: gb_bigtree_mult_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Bigtree Multiple Vulnerabilities
 #
@@ -29,37 +29,35 @@ CPE = "cpe:/a:bigtree:bigtree";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807792");
-  script_version("$Revision: 9437 $");
+  script_version("$Revision: 11640 $");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-18 14:17:30 +0530 (Mon, 18 Apr 2016)");
   script_name("Bigtree Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with Bigtree
+  script_tag(name:"summary", value:"The host is installed with Bigtree
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - An improper validation of input to 'cleanFile' Function.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
-  to PHP object injection, and to bypass the filter.
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
+  to PHP object injection, and to bypass the filter.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"BigTree 4.2.8");
 
-  script_tag(name: "affected" , value:"BigTree 4.2.8");
-
-  script_tag(name: "solution" , value:"Upgrade to version 4.2.9 or later
+  script_tag(name:"solution", value:"Upgrade to version 4.2.9 or later
   For updates refer to https://www.bigtreecms.org/");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Mar/63");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Mar/63");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_cisco-sa-20160817-asa-cli.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_cisco_asa_cisco-sa-20160817-asa-cli.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Cisco Adaptive Security Appliance CLI Remote Code Execution Vulnerability
 #
@@ -29,23 +29,23 @@ CPE = "cpe:/a:cisco:asa";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106184");
- script_cve_id("CVE-2016-6367");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 5836 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106184");
+  script_cve_id("CVE-2016-6367");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11640 $");
 
- script_name("Cisco Adaptive Security Appliance CLI Remote Code Execution Vulnerability");
+  script_name("Cisco Adaptive Security Appliance CLI Remote Code Execution Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160817-asa-cli");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160817-asa-cli");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewErp.x?alertId=ERP-56516");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewErp.x?alertId=ERP-56516");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewErp.x?alertId=ERP-56516");
- 
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the command-line interface (CLI) parser of Cisco
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the command-line interface (CLI) parser of Cisco
 Adaptive Security Appliance (ASA) Software could allow an authenticated, local attacker to create a denial
 of service (DoS) condition or potentially execute arbitrary code. An attacker could exploit this vulnerability
 by invoking certain invalid commands in an affected device.
@@ -55,16 +55,16 @@ this vulnerability. This advisory is available at the following link:
 
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160817-asa-cli");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
- script_tag(name:"creation_date", value:"2016-08-18 12:25:55 +0700 (Thu, 18 Aug 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
- script_mandatory_keys("cisco_asa/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-18 12:25:55 +0700 (Thu, 18 Aug 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
+  script_mandatory_keys("cisco_asa/version");
  exit(0);
 }
 
@@ -74,7 +74,7 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE, nofork: TRUE ) ) exit( 0 );
 check_vers = ereg_replace(string:version, pattern:"\(([0-9.]+)\)", replace:".\1");
 
-affected = make_list( 
+affected = make_list(
 		'7.0.1.4',
 		'7.0.1',
 		'7.0.2',

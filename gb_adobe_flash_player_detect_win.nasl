@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_detect_win.nasl 10891 2018-08-10 12:51:28Z cfischer $
+# $Id: gb_adobe_flash_player_detect_win.nasl 11624 2018-09-26 12:00:34Z santu $
 #
 # Adobe Flash Player/Flash CS/AIR/Flex Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800029");
-  script_version("$Revision: 10891 $");
+  script_version("$Revision: 11624 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 14:00:34 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-10-16 18:25:33 +0200 (Thu, 16 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Flash Player/Flash CS/AIR/Flex Version Detection (Windows)");
@@ -149,13 +149,12 @@ foreach key (key_list)
       {
         set_kb_item(name:"Adobe/Air_or_Flash_or_Reader_or_Acrobat/Win/Installed", value:TRUE);
         set_kb_item(name:"AdobeFlashPlayer/Win/Installed", value:TRUE);
+        set_kb_item(name:"AdobeFlashPlayer/Win/Ver", value:playerVer);
+        register_and_report_cpe( app:adobeName, ver:playerVer, base:"cpe:/a:adobe:flash_player:", expr:"^([0-9.]+)", insloc:insPath );
 
         if("64" >< os_arch && "Wow6432Node" >!< key) {
           set_kb_item(name:"AdobeFlashPlayer64/Win/Ver", value:playerVer);
           register_and_report_cpe( app:adobeName, ver:playerVer, base:"cpe:/a:adobe:flash_player:x64:", expr:"^([0-9.]+)", insloc:insPath );
-        } else {
-          set_kb_item(name:"AdobeFlashPlayer/Win/Ver", value:playerVer);
-          register_and_report_cpe( app:adobeName, ver:playerVer, base:"cpe:/a:adobe:flash_player:", expr:"^([0-9.]+)", insloc:insPath );
         }
 
         ## Commented as we need to find multiple adobe versions for

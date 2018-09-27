@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_service_command_vuln_06_2016.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_clamav_service_command_vuln_06_2016.nasl 11647 2018-09-27 09:31:07Z jschulte $
 #
 # ClamAV Service Commands Injection Vulnerability
 #
@@ -27,35 +27,44 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105762");
-  script_version("$Revision: 5650 $");
+  script_version("$Revision: 11647 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:31:07 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-13 14:28:48 +0200 (Mon, 13 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ClamAV `Service Commands` Injection Vulnerability");
 
-  script_tag(name: "summary" , value: "ClamAV 0.99.2, and possibly other previous versions, allow the execution of clamav commands SCAN and SHUTDOWN without authentication.");
-  script_tag(name: "vuldetect", value:"Send a SCAN command and check the response");
+  script_tag(name:"summary", value:"ClamAV 0.99.2, and possibly other previous versions, allow the execution of clamav commands SCAN and SHUTDOWN without authentication.");
+  script_tag(name:"vuldetect", value:"Send a SCAN command and check the response");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_clamav_remote_detect.nasl");
+  script_dependencies("gb_clamav_remote_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/clamd", 3310);
   script_mandatory_keys("ClamAV/installed");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
+
   exit(0);
 }
 
-
 include("host_details.inc");
+include("misc_func.inc");
 
 CPE = 'cpe:/a:clamav:clamav';
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! soc = open_sock_tcp( port ) ) exit( 0 );
 
-send( socket:soc, data:'SCAN /foo/bar/openvas_' + rand() + '.txt' );
+vtstring = get_vt_string(lowercase:TRUE);
+
+send( socket:soc, data:'SCAN /foo/bar/' + vtstring + '_' + rand() + '.txt' );
 recv = recv( socket:soc, length:1024 );
 close( soc );
 
@@ -63,16 +72,24 @@ if( "No such file or directory" >!< recv ) exit( 0 );
 
 if( ! soc = open_sock_tcp( port ) ) exit( 0 );
 
-send( socket:soc, data:'SCAN /etc/passwd' );
-recv = recv( socket:soc, length:1024 );
+files = traversal_files();
 
-close( soc );
+foreach pattern(keys(files)) {
 
-if( "/etc/passwd: OK" >< recv )
-{
-  report = 'It was possible to confirm the vulnerability by sending the "SCAN /etc/passwd" clamav command. Response:\n\n' + recv + '\n';
-  security_message( port:port, data:report );
-  exit( 0 );
+  file = files[pattern];
+
+  send( socket:soc, data:'SCAN /' + file );
+  recv = recv( socket:soc, length:1024 );
+
+
+  if( "/" + file + ": OK" >< recv )
+  {
+    report = 'It was possible to confirm the vulnerability by sending the "SCAN /' + file + '" clamav command. Response:\n\n' + recv + '\n';
+    security_message( port:port, data:report );
+    close(soc);
+    exit( 0 );
+  }
 }
 
+close(soc);
 exit( 99 );

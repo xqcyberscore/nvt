@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_security_bypass_vuln_jan16.nasl 8598 2018-01-31 09:59:32Z cfischer $
+# $Id: gb_ibm_websphere_security_bypass_vuln_jan16.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # IBM Websphere Apllication Server Security Bypass Vulnerability Jan16
 #
@@ -29,40 +29,37 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806844");
-  script_version("$Revision: 8598 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2013-0462");
   script_bugtraq_id(57513);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 10:59:32 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-20 17:51:20 +0530 (Wed, 20 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Apllication Server Security Bypass Vulnerability Jan16");
 
-  script_tag(name: "summary" , value:"This host is installed with IBM Websphere 
+  script_tag(name:"summary", value:"This host is installed with IBM Websphere
   application server and is prone to security bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The flaw is due to an unspecified
+  script_tag(name:"insight", value:"The flaw is due to an unspecified
   vulnerability.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   a remote attacker to bypass certain security restrictions, which may aid in
-  further attacks.
+  further attacks.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"IBM WebSphere Application Server (WAS)
+  script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS)
   6.1, 7.0 before 7.0.0.27, 8.0, and 8.5");
 
-  script_tag(name: "solution" , value:"Apply the patch from below link,
+  script_tag(name:"solution", value:"Apply the patch from below link,
   For updates refer to http://www-01.ibm.com/support/docview.wss?uid=swg21632423");
 
   script_tag(name:"solution_type", value:"Workaround");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21632423");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21632423");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -84,7 +81,7 @@ if(!wasVer = get_app_version(cpe:CPE, port:wasPort)){
   exit(0);
 }
 
-if(version_is_equal(version:wasVer, test_version:"6.1") || 
+if(version_is_equal(version:wasVer, test_version:"6.1") ||
    version_in_range(version:wasVer, test_version:"7.0", test_version2:"7.0.0.27") ||
    version_is_equal(version:wasVer, test_version:"8.0") ||
    version_is_equal(version:wasVer, test_version:"8.5"))

@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807413");
-  script_version("$Revision: 8957 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2015-5346");
   script_bugtraq_id(83323);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-26 15:41:13 +0100 (Mon, 26 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-25 14:42:54 +0530 (Thu, 25 Feb 2016)");
   script_name("Apache Tomcat Session Fixation Vulnerability - Feb16 (Linux)");
 
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to hijack web sessions by leveraging use of a requestedSessionSSL
-  field for an unintended request.
-
-  Impact Level: Application");
+  field for an unintended request.");
 
   script_tag(name:"affected", value:"Apache Tomcat 7.0.5 before 7.0.66,
   8.0.0.RC1 before 8.0.31, and 9.0.0.M1 on Linux.");
@@ -70,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("ApacheTomcat/installed","Host/runs_unixoide");
+  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 8080);
   exit(0);
 }
@@ -78,23 +76,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-appPort = "";
-appVer = "";
-
-## get the port
 if(!appPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!appVer = get_app_version(cpe:CPE, port:appPort)){
   exit(0);
 }
 
 if(appVer =~ "^(7|8|9)")
 {
-  ## Grep for vulnerable version
   if(version_in_range(version:appVer, test_version:"7.0.5", test_version2:"7.0.65"))
   {
     fix = "7.0.66";
@@ -119,4 +110,4 @@ if(appVer =~ "^(7|8|9)")
     security_message(data:report, port:appPort);
     exit(0);
   }
-}      
+}

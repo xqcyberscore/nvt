@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ExaGrid_default_ssh_login.nasl 10881 2018-08-10 10:27:02Z mmartin $
+# $Id: gb_ExaGrid_default_ssh_login.nasl 11650 2018-09-27 10:32:13Z jschulte $
 #
 # Exagrid SSH Known SSH Private Key
 #
@@ -27,31 +27,33 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105597");
- script_version("$Revision: 10881 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("Exagrid SSH Known SSH Private Key");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:27:02 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2016-04-07 17:30:40 +0200 (Thu, 07 Apr 2016)");
- script_category(ACT_ATTACK);
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_require_ports("Services/ssh", 22);
+  script_oid("1.3.6.1.4.1.25623.1.0.105597");
+  script_version("$Revision: 11650 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Exagrid SSH Known SSH Private Key");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 12:32:13 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-04-07 17:30:40 +0200 (Thu, 07 Apr 2016)");
+  script_category(ACT_ATTACK);
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_require_ports("Services/ssh", 22);
 
- script_tag(name: "summary" , value: 'The remote Exagrid device is prone to a default account authentication bypass vulnerability.');
+  script_tag(name:"summary", value:'The remote Exagrid device is prone to a default account authentication bypass vulnerability.');
 
- script_tag(name: "impact" , value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
+  script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
 
- script_tag(name: "vuldetect" , value: 'Try to login with known private key.');
- script_tag(name: "solution" , value: 'Delete the known key.');
- script_tag(name:"solution_type", value:"Mitigation");
- script_dependencies("find_service.nasl");
- script_tag(name:"qod_type", value:"exploit");
+  script_tag(name:"vuldetect", value:'Try to login with known private key.');
+  script_tag(name:"solution", value:'Delete the known key.');
+  script_tag(name:"solution_type", value:"Mitigation");
+  script_dependencies("find_service.nasl", "os_detection.nasl");
+  script_require_keys("Host/runs_unixoide");
+  script_tag(name:"qod_type", value:"exploit");
  exit(0);
 }
 
 include("ssh_func.inc");
+include("misc_func.inc");
 
 port = get_kb_item( "Services/ssh" );
 if( ! port ) port = 22;
@@ -81,18 +83,24 @@ login = ssh_login( socket:soc, login:user, password:NULL, pub:NULL, priv:key, pa
 
 if(login == 0)
 {
-  cmd = ssh_cmd( socket:soc, cmd:'cat /etc/passwd' );
-  close( soc );
+  files = traversal_files("linux");
 
-  if( cmd =~ 'root:.*:0:[01]:' )
-  {
-    report = 'It was possible to login as user `root` with the known secret key and to execute `cat /etc/passwd`. Result:\n\n' + cmd;
+  foreach pattern( keys( files ) ) {
+
+    file = files[pattern];
+
+    cmd = ssh_cmd( socket:soc, cmd:'cat /' + file );
     close( soc );
-    security_message( port:port, data:report );
-    exit( 0 );
+
+    if( egrep( string:cmd, pattern:pattern ) )
+    {
+      report = 'It was possible to login as user `root` with the known secret key and to execute `cat /' + file + '`. Result:\n\n' + cmd;
+      close( soc );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 
 if( soc ) close( soc );
-exit( 0 );
-
+exit( 99 );

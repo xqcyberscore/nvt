@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xwiki_enterprise_mult_stored_xss_vuln.nasl 11430 2018-09-17 10:16:03Z cfischer $
+# $Id: gb_xwiki_enterprise_mult_stored_xss_vuln.nasl 11622 2018-09-26 10:34:07Z asteins $
 #
 # XWiki Enterprise Multiple Stored Cross-Site Scripting Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:xwiki:xwiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802671");
-  script_version("$Revision: 11430 $");
+  script_version("$Revision: 11622 $");
   script_bugtraq_id(55235);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:16:03 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 12:34:07 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 19:24:16 +0530 (Thu, 30 Aug 2012)");
   script_name("XWiki Enterprise Multiple Stored Cross-Site Scripting Vulnerabilities");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/78026");
@@ -71,19 +71,20 @@ scripting vulnerabilities.");
 }
 
 include("http_func.inc");
-include("version_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("version_func.inc");
 
 xss  = "<img src='1.jpg'onerror=javascript:alert(0)>";
 
-if(!xwikiPort = get_app_port(cpe:CPE)){
+if (!xwikiPort = get_app_port(cpe: CPE))
   exit(0);
-}
 
-if(!dir = get_dir_from_kb(port:xwikiPort, app:"XWiki")){
+if (!dir = get_app_location(cpe: CPE, port: xwikiPort))
   exit(0);
-}
+
+if (dir == "/")
+  dir = "";
 
 useragent = get_http_user_agent();
 host = http_host_name(port:xwikiPort);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kmccontrols_bac_mult_vuln.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_kmccontrols_bac_mult_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # KMC Controls BAC-5051E Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/h:kmc_controls:bac-5051e";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106129");
-  script_version("$Revision: 5557 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2016-07-12 14:08:41 +0700 (Tue, 12 Jul 2016)");
-  script_tag(name: "cvss_base", value: "6.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11640 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-12 14:08:41 +0700 (Tue, 12 Jul 2016)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-4494", "CVE-2016-4495");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("KMC Controls BAC-5051E Multiple Vulnerabilities");
 
@@ -51,25 +51,25 @@ if (description)
   script_dependencies("gb_kmccontrols_bac_devices_detect.nasl");
   script_mandatory_keys("kmc_controls_bac/detected");
 
-  script_tag(name: "summary", value: "KMC Controls BAC-5051E is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"KMC Controls BAC-5051E is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "KMC Controls BAC-5051E is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"KMC Controls BAC-5051E is prone to multiple vulnerabilities:
 
 An unauthorized user can use a CSRF attack to read configuration data from a file. (CVE-2016-4494)
 
 A missing authorization check allows an unauthorized user to read configuration data from a file.
 (CVE-2016-4495)");
 
-  script_tag(name: "impact", value: "An unauthorized user can exploit these vulnerabilities to read the
+  script_tag(name:"impact", value:"An unauthorized user can exploit these vulnerabilities to read the
 configuration of the target device.");
 
-  script_tag(name: "affected", value: "Firmware versions prior to E0.2.0.2");
+  script_tag(name:"affected", value:"Firmware versions prior to E0.2.0.2");
 
-  script_tag(name: "solution", value: "Upgrade to firmware version E0.2.0.2 or later");
+  script_tag(name:"solution", value:"Upgrade to firmware version E0.2.0.2 or later");
 
-  script_xref(name: "URL", value: " https://ics-cert.us-cert.gov/advisories/ICSA-16-126-01");
+  script_xref(name:"URL", value:" https://ics-cert.us-cert.gov/advisories/ICSA-16-126-01");
 
 
   exit(0);

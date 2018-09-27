@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol31026324.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: gb_f5_big_ip_sol31026324.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # F5 BIG-IP - SOL31026324 - Linux kernel vulnerabilities CVE-2015-2925, CVE-2015-5307, and CVE-2015-8104
 #
@@ -29,21 +29,21 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105517");
- script_cve_id("CVE-2015-2925","CVE-2015-5307","CVE-2015-8104");
- script_tag(name:"cvss_base", value:"6.9");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5689 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105517");
+  script_cve_id("CVE-2015-2925", "CVE-2015-5307", "CVE-2015-8104");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11640 $");
 
- script_name("F5 BIG-IP - SOL31026324 - Linux kernel vulnerabilities CVE-2015-2925, CVE-2015-5307, and CVE-2015-8104");
+  script_name("F5 BIG-IP - SOL31026324 - Linux kernel vulnerabilities CVE-2015-2925, CVE-2015-5307, and CVE-2015-8104");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/31/sol31026324.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/31/sol31026324.html");
 
- script_tag(name: "impact" , value:"A local user may be able to bypass a container protection mechanism by renaming a directory, or cause a denial-of-service (DoS) to the system by triggering certain exceptions.");
+  script_tag(name:"impact", value:"A local user may be able to bypass a container protection mechanism by renaming a directory, or cause a denial-of-service (DoS) to the system by triggering certain exceptions.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"CVE-2015-2925
+  script_tag(name:"insight", value:"CVE-2015-2925
 The prepend_path function in fs/dcache.c in the Linux kernel before 4.2.4 does not properly handle rename actions inside a bind mount, which allows local users to bypass an intended container protection mechanism by renaming a directory, related to a 'double-chroot attack'.
 
 CVE-2015-5307
@@ -52,20 +52,20 @@ The KVM subsystem in the Linux kernel through 4.2.6, and Xen 4.3.x through 4.6.x
 CVE-2015-8104
 The KVM subsystem in the Linux kernel through 4.2.6, and Xen 4.3.x through 4.6.x, allows guest OS users to cause a denial of service (host OS panic or hang) by triggering many #DB (aka Debug) exceptions, related to svm.c.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-01-19 12:04:32 +0100 (Tue, 19 Jan 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-01-19 12:04:32 +0100 (Tue, 19 Jan 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

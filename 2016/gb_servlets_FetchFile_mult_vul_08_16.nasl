@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_servlets_FetchFile_mult_vul_08_16.nasl 11343 2018-09-12 06:36:46Z cfischer $
+# $Id: gb_servlets_FetchFile_mult_vul_08_16.nasl 11647 2018-09-27 09:31:07Z jschulte $
 #
 # Multiple Vendors '/servlets/FetchFile' Multiple Vulnerabilities
 #
@@ -28,7 +28,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105858");
-  script_version("$Revision: 11343 $");
+  script_version("$Revision: 11647 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2016-6601");
@@ -44,12 +44,12 @@ if(description)
   product or replace the product by another one.");
 
   script_tag(name:"summary", value:"Multiple vulnerabilities affecting the remote device have been found, these vulnerabilities allows uploading of arbitrary files and their
-execution, arbitrary file download (with directory traversal), use of a weak algorithm for storing passwords and session hijacking.");
+  execution, arbitrary file download (with directory traversal), use of a weak algorithm for storing passwords and session hijacking.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:31:07 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-09 10:38:38 +0200 (Tue, 09 Aug 2016)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms15-012.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_ms_office_web_apps_ms15-012.nasl 11635 2018-09-27 06:07:37Z cfischer $
 #
 # Microsoft Office Web Apps Remote Code Execution Vulnerability (3032328)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805048");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11635 $");
   script_cve_id("CVE-2015-0064");
   script_bugtraq_id(72463);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 12:20:06 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft Office Web Apps Remote Code Execution Vulnerability (3032328)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-012.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A remote code execution vulnerability
   exists in Microsoft office Web Apps that is caused by improperly handling

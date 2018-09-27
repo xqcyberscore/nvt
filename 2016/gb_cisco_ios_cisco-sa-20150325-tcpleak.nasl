@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20150325-tcpleak.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_cisco_ios_cisco-sa-20150325-tcpleak.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Cisco IOS Software and IOS XE Software TCP Packet Memory Leak Vulnerability
 #
@@ -29,29 +29,29 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105642");
- script_cve_id("CVE-2015-0646");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5867 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105642");
+  script_cve_id("CVE-2015-0646");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11640 $");
 
- script_name("Cisco IOS Software and IOS XE Software TCP Packet Memory Leak Vulnerability");
+  script_name("Cisco IOS Software and IOS XE Software TCP Packet Memory Leak Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150325-tcpleak");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150325-tcpleak");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAMBAlert.x?alertId=37433");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=37821");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewErp.x?alertId=43609");
+   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20150325-bundle");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAMBAlert.x?alertId=37433");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=37821");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewErp.x?alertId=43609");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20150325-bundle");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAMBAlert.x?alertId=37433");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=37821");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewErp.x?alertId=43609");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20150325-bundle");
- 
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the TCP input module of Cisco IOS and Cisco IOS XE Software could allow an unauthenticated, remote attacker to cause a memory leak and eventual reload of the affected device.
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the TCP input module of Cisco IOS and Cisco IOS XE Software could allow an unauthenticated, remote attacker to cause a memory leak and eventual reload of the affected device.
 
 The vulnerability is due to improper handling of certain crafted packet sequences used in establishing a TCP three-way handshake. An attacker could exploit this vulnerability by sending a crafted sequence of TCP packets while establishing a three-way handshake. A successful exploit could allow the attacker to cause a memory leak and eventual reload of the affected device.
 
@@ -62,19 +62,18 @@ Cisco has released software updates that address this vulnerability. This adviso
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150325-tcpleak
 
 Note: The March 25, 2015, Cisco IOS & XE Software Security Advisory bundled publication includes seven Cisco Security Advisories. The advisories address vulnerabilities in Cisco IOS Software and Cisco IOS XE Software. Individual publication links are in Cisco Event Response: Semiannual Cisco IOS & XE Software Security Advisory Bundled Publication at the following link:
-http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_mar15.html
-");
+http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_mar15.html");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
- script_tag(name:"creation_date", value:"2016-05-03 19:34:24 +0200 (Tue, 03 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-03 19:34:24 +0200 (Tue, 03 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version");
  exit(0);
 }
 
@@ -83,7 +82,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'12.0(1)',
 		'12.0(1a)',
 		'12.0(2)',

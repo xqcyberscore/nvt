@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitescope_55269.nasl 11431 2018-09-17 11:54:52Z cfischer $
+# $Id: gb_sitescope_55269.nasl 11625 2018-09-26 12:08:49Z jschulte $
 #
 # HP SiteScope Multiple Security Bypass Vulnerabilities
 #
@@ -35,26 +35,26 @@ if(description)
   script_bugtraq_id(55269, 55273);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11431 $");
+  script_version("$Revision: 11625 $");
 
   script_name("HP SiteScope Multiple Security Bypass Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55269");
   script_xref(name:"URL", value:"http://www.hp.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 14:08:49 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-07 17:11:57 +0200 (Fri, 07 Sep 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("gb_hp_sitescope_detect.nasl");
+  script_dependencies("gb_hp_sitescope_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("hp/sitescope/installed");
   script_require_ports("Services/www", 8080);
 
   script_tag(name:"summary", value:"HP SiteScope is prone to multiple security-bypass vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploits may allow attackers to bypass the bypass security
- restrictions and to perform unauthorized actions such as execution of
- arbitrary code in the context of the application.");
+  restrictions and to perform unauthorized actions such as execution of
+  arbitrary code in the context of the application.");
   script_tag(name:"solution", value:"Updates are available. Please contact the vendor.");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +66,7 @@ if(description)
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);
@@ -79,9 +80,11 @@ if (dir == "/")
 useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
-files =  make_array("root:.*:0:[01]:","/etc/passwd","\[boot loader\]","c:\\boot.ini");
+files =  traversal_files();
 
-foreach file(keys(files)) {
+foreach pattern(keys(files)) {
+
+  file = files[pattern];
 
   soap = string("<?xml version='1.0' encoding='UTF-8'?>\r\n",
                 "<wsns0:Envelope\r\n",
@@ -98,7 +101,7 @@ foreach file(keys(files)) {
                 "<in0\r\n",
                 "xsi:type='xsd:string'\r\n",
                 "xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'\r\n",
-                ">",files[file],"</in0>\r\n",
+                ">",file,"</in0>\r\n",
                 "</impl:loadFileContent>\r\n",
                 "</wsns0:Body>\r\n",
                 "</wsns0:Envelope>\r\n");
@@ -114,7 +117,7 @@ foreach file(keys(files)) {
                 soap);
   result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
-  if(eregmatch(string:result, pattern:file)) {
+  if(eregmatch(string:result, pattern:pattern)) {
     security_message(port:port);
     exit(0);
   }

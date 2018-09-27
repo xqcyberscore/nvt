@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 11000 2018-08-16 09:46:21Z cfischer $
+# $Id: misc_func.inc 11626 2018-09-26 12:18:59Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11000 $
+# $Revision: 11626 $
 #
 ###############################################################################
 
@@ -1596,4 +1596,48 @@ function get_vt_string( lowercase ) {
     vt_string = tolower( vt_string );
   }
   return vt_string;
+}
+
+# @brief PoC for a replacement of @ref get_vt_string to return various representations of
+#        the VT string in one call.
+#
+# @todo  Update functions description once the function is feature complete and was accepted.
+#
+# @return An array containig various string representations of either "GBN-VT" or "OpenVAS-VT"
+#         depending on the platform the scanner is running at.
+#
+function get_vt_strings() {
+
+  local_var ret_array, vt_string, vt_string_lo, vt_string_up, rand_numbers;
+
+  ret_array = make_array();
+
+  if( executed_on_gos() ) {
+    vt_string = "GBN-VT";
+  } else {
+    vt_string = "OpenVAS-VT";
+  }
+
+  vt_string_lo = tolower( vt_string );
+  vt_string_up = toupper( vt_string );
+  rand_numbers = string( rand() ); # nb: Returns an integer with a length between 9 and 10, converting it to string first
+
+  ret_array["default"] = vt_string;
+  ret_array["default_rand"] = vt_string + rand_numbers;
+  ret_array["default_hex"] = hexstr( vt_string );
+  ret_array["default_rand_hex"] = hexstr( vt_string + rand_numbers );
+   # nb: e.g. for the use in the "-p" parameter of unixoide ping commands which allows a max. of 16 bytes in the passed string
+  ret_array["default_max_16"] = vt_string + substr( rand_numbers, 0, 16 - strlen( vt_string ) - 1 );
+
+  ret_array["lowercase"] = vt_string_lo;
+  ret_array["lowercase_rand"] = vt_string_lo + rand_numbers;
+  ret_array["lowercase_hex"] = hexstr( vt_string_lo );
+  ret_array["lowercase_rand_hex"] = hexstr( vt_string_lo + rand_numbers );
+
+  ret_array["uppercase"] = vt_string_up;
+  ret_array["uppercase_rand"] = vt_string_up + rand_numbers;
+  ret_array["uppercase_hex"] = hexstr( vt_string_up );
+  ret_array["uppercase_rand_hex"] = hexstr( vt_string_up + rand_numbers );
+
+  return ret_array;
 }

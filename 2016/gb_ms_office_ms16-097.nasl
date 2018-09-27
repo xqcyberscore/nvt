@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-097.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_ms_office_ms16-097.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Microsoft Office Multiple Remote Code Execution Vulnerabilities (3177393)
 #
@@ -27,31 +27,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807873");
-  script_version("$Revision: 5598 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2016-3301", "CVE-2016-3303", "CVE-2016-3304");
   script_bugtraq_id(92288, 92301, 92302);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-10 14:44:44 +0530 (Wed, 10 Aug 2016)");
   script_name("Microsoft Office Multiple Remote Code Execution Vulnerabilities (3177393)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS16-097.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to the windows font
   library which improperly handles specially crafted embedded fonts.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker to execute arbitrary code on the affected system.
+  attacker to execute arbitrary code on the affected system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft Office 2007 Service Pack 3
+  script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3
   Microsoft Office 2010 Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -63,9 +59,9 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115109");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115131");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-097");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3115109");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3115131");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-097");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -81,11 +77,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-msPath = "";
-msdllVer = "";
-offPath = "";
-
 ## MS Office 2007/2010
 if(!get_kb_item("MS/Office/Ver") =~ "^[12|14].*"){
   exit(0);
@@ -97,16 +88,15 @@ if(msPath)
 {
   foreach ver (make_list("OFFICE12", "OFFICE14"))
   {
-    ## Get Version from Ogl.dll
     offPath = msPath + "\Microsoft Shared\" + ver;
     msdllVer = fetch_file_version(sysPath:offPath, file_name:"Ogl.dll");
 
     if(msdllVer)
     {
-      if(msdllVer =~ "^(12)"){
+      if(msdllVer =~ "^12"){
         Vulnerable_range  =  "12.0 - 12.0.6751.4999";
       }
-      else if(msdllVer =~ "^(14)"){
+      else if(msdllVer =~ "^14"){
         Vulnerable_range  =  "14.0 - 14.0.7172.4999";
       }
 

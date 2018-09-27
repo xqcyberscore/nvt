@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_netweaver_info_disc_vuln.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_sap_netweaver_info_disc_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # SAP NetWeaver WD_CHAT Information Disclosure Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:sap:netweaver';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106149");
-  script_version("$Revision: 5877 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2016-07-22 14:30:27 +0700 (Fri, 22 Jul 2016)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11640 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-22 14:30:27 +0700 (Fri, 22 Jul 2016)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-3973");
 
-  script_tag(name: "qod_type", value: "remote_analysis");
+  script_tag(name:"qod_type", value:"remote_analysis");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("SAP NetWeaver WD_CHAT Information Disclosure Vulnerability");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_sap_netweaver_detect.nasl");
   script_mandatory_keys("sap_netweaver/installed");
 
-  script_tag(name: "summary", value: "SAP NetWeaver is prone to an information disclosure vulnerability.");
+  script_tag(name:"summary", value:"SAP NetWeaver is prone to an information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks if WD_CHAT is accessible.");
+  script_tag(name:"vuldetect", value:"Checks if WD_CHAT is accessible.");
 
-  script_tag(name: "insight", value: "The chat feature in the Real-Time Collaboration (RTC) services allows
+  script_tag(name:"insight", value:"The chat feature in the Real-Time Collaboration (RTC) services allows
 remote attackers to obtain sensitive user information.");
 
-  script_tag(name: "impact", value: "An unauthenticated  attacker can get information about SAP NetWeaver
+  script_tag(name:"impact", value:"An unauthenticated  attacker can get information about SAP NetWeaver
 users.");
 
-  script_tag(name: "affected", value: "Version 7.1 - 7.5");
+  script_tag(name:"affected", value:"Version 7.1 - 7.5");
 
-  script_tag(name: "solution", value: "Check the references for solutions ");
+  script_tag(name:"solution", value:"Check the references for solutions ");
 
-  script_xref(name: "URL", value: "https://erpscan.com/advisories/erpscan-16-016-sap-netweaver-7-4-information-disclosure-wd_chat/");
-  script_xref(name: "URL", value: "https://service.sap.com/sap/support/notes/2255990");
+  script_xref(name:"URL", value:"https://erpscan.com/advisories/erpscan-16-016-sap-netweaver-7-4-information-disclosure-wd_chat/");
+  script_xref(name:"URL", value:"https://service.sap.com/sap/support/notes/2255990");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_cisco-sa-20160817-asa-snmp.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_cisco_asa_cisco-sa-20160817-asa-snmp.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Cisco Adaptive Security Appliance SNMP Remote Code Execution Vulnerability
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/a:cisco:asa";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106183");
- script_cve_id("CVE-2016-6366");
- script_tag(name:"cvss_base", value:"8.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 5568 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106183");
+  script_cve_id("CVE-2016-6366");
+  script_tag(name:"cvss_base", value:"8.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11640 $");
 
- script_name("Cisco Adaptive Security Appliance SNMP Remote Code Execution Vulnerability");
+  script_name("Cisco Adaptive Security Appliance SNMP Remote Code Execution Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160817-asa-snmp");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160817-asa-snmp");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the Simple Network Management Protocol (SNMP) code
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the Simple Network Management Protocol (SNMP) code
 of Cisco Adaptive Security Appliance (ASA) Software could allow an unauthenticated, remote attacker to cause
 a reload of the affected system or to remotely execute code.
 
@@ -58,16 +58,16 @@ community string in SNMP version 1 and SNMP version 2c or a valid username and p
 
 Cisco has released software updates that address this vulnerability.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-08-18 10:57:32 +0700 (Thu, 18 Aug 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
- script_mandatory_keys("cisco_asa/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-18 10:57:32 +0700 (Thu, 18 Aug 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
+  script_mandatory_keys("cisco_asa/version");
  exit(0);
 }
 

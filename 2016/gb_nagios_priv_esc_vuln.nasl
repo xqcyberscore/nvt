@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_priv_esc_vuln.nasl 4772 2016-12-15 09:55:20Z ckuerste $
+# $Id: gb_nagios_priv_esc_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Nagios Privilege Escalation Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:nagios:nagios';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106474");
-  script_version("$Revision: 4772 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-12-15 10:55:20 +0100 (Thu, 15 Dec 2016) $");
-  script_tag(name: "creation_date", value: "2016-12-15 10:22:34 +0700 (Thu, 15 Dec 2016)");
-  script_tag(name: "cvss_base", value: "4.4");
-  script_tag(name: "cvss_base_vector", value: "AV:L/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11640 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-15 10:22:34 +0700 (Thu, 15 Dec 2016)");
+  script_tag(name:"cvss_base", value:"4.4");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-8641");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Nagios Privilege Escalation Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("nagios_detect.nasl");
   script_mandatory_keys("nagios/installed");
 
-  script_tag(name: "summary", value: "Nagios is prone to a privilege escalation vulnerability.");
+  script_tag(name:"summary", value:"Nagios is prone to a privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The Nagios startup script, run by root, is insecurely giving owner of file
+  script_tag(name:"insight", value:"The Nagios startup script, run by root, is insecurely giving owner of file
 to nagios. If the Nagios user symlink $NagiosRunFile to a file that he has no access to, at startup or reboot of
 the nagios daemon, the init script will give him ownership of the linked file.");
 
-  script_tag(name: "impact", value: "A local attacker may gain privileged access to files.");
+  script_tag(name:"impact", value:"A local attacker may gain privileged access to files.");
 
-  script_tag(name: "affected", value: "Nagios 4.2.2 and before.");
+  script_tag(name:"affected", value:"Nagios 4.2.2 and before.");
 
-  script_tag(name: "solution", value: "Update to version 4.2.3 or later.");
+  script_tag(name:"solution", value:"Update to version 4.2.3 or later.");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40774/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40774/");
 
   exit(0);
 }

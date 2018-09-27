@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln_mar16_macosx.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_mozilla_firefox_esr_mult_vuln_mar16_macosx.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities - Mar16 (Mac OS X)
 #
@@ -29,54 +29,61 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807523");
-  script_version("$Revision: 5598 $");
-  script_cve_id("CVE-2016-1954", "CVE-2016-1957", "CVE-2016-1958", "CVE-2016-1960", 
-                "CVE-2016-1950", "CVE-2016-1952", "CVE-2016-1961", "CVE-2016-1962", 
-                "CVE-2016-1964", "CVE-2016-1965", "CVE-2016-1966", "CVE-2016-1969", 
-                "CVE-2016-1974", "CVE-2016-1977", "CVE-2016-2790", "CVE-2016-2791", 
-                "CVE-2016-2792", "CVE-2016-2793", "CVE-2016-2794", "CVE-2016-2795", 
-                "CVE-2016-2796", "CVE-2016-2797", "CVE-2016-2798", "CVE-2016-2799", 
+  script_version("$Revision: 11640 $");
+  script_cve_id("CVE-2016-1954", "CVE-2016-1957", "CVE-2016-1958", "CVE-2016-1960",
+                "CVE-2016-1950", "CVE-2016-1952", "CVE-2016-1961", "CVE-2016-1962",
+                "CVE-2016-1964", "CVE-2016-1965", "CVE-2016-1966", "CVE-2016-1969",
+                "CVE-2016-1974", "CVE-2016-1977", "CVE-2016-2790", "CVE-2016-2791",
+                "CVE-2016-2792", "CVE-2016-2793", "CVE-2016-2794", "CVE-2016-2795",
+                "CVE-2016-2796", "CVE-2016-2797", "CVE-2016-2798", "CVE-2016-2799",
                 "CVE-2016-2800", "CVE-2016-2801", "CVE-2016-2802");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-03-14 18:44:58 +0530 (Mon, 14 Mar 2016)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities - Mar16 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox ESR and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The 'nsCSPContext::SendReports' function in 'dom/security/nsCSPContext.cpp'
-    script does not prevent use of a non-HTTP report-uri for a CSP violation 
+    script does not prevent use of a non-HTTP report-uri for a CSP violation
     report.
-  - A memory leak in the libstagefright library when array destruction occurs 
+
+  - A memory leak in the libstagefright library when array destruction occurs
     during MPEG4 video file processing.
+
   - An error in 'browser/base/content/browser.js' script.
+
   - Multiple use-after-free issues.
+
   - Multiple out-of-bounds read errors
+
   - The mishandling of a navigation sequence that returns to the original page.
-  - A memory corruption issue in NPAPI plugin in 'nsNPObjWrapper::GetNewOrUsed' 
+
+  - A memory corruption issue in NPAPI plugin in 'nsNPObjWrapper::GetNewOrUsed'
     function in 'dom/plugins/base/nsJSNPRuntime.cpp' script.
-  - A race condition in the 'GetStaticInstance' function in the WebRTC 
+
+  - A race condition in the 'GetStaticInstance' function in the WebRTC
     implementation.
+
   - Multiple Heap-based buffer overflow vulnerabilities.
+
   - The multiple unspecified vulnerabilities in the browser engine.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote 
-  attackers to execute arbitrary code or to cause a denial of service, 
-  possibly gain privileges, to bypass the Same Origin Policy, to obtain 
-  sensitive information and to do spoofing attacks.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to execute arbitrary code or to cause a denial of service,
+  possibly gain privileges, to bypass the Same Origin Policy, to obtain
+  sensitive information and to do spoofing attacks.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR version 38.x
+  script_tag(name:"affected", value:"Mozilla Firefox ESR version 38.x
   before 38.7 on Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version
   38.7 or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -84,7 +91,7 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
 
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2016-25");
-  
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
@@ -96,16 +103,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
-if(ffVer =~ "^(38)")
+if(ffVer =~ "^38")
 {
   if(version_is_less(version:ffVer, test_version:"38.7"))
   {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-093.nasl 11445 2018-09-18 08:09:39Z mmartin $
+# $Id: gb_ms15-093.nasl 11635 2018-09-27 06:07:37Z cfischer $
 #
 # Microsoft Internet Explorer RCE vulnerability (3088903)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805959");
-  script_version("$Revision: 11445 $");
+  script_version("$Revision: 11635 $");
   script_cve_id("CVE-2015-2502");
   script_bugtraq_id(76403);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-19 17:04:11 +0530 (Wed, 19 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer RCE vulnerability (3088903)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS15-093.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The error exists due to multiple improper
   handling of memory objects.");

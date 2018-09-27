@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_wnr2000_router_multiple_vuln.nasl 5168 2017-02-02 14:02:42Z teissa $
+# $Id: gb_netgear_wnr2000_router_multiple_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # NETGEAR WNR2000 Router Multiple Vulnerabilities
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/h:netgear:wnr2000";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809775");
-  script_version("$Revision: 5168 $");
+  script_version("$Revision: 11640 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-02 15:02:42 +0100 (Thu, 02 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-30 15:20:48 +0530 (Fri, 30 Dec 2016)");
 
   script_cve_id("CVE-2016-10175", "CVE-2016-10176", "CVE-2016-10174");
@@ -39,36 +39,38 @@ if(description)
   script_tag(name:"qod_type", value:"remote_active");
   script_name("NETGEAR WNR2000 Router Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is running NETGEAR WNR2000 Router
+  script_tag(name:"summary", value:"The host is running NETGEAR WNR2000 Router
   and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to get specific information or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The device leaks its serial number while requesting for
     'BRS_netgear_success.html'.
+
   - Improper access control while sending request to 'apply_noauth.cgi'.
+
   - Timestamps used in application can be easily calculated and generated outside.
+
   - Improper handling of access to *.cgi files by HTTP server in the device (uhttpd).");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to potentially sensitive information, reboot router,
   factory reset the router, change WLAN settings, change password recovery settings,
   obtain the admin password once recovery settings are changed, execute code and
-  conduct denial of service attack.
+  conduct denial of service attack.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"NETGEAR WNR2000 routers");
 
-  script_tag(name: "affected" , value:"NETGEAR WNR2000 routers");
-
-  script_tag(name: "solution" , value:"NETGEAR has released beta firmware for the affected routers, which can be obtained from : 
+  script_tag(name:"solution", value:"NETGEAR has released beta firmware for the affected routers, which can be obtained from :
   http://kb.netgear.com/000036549/Insecure-Remote-Access-and-Command-Execution-Security-Vulnerability. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Dec/72");
-  script_xref(name : "URL" , value : "https://raw.githubusercontent.com/pedrib/PoC/master/advisories/netgear-wnr2000.txt");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Dec/72");
+  script_xref(name:"URL", value:"https://raw.githubusercontent.com/pedrib/PoC/master/advisories/netgear-wnr2000.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -83,26 +85,17 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-netPort = "";
-serial = "";
-rcvRes = "";
-req = "";
-
-## get the port
 if(!netPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
 url = "/BRS_netgear_success.html";
 
-## Send and receive response
 req = http_get(item: url, port:netPort);
 rcvRes = http_keepalive_send_recv(port:netPort, data:req);
 
 if(rcvRes =~ "HTTP/1.. 200" && "wnr2000" >< rcvRes && "netgear" >< rcvRes)
 {
-  ##Grep for serial number
   serial = eregmatch(pattern:'var sn="([0-9A-Za-z]+)";', string:rcvRes);
   if(serial[1])
   {

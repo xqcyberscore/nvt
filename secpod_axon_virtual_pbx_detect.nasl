@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_axon_virtual_pbx_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
+# $Id: secpod_axon_virtual_pbx_detect.nasl 11629 2018-09-26 17:02:49Z cfischer $
 #
 # Axon Virtual PBX Version Detection (SIP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900983");
-  script_version("$Revision: 10899 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 19:02:49 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-11-26 06:39:46 +0100 (Thu, 26 Nov 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -39,7 +39,7 @@ if(description)
   script_dependencies("sip_detection.nasl", "find_service.nasl", "gb_axon_virtual_pbx_web_detect.nasl");
   script_mandatory_keys("sip/detected");
 
-  script_tag(name:"summary", value:"This script performs SIP based detecion of Axon Virtual PBX.");
+  script_tag(name:"summary", value:"This script performs SIP based detection of Axon Virtual PBX.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_philips_insight_default_telnet_credentials.nasl 5975 2017-04-19 07:43:02Z teissa $
+# $Id: sw_philips_insight_default_telnet_credentials.nasl 11650 2018-09-27 10:32:13Z jschulte $
 #
 # Philips In.Sight Default Telnet Credentials
 #
@@ -28,18 +28,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111096");
-  script_version("$Revision: 5975 $");
+  script_version("$Revision: 11650 $");
   script_cve_id("CVE-2015-2882");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Philips In.Sight Default Telnet Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 09:43:02 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 12:32:13 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-24 12:00:00 +0200 (Sun, 24 Apr 2016)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
-  script_dependencies("telnetserver_detect_type_nd_version.nasl");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl", "os_detection.nasl");
   script_require_ports("Services/telnet", 23);
+  script_require_keys("Host/runs_unixoide");
 
   script_xref(name:"URL", value:"http://www.ifc0nfig.com/a-close-look-at-the-philips-in-sight-ip-camera-range/");
   script_xref(name:"URL", value:"https://www.rapid7.com/docs/Hacking-IoT-A-Case-Study-on-Baby-Monitor-Exposures-and-Vulnerabilities.pdf");
@@ -58,6 +59,7 @@ if(description)
 }
 
 include("telnet_func.inc");
+include("misc_func.inc");
 
 report = 'It was possible to login using the following credentials:\n';
 
@@ -90,12 +92,20 @@ foreach cred ( keys( creds ) ) {
       send( socket:soc, data: creds[cred] + '\r\n\r\n' );
       recv = recv( socket:soc, length:1024 );
 
-      send( socket:soc, data: 'cat /etc/passwd\r\n' );
-      recv = recv( socket:soc, length:1024 );
+      files = traversal_files("linux");
 
-      if( recv =~ "root:.*:0:[01]:" ) {
-        report += '\n' + tolower( cred ) + ":" + creds[cred];
-        VULN = TRUE;
+      foreach pattern( keys( files ) ) {
+
+        file = files[pattern];
+
+        send( socket:soc, data: 'cat /etc/passwd\r\n' );
+        recv = recv( socket:soc, length:1024 );
+
+        if( egrep( string:recv, pattern:pattern ) ) {
+          report += '\n' + tolower( cred ) + ":" + creds[cred];
+          VULN = TRUE;
+          break;
+        }
       }
     }
   }
@@ -105,6 +115,6 @@ foreach cred ( keys( creds ) ) {
 if( VULN ) {
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

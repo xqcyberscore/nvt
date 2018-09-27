@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_server_dos_vuln_apr16.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
+# $Id: gb_oracle_glassfish_server_dos_vuln_apr16.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Oracle GlassFish Server Denial of Service Vulnerability April16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807565");
-  script_version("$Revision: 9927 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2015-7182");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-27 10:47:16 +0530 (Wed, 27 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle GlassFish Server Denial of Service Vulnerability April16");
@@ -41,27 +41,24 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with  Oracle GlassFish
   Server is prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw is due to a heap-based buffer 
+  script_tag(name:"insight", value:"The flaw is due to a heap-based buffer
   overflow error in Oracle GlassFish Server component.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause a denial of service (application crash) or possibly 
-  execute arbitrary code.
-
-  Impact Level: Application");
+  attackers to cause a denial of service (application crash) or possibly
+  execute arbitrary code.");
 
   script_tag(name:"affected", value:"Oracle GlassFish Server version 2.1.1.");
 
-  script_tag(name:"solution", value:"Apply the appropriate patch from the below 
+  script_tag(name:"solution", value:"Apply the appropriate patch from the below
   link,
   http://www.oracle.com/technetwork/security-advisory/cpuapr2016v3-2985753.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "URL", value: "http://www.oracle.com/technetwork/security-advisory/cpuapr2016v3-2985753.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuapr2016v3-2985753.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

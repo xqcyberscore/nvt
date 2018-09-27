@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-067.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: gb_ms16-067.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Microsoft Windows RDP Drive Information Disclosure Vulnerability (3155784)
 #
@@ -26,20 +26,19 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.807325") ;
-  script_version("$Revision: 5513 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.807325");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2016-0190");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 10:30:07 +0530 (Wed, 11 May 2016)");
   script_name("Microsoft Windows RDP Drive Information Disclosure Vulnerability (3155784)");
-  
+
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-067");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists when a USB disk mounted
   over Remote Desktop Protocol (RDP) via Microsoft RemoteFX is not correctly
@@ -47,12 +46,9 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to obtain access to file and directory information on the mounting
-  user's USB disk.
+  user's USB disk.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8.1 x32/x64 Edition
+  script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
   Microsoft Windows Server 2012/2012R2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -70,7 +66,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -81,22 +78,15 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-sysVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2012:1, win2012R2:1, win8_1:1, win8_1x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of Ntoskrnl.exe
 sysVer = fetch_file_version(sysPath, file_name:"System32\Drivers\volmgr.sys");
 if(!sysVer){
   exit(0);
@@ -112,16 +102,13 @@ else if (sysVer =~ "^(6\.3\.9600\.1)"){
 ## Server 2012
 if(hotfix_check_sp(win2012:1) > 0)
 {
-  ## Check for Ntoskrnl.exe version
   if(version_is_less(version:sysVer, test_version:"6.2.9200.21831")){
      VULN = TRUE ;
   }
 }
 
-## Windows 8.1 and Server 2012 R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Ntoskrnl.exe version
   if(version_is_less(version:sysVer, test_version:"6.3.9600.18302")){
     VULN = TRUE ;
   }

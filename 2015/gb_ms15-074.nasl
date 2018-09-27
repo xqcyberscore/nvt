@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-074.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_ms15-074.nasl 11635 2018-09-27 06:07:37Z cfischer $
 #
 # Microsoft Windows Installer Service Privilege Escalation Vulnerarbility (3072630)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805078");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11635 $");
   script_cve_id("CVE-2015-2371");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 09:12:38 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Installer Service Privilege Escalation Vulnerarbility (3072630)");
@@ -39,8 +39,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-074.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An elevation of privilege vulnerability exists
   in some cases in the Windows Installer service when it improperly runs custom

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpldapadmin_51794.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_phpldapadmin_51794.nasl 11648 2018-09-27 09:32:28Z asteins $
 #
 # phpLDAPadmin 'server_id' Parameter Cross Site Scripting Vulnerabilities
 #
@@ -30,7 +30,7 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103406");
   script_bugtraq_id(51794);
-  script_version("$Revision: 11435 $");
+  script_version("$Revision: 11648 $");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
 
@@ -40,7 +40,7 @@ if(description)
   script_xref(name:"URL", value:"http://packages.debian.org/lenny/phpldapadmin");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/521450");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:32:28 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-02 11:00:37 +0100 (Thu, 02 Feb 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -69,14 +69,21 @@ Likely none will be provided anymore. General solution options are to upgrade to
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!can_host_php(port:port))exit(0);
+CPE = 'cpe:/a:phpldapadmin:phpldapadmin';
 
-if(!dir = get_dir_from_kb(port:port,app:"phpldapadmin"))exit(0);
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
+
+if(dir == "/")
+  dir = "";
+
 url = string(dir, "/index.php?server_id=<script>alert('xss-test')</script>&redirect=false");
 
 if(http_vuln_check(port:port, url:url,pattern:"<script>alert\('xss-test'\)</script>",check_header:TRUE)) {

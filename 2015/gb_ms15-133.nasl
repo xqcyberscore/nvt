@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-133.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_ms15-133.nasl 11635 2018-09-27 06:07:37Z cfischer $
 #
 # Microsoft Windows PGM UAF Elevation of Privilege Vulnerability (3116130)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806775");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11635 $");
   script_cve_id("CVE-2015-6126");
   script_bugtraq_id(78509);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 08:11:32 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft Windows PGM UAF Elevation of Privilege Vulnerability (3116130)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-133");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to some unspecified weakness
   in the Windows Pragmatic General Multicast (PGM) protocol.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_out_of_bound_mem_read_vuln_win.nasl 8173 2017-12-19 11:45:56Z cfischer $
+# $Id: gb_imagemagick_out_of_bound_mem_read_vuln_win.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # ImageMagick Out Of Bounds Memory Read Vulnerability (Windows)
 #
@@ -29,41 +29,38 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810246");
-  script_version("$Revision: 8173 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2016-5687");
   script_bugtraq_id(91283);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 12:45:56 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-06 18:38:55 +0530 (Mon, 06 Jun 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick Out Of Bounds Memory Read Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with ImageMagick
+  script_tag(name:"summary", value:"The host is installed with ImageMagick
   and is prone to an out of bounds memory read vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an out of bounds memory 
-  read in the 'VerticalFilter' function that can be triggered by a malformed DDS 
+  script_tag(name:"insight", value:"The flaw is due to an out of bounds memory
+  read in the 'VerticalFilter' function that can be triggered by a malformed DDS
   file.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
-  remote attackers to have unspecified impact.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  remote attackers to have unspecified impact.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"ImageMagick versions before 6.9.4-3 
+  script_tag(name:"affected", value:"ImageMagick versions before 6.9.4-3
   and 7.x before 7.0.1-4 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to ImageMagick version
+  script_tag(name:"solution", value:"Upgrade to ImageMagick version
   7.0.1-4 or 6.9.4-3 or later. For updates refer to http://www.imagemagick.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://blog.fuzzing-project.org/46-Various-invalid-memory-reads-in-ImageMagick-WPG,-DDS,-DCM.html");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2016/06/14/5");
+  script_xref(name:"URL", value:"https://blog.fuzzing-project.org/46-Various-invalid-memory-reads-in-ImageMagick-WPG, -DDS, -DCM.html");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2016/06/14/5");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -76,16 +73,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-imVer = "";
-report = "";
-
-## Get version
 if(!imVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:imVer, test_version:"6.9.4.3"))
 {
   fix = "6.9.4-3";

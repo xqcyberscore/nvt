@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-028.nasl 11475 2018-09-19 12:12:13Z cfischer $
+# $Id: gb_ms15-028.nasl 11635 2018-09-27 06:07:37Z cfischer $
 #
 # Microsoft Windows Task Scheduler security Feature Bypass Vulnerability (3030377)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805144");
-  script_version("$Revision: 11475 $");
+  script_version("$Revision: 11635 $");
   script_cve_id("CVE-2015-0084");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 14:12:13 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-11 10:27:42 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Task Scheduler security Feature Bypass Vulnerability (3030377)");
@@ -39,8 +39,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-028.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw exists as Windows Task Scheduler
   fails to properly validate and enforce impersonation levels.");

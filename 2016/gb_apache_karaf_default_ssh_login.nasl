@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_karaf_default_ssh_login.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_apache_karaf_default_ssh_login.nasl 11650 2018-09-27 10:32:13Z jschulte $
 #
 # Apache Karaf SSH Default Credentials
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105593");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 11650 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Apache Karaf SSH Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 12:32:13 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-01 15:59:09 +0200 (Fri, 01 Apr 2016)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -47,13 +47,13 @@ if (description)
   script_tag(name:"insight", value:'It was possible to login with default credentials: karaf/karaf');
   script_tag(name:"solution", value:'Change the password.');
   script_tag(name:"solution_type", value:"Workaround");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "os_detection.nasl");
   script_tag(name:"qod_type", value:"exploit");
- exit(0);
+  exit(0);
 }
 
 include("ssh_func.inc");
-
+include("misc_func.inc");
 
 port = get_kb_item( "Services/ssh" );
 if( ! port ) port = 8101;
@@ -69,17 +69,25 @@ login = ssh_login( socket:soc, login:user, password:pass, pub:NULL, priv:NULL, p
 
 if(login == 0)
 {
-  cmd = ssh_cmd( socket:soc, cmd:'cat /etc/passwd', nosh:TRUE );
-  close( soc );
 
-  if( cmd =~ 'root:.*:0:[01]:' )
-  {
-    report = 'It was possible to login as user `karaf` with password `karaf` and to execute `cat /etc/passwd`. Result:\n\n' + cmd;
-    security_message( port:port, data:report );
-    exit( 0 );
+  files = traversal_files();
+
+  foreach pattern( keys( files ) ) {
+
+    file = files[pattern];
+
+    cmd = ssh_cmd( socket:soc, cmd:'cat /' + file, nosh:TRUE );
+
+    if( egrep( string:cmd, pattern:pattern ) )
+    {
+      if( soc ) close( soc );
+      report = 'It was possible to login as user `karaf` with password `karaf` and to execute `cat /' + file + '`. Result:\n\n' + cmd;
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 
 if( soc ) close( soc );
-exit( 0 );
+exit( 99 );
 

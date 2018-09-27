@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 26 Sep 2018 12:17:23 +0200
+# Automatically created on:  Thu, 27 Sep 2018 13:21:03 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38511,6 +38511,9 @@
 2018/adobe/gb_adobe_flash_player_apsb18-31_lin.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_apsb18-31_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_apsb18-31_win.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_eol_lin.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_eol_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_flash_player_eol_win.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_within_chrome_apsa18-01_lin.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_within_chrome_apsa18-01_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_within_chrome_apsa18-01_win.nasl: GPLv2+
@@ -38561,6 +38564,9 @@
 2018/adobe/gb_adobe_reader_dc_classic_apsb18-09_win.nasl: GPLv2+
 2018/adobe/gb_adobe_reader_dc_cont_apsb17-11_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_reader_dc_cont_apsb17-11_win.nasl: GPLv2+
+2018/adobe/gb_adobe_reader_eol_lin.nasl: GPLv2+
+2018/adobe/gb_adobe_reader_eol_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_reader_eol_win.nasl: GPLv2+
 2018/adobe/gb_flash_player_for_ie_edge_april18.nasl: GPLv2+
 2018/adobe/gb_flash_player_for_ie_edge_apsa18-01.nasl: GPLv2+
 2018/adobe/gb_flash_player_for_ie_edge_apsb18-19.nasl: GPLv2+
@@ -39524,6 +39530,8 @@
 2018/debian/deb_dla_1518.nasl: GPLv2+
 2018/debian/deb_dla_1519.nasl: GPLv2+
 2018/debian/deb_dla_1520.nasl: GPLv2+
+2018/debian/deb_dla_1521.nasl: GPLv2+
+2018/debian/deb_dla_1522.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -42298,6 +42306,7 @@
 2018/ubuntu/gb_ubuntu_USN_3762_2.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3766_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3768_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3769_1.nasl: GPLv2+
 2018/universal_media_server/gb_universal_media_server_xxe_vuln.nasl: GPLv2+
 2018/vbulletin/gb_vbulletin_url_param_open_redirect_vuln.nasl: GPLv2+
 2018/vertiv/gb_emerson_liebert_intellislot_default_credentials.nasl: GPLv2+
@@ -59474,6 +59483,7 @@ gsf/2018/cisco/gb_cisco_asa_cisco-sa-20180418-asawvpn2.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_asa_cisco-sa-20180418-asawvpn.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_asa_cisco-sa-20180606-asaftd_active.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_asa_cisco-sa-20180606-asaftd.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_asa_cisco-sa-20180926-ipsec.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_csma_cisco-sa-20171115-esa.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_csma_cisco-sa-20180117-esasma.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_csma_cisco-sa-20180207-esacsm.nasl: GPLv2+
@@ -59536,6 +59546,16 @@ gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180328-smi.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180328-snmp.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180418-iess.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180813-rsa-nonce.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180926-cdp-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180926-cmp.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180926-ipv6hbh.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180926-ir800-memwrite.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180926-ospfv3-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180926-pnp-memleak.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180926-ptp.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180926-sm1t3e3.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180926-tacplus.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180926-vtp.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20170726-anicrl.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180207-ios.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180328-cmdinj.nasl: GPLv2+
@@ -59558,6 +59578,25 @@ gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180328-xepriv.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180328-xesc.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180418-cbr8.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180606-aaa.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-cdp-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-cdp-memleak.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-cmp.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-digsig.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-errdisable.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-iosxe-cmdinj.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-ipsec.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-ipv6hbh.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-macsec.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-ospfv3-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-pnp-memleak.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-privesc.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-shell-access.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-sip-alg.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-sm1t3e3.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-tacplus.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-vtp.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-webdos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ios_xe_cisco-sa-20180926-webuidos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_xr_cisco-sa-20180131-ipv6.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_xr_cisco-sa-20180328-lldp.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_xr_cisco-sa-20180418-iosxr.nasl: GPLv2+
@@ -59919,6 +59958,9 @@ gsf/2018/hylafax/gb_hylafax_mult_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_bigfix_encryption_prot_security_bypass_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_bigfix_mult_vuln_may18.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_bigfix_os_command_injection_vuln_apr18.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_db2_ats_priv_esc_vuln.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_db2_db2cacpy_priv_esc_vuln.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_db2_db2licm_tool_bof_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_db2_format_string_vuln_01_july18.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_db2_format_string_vuln_july18.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_db2_mult_priv_esc_vuln_may18.nasl: GPLv2+
@@ -60413,6 +60455,9 @@ gsf/2018/rhel/gb_RHSA-2018_2570-01_bind.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_2571-01_bind.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_2692-01_firefox.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_2693-01_firefox.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_2731-01_spice_and_spice-gtk.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_2732-01_spice-gtk_and_spice-server.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_2737-01_mod_perl.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1100_mult_vuln.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln1.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln.nasl: GPLv2+
@@ -60522,6 +60567,7 @@ gsf/2018/zohocorp/gb_manageengine_netflow_analyzer_mult_vuln1.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_netflow_analyzer_mult_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_opmanager_mult_vuln1.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_opmanager_mult_vuln.nasl: GPLv2+
+gsf/2018/zohocorp/gb_manageengine_opmanager_oputilservlet_access_bypass_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_oputils_mult_vuln1.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_oputils_mult_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_servicedesk_plus_file_upload_vuln.nasl: GPLv2+

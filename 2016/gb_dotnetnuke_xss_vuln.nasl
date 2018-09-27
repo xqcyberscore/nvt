@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnetnuke_xss_vuln.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_dotnetnuke_xss_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # DotNetNuke (DNN) Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:dotnetnuke:dotnetnuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809281");
-  script_version("$Revision: 5598 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2016-7119");
   script_bugtraq_id(92719);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-09-22 12:36:34 +0530 (Thu, 22 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("DotNetNuke (DNN) Cross Site Scripting Vulnerability");
@@ -42,16 +42,13 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with DotNetNuke
   and is prone to cross-site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to improper handling
   of user-profile biography section.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote
-  authenticated users to inject arbitrary web script.
-
-  Impact Level: Application");
+  authenticated users to inject arbitrary web script.");
 
   script_tag(name:"affected", value:"DotNetNuke (DNN) versions before 8.0.1.");
 
@@ -60,7 +57,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.dnnsoftware.com/community/security/security-center");
+  script_xref(name:"URL", value:"http://www.dnnsoftware.com/community/security/security-center");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -74,21 +71,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-dnnPort = "";
-dnnVer = "";
-
-## get the port
 if(!dnnPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!dnnVer = get_app_version(cpe:CPE, port:dnnPort)){
   exit(0);
 }
 
-##check for version before 5.6.25
 if(version_is_less(version:dnnVer, test_version:"8.0.1"))
 {
   report = report_fixed_ver(installed_version:dnnVer, fixed_version:"8.0.1");

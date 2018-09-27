@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_52048.nasl 11049 2018-08-20 08:53:50Z asteins $
+# $Id: gb_freepbx_52048.nasl 11648 2018-09-27 09:32:28Z asteins $
 #
 # FreePBX 'gen_amp_conf.php' Credentials Information Disclosure Vulnerability
 #
@@ -29,7 +29,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103428");
   script_bugtraq_id(52048);
-  script_version("$Revision: 11049 $");
+  script_version("$Revision: 11648 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("FreePBX 'gen_amp_conf.php' Credentials Information Disclosure Vulnerability");
@@ -38,7 +38,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.freepbx.org/");
   script_xref(name:"URL", value:"http://www.freepbx.org/forum/freepbx/development/security-gen-amp-conf-php");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:32:28 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-16 16:59:07 +0100 (Thu, 16 Feb 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -59,22 +59,26 @@ sensitive information that may aid in further attacks.");
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!can_host_php(port:port))exit(0);
+CPE = 'cpe:/a:freepbx:freepbx';
 
-if(!dir = get_dir_from_kb(port:port,app:"freepbx"))exit(0);
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
+
+if(dir == "/")
+  dir = "";
 
 url = string(dir, "/admin/modules/framework/bin/gen_amp_conf.php");
 
 if(http_vuln_check(port:port, url:url,pattern:"ARI_ADMIN_USERNAME",extra_check:make_list("ARI_ADMIN_PASSWORD","AMPENGINE","DIE_FREEPBX_VERBOSE"))) {
-
   security_message(port:port);
   exit(0);
-
 }
 
 exit(0);

@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808236");
-  script_version("$Revision: 11323 $");
+  script_version("$Revision: 11640 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:20:18 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-27 14:52:23 +0530 (Mon, 27 Jun 2016)");
 
   script_name("Joomla Publisher component SQL Injection Vulnerability");
@@ -86,7 +86,6 @@ if (dir == "/")
 
 url = dir + "/index.php?option=com_publisher&view=issues&Itemid='SQL-INJECTION-TEST&lang=en";
 
-## check_header is not doing it's not 200 OK
 if(http_vuln_check(port:http_port, url:url, pattern:"You have an error in your SQL syntax",
                    extra_check:make_list('SQL-INJECTION-TEST', '<title>1064 - Error: 1064</title>',
                    'id="pub-component" class="pub-content"'))) {

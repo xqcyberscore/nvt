@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolphin_mult_xss_vuln.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_dolphin_mult_xss_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Dolphin Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,44 +29,44 @@ CPE = "cpe:/a:boonex:dolphin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808218");
-  script_version("$Revision: 5588 $");
+  script_version("$Revision: 11640 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-06 09:51:58 +0530 (Mon, 06 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Dolphin Multiple Cross Site Scripting Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with Dolphin and is prone to 
+  script_tag(name:"summary", value:"The host is installed with Dolphin and is prone to
   multiple cross site scripting vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to read cookie or not.");
 
-  script_tag(name: "insight" , value:"The multiple flaws are due to :
-  - An insufficient validation of user supplied input via GET parameter 
+  script_tag(name:"insight", value:"The multiple flaws are due to :
+
+  - An insufficient validation of user supplied input via GET parameter
     'explain' to explanation.php script.
-  - An insufficient validation of user supplied input via GET parameters 
+
+  - An insufficient validation of user supplied input via GET parameters
     'photos_only', 'online_only', 'mode' to viewFriends.php script.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to inject arbitrary web script into user's brower session.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to inject arbitrary web script into user's brower session.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Dolphin versions 7.0.7 and lower.");
 
-  script_tag(name: "affected" , value:"Dolphin versions 7.0.7 and lower.");
-
-  script_tag(name: "solution" , value:"Upgrade to version 7.0.8 or later,
+  script_tag(name:"solution", value:"Upgrade to version 7.0.8 or later,
   For updates refer to http://www.boonex.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Feb/326");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2012/Feb/326");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_dolphin_detect.nasl"); 
+  script_dependencies("gb_dolphin_detect.nasl");
   script_mandatory_keys("Dolphin/Installed");
   script_require_ports("Services/www", 80);
   exit(0);
@@ -76,29 +76,19 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = 0;
-report = "";
-dir = "";
-url = "";
-
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Application Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
 if(dir == "/") dir = "";
 
-## Construct the attack request
 url =  dir + "/viewFriends.php?iUser=1&page=1&per_page=32&sort=activity&online_only='"+
              "><script>alert(document.cookie)</script>";
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
                    pattern:"<script>alert\(document.cookie\)</script>",
                    extra_check:make_list("Dolphin", "from BoonEx")))

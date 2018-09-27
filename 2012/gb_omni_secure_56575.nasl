@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_omni_secure_56575.nasl 11049 2018-08-20 08:53:50Z asteins $
+# $Id: gb_omni_secure_56575.nasl 11647 2018-09-27 09:31:07Z jschulte $
 #
 # Omni-Secure 'dir' Parameter Multiple File Disclosure Vulnerabilities
 #
@@ -29,7 +29,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103619");
   script_bugtraq_id(56575);
-  script_version("$Revision: 11049 $");
+  script_version("$Revision: 11647 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -37,7 +37,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56575");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:31:07 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-07 10:59:11 +0100 (Fri, 07 Dec 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -49,14 +49,14 @@ if (description)
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name:"summary", value:"Omni-Secure is prone to multiple file-disclosure vulnerabilities.
 
-An attacker can exploit these issues to view local files in the
-context of the web server process. This may aid in further attacks.
+  An attacker can exploit these issues to view local files in the
+  context of the web server process. This may aid in further attacks.
 
-Versions Omni-Secure 5, 6 and 7 are vulnerable.");
+  Versions Omni-Secure 5, 6 and 7 are vulnerable.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
-Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features,
-remove the product or replace the product by another one.");
- exit(0);
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
+  exit(0);
 }
 
 include("http_func.inc");
@@ -83,4 +83,4 @@ foreach dir( make_list_unique( "/oss7", "/oss6", "/oss5", cgi_dirs( port:port ))
   }
 }
 
-exit( 0 );
+exit( 99 );

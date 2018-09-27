@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop_24-2018-01_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop_24-2018-01_win.nasl 11624 2018-09-26 12:00:34Z santu $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop_24-2018-01)-Windows
 #
@@ -29,16 +29,17 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812674");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11624 $");
   script_cve_id("CVE-2018-6031", "CVE-2018-6032", "CVE-2018-6033", "CVE-2018-6034",
                 "CVE-2018-6035", "CVE-2018-6036", "CVE-2018-6037", "CVE-2018-6038",
                 "CVE-2018-6039", "CVE-2018-6040", "CVE-2018-6041", "CVE-2018-6042",
                 "CVE-2018-6043", "CVE-2018-6045", "CVE-2018-6046", "CVE-2018-6047",
                 "CVE-2018-6048", "CVE-2018-6049", "CVE-2018-6050", "CVE-2018-6051",
-                "CVE-2018-6052", "CVE-2018-6053", "CVE-2018-6054" );
+                "CVE-2018-6052", "CVE-2018-6053", "CVE-2018-6054", "CVE-2018-6055",
+                "CVE-2018-6119");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 14:00:34 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-01-25 16:11:22 +0530 (Thu, 25 Jan 2018)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_24-2018-01)-Windows");
 
@@ -81,25 +82,28 @@ if(description)
 
   - Leak of page thumbnails in New Tab Page.
 
-  - Use after free in WebUI.");
+  - Use after free in WebUI.
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
-  vulnerability will allow remote attackers to execute arbitrary script
-  and cause some unspecified impact.
+  - Incorrect security UI in Omnibox.
 
-  Impact Level: System/Application");
+  - Insufficient policy enforcement in Catalog Service.");
 
-  script_tag(name: "affected" , value:"Google Chrome version prior to 64.0.3282.119
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to execute arbitrary script, conduct spoofing attack and cause some
+  unspecified impact.");
+
+  script_tag(name:"affected", value:"Google Chrome version prior to 64.0.3282.119
   on Windows");
 
-  script_tag(name: "solution", value:"Upgrade to Google Chrome version 64.0.3282.119
-  or later. For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version 64.0.3282.119
+  or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://chromereleases.googleblog.com/2018/01/stable-channel-update-for-desktop_24.html");
+  script_xref(name:"URL", value:"https://chromereleases.googleblog.com/2018/01/stable-channel-update-for-desktop_24.html");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
@@ -110,8 +114,6 @@ if(description)
 
 include("host_details.inc");
 include("version_func.inc");
-
-chr_ver = "";
 
 infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
 chr_ver  = infos['version'];

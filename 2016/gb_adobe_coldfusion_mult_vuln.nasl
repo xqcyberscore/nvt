@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_mult_vuln.nasl 9114 2018-03-15 16:06:15Z cfischer $
+# $Id: gb_adobe_coldfusion_mult_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Adobe ColdFusion Multiple Vulnerabilities(march-2016)
 #
@@ -29,31 +29,30 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807014");
-  script_version("$Revision: 9114 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2015-8052", "CVE-2015-8053", "CVE-2015-5255");
   script_bugtraq_id(77625, 77626);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-15 17:06:15 +0100 (Thu, 15 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-03-11 14:43:52 +0530 (Fri, 11 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Multiple Vulnerabilities(march-2016)");
 
-  script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is 
+  script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is
   prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An insufficient validation of user supplied input via unspecified vectors.
+
   - The Server-Side Request Forgery (SSRF) issue in Adobe BlazeDS.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject arbitrary web script or HTML via unspecified vectors,
-  to send HTTP traffic to intranet servers.
-
-  Impact Level: Application");
+  to send HTTP traffic to intranet servers.");
 
   script_tag(name:"affected", value:"ColdFusion 10 before Update 18 and
   11 before Update 7");

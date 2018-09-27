@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2016-10_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2016-10_win.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2016-10)-Windows
 #
@@ -29,45 +29,54 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809072");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2016-5181", "CVE-2016-5182", "CVE-2016-5183", "CVE-2016-5184",
                 "CVE-2016-5185", "CVE-2016-5188", "CVE-2016-5192", "CVE-2016-5189",
                 "CVE-2016-5186", "CVE-2016-5191", "CVE-2016-5190", "CVE-2016-5193",
-                "CVE-2016-5194" );
+                "CVE-2016-5194");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-21 12:32:32 +0530 (Fri, 21 Oct 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2016-10)-Windows");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to
+  script_tag(name:"insight", value:"The multiple flaws exists due to
+
   - An universal XSS error in Blink
+
   - A heap overflow error in Blink.
+
   - Multiple use after free errors in PDFium.
+
   - An use after free error in Blink.
+
   - Multiple URL spoofing errors.
+
   - An UI spoofing error.
+
   - A cross-origin bypass error in Blink.
+
   - An out of bounds read error in DevTools.
+
   - An universal XSS error in Bookmarks.
+
   - An use after free error in Internals.
+
   - A scheme bypass error.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of these
+  script_tag(name:"impact", value:"Successful exploitation of these
   vulnerabilities will allow remote attackers to bypass security, to execute
-  arbitrary script code, to corrupt memory and to conduct spoofing attacks
+  arbitrary script code, to corrupt memory and to conduct spoofing attacks.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Google Chrome version
+  script_tag(name:"affected", value:"Google Chrome version
   prior to 54.0.2840.59 on Windows");
 
-  script_tag(name: "solution", value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   54.0.2840.59 or later.
   For updates refer to http://www.google.com/chrome");
 
@@ -75,7 +84,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2016/10/stable-channel-update-for-desktop.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2016/10/stable-channel-update-for-desktop.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

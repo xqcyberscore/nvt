@@ -61,16 +61,10 @@ include("cpe.inc");
 include("host_details.inc");
 include("smb_nt.inc");
 
-host    = get_host_ip();
-usrname = kb_smb_login();
-passwd  = kb_smb_password();
+infos = kb_smb_wmi_connectinfo();
+if( ! infos ) exit( 0 );
 
-if( ! host || ! usrname || ! passwd ) exit( 0 );
-
-domain = get_kb_item( "SMB/domain" );
-if( domain ) usrname = domain + '\\' + usrname;
-
-handle = wmi_connect( host:host, username:usrname, password:passwd );
+handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
 fileList = wmi_file_file_search( handle:handle, fileName:"chrome", fileExtn:"exe", includeHeader:FALSE );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-122.nasl 11445 2018-09-18 08:09:39Z mmartin $
+# $Id: gb_ms15-122.nasl 11635 2018-09-27 06:07:37Z cfischer $
 #
 # Microsoft Windows Kerberos Local Security Bypass Vulnerability (3105256)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806556");
-  script_version("$Revision: 11445 $");
+  script_version("$Revision: 11635 $");
   script_cve_id("CVE-2015-6095");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 08:59:53 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft Windows Kerberos Local Security Bypass Vulnerability (3105256)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-122.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to Kerberos fails to check
   the password change of a user signing into a workstation.");

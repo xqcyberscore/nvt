@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_dos_vuln01_feb16.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_apache_subversion_dos_vuln01_feb16.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Apache Subversion Denial Of Service Vulnerability -01 Feb16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806856");
-  script_version("$Revision: 5580 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2013-4505");
   script_bugtraq_id(63966);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-08 18:19:08 +0530 (Mon, 08 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Subversion Denial Of Service Vulnerability -01 Feb16");
@@ -42,17 +42,14 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apache Subversion
   and is prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to the 'is_this_legal()'
   function in mod_dontdothat does not restrict requests from serf based
   clients.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to cause a denial of service or bypass intended access restriction.
-
-  Impact Level: Application");
+  attacker to cause a denial of service or bypass intended access restriction.");
 
   script_tag(name:"affected", value:"Apache Subversion 1.4.0 through
   1.7.13 and 1.8.0 through 1.8.4");
@@ -62,7 +59,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://subversion.apache.org/security/CVE-2013-4505-advisory.txt");
+  script_xref(name:"URL", value:"https://subversion.apache.org/security/CVE-2013-4505-advisory.txt");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -77,21 +74,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-http_port = 0;
-subver = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# Get Version
 if(!subver = get_app_version(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-# Checking for Vulnerable version
 if(subver =~ "^(1\.8)")
 {
   if(version_is_less(version:subver, test_version:"1.8.5"))

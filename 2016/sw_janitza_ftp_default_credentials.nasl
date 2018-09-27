@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_janitza_ftp_default_credentials.nasl 9552 2018-04-20 12:17:18Z cfischer $
+# $Id: sw_janitza_ftp_default_credentials.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Janitza Multiple Devices FTP Default Credentials
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111104");
-  script_version("$Revision: 9552 $");
+  script_version("$Revision: 11640 $");
   script_cve_id("CVE-2015-3968");
   script_bugtraq_id(77291);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Janitza Multiple Devices FTP Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 14:17:18 +0200 (Fri, 20 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-06-11 11:12:12 +0200 (Sat, 11 Jun 2016)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -53,7 +53,7 @@ if(description)
 
   script_tag(name:"vuldetect", value:'Connect to the FTP service and try to login with default credentials.');
 
-  script_tag(name:"insight", value:'It was possible to login with default credentials: "admin:Janitza", "user:Janitza" or "guest:Janitza".');
+  script_tag(name:"insight", value:'It was possible to login with default credentials:"admin:Janitza", "user:Janitza" or "guest:Janitza".');
 
   script_tag(name:"solution", value:'Change the default username and password.');
 

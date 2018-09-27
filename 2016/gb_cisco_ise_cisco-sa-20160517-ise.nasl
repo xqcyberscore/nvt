@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_cisco-sa-20160517-ise.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_cisco_ise_cisco-sa-20160517-ise.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Cisco Identity Services Engine Active Directory Integration Component Remote Denial of Service Vulnerability
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/a:cisco:identity_services_engine";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105725");
- script_cve_id("CVE-2016-1402");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5598 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105725");
+  script_cve_id("CVE-2016-1402");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11640 $");
 
- script_name("Cisco Identity Services Engine Active Directory Integration Component Remote Denial of Service Vulnerability");
+  script_name("Cisco Identity Services Engine Active Directory Integration Component Remote Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160517-ise");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160517-ise");
 
- script_tag(name: "impact" , value:"");
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "insight" , value:"");
- script_tag(name: "solution" , value:"");
- script_tag(name: "summary" , value:"");
+  script_tag(name:"impact", value:"");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"insight", value:"");
+  script_tag(name:"solution", value:"");
+  script_tag(name:"summary", value:"");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-18 09:52:59 +0200 (Wed, 18 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ise_version.nasl");
- script_mandatory_keys("cisco_ise/version", "cisco_ise/patch");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-18 09:52:59 +0200 (Wed, 18 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ise_version.nasl");
+  script_mandatory_keys("cisco_ise/version", "cisco_ise/patch");
 
  exit(0);
 }

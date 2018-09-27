@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mssql_brute_force.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: mssql_brute_force.nasl 11638 2018-09-27 06:42:05Z cfischer $
 #
 # Microsoft's SQL Server Brute Force
 #
@@ -30,8 +30,8 @@
 # username and password combinations. If you know of a
 # common/default account that is not listed, please
 # submit it to:
-#   
-#    openvas-plugins@wald.intevation.org
+#
+# https://community.greenbone.net/c/vulnerability-tests
 #
 # System accounts with blank passwords are checked for in
 # a separate plugin (mssql_blank_password.nasl). This plugin
@@ -41,8 +41,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10862");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 11638 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:42:05 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -50,22 +50,25 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2001 H D Moore");
   script_family("Default Accounts");
-  script_require_ports("Services/mssql", 1433); 
+  script_require_ports("Services/mssql", 1433);
   script_dependencies("mssqlserver_detect.nasl");
   script_mandatory_keys("MS/SQLSERVER/Running");
 
   script_tag(name:"solution", value:"Please set a difficult to guess password for these accounts.");
+
   script_tag(name:"summary", value:"The MSSQL Server has a common password for one or more accounts.
   These accounts may be used to gain access to the records in the database or even allow
   remote command execution.");
+
   script_tag(name:"impact", value:"An attacker can use these accounts to read and/or
   modify data on your MSSQL server. In addition, the attacker may be able to launch programs on the
   target Operating system");
+
   script_tag(name:"insight", value:"If you want to use additional passwords for the 'sa' and 'admin' accounts
   you need to disable safe_checks().");
 
   script_tag(name:"solution_type", value:"Workaround");
-  script_tag(name:"qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
@@ -137,10 +140,10 @@ function sql_recv(socket)
 
  head = recv(socket:socket, length:4, min:4);
  if(strlen(head) < 4) return NULL;
- 
+
  len_hi = 256 * ord(head[2]);
  len_lo = ord(head[3]);
- 
+
  len = len_hi + len_lo;
  body = recv(socket:socket, length:len);
  return(string(head, body));
@@ -152,30 +155,30 @@ function make_sql_login_pkt (username, password)
 
     ulen = strlen(username);
     plen = strlen(password);
-    
+
     upad = 30 - ulen;
     ppad = 30 - plen;
-    
+
     ubuf = "";
     pbuf = "";
-    
+
     nul = raw_string(0x00);
-    
-  
+
+
     if(ulen)
     {
         ublen = raw_string(ulen % 255);
     } else {
         ublen = raw_string(0x00);
     }
-    
-    
+
+
     if(plen)
     {
         pblen =  raw_string(plen % 255);
     } else {
         pblen = raw_string(0x00);
-    }  
+    }
 
     ubuf = string(username, crap(data:nul, length:upad));
     pbuf = string(password, crap(data:nul, length:ppad));
@@ -248,7 +251,7 @@ if(get_port_state(port)) {
 
     r  = sql_recv(socket:soc);
     close(soc);
-	    
+
     if(strlen(r) > 10 && ord(r[8]) == 0xE3) {
       report = report + "Account '" + username + "' has password '" + password + "'\n";
       found = 1;

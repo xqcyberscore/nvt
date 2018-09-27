@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3033929.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_microsoft_security_advisory_3033929.nasl 11635 2018-09-27 06:07:37Z cfischer $
 #
 # MS Windows SHA-2 Code Signing Support Vulnerability (3033929)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805354");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11635 $");
   script_cve_id("CVE-2015-0073", "CVE-2015-0075");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-20 17:53:39 +0530 (Fri, 20 Mar 2015)");
   script_name("MS Windows SHA-2 Code Signing Support Vulnerability (3033929)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Advisory 3033929.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an error within the
   WebDAV kernel-mode driver (Winload.exe).");

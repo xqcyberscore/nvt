@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wowza_mult_vuln.nasl 5748 2017-03-28 13:15:16Z teissa $
+# $Id: gb_wowza_mult_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # Wowza Streaming Engine Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:wowza:streaming_engine';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106225");
-  script_version("$Revision: 5748 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-28 15:15:16 +0200 (Tue, 28 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2016-09-07 11:27:17 +0700 (Wed, 07 Sep 2016)");
+  script_version("$Revision: 11640 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-07 11:27:17 +0700 (Wed, 07 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Wowza Streaming Engine Multiple Vulnerabilities");
 
@@ -49,9 +49,9 @@ if (description)
   script_dependencies("gb_wowza_streaming_engine_detect.nasl");
   script_mandatory_keys("wowza_streaming_engine/installed", "wowza_streaming_engine/build");
 
-  script_tag(name: "summary", value: "Wowza Streaming Engine is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Wowza Streaming Engine is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "The application interface allows users to perform certain actions via
+  script_tag(name:"insight", value:"The application interface allows users to perform certain actions via
 HTTP requests without performing any validity checks to verify the requests. This can be exploited to perform
 certain actions with administrative privileges if a logged-in user visits a malicious web site.
 
@@ -64,18 +64,18 @@ via several parameters to several scripts is not properly sanitized before being
 be exploited to execute arbitrary HTML and script code in a user's browser session in context of an affected
 site.");
 
-  script_tag(name: "impact", value: "Attackers may elevate their privileges or execute arbitrary scripts in the
+  script_tag(name:"impact", value:"Attackers may elevate their privileges or execute arbitrary scripts in the
 users context.");
 
-  script_tag(name: "affected", value: "All Wowza Streaming Engines until at least 4.5.0 build18676.");
+  script_tag(name:"affected", value:"All Wowza Streaming Engines until at least 4.5.0 build18676.");
 
-  script_tag(name: "solution", value: "Update to version 4.6.0 build 19395.");
+  script_tag(name:"solution", value:"Update to version 4.6.0 build 19395.");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40133/");
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40134/");
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40135/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40133/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40134/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40135/");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   exit(0);
 }

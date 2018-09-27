@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_servicedesk_plus_mult_unauth_info_disc_vuln.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_manage_engine_servicedesk_plus_mult_unauth_info_disc_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
 #
 # ManageEngine ServiceDesk Plus Multiple Unauthorized Information Disclosure Vulnerabilities
 #
@@ -29,34 +29,31 @@ CPE = "cpe:/a:manageengine:servicedesk_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809071");
-  script_version("$Revision: 5557 $");
+  script_version("$Revision: 11640 $");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-20 12:16:44 +0530 (Thu, 20 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ManageEngine ServiceDesk Plus Multiple Unauthorized Information Disclosure Vulnerabilities");
 
-  script_tag(name: "summary" , value:"This host is installed with 
+  script_tag(name:"summary", value:"This host is installed with
   ManageEngine ServiceDesk Plus and is prone to multiple unauthorized information
   disclosure vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The Multiple flaws are due to 
+  script_tag(name:"insight", value:"The Multiple flaws are due to
   an inadequate access control over non-permissible functionalities
   under Request module.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a remote
-  attacker with low privilege to access non-permissible functionalities.
+  script_tag(name:"impact", value:"Successful exploitation will allow a remote
+  attacker with low privilege to access non-permissible functionalities.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"ManageEngine ServiceDesk Plus version 
+  script_tag(name:"affected", value:"ManageEngine ServiceDesk Plus version
   9.2 Build 9207 (Other versions could also be affected).");
 
-  script_tag(name:"solution" , value:"Upgrade to ManageEngine ServiceDesk Plus 
+  script_tag(name:"solution", value:"Upgrade to ManageEngine ServiceDesk Plus
   9.2 Build 9228 or later.
   For updates refer to https://www.manageengine.com/products/service-desk/readme-9.2.html");
 
@@ -78,25 +75,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable initialization
-deskPort = 0;
-deskVer = 0;
-vers = "";
-report = "";
-
-## Get port
 if(!deskPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!deskVer = get_app_version(cpe:CPE, port:deskPort)){
   exit(0);
 }
 
 vers = str_replace(string:deskVer, find:"build", replace:".");
 
-## Check ManageEngine ServiceDesk Plus vulnerable version
 if(version_is_equal(version:vers, test_version:"9.2.9207"))
 {
   report = report_fixed_ver(installed_version:deskVer, fixed_version:"9.2 build9229");
