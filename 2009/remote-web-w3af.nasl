@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-web-w3af.nasl 11546 2018-09-22 11:30:16Z cfischer $
+# $Id: remote-web-w3af.nasl 11665 2018-09-28 07:14:18Z cfischer $
 #
 # Assess web security with w3af
 #
@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80109");
-  script_version("$Revision: 11546 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 13:30:16 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11665 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-10-18 22:12:25 +0200 (Sun, 18 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,9 +38,9 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_add_preference(name: "Profile", type:"radio",value:"fast_scan;sitemap;web_infrastructure;OWASP_TOP10;audit_high_risk;bruteforce;full_audit");
-  script_add_preference(name: "Seed URL", type: "entry", value: "");
-  script_add_preference(name: 'Report broken w3af installation', value: 'no', type: 'checkbox');
+  script_add_preference(name:"Profile", type:"radio", value:"fast_scan;sitemap;web_infrastructure;OWASP_TOP10;audit_high_risk;bruteforce;full_audit");
+  script_add_preference(name:"Seed URL", type:"entry", value:"");
+  script_add_preference(name:'Report broken w3af installation', value:'no', type:'checkbox');
 
   script_tag(name:"summary", value:"This plugin uses w3af (w3af_console to be exact) to find
   web security issues.

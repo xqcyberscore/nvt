@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quantum_scalar_52566.nasl 11625 2018-09-26 12:08:49Z jschulte $
+# $Id: gb_quantum_scalar_52566.nasl 11657 2018-09-27 13:32:51Z cfischer $
 #
 # Multiple Vendor Products Security Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2012-1841", "CVE-2012-1842", "CVE-2012-1844");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11625 $");
+  script_version("$Revision: 11657 $");
 
   script_name("Multiple Vendor Products Security Vulnerabilities");
 
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.quantum.com/ServiceandSupport/SoftwareandDocumentationDownloads/SI500/Index.aspx");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/913483");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 14:08:49 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 15:32:51 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-11 09:50:54 +0200 (Wed, 11 Apr 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -99,7 +99,7 @@ if(egrep(string:buf, pattern:"(<title>QUANTUM - Scalar|<title>DELL - ML.* Login 
 
     url = '/logShow.htm?file=/' + file;
     if(http_vuln_check(port:port, url:url, pattern:pattern)) {
-      report = report_vuln_url(url:url);
+      report = report_vuln_url(port:port, url:url);
       security_message(data:report, port:port);
       exit(0);
     }

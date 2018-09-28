@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_ids_evasion.nasl 6286 2017-06-06 14:13:46Z cfischer $
+# $Id: http_ids_evasion.nasl 11663 2018-09-28 06:18:46Z cfischer $
 #
 # HTTP NIDS evasion
 #
@@ -24,70 +24,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This plugin configures OpenVAS for NIDS evasion (see the 'Prefs' panel).
-NIDS evasion options are useful if you want to determine
-the quality of the expensive NIDS you just bought.
-
-HTTP evasion techniques :
-
-- Use HTTP HEAD instead of GET
-
-- URL encoding:
-
- -- Hex: change characters to %XX
-
- -- UTF-16 (double byte): change characters to %00%XX. This should *not* work!
-
- -- UTF-16 (MS %u): change characters to %uXXXX. This works only with IIS.
-
- -- Incorrect UTF-8: change characters to invalid multibyte UTF8 sequences.
-
-- Absolute URI: insert scheme://host/ in front of the relative URI.
-
-- Double slashes: change every / to //
-
-- Reverse traversal: change / into /dirname/../
-
-  -- 'Basic' inserts 8 characters random directory names
-
-  -- 'Long' means 1000 character directory name.
-
-- Self-reference directories: changes every / to /./
-
-- Premature request ending: just like 'reverse traversal', but the directory
-  name contains %0d%0a (could be translated to CR LF)
-
-- CGI.pm semicolon separator: uses ';' instead of '&' in the query string.
-
-- Parameter hiding: another form of reverse traversal. The directory contains
-  %3F (could be translated to ?)
-
-- Dos/Windows syntax: uses \ instead of /
-
-- Null method: insert %00 between the method and the URI
-
-- TAB separator: uses TAB instead of SPACE between the method, the URL and the HTTP
-  version
-
-- HTTP/0.9 requests: uses HTTP/0.9 requests (method & URI only, no HTTP version field)
-
-'Premature request ending' and 'Parameter hiding' target 'smart' IDS.
-
-Read http://www.wiretrip.net/rfp/pages/whitepapers/whiskerids.html
-for more information.
-
-Warning: those features are experimental and some options may result in false negatives!
-
-This plugin does not do any security check.";
-
 # The HTTP IDS evasion mode comes from Whisker, by RFP.
 # Read http://www.wiretrip.net/rfp/pages/whitepapers/whiskerids.html
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80010");
-  script_version("$Revision: 6286 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-06 16:13:46 +0200 (Tue, 06 Jun 2017) $");
+  script_version("$Revision: 11663 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 08:18:46 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 19:16:58 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -120,7 +64,61 @@ if(description)
   script_add_preference(name:"Force protocol string : ", type:"entry", value:"");
   script_add_preference(name:"Random case sensitivity (Nikto only)", type:"checkbox", value:"no");
 
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This plugin configures OpenVAS for NIDS evasion (see the 'Prefs' panel).
+NIDS evasion options are useful if you want to determine
+the quality of the expensive NIDS you just bought.
+
+HTTP evasion techniques :
+
+  - Use HTTP HEAD instead of GET
+
+  - URL encoding:
+
+  - - Hex: change characters to %XX
+
+  - - UTF-16 (double byte): change characters to %00%XX. This should *not* work!
+
+  - - UTF-16 (MS %u): change characters to %uXXXX. This works only with IIS.
+
+  - - Incorrect UTF-8: change characters to invalid multibyte UTF8 sequences.
+
+  - Absolute URI: insert scheme://host/ in front of the relative URI.
+
+  - Double slashes: change every / to //
+
+  - Reverse traversal: change / into /dirname/../
+
+  - - 'Basic' inserts 8 characters random directory names
+
+  - - 'Long' means 1000 character directory name.
+
+  - Self-reference directories: changes every / to /./
+
+  - Premature request ending: just like 'reverse traversal', but the directory
+  name contains %0d%0a (could be translated to CR LF)
+
+  - CGI.pm semicolon separator: uses ';' instead of '&' in the query string.
+
+  - Parameter hiding: another form of reverse traversal. The directory contains
+  %3F (could be translated to ?)
+
+  - Dos/Windows syntax: uses \ instead of /
+
+  - Null method: insert %00 between the method and the URI
+
+  - TAB separator: uses TAB instead of SPACE between the method, the URL and the HTTP
+  version
+
+  - HTTP/0.9 requests: uses HTTP/0.9 requests (method & URI only, no HTTP version field)
+
+'Premature request ending' and 'Parameter hiding' target 'smart' IDS.
+
+Read http://www.wiretrip.net/rfp/pages/whitepapers/whiskerids.html
+for more information.
+
+Warning: those features are experimental and some options may result in false negatives!
+
+This plugin does not do any security check.");
 
   script_tag(name:"qod_type", value:"general_note");
 

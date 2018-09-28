@@ -1,9 +1,11 @@
-# OpenVAS Vulnerability Test 
-# Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1272.nasl 6560 2017-07-06 11:58:38Z cfischer $
- 
-# Authors: 
-# Eero Volotinen <eero.volotinen@solinor.com> 
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: ELSA-2015-1272.nasl 11688 2018-09-28 13:36:28Z cfischer $
+#
+# Oracle Linux Local Check
+#
+# Authors:
+# Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://solinor.com
@@ -20,82 +22,85 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
+
 if(description)
- {
-script_oid("1.3.6.1.4.1.25623.1.0.123058");
-script_version("$Revision: 6560 $");
-script_tag(name:"creation_date", value:"2015-10-06 13:58:49 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
-script_name("Oracle Linux Local Check: ELSA-2015-1272");
-script_tag(name: "insight", value: "ELSA-2015-1272 -  kernel security, bug fix, and enhancement update - [2.6.32-573]- [security] selinux: dont waste ebitmap space when importing NetLabel categories (Paul Moore) [1130197]- [x86] Revert Add driver auto probing for x86 features v4 (Prarit Bhargava) [1231280]- [net] bridge: netfilter: dont call iptables on vlan packets if sysctl is off (Florian Westphal) [1236551]- [net] ebtables: Allow filtering of hardware accelerated vlan frames (Florian Westphal) [1236551][2.6.32-572]- [fs] Revert fuse: use clear_highpage and KM_USER0 instead of KM_USER1 (Brian Foster) [1229562][2.6.32-571]- [netdrv] bnx2x: Move statistics implementation into semaphores (Michal Schmidt) [1231348]- [scsi] storvsc: Set the SRB flags correctly when no data transfer is needed (Vitaly Kuznetsov) [1221404][2.6.32-570]- [block] fix ext_dev_lock lockdep report (Jeff Moyer) [1230927]- [md] Revert md dm: run queue on re-queue (Mike Snitzer) [1232007]- [firmware] another cxgb4 firmware load fixup (Sai Vemuri) [1189255]- [char] tty: Dont protect atomic operation with mutex (Aristeu Rozanski) [1184182]- [edac] i5100 add 6 ranks per channel (Aristeu Rozanski) [1171333]- [edac] i5100 clean controller to channel terms (Aristeu Rozanski) [1171333]- [crypto] rng - Remove krng (Herbert Xu) [1226418]- [crypto] drbg - Add stdrng alias and increase priority (Herbert Xu) [1226418]- [crypto] seqiv - Move IV seeding into init function (Herbert Xu) [1226418]- [crypto] eseqiv - Move IV seeding into init function (Herbert Xu) [1226418]- [crypto] chainiv - Move IV seeding into init function (Herbert Xu) [1226418][2.6.32-569]- [gpu] drm/radeon: fix freeze for laptop with Turks/Thames GPU (Jerome Glisse) [1213297]- [md] dm: fix casting bug in dm_merge_bvec (Mike Snitzer) [1226453]- [fs] nfs: Send the size attribute on open(O_TRUNC) (Benjamin Coddington) [1208065]- [net] inet: fix processing of ICMP frag_needed messages (Sabrina Dubroca) [1210321]- [net] tcp: double default TSQ output bytes limit (Hannes Frederic Sowa) [1140590]- [hv] hv_balloon: correctly handle num_pages>INT_MAX case (Vitaly Kuznetsov) [1006234]- [hv] hv_balloon: correctly handle val.freeramref_count on configure() (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: inform mac80211 about umac scans that was aborted by restart (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: remove d0i3 ref correctly during AP start (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: Fix memory leak in iwl_req_fw_callback() (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: remove WARN_ON for invalid BA notification (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: take IWL_MVM_REF_UCODE_DOWN before restarting hw (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: dont wait for firmware verification (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: add new 3165 series PCI IDs (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: remove time-event start/end failure warning (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add iccm data to 8000 b-step data dump (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: pcie: add rx packet sequence number to dbg print (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: properly flush the queues for buffering transport (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: assign new TLV bit for multi-source LAR (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: continue (with error) CSA on GO time event failure (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: simplify iwl_mvm_get_wakeup_status() return (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: dont double unlock the mutex in __iwl_mvm_resume() (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: clarify time event end handling (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: Always enable the smart FIFO (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: update copyright to include 2015 (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: add more new 8260 series PCI IDs (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: BT Coex - update the new API (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: fix force NMI for 8000 (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: freeze the non-shared queues when a station goes to sleep (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: pcie: allow the op_mode to freeze the stuck queue timer (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: rs: update Tx statistics when using fixed rate (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: dont init MCC during CT-kill (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: remove warning on station exhaustion (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: trans: Take ownership on secure machine before FW load (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: add new 8260 series PCI IDs (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: rs: improve ss_params debug print (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: dont allow the FW to return invalid ch indices (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: reflect TDLS pm state in mvmvif->pm_enabled (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: fix identation (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: remove unneeded include iwl-fw-error-dump.h (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: use correct NVM offset for LAR enable for new NVMs (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: fix smatch warning: warn: inconsistent indenting (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: pcie: include more registers in the prph dump (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: pcie: speed up the Tx DMA stop flow (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: support family 8000 B2/C steps (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: always update the quota after association (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: BT Coex - disable RRC by default (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: remove IWL_UCODE_TLV_API_SF_NO_DUMMY_NOTIF (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: remove IWL_UCODE_TLV_API_DISABLE_STA_TX (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: bump API to 13 for devices that use iwlmvm (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: set LAR MCC on D3/D0 transitions (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: support LAR updates from BIOS (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: take the MAC address from HW registers (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: allow disabling LAR via module param (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: support new PHY_SKU nvm section for family 8000 B0 (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: disable 11ac if 11n is disabled (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: iwlmvm: LAR: disable LAR support due to NVM vs TLV conflict (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: change last 5ghz channel to 165 & add support for 8000 family (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: use IWL_DEFAULT_MAX_TX_POWER for max_eirp (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: nvm: init correct nvm channel list for 8000 devices (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: LAR: Add chub mcc change notify command (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: dont declare support for 5ghz if not supported (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: ignore IBSS flag as regulatory NO-IR indication (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: consider LAR support during NVM parse (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: create regdomain from mcc_update_cmd response (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: init country code on init/recovery (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add MCC update FW API (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: disconnect if CSA time event fails scheduling (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: dvm: drop VO packets when mac80211 tells us to (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: fix compilation with IWLWIFI_DEBUGFS not set (Stanislaw Gruszka) [1134606]- [netdrv] wireless: Use eth__addr instead of memset (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: dont override passive dwell in case of fragmented scan (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add trigger for firmware dump upon low RSSI (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add trigger for firmware dump upon statistics (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: restart firmware recording when no configuration is set (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add trigger for firmware dump upon command response (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add trigger for firmware dump upon channel switch (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add trigger for firmware dump upon missed beacons (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add the cause of the firmware dump in the dump (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add framework for triggers for fw dump (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: use only 40 ms for fragmented scan (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: allow to force the Rx chains from debugfs (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: add new TLV capability flag for BT PLCR (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: dont iterate interfaces to disconnect in net-detect (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: new Alive / error table API (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: support beacon statistics for BSS client (Stanislaw Gruszka) [1134606]- [net] cfg80211: add nl80211 beacon-only statistics (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: dont write to DBGC_OUT_CTRL when stopping the recording (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: remove deprecated scan API code (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: deprecate -9.ucode for 3160 / 7260 / 7265 (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: support radio statistics as global survey (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add statistics API version 10 (Stanislaw Gruszka) [1134606]- [net] cfg80211: add scan time to survey data (Stanislaw Gruszka) [1134606]- [netdrv] cfg80211: remove channel from survey names (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: pcie: apply destination before releasing reset (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: remove unused function in BT coex (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: fix BT coex shared antenna activity check (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: rs: print single stream params via debugfs (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: rs: avoid ss_force from being reset after tx idle (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: increase the number of PAPD channel groups to 9 (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: consider TDLS queues as used during drain (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: rs: disable MIMO for low latency P2P (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: rs: adapt rate matching to new STBC/BFER (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: disable beamformer unless FW supports it (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: dont try to stop scans that are not running anymore (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: rs: better match tx response rate to the LQ table (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: call ieee80211_scan_completed() even if scan abort fails (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: reduce quota threshold (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: dont send a command the firmware doesnt know (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: Fix building channels in scan_config_cmd (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: Enable EBS also in single scan on umac interface (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: Fix a few EBS error handling bugs (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: allow to define the stuck queue timer per queue (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: enable watchdog on Tx queues for mvm (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: ignore stale TDLS ch-switch responses (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: improve TDLS ch-sw state machine (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: pcie: prepare the enablement of 31 TFD queues (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: rs: enable forcing single stream Tx decision (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: remove space padding after sysassert description (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add beamformer support (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: pcie: dont dump useless data when a TFD queue hangs (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: dont reprobe if we fail during reconfig and fw_restart is false (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: check IWL_UCODE_TLV_API_SCD_CFG in API and not in capa (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: fix rx chains configuration in phy ctxt cmd (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: pcie: support secured boot flow for family 8000 B step (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: use a new API for enabling STBC (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: rs: refactor ht/vht init (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: rs: remove stats argument from functions (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: really disable TDLS queues (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: BT Coex - set all the co-running values to 0 (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: Do not consider invalid HW queues in queue mask (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: support family 8000 C step (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: pcie: init ref_lock (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: document switch case fall-through in iwl_mvm_send_sta_key (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: rs: use STBC regardless of power save mode (Stanislaw Gruszka) [1134606]- [netdrv] Revert iwlwifi: mvm: drop non VO frames when flushing (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add support for new LTR command (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: BT Coex - fine tune the MPLUT register (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: move U-APSD decision to authentication (Stanislaw Gruszka) [1134606]- [netdrv] mac80211: move U-APSD enablement to vif flags (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: ignore temperature updates in the RX statistics notification (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: rs: cleanup unuseful and overflowing traces (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: generate statistics debugfs code (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: move statistics API to new header file (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: sync statistics firmware API (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: correctly set the NMI register (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add rxf and txf to dump data (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add support for dumping a secondary SRAM (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add debugfs file for misbehaving U-APSD AP (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: let the firmware configure the scheduler (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: remove unused TLV capability flags (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add print of he nvm version (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: set max_out_time equal to frag_passive_dwell in fragmented scan (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: rs: allow to disable MIMO for P2P only (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: allow to collect debug data from non-sleepable context (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: make sure state isnt in d0i3 when stopping fw monitor (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: Add debugfs entry to enable scan offload notification (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: add new config and PCI IDs for 4165 series (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: make sure state isnt in d0i3 when collecting fw dbg (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: rs: repeat initial legacy rates in LQ table (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: dont indicate no BA if STA was in powersave (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: rs: organize and cleanup consts (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: Alter passive scan fragmentation parameters in case of multi-MAC (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: call to pcie_apply_destination also on family 8000 B step (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: ask the fw to wakeup (from d0i3) on sysassert (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: tlv: add support for IWL_UCODE_TLV_SDIO_ADMA_ADDR TLV (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: use iwl_mvm_sta_from_mac80211() consistently (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: use iwl_mvm_vif_from_mac80211() consistently (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: remove useless extern definition of iwl4265_2ac_sdio_cfg (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: clean refs before stop_device() (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: dvm: main: Use setup_timer (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: dvm: tt: Use setup_timer (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: support 2 different channels (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: wait for d0i3 exit on hw restart (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: consider d0i3_disable in iwl_mvm_is_d0i3_supported() (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: support multiple d0i3 modes (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: support IWL_D0I3_MODE_ON_SUSPEND d0i3 mode (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: allow both d0i3 and d3 wowlan configuration modes (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: pcie: add basic reference accounting (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: convert the SRAM dump to the generic memory dump (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: change SMEM dump to general purpose memory dump (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add smem content to dump data (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: support additional nvm_file in family 8000 B step (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: rs: fix max rate allowed if no rate is allowed (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: clear tt values when entering CT-kill (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: Set the HW step in the core dump (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: allow RSSI compensation (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add debugfs to trigger fw debug logs collection (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: pcie: let the Manageability Engine know when we leave (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: support LnP 1x1 antenna configuration (Stanislaw Gruszka) [1134606]- [netdrv] Revert iwlwifi: use correct fw file in 8000 b-step (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: mvm: add fw runtime stack to dump data (Stanislaw Gruszka) [1134606]- [netdrv] iwlwifi: remove MODULE_VERSION (Stanislaw Gruszka) [1134606][2.6.32-565]- [x86] perf/intel: Add INST_RETIRED.ALL workarounds (Jiri Olsa) [1189949]- [x86] perf/intel: Add Broadwell core support (Jiri Olsa) [1189949]- [x86] perf/intel: Add new cache events table for Haswell (Jiri Olsa) [1189949]"); 
-script_tag(name : "solution", value : "update software");
-script_tag(name : "solution_type", value : "VendorFix");
-script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2015-1272");
-script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2015-1272.html");
-script_cve_id("CVE-2014-8133","CVE-2014-3184","CVE-2014-4652","CVE-2014-9683","CVE-2015-0239","CVE-2015-3339","CVE-2014-3940","CVE-2014-8709");
-script_tag(name:"cvss_base", value:"6.2");
-script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:C/A:C");
-script_tag(name:"qod_type", value:"package");
-script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
-script_category(ACT_GATHER_INFO);
-script_copyright("Eero Volotinen");
-script_family("Oracle Linux Local Security Checks");
-exit(0);
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.123058");
+  script_version("$Revision: 11688 $");
+  script_tag(name:"creation_date", value:"2015-10-06 13:58:49 +0300 (Tue, 06 Oct 2015)");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 15:36:28 +0200 (Fri, 28 Sep 2018) $");
+  script_name("Oracle Linux Local Check: ELSA-2015-1272");
+  script_tag(name:"insight", value:"ELSA-2015-1272 - kernel security, bug fix, and enhancement update. Please see the references for more insight.");
+  script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Oracle Linux Local Security Checks ELSA-2015-1272");
+  script_xref(name:"URL", value:"http://linux.oracle.com/errata/ELSA-2015-1272.html");
+  script_cve_id("CVE-2014-8133", "CVE-2014-3184", "CVE-2014-4652", "CVE-2014-9683", "CVE-2015-0239", "CVE-2015-3339", "CVE-2014-3940", "CVE-2014-8709");
+  script_tag(name:"cvss_base", value:"6.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"qod_type", value:"package");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release", re:"ssh/login/release=OracleLinux6");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Eero Volotinen");
+  script_family("Oracle Linux Local Security Checks");
+
+  exit(0);
 }
+
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
-release = get_kb_item("ssh/login/release");
+
+release = rpm_get_ssh_release();
+if(!release) exit(0);
+
 res = "";
-if(release == NULL)
-{
- exit(0);
-}
+
 if(release == "OracleLinux6")
 {
   if ((res = isrpmvuln(pkg:"kernel", rpm:"kernel~2.6.32~573.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-abi-whitelists", rpm:"kernel-abi-whitelists~2.6.32~573.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-debug", rpm:"kernel-debug~2.6.32~573.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-debug-devel", rpm:"kernel-debug-devel~2.6.32~573.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-devel", rpm:"kernel-devel~2.6.32~573.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-doc", rpm:"kernel-doc~2.6.32~573.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-firmware", rpm:"kernel-firmware~2.6.32~573.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-headers", rpm:"kernel-headers~2.6.32~573.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"perf", rpm:"perf~2.6.32~573.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"python-perf", rpm:"python-perf~2.6.32~573.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
 
 }
-if (__pkg_match) exit(99); #Not vulnerable
+if (__pkg_match) exit(99);
   exit(0);
 

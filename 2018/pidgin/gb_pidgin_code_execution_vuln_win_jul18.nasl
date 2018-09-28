@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_code_execution_vuln_win_jul18.nasl 10692 2018-07-31 13:51:55Z santu $
+# $Id: gb_pidgin_code_execution_vuln_win_jul18.nasl 11661 2018-09-28 03:58:36Z ckuersteiner $
 #
 # Pidgin 'Out-of-Bounds Write' Code Execution Vulnerability-(Windows)
 #
@@ -29,32 +29,29 @@ CPE = "cpe:/a:pidgin:pidgin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813735");
-  script_version("$Revision: 10692 $");
+  script_version("$Revision: 11661 $");
   script_cve_id("CVE-2017-2640");
   script_bugtraq_id(96775);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 15:51:55 +0200 (Tue, 31 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 05:58:36 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-30 16:05:18 +0530 (Mon, 30 Jul 2018)");
   script_name("Pidgin 'Out-of-Bounds Write' Code Execution Vulnerability-(Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Pidgin and is
+  script_tag(name:"summary", value:"This host is installed with Pidgin and is
   prone to code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an out-of-bounds
+  script_tag(name:"insight", value:"The flaw exists due to an out-of-bounds
   write error while decoding invalid xml.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow an
-  attacker to execute arbitrary code on affected system.
+  script_tag(name:"impact", value:"Successful exploitation will allow an
+  attacker to execute arbitrary code on affected system.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Pidgin before version 2.12.0 on Windows.");
 
-  script_tag(name: "affected" , value:"Pidgin before version 2.12.0 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Pidgin version 2.12.0 or later.
+  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.12.0 or later.
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");

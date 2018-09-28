@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4213.nasl 10056 2018-06-04 06:29:53Z cfischer $
+# $Id: deb_4213.nasl 11661 2018-09-28 03:58:36Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4213-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,15 +31,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704213");
-  script_version("$Revision: 10056 $");
+  script_version("$Revision: 11661 $");
   script_cve_id("CVE-2017-15038", "CVE-2017-15119", "CVE-2017-15124", "CVE-2017-15268", "CVE-2017-15289",
                 "CVE-2017-16845", "CVE-2017-17381", "CVE-2017-18043", "CVE-2017-5715", "CVE-2018-5683",
                 "CVE-2018-7550");
   script_name("Debian Security Advisory DSA 4213-1 (qemu - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 08:29:53 +0200 (Mon, 04 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 05:58:36 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-05-29 00:00:00 +0200 (Tue, 29 May 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

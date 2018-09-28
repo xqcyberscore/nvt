@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snmpwalk_portscan.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: snmpwalk 'scanner'
+# $Id: snmpwalk_portscan.nasl 11665 2018-09-28 07:14:18Z cfischer $
+#
+# snmpwalk 'scanner'
 #
 # Authors:
 # Michel Arboi <arboi@alussinan.org>
@@ -20,42 +22,34 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "This plugin runs snmpwalk against the remote machine to find open ports.";
+###############################################################################
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.14274");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"0.0");
- name = "snmpwalk 'scanner'";
- script_name(name);
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.14274");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_version("$Revision: 11665 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("snmpwalk 'scanner'");
+  script_category(ACT_SCANNER);
+  script_copyright("This script is Copyright (C) 2004 Michel Arboi");
+  script_family("Port scanners");
+  script_dependencies("toolcheck.nasl", "ping_host.nasl");
+  script_mandatory_keys("Tools/Present/snmpwalk");
 
- 
- 
- script_category(ACT_SCANNER);
- 
- script_copyright("This script is Copyright (C) 2004 Michel Arboi");
- family = "Port scanners";
- script_family(family);
+  script_add_preference(name:"Community name :", type:"entry", value:"public");
+  script_add_preference(name:"SNMP protocol :", type:"radio", value:"1;2c");
+  script_add_preference(name:"SNMP transport layer :", type:"radio", value:"udp;tcp");
+  script_add_preference(name:"TCP/UDP port :", type:"entry", value:"");
+  script_add_preference(name:"Number of retries :", type:"entry", value:"");
+  script_add_preference(name:"Timeout between retries :", type:"entry", value:"");
 
- script_dependencies("toolcheck.nasl", "ping_host.nasl");
+  script_tag(name:"summary", value:"This plugin runs snmpwalk against the remote machine to find open ports.");
 
- script_add_preference(name: "Community name :", type: "entry", value: "public");
- script_add_preference(name: "SNMP protocol :", type: "radio", value: "1;2c");
- script_add_preference(name: "SNMP transport layer :", type: "radio", value: "udp;tcp");
- script_add_preference(name: "TCP/UDP port :", type: "entry", value: "");
- script_add_preference(name: "Number of retries :", type: "entry", value: "");
- script_add_preference(name: "Timeout between retries :", type: "entry", value: "");
- script_mandatory_keys("Tools/Present/snmpwalk");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 check =  (! safe_checks()) ||  ("yes" >< get_preference("unscanned_closed"));
@@ -139,7 +133,7 @@ scanned = 0; udp_scanned = 0;
 foreach o (
   make_list("tcp.tcpConnTable.tcpConnEntry.tcpConnLocalPort.0.0.0.0",
             "tcp.tcpConnTable.tcpConnEntry.tcpConnLocalPort." + ip,
-            "udp.udpTable.udpEntry.udpLocalPort.0.0.0.0", 
+            "udp.udpTable.udpEntry.udpLocalPort.0.0.0.0",
             "udp.udpTable.udpEntry.udpLocalPort." + ip))
 {
  scanner_status(current: 0, total: i++);
@@ -181,7 +175,7 @@ foreach o (
     }
    }
   }
- } 
+ }
 }
 
 if (scanned)
@@ -189,7 +183,7 @@ if (scanned)
  set_kb_item(name: "Host/scanned", value: TRUE);
  set_kb_item(name: "Host/full_scan", value: TRUE);
  set_kb_item(name: 'Host/scanners/snmpwalk', value: TRUE);
- log_message(port: snmp_port, proto: snmp_layer, 
+ log_message(port: snmp_port, proto: snmp_layer,
 data: strcat("snmpwalk could get the open port list with the community name ", snmp_comm));
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cisco_default_pw.nasl 9567 2018-04-23 13:22:46Z cfischer $
+# $Id: cisco_default_pw.nasl 11663 2018-09-28 06:18:46Z cfischer $
 #
 # Cisco default password
 #
@@ -38,8 +38,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.23938");
-  script_version("$Revision: 9567 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-23 15:22:46 +0200 (Mon, 23 Apr 2018) $");
+  script_version("$Revision: 11663 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 08:18:46 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2007-11-04 00:32:20 +0100 (Sun, 04 Nov 2007)");
   script_cve_id("CVE-1999-0508");
   script_tag(name:"cvss_base", value:"4.6");
@@ -166,7 +166,7 @@ function check_cisco_account( login, password ) {
         return 0;
       }
 
-      # Check for banner, covers the case of Cisco telnet as well as the case of a console server to a Cisco port
+      # nb: Check for banner, covers the case of Cisco telnet as well as the case of a console server to a Cisco port
       # Note: banners of cisco systems are not necessarily set, so this might lead to false negatives!
       if( stridx( banner, "User Access Verification" ) == -1 && stridx( banner, "assword:" ) == -1 ) {
         telnet_port = 0;

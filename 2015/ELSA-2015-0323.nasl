@@ -1,9 +1,11 @@
-# OpenVAS Vulnerability Test 
-# Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-0323.nasl 6560 2017-07-06 11:58:38Z cfischer $
- 
-# Authors: 
-# Eero Volotinen <eero.volotinen@solinor.com> 
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: ELSA-2015-0323.nasl 11688 2018-09-28 13:36:28Z cfischer $
+#
+# Oracle Linux Local Check
+#
+# Authors:
+# Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://solinor.com
@@ -20,118 +22,121 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
+
 if(description)
- {
-script_oid("1.3.6.1.4.1.25623.1.0.123165");
-script_version("$Revision: 6560 $");
-script_tag(name:"creation_date", value:"2015-10-06 14:00:11 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:58:38 +0200 (Thu, 06 Jul 2017) $");
-script_name("Oracle Linux Local Check: ELSA-2015-0323");
-script_tag(name: "insight", value: "ELSA-2015-0323 -  libvirt security, bug fix, and enhancement update - [1.2.8-16.0.1]- Replace docs/et.png in tarball with blank image[1.2.8-16]- qemu: don't setup cpuset.mems if memory mode in numatune is not 'strict' (rhbz#1186094)- lxc: don't setup cpuset.mems if memory mode in numatune is not 'strict' (rhbz#1186094)[1.2.8-15]- qemu: Add missing goto error in qemuRestoreCgroupState (rhbz#1161540)[1.2.8-14]- virNetworkDefUpdateIPDHCPHost: Don't crash when updating network (rhbz#1182486)- Format CPU features even for host-model (rhbz#1182448)- util: Add function virCgroupHasEmptyTasks (rhbz#1161540)- util: Add virNumaGetHostNodeset (rhbz#1161540)- qemu: Remove unnecessary qemuSetupCgroupPostInit function (rhbz#1161540)- qemu: Save numad advice into qemuDomainObjPrivate (rhbz#1161540)- qemu: Leave cpuset.mems in parent cgroup alone (rhbz#1161540)- qemu: Fix hotplugging cpus with strict memory pinning (rhbz#1161540)- util: Fix possible NULL dereference (rhbz#1161540)- qemu_driver: fix setting vcpus for offline domain (rhbz#1161540)- qemu: migration: Unlock vm on failed ACL check in protocol v2 APIs (CVE-2014-8136)- CVE-2015-0236: qemu: Check ACLs when dumping security info from save image (CVE-2015-0236)- CVE-2015-0236: qemu: Check ACLs when dumping security info from snapshots (CVE-2015-0236)- Check for domain liveness in qemuDomainObjExitMonitor (rhbz#1161024)- Mark the domain as active in qemuhotplugtest (rhbz#1161024)- Fix vmdef usage while in monitor in qemuDomainHotplugVcpus (rhbz#1161024)- Fix vmdef usage while in monitor in BlockStat* APIs (rhbz#1161024)- Fix vmdef usage while in monitor in qemu process (rhbz#1161024)- Fix vmdef usage after domain crash in monitor on device detach (rhbz#1161024)- Fix vmdef usage after domain crash in monitor on device attach (rhbz#1161024)[1.2.8-13]- conf: Fix memory leak when parsing invalid network XML (rhbz#1180136)- qxl: change the default value for vgamem_mb to 16 MiB (rhbz#1181052)- qemuxml2argvtest: Fix test after change of qxl vgamem_mb default (rhbz#1181052)- conf: fix crash when hotplug a channel chr device with no target (rhbz#1181408)- qemu: forbid second blockcommit during active commit (rhbz#1135339)- qemu_monitor: introduce new function to get QOM path (rhbz#1180574)- qemu_process: detect updated video ram size values from QEMU (rhbz#1180574)[1.2.8-12]- Fix hotplugging of block device-backed usb disks (rhbz#1175668)- qemu: Create memory-backend-{ram, file} iff needed (rhbz#1175397)- conf: Don't format actual network definition in migratable XML (rhbz#1177194)[1.2.8-11]- virsh: vol-upload disallow negative offset (rhbz#1087104)- storage: fix crash caused by no check return before set close (rhbz#1087104)- qemu: Fix virsh freeze when blockcopy storage file is removed (rhbz#1139567)- security: Manage SELinux labels on shared/readonly hostdev's (rhbz#1082521)- nwfilter: fix crash when adding non-existing nwfilter (rhbz#1169409)- conf: Fix libvirtd crash matching hostdev XML (rhbz#1174053)- qemu: Resolve Coverity REVERSE_INULL (rhbz#1172570)- CVE-2014-8131: Fix possible deadlock and segfault in qemuConnectGetAllDomainStats() (CVE-2014-8131)- qemu: bulk stats: Fix logic in monitor handling (rhbz#1172570)- qemu: avoid rare race when undefining domain (rhbz#1150505)- Do not format CPU features without a model (rhbz#1151885)- Ignore CPU features without a model for host-passthrough (rhbz#1151885)- Silently ignore MAC in NetworkLoadConfig (rhbz#1156367)- Generate a MAC when loading a config instead of package update (rhbz#1156367)- qemu: move setting emulatorpin ahead of monitor showing up (rhbz#1170484)- util: Introduce flags field for macvtap creation (rhbz#1081461)- network: Bring netdevs online later (rhbz#1081461)- qemu: always call qemuInterfaceStartDevices() when starting CPUs (rhbz#1081461)- qemu: add a qemuInterfaceStopDevices(), called when guest CPUs stop (rhbz#1081461)- conf: replace call to virNetworkFree() with virObjectUnref() (rhbz#1099210)- util: new functions for setting bridge and bridge port attributes (rhbz#1099210)- util: functions to manage bridge fdb (forwarding database) (rhbz#1099210)- conf: new network bridge device attribute macTableManager (rhbz#1099210)- network: save bridge name in ActualNetDef when actualType==network too (rhbz#1099210)- network: store network macTableManager setting in NetDef actual object (rhbz#1099210)- network: setup bridge devices for macTableManager='libvirt' (rhbz#1099210)- qemu: setup tap devices for macTableManager='libvirt' (rhbz#1099210)- qemu: add/remove bridge fdb entries as guest CPUs are started/stopped (rhbz#1099210)- virsh: document block.n.allocation stat (rhbz#1041569)- getstats: avoid memory leak on OOM (rhbz#1041569)- getstats: improve documentation (rhbz#1041569)- getstats: start giving offline block stats (rhbz#1041569)- getstats: add block.n.path stat (rhbz#1041569)- qemuMonitorJSONBlockStatsUpdateCapacity: Don't skip disks (rhbz#1041569)- getstats: prepare monitor collection for recursion (rhbz#1041569)- getstats: perform recursion in monitor collection (rhbz#1041569)- getstats: prepare for dynamic block.count stat (rhbz#1041569)- getstats: add new flag for block backing chain (rhbz#1041569)- getstats: split block stats reporting for easier recursion (rhbz#1041569)- getstats: crawl backing chain for qemu (rhbz#1041569)- logical: Add '--type snapshot' to lvcreate command (rhbz#1166592)[1.2.8-10]- qemu: add the missing jobinfo type in qemuDomainGetJobInfo (rhbz#1167883)- network: Fix upgrade from libvirt older than 1.2.4 (rhbz#1167145)- qemu: fix domain startup failing with 'strict' mode in numatune (rhbz#1168866)- qemu: Don't track quiesced state of FSs (rhbz#1160084)- qemu: fix block{commit,copy} abort handling (rhbz#1135169)[1.2.8-9]- doc: fix mismatched ACL attribute name (rhbz#1161358)- qemu: monitor: Rename and improve qemuMonitorGetPtyPaths (rhbz#1146944)- conf: Add channel state for virtio channels to the XML (rhbz#1146944)- qemu: Add handling for VSERPORT_CHANGE event (rhbz#1146944)- qemu: chardev: Extract more information about character devices (rhbz#1146944)- qemu: process: Refresh virtio channel guest state when connecting to mon (rhbz#1146944)- event: Add guest agent lifecycle event (rhbz#1146944)- examples: Add support for the guest agent lifecycle event (rhbz#1146944)- qemu: Emit the guest agent lifecycle event (rhbz#1146944)- internal: add macro to round value to the next closest power of 2 (rhbz#1076098)- video: cleanup usage of vram attribute and update documentation (rhbz#1076098)- QXL: fix setting ram and vram values for QEMU QXL device (rhbz#1076098)- caps: introduce new QEMU capability for vgamem_mb device property (rhbz#1076098)- qemu-command: use vram attribute for all video devices (rhbz#1076098)- qemu-command: introduce new vgamem attribute for QXL video device (rhbz#1076098)[1.2.8-8]- qemu: Fix crash in tunnelled migration (rhbz#1147331)- qemu: Really fix crash in tunnelled migration (rhbz#1147331)- qemu: Update fsfreeze status on domain state transitions (rhbz#1160084)- qemuPrepareNVRAM: Save domain conf only if domain's persistent (rhbz#1026772)- docs: Document NVRAM behavior on transient domains (rhbz#1026772)- Fix build in qemu_capabilities (rhbz#1165782)- qemu: Support OVMF on armv7l aarch64 guests (rhbz#1165782)- qemu: Drop OVMF whitelist (rhbz#1165782)- storage: Fix issue finding LU's when block doesn't exist (rhbz#1152382)- storage: Add thread to refresh for createVport (rhbz#1152382)- storage: qemu: Fix security labelling of new image chain elements (rhbz#1151718)- virsh: sync domdisplay help and manual (rhbz#997802)- docs: domain: Move docs for storage hosts under the element (rhbz#1164528)- test: virstoragetest: Add testing of network disk details (rhbz#1164528)- util: storage: Copy hosts of a storage file only if they exist (rhbz#1164528)- qemu: Refactor qemuBuildNetworkDriveURI to take a virStorageSourcePtr (rhbz#1164528)- tests: Reflow the expected output from RBD disk test (rhbz#1164528)- util: split out qemuParseRBDString into a common helper (rhbz#1164528)- util: storagefile: Split out parsing of NBD string into a separate func (rhbz#1164528)- storage: Allow parsing of RBD backing strings when building backing chain (rhbz#1164528)- storage: rbd: qemu: Add support for specifying internal RBD snapshots (rhbz#1164528)- storage: rbd: Implement support for passing config file option (rhbz#1164528)[1.2.8-7]- qemu: avoid rare race when undefining domain (rhbz#1150505)- qemu: stop NBD server after successful migration (rhbz#1160212)- Require at least one console for LXC domain (rhbz#1155410)- remote: Fix memory leak in remoteConnectGetAllDomainStats (rhbz#1158715)- CVE-2014-7823: dumpxml: security hole with migratable flag (CVE-2014-7823)- Free job statistics from the migration cookie (rhbz#1161124)- Fix virDomainChrEquals for spicevmc (rhbz#1162097)- network: fix call virNetworkEventLifecycleNew when networkStartNetwork fail (rhbz#1162915)- Do not crash on gluster snapshots with no host name (rhbz#1162974)- nwfilter: fix deadlock caused updating network device and nwfilter (rhbz#1143780)- util: eliminate 'use after free' in callers of virNetDevLinkDump (rhbz#1163463)- storage: Check for valid fc_host parent at startup (rhbz#1160565)- storage: Ensure fc_host parent matches wwnn/wwpn (rhbz#1160565)- storage: Don't use a stack copy of the adapter (rhbz#1160926)- storage: Introduce virStoragePoolSaveConfig (rhbz#1160926)- storage: Introduce 'managed' for the fchost parent (rhbz#1160926)- qemu: Always set migration capabilities (rhbz#1163953)[1.2.8-6]- qemu: support nospace reason in io error event (rhbz#1119784)- RHEL: Add support for QMP I/O error reason (rhbz#1119784)- nodeinfo: fix nodeGetFreePages when max node is zero (rhbz#1145048)- nodeGetFreePages: Push forgotten change (rhbz#1145048)- conf: tests: fix virDomainNetDefFormat for vhost-user in client mode (rhbz#1155458)- util: string: Add helper to check whether string is empty (rhbz#1142693)- qemu: restore: Fix restoring of VM when the restore hook returns empty XML (rhbz#1142693)- security_selinux: Don't relabel /dev/net/tun (rhbz#1095636)- qemu: Fix updating bandwidth limits in live XML (rhbz#1146511)- qemu: save domain status after set the blkio parameters (rhbz#1146511)- qemu: call qemuDomainObjBeginJob/qemuDomainObjEndJob in qemuDomainSetInterfaceParameters (rhbz#1146511)- qemu: save domain status after set domain's numa parameters (rhbz#1146511)- qemu: forbid snapshot-delete --children-only on external snapshot (rhbz#956506)- qemu: better error message when block job can't succeed (rhbz#1140981)- Reject live update of offloading options (rhbz#1155441)- virutil: Introduce virGetSCSIHostNumber (rhbz#1146837)- virutil: Introduce virGetSCSIHostNameByParentaddr (rhbz#1146837)- storage_conf: Resolve libvirtd crash matching scsi_host (rhbz#1146837)- Match scsi_host pools by parent address first (rhbz#1146837)- Relax duplicate SCSI host pool checking (rhbz#1146837)- qemu: Remove possible NULL deref in debug output (rhbz#1141621)- virsh: Adjust the text in man page regarding qemu-attach (rhbz#1141621)- hotplug: Check for alias in controller detach (rhbz#1141621)- hotplug: Check for alias in disk detach (rhbz#1141621)- hotplug: Check for alias in hostdev detach (rhbz#1141621)- hotplug: Check for alias in chrdev detach (rhbz#1141621)- hotplug: Check for alias in net detach (rhbz#1141621)- qemu-attach: Assign device aliases (rhbz#1141621)- hotplug: fix char device detach (rhbz#1141621)- storage: Fix crash when parsing backing store URI with schema (rhbz#1156288)- remote: fix jump depends on uninitialised value (rhbz#1158715)- qemu: Release nbd port from migrationPorts instead of remotePorts (rhbz#1159245)- conf: add trustGuestRxFilters attribute to network and domain interface (rhbz#848199)- network: set interface actual trustGuestRxFilters from network/portgroup (rhbz#848199)- util: define virNetDevRxFilter and basic utility functions (rhbz#848199)- qemu: qemuMonitorQueryRxFilter - retrieve guest netdev rx-filter (rhbz#848199)- qemu: add short document on qemu event handlers (rhbz#848199)- qemu: setup infrastructure to handle NIC_RX_FILTER_CHANGED event (rhbz#848199)- qemu: change macvtap device MAC address in response to NIC_RX_FILTER_CHANGED (rhbz#848199)- util: Functions to update host network device's multicast filter (rhbz#848199)- qemu: change macvtap multicast list in response to NIC_RX_FILTER_CHANGED (rhbz#848199)- virnetdev: Resolve Coverity DEADCODE (rhbz#848199)- virnetdev: Resolve Coverity FORWARD_NULL (rhbz#848199)- virnetdev: Resolve Coverity RESOURCE_LEAK (rhbz#848199)- lxc: improve error message for invalid blkiotune settings (rhbz#1131306)- qemu: improve error message for invalid blkiotune settings (rhbz#1131306)- Do not probe for power mgmt capabilities in lxc emulator (rhbz#1159227)- qemu: make advice from numad available when building commandline (rhbz#1138545)[1.2.8-5]- qemuPrepareNVRAM: Save domain after NVRAM path generation (rhbz#1026772)- Fix crash cpu_shares change event crash on domain startup (rhbz#1147494)- Don't verify CPU features with host-passthrough (rhbz#1147584)- Also filter out non-migratable features out of host-passthrough (rhbz#1147584)- selinux: Avoid label reservations for type = none (rhbz#1138487)- qemu: bulk stats: extend internal collection API (rhbz#1113116)- qemu: bulk stats: implement CPU stats group (rhbz#1113116)- qemu: bulk stats: implement balloon group (rhbz#1113116)- qemu: bulk stats: implement VCPU group (rhbz#1113116)- qemu: bulk stats: implement interface group (rhbz#1113116)- qemu: bulk stats: implement block group (rhbz#1113116)- virsh: add options to query bulk stats group (rhbz#1113116)- lib: De-duplicate stats group documentation for all stats functions (rhbz#1113116)- lib: Document that virConnectGetAllDomainStats may omit some stats fields (rhbz#1113116)- man: virsh: Add docs for supported stats groups (rhbz#1113116)- qemu: monitor: return block stats data as a hash to avoid disk mixup (rhbz#1113116)- qemu: monitor: Avoid shadowing variable 'devname' on FreeBSD (rhbz#1113116)- qemu: monitor: Add helper function to fill physical/virtual image size (rhbz#1113116)- qemu: bulk stats: add block allocation information (rhbz#1113116)- qemu: json: Fix missing break in error reporting function (rhbz#1113116)- qemu: monitor: Avoid shadowing variable 'devname' on FreeBSD. Again. (rhbz#1113116)- docs, conf, schema: add support for shmem device (rhbz#1126991)- qemu: add capability probing for ivshmem device (rhbz#1126991)- qemu: Build command line for ivshmem device (rhbz#1126991)- minor shmem clean-ups (rhbz#1126991)- virSecuritySELinuxSetTapFDLabel: Temporarily revert to old behavior (rhbz#1095636)- domain_conf: fix domain deadlock (CVE-2014-3657)- qemu: support relative backing for RHEL 7.0.z qemu (rhbz#1150322)- qemu: Fix hot unplug of SCSI_HOST device (rhbz#1141732)- qemu: Remove need for virConnectPtr in hotunplug detach host, net (rhbz#1141732)[1.2.8-4]- Fix libvirtd crash when removing metadata (rhbz#1143955)- Fix leak in x86UpdateHostModel (rhbz#1144303)- Move the FIPS detection from capabilities (rhbz#1135431)- qemu: raise an error when trying to use readonly sata disks (rhbz#1112939)- virsh-host: fix pagesize unit of freepages (rhbz#1145048)- nodeinfo: report error when given node is out of range (rhbz#1145050)- Fix typo of virNodeGetFreePages comment (rhbz#1145050)- nodeinfo: Prefer MIN in nodeGetFreePages (rhbz#1145050)- Fix bug with loading bridge name for active domain during libvirtd start (rhbz#1140085)- qemu: save image: Split out user provided XML checker (rhbz#1142693)- qemu: save image: Add possibility to return XML stored in the image (rhbz#1142693)- qemu: save image: Split out new definition check/update (rhbz#1142693)- qemu: save image: Split out checks done only when editing the save img (rhbz#1142693)- qemu: hook: Provide hook when restoring a domain save image (rhbz#1142693)- qemu: Expose additional migration statistics (rhbz#1013055)- qemu: Fix old tcp:host URIs more cleanly (rhbz#1013055)- qemu: Prepare support for arbitrary migration protocol (rhbz#1013055)- qemu: Add RDMA migration capabilities (rhbz#1013055)- qemu: RDMA migration support (rhbz#1013055)- qemu: Memory pre-pinning support for RDMA migration (rhbz#1013055)- qemu: Fix memory leak in RDMA migration code (rhbz#1013055)- schemas: finish virTristate{Bool, Switch} transition (rhbz#1139364)- conf: split out virtio net driver formatting (rhbz#1139364)- conf: remove redundant local variable (rhbz#1139364)- conf: add options for disabling segment offloading (rhbz#1139364)- qemu: wire up virtio-net segment offloading options (rhbz#1139364)- spec: Enable qemu driver for RHEL-7 on aarch64 (rhbz#1142448)- blkdeviotune: fix bug with saving values into live XML (rhbz#1146511)- security: Fix labelling host devices (rhbz#1146550)- qemu: Add missing goto on rawio (rhbz#1103739)- hostdev: Add 'rawio' attribute to _virDomainHostdevSubsysSCSI (rhbz#1103739)- qemu: Process the hostdev 'rawio' setting (rhbz#1103739)- util: Add function to check if a virStorageSource is 'empty' (rhbz#1138231)- util: storage: Allow metadata crawler to report useful errors (rhbz#1138231)- qemu: Sanitize argument names and empty disk check in qemuDomainDetermineDiskChain (rhbz#1138231)- qemu: Report better errors from broken backing chains (rhbz#1138231)- storage: Improve error message when traversing backing chains (rhbz#1138231)- qemu: Always re-detect backing chain (rhbz#1144922)- event: introduce new event for tunable values (rhbz#1115898)- tunable_event: extend debug message and tweak limit for remote message (rhbz#1115898)- add an example how to use tunable event (rhbz#1115898)- Fix MinGW build (rhbz#1115898)- event_example: cleanup example code for tunable event (rhbz#1115898)- cputune_event: queue the event for cputune updates (rhbz#1115898)- blkdeviotune: trigger tunable event for blkdeviotune updates (rhbz#1115898)- Rename tunable event constants (rhbz#1115898)- Fix typo s/EMULATORIN/EMULATORPIN/ (rhbz#1115898)- Check for NULL in qemu monitor event filter (rhbz#1144920)[1.2.8-3]- virsh: Move --completed from resume to domjobinfo (rhbz#1063724)- qemu_driver: Resolve Coverity COPY_PASTE_ERROR (rhbz#1141209)- virfile: Resolve Coverity DEADCODE (rhbz#1141209)- lxc: Resolve Coverity FORWARD_NULL (rhbz#1141209)- qemu: Resolve Coverity FORWARD_NULL (rhbz#1141209)- qemu: Resolve Coverity FORWARD_NULL (rhbz#1141209)- xen: Resolve Coverity NEGATIVE_RETURNS (rhbz#1141209)- qemu: Resolve Coverity NEGATIVE_RETURNS (rhbz#1141209)- qemu: Resolve Coverity NEGATIVE_RETURNS (rhbz#1141209)- virsh: Resolve Coverity NEGATIVE_RETURNS (rhbz#1141209)- daemon: Resolve Coverity RESOURCE_LEAK (rhbz#1141209)- domain_conf: Resolve Coverity COPY_PASTE_ERROR (rhbz#1141209)- storage_conf: Fix libvirtd crash when defining scsi storage pool (rhbz#1141943)- qemu: time: Report errors if agent command fails (rhbz#1142294)- util: storage: Copy driver type when initializing chain element (rhbz#1140984)- docs, conf, schema: add support for shared memory mapping (rhbz#1133144)- qemu: add support for shared memory mapping (rhbz#1133144)- rpc: reformat the flow to make a bit more sense (rhbz#927369)- remove redundant pidfile path constructions (rhbz#927369)- util: fix potential leak in error codepath (rhbz#927369)- util: get rid of unnecessary umask() call (rhbz#927369)- rpc: make daemon spawning a bit more intelligent (rhbz#927369)- conf: add backend element to interfaces (rhbz#1139362)- Wire up the interface backend options (rhbz#1139362)- CVE-2014-3633: qemu: blkiotune: Use correct definition when looking up disk (CVE-2014-3633)- qemu: fix crash with shared disks (rhbz#1142722)- nvram: Fix permissions (rhbz#1026772)- libvirt.spec: Fix permission even for libvirt-driver-qemu (rhbz#1026772)- virDomainUndefineFlags: Allow NVRAM unlinking (rhbz#1026772)- formatdomain: Update example to match the rest (rhbz#1026772)- domaincaps: Expose UEFI capability (rhbz#1026772)- qemu_capabilities: Change virQEMUCapsFillDomainCaps signature (rhbz#1026772)- domaincaps: Expose UEFI binary path, if it exists (rhbz#1026772)- domaincapstest: Run cleanly on systems missing OVMF firmware (rhbz#1026772)- conf: Disallow nonexistent NUMA nodes for hugepages (rhbz#1135396)- qemu: Honor hugepages for UMA domains (rhbz#1135396)- RHEL: Fix maxvcpus output (rhbz#1092363)- virsh: Add iothread to 'attach-disk' (rhbz#1101574)- qemu: Issue query-iothreads and to get list of active IOThreads (rhbz#1101574)- vircgroup: Introduce virCgroupNewIOThread (rhbz#1101574)- qemu_domain: Add niothreadpids and iothreadpids (rhbz#1101574)- qemu_cgroup: Introduce cgroup functions for IOThreads (rhbz#1101574)- qemu: Allow pinning specific IOThreads to a CPU (rhbz#1101574)- domain_conf: Add iothreadpin to cputune (rhbz#1101574)- vircgroup: Fix broken builds without cgroups (rhbz#1101574)- cputune: allow interleaved xml (rhbz#1101574)- qemu: Fix iothreads issue (rhbz#1101574)- qemu_cgroup: Adjust spacing around incrementor (rhbz#1101574)- qemu: Fix call in qemuDomainSetNumaParamsLive for virCgroupNewIOThread (rhbz#1101574)- qemu: Need to check for capability before query (rhbz#1101574)- qemu: Don't fail startup/attach for IOThreads if no JSON (rhbz#1101574)- Fixes for domains with no iothreads (rhbz#1101574)[1.2.8-2]- remote: Fix memory leak on error path when deserializing bulk stats (rhbz#1136350)- spec: Fix preun script for daemon (rhbz#1136736)- security: fix DH key generation when FIPS mode is on (rhbz#1128497)- tests: force FIPS testing mode with new enough GNU TLS versions (rhbz#1128497)- Don't include non-migratable features in host-model (rhbz#1138221)- qemu: Rename DEFAULT_JOB_MASK to QEMU_DEFAULT_JOB_MASK (rhbz#1134154)- qemu: snapshot: Fix job handling when creating snapshots (rhbz#1134154)- qemu: snapshot: Acquire job earlier on snapshot revert/delete (rhbz#1134154)- qemu: snapshot: Fix snapshot function header formatting and spacing (rhbz#1134154)- qemu: snapshot: Simplify error paths (rhbz#1134154)- qemu: Propagate QEMU errors during incoming migrations (rhbz#1090093)- Refactor job statistics (rhbz#1063724)- qemu: Avoid incrementing jobs_queued if virTimeMillisNow fails (rhbz#1063724)- Add support for fetching statistics of completed jobs (rhbz#1063724)- qemu: Silence coverity on optional migration stats (rhbz#1063724)- virsh: Add support for completed job stats (rhbz#1063724)- qemu: Transfer migration statistics to destination (rhbz#1063724)- qemu: Recompute downtime and total time when migration completes (rhbz#1063724)- qemu: Transfer recomputed stats back to source (rhbz#1063724)- conf: Extend and introduce (rhbz#1112257)- qemu: Implement extended loader and nvram (rhbz#1112257)- qemu: Automatically create NVRAM store (rhbz#1112257)[1.2.8-1]- Rebased to libvirt-1.2.8 (rhbz#1035158)- The rebase also fixes the following bugs: rhbz#927369, rhbz#957293, rhbz#999926, rhbz#1021703, rhbz#1043735 rhbz#1047818, rhbz#1062142, rhbz#1064770, rhbz#1072653, rhbz#1078126 rhbz#1095636, rhbz#1103245, rhbz#1119215, rhbz#1121837, rhbz#1121955 rhbz#1122455, rhbz#1126329, rhbz#1126721, rhbz#1126909, rhbz#1128097 rhbz#1128751, rhbz#1129207, rhbz#1129372, rhbz#1129998, rhbz#1130089 rhbz#1130379, rhbz#1131306, rhbz#1131445, rhbz#1131788, rhbz#1131811 rhbz#1131819, rhbz#1131876, rhbz#1132301, rhbz#1132305, rhbz#1132347[1.2.7-1]- Rebased to libvirt-1.2.7 (rhbz#1035158)- The rebase also fixes the following bugs: rhbz#823535, rhbz#872628, rhbz#874418, rhbz#878394, rhbz#880483 rhbz#921094, rhbz#963817, rhbz#964177, rhbz#967493, rhbz#967494 rhbz#972964, rhbz#983350, rhbz#985782, rhbz#985980, rhbz#990319 rhbz#990418, rhbz#991290, rhbz#992980, rhbz#994731, rhbz#995377 rhbz#997627, rhbz#997802, rhbz#1006700, rhbz#1007698, rhbz#1007759 rhbz#1010885, rhbz#1022874, rhbz#1023366, rhbz#1025407, rhbz#1027076 rhbz#1029266, rhbz#1029732, rhbz#1032363, rhbz#1033020, rhbz#1033398 rhbz#1033704, rhbz#1035128, rhbz#1046192, rhbz#1049038, rhbz#1052114 rhbz#1056902, rhbz#1062142, rhbz#1063837, rhbz#1066280, rhbz#1066894 rhbz#1067338, rhbz#1069552, rhbz#1069784, rhbz#1070680, rhbz#1072141 rhbz#1072677, rhbz#1073368, rhbz#1073506, rhbz#1074086, rhbz#1075290 rhbz#1075299, rhbz#1076957, rhbz#1076959, rhbz#1076960, rhbz#1076962 rhbz#1077009, rhbz#1077572, rhbz#1078590, rhbz#1079162, rhbz#1079173 rhbz#1080859, rhbz#1081881, rhbz#1081932, rhbz#1082124, rhbz#1083345 rhbz#1084360, rhbz#1085706, rhbz#1085769, rhbz#1086121, rhbz#1086331 rhbz#1086704, rhbz#1087104, rhbz#1087671, rhbz#1088293, rhbz#1088667 rhbz#1088787, rhbz#1088864, rhbz#1089179, rhbz#1089378, rhbz#1091132 rhbz#1091866, rhbz#1092038, rhbz#1092253, rhbz#1093127, rhbz#1095035 rhbz#1097028, rhbz#1097503, rhbz#1097677, rhbz#1097968, rhbz#1098659 rhbz#1099978, rhbz#1100086, rhbz#1100769, rhbz#1101059, rhbz#1101510 rhbz#1101987, rhbz#1101999, rhbz#1102426, rhbz#1102457, rhbz#1102611 rhbz#1104992, rhbz#1104993, rhbz#1105939, rhbz#1108593, rhbz#1110198 rhbz#1110212, rhbz#1110673, rhbz#1111044, rhbz#1112939, rhbz#1113332 rhbz#1113668, rhbz#1113751, rhbz#1113868, rhbz#1118710, rhbz#1119206 rhbz#1119387, rhbz#1119592, rhbz#1120474, rhbz#1122255, rhbz#1122973- spec: Enable qemu driver for RHEL-7 on ppc64 (rhbz#1120474)[1.2.6-1]- Rebased to libvirt-1.2.6 (rhbz#1035158)"); 
-script_tag(name : "solution", value : "update software");
-script_tag(name : "solution_type", value : "VendorFix");
-script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2015-0323");
-script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2015-0323.html");
-script_cve_id("CVE-2014-8136","CVE-2015-0236");
-script_tag(name:"cvss_base", value:"3.5");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:N");
-script_tag(name:"qod_type", value:"package");
-script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
-script_category(ACT_GATHER_INFO);
-script_copyright("Eero Volotinen");
-script_family("Oracle Linux Local Security Checks");
-exit(0);
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.123165");
+  script_version("$Revision: 11688 $");
+  script_tag(name:"creation_date", value:"2015-10-06 14:00:11 +0300 (Tue, 06 Oct 2015)");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 15:36:28 +0200 (Fri, 28 Sep 2018) $");
+  script_name("Oracle Linux Local Check: ELSA-2015-0323");
+  script_tag(name:"insight", value:"ELSA-2015-0323 - libvirt security, bug fix, and enhancement update. Please see the references for more insight.");
+  script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Oracle Linux Local Security Checks ELSA-2015-0323");
+  script_xref(name:"URL", value:"http://linux.oracle.com/errata/ELSA-2015-0323.html");
+  script_cve_id("CVE-2014-8136", "CVE-2015-0236");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:N");
+  script_tag(name:"qod_type", value:"package");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release", re:"ssh/login/release=OracleLinux7");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Eero Volotinen");
+  script_family("Oracle Linux Local Security Checks");
+
+  exit(0);
 }
+
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
-release = get_kb_item("ssh/login/release");
+
+release = rpm_get_ssh_release();
+if(!release) exit(0);
+
 res = "";
-if(release == NULL)
-{
- exit(0);
-}
+
 if(release == "OracleLinux7")
 {
   if ((res = isrpmvuln(pkg:"libvirt", rpm:"libvirt~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-client", rpm:"libvirt-client~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-daemon", rpm:"libvirt-daemon~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-daemon-config-network", rpm:"libvirt-daemon-config-network~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-daemon-config-nwfilter", rpm:"libvirt-daemon-config-nwfilter~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-daemon-driver-interface", rpm:"libvirt-daemon-driver-interface~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-daemon-driver-lxc", rpm:"libvirt-daemon-driver-lxc~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-daemon-driver-network", rpm:"libvirt-daemon-driver-network~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-daemon-driver-nodedev", rpm:"libvirt-daemon-driver-nodedev~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-daemon-driver-nwfilter", rpm:"libvirt-daemon-driver-nwfilter~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-daemon-driver-qemu", rpm:"libvirt-daemon-driver-qemu~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-daemon-driver-secret", rpm:"libvirt-daemon-driver-secret~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-daemon-driver-storage", rpm:"libvirt-daemon-driver-storage~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-daemon-kvm", rpm:"libvirt-daemon-kvm~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-daemon-lxc", rpm:"libvirt-daemon-lxc~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-devel", rpm:"libvirt-devel~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-docs", rpm:"libvirt-docs~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-lock-sanlock", rpm:"libvirt-lock-sanlock~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-login-shell", rpm:"libvirt-login-shell~1.2.8~16.0.1.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
 
 }
-if (__pkg_match) exit(99); #Not vulnerable
+if (__pkg_match) exit(99);
   exit(0);
 

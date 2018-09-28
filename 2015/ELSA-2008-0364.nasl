@@ -1,9 +1,11 @@
-# OpenVAS Vulnerability Test 
-# Description: Oracle Linux Local Check 
-# $Id: ELSA-2008-0364.nasl 6553 2017-07-06 11:52:12Z cfischer $
- 
-# Authors: 
-# Eero Volotinen <eero.volotinen@solinor.com> 
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: ELSA-2008-0364.nasl 11688 2018-09-28 13:36:28Z cfischer $
+#
+# Oracle Linux Local Check
+#
+# Authors:
+# Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://solinor.com
@@ -20,62 +22,65 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
+
 if(description)
- {
-script_oid("1.3.6.1.4.1.25623.1.0.122583");
-script_version("$Revision: 6553 $");
-script_tag(name:"creation_date", value:"2015-10-08 14:48:37 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:52:12 +0200 (Thu, 06 Jul 2017) $");
-script_name("Oracle Linux Local Check: ELSA-2008-0364");
-script_tag(name: "insight", value: "ELSA-2008-0364 -  mysql security and bug fix update - [5.0.45-7]- Adjust thread stack requests to allow for platform-specific guard page size; necessary to prevent stack overrun on PPC with RHEL5's 64K page size.Resolves: #435391- Remove calendar-dependent queries from 'view' test; necessary to get regression tests to pass after 2007.[5.0.45-6]- Back-port upstream fixes for CVE-2007-5925, CVE-2007-5969, CVE-2007-6303.Resolves: #422211[5.0.45-1]- Update to MySQL 5.0.45Resolves: #256501, #240813, #246309, #254012Resolves: #280811, #316451, #349121, #367131- Synchronize with current Fedora package, which is pretty well tested by now; see past bzs 245770, 241912, 233771, 221085, 223713, 203910, 193559, 199368[5.0.22-3]- Fix CVE-2007-3780: remote DOS via bad password length byteResolves: #257681"); 
-script_tag(name : "solution", value : "update software");
-script_tag(name : "solution_type", value : "VendorFix");
-script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2008-0364");
-script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2008-0364.html");
-script_cve_id("CVE-2006-7232","CVE-2007-1420","CVE-2007-2583","CVE-2007-2691","CVE-2007-2692","CVE-2007-3781","CVE-2007-3782","CVE-2006-0903","CVE-2006-4031","CVE-2006-4227");
-script_tag(name:"cvss_base", value:"6.5");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-script_tag(name:"qod_type", value:"package");
-script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
-script_category(ACT_GATHER_INFO);
-script_copyright("Eero Volotinen");
-script_family("Oracle Linux Local Security Checks");
-exit(0);
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.122583");
+  script_version("$Revision: 11688 $");
+  script_tag(name:"creation_date", value:"2015-10-08 14:48:37 +0300 (Thu, 08 Oct 2015)");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 15:36:28 +0200 (Fri, 28 Sep 2018) $");
+  script_name("Oracle Linux Local Check: ELSA-2008-0364");
+  script_tag(name:"insight", value:"ELSA-2008-0364 - mysql security and bug fix update. Please see the references for more insight.");
+  script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Oracle Linux Local Security Checks ELSA-2008-0364");
+  script_xref(name:"URL", value:"http://linux.oracle.com/errata/ELSA-2008-0364.html");
+  script_cve_id("CVE-2006-7232", "CVE-2007-1420", "CVE-2007-2583", "CVE-2007-2691", "CVE-2007-2692", "CVE-2007-3781", "CVE-2007-3782", "CVE-2006-0903", "CVE-2006-4031", "CVE-2006-4227");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"qod_type", value:"package");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release", re:"ssh/login/release=OracleLinux5");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Eero Volotinen");
+  script_family("Oracle Linux Local Security Checks");
+
+  exit(0);
 }
+
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
-release = get_kb_item("ssh/login/release");
+
+release = rpm_get_ssh_release();
+if(!release) exit(0);
+
 res = "";
-if(release == NULL)
-{
- exit(0);
-}
+
 if(release == "OracleLinux5")
 {
   if ((res = isrpmvuln(pkg:"mysql", rpm:"mysql~5.0.45~7.el5", rls:"OracleLinux5")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"mysql-bench", rpm:"mysql-bench~5.0.45~7.el5", rls:"OracleLinux5")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"mysql-devel", rpm:"mysql-devel~5.0.45~7.el5", rls:"OracleLinux5")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"mysql-server", rpm:"mysql-server~5.0.45~7.el5", rls:"OracleLinux5")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"mysql-test", rpm:"mysql-test~5.0.45~7.el5", rls:"OracleLinux5")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
 
 }
-if (__pkg_match) exit(99); #Not vulnerable
+if (__pkg_match) exit(99);
   exit(0);
 

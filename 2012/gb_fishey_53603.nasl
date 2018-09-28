@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fishey_53603.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_fishey_53603.nasl 11651 2018-09-27 11:53:00Z asteins $
 #
 # Atlassian JIRA FishEye and Crucible Plugins XML Parsing Unspecified Security Vulnerability
 #
@@ -29,7 +29,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103490");
   script_bugtraq_id(53603);
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11651 $");
 
   script_name("Atlassian JIRA FishEye and Crucible Plugins XML Parsing Unspecified Security Vulnerability");
 
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 13:53:00 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-18 12:55:55 +0200 (Fri, 18 May 2012)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -64,24 +64,22 @@ vulnerable.");
   exit(0);
 }
 
-include("http_func.inc");
 include("host_details.inc");
-
 include("version_func.inc");
 
-port = get_http_port(default:80);
+CPE = 'cpe:/a:atlassian:fisheye';
 
-if(vers = get_version_from_kb(port:port,app:"FishEye")) {
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
 
-  if(version_in_range(version:vers, test_version:"2.7", test_version2:"2.7.11") ||
-     version_in_range(version:vers, test_version:"2.6", test_version2:"2.6.7")  ||
-     version_in_range(version:vers, test_version:"2.5", test_version2:"2.5.7")) {
-      security_message(port:port);
-      exit(0);
-  } else {
-    exit(99);
-  }
+if(!vers = get_app_version(cpe:CPE, port:port))
+  exit(0);
 
+if(version_in_range(version:vers, test_version:"2.7", test_version2:"2.7.11") ||
+   version_in_range(version:vers, test_version:"2.6", test_version2:"2.6.7")  ||
+   version_in_range(version:vers, test_version:"2.5", test_version2:"2.5.7")) {
+  security_message(port:port);
+  exit(0);
 }
 
-exit(0);
+exit(99);

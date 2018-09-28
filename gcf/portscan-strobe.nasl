@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: portscan-strobe.nasl 11379 2018-09-13 13:48:15Z cfischer $
+# $Id: portscan-strobe.nasl 11665 2018-09-28 07:14:18Z cfischer $
 #
 # NASL wrapper around strobe portscanner
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80009");
-  script_version("$Revision: 11379 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 15:48:15 +0200 (Thu, 13 Sep 2018) $");
+  script_version("$Revision: 11665 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-10-26 10:11:20 +0100 (Sun, 26 Oct 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -40,10 +40,10 @@ if(description)
   script_dependencies("toolcheck.nasl", "ping_host.nasl");
   script_mandatory_keys("Tools/Present/strobe");
 
-  #  script_add_preference(name:"Strobe timeout", type:"entry", value: "");
-  #  script_add_preference(name:"Strobe number of sockets in parallel", type:"entry", value: "");
-  #  script_add_preference(name:"Strobe local port to bind outgoing requests", type:"entry", value: "");
-  #  script_add_preference(name:"Disable usage of getpeername", type:"checkbox", value: "no");
+  #  script_add_preference(name:"Strobe timeout", type:"entry", value:"");
+  #  script_add_preference(name:"Strobe number of sockets in parallel", type:"entry", value:"");
+  #  script_add_preference(name:"Strobe local port to bind outgoing requests", type:"entry", value:"");
+  #  script_add_preference(name:"Disable usage of getpeername", type:"checkbox", value:"no");
 
   script_tag(name:"summary", value:"This plugin runs strobe to find open ports.
   Strobe is a small TCP port scanner.

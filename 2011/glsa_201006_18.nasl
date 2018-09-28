@@ -1,7 +1,8 @@
-#
+###############################################################################
 # OpenVAS Vulnerability Test
-# $
-# Description: Auto generated from Gentoo's XML based advisory
+# $Id: glsa_201006_18.nasl 11671 2018-09-28 10:44:05Z cfischer $
+#
+# Auto generated from Gentoo's XML based advisory
 #
 # Authors:
 # Thomas Reinke <reinke@securityspace.com>
@@ -24,12 +25,26 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The Oracle JDK and JRE are vulnerable to multiple unspecified
-    vulnerabilities.";
-tag_solution = "All Oracle JRE 1.6.x users should upgrade to the latest version:
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.69021");
+  script_version("$Revision: 11671 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2011-03-09 05:54:11 +0100 (Wed, 09 Mar 2011)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2009-3555", "CVE-2010-0082", "CVE-2010-0084", "CVE-2010-0085", "CVE-2010-0087", "CVE-2010-0088", "CVE-2010-0089", "CVE-2010-0090", "CVE-2010-0091", "CVE-2010-0092", "CVE-2010-0093", "CVE-2010-0094", "CVE-2010-0095", "CVE-2010-0837", "CVE-2010-0838", "CVE-2010-0839", "CVE-2010-0840", "CVE-2010-0841", "CVE-2010-0842", "CVE-2010-0843", "CVE-2010-0844", "CVE-2010-0845", "CVE-2010-0846", "CVE-2010-0847", "CVE-2010-0848", "CVE-2010-0849", "CVE-2010-0850", "CVE-2010-0886", "CVE-2010-0887");
+  script_name("Gentoo Security Advisory GLSA 201006-18 (sun-jre-bin sun-jdk emul-linux-x86-java)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 E-Soft Inc. http://www.securityspace.com");
+  script_family("Gentoo Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
+  script_tag(name:"insight", value:"The Oracle JDK and JRE are vulnerable to multiple unspecified
+    vulnerabilities.");
+  script_tag(name:"solution", value:"All Oracle JRE 1.6.x users should upgrade to the latest version:
 
     # emerge --sync
     # emerge --ask --oneshot --verbose '>=dev-java/sun-jre-bin-1.6.0.20'
@@ -68,47 +83,20 @@ http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201006-18
 http://bugs.gentoo.org/show_bug.cgi?id=306579
 http://bugs.gentoo.org/show_bug.cgi?id=314531
 http://www.gentoo.org/doc/en/java.xml#doc_chap4
-http://www.oracle.com/technology/deploy/security/critical-patch-updates/javacpumar2010.html";
-tag_summary = "The remote host is missing updates announced in
-advisory GLSA 201006-18.";
+http://www.oracle.com/technology/deploy/security/critical-patch-updates/javacpumar2010.html");
+  script_tag(name:"summary", value:"The remote host is missing updates announced in
+advisory GLSA 201006-18.");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-                                                                                
-                                                                                
-
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.69021");
- script_version("$Revision: 9351 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-03-09 05:54:11 +0100 (Wed, 09 Mar 2011)");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_cve_id("CVE-2009-3555", "CVE-2010-0082", "CVE-2010-0084", "CVE-2010-0085", "CVE-2010-0087", "CVE-2010-0088", "CVE-2010-0089", "CVE-2010-0090", "CVE-2010-0091", "CVE-2010-0092", "CVE-2010-0093", "CVE-2010-0094", "CVE-2010-0095", "CVE-2010-0837", "CVE-2010-0838", "CVE-2010-0839", "CVE-2010-0840", "CVE-2010-0841", "CVE-2010-0842", "CVE-2010-0843", "CVE-2010-0844", "CVE-2010-0845", "CVE-2010-0846", "CVE-2010-0847", "CVE-2010-0848", "CVE-2010-0849", "CVE-2010-0850", "CVE-2010-0886", "CVE-2010-0887");
- script_name("Gentoo Security Advisory GLSA 201006-18 (sun-jre-bin sun-jdk emul-linux-x86-java)");
-
-
-
- script_category(ACT_GATHER_INFO);
-
- script_copyright("Copyright (c) 2011 E-Soft Inc. http://www.securityspace.com");
- script_family("Gentoo Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("pkg-lib-gentoo.inc");
+include("revisions-lib.inc");
 
 res = "";
+report = "";
 report = "";
 if ((res = ispkgvuln(pkg:"dev-java/sun-jre-bin", unaffected: make_list("ge 1.6.0.20"), vulnerable: make_list("lt 1.6.0.20"))) != NULL) {
     report += res;
@@ -123,5 +111,5 @@ if ((res = ispkgvuln(pkg:"app-emulation/emul-linux-x86-java", unaffected: make_l
 if (report != "") {
     security_message(data:report);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+    exit(99);
 }

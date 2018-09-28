@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882668");
-  script_version("$Revision: 6659 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:52:22 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 11661 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 05:58:36 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-03-02 12:09:24 +0530 (Thu, 02 Mar 2017)");
   script_cve_id("CVE-2017-2634", "CVE-2017-6074");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for kernel CESA-2017:0323 centos5 ");
   script_tag(name: "summary", value: "Check the version of kernel");

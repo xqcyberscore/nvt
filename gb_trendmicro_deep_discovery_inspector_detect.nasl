@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_deep_discovery_inspector_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_trendmicro_deep_discovery_inspector_detect.nasl 11668 2018-09-28 08:33:11Z ckuersteiner $
 #
 # Trend Micro Deep Discovery Inspector Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106142");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11668 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 10:33:11 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-15 13:58:23 +0700 (Fri, 15 Jul 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,11 +47,11 @@ Discovery Inspector and to extract its version");
 
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name:"URL", value:"https://www.trendmicro.com/us/enterprise/security-risk-management/deep-discovery/");
+  script_xref(name:"URL", value:"https://www.trendmicro.com/en_us/business/products/network/advanced-threat-protection/inspector.html");
 
 
  exit(0);
@@ -66,29 +66,31 @@ port = get_http_port(default: 443);
 
 res = http_get_cache(port: port, item: "/");
 
-if ("Trend Micro Deep Discovery Inspector Logon" >< res &&
-    "Enable Javascript to use Deep Discovery Inspector" >< res) {
+if ("Deep Discovery Inspector" >< res && "scripts/strings.js" >< res) {
   version = "unknown";
 
-  req = http_get(port: port, item: "/scripts/strings.js");
+  url = "/scripts/strings.js";
+  req = http_get(port: port, item: url);
   res  = http_keepalive_send_recv(port: port, data: req);
-  ver = eregmatch(pattern: 'REMOTE_ONLINE_HELP_URL.*v([0-9._SP]+).*olh/";', string: res);
-  if (!isnull(ver[1]))
-    version = ereg_replace(pattern: "_", string: ver[1], replace: ".");
 
-  set_kb_item(name: "deep_discovery_inspector/installed", value: TRUE);
-  if (version != "unknown")
-    set_kb_item(name: "deep_discovery_inspector/version", value: version);
+  ver = eregmatch(pattern: 'REMOTE_ONLINE_HELP_URL.*v([0-9._SP]+).*olh/";', string: res);
+  if (!isnull(ver[1])) {
+    version = ereg_replace(string: ver[1], pattern: "_", replace: ".");
+    concUrl = url;
+  }
+
+  set_kb_item(name: "deep_discovery_inspector/detected", value: TRUE);
 
   cpe = build_cpe(value: version, exp: "^([0-9.SP]+)", base: "cpe:/a:trend_micro:deep_discovery_inspector:");
-  if (isnull(cpe))
+  if (!cpe)
     cpe = "cpe:/a:trend_micro:deep_discovery_inspector";
 
   register_product(cpe: cpe, location: "/", port: port);
 
   log_message(data: build_detection_report(app: "Trend Micro Deep Discovery Inspector", version: version,
-                                           install: "/", cpe: cpe, concluded: ver[0]),
+                                           install: "/", cpe: cpe, concluded: ver[0], concludedUrl: concUrl),
               port: port);
+  exit(0);
 }
 
 exit(0);

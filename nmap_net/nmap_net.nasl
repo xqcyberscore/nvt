@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap_net.nasl 11527 2018-09-21 15:59:27Z cfischer $
+# $Id: nmap_net.nasl 11663 2018-09-28 06:18:46Z cfischer $
 #
 # Launch Nmap for Network Scanning (nmap_net system)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.104000");
-  script_version("$Revision: 11527 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 17:59:27 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 11663 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 08:18:46 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-05-31 15:59:37 +0200 (Tue, 31 May 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,8 +44,7 @@ if(description)
   script_add_preference(name:"Disable DNS resolution", type:"checkbox", value:"no");
 
   # --- Scan techniques ---
-  script_add_preference(name:"TCP scanning technique", type:"radio",
-    value:"connect();SYN;ACK;FIN;Window;Maimon;Xmas tree;Null;SCTP Init;SCTP COOKIE_ECHO");
+  script_add_preference(name:"TCP scanning technique", type:"radio", value:"connect();SYN;ACK;FIN;Window;Maimon;Xmas tree;Null;SCTP Init;SCTP COOKIE_ECHO");
   script_add_preference(name:"Service scan", type:"checkbox", value:"no");
   script_add_preference(name:"RPC port scan", type:"checkbox", value:"no");
 
@@ -55,11 +54,10 @@ if(description)
 
   # --- Firewall/IDS evasion ---
   script_add_preference(name:"Fragment IP packets (bypasses firewalls)", type:"checkbox", value:"no");
-  script_add_preference(name:"Source port", value: "", type:"entry");
+  script_add_preference(name:"Source port", value:"", type:"entry");
 
   # --- Timing and performances ---
-  script_add_preference(name:"Timing policy", type:"radio",
-    value:"Normal;Insane;Aggressive;Polite;Sneaky;Paranoid");
+  script_add_preference(name:"Timing policy", type:"radio", value:"Normal;Insane;Aggressive;Polite;Sneaky;Paranoid");
   script_add_preference(name:"Host Timeout (ms)", value:"", type:"entry");
   script_add_preference(name:"Min RTT Timeout (ms)", value:"", type:"entry");
   script_add_preference(name:"Max RTT Timeout (ms)", value:"", type:"entry");
@@ -71,9 +69,9 @@ if(description)
   script_add_preference(name:"Minimum wait between probes (ms)", value:"", type:"entry");
 
   # --- Targets specification ---
-  script_add_preference(name:"Exclude hosts", value: "", type:"entry");
+  script_add_preference(name:"Exclude hosts", value:"", type:"entry");
 
-  script_add_preference(name:"File containing XML results", value: "", type: "file");
+  script_add_preference(name:"File containing XML results", value:"", type:"file");
 
   script_dependencies("toolcheck.nasl");
 

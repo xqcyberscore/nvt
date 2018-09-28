@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dangerous_cgis.nasl 5273 2017-02-12 13:11:18Z cfi $
+# $Id: dangerous_cgis.nasl 11663 2018-09-28 06:18:46Z cfischer $
 #
 # Various dangerous cgi scripts
 #
@@ -34,14 +34,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11748");
-  script_version("$Revision: 5273 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-12 14:11:18 +0100 (Sun, 12 Feb 2017) $");
+  script_version("$Revision: 11663 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 08:18:46 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1784, 2177, 2197, 2705, 4211, 4579, 5078);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_cve_id("CVE-1999-1072","CVE-2002-0749","CVE-2001-0135","CVE-2002-0955","CVE-2001-0562",
-                "CVE-2002-0346","CVE-2000-0923","CVE-2001-0123");
+  script_cve_id("CVE-1999-1072", "CVE-2002-0749", "CVE-2001-0135", "CVE-2002-0955", "CVE-2001-0562",
+                "CVE-2002-0346", "CVE-2000-0923", "CVE-2001-0123");
   script_name("Various dangerous cgi scripts");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2003 John Lampe");
@@ -51,17 +51,13 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_add_preference(name:"Check all detected CGI directories:", type:"checkbox", value:"no");
 
-  tag_summary = "Some of the following dangerous CGIs were found.
+  script_tag(name:"summary", value:"Some of the following dangerous CGIs were found.
 
   By default this script only checks for this CGIs within the /cgi-bin directory. You can change
-  this behavior with the script preference to check all detected CGI directories.";
-
-  tag_solution = "Please take the time to visit http://cve.mitre.org and check the
+  this behavior with the script preference to check all detected CGI directories.");
+  script_tag(name:"solution", value:"Please take the time to visit http://cve.mitre.org and check the
   associated CVE ID for each cgi found. If you are running a vulnerable
-  version, then delete or upgrade the CGI.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  version, then delete or upgrade the CGI.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

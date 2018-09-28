@@ -1,9 +1,11 @@
-# OpenVAS Vulnerability Test 
-# Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-0923.nasl 6559 2017-07-06 11:57:32Z cfischer $
- 
-# Authors: 
-# Eero Volotinen <eero.volotinen@solinor.com> 
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: ELSA-2014-0923.nasl 11688 2018-09-28 13:36:28Z cfischer $
+#
+# Oracle Linux Local Check
+#
+# Authors:
+# Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://solinor.com
@@ -20,90 +22,93 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
+
 if(description)
- {
-script_oid("1.3.6.1.4.1.25623.1.0.123356");
-script_version("$Revision: 6559 $");
-script_tag(name:"creation_date", value:"2015-10-06 14:02:42 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:57:32 +0200 (Thu, 06 Jul 2017) $");
-script_name("Oracle Linux Local Check: ELSA-2014-0923");
-script_tag(name: "insight", value: "ELSA-2014-0923 -  kernel security update - [3.10.0-123.4.4]- Oracle Linux certificates (Alexey Petrenko)[3.10.0-123.4.4]- [net] l2tp_ppp: fail when socket option level is not SOL_PPPOL2TP (Petr Matousek) [1119465 1119466] {CVE-2014-4943}[3.10.0-123.4.3]- [x86] ptrace: force IRET path after a ptrace_stop() (Oleg Nesterov) [1115934 1115935] {CVE-2014-4699}"); 
-script_tag(name : "solution", value : "update software");
-script_tag(name : "solution_type", value : "VendorFix");
-script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2014-0923");
-script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2014-0923.html");
-script_cve_id("CVE-2014-4943","CVE-2014-4699");
-script_tag(name:"cvss_base", value:"6.9");
-script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-script_tag(name:"qod_type", value:"package");
-script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
-script_category(ACT_GATHER_INFO);
-script_copyright("Eero Volotinen");
-script_family("Oracle Linux Local Security Checks");
-exit(0);
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.123356");
+  script_version("$Revision: 11688 $");
+  script_tag(name:"creation_date", value:"2015-10-06 14:02:42 +0300 (Tue, 06 Oct 2015)");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 15:36:28 +0200 (Fri, 28 Sep 2018) $");
+  script_name("Oracle Linux Local Check: ELSA-2014-0923");
+  script_tag(name:"insight", value:"ELSA-2014-0923 - kernel security update. Please see the references for more insight.");
+  script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Oracle Linux Local Security Checks ELSA-2014-0923");
+  script_xref(name:"URL", value:"http://linux.oracle.com/errata/ELSA-2014-0923.html");
+  script_cve_id("CVE-2014-4943", "CVE-2014-4699");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"qod_type", value:"package");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release", re:"ssh/login/release=OracleLinux7");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Eero Volotinen");
+  script_family("Oracle Linux Local Security Checks");
+
+  exit(0);
 }
+
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
-release = get_kb_item("ssh/login/release");
+
+release = rpm_get_ssh_release();
+if(!release) exit(0);
+
 res = "";
-if(release == NULL)
-{
- exit(0);
-}
+
 if(release == "OracleLinux7")
 {
   if ((res = isrpmvuln(pkg:"kernel", rpm:"kernel~3.10.0~123.4.4.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-abi-whitelists", rpm:"kernel-abi-whitelists~3.10.0~123.4.4.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-debug", rpm:"kernel-debug~3.10.0~123.4.4.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-debug-devel", rpm:"kernel-debug-devel~3.10.0~123.4.4.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-devel", rpm:"kernel-devel~3.10.0~123.4.4.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-doc", rpm:"kernel-doc~3.10.0~123.4.4.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-headers", rpm:"kernel-headers~3.10.0~123.4.4.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-tools", rpm:"kernel-tools~3.10.0~123.4.4.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-tools-libs", rpm:"kernel-tools-libs~3.10.0~123.4.4.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-tools-libs-devel", rpm:"kernel-tools-libs-devel~3.10.0~123.4.4.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"perf", rpm:"perf~3.10.0~123.4.4.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"python-perf", rpm:"python-perf~3.10.0~123.4.4.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
 
 }
-if (__pkg_match) exit(99); #Not vulnerable
+if (__pkg_match) exit(99);
   exit(0);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: exhibit_engine_rfi.nasl 11650 2018-09-27 10:32:13Z jschulte $
+# $Id: exhibit_engine_rfi.nasl 11654 2018-09-27 12:19:57Z cfischer $
 #
 # Exhibit Engine toroot Parameter Remote File Include Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80058");
-  script_version("$Revision: 11650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 12:32:13 +0200 (Thu, 27 Sep 2018) $");
+  script_version("$Revision: 11654 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 14:19:57 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -81,10 +81,9 @@ foreach dir( make_list_unique( "/gallery", "/photos", "/images", "/exhibit", "/e
 
     file = files[pattern];
 
-    # Attack: Attempt a remote file include of /etc/passwd
-    req = http_get(item:string(dir, "/styles.php?toroot=", file, "%00"),port:port);
+    req = http_get(item:string(dir, "/styles.php?toroot=/", file, "%00"),port:port);
     res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-    if (res == NULL) continue;
+    if (!res) continue;
 
     if (egrep(pattern:pattern, string:res) ||
       string("main(", file, "\\0styles/original.php): failed to open stream") >< res ||

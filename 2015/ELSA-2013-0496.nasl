@@ -1,9 +1,11 @@
-# OpenVAS Vulnerability Test 
-# Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0496.nasl 6558 2017-07-06 11:56:55Z cfischer $
- 
-# Authors: 
-# Eero Volotinen <eero.volotinen@solinor.com> 
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: ELSA-2013-0496.nasl 11688 2018-09-28 13:36:28Z cfischer $
+#
+# Oracle Linux Local Check
+#
+# Authors:
+# Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://solinor.com
@@ -20,78 +22,81 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
+
 if(description)
- {
-script_oid("1.3.6.1.4.1.25623.1.0.123696");
-script_version("$Revision: 6558 $");
-script_tag(name:"creation_date", value:"2015-10-06 14:07:21 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:56:55 +0200 (Thu, 06 Jul 2017) $");
-script_name("Oracle Linux Local Check: ELSA-2013-0496");
-script_tag(name: "insight", value: "ELSA-2013-0496 - Oracle Linux 6 kernel security and bugfix  update - [2.6.32-358.el6] - [fs] Fix sget() race with failing mount (Eric Sandeen) [883276] [2.6.32-357.el6] - [virt] xen: Fix stack corruption in xen_failsafe_callback for 32bit PVOPS guests (Andrew Jones) [896050] {CVE-2013-0190} - [block] sg_io: use different default filters for each device class (Paolo Bonzini) [875361] {CVE-2012-4542} - [block] sg_io: prepare for adding per-device-type filters (Paolo Bonzini) [875361] {CVE-2012-4542} - [virt] virtio-blk: Don't free ida when disk is in use (Asias He) [870344] - [netdrv] mlx4: Remove FCS bytes from packet length (Doug Ledford) [893707] - [net] netfilter: nf_ct_reasm: fix conntrack reassembly expire code (Amerigo Wang) [726807] [2.6.32-356.el6] - [char] ipmi: use a tasklet for handling received messages (Prarit Bhargava) [890160] - [char] ipmi: handle run_to_completion properly in deliver_recv_msg() (Prarit Bhargava) [890160] - [usb] xhci: Reset reserved command ring TRBs on cleanup (Don Zickus) [843520] - [usb] xhci: handle command after aborting the command ring (Don Zickus) [874541] - [usb] xhci: cancel command after command timeout (Don Zickus) [874541] - [usb] xhci: add aborting command ring function (Don Zickus) [874541] - [usb] xhci: add cmd_ring_state (Don Zickus) [874541] - [usb] xhci: Fix Null pointer dereferencing with non-DMI systems (Don Zickus) [874542] - [usb] xhci: Intel Panther Point BEI quirk (Don Zickus) [874542] - [usb] xhci: Increase XHCI suspend timeout to 16ms (Don Zickus) [874542] - [powerpc] Revert: pseries/iommu: remove default window before attempting DDW manipulation (Steve Best) [890454] - [serial] 8250_pnp: add Intermec CV60 touchscreen device (Mauro Carvalho Chehab) [894445] - [char] ipmi: apply missing hunk from upstream commit 2407d77a (Tony Camuso) [882787] - [acpi] Fix broken kernel build if CONFIG_ACPI_DEBUG is enabled (Lenny Szubowicz) [891948] - [scsi] qla2xxx: Test and clear FCPORT_UPDATE_NEEDED atomically (Chad Dupuis) [854736] - [mm] vmalloc: remove guard page from between vmap blocks (Johannes Weiner) [873737] - [mm] vmalloc: vmap area cache (Johannes Weiner) [873737] - [fs] vfs: prefer EEXIST to EROFS when creating on an RO filesystem (Eric Sandeen) [878091] - [scsi] qla2xxx: change queue depth ramp print to debug print (Rob Evers) [893113] - [fs] nfs: Fix umount when filelayout DS is also the MDS (Steve Dickson) [895194] - [fs] nfs/pnfs: add set-clear layoutdriver interface (Steve Dickson) [895194] - [fs] nfs: Don't call nfs4_deviceid_purge_client() unless we're NFSv4.1 (Steve Dickson) [895194] - [fs] nfs: Wait for session recovery to finish before returning (Steve Dickson) [895176] - [mm] compaction: validate pfn range passed to isolate_freepages_block (Johannes Weiner) [889456 890498] - [drm] nouveau: ensure legacy vga is re-enabled during POST (Ben Skeggs) [625441] - [netdrv] be2net: Remove stops to further access to BE NIC on UE bits (Ivan Vecera) [894344] - [virt] kvm: invalid opcode oops on SET_SREGS with OSXSAVE bit set (Petr Matousek) [862904] {CVE-2012-4461} [2.6.32-355.el6] - [netdrv] qlge: remove NETIF_F_TSO6 flag (Amerigo Wang) [891839] - [fs] ext3: Remove BKL from ext3_put_super() and ext3_remount() (Carlos Maiolino) [885945] - [lib] switch the protection of percpu_counter list to spinlock (Carlos Maiolino) [885945] - [virt] hv: Add Hyper-V balloon driver (Jason Wang) [885572] - [mm] export a function to get vm committed memory (Jason Wang) [885572] - [drm] nouveau: extend prevent display switching issues by disabling pageflip (Ben Skeggs) [853226] - [netdrv] mlx4: Fix advertisement of wrong PF context behaviour (Alex Williamson) [894060] [2.6.32-354.el6] - [char] ipmi: add new kernel options to prevent automatic ipmi init (Tony Camuso) [877177] - [usb] xhci: New system added for Compliance Mode Patch on SN65LVPE502CP (Don Zickus) [856709] - [x86] quirks: Mark Haswell HDMI Audio as unsupported (Prarit Bhargava) [883428] - [scsi] bfa: fix crash in bfa_cb_ioim_done when performing failover/failback tests (Vijay Guvva) [878618] - [fs] autofs4: Fix sparse warning: context imbalance in autofs4_d_automount() different lock contexts for basic block (Ian Kent) [876795] - [fs] jbd, jbd2: don't wake kjournald unnecessarily (Eric Sandeen) [886318] - [scsi] qla4xxx: v5.03.00.00.06.04-k2 (Rob Evers) [890727] - [scsi] qla4xxx: Correct the validation to check in get_sys_info mailbox (Rob Evers) [890727] - [scsi] qla4xxx: Pass correct function param to qla4_8xxx_rd_direct (Rob Evers) [890727] - [scsi] qla4xxx: v5.03.00.00.06.04-k1 (Chad Dupuis) [878048] - [scsi] qla4xxx: update copyrights in LICENSE.qla4xxx (Chad Dupuis) [878048] - [scsi] qla4xxx: Disable generating pause frames for ISP83XX (Chad Dupuis) [878048] - [scsi] qla4xxx: Fix double clearing of risc_intr for ISP83XX (Chad Dupuis) [878048] - [scsi] qla4xxx: IDC implementation for Loopback (Chad Dupuis) [878048] - [scsi] qla4xxx: Fix panic while rmmod (Chad Dupuis) [878048] - [scsi] qla4xxx: Fail probe_adapter if IRQ allocation fails (Chad Dupuis) [878048] - [scsi] qla4xxx: Prevent MSI/MSI-X falling back to INTx for ISP82XX (Chad Dupuis) [878048] - [scsi] qla4xxx: Update idc reg in case of PCI AER (Chad Dupuis) [878048] - [scsi] qla4xxx: Fix double IDC locking in qla4_8xxx_error_recovery (Chad Dupuis) [878048] - [scsi] qla4xxx: Clear interrupt while unloading driver for ISP83XX (Chad Dupuis) [878048] - [scsi] qla4xxx: Print correct IDC version (Chad Dupuis) [878048] - [scsi] qla4xxx: Added new mbox cmd to pass driver version to FW (Chad Dupuis) [878048] - [scsi] qla4xxx: fix various printk and comment typos (Chad Dupuis) [878048] - [fs] autofs4: use simple_empty() for empty directory check (Ian Kent) [876795] - [fs] autofs4: dont clear DCACHE_NEED_AUTOMOUNT on rootless mount (Ian Kent) [876795] - [fs] gfs2: Fix race in gfs2_rs_alloc (Abhijith Das) [878476] - [fs] xfs: fix broken error handling in xfs_vm_writepage (Dave Chinner) [874539] - [drm] radeon: force rn50 chip to always report connected on analog output (Jerome Glisse) [892723] - [sound] alsa: add support for Teradici 2200 host card audio (Jaroslav Kysela) [890581] - [md] dm-raid: Fix RAID10's check for sufficient redundancy (Jonathan E Brassow) [889358] - [scsi] hpsa: update version number to 3.2.0 (Tomas Henzl) [891935] - [netdrv] cxgb4: Initialize data structures before using (Steve Best) [885756] [2.6.32-353.el6] - [mm] pageattr: prevent PSE and GLOABL leftovers to confuse pmd/pte_present and pmd_huge (Andrea Arcangeli) [878877] - [fs] gfs2: Fix FITRIM argument handling (Abhijith Das) [866932] - [fs] gfs2: Require user to provide argument for FITRIM (Abhijith Das) [866932] - [fs] exec: do not leave bprm->interp on stack (Josh Poimboeuf) [880146] {CVE-2012-4530} - [fs] exec: use -ELOOP for max recursion depth (Josh Poimboeuf) [880146] {CVE-2012-4530} - [fs] btrfs: close exclusive opens with close_bdev_exclusive() (Zach Brown) [874505] - [kernel] sched_rt: Fix hang where umount is stuck in synchronize_sched_expedited (Larry Woodman) [814768] [2.6.32-352.el6] - [md] raid10: Do not call md_raid10_unplug_device while holding spinlock (Jonathan E Brassow) [886658] - [md] dm-thin: commit before gathering status (Mike Snitzer) [882426] - [md] dm-thin: cleanup dead code (Mike Snitzer) [882426] - [md] dm-thin: rename cell_defer_except to cell_defer_no_holder (Mike Snitzer) [882426] - [md] dm-thin: emit 'ignore_discard' in status if discards are disabled (Mike Snitzer) [882426] - [md] dm-thin: wake the worker when a discard is prepared (Mike Snitzer) [882426] - [md] dm-thin: fix race between simultaneous io and discards to same block (Mike Snitzer) [882426] - [md] dm-thin: replace calls to cell_release_singleton with cell_defer_except (Mike Snitzer) [882426] - [mm] Revert: ksm: numa awareness sysfs knob (Jarod Wilson) [743643] - [fs] gfs2: Reset rd_last_alloc when it reaches the end of the rgrp (Robert S Peterson) [882381] - [fs] gfs2: Stop looking for free blocks at end of rgrp (Robert S Peterson) [882381] - [drm] nouveau: cache ramcfg value for RAM_RESTRICT_ZM_GROUP (Ben Skeggs) [878384] - [drm] nouveau: disable use of tesla/fermi copy engines for buffer moves (Ben Skeggs) [878384] - [fs] xfs: fix direct IO nested transaction deadlock (Dave Chinner) [876426] [2.6.32-351.el6] - [kernel] ptrace-utrace: fix PTRACE_GETEVENTMSG(pid) in sub-namespace (Oleg Nesterov) [782330] - [scsi] mpt2sas: fix for driver fails EEH recovery from injected pci bus error (Tomas Henzl) [829149] - [mm] memcontrol: propagate LRU accounting state when splitting THP (Johannes Weiner) [881714] - [net] sctp: proc: protect bind_addr->address_list accesses with rcu_read_lock() (Thomas Graf) [706038] - [net] sctp: Add RCU protection to assoc->transport_addr_list (Thomas Graf) [706038] - [s390] zfcp: Adapt to new FC_PORTSPEED semantics (Hendrik Brueckner) [855128] - [virt] virtio_net: allow to change mac when iface is running (Jiri Pirko) [882868] - [virt] kvm: Minimal hyper-v support (Vadim Rozenfeld) [871350] - [fs] gfs2: Journal DLM lock has wrong label (Steven Whitehouse) [884822] - [mm] huge_memory: fix typo in transparent_hugepage sysfs symlink (Jeremy Eder) [887308] - [mm] ksm: numa awareness sysfs knob (Petr Holasek) [743643] - [fs] btrfs: handle IS_ERR(inode) in btrfs_lookup() (Zach Brown) [870944] - [kernel] sched: Add irq_{enter,exit}() to scheduler_ipi() (Stanislaw Gruszka) [836964] - [kernel] panic: fix a possible deadlock in panic() (Tatsuya Kitamura) [871939] [2.6.32-350.el6] - [powerpc] perf: power_pmu_start restores incorrect values, breaking frequency events (Jiri Olsa) [880525] - [netdrv] mlx4: Allow choosing flow steering mode (Doug Ledford) [885191] - [netdrv] mlx4: Adjustments to Flow Steering activation logic for SRIOV (Doug Ledford) [885191] - [netdrv] mlx4: Fix wrong error flow in the flow steering wrapper (Doug Ledford) [885191] - [netdrv] mlx4: Add QPN enforcement for flow steering rules set by VFs (Doug Ledford) [885191] - [infiniband] mlx4: 64-byte CQE/EQE support (Doug Ledford) [885191] - [netdrv] mlx4: Fix potential deadlock in mlx4_eq_int() (Doug Ledford) [885191] - [infiniband] mlx4: Fix spinlock order to avoid lockdep warnings (Doug Ledford) [885191] - [netdrv] mlx4: Removing reserve vectors (Doug Ledford) [885191] - [netdrv] mlx4: Fix double-release-range in tx-rings (Doug Ledford) [885191] - [infiniband] mlx4: Fix QP1 P_Key processing in the Primary Physical Function (PPF) (Doug Ledford) [885191] - [infiniband] mlx4: Synchronize cleanup of MCGs in MCG paravirtualization (Doug Ledford) [885191] - [net] bonding: Bonding driver does not consider the gso_max_size setting of slave devices (Ivan Vecera) [883643] - [net] tcp: Fix >4GB writes on 64-bit (Daniel Borkmann) [885238] - [net] bridge: skip forwarding delay if not using STP (Thomas Graf) [881682] - [fs] nfs: Fix open(O_TRUNC) and ftruncate() error handling (Steve Dickson) [884263] - [fs] nfsd: add proc file listing kernel's gss_krb5 enctypes (Steve Dickson) [877113] - [fs] nfs: add nfs_sb_deactive_async to avoid deadlock (Steve Dickson) [871968] - [fs] nfs: fix page dirtying in NFS DIO read codepath (Jeff Layton) [876514] - [fs] nfs: don't zero out the rest of the page if we hit the EOF on a DIO READ (Jeff Layton) [876514] - [fs] handle null sb in get_super_thawed (Eric Sandeen) [874521] - [scsi] Fix race when removing SCSI devices (Tomas Henzl) [820880] - [netdrv] be2net: enable GRO by default (Ivan Vecera) [849930] - [netdrv] igb: fix compile warning if CONFIG_IGB_PTP is not set (Stefan Assmann) [886519] - [netdrv] bnx2x: Prevent link flaps when booting from SAN (Michal Schmidt) [881068] - [netdrv] bnx2x: Activate LFA (Michal Schmidt) [881068] - [acpi] apei: Fixup common access width firmware bug (Prarit Bhargava) [880465] - [acpi] apei: Avoid too much error reporting in runtime (Prarit Bhargava) [880465] - [acpi] apei: Fix incorrect APEI register bit width check and usage (Prarit Bhargava) [880465] - [virt] vhost: fix length for cross region descriptor (Michael S. Tsirkin) [862265] - [fs] nfs: Use FS-Cache invalidation (David Howells) [699931] - [fs] cachefiles: Implement invalidation (David Howells) [699931] - [fs] vfs: Make more complete truncate operation available to CacheFiles (David Howells) [699931] - [fs] fscache: Provide proper invalidation (David Howells) [699931] - [fs] fscache: Fix operation state management and accounting (David Howells) [699931] - [fs] fscache: Make cookie relinquishment wait for outstanding reads (David Howells) [699931] - [fs] cachefiles: Make some debugging statements conditional (David Howells) [699931] - [fs] fscache: Check cookie is still correct in __fscache_read_or_alloc_pages() (David Howells) [699931] - [fs] fscache: Check that there are no read ops when cookie relinquished (David Howells) [699931] - [fs] cachefiles: Downgrade the requirements passed to the allocator (David Howells) [699931] - [fs] fscache: Validate page mapping pointer value (David Howells) [699931] - [fs] fscache: Fix the marking of cached pages (David Howells) [699931] - [fs] fscache: nfs_migrate_page() does not wait for FS-Cache to finish with a page (David Howells) [699931] - [fs] fscache: Fix __fscache_uncache_all_inode_pages()'s outer loop (David Howells) [699931] - [fs] fscache: Add a helper to bulk uncache pages on an inode (David Howells) [699931] - [scsi] qla2xxx: Ramp down queue depth for attached SCSI devices when driver resources are low (Chad Dupuis) [829739] - [scsi] qla2xxx: Determine the number of outstanding commands based on available resources (Chad Dupuis) [829739] - [s390] zfcp: return early from slave_destroy if slave_alloc returned early (Hendrik Brueckner) [878372] - [scsi] fcoe: fix fcoe enable on link toggle while it is still disabled (Neil Horman) [875271] - [scsi] Log thin provisioning threshold event (Ewan Milne) [847998] - [netdrv] qlge: NETIF_F_GRO needs to be part of hw_features instead of features (John Green) [849749] - [s390] qeth: set new mac even if old mac is gone (Hendrik Brueckner) [883458] - [s390] qeth: Fix IPA_CMD_QIPASSIST return code handling (Hendrik Brueckner) [882792] [2.6.32-349.el6] - [redhat] kabi: additional whitelist symbols for RHEL-6.4 (Jiri Olsa) [866427] [2.6.32-348.el6] - [ipc] mqueue: Prevent mq_send/receive memory corruption (Larry Woodman) [885030] - [fs] nfs: prevent delegreturn attr deadlock (David Jeffery) [870142] - [netdrv] tg3: Do not set TSS for 5719 and 5720 (John Feeney) [823371] - [scsi] lpfc: Update lpfc version for 8.3.5.86.1p driver release (Rob Evers) [877149] - [scsi] lpfc: Fixed setting sequential delivery bit in a service class that is not valid (Rob Evers) [877149] - [scsi] lpfc: Fixed boot from san failure when SLI4 FC device presented on the same PCI bus (Rob Evers) [877149] - [scsi] lpfc: Add LOGO support after ABTS compliance (Rob Evers) [877149] - [scsi] lpfc: Fixed not reporting logical link speed to SCSI midlayer when QoS not on (Rob Evers) [877149] - [scsi] lpfc: Fixed SCSI host create showing wrong link speed on SLI3 HBA ports (Rob Evers) [877149] - [scsi] lpfc: Fixed kernel warning on spinlock usage on some distributions (Rob Evers) [877149] - [scsi] lpfc: Fixed Linux generic firmware download on SLI4 devices with longer module names (Rob Evers) [877149] - [scsi] lpfc: Fix error with fabric service parameters causing performance issues (Rob Evers) [877149] - [scsi] lpfc: Fixed messages for misconfigured port errors (Rob Evers) [877149] - [scsi] lpfc: Fix FCP2 Retries for non-r/w commands (Rob Evers) [877149] - [scsi] lpfc: Fix incorrect comment in T10 DIF attributes (Rob Evers) [877149] - [scsi] lpfc: Correct missing queue destroy on function reset (Rob Evers) [877149] - [scsi] lpfc: Added checking BMBX register for RDY bit before writing the first address in (Rob Evers) [877149] - [scsi] lpfc: Misc changes to optimize critical path (Rob Evers) [877149] - [s390] qdio: fix kernel panic for zfcp 31-bit (Hendrik Brueckner) [878380] - [s390] zcrypt: msgType50 (RSA-CRT) fix (Hendrik Brueckner) [875977] - [netdrv] ixgbe: fix uninitialized event.type in ixgbe_ptp_check_pps_event (Andy Gospodarek) [884369] - [netdrv] ixgbe: (PTP) Fix PPS interrupt code (Andy Gospodarek) [884369] - [netdrv] ixgbe: Fix PTP X540 SDP alignment code for PPS signal (Andy Gospodarek) [884369] - [s390] zfcp: support for hardware data router (Hendrik Brueckner) [823016] - [s390] qdio: base support for hardware data router with zfcp (Hendrik Brueckner) [823016] - [s390] qdio: Split SBAL entry flags (Hendrik Brueckner) [823016] - [net] netfilter/ipset: Check and reject crazy /0 input parameters (Thomas Graf) [880920] - [kernel] kmod: make __request_module() killable (Oleg Nesterov) [819529] {CVE-2012-4398} - [kernel] kmod: introduce call_modprobe() helper (Oleg Nesterov) [819529] {CVE-2012-4398} - [kernel] usermodehelper: implement UMH_KILLABLE (Oleg Nesterov) [819529] {CVE-2012-4398} - [kernel] usermodehelper: introduce umh_complete(sub_info) (Oleg Nesterov) [819529] {CVE-2012-4398} - [kernel] call_usermodehelper: simplify/fix UMH_NO_WAIT case (Oleg Nesterov) [819529] {CVE-2012-4398} - [kernel] wait_for_helper: SIGCHLD from user-space can lead to use-after-free (Oleg Nesterov) [819529] {CVE-2012-4398} - [netdrv] qlge: Backport offload features to vlan interfaces (John Green) [849749] - [netdrv] igbvf: work around i350 erratum (Stefan Assmann) [870638]"); 
-script_tag(name : "solution", value : "update software");
-script_tag(name : "solution_type", value : "VendorFix");
-script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2013-0496");
-script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2013-0496.html");
-script_cve_id("CVE-2012-4508","CVE-2013-0190","CVE-2012-4542","CVE-2013-0309","CVE-2013-0310","CVE-2013-0311");
-script_tag(name:"cvss_base", value:"6.6");
-script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:C/I:C/A:C");
-script_tag(name:"qod_type", value:"package");
-script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
-script_category(ACT_GATHER_INFO);
-script_copyright("Eero Volotinen");
-script_family("Oracle Linux Local Security Checks");
-exit(0);
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.123696");
+  script_version("$Revision: 11688 $");
+  script_tag(name:"creation_date", value:"2015-10-06 14:07:21 +0300 (Tue, 06 Oct 2015)");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 15:36:28 +0200 (Fri, 28 Sep 2018) $");
+  script_name("Oracle Linux Local Check: ELSA-2013-0496");
+  script_tag(name:"insight", value:"ELSA-2013-0496 - Oracle Linux 6 kernel security and bugfix  update. Please see the references for more insight.");
+  script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Oracle Linux Local Security Checks ELSA-2013-0496");
+  script_xref(name:"URL", value:"http://linux.oracle.com/errata/ELSA-2013-0496.html");
+  script_cve_id("CVE-2012-4508", "CVE-2013-0190", "CVE-2012-4542", "CVE-2013-0309", "CVE-2013-0310", "CVE-2013-0311");
+  script_tag(name:"cvss_base", value:"6.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:C/I:C/A:C");
+  script_tag(name:"qod_type", value:"package");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release", re:"ssh/login/release=OracleLinux6");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Eero Volotinen");
+  script_family("Oracle Linux Local Security Checks");
+
+  exit(0);
 }
+
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
-release = get_kb_item("ssh/login/release");
+
+release = rpm_get_ssh_release();
+if(!release) exit(0);
+
 res = "";
-if(release == NULL)
-{
- exit(0);
-}
+
 if(release == "OracleLinux6")
 {
   if ((res = isrpmvuln(pkg:"kernel", rpm:"kernel~2.6.32~358.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-debug", rpm:"kernel-debug~2.6.32~358.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-debug-devel", rpm:"kernel-debug-devel~2.6.32~358.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-devel", rpm:"kernel-devel~2.6.32~358.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-doc", rpm:"kernel-doc~2.6.32~358.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-firmware", rpm:"kernel-firmware~2.6.32~358.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-headers", rpm:"kernel-headers~2.6.32~358.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"perf", rpm:"perf~2.6.32~358.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"python-perf", rpm:"python-perf~2.6.32~358.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
 
 }
-if (__pkg_match) exit(99); #Not vulnerable
+if (__pkg_match) exit(99);
   exit(0);
 

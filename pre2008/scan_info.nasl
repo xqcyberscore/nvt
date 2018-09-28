@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: scan_info.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: Information about the scan
+# $Id: scan_info.nasl 11665 2018-09-28 07:14:18Z cfischer $
+#
+# Information about the scan
 #
 # Authors:
 # Tenable Network Security
@@ -20,19 +22,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "This script displays, for each tested host, information about the scan itself:
-
- - The version of the NVT feed
- - The type of NVT feed (Direct, Registered or GPL)
- - The version of the OpenVAS Engine
- - The port scanner(s) used
- - The port range scanned
- - The date of the scan
- - The duration of the scan
- - The number of hosts scanned in parallel
- - The number of checks done in parallel";
+###############################################################################
 
 # TODO: This NVT is actually not relevant anymore because it is returning
 # data that are available in the scanner client anyway. In the early days
@@ -43,30 +33,41 @@ tag_summary = "This script displays, for each tested host, information about the
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.19506");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
- script_tag(name:"cvss_base", value:"0.0");
- name = "Information about the scan";
- script_name(name);
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.19506");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_version("$Revision: 11665 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("Information about the scan");
+  script_category(ACT_END);
+  script_copyright("Copyright (C) 2004 Tenable Network Security");
+  script_family("General");
 
+  script_add_preference(name:"Be silent", type:"checkbox", value:"yes");
 
- 
- script_category(ACT_END);
- 
- 
- script_copyright("Copyright (C) 2004 Tenable Network Security");
- family = "General";
- script_family(family);
+  script_tag(name:"summary", value:"This script displays, for each tested host, information about the scan itself:
 
- script_add_preference(name:"Be silent", type:"checkbox", value: "yes");
+  - The version of the NVT feed
 
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  - The type of NVT feed (Direct, Registered or GPL)
+
+  - The version of the Scanner Engine
+
+  - The port scanner(s) used
+
+  - The port range scanned
+
+  - The date of the scan
+
+  - The duration of the scan
+
+  - The number of hosts scanned in parallel
+
+  - The number of checks done in parallel");
+
+  exit(0);
 }
 
 include('plugin_feed_info.inc');
@@ -79,10 +80,10 @@ version = OPENVAS_VERSION;
 
 if(isnull(version)) {
  version = "Unknown";
-}  
+}
 
 report = 'Information about this scan : \n\n';
-report += 'OpenVAS Scanner version : ' + version + '\n';
+report += 'Scanner version : ' + version + '\n';
 
 if ( PLUGIN_SET )
 {

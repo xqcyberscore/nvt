@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbseo_51647.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_vbseo_51647.nasl 11651 2018-09-27 11:53:00Z asteins $
 #
 # vBSEO 'proc_deutf()' Remote Code Execution Vulnerability
 #
@@ -30,7 +30,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.103405");
   script_cve_id("CVE-2012-5223");
   script_bugtraq_id(51647);
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11651 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -40,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.vbseo.com/f5/vbseo-security-bulletin-all-supported-versions-patch-release-52783/");
   script_xref(name:"URL", value:"http://www.vbseo.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 13:53:00 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-31 14:44:01 +0100 (Tue, 31 Jan 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,15 +62,22 @@ may also be affected.");
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 include("version_func.inc");
 include("misc_func.inc");
 
-port = get_http_port(default:80);
-if(!can_host_php(port:port))exit(0);
+CPE = 'cpe:/a:vbulletin:vbulletin';
 
-if(! dir = get_dir_from_kb(port:port, app:"vBulletin"))exit(0);
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
+
+if(dir == "/")
+  dir = "";
+
 url = string(dir, "/vbseocp.php");
 
 cmd = base64(str:'passthru("id");');

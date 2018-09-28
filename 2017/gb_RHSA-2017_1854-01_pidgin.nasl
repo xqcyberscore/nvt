@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_1854-01_pidgin.nasl 6850 2017-08-04 07:23:54Z santu $
+# $Id: gb_RHSA-2017_1854-01_pidgin.nasl 11661 2018-09-28 03:58:36Z ckuersteiner $
 #
 # RedHat Update for pidgin RHSA-2017:1854-01
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871854");
-  script_version("$Revision: 6850 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:23:54 +0200 (Fri, 04 Aug 2017) $");
+  script_version("$Revision: 11661 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 05:58:36 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 12:47:19 +0530 (Fri, 04 Aug 2017)");
   script_cve_id("CVE-2014-3694", "CVE-2014-3695", "CVE-2014-3696", "CVE-2014-3698", 
                 "CVE-2017-2640"); 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for pidgin RHSA-2017:1854-01");
   script_tag(name: "summary", value: "Check the version of pidgin");

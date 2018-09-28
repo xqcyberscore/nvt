@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_settings.nasl 10902 2018-08-10 14:20:55Z cfischer $
+# $Id: smtp_settings.nasl 11663 2018-09-28 06:18:46Z cfischer $
 #
 # SMTP settings
 #
@@ -34,8 +34,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80086");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10902 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11663 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 08:18:46 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SMTP settings");
@@ -44,10 +44,8 @@ if(description)
   script_family("Settings");
 
   script_add_preference(name:"Third party domain :", type:"entry", value:default_domain);
-  script_add_preference(name:"From address : ", type:"entry",
-            value:"nobody@example.com");
-  script_add_preference(name:"To address : ", type:"entry",
-                        value:"postmaster@[AUTO_REPLACED_IP]");
+  script_add_preference(name:"From address : ", type:"entry", value:"nobody@example.com");
+  script_add_preference(name:"To address : ", type:"entry", value:"postmaster@[AUTO_REPLACED_IP]");
   # AUTO_REPLACED_IP and AUTO_REPLACED_ADDR are... automatically replaced!
 
   script_tag(name:"summary", value:"This script just sets a couple of SMTP parameters.

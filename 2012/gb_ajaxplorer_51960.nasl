@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ajaxplorer_51960.nasl 11425 2018-09-17 09:11:30Z asteins $
+# $Id: gb_ajaxplorer_51960.nasl 11651 2018-09-27 11:53:00Z asteins $
 #
 # AjaXplorer 'doc_file' Parameter Local File Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103422");
   script_bugtraq_id(51960);
-  script_version("$Revision: 11425 $");
+  script_version("$Revision: 11651 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_name("AjaXplorer 'doc_file' Parameter Local File Disclosure Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:11:30 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 13:53:00 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 12:40:42 +0100 (Wed, 15 Feb 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -63,12 +63,19 @@ if(description)
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit( 0 );
+CPE = 'cpe:/a:ajaxplorer:ajaxplorer';
 
-if( ! dir = get_dir_from_kb( port:port, app:"AjaXplorer" ) ) exit( 0 );
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
+
+if(dir == "/")
+  dir = "";
 
 files = traversal_files();
 

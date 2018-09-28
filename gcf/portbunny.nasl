@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: portbunny.nasl 10116 2018-06-07 10:39:19Z cfischer $
+# $Id: portbunny.nasl 11665 2018-09-28 07:14:18Z cfischer $
 #
 # Use portbunny as scanner
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80002");
-  script_version("$Revision: 10116 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 12:39:19 +0200 (Thu, 07 Jun 2018) $");
+  script_version("$Revision: 11665 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-08-31 23:34:05 +0200 (Sun, 31 Aug 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_category(ACT_SCANNER);
   script_copyright("This script is Copyright (C) 2008 Vlatko Kosturjak");
   script_family("Port scanners");
-  script_add_preference(name:"Wait longer for triggers to return", type:"checkbox", value: "no");
+  script_add_preference(name:"Wait longer for triggers to return", type:"checkbox", value:"no");
   script_dependencies("toolcheck.nasl", "ping_host.nasl");
   script_mandatory_keys("Tools/Present/portbunny");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_totalcalendar_sql_inj_n_dir_trav_vuln.nasl 11625 2018-09-26 12:08:49Z jschulte $
+# $Id: secpod_totalcalendar_sql_inj_n_dir_trav_vuln.nasl 11657 2018-09-27 13:32:51Z cfischer $
 #
 # TotalCalendar SQL Injection and Directory Traversal Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902225");
-  script_version("$Revision: 11625 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 14:08:49 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 11657 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 15:32:51 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_cve_id("CVE-2009-4973", "CVE-2009-4974");
   script_tag(name:"cvss_base", value:"7.5");
@@ -95,7 +95,7 @@ foreach dir (make_list_unique("/projects/TotalCalendar", "/TotalCalendar", "/", 
 
       if(egrep(string:rcvRes, pattern:pattern, icase:TRUE))
       {
-        report = report_vuln_url(url:url);
+        report = report_vuln_url(port:tcPort, url:url);
         security_message(data:report, port:tcPort);
         exit(0);
       }

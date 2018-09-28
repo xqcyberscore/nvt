@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: p-smash.nasl 10411 2018-07-05 10:15:10Z cfischer $
+# $Id: p-smash.nasl 11663 2018-09-28 06:18:46Z cfischer $
 #
 # p-smash DoS (ICMP 9 flood)
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11024");
-  script_version("$Revision: 10411 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 11663 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 08:18:46 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -45,8 +45,8 @@ if(description)
   script_dependencies("global_settings.nasl");
   script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
 
-  # script_add_preference(name:"Flood length :", type:"entry", value:"5000");
-  # script_add_preference(name:"Data length :", type:"entry", value:"500");
+  #  script_add_preference(name:"Flood length :", type:"entry", value:"5000");
+  #  script_add_preference(name:"Data length :", type:"entry", value:"500");
 
   script_xref(name:"URL", value:"http://support.microsoft.com/default.aspx?scid=KB;en-us;q216141");
 

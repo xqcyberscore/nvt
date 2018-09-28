@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0421_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_0421_1.nasl 11661 2018-09-28 03:58:36Z ckuersteiner $
 #
 # SuSE Update for spice openSUSE-SU-2017:0421-1 (spice)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851487");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 11661 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 05:58:36 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-02-09 05:49:28 +0100 (Thu, 09 Feb 2017)");
   script_cve_id("CVE-2016-9577", "CVE-2016-9578");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for spice openSUSE-SU-2017:0421-1 (spice)");
   script_tag(name: "summary", value: "Check the version of spice");

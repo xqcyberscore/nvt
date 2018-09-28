@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webdir_search.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_webdir_search.nasl 11658 2018-09-27 14:21:41Z cfischer $
 #
 # Search for specified webdirs
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103437");
-  script_version("$Revision: 11072 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_version("$Revision: 11658 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 16:21:41 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-27 16:32:37 +0100 (Mon, 27 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -43,9 +43,9 @@ if(description)
 
   script_tag(name:"summary", value:"This Plugin is searching for the specified webdirs.");
 
-  script_add_preference(name: "Search for dir(s)", value: "/admin;/manager", type: "entry");
-  script_add_preference(name: "Valid http status codes indicating that a directory was found", value: "200;301;302;401;403", type: "entry");
-  script_add_preference(name: "Run this Plugin", type:"checkbox", value: "no");
+  script_add_preference(name:"Search for dir(s)", value:"/admin;/manager", type:"entry");
+  script_add_preference(name:"Valid http status codes indicating that a directory was found", value:"200;301;302;401;403", type:"entry");
+  script_add_preference(name:"Run this Plugin", type:"checkbox", value:"no");
 
   script_tag(name:"qod_type", value:"remote_probe");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_vbtube_xss_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_vbulletin_vbtube_xss_vuln.nasl 11673 2018-09-28 10:56:33Z asteins $
 #
 # vBulletin vBTube Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802209");
-  script_version("$Revision: 11552 $");
+  script_version("$Revision: 11673 $");
   script_bugtraq_id(48280);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:56:33 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-06-17 11:16:31 +0200 (Fri, 17 Jun 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -60,28 +60,30 @@ cross site scripting vulnerabilities.");
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("http_func.inc");
-include("version_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
+include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!port){
+CPE = 'cpe:/a:vbulletin:vbulletin';
+
+if(!port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!can_host_php(port:port)){
+if(!dir = get_app_location(cpe:CPE, port:port))
   exit(0);
-}
 
-if(! dir = get_dir_from_kb(port:port, app:"vBulletin")){
-  exit(0);
-}
+if(dir == "/")
+  dir = "";
 
-url = string(dir, '/vBTube.php?page=1&do=user&uname="><script>alert(/openvas',
+vt_string = get_vt_string(lowercase:TRUE);
+url = string(dir, '/vBTube.php?page=1&do=user&uname="><script>alert(/' + vt_string,
                   '-xss-test/);</script>');
 
-if(http_vuln_check(port:port, url:url, check_header: TRUE,
-   pattern:"><script>alert\(/openvas-xss-test/\);</script>")){
-  security_message(port);
+if(http_vuln_check(port:port, url:url, check_header:TRUE,
+   pattern:"><script>alert\(/" + vt_string + "-xss-test/\);</script>")) {
+  security_message(port:port);
 }
+
+exit(0);

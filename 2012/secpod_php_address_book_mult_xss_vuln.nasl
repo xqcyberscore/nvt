@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_address_book_mult_xss_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
+# $Id: secpod_php_address_book_mult_xss_vuln.nasl 11651 2018-09-27 11:53:00Z asteins $
 #
 # PHP Address Book Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902838");
-  script_version("$Revision: 11429 $");
+  script_version("$Revision: 11651 $");
   script_bugtraq_id(53598);
   script_cve_id("CVE-2012-2903");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 13:53:00 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-24 15:15:15 +0530 (Thu, 24 May 2012)");
   script_name("PHP Address Book Multiple Cross Site Scripting Vulnerabilities");
 
@@ -65,19 +65,28 @@ cross site scripting vulnerabilities.");
 }
 
 include("http_func.inc");
-include("version_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
+include("version_func.inc");
 
-port = get_http_port(default:80);
+CPE = 'cpe:/a:chatelao:php_address_book';
 
-if(!dir = get_dir_from_kb(port:port, app:"PHP-Address-Book")){
+if(!port = get_app_port(cpe:CPE))
   exit(0);
-}
+
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
+
+if(dir == "/")
+  dir = "";
 
 url = dir + '/index.php?group="<script>alert(document.cookie)</script>';
 
 if(http_vuln_check( port: port, url: url, check_header: TRUE,
                     pattern: "<script>alert\(document.cookie\)</script>",
                     extra_check: 'content=\"PHP-Addressbook')) {
-  security_message(port);
+  security_message(port:port);
+	exit(0);
 }
+
+exit(99);

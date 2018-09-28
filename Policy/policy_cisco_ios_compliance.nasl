@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_cisco_ios_compliance.nasl 11532 2018-09-21 19:07:30Z cfischer $
+# $Id: policy_cisco_ios_compliance.nasl 11659 2018-09-27 15:16:14Z cfischer $
 #
 # Cisco IOS Compliance Check
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106431");
-  script_version("$Revision: 11532 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:07:30 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 11659 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 17:16:14 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-01-11 10:55:08 +0700 (Wed, 11 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,8 +48,8 @@ if(description)
   script_tag(name:"summary", value:"Runs the Cisco IOS Compliance Check with the provided policy file and
   stores the results in the kb.");
 
-  script_add_preference(name: "Cisco IOS Policies", type: "file", value: "");
-  script_add_preference(name: "Enable Password", type: "password", value: "");
+  script_add_preference(name:"Cisco IOS Policies", type:"file", value:"");
+  script_add_preference(name:"Enable Password", type:"password", value:"");
 
   exit(0);
 }

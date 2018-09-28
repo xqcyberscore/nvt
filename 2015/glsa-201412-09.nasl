@@ -1,7 +1,9 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# Description: Gentoo Linux security check
-# $Id: glsa-201412-09.nasl 9374 2018-04-06 08:58:12Z cfischer $
-
+# $Id: glsa-201412-09.nasl 11671 2018-09-28 10:44:05Z cfischer $
+#
+# Gentoo Linux security check
+#
 # Authors:
 # Eero Volotinen <eero.volotinen@solinor.com>
 #
@@ -20,32 +22,34 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-if(description)
- {
-script_oid("1.3.6.1.4.1.25623.1.0.121295");
-script_version("$Revision: 9374 $");
-script_tag(name:"creation_date", value:"2015-09-29 11:28:05 +0300 (Tue, 29 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:58:12 +0200 (Fri, 06 Apr 2018) $");
-script_name("Gentoo Linux Local Check: https://security.gentoo.org/glsa/201412-09");
-script_tag(name: "insight", value: "Vulnerabilities have been discovered in the packages listed below. Please review the CVE identifiers in the Reference section for details."); 
-script_tag(name : "solution", value : "update software");
-script_tag(name : "solution_type", value : "VendorFix");
-script_xref(name : "URL" , value : "https://security.gentoo.org/glsa/201412-09");
-script_cve_id("CVE-2007-4370","CVE-2009-4023","CVE-2009-4111","CVE-2010-0778","CVE-2010-1780","CVE-2010-1782","CVE-2010-1783","CVE-2010-1784","CVE-2010-1785","CVE-2010-1786","CVE-2010-1787","CVE-2010-1788","CVE-2010-1790","CVE-2010-1791","CVE-2010-1792","CVE-2010-1793","CVE-2010-1807","CVE-2010-1812","CVE-2010-1814","CVE-2010-1815","CVE-2010-2526","CVE-2010-2901","CVE-2010-3255","CVE-2010-3257","CVE-2010-3259","CVE-2010-3362","CVE-2010-3374","CVE-2010-3389","CVE-2010-3812","CVE-2010-3813","CVE-2010-3999","CVE-2010-4042","CVE-2010-4197","CVE-2010-4198","CVE-2010-4204","CVE-2010-4206","CVE-2010-4492","CVE-2010-4493","CVE-2010-4577","CVE-2010-4578","CVE-2011-0007","CVE-2011-0465","CVE-2011-0482","CVE-2011-0721","CVE-2011-0727","CVE-2011-0904","CVE-2011-0905","CVE-2011-1072","CVE-2011-1097","CVE-2011-1144","CVE-2011-1425","CVE-2011-1572","CVE-2011-1760","CVE-2011-1951","CVE-2011-2471","CVE-2011-2472","CVE-2011-2473","CVE-2011-2524","CVE-2011-3365","CVE-2011-3366","CVE-2011-3367");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-script_tag(name:"qod_type", value:"package");
-script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
-script_category(ACT_GATHER_INFO);
-script_tag(name:"summary", value:"Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201412-09");
-script_copyright("Eero Volotinen");
-script_family("Gentoo Local Security Checks");
-exit(0);
-}
-include("revisions-lib.inc");
+###############################################################################
 
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.121295");
+  script_version("$Revision: 11671 $");
+  script_tag(name:"creation_date", value:"2015-09-29 11:28:05 +0300 (Tue, 29 Sep 2015)");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_name("Gentoo Security Advisory GLSA 201412-09");
+  script_tag(name:"insight", value:"Vulnerabilities have been discovered in the packages listed below. Please review the CVE identifiers in the Reference section for details.");
+  script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"https://security.gentoo.org/glsa/201412-09");
+  script_cve_id("CVE-2007-4370", "CVE-2009-4023", "CVE-2009-4111", "CVE-2010-0778", "CVE-2010-1780", "CVE-2010-1782", "CVE-2010-1783", "CVE-2010-1784", "CVE-2010-1785", "CVE-2010-1786", "CVE-2010-1787", "CVE-2010-1788", "CVE-2010-1790", "CVE-2010-1791", "CVE-2010-1792", "CVE-2010-1793", "CVE-2010-1807", "CVE-2010-1812", "CVE-2010-1814", "CVE-2010-1815", "CVE-2010-2526", "CVE-2010-2901", "CVE-2010-3255", "CVE-2010-3257", "CVE-2010-3259", "CVE-2010-3362", "CVE-2010-3374", "CVE-2010-3389", "CVE-2010-3812", "CVE-2010-3813", "CVE-2010-3999", "CVE-2010-4042", "CVE-2010-4197", "CVE-2010-4198", "CVE-2010-4204", "CVE-2010-4206", "CVE-2010-4492", "CVE-2010-4493", "CVE-2010-4577", "CVE-2010-4578", "CVE-2011-0007", "CVE-2011-0465", "CVE-2011-0482", "CVE-2011-0721", "CVE-2011-0727", "CVE-2011-0904", "CVE-2011-0905", "CVE-2011-1072", "CVE-2011-1097", "CVE-2011-1144", "CVE-2011-1425", "CVE-2011-1572", "CVE-2011-1760", "CVE-2011-1951", "CVE-2011-2471", "CVE-2011-2472", "CVE-2011-2473", "CVE-2011-2524", "CVE-2011-3365", "CVE-2011-3366", "CVE-2011-3367");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"qod_type", value:"package");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"summary", value:"Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201412-09");
+  script_copyright("Eero Volotinen");
+  script_family("Gentoo Local Security Checks");
+
+  exit(0);
+}
+
+include("revisions-lib.inc");
 include("pkg-lib-gentoo.inc");
 
 res = "";
@@ -148,12 +152,11 @@ if((res=ispkgvuln(pkg:"dev-vcs/gitolite", unaffected: make_list("ge 1.5.9.1"), v
   report += res;
 }
 if((res=ispkgvuln(pkg:"dev-util/qt-creator", unaffected: make_list("ge 2.1.0"), vulnerable: make_list("lt 2.1.0"))) != NULL) {
-
   report += res;
 }
 
 if(report != "") {
     security_message(data:report);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+    exit(99);
 }

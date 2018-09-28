@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siestta_dir_trav_n_xss_vuln.nasl 11625 2018-09-26 12:08:49Z jschulte $
+# $Id: gb_siestta_dir_trav_n_xss_vuln.nasl 11657 2018-09-27 13:32:51Z cfischer $
 #
 # Siestta Directory Traversal and Cross Site Scripting Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800769");
-  script_version("$Revision: 11625 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 14:08:49 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 11657 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 15:32:51 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-05-13 09:36:55 +0200 (Thu, 13 May 2010)");
   script_cve_id("CVE-2010-1710", "CVE-2010-1711");
   script_bugtraq_id(39526);
@@ -65,9 +65,6 @@ include("version_func.inc");
 include("misc_func.inc");
 
 siPort = get_http_port(default:80);
-if(!get_port_state(siPort)){
-  exit(0);
-}
 
 siVer = get_kb_item("www/" + siPort + "/Siestta");
 if(!siVer){
@@ -88,7 +85,7 @@ if(siVer[2] != NULL)
     sndReq = http_get(item:url, port:siPort);
     rcvRes = http_send_recv(port:siPort, data:sndReq);
     if(egrep(string:rcvRes, pattern:pattern, icase:TRUE)) {
-      report = report_vuln_url(url:url);
+      report = report_vuln_url(port:siPort, url:url);
       security_message(data:report, port:siPort);
       exit(0);
     }

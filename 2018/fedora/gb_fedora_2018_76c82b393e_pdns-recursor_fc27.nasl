@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_76c82b393e_pdns-recursor_fc27.nasl 10199 2018-06-14 13:09:24Z santu $
+# $Id: gb_fedora_2018_76c82b393e_pdns-recursor_fc27.nasl 11661 2018-09-28 03:58:36Z ckuersteiner $
 #
 # Fedora Update for pdns-recursor FEDORA-2018-76c82b393e
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874674");
-  script_version("$Revision: 10199 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 15:09:24 +0200 (Thu, 14 Jun 2018) $");
+  script_version("$Revision: 11661 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 05:58:36 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-14 05:59:17 +0200 (Thu, 14 Jun 2018)");
   script_cve_id("CVE-2017-15120", "CVE-2018-1000003", "CVE-2017-15090", "CVE-2017-15092", 
                 "CVE-2017-15093", "CVE-2017-15094");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for pdns-recursor FEDORA-2018-76c82b393e");
   script_tag(name:"summary", value:"Check the version of pdns-recursor");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: pnscan.nasl 11546 2018-09-22 11:30:16Z cfischer $
+# $Id: pnscan.nasl 11665 2018-09-28 07:14:18Z cfischer $
 #
 # NASL wrapper around pnscan portscanner
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80001");
-  script_version("$Revision: 11546 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 13:30:16 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11665 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-08-31 23:34:05 +0200 (Sun, 31 Aug 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -37,8 +37,8 @@ if(description)
   script_category(ACT_SCANNER);
   script_copyright("This script is Copyright (C) 2008 Vlatko Kosturjak");
   script_family("Port scanners");
-  script_add_preference(name:"Pnscan Timeout", type:"entry", value: "");
-  script_add_preference(name:"Pnscan Concurrent worker threads", type:"entry", value: "");
+  script_add_preference(name:"Pnscan Timeout", type:"entry", value:"");
+  script_add_preference(name:"Pnscan Concurrent worker threads", type:"entry", value:"");
   script_dependencies("toolcheck.nasl", "ping_host.nasl");
   script_mandatory_keys("Tools/Present/pnscan");
 

@@ -1,7 +1,8 @@
-#
+###############################################################################
 # OpenVAS Vulnerability Test
-# $
-# Description: Auto generated from Gentoo's XML based advisory
+# $Id: glsa_201201_16.nasl 11671 2018-09-28 10:44:05Z cfischer $
+#
+# Auto generated from Gentoo's XML based advisory
 #
 # Authors:
 # Thomas Reinke <reinke@securityspace.com>
@@ -24,17 +25,31 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "A debugging functionality in the X.Org X Server that is bound to a
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.70817");
+  script_cve_id("CVE-2012-0064");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11671 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-12 10:04:42 -0500 (Sun, 12 Feb 2012)");
+  script_name("Gentoo Security Advisory GLSA 201201-16 (xkeyboard-config xorg-server)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
+  script_family("Gentoo Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
+  script_tag(name:"insight", value:"A debugging functionality in the X.Org X Server that is bound to a
     hotkey by default can be used by local attackers to circumvent screen
-    locking utilities.";
-tag_solution = "All xkeyboard-config users should upgrade to the latest version:
+    locking utilities.");
+  script_tag(name:"solution", value:"All xkeyboard-config users should upgrade to the latest version:
 
       # emerge --sync
       # emerge --ask --oneshot --verbose '>=x11-misc/xkeyboard-config-2.4.1-r3'
-    
+
 
 NOTE: The X.Org X Server 1.11 was only stable on the AMD64, ARM, HPPA,
       and x86 architectures. Users of the stable branches of all other
@@ -43,44 +58,18 @@ fixed
       X Keyboard Configuration Database version.
 
 http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201201-16
-http://bugs.gentoo.org/show_bug.cgi?id=399347";
-tag_summary = "The remote host is missing updates announced in
-advisory GLSA 201201-16.";
+http://bugs.gentoo.org/show_bug.cgi?id=399347");
+  script_tag(name:"summary", value:"The remote host is missing updates announced in
+advisory GLSA 201201-16.");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-                                                                                
-                                                                                
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.70817");
- script_cve_id("CVE-2012-0064");
- script_tag(name:"cvss_base", value:"4.6");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 9352 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-02-12 10:04:42 -0500 (Sun, 12 Feb 2012)");
- script_name("Gentoo Security Advisory GLSA 201201-16 (xkeyboard-config xorg-server)");
-
-
-
- script_category(ACT_GATHER_INFO);
-
- script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
- script_family("Gentoo Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("pkg-lib-gentoo.inc");
+include("revisions-lib.inc");
+
 res = "";
 report = "";
 if((res = ispkgvuln(pkg:"x11-misc/xkeyboard-config", unaffected: make_list("ge 2.4.1-r3"), vulnerable: make_list("lt 2.4.1-r3"))) != NULL ) {
@@ -90,5 +79,5 @@ if((res = ispkgvuln(pkg:"x11-misc/xkeyboard-config", unaffected: make_list("ge 2
 if(report != "") {
     security_message(data:report);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+    exit(99);
 }

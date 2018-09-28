@@ -1,9 +1,11 @@
-# OpenVAS Vulnerability Test 
-# Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0006.nasl 6552 2017-07-06 11:49:41Z cfischer $
- 
-# Authors: 
-# Eero Volotinen <eero.volotinen@solinor.com> 
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: ELSA-2016-0006.nasl 11688 2018-09-28 13:36:28Z cfischer $
+#
+# Oracle Linux Local Check
+#
+# Authors:
+# Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://solinor.com
@@ -20,138 +22,141 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
+
 if(description)
- {
-script_oid("1.3.6.1.4.1.25623.1.0.122817");
-script_version("$Revision: 6552 $");
-script_tag(name:"creation_date", value:"2016-01-08 07:47:21 +0200 (Fri, 08 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
-script_name("Oracle Linux Local Check: ELSA-2016-0006");
-script_tag(name: "insight", value: "ELSA-2016-0006 -  samba security update - [4.2.3-11]- resolves: #1290710- CVE-2015-3223 Remote DoS in Samba (AD) LDAP server- CVE-2015-5299 Missing access control check in shadow copy code- CVE-2015-5252 Insufficient symlink verification in smbd- CVE-2015-5296 Samba client requesting encryption vulnerable to downgrade attack"); 
-script_tag(name : "solution", value : "update software");
-script_tag(name : "solution_type", value : "VendorFix");
-script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2016-0006");
-script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2016-0006.html");
-script_cve_id("CVE-2015-3223","CVE-2015-5252","CVE-2015-5296","CVE-2015-5299","CVE-2015-7540");
-script_tag(name:"cvss_base", value:"5.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-script_tag(name:"qod_type", value:"package");
-script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
-script_category(ACT_GATHER_INFO);
-script_copyright("Eero Volotinen");
-script_family("Oracle Linux Local Security Checks");
-exit(0);
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.122817");
+  script_version("$Revision: 11688 $");
+  script_tag(name:"creation_date", value:"2016-01-08 07:47:21 +0200 (Fri, 08 Jan 2016)");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 15:36:28 +0200 (Fri, 28 Sep 2018) $");
+  script_name("Oracle Linux Local Check: ELSA-2016-0006");
+  script_tag(name:"insight", value:"ELSA-2016-0006 - samba security update. Please see the references for more insight.");
+  script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Oracle Linux Local Security Checks ELSA-2016-0006");
+  script_xref(name:"URL", value:"http://linux.oracle.com/errata/ELSA-2016-0006.html");
+  script_cve_id("CVE-2015-3223", "CVE-2015-5252", "CVE-2015-5296", "CVE-2015-5299", "CVE-2015-7540");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"qod_type", value:"package");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release", re:"ssh/login/release=OracleLinux7");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Eero Volotinen");
+  script_family("Oracle Linux Local Security Checks");
+
+  exit(0);
 }
+
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
-release = get_kb_item("ssh/login/release");
+
+release = rpm_get_ssh_release();
+if(!release) exit(0);
+
 res = "";
-if(release == NULL)
-{
- exit(0);
-}
+
 if(release == "OracleLinux7")
 {
   if ((res = isrpmvuln(pkg:"libsmbclient", rpm:"libsmbclient~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libsmbclient-devel", rpm:"libsmbclient-devel~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libwbclient", rpm:"libwbclient~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libwbclient-devel", rpm:"libwbclient-devel~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba", rpm:"samba~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-client", rpm:"samba-client~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-client-libs", rpm:"samba-client-libs~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-common", rpm:"samba-common~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-common-libs", rpm:"samba-common-libs~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-common-tools", rpm:"samba-common-tools~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-dc", rpm:"samba-dc~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-dc-libs", rpm:"samba-dc-libs~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-devel", rpm:"samba-devel~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-libs", rpm:"samba-libs~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-pidl", rpm:"samba-pidl~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-python", rpm:"samba-python~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-test", rpm:"samba-test~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-test-devel", rpm:"samba-test-devel~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-test-libs", rpm:"samba-test-libs~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-vfs-glusterfs", rpm:"samba-vfs-glusterfs~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-winbind", rpm:"samba-winbind~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-winbind-clients", rpm:"samba-winbind-clients~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-winbind-krb5-locator", rpm:"samba-winbind-krb5-locator~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"samba-winbind-modules", rpm:"samba-winbind-modules~4.2.3~11.el7_2", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
 
 }
-if (__pkg_match) exit(99); #Not vulnerable
+if (__pkg_match) exit(99);
   exit(0);
 

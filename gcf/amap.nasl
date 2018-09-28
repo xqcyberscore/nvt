@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: amap.nasl 11529 2018-09-21 16:26:30Z cfischer $
+# $Id: amap.nasl 11665 2018-09-28 07:14:18Z cfischer $
 #
 # amap (NASL wrapper)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14663");
-  script_version("$Revision: 11529 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 18:26:30 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 11665 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -39,7 +39,7 @@ if(description)
   script_dependencies("toolcheck.nasl", "ping_host.nasl");
   script_mandatory_keys("Tools/Present/amap", "Tools/Present/amap/bin");
 
-  script_add_preference(name: "File containing machine readable results : ", type:"file", value:"");
+  script_add_preference(name:"File containing machine readable results : ", type:"file", value:"");
 
   script_add_preference(name:"Mode", type:"radio", value:"Map applications;Just grab banners;Port scan only");
   script_add_preference(name:"Quicker", type:"checkbox", value:"no");

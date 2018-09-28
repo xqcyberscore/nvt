@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-web-wapiti.nasl 11529 2018-09-21 16:26:30Z cfischer $
+# $Id: remote-web-wapiti.nasl 11665 2018-09-28 07:14:18Z cfischer $
 #
 # Assess web security with wapiti
 #
@@ -25,8 +25,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80110");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11529 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 18:26:30 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 11665 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-03-24 21:54:49 +0100 (Wed, 24 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("wapiti (NASL wrapper)");
@@ -50,7 +50,7 @@ Note that the scanner is using limited set of wapiti options.
 Therefore, for more complete web assessment, you should
 use standalone wapiti tool for deeper/customized checks.");
 
-  script_add_preference(name: 'Report broken wapiti installation', value: 'no', type: 'checkbox');
+  script_add_preference(name:'Report broken wapiti installation', value:'no', type:'checkbox');
 
  exit(0);
 }

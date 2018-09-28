@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ganglia_54699.nasl 11647 2018-09-27 09:31:07Z jschulte $
+# $Id: gb_ganglia_54699.nasl 11657 2018-09-27 13:32:51Z cfischer $
 #
 # Ganglia PHP Code Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2012-3448");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11647 $");
+  script_version("$Revision: 11657 $");
 
   script_name("Ganglia PHP Code Execution Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://ganglia.sourceforge.net/");
   script_xref(name:"URL", value:"http://console-cowboys.blogspot.de/2012/07/extending-your-ganglia-install-with.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:31:07 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 15:32:51 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-13 12:40:50 +0200 (Mon, 13 Aug 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -82,7 +82,7 @@ foreach pattern(keys(files)) {
   url = dir + '/graph.php?g=cpu_report,include+%27/' + file + '%27';
 
   if(http_vuln_check(port:port, url:url, pattern:pattern)) {
-    report = report_vuln_url(url:url);
+    report = report_vuln_url(port:port, url:url);
     security_message(data:report, port:port);
     exit(0);
   }

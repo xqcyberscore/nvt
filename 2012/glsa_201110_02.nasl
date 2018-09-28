@@ -1,7 +1,8 @@
-#
+###############################################################################
 # OpenVAS Vulnerability Test
-# $
-# Description: Auto generated from Gentoo's XML based advisory
+# $Id: glsa_201110_02.nasl 11671 2018-09-28 10:44:05Z cfischer $
+#
+# Auto generated from Gentoo's XML based advisory
 #
 # Authors:
 # Thomas Reinke <reinke@securityspace.com>
@@ -24,16 +25,30 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Multiple vulnerabilities in Wireshark allow for the remote
-    execution of arbitrary code, or a Denial of Service condition.";
-tag_solution = "All Wireshark users should upgrade to the latest version:
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.70765");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2010-2283", "CVE-2010-2284", "CVE-2010-2285", "CVE-2010-2286", "CVE-2010-2287", "CVE-2010-2992", "CVE-2010-2993", "CVE-2010-2994", "CVE-2010-2995", "CVE-2010-3133", "CVE-2010-3445", "CVE-2010-4300", "CVE-2010-4301", "CVE-2010-4538", "CVE-2011-0024", "CVE-2011-0444", "CVE-2011-0445", "CVE-2011-0538", "CVE-2011-0713", "CVE-2011-1138", "CVE-2011-1139", "CVE-2011-1140", "CVE-2011-1141", "CVE-2011-1142", "CVE-2011-1143", "CVE-2011-1590", "CVE-2011-1591", "CVE-2011-1592", "CVE-2011-1956", "CVE-2011-1957", "CVE-2011-1958", "CVE-2011-1959", "CVE-2011-2174", "CVE-2011-2175", "CVE-2011-2597", "CVE-2011-2698", "CVE-2011-3266", "CVE-2011-3360", "CVE-2011-3482", "CVE-2011-3483");
+  script_version("$Revision: 11671 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-12 10:04:38 -0500 (Sun, 12 Feb 2012)");
+  script_name("Gentoo Security Advisory GLSA 201110-02 (wireshark)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
+  script_family("Gentoo Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
+  script_tag(name:"insight", value:"Multiple vulnerabilities in Wireshark allow for the remote
+    execution of arbitrary code, or a Denial of Service condition.");
+  script_tag(name:"solution", value:"All Wireshark users should upgrade to the latest version:
 
       # emerge --sync
       # emerge --ask --oneshot --verbose '>=net-analyzer/wireshark-1.4.9'
-    
+
 
 http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201110-02
 http://bugs.gentoo.org/show_bug.cgi?id=323859
@@ -48,44 +63,18 @@ http://bugs.gentoo.org/show_bug.cgi?id=369683
 http://bugs.gentoo.org/show_bug.cgi?id=373961
 http://bugs.gentoo.org/show_bug.cgi?id=381551
 http://bugs.gentoo.org/show_bug.cgi?id=383823
-http://bugs.gentoo.org/show_bug.cgi?id=386179";
-tag_summary = "The remote host is missing updates announced in
-advisory GLSA 201110-02.";
+http://bugs.gentoo.org/show_bug.cgi?id=386179");
+  script_tag(name:"summary", value:"The remote host is missing updates announced in
+advisory GLSA 201110-02.");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-                                                                                
-                                                                                
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.70765");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_cve_id("CVE-2010-2283", "CVE-2010-2284", "CVE-2010-2285", "CVE-2010-2286", "CVE-2010-2287", "CVE-2010-2992", "CVE-2010-2993", "CVE-2010-2994", "CVE-2010-2995", "CVE-2010-3133", "CVE-2010-3445", "CVE-2010-4300", "CVE-2010-4301", "CVE-2010-4538", "CVE-2011-0024", "CVE-2011-0444", "CVE-2011-0445", "CVE-2011-0538", "CVE-2011-0713", "CVE-2011-1138", "CVE-2011-1139", "CVE-2011-1140", "CVE-2011-1141", "CVE-2011-1142", "CVE-2011-1143", "CVE-2011-1590", "CVE-2011-1591", "CVE-2011-1592", "CVE-2011-1956", "CVE-2011-1957", "CVE-2011-1958", "CVE-2011-1959", "CVE-2011-2174", "CVE-2011-2175", "CVE-2011-2597", "CVE-2011-2698", "CVE-2011-3266", "CVE-2011-3360", "CVE-2011-3482", "CVE-2011-3483");
- script_version("$Revision: 9352 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-02-12 10:04:38 -0500 (Sun, 12 Feb 2012)");
- script_name("Gentoo Security Advisory GLSA 201110-02 (wireshark)");
-
-
-
- script_category(ACT_GATHER_INFO);
-
- script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
- script_family("Gentoo Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("pkg-lib-gentoo.inc");
+include("revisions-lib.inc");
+
 res = "";
 report = "";
 if((res = ispkgvuln(pkg:"net-analyzer/wireshark", unaffected: make_list("ge 1.4.9"), vulnerable: make_list("lt 1.4.9"))) != NULL ) {
@@ -95,5 +84,5 @@ if((res = ispkgvuln(pkg:"net-analyzer/wireshark", unaffected: make_list("ge 1.4.
 if(report != "") {
     security_message(data:report);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+    exit(99);
 }

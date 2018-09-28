@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_cert_issuer.nasl 8144 2017-12-15 13:19:55Z cfischer $
+# $Id: gb_policy_cert_issuer.nasl 11659 2018-09-27 15:16:14Z cfischer $
 #
 # SSL/TLS: Cert Issuer Policy Check
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140038");
-  script_version("$Revision: 8144 $");
+  script_version("$Revision: 11659 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 17:16:14 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-01 09:34:04 +0100 (Tue, 01 Nov 2016)");
   script_name("SSL/TLS: Cert Issuer Policy Check");
   script_category(ACT_GATHER_INFO);
@@ -40,7 +40,7 @@ if(description)
   script_mandatory_keys("ssl_tls/port");
 
   script_add_preference(name:"Perform check:", type:"checkbox", value:"no");
-  script_add_preference(name:"Certificate Issuer", value: "", type: "entry");
+  script_add_preference(name:"Certificate Issuer", value:"", type:"entry");
   script_add_preference(name:"Report passed tests:", type:"checkbox", value:"no");
 
   script_tag(name:"summary", value:"This script checks if the SSL/TLS certificate is signed by the given issuer.");

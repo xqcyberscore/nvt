@@ -25,8 +25,30 @@
 # between non-installed packages and packages installed but not vulnerable.
 __pkg_match = FALSE;
 
-# Example call: isrpmvuln(pkg:"gnutls-utils", rpm:"gnutls-utils~1.4.1~3", rls:"FC6")
+# Global keys to avoid that we're repeatedly asking redis for something we already know
+global_var __rpm_ssh_release, __rpm_ssh_pkgs;
 
+# @brief returns the current release string of the target saved within the KB (ssh/login/release).
+#
+# @return a string containing the current release of the target or an empty string if no release
+#         string exists in the KB.
+#
+# @todo Maybe move into a spearate (new) include if other pkg-lib-*.inc includes needs this as well.
+#
+function rpm_get_ssh_release() {
+
+  local_var rls;
+
+  if( ! isnull( __rpm_ssh_release ) ) {
+    rls = string( __rpm_ssh_release );
+  } else {
+    rls = string( get_kb_item( "ssh/login/release" ) );
+    __rpm_ssh_release = rls;
+  }
+  return rls;
+}
+
+# Example call: isrpmvuln(pkg:"gnutls-utils", rpm:"gnutls-utils~1.4.1~3", rls:"FC6")
 function isrpmvuln(pkg, rpm, rls) {
     local_var a, b, kbrls, pat, matches, checkshorta, checkshortb, rc, norm_pkg, report;
     # Check that we have the data for this release.

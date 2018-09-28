@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3575_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_3575_1.nasl 11661 2018-09-28 03:58:36Z ckuersteiner $
 #
 # Ubuntu Update for qemu USN-3575-1
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843452");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11661 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 05:58:36 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-02-21 08:46:41 +0100 (Wed, 21 Feb 2018)");
   script_cve_id("CVE-2017-11334", "CVE-2017-13672", "CVE-2017-14167", "CVE-2017-15038",
                 "CVE-2017-15118", "CVE-2017-15119", "CVE-2017-15124", "CVE-2017-15268",
                 "CVE-2017-15289", "CVE-2017-16845", "CVE-2017-17381", "CVE-2017-18043",
                 "CVE-2018-5683");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for qemu USN-3575-1");
   script_tag(name:"summary", value:"Check the version of qemu");

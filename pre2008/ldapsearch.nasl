@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ldapsearch.nasl 8155 2017-12-18 08:24:14Z cfischer $
+# $Id: ldapsearch.nasl 11663 2018-09-28 06:18:46Z cfischer $
 #
 # LDAP information extraction with ldapsearch
 #
@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.91984");
-  script_version("$Revision: 8155 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 09:24:14 +0100 (Mon, 18 Dec 2017) $");
+  script_version("$Revision: 11663 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 08:18:46 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2006-04-23 14:49:44 +0200 (Sun, 23 Apr 2006)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -104,7 +104,7 @@ function getdc( res ) {
   dc = eregmatch( string:r, pattern:patt, icase:TRUE );
   if( dc ) {
     value[i] = dc[n+1];
-    #get the first value of DC=... or dc=... and put it into our array for storage
+    # nb: first value of DC=... or dc=... put into our array for storage
     i++;
     n++;
 
@@ -116,7 +116,7 @@ function getdc( res ) {
 
         dc = eregmatch( string:r, pattern:patt, icase:TRUE );
         value[i] = dc[n];
-        #get the next value of dc=... or DC=...
+        # nb: the next value of dc=... or DC=...
         i++;
         if( ! dc[n] ) exit( 0 );
         n++;
@@ -169,7 +169,7 @@ if( ldapv3 ) {
     exit( 0 );
   }
 
-  # Try to guess the DC/DN from the hostname
+  # nb: Try to guess the DC/DN from the hostname
   # If we get a parly match we're getting a matchedDN: back which we can use later
   host_dn = split( host, sep:".", keep:FALSE );
   if( host_dn ) {
@@ -195,7 +195,7 @@ if( ldapv3 ) {
       log_message( port:port, data:report );
       exit( 0 );
     } else if( "matchedDN:" >< res ) {
-      # get the base dn from the matchedDN: response
+      # nb: the base dn from the matchedDN: response
       base_dn = egrep( string:res, pattern:'^matchedDN: (.*)$', icase:TRUE );
       base_dn = ereg_replace( string:base_dn, pattern:"matchedDN: ", replace:"" );
       base_dn = chomp( base_dn );
@@ -233,7 +233,7 @@ if( ldapv3 ) {
     #this gets the dc values so we can use them for a ldapsearch down the branch..
     val = getdc( res:res );
 
-    #get the first two dc values to pass it to LDAPsearch.
+    # nb: the first two dc values to pass it to LDAPsearch.
     value = "dc=" + val[0] + ",dc=" + val[1];
 
     #note that for deeper searches we would want use the other values in the array.

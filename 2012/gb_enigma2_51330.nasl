@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_enigma2_51330.nasl 11647 2018-09-27 09:31:07Z jschulte $
+# $Id: gb_enigma2_51330.nasl 11657 2018-09-27 13:32:51Z cfischer $
 #
 # Enigma2 'file' Parameter Information Disclosure Vulnerability
 #
@@ -29,7 +29,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103381");
   script_bugtraq_id(51330);
-  script_version("$Revision: 11647 $");
+  script_version("$Revision: 11657 $");
   script_cve_id("CVE-2012-1024", "CVE-2012-1025");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51330");
   script_xref(name:"URL", value:"http://dream.reichholf.net/wiki/Enigma2");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:31:07 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 15:32:51 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-10 10:48:24 +0100 (Tue, 10 Jan 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -83,7 +83,7 @@ if(http_vuln_check(port:port, url:url,pattern:"Enigma2 Movielist")) {
     url = "/file?file=/" + file;
 
     if(http_vuln_check(port:port, url:url,pattern:pattern)) {
-      report = report_vuln_url(url:url);
+      report = report_vuln_url(port:port, url:url);
       security_message(data:report, port:port);
       exit(0);
     }

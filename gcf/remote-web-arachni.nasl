@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-web-arachni.nasl 11529 2018-09-21 16:26:30Z cfischer $
+# $Id: remote-web-arachni.nasl 11665 2018-09-28 07:14:18Z cfischer $
 #
 # Assess web security with arachni
 #
@@ -25,8 +25,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.110001");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11529 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 18:26:30 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 11665 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-02-02 13:26:27 +0100 (Wed, 02 Feb 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("arachni (NASL wrapper)");
@@ -34,19 +34,19 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2011 Michelangelo Sidagni");
   script_family("Web application abuses");
-  script_add_preference(name: "Modules", type:"radio",value:"All;Audit;Recon");
-  script_add_preference(name: "Concurrent Request Limit", type: "entry", value: "60");
-  script_add_preference(name: "User Agent", type: "entry", value: "arachni");
-  script_add_preference(name: "Authorized by", type: "entry", value: "arachni");
-  script_add_preference(name: "Exclude URLs", type: "entry", value: "");
-  script_add_preference(name: "Include URLs", type: "entry", value: "");
-  script_add_preference(name: "Follow Subdomains", type:"checkbox", value: "no");
-  script_add_preference(name: "Obey robot.txt", type:"checkbox", value: "no");
-  script_add_preference(name: "Audit Headers", type:"checkbox", value: "no");
-  script_add_preference(name: "Autologin Login URL", type: "entry", value: "http://url/loginpage");
-  script_add_preference(name: "Autologin Login Parameters", type: "entry", value: "parameter-username=user&parameter-password=pass");
-  script_add_preference(name: "Seed URL", type: "entry", value: "");
-  script_add_preference(name: 'Report broken arachni installation', value: 'no', type: 'checkbox');
+  script_add_preference(name:"Modules", type:"radio", value:"All;Audit;Recon");
+  script_add_preference(name:"Concurrent Request Limit", type:"entry", value:"60");
+  script_add_preference(name:"User Agent", type:"entry", value:"arachni");
+  script_add_preference(name:"Authorized by", type:"entry", value:"arachni");
+  script_add_preference(name:"Exclude URLs", type:"entry", value:"");
+  script_add_preference(name:"Include URLs", type:"entry", value:"");
+  script_add_preference(name:"Follow Subdomains", type:"checkbox", value:"no");
+  script_add_preference(name:"Obey robot.txt", type:"checkbox", value:"no");
+  script_add_preference(name:"Audit Headers", type:"checkbox", value:"no");
+  script_add_preference(name:"Autologin Login URL", type:"entry", value:"http://url/loginpage");
+  script_add_preference(name:"Autologin Login Parameters", type:"entry", value:"parameter-username=user&parameter-password=pass");
+  script_add_preference(name:"Seed URL", type:"entry", value:"");
+  script_add_preference(name:'Report broken arachni installation', value:'no', type:'checkbox');
   script_dependencies("find_service.nasl", "httpver.nasl", "http_login.nasl", "no404.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");

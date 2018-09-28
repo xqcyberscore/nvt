@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_polycom_products_52301.nasl 11647 2018-09-27 09:31:07Z jschulte $
+# $Id: gb_polycom_products_52301.nasl 11657 2018-09-27 13:32:51Z cfischer $
 #
 # Polycom Products Directory Traversal and Command Injection Vulnerabilities
 #
@@ -29,13 +29,13 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103442");
   script_bugtraq_id(52301);
-  script_version("$Revision: 11647 $");
+  script_version("$Revision: 11657 $");
 
   script_name("Polycom Products Directory Traversal and Command Injection Vulnerabilities");
 
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:31:07 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 15:32:51 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-06 10:45:23 +0100 (Tue, 06 Mar 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -82,7 +82,7 @@ foreach pattern(keys(files)) {
   url = string("/a_getlog.cgi?name=../../../" + file);
 
   if(http_vuln_check(port:port, url:url,pattern:pattern)) {
-    report = report_vuln_url(url:url);
+    report = report_vuln_url(port:port, url:url);
     security_message(data:report, port:port);
     exit(0);
   }

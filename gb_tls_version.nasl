@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tls_version.nasl 9301 2018-04-04 12:02:46Z cfischer $
+# $Id: gb_tls_version.nasl 11665 2018-09-28 07:14:18Z cfischer $
 #
 # SSL/TLS: Version Detection Report
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103823");
-  script_version("$Revision: 9301 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 14:02:46 +0200 (Wed, 04 Apr 2018) $");
+  script_version("$Revision: 11665 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-29 12:36:43 +0100 (Tue, 29 Oct 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("secpod_ssl_ciphers.nasl");
   script_mandatory_keys("ssl_tls/port");
-  script_add_preference(name:"Report TLS version", type:"checkbox", value: "no");
+  script_add_preference(name:"Report TLS version", type:"checkbox", value:"no");
 
   script_tag(name:"summary", value:"This script reports the detected SSL/TLS versions.");
 

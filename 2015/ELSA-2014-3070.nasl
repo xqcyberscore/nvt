@@ -1,9 +1,11 @@
-# OpenVAS Vulnerability Test 
-# Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-3070.nasl 6559 2017-07-06 11:57:32Z cfischer $
- 
-# Authors: 
-# Eero Volotinen <eero.volotinen@solinor.com> 
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: ELSA-2014-3070.nasl 11688 2018-09-28 13:36:28Z cfischer $
+#
+# Oracle Linux Local Check
+#
+# Authors:
+# Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://solinor.com
@@ -20,67 +22,70 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
+
 if(description)
- {
-script_oid("1.3.6.1.4.1.25623.1.0.123328");
-script_version("$Revision: 6559 $");
-script_tag(name:"creation_date", value:"2015-10-06 14:02:20 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:57:32 +0200 (Thu, 06 Jul 2017) $");
-script_name("Oracle Linux Local Check: ELSA-2014-3070");
-script_tag(name: "insight", value: "ELSA-2014-3070 - Unbreakable Enterprise kernel security and bug fix update - kernel-uek[3.8.13-44]- net: Use netlink_ns_capable to verify the permisions of netlink messages (Eric W. Biederman) [Orabug: 19404229] {CVE-2014-0181}- net: Add variants of capable for use on netlink messages (Eric W. Biederman) [Orabug: 19404229] - net: Add variants of capable for use on on sockets (Eric W. Biederman) [Orabug: 19404229] - netlink: Rename netlink_capable netlink_allowed (Eric W. Biederman) [Orabug: 19404229] - sctp: Fix sk_ack_backlog wrap-around problem (Xufeng Zhang) [Orabug: 19404238] {CVE-2014-4667}- Revert 'xen/fb: allow xenfb initialization for hvm guests' (Vaughan Cao) [Orabug: 19320529][3.8.13-43]- init: fix in-place parameter modification regression (Krzysztof Mazur) [Orabug: 18954967] - drivers: scsi: storvsc: Correctly handle TEST_UNIT_READY failure (K. Y. Srinivasan) [Orabug: 19280065] - drivers: scsi: storvsc: Set srb_flags in all cases (K. Y. Srinivasan) [Orabug: 19280065] - Drivers: scsi: storvsc: Implement a timedout handler (K. Y. Srinivasan) [Orabug: 19280065] - Drivers: scsi: storvsc: Fix a bug in handling VMBUS protocol version (K. Y. Srinivasan) [Orabug: 19280065] - Drivers: scsi: storvsc: Filter commands based on the storage protocol version (K. Y. Srinivasan) [Orabug: 19280065] - Drivers: scsi: storvsc: Set cmd_per_lun to reflect value supported by the Host (K. Y. Srinivasan) [Orabug: 19280065] - Drivers: scsi: storvsc: Change the limits to reflect the values on the host (K. Y. Srinivasan) [Orabug: 19280065][3.8.13-42]- filter: prevent nla extensions to peek beyond the end of the message (Mathias Krause) [Orabug: 19315780] {CVE-2014-3144} {CVE-2014-3145}[3.8.13-41]- rds: Lost locking in loop connection freeing (Pavel Emelyanov) [Orabug: 19124446] - ocfs2/o2net: incorrect to terminate accepting connections loop upon rejecting an invalid one (Tariq Saeed) [Orabug: 19296823] - xen/pciback: Don't deadlock when unbinding. (Konrad Rzeszutek Wilk) [Orabug: 19296592] - PCI: Split out pci_dev lock/unlock and save/restore (Alex Williamson) [Orabug: 19296592][3.8.13-40]- l2tp: fix an unprivileged user to kernel privilege escalation (Sasha Levin) [Orabug: 19228689] {CVE-2014-4943} {CVE-2014-4943}- ptrace,x86: force IRET path after a ptrace_stop() (Tejun Heo) [Orabug: 19222017] {CVE-2014-4699}- mpt3sas: Rework the MSI-X code to work on systems with many processors (Martin K. Petersen) [Orabug: 18182490] - mpt2sas: Rework the MSI-X code to work on systems with many processors (Martin K. Petersen) [Orabug: 18182490] - mpt3sas: Bump mpt3sas driver version to 04.100.00.00 (Reddy, Sreekanth) [Orabug: 19015667] - mpt3sas: Added Reply Descriptor Post Queue (RDPQ) Array support (Reddy, Sreekanth) [Orabug: 19015667] - mpt3sas: Bump mpt3sas driver version to 03.100.00.00 (Reddy, Sreekanth) [Orabug: 19015667] - mpt3sas: Added OEM branding Strings (Reddy, Sreekanth) [Orabug: 19015667] - mpt3sas: MPI2.5 Rev H (2.5.3) specifications (Reddy, Sreekanth) [Orabug: 19015667] - mpt3sas: Copyright in driver sources is updated for year the 2014 (Reddy, Sreekanth) [Orabug: 19015667] - mpt3sas: Clear PFA Status on SGPIO when PFA Drive is Removed or Replaced (Reddy, Sreekanth) [Orabug: 19015667] - mpt3sas: MPI2.5 Rev G (2.5.2) specifications (Reddy, Sreekanth) [Orabug: 19015667] - mpt3sas: Remove use of DEF_SCSI_QCMD (Matthew Wilcox) [Orabug: 19015667] - mpt3sas: Remove uses of serial_number (Matthew Wilcox) [Orabug: 19015667] - Allow MPT Fusion SAS 3.0 driver to be built into the kernel (Greg Kroah-Hartman) [Orabug: 19015667] - mpt3sas: Remove phys on topology change (Jan Vesely) [Orabug: 19015667] - mpt3sas: Added a driver module parameter max_msix_vectors (Sreekanth Reddy) [Orabug: 19015667] - mpt3sas: fix cleanup on controller resource mapping failure (Joe Lawrence) [Orabug: 19015667] - Revert 'mpt3sas: update from v02.100.00.00 to v3.00.00.00' (Martin K. Petersen) [Orabug: 19015667] - Revert 'mpt3sas: Rework the MSI-X code to work on systems with many processors' (Martin K. Petersen) [Orabug: 19015667] - mpt2sas: Added module parameter 'unblock_io' to unblock IO's during disk addition (Reddy, Sreekanth) [Orabug: 19015667] - mpt2sas: Bump mpt2sas driver version to 18.100.00.00 (Reddy, Sreekanth) [Orabug: 19015667] - mpt2sas: Get IOC_FACTS information using handshake protocol only after HBA card gets into READY or Operational state (Reddy, Sreekanth) [Orabug: 19015667] - mpt2sas: Added Reply Descriptor Post Queue (RDPQ) Array support (Reddy, Sreekanth) [Orabug: 19015667] - mpt2sas: For >2TB volumes, DirectDrive support sends IO's with LBA bit 31 to IR FW instead of DirectDrive (Reddy, Sreekanth) [Orabug: 19015667] - mpt2sas: Copyright in driver sources is updated for year the 2014 (Reddy, Sreekanth) [Orabug: 19015667] - mpt2sas: Clear PFA Status on SGPIO when PFA Drive is Removed or Replaced (Reddy, Sreekanth) [Orabug: 19015667] - mpt2sas: Bump mpt2sas driver version to 17.100.00.00 (Reddy, Sreekanth) [Orabug: 19015667] - mpt2sas: MPI2 Rev Y (2.00.17) and Rev Z (2.00.18) specifications (Reddy, Sreekanth) [Orabug: 19015667] - mpt2sas: Added driver module parameter max_msix_vectors (Reddy, Sreekanth) [Orabug: 19015667] - mpt2sas: Add free smids to the head, not tail of list (Matthew Wilcox) [Orabug: 19015667] - mpt2sas: Remove use of DEF_SCSI_QCMD (Matthew Wilcox) [Orabug: 19015667] - mpt2sas: Remove uses of serial_number (Matthew Wilcox) [Orabug: 19015667] - mpt2sas: Don't disable device twice at suspend. (Tyler Stachecki) [Orabug: 19015667] - mpt2sas: Remove phys on topology change. (Jan Vesely) [Orabug: 19015667] - mpt2sas: Bump driver version to v16.100.00.00 (Sreekanth Reddy) [Orabug: 19015667] - mpt2sas: Fix for kernel panic when driver loads with HBA connected to non LUN 0 configured expander (Sreekanth Reddy) [Orabug: 19015667] - mpt2sas: when Async scanning is enabled then while scanning, devices are removed but their transport layer entries are not removed (Sreekanth Reddy) [Orabug: 19015667] - mpt2sas: Infinite loop can occur if MPI2_IOCSTATUS_CONFIG_INVALID_PAGE is not returned (Sreekanth Reddy) [Orabug: 19015667] - mpt2sas: The copyright in driver sources is updated for the year 2013 (Sreekanth Reddy) [Orabug: 19015667] - mpt2sas: MPI2 Rev X (2.00.16) specifications (Sreekanth Reddy) [Orabug: 19015667] - mpt2sas: Change in MPI2_RAID_ACTION_SYSTEM_SHUTDOWN_INITIATED notification methodology (Sreekanth Reddy) [Orabug: 19015667] - mpt2sas: Null pointer deference possibility in mpt2sas_ctl_event_callback function (Sreekanth Reddy) [Orabug: 19015667] - mpt2sas: fix cleanup on controller resource mapping failure (Joe Lawrence) [Orabug: 19015667] - mpt2sas: fix for unused variable 'event_data' warning (Reddy, Sreekanth) [Orabug: 19015667] - mpt2sas: Bump driver vesion to v15.100.00.00 (Sreekanth Reddy) [Orabug: 19015667] - mpt2sas: Calulate the Reply post queue depth calculation as per the MPI spec (Sreekanth Reddy) [Orabug: 19015667] - mpt2sas: fix firmware failure with wrong task attribute (Sreekanth Reddy) [Orabug: 19015667] - mpt2sas: Fix for device scan following host reset could get stuck in a infinite loop (Sreekanth Reddy) [Orabug: 19015667] - mpt2sas: Update the timing requirements for issuing a Hard Reset (Sreekanth Reddy) [Orabug: 19015667] - mpt2sas: MPI2 Rev W (2.00.15) specification (Sreekanth Reddy) [Orabug: 19015667] - mpt2sas: Fix for issue Missing delay not getting set during system bootup (Reddy, Sreekanth) [Orabug: 19015667] - mpt2sas: Add support for OEM specific controller (Sreekanth Reddy) [Orabug: 19015667] - mpt2sas: fix for driver fails EEH, recovery from injected pci bus error (Sreekanth Reddy) [Orabug: 19015667] - Revert 'mpt2sas: update to LSI version 16.05.01.00' (Martin K. Petersen) [Orabug: 19015667] - Revert 'mpt2sas: update from 16.05.01.00 to 17.00.00.00' (Martin K. Petersen) [Orabug: 19015667] - Revert 'mpt2sas: Rework the MSI-X code to work on systems with many processors' (Martin K. Petersen) [Orabug: 19015667] - megaraid_sas: Version and Changelog update (Adam Radford) [Orabug: 19015667] - megaraid_sas: Fix LD/VF affiliation parsing (Adam Radford) [Orabug: 19015667] - megaraid_sas: Remove unused variables in megasas_instance (Adam Radford) [Orabug: 19015667] - megaraid_sas: Fix reset_mutex leak (Adam Radford) [Orabug: 19015667] - megaraid_sas: fix a small problem when reading state value from hw (Tomas Henzl) [Orabug: 19015667] - megaraid_sas: Version and Changelog update (Adam Radford) [Orabug: 19015667] - megaraid_sas: Add Dell PowerEdge VRTX SR-IOV VF support (Adam Radford) [Orabug: 19015667] - megaraid_sas: Return leaked MPT frames to MPT frame pool (Adam Radford) [Orabug: 19015667] - megaraid_sas: Fix megasas_ioc_init_fusion (Adam Radford) [Orabug: 19015667] - megaraid_sas: Load correct raid context timeout (Adam Radford) [Orabug: 19015667] - megaraid_sas: Performance boost fixes (Sumit.Saxena@lsi.com) [Orabug: 19015667] - megaraid_sas: Set 32-bit DMA mask (Sumit.Saxena@lsi.com) [Orabug: 19015667] - megaraid_sas: Big endian code related fixes (Sumit.Saxena@lsi.com) [Orabug: 19015667] - megaraid_sas: Don't wait forever for non-IOCTL DCMDs (Sumit.Saxena@lsi.com) [Orabug: 19015667] - megaraid_sas: check return value for megasas_get_pd_list() (Hannes Reinecke) [Orabug: 19015667] - megaraid_sas_fusion: Return correct error value in megasas_get_ld_map_info() (Hannes Reinecke) [Orabug: 19015667] - megaraid_sas_fusion: correctly pass queue info pointer (Hannes Reinecke) [Orabug: 19015667] - megaraid: missing bounds check in mimd_to_kioc() (Dan Carpenter) [Orabug: 19015667] - megaraid: Use resource_size_t for PCI resources, not long (Ben Collins) [Orabug: 19015667][3.8.13-39]- PCI: Work around Ivytown NTB BAR size issue (Jon Mason) [Orabug: 18127862] - cgroup: make cgroup_path() not print double slashes (Tejun Heo) [Orabug: 18510637] - xen: Introduce 'xen_nopv' to disable PV extensions for HVM guests. (Konrad Rzeszutek Wilk) [Orabug: 19033747] - spec: reenable pesign module signing (Guangyu Sun) [Orabug: 19065003] - [ocfs2]: refcount: take rw_lock in ocfs2_reflink (Wengang Wang) [Orabug: 19154247] - cifs: bugfix for unreclaimed writeback pages in cifs_writev_requeue() (Ouyang Maochun) [Orabug: 18447168] - xfs: add CRCs to attr leaf blocks (Dave Chinner) [Orabug: 18504299] - xfs: add CRCs to dir2/da node blocks (Dave Chinner) [Orabug: 18504299] - xfs: shortform directory offsets change for dir3 format (Dave Chinner) [Orabug: 18504299] - xfs: add CRC checking to dir2 leaf blocks (Dave Chinner) [Orabug: 18504299] - xfs: add CRC checking to dir2 data blocks (Dave Chinner) [Orabug: 18504299] - xfs: add CRC checking to dir2 free blocks (Dave Chinner) [Orabug: 18504299] - xfs: add CRC checks to block format directory blocks (Dave Chinner) [Orabug: 18504299] - xfs: add CRC checks to remote symlinks (Dave Chinner) [Orabug: 18504299] - xfs: split out symlink code into it's own file. (Dave Chinner) [Orabug: 18504299] - xfs: add version 3 inode format with CRCs (Christoph Hellwig) [Orabug: 18504299] - xfs: add CRC checks for quota blocks (Christoph Hellwig) [Orabug: 18504299] - xfs: add CRC checks to the AGI (Dave Chinner) [Orabug: 18504299] - xfs: add CRC checks to the AGFL (Christoph Hellwig) [Orabug: 18504299] - xfs: add CRC checks to the AGF (Dave Chinner) [Orabug: 18504299] - xfs: add support for large btree blocks (Christoph Hellwig) [Orabug: 18504299] - xfs: xfs_iomap_prealloc_size() tracepoint (Brian Foster) [Orabug: 18504299] - xfs: add quota-driven speculative preallocation throttling (Brian Foster) [Orabug: 18504299] - xfs: xfs_dquot prealloc throttling watermarks and low free space (Brian Foster) [Orabug: 18504299] - xfs: pass xfs_dquot to xfs_qm_adjust_dqlimits() instead of xfs_disk_dquot_t (Brian Foster) [Orabug: 18504299] - xfs: push rounddown_pow_of_two() to after prealloc throttle (Brian Foster) [Orabug: 18504299] - xfs: reorganize xfs_iomap_prealloc_size to remove indentation (Brian Foster) [Orabug: 18504299] - xfs: take inode version into account in XFS_LITINO (Christoph Hellwig) [Orabug: 18504299] - xfs: rearrange some code in xfs_bmap for better locality (Dave Chinner) [Orabug: 18504299] - xfs: don't verify buffers after IO errors (Dave Chinner) [Orabug: 18504299] - xfs: limit speculative prealloc size on sparse files (Dave Chinner) [Orabug: 18504299] - xfs: memory barrier before wake_up_bit() (Alex Elder) [Orabug: 18504299] - xfs: refactor space log reservation for XFS_TRANS_ATTR_SET (Jeff Liu) [Orabug: 18504299] - xfs: make use of XFS_SB_LOG_RES() at xfs_fs_log_dummy() (Jeff Liu) [Orabug: 18504299] - xfs: make use of XFS_SB_LOG_RES() at xfs_mount_log_sb() (Jeff Liu) [Orabug: 18504299] - xfs: make use of XFS_SB_LOG_RES() at xfs_log_sbcount() (Jeff Liu) [Orabug: 18504299] - xfs: introduce XFS_SB_LOG_RES() for transactions that modify sb on disk (Jeff Liu) [Orabug: 18504299] - xfs: calculate XFS_TRANS_QM_QUOTAOFF_END space log reservation at mount time (Jeff Liu) [Orabug: 18504299] - xfs: calculate XFS_TRANS_QM_QUOTAOFF space log reservation at mount time (Jeff Liu) [Orabug: 18504299] - xfs: calculate XFS_TRANS_QM_DQALLOC space log reservation at mount time (Jeff Liu) [Orabug: 18504299] - xfs: calcuate XFS_TRANS_QM_SETQLIM space log reservation at mount time (Jeff Liu) [Orabug: 18504299] - xfs: calculate xfs_qm_write_sb_changes() space log reservation at mount time (Jeff Liu) [Orabug: 18504299] - xfs: calculate XFS_TRANS_QM_SBCHANGE space log reservation at mount time (Jeff Liu) [Orabug: 18504299] - xfs: make use of xfs_calc_buf_res() in xfs_trans.c (Jeff Liu) [Orabug: 18504299] - xfs: add a helper to figure out the space log reservation per item (Jeff Liu) [Orabug: 18504299] - xfs: fix fs/xfs/xfs_log.c:1740:39: error: 'B_TRUE' undeclared (Ben Myers) [Orabug: 18504299] - xfs: Remove boolean_t typedef completely. (Thiago Farina) [Orabug: 18504299] (Abhijit Pawar) [Orabug: 18504299] - xfs: don't zero structure members after a memset(0) (Eric Sandeen) [Orabug: 18504299] - xfs remove the XFS_TRANS_DEBUG routines (Mark Tinguely) [Orabug: 18504299] - spec: list linux-firmware as a dependency (Guangyu Sun) [Orabug: 18539100] - kbuild/ctf: Fix out-of-tree module build when CONFIG_CTF=n. (Nick Alcock) [Orabug: 19078361] - dtrace: support order-only-prerequisites for sdtstub generation (Kris Van Hees) [Orabug: 18906444] - qlcnic: Add SRIOV helper function to determine if VFs are assigned to guest (Vaughan Cao) [Orabug: 19167877] - qlcnic: make Kconfig changes (Vaughan Cao) [Orabug: 19167877] - qlcnic: sysfs interface for PCI BAR access (Sony Chacko) [Orabug: 19167877] - qlcnic: Update version to 5.3.59 (Rajesh Borundia) [Orabug: 19167877] - qlcnic: Collect firmware dump using DMA on 82xx adapters (Shahed Shaikh) [Orabug: 19167877] - qlcnic: Add mac learning support to SR-IOV VF. (Rajesh Borundia) [Orabug: 19167877] - qlcnic: Add support to process commands in atomic context (Rajesh Borundia) [Orabug: 19167877] - qlcnic: Allow SR-IOV VF probe in hypervisor. (Rajesh Borundia) [Orabug: 19167877] - qlcnic: Set real_num_{tx or rx}_queues properly (Shahed Shaikh) [Orabug: 19167877] - qlcnic: Fix panic while dumping TX queues on TX timeout (Manish Chopra) [Orabug: 19167877] - qlcnic: Update version to 5.3.58 (Jitendra Kalsaria) [Orabug: 19167877] - qlcnic: Limit vNIC support in legacy interrupt mode (Sucheta Chakraborty) [Orabug: 19167877] - qlcnic: Add driver logs in error path. (Sucheta Chakraborty) [Orabug: 19167877] - qlcnic: Allow setting TX interrupt coalescing parameters from VF. (Sucheta Chakraborty) [Orabug: 19167877] - qlcnic: Add hwmon-sysfs interface to export board temperature. (Harish Patil) [Orabug: 19167877] - qlcnic: Optimize MAC learning code (Shahed Shaikh) [Orabug: 19167877] - qlcnic: Fix memory leak. (Rajesh Borundia) [Orabug: 19167877] - qlcnic: Reset firmware API lock at driver load time (Sony Chacko) [Orabug: 19167877] - qlcnic: Fix MSI-X initialization code (Alexander Gordeev) [Orabug: 19167877] - qlcnic: Do not disable SR-IOV when VFs are assigned to VMs (Manish Chopra) [Orabug: 19167877] - qlcnic: Fix QLogic application/driver interface for virtual NIC configuration (Jitendra Kalsaria) [Orabug: 19167877] - qlcnic: Fix PVID configuration on eSwitch port. (Jitendra Kalsaria) [Orabug: 19167877] - qlcnic: Fix max ring count calculation (Shahed Shaikh) [Orabug: 19167877] - qlcnic: Fix to send INIT_NIC_FUNC as first mailbox. (Sucheta Chakraborty) [Orabug: 19167877] - qlcnic: Fix panic due to uninitialzed delayed_work struct in use. (Sucheta Chakraborty) [Orabug: 19167877] - net: qlcnic: include irq.h for irq definitions (Josh Boyer) [Orabug: 19167877] - qlcnic: Remove casts of pointer to same type (Joe Perches) [Orabug: 19167877] - qlcnic: Update version to 5.3.57 (Shahed Shaikh) [Orabug: 19167877] - qlcnic: dcb: a couple off by one bugs (Dan Carpenter) [Orabug: 19167877] - qlcnic: Fix number of rings when we fall back from msix to legacy. (Rajesh Borundia) [Orabug: 19167877] - qlcnic: Allow any VLAN to be configured from VF. (Sucheta Chakraborty) [Orabug: 19167877] - qlcnic: Fix usage of use_msi and use_msi_x module parameters (Shahed Shaikh) [Orabug: 19167877] - qlcnic: Fix function return error check (Shahed Shaikh) [Orabug: 19167877] - qlcnic: Update version to 5.3.56 (Shahed Shaikh) [Orabug: 19167877] - qlcnic: Enhance semaphore lock access failure error message (Harish Patil) [Orabug: 19167877] - qlcnic: Allow vlan0 traffic (Rajesh Borundia) [Orabug: 19167877] - qlcnic: Enhance driver message in failed state. (Sucheta Chakraborty) [Orabug: 19167877] - qlcnic: Updates to QLogic application/driver interface for virtual NIC configuration (Jitendra Kalsaria) [Orabug: 19167877] - qlcnic: Re-factor firmware minidump template header handling (Shahed Shaikh) [Orabug: 19167877] - qlcnic: Cleanup qlcnic_enable_msix() return values (Alexander Gordeev) [Orabug: 19167877] - qlcnic: Reverse patches till 5.3.55. (Sucheta Chakraborty) [Orabug: 19167877] - qla4xxx: Update driver version to v5.04.00.06.06.02-uek3 (Tej Parkash) [Orabug: 19144350] - qla4xxx: Use kmemdup instead of kmalloc + memcpy (Benoit Taine) [Orabug: 19144350] - qla4xxx: Fix smatch warning in func qla4xxx_conn_get_param (Adheer Chandravanshi) [Orabug: 19144350] - qla4xxx: Fix smatch warning in func qla4xxx_get_ep_param (Adheer Chandravanshi) [Orabug: 19144350] - qla4xxx: Fix memory leak for ha->saved_acb (Nilesh Javali) [Orabug: 19144350] - qla4xxx: Export sysfs DDBs from DPC handler (Nilesh Javali) [Orabug: 19144350] - qla4xxx: Disable INTx interrupt for ISP82XX (Tej Parkash) [Orabug: 19144350] - hpsa: add previously missing pci_device_id (Vaughan Cao) [Orabug: 19137821] - hpsa: fix handling of hpsa_volume_offline return value (Stephen M. Cameron) [Orabug: 19137821] - hpsa: return -ENOMEM not -1 on kzalloc failure in hpsa_get_device_id (Stephen M. Cameron) [Orabug: 19137821] - hpsa: remove messages about volume status VPD inquiry page not supported (Stephen M. Cameron) [Orabug: 19137821] - hpsa: report check condition even if no sense data present for ioaccel2 mode (Stephen M. Cameron) [Orabug: 19137821] - hpsa: remove bad unlikely annotation from device list updating code (Stephen M. Cameron) [Orabug: 19137821] - hpsa: fix event filtering to prevent excessive rescans with old firmware (Stephen M. Cameron) [Orabug: 19137821] - hpsa: kill annoying messages about SSD Smart Path retries (Stephen M. Cameron) [Orabug: 19137821] - hpsa: define extended_report_lun_entry data structure (Stephen M. Cameron) [Orabug: 19137821] - hpsa: Rearrange start_io to avoid one unlock/lock sequence in main io path (Stephen M. Cameron) [Orabug: 19137821] - hpsa: avoid unnecessary readl on every command submission (Stephen M. Cameron) [Orabug: 19137821] - hpsa: use per-cpu variable for lockup_detected (Stephen M. Cameron) [Orabug: 19137821] - hpsa: set irq affinity hints to route MSI-X vectors across CPUs (Stephen M. Cameron) [Orabug: 19137821] - hpsa: allocate reply queues individually (Stephen M. Cameron) [Orabug: 19137821] - hpsa: choose number of reply queues more intelligently. (Stephen M. Cameron) [Orabug: 19137821] - hpsa: remove dev_dbg() calls from hot paths (Stephen M. Cameron) [Orabug: 19137821] - hpsa: use gcc aligned attribute instead of manually padding structs (Stephen M. Cameron) [Orabug: 19137821] - hpsa: change doorbell reset delay to ten seconds (Justin Lindley) [Orabug: 19137821] - hpsa: allow passthru ioctls to work with bidirectional commands (Stephen M. Cameron) [Orabug: 19137821] - hpsa: remove unused fields from struct ctlr_info (Stephen M. Cameron) [Orabug: 19137821] - hpsa: fix bad comparison of signed with unsigned in hpsa_update_scsi_devices (Joe Handzik) [Orabug: 19137821] - hpsa: do not ignore failure of sense controller parameters command (Joe Handzik) [Orabug: 19137821] - hpsa: fix memory leak in hpsa_hba_mode_enabled (Joe Handzik) [Orabug: 19137821] - hpsa: Checking for a NULL return from a kzalloc call (Joe Handzik) [Orabug: 19137821] - hpsa: unnecessary type conversion for physdev_list (Vaughan Cao) [Orabug: 19137821] - hpsa: detect_controller_lockup don't need return value (Vaughan Cao) [Orabug: 19137821] - hpsa: fixup MSI-X registration (Hannes Reinecke) [Orabug: 19137821] - xen/microcode: Use dummy microcode_ops for non initial domain guest (Zhenzhong Duan) [Orabug: 19053626] - hyperv: Change the receive buffer size for legacy hosts (Haiyang Zhang) [Orabug: 19050496] - be2net: fix qnq mode detection on VFs (Suresh Reddy) [Orabug: 19006455] - be2net: cleanup MCC async event processing code (Sathya Perla) [Orabug: 19006455] - be2net: move async cmd processing to a separate routine (Sathya Perla) [Orabug: 19006455] - be2net: re-factor MCCQ error status handling code (Kalesh AP) [Orabug: 19006455] - be2net: support flashing new regions on Skyhawk-R (Vasundhara Volam) [Orabug: 19006455] - be2net: skip multicast promiscuos setting in already set (Kalesh AP) [Orabug: 19006455] - be2net: enable interrupts in EEH resume (Kalesh AP) [Orabug: 19006455] - net: get rid of SET_ETHTOOL_OPS (Wilfried Klaebe) [Orabug: 19006455] - be2net: use MCCQ instead of MBOX in be_cmd_rss_config() (Kalesh AP) [Orabug: 19006455] - be2net: include rx-compl error counter in ethtool stats (Kalesh AP) [Orabug: 19006455] - be2net: remove unused code in be_cmd_vlan_config() (Kalesh AP) [Orabug: 19006455] - be2net: covert vlan array to bit-map (Ravikumar Nelavelli) [Orabug: 19006455] - be2net: fix line wrap and function call indentation in be_ethtool.c (Sathya Perla) [Orabug: 19006455] - be2net: fix function call indentation in be_cmds.c (Sathya Perla) [Orabug: 19006455] - be2net: fix line wrap and function call indentation in be_main.c (Sathya Perla) [Orabug: 19006455] - be2net: Fix invocation of be_close() after be_clear() (Kalesh AP) [Orabug: 19006455] - be2net: Fix to reap TX compls till HW doesn't respond for some time (Vasundhara Volam) [Orabug: 19006455] - selinux: correctly label /proc inodes in use before the policy is loaded (Paul Moore) [Orabug: 18823621] - mm, hugetlb: improve page-fault scalability (Davidlohr Bueso) [Orabug: 18757256] - config: build TPM HW Random Number Generator as module (Guangyu Sun) [Orabug: 18502024] - cpufreq: Drop rwsem lock around CPUFREQ_GOV_POLICY_EXIT (Viresh Kumar) [Orabug: 18464169] - cpufreq: Preserve sysfs files across suspend/resume (Srivatsa S. Bhat) [Orabug: 18464169] - cpufreq, ondemand: Remove leftover debug line (Borislav Petkov) [Orabug: 18464169] - cpufreq: Issue CPUFREQ_GOV_POLICY_EXIT notifier before dropping policy refcount (Viresh Kumar) [Orabug: 18464169] - cpufreq: governors: Fix CPUFREQ_GOV_POLICY_{INIT or EXIT} notifiers (Viresh Kumar) [Orabug: 18464169] - cpufreq: Revert incorrect commit 5800043 (Rafael J. Wysocki) [Orabug: 18464169] - cpufreq: Don't call __cpufreq_governor() for drivers without target() (Viresh Kumar) [Orabug: 18464169] - cpufreq: convert cpufreq_driver to using RCU (Nathan Zimmer) [Orabug: 18464169] - cpufreq: Call __cpufreq_governor() with correct policy->cpus mask (Viresh Kumar) [Orabug: 18464169] - cpufreq: Correct header guards typo (Borislav Petkov) [Orabug: 18464169] - cpufreq: Fix unsigned variable being checked for negative value (jhbird.choi@samsung.com) [Orabug: 18464169] - cpufreq: conservative: Fix the logic in frequency decrease checking (Stratos Karafotis) [Orabug: 18464169] - cpufreq: conservative: Fix sampling_down_factor functionality (Stratos Karafotis) [Orabug: 18464169] - cpufreq: governors: Calculate iowait time only when necessary (Stratos Karafotis) [Orabug: 18464169] - cpufreq: conservative: Fix relation when decreasing frequency (Namhyung Kim) [Orabug: 18464169] - cpufreq: conservative: Break out earlier on the lowest frequency (Namhyung Kim) [Orabug: 18464169] - cpufreq: governors: Avoid unnecessary per cpu timer interrupts (Viresh Kumar) [Orabug: 18464169] - cpufreq: ondemand: Don't update sample_type if we don't evaluate load again (Viresh Kumar) [Orabug: 18464169] - cpufreq: governor: Set MIN_LATENCY_MULTIPLIER to 20 (Viresh Kumar) [Orabug: 18464169] - cpufreq: governor: Implement per policy instances of governors (Viresh Kumar) [Orabug: 18464169] - cpufreq: Add per policy governor-init/exit infrastructure (Viresh Kumar) [Orabug: 18464169] - cpufreq: Convert the cpufreq_driver_lock to a rwlock (Nathan Zimmer) [Orabug: 18464169] - cpufreq: acpi-cpufreq: Don't set policy->related_cpus from .init() (Viresh Kumar) [Orabug: 18464169] - cpufreq: stats: do cpufreq_cpu_put() corresponding to cpufreq_cpu_get() (viresh kumar) [Orabug: 18464169] - cpufreq_stats: do not remove sysfs files if frequency table is not present (Dirk Brandewie) [Orabug: 18464169] - cpufreq: Do not track governor name for scaling drivers with internal governors. (Dirk Brandewie) [Orabug: 18464169] - cpufreq: Only call cpufreq_out_of_sync() for driver that implement cpufreq_driver.target() (Dirk Brandewie) [Orabug: 18464169] - cpufreq: Retrieve current frequency from scaling drivers with internal governors (Dirk Brandewie) [Orabug: 18464169] - cpufreq: Fix locking issues (Viresh Kumar) [Orabug: 18464169] - cpufreq: Create a macro for unlock_policy_rwsem{read,write} (Viresh Kumar) [Orabug: 18464169] - cpufreq: Remove unused HOTPLUG_CPU code (Viresh Kumar) [Orabug: 18464169]"); 
-script_tag(name : "solution", value : "update software");
-script_tag(name : "solution_type", value : "VendorFix");
-script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2014-3070");
-script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2014-3070.html");
-script_cve_id("CVE-2013-2930","CVE-2013-4579","CVE-2014-1690");
-script_tag(name:"cvss_base", value:"4.3");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-script_tag(name:"qod_type", value:"package");
-script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
-script_category(ACT_GATHER_INFO);
-script_copyright("Eero Volotinen");
-script_family("Oracle Linux Local Security Checks");
-exit(0);
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.123328");
+  script_version("$Revision: 11688 $");
+  script_tag(name:"creation_date", value:"2015-10-06 14:02:20 +0300 (Tue, 06 Oct 2015)");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 15:36:28 +0200 (Fri, 28 Sep 2018) $");
+  script_name("Oracle Linux Local Check: ELSA-2014-3070");
+  script_tag(name:"insight", value:"ELSA-2014-3070 - Unbreakable Enterprise kernel security and bug fix update. Please see the references for more insight.");
+  script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Oracle Linux Local Security Checks ELSA-2014-3070");
+  script_xref(name:"URL", value:"http://linux.oracle.com/errata/ELSA-2014-3070.html");
+  script_cve_id("CVE-2013-2930", "CVE-2013-4579", "CVE-2014-1690");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"qod_type", value:"package");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release", re:"ssh/login/release=OracleLinux(7|6)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Eero Volotinen");
+  script_family("Oracle Linux Local Security Checks");
+
+  exit(0);
 }
+
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
-release = get_kb_item("ssh/login/release");
+
+release = rpm_get_ssh_release();
+if(!release) exit(0);
+
 res = "";
-if(release == NULL)
-{
- exit(0);
-}
+
 if(release == "OracleLinux7")
 {
   if ((res = isrpmvuln(pkg:"dtrace-modules", rpm:"dtrace-modules~3.8.13~44.el7uek~0.4.3~4.el7", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek", rpm:"kernel-uek~3.8.13~44.el7uek", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-debug", rpm:"kernel-uek-debug~3.8.13~44.el7uek", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-debug-devel", rpm:"kernel-uek-debug-devel~3.8.13~44.el7uek", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-devel", rpm:"kernel-uek-devel~3.8.13~44.el7uek", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-doc", rpm:"kernel-uek-doc~3.8.13~44.el7uek", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-firmware", rpm:"kernel-uek-firmware~3.8.13~44.el7uek", rls:"OracleLinux7")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
 
 }
@@ -88,34 +93,34 @@ if(release == "OracleLinux6")
 {
   if ((res = isrpmvuln(pkg:"dtrace-modules", rpm:"dtrace-modules~3.8.13~44.el6uek~0.4.3~4.el6", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek", rpm:"kernel-uek~3.8.13~44.el6uek", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-debug", rpm:"kernel-uek-debug~3.8.13~44.el6uek", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-debug-devel", rpm:"kernel-uek-debug-devel~3.8.13~44.el6uek", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-devel", rpm:"kernel-uek-devel~3.8.13~44.el6uek", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-doc", rpm:"kernel-uek-doc~3.8.13~44.el6uek", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-firmware", rpm:"kernel-uek-firmware~3.8.13~44.el6uek", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
 
 }
-if (__pkg_match) exit(99); #Not vulnerable
+if (__pkg_match) exit(99);
   exit(0);
 

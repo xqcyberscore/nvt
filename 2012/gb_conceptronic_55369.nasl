@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_conceptronic_55369.nasl 11647 2018-09-27 09:31:07Z jschulte $
+# $Id: gb_conceptronic_55369.nasl 11657 2018-09-27 13:32:51Z cfischer $
 #
 # Multiple Conceptronic Products Directory Traversal Vulnerability
 #
@@ -31,13 +31,13 @@ if (description)
   script_bugtraq_id(55369);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_version("$Revision: 11647 $");
+  script_version("$Revision: 11657 $");
 
   script_name("Multiple Conceptronic Products Directory Traversal Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55369");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:31:07 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 15:32:51 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-12 12:56:11 +0200 (Wed, 12 Sep 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -83,7 +83,7 @@ if(http_vuln_check(port:port, url:"/login.htm",pattern:"(Conceptronic|CH3HNAS|CH
     url = '/cgi-bin/log.cgi?syslog&../../' + file + '&Conceptronic2009';
 
     if(http_vuln_check(port:port, url:url,pattern:pattern,check_header:TRUE)) {
-      report = report_vuln_url(url:url);
+      report = report_vuln_url(port:port, url:url);
       security_message(data:report, port:port);
       exit(0);
     }

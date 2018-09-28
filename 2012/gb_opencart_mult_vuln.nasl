@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencart_mult_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
+# $Id: gb_opencart_mult_vuln.nasl 11651 2018-09-27 11:53:00Z asteins $
 #
 # OpenCart Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802751");
-  script_version("$Revision: 11429 $");
+  script_version("$Revision: 11651 $");
   script_bugtraq_id(52957);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 13:53:00 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-18 18:47:56 +0530 (Wed, 18 Apr 2012)");
   script_name("OpenCart Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48762");
@@ -68,15 +68,20 @@ vulnerabilities.");
 
 include("misc_func.inc");
 include("http_func.inc");
+include("http_keepalive.inc");
 include("version_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
 
-port = get_http_port(default:80);
+CPE = 'cpe:/a:opencart:opencart';
 
-if(!dir = get_dir_from_kb(port:port, app:"opencart")){
+if(!port = get_app_port(cpe:CPE))
   exit(0);
-}
+
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
+
+if(dir == "/")
+  dir = "";
 
 files = traversal_files();
 

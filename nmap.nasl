@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: nmap.nasl 11663 2018-09-28 06:18:46Z cfischer $
 #
 # Nmap (NASL wrapper)
 #
@@ -52,8 +52,8 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14259");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11663 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 08:18:46 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,8 +64,7 @@ if(description)
   script_dependencies("toolcheck.nasl", "ping_host.nasl");
   script_mandatory_keys("Tools/Present/nmap");
 
-  script_add_preference(name:"TCP scanning technique :", type:"radio",
-  value:"connect();SYN scan;FIN scan;Xmas Tree scan;SYN FIN scan;FIN SYN scan;Null scan;No TCP scan");
+  script_add_preference(name:"TCP scanning technique :", type:"radio", value:"connect();SYN scan;FIN scan;Xmas Tree scan;SYN FIN scan;FIN SYN scan;Null scan;No TCP scan");
 
   script_add_preference(name:"Service scan", type:"checkbox", value:"no");
   script_add_preference(name:"RPC port scan", type:"checkbox", value:"no");

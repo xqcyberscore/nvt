@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_netpet_cms_dir_trav_vuln.nasl 11625 2018-09-26 12:08:49Z jschulte $
+# $Id: secpod_netpet_cms_dir_trav_vuln.nasl 11657 2018-09-27 13:32:51Z cfischer $
 #
 # Netpet CMS Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902024");
-  script_version("$Revision: 11625 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 14:08:49 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 11657 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 15:32:51 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_cve_id("CVE-2009-4723");
   script_tag(name:"cvss_base", value:"7.5");
@@ -62,9 +62,6 @@ include("version_func.inc");
 include("misc_func.inc");
 
 netPort = get_http_port(default:80);
-if(!netPort){
-  exit(0);
-}
 
 netVer = get_kb_item("www/" + netPort + "/NetpetCMS");
 if(isnull(netVer)){
@@ -83,7 +80,7 @@ if(!isnull(netVer[2]))
     sndReq = http_get(item:string(netVer[2], url), port:netPort);
     rcvRes = http_send_recv(port:netPort, data:sndReq);
     if(egrep(pattern:pattern, string:rcvRes, icase:TRUE)) {
-      report = report_vuln_url(url);
+      report = report_vuln_url(port:netPort, url:url);
       security_message(data:report, port:netPort);
       exit(0);
     }

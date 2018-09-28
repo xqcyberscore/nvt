@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ids_evasion.nasl 6283 2017-06-06 10:01:29Z cfischer $
+# $Id: ids_evasion.nasl 11663 2018-09-28 06:18:46Z cfischer $
 #
 # NIDS evasion
 #
@@ -25,47 +25,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This plugin configures OpenVAS for NIDS evasion (see the 'Prefs' panel).
-NIDS evasion options are useful if you want to determine
-the quality of the expensive NIDS you just bought.
-
-TCP Evasion techniques :
-
-- Split : send data one byte at a time. This confuses
-  NIDSes which do not perform stream reassembly
-
-- Injection : same as split, but malformed TCP packets
-  containing bogus data are sent between normal packets.
-  Here, a 'malformed' tcp packet means a legitimate TCP packet
-  with a bogus checksum.
-  This confuses NIDSes which perform stream reassembly but do
-  not accurately verify the checksum of the packets or
-  which do not determine if the remote host actually
-  receives the packets seen;
-
-- Short TTL : same as split, but a valid TCP packets
-  containing bogus data are sent between normal packets.
-  These packets have a short (N-1), meaning that if
-  the NIDS is on a gateway, it will see these packets
-  go through, but they will not reach the target
-  host.
-  This confuses NIDSes which perform stream reassembly
-  but do not accurately check if the packet can actually
-  reach the remote host or which do not determine if the
-  remote host actually receives the packets seen ;
-
-- Fake RST : each time a connection is established, OpenVAS
-  will send a RST packet with a bogus tcp checksum or
-  a bogus ttl (depending on the options you chose above),
-  thus making the IDS believe the connection was closed
-  abruptly.
-  This confuses badly written NIDSes which believe
-  anything they see.
-
-Warning: those features are experimental and some options may result in false negatives!
-
-This plugin does not do any security check.";
-
 # The HTTP IDS evasion mode comes from Whisker, by RFP.
 # It has been moved to http_ids_evasion.nasl
 #
@@ -75,8 +34,8 @@ This plugin does not do any security check.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80011");
-  script_version("$Revision: 6283 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-06 12:01:29 +0200 (Tue, 06 Jun 2017) $");
+  script_version("$Revision: 11663 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 08:18:46 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 19:16:58 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -88,7 +47,47 @@ if(description)
   script_add_preference(name:"TCP evasion technique", type:"radio", value:"none;split;injection;short ttl");
   script_add_preference(name:"Send fake RST when establishing a TCP connection", type:"checkbox", value:"no");
 
-  script_tag(name:"summary" , value:tag_summary);
+  script_tag(name:"summary", value:"This plugin configures the scanner for NIDS evasion (see the 'Prefs' panel).
+
+NIDS evasion options are useful if you want to determine
+the quality of the expensive NIDS you just bought.
+
+TCP Evasion techniques :
+
+  - Split : send data one byte at a time. This confuses
+  NIDSes which do not perform stream reassembly
+
+  - Injection : same as split, but malformed TCP packets
+  containing bogus data are sent between normal packets.
+  Here, a 'malformed' tcp packet means a legitimate TCP packet
+  with a bogus checksum.
+  This confuses NIDSes which perform stream reassembly but do
+  not accurately verify the checksum of the packets or
+  which do not determine if the remote host actually
+  receives the packets seen;
+
+  - Short TTL : same as split, but a valid TCP packets
+  containing bogus data are sent between normal packets.
+  These packets have a short (N-1), meaning that if
+  the NIDS is on a gateway, it will see these packets
+  go through, but they will not reach the target
+  host.
+  This confuses NIDSes which perform stream reassembly
+  but do not accurately check if the packet can actually
+  reach the remote host or which do not determine if the
+  remote host actually receives the packets seen ;
+
+  - Fake RST : each time a connection is established, the
+  scanner will send a RST packet with a bogus tcp checksum or
+  a bogus ttl (depending on the options you chose above),
+  thus making the IDS believe the connection was closed
+  abruptly.
+  This confuses badly written NIDSes which believe
+  anything they see.
+
+  Warning: those features are experimental and some options may result in false negatives!
+
+  This plugin does not do any security check.");
 
   script_tag(name:"qod_type", value:"general_note");
 

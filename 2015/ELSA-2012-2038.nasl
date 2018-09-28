@@ -1,9 +1,11 @@
-# OpenVAS Vulnerability Test 
-# Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-2038.nasl 6557 2017-07-06 11:55:33Z cfischer $
- 
-# Authors: 
-# Eero Volotinen <eero.volotinen@solinor.com> 
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: ELSA-2012-2038.nasl 11688 2018-09-28 13:36:28Z cfischer $
+#
+# Oracle Linux Local Check
+#
+# Authors:
+# Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://solinor.com
@@ -20,83 +22,86 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
+
 if(description)
- {
-script_oid("1.3.6.1.4.1.25623.1.0.123793");
-script_version("$Revision: 6557 $");
-script_tag(name:"creation_date", value:"2015-10-06 14:08:38 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:55:33 +0200 (Thu, 06 Jul 2017) $");
-script_name("Oracle Linux Local Check: ELSA-2012-2038");
-script_tag(name: "insight", value: "ELSA-2012-2038 - Unbreakable Enterprise kernel security and bug fix update - [2.6.32-300.37.1.] - sfc: Replace some literal constants with EFX_PAGE_SIZE/EFX_BUF_SIZE (Ben Hutchings) [Orabug: 14769994] - CVE-2012-3412 sfc: Fix maximum number of TSO segments and minimum TX queue size (Ben Hutchings) [Orabug: 14769994] {CVE-2012-3412} [2.6.32-300.36.1.] - dl2k: Clean up rio_ioctl (Stephan Mueller) [Orabug: 14675306] {CVE-2012-2313} - hugetlb: fix resv_map leak in error path (Christoph Lameter) [Orabug: 14676403] {CVE-2012-2390} - rds: set correct msg_namelen (Jay Fenlason) [Orabug: 14676504] {CVE-2012-3430} [2.6.32-300.35.1.] - oracleasm: Bring driver in sync with UEK2 (Martin K. Petersen) - Fix system hang due to bad protection module parameters (CR 130769) (Martin K. Petersen) - sd: Avoid remapping bad reference tags (Martin K. Petersen) - block: Fix bad range check in bio_sector_offset (Martin K. Petersen) [2.6.32-300.34.1.] - htrimer: fix kabi breakage (Joe Jin) - 2.6.32.x: timekeeping: Add missing update call in timekeeping_resume() (Thomas Gleixner) - 2.6.32.x: hrtimer: Update hrtimer base offsets each hrtimer_interrupt (John Stultz) - 2.6.32.x: timekeeping: Provide hrtimer update function (Thomas Gleixner) - 2.6.32.x: hrtimers: Move lock held region in hrtimer_interrupt() (Thomas Gleixner) - 2.6.32.x: timekeeping: Maintain ktime_t based offsets for hrtimers (Thomas Gleixner) - 2.6.32.x: timekeeping: Fix leapsecond triggered load spike issue (John Stultz) - 2.6.32.x: hrtimer: Provide clock_was_set_delayed() (John Stultz) - 2.6.32.x: time: Move common updates to a function (Thomas Gleixner) - 2.6.32.x: timekeeping: Fix CLOCK_MONOTONIC inconsistency during leapsecond (John Stultz) - 2.6.32.x: ntp: Correct TAI offset during leap second (Richard Cochran) - 2.6.32.x: ntp: Fix leap-second hrtimer livelock (John Stultz) - Revert '2.6.32.x: hrtimer: Fix clock_was_set so it is safe to call from irq context' (Joe Jin) - Revert '2.6.32.x: time: Fix leapsecond triggered hrtimer/futex load spike issue' (Joe Jin) - Revert '2.6.32.x: hrtimer: Update hrtimer base offsets each hrtimer_interrupt' (Joe Jin) [2.6.32-300.33.1.] - mpt2sas: Update mpt2sas to 120.105.11.00 (Guru Anbalagane) [Orabug: 14376481] - Revert 'mpt2sas: update to 12.105.11.00' (Maxim Uvarov)"); 
-script_tag(name : "solution", value : "update software");
-script_tag(name : "solution_type", value : "VendorFix");
-script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2012-2038");
-script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2012-2038.html");
-script_cve_id("CVE-2012-3412");
-script_tag(name:"cvss_base", value:"7.8");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-script_tag(name:"qod_type", value:"package");
-script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
-script_category(ACT_GATHER_INFO);
-script_copyright("Eero Volotinen");
-script_family("Oracle Linux Local Security Checks");
-exit(0);
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.123793");
+  script_version("$Revision: 11688 $");
+  script_tag(name:"creation_date", value:"2015-10-06 14:08:38 +0300 (Tue, 06 Oct 2015)");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 15:36:28 +0200 (Fri, 28 Sep 2018) $");
+  script_name("Oracle Linux Local Check: ELSA-2012-2038");
+  script_tag(name:"insight", value:"ELSA-2012-2038 - Unbreakable Enterprise kernel security and bug fix update. Please see the references for more insight.");
+  script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Oracle Linux Local Security Checks ELSA-2012-2038");
+  script_xref(name:"URL", value:"http://linux.oracle.com/errata/ELSA-2012-2038.html");
+  script_cve_id("CVE-2012-3412");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"qod_type", value:"package");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release", re:"ssh/login/release=OracleLinux(5|6)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Eero Volotinen");
+  script_family("Oracle Linux Local Security Checks");
+
+  exit(0);
 }
+
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
-release = get_kb_item("ssh/login/release");
+
+release = rpm_get_ssh_release();
+if(!release) exit(0);
+
 res = "";
-if(release == NULL)
-{
- exit(0);
-}
+
 if(release == "OracleLinux5")
 {
   if ((res = isrpmvuln(pkg:"kernel-uek", rpm:"kernel-uek~2.6.32~300.37.1.el5uek", rls:"OracleLinux5")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-debug", rpm:"kernel-uek-debug~2.6.32~300.37.1.el5uek", rls:"OracleLinux5")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-debug-devel", rpm:"kernel-uek-debug-devel~2.6.32~300.37.1.el5uek", rls:"OracleLinux5")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-devel", rpm:"kernel-uek-devel~2.6.32~300.37.1.el5uek", rls:"OracleLinux5")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-doc", rpm:"kernel-uek-doc~2.6.32~300.37.1.el5uek", rls:"OracleLinux5")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-firmware", rpm:"kernel-uek-firmware~2.6.32~300.37.1.el5uek", rls:"OracleLinux5")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-headers", rpm:"kernel-uek-headers~2.6.32~300.37.1.el5uek", rls:"OracleLinux5")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"mlnx_en", rpm:"mlnx_en~2.6.32~300.37.1.el5uek~1.5.7~2", rls:"OracleLinux5")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"mlnx_en", rpm:"mlnx_en~2.6.32~300.37.1.el5uekdebug~1.5.7~2", rls:"OracleLinux5")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"ofa", rpm:"ofa~2.6.32~300.37.1.el5uek~1.5.1~4.0.58", rls:"OracleLinux5")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"ofa", rpm:"ofa~2.6.32~300.37.1.el5uekdebug~1.5.1~4.0.58", rls:"OracleLinux5")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
 
 }
@@ -104,50 +109,50 @@ if(release == "OracleLinux6")
 {
   if ((res = isrpmvuln(pkg:"kernel-uek", rpm:"kernel-uek~2.6.32~300.37.1.el6uek", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-debug", rpm:"kernel-uek-debug~2.6.32~300.37.1.el6uek", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-debug-devel", rpm:"kernel-uek-debug-devel~2.6.32~300.37.1.el6uek", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-devel", rpm:"kernel-uek-devel~2.6.32~300.37.1.el6uek", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-doc", rpm:"kernel-uek-doc~2.6.32~300.37.1.el6uek", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-firmware", rpm:"kernel-uek-firmware~2.6.32~300.37.1.el6uek", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"kernel-uek-headers", rpm:"kernel-uek-headers~2.6.32~300.37.1.el6uek", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"mlnx_en", rpm:"mlnx_en~2.6.32~300.37.1.el6uek~1.5.7~0.1", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"mlnx_en", rpm:"mlnx_en~2.6.32~300.37.1.el6uekdebug~1.5.7~0.1", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"ofa", rpm:"ofa~2.6.32~300.37.1.el6uek~1.5.1~4.0.58", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"ofa", rpm:"ofa~2.6.32~300.37.1.el6uekdebug~1.5.1~4.0.58", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
 
 }
-if (__pkg_match) exit(99); #Not vulnerable
+if (__pkg_match) exit(99);
   exit(0);
 

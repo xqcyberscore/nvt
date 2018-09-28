@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geovision_ip_camera_remote_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
+# $Id: gb_geovision_ip_camera_remote_detect.nasl 11670 2018-09-28 09:04:03Z tpassfeld $
 #
 # Geovision Inc. IP Camera Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812758");
-  script_version("$Revision: 11408 $");
+  script_version("$Revision: 11670 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 11:04:03 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 17:51:20 +0530 (Thu, 08 Feb 2018)");
   script_name("Geovision Inc. IP Camera Remote Detection");
 
@@ -54,29 +54,31 @@ if(description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("cpe.inc");
 
-geoPort = get_http_port(default:80);
+port = get_http_port(default: 80);
+url = "/ssi.cgi/Login.htm";
 
-sndReq = http_get(item:"/ssi.cgi/Login.htm", port:geoPort);
-rcvRes = http_keepalive_send_recv(port:geoPort, data:sndReq);
+res = http_get_cache(port: port, item: "/ssi.cgi/Login.htm");
 
-if("<TITLE>GeoVision Inc. - IP Camera</TITLE>" >< rcvRes &&
-   rcvRes =~ "HTTP/1.. 200 OK")
-{
-  version = "Unknown";
+if('document.write("<INPUT name=umd5' >< res || 'document.write("<INPUT name=pmd5' >< res) {
 
-  set_kb_item(name:"GeoVisionIP/Camera/Detected", value:TRUE);
+  version = "unknown";
 
-  cpe = "cpe:/h:geovision:geovisionip_camera";
+  set_kb_item(name: "geovision/ip_camera/detected", value: TRUE);
 
-  register_product(cpe:cpe, location:"/", port:geoPort);
+  CPE = "cpe:/h:geovision:geovisionip_camera";
 
-  log_message(data:build_detection_report(app:"GeoVision IP Camera",
-                                          version:version,
-                                          install:"/",
-                                          cpe:cpe,
-                                          concluded:version),
-                                          port:geoPort);
+  conclUrl = report_vuln_url(port: port, url: url, url_only: TRUE);
+
+  register_and_report_cpe(app: "GeoVision IP Camera",
+                          ver: version,
+                          concluded: version,
+                          base: CPE,
+                          expr: '([0-9.]+)',
+                          insloc: "/",
+                          regPort: port,
+                          conclUrl: conclUrl);
 }
 
 exit(0);

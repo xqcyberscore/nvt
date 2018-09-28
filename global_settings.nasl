@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: global_settings.nasl 11270 2018-09-06 14:44:58Z cfischer $
+# $Id: global_settings.nasl 11665 2018-09-28 07:14:18Z cfischer $
 #
 # Global variable settings
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12288");
-  script_version("$Revision: 11270 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:44:58 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 11665 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -49,8 +49,8 @@ if(description)
 
   script_add_preference(name:"Log verbosity", type:"radio", value:"Normal;Quiet;Verbose;Debug");
   script_add_preference(name:"Debug level", type:"entry", value:"0");
-  script_add_preference(name:"HTTP User-Agent", type:"entry", value: "");
-  script_add_preference(name:"Strictly unauthenticated", type:"checkbox", value: "no");
+  script_add_preference(name:"HTTP User-Agent", type:"entry", value:"");
+  script_add_preference(name:"Strictly unauthenticated", type:"checkbox", value:"no");
   script_add_preference(name:"Exclude printers from scan", type:"checkbox", value:"yes");
   script_add_preference(name:"Exclude known fragile devices/ports from scan", type:"checkbox", value:"yes");
   script_add_preference(name:"Enable SSH Debug", type:"checkbox", value:"no");

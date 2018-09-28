@@ -1,9 +1,11 @@
-# OpenVAS Vulnerability Test 
-# Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-0103.nasl 6600 2017-07-07 09:58:31Z teissa $
- 
-# Authors: 
-# Eero Volotinen <eero.volotinen@solinor.com> 
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: ELSA-2014-0103.nasl 11688 2018-09-28 13:36:28Z cfischer $
+#
+# Oracle Linux Local Check
+#
+# Authors:
+# Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://solinor.com
@@ -20,62 +22,65 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
+
 if(description)
- {
-script_oid("1.3.6.1.4.1.25623.1.0.123479");
-script_version("$Revision: 6600 $");
-script_tag(name:"creation_date", value:"2015-10-06 14:04:26 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
-script_name("Oracle Linux Local Check: ELSA-2014-0103");
-script_tag(name: "insight", value: "ELSA-2014-0103 -  libvirt security and bug fix update - [0.10.2-29.0.1.el6_5.3]- Replace docs/et.png in tarball with blank image[0.10.2-29.el6_5.3]- qemu: Avoid operations on NULL monitor if VM fails early (rhbz#1055578)- qemu: Do not access stale data in virDomainBlockStats (CVE-2013-6458)- qemu: Avoid using stale data in virDomainGetBlockInfo (CVE-2013-6458)- qemu: Fix job usage in qemuDomainBlockJobImpl (CVE-2013-6458)- qemu: Fix job usage in qemuDomainBlockCopy (rhbz#1054804)- qemu: Fix job usage in virDomainGetBlockIoTune (CVE-2013-6458)- Don't crash if a connection closes early (CVE-2014-1447)- Really don't crash if a connection closes early (CVE-2014-1447)"); 
-script_tag(name : "solution", value : "update software");
-script_tag(name : "solution_type", value : "VendorFix");
-script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2014-0103");
-script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2014-0103.html");
-script_cve_id("CVE-2013-6458","CVE-2014-1447");
-script_tag(name:"cvss_base", value:"6.8");
-script_tag(name:"cvss_base_vector", value:"AV:A/AC:H/Au:N/C:C/I:C/A:C");
-script_tag(name:"qod_type", value:"package");
-script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");
-script_category(ACT_GATHER_INFO);
-script_copyright("Eero Volotinen");
-script_family("Oracle Linux Local Security Checks");
-exit(0);
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.123479");
+  script_version("$Revision: 11688 $");
+  script_tag(name:"creation_date", value:"2015-10-06 14:04:26 +0300 (Tue, 06 Oct 2015)");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 15:36:28 +0200 (Fri, 28 Sep 2018) $");
+  script_name("Oracle Linux Local Check: ELSA-2014-0103");
+  script_tag(name:"insight", value:"ELSA-2014-0103 - libvirt security and bug fix update. Please see the references for more insight.");
+  script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Oracle Linux Local Security Checks ELSA-2014-0103");
+  script_xref(name:"URL", value:"http://linux.oracle.com/errata/ELSA-2014-0103.html");
+  script_cve_id("CVE-2013-6458", "CVE-2014-1447");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"qod_type", value:"package");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release", re:"ssh/login/release=OracleLinux6");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Eero Volotinen");
+  script_family("Oracle Linux Local Security Checks");
+
+  exit(0);
 }
+
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
-release = get_kb_item("ssh/login/release");
+
+release = rpm_get_ssh_release();
+if(!release) exit(0);
+
 res = "";
-if(release == NULL)
-{
- exit(0);
-}
+
 if(release == "OracleLinux6")
 {
   if ((res = isrpmvuln(pkg:"libvirt", rpm:"libvirt~0.10.2~29.0.1.el6_5.3", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-client", rpm:"libvirt-client~0.10.2~29.0.1.el6_5.3", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-devel", rpm:"libvirt-devel~0.10.2~29.0.1.el6_5.3", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-python", rpm:"libvirt-python~0.10.2~29.0.1.el6_5.3", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
   if ((res = isrpmvuln(pkg:"libvirt-lock-sanlock", rpm:"libvirt-lock-sanlock~0.10.2~29.0.1.el6_5.3", rls:"OracleLinux6")) != NULL) {
     security_message(data:res);
-    exit(0);  
+    exit(0);
   }
 
 }
-if (__pkg_match) exit(99); #Not vulnerable
+if (__pkg_match) exit(99);
   exit(0);
 

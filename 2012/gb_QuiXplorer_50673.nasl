@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_QuiXplorer_50673.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_QuiXplorer_50673.nasl 11651 2018-09-27 11:53:00Z asteins $
 #
 # QuiXplorer 'index.php' Arbitrary File Upload Vulnerability
 #
@@ -32,14 +32,14 @@ if(description)
   script_cve_id("CVE-2011-5005");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11435 $");
+  script_version("$Revision: 11651 $");
 
   script_name("QuiXplorer 'index.php' Arbitrary File Upload Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50673");
   script_xref(name:"URL", value:"http://quixplorer.sourceforge.net/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 13:53:00 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-05 11:51:25 +0100 (Thu, 05 Jan 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -65,14 +65,21 @@ Likely none will be provided anymore. General solution options are to upgrade to
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 include("version_func.inc");
 include("misc_func.inc");
 
-port = get_http_port(default:80);
+CPE = 'cpe:/a:claudio_klingler:quixplorer';
 
-if(!dir = get_dir_from_kb(port:port, app:"QuiXplorer")){
+if(!port = get_app_port(cpe:CPE))
   exit(0);
-}
+
+if(!dir = get_app_location(cpe:CPE, port:port))
+  exit(0);
+
+if(dir == "/")
+  dir = "";
+
 
 url = string(dir,"/index.php?action=upload&order=type&srt=yes");
 useragent = get_http_user_agent();

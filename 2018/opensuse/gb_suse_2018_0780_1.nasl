@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0780_1.nasl 9214 2018-03-27 08:11:34Z santu $
+# $Id: gb_suse_2018_0780_1.nasl 11661 2018-09-28 03:58:36Z ckuersteiner $
 #
 # SuSE Update for qemu openSUSE-SU-2018:0780-1 (qemu)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851724");
-  script_version("$Revision: 9214 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-27 10:11:34 +0200 (Tue, 27 Mar 2018) $");
+  script_version("$Revision: 11661 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 05:58:36 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-03-25 08:22:33 +0200 (Sun, 25 Mar 2018)");
   script_cve_id("CVE-2017-15119", "CVE-2017-15124", "CVE-2017-16845", "CVE-2017-17381", 
                 "CVE-2017-18043", "CVE-2017-5715", "CVE-2018-5683", "CVE-2018-7550");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for qemu openSUSE-SU-2018:0780-1 (qemu)");
   script_tag(name: "summary", value: "Check the version of qemu");

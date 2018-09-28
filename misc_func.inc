@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 11626 2018-09-26 12:18:59Z cfischer $
+# $Id: misc_func.inc 11658 2018-09-27 14:21:41Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11626 $
+# $Revision: 11658 $
 #
 ###############################################################################
 
@@ -85,29 +85,35 @@ function register_service( port, proto, ipproto, message ) {
   if( _misc_func_debug ) display(get_host_ip(), ": register_service: port=", port, ", proto=", proto, "\n");
 }
 
-function register_service_as_host_detail( port, proto, service, message )
-{
-  if( ! port )
-  {
+# @brief Internal function to be called by @register_service only
+#
+function register_service_as_host_detail( port, proto, service, message ) {
+
+  # TODO: Remove once openvas-nasl-lint can handle such a missing function
+  # within includes as the calling VT only needs to make sure to have all
+  # required .inc files included.
+  if( ! defined_func( "register_host_detail" ) ) include("host_details.inc");
+
+  local_var port, proto, service, message, hd;
+
+  if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#register_service_as_host_detail" );
     return;
   }
 
-  if( ! service )
-  {
+  if( ! service ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#service#-#register_service_as_host_detail" );
     return;
   }
 
-  if( ! proto ) proto = 'tcp';
+  if( ! proto )
+    proto = 'tcp';
 
   # "623, udp, ipmi,'An IPMI service is running at this port. Supported IPMI version(s): v1.5, v2.0\n'"
   hd = port + ',' + proto + ',' + service;
 
   if( message )
     hd += ',' + message;
-
-  if( ! defined_func( "register_host_detail" ) ) include('host_details.inc');
 
   register_host_detail( name:'Services', value:hd, desc:"Service detection (" + get_script_oid() + ")");
 
@@ -1603,7 +1609,7 @@ function get_vt_string( lowercase ) {
 #
 # @todo  Update functions description once the function is feature complete and was accepted.
 #
-# @return An array containig various string representations of either "GBN-VT" or "OpenVAS-VT"
+# @return An array containing various string representations of either "GBN-VT" or "OpenVAS-VT"
 #         depending on the platform the scanner is running at.
 #
 function get_vt_strings() {

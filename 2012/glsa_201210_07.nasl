@@ -1,7 +1,8 @@
-#
+###############################################################################
 # OpenVAS Vulnerability Test
-# $
-# Description: Auto generated from Gentoo's XML based advisory
+# $Id: glsa_201210_07.nasl 11671 2018-09-28 10:44:05Z cfischer $
+#
+# Auto generated from Gentoo's XML based advisory
 #
 # Authors:
 # Thomas Reinke <reinke@securityspace.com>
@@ -24,17 +25,31 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "Multiple vulnerabilities have been reported in Chromium, some of
-    which may allow execution of arbitrary code.";
-tag_solution = "All Chromium users should upgrade to the latest version:
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.72523");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2012-2859", "CVE-2012-2860", "CVE-2012-2865", "CVE-2012-2866", "CVE-2012-2867", "CVE-2012-2868", "CVE-2012-2869", "CVE-2012-2872", "CVE-2012-2874", "CVE-2012-2876", "CVE-2012-2877", "CVE-2012-2878", "CVE-2012-2879", "CVE-2012-2880", "CVE-2012-2881", "CVE-2012-2882", "CVE-2012-2883", "CVE-2012-2884", "CVE-2012-2885", "CVE-2012-2886", "CVE-2012-2887", "CVE-2012-2888", "CVE-2012-2889", "CVE-2012-2891", "CVE-2012-2892", "CVE-2012-2894", "CVE-2012-2896", "CVE-2012-2900", "CVE-2012-5108", "CVE-2012-5110", "CVE-2012-5111", "CVE-2012-5112", "CVE-2012-5376");
+  script_version("$Revision: 11671 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2012-10-22 08:43:44 -0400 (Mon, 22 Oct 2012)");
+  script_name("Gentoo Security Advisory GLSA 201210-07 (chromium)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
+  script_family("Gentoo Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
+  script_tag(name:"insight", value:"Multiple vulnerabilities have been reported in Chromium, some of
+    which may allow execution of arbitrary code.");
+  script_tag(name:"solution", value:"All Chromium users should upgrade to the latest version:
 
       # emerge --sync
       # emerge --ask --oneshot --verbose
       '>=www-client/chromium-22.0.1229.94'
-    
+
 
 http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201210-07
 http://bugs.gentoo.org/show_bug.cgi?id=433551
@@ -44,44 +59,18 @@ http://bugs.gentoo.org/show_bug.cgi?id=437984
 http://googlechromereleases.blogspot.com/2012/08/stable-channel-update_30.html
 http://googlechromereleases.blogspot.com/2012/09/stable-channel-update_25.html
 http://googlechromereleases.blogspot.com/2012/10/stable-channel-update.html
-http://googlechromereleases.blogspot.com/2012/10/stable-channel-update_6105.html";
-tag_summary = "The remote host is missing updates announced in
-advisory GLSA 201210-07.";
+http://googlechromereleases.blogspot.com/2012/10/stable-channel-update_6105.html");
+  script_tag(name:"summary", value:"The remote host is missing updates announced in
+advisory GLSA 201210-07.");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-                                                                                
-                                                                                
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.72523");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_cve_id("CVE-2012-2859", "CVE-2012-2860", "CVE-2012-2865", "CVE-2012-2866", "CVE-2012-2867", "CVE-2012-2868", "CVE-2012-2869", "CVE-2012-2872", "CVE-2012-2874", "CVE-2012-2876", "CVE-2012-2877", "CVE-2012-2878", "CVE-2012-2879", "CVE-2012-2880", "CVE-2012-2881", "CVE-2012-2882", "CVE-2012-2883", "CVE-2012-2884", "CVE-2012-2885", "CVE-2012-2886", "CVE-2012-2887", "CVE-2012-2888", "CVE-2012-2889", "CVE-2012-2891", "CVE-2012-2892", "CVE-2012-2894", "CVE-2012-2896", "CVE-2012-2900", "CVE-2012-5108", "CVE-2012-5110", "CVE-2012-5111", "CVE-2012-5112", "CVE-2012-5376");
- script_version("$Revision: 9352 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-10-22 08:43:44 -0400 (Mon, 22 Oct 2012)");
- script_name("Gentoo Security Advisory GLSA 201210-07 (chromium)");
-
-
-
- script_category(ACT_GATHER_INFO);
-
- script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
- script_family("Gentoo Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/gentoo", "ssh/login/pkg");
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("pkg-lib-gentoo.inc");
+include("revisions-lib.inc");
+
 res = "";
 report = "";
 if((res = ispkgvuln(pkg:"www-client/chromium", unaffected: make_list("ge 22.0.1229.94"), vulnerable: make_list("lt 22.0.1229.94"))) != NULL ) {
@@ -91,5 +80,5 @@ if((res = ispkgvuln(pkg:"www-client/chromium", unaffected: make_list("ge 22.0.12
 if(report != "") {
     security_message(data:report);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+    exit(99);
 }

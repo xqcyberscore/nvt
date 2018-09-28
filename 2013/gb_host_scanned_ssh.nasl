@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_host_scanned_ssh.nasl 11538 2018-09-21 19:50:22Z cfischer $
+# $Id: gb_host_scanned_ssh.nasl 11658 2018-09-27 14:21:41Z cfischer $
 #
 # Leave information on scanned hosts
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103625");
-  script_version("$Revision: 11538 $");
+  script_version("$Revision: 11658 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:50:22 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 16:21:41 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-14 10:37:58 +0100 (Fri, 14 Dec 2012)");
   script_name("Leave information on scanned hosts");
   script_category(ACT_END);
@@ -41,14 +41,14 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_dependencies("host_scan_end.nasl", "gather-package-list.nasl");
 
-  script_add_preference(name:"Enable", type:"checkbox", value: "no");
+  script_add_preference(name:"Enable", type:"checkbox", value:"no");
 
-  script_add_preference(name:"Use File", type:"checkbox", value: "no");
+  script_add_preference(name:"Use File", type:"checkbox", value:"no");
   script_add_preference(name:"File name /tmp/", type:"entry", value:"scan_info.txt");
-  script_add_preference(name:"Append to File", type:"checkbox", value: "no");
+  script_add_preference(name:"Append to File", type:"checkbox", value:"no");
 
-  script_add_preference(name:"Use Syslog", type:"checkbox", value: "no");
-  script_add_preference(name:"Syslog priority", type:"radio", value: "info;debug;notice;warning;err;crit;alert;emerg");
+  script_add_preference(name:"Use Syslog", type:"checkbox", value:"no");
+  script_add_preference(name:"Syslog priority", type:"radio", value:"info;debug;notice;warning;err;crit;alert;emerg");
   script_add_preference(name:"Syslog tag", type:"entry", value:"VulScan");
 
   script_add_preference(name:"Message", type:"entry", value:"Security Scan of ::HOSTNAME:: finished. Start: ::SCAN_START:: Stop: ::SCAN_STOP::");

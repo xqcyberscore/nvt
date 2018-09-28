@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805806");
-  script_version("$Revision: 11407 $");
+  script_version("$Revision: 11667 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:02:05 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:49:01 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-25 12:03:58 +0530 (Thu, 25 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ManageEngine SupportCenter Plus Remote Detection");
@@ -64,6 +64,12 @@ if(">ManageEngine SupportCenter Plus<" >< rcvRes &&
                            "ZOHO Corp" >< rcvRes)
 {
   appVer = eregmatch(pattern:"style.css\?([0-9.]+)", string:rcvRes);
+  if(!appVer[1]){
+    appVer = eregmatch(pattern:"default-theme.css\?([0-9.]+)", string:rcvRes);
+  }
+  if(!appVer[1]){
+    appVer = eregmatch(pattern:'BUILD_NO":"([0-9.]+)', string:rcvRes);
+  }
 
   if(appVer[1]){
     appVer = appVer[1];

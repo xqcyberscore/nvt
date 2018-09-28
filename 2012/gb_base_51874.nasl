@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_base_51874.nasl 11148 2018-08-28 14:25:49Z asteins $
+# $Id: gb_base_51874.nasl 11651 2018-09-27 11:53:00Z asteins $
 #
 # BASE 'base_qry_main.php' SQL Injection Vulnerability
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2012-1017");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11148 $");
+  script_version("$Revision: 11651 $");
 
   script_name("BASE 'base_qry_main.php' SQL Injection Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51874");
   script_xref(name:"URL", value:"http://base.secureideas.net/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 13:53:00 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-10 11:58:03 +0100 (Fri, 10 Feb 2012)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -66,19 +66,21 @@ Likely none will be provided anymore. General solution options are to upgrade to
 }
 
 include("http_func.inc");
+
 include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if (!can_host_php(port:port)) exit(0);
+CPE = 'cpe:/a:secureideas:base';
 
-if(vers = get_version_from_kb(port:port,app:"BASE")) {
+if(!port = get_app_port(cpe:CPE))
+  exit(0);
 
-  if(version_is_equal(version: vers, test_version: "1.4.5")) {
-      security_message(port:port);
-      exit(0);
-  }
+if(!vers = get_app_version(cpe:CPE, port:port))
+  exit(0);
 
+if(version_is_equal(version:vers, test_version:"1.4.5")) {
+  security_message(port:port, data:"The target host was found to be vulnerable");
+  exit(0);
 }
 
 exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: blackice_dos.nasl 10411 2018-07-05 10:15:10Z cfischer $
+# $Id: blackice_dos.nasl 11665 2018-09-28 07:14:18Z cfischer $
 #
 # BlackIce DoS (ping flood)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10927");
-  script_version("$Revision: 10411 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 11665 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4025);
   script_tag(name:"cvss_base", value:"7.5");
@@ -44,9 +44,9 @@ if(description)
   script_dependencies("global_settings.nasl");
   script_exclude_keys("keys/TARGET_IS_IPV6");
 
-  #script_add_preference(name:"Flood length :", type:"entry", value:"600");
-  #script_add_preference(name:"Data length :", type:"entry", value:"10000");
-  #script_add_preference(name:"MTU :",  type:"entry", value:"576");
+  #  script_add_preference(name:"Flood length :", type:"entry", value:"600");
+  #  script_add_preference(name:"Data length :", type:"entry", value:"10000");
+  #  script_add_preference(name:"MTU :", type:"entry", value:"576");
 
   script_tag(name:"solution", value:"Upgrade your BlackIce software or remove it.");
 

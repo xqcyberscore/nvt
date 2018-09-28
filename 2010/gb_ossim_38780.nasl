@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ossim_38780.nasl 11625 2018-09-26 12:08:49Z jschulte $
+# $Id: gb_ossim_38780.nasl 11657 2018-09-27 13:32:51Z cfischer $
 #
 # OSSIM 'file' Parameter Directory Traversal Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:alienvault:open_source_security_information_management";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100542");
-  script_version("$Revision: 11625 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 14:08:49 +0200 (Wed, 26 Sep 2018) $");
+  script_version("$Revision: 11657 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-27 15:32:51 +0200 (Thu, 27 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-03-19 11:14:17 +0100 (Fri, 19 Mar 2010)");
   script_bugtraq_id(38780);
   script_tag(name:"cvss_base", value:"5.0");
@@ -55,12 +55,13 @@ if (description)
   script_tag(name:"solution", value:"The vendor has released an update to address this issue. Please see
   the references for more information.");
   script_tag(name:"summary", value:"OSSIM is prone to a directory-traversal vulnerability because it fails
-  to sufficiently sanitize user-supplied input data.
+  to sufficiently sanitize user-supplied input data.");
 
-  Exploiting the issue may allow an attacker to obtain sensitive
-  information that could aid in further attacks.
+  script_tag(name:"impact", value:"Exploiting the issue may allow an attacker to obtain sensitive
+  information that could aid in further attacks.");
 
-  OSSIM 2.2 is affected; other versions may also be vulnerable.");
+  script_tag(name:"affected", value:"OSSIM 2.2 is affected. Other versions may also be vulnerable.");
+
   exit(0);
 }
 
@@ -87,10 +88,10 @@ foreach pattern(keys(files)) {
 
   req = http_get(item:url, port:port);
   buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-  if(buf == NULL)continue;
+  if(!buf)continue;
 
   if(egrep(pattern:pattern, string:buf, icase:TRUE)) {
-    report = report_vuln_url(url:url);
+    report = report_vuln_url(port:port, url:url);
     security_message(data:report, port:port);
     exit(0);
   }
