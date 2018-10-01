@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2930-01_kernel.nasl 7558 2017-10-25 10:46:31Z santu $
+# $Id: gb_RHSA-2017_2930-01_kernel.nasl 11700 2018-10-01 04:58:46Z ckuersteiner $
 #
 # RedHat Update for kernel RHSA-2017:2930-01
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812046");
-  script_version("$Revision: 7558 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-25 12:46:31 +0200 (Wed, 25 Oct 2017) $");
+  script_version("$Revision: 11700 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 06:58:46 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-20 08:39:36 +0200 (Fri, 20 Oct 2017)");
   script_cve_id("CVE-2016-8399", "CVE-2017-1000111", "CVE-2017-1000112", "CVE-2017-11176",
                 "CVE-2017-14106", "CVE-2017-7184", "CVE-2017-7541", "CVE-2017-7542",
                 "CVE-2017-7558");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2017:2930-01");
   script_tag(name: "summary", value: "Check the version of kernel");

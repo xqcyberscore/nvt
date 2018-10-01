@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2012-0016.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: gb_VMSA-2012-0016.nasl 11696 2018-09-28 21:16:43Z cfischer $
 #
 # VMSA-2012-0016: VMware security updates for vSphere API and ESX Service Console
 #
@@ -25,85 +25,79 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103609");
   script_cve_id("CVE-2012-5703", "CVE-2012-1033", "CVE-2012-1667", "CVE-2012-3817", "CVE-2011-4940", "CVE-2011-4944", "CVE-2012-1150", "CVE-2012-0876", "CVE-2012-1148", "CVE-2012-0441");
-
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11696 $");
   script_name("VMSA-2012-0016: VMware security updates for vSphere API and ESX Service Console");
-
-
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 23:16:43 +0200 (Fri, 28 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-16 11:02:01 +0100 (Fri, 16 Nov 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("VMware Local Security Checks");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("gb_vmware_esxi_init.nasl");
   script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
-  script_tag(name:"summary", value:"The remote ESXi is missing one or more security related Updates from VMSA-2012-0016.
 
-Summary
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2012-0016.html");
 
-VMware has updated the vSphere API to address a denial of service vulnerability
-in ESX and ESXi. VMware has also updated the ESX Service Console to include
-several open source security updates.
+  script_tag(name:"solution", value:"Apply the missing patch(es).");
 
-Relevant releases
+  script_tag(name:"summary", value:"The remote ESXi is missing one or more security related Updates from VMSA-2012-0016.");
 
-VMware ESXi 4.1 without patch ESXi410-201211401-SG
-VMware ESX 4.1 without patches ESX410-201211401-SG, ESX410-201211402-SG, ESX410-201211405-SG,
-and ESX410-201211407-SG
+  script_tag(name:"affected", value:"VMware ESXi 4.1 without patch ESXi410-201211401-SG
 
-Problem Description
+  VMware ESX 4.1 without patches ESX410-201211401-SG, ESX410-201211402-SG, ESX410-201211405-SG, and ESX410-201211407-SG");
 
-a. VMware vSphere API denial of service vulnerability
+  script_tag(name:"insight", value:"VMware has updated the vSphere API to address a denial of service vulnerability
+  in ESX and ESXi. VMware has also updated the ESX Service Console to include several open source security updates.
 
-The VMware vSphere API contains a denial of service vulnerability. This issue
-allows an unauthenticated user to send a maliciously crafted API request and
-disable the host daemon. Exploitation of the issue would prevent management
-activities on the host but any virtual machines running on the host would be
-unaffected.
+  a. VMware vSphere API denial of service vulnerability
 
-b. VMware vSphere API denial of service vulnerability
+  The VMware vSphere API contains a denial of service vulnerability. This issue
+  allows an unauthenticated user to send a maliciously crafted API request and
+  disable the host daemon. Exploitation of the issue would prevent management
+  activities on the host but any virtual machines running on the host would be
+  unaffected.
 
-The ESX service console bind packages are updated to the following versions:
+  b. VMware vSphere API denial of service vulnerability
 
-    bind-libs-9.3.6-20.P1.el5_8.2
-    bind-utils-9.3.6-20.P1.el5_8.2
+  The ESX service console bind packages are updated to the following versions:
 
-These updates fix multiple security issues.
+  bind-libs-9.3.6-20.P1.el5_8.2
 
-c. Update to ESX service console python packages
+  bind-utils-9.3.6-20.P1.el5_8.2
 
-The ESX service console Python packages are updated to the following versions:
+  These updates fix multiple security issues.
 
-    python-2.4.3-46.el5_8.2.x86_64
-    python-libs-2.4.3-46.el5_8.2.x86_64
+  c. Update to ESX service console python packages
 
-These updates fix multiple security issues.
+  The ESX service console Python packages are updated to the following versions:
 
-d. Update to ESX service console expat package
+   python-2.4.3-46.el5_8.2.x86_64
 
-The ESX service console expat package is updated to expat-1.95.8-11.el5_8.
+   python-libs-2.4.3-46.el5_8.2.x86_64
 
-This update fixes multiple security issues.
+  These updates fix multiple security issues.
 
-e. Update to ESX service console nspr and nss packages
+  d. Update to ESX service console expat package
 
-This patch updates the ESX service console Netscape Portable Runtime and
-Network Security Services RPMs to versions nspr-4.9.1.4.el5_8 and
-nss-3.13.5.4.9834, respectively, to resolve multiple security issues.
+  The ESX service console expat package is updated to expat-1.95.8-11.el5_8.
 
-Solution
-Apply the missing patch(es).");
+  This update fixes multiple security issues.
+
+  e. Update to ESX service console nspr and nss packages
+
+  This patch updates the ESX service console Netscape Portable Runtime and
+  Network Security Services RPMs to versions nspr-4.9.1.4.el5_8 and
+  nss-3.13.5.4.9834, respectively, to resolve multiple security issues.");
+
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2012-0016.html");
- exit(0);
+
+  exit(0);
 }
 
 include("vmware_esx.inc");
@@ -117,10 +111,8 @@ patches = make_array("4.1.0","ESXi410-201211401-SG");
 if(!patches[esxVersion])exit(0);
 
 if(_esxi_patch_missing(esxi_version:esxVersion, patch:patches[esxVersion])) {
-
   security_message(port:0);
   exit(0);
-
 }
 
 exit(99);

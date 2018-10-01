@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 28 Sep 2018 16:27:48 +0200
+# Automatically created on:  Mon, 01 Oct 2018 08:54:11 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38592,6 +38592,8 @@
 2018/apache/gb_apache_hadoop_priv_esc_vuln_may18.nasl: GPLv2+
 2018/apache/gb_apache_hadoop_yarn_nodemanager_info_disc_vuln.nasl: GPLv2+
 2018/apache/gb_apache_http2_conn_dos_vuln.nasl: GPLv2+
+2018/apache/gb_apache_http2_settings_data_proc_dos_vuln_lin.nasl: GPLv2+
+2018/apache/gb_apache_http2_settings_data_proc_dos_vuln_win.nasl: GPLv2+
 2018/apache/gb_apache_httpd_dos_vuln02_apr18_lin.nasl: GPLv2+
 2018/apache/gb_apache_httpd_dos_vuln02_apr18_win.nasl: GPLv2+
 2018/apache/gb_apache_httpd_dos_vuln_apr18_lin.nasl: GPLv2+
@@ -39884,6 +39886,7 @@
 2018/fedora/gb_fedora_2018_08550a9006_postgresql_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_08ea7a5f0b_LibRaw_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_09b59b0227_chromium_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_09c51bbcec_mozilla-noscript_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_0a0da2f3b7_qt3_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_0a3b07a003_libreoffice_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_0a473d6e7b_unboundid-ldapsdk_fc27.nasl: GPLv2+
@@ -39913,6 +39916,7 @@
 2018/fedora/gb_fedora_2018_111044d435_curl_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_118b9abf99_webkit2gtk3_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_11b37d7a68_wget_fc28.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_11b966722a_hylafax+_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_1217b02061_bchunk_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_122ea355a7_memcached_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_12f92ff831_php_fc27.nasl: GPLv2+
@@ -39938,6 +39942,7 @@
 2018/fedora/gb_fedora_2018_16bb8b00c5_zsh_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_16c8fdf9b8_kubernetes_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_1724b6a0dc_monitorix_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_1758d97170_yaml-cpp_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_17843a895b_qt3_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_17a97bb25b_wavpack_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_17ba1a2393_awstats_fc26.nasl: GPLv2+
@@ -39962,6 +39967,7 @@
 2018/fedora/gb_fedora_2018_1c80fea1cd_kernel-headers_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_1c8b49fbc7_perl_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_1c8b49fbc7_perl-Module-CoreList_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_1cb4c4a6d8_lcms2_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_1cbdc8cbb8_glibc_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_1d2bc76093_ansible_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_1d3d0e6f2e_monitorix_fc26.nasl: GPLv2+
@@ -39974,6 +39980,7 @@
 2018/fedora/gb_fedora_2018_1fffa787e7_ruby_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_2012089e37_libsamplerate_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_202c536f70_gifsicle_fc28.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_2062cd7548_libbson_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_20ba39cba9_poppler_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_21a7ad920c_kernel_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_223d8fc52a_java-1.8.0-openjdk-aarch32_fc27.nasl: GPLv2+
@@ -40042,9 +40049,11 @@
 2018/fedora/gb_fedora_2018_331af74020_gd_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_335aec0507_libtiff_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_337757e11f_plasma-workspace_fc26.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_33c7c17e71_python2_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_33fef25ed1_ghc-hakyll_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_33fef25ed1_ghc-hs-bibutils_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_33fef25ed1_pandoc-citeproc_fc28.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_34fac89d51_visualboyadvance-m_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_35254ad97d_shadow-utils_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_35325c9faf_qutebrowser_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_3564527be4_haproxy_fc28.nasl: GPLv2+
@@ -40056,6 +40065,7 @@
 2018/fedora/gb_fedora_2018_373bbbd408_nodejs-JSV_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_373bbbd408_nodejs-uri-js_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_375e3244b6_httpd_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_37a27807e0_hylafax+_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_37e28670f2_php-simplesamlphp-saml2_3_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_388847c0de_LibRaw_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_389bc4e911_knot-resolver_fc28.nasl: GPLv2+
@@ -40070,6 +40080,7 @@
 2018/fedora/gb_fedora_2018_394bf4fb5a_community-mysql_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_39e0872379_libtomcrypt_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_3a3c660bfa_community-mysql_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_3aafb854a9_yum-utils_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_3b782350ff_libxml2_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_3ba1be2e79_wavpack_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_3dc16842e2_gnupg2_fc28.nasl: GPLv2+
@@ -40098,6 +40109,7 @@
 2018/fedora/gb_fedora_2018_43541091ab_libvncserver_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_4367d984c1_sblim-sfcb_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_43712163de_webkitgtk4_fc26.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_43ff5f6e5b_moodle_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_44c6f91560_libtiff_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_44e1c23700_qt5-qtwebengine_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_44f8a7454d_qemu_fc28.nasl: GPLv2+
@@ -40139,6 +40151,7 @@
 2018/fedora/gb_fedora_2018_4e660226e7_glusterfs_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_4edbabf88a_electrum_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_4ef71d3525_gnupg_fc28.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_4f0089c995_yum-utils_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_4f0b7d1251_tcpflow_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_4f5a3e792f_libXfont2_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_4fabf63492_squid_fc27.nasl: GPLv2+
@@ -40286,6 +40299,7 @@
 2018/fedora/gb_fedora_2018_7714b514e2_glibc_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_77533e644b_java-1.8.0-openjdk_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_775d96b54b_blktrace_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_77d864ff39_libbson_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_77e610115a_mariadb_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_77fe2e20ad_thunderbird-enigmail_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_781b88f72d_firefox_fc27.nasl: GPLv2+
@@ -40592,6 +40606,7 @@
 2018/fedora/gb_fedora_2018_c188d3f09a_unboundid-ldapsdk_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_c1b8e0176c_freetype_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_c1ef35a4f9_glibc_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_c2499e6025_yaml-cpp_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_c3838931e1_libsoup_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_c38e40a4bf_golang_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_c39ae23dc8_ghostscript_fc28.nasl: GPLv2+
@@ -40681,6 +40696,7 @@
 2018/fedora/gb_fedora_2018_d64806ca1d_net-snmp_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_d7125c3900_singularity_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_d77cc41f35_kernel_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_d77cc41f35_kernel-headers_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_d7ea552cde_cups-filters_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_d7ea552cde_qpdf_fc26.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_d809bd2fd6_php-simplesamlphp-saml2_1_fc26.nasl: GPLv2+
@@ -40753,6 +40769,7 @@
 2018/fedora/gb_fedora_2018_e8f793bbfc_kernel_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_e92359c3b8_visualboyadvance-m_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_e952086dda_firefox_fc27.nasl: GPLv2+
+2018/fedora/gb_fedora_2018_e9821afbca_mozilla-noscript_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_eaa7de17ae_botan2_fc28.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_eacf5a9ce8_thunderbird-enigmail_fc27.nasl: GPLv2+
 2018/fedora/gb_fedora_2018_eb58dc8a6f_mbedtls_fc27.nasl: GPLv2+
@@ -41054,6 +41071,7 @@
 2018/mediawiki/gb_mediawiki_install_path_disc_vuln_lin.nasl: GPLv2+
 2018/mediawiki/gb_mediawiki_install_path_disc_vuln_win.nasl: GPLv2+
 2018/memcached/gb_memcached_amplification_attack.nasl: GPLv2+
+2018/mercurial/gb_mercurial_mult_vuln_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_ancm_dos_vuln_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_dos_vuln_may18_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_dos_vuln_sep18_win.nasl: GPLv2+
@@ -41956,6 +41974,8 @@
 2018/postgresql/gb_postgresql_info_disc_vuln01_feb18_win.nasl: GPLv2+
 2018/postgresql/gb_postgresql_info_disc_vuln_feb18_lin.nasl: GPLv2+
 2018/postgresql/gb_postgresql_info_disc_vuln_feb18_win.nasl: GPLv2+
+2018/postgresql/gb_postgresql_interactive_installer_code_exec_vuln_lin.nasl: GPLv2+
+2018/postgresql/gb_postgresql_interactive_installer_code_exec_vuln_win.nasl: GPLv2+
 2018/postgresql/gb_postgresql_libpq_security_bypass_vuln_aug18_lin.nasl: GPLv2+
 2018/postgresql/gb_postgresql_libpq_security_bypass_vuln_aug18_win.nasl: GPLv2+
 2018/postgresql/gb_postgresql_logrotate_vuln_may18_lin.nasl: GPLv2+
@@ -42284,6 +42304,7 @@
 2018/ubuntu/gb_ubuntu_USN_3717_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3718_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3718_2.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3719_3.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3721_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3722_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3722_3.nasl: GPLv2+
@@ -42327,6 +42348,8 @@
 2018/ubuntu/gb_ubuntu_USN_3766_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3768_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3769_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3771_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3772_1.nasl: GPLv2+
 2018/universal_media_server/gb_universal_media_server_xxe_vuln.nasl: GPLv2+
 2018/vbulletin/gb_vbulletin_url_param_open_redirect_vuln.nasl: GPLv2+
 2018/vertiv/gb_emerson_liebert_intellislot_default_credentials.nasl: GPLv2+
@@ -43504,6 +43527,7 @@ gb_memcachedb_detect.nasl: GPLv2+
 gb_memcached_detect.nasl: GPLv2+
 gb_memcached_detect_udp.nasl: GPLv2+
 gb_merak_mail_server_detect.nasl: GPLv2+
+gb_mercurial_detect_win.nasl: GPLv2+
 gb_mesosphere_marathon_detect.nasl: GPLv2+
 gb_metasploit_detect_lin.nasl: GPLv2+
 gb_Meteocontrol_detect.nasl: GPLv2+
@@ -60003,6 +60027,12 @@ gsf/2018/ibm/gb_ibm_sametime_info_disc_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_security_identity_manager_mult_vuln_june18.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_storwize_mult_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_tivoli_remote_control_info_disc_vuln.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_tsm_client_info_disc_ibm10718013_lin.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_tsm_client_info_disc_ibm10718013_macosx.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_tsm_client_info_disc_ibm10718013_win.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_tsm_client_info_disc_ibm10729873_lin.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_tsm_client_info_disc_ibm10729873_macosx.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_tsm_client_info_disc_ibm10729873_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_urbancode_deploy_info_disc_vuln_swg2C1000219.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_urbancode_deploy_info_disc_vuln_swg2C1000376.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_urbancode_deploy_mult_vuln_swg2C1000264.nasl: GPLv2+
@@ -60481,6 +60511,12 @@ gsf/2018/rhel/gb_RHSA-2018_2693-01_firefox.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_2731-01_spice_and_spice-gtk.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_2732-01_spice-gtk_and_spice-server.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_2737-01_mod_perl.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_2748-01_kernel.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_2757-01_389-ds-base.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_2766-01_flatpak.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_2768-01_nss.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_2834-01_firefox.nasl: GPLv2+
+gsf/2018/rhel/gb_RHSA-2018_2835-01_firefox.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1100_mult_vuln.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln1.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Include File
-# $Id: secpod_reg.inc 7173 2017-09-18 11:29:22Z cfischer $
+# $Id: secpod_reg.inc 11699 2018-09-29 11:26:08Z cfischer $
 #
 # Retrieving Windows Registry Related Queries
 #
@@ -41,7 +41,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7173 $
+# $Revision: 11699 $
 #
 ##############################################################################
 
@@ -442,23 +442,27 @@ function hotfix_check_sp( nt, win2k, xp, xpx64, win2003, win2003x64, winVista, w
   return -1;
 }
 
-#-----------------------------------------------------------------------------
-# hotfix_missing() : This function is to check whether the OS is installed
-# with given hotfix or not.
+# @brief This function is to check whether the OS is installed with given hotfix or not.
 #
-# Returns Value :
-#  1 : If hotfix is missing.
-#  0 : If hotfix is present.
-# -1 : If invalid credentials or could not connect to registry.
-#-----------------------------------------------------------------------------
-
+# @note  Deprecated and shouldn't be used anymore because hotfixes might get superseded by others
+#        and the function might report an missing hotfix which was removed and superseded by such
+#        other/newer one.
+#
+# @param name The KB number to check, e.g. 953230 or KB953230 (The KB will be stripped automatically)
+#
+# @return 1 If the hotfix is missing, 0 if the hotfix is present or -1 if it wasn't possible to connect
+#         to the remote registry or an invalid input was given to the name parameter.
+#
 function hotfix_missing( name ) {
 
-  local_var KB, key;
+  local_var name, KB, key;
 
-  if( isnull( name ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#hotfix_missing" );
+  if( ! name ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#hotfix_missing" );
+    return -1;
+  }
 
-  KB = get_kb_list( "SMB/Registry/*" );
+  KB = get_kb_list( "SMB/Registry/HKLM/SOFTWARE/Microsoft/*" );
 
   if( isnull( KB ) || max_index( make_list( keys( KB ) ) ) == 0 ) {
     return -1;
@@ -473,15 +477,9 @@ function hotfix_missing( name ) {
   }
 
   foreach key( keys( KB ) ) {
-
-    if( ereg( pattern:"SMB/Registry/HKLM/SOFTWARE/Microsoft/(Updates/.*|" +
-                      "Windows NT/CurrentVersion/HotFix)/(KB|Q|M)" + name,
-              string:key ) ) {
+    if( ereg( pattern:"SMB/Registry/HKLM/SOFTWARE/Microsoft/(Updates/.*|Windows NT/CurrentVersion/HotFix)/(KB|Q|M)" + name, string:key ) ) {
       return 0;
-    } else if( ereg( pattern:"SMB/Registry/HKLM/SOFTWARE/Microsoft/Windows/" +
-                             "CurrentVersion/Component Based Servicing/" +
-                             "Packages/[P|P]ackage.?[0-9].?for.?KB.*" + name,
-                     string:key ) ) {
+    } else if( ereg( pattern:"SMB/Registry/HKLM/SOFTWARE/Microsoft/Windows/CurrentVersion/Component Based Servicing/Packages/[P|p]ackage.?[0-9]*.?for.?KB.*" + name, string:key ) ) {
       return 0;
     }
   }

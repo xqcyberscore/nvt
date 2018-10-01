@@ -1,9 +1,11 @@
-# OpenVAS Vulnerability Test 
-# Description: Mageia Linux security check 
-# $Id: mgasa-2016-0048.nasl 6562 2017-07-06 12:22:42Z cfischer $
- 
-# Authors: 
-# Eero Volotinen <eero.volotinen@solinor.com> 
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: mgasa-2016-0048.nasl 11692 2018-09-28 16:55:19Z cfischer $
+#
+# Mageia Linux security check
+#
+# Authors:
+# Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
@@ -20,38 +22,40 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
+
 if(description)
- {
-script_oid("1.3.6.1.4.1.25623.1.0.131212");
-script_version("$Revision: 6562 $");
-script_tag(name:"creation_date", value:"2016-02-08 19:55:18 +0200 (Mon, 08 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 14:22:42 +0200 (Thu, 06 Jul 2017) $");
-script_name("Mageia Linux Local Check: mgasa-2016-0048");
-script_tag(name: "insight", value: "An out-of-bounds write flaw was found in the JPEG image format decoder in the AWT component in OpenJDK. A specially crafted JPEG image could cause a Java application to crash or, possibly execute arbitrary code. An untrusted Java application or applet could use this flaw to bypass Java sandbox restrictions (CVE-2016-0483). An integer signedness issue was found in the font parsing code in the 2D component in OpenJDK. A specially crafted font file could possibly cause the Java Virtual Machine to execute arbitrary code, allowing an untrusted Java application or applet to bypass Java sandbox restrictions (CVE-2016-0494). It was discovered that the password-based encryption (PBE) implementation in the Libraries component in OpenJDK used an incorrect key length. This could, in certain cases, lead to generation of keys that were weaker than expected (CVE-2016-0475). It was discovered that the JAXP component in OpenJDK did not properly enforce the totalEntitySizeLimit limit. An attacker able to make a Java application process a specially crafted XML file could use this flaw to make the application consume an excessive amount of memory (CVE-2016-0466). A flaw was found in the way TLS 1.2 could use the MD5 hash function for signing ServerKeyExchange and Client Authentication packets during a TLS handshake. A man-in-the-middle attacker able to force a TLS connection to use the MD5 hash function could use this flaw to conduct collision attacks to impersonate a TLS server or an authenticated TLS client (CVE-2015-7575). Multiple flaws were discovered in the Networking and JMX components in OpenJDK. An untrusted Java application or applet could use these flaws to bypass certain Java sandbox restrictions (CVE-2016-0402, CVE-2016-0448). This update also required the addition of a new package, copy-jdk-configs, and a patch to the chkconfig package which adds the --family option to the alternatives command. Both of these are used by scriplets in the update java-1.8.0-openjdk packages."); 
-script_tag(name : "solution", value : "update software");
-script_tag(name : "solution_type", value : "VendorFix");
-script_xref(name : "URL" , value : "https://advisories.mageia.org/MGASA-2016-0048.html");
-script_cve_id("CVE-2015-7575","CVE-2016-0402","CVE-2016-0448","CVE-2016-0466","CVE-2016-0475","CVE-2016-0483","CVE-2016-0494");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-script_tag(name:"qod_type", value:"package");
-script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release");
-script_category(ACT_GATHER_INFO);
-script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0048");
-script_copyright("Eero Volotinen");
-script_family("Mageia Linux Local Security Checks");
-exit(0);
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.131212");
+  script_version("$Revision: 11692 $");
+  script_tag(name:"creation_date", value:"2016-02-08 19:55:18 +0200 (Mon, 08 Feb 2016)");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-28 18:55:19 +0200 (Fri, 28 Sep 2018) $");
+  script_name("Mageia Linux Local Check: mgasa-2016-0048");
+  script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"https://advisories.mageia.org/MGASA-2016-0048.html");
+  script_cve_id("CVE-2015-7575", "CVE-2016-0402", "CVE-2016-0448", "CVE-2016-0466", "CVE-2016-0475", "CVE-2016-0483", "CVE-2016-0494");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"qod_type", value:"package");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/mageia_linux", "ssh/login/release", re:"ssh/login/release=MAGEIA5");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"summary", value:"Mageia Linux Local Security Checks mgasa-2016-0048");
+  script_copyright("Eero Volotinen");
+  script_family("Mageia Linux Local Security Checks");
+
+  exit(0);
 }
+
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
-release = get_kb_item("ssh/login/release");
+
+release = rpm_get_ssh_release();
+if(!release) exit(0);
+
 res = "";
-if(release == NULL)
-{
- exit(0);
-}
+
 if(release == "MAGEIA5")
 {
 if ((res = isrpmvuln(pkg:"copy-jdk-configs", rpm:"copy-jdk-configs~1.1~1.1.mga5", rls:"MAGEIA5")) != NULL) {
@@ -70,6 +74,6 @@ if ((res = isrpmvuln(pkg:"lua-posix", rpm:"lua-posix~33.3.1~1.mga5", rls:"MAGEIA
   security_message(data:res);
   exit(0);
 }
-if (__pkg_match) exit(99); #Not vulnerable
+if (__pkg_match) exit(99);
   exit(0);
 }
