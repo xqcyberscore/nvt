@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_xss_vuln_aug16_win.nasl 10457 2018-07-09 06:23:47Z cfischer $
+# $Id: gb_php_xss_vuln_aug16_win.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # PHP Cross-Site Scripting Vulnerability - Aug16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808799");
-  script_version("$Revision: 10457 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2015-8935");
   script_bugtraq_id(92356);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:23:47 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-17 15:18:31 +0530 (Wed, 17 Aug 2016)");
   script_name("PHP Cross-Site Scripting Vulnerability - Aug16 (Windows)");
 
@@ -50,9 +50,7 @@ if(description)
   script_tag(name:"impact", value:"Successfully exploiting this issue allows
   remote attackers to conduct cross-site scripting (XSS) attacks against
   Internet Explorer by leveraging '%0A%20' or '%0D%0A%20' mishandling in
-  the header function.
-
-  Impact Level: Application");
+  the header function.");
 
   script_tag(name:"affected", value:"PHP versions before 5.4.38, 5.5.x before
   5.5.22, and 5.6.x before 5.6.6 on Windows");

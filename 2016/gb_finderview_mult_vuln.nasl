@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_finderview_mult_vuln.nasl 6264 2017-06-01 12:53:37Z cfischer $
+# $Id: gb_finderview_mult_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # FinderView Multiple Vulnerabilities
 #
@@ -29,39 +29,37 @@ CPE = "cpe:/a:finderview:finderview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808097");
-  script_version("$Revision: 6264 $");
+  script_version("$Revision: 11702 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-01 14:53:37 +0200 (Thu, 01 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-27 14:33:21 +0530 (Mon, 27 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("FinderView Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with FinderView
+  script_tag(name:"summary", value:"The host is installed with FinderView
   and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to read cookie or not.");
 
-  script_tag(name: "insight" , value:"The multiple flaws are due to an
+  script_tag(name:"insight", value:"The multiple flaws are due to an
   insufficient validation of user supplied input via GET parameter 'callback'
   to 'api.php' script.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to view directory and to cause cross site scripting and steal the
-  cookie of other active sessions.
+  cookie of other active sessions.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"FinderView version 0.1");
 
-  script_tag(name: "affected" , value:"FinderView version 0.1");
-
-  script_tag(name:"solution", value:"The last release of this product was in 2014, likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective features, remove the product or replace
-  the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40011");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40011");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -77,28 +75,18 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-find_port = 0;
-report = "";
-dir = "";
-url = "";
-
-# Get HTTP Port
 if(!find_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Application Location
 if(!dir = get_app_location(cpe:CPE, port:find_port)){
   exit(0);
 }
 
 if(dir == "/") dir = "";
 
-## Construct the attack request
 url =  dir + "/api.php?callback=<script>alert(document.cookie)<%2fscript>";
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:find_port, url:url, check_header:TRUE,
                    pattern:"<script>alert\(document.cookie\)</script>",
                    extra_check:"README.md"))

@@ -1,12 +1,14 @@
-# OpenVAS Vulnerability Test 
-# Description: Amazon Linux security check 
-# $Id: alas-2013-177.nasl 6577 2017-07-06 13:43:46Z cfischer $
- 
-# Authors: 
-# Eero Volotinen <eero.volotinen@iki.fi> 
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: alas-2013-177.nasl 6577 2017-07-06 13:43:46Z cfischer$
+#
+# Amazon Linux security check
+#
+# Authors:
+# Eero Volotinen <eero.volotinen@iki.fi>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org 
+# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -20,38 +22,41 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
+
 if(description)
- {
-script_oid("1.3.6.1.4.1.25623.1.0.120561");
-script_version("$Revision: 6577 $");
-script_tag(name:"creation_date", value:"2015-09-08 13:29:37 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:43:46 +0200 (Thu, 06 Jul 2017) $");
-script_name("Amazon Linux Local Check: ALAS-2013-177");
-script_tag(name: "insight", value: "A heap overflow flaw was found in Perl. If a Perl application allowed user input to control the count argument of the string repeat operator, an attacker could cause the application to crash or, potentially, execute arbitrary code with the privileges of the user running the application. (CVE-2012-5195 )A denial of service flaw was found in the way Perl's rehashing code implementation, responsible for recalculation of hash keys and redistribution of hash content, handled certain input. If an attacker supplied specially-crafted input to be used as hash keys by a Perl application, it could cause excessive memory consumption. (CVE-2013-1667 )It was found that the Perl CGI module, used to handle Common Gateway Interface requests and responses, incorrectly sanitized the values for Set-Cookie and P3P headers. If a Perl application using the CGI module reused cookies values and accepted untrusted input from web browsers, a remote attacker could use this flaw to alter member items of the cookie or add new items. (CVE-2012-5526 )It was found that the Perl Locale::Maketext module, used to localize Perl applications, did not properly handle backslashes or fully-qualified method names. An attacker could possibly use this flaw to execute arbitrary Perl code with the privileges of a Perl application that uses untrusted Locale::Maketext templates. (CVE-2012-6329 )"); 
-script_tag(name : "solution", value : "Run yum update perl to update your system.");
-script_tag(name : "solution_type", value : "VendorFix");
-script_xref(name : "URL" , value : "https://alas.aws.amazon.com/ALAS-2013-177.html");
-script_cve_id("CVE-2012-6329", "CVE-2013-1667", "CVE-2012-5526", "CVE-2012-5195");
-script_tag(name:"cvss_base", value:"7.5");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-script_tag(name:"qod_type", value:"package");
-script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
-script_category(ACT_GATHER_INFO);
-script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_copyright("Eero Volotinen");
-script_family("Amazon Linux Local Security Checks");
-exit(0);
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.120561");
+  script_version("$Revision: 11711 $");
+  script_tag(name:"creation_date", value:"2015-09-08 13:29:37 +0200 (Tue, 08 Sep 2015)");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 14:30:57 +0200 (Mon, 01 Oct 2018) $");
+  script_name("Amazon Linux Local Check: ALAS-2013-177");
+  script_tag(name:"insight", value:"Multiple flaws were found in Perl. Please see the references for more information.");
+  script_tag(name:"solution", value:"Run yum update perl to update your system.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"https://alas.aws.amazon.com/ALAS-2013-177.html");
+  script_cve_id("CVE-2012-6329", "CVE-2013-1667", "CVE-2012-5526", "CVE-2012-5195");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"qod_type", value:"package");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
+  script_copyright("Eero Volotinen");
+  script_family("Amazon Linux Local Security Checks");
+
+  exit(0);
 }
+
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
-release = get_kb_item("ssh/login/release");
+
+release = rpm_get_ssh_release();
+if(!release) exit(0);
+
 res = "";
-if(release == NULL)
-{
- exit(0);
-}
+
 if(release == "AMAZON")
 {
 if ((res = isrpmvuln(pkg:"perl-suidperl", rpm:"perl-suidperl~5.10.1~130.17.amzn1", rls:"AMAZON")) != NULL) {
@@ -242,6 +247,6 @@ if ((res = isrpmvuln(pkg:"perl-File-Fetch", rpm:"perl-File-Fetch~0.26~130.17.amz
   security_message(data:res);
   exit(0);
 }
-if (__pkg_match) exit(99); #Not vulnerable
+if (__pkg_match) exit(99);
   exit(0);
 }

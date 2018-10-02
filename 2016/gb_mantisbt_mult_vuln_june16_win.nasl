@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_vuln_june16_win.nasl 11343 2018-09-12 06:36:46Z cfischer $
+# $Id: gb_mantisbt_mult_vuln_june16_win.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # MantisBT SOAP API Information Disclosure Vulnerability - June16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mantisbt:mantisbf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807599");
-  script_version("$Revision: 11343 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2014-9759");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-03 17:28:35 +0530 (Fri, 03 Jun 2016)");
   script_name("MantisBT SOAP API Information Disclosure Vulnerability - June16 (Windows)");
 
@@ -49,9 +49,7 @@ if(description)
   config becomes available via SOAP API");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to obtain sensitive master salt configuration information via a SOAP API request.
-
-  Impact Level: Application");
+  to obtain sensitive master salt configuration information via a SOAP API request.");
 
   script_tag(name:"affected", value:"MantisBT versions 1.3.x before 1.3.0
   on Windows");

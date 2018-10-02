@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_image_export_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_wordpress_image_export_dir_trav_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Wordpress Image Export Directory Traversal Vulnerability
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807625");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 11702 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:31 +0530 (Fri, 01 Apr 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress Image Export Directory Traversal Vulnerability");
 
-  script_tag(name:"summary" , value:"This host is installed with Wordpress Image
+  script_tag(name:"summary", value:"This host is installed with Wordpress Image
   Export plugin and is prone to directory traversal vulnerability.");
 
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
@@ -47,13 +47,13 @@ if(description)
   of input to 'file' parameter in 'download.php' file.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers
-  to read arbitrary files.
+  to read arbitrary files.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Wordpress Image Export Plugin 1.1.0. and prior");
 
-  script_tag(name:"affected" , value:"Wordpress Image Export Plugin 1.1.0. and prior");
-
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -73,12 +73,10 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get installed location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
@@ -87,10 +85,8 @@ files = traversal_files();
 
 foreach file (keys(files))
 {
-   ## Construct vulnerable url 
    url = dir + '/wp-content/plugins/image-export-master/download.php?file=' + crap(data: "../", length: 3*15) + files[file];
 
-   ## Try attack and check the response to confirm vulnerability
    if( http_vuln_check( port:http_port, url:url, check_header:TRUE, pattern:file ) )
    {
      report = report_vuln_url(port:http_port, url:url);

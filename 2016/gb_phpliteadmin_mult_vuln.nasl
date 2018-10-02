@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpliteadmin_mult_vuln.nasl 8597 2018-01-31 08:42:52Z cfischer $
+# $Id: gb_phpliteadmin_mult_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # phpLiteAdmin Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:phpliteadmin_project:phpliteadmin';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106090");
-  script_version("$Revision: 8597 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2016-05-31 08:10:56 +0700 (Tue, 31 May 2016)");
-  script_tag(name: "cvss_base", value: "6.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11702 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-31 08:10:56 +0700 (Tue, 31 May 2016)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("phpLiteAdmin Multiple Vulnerabilities");
 
@@ -49,26 +49,26 @@ if (description)
   script_dependencies("gb_phpliteadmin_detect.nasl");
   script_mandatory_keys("phpliteadmin/installed");
 
-  script_tag(name: "summary", value: "phpLiteAdmin is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"phpLiteAdmin is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "phpLiteAdmin contains multiple vulnerabilities:
+  script_tag(name:"insight", value:"phpLiteAdmin contains multiple vulnerabilities:
 Cross-site request forgery (CSRF) vulnerability allows remote attackers to hijack the authentication of
 users for requests that drop database tables via the droptable parameter to phpliteadmin.php (CVE-2015-6517).
 
 Multiple cross-site scripting (XSS) vulnerabilities allow remote attackers to inject arbitrary web script
 or HTML via the PATH_INFO, droptable parameter, or table parameter to phpliteadmin.php (CVE-2015-6518).");
 
-  script_tag(name: "impact", value: "A remote attacker may drop database tables or inject arbitrary web
+  script_tag(name:"impact", value:"A remote attacker may drop database tables or inject arbitrary web
 scripts or HTML code.");
 
-  script_tag(name: "affected", value: "Version 1.9.6 and prior");
+  script_tag(name:"affected", value:"Version 1.9.6 and prior");
 
-  script_tag(name: "solution", value: "Update to version 1.9.7 or later.");
+  script_tag(name:"solution", value:"Update to version 1.9.7 or later.");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/39714/");
-  script_xref(name: "URL", value: "https://bitbucket.org/phpliteadmin/public/wiki/Changelog%20phpLiteAdmin%201.9.7");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39714/");
+  script_xref(name:"URL", value:"https://bitbucket.org/phpliteadmin/public/wiki/Changelog%20phpLiteAdmin%201.9.7");
 
   exit(0);
 }

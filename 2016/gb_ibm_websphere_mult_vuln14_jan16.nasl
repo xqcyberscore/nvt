@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mult_vuln14_jan16.nasl 8596 2018-01-31 08:17:43Z cfischer $
+# $Id: gb_ibm_websphere_mult_vuln14_jan16.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # IBM Websphere Apllication Server Multiple Vulnerabilities-14 Jan16
 #
@@ -29,43 +29,42 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806842");
-  script_version("$Revision: 8596 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2013-0461", "CVE-2013-0459");
   script_bugtraq_id(57512, 57509);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:17:43 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-20 17:51:20 +0530 (Wed, 20 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Apllication Server Multiple Vulnerabilities-14 Jan16");
 
-  script_tag(name: "summary" , value:"This host is installed with IBM Websphere 
+  script_tag(name:"summary", value:"This host is installed with IBM Websphere
   application server and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An improper validation of input in the administrative console.
+
   - An improper validation of input by virtual member manager (VMM)
     administrative console.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to inject arbitrary web script or HTML via unspecified vectors.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to inject arbitrary web script or HTML via unspecified vectors.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"IBM WebSphere Application Server (WAS)
-  6.1 before 6.1.0.47, 7.0 before 7.0.0.27, 8.0 before 8.0.0.6, 
+  script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS)
+  6.1 before 6.1.0.47, 7.0 before 7.0.0.27, 8.0 before 8.0.0.6,
   and 8.5 before 8.5.0.2");
 
-  script_tag(name: "solution" , value:"Upgrade to IBM WebSphere Application 
+  script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
   Server (WAS) version 6.1.0.47, 7.0.0.27, 8.0.0.6, 8.5.0.2 or later,
   For updates refer to http://www-03.ibm.com/software/products/en/appserv-was");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21622444");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21622444");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -96,7 +95,7 @@ if(version_in_range(version:wasVer, test_version:"6.1", test_version2:"6.1.0.46"
 else if(version_in_range(version:wasVer, test_version:"7.0", test_version2:"7.0.0.26"))
 {
   fix = "7.0.0.27";
-  VULN = TRUE;  
+  VULN = TRUE;
 }
 
 else if(version_in_range(version:wasVer, test_version:"8.0", test_version2:"8.0.0.5"))

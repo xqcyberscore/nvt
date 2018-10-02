@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_reg_enum.nasl 11699 2018-09-29 11:26:08Z cfischer $
+# $Id: secpod_reg_enum.nasl 11706 2018-10-01 09:48:48Z cfischer $
 #
 # Enumerates List of Windows Hotfixes
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900012");
-  script_version("$Revision: 11699 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-29 13:26:08 +0200 (Sat, 29 Sep 2018) $");
+  script_version("$Revision: 11706 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -109,36 +109,15 @@ function crawl(key, level, maxlevel, soc, uid, tid, pipe, handle){
   return enum;
 }
 
-name = kb_smb_name();
-if(!name){
-  exit(0);
-}
+infos = kb_smb_wmi_connectinfo();
+if( ! infos ) exit( 0 );
 
-port = kb_smb_transport();
-if(!port){
-  exit(0);
-}
-
-if(!get_port_state(port)){
-  exit(0);
-}
-
-login  = kb_smb_login();
-pass   = kb_smb_password();
-domain = kb_smb_domain();
-
-if(!login){
-  login = "";
-}
-if(!pass){
-  pass = "";
-}
-
-soc = open_sock_tcp(port);
+soc = open_sock_tcp(infos["transport_port"]);
 if(!soc){
   exit(0);
 }
 
+name = infos["netbios_name"];
 r = smb_session_request(soc:soc, remote:name);
 if(!r){
   close(soc);
@@ -151,7 +130,7 @@ if(!prot){
   exit(0);
 }
 
-r = smb_session_setup(soc:soc, login:login, password:pass, domain:domain, prot:prot);
+r = smb_session_setup(soc:soc, login:infos["username_plain"], password:infos["password"], domain:infos["domain"], prot:prot);
 if(!r){
   close(soc);
   exit(0);
@@ -196,6 +175,8 @@ location2 = "SOFTWARE\Microsoft\Windows NT\CurrentVersion\HotFix";
 list = make_list(crawl(key:location1, level:0, maxlevel:3, soc:soc, uid:uid, tid:tid, pipe:pipe, handle:handle),
                  crawl(key:location2, level:0, maxlevel:1, soc:soc, uid:uid, tid:tid, pipe:pipe, handle:handle));
 
+close(soc);
+
 if(max_index(list) > 0){
   set_kb_item(name:"SMB/registry_enumerated", value:TRUE);
 }
@@ -212,8 +193,6 @@ foreach item (list){
     set_kb_item(name:"SMB/Registry/HKLM/" + item, value:TRUE);
   }
 }
-
-close(soc);
 
 # nb: Windows Vista, Windows 7, Windows 2008
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages\";

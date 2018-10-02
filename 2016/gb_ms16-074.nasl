@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-074.nasl 10017 2018-05-30 07:17:29Z cfischer $
+# $Id: gb_ms16-074.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Microsoft Graphics Component Multiple Vulnerabilities (3164036)
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808086");
-  script_version("$Revision: 10017 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2016-3216", "CVE-2016-3219", "CVE-2016-3220");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-15 09:21:26 +0530 (Wed, 15 Jun 2016)");
   script_name("Microsoft Graphics Component Multiple Vulnerabilities (3164036)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-074.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - the Windows Graphics Component (GDI32.dll) fails to properly
     handle objects in memory.
@@ -54,9 +53,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to retrieve information that could lead to an Address Space Layout
   Randomization (ASLR) bypass, and to run processes in an elevated context, and
-  execute arbitrary code and take control of an affected system.
-
-  Impact Level: System");
+  execute arbitrary code and take control of an affected system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
 
@@ -84,13 +81,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3164036");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-074");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3164036");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-074");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
   exit(0);
@@ -117,7 +115,6 @@ if(!dllver1 && !dllver2){
   exit(0);
 }
 
-##Windows 7 and Windows Server 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
   if(dllver1)
@@ -138,7 +135,6 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
   }
 }
 
-##Windows Vista and Windows Server 2008
 else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
   if(dllver1)
@@ -169,7 +165,6 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
   }
 }
 
-##Windows 8.1 and Windows Server 2012 R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
   if(dllver1)
@@ -190,7 +185,6 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
   }
 }
 
-##Windows Server 2012
 else if(hotfix_check_sp(win2012:1) > 0)
 {
   if(dllver1)
@@ -203,7 +197,6 @@ else if(hotfix_check_sp(win2012:1) > 0)
   }
 }
 
-##Windows 10
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
   if(dllver1)
@@ -213,7 +206,6 @@ else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
       Vulnerable_range = "Less than 10.0.10240.16942";
       VULN1 = TRUE ;
     }
-    ##Windows 10 Version 1511
     else if(version_in_range(version:dllver1, test_version:"10.0.10586.0", test_version2:"10.0.10586.419"))
     {
       Vulnerable_range = "10.0.10586.0 - 10.0.10586.419";
@@ -227,7 +219,6 @@ else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
       Vulnerable_range = "Less than 10.0.10240.16384";
       VULN2 = TRUE ;
     }
-    ##Windows 10 Version 1511
     else if(version_in_range(version:dllver2, test_version:"10.0.10586.0", test_version2:"10.0.10586.419"))
     {
       Vulnerable_range = "10.0.10586.0 - 10.0.10586.419";

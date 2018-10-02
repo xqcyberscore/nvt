@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 01 Oct 2018 08:54:11 +0200
+# Automatically created on:  Tue, 02 Oct 2018 11:35:36 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39105,6 +39105,8 @@
 2018/debian/deb_4304.nasl: GPLv2+
 2018/debian/deb_4305.nasl: GPLv2+
 2018/debian/deb_4306.nasl: GPLv2+
+2018/debian/deb_4307.nasl: GPLv2+
+2018/debian/deb_4308.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39541,6 +39543,9 @@
 2018/debian/deb_dla_1522.nasl: GPLv2+
 2018/debian/deb_dla_1523.nasl: GPLv2+
 2018/debian/deb_dla_1524.nasl: GPLv2+
+2018/debian/deb_dla_1525.nasl: GPLv2+
+2018/debian/deb_dla_1526.nasl: GPLv2+
+2018/debian/deb_dla_1527.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -40991,6 +40996,7 @@
 2018/imagemagick/gb_imagemagick_dos_vuln_macosx.nasl: GPLv2+
 2018/imagemagick/gb_imagemagick_dos_vuln_may18_lin.nasl: GPLv2+
 2018/imagemagick/gb_imagemagick_dos_vuln_win.nasl: GPLv2+
+2018/inedo/gb_inedo_proget_csrf_vuln.nasl: GPLv2+
 2018/infoblox/gb_infoblox_netmri_rxss_vuln.nasl: GPLv2+
 2018/infoblox/gb_infoblox_netmri_shell_escape_priv_esc.nasl: GPLv2+
 2018/intelbras/gb_ncloud300_router_auth_bypass_vuln.nasl: GPLv2+
@@ -41374,6 +41380,7 @@
 2018/miniupnp/gb_miniupnp_dos_vuln.nasl: GPLv2+
 2018/mit/gb_kerberos5_mult_vuln.nasl: GPLv2+
 2018/mobotix/gb_mobotix_webcam_default_credentials.nasl: GPLv2+
+2018/modx/gb_modx_cms_xss_vuln1.nasl: GPLv2+
 2018/modx/gb_modx_cms_xss_vuln.nasl: GPLv2+
 2018/moinmoin/gb_moinmoin_194_lin.nasl: GPLv2+
 2018/moinmoin/gb_moinmoin_194_win.nasl: GPLv2+
@@ -41901,6 +41908,7 @@
 2018/oracle/gb_oracle_webcenter_content_cpujan2018-3236628_02.nasl: GPLv2+
 2018/otrs/gb_otrs_default_credentials.nasl: GPLv2+
 2018/otrs/gb_otrs_info_disc_vuln.nasl: GPLv2+
+2018/otrs/gb_otrs_mult_vuln.nasl: GPLv2+
 2018/otrs/gb_otrs_priv_esc_vuln.nasl: GPLv2+
 2018/otrs/gb_otrs_rce_vuln.nasl: GPLv2+
 2018/owncloud/gb_owncloud_openid_access_control_bypass_vuln_lin.nasl: GPLv2+
@@ -43362,6 +43370,7 @@ gb_ilias_detect.nasl: GPLv2+
 gb_image_hosting_script_dpi_detect.nasl: GPLv2+
 gb_imagemagick_detect_macosx.nasl: GPLv2+
 gb_indusoft_web_studio_detect_win.nasl: GPLv2+
+gb_inedo_proget_detect.nasl: GPLv2+
 gb_informix_detect.nasl: GPLv2+
 gb_ingate_firewall_detect.nasl: GPLv2+
 gb_ingate_siparator_detect.nasl: GPLv2+
@@ -59974,6 +59983,8 @@ gsf/2018/hp/gb_hp_ilo2_multiple_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_ilo_CVE-2017-12542.nasl: GPLv2+
 gsf/2018/hp/gb_hp_ilo_CVE-2017-8987.nasl: GPLv2+
 gsf/2018/hp/gb_hp_ilo_CVE-2018-7093.nasl: GPLv2+
+gsf/2018/hp/gb_hp_ilo_HPESBHF03866.nasl: GPLv2+
+gsf/2018/hp/gb_hp_ilo_HPESBHF03875.nasl: GPLv2+
 gsf/2018/hp/gb_hp_ilo_rce_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_imc_dir_trav_vuln_hpesbhf03872.nasl: GPLv2+
 gsf/2018/hp/gb_hp_imc_mult_vuln_hpesbhf03745_win.nasl: GPLv2+
@@ -60373,6 +60384,7 @@ gsf/2018/pfsense/gb_pfsense_mult_vuln02_june18.nasl: GPLv2+
 gsf/2018/pfsense/gb_pfsense_webgui_bruteforce_vuln.nasl: GPLv2+
 gsf/2018/pfsense/gb_pfsense_webgui_code_exec_n_xss_vuln.nasl: GPLv2+
 gsf/2018/pfsense/gb_pfsense_webgui_mult_xss_vuln01.nasl: GPLv2+
+gsf/2018/pfsense/gb_pfsense_webgui_SA-18_08.nasl: GPLv2+
 gsf/2018/pfsense/gb_pfsense_webgui_xss_vuln01.nasl: GPLv2+
 gsf/2018/pfsense/gb_pfsense_webgui_xss_vuln02.nasl: GPLv2+
 gsf/2018/pfsense/gb_pfsense_webgui_xss_vuln03.nasl: GPLv2+
@@ -60380,6 +60392,7 @@ gsf/2018/phusion/gb_phusion_passenger_info_discl_vuln.nasl: GPLv2+
 gsf/2018/phusion/gb_phusion_passenger_mult_vuln.nasl: GPLv2+
 gsf/2018/printeron/gb_printeron_mult_vuln.nasl: GPLv2+
 gsf/2018/processmaker/gb_processmaker_mult_vuln.nasl: GPLv2+
+gsf/2018/progress/gb_sitefinity_mult_vuln.nasl: GPLv2+
 gsf/2018/pruftechnik/gb_vibnode_eol.nasl: GPLv2+
 gsf/2018/puppet/gb_puppet_enterprise_cert_auth_rev_prox_vuln.nasl: GPLv2+
 gsf/2018/puppet/gb_puppet_enterprise_cve-2018-6512.nasl: GPLv2+

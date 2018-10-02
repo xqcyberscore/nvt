@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_spa_cisco-sa-20160831-spa.nasl 3930 2016-09-01 09:57:42Z ckuerste $
+# $Id: gb_cisco_spa_cisco-sa-20160831-spa.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Cisco Small Business SPA3x/5x Series Denial of Service Vulnerability
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106217");
-  script_version("$Revision: 3930 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-01 11:57:42 +0200 (Thu, 01 Sep 2016) $");
-  script_tag(name: "creation_date", value: "2016-09-01 13:50:07 +0700 (Thu, 01 Sep 2016)");
+  script_version("$Revision: 11702 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-01 13:50:07 +0700 (Thu, 01 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_cve_id("CVE-2016-1469");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cisco Small Business SPA3x/5x Series Denial of Service Vulnerability");
 
@@ -49,23 +49,23 @@ if (description)
   script_dependencies("gb_cisco_spa_voip_device_detect.nasl");
   script_mandatory_keys("cisco/spa_voip/model", "cisco/spa_voip/version");
 
-  script_tag(name: "summary", value: "A vulnerability in the HTTP framework of Cisco Small Business SPA300 Series
+  script_tag(name:"summary", value:"A vulnerability in the HTTP framework of Cisco Small Business SPA300 Series
 IP Phones, Cisco Small Business SPA500 Series IP Phones, and Cisco SPA51x IP Phones could allow an
 unauthenticated, remote attacker to cause a denial of service (DoS) condition on an affected device.");
 
-  script_tag(name: "insight", value: "The vulnerability is due to incorrect handling of malformed HTTP traffic.
+  script_tag(name:"insight", value:"The vulnerability is due to incorrect handling of malformed HTTP traffic.
 An attacker could exploit this vulnerability by sending crafted HTTP requests to an affected device.");
 
-  script_tag(name: "impact", value: "An exploit could allow the attacker to deny service continually by sending
+  script_tag(name:"impact", value:"An exploit could allow the attacker to deny service continually by sending
 crafted HTTP requests to a phone, resulting in a DoS condition.");
 
-  script_tag(name: "affected", value: "SPA300 Series IP Phones, SPA500 Series IP Phones and SPA51x IP Phones.");
+  script_tag(name:"affected", value:"SPA300 Series IP Phones, SPA500 Series IP Phones and SPA51x IP Phones.");
 
-  script_tag(name: "solution", value: "Cisco has released software updates that address this vulnerability.");
+  script_tag(name:"solution", value:"Cisco has released software updates that address this vulnerability.");
 
-  script_xref(name: "URL", value: "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160831-spa");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160831-spa");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-003.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: secpod_ms12-003.nasl 11706 2018-10-01 09:48:48Z cfischer $
 #
 # MS Windows Client/Server Run-time Subsystem Privilege Escalation Vulnerability (2646524)
 #
@@ -30,12 +30,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902499");
-  script_version("$Revision: 11372 $");
+  script_version("$Revision: 11706 $");
   script_cve_id("CVE-2012-0005");
   script_bugtraq_id(51270);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-11 08:42:52 +0530 (Wed, 11 Jan 2012)");
   script_name("MS Windows Client/Server Run-time Subsystem Privilege Escalation Vulnerability (2646524)");
   script_category(ACT_GATHER_INFO);
@@ -43,7 +43,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl", "gb_wmi_access.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
+  script_mandatory_keys("WMI/access_successful", "SMB/registry_enumerated");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/47479/");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2646524");
@@ -52,6 +52,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation could allow attacker to execute arbitrary code with
   system-level privileges. Successfully exploiting this issue will result in
   the complete compromise of affected computers.");
+
   script_tag(name:"affected", value:"Microsoft Windows XP Service Pack 3 and prior.
 
   Microsoft Windows 2003 Service Pack 2 and prior.
@@ -59,11 +60,15 @@ if(description)
   Microsoft Windows Vista Service Pack 2 and prior.
 
   Microsoft Windows Server 2008 Service Pack 2 and prior.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://technet.microsoft.com/en-us/security/bulletin/ms12-003");
+
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-003.");
+
   script_tag(name:"insight", value:"The flaw is due to an error in the Client/Server Run-time Subsystem
   (CSRSS) when processing specially crafted sequences of unicode characters.
 

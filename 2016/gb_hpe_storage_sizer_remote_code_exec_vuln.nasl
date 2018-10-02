@@ -1,9 +1,9 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_storage_sizer_remote_code_exec_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_hpe_storage_sizer_remote_code_exec_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # HPE Storage Sizer Remote Arbitrary Code Execution Vulnerability
-# 
+#
 # Authors:
 # Tushar Khelge <ktushar@secpod.com>
 #
@@ -29,28 +29,25 @@ CPE = "cpe:/a:hp:storage_sizing_tool";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809187");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2016-4377");
   script_bugtraq_id(92479);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-01 16:12:15 +0530 (Thu, 01 Sep 2016)");
   script_name("HPE Storage Sizer Remote Arbitrary Code Execution Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with HPE Storage
   Sizer and is prone to remote arbitrary code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an unspecified
   error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  arbitrary code execution.
-
-  Impact Level: System/Application.");
+  arbitrary code execution.");
 
   script_tag(name:"affected", value:"HPE Storage Sizer prior to 13.0.");
 
@@ -72,15 +69,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-hpVer= "";
-
-## Get version
 if(!hpVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check For Version less than 13.0
 if(version_is_less(version:hpVer, test_version:"13.0"))
 {
   report = report_fixed_ver(installed_version:hpVer, fixed_version:"13.0");

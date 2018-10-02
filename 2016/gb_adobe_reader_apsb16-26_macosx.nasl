@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_apsb16-26_macosx.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_adobe_reader_apsb16-26_macosx.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Adobe Reader Security Updates(apsb16-26)-MAC OS X
 #
@@ -29,43 +29,44 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808582");
-  script_version("$Revision: 5588 $");
-  script_cve_id("CVE-2016-4191", "CVE-2016-4192", "CVE-2016-4193", "CVE-2016-4194", 
-                "CVE-2016-4195", "CVE-2016-4196", "CVE-2016-4197", "CVE-2016-4198", 
-                "CVE-2016-4199", "CVE-2016-4200", "CVE-2016-4201", "CVE-2016-4202", 
-                "CVE-2016-4203", "CVE-2016-4204", "CVE-2016-4205", "CVE-2016-4206", 
-                "CVE-2016-4207", "CVE-2016-4208", "CVE-2016-4209", "CVE-2016-4210", 
-                "CVE-2016-4211", "CVE-2016-4212", "CVE-2016-4213", "CVE-2016-4214", 
-                "CVE-2016-4215", "CVE-2016-4250", "CVE-2016-4251", "CVE-2016-4252", 
+  script_version("$Revision: 11702 $");
+  script_cve_id("CVE-2016-4191", "CVE-2016-4192", "CVE-2016-4193", "CVE-2016-4194",
+                "CVE-2016-4195", "CVE-2016-4196", "CVE-2016-4197", "CVE-2016-4198",
+                "CVE-2016-4199", "CVE-2016-4200", "CVE-2016-4201", "CVE-2016-4202",
+                "CVE-2016-4203", "CVE-2016-4204", "CVE-2016-4205", "CVE-2016-4206",
+                "CVE-2016-4207", "CVE-2016-4208", "CVE-2016-4209", "CVE-2016-4210",
+                "CVE-2016-4211", "CVE-2016-4212", "CVE-2016-4213", "CVE-2016-4214",
+                "CVE-2016-4215", "CVE-2016-4250", "CVE-2016-4251", "CVE-2016-4252",
                 "CVE-2016-4254", "CVE-2016-4255", "CVE-2016-4265", "CVE-2016-4266",
                 "CVE-2016-4267", "CVE-2016-4268", "CVE-2016-4269", "CVE-2016-4270",
                 "CVE-2016-4119", "CVE-2016-6937", "CVE-2016-6938");
   script_bugtraq_id(91716, 91712, 91714, 93016, 93014);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 13:02:40 +0530 (Thu, 14 Jul 2016)");
   script_name("Adobe Reader Security Updates(apsb16-26)-MAC OS X");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Reader
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
+
   - An integer overflow vulnerability.
+
   - An use-after-free vulnerability.
+
   - A heap buffer overflow vulnerability.
+
   - A Memory corruption vulnerabilities.");
 
-  script_tag(name:"impact" , value:"Successful exploitation of this
-  vulnerability will allow remote attacker lead to code execution and 
-  to bypass JavaScript API execution restrictions.
+  script_tag(name:"impact", value:"Successful exploitation of this
+  vulnerability will allow remote attacker lead to code execution and
+  to bypass JavaScript API execution restrictions.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Adobe Reader version 11.x before 11.0.17 on MAC OS X.");
+  script_tag(name:"affected", value:"Adobe Reader version 11.x before 11.0.17 on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Reader version
   11.0.17 or later.
@@ -75,7 +76,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/acrobat/apsb16-26.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/acrobat/apsb16-26.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -89,20 +90,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
-## Get version
 if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## check the version
 if(!readerVer =~ "^(11\.)"){
   exit(0);
 }
 
-## Check Adobe Reader vulnerable versions
 if(version_in_range(version:readerVer, test_version:"11.0", test_version2:"11.0.16"))
 {
   report = report_fixed_ver(installed_version:readerVer, fixed_version:"11.0.17");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160928-smi.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_cisco_ios_cisco-sa-20160928-smi.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Cisco IOS Software Smart Install Memory Leak Vulnerability
 #
@@ -29,40 +29,40 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106314");
- script_cve_id("CVE-2016-6385");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5732 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106314");
+  script_cve_id("CVE-2016-6385");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11702 $");
 
- script_name("Cisco IOS Software Smart Install Memory Leak Vulnerability");
+  script_name("Cisco IOS Software Smart Install Memory Leak Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-smi");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160928-smi");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"The Smart Install client feature in Cisco IOS Software contains a
+  script_tag(name:"summary", value:"The Smart Install client feature in Cisco IOS Software contains a
 vulnerability that could allow an unauthenticated, remote attacker to cause a memory leak and eventual denial
 of service (DoS) condition on an affected device.");
 
- script_tag(name: "insight", value: "The vulnerability is due to incorrect handling of image list parameters.
+  script_tag(name:"insight", value:"The vulnerability is due to incorrect handling of image list parameters.
 An attacker could exploit this vulnerability by sending crafted Smart Install packets to TCP port 4786.");
 
- script_tag(name: "impact", value: "A successful exploit could cause the device to leak memory and eventually
+  script_tag(name:"impact", value:"A successful exploit could cause the device to leak memory and eventually
 reload, resulting in a DoS condition.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-09-29 15:42:34 +0700 (Thu, 29 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-29 15:42:34 +0700 (Thu, 29 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version");
  exit(0);
 }
 
@@ -71,7 +71,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'12.2(35)EX',
 		'12.2(35)EX1',
 		'12.2(35)EX2',

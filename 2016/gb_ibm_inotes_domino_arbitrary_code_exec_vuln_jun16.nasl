@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_inotes_domino_arbitrary_code_exec_vuln_jun16.nasl 7575 2017-10-26 09:47:04Z cfischer $
+# $Id: gb_ibm_inotes_domino_arbitrary_code_exec_vuln_jun16.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # IBM INotes and Domino Arbitrary Code Execution Vulnerability - Jun16
 #
@@ -29,42 +29,39 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808112");
-  script_version("$Revision: 7575 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2014-0892");
   script_bugtraq_id(67014);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-02 18:14:09 +0530 (Thu, 02 Jun 2016)");
   script_name("IBM INotes and Domino Arbitrary Code Execution Vulnerability - Jun16");
 
   script_tag(name:"summary", value:"This host is installed with IBM Domino and
   is prone to arbitrary code execution vulnerability");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an incorrect usage of
   gcc options.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to execute arbitrary code by leveraging the absence of the NX protection
-  mechanism and placing crafted x86 code on the stack, aka SPR KLYH9GGS9W.
-
-  Impact Level: System/Application");
+  mechanism and placing crafted x86 code on the stack, aka SPR KLYH9GGS9W.");
 
   script_tag(name:"affected", value:"IBM iNotes and Domino 8.5.x before 8.5.3
   FP6 IF3 and 9.x before 9.0.1 FP1");
 
   script_tag(name:"solution", value:"Upgrade to IBM Domino 8.5.3 FP6 IF3,
-  or 9.0.1 FP1, or later. 
+  or 9.0.1 FP1, or later.
   For updates refer to http://www-01.ibm.com/support/docview.wss?uid=swg21670264");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21670264");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21670264");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -77,9 +74,6 @@ if(description)
 include("version_func.inc");
 include("revisions-lib.inc"); # Used in get_highest_app_version
 include("host_details.inc");
-
-## Variable Initialization
-domVer = "";
 
 if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);

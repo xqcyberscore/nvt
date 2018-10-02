@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_arbitrary_code_vuln_macosx.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_reader_arbitrary_code_vuln_macosx.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Foxit Reader Arbitrary Code Execution Vulnerability (MAC OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809336");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2016-8856");
   script_bugtraq_id(93608);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-08 17:31:49 +0530 (Tue, 08 Nov 2016)");
   script_name("Foxit Reader Arbitrary Code Execution Vulnerability (MAC OS X)");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to overwrite core files with backdoor code, which when executed by
-  privileged user would result in Privilege Escalation, Code Execution, or both.
-
-  Impact Level: System/Application");
+  privileged user would result in Privilege Escalation, Code Execution, or both.");
 
   script_tag(name:"affected", value:"Foxit Reader version 2.1.0.0804 and
   earlier");

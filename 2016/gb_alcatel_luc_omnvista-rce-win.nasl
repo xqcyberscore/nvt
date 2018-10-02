@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alcatel_luc_omnvista-rce-win.nasl 9603 2018-04-25 10:35:13Z asteins $
+# $Id: gb_alcatel_luc_omnvista-rce-win.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Alcatel Lucent Omnivista 8770 - Remote Code Execution Vulnerability (Windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:alcatel-lucent:omnivista";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107112");
-  script_version("$Revision: 9603 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2016-9796");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 12:35:13 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-23 13:00:46 +0530 (Fri, 23 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Alcatel Lucent Omnivista 8770 - Remote Code Execution Vulnerability (Windows)");
@@ -46,9 +46,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to the fact that determined ORBs are exposed and they can be invoked without authentication.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  remote attackers to execute arbitrary code.
-
-  Impact Level: Application");
+  remote attackers to execute arbitrary code.");
 
   script_tag(name:"affected", value:"Alcatel Lucent Omnivista 8770 2.0, 2.6 and 3.0");
 
@@ -79,7 +77,6 @@ giopport = 30024;
 if( ! get_port_state( giopport ) ) exit( 0 );
 soc = open_sock_tcp( giopport );
 if( ! soc ) exit( 0 );
-##  Construct AddjobSet packet
 req = raw_string( 0x47, 0x49, 0x4f, 0x50, 0x01, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x01, 0x26, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00,

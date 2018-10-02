@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update_24-2016-03_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_stable-channel-update_24-2016-03_win.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update_24-2016-03)-Windows
 #
@@ -29,39 +29,43 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807642");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2016-1646", "CVE-2016-1647", "CVE-2016-1648", "CVE-2016-1649",
 		        "CVE-2016-1650", "CVE-2016-3679");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-28 10:36:52 +0530 (Mon, 28 Mar 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update_24-2016-03)-Windows");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
+
   - Out-of-bounds read in V8.
+
   - Use-after-free in Navigation.
+
   - Use-after-free in Extensions.
+
   - Buffer overflow in libANGLE.
+
   - Various fixes from internal audits, fuzzing and other initiatives.
+
   - Multiple unspecified vulnerabilities in Google V8.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow an
+  script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to execute arbitrary code in the context of the browser, obtain
   sensitive information, bypass security restrictions, or cause
-  denial-of-service conditions.
+  denial-of-service conditions.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Google Chrome version
+  script_tag(name:"affected", value:"Google Chrome version
   prior to 49.0.2623.108 on Windows.");
 
-  script_tag(name: "solution", value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   49.0.2623.108 or later.
   For updates refer to http://www.google.com/chrome");
 
@@ -69,7 +73,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2016/03/stable-channel-update_24.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2016/03/stable-channel-update_24.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

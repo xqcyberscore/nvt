@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3719_3.nasl 11700 2018-10-01 04:58:46Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3719_3.nasl 11715 2018-10-01 15:34:24Z cfischer $
 #
 # Ubuntu Update for mutt USN-3719-3
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843642");
-  script_version("$Revision: 11700 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 06:58:46 +0200 (Mon, 01 Oct 2018) $");
+  script_version("$Revision: 11715 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 17:34:24 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-28 08:19:24 +0200 (Fri, 28 Sep 2018)");
   script_cve_id("CVE-2018-14350", "CVE-2018-14352", "CVE-2018-14354", "CVE-2018-14359",
                 "CVE-2018-14358", "CVE-2018-14353", "CVE-2018-14357", "CVE-2018-14355",
@@ -67,19 +67,17 @@ CVE-2018-14362, CVE-2018-14349)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU16\.04 LTS");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "UBUNTU16.04 LTS")
 {

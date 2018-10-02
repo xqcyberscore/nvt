@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-004.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_ms12-004.nasl 11706 2018-10-01 09:48:48Z cfischer $
 #
 # Microsoft Windows Media Could Allow Remote Code Execution Vulnerabilities (2636391)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902807");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11706 $");
   script_bugtraq_id(51292, 51295);
   script_cve_id("CVE-2012-0003", "CVE-2012-0004");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-11 10:10:10 +0530 (Wed, 11 Jan 2012)");
   script_name("Microsoft Windows Media Could Allow Remote Code Execution Vulnerabilities (2636391)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47485");
@@ -45,11 +45,12 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"impact", value:"Successful exploitation will allow the attacker to execute arbitrary code in
   the context of the user running the application which can compromise the
   application and possibly the computer.");
+
   script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior.
 
   Microsoft Windows XP Service Pack 3 and prior.
@@ -61,23 +62,27 @@ if(description)
   Microsoft Windows Server 2008 Service Pack 2 and prior.
 
   Microsoft Windows Media Center TV Pack for Windows Vista.");
+
   script_tag(name:"insight", value:"- An unspecified error in the Windows multimedia library (winmm.dll) when
     parsing MIDI files can be exploited via a specially crafted file opened
     in Windows Media Player.
 
   - An unspecified error exists in the Line21 DirectShow filter (Quartz.dll
     and Qdvd.dll) when parsing specially crafted media files.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
 
   http://technet.microsoft.com/en-us/security/bulletin/ms12-004");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-004.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

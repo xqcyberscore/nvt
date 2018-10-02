@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160914-ios-xe.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: gb_cisco_ios_cisco-sa-20160914-ios-xe.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Cisco IOS Software Data in Motion Denial of Service Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106250");
- script_cve_id("CVE-2016-6403");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5513 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106250");
+  script_cve_id("CVE-2016-6403");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11702 $");
 
- script_name("Cisco IOS Software Data in Motion Denial of Service Vulnerability");
+  script_name("Cisco IOS Software Data in Motion Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160914-ios-xe");
- 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160914-ios-xe");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "summary" , value:"A vulnerability in the Data in Motion (DMo) application in Cisco IOS
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+
+  script_tag(name:"summary", value:"A vulnerability in the Data in Motion (DMo) application in Cisco IOS
 software with the IOx feature set could allow an unauthenticated, remote attacker to to cause a denial of service
 condition in the DMo process.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient input validation by the affected
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient input validation by the affected
 software. An attacker could exploit this vulnerability by sending a specially crafted packet to the targeted
 system.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause a DoS condition on the targeted
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause a DoS condition on the targeted
 system.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-09-16 11:26:46 +0700 (Fri, 16 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-16 11:26:46 +0700 (Fri, 16 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version");
  exit(0);
 }
 

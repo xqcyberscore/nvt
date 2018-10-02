@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_nnmi_c05325823.nasl 4568 2016-11-18 09:58:27Z ckuerste $
+# $Id: gb_hpe_nnmi_c05325823.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # HPE Network Node Manager i (NNMi) Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:hp:network_node_manager_i";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106401");
-  script_version("$Revision: 4568 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-11-18 10:58:27 +0100 (Fri, 18 Nov 2016) $");
-  script_tag(name: "creation_date", value: "2016-11-18 10:07:02 +0700 (Fri, 18 Nov 2016)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11702 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-18 10:07:02 +0700 (Fri, 18 Nov 2016)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-4398", "CVE-2016-4399", "CVE-2016-4400");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("HPE Network Node Manager i (NNMi) Multiple Vulnerabilities");
 
@@ -51,24 +51,24 @@ if (description)
   script_dependencies("gb_hpe_nnmi_detect.nasl");
   script_mandatory_keys("hpe/nnmi/installed");
 
-  script_tag(name: "summary", value: "HPE Network Node Manager i is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"HPE Network Node Manager i is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "HPE Network Node Manager i is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"HPE Network Node Manager i is prone to multiple vulnerabilities:
 
-- Remote Code Execution (CVE-2016-4398)
+  - Remote Code Execution (CVE-2016-4398)
 
-- Cross Site Scripting (CVE-2016-4399, CVE-2016-4400)");
+  - Cross Site Scripting (CVE-2016-4399, CVE-2016-4400)");
 
-  script_tag(name: "impact", value: "An authenticated user may execute arbitrary code.");
+  script_tag(name:"impact", value:"An authenticated user may execute arbitrary code.");
 
-  script_tag(name: "affected", value: "HPE Network Node Manager i (NNMi) Software 10.00, 10.01 (patch1),
+  script_tag(name:"affected", value:"HPE Network Node Manager i (NNMi) Software 10.00, 10.01 (patch1),
 10.01 (patch 2), 10.10");
 
-  script_tag(name: "solution", value: "See the referenced security bulletin for a solution.");
+  script_tag(name:"solution", value:"See the referenced security bulletin for a solution.");
 
-  script_xref(name: "URL", value: "http://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05325823");
+  script_xref(name:"URL", value:"http://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05325823");
 
   exit(0);
 }

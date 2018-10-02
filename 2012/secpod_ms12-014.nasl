@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-014.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_ms12-014.nasl 11706 2018-10-01 09:48:48Z cfischer $
 #
 # MS Windows Indeo Codec Remote Code Execution Vulnerability (2661637)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902792");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11706 $");
   script_cve_id("CVE-2010-3138");
   script_bugtraq_id(42730);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 13:02:52 +0530 (Wed, 15 Feb 2012)");
   script_name("MS Windows Indeo Codec Remote Code Execution Vulnerability (2661637)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/41114/");
@@ -45,24 +45,29 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"impact", value:"Successful exploitation allows an attackers to load arbitrary libraries by
-  tricking a user into opening an AVI file located on a remote WebDAV or SMB
-  share via an application using the filter.");
+  tricking a user into opening an AVI file located on a remote WebDAV or SMB share via an application using the filter.");
+
   script_tag(name:"affected", value:"Microsoft Windows XP Service Pack 3 and prior.");
+
   script_tag(name:"insight", value:"The flaw is due to an error in 'Indeo' filter, it is loading libraries
   (e.g. iacenc.dll) in an insecure manner.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://technet.microsoft.com/en-us/security/bulletin/ms12-014");
+
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-014.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

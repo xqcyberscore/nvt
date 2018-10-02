@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_83103.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_cisco_cucm_83103.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Cisco Unified Communications Manager Information Disclosure Vulnerability
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/a:cisco:unified_communications_manager";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105541");
- script_bugtraq_id(83103);
- script_cve_id("CVE-2016-1319");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5580 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105541");
+  script_bugtraq_id(83103);
+  script_cve_id("CVE-2016-1319");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11702 $");
 
- script_name("Multiple Cisco Unified Products Information Disclosure Vulnerability");
+  script_name("Multiple Cisco Unified Products Information Disclosure Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/83103");
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160208-ucm");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/83103");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160208-ucm");
 
- script_tag(name: "impact" , value:"An attacker can exploit this issue to obtain sensitive information.");
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "insight" , value:"The vulnerability is due to an encryption key that can be read in plain text.");
- script_tag(name: "solution" , value:"Updates are available. Please see the vendor advisory for more information.");
- script_tag(name: "summary" , value:"Multiple Cisco Unified Products are prone to an information-disclosure vulnerability.");
- script_tag(name: "affected" , value:"Cisco Unified Communications Manager (CallManager) Releases 10.5(2.12901.1), 10.5(2.10000.5), 11.0(1.10000.10), and 9.1(2.10000.28)");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to obtain sensitive information.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"insight", value:"The vulnerability is due to an encryption key that can be read in plain text.");
+  script_tag(name:"solution", value:"Updates are available. Please see the vendor advisory for more information.");
+  script_tag(name:"summary", value:"Multiple Cisco Unified Products are prone to an information-disclosure vulnerability.");
+  script_tag(name:"affected", value:"Cisco Unified Communications Manager (CallManager) Releases 10.5(2.12901.1), 10.5(2.10000.5), 11.0(1.10000.10), and 9.1(2.10000.28)");
 
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-02-12 14:47:29 +0100 (Fri, 12 Feb 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_cucm_version.nasl");
- script_mandatory_keys("cisco/cucm/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-02-12 14:47:29 +0100 (Fri, 12 Feb 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_cucm_version.nasl");
+  script_mandatory_keys("cisco/cucm/version");
 
  exit(0);
 }

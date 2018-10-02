@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_antivirus_engine_dos_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_symantec_antivirus_engine_dos_vuln_win.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Symantec Antivirus Engine Denial of Service Vulnerability (Windows)
 #
@@ -28,42 +28,39 @@
 CPE = "cpe:/a:symantec:anti-virus_engine";
 
 if(description)
-{   
+{
   script_oid("1.3.6.1.4.1.25623.1.0.808534");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2016-2208");
-  script_bugtraq_id(90653 );
+  script_bugtraq_id(90653);
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-04 14:15:06 +0530 (Mon, 04 Jul 2016)");
   script_name("Symantec Antivirus Engine Denial of Service Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value: "This host is installed with Symantec
+  script_tag(name:"summary", value:"This host is installed with Symantec
   Antivirus Engine and is prone to denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The flaw exists due to an error in the
+  script_tag(name:"insight", value:"The flaw exists due to an error in the
   kernel component via a malformed PE header file.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allows remote
-  attackers to execute arbitrary code or cause a denial of service.
+  script_tag(name:"impact", value:"Successful exploitation will allows remote
+  attackers to execute arbitrary code or cause a denial of service.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Symantec Anti-Virus Engine (AVE) 20151.1
+  script_tag(name:"affected", value:"Symantec Anti-Virus Engine (AVE) 20151.1
   before 20151.1.1.4.");
 
-  script_tag(name: "solution" , value:"Update to Symantec Anti-Virus Engine (AVE)
+  script_tag(name:"solution", value:"Update to Symantec Anti-Virus Engine (AVE)
   version 20151.1.1.4 or later. For updates refer to
   https://support.symantec.com/en_US/article.TECH103088.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&amp;pvid=security_advisory&amp;suid=20160516_00");
+  script_xref(name:"URL", value:"https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&amp;pvid=security_advisory&amp;suid=20160516_00");
 
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -76,10 +73,6 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-sepVer= "";
-
-## Get version
 if(!sepVer = get_app_version(cpe:CPE)){
   exit(0);
 }

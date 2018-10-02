@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1223_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_1223_1.nasl 11721 2018-10-02 08:19:21Z cfischer $
 #
 # Ubuntu Update for puppet USN-1223-1
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1223-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840763");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11721 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 10:19:21 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-04 16:55:13 +0200 (Tue, 04 Oct 2011)");
   script_xref(name:"USN", value:"1223-1");
   script_tag(name:"cvss_base", value:"6.3");
@@ -58,10 +58,9 @@ if(description)
   SSH authorized_keys files. A local attacker could exploit this to overwrite
   arbitrary files as root. (CVE-2011-3870)
 
-  It was discovered that Puppet used a predictable filename when using the
-  --edit resource. A local attacker could exploit this to edit arbitrary
-  files or run arbitrary code as the user invoking the program, typically
-  root. (CVE-2011-3871)");
+  It was discovered that Puppet used a predictable filename when using the --edit resource.
+  A local attacker could exploit this to edit arbitrary files or run arbitrary code as the
+  user invoking the program, typically root. (CVE-2011-3871)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);

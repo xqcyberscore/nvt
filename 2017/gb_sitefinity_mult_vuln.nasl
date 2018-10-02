@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitefinity_mult_vuln.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_sitefinity_mult_vuln.nasl 11717 2018-10-02 06:52:54Z ckuersteiner $
 #
 # Sitefinity CMS Multiple Vulnerabilities
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:telerik:sitefinity_cms';
+CPE = 'cpe:/a:progress:sitefinity';
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140541");
-  script_version("$Revision: 11474 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 11717 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 08:52:54 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-28 08:24:34 +0700 (Tue, 28 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");

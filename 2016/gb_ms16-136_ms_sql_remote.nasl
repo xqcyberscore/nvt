@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-136_ms_sql_remote.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_ms16-136_ms_sql_remote.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Microsoft SQL Server Multiple Vulnerabilities (3199641)
 #
@@ -29,51 +29,55 @@ CPE = "cpe:/a:microsoft:sql_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809096");
-  script_version("$Revision: 5867 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2016-7249", "CVE-2016-7250", "CVE-2016-7251", "CVE-2016-7252",
 		"CVE-2016-7253", "CVE-2016-7254");
   script_bugtraq_id(94037, 94060, 94043, 94050, 94061, 94056);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-14 15:30:37 +0530 (Mon, 14 Nov 2016)");
   script_name("Microsoft SQL Server Multiple Vulnerabilities (3199641)");
 
-  script_tag(name: "summary" , value:"This host is missing an important
+  script_tag(name:"summary", value:"This host is missing an important
   security update according to Microsoft Bulletin MS16-136.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to
+  script_tag(name:"insight", value:"Multiple flaws exist due to:
+
   - The Microsoft SQL Server improperly handles pointer casting.
+
   - The SQL Server MDS does not properly validate a request parameter on the SQL
     Server site.
+
   - An improper check of 'FILESTREAM' path.
+
   - The SQL Server Agent incorrectly check ACLs on atxcore.dll.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain elevated privileges that could be used to view, change,
-  or delete data; or create new accounts, also can gain additional database and
-  file information and to spoof content, disclose information, or take any action 
-  that the user could take on the site on behalf of the targeted user.
+  or delete data, or create new accounts, also can gain additional database and
+  file information and to spoof content, disclose information, or take any action
+  that the user could take on the site on behalf of the targeted user.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Microsoft SQL Server 2012 x86/x64 Edition Service Pack 2 and prior,
 
-  script_tag(name: "affected" , value:"
-  Microsoft SQL Server 2012 x86/x64 Edition Service Pack 2 and prior,
   Microsoft SQL Server 2012 x86/x64 Edition Service Pack 3 and prior,
+
   Microsoft SQL Server 2014 x86/x64 Edition Service Pack 1 and prior,
+
   Microsoft SQL Server 2014 x86/x64 Edition Service Pack 2 and prior,
+
   Microsoft SQL Server 2016 x64 Edition.");
 
-  script_tag(name: "solution" , value:"Run Windows Update and update the
+  script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from this link, https://technet.microsoft.com/library/security/MS16-136");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-136");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-136");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -88,21 +92,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-mssqlVer = "";
-mssqlPort = "";
-
-## Get Port
 if(!mssqlPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!mssqlVer = get_app_version(cpe:CPE, port:mssqlPort)){
   exit(0);
 }
 
-## Check for file Microsoft.sqlserver.chainer.infrastructure.dll
 ## MS SQL 2012 SP2 : GDR x64/x86 ==> 11.0.5388.0  ; CU x64/x86 ==> 11.0.5676.0
 if(mssqlVer =~ "^11\.0")
 {
@@ -133,7 +130,7 @@ else if(mssqlVer =~ "^11\.0")
   }
 }
 
-## MS SQL 2014 SP1 : GDR x64/x86 ==> 12.0.4487.0   ; CU x64/x86 ==> 12.0.4232.0 
+## MS SQL 2014 SP1 : GDR x64/x86 ==> 12.0.4487.0   ; CU x64/x86 ==> 12.0.4232.0
 else if(mssqlVer =~ "^12\.0")
 {
   if(version_in_range(version:mssqlVer, test_version:"12.0.4000.0", test_version2:"12.0.4231.0"))
@@ -148,7 +145,7 @@ else if(mssqlVer =~ "^12\.0")
   }
 }
 
-## MS SQL 2014 SP2 : GDR x64/x86 ==> 12.0.5203.0   ; CU x64/x86 ==> 12.0.5532.0 
+## MS SQL 2014 SP2 : GDR x64/x86 ==> 12.0.5203.0   ; CU x64/x86 ==> 12.0.5532.0
 else if(mssqlVer =~ "^12\.0")
 {
   if(version_in_range(version:mssqlVer, test_version:"12.0.5000.0", test_version2:"12.0.5202.0"))

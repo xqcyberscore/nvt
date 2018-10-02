@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitefinity_auth_bypass.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_sitefinity_auth_bypass.nasl 11717 2018-10-02 06:52:54Z ckuersteiner $
 #
 # Sitefinity Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113078");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 11717 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 08:52:54 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 14:49:50 +0100 (Wed, 10 Jan 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -63,7 +63,7 @@ if( description )
   exit( 0 );
 }
 
-CPE = "cpe:/a:telerik:sitefinity_cms";
+CPE = "cpe:/a:progress:sitefinity";
 
 include( "host_details.inc" );
 include( "version_func.inc" );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-001.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: secpod_ms12-001.nasl 11706 2018-10-01 09:48:48Z cfischer $
 #
 # Microsoft Windows Kernel Security Feature Bypass Vulnerability (2644615)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902783");
-  script_version("$Revision: 11372 $");
+  script_version("$Revision: 11706 $");
   script_bugtraq_id(51296);
   script_cve_id("CVE-2012-0001");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2012-01-11 10:01:06 +0530 (Wed, 11 Jan 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
   script_name("Microsoft Windows Kernel Security Feature Bypass Vulnerability (2644615)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47356/");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2644615");
@@ -45,10 +45,11 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code by
   leveraging memory corruption vulnerabilities in Windows applications.");
+
   script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior.
 
   Microsoft Windows 2003 Service Pack 2 and prior.
@@ -56,21 +57,25 @@ if(description)
   Microsoft Windows Vista Service Pack 2 and prior.
 
   Microsoft Windows Server 2008 Service Pack 2 and prior.");
+
   script_tag(name:"insight", value:"The flaw is due to an error in the way the kernel (ntdll.dll) loads
   structured exception handling tables and allows bypassing the SafeSEH
   security mechanism. This facilitates easier exploitation of other
   vulnerabilities in affected applications to execute code.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
 
   http://technet.microsoft.com/en-us/security/bulletin/ms12-001");
+
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-001.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

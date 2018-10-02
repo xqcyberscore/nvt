@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_servicedesk_plus_mult_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_manageengine_servicedesk_plus_mult_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # ManageEngine ServiceDesk Plus Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:manageengine:servicedesk_plus';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106319");
-  script_version("$Revision: 7585 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2016-09-30 10:47:53 +0700 (Fri, 30 Sep 2016)");
+  script_version("$Revision: 11702 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-30 10:47:53 +0700 (Fri, 30 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-4888", "CVE-2016-4890");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("ManageEngine ServiceDesk Plus Multiple Vulnerabilities");
 
@@ -51,26 +51,26 @@ if (description)
   script_dependencies("gb_ManageEngine_ServiceDesk_Plus_detect.nasl");
   script_mandatory_keys("ManageEngine/ServiceDeskPlus/installed");
 
-  script_tag(name: "summary", value: "ManageEngine ServiceDesk Plus is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"ManageEngine ServiceDesk Plus is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "ServiceDesk Plus is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"ServiceDesk Plus is prone to multiple vulnerabilities:
 
-- A stored cross-site scripting vulnerability (CVE-2016-4888).
+  - A stored cross-site scripting vulnerability (CVE-2016-4888).
 
-- Using an insecure method for generating cookies (CVE-2016-4890).");
+  - Using an insecure method for generating cookies (CVE-2016-4890).");
 
-  script_tag(name: "impact", value: "An arbitrary script may be executed on a web browser of a user that is
+  script_tag(name:"impact", value:"An arbitrary script may be executed on a web browser of a user that is
 logged in. If an attacker obtains a user's cookie, the password contained in the cookie can be easily guessed.");
 
-  script_tag(name: "affected", value: "ServiceDesk Plus before version 9.2 build 9228.");
+  script_tag(name:"affected", value:"ServiceDesk Plus before version 9.2 build 9228.");
 
-  script_tag(name: "solution", value: "Upgrade to version 9.2 build 9228 or later");
+  script_tag(name:"solution", value:"Upgrade to version 9.2 build 9228 or later");
 
-  script_xref(name: "URL", value: "https://jvn.jp/en/jp/JVN50347324/index.html");
-  script_xref(name: "URL", value: "https://jvn.jp/en/jp/JVN72559412/index.html");
-  script_xref(name: "URL", value: "https://www.manageengine.com/products/service-desk/readme-9.2.html");
+  script_xref(name:"URL", value:"https://jvn.jp/en/jp/JVN50347324/index.html");
+  script_xref(name:"URL", value:"https://jvn.jp/en/jp/JVN72559412/index.html");
+  script_xref(name:"URL", value:"https://www.manageengine.com/products/service-desk/readme-9.2.html");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   exit(0);
 }

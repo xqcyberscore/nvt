@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_activex_control_mult_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_ms_windows_activex_control_mult_vuln.nasl 11706 2018-10-01 09:48:48Z cfischer $
 #
 # Microsoft Windows ActiveX Control Multiple Vulnerabilities (2647518)
 #
@@ -27,12 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802426");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11706 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-14 13:25:40 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Windows ActiveX Control Multiple Vulnerabilities (2647518)");
+  script_cve_id("CVE-2011-1388", "CVE-2011-1391", "CVE-2011-1392", "CVE-2012-0189");
 
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2647518");
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/advisory/2647518");
@@ -43,39 +44,61 @@ if(description)
   script_family("Windows");
   script_tag(name:"solution_type", value:"VendorFix");
   script_dependencies("secpod_reg_enum.nasl");
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/registry_enumerated");
+
   script_tag(name:"impact", value:"Successful exploitation will let the remote attackers execute arbitrary code,
   and can compromise a vulnerable system.");
+
   script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior
+
   Microsoft Windows XP Service Pack 3 and prior
+
   Microsoft Windows 2003 Service Pack 2 and prior
+
   Microsoft Windows Vista Service Pack 2 and prior
+
   Microsoft Windows Server 2008 Service Pack 2 and prior");
+
   script_tag(name:"insight", value:"The flaws are due to errors in the handling of Biostat SamplePower,
-  Blueberry Software Flashback Component and HP Photo Creative ActiveX
-  controls.");
+  Blueberry Software Flashback Component and HP Photo Creative ActiveX controls.");
+
   script_tag(name:"summary", value:"This script will list all the vulnerable activex controls installed
   on the remote windows machine with references and cause.");
+
   script_tag(name:"solution", value:"Apply the patch from below link,
+
   http://support.microsoft.com/kb/2647518
 
   Workaround:
   Set the killbit for the following CLSIDs,
+
   {6e84d662-9599-11d2-9367-20cc03c10627},
+
   {7e00a3b0-8f5c-11d2-baa4-04f205c10000},
+
   {4ba9089c-ddfc-4206-b937-74484b06d305},
+
   {A3CD4BF9-EC17-47A4-833C-50A324D6FF35},
+
   {57733FF6-E100-4A4B-A7D1-A85AD17ABC54},
+
   {9B8E377B-7291-491A-B611-BB3E1D5F99F0},
+
   {ee5e14b0-4abf-409e-9c39-74f3d35bd85a},
+
   {b34b19f4-7ebe-46cb-807c-746e72ebb4b6},
+
   {7a7b986c-31e9-4286-88ca-b9dc481ca989},
+
   {8290cb76-9f61-458b-ad2c-3f6fd2e8cd7d},
+
   {dd7b057d-9020-4630-baf8-7a0cda04588d},
+
   {fc7F9cc6-e049-4698-8a25-59ad87c7dce2}.");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

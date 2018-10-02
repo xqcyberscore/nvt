@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitefinity_mult_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_sitefinity_mult_vuln.nasl 11717 2018-10-02 06:52:54Z ckuersteiner $
 #
 # Sitefinity < 10.1 Multiple Vulnerabilities
 #
@@ -28,22 +28,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:telerik:sitefinity_cms';
+CPE = 'cpe:/a:progress:sitefinity';
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112222");
-  script_version("$Revision: 9758 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-13 13:52:34 +0100 (Tue, 13 Feb 2018)");
+  script_version("$Revision: 11717 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 08:52:54 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-13 13:52:34 +0100 (Tue, 13 Feb 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-18175", "CVE-2017-18176", "CVE-2017-18177", "CVE-2017-18178", "CVE-2017-18179");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Sitefinity < 10.1 Multiple Vulnerabilities");
 
@@ -54,11 +54,11 @@ if (description)
   script_dependencies("gb_sitefinity_detect.nasl");
   script_mandatory_keys("sitefinity/detected");
 
-  script_tag(name: "summary", value: "Sitefinity is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Sitefinity is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: 'Sitefinity is prone to the following vulnerabilities:
+  script_tag(name:"insight", value:'Sitefinity is prone to the following vulnerabilities:
 
 1) Open Redirect Vulnerabilities
 Several scripts of Sitefinity are vulnerable to an open redirect. This
@@ -102,11 +102,11 @@ which are provided via the same domain, allowing an authenticated attacker
 to access arbitrary information and execute arbitrary functions of Sitefinity on behalf of other users.
 These vulnerabilities can be used by attackers to circumvent segregation of duties.');
 
-  script_tag(name: "affected", value: "Sitefinity before version 10.1.");
+  script_tag(name:"affected", value:"Sitefinity before version 10.1.");
 
-  script_tag(name: "solution", value: "Update to version 10.1 or later.");
+  script_tag(name:"solution", value:"Update to version 10.1 or later.");
 
-  script_xref(name: "URL", value: "https://www.sec-consult.com/en/blog/advisories/multiple-vulnerabilities-in-progress-sitefinity/index.html");
+  script_xref(name:"URL", value:"https://www.sec-consult.com/en/blog/advisories/multiple-vulnerabilities-in-progress-sitefinity/index.html");
 
   exit(0);
 }

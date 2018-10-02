@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-008.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: secpod_ms12-008.nasl 11706 2018-10-01 09:48:48Z cfischer $
 #
 # Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2660465)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902810");
-  script_version("$Revision: 11372 $");
+  script_version("$Revision: 11706 $");
   script_cve_id("CVE-2012-0154", "CVE-2011-5046");
   script_bugtraq_id(51122, 51920);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 09:09:09 +0530 (Wed, 15 Feb 2012)");
   script_name("Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2660465)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47237");
@@ -46,7 +46,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial of
   service and possibly execute arbitrary code with kernel-level privileges.");
@@ -59,6 +59,7 @@ if(description)
   Microsoft Windows Vista Service Pack 2 and prior.
 
   Microsoft Windows Server 2008 Service Pack 2 and prior.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to
 
   - An error in win32k.sys when validating input passed from user mode through
@@ -69,17 +70,20 @@ if(description)
   - A use-after-free error in win32k.sys when handling certain keyboard layouts
     can be exploited to dereference already freed memory and gain escalated
     privileges.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
 
   http://technet.microsoft.com/en-us/security/bulletin/ms12-008");
+
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-008.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

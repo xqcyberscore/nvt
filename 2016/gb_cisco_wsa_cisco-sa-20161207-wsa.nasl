@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20161207-wsa.nasl 4710 2016-12-08 09:46:58Z ckuerste $
+# $Id: gb_cisco_wsa_cisco-sa-20161207-wsa.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Cisco Web Security Appliance HTTP URL Denial of Service Vulnerability
 #
@@ -29,40 +29,40 @@ CPE = "cpe:/h:cisco:web_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106455");
- script_cve_id("CVE-2016-6469");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 4710 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106455");
+  script_cve_id("CVE-2016-6469");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11702 $");
 
- script_name("Cisco Web Security Appliance HTTP URL Denial of Service Vulnerability");
+  script_name("Cisco Web Security Appliance HTTP URL Denial of Service Vulnerability");
 
- script_xref(name:"URL", value: "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161207-wsa");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161207-wsa");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"A vulnerability in HTTP URL parsing of Cisco AsyncOS for Cisco Web Security
+  script_tag(name:"summary", value:"A vulnerability in HTTP URL parsing of Cisco AsyncOS for Cisco Web Security
 Appliance (WSA) could allow an unauthenticated, remote attacker to cause a denial of service (DoS) vulnerability
 due to the proxy process unexpectedly restarting.");
 
- script_tag(name: "insight", value: "The vulnerability is due to improper input validation of the HTTP URL string.
+  script_tag(name:"insight", value:"The vulnerability is due to improper input validation of the HTTP URL string.
 An attacker could exploit this vulnerability by sending a crafted HTTP request to the affected device.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause a DoS condition due to the proxy
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause a DoS condition due to the proxy
 process restarting.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-12-08 10:46:58 +0100 (Thu, 08 Dec 2016) $");
- script_tag(name:"creation_date", value:"2016-12-08 11:24:12 +0700 (Thu, 08 Dec 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_wsa_version.nasl");
- script_mandatory_keys("cisco_wsa/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-08 11:24:12 +0700 (Thu, 08 Dec 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_wsa_version.nasl");
+  script_mandatory_keys("cisco_wsa/installed");
  exit(0);
 }
 
@@ -71,7 +71,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'9.0.1-162',
 		'9.1.1-074' );
 

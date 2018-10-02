@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitefinity_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
+# $Id: gb_sitefinity_detect.nasl 11717 2018-10-02 06:52:54Z ckuersteiner $
 #
 # Sitefinity CMS Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140540");
-  script_version("$Revision: 10894 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11717 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 08:52:54 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-28 08:24:34 +0700 (Tue, 28 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -79,9 +79,9 @@ foreach dir (make_list_unique("/", cgi_dirs(port: port))) {
 
     set_kb_item(name: "sitefinity/detected", value: TRUE);
 
-    cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:telerik:sitefinity_cms:");
+    cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:progress:sitefinity:");
     if (!cpe)
-      cpe = 'cpe:/a:telerik:sitefinity_cms';
+      cpe = 'cpe:/a:progress:sitefinity';
 
     register_product(cpe: cpe, location: install, port: port);
 

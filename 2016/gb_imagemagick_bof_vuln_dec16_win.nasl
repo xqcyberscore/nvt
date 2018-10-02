@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_bof_vuln_dec16_win.nasl 8173 2017-12-19 11:45:56Z cfischer $
+# $Id: gb_imagemagick_bof_vuln_dec16_win.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # ImageMagick 'Get8BIMProperty' Buffer Overflow Vulnerability (Windows)
 #
@@ -29,41 +29,38 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810249");
-  script_version("$Revision: 8173 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2016-6491");
   script_bugtraq_id(92186);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 12:45:56 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-06 18:38:55 +0530 (Mon, 06 Jun 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick 'Get8BIMProperty' Buffer Overflow Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with ImageMagick
+  script_tag(name:"summary", value:"The host is installed with ImageMagick
   and is prone to a buffer overflow vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to a buffer overflow error 
+  script_tag(name:"insight", value:"The flaw is due to a buffer overflow error
   in the Get8BIMProperty function in 'MagickCore/property.c' script.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to cause a denial of service.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to cause a denial of service.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"ImageMagick versions before 6.9.5-4 and 7.x 
+  script_tag(name:"affected", value:"ImageMagick versions before 6.9.5-4 and 7.x
   before 7.0.2-6 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to ImageMagick version
+  script_tag(name:"solution", value:"Upgrade to ImageMagick version
   6.9.5-4 or 7.0.2-6 or later. For updates refer to http://www.imagemagick.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1036501");
-  script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2016/q3/192");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2016/07/28/13");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1036501");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2016/q3/192");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2016/07/28/13");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
@@ -75,16 +72,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-imVer = "";
-report = "";
-
-## Get version
 if(!imVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:imVer, test_version:"6.9.5.4"))
 {
   fix = "6.9.5-4";

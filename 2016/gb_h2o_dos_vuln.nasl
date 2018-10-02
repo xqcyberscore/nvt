@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_h2o_dos_vuln.nasl 8965 2018-02-27 11:35:42Z cfischer $
+# $Id: gb_h2o_dos_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # H2O HTTP Server DoS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:h2o_project:h2o';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106488");
-  script_version("$Revision: 8965 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-27 12:35:42 +0100 (Tue, 27 Feb 2018) $");
-  script_tag(name: "creation_date", value: "2016-12-23 14:52:16 +0700 (Fri, 23 Dec 2016)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:P");
+  script_version("$Revision: 11702 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-23 14:52:16 +0700 (Fri, 23 Dec 2016)");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
 
   script_cve_id("CVE-2016-7835");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("H2O HTTP Server DoS Vulnerability");
 
@@ -51,23 +51,23 @@ if (description)
   script_dependencies("gb_h2o_http_server_detect.nasl");
   script_mandatory_keys("h2o/installed");
 
-  script_tag(name: "summary", value: "H2O HTTP Server is prone to a denial of service vulnerability.");
+  script_tag(name:"summary", value:"H2O HTTP Server is prone to a denial of service vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "A use-after-free vulnerability exists in H2O that can be used by a remote
+  script_tag(name:"insight", value:"A use-after-free vulnerability exists in H2O that can be used by a remote
 attacker to execute DoS attacks or information theft");
 
-  script_tag(name: "impact", value: "An unauthenticated remote attacker may cause a DoS condition or obtain
+  script_tag(name:"impact", value:"An unauthenticated remote attacker may cause a DoS condition or obtain
 arbitrary information which may include the server certificate's private keys, depending on the software's
 settings.");
 
-  script_tag(name: "affected", value: "H2O version 2.0.4, 2.1.0-beta3 and prior.");
+  script_tag(name:"affected", value:"H2O version 2.0.4, 2.1.0-beta3 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 2.0.5, 2.1.0-beta4 or later.");
+  script_tag(name:"solution", value:"Update to version 2.0.5, 2.1.0-beta4 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/h2o/h2o/issues/1144");
-  script_xref(name: "URL", value: "https://jvn.jp/en/jp/JVN44566208/index.html");
+  script_xref(name:"URL", value:"https://github.com/h2o/h2o/issues/1144");
+  script_xref(name:"URL", value:"https://jvn.jp/en/jp/JVN44566208/index.html");
 
   exit(0);
 }

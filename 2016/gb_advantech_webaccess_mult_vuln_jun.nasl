@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_mult_vuln_jun.nasl 6143 2017-05-17 10:03:21Z teissa $
+# $Id: gb_advantech_webaccess_mult_vuln_jun.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Advantech WebAccess Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106108");
-  script_version("$Revision: 6143 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-17 12:03:21 +0200 (Wed, 17 May 2017) $");
-  script_tag(name: "creation_date", value: "2016-06-24 11:38:08 +0700 (Fri, 24 Jun 2016)");
+  script_version("$Revision: 11702 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-24 11:38:08 +0700 (Fri, 24 Jun 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2016-4525", "CVE-2016-4528", "CVE-2016-5810");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Advantech WebAccess Multiple Vulnerabilities");
 
@@ -51,11 +51,11 @@ if (description)
   script_dependencies("gb_advantech_webaccess_detect.nasl");
   script_mandatory_keys("Advantech/WebAccess/installed");
 
-  script_tag(name: "summary", value: "Advantech WebAccess is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Advantech WebAccess is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Advantech WebAccess is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Advantech WebAccess is prone to multiple vulnerabilities:
 
 Several ActiveX controls are intended for restricted use, but have been marked as safe-for-scripting.
 (CVE-2016-4525)
@@ -64,14 +64,14 @@ A specially crafted DLL file can cause a buffer overflow. (CVE-2016-4528)
 
 A properly authenticated administrator can view passwords for other administrators. (CVE-2016-5810)");
 
-  script_tag(name: "impact", value: "A local attacker may insert and run arbitrary code on an affected
+  script_tag(name:"impact", value:"A local attacker may insert and run arbitrary code on an affected
 system. A authenticated administrator may view passwords from other administrators.");
 
-  script_tag(name: "affected", value: "WebAccess versions prior to 8.1_20160519");
+  script_tag(name:"affected", value:"WebAccess versions prior to 8.1_20160519");
 
-  script_tag(name: "solution", value: "Upgrade to Version 8.1_20160519 or later");
+  script_tag(name:"solution", value:"Upgrade to Version 8.1_20160519 or later");
 
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-16-173-01");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-16-173-01");
 
   exit(0);
 }

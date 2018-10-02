@@ -1,9 +1,9 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_wfbs_services_mult_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_trend_micro_wfbs_services_mult_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Trend Micro WFBS Services Multiple Vulnerabilities
-# 
+#
 # Authors:
 # Tushar Khelge <tushar.khelge@secpod.com>
 #
@@ -29,40 +29,37 @@ CPE = "cpe:/a:trend_micro:business_security_services";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809153");
-  script_version("$Revision: 9381 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2016-1223", "CVE-2016-1224");
   script_bugtraq_id(91288, 91290);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-23 12:01:39 +0530 (Tue, 23 Aug 2016)");
   script_name("Trend Micro WFBS Services Multiple Vulnerabilities");
-  script_tag(name: "summary" , value: "This host is installed with Trend Micro
+  script_tag(name:"summary", value:"This host is installed with Trend Micro
   Worry-Free Business Security Services and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Multiple flaws exist due to the unintended
+  script_tag(name:"insight", value:"Multiple flaws exist due to the unintended
   file could be accessed and potential unintended script may gets executed.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to cause path traversal and HTTP header injection Vulnerability and to inject
-  arbitrary HTTP headers and conduct cross-site scripting (XSS).
+  arbitrary HTTP headers and conduct cross-site scripting (XSS).");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Trend Micro Worry-Free Business Security
+  script_tag(name:"affected", value:"Trend Micro Worry-Free Business Security
   Services versions 5.x through 5.9.1095.");
 
-  script_tag(name: "solution" , value:"Updates are available, refer to http://esupport.trendmicro.com");
+  script_tag(name:"solution", value:"Updates are available, refer to http://esupport.trendmicro.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "http://esupport.trendmicro.com/solution/ja-JP/1114102.aspx");
-  script_xref(name: "URL" , value : "http://jvn.jp/en/jp/JVN48847535/index.html");
+  script_xref(name:"URL", value:"http://esupport.trendmicro.com/solution/ja-JP/1114102.aspx");
+  script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN48847535/index.html");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -75,16 +72,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-trendVer = "";
-report = "";
-
-## Get version
 if(!trendVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(trendVer =~ "^5\.")
 {
   if(version_is_less_equal(version:trendVer, test_version:"5.9.1095"))

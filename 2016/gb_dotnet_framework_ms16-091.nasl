@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms16-091.nasl 10017 2018-05-30 07:17:29Z cfischer $
+# $Id: gb_dotnet_framework_ms16-091.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Microsoft .NET Framework Information Disclosure Vulnerability (3170048)
 #
@@ -27,27 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807856");
-  script_version("$Revision: 10017 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2016-3255");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-13 08:15:13 +0530 (Wed, 13 Jul 2016)");
   script_name("Microsoft .NET Framework Information Disclosure Vulnerability (3170048)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-091.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw exists as .NET Framework improperly
   parses XML input containing a reference to an external entity.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain access to potentially sensitive information.
-
-  Impact Level: System/Application");
+  attackers to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"Microsoft .NET Framework 2.0 Service Pack 2
 
@@ -68,15 +65,15 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3170048");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3163912");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3172985");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-091");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3170048");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3163912");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3172985");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-091");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
 
@@ -154,7 +151,6 @@ foreach item (registry_enum_keys(key:key))
       }
 
       ##.NET Framework 4.5.2 in Windows Vista Service Pack 2, Windows Server 2008 Service Pack 2,
-      ## Windows 7 Service Pack 1, and Windows Server 2008 R2 Service Pack 1
       ## https://support.microsoft.com/en-us/kb/3163251
       if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0)
       {

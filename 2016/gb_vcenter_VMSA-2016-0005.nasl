@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2016-0005.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: gb_vcenter_VMSA-2016-0005.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # VMSA-2016-0005 VMware product updates address critical and important security issues
 #
@@ -27,42 +27,42 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105731");
- script_cve_id("CVE-2016-3427", "CVE-2016-2077");
- script_tag(name:"cvss_base", value:"9.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5513 $");
- script_name("VMSA-2016-0005 VMware product updates address critical and important security issues");
+  script_oid("1.3.6.1.4.1.25623.1.0.105731");
+  script_cve_id("CVE-2016-3427", "CVE-2016-2077");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11702 $");
+  script_name("VMSA-2016-0005 VMware product updates address critical and important security issues");
 
- script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0005.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0005.html");
 
- script_tag(name: "vuldetect" , value:"Check the build number");
+  script_tag(name:"vuldetect", value:"Check the build number");
 
- script_tag(name: "insight" , value:"Critical JMX issue when deserializing authentication credentials
+  script_tag(name:"insight", value:"Critical JMX issue when deserializing authentication credentials
 
 The RMI server of Oracle JRE JMX deserializes any class when deserializing authentication credentials. This may allow a remote,
 unauthenticated attacker to cause deserialization flaws and execute their commands.");
 
- script_tag(name: "solution" , value:"Updates are available.");
+  script_tag(name:"solution", value:"Updates are available.");
 
- script_tag(name: "summary" , value:"Mware product updates address critical and important security issues.");
+  script_tag(name:"summary", value:"Mware product updates address critical and important security issues.");
 
- script_tag(name: "affected" , value:"vCenter Server 6.0 on Windows without workaround of KB 2145343
+  script_tag(name:"affected", value:"vCenter Server 6.0 on Windows without workaround of KB 2145343
 vCenter Server 6.0 on Linux (VCSA) prior to 6.0.0b
 vCenter Server 5.5 prior to 5.5 U3d (on Windows), 5.5 U3 (VCSA)
 vCenter Server 5.1 prior to 5.1 U3b
 vCenter Server 5.0 prior to 5.0 U3e ");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-26 11:51:22 +0200 (Thu, 26 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_vcenter_detect.nasl", "os_detection.nasl" );
- script_mandatory_keys("VMware_vCenter/version","VMware_vCenter/build");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-26 11:51:22 +0200 (Thu, 26 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_vcenter_detect.nasl", "os_detection.nasl");
+  script_mandatory_keys("VMware_vCenter/version", "VMware_vCenter/build");
 
  exit(0);
 

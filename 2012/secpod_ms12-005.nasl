@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-005.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: secpod_ms12-005.nasl 11706 2018-10-01 09:48:48Z cfischer $
 #
 # Windows ClickOnce Application Installer Remote Code Execution Vulnerability (2584146)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902657");
-  script_version("$Revision: 11372 $");
+  script_version("$Revision: 11706 $");
   script_cve_id("CVE-2012-0013");
   script_bugtraq_id(51284);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-11 09:53:59 +0530 (Wed, 11 Jan 2012)");
   script_name("Windows ClickOnce Application Installer Remote Code Execution Vulnerability (2584146)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47480");
@@ -44,28 +44,37 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"impact", value:"Successful exploitation could allow local attackers to run arbitrary code
-  and take complete control of an affected system. An attacker can gain
-  administrative rights.");
+  and take complete control of an affected system. An attacker can gain administrative rights.");
+
   script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior.
+
   Microsoft Windows XP Service Pack 3 and prior.
+
   Microsoft Windows 2003 Service Pack 2 and prior.
+
   Microsoft Windows Vista Service Pack 2 and prior.
+
   Microsoft Windows Server 2008 Service Pack 2 and prior.");
+
   script_tag(name:"insight", value:"The flaw is due to an error within the Windows Packager when
   loading ClickOnce applications embedded in Microsoft Office files.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://technet.microsoft.com/en-us/security/bulletin/ms12-005");
+
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-005.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

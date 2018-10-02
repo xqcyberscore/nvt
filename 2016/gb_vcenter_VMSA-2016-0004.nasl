@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2016-0004.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_vcenter_VMSA-2016-0004.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # VMSA-2016-0004 VMware product updates address a critical security issue in the VMware Client Integration Plugin
 #
@@ -27,37 +27,37 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105606");
- script_cve_id("CVE-2016-2076");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5534 $");
- script_name("VMSA-2016-0004 VMware product updates address a critical security issue in the VMware Client Integration Plugin");
+  script_oid("1.3.6.1.4.1.25623.1.0.105606");
+  script_cve_id("CVE-2016-2076");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11702 $");
+  script_name("VMSA-2016-0004 VMware product updates address a critical security issue in the VMware Client Integration Plugin");
 
- script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0004.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0004.html");
 
- script_tag(name: "vuldetect" , value:"Check the build number");
+  script_tag(name:"vuldetect", value:"Check the build number");
 
- script_tag(name: "insight" , value:"Critical VMware Client Integration Plugin incorrect session handling
+  script_tag(name:"insight", value:"Critical VMware Client Integration Plugin incorrect session handling
 
 The VMware Client Integration Plugin does not handle session content in a safe way. This may allow for a Man in the Middle attack or Web session hijacking in case the user of the vSphere Web Client visits a malicious Web site.");
 
- script_tag(name: "solution" , value:"Update to 6.0U2/5.5U3d. In order to remediate the issue, both the server side and the client side (i.e. CIP of the vSphere Web Client) will need to be updated.");
+  script_tag(name:"solution", value:"Update to 6.0U2/5.5U3d. In order to remediate the issue, both the server side and the client side (i.e. CIP of the vSphere Web Client) will need to be updated.");
 
- script_tag(name: "summary" , value:"VMware vCenter Server updates address a critical security issue.");
+  script_tag(name:"summary", value:"VMware vCenter Server updates address a critical security issue.");
 
- script_tag(name: "affected" , value:"vCenter Server 6.0 prior to 6.0 U2 and vCenter Server 5.5 U3a, U3b, U3c");
+  script_tag(name:"affected", value:"vCenter Server 6.0 prior to 6.0 U2 and vCenter Server 5.5 U3a, U3b, U3c");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-04-15 18:13:05 +0200 (Fri, 15 Apr 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_vcenter_detect.nasl");
- script_mandatory_keys("VMware_vCenter/version","VMware_vCenter/build");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-04-15 18:13:05 +0200 (Fri, 15 Apr 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_vcenter_detect.nasl");
+  script_mandatory_keys("VMware_vCenter/version", "VMware_vCenter/build");
 
  exit(0);
 

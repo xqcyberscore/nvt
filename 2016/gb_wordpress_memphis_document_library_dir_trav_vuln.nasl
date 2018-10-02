@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_memphis_document_library_dir_trav_vuln.nasl 9998 2018-05-29 08:15:38Z cfischer $
+# $Id: gb_wordpress_memphis_document_library_dir_trav_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Wordpress Memphis Document Library Plugin Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807530");
-  script_version("$Revision: 9998 $");
+  script_version("$Revision: 11702 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 10:15:38 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:34 +0530 (Fri, 01 Apr 2016)");
   script_name("Wordpress Memphis Document Library Plugin Directory Traversal Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
   does not properly validate GET parameter 'mdocs-img-preview'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to download arbitrary files.
-
-  Impact Level: Application");
+  attackers to download arbitrary files.");
 
   script_tag(name:"affected", value:"Wordpress Plugin Memphis Document Library
   versions 2.3 to 3.1.5");
@@ -59,7 +57,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/39593");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39593");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

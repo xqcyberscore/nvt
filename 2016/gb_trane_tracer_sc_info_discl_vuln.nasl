@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trane_tracer_sc_info_discl_vuln.nasl 4220 2016-10-05 15:43:56Z cfi $
+# $Id: gb_trane_tracer_sc_info_discl_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Trane Tracer SC Information Exposure Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:trane:tracer_sc";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106273");
-  script_version("$Revision: 4220 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-10-05 17:43:56 +0200 (Wed, 05 Oct 2016) $");
-  script_tag(name: "creation_date", value: "2016-09-20 17:00:53 +0700 (Tue, 20 Sep 2016)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11702 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-20 17:00:53 +0700 (Tue, 20 Sep 2016)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-0870");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Trane Tracer SC Information Exposure Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_trane_tracer_sc_detect.nasl");
   script_mandatory_keys("trane_tracer/detected");
 
-  script_tag(name: "summary", value: "Trane Tracer SC is prone to a information exposure vulnerability.");
+  script_tag(name:"summary", value:"Trane Tracer SC is prone to a information exposure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The vulnerability allows an unauthorized party to obtain sensitive
+  script_tag(name:"insight", value:"The vulnerability allows an unauthorized party to obtain sensitive
 information from the contents of configuration files not protected by the web server.");
 
-  script_tag(name: "impact", value: "An unauthorized attacker can exploit these vulnerability to read sensitive
+  script_tag(name:"impact", value:"An unauthorized attacker can exploit these vulnerability to read sensitive
 information from the contents of configuration files.");
 
-  script_tag(name: "affected", value: "Versions 4.2.1134 and below.");
+  script_tag(name:"affected", value:"Versions 4.2.1134 and below.");
 
-  script_tag(name: "solution", value: "Contact the vendor for an update.");
+  script_tag(name:"solution", value:"Contact the vendor for an update.");
 
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-16-259-03");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-16-259-03");
 
   exit(0);
 }

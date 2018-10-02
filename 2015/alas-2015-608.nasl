@@ -1,12 +1,14 @@
-# OpenVAS Vulnerability Test 
-# Description: Amazon Linux security check 
-# $Id: alas-2015-608.nasl 6575 2017-07-06 13:42:08Z cfischer $
- 
-# Authors: 
-# Eero Volotinen <eero.volotinen@iki.fi> 
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: alas-2015-608.nasl 6575 2017-07-06 13:42:08Z cfischer$
+#
+# Amazon Linux security check
+#
+# Authors:
+# Eero Volotinen <eero.volotinen@iki.fi>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org 
+# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -20,41 +22,44 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
+
 if(description)
- {
-script_oid("1.3.6.1.4.1.25623.1.0.120598");
-script_version("$Revision: 6575 $");
-script_tag(name:"creation_date", value:"2015-11-08 13:11:00 +0200 (Sun, 08 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 15:42:08 +0200 (Thu, 06 Jul 2017) $");
-script_name("Amazon Linux Local Check: alas-2015-608");
-script_tag(name: "insight", value: "Network Security Services (NSS) is a set of libraries designed to support cross-platform development of security-enabled client and server applications. Netscape Portable Runtime (NSPR) provides platform independence for non-GUI operating system facilities. A use-after-poison flaw and a heap-based buffer overflow flaw were found in the way NSS parsed certain ASN.1 structures. An attacker could use these flaws to cause NSS to crash or execute arbitrary code with the permissions of the user running an application compiled against the NSS library. (CVE-2015-7181 , CVE-2015-7182 )A heap-based buffer overflow was found in NSPR. An attacker could use this flaw to cause NSPR to crash or execute arbitrary code with the permissions of the user running an application compiled against the NSPR library. (CVE-2015-7183 )Note: Applications using NSPR's PL_ARENA_ALLOCATE, PR_ARENA_ALLOCATE, PL_ARENA_GROW, or PR_ARENA_GROW macros need to be rebuild against the fixed nspr packages to completely resolve the CVE-2015-7183  issue. This erratum includes nss and nss-utils packages rebuilt against the fixed nspr version."); 
-script_tag(name : "solution", value : "Run yum update nspr to update your system.
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.120598");
+  script_version("$Revision: 11711 $");
+  script_tag(name:"creation_date", value:"2015-11-08 13:11:00 +0200 (Sun, 08 Nov 2015)");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 14:30:57 +0200 (Mon, 01 Oct 2018) $");
+  script_name("Amazon Linux Local Check: alas-2015-608");
+  script_tag(name:"insight", value:"Multiple flaws were found in the Network Security Services (NSS). Please see the references for more information.");
+  script_tag(name:"solution", value:"Run yum update nspr to update your system.
 Run yum update nss-util to update your system.
 Run yum update nss to update your system.
 Run yum update jss to update your system.");
-script_tag(name : "solution_type", value : "VendorFix");
-script_xref(name : "URL" , value : "https://alas.aws.amazon.com/ALAS-2015-608.html");
-script_cve_id("CVE-2015-7183","CVE-2015-7182","CVE-2015-7181");
-script_tag(name:"cvss_base", value:"7.5");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-script_tag(name:"qod_type", value:"package");
-script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
-script_category(ACT_GATHER_INFO);
-script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_copyright("Eero Volotinen");
-script_family("Amazon Linux Local Security Checks");
-exit(0);
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"https://alas.aws.amazon.com/ALAS-2015-608.html");
+  script_cve_id("CVE-2015-7183", "CVE-2015-7182", "CVE-2015-7181");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"qod_type", value:"package");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
+  script_copyright("Eero Volotinen");
+  script_family("Amazon Linux Local Security Checks");
+
+  exit(0);
 }
+
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
-release = get_kb_item("ssh/login/release");
+
+release = rpm_get_ssh_release();
+if(!release) exit(0);
+
 res = "";
-if(release == NULL)
-{
- exit(0);
-}
+
 if(release == "AMAZON")
 {
 if ((res = isrpmvuln(pkg:"nspr-debuginfo", rpm:"nspr-debuginfo~4.10.8~2.35.amzn1", rls:"AMAZON")) != NULL) {
@@ -117,6 +122,6 @@ if ((res = isrpmvuln(pkg:"jss-debuginfo", rpm:"jss-debuginfo~4.2.6~35.17.amzn1",
   security_message(data:res);
   exit(0);
 }
-if (__pkg_match) exit(99); #Not vulnerable
+if (__pkg_match) exit(99);
   exit(0);
 }

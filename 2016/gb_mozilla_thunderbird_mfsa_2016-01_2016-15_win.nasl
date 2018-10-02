@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2016-01_2016-15_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_thunderbird_mfsa_2016-01_2016-15_win.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Mozilla Thunderbird Security Updates( mfsa_2016-01_2016-15 )-Windows
 #
@@ -29,33 +29,34 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808689");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2016-1935", "CVE-2016-1930", "CVE-2016-1931", "CVE-2016-1523");
   script_bugtraq_id(81952, 81953, 82991);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-07 12:05:44 +0530 (Wed, 07 Sep 2016)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2016-01_2016-15 )-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - The Buffer overflow in the BufferSubData function.
+
   - Multiple unspecified Vulnerabilities.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to cause a denial of service
-  (memory corruption and application crash) or possibly execute arbitrary code.
-  Impact Level: System/Application.");
+  (memory corruption and application crash) or possibly execute arbitrary code.");
 
-  script_tag(name: "affected" , value:"Mozilla Thunderbird version before
+  script_tag(name:"affected", value:"Mozilla Thunderbird version before
   38.6 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version 38.6
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 38.6
   For updates refer https://www.mozilla.org/en-US/thunderbird");
 
   script_tag(name:"solution_type", value:"VendorFix");

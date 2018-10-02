@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vpet_engine_sql_inj_n_backdoor_vuln.nasl 9121 2018-03-17 13:28:53Z cfischer $
+# $Id: gb_vpet_engine_sql_inj_n_backdoor_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # VPet Engine SQL Injection and Backdoor Account Vulnerabilities
 #
@@ -30,43 +30,41 @@ CPE = "cpe:/a:vpet:vpet_engine";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808174");
-  script_version("$Revision: 9121 $");
+  script_version("$Revision: 11702 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-27 12:52:04 +0530 (Mon, 27 Jun 2016)");
   script_name("VPet Engine SQL Injection and Backdoor Account Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with vPet Engine and is
+  script_tag(name:"summary", value:"The host is installed with vPet Engine and is
   prone to sql injection and backdoor account vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and check
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check
   whether it is able to execute sql query or not.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to
+  script_tag(name:"insight", value:"The multiple flaws exists due to
 
   - An improper validation of user supplied input to 'game' parameter.
 
   - A backdoor accounts 'admin' and password as 'admin'.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database,
-  allowing for the manipulation or disclosure of arbitrary data and also 
-  can gain adminitrative access of the system.
+  allowing for the manipulation or disclosure of arbitrary data and also
+  can gain adminitrative access of the system.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"vPet Engine Version 2.1");
 
-  script_tag(name: "affected" , value:"vPet Engine Version 2.1");
-
-  script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since
-  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
-  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/137626/vpetengine-sqlbackdoor.txt");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/137626/vpetengine-sqlbackdoor.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -77,36 +75,28 @@ if (description)
   exit(0);
 }
 
-
+include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-dir = "";
-url = "";
-report = "";
-vpet_Port = 0;
-
-## Get vPet Port
 if(!vpet_Port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Get install location
 if(!dir = get_app_location(cpe:CPE, port:vpet_Port)){
   exit(0);
 }
 
 if(dir == "/") dir = "";
 
-## Construct the attack request
-url = dir + "/index.php?game=OPENVAS-SQL-INJECTION-TEST'";
+vt_string = get_vt_string();
 
-## Check the response to confirm vulnerability
+url = dir + "/index.php?game=" + vt_string + "-SQL-INJECTION-TEST'";
+
 if(http_vuln_check(port:vpet_Port, url:url, check_header:TRUE,
                    pattern:"supplied argument is not a valid MySQL",
-                   extra_check: make_list("OPENVAS-SQL-INJECTION-TEST", "vPet Engine")))
+                   extra_check: make_list(vt_string + "-SQL-INJECTION-TEST", "vPet Engine")))
 {
   report = report_vuln_url( port:vpet_Port, url:url );
   security_message(port:vpet_Port, data:report);

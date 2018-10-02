@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-20161012-ucm.nasl 5813 2017-03-31 09:01:08Z teissa $
+# $Id: gb_cisco_cucm_cisco-sa-20161012-ucm.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Cisco Unified Communications Manager iFrame Data Clickjacking Vulnerability
 #
@@ -29,34 +29,34 @@ CPE = "cpe:/a:cisco:unified_communications_manager";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.107061");
- script_cve_id("CVE-2016-6440");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 5813 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.107061");
+  script_cve_id("CVE-2016-6440");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11702 $");
 
- script_name("Cisco Unified Communications Manager iFrame Data Clickjacking Vulnerability");
+  script_name("Cisco Unified Communications Manager iFrame Data Clickjacking Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161012-ucm");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161012-ucm");
 
- script_tag(name: "impact" , value:"An exploit could allow the attacker to perform a clickjacking or phishing attack where the user is tricked into clicking on a malicious link. Protection mechanisms should be used to prevent this type of attack.");
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "insight" , value:"The vulnerability is due to a lack of proper input sanitization of iframe data within the HTTP requests sent to the device. An attacker could exploit this vulnerability by sending crafted HTTP packets with malicious iframe data. ");
- script_tag(name: "solution" , value:"Updates are available. Please see the vendor advisory for more information.");
- script_tag(name: "summary" , value:"could allow the attacker to perform a clickjacking or phishing attack where the user is tricked into clicking on a malicious link.");
- script_tag(name: "affected" , value:"Cisco Unified Communications Manager 11.0(1.10000.10), 11.5(1.10000.6) and 11.5(0.99838.4) are affected.");
+  script_tag(name:"impact", value:"An exploit could allow the attacker to perform a clickjacking or phishing attack where the user is tricked into clicking on a malicious link. Protection mechanisms should be used to prevent this type of attack.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"insight", value:"The vulnerability is due to a lack of proper input sanitization of iframe data within the HTTP requests sent to the device. An attacker could exploit this vulnerability by sending crafted HTTP packets with malicious iframe data. ");
+  script_tag(name:"solution", value:"Updates are available. Please see the vendor advisory for more information.");
+  script_tag(name:"summary", value:"could allow the attacker to perform a clickjacking or phishing attack where the user is tricked into clicking on a malicious link.");
+  script_tag(name:"affected", value:"Cisco Unified Communications Manager 11.0(1.10000.10), 11.5(1.10000.6) and 11.5(0.99838.4) are affected.");
 
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-10-14 14:48:29 +0100 (Fri, 14 Oct 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_cucm_version.nasl");
- script_mandatory_keys("cisco/cucm/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-14 14:48:29 +0100 (Fri, 14 Oct 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_cucm_version.nasl");
+  script_mandatory_keys("cisco/cucm/version");
 
  exit(0);
 }

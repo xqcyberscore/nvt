@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-031.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_ms16-031.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Microsoft Windows Privilege Elevation Vulnerability (3140410)
 #
@@ -26,31 +26,27 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.807467") ;
-  script_version("$Revision: 5732 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.807467");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2016-0087");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-09 08:12:48 +0530 (Wed, 09 Mar 2016)");
   script_name("Microsoft Windows Privilege Elevation Vulnerability (3140410)");
-  
+
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-031");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an imporper
   sanitization of handles in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker to run arbitrary code as system.
+  attacker to run arbitrary code as system.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows Vista x32/x64 Edition Service Pack 2
+  script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1");
@@ -70,7 +66,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -81,22 +78,15 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-sysVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of Ntoskrnl.exe
 sysVer = fetch_file_version(sysPath, file_name:"System32\Ntoskrnl.exe");
 if(!sysVer){
   exit(0);
@@ -115,20 +105,16 @@ else if (sysVer =~ "^(6\.2\.9200\.2)"){
   Vulnerable_range = "6.2.9200.23000 - 6.2.9200.23348";
 }
 
-## Windows Vista and Server 2008
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Ntoskrnl.exe version
   if(version_is_less(version:sysVer, test_version:"6.0.6002.19598")||
      version_in_range(version:sysVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23909")){
     VULN = TRUE ;
   }
 }
 
-## Windows 7 and Windows Server 2008 R2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Ntoskrnl.exe version
   if(version_is_less(version:sysVer, test_version:"6.1.7601.19160") ||
      version_in_range(version:sysVer, test_version:"6.1.7601.23000", test_version2:"6.1.7601.23348")){
     VULN = TRUE ;

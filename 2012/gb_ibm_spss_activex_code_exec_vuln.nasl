@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_spss_activex_code_exec_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_ibm_spss_activex_code_exec_vuln.nasl 11706 2018-10-01 09:48:48Z cfischer $
 #
 # IBM SPSS SamplePower 'VsVIEW6' ActiveX Control Multiple Code Execution Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:spss_samplepower";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802600");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11706 $");
   script_bugtraq_id(51448);
   script_cve_id("CVE-2012-0189");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-01 11:11:11 +0530 (Wed, 01 Feb 2012)");
   script_name("IBM SPSS SamplePower 'VsVIEW6' ActiveX Control Multiple Code Execution Vulnerabilities (Windows)");
 
@@ -48,26 +48,33 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_ibm_spss_sample_power_detect_win.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("IBM/SPSS/Win/Installed");
-  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute
-arbitrary code in the context of the application using the ActiveX control.
-Failed exploit attempts will likely result in denial-of-service conditions.");
-  script_tag(name:"affected", value:"IBM SPSS SamplePower version 3.0");
-  script_tag(name:"insight", value:"Multiple flaws are due to unspecified errors in the VsVIEW6
-ActiveX Control (VsVIEW6.ocx) when handling the 'SaveDoc()' and 'PrintFile()'
-methods.");
-  script_tag(name:"summary", value:"This host is installed with IBM SPSS SamplePower and is prone
-to buffer overflow vulnerability.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year
-since the disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.
 
-A workaround is to disable the use of the vulnerable ActiveX control within
-Internet Explorer or Set the killbit for the following CLSID
-{6E84D662-9599-11D2-9367-20CC03C10627}. For more info please refer the below link,
-http://support.microsoft.com/kb/240797");
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute
+  arbitrary code in the context of the application using the ActiveX control.
+  Failed exploit attempts will likely result in denial-of-service conditions.");
+
+  script_tag(name:"affected", value:"IBM SPSS SamplePower version 3.0");
+
+  script_tag(name:"insight", value:"Multiple flaws are due to unspecified errors in the VsVIEW6
+  ActiveX Control (VsVIEW6.ocx) when handling the 'SaveDoc()' and 'PrintFile()' methods.");
+
+  script_tag(name:"summary", value:"This host is installed with IBM SPSS SamplePower and is prone
+  to buffer overflow vulnerability.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective
+  features, remove the product or replace the product by another one.
+
+  A workaround is to disable the use of the vulnerable ActiveX control within
+  Internet Explorer or Set the killbit for the following CLSID
+  {6E84D662-9599-11D2-9367-20CC03C10627}. For more info please refer the below link,
+  http://support.microsoft.com/kb/240797");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 

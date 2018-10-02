@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-009.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: secpod_ms12-009.nasl 11706 2018-10-01 09:48:48Z cfischer $
 #
 # MS Windows Ancillary Function Driver Privilege Elevation Vulnerabilities (2645640)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902424");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 11706 $");
   script_cve_id("CVE-2012-0148", "CVE-2012-0149");
   script_bugtraq_id(51930, 51936);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 13:25:41 +0530 (Wed, 15 Feb 2012)");
   script_name("MS Windows Ancillary Function Driver Privilege Elevation Vulnerabilities (2645640)");
   script_category(ACT_GATHER_INFO);
@@ -40,23 +40,31 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"impact", value:"Successful exploitation could allow elevation of privilege if an attacker
   logs on to a user's system and runs a specially crafted application.");
+
   script_tag(name:"affected", value:"Microsoft Windows 2K3 Service Pack 2 and prior.");
+
   script_tag(name:"insight", value:"The flaws are caused due an error in Ancillary Function Driver (AFD) which
   does not properly validate input passed from user mode to the Windows kernel.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
+
   http://technet.microsoft.com/en-us/security/bulletin/ms12-009");
+
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-009.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_xref(name:"URL", value:"http://secunia.com/advisories/47911/");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2645640");
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms12-009");
+
   exit(0);
 }
 

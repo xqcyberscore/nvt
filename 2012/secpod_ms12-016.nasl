@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-016.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_ms12-016.nasl 11706 2018-10-01 09:48:48Z cfischer $
 #
 # Microsoft .NET Framework and Microsoft Silverlight Remote Code Execution Vulnerabilities (2651026)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902811");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11706 $");
   script_cve_id("CVE-2012-0014", "CVE-2012-0015");
   script_bugtraq_id(51938, 51940);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 10:10:10 +0530 (Wed, 15 Feb 2012)");
   script_name("Microsoft .NET Framework and Microsoft Silverlight Remote Code Execution Vulnerabilities (2651026)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48030");
@@ -45,7 +45,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_reg_enum.nasl", "gb_ms_silverlight_detect.nasl");
   script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
+  script_mandatory_keys("SMB/registry_enumerated");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attacker to execute arbitrary code within
   the context of the affected application. Failed exploit attempts will likely
@@ -67,7 +67,6 @@ if(description)
   - An error when calculating certain buffer lengths can be exploited to corrupt
     memory via a specially crafted XAML Browser Application (XBAP).");
 
-
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
 
@@ -78,6 +77,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 

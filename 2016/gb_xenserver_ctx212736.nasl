@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx212736.nasl 5595 2017-03-16 17:32:19Z mime $
+# $Id: gb_xenserver_ctx212736.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Citrix XenServer Multiple Security Updates (CTX212736)
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/a:citrix:xenserver";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105732");
- script_cve_id("CVE-2016-3710","CVE-2016-3712","CVE-2016-2107","CVE-2016-2108");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5595 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105732");
+  script_cve_id("CVE-2016-3710", "CVE-2016-3712", "CVE-2016-2107", "CVE-2016-2108");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11702 $");
 
- script_name("Citrix XenServer Multiple Security Updates (CTX212736)");
+  script_name("Citrix XenServer Multiple Security Updates (CTX212736)");
 
- script_xref(name:"URL", value:"http://support.citrix.com/article/CTX212736");
+  script_xref(name:"URL", value:"http://support.citrix.com/article/CTX212736");
 
- script_tag(name: "vuldetect" , value:"Check the installed hotfixes");
- script_tag(name: "solution" , value:"Apply the hotfix referenced in the advisory");
+  script_tag(name:"vuldetect", value:"Check the installed hotfixes");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory");
 
- script_tag(name: "summary" , value:"A number of security vulnerabilities have been identified in Citrix XenServer that may allow a malicious administrator of a guest VM (depending on configuration) or an attacker on the management network to compromise the host.");
- script_tag(name: "affected" , value:"These vulnerabilities affect all currently supported versions of Citrix XenServer up to and including Citrix XenServer 6.5 Service Pack 1.");
+  script_tag(name:"summary", value:"A number of security vulnerabilities have been identified in Citrix XenServer that may allow a malicious administrator of a guest VM (depending on configuration) or an attacker on the management network to compromise the host.");
+  script_tag(name:"affected", value:"These vulnerabilities affect all currently supported versions of Citrix XenServer up to and including Citrix XenServer 6.5 Service Pack 1.");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 18:32:19 +0100 (Thu, 16 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-05-26 12:29:51 +0200 (Thu, 26 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("Citrix Xenserver Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_xenserver_version.nasl");
- script_mandatory_keys("xenserver/product_version","xenserver/patches");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-26 12:29:51 +0200 (Thu, 26 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Citrix Xenserver Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_xenserver_version.nasl");
+  script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
  exit(0);
 }

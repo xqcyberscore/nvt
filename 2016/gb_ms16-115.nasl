@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-115.nasl 5850 2017-04-04 09:01:03Z teissa $
+# $Id: gb_ms16-115.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Microsoft Windows PDF Library Multiple Information Disclosure Vulnerabilities (3188733)
 #
@@ -27,31 +27,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809310");
-  script_version("$Revision: 5850 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2016-3370", "CVE-2016-3374");
   script_bugtraq_id(92839, 92838);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-14 08:36:03 +0530 (Wed, 14 Sep 2016)");
   script_name("Microsoft Windows PDF Library Multiple Information Disclosure Vulnerabilities (3188733)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-115");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaws are due to Windows PDF Library
-  improperly handles objects in memory."); 
+  improperly handles objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to could obtain information to further compromise a target system.
+  attacker to could obtain information to further compromise a target system.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8.1 x32/x64 Edition
+  script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
   Microsoft Windows Server 2012/2012R2
   Microsoft Windows 10 x32/x64
   Microsoft Windows 10 Version 1511 x32/x64");
@@ -65,13 +61,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3188733");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/ms16-115");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3188733");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/ms16-115");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -82,33 +79,24 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-sysVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2012:1, win2012R2:1, win8_1:1, win8_1x64:1,
                    win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-## fetch file "Glcndfilter.dll" and "Windows.data.pdf.dll"
-dllVer1 = fetch_file_version(sysPath, file_name:"System32\Glcndfilter.dll"); 
+dllVer1 = fetch_file_version(sysPath, file_name:"System32\Glcndfilter.dll");
 dllVer2 = fetch_file_version(sysPath, file_name:"System32\Windows.data.pdf.dll");
 if(!dllVer1 && !dllVer2){
   exit(0);
 }
 
-# Windows server 2012
 if(hotfix_check_sp(win2012:1) > 0)
 {
-  ## Check for Glcndfilter.dll version
   if(version_is_less(version:dllVer1, test_version:"6.2.9200.21954"))
   {
      Vulnerable_range = "Less than 6.2.9200.21954";
@@ -116,10 +104,8 @@ if(hotfix_check_sp(win2012:1) > 0)
   }
 }
 
-## Windows 8.1 and Server 2012R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Glcndfilter.dll version
   if(version_is_less(version:dllVer1, test_version:"6.3.9600.18454"))
   {
     Vulnerable_range = "Less than 6.3.9600.18454";
@@ -127,16 +113,13 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
   }
 }
 
-##Windows 10
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && dllVer2)
 {
-  ## Check for Windows.data.pdf.dll version
   if(version_is_less(version:dllVer2, test_version:"10.0.10240.17113"))
   {
     Vulnerable_range = "Less than 10.0.10240.17113";
     VULN2 = TRUE ;
   }
-  ##Windows 10 Version 1511
   else if(version_in_range(version:dllVer2, test_version:"10.0.10586.0", test_version2:"10.0.10586.588"))
   {
     Vulnerable_range = "10.0.10586.0 - 10.0.10586.588";
@@ -148,7 +131,7 @@ if(VULN2)
 {
   report = 'File checked:     ' + sysPath + "\system32\windows.data.pdf.dll"+ '\n' +
            'File version:     ' + dllVer2  + '\n' +
-           'Vulnerable range: ' + Vulnerable_range + '\n' ;   
+           'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
   exit(0);
 }

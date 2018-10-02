@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foreman_info_discl_vuln2.nasl 9216 2018-03-27 09:14:44Z santu $
+# $Id: gb_foreman_info_discl_vuln2.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Foreman Information Disclosure Vulnerability-02
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:theforeman:foreman';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106420");
-  script_version("$Revision: 9216 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-27 11:14:44 +0200 (Tue, 27 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
+  script_version("$Revision: 11702 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-29 08:20:28 +0700 (Tue, 29 Nov 2016)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-4995");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Foreman Information Disclosure Vulnerability-02");
 
@@ -51,19 +51,19 @@ if (description)
   script_dependencies("gb_foreman_detect.nasl");
   script_mandatory_keys("foreman/installed");
 
-  script_tag(name: "summary", value: "Foreman is prone to an information disclosure vulnerability.");
+  script_tag(name:"summary", value:"Foreman is prone to an information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Users who are logged in with permissions to view some hosts are able to
+  script_tag(name:"insight", value:"Users who are logged in with permissions to view some hosts are able to
 preview provisioning templates for any host by specifying its hostname in the URL, as the specific view_hosts
 permissions and filters aren't checked.");
 
-  script_tag(name: "affected", value: "Version 1.11.x and 1.12.0.");
+  script_tag(name:"affected", value:"Version 1.11.x and 1.12.0.");
 
-  script_tag(name: "solution", value: "Upgrade to 1.11.4, 1.12.1 or later.");
+  script_tag(name:"solution", value:"Upgrade to 1.11.4, 1.12.1 or later.");
 
-  script_xref(name: "URL", value: "https://theforeman.org/security.html#2016-4995");
+  script_xref(name:"URL", value:"https://theforeman.org/security.html#2016-4995");
 
   exit(0);
 }

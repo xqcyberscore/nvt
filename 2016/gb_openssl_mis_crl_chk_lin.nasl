@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mis_crl_chk_lin.nasl 9585 2018-04-24 11:46:06Z asteins $
+# $Id: gb_openssl_mis_crl_chk_lin.nasl 11702 2018-10-01 07:31:38Z asteins $
 # OpenSSL Missing CRL sanity check Vulnerability (Linux)
 #
 # Authors:
@@ -28,10 +28,10 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107056");
-  script_version("$Revision: 9585 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2016-7052");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 13:46:06 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"creation_date", value:"2016-09-26 06:40:16 +0200 (Mon, 26 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
@@ -44,7 +44,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed","Host/runs_unixoide");
+  script_mandatory_keys("OpenSSL/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
 
   script_tag(name:"summary", value:"This host is running OpenSSL and is prone to a denial of service vulnerability.");

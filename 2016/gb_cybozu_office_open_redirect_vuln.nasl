@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_office_open_redirect_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_cybozu_office_open_redirect_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Cybozu Office Open Redirect Vulnerability Feb16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cybozu:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807279");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2015-8483");
   script_bugtraq_id(83290);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-03 18:23:59 +0530 (Thu, 03 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cybozuo Office Open Redirect Vulnerability Feb16");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to redirect users to arbitrary web sites and conduct phishing
-  attacks via a crafted URL.
-
-  Impact Level: Application");
+  attacks via a crafted URL.");
 
   script_tag(name:"affected", value:"Cybozu Office version 10.2.0 to 10.3.0");
 
@@ -60,7 +58,7 @@ if(description)
   or later, For updates refer to http://products.cybozu.co.jp/office/");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  
+
   script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN71428831/index.html");
 
   script_category(ACT_GATHER_INFO);
@@ -75,10 +73,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-cybVer = "";
-
-## Get version
 if(!cybPort = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -87,7 +81,6 @@ if(!cybVer = get_app_version(port:cybPort, cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_in_range(version:cybVer, test_version:"10.2.0", test_version2:"10.3.0"))
 {
   report = report_fixed_ver(installed_version:cybVer, fixed_version:"10.4.0");

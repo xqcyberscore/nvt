@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_java_console_auth_bypass_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
+# $Id: gb_ibm_domino_java_console_auth_bypass_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # IBM Domino 'java console' Authentication Bypass Vulnerability
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808191");
-  script_version("$Revision: 7575 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2016-0304");
   script_bugtraq_id(90804);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-12 17:25:38 +0530 (Tue, 12 Jul 2016)");
   script_name("IBM Domino 'java console' Authentication Bypass Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with IBM Domino and
   is prone to authentication bypass vulnerability");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an error in the java
   console when a certain unsupported configuration involving UNC share path names
@@ -50,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to bypass the authentication process and possibly execute arbitrary code
-  with SYSTEM privileges.
-
-  Impact Level: System/Application");
+  with SYSTEM privileges.");
 
   script_tag(name:"affected", value:"IBM Domino versions 8.5.x before
   8.5.3 FP6 IF13 and 9.x before 9.0.1 FP6");
@@ -65,7 +62,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21983328");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21983328");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -78,9 +75,6 @@ if(description)
 include("version_func.inc");
 include("revisions-lib.inc"); # Used in get_highest_app_version
 include("host_details.inc");
-
-## Variable Initialization
-domVer = "";
 
 if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);

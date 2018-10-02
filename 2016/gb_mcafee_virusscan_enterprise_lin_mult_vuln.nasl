@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_virusscan_enterprise_lin_mult_vuln.nasl 5644 2017-03-21 09:07:05Z teissa $
+# $Id: gb_mcafee_virusscan_enterprise_lin_mult_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # McAfee VirusScan Enterprise for Linux Multiple Vulnerabilities
 #
@@ -30,18 +30,18 @@ CPE = 'cpe:/a:mcafee:virusscan_enterprise_for_linux';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106470");
-  script_version("$Revision: 5644 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-21 10:07:05 +0100 (Tue, 21 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2016-12-14 11:28:02 +0700 (Wed, 14 Dec 2016)");
+  script_version("$Revision: 11702 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-14 11:28:02 +0700 (Wed, 14 Dec 2016)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-8016", "CVE-2016-8017", "CVE-2016-8018", "CVE-2016-8019", "CVE-2016-8020",
 "CVE-2016-8021", "CVE-2016-8022", "CVE-2016-8023", "CVE-2016-8024", "CVE-2016-8025");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("McAfee VirusScan Enterprise for Linux Multiple Vulnerabilities");
 
@@ -52,42 +52,42 @@ if (description)
   script_dependencies("gb_mcafee_virusscan_enterprise_detect_lin.nasl");
   script_mandatory_keys("mcafee/virusscan_enterprise_linux/installed");
 
-  script_tag(name: "summary", value: "McAfee VirusScan Enterprise for Linux is prone to multiple
+  script_tag(name:"summary", value:"McAfee VirusScan Enterprise for Linux is prone to multiple
 vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "McAfee VirusScan Enterprise for Linux is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"McAfee VirusScan Enterprise for Linux is prone to multiple vulnerabilities:
 
-- Remote Unauthenticated File Existence Test (CVE-2016-8016)
+  - Remote Unauthenticated File Existence Test (CVE-2016-8016)
 
-- Remote Unauthenticated File Read (CVE-2016-8017)
+  - Remote Unauthenticated File Read (CVE-2016-8017)
 
-- No Cross-Site Request Forgery Tokens (CVE-2016-8018)
+  - No Cross-Site Request Forgery Tokens (CVE-2016-8018)
 
-- Cross Site Scripting (CVE-2016-8019)
+  - Cross Site Scripting (CVE-2016-8019)
 
-- Authenticated Remote Code Execution and Privilege Escalation (CVE-2016-8020)
+  - Authenticated Remote Code Execution and Privilege Escalation (CVE-2016-8020)
 
-- Web Interface Allows Arbitrary File Write to Known Location (CVE-2016-8021)
+  - Web Interface Allows Arbitrary File Write to Known Location (CVE-2016-8021)
 
-- Remote Use of Authentication Tokens (CVE-2016-8022)
+  - Remote Use of Authentication Tokens (CVE-2016-8022)
 
-- Brute Force Authentication Tokens (CVE-2016-8023)
+  - Brute Force Authentication Tokens (CVE-2016-8023)
 
-- Brute Force Authentication Tokens (CVE-2016-8024)
+  - Brute Force Authentication Tokens (CVE-2016-8024)
 
-- Authenticated SQL Injection (CVE-2016-8025)");
+  - Authenticated SQL Injection (CVE-2016-8025)");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may execute code when chained the vulnerabilities
+  script_tag(name:"impact", value:"An unauthenticated attacker may execute code when chained the vulnerabilities
 together.");
 
-  script_tag(name: "affected", value: "Version 2.0.3");
+  script_tag(name:"affected", value:"Version 2.0.3");
 
-  script_tag(name: "solution", value: "Upgrade to Endpoint Security for Linux (ENSL) 10.2 or later.");
+  script_tag(name:"solution", value:"Upgrade to Endpoint Security for Linux (ENSL) 10.2 or later.");
 
-  script_xref(name: "URL", value: "https://kc.mcafee.com/corporate/index?page=content&id=SB10181");
-  script_xref(name: "URL", value: "https://nation.state.actor/mcafee.html");
+  script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10181");
+  script_xref(name:"URL", value:"https://nation.state.actor/mcafee.html");
 
   exit(0);
 }

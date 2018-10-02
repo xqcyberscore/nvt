@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_brackets_xss_n_unspecified_vuln_win.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_adobe_brackets_xss_n_unspecified_vuln_win.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Adobe Brackets Cross-site Scripting and Unspecified Vulnerabilities (Windows)
 #
@@ -29,39 +29,38 @@ CPE = "cpe:/a:adobe:brackets";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808177");
-  script_version("$Revision: 5836 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2016-4164", "CVE-2016-4165");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-08 11:10:27 +0530 (Fri, 08 Jul 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Brackets Cross-site Scripting and Unspecified Vulnerabilities (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Adobe Brackets
+  script_tag(name:"summary", value:"This host is installed with Adobe Brackets
   and is prone to cross-site scripting and an unspecified vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - A JavaScript injection vulnerability.
+
   - An input validation vulnerability.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to inject arbitrary web script or HTML code or have an
-  unspecified impact on affected system.
+  unspecified impact on affected system.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Adobe Brackets prior to 1.7 on Windows.");
 
-  script_tag(name: "affected" , value:"Adobe Brackets prior to 1.7 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Adobe Brackets version 1.7
+  script_tag(name:"solution", value:"Upgrade to Adobe Brackets version 1.7
   or later. For updates refer http://brackets.io");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/brackets/apsb16-20.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/brackets/apsb16-20.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -75,15 +74,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-BrkVer = "";
-
-## Get version
 if(!BrkVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check Adobe Brackets vulnerable version
 if(version_is_less(version:BrkVer, test_version:"1.7.0"))
 {
   report = report_fixed_ver(installed_version:BrkVer, fixed_version:"1.7.0");

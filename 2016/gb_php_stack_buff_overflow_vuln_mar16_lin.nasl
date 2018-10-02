@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807507");
-  script_version("$Revision: 10457 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2015-5590", "CVE-2015-8838", "CVE-2015-5589");
   script_bugtraq_id(75970, 88763, 75974);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:23:47 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-01 16:56:54 +0530 (Tue, 01 Mar 2016)");
   script_name("PHP 'phar_fix_filepath' Function Stack Buffer Overflow Vulnerability - Mar16 (Linux)");
 
@@ -53,9 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to execute arbitrary code in the context of the PHP process.
-  Failed exploit attempts will likely crash the webserver.
-
-  Impact Level: Application");
+  Failed exploit attempts will likely crash the webserver.");
 
   script_tag(name:"affected", value:"PHP versions before 5.4.43, 5.5.x before
   5.5.27, and 5.6.x before 5.6.11 on Linux");

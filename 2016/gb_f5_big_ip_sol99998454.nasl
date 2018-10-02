@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol99998454.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_f5_big_ip_sol99998454.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # F5 BIG-IP - SOL99998454 - iControl REST vulnerability CVE-2016-5021
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105759");
- script_cve_id("CVE-2016-5021");
- script_tag(name:"cvss_base", value:"4.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
- script_version ("$Revision: 5732 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105759");
+  script_cve_id("CVE-2016-5021");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_version("$Revision: 11702 $");
 
- script_name("F5 BIG-IP - SOL99998454 - iControl REST vulnerability CVE-2016-5021");
+  script_name("F5 BIG-IP - SOL99998454 - iControl REST vulnerability CVE-2016-5021");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/99/sol99998454.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/99/sol99998454.html");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"An undisclosed iControl REST worker fails to fully sanitize parameters, which can lead to disclosure of information through a maliciously crafted query.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"An undisclosed iControl REST worker fails to fully sanitize parameters, which can lead to disclosure of information through a maliciously crafted query.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-06-13 11:36:35 +0200 (Mon, 13 Jun 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-13 11:36:35 +0200 (Mon, 13 Jun 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20161005-iosxr.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_cisco_ios_xr_cisco-sa-20161005-iosxr.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Cisco IOS XR Software Command-Line Interface Privilege Escalation Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/o:cisco:ios_xr";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106337");
- script_cve_id("CVE-2016-6428");
- script_tag(name:"cvss_base", value:"7.2");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5675 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106337");
+  script_cve_id("CVE-2016-6428");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11702 $");
 
- script_name("Cisco IOS XR Software Command-Line Interface Privilege Escalation Vulnerability");
+  script_name("Cisco IOS XR Software Command-Line Interface Privilege Escalation Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161005-iosxr");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161005-iosxr");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"A vulnerability in the command-line interface (CLI) of IOS-XR series
+  script_tag(name:"summary", value:"A vulnerability in the command-line interface (CLI) of IOS-XR series
 software could allow an authenticated, local attacker to execute arbitrary code on a targeted system at the root
 privilege level.");
 
- script_tag(name: "insight", value: "The vulnerability is due to incorrect permissions given to a set of users.");
+  script_tag(name:"insight", value:"The vulnerability is due to incorrect permissions given to a set of users.");
 
- script_tag(name: "impact", value: "An attacker could exploit this vulnerability by authenticating to the device
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by authenticating to the device
 and sending crafted user input to execute commands on the underlying operating system. The user has to be
 logged-in to the device with valid admin credentials.");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-10-06 11:31:48 +0700 (Thu, 06 Oct 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xr_version.nasl");
- script_mandatory_keys("cisco/ios_xr/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-06 11:31:48 +0700 (Thu, 06 Oct 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xr_version.nasl");
+  script_mandatory_keys("cisco/ios_xr/version");
  exit(0);
 }
 

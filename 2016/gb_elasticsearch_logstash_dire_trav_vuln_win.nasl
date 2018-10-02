@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_logstash_dire_trav_vuln_win.nasl 9000 2018-03-01 13:59:11Z cfischer $
+# $Id: gb_elasticsearch_logstash_dire_trav_vuln_win.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # Elasticsearch Logstash 'CVE-2015-4152' Directory Traversal Vulnerability
 #
@@ -29,28 +29,25 @@ CPE = "cpe:/a:elasticsearch:logstash";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808094");
-  script_version("$Revision: 9000 $");
+  script_version("$Revision: 11702 $");
   script_cve_id("CVE-2015-4152");
   script_bugtraq_id(75112);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 14:59:11 +0100 (Thu, 01 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-23 16:16:20 +0530 (Thu, 23 Jun 2016)");
   script_name("Elasticsearch Logstash 'CVE-2015-4152' Directory Traversal Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Elasticsearch Logstash
   and is prone to directory traversal vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The Flaw is due to improper validation of
   path option in file output plugin.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote
-  attackers to write to arbitrary files.
-
-  Impact Level: Application");
+  attackers to write to arbitrary files.");
 
   # The Logstash version might differ from the Elasticsearch version detected
   # by gb_elastsearch_detect.nasl

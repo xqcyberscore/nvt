@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mult_vuln02_jan16.nasl 8596 2018-01-31 08:17:43Z cfischer $
+# $Id: gb_ibm_websphere_mult_vuln02_jan16.nasl 11702 2018-10-01 07:31:38Z asteins $
 #
 # IBM Websphere Apllication Server Multiple Vulnerabilities-02 Jan16
 #
@@ -29,49 +29,51 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806824");
-  script_version("$Revision: 8596 $");
-  script_cve_id("CVE-2012-3306","CVE-2012-3304","CVE-2012-3311","CVE-2012-3325",
+  script_version("$Revision: 11702 $");
+  script_cve_id("CVE-2012-3306", "CVE-2012-3304", "CVE-2012-3311", "CVE-2012-3325",
                 "CVE-2012-4853");
   script_bugtraq_id(55678, 55671, 55309, 56458);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:17:43 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-19 11:35:34 +0530 (Tue, 19 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Apllication Server Multiple Vulnerabilities-02 Jan16");
 
-  script_tag(name: "summary" , value:"This host is installed with IBM Websphere
+  script_tag(name:"summary", value:"This host is installed with IBM Websphere
   apllication server and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An improper validation of credentials.
+
   - No CBIND checks when configuring Federated Repositories for IIOP connections
     and Optimized Local Adapters.
+
   - No purging of password data from the authentication cache, which has
     unspecified impact and remote attack vectors.
+
   - The some cross site request forgery vulnerability.
+
   - An error in administrative console.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attacker to traverse directories on the system,to bypass security restrictions,
-  to hijack a valid user's session, and leads to information disclosure.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attacker to traverse directories on the system, to bypass security restrictions,
+  to hijack a valid user's session, and leads to information disclosure.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"IBM WebSphere Application Server (WAS)
+  script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS)
   version 6.1 before 6.1.0.45, 7.0 before 7.0.0.25, 8.0 before 8.0.0.5,
   and 8.5 before 8.5.0.1");
 
-  script_tag(name: "solution" , value:"Upgrade to IBM WebSphere Application
+  script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
   Server (WAS) version  6.1.0.45, or 7.0.0.25, or 8.0.0.5, or 8.5.0.1, or later
   For updates refer to http://www-03.ibm.com/software/products/en/appserv-was");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21611313");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21611313");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,12 +1,14 @@
-# OpenVAS Vulnerability Test 
-# Description: Amazon Linux security check 
-# $Id: alas-2014-452.nasl 7000 2017-08-24 11:51:46Z teissa $
- 
-# Authors: 
-# Eero Volotinen <eero.volotinen@iki.fi> 
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: alas-2014-452.nasl 7000 2017-08-24 11:51:46Z teissa$
+#
+# Amazon Linux security check
+#
+# Authors:
+# Eero Volotinen <eero.volotinen@iki.fi>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org 
+# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -20,38 +22,41 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
+
 if(description)
- {
-script_oid("1.3.6.1.4.1.25623.1.0.120017");
-script_version("$Revision: 7000 $");
-script_tag(name:"creation_date", value:"2015-09-08 13:15:02 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
-script_name("Amazon Linux Local Check: ALAS-2014-452");
-script_tag(name: "insight", value: "Multiple integer overflow flaws, leading to heap-based buffer overflows, were found in the way various X11 client libraries handled certain protocol data. An attacker able to submit invalid protocol data to an X11 server via a malicious X11 client could use either of these flaws to potentially escalate their privileges on the system. (CVE-2013-1981 , CVE-2013-1982 , CVE-2013-1983 , CVE-2013-1984 , CVE-2013-1985 , CVE-2013-1986 , CVE-2013-1987 , CVE-2013-1988 , CVE-2013-1989 , CVE-2013-1990 , CVE-2013-1991 , CVE-2013-2003 , CVE-2013-2062 , CVE-2013-2064 )Multiple array index errors, leading to heap-based buffer out-of-bounds write flaws, were found in the way various X11 client libraries handled data returned from an X11 server. A malicious X11 server could possibly use this flaw to execute arbitrary code with the privileges of the user running an X11 client. (CVE-2013-1997 , CVE-2013-1998 , CVE-2013-1999 , CVE-2013-2000 , CVE-2013-2001 , CVE-2013-2002 , CVE-2013-2066 )A buffer overflow flaw was found in the way the XListInputDevices() function of X.Org X11's libXi runtime library handled signed numbers. A malicious X11 server could possibly use this flaw to execute arbitrary code with the privileges of the user running an X11 client. (CVE-2013-1995 )A flaw was found in the way the X.Org X11 libXt runtime library used uninitialized pointers. A malicious X11 server could possibly use this flaw to execute arbitrary code with the privileges of the user running an X11 client. (CVE-2013-2005 )Two stack-based buffer overflow flaws were found in the way libX11, the Core X11 protocol client library, processed certain user-specified files. A malicious X11 server could possibly use this flaw to crash an X11 client via a specially crafted file. (CVE-2013-2004 )"); 
-script_tag(name : "solution", value : "Run yum update libX11 libXcursor libXfixes libXi libXrandr libXrender libXres libXt libXv libXvMC libXxf86dga libXxf86vm libdmx xorg-x11-proto-devel to update your system.");
-script_tag(name : "solution_type", value : "VendorFix");
-script_xref(name : "URL" , value : "https://alas.aws.amazon.com/ALAS-2014-452.html");
-script_cve_id("CVE-2013-2062", "CVE-2013-2064", "CVE-2013-2066", "CVE-2013-2003", "CVE-2013-2002", "CVE-2013-2001", "CVE-2013-2000", "CVE-2013-2005", "CVE-2013-2004", "CVE-2013-1990", "CVE-2013-1991", "CVE-2013-1995", "CVE-2013-1998", "CVE-2013-1999", "CVE-2013-1989", "CVE-2013-1988", "CVE-2013-1987", "CVE-2013-1986", "CVE-2013-1985", "CVE-2013-1984", "CVE-2013-1983", "CVE-2013-1982", "CVE-2013-1981", "CVE-2013-1997");
-script_tag(name:"cvss_base", value:"6.8");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-script_tag(name:"qod_type", value:"package");
-script_dependencies("gather-package-list.nasl");
-script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
-script_category(ACT_GATHER_INFO);
-script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_copyright("Eero Volotinen");
-script_family("Amazon Linux Local Security Checks");
-exit(0);
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.120017");
+  script_version("$Revision: 11711 $");
+  script_tag(name:"creation_date", value:"2015-09-08 13:15:02 +0200 (Tue, 08 Sep 2015)");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-01 14:30:57 +0200 (Mon, 01 Oct 2018) $");
+  script_name("Amazon Linux Local Check: ALAS-2014-452");
+  script_tag(name:"insight", value:"Multiple flaws were found in X11. Please see the references for more information.");
+  script_tag(name:"solution", value:"Run yum update libX11 libXcursor libXfixes libXi libXrandr libXrender libXres libXt libXv libXvMC libXxf86dga libXxf86vm libdmx xorg-x11-proto-devel to update your system.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"https://alas.aws.amazon.com/ALAS-2014-452.html");
+  script_cve_id("CVE-2013-2062", "CVE-2013-2064", "CVE-2013-2066", "CVE-2013-2003", "CVE-2013-2002", "CVE-2013-2001", "CVE-2013-2000", "CVE-2013-2005", "CVE-2013-2004", "CVE-2013-1990", "CVE-2013-1991", "CVE-2013-1995", "CVE-2013-1998", "CVE-2013-1999", "CVE-2013-1989", "CVE-2013-1988", "CVE-2013-1987", "CVE-2013-1986", "CVE-2013-1985", "CVE-2013-1984", "CVE-2013-1983", "CVE-2013-1982", "CVE-2013-1981", "CVE-2013-1997");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"qod_type", value:"package");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/amazon_linux", "ssh/login/release");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
+  script_copyright("Eero Volotinen");
+  script_family("Amazon Linux Local Security Checks");
+
+  exit(0);
 }
+
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
-release = get_kb_item("ssh/login/release");
+
+release = rpm_get_ssh_release();
+if(!release) exit(0);
+
 res = "";
-if(release == NULL)
-{
- exit(0);
-}
+
 if(release == "AMAZON")
 {
 if ((res = isrpmvuln(pkg:"libX11-debuginfo", rpm:"libX11-debuginfo~1.6.0~2.2.12.amzn1", rls:"AMAZON")) != NULL) {
@@ -214,6 +219,6 @@ if ((res = isrpmvuln(pkg:"xorg-x11-proto-devel", rpm:"xorg-x11-proto-devel~7.7~9
   security_message(data:res);
   exit(0);
 }
-if (__pkg_match) exit(99); #Not vulnerable
+if (__pkg_match) exit(99);
   exit(0);
 }
