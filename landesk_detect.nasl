@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: landesk_detect.nasl 10814 2018-08-07 12:02:33Z cfischer $
+# $Id: landesk_detect.nasl 11723 2018-10-02 09:59:19Z ckuersteiner $
 #
 # LANDesk Management Agent Detection
 #
@@ -27,12 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100328");
-  script_version("$Revision: 10814 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 14:02:33 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 11723 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 11:59:19 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-10-30 14:42:19 +0100 (Fri, 30 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+
   script_name("LANDesk Management Agent Detection");
+
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
@@ -60,15 +62,12 @@ foreach port( make_list( 9595, 9593 ) ) {
   if( ! get_port_state( port ) ) continue;
   if( get_http_is_marked_broken( port:port, host:host ) ) continue;
 
-  req = http_get( item:"/", port:port );
-  buf = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+  buf = http_get_cache( item:"/", port:port );
   if( isnull( buf ) ) continue;
 
-  if( concl = egrep( pattern:"LANDesk.*Management Agent", string:buf, icase:TRUE ) ) {
-
+  if( concl = egrep( pattern:"LANDesk.*Management Agent</title>", string:buf, icase:TRUE ) ) {
     install = "/";
     version = "unknown";
-    set_kb_item( name:"www/" + port + "/landesk", value:TRUE );
     set_kb_item( name:"landesk_managament_agent/detected", value:TRUE );
 
     cpe = "cpe:/a:landesk:landesk_management_suite";

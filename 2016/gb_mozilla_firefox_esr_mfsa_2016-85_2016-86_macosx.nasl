@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2016-85_2016-86_macosx.nasl 9341 2018-04-06 05:27:04Z cfischer $
+# $Id: gb_mozilla_firefox_esr_mfsa_2016-85_2016-86_macosx.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # Mozilla Firefox Esr Security Updates( mfsa_2016-85_2016-86 )-MAC OS X
 #
@@ -29,46 +29,55 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809327");
-  script_version("$Revision: 9341 $");
-  script_cve_id("CVE-2016-5270", "CVE-2016-5272", "CVE-2016-5276", "CVE-2016-5274", 
-                "CVE-2016-5277", "CVE-2016-5278", "CVE-2016-5280", "CVE-2016-5281", 
-                "CVE-2016-5284", "CVE-2016-5250", "CVE-2016-5261", "CVE-2016-5257"); 
+  script_version("$Revision: 11725 $");
+  script_cve_id("CVE-2016-5270", "CVE-2016-5272", "CVE-2016-5276", "CVE-2016-5274",
+                "CVE-2016-5277", "CVE-2016-5278", "CVE-2016-5280", "CVE-2016-5281",
+                "CVE-2016-5284", "CVE-2016-5250", "CVE-2016-5261", "CVE-2016-5257");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 07:27:04 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-23 10:26:10 +0530 (Fri, 23 Sep 2016)");
   script_name("Mozilla Firefox Esr Security Updates( mfsa_2016-85_2016-86 )-MAC OS X");
 
-  script_tag(name: "summary" , value:"This host is installed with 
+  script_tag(name:"summary", value:"This host is installed with
   Mozilla Firefox Esr and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - Heap-buffer-overflow in nsCaseTransformTextRunFactory::TransformString.
+
   - Bad cast in nsImageGeometryMixin.
+
   - Heap-use-after-free in mozilla::a11y::DocAccessible::ProcessInvalidationList.
+
   - Use-after-free in nsFrameManager::CaptureFrameState.
+
   - Heap-use-after-free in nsRefreshDriver::Tick.
+
   - Heap-buffer-overflow in nsBMPEncoder::AddImageFrame.
+
   - Use-after-free in mozilla::nsTextNodeDirectionalityMap::RemoveElementFromMap.
+
   - Use-after-free in DOMSVGLength.
+
   - Add-on update site certificate pin expiration.
+
   - Resource Timing API is storing resources sent by the previous page.
+
   - Integer overflow and memory corruption in WebSocketChannel
+
   - Memory safety bugs.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of these
+  script_tag(name:"impact", value:"Successful exploitation of these
   vulnerabilities allow remote attackers to cause a denial of service, to execute
-  arbitrary code, to obtain sensitive full-pathname information.
+  arbitrary code, to obtain sensitive full-pathname information.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Mozilla Firefox Esr version before 
+  script_tag(name:"affected", value:"Mozilla Firefox Esr version before
   45.4 on MAC OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox Esr version 45.4
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox Esr version 45.4
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -88,15 +97,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"45.4"))
 {
   report = report_fixed_ver(installed_version:ffVer, fixed_version:"45.4");

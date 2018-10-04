@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3152550.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_microsoft_security_advisory_3152550.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # Microsoft Wireless Mouse Input Filtering Improvement Advisory (3152550)
 #
@@ -27,37 +27,33 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807544");
-  script_version("$Revision: 5580 $");
+  script_version("$Revision: 11725 $");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-14 14:33:32 +0530 (Thu, 14 Apr 2016)");
   script_name("Microsoft Wireless Mouse Input Filtering Improvement Advisory (3152550)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft advisory (3152550).");
 
-  script_tag(name: "vuldetect" , value: "Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "An update is available that improve
-  input filtering for certain microsoft wireless mouse devices. The update 
-  enhances security by filtering out QWERTY key packets in keystroke 
-  communications issued from receiving USB wireless dongles to wireless mouse 
+  script_tag(name:"insight", value:"An update is available that improve
+  input filtering for certain microsoft wireless mouse devices. The update
+  enhances security by filtering out QWERTY key packets in keystroke
+  communications issued from receiving USB wireless dongles to wireless mouse
   devices.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to inject arbitrary keyboard HID packets (for example, to simulate
-  keystrokes) into a USB dongle.
+  keystrokes) into a USB dongle.");
 
-  Impact Level: System");
-
-  script_tag(name: "affected" , value:"
-  Microsoft Windows 10 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64
   Microsoft Windows 8.1 x32/x64
   Microsoft Windows 7 x32/x64 Edition Service Pack 1");
 
-  script_tag(name: "solution" , value: "Run Windows Update and update the
+  script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
   https://technet.microsoft.com/en-us/library/security/3152550");
@@ -67,13 +63,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3152550");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/3152550.aspx");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3152550");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/3152550.aspx");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -84,23 +81,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win7:2, win7x64:2, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath){
   exit(0);
 }
 
 ## The vulnerable files are not found in the system.So developed taking the default location on assumption
-## Get Version from 'Wirelesskeyboardfilter.sys','Wirelessdevice.dll'
 sysVer = fetch_file_version(sysPath, file_name:"system32\Drivers\Wirelesskeyboardfilter.sys");
 dllVer1 = fetch_file_version(sysPath, file_name:"system32\Wirelessdevice.dll");
 
@@ -108,17 +98,14 @@ if(!sysVer && !dllVer1){
   exit(0);
 }
 
-##Windows 8.1, Windows 7 and Windows 10
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win7:2, win7x64:2, win10:1, win10x64:1) > 0)
 {
-  ## Check for Wirelesskeyboardfilter.sys version
   if(sysVer && version_is_less(version:sysVer, test_version:"1.0.102.0"))
   {
     Vulnerable_range = "Version Less than 1.0.102.0";
     VULN1 = TRUE ;
   }
 
-  ## Check for Wirelessdevice.dll version
   if(dllVer1 && version_is_less(version:dllVer1, test_version:"1.0.102.0"))
   {
     Vulnerable_range = "Version Less than 1.0.102.0";

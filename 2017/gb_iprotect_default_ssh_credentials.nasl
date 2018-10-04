@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iprotect_default_ssh_credentials.nasl 8061 2017-12-08 15:07:15Z cfischer $
+# $Id: gb_iprotect_default_ssh_credentials.nasl 11749 2018-10-04 10:21:12Z jschulte $
 #
 # iProtect Server Default SSH Login
 #
@@ -28,16 +28,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108306");
-  script_version("$Revision: 8061 $");
+  script_version("$Revision: 11749 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 16:07:15 +0100 (Fri, 08 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-04 12:21:12 +0200 (Thu, 04 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-30 14:22:43 +0100 (Thu, 30 Nov 2017)");
   script_name("iProtect Server Default SSH Login");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "os_detection.nasl");
   script_require_ports("Services/ssh", 22);
 
   script_xref(name:"URL", value:"http://www.keyprocessor.com/kennisbank/Zipfile/KP_iProtect_8_0.03%20Stand-by%20server_M_160523_EN");
@@ -57,8 +57,11 @@ if(description)
 }
 
 include("ssh_func.inc");
+include("misc_func.inc");
 
 port = get_ssh_port( default:22 );
+
+files = traversal_files();
 
 username = "atlas";
 password = "kp4700";
@@ -68,12 +71,18 @@ if( ! soc = open_sock_tcp( port ) ) exit( 0 );
 login = ssh_login( socket:soc, login:username, password:password, pub:NULL, priv:NULL, passphrase:NULL );
 
 if( login == 0 ) {
-  cmd = ssh_cmd( socket:soc, cmd:"cat /etc/passwd" );
 
-  if( passwd = egrep( pattern:"root:.*:0:[01]:", string:cmd ) ) {
-    vuln = TRUE;
-    report += '\nUsername: "' + username  + '", Password: "' + password + '"';
-    passwd_report += '\nIt was also possible to execute "cat /etc/passwd" as "' + username + '". Result:\n\n' + passwd;
+  foreach pattern( keys( files ) ) {
+
+    file = files[pattern];
+
+    cmd = ssh_cmd( socket:soc, cmd:"cat /" + file );
+
+    if( passwd = egrep( pattern:pattern, string:cmd ) ) {
+      vuln = TRUE;
+      report += '\nUsername: "' + username  + '", Password: "' + password + '"';
+      passwd_report += '\nIt was also possible to execute "cat /' + file + '" as "' + username + '". Result:\n\n' + passwd;
+    }
   }
 }
 

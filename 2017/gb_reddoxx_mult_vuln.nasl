@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_reddoxx_mult_vuln.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_reddoxx_mult_vuln.nasl 11749 2018-10-04 10:21:12Z jschulte $
 #
 # REDDOX Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:reddoxx:reddox_appliance";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106983");
-  script_version("$Revision: 11474 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 11749 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-04 12:21:12 +0200 (Thu, 04 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-25 10:58:24 +0700 (Tue, 25 Jul 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,7 +46,7 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_reddoxx_web_detect.nasl");
+  script_dependencies("gb_reddoxx_web_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("reddoxx/detected");
 
   script_tag(name:"summary", value:"REDDOXX Appliance is prone to multiple vulnerabilities.");
@@ -54,25 +54,25 @@ if (description)
   script_tag(name:"insight", value:"REDDOXX Appliance is prone to multiple vulnerabilities:
 
   - Cross-Site Scripting vulnerability, which allows attackers to inject arbitrary JavaScript code via a crafted
-URL.
+  URL.
 
   - Unauthenticated Arbitrary File Disclosure, which allows unauthenticated attackers to download arbitrary files
-from the affected system.
+  from the affected system.
 
   - Unauthenticated Extraction of Session-IDs, which allows unauthenticated attackers to extract valid session IDs.
 
   - Arbitrary File Disclosure with root Privileges via RdxEngine-API, which allows unauthenticated attackers to list
-directory contents and download arbitrary files from the affected system with root permissions.
+  directory contents and download arbitrary files from the affected system with root permissions.
 
   - Undocumented Administrative Service Accoun, which allows attackers to access the administrative interface of the
-appliance and change its configuration.
+  appliance and change its configuration.
 
   - Unauthenticated Access to Diagnostic Functions, which allows attackers unauthenticated access to the diagnostic
-functions of the administrative interface of the REDDOXX appliance. The functions allow, for example, to capture
-network traffic on the appliance's interfaces.
+  functions of the administrative interface of the REDDOXX appliance. The functions allow, for example, to capture
+  network traffic on the appliance's interfaces.
 
   - Remote Command Execution as root, which allows attackers to execute arbitrary command with root privileges while
-unauthenticated.");
+  unauthenticated.");
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
@@ -94,16 +94,24 @@ unauthenticated.");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-url = '/download.php?file=/opt/reddoxx/data/temp/Sessions/../../../../../etc/passwd';
+files = traversal_files();
 
-if (http_vuln_check(port: port, url: url, pattern: "root:.*:0:[01]:", check_header: TRUE)) {
-  report = report_vuln_url(port: port, url: url);
-  security_message(port: port, data: report);
-  exit(0);
+foreach pattern(keys(files)) {
+
+  file = files[pattern];
+
+  url = '/download.php?file=/opt/reddoxx/data/temp/Sessions/../../../../../' + file;
+
+  if (http_vuln_check(port: port, url: url, pattern: pattern, check_header: TRUE)) {
+    report = report_vuln_url(port: port, url: url);
+    security_message(port: port, data: report);
+    exit(0);
+  }
 }
 
-exit(0);
+exit(99);

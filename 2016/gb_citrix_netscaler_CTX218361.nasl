@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX218361.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
+# $Id: gb_citrix_netscaler_CTX218361.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # Unauthorized Redirect flaw in Citrix NetScaler ADC could result in session hijack
 #
@@ -29,37 +29,37 @@ CPE = "cpe:/a:citrix:netscaler";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140036");
- script_cve_id("CVE-2016-9028");
- script_tag(name:"cvss_base", value:"5.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 8384 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140036");
+  script_cve_id("CVE-2016-9028");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_version("$Revision: 11725 $");
 
- script_name("Unauthorized Redirect flaw in Citrix NetScaler ADC could result in session hijack (CTX218361)");
+  script_name("Unauthorized Redirect flaw in Citrix NetScaler ADC could result in session hijack (CTX218361)");
 
- script_xref(name:"URL", value:"https://support.citrix.com/article/CTX218361");
+  script_xref(name:"URL", value:"https://support.citrix.com/article/CTX218361");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Updates are available");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Updates are available");
 
- script_tag(name: "summary" , value:"An unauthorized redirect vulnerability has been identified in Citrix NetScaler ADC that could allow a remote attacker to obtain session cookies of a redirected AAA user.");
+  script_tag(name:"summary", value:"An unauthorized redirect vulnerability has been identified in Citrix NetScaler ADC that could allow a remote attacker to obtain session cookies of a redirected AAA user.");
 
- script_tag(name: "affected" , value:"The vulnerability affects the following versions of Citrix NetScaler ADC:
+  script_tag(name:"affected", value:"The vulnerability affects the following versions of Citrix NetScaler ADC:
 Version 11.1 earlier than 11.1 Build 47.14
 Version 11.0 earlier than 11.0 Build 65.31/65.35F
 Version 10.5 earlier than 10.5 Build 61.11
 Version 10.1 earlier than 10.1 Build 135.8");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
- script_tag(name:"creation_date", value:"2016-10-28 12:53:02 +0200 (Fri, 28 Oct 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_citrix_netscaler_version.nasl");
- script_mandatory_keys("citrix_netscaler/detected");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-28 12:53:02 +0200 (Fri, 28 Oct 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_citrix_netscaler_version.nasl");
+  script_mandatory_keys("citrix_netscaler/detected");
 
  exit(0);
 }

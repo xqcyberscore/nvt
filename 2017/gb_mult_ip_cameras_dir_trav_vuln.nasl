@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_ip_cameras_dir_trav_vuln.nasl 6701 2017-07-12 13:04:06Z cfischer $
+# $Id: gb_mult_ip_cameras_dir_trav_vuln.nasl 11747 2018-10-04 09:58:33Z jschulte $
 #
 # Multiple IP-Cameras Directory Traversal Vulnerability
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106907");
-  script_version("$Revision: 6701 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-26 14:23:36 +0700 (Mon, 26 Jun 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11747 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-04 11:58:33 +0200 (Thu, 04 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-26 14:23:36 +0700 (Mon, 26 Jun 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-9833");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("Multiple IP-Cameras Directory Traversal Vulnerability");
 
@@ -46,41 +46,51 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_get_http_banner.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Boa/banner");
 
-  script_tag(name: "summary", value: "The IP-Camera is prone to a diretory traversal vulnerability.");
+  script_tag(name:"summary", value:"The IP-Camera is prone to a diretory traversal vulnerability.");
 
-  script_tag(name: "insight", value: "The scripts '/cgi-bin/wappwd' and '/cgi-bin/wapopen' are prone to a
-directory-traversal vulnerability because they fail to properly sanitize user-supplied input in the 'FILEFAIL'
-and 'FILECAMERA' parameters respectively.");
+  script_tag(name:"insight", value:"The scripts '/cgi-bin/wappwd' and '/cgi-bin/wapopen' are prone to a
+  directory-traversal vulnerability because they fail to properly sanitize user-supplied input in the 'FILEFAIL'
+  and 'FILECAMERA' parameters respectively.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker can exploit this vulnerability to retrieve
-arbitrary files from the vulnerable system in the context of the affected application. Information obtained may
-aid in further attacks.");
+  script_tag(name:"impact", value:"An unauthenticated attacker can exploit this vulnerability to retrieve
+  arbitrary files from the vulnerable system in the context of the affected application. Information obtained may
+  aid in further attacks.");
 
-  script_tag(name: "solution", value: "Contact the vendor for an update.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name: "URL", value: "https://pastebin.com/raw/rt7LJvyF");
-  script_xref(name: "URL", value: "http://www.oamk.fi/~jukkao/bugtraq/1104/0206.html");
+  script_xref(name:"URL", value:"https://pastebin.com/raw/rt7LJvyF");
+  script_xref(name:"URL", value:"http://www.oamk.fi/~jukkao/bugtraq/1104/0206.html");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default: 80);
 
-url = "/cgi-bin/wapopen?FILECAMERA=../../../etc/passwd";
+files = traversal_files();
 
-if (http_vuln_check(port: port, url: url, pattern: "root:.*:0:[01]:", check_header: TRUE)) {
-  report = report_vuln_url(port: port, url: url);
-  security_message(port: port, data: report);
-  exit(0);
+foreach pattern(keys(files)) {
+
+  file = files[pattern];
+
+  url = "/cgi-bin/wapopen?FILECAMERA=../../../" + file;
+
+  if (http_vuln_check(port: port, url: url, pattern: pattern, check_header: TRUE)) {
+    report = report_vuln_url(port: port, url: url);
+    security_message(port: port, data: report);
+    exit(0);
+  }
 }
 
-exit(0);
+exit(99);

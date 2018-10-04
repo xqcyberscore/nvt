@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_tinyproxy_55099.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: sw_tinyproxy_55099.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # Tinyproxy < 1.8.4 Header Multiple Denial of Service Vulnerabilities
 #
@@ -29,29 +29,26 @@ CPE = "cpe:/a:banu:tinyproxy";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111081");
-  script_version("$Revision: 5732 $");
+  script_version("$Revision: 11725 $");
   script_cve_id("CVE-2012-3505");
   script_bugtraq_id(55099);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-01 11:00:00 +0100 (Mon, 01 Feb 2016)");
   script_name("Tinyproxy < 1.8.4 Header Multiple Denial of Service Vulnerabilities");
 
   script_tag(name:"summary", value:"Tinyproxy is prone to multiple remote denial-of-service
   vulnerabilities that affect the 'OpenSSL' extension.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"impact", value:"Successful attacks will cause the application to consume
-  excessive memory, creating a denial-of-service condition.
-
-  Impact Level: Application");
+  excessive memory, creating a denial-of-service condition.");
   script_tag(name:"affected", value:"Tinyproxy versions before 1.8.4");
   script_tag(name:"solution", value:"Upgrade to Tinyproxy 1.8.4. For updates refer to https://tinyproxy.github.io/");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55099");
   script_xref(name:"URL", value:"https://tinyproxy.github.io/");
-  
+
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");

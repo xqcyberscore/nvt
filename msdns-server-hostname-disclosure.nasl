@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: msdns-server-hostname-disclosure.nasl 10906 2018-08-10 14:50:26Z cfischer $
+# $Id: msdns-server-hostname-disclosure.nasl 11750 2018-10-04 10:39:18Z cfischer $
 #
 # Microsoft DNS server internal hostname disclosure detection
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100950");
-  script_version("$Revision: 10906 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11750 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-04 12:39:18 +0200 (Thu, 04 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-07-10 19:42:14 +0200 (Fri, 10 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,16 +42,19 @@ if(description)
   script_require_udp_ports("Services/udp/domain", 53);
   script_mandatory_keys("DNS/identified");
 
-  script_xref(name:"URL", value:"http://www.openvas.org/blog.php?id=31");
+  script_xref(name:"URL", value:"https://web.archive.org/web/20140419113733/http://support.microsoft.com:80/kb/198410");
 
-  script_tag(name:"insight", value:"Microsoft DNS server may disclose the internal hostname of the server in response to requests for the hardcoded zones 0.in-addr.arpa and 255.in-addr.arpa.");
+  script_tag(name:"insight", value:"Microsoft DNS server may disclose the internal hostname of the server in response
+  to requests for the hardcoded zones 0.in-addr.arpa and 255.in-addr.arpa.");
+
   script_tag(name:"solution", value:"On the following platforms, we recommend you resolve in the described manner:
-  All default Microsoft DNS server configurations
 
-  http://support.microsoft.com/default.aspx?id=198410");
+  All default Microsoft DNS server configurations: Please see the referenced KB article KB198410.");
+
   script_tag(name:"summary", value:"Microsoft DNS server internal hostname disclosure detection");
 
   script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);
 }

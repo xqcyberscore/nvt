@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_websvn_xss_vuln.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_websvn_xss_vuln.nasl 11727 2018-10-02 13:45:55Z cfischer $
 #
 # WebSVN Cross site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:tigris:websvn";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806882");
-  script_version("$Revision: 11702 $");
+  script_version("$Revision: 11727 $");
   script_cve_id("CVE-2016-2511", "CVE-2016-1236");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 15:45:55 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-01 14:45:36 +0530 (Tue, 01 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("WebSVN Cross site Scripting Vulnerability");
@@ -85,7 +85,7 @@ if(!dir = get_app_location(cpe:CPE, port:svnPort)){
   exit(0);
 }
 
-if(dir = "/") {
+if(dir == "/") {
   dir = "";
 }
 

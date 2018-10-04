@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_chip_default_ssh_credentials.nasl 7953 2017-11-30 15:08:11Z cfischer $
+# $Id: gb_chip_default_ssh_credentials.nasl 11747 2018-10-04 09:58:33Z jschulte $
 #
 # C.H.I.P. Device Default SSH Login
 #
@@ -28,17 +28,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108164");
-  script_version("$Revision: 7953 $");
+  script_version("$Revision: 11747 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-30 16:08:11 +0100 (Thu, 30 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-04 11:58:33 +0200 (Thu, 04 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-18 13:24:16 +0200 (Thu, 18 May 2017)");
   script_name("C.H.I.P. Device Default SSH Login");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "os_detection.nasl");
   script_require_ports("Services/ssh", 22);
+  script_require_keys("Host/runs_unixoide");
 
   script_xref(name:"URL", value:"https://getchip.com/");
 
@@ -57,11 +58,14 @@ if(description)
 }
 
 include("ssh_func.inc");
+include("misc_func.inc");
 
 port = get_ssh_port( default:22 );
 
 password = "chip";
 report = 'It was possible to login to the remote C.H.I.P. Device via SSH with the following credentials:\n';
+
+files = traversal_files("linux");
 
 foreach username( make_list( "root", "chip" ) ) {
 
@@ -70,12 +74,18 @@ foreach username( make_list( "root", "chip" ) ) {
   login = ssh_login( socket:soc, login:username, password:password, pub:NULL, priv:NULL, passphrase:NULL );
 
   if( login == 0 ) {
-    cmd = ssh_cmd( socket:soc, cmd:"cat /etc/passwd" );
 
-    if( passwd = egrep( pattern:"root:.*:0:[01]:", string:cmd ) ) {
-      vuln = TRUE;
-      report += '\nUsername: "' + username  + '", Password: "' + password + '"';
-      passwd_report += '\nIt was also possible to execute "cat /etc/passwd" as "' + username + '". Result:\n\n' + passwd;
+    foreach pattern( keys( files ) ) {
+
+      file = files[pattern];
+
+      cmd = ssh_cmd( socket:soc, cmd:"cat /" + file );
+
+      if( passwd = egrep( pattern:pattern, string:cmd ) ) {
+        vuln = TRUE;
+        report += '\nUsername: "' + username  + '", Password: "' + password + '"';
+        passwd_report += '\nIt was also possible to execute "cat /' + file + '" as "' + username + '". Result:\n\n' + passwd;
+      }
     }
   }
   close( soc );

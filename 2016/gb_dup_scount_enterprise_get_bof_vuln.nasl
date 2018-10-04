@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dup_scount_enterprise_get_bof_vuln.nasl 9603 2018-04-25 10:35:13Z asteins $
+# $Id: gb_dup_scount_enterprise_get_bof_vuln.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # DiskBoss Enterprise Server GET Buffer Overflow Vulnerability (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:dboss:diskboss_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107103");
-  script_version("$Revision: 9603 $");
+  script_version("$Revision: 11725 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 12:35:13 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-06 16:11:25 +0530 (Tue, 06 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("DiskBoss Enterprise Server GET Buffer Overflow Vulnerability (Windows)");
@@ -47,14 +47,13 @@ if(description)
   web requests passed via GET parameter.");
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote
-  attackers to elevate privileges from any account type and execute code.
-
-  Impact Level: Application");
+  attackers to elevate privileges from any account type and execute code.");
 
   script_tag(name:"affected", value:"DiskBoss Enterprise version 7.4.28.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability.
-  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40869/");
   script_category(ACT_GATHER_INFO);

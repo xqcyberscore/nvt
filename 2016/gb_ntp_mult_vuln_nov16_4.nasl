@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_mult_vuln_nov16_4.nasl 5070 2017-01-24 10:05:10Z antu123 $
+# $Id: gb_ntp_mult_vuln_nov16_4.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # NTP.org 'ntp' Multiple Vulnerabilities (Nov-2016)
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106408");
-  script_version("$Revision: 5070 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-24 11:05:10 +0100 (Tue, 24 Jan 2017) $");
-  script_tag(name: "creation_date", value: "2016-06-03 11:18:33 +0700 (Fri, 03 Jun 2016)");
+  script_version("$Revision: 11725 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-03 11:18:33 +0700 (Fri, 03 Jun 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2016-7433", "CVE-2016-7429");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("NTP.org 'ntp' Multiple Vulnerabilities");
 
@@ -50,14 +50,14 @@ if (description)
   script_mandatory_keys("NTP/Installed", "NTP/Linux/Ver");
   script_require_udp_ports(123);
 
-  script_tag(name: "summary", value: "NTP.org's reference implementation of NTP server, ntpd, contains
+  script_tag(name:"summary", value:"NTP.org's reference implementation of NTP server, ntpd, contains
 multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "ntpd contains multiple vulnerabilities:
+  script_tag(name:"insight", value:"ntpd contains multiple vulnerabilities:
 
-- When ntpd receives a server response on a socket that corresponds to a different interface than was used for
+  - When ntpd receives a server response on a socket that corresponds to a different interface than was used for
 the request, the peer structure is updated to use the interface for new requests. If ntpd is running on a host
 with multiple interfaces in separate networks and the operating system doesn't check source address in received
 packets (e.g. rp_filter on Linux is set to 0), an attacker that knows the address of the source can send a
@@ -66,19 +66,19 @@ it from sending new requests until the list of interfaces is refreshed, which ha
 every 5 minutes by default. If the attack is repeated often enough (once per second), ntpd will not be able to
 synchronize with the source. (CVE-2016-7429)
 
-- Bug 2085 described a condition where the root delay was included twice, causing the jitter value to be higher
+  - Bug 2085 described a condition where the root delay was included twice, causing the jitter value to be higher
 than expected. Due to a misinterpretation of a small-print variable in The Book, the fix for this problem was
 incorrect, resulting in a root distance that did not include the peer dispersion. The calculations and formulae
 have been reviewed and reconciled, and the code has been updated accordingly. (CVE-2016-7433)");
 
-  script_tag(name: "impact", value: "A remote unauthenticated attacker may be able to perform a denial of
+  script_tag(name:"impact", value:"A remote unauthenticated attacker may be able to perform a denial of
 service on ntpd.");
 
-  script_tag(name: "affected", value: "Version 4.2.7p385 until 4.2.8p8, 4.3.0 until 4.3.93");
+  script_tag(name:"affected", value:"Version 4.2.7p385 until 4.2.8p8, 4.3.0 until 4.3.93");
 
-  script_tag(name: "solution", value: "Upgrade to NTP version 4.2.8p9, 4.3.94 or later.");
+  script_tag(name:"solution", value:"Upgrade to NTP version 4.2.8p9, 4.3.94 or later.");
 
-  script_xref(name: "URL", value: "https://www.kb.cert.org/vuls/id/633847");
+  script_xref(name:"URL", value:"https://www.kb.cert.org/vuls/id/633847");
 
   exit(0);
 }

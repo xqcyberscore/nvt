@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_mult_vuln_apr16.nasl 11092 2018-08-23 09:40:58Z santu $
+# $Id: gb_ntp_mult_vuln_apr16.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # NTP.org 'ntpd' Multiple Vulnerabilities
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807567");
-  script_version("$Revision: 11092 $");
+  script_version("$Revision: 11725 $");
   script_cve_id("CVE-2015-7973", "CVE-2015-7974", "CVE-2015-7975", "CVE-2015-7976",
                 "CVE-2015-7977", "CVE-2015-7978", "CVE-2015-7979", "CVE-2015-8138",
                 "CVE-2015-8139", "CVE-2015-8140", "CVE-2015-8158", "CVE-2016-1547",
@@ -36,7 +36,7 @@ if(description)
                 "CVE-2015-7704");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 11:40:58 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-28 15:41:24 +0530 (Thu, 28 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NTP.org 'ntpd' Multiple Vulnerabilities");
@@ -47,31 +47,45 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The ntpd does not filter IPv4 bogon packets received from the network.
+
   - The duplicate IPs on unconfig directives will cause an assertion botch.
+
   - Crafted addpeer with hmode > 7 causes array wraparound with MATCH_ASSOC.
+
   - An improper Restriction of Operations within the Bounds of a Memory Buffer.
+
   - Replay attack on authenticated broadcast mode.
+
   - The nextvar() function does not properly validate length.
+
   - The ntpq saveconfig command allows dangerous characters in filenames.
+
   - Restriction list NULL pointer dereference.
+
   - Uncontrolled Resource Consumption in recursive traversal of restriction list.
+
   - An off-path attacker can send broadcast packets with bad authentication to
     broadcast clients.
+
   - An improper sanity check for the origin timestamp.
+
   - Origin Leak: ntpq and ntpdc Disclose Origin Timestamp to Unauthenticated Clients.
+
   - The sequence number being included under the signature fails to prevent
     replay attacks in ntpq protocol.
+
   - An uncontrolled Resource Consumption in ntpq.
+
   - An off-path attacker can deny service to ntpd clients by demobilizing
     preemptable associations using spoofed crypto-NAK packets.
+
   - Multiple input validation errors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   unauthenticated remote attackers to spoof packets to cause denial of service,
-  authentication bypass, or certain configuration changes.
-
-  Impact Level: Application");
+  authentication bypass, or certain configuration changes.");
 
   script_tag(name:"affected", value:"NTP version before 4.2.8p7");
 

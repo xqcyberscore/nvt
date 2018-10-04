@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asbru_web_content_mgnt_sys_mult_vuln.nasl 10916 2018-08-10 16:01:30Z cfischer $
+# $Id: gb_asbru_web_content_mgnt_sys_mult_vuln.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # Asbru Web Content Management System Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:asbru_web_content_management_system:asbru";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807656");
-  script_version("$Revision: 10916 $");
+  script_version("$Revision: 11725 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 18:01:30 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-12 17:30:16 +0530 (Tue, 12 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Asbru Web Content Management System Multiple Vulnerabilities");
@@ -56,9 +56,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to traverse directories on the system, to redirect a victim to
   arbitrary Web sites, to steal the victim's cookie-based authentication
-  credentials, and other malicious activities.
-
-  Impact Level: Application");
+  credentials, and other malicious activities.");
 
   script_tag(name:"affected", value:"Asbru Web Content Management System 9.2.7");
 

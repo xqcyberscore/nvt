@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_default_ssh_credentials.nasl 7805 2017-11-17 08:42:10Z cfischer $
+# $Id: gb_pfsense_default_ssh_credentials.nasl 11747 2018-10-04 09:58:33Z jschulte $
 #
 # pfSense Default SSH Credentials
 #
@@ -28,16 +28,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112123");
-  script_version("$Revision: 7805 $");
+  script_version("$Revision: 11747 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-17 09:42:10 +0100 (Fri, 17 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-04 11:58:33 +0200 (Thu, 04 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 13:32:16 +0100 (Wed, 15 Nov 2017)");
   script_name("pfSense Default SSH Credentials");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_pfsense_detect.nasl");
+  script_dependencies("gb_pfsense_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/ssh", 22);
 
   script_tag(name:"summary", value:"pfSense is prone to a default account authentication bypass vulnerability via SSH.");
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name:"solution", value:"Change the password.");
 
-  script_tag(name:"solution_type", value: "Mitigation");
+  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"exploit");
 
   script_xref(name:"URL", value:"https://www.question-defense.com/2012/11/19/pfsense-default-login");
@@ -58,11 +58,14 @@ if(description)
 }
 
 include("ssh_func.inc");
+include("misc_func.inc");
 
 port = get_ssh_port( default:22 );
 
 password = "pfsense";
 report = 'It was possible to login to pfSense via SSH with the following credentials:\n';
+
+files = traversal_files();
 
 foreach username( make_list( "admin", "root" ) ) {
 
@@ -71,15 +74,21 @@ foreach username( make_list( "admin", "root" ) ) {
   login = ssh_login( socket:soc, login:username, password:password, pub:NULL, priv:NULL, passphrase:NULL );
 
   if( login == 0 ) {
-    rcv = ssh_cmd( socket:soc, cmd:'8\n && cat /etc/passwd', nosh:TRUE, pty:TRUE );
 
-    if( 'Welcome to pfSense' >< rcv && username >< rcv ) {
-      vuln = TRUE;
-      report += '\nUsername: "' + username  + '", Password: "' + password + '"';
-    }
+    foreach pattern( keys ( files ) ) {
 
-    if( passwd = egrep( pattern:'root:.*:0:[01]:', string:rcv ) ) {
-      passwd_report += '\nIt was also possible to execute "cat /etc/passwd" as "' + username + '". Result:\n\n' + passwd;
+      file = files[pattern];
+
+      rcv = ssh_cmd( socket:soc, cmd:'8\n && cat /' + file, nosh:TRUE, pty:TRUE );
+
+      if( 'Welcome to pfSense' >< rcv && egrep( string:rcv, pattern:pattern ) ) {
+        vuln = TRUE;
+        report += '\nUsername: "' + username  + '", Password: "' + password + '"';
+      }
+
+      if( passwd = egrep( pattern:pattern, string:rcv ) ) {
+        passwd_report += '\nIt was also possible to execute "cat /' + file + '" as "' + username + '". Result:\n\n' + passwd;
+      }
     }
   }
   close( soc );

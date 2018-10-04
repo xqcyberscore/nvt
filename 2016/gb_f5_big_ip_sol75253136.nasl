@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol75253136.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_f5_big_ip_sol75253136.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # F5 BIG-IP - SOL75253136 - GnuPG vulnerability CVE-2013-4242
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105557");
- script_cve_id("CVE-2013-4242");
- script_tag(name:"cvss_base", value:"1.9");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5534 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105557");
+  script_cve_id("CVE-2013-4242");
+  script_tag(name:"cvss_base", value:"1.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11725 $");
 
- script_name("F5 BIG-IP - SOL75253136 - GnuPG vulnerability CVE-2013-4242");
+  script_name("F5 BIG-IP - SOL75253136 - GnuPG vulnerability CVE-2013-4242");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/75/sol75253136.html?sr=51723047");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/75/sol75253136.html?sr=51723047");
 
- script_tag(name: "impact" , value:"Local user may obtain confidential information by exploiting this vulnerability");
+  script_tag(name:"impact", value:"Local user may obtain confidential information by exploiting this vulnerability");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"GnuPG before 1.4.14, and Libgcrypt before 1.5.3 as used in GnuPG 2.0.x and possibly other products, allows local users to obtain private RSA keys via a cache side-channel attack involving the L3 cache, aka Flush+Reload.");
+  script_tag(name:"insight", value:"GnuPG before 1.4.14, and Libgcrypt before 1.5.3 as used in GnuPG 2.0.x and possibly other products, allows local users to obtain private RSA keys via a cache side-channel attack involving the L3 cache, aka Flush+Reload.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-02-23 10:39:51 +0100 (Tue, 23 Feb 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-02-23 10:39:51 +0100 (Tue, 23 Feb 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

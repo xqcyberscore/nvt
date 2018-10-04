@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unknown_os_service_reporting.nasl 11638 2018-09-27 06:42:05Z cfischer $
+# $Id: gb_unknown_os_service_reporting.nasl 11748 2018-10-04 10:12:39Z cfischer $
 #
 # Unknown OS and Service Banner Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108441");
-  script_version("$Revision: 11638 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:42:05 +0200 (Thu, 27 Sep 2018) $");
+  script_version("$Revision: 11748 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-04 12:12:39 +0200 (Thu, 04 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 10:53:41 +0200 (Wed, 02 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,6 +40,8 @@ if(description)
   script_dependencies("unknown_services.nasl", "find_service_nmap.nasl", "os_detection.nasl");
   script_mandatory_keys("unknown_os_or_service/available");
 
+  script_xref(name:"URL", value:"https://community.greenbone.net/c/vulnerability-tests");
+
   script_tag(name:"summary", value:"This NVT consolidates and reports the information collected by
   the following NVTs:
 
@@ -49,7 +51,8 @@ if(description)
 
   - OS Detection Consolidation and Reporting (OID: 1.3.6.1.4.1.25623.1.0.105937)
 
-  If you know any of the information reported here, please send the full output to https://community.greenbone.net/c/vulnerability-tests.");
+  If you know any of the information reported here, please send the full output to
+  the referenced community portal.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -67,7 +70,7 @@ if( unknown_os_banners ) {
 
   report  = 'Unknown banners have been collected which might help to identify the OS running on this host. ';
   report += 'If these banners containing information about the host OS please report the following information ';
-  report += 'to openvas-plugins@wald.intevation.org:';
+  report += 'to https://community.greenbone.net/c/vulnerability-tests:';
 
   # Sort to not report changes on delta reports if just the order is different
   keys = sort( keys( unknown_os_banners ) );

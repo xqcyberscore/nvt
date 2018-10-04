@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ldu_detection.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: ldu_detection.nasl 11723 2018-10-02 09:59:19Z ckuersteiner $
 #
 # Detects LDU version
 #
@@ -28,11 +28,13 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19602");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10905 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11723 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 11:59:19 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
+
   script_name("Detects LDU version");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");
   script_family("Product detection");
@@ -115,9 +117,7 @@ foreach dir( make_list_unique( "/" , cgi_dirs(port:port) ) ) {
       }
     }
 
-    set_kb_item( name:"ldu/installed", value:TRUE );
-    tmp_version = version + " under " + install;
-    set_kb_item( name:"www/" + port + "/ldu", value:tmp_version );
+    set_kb_item( name:"ldu/detected", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:neocrome:land_down_under:" );
     if( isnull( cpe ) )

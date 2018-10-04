@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webserver_favicon.nasl 7208 2017-09-21 06:03:49Z cfischer $
+# $Id: webserver_favicon.nasl 11730 2018-10-02 17:53:18Z cfischer $
 #
 # Identify software/infrastructure via favicon.ico
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20108");
-  script_version("$Revision: 7208 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-21 08:03:49 +0200 (Thu, 21 Sep 2017) $");
+  script_version("$Revision: 11730 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 19:53:18 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,9 +55,8 @@ if(description)
   exit(0);
 }
 
-#TODO:
-#Report unknown md5 as extra logmessage?
-#Register items with their matching CPE?
+# TBD: Report unknown md5 as extra logmessage?
+# TBD: Register items with their matching CPE?
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -407,18 +406,17 @@ server["ef9c0362bf20a086bb7c2e8ea346b9f0"]="Roundcube Webmail 1.0.0+, Skins Clas
 
 function check_md5( res, port, url ) {
 
-  local_var res, port, url, md5, file;
+  local_var res, port, url, md5, report;
 
   if( ! res || isnull( res ) ) return;
   md5 = hexstr( MD5( res ) );
 
-  # Check the hash against what we know about.
   if( server[md5] ) {
-    found = TRUE;
-    file = report_vuln_url( port:port, url:url, url_only:TRUE );
-    # Some favicon.ico might be found twice by direct access to /favicon.ico and indirect access via link rel tag.
-    if( ! in_array( search:file, array:foundList ) )
-      foundList = make_list( foundList, '"' + server[md5] + '" fingerprinted by the file: "' + file + '"' );
+    found  = TRUE;
+    report = '"' + server[md5] + '" fingerprinted by the file: "' + report_vuln_url( port:port, url:url, url_only:TRUE ) + '"';
+    # nb: Some favicon.ico might be found twice by direct access to /favicon.ico and indirect access via link rel tag.
+    if( ! in_array( search:report, array:foundList ) )
+      foundList = make_list( foundList, report );
   }
 }
 
@@ -432,14 +430,14 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   install = dir;
   if( dir == "/" ) dir = "";
 
+  # nb: Direct request to favicon.ico
   url = dir + "/favicon.ico";
-  # Make direct request to favicon.ico
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
   check_md5( res:res, port:port, url:url );
 
-  # Check if a favicon is referenced via a <link rel= tag
+  # nb: favicon might be referenced via a <link rel= tag
   res = http_get_cache( item:dir + "/", port:port );
 
   if( match = egrep( pattern:'<link.*rel="(icon|shortcut icon)".*>$', string:res ) ) {

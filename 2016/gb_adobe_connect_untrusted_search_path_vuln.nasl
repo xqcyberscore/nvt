@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_connect_untrusted_search_path_vuln.nasl 7857 2017-11-22 07:24:15Z cfischer $
+# $Id: gb_adobe_connect_untrusted_search_path_vuln.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # Adobe Connect Untrusted Search Path Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:connect";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808062");
-  script_version("$Revision: 7857 $");
+  script_version("$Revision: 11725 $");
   script_cve_id("CVE-2016-4118");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-22 08:24:15 +0100 (Wed, 22 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 16:34:52 +0530 (Tue, 07 Jun 2016)");
   script_name("Adobe Connect Untrusted Search Path Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -58,9 +58,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
   users of the System which is using the vulnerable Adobe Connect Add-In to
-  gain privileges via unspecified vectors.
-
-  Impact Level: Application");
+  gain privileges via unspecified vectors.");
 
   script_tag(name:"affected", value:"Adobe Connect versions before 9.5.3.");
 
@@ -85,7 +83,6 @@ if(!acVer = get_app_version(cpe:CPE, port:acPort)){
   exit(0);
 }
 
-##Check for vulnerable version
 if(version_is_less(version:acVer, test_version:"9.5.3"))
 {
   report = report_fixed_ver(installed_version:acVer, fixed_version:"9.5.3");

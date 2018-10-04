@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln01_may16_win.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: gb_wireshark_mult_dos_vuln01_may16_win.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities May16 (Windows)
 #
@@ -29,34 +29,35 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807575");
-  script_version("$Revision: 5689 $");
+  script_version("$Revision: 11725 $");
   script_cve_id("CVE-2016-4084", "CVE-2016-4083", "CVE-2016-4077", "CVE-2016-4076");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-03 11:09:01 +0530 (Tue, 03 May 2016)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities May16 (Windows)");
-  
+
   script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to multiple denial of service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
-  - 'epan/dissectors/packet-ncp2222.inc' script in the NCP dissector does not 
+
+  - 'epan/dissectors/packet-ncp2222.inc' script in the NCP dissector does not
     properly initialize memory for search patterns.
-  - 'epan/reassemble.c' script in TShark relies on incorrect special-case 
+
+  - 'epan/reassemble.c' script in TShark relies on incorrect special-case
     handling of truncated Tvb data structures.
-  - 'epan/dissectors/packet-mswsp.c' script in the MS-WSP dissector does not 
+
+  - 'epan/dissectors/packet-mswsp.c' script in the MS-WSP dissector does not
     ensure that data is available before array allocation.
-  - An integer signedness error in 'epan/dissectors/packet-mswsp.c' script in 
+
+  - An integer signedness error in 'epan/dissectors/packet-mswsp.c' script in
     the MS-WSP dissector");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to conduct denial of service attack.
-
-  Impact Level: Application");
+  attackers to conduct denial of service attack.");
 
   script_tag(name:"affected", value:"Wireshark version 2.0.x before 2.0.3
   on Windows");
@@ -84,15 +85,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-wirversion = "";
-
-## Get the version
 if(!wirversion = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check the vulnerable version 
 if(version_in_range(version:wirversion, test_version:"2.0.0", test_version2:"2.0.2"))
 {
   report = report_fixed_ver(installed_version:wirversion, fixed_version:"2.0.3");

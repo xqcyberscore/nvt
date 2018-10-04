@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln02_aug16_win.nasl 10457 2018-07-09 06:23:47Z cfischer $
+# $Id: gb_php_mult_vuln02_aug16_win.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # PHP Multiple Vulnerabilities - 02 - Aug16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808789");
-  script_version("$Revision: 10457 $");
+  script_version("$Revision: 11725 $");
   script_cve_id("CVE-2016-5771", "CVE-2016-5770");
   script_bugtraq_id(91401, 91403);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:23:47 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-17 12:19:56 +0530 (Wed, 17 Aug 2016)");
   script_name("PHP Multiple Vulnerabilities - 02 - Aug16 (Windows)");
 
@@ -54,9 +54,7 @@ if(description)
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to cause a denial of service (use-after-free and application
   crash) or possibly execute arbitrary code or possibly have unspecified other
-  impact via a large integer argument.
-
-  Impact Level: Application");
+  impact via a large integer argument.");
 
   script_tag(name:"affected", value:"PHP versions prior to 5.5.37 and 5.6.x
   before 5.6.23 on Windows");

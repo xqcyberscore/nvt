@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_65b543b628_sssd_fc26.nasl 7599 2017-10-30 09:14:28Z santu $
+# $Id: gb_fedora_2017_65b543b628_sssd_fc26.nasl 11732 2018-10-03 08:05:04Z cfischer $
 #
 # Fedora Update for sssd FEDORA-2017-65b543b628
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873522");
-  script_version("$Revision: 7599 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-30 10:14:28 +0100 (Mon, 30 Oct 2017) $");
+  script_version("$Revision: 11732 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-03 10:05:04 +0200 (Wed, 03 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-25 15:35:30 +0200 (Wed, 25 Oct 2017)");
   script_cve_id("CVE-2017-12173");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for sssd FEDORA-2017-65b543b628");
   script_tag(name: "summary", value: "Check the version of sssd");

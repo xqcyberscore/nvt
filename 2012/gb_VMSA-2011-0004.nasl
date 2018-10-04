@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2011-0004.nasl 11696 2018-09-28 21:16:43Z cfischer $
+# $Id: gb_VMSA-2011-0004.nasl 11748 2018-10-04 10:12:39Z cfischer $
 #
 # VMSA-2011-0004.3 VMware ESX/ESXi SLPD denial of service vulnerability and ESX third party updates for Service Console packages bind, pam, and rpm.
 #
@@ -31,9 +31,9 @@ if(description)
   script_cve_id("CVE-2010-3613", "CVE-2010-3614", "CVE-2010-3762", "CVE-2010-3316", "CVE-2010-3435", "CVE-2010-3853", "CVE-2010-2059", "CVE-2010-3609");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11696 $");
+  script_version("$Revision: 11748 $");
   script_name("VMSA-2011-0004.3 VMware ESX/ESXi SLPD denial of service vulnerability and ESX third party updates for Service Console packages bind, pam, and rpm.");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 23:16:43 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-04 12:12:39 +0200 (Thu, 04 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-16 10:51:14 +0100 (Fri, 16 Mar 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("VMware Local Security Checks");
@@ -55,7 +55,7 @@ if(description)
 
   VMware ESX 4.0 without patches ESX400-201103401-SG, ESX400-201103404-SG, ESX400-201103406-SG and ESX400-201103407-SG.");
 
-  script_tag(name:"insight", value:"a. Service Location Protocol daemon DoS
+  script_tag(name:"impact", value:"a. Service Location Protocol daemon DoS
 
   Exploitation of this vulnerability could cause SLPD to consume significant CPU resources.");
 

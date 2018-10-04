@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mailman_privatepy_directory_traversal.nasl 8622 2018-02-01 12:11:05Z cfischer $
+# $Id: mailman_privatepy_directory_traversal.nasl 11723 2018-10-02 09:59:19Z ckuersteiner $
 #
 # Mailman private.py Directory Traversal Vulnerability
 #
@@ -29,15 +29,17 @@ CPE = "cpe:/a:gnu:mailman";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16339");
-  script_version("$Revision: 8622 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-01 13:11:05 +0100 (Thu, 01 Feb 2018) $");
+  script_version("$Revision: 11723 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 11:59:19 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2005-0202");
   script_bugtraq_id(12504);
   script_xref(name:"OSVDB", value:"13671");
+
   script_name("Mailman private.py Directory Traversal Vulnerability");
+
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2005 George A. Theall");
@@ -48,14 +50,12 @@ if(description)
   script_xref(name:"URL", value:"http://mail.python.org/pipermail/mailman-announce/2005-February/000076.html");
   script_xref(name:"URL", value:"http://lists.netsys.com/pipermail/full-disclosure/2005-February/031562.html");
 
-  tag_summary = "Authenticated Mailman users can view arbitrary files on the remote
-  host.
+  script_tag(name:"summary", value:"Authenticated Mailman users can view arbitrary files on the remote host.
 
-  According to its version number, the remote installation of Mailman
-  reportedly is prone to a directory traversal vulnerability in
-  'Cgi/private.py'.";
+  According to its version number, the remote installation of Mailman reportedly is prone to a directory traversal
+  vulnerability in 'Cgi/private.py'.");
 
-  tag_insight = "The flaw comes into play only on web servers that
+  script_tag(name:"insight", value:"The flaw comes into play only on web servers that
   don't strip extraneous slashes from URLs, such as Apache 1.3.x, and
   allows a list subscriber, using a specially crafted web request, to
   retrieve arbitrary files from the server - any file accessible by the
@@ -67,14 +67,10 @@ if(description)
   http://$target/mailman/private/$listname/.../....///mailman?username=$user&password=$pass
 
   allows access to archives for the mailing list named 'mailman' for
-  which the user might not otherwise be entitled.";
+  which the user might not otherwise be entitled.");
 
-  tag_solution = "Upgrade to Mailman 2.1.6b1 or apply the fix referenced in the first
-  URL above.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Upgrade to Mailman 2.1.6b1 or apply the fix referenced in the first
+  URL above.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

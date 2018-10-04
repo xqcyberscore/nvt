@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb16-32_macosx.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_adobe_flash_player_apsb16-32_macosx.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # Adobe Flash Player Security Updates( apsb16-32 )-MAC OS X
 #
@@ -29,37 +29,37 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809443");
-  script_version("$Revision: 5867 $");
-  script_cve_id("CVE-2016-4273", "CVE-2016-4286", "CVE-2016-6981", "CVE-2016-6982", 
-                "CVE-2016-6983", "CVE-2016-6984", "CVE-2016-6985", "CVE-2016-6986", 
+  script_version("$Revision: 11725 $");
+  script_cve_id("CVE-2016-4273", "CVE-2016-4286", "CVE-2016-6981", "CVE-2016-6982",
+                "CVE-2016-6983", "CVE-2016-6984", "CVE-2016-6985", "CVE-2016-6986",
                 "CVE-2016-6987", "CVE-2016-6989", "CVE-2016-6990", "CVE-2016-6992");
   script_bugtraq_id(93490, 93497, 93492);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-12 19:03:06 +0530 (Wed, 12 Oct 2016)");
   script_name("Adobe Flash Player Security Updates( apsb16-32 )-MAC OS X");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
+
   - A type confusion vulnerability.
+
   - The use-after-free vulnerabilities.
+
   - The memory corruption vulnerabilities.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
-  vulnerability will allow remote attackers lead to code execution.
+  script_tag(name:"impact", value:"Successful exploitation of this
+  vulnerability will allow remote attackers lead to code execution.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Adobe Flash Player version before 
+  script_tag(name:"affected", value:"Adobe Flash Player version before
   18.0.0.382 and 22.x before 23.0.0.185 on MAC OS X.");
 
-  script_tag(name: "solution", value:"Upgrade to Adobe Flash Player version
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
   18.0.0.382, or 23.0.0.185, or later.
   For updates refer to http://get.adobe.com/flashplayer");
 
@@ -67,7 +67,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/flash-player/apsb16-32.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb16-32.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -81,15 +81,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-playerVer = "";
-
-## Get version
 if(!playerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_in_range(version:playerVer, test_version:"22", test_version2:"23.0.0.184"))
 {
   fix = "23.0.0.185";

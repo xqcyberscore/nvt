@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20161026-esa4.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_cisco_esa_cisco-sa-20161026-esa4.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # Cisco Email Security Appliance Quarantine Email Rendering Vulnerability
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/h:cisco:email_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140026");
- script_cve_id("CVE-2016-1423");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 5580 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140026");
+  script_cve_id("CVE-2016-1423");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11725 $");
 
- script_name("Cisco Email Security Appliance Quarantine Email Rendering Vulnerability");
+  script_name("Cisco Email Security Appliance Quarantine Email Rendering Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esa4");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esa4");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in the display of email messages in the Messages in Quarantine (MIQ) view in Cisco
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in the display of email messages in the Messages in Quarantine (MIQ) view in Cisco
 AsyncOS for Cisco Email Security Appliance (ESA) could allow an unauthenticated, remote attacker to
 cause a user to click a malicious link in the MIQ view. The malicious link could be used to
 facilitate a cross-site scripting (XSS) or HTML injection attack.
@@ -57,16 +57,16 @@ that address this vulnerability.
 
 http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esa4");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-10-27 14:10:54 +0200 (Thu, 27 Oct 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_esa_version.nasl");
- script_mandatory_keys("cisco_esa/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-27 14:10:54 +0200 (Thu, 27 Oct 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_esa_version.nasl");
+  script_mandatory_keys("cisco_esa/installed");
  exit(0);
 }
 
@@ -75,7 +75,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'8.9.0',
 		'8.9.1-000',
 		'8.9.2-032',

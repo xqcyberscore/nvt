@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: pkg-lib-hpux.inc 10242 2018-06-19 05:45:15Z cfischer $
+# $Id: pkg-lib-hpux.inc 11738 2018-10-04 06:07:03Z cfischer $
 #
 # Check if HP-UX packages are up to date
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10242 $
+# $Revision: 11738 $
 #
 ###############################################################################
 
@@ -33,46 +33,111 @@
 # between non-installed packages and packages installed but not vulnerable.
 __pkg_match = FALSE;
 
-#
-# ishpuxpkgvuln is intended to provide a quick way to verify that
-# a given package, is installed and is vulnerable or not.
-# The function ishpuxpkgvuln returns 0 if it is not installed or
-# is installed and up to date, and returns 1 if it is installed
-# but vulnerable
-#
+# Global keys to avoid that we're repeatedly asking redis for something we already know
+global_var __hpux_ssh_release, __hpux_ssh_pkgrev, __hpux_ssh_pkgsupersedes;
 
-function ishpuxpkgvuln(pkg, revision, patch_list, rls) {
+# @brief returns the current release string of the target saved within the KB (ssh/login/release).
+#
+# @return a string containing the current release of the target or an empty string if no release
+#         string exists in the KB.
+#
+# @todo Maybe move into a spearate (new) include if other pkg-lib-*.inc includes needs this as well.
+#
+function hpux_get_ssh_release() {
 
-  local_var kbrls, rpms, pat, matches, rc, report;
+  local_var rls;
+
+  if( ! isnull( __hpux_ssh_release ) ) {
+    rls = string( __hpux_ssh_release );
+  } else {
+    rls = string( get_kb_item( "ssh/login/release" ) );
+    __hpux_ssh_release = rls;
+  }
+  return rls;
+}
+
+# @brief returns the output of "swlist -a revision -l fileset" of the target collected
+#        by gather-package-list.nasl and saved within the KB (ssh/login/hp_pkgrev).
+#
+# @return a string containing the output of the command above or an empty string if
+#         no output was returned / saved in the KB.
+#
+function hpux_get_ssh_pkgrev() {
+
+  local_var pkgrev;
+
+  if( ! isnull( __hpux_ssh_pkgrev ) ) {
+    pkgrev = string( __hpux_ssh_pkgrev );
+  } else {
+    pkgrev = string( get_kb_item( "ssh/login/hp_pkgrev" ) );
+    __hpux_ssh_pkgrev = pkgrev;
+  }
+  return pkgrev;
+}
+
+# @brief returns the output of "swlist -l patch -a supersedes" of the target collected
+#        by gather-package-list.nasl and saved within the KB (ssh/login/hp_pkgsupersedes).
+#
+# @return a string containing the output of the command above or an empty string if
+#         no output was returned / saved in the KB.
+#
+function hpux_get_ssh_pkgsupersedes() {
+
+  local_var pkgsupersedes;
+
+  if( ! isnull( __hpux_ssh_pkgsupersedes ) ) {
+    pkgsupersedes = string( __hpux_ssh_pkgsupersedes );
+  } else {
+    pkgsupersedes = string( get_kb_item( "ssh/login/hp_pkgsupersedes" ) );
+    __hpux_ssh_pkgsupersedes = pkgsupersedes;
+  }
+  return pkgsupersedes;
+}
+
+# @brief ishpuxpkgvuln is intended to provide a quick way to verify that a given
+#        package, if it is installed, is vulnerable or not.
+#
+# @param pkg        TODO
+# @param revision   TODO
+# @param patch_list TODO
+# @param rls        TODO
+#
+# @return NULL if a package is not installed or is installed but up to date, a string
+#         containing a report about found package and the current installed version of
+#         it if it is installed and vulnerable.
+#
+function ishpuxpkgvuln( pkg, revision, patch_list, rls ) {
+
+  local_var pkg, revision, patch_list, rls;
+  local_var kbrls, pkgs_rev, inst_rev, patches, patch, rc, report;
 
   # Check that we have the data for this release.
-  kbrls = get_kb_item("ssh/login/release");
-  if(kbrls!=rls) {
-    return NULL;
-  }
+  kbrls = hpux_get_ssh_release();
+  if( kbrls != rls ) return NULL;
 
-  pkgs_rev = get_kb_item("ssh/login/hp_pkgrev");
-  inst_rev = eregmatch(pattern:pkg + "(	+)?([a-zA-Z0-9.]+) ", string:chomp(pkgs_rev));
-  if(isnull(inst_rev)) {
-    return NULL;
-  }
+  pkgs_rev = hpux_get_ssh_pkgrev();
+  # nb: The original code had a tab in the first pattern. Typo or was this intended?
+  inst_rev = eregmatch( pattern:pkg + "(\t+| +)?([a-zA-Z0-9.]+) ", string:chomp( pkgs_rev ) );
+  if( isnull( inst_rev ) ) return NULL;
 
   __pkg_match = TRUE;
 
-  if(patch_list != NULL) {
-    patches = get_kb_item("ssh/login/hp_pkgsupersedes");
-    foreach patch (patch_list) {
-      if(patch >!< patches) {
+  if( ! isnull( patch_list ) ) {
+    patches = hpux_get_ssh_pkgsupersedes();
+    foreach patch( patch_list ) {
+      if( patch >!< patches ) {
         return "";
       }
     }
     return NULL;
   }
 
-  rc = revcomp(a:inst_rev[2], b:revision);
+  rc = revcomp( a:inst_rev[2], b:revision );
 
-  if(rc < 0) {
-    report = 'Package ' + pkg + ' version ' + inst_rev[2] + ' is installed which is known to be vulnerable.\n';
+  if( rc < 0 ) {
+    report  = 'Vulnerable package: ' + pkg + '\n';
+    report += 'Installed version:  ' + inst_rev[2] + '\n';
+    report += 'Fixed version:      ' + revision + '\n\n';
     return report;
   }
   return NULL;

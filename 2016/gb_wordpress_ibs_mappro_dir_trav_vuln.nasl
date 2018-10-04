@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ibs_mappro_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_wordpress_ibs_mappro_dir_trav_vuln.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # Wordpress IBS Mappro Directory Traversal Vulnerability
 #
@@ -29,16 +29,16 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808201");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 11725 $");
   script_cve_id("CVE-2015-5472");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-20 16:09:30 +0530 (Fri, 20 May 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress IBS Mappro Directory Traversal Vulnerability");
 
-  script_tag(name:"summary" , value:"This host is installed with Wordpress
+  script_tag(name:"summary", value:"This host is installed with Wordpress
   IBS Mappro plugin and is prone to directory traversal vulnerability.");
 
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
@@ -48,11 +48,9 @@ if(description)
   of input to 'file' parameter in 'lib/download.php' file.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers
-  to read arbitrary files.
+  to read arbitrary files.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected" , value:"Wordpress IBS Mappro version 0.6 and previous");
+  script_tag(name:"affected", value:"Wordpress IBS Mappro version 0.6 and previous");
 
   script_tag(name:"solution", value:"Upgrade to IBS Mappro version 1.0 or later.
   For updates refer to https://wordpress.org/plugins/ibs-mappro");
@@ -75,17 +73,10 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable initialization
-url = "";
-dir = "";
-http_port = 0;
-
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get installed location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
@@ -94,10 +85,8 @@ files = traversal_files();
 
 foreach file (keys(files))
 {
-   ## Construct vulnerable url 
    url = dir + '/wp-content/plugins/ibs-mappro/lib/download.php?file=' + crap(data: "../", length: 3*15) + files[file];
-  
-   ## Try attack and check the response to confirm vulnerability
+
    if(http_vuln_check(port:http_port, url:url, check_header:TRUE, pattern:file))
    {
      report = report_vuln_url(port:http_port, url:url);

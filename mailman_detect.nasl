@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mailman_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
+# $Id: mailman_detect.nasl 11723 2018-10-02 09:59:19Z ckuersteiner $
 #
 # Mailman Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16338");
-  script_version("$Revision: 10899 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11723 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 11:59:19 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,14 +59,13 @@ include("host_details.inc");
 port = get_http_port( default:80 );
 
 foreach dir( make_list_unique( "/mailman", cgi_dirs( port:port ) ) ) {
-
   installed = FALSE;
-  install   = dir;
+  install = dir;
   if( dir == "/" ) dir = "";
+
   url = dir + "/listinfo";
 
-  req = http_get( item:url, port:port );
-  res = http_keepalive_send_recv( port:port, data:req );
+  res = http_get_cache( item:url, port:port );
   if( isnull( res ) ) continue;
 
   # Find the version number. It will be in a line such as
@@ -84,19 +83,14 @@ foreach dir( make_list_unique( "/mailman", cgi_dirs( port:port ) ) ) {
   }
 
   if( installed ) {
-
     set_kb_item( name:"gnu_mailman/detected", value:TRUE );
 
     cpe = "cpe:/a:gnu:mailman:" + version;
     register_product( cpe:cpe, location:install, port:port );
 
-    log_message( data:build_detection_report( app:"Mailman",
-                                              version:version,
-                                              install:install,
-                                              cpe:cpe,
-                                              concludedUrl:conclUrl,
-                                              concluded:ver[0] ),
-                                              port:port );
+    log_message( data:build_detection_report( app:"Mailman", version:version, install:install, cpe:cpe,
+                                              concludedUrl:conclUrl, concluded:ver[0] ),
+                 port:port );
   }
 }
 

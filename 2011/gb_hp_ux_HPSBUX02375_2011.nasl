@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: gb_hp_ux_HPSBUX02375_2011.nasl 11739 2018-10-04 07:49:31Z cfischer $
 #
 # HP-UX Update for NFS/ONCplus HPSBUX02375
 #
@@ -23,54 +24,50 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-include("revisions-lib.inc");
-tag_impact = "Remote Denial of Service (DoS)";
-tag_affected = "NFS/ONCplus on
-  HP-UX B.11.31 running NFS / ONCplus version B.11.31.04 or earlier";
-tag_insight = "A potential security vulnerability has been identified with NFS/ONCplus 
-  running on HP-UX. The vulnerability could be exploited remotely to create a 
-  Denial of Service (DoS).";
-tag_solution = "Please Install the Updated Packages.";
-
-
 if(description)
 {
-  script_xref(name : "URL" , value : "http://www11.itrc.hp.com/service/cki/docDisplay.do?docId=emr_na-c01570585");
+  script_xref(name:"URL", value:"http://www11.itrc.hp.com/service/cki/docDisplay.do?docId=emr_na-c01570585");
   script_oid("1.3.6.1.4.1.25623.1.0.835250");
-  script_version("$Revision: 9371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:55:06 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11739 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-04 09:49:31 +0200 (Thu, 04 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-28 16:24:14 +0100 (Mon, 28 Feb 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_xref(name: "HPSBUX", value: "02375");
+  script_xref(name:"HPSBUX", value:"02375");
   script_cve_id("CVE-2008-3543");
   script_name("HP-UX Update for NFS/ONCplus HPSBUX02375");
-
-  script_tag(name:"summary", value:"Check for the Version of NFS/ONCplus");
+  script_tag(name:"summary", value:"The remote host is missing an update for the NFS/ONCplus package(s) announced via the referenced advisory.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("HP-UX Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/hp_hp-ux", "ssh/login/release");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name:"qod_type", value:"package");
+  script_mandatory_keys("ssh/login/hp_hp-ux", "ssh/login/hp_pkgrev", re:"ssh/login/release=HPUX11\.31");
+
+  script_tag(name:"impact", value:"Remote Denial of Service (DoS)");
+
+  script_tag(name:"affected", value:"NFS/ONCplus on HP-UX B.11.31 running NFS / ONCplus version B.11.31.04 or earlier");
+
+  script_tag(name:"insight", value:"A potential security vulnerability has been identified with NFS/ONCplus
+  running on HP-UX. The vulnerability could be exploited remotely to create a
+  Denial of Service (DoS).");
+
+  script_tag(name:"solution", value:"Please install the updated package(s).");
+
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable package version is present on the target host.");
+
   script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-hpux.inc");
 
-release = get_kb_item("ssh/login/release");
-
+release = hpux_get_ssh_release();
+if(!release) exit(0);
 
 res = "";
-if(release == NULL){
-  exit(0);
-}
 
 if(release == "HPUX11.31")
 {
@@ -189,6 +186,6 @@ if(release == "HPUX11.31")
     exit(0);
   }
 
-  if (__pkg_match) exit(99); # Not vulnerable.
+  if (__pkg_match) exit(99);
   exit(0);
 }

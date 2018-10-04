@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 11212 2018-09-04 09:28:10Z ckuersteiner $
+# $Id: gather-package-list.nasl 11744 2018-10-04 08:40:58Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 11212 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:28:10 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 11744 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-04 10:40:58 +0200 (Thu, 04 Oct 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -3282,6 +3282,8 @@ if( "HP-UX" >< uname ) {
 uname = ssh_cmd( socket:sock, cmd:"uname -a" );
 if( "FreeBSD" >< uname ) {
 
+  set_kb_item( name:"ssh/login/freebsd", value:TRUE );
+
   register_uname( uname:uname );
 
   osversion = ssh_cmd( socket:sock, cmd:"uname -r" );
@@ -3334,6 +3336,8 @@ if( "FreeBSD" >< uname ) {
 # Whilst we're at it, lets check if it's Solaris
 if( "SunOS " >< uname ) {
 
+  set_kb_item( name:"ssh/login/solaris", value:TRUE );
+
   register_uname( uname:uname );
 
   osversion = ssh_cmd( socket:sock, cmd:"uname -r" );
@@ -3368,6 +3372,8 @@ if( "SunOS " >< uname ) {
 # OpenBSD $hostname 5.5 GENERIC#271 amd64
 # OpenBSD $hostname 6.3 GENERIC#100 amd64
 if( "OpenBSD " >< uname ) {
+
+  set_kb_item( name:"ssh/login/openbsd", value:TRUE );
 
   register_uname( uname:uname );
 

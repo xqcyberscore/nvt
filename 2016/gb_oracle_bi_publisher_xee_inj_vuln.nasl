@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_bi_publisher_xee_inj_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_oracle_bi_publisher_xee_inj_vuln.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # Oracle BI Publisher XML External Entity Injection Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:oracle:business_intelligence_publisher";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809733");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11725 $");
   script_cve_id("CVE-2016-3473");
   script_bugtraq_id(93719);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-25 17:10:49 +0530 (Fri, 25 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle BI Publisher XML External Entity Injection Vulnerability");
@@ -41,19 +41,16 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Oracle BI Publisher
   and is prone to XML external entity injection vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in the 'Security'
   sub-component of Oracle BI Publisher.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to conduct XML External Entity (XXE) injection attack
-  on the affected system.
+  on the affected system.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected" , value:"Oracle BI Publisher versions 11.1.1.7.0,
+  script_tag(name:"affected", value:"Oracle BI Publisher versions 11.1.1.7.0,
   11.1.1.9.0, 12.2.1.0.0");
 
   script_tag(name:"solution", value:"Apply update from the link mentioned below
@@ -61,8 +58,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40590");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40590");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -77,10 +74,6 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-obpPort = "";
-obpVer = "";
-
 if(!obpPort = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -89,7 +82,6 @@ if(!obpVer = get_app_version(cpe:CPE, port:obpPort)){
   exit(0);
 }
 
-## Check for version 11.1.1.7.0, 11.1.1.9.0, 12.2.1.0.0
 if(version_is_equal(version:obpVer, test_version:"11.1.1.7.0")||
    version_is_equal(version:obpVer, test_version:"11.1.1.9.0")||
    version_is_equal(version:obpVer, test_version:"12.2.1.0.0"))

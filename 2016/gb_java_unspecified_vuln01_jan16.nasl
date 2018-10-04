@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_unspecified_vuln01_jan16.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_java_unspecified_vuln01_jan16.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # Oracle Java SE JRE Unspecified Vulnerability-01 Jan 2016 (Windows)
 #
@@ -29,31 +29,29 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806670");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 11725 $");
   script_cve_id("CVE-2016-0475");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-22 16:24:06 +0530 (Fri, 22 Jan 2016)");
   script_name("Oracle Java SE JRE Unspecified Vulnerability-01 Jan 2016 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
+  script_tag(name:"summary", value:"The host is installed with Oracle Java SE
   JRE and is prone to unspecified vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to some unspecified
+  script_tag(name:"insight", value:"The flaw exists due to some unspecified
   error.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
-  to have an impact on confidentiality and integrity via unknown vectors.
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
+  to have an impact on confidentiality and integrity via unknown vectors.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Oracle Java SE 8 update 66 and prior on
+  script_tag(name:"affected", value:"Oracle Java SE 8 update 66 and prior on
   Windows.");
 
-  script_tag(name: "solution" , value:"Apply the patch from below link,
+  script_tag(name:"solution", value:"Apply the patch from below link,
 
   http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
 
@@ -61,7 +59,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

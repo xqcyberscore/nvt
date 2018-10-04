@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: lcdproc_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
+# $Id: lcdproc_detect.nasl 11723 2018-10-02 09:59:19Z ckuersteiner $
 #
 # LCDproc server detection
 #
@@ -27,12 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10379");
-  script_version("$Revision: 10896 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11723 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 11:59:19 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+
   script_name("LCDproc server detection");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2000 SecuriTeam");
   script_family("Service detection");
@@ -41,10 +43,11 @@ if(description)
 
   script_tag(name:"solution", value:"Disable access to this service from outside by disabling
   access to TCP port 13666 (default port used).");
-  script_tag(name:"summary", value:"LCDproc (http://lcdproc.omnipotent.net) is a
-  system that is used to display system information and other data
+
+  script_tag(name:"summary", value:"LCDproc is a system that is used to display system information and other data
   on an LCD display (or any supported display device, including curses
   or text).");
+
   script_tag(name:"impact", value:"The LCDproc version 0.4 and above uses a client-server protocol, allowing
   anyone with access to the LCDproc server to modify the displayed content.");
 
@@ -60,14 +63,12 @@ port = get_unknown_port( default:13666 );
 soc = open_sock_tcp( port );
 
 if( soc ) {
-
   req = string( "hello" );
 
   send(socket:soc, data:req);
   result = recv(socket:soc, length:4096);
 
   if( "connect LCDproc" >< result ) {
-
     resultrecv = strstr( result, "connect LCDproc " );
     resultsub = strstr( resultrecv, string( "lcd " ) );
     resultrecv = resultrecv - resultsub;
@@ -78,7 +79,7 @@ if( soc ) {
     banner = banner + resultrecv;
     banner = banner + ') was found running on the target.\n';
 
-    set_kb_item( name:"lcdproc/installed", value:TRUE );
+    set_kb_item( name:"lcdproc/detected", value:TRUE );
     register_service( port:port, proto:"lcdproc" );
     log_message( port:port, data:banner );
     exit( 0 );

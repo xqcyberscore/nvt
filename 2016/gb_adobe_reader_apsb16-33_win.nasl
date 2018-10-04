@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_apsb16-33_win.nasl 8210 2017-12-21 10:26:31Z cfischer $
+# $Id: gb_adobe_reader_apsb16-33_win.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # Adobe Reader Security Updates(apsb16-33)-Windows
 #
@@ -29,39 +29,38 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809446");
-  script_version("$Revision: 8210 $");
-  script_cve_id("CVE-2016-1089", "CVE-2016-1091", "CVE-2016-6939", "CVE-2016-6940", 
-                "CVE-2016-6941", "CVE-2016-6942", "CVE-2016-6943", "CVE-2016-6944", 
-                "CVE-2016-6945", "CVE-2016-6946", "CVE-2016-6947", "CVE-2016-6948", 
-                "CVE-2016-6949", "CVE-2016-6950", "CVE-2016-6951", "CVE-2016-6952", 
-                "CVE-2016-6953", "CVE-2016-6954", "CVE-2016-6955", "CVE-2016-6956", 
-                "CVE-2016-6957", "CVE-2016-6958", "CVE-2016-6959", "CVE-2016-6960", 
-                "CVE-2016-6961", "CVE-2016-6962", "CVE-2016-6963", "CVE-2016-6964", 
-                "CVE-2016-6965", "CVE-2016-6966", "CVE-2016-6967", "CVE-2016-6968", 
-                "CVE-2016-6969", "CVE-2016-6970", "CVE-2016-6971", "CVE-2016-6972", 
-                "CVE-2016-6973", "CVE-2016-6974", "CVE-2016-6975", "CVE-2016-6976", 
-                "CVE-2016-6977", "CVE-2016-6978", "CVE-2016-6979", "CVE-2016-6988", 
-                "CVE-2016-6993", "CVE-2016-6994", "CVE-2016-6995", "CVE-2016-6996", 
-                "CVE-2016-6997", "CVE-2016-6998", "CVE-2016-6999", "CVE-2016-7000", 
-                "CVE-2016-7001", "CVE-2016-7002", "CVE-2016-7003", "CVE-2016-7004", 
-                "CVE-2016-7005", "CVE-2016-7006", "CVE-2016-7007", "CVE-2016-7008", 
-                "CVE-2016-7009", "CVE-2016-7010", "CVE-2016-7011", "CVE-2016-7012", 
-                "CVE-2016-7013", "CVE-2016-7014", "CVE-2016-7015", "CVE-2016-7016", 
+  script_version("$Revision: 11725 $");
+  script_cve_id("CVE-2016-1089", "CVE-2016-1091", "CVE-2016-6939", "CVE-2016-6940",
+                "CVE-2016-6941", "CVE-2016-6942", "CVE-2016-6943", "CVE-2016-6944",
+                "CVE-2016-6945", "CVE-2016-6946", "CVE-2016-6947", "CVE-2016-6948",
+                "CVE-2016-6949", "CVE-2016-6950", "CVE-2016-6951", "CVE-2016-6952",
+                "CVE-2016-6953", "CVE-2016-6954", "CVE-2016-6955", "CVE-2016-6956",
+                "CVE-2016-6957", "CVE-2016-6958", "CVE-2016-6959", "CVE-2016-6960",
+                "CVE-2016-6961", "CVE-2016-6962", "CVE-2016-6963", "CVE-2016-6964",
+                "CVE-2016-6965", "CVE-2016-6966", "CVE-2016-6967", "CVE-2016-6968",
+                "CVE-2016-6969", "CVE-2016-6970", "CVE-2016-6971", "CVE-2016-6972",
+                "CVE-2016-6973", "CVE-2016-6974", "CVE-2016-6975", "CVE-2016-6976",
+                "CVE-2016-6977", "CVE-2016-6978", "CVE-2016-6979", "CVE-2016-6988",
+                "CVE-2016-6993", "CVE-2016-6994", "CVE-2016-6995", "CVE-2016-6996",
+                "CVE-2016-6997", "CVE-2016-6998", "CVE-2016-6999", "CVE-2016-7000",
+                "CVE-2016-7001", "CVE-2016-7002", "CVE-2016-7003", "CVE-2016-7004",
+                "CVE-2016-7005", "CVE-2016-7006", "CVE-2016-7007", "CVE-2016-7008",
+                "CVE-2016-7009", "CVE-2016-7010", "CVE-2016-7011", "CVE-2016-7012",
+                "CVE-2016-7013", "CVE-2016-7014", "CVE-2016-7015", "CVE-2016-7016",
                 "CVE-2016-7017", "CVE-2016-7018", "CVE-2016-7019", "CVE-2016-7854",
                 "CVE-2016-7853", "CVE-2016-7852");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 11:26:31 +0100 (Thu, 21 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-13 12:55:40 +0530 (Thu, 13 Oct 2016)");
   script_name("Adobe Reader Security Updates(apsb16-33)-Windows");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Reader
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
 
   - An use-after-free vulnerabilities.
 
@@ -71,13 +70,11 @@ if(description)
 
   - An integer overflow vulnerability.");
 
-  script_tag(name:"impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers lead to code execution and
-  to bypass restrictions on Javascript API execution.
+  to bypass restrictions on Javascript API execution.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Adobe Reader version 11.x before 11.0.18 on Windows.");
+  script_tag(name:"affected", value:"Adobe Reader version 11.x before 11.0.18 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Reader version
   11.0.18 or later.
@@ -87,7 +84,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/acrobat/apsb16-33.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/acrobat/apsb16-33.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 11558 2018-09-23 08:25:04Z cfischer $
+# $Id: sw_http_os_detection.nasl 11724 2018-10-02 10:01:35Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 11558 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-23 10:25:04 +0200 (Sun, 23 Sep 2018) $");
+  script_version("$Revision: 11724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:01:35 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -557,6 +557,55 @@ function check_http_banner( port, banner ) {
         return;
       }
 
+      # http://archive.debian.org/debian/pool/main/a/apache2/
+      # http://archive.debian.org/debian/pool/main/a/apache/
+      # http://ftp.debian.org/debian/pool/main/a/apache2/
+      if( "Apache/1.3.9 (Unix) Debian/GNU" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"2.2", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        return;
+      }
+
+      if( "Apache/1.3.26 (Unix) Debian GNU/Linux" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"3.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        return;
+      }
+
+      if( "Apache/1.3.33 (Debian GNU/Linux)" >< banner || "Apache/2.0.54 (Debian GNU/Linux)" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"3.1", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        return;
+      }
+
+      # Server: Apache/1.3.34 Ben-SSL/1.55 (Debian) PHP/4.4.4-8+etch6 mod_jk/1.2.18
+      if( "Apache/1.3.34 (Debian)" >< banner || "Apache/2.2.3 (Debian)" >< banner || ( "Apache/1.3.34 Ben-SSL" >< banner && "(Debian)" >< banner ) ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"4.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        return;
+      }
+
+      if( "Apache/2.2.9 (Debian)" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        return;
+      }
+
+      if( "Apache/2.2.16 (Debian)" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"6.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        return;
+      }
+
+      if( "Apache/2.2.22 (Debian)" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"7", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        return;
+      }
+
+      if( "Apache/2.4.10 (Debian)" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        return;
+      }
+
+      if( "Apache/2.4.25 (Debian)" >< banner ) {
+        register_and_report_os( os:"Debian GNU/Linux", version:"9", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        return;
+      }
+
       if( "(Debian)" >< banner || "(Debian GNU/Linux)" >< banner || "devel-debian" >< banner || "~dotdeb+" >< banner || "(Raspbian)" >< banner ) {
         # Apache/2.2.3 (Debian) mod_python/3.2.10 Python/2.4.4 PHP/5.2.0-8+etch16 mod_perl/2.0.2 Perl/v5.8.8
         if( "PHP" >< banner && "+etch" >< banner ) {
@@ -578,10 +627,16 @@ function check_http_banner( port, banner ) {
       }
 
       if( "(CentOS)" >< banner ) {
-        if( "Apache/2.4.6 (CentOS)" >< banner ) {
+        if( "Apache/2.4.6 (CentOS)" >< banner ) { # http://mirror.centos.org/centos/7/os/x86_64/Packages/
           register_and_report_os( os:"CentOS", version:"7", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        } else if( "Apache/2.2.15 (CentOS)" >< banner ) {
+        } else if( "Apache/2.2.15 (CentOS)" >< banner ) { # http://mirror.centos.org/centos/6/os/x86_64/Packages/
           register_and_report_os( os:"CentOS", version:"6", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else if( "Apache/2.2.3 (CentOS)" >< banner ) { # http://vault.centos.org/5.0/os/x86_64/CentOS/
+          register_and_report_os( os:"CentOS", version:"5", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else if( "Apache/2.0.52 (CentOS)" >< banner ) { # http://vault.centos.org/4.0/os/x86_64/CentOS/RPMS/
+          register_and_report_os( os:"CentOS", version:"4", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else if( "Apache/2.0.46 (CentOS)" >< banner ) { # http://vault.centos.org/3.9/os/x86_64/RedHat/RPMS/
+          register_and_report_os( os:"CentOS", version:"3", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         } else {
           register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         }
@@ -604,8 +659,16 @@ function check_http_banner( port, banner ) {
         return;
       }
 
-      if( "(Red Hat)" >< banner ) {
-        register_and_report_os( os:"Redhat Linux", cpe:"cpe:/o:redhat:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      if( "(Red Hat)" >< banner || "(Red-Hat/Linux)" >< banner ) {
+        # nb: Doubled space is expected...
+        if( "Apache/1.3.23 (Unix)  (Red-Hat/Linux)" >< banner ) {
+          # http://vault.centos.org/2.1/source/i386/SRPMS/ -> apache-1.3.23-10.src.rpm
+          # TODO: Redhat version currently unknown, CentOS release taken from the src rpm above.
+          register_and_report_os( os:"CentOS", version:"2", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          register_and_report_os( os:"Redhat Linux", cpe:"cpe:/o:redhat:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else {
+          register_and_report_os( os:"Redhat Linux", cpe:"cpe:/o:redhat:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        }
         return;
       }
 

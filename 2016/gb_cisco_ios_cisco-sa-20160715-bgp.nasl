@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160715-bgp.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_cisco_ios_cisco-sa-20160715-bgp.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # Cisco IOS Software Border Gateway Protocol Message Processing Denial of Service Vulnerability
 #
@@ -29,21 +29,21 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106145");
- script_cve_id("CVE-2016-1459");
- script_tag(name:"cvss_base", value:"4.9");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:N/I:N/A:C");
- script_version ("$Revision: 5598 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106145");
+  script_cve_id("CVE-2016-1459");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:N/I:N/A:C");
+  script_version("$Revision: 11725 $");
 
- script_name("Cisco IOS Software Border Gateway Protocol Message Processing Denial of Service Vulnerability");
+  script_name("Cisco IOS Software Border Gateway Protocol Message Processing Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160715-bgp");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160715-bgp");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"A vulnerability in Border Gateway Protocol (BGP) message processing
+  script_tag(name:"vuldetect", value:"Check the version.");
+
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"A vulnerability in Border Gateway Protocol (BGP) message processing
 functions of Cisco IOS Software could allow an authenticated, remote attacker to cause an affected
 device to reload.
 
@@ -55,16 +55,16 @@ a denial of service (DoS) condition.
 Possible workarounds for this issue include setting a maxpath-limit value for BGP MIBs or suppressing use of
 BGP MIBs.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-07-18 13:39:39 +0700 (Mon, 18 Jul 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-18 13:39:39 +0700 (Mon, 18 Jul 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version");
  exit(0);
 }
 
@@ -73,7 +73,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'12.4(19a)',
 		'12.4(24)GC4',
 		'12.4(24)GC5',

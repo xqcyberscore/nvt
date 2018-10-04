@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ldu_801.nasl 10615 2018-07-25 13:01:15Z cfischer $
+# $Id: ldu_801.nasl 11727 2018-10-02 13:45:55Z cfischer $
 #
 # Description: Land Down Under <= 801 Multiple Vulnerabilities
 #
@@ -24,23 +24,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:neocrome:land_down_under";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19603");
-  script_version("$Revision: 10615 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 15:01:15 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 11727 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 15:45:55 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2788", "CVE-2005-2884");
   script_bugtraq_id(14685, 14746, 14820);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+
   script_name("Land Down Under <= 801 Multiple Vulnerabilities");
+
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2006 Josh Zlatin-Amishav");
   script_dependencies("ldu_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("ldu/installed");
+  script_mandatory_keys("ldu/detected");
 
   script_xref(name:"URL", value:"http://securityfocus.com/archive/1/409511");
   script_xref(name:"URL", value:"http://www.packetstormsecurity.org/0509-advisories/LDU801.txt");
@@ -50,12 +54,7 @@ if(description)
   are to upgrade to a newer release, disable respective features, remove the product or replace the
   product by another one.");
 
-  script_tag(name:"summary", value:"The remote web server contains several PHP scripts that permit SQL
-  injection and cross-site scripting attacks.
-
-  Description :
-
-  The remote version of Land Down Under is prone to several SQL injection
+  script_tag(name:"summary", value:"The remote version of Land Down Under is prone to several SQL injection
   and cross-site scripting attacks due to its failure to sanitize
   user-supplied input to several parameters used by the 'events.php',
   'index.php', and 'list.php' scripts. A malicious user can exploit
@@ -68,27 +67,27 @@ if(description)
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port(default:80);
-install = get_kb_item("www/" + port + "/ldu");
-if (isnull(install)) exit(0);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");
-if (!isnull(matches)) {
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
 
-  dir = matches[2];
-  url = dir + "/list.php?c='&s=title&w=asc&o=vuln-test&p=1";
-  req = http_get(item:url, port:port);
-  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+if (dir == "/")
+  dir = "";
 
-  if ("MySQL error" >< res && egrep(string:res, pattern:"syntax to use near '(asc&o=|0.+page_vuln-test)")) {
-    report = report_vuln_url(port:port, url:url);
-    security_message(port:port, data:report);
-    exit(0);
-  }
-  exit(99);
+url = dir + "/list.php?c='&s=title&w=asc&o=vuln-test&p=1";
+req = http_get(item:url, port:port);
+res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+
+if ("MySQL error" >< res && egrep(string:res, pattern:"syntax to use near '(asc&o=|0.+page_vuln-test)")) {
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
+  exit(0);
 }
 
-exit(0);
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_smb123_mitm_vuln.nasl 10398 2018-07-04 12:11:48Z cfischer $
+# $Id: gb_samba_smb123_mitm_vuln.nasl 11732 2018-10-03 08:05:04Z cfischer $
 #
 # Samba Server 'SMB 1/2/3' MitM Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811907");
-  script_version("$Revision: 10398 $");
+  script_version("$Revision: 11732 $");
   script_cve_id("CVE-2017-12150");
   script_bugtraq_id(100918);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-03 10:05:04 +0200 (Wed, 03 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-22 13:29:22 +0530 (Fri, 22 Sep 2017)");
   script_name("Samba Server 'SMB 1/2/3' MitM Vulnerability");
   script_category(ACT_GATHER_INFO);

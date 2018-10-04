@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_crlf_injection_vuln.nasl 8596 2018-01-31 08:17:43Z cfischer $
+# $Id: gb_ibm_was_crlf_injection_vuln.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # IBM Websphere Application Server CRLF Injection Vulnerability
 #
@@ -29,34 +29,31 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807853");
-  script_version("$Revision: 8596 $");
+  script_version("$Revision: 11725 $");
   script_cve_id("CVE-2016-0359");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:17:43 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-05 11:50:52 +0530 (Tue, 05 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server CRLF Injection Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with IBM Websphere
+  script_tag(name:"summary", value:"This host is installed with IBM Websphere
   application server and is prone to CRLF injection vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The flaw is due to some unspecified error
+  script_tag(name:"insight", value:"The flaw is due to some unspecified error
   within application.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a remote
-  attacker to conduct HTTP response splitting attacks.
+  script_tag(name:"impact", value:"Successful exploitation will allow a remote
+  attacker to conduct HTTP response splitting attacks.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"IBM WebSphere Application Server (WAS)
+  script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS)
   7.0 before 7.0.0.43, 8.0 before 8.0.0.13, and 8.5 before 8.5.5.10, 8.5 Liberty
   before Liberty Fix 16.0.0.2");
 
-  script_tag(name:"solution" , value:"Upgrade to IBM WebSphere Application
+  script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
   Server (WAS) to 7.0.0.43 or 8.0.0.13 or 8.5.5.10 or Liberty Fix 16.0.0.2
   or later. For updates refer to
   http://www-03.ibm.com/software/products/en/appserv-was");
@@ -85,7 +82,6 @@ if(!wasVer = get_app_version(cpe:CPE, port:wasPort)){
   exit(0);
 }
 
-##Check Liberty profile is installed
 liberty = get_kb_item("ibm_websphere_application_server/liberty/profile/installed");
 
 if (liberty)
@@ -95,7 +91,7 @@ if (liberty)
     fix = "16.0.0.2";
     VULN = TRUE;
   }
-} else 
+} else
 {
   if(version_in_range(version:wasVer, test_version:"7.0", test_version2:"7.0.0.41"))
   {

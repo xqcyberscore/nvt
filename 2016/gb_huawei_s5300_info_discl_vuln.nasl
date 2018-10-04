@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_s5300_info_discl_vuln.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_huawei_s5300_info_discl_vuln.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # Huawei S5300 Campus Series Switches information Disclosure Vulnerability
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106157");
-  script_version("$Revision: 5650 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2016-07-29 09:30:37 +0700 (Fri, 29 Jul 2016)");
-  script_tag(name: "cvss_base", value: "2.1");
-  script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11725 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-29 09:30:37 +0700 (Fri, 29 Jul 2016)");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_cve_id("CVE-2015-8675");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Huawei S5300 Campus Series Switches information Disclosure Vulnerability");
 
@@ -49,24 +49,24 @@ if (description)
   script_dependencies("gb_huawei_switch_detect.nasl");
   script_mandatory_keys("huawei_switch/detected", "huawei_switch/model", "huawei_switch/version");
 
-  script_tag(name: "summary", value: "Huawei S5300 Campus Series switches are prone to a local information
+  script_tag(name:"summary", value:"Huawei S5300 Campus Series switches are prone to a local information
 disclosure vulnerability.");
 
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "When uploading files to some directory, the user needs to enter the
+  script_tag(name:"insight", value:"When uploading files to some directory, the user needs to enter the
 username and password. However, the system does not mask passwords. As a result, the password entered is
 displayed in plain text, leading to password leaks.");
 
-  script_tag(name: "impact", value: "Physically proximate attackers may obtain sensitive password information
+  script_tag(name:"impact", value:"Physically proximate attackers may obtain sensitive password information
 by reading the display.");
 
-  script_tag(name: "affected", value: "Versions prior to V200R005SPH008");
+  script_tag(name:"affected", value:"Versions prior to V200R005SPH008");
 
-  script_tag(name: "solution", value: "Upgrade to Version V200R005SPH008 or later");
+  script_tag(name:"solution", value:"Upgrade to Version V200R005SPH008 or later");
 
-  script_xref(name: "URL", value: "http://www.huawei.com/en/psirt/security-advisories/huawei-sa-20160112-01-switch-en");
+  script_xref(name:"URL", value:"http://www.huawei.com/en/psirt/security-advisories/huawei-sa-20160112-01-switch-en");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortianalyzer_cve_2016_3196.nasl 5675 2017-03-22 10:00:52Z teissa $
+# $Id: gb_fortianalyzer_cve_2016_3196.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # FortiAnalyzer Persistent XSS Vulnerability
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/h:fortinet:fortianalyzer";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105815");
- script_cve_id("CVE-2016-3196");
- script_tag(name:"cvss_base", value:"3.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
- script_version ("$Revision: 5675 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105815");
+  script_cve_id("CVE-2016-3196");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_version("$Revision: 11725 $");
 
- script_name("FortiAnalyzer Persistent XSS Vulnerability");
+  script_name("FortiAnalyzer Persistent XSS Vulnerability");
 
- script_xref(name:"URL", value:"https://fortiguard.com/advisory/fortimanager-and-fortianalyzer-persistent-xss-vulnerability");
+  script_xref(name:"URL", value:"https://fortiguard.com/advisory/fortimanager-and-fortianalyzer-persistent-xss-vulnerability");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Upgrade to FortiAnalyzer 5.4.0 and above or 5.2.6 and above");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade to FortiAnalyzer 5.4.0 and above or 5.2.6 and above.");
 
- script_tag(name: "summary" , value:"When a low privileged user uploads images in the report section, the filenames are not properly sanitized; this potentially enables stored XSS attacks.");
+  script_tag(name:"summary", value:"When a low privileged user uploads images in the report section, the filenames are not properly sanitized.");
 
- script_tag(name: "affected" , value:"FortiAnalyzer: 5.0.0 - 5.0.11, 5.2.0 - 5.2.5");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"FortiAnalyzer: 5.0.0 - 5.0.11, 5.2.0 - 5.2.5");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-07-19 10:34:06 +0200 (Tue, 19 Jul 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("FortiOS Local Security Checks");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_fortianalyzer_version.nasl");
- script_mandatory_keys("fortianalyzer/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-19 10:34:06 +0200 (Tue, 19 Jul 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("FortiOS Local Security Checks");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_fortianalyzer_version.nasl");
+  script_mandatory_keys("fortianalyzer/version");
 
  exit(0);
 }

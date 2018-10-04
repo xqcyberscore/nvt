@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fsecure_internet_gatekeeper_detect.nasl 11029 2018-08-17 09:30:04Z cfischer $
+# $Id: gb_fsecure_internet_gatekeeper_detect.nasl 11725 2018-10-02 10:50:50Z asteins $
 #
 # F-Secure Internet Gatekeeper Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103081");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11029 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:30:04 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11725 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-02 12:50:50 +0200 (Tue, 02 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-21 13:57:38 +0100 (Mon, 21 Feb 2011)");
   script_tag(name:"cvss_base", value:"0.0");
 
@@ -67,7 +67,6 @@ if( buf == NULL )continue;
 
 if("<title>F-Secure Anti-Virus Gateway for Linux</title>" >< buf)
 {
-
    vers = string("unknown");
    install = "/";
 
