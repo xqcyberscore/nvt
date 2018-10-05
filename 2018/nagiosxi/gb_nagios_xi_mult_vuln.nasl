@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_xi_mult_vuln.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
+# $Id: gb_nagios_xi_mult_vuln.nasl 11759 2018-10-05 09:53:49Z ckuersteiner $
 #
 # Nagios XI <= 5.4.13 Multiple Vulnerabilities
 #
@@ -33,8 +33,8 @@ if (description)
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
   script_cve_id("CVE-2018-10553", "CVE-2018-10554");
-  script_version ("$Revision: 10148 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
+  script_version("$Revision: 11759 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:53:49 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 12:20:22 +0200 (Wed, 02 May 2018)");
 
   script_name("Nagios XI <= 5.4.13 Multiple Vulnerabilities");
@@ -45,9 +45,10 @@ if (description)
   - A registered user being able to use directory traversal to read local files.
 
   - Cross-site scripting (XSS) exploitable via CSRF in various parameters.");
+
   script_tag(name:"affected", value:"Nagios XI up to and including version 5.4.13");
 
-  script_tag(name:"solution", value:"No known solution is available as of 02nd May, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 05th October, 2018. Information regarding
 this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://code610.blogspot.de/2018/04/few-bugs-in-latest-nagios-xi-5413.html");

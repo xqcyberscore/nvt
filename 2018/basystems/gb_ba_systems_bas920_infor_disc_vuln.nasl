@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ba_systems_bas920_infor_disc_vuln.nasl 9828 2018-05-15 06:32:40Z cfischer $
+# $Id: gb_ba_systems_bas920_infor_disc_vuln.nasl 11759 2018-10-05 09:53:49Z ckuersteiner $
 #
 # Building Automation Systems BAS920 Information Disclosure Vulnerability
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/h:building_automation_systems:bas";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812372");
-  script_version("$Revision: 9828 $");
+  script_version("$Revision: 11759 $");
   script_cve_id("CVE-2017-17974");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 08:32:40 +0200 (Tue, 15 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:53:49 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-03 11:58:58 +0530 (Wed, 03 Jan 2018)");
+
   script_name("Building Automation Systems BAS920 Information Disclosure Vulnerability");
 
   script_tag(name:"summary", value:"The host is running Building Automation Systems
@@ -47,22 +48,20 @@ if(description)
   mechanisms in the device.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to gain access to potentially sensitive information.
-
-  Impact Level: System/Application");
+  attacker to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"BA SYSTEMS BAS Web on BAS920 devices with
   Firmware 01.01.00*, HTTPserv 00002, and Script 02.*. Other models may be also
   affected.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 15th May, 2018. Information
+  script_tag(name:"solution", value:"No known solution is available as of 05th October, 2018. Information
 regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "http://misteralfa-hack.blogspot.in/2017/12/ba-system-improper-access-control.html");
+  script_xref(name:"URL", value:"http://misteralfa-hack.blogspot.in/2017/12/ba-system-improper-access-control.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

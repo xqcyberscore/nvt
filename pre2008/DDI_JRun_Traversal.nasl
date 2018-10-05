@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_JRun_Traversal.nasl 10771 2018-08-04 15:18:29Z cfischer $
+# $Id: DDI_JRun_Traversal.nasl 11761 2018-10-05 10:25:32Z jschulte $
 #
 # JRun directory traversal
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10997");
-  script_version("$Revision: 10771 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-04 17:18:29 +0200 (Sat, 04 Aug 2018) $");
+  script_version("$Revision: 11761 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:25:32 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2001-1544");
   script_bugtraq_id(3666);
@@ -41,12 +41,12 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2002 Digital Defense Inc.");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 8000);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"solution", value:"The vendor has addressed this issue in Macromedia Product Security
-  Bulletin MPSB01-17. Please upgrade to the latest version of JRun available from http://www.allaire.com/");
+  Bulletin MPSB01-17. Please upgrade to the latest version of JRun.");
 
   script_tag(name:"summary", value:"This host is running the Allaire JRun web server. Versions 2.3.3, 3.0, and
   3.1 are vulnerable to a directory traversal attack.");
@@ -56,17 +56,14 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.allaire.com/");
+
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-req_unx = "/../../../../../../../../etc/passwd";
-pat_unx = "root:";
-
-req_win = "/..\..\..\..\..\..\..\..\winnt\win.ini";
-pat_win = "[fonts]";
+include("misc_func.inc");
 
 port = get_http_port(default:8000);
 
@@ -74,26 +71,27 @@ wkey = string("web/traversal/", port);
 trav = get_kb_item(wkey);
 if (trav) exit(0);
 
-req = http_get(item:req_unx, port:port);
-res = http_keepalive_send_recv(data:req, port:port);
-if (isnull(res)) exit(0);
+files = traversal_files();
 
-if(pat_unx >< res) {
-  set_kb_item(name:"web/traversal/" + port, value:TRUE);
-  report = report_vuln_url(port:port, url:req_unx);
-  security_message(port:port, data:report);
-  exit(0);
-}
+foreach prefix(make_list("/../../../../../../../../", "/..\..\..\..\..\..\..\..\")) {
 
-req = http_get(item:req_win, port:port);
-res = http_keepalive_send_recv(port:port, data:req);
-if (isnull(res)) exit(0);
+  foreach pattern(keys(files)) {
 
-if(pat_win >< res) {
-  set_kb_item(name:"web/traversal/" + port, value:TRUE);
-  report = report_vuln_url(port:port, url:req_win);
-  security_message(port:port, data:report);
-  exit(0);
+    file = files[pattern];
+
+    url = prefix + file;
+
+    req = http_get(item:url, port:port);
+    res = http_keepalive_send_recv(data:req, port:port);
+    if (isnull(res)) continue;
+
+    if(egrep(string:res, pattern:pattern)) {
+      set_kb_item(name:"web/traversal/" + port, value:TRUE);
+      report = report_vuln_url(port:port, url:url);
+      security_message(port:port, data:report);
+      exit(0);
+    }
+  }
 }
 
 exit(99);

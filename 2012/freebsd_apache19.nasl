@@ -1,8 +1,9 @@
-#
-#VID d8c901ff-0f0f-11e1-902b-20cf30e32f6d
+###############################################################################
+# VID d8c901ff-0f0f-11e1-902b-20cf30e32f6d
 # OpenVAS Vulnerability Test
-# $
-# Description: Auto generated from VID d8c901ff-0f0f-11e1-902b-20cf30e32f6d
+# $Id: freebsd_apache19.nasl 11757 2018-10-05 09:43:25Z cfischer $
+#
+# Auto generated from VID d8c901ff-0f0f-11e1-902b-20cf30e32f6d
 #
 # Authors:
 # Thomas Reinke <reinke@securityspace.com>
@@ -24,11 +25,27 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The following packages are affected:
-   apache
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.70600");
+  script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_cve_id("CVE-2011-3368");
+  script_version("$Revision: 11757 $");
+  script_name("FreeBSD Ports: apache");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
+  script_family("FreeBSD Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/freebsd", "ssh/login/freebsdrel");
+
+  script_tag(name:"insight", value:"The following packages are affected:
+
+  apache
    apache+ssl
    apache+ipv6
    apache+mod_perl
@@ -43,96 +60,73 @@ The mod_proxy module in the Apache HTTP Server 1.3.x through 1.3.42,
 interact with use of (1) RewriteRule and (2) ProxyPassMatch pattern
 matches for configuration of a reverse proxy, which allows remote
 attackers to send requests to intranet servers via a malformed URI
-containing an initial @ (at sign) character.";
-tag_solution = "Update your system with the appropriate patches or
-software upgrades.
+containing an initial @ (at sign) character.");
 
-http://httpd.apache.org/security/vulnerabilities_13.html
-http://seclists.org/fulldisclosure/2011/Oct/232
-http://www.vuxml.org/freebsd/d8c901ff-0f0f-11e1-902b-20cf30e32f6d.html";
-tag_summary = "The remote host is missing an update to the system
-as announced in the referenced advisory.";
+  script_tag(name:"solution", value:"Update your system with the appropriate patches or
+  software upgrades.");
 
+  script_xref(name:"URL", value:"http://httpd.apache.org/security/vulnerabilities_13.html");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2011/Oct/232");
+  script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/d8c901ff-0f0f-11e1-902b-20cf30e32f6d.html");
 
+  script_tag(name:"summary", value:"The remote host is missing an update to the system
+  as announced in the referenced advisory.");
 
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.70600");
- script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_cve_id("CVE-2011-3368");
- script_version("$Revision: 9352 $");
- script_name("FreeBSD Ports: apache");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-
-
- script_category(ACT_GATHER_INFO);
-
- script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
- script_family("FreeBSD Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/freebsdrel", "login/SSH/success");
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
+include("revisions-lib.inc");
 include("pkg-lib-bsd.inc");
 
+vuln = FALSE;
 txt = "";
-vuln = 0;
+
 bver = portver(pkg:"apache");
 if(!isnull(bver) && revcomp(a:bver, b:"1.3.43")<0) {
-    txt += 'Package apache version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package apache version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 bver = portver(pkg:"apache+ssl");
 if(!isnull(bver) && revcomp(a:bver, b:"1.3.43.1.59_2")<0) {
-    txt += 'Package apache+ssl version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package apache+ssl version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 bver = portver(pkg:"apache+ipv6");
 if(!isnull(bver) && revcomp(a:bver, b:"1.3.43")<0) {
-    txt += 'Package apache+ipv6 version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package apache+ipv6 version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 bver = portver(pkg:"apache+mod_perl");
 if(!isnull(bver) && revcomp(a:bver, b:"1.3.43")<0) {
-    txt += 'Package apache+mod_perl version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package apache+mod_perl version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 bver = portver(pkg:"apache+mod_ssl");
 if(!isnull(bver) && revcomp(a:bver, b:"1.3.41+2.8.31_4")<0) {
-    txt += 'Package apache+mod_ssl version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package apache+mod_ssl version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 bver = portver(pkg:"apache+mod_ssl+ipv6");
 if(!isnull(bver) && revcomp(a:bver, b:"1.3.41+2.8.31_4")<0) {
-    txt += 'Package apache+mod_ssl+ipv6 version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package apache+mod_ssl+ipv6 version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 bver = portver(pkg:"ru-apache-1.3");
 if(!isnull(bver) && revcomp(a:bver, b:"1.3.43+30.23_1")<0) {
-    txt += 'Package ru-apache-1.3 version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package ru-apache-1.3 version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 bver = portver(pkg:"ru-apache+mod_ssl");
 if(!isnull(bver) && revcomp(a:bver, b:"1.3.43+30.23_1")<0) {
-    txt += 'Package ru-apache+mod_ssl version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package ru-apache+mod_ssl version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 
 if(vuln) {
-    security_message(data:string(txt));
+  security_message(data:txt);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }

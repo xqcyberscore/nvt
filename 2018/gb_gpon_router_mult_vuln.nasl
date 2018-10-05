@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gpon_router_mult_vuln.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
+# $Id: gb_gpon_router_mult_vuln.nasl 11759 2018-10-05 09:53:49Z ckuersteiner $
 #
 # GPON Home Routers Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113170");
-  script_version("$Revision: 10231 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 11759 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:53:49 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-03 16:26:55 +0200 (Thu, 03 May 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -52,17 +52,22 @@ if( description )
   script_tag(name:"summary", value:"GPON Home Routers are prone to multiple vulnerabilities.
 
   Those vulnerabilities where known to be exploited by the Mettle, Muhstik, Mirai, Hajime, and Satori Botnets in 2018.");
+
   script_tag(name:"vuldetect", value:"The script tries to exploit both vulnerabilities and execute and 'id' command
   on the target and checks if it was successful.");
+
   script_tag(name:"insight", value:"There exist two vulnerabilities:
 
-  Appending '?images/' to the URL when accessing the router's web interface will bypass authentication
+  - Appending '?images/' to the URL when accessing the router's web interface will bypass authentication
 
-  The 'ping' command of the router allows for code execution.");
+  - The 'ping' command of the router allows for code execution.");
+
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to gain complete control over
   the target.");
+
   script_tag(name:"affected", value:"All GPON Home Routers are possibly affected.");
-  script_tag(name:"solution", value:"No known solution is available as of 03rd May, 2018.
+
+  script_tag(name:"solution", value:"No known solution is available as of 05th October, 2018.
   Information regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://www.vpnmentor.com/blog/critical-vulnerability-gpon-router/");

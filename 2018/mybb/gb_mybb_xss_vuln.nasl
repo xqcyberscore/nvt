@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_xss_vuln.nasl 11178 2018-08-31 11:06:23Z jschulte $
+# $Id: gb_mybb_xss_vuln.nasl 11759 2018-10-05 09:53:49Z ckuersteiner $
 #
 # MyBB 1.8.14 XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113109");
-  script_version("$Revision: 11178 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-31 13:06:23 +0200 (Fri, 31 Aug 2018) $");
+  script_version("$Revision: 11759 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:53:49 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-13 10:50:30 +0100 (Tue, 13 Feb 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -53,7 +53,7 @@ if( description )
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"XSS Vulnerability via the Title or Description field on the Edit Forum screen.");
   script_tag(name:"affected", value:"MyBB through version 1.8.14.");
-  script_tag(name:"solution", value:"No known solution is available as of 14th May, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 05th October, 2018. Information regarding
 this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://websecnerd.blogspot.de/2018/02/mybb-forum-1.html");

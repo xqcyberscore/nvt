@@ -1,8 +1,9 @@
-#
-#VID 1449af37-9eba-11e1-b9c1-00262d5ed8ee
+###############################################################################
+# VID 1449af37-9eba-11e1-b9c1-00262d5ed8ee
 # OpenVAS Vulnerability Test
-# $
-# Description: Auto generated from VID 1449af37-9eba-11e1-b9c1-00262d5ed8ee
+# $Id: freebsd_chromium12.nasl 11757 2018-10-05 09:43:25Z cfischer $
+#
+# Auto generated from VID 1449af37-9eba-11e1-b9c1-00262d5ed8ee
 #
 # Authors:
 # Thomas Reinke <reinke@securityspace.com>
@@ -24,10 +25,25 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The following package is affected: chromium
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.71375");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2011-3083", "CVE-2011-3084", "CVE-2011-3085", "CVE-2011-3086", "CVE-2011-3087", "CVE-2011-3088", "CVE-2011-3089", "CVE-2011-3090", "CVE-2011-3091", "CVE-2011-3092", "CVE-2011-3093", "CVE-2011-3094", "CVE-2011-3095", "CVE-2011-3096", "CVE-2011-3097", "CVE-2011-3099", "CVE-2011-3100");
+  script_version("$Revision: 11757 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-05-31 11:53:51 -0400 (Thu, 31 May 2012)");
+  script_name("FreeBSD Ports: chromium");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
+  script_family("FreeBSD Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/freebsd", "ssh/login/freebsdrel");
+
+  script_tag(name:"insight", value:"The following package is affected: chromium
 
 CVE-2011-3083
 browser/profiles/profile_impl_io_data.cc in Google Chrome before
@@ -103,58 +119,37 @@ involving a malformed name for the font encoding.
 CVE-2011-3100
 Google Chrome before 19.0.1084.46 does not properly draw dash paths,
 which allows remote attackers to cause a denial of service
-(out-of-bounds read) via unspecified vectors.";
-tag_solution = "Update your system with the appropriate patches or
-software upgrades.
+(out-of-bounds read) via unspecified vectors.");
 
-http://googlechromereleases.blogspot.com/search/label/Stable%20updates
-http://www.vuxml.org/freebsd/1449af37-9eba-11e1-b9c1-00262d5ed8ee.html";
-tag_summary = "The remote host is missing an update to the system
-as announced in the referenced advisory.";
+  script_tag(name:"solution", value:"Update your system with the appropriate patches or
+  software upgrades.");
 
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.com/search/label/Stable%20updates");
+  script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/1449af37-9eba-11e1-b9c1-00262d5ed8ee.html");
 
+  script_tag(name:"summary", value:"The remote host is missing an update to the system
+  as announced in the referenced advisory.");
 
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.71375");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_cve_id("CVE-2011-3083", "CVE-2011-3084", "CVE-2011-3085", "CVE-2011-3086", "CVE-2011-3087", "CVE-2011-3088", "CVE-2011-3089", "CVE-2011-3090", "CVE-2011-3091", "CVE-2011-3092", "CVE-2011-3093", "CVE-2011-3094", "CVE-2011-3095", "CVE-2011-3096", "CVE-2011-3097", "CVE-2011-3099", "CVE-2011-3100");
- script_version("$Revision: 9352 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-05-31 11:53:51 -0400 (Thu, 31 May 2012)");
- script_name("FreeBSD Ports: chromium");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-
- script_category(ACT_GATHER_INFO);
-
- script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
- script_family("FreeBSD Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/freebsdrel", "login/SSH/success");
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
+include("revisions-lib.inc");
 include("pkg-lib-bsd.inc");
-vuln = 0;
+
+vuln = FALSE;
 txt = "";
+
 bver = portver(pkg:"chromium");
 if(!isnull(bver) && revcomp(a:bver, b:"19.0.1084.46")<0) {
-    txt += "Package chromium version " + bver + " is installed which is known to be vulnerable.\n";
-    vuln = 1;
+  txt += "Package chromium version " + bver + " is installed which is known to be vulnerable.\n";
+  vuln = TRUE;
 }
 
 if(vuln) {
-    security_message(data:string(txt ));
+  security_message(data:txt);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }

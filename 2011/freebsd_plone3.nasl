@@ -1,8 +1,9 @@
-#
-#VID 7c492ea2-3566-11e0-8e81-0022190034c0
+###############################################################################
+# VID 7c492ea2-3566-11e0-8e81-0022190034c0
 # OpenVAS Vulnerability Test
-# $
-# Description: Auto generated from VID 7c492ea2-3566-11e0-8e81-0022190034c0
+# $Id: freebsd_plone3.nasl 11757 2018-10-05 09:43:25Z cfischer $
+#
+# Auto generated from VID 7c492ea2-3566-11e0-8e81-0022190034c0
 #
 # Authors:
 # Thomas Reinke <reinke@securityspace.com>
@@ -24,76 +25,69 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The following packages are affected:
-   plone
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.68947");
+  script_version("$Revision: 11757 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-03-05 22:25:39 +0100 (Sat, 05 Mar 2011)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2011-0720");
+  script_bugtraq_id(46102);
+  script_name("FreeBSD Ports: plone");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 E-Soft Inc. http://www.securityspace.com");
+  script_family("FreeBSD Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/freebsd", "ssh/login/freebsdrel");
+
+  script_tag(name:"insight", value:"The following packages are affected:
+
+  plone
    plone3
 
 CVE-2011-0720
 Unspecified vulnerability in Plone 2.5 through 4.0 allows remote
 attackers to obtain administrative access, read or create arbitrary
-content, and change the site skin via unknown vectors.";
-tag_solution = "Update your system with the appropriate patches or
-software upgrades.
+content, and change the site skin via unknown vectors.");
 
-http://plone.org/products/plone/security/advisories/cve-2011-0720
-http://www.vuxml.org/freebsd/7c492ea2-3566-11e0-8e81-0022190034c0.html";
-tag_summary = "The remote host is missing an update to the system
-as announced in the referenced advisory.";
+  script_tag(name:"solution", value:"Update your system with the appropriate patches or
+  software upgrades.");
 
+  script_xref(name:"URL", value:"http://plone.org/products/plone/security/advisories/cve-2011-0720");
+  script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/7c492ea2-3566-11e0-8e81-0022190034c0.html");
 
+  script_tag(name:"summary", value:"The remote host is missing an update to the system
+  as announced in the referenced advisory.");
 
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.68947");
- script_version("$Revision: 9351 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-03-05 22:25:39 +0100 (Sat, 05 Mar 2011)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_cve_id("CVE-2011-0720");
- script_bugtraq_id(46102);
- script_name("FreeBSD Ports: plone");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-
-
- script_category(ACT_GATHER_INFO);
-
- script_copyright("Copyright (c) 2011 E-Soft Inc. http://www.securityspace.com");
- script_family("FreeBSD Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/freebsdrel", "login/SSH/success");
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
+include("revisions-lib.inc");
 include("pkg-lib-bsd.inc");
 
+vuln = FALSE;
 txt = "";
-vuln = 0;
+
 bver = portver(pkg:"plone");
 if(!isnull(bver) && revcomp(a:bver, b:"2.5")>=0) {
-    txt += 'Package plone version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package plone version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 bver = portver(pkg:"plone3");
 if(!isnull(bver) && revcomp(a:bver, b:"3")>=0) {
-    txt += 'Package plone3 version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package plone3 version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 
 if(vuln) {
-    security_message(data:string(txt));
+  security_message(data:txt);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }

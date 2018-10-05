@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mailreader.nasl 9348 2018-04-06 07:01:19Z cfischer $
+# $Id: mailreader.nasl 11761 2018-10-05 10:25:32Z jschulte $
 # Description: mailreader.com directory traversal and arbitrary command execution
 #
 # Authors:
@@ -22,25 +22,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "mailreader.com software is installed. A directory traversal flaw 
-allows anybody to read arbitrary files on your system.";
-
-tag_solution = "upgrade to v2.3.32 or later";
-
 # References:
 # Date: Mon, 28 Oct 2002 17:48:04 +0800
 # From: "pokleyzz" <pokleyzz@scan-associates.net>
-# To: "bugtraq" <bugtraq@securityfocus.com>, 
-#  "Shaharil Abdul Malek" <shaharil@scan-associates.net>, 
-#  "sk" <sk@scan-associates.net>, "pokley" <saleh@scan-associates.net>, 
-#  "Md Nazri Ahmad" <nazri@ns1.scan-associates.net> 
+# To: "bugtraq" <bugtraq@securityfocus.com>,
+#  "Shaharil Abdul Malek" <shaharil@scan-associates.net>,
+#  "sk" <sk@scan-associates.net>, "pokley" <saleh@scan-associates.net>,
+#  "Md Nazri Ahmad" <nazri@ns1.scan-associates.net>
 # Subject: SCAN Associates Advisory : Multiple vurnerabilities on mailreader.com
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11780");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11761 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:25:32 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2002-1581", "CVE-2002-1582");
   script_bugtraq_id(5393, 6055, 6058);
@@ -51,20 +46,27 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("(C) Michel Arboi 2003");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"upgrade to v2.3.32 or later");
+  script_tag(name:"summary", value:"mailreader.com software is installed. A directory traversal flaw
+  allows anybody to read arbitrary files on your system.");
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default:80);
 
 dirtrav = 1; version = 1;
+
+files = traversal_files();
+
+vtstring = get_vt_string();
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
@@ -73,13 +75,20 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   r2 = NULL;
   if (dirtrav)
   {
-    r = http_get(port: port, item: strcat(dir, "/nph-mr.cgi?do=loginhelp&configLanguage=../../../../../../../etc/passwd%00"));
-    r2 =  http_keepalive_send_recv(port: port, data: r);
-    if (isnull(r2)) exit(0);	# Dead server
-    if (r2 =~ "root:[^:]*:0:[01]:")
-    {
-      security_message(port);
-      dirtrav = 0;
+    foreach pattern(keys(files)) {
+
+      file = files[pattern];
+
+      url = strcat(dir, "/nph-mr.cgi?do=loginhelp&configLanguage=../../../../../../../" + file + "%00");
+      r = http_get(port: port, item: url);
+      r2 =  http_keepalive_send_recv(port: port, data: r);
+      if (isnull(r2)) exit(0);	# Dead server
+      if (egrep(string: r2, pattern: pattern))
+      {
+        report = report_vuln_url(url: url);
+        security_message(data: report, port: port);
+        dirtrav = 0;
+      }
     }
   }
 
@@ -92,11 +101,11 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
     }
     if (r2 =~ "Powered by Mailreader.com v2\.3\.3[01]")
     {
-      m = "You are running a version of mailreader.com software 
+      m = "You are running a version of mailreader.com software
 which allows any authenticated user to run arbitrary commands
 on your system.
 
-*** Note that OpenVAS just checked the version number and did not
+*** Note that " + vtstring + " just checked the version number and did not
 *** perform a real attack. So this might be a false alarm.
 
 Solution: upgrade to v2.3.32 or later";
@@ -107,10 +116,10 @@ Solution: upgrade to v2.3.32 or later";
     {
 # Note: SecurityFocus #5393 advises you to upgrade to 2.3.30, but
 # this version contains a terrible flaw! (read above)
-      m = "You are running an old version of mailreader.com software 
+      m = "You are running an old version of mailreader.com software
 which allows an attacker to hijack user session.
 
-*** Note that OpenVAS just checked the version number and did not
+*** Note that " + vtstring + " just checked the version number and did not
 *** perform a real attack. So this might be a false alarm.
 
 Solution: upgrade to v2.3.32 or later";

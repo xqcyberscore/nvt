@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phptonuke_dir_trav.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: phptonuke_dir_trav.nasl 11761 2018-10-05 10:25:32Z jschulte $
 #
 # myPHPNuke phptonuke.php Directory Traversal
 #
@@ -37,8 +37,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11824");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 11761 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:25:32 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,25 +48,21 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name:"URL", value:"http://marc.theaimsgroup.com/?l=bugtraq&m=103480589031537&w=2");
 
-  tag_summary = "The remote web server contains a PHP script that allows for reading of
+  script_tag(name:"solution", value:"Upgrade to the latest version.");
+  script_tag(name:"summary", value:"The remote web server contains a PHP script that allows for reading of
   arbitrary files.
 
   Description :
 
   The version of myPHPNuke installed on the remote host allows anyone to
   read arbitrary files by passing the full filename to the 'filnavn'
-  argument of the 'phptonuke.php' script.";
-
-  tag_solution = "Upgrade to the latest version.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  argument of the 'phptonuke.php' script.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -76,19 +72,28 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
+files = traversal_files();
+
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = dir + "/phptonuke.php?filnavn=/etc/passwd";
 
-  if( http_vuln_check( port:port, url:url, pattern:".*root:.*:0:[01]:.*" ) ) {
-    report = report_vuln_url( port:port, url:url );
-    security_message( port:port, data:report );
-    exit( 0 );
+  foreach pattern( keys( files ) ) {
+
+    file = files[pattern];
+
+    url = dir + "/phptonuke.php?filnavn=/" + file;
+
+    if( http_vuln_check( port:port, url:url, pattern:pattern ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 

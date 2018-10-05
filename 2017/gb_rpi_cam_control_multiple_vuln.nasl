@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rpi_cam_control_multiple_vuln.nasl 11749 2018-10-04 10:21:12Z jschulte $
+# $Id: gb_rpi_cam_control_multiple_vuln.nasl 11759 2018-10-05 09:53:49Z ckuersteiner $
 #
 # RPi Cam Control Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:rpi:cam_control";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812362");
-  script_version("$Revision: 11749 $");
+  script_version("$Revision: 11759 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-04 12:21:12 +0200 (Thu, 04 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:53:49 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-26 14:19:48 +0530 (Tue, 26 Dec 2017)");
   script_name("RPi Cam Control Multiple Vulnerabilities");
 
@@ -52,7 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"RPi Cam Control versions through 6.4.14");
 
-  script_tag(name:"solution", value:"No known solution is available as of 07th May, 2018. Information
+  script_tag(name:"solution", value:"No known solution is available as of 05th October, 2018. Information
   regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

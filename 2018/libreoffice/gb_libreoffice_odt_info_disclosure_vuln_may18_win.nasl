@@ -1,5 +1,6 @@
-###############################################################################                                                                 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_odt_info_disclosure_vuln_may18_win.nasl 10231 2018-06-18 03:58:33Z ckuersteiner $
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_libreoffice_odt_info_disclosure_vuln_may18_win.nasl 11760 2018-10-05 10:04:56Z cfischer $
 #
 # LibreOffice ODT File Information Disclosure Vulnerability May18 (Windows)
 #
@@ -26,15 +27,17 @@
 
 CPE = "cpe:/a:libreoffice:libreoffice";
 
-if(description)                                                                                                                                 {
+if(description)
+{
   script_oid("1.3.6.1.4.1.25623.1.0.812872");
-  script_version("$Revision: 10231 $");
+  script_version("$Revision: 11760 $");
   script_cve_id("CVE-2018-10583");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 05:58:33 +0200 (Mon, 18 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:04:56 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-07 13:33:47 +0530 (Mon, 07 May 2018)");
   script_tag(name:"qod_type", value:"registry");
+
   script_name("LibreOffice ODT File Information Disclosure Vulnerability May18 (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with LibreOffice and
@@ -42,30 +45,27 @@ if(description)                                                                 
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists within an
-  office:document-content element in a .odt XML document.");
+  script_tag(name:"insight", value:"The flaw exists within an office:document-content element in a .odt XML
+document.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to automatically process and initiate an SMB connection embedded in a malicious
-  .odt file and leak NetNTLM credentials.
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker to automatically process and
+initiate an SMB connection embedded in a malicious .odt file and leak NetNTLM credentials.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"LibreOffice prior to version 5.4.7 or 6.0.4 on Windows.");
 
-  script_tag(name:"affected", value:"LibreOffice version 6.0.3 on Windows.");
+  script_tag(name:"solution", value:"Update to version 5.4.7, 6.0.4 or later.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 11th May, 2018.
-  Information regarding this issue will be updated once solution details are available.
-  For updates refer to Reference links.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
   script_xref(name:"URL", value:"http://secureyourit.co.uk/wp/2018/05/01/creating-malicious-odt-files/");
-  script_xref(name:"URL", value:"https://www.libreoffice.org/");
+  script_xref(name:"URL", value:"https://www.libreoffice.org/about-us/security/advisories/cve-2018-10583/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_libreoffice_detect_portable_win.nasl");
   script_mandatory_keys("LibreOffice/Win/Ver");
+
   exit(0);
 }
 
@@ -76,10 +76,18 @@ infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
 lver = infos['version'];
 lpath = infos['location'];
 
-if(lver == "6.0.3.2")
-{
-  report = report_fixed_ver(installed_version:lver, fixed_version:"NoneAvailable", install_path:lpath);
-  security_message(data:report);
+if (version_is_less(version: lver, test_version: "5.4.7")) {
+  report = report_fixed_ver(installed_version:lver, fixed_version:"5.4.7", install_path:lpath);
+  security_message(port: 0, data:report);
   exit(0);
 }
+
+if (lver =~ "^6\.0") {
+  if (version_is_less(version: lver, test_version: "6.0.4")) {
+    report = report_fixed_ver(installed_version:lver, fixed_version:"6.0.4", install_path:lpath);
+    security_message(port: 0, data:report);
+    exit(0);
+  }
+}
+
 exit(0);

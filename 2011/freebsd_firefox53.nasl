@@ -1,8 +1,9 @@
-#
-#VID 1d8ff4a2-0445-11e0-8e32-000f20797ede
+###############################################################################
+# VID 1d8ff4a2-0445-11e0-8e32-000f20797ede
 # OpenVAS Vulnerability Test
-# $
-# Description: Auto generated from VID 1d8ff4a2-0445-11e0-8e32-000f20797ede
+# $Id: freebsd_firefox53.nasl 11757 2018-10-05 09:43:25Z cfischer $
+#
+# Auto generated from VID 1d8ff4a2-0445-11e0-8e32-000f20797ede
 #
 # Authors:
 # Thomas Reinke <reinke@securityspace.com>
@@ -24,11 +25,27 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The following packages are affected:
-   firefox
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.68690");
+  script_version("$Revision: 11757 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-01-24 17:55:59 +0100 (Mon, 24 Jan 2011)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2010-3766", "CVE-2010-3767", "CVE-2010-3768", "CVE-2010-3769", "CVE-2010-3770", "CVE-2010-3771", "CVE-2010-3772", "CVE-2010-3773", "CVE-2010-3774", "CVE-2010-3775", "CVE-2010-3776", "CVE-2010-3777", "CVE-2010-3778");
+  script_name("FreeBSD Ports: firefox");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2010 E-Soft Inc. http://www.securityspace.com");
+  script_family("FreeBSD Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/freebsd", "ssh/login/freebsdrel");
+
+  script_tag(name:"insight", value:"The following packages are affected:
+
+  firefox
    libxul
    linux-firefox
    linux-firefox-devel
@@ -37,113 +54,90 @@ tag_insight = "The following packages are affected:
    seamonkey
    thunderbird
 
-For details, please visit the referenced security advisories.";
-tag_solution = "Update your system with the appropriate patches or
-software upgrades.
+For details, please visit the referenced security advisories.");
 
-http://www.mozilla.org/security/announce/2010/mfsa2010-74.html
-http://www.mozilla.org/security/announce/2010/mfsa2010-75.html
-http://www.mozilla.org/security/announce/2010/mfsa2010-76.html
-http://www.mozilla.org/security/announce/2010/mfsa2010-77.html
-http://www.mozilla.org/security/announce/2010/mfsa2010-78.html
-http://www.mozilla.org/security/announce/2010/mfsa2010-79.html
-http://www.mozilla.org/security/announce/2010/mfsa2010-80.html
-http://www.mozilla.org/security/announce/2010/mfsa2010-81.html
-http://www.mozilla.org/security/announce/2010/mfsa2010-82.html
-http://www.mozilla.org/security/announce/2010/mfsa2010-83.html
-http://www.mozilla.org/security/announce/2010/mfsa2010-84.html
-http://www.vuxml.org/freebsd/1d8ff4a2-0445-11e0-8e32-000f20797ede.html";
-tag_summary = "The remote host is missing an update to the system
-as announced in the referenced advisory.";
+  script_tag(name:"solution", value:"Update your system with the appropriate patches or
+  software upgrades.");
 
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2010/mfsa2010-74.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2010/mfsa2010-75.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2010/mfsa2010-76.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2010/mfsa2010-77.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2010/mfsa2010-78.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2010/mfsa2010-79.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2010/mfsa2010-80.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2010/mfsa2010-81.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2010/mfsa2010-82.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2010/mfsa2010-83.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2010/mfsa2010-84.html");
+  script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/1d8ff4a2-0445-11e0-8e32-000f20797ede.html");
 
+  script_tag(name:"summary", value:"The remote host is missing an update to the system
+  as announced in the referenced advisory.");
 
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.68690");
- script_version("$Revision: 9351 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-01-24 17:55:59 +0100 (Mon, 24 Jan 2011)");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_cve_id("CVE-2010-3766", "CVE-2010-3767", "CVE-2010-3768", "CVE-2010-3769", "CVE-2010-3770", "CVE-2010-3771", "CVE-2010-3772", "CVE-2010-3773", "CVE-2010-3774", "CVE-2010-3775", "CVE-2010-3776", "CVE-2010-3777", "CVE-2010-3778");
- script_name("FreeBSD Ports: firefox");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-
-
- script_category(ACT_GATHER_INFO);
-
- script_copyright("Copyright (c) 2010 E-Soft Inc. http://www.securityspace.com");
- script_family("FreeBSD Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/freebsdrel", "login/SSH/success");
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
+include("revisions-lib.inc");
 include("pkg-lib-bsd.inc");
 
+vuln = FALSE;
 txt = "";
-vuln = 0;
+
 bver = portver(pkg:"firefox");
 if(!isnull(bver) && revcomp(a:bver, b:"3.6.*,1")>0 && revcomp(a:bver, b:"3.6.13,1")<0) {
-    txt += 'Package firefox version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package firefox version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 if(!isnull(bver) && revcomp(a:bver, b:"3.5.*,1")>0 && revcomp(a:bver, b:"3.5.16,1")<0) {
-    txt += 'Package firefox version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package firefox version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 bver = portver(pkg:"libxul");
 if(!isnull(bver) && revcomp(a:bver, b:"1.9.2")>0 && revcomp(a:bver, b:"1.9.2.13")<0) {
-    txt += 'Package libxul version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package libxul version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 bver = portver(pkg:"linux-firefox");
 if(!isnull(bver) && revcomp(a:bver, b:"3.6.13,1")<0) {
-    txt += 'Package linux-firefox version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package linux-firefox version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 bver = portver(pkg:"linux-firefox-devel");
 if(!isnull(bver) && revcomp(a:bver, b:"3.5.16")<0) {
-    txt += 'Package linux-firefox-devel version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package linux-firefox-devel version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 bver = portver(pkg:"linux-seamonkey");
 if(!isnull(bver) && revcomp(a:bver, b:"2.0")>0 && revcomp(a:bver, b:"2.0.11")<0) {
-    txt += 'Package linux-seamonkey version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package linux-seamonkey version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 bver = portver(pkg:"linux-thunderbird");
 if(!isnull(bver) && revcomp(a:bver, b:"3.1")>=0 && revcomp(a:bver, b:"3.1.7")<0) {
-    txt += 'Package linux-thunderbird version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package linux-thunderbird version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 bver = portver(pkg:"seamonkey");
 if(!isnull(bver) && revcomp(a:bver, b:"2.0")>0 && revcomp(a:bver, b:"2.0.11")<0) {
-    txt += 'Package seamonkey version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package seamonkey version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 bver = portver(pkg:"thunderbird");
 if(!isnull(bver) && revcomp(a:bver, b:"3.0")>=0 && revcomp(a:bver, b:"3.0.11")<0) {
-    txt += 'Package thunderbird version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package thunderbird version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 if(!isnull(bver) && revcomp(a:bver, b:"3.1")>=0 && revcomp(a:bver, b:"3.1.7")<0) {
-    txt += 'Package thunderbird version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package thunderbird version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 
 if(vuln) {
-    security_message(data:string(txt));
+  security_message(data:txt);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }

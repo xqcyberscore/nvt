@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 04 Oct 2018 13:05:49 +0200
+# Automatically created on:  Fri, 05 Oct 2018 12:35:57 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38636,6 +38636,8 @@
 2018/apache/gb_apache_tomcat_mod_jk_bof_vuln_win.nasl: GPLv2+
 2018/apache/gb_apache_tomcat_nio_nio2_info_disc_vuln_lin.nasl: GPLv2+
 2018/apache/gb_apache_tomcat_nio_nio2_info_disc_vuln_win.nasl: GPLv2+
+2018/apache/gb_apache_tomcat_open_redirect_vuln_lin.nasl: GPLv2+
+2018/apache/gb_apache_tomcat_open_redirect_vuln_win.nasl: GPLv2+
 2018/apache/gb_apache_tomcat_sec_constraint_order_access_bypass_vuln_lin.nasl: GPLv2+
 2018/apache/gb_apache_tomcat_sec_constraint_order_access_bypass_vuln_win.nasl: GPLv2+
 2018/apache/gb_apache_tomcat_utf8_decoder_dos_vuln_lin.nasl: GPLv2+
@@ -41117,8 +41119,12 @@
 2018/mcafee/gb_mcafee_virusscan_ent_mctray_previlege_escalation_vuln.nasl: GPLv2+
 2018/mediawiki/gb_mediawiki_eol_lin.nasl: GPLv2+
 2018/mediawiki/gb_mediawiki_eol_win.nasl: GPLv2+
+2018/mediawiki/gb_mediawiki_htaccess_vuln_lin.nasl: GPLv2+
+2018/mediawiki/gb_mediawiki_htaccess_vuln_win.nasl: GPLv2+
 2018/mediawiki/gb_mediawiki_install_path_disc_vuln_lin.nasl: GPLv2+
 2018/mediawiki/gb_mediawiki_install_path_disc_vuln_win.nasl: GPLv2+
+2018/mediawiki/gb_mediawiki_mult_vuln_lin.nasl: GPLv2+
+2018/mediawiki/gb_mediawiki_mult_vuln_win.nasl: GPLv2+
 2018/memcached/gb_memcached_amplification_attack.nasl: GPLv2+
 2018/mercurial/gb_mercurial_mult_vuln_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_ancm_dos_vuln_win.nasl: GPLv2+
@@ -43068,6 +43074,7 @@ gb_dlink_dap_detect.nasl: GPLv2+
 gb_dlink_dir_detect.nasl: GPLv2+
 gb_dlink_dns_detect.nasl: GPLv2+
 gb_dlink_dsl_detect.nasl: GPLv2+
+gb_dlink_wifimanger_detect.nasl: GPLv2+
 gb_dlxspot_web_detect.nasl: GPLv2+
 gb_dm_filemanager_detect.nasl: GPLv2+
 gb_dnaLIMS_detect.nasl: GPLv2+
@@ -59870,6 +59877,7 @@ gsf/2018/dell/gb_dell_idrac_mult_vuln.nasl: GPLv2+
 gsf/2018/dell/gb_sonicwall_gms_multiple_vuln.nasl: GPLv2+
 gsf/2018/diskboss/gb_diskboss_dos_vuln.nasl: GPLv2+
 gsf/2018/diskboss/gb_diskboss_enterprise_inf_disc_vuln.nasl: GPLv2+
+gsf/2018/d-link/gb_dlink_wifimanager_mult_vuln.nasl: GPLv2+
 gsf/2018/dotcms/gb_dotcms_default_credentials.nasl: GPLv2+
 gsf/2018/dotcms/gb_dotcms_xss_vuln.nasl: GPLv2+
 gsf/2018/draytek/gb_draytek_vigoracs_rce_vuln.nasl: GPLv2+

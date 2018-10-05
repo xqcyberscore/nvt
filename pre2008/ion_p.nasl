@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ion_p.nasl 5911 2017-04-10 08:58:14Z cfi $
+# $Id: ion_p.nasl 11761 2018-10-05 10:25:32Z jschulte $
 #
 # ion-p/ion-p.exe Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11729");
-  script_version("$Revision: 5911 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 10:58:14 +0200 (Mon, 10 Apr 2017) $");
+  script_version("$Revision: 11761 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:25:32 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(6091);
   script_tag(name:"cvss_base", value:"5.0");
@@ -42,17 +42,15 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The ion-p.exe exists on this webserver.
-  Some versions of this file are vulnerable to remote exploit.";
-
-  tag_impact = "An attacker, exploiting this vulnerability, may be able to gain
-  access to confidential data and/or escalate their privileges on the Web server.";
-
-  tag_solution = "Remove it from the cgi-bin or scripts directory.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:"The ion-p.exe exists on this webserver.
+  Some versions of this file are vulnerable to remote exploit.");
+  script_tag(name:"impact", value:"An attacker, exploiting this vulnerability, may be able to gain
+  access to confidential data and/or escalate their privileges on the Web server.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
@@ -62,28 +60,36 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
+
+files = traversal_files();
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
 
   if( host_runs( "windows" ) == "yes" ) {
-    url = dir + "/ion-p.exe?page=c:\\winnt\\win.ini";
-    pattern = ".*\[fonts\].*";
+    prefix = "c:\\";
   } else if( host_runs( "linux" ) == "yes" ) {
-    url = dir + "/ion-p?page=../../../../../etc/passwd";
-    pattern = ".*root:.*:0:[01]:.*";
+    prefix = "../../../../../";
   } else {
     # This CGI is low prio these days so don't run this test against a system we don't know the OS.
     exit(0);
   }
 
-  if( http_vuln_check( port:port, url:url, pattern:pattern ) ) {
-    report = report_vuln_url( port:port, url:url );
-    security_message( port:port, data:report );
-    exit( 0 );
+  foreach pattern( keys( files ) ) {
+
+    file = files[pattern];
+
+    url = dir + "/ion-p.exe?page=" + prefix + file;
+
+    if( http_vuln_check( port:port, url:url, pattern:pattern ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 

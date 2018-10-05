@@ -1,8 +1,9 @@
-#
-#VID 462e2d6c-8017-11e1-a571-bcaec565249c
+###############################################################################
+# VID 462e2d6c-8017-11e1-a571-bcaec565249c
 # OpenVAS Vulnerability Test
-# $
-# Description: Auto generated from VID 462e2d6c-8017-11e1-a571-bcaec565249c
+# $Id: freebsd_freetype25.nasl 11757 2018-10-05 09:43:25Z cfischer $
+#
+# Auto generated from VID 462e2d6c-8017-11e1-a571-bcaec565249c
 #
 # Authors:
 # Thomas Reinke <reinke@securityspace.com>
@@ -24,10 +25,25 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The following package is affected: freetype2
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.71283");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2012-1126", "CVE-2012-1127", "CVE-2012-1128", "CVE-2012-1129", "CVE-2012-1130", "CVE-2012-1131", "CVE-2012-1132", "CVE-2012-1133", "CVE-2012-1134", "CVE-2012-1135", "CVE-2012-1136", "CVE-2012-1137", "CVE-2012-1138", "CVE-2012-1139", "CVE-2012-1140", "CVE-2012-1141", "CVE-2012-1142", "CVE-2012-1143", "CVE-2012-1144");
+  script_version("$Revision: 11757 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2012-04-30 07:59:26 -0400 (Mon, 30 Apr 2012)");
+  script_name("FreeBSD Ports: freetype2");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
+  script_family("FreeBSD Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/freebsd", "ssh/login/freebsdrel");
+
+  script_tag(name:"insight", value:"The following package is affected: freetype2
 
 CVE-2012-1126
 FreeType before 2.4.9, as used in Mozilla Firefox Mobile before 10.0.4
@@ -136,59 +152,38 @@ CVE-2012-1144
 FreeType before 2.4.9, as used in Mozilla Firefox Mobile before 10.0.4
 and other products, allows remote attackers to cause a denial of
 service (invalid heap write operation and memory corruption) or
-possibly execute arbitrary code via a crafted TrueType font.";
-tag_solution = "Update your system with the appropriate patches or
-software upgrades.
+possibly execute arbitrary code via a crafted TrueType font.");
 
-https://sourceforge.net/projects/freetype/files/freetype2/2.4.9/README/view
-https://bugzilla.redhat.com/show_bug.cgi?id=806270
-http://www.vuxml.org/freebsd/462e2d6c-8017-11e1-a571-bcaec565249c.html";
-tag_summary = "The remote host is missing an update to the system
-as announced in the referenced advisory.";
+  script_tag(name:"solution", value:"Update your system with the appropriate patches or
+  software upgrades.");
 
+  script_xref(name:"URL", value:"https://sourceforge.net/projects/freetype/files/freetype2/2.4.9/README/view");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=806270");
+  script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/462e2d6c-8017-11e1-a571-bcaec565249c.html");
 
+  script_tag(name:"summary", value:"The remote host is missing an update to the system
+  as announced in the referenced advisory.");
 
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.71283");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_cve_id("CVE-2012-1126", "CVE-2012-1127", "CVE-2012-1128", "CVE-2012-1129", "CVE-2012-1130", "CVE-2012-1131", "CVE-2012-1132", "CVE-2012-1133", "CVE-2012-1134", "CVE-2012-1135", "CVE-2012-1136", "CVE-2012-1137", "CVE-2012-1138", "CVE-2012-1139", "CVE-2012-1140", "CVE-2012-1141", "CVE-2012-1142", "CVE-2012-1143", "CVE-2012-1144");
- script_version("$Revision: 9352 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-04-30 07:59:26 -0400 (Mon, 30 Apr 2012)");
- script_name("FreeBSD Ports: freetype2");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-
- script_category(ACT_GATHER_INFO);
-
- script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
- script_family("FreeBSD Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/freebsdrel", "login/SSH/success");
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
+include("revisions-lib.inc");
 include("pkg-lib-bsd.inc");
-vuln = 0;
+
+vuln = FALSE;
 txt = "";
+
 bver = portver(pkg:"freetype2");
 if(!isnull(bver) && revcomp(a:bver, b:"2.4.9")<0) {
-    txt += "Package freetype2 version " + bver + " is installed which is known to be vulnerable.\n";
-    vuln = 1;
+  txt += "Package freetype2 version " + bver + " is installed which is known to be vulnerable.\n";
+  vuln = TRUE;
 }
 
 if(vuln) {
-    security_message(data:string(txt ));
+  security_message(data:txt);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }

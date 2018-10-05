@@ -1,8 +1,9 @@
-#
-#VID c8c927e5-2891-11e0-8f26-00151735203a
+###############################################################################
+# VID c8c927e5-2891-11e0-8f26-00151735203a
 # OpenVAS Vulnerability Test
-# $
-# Description: Auto generated from VID c8c927e5-2891-11e0-8f26-00151735203a
+# $Id: freebsd_bugzilla12.nasl 11757 2018-10-05 09:43:25Z cfischer $
+#
+# Auto generated from VID c8c927e5-2891-11e0-8f26-00151735203a
 #
 # Authors:
 # Thomas Reinke <reinke@securityspace.com>
@@ -24,10 +25,26 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The following package is affected: bugzilla
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.68959");
+  script_version("$Revision: 11757 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2011-03-05 22:25:39 +0100 (Sat, 05 Mar 2011)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2010-4568", "CVE-2010-2761", "CVE-2010-4411", "CVE-2010-4572", "CVE-2010-4567", "CVE-2010-0048", "CVE-2011-0046");
+  script_bugtraq_id(25425);
+  script_name("FreeBSD Ports: bugzilla");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 E-Soft Inc. http://www.securityspace.com");
+  script_family("FreeBSD Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/freebsd", "ssh/login/freebsdrel");
+
+  script_tag(name:"insight", value:"The following package is affected: bugzilla
 
 CVE-2010-4568
 Bugzilla 2.14 through 2.22.7; 3.0.x, 3.1.x, and 3.2.x before 3.2.10;
@@ -75,72 +92,48 @@ arbitrary users for requests related to (1) adding a saved search in
 buglist.cgi, (2) voting in votes.cgi, (3) sanity checking in
 sanitycheck.cgi, (4) creating or editing a chart in chart.cgi, (5)
 column changing in colchange.cgi, and (6) adding, deleting, or
-approving a quip in quips.cgi.";
-tag_solution = "Update your system with the appropriate patches or
-software upgrades.
+approving a quip in quips.cgi.");
 
-https://bugzilla.mozilla.org/show_bug.cgi?id=621591
-https://bugzilla.mozilla.org/show_bug.cgi?id=619594
-https://bugzilla.mozilla.org/show_bug.cgi?id=591165
-https://bugzilla.mozilla.org/show_bug.cgi?id=621572
-https://bugzilla.mozilla.org/show_bug.cgi?id=619588
-https://bugzilla.mozilla.org/show_bug.cgi?id=628034
-https://bugzilla.mozilla.org/show_bug.cgi?id=621090
-https://bugzilla.mozilla.org/show_bug.cgi?id=621105
-https://bugzilla.mozilla.org/show_bug.cgi?id=621107
-https://bugzilla.mozilla.org/show_bug.cgi?id=621108
-https://bugzilla.mozilla.org/show_bug.cgi?id=621109
-https://bugzilla.mozilla.org/show_bug.cgi?id=621110
-http://www.vuxml.org/freebsd/c8c927e5-2891-11e0-8f26-00151735203a.html";
-tag_summary = "The remote host is missing an update to the system
-as announced in the referenced advisory.";
+  script_tag(name:"solution", value:"Update your system with the appropriate patches or
+  software upgrades.");
 
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=621591");
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=619594");
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=591165");
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=621572");
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=619588");
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=628034");
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=621090");
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=621105");
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=621107");
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=621108");
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=621109");
+  script_xref(name:"URL", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=621110");
+  script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/c8c927e5-2891-11e0-8f26-00151735203a.html");
 
+  script_tag(name:"summary", value:"The remote host is missing an update to the system
+  as announced in the referenced advisory.");
 
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.68959");
- script_version("$Revision: 9351 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2011-03-05 22:25:39 +0100 (Sat, 05 Mar 2011)");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_cve_id("CVE-2010-4568", "CVE-2010-2761", "CVE-2010-4411", "CVE-2010-4572", "CVE-2010-4567", "CVE-2010-0048", "CVE-2011-0046");
- script_bugtraq_id(25425);
- script_name("FreeBSD Ports: bugzilla");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-
-
- script_category(ACT_GATHER_INFO);
-
- script_copyright("Copyright (c) 2011 E-Soft Inc. http://www.securityspace.com");
- script_family("FreeBSD Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/freebsdrel", "login/SSH/success");
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
+include("revisions-lib.inc");
 include("pkg-lib-bsd.inc");
 
+vuln = FALSE;
 txt = "";
-vuln = 0;
+
 bver = portver(pkg:"bugzilla");
 if(!isnull(bver) && revcomp(a:bver, b:"2.14")>=0 && revcomp(a:bver, b:"3.6.4")<0) {
-    txt += 'Package bugzilla version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package bugzilla version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 
 if(vuln) {
-    security_message(data:string(txt));
+  security_message(data:txt);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }

