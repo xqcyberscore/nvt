@@ -1,7 +1,6 @@
 ###############################################################################
-# VID f45c0049-be72-11e1-a284-0023ae8e59f0
 # OpenVAS Vulnerability Test
-# $Id: freebsd_py-pycrypto0.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_py-pycrypto0.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID f45c0049-be72-11e1-a284-0023ae8e59f0
 #
@@ -33,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2012-2417");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-10 03:22:17 -0400 (Fri, 10 Aug 2012)");
   script_name("FreeBSD Ports: py-pycrypto");
   script_category(ACT_GATHER_INFO);

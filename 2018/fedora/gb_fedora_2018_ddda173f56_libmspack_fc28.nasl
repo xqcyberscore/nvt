@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ddda173f56_libmspack_fc28.nasl 10887 2018-08-10 12:05:12Z santu $
+# $Id: gb_fedora_2018_ddda173f56_libmspack_fc28.nasl 11771 2018-10-08 05:52:02Z asteins $
 #
 # Fedora Update for libmspack FEDORA-2018-ddda173f56
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874906");
-  script_version("$Revision: 10887 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:05:12 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11771 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 07:52:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-08 06:07:52 +0200 (Wed, 08 Aug 2018)");
   script_cve_id("CVE-2018-14679");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libmspack FEDORA-2018-ddda173f56");
   script_tag(name:"summary", value:"Check the version of libmspack");

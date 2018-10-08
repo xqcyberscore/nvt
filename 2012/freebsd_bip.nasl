@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 1c4cab30-5468-11e1-9fb7-003067b2972c
 # OpenVAS Vulnerability Test
-# $Id: freebsd_bip.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_bip.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 1c4cab30-5468-11e1-9fb7-003067b2972c
 #
@@ -33,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_cve_id("CVE-2012-0806");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-12 07:27:19 -0500 (Sun, 12 Feb 2012)");
   script_name("FreeBSD Ports: bip");
   script_category(ACT_GATHER_INFO);

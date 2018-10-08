@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_1865-01_X.org_X11_libraries.nasl 6850 2017-08-04 07:23:54Z santu $
+# $Id: gb_RHSA-2017_1865-01_X.org_X11_libraries.nasl 11771 2018-10-08 05:52:02Z asteins $
 #
 # RedHat Update for X.org X11 libraries RHSA-2017:1865-01
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871852");
-  script_version("$Revision: 6850 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:23:54 +0200 (Fri, 04 Aug 2017) $");
+  script_version("$Revision: 11771 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 07:52:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 12:46:22 +0530 (Fri, 04 Aug 2017)");
   script_cve_id("CVE-2016-10164", "CVE-2017-2625", "CVE-2017-2626");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for X.org X11 libraries RHSA-2017:1865-01");
   script_tag(name: "summary", value: "Check the version of X.org X11 libraries");

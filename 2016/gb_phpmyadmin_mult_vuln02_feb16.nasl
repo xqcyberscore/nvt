@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_vuln02_feb16.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_phpmyadmin_mult_vuln02_feb16.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # phpMyAdmin Multiple Vulnerabilities -02 Feb16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807078");
-  script_version("$Revision: 5745 $");
+  script_version("$Revision: 11772 $");
   script_cve_id("CVE-2016-2044", "CVE-2016-2045");
   script_bugtraq_id(82104, 82100);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-22 19:19:14 +0530 (Mon, 22 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_active");
   script_name("phpMyAdmin Multiple Vulnerabilities -02 Feb16");
@@ -45,29 +45,29 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to obtain sensitive information or not.");
 
-  script_tag(name:"insight", value:"Multiple flaws are due to: 
-  - recommended setting of the PHP configuration directive display_errors is 
-    set to on, which is against the recommendations given in the PHP manual 
+  script_tag(name:"insight", value:"Multiple flaws are due to:
+
+  - recommended setting of the PHP configuration directive display_errors is
+    set to on, which is against the recommendations given in the PHP manual
     for a production server.
-  - Insufficient validation of user supplied input via SQL query in the 
+
+  - Insufficient validation of user supplied input via SQL query in the
     SQL editor");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to obtain sensitive information about the server and to inject 
-  arbitrary web script or HTML.
-
-  Impact Level: Application");
+  attackers to obtain sensitive information about the server and to inject
+  arbitrary web script or HTML.");
 
   script_tag(name:"affected", value:"phpMyAdmin versions 4.5.x before 4.5.4");
 
-  script_tag(name: "solution" , value:"Upgrade to phpMyAdmin version 4.5.4 or
+  script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 4.5.4 or
   or later or apply patch from the link mentioned in reference.
   For updates refer to https://www.phpmyadmin.net");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.phpmyadmin.net/security/PMASA-2016-9");
-  script_xref(name : "URL" , value : "https://www.phpmyadmin.net/security/PMASA-2016-8");
+  script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2016-9");
+  script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2016-8");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -83,27 +83,16 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-# Variable Initialization
-dir = "";
-url = "";
-report = "";
-http_port = 0;
-
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Application Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-##Construct Attack Request
 url = dir + '/libraries/sql-parser/autoload.php';
 
-## Try attack and check the response to confirm vulnerability
-## Check whether it is able to get full path of the directory where phpMyAdmin is installed
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
    pattern:"Fatal error.*autoload.php"))
 {

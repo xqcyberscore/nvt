@@ -1,7 +1,6 @@
 ###############################################################################
-# VID a1050b8b-6db3-11e1-8b37-0011856a6e37
 # OpenVAS Vulnerability Test
-# $Id: freebsd_firefox66.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_firefox66.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID a1050b8b-6db3-11e1-8b37-0011856a6e37
 #
@@ -33,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2012-0451", "CVE-2012-0455", "CVE-2012-0456", "CVE-2012-0457", "CVE-2012-0458", "CVE-2012-0459", "CVE-2012-0460", "CVE-2012-0461", "CVE-2012-0462", "CVE-2012-0463", "CVE-2012-0464");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-30 07:59:26 -0400 (Mon, 30 Apr 2012)");
   script_name("FreeBSD Ports: firefox");
   script_category(ACT_GATHER_INFO);

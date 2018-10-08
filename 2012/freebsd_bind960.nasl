@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 90cc1494-10ac-11e1-b3ec-0024e830109b
 # OpenVAS Vulnerability Test
-# $Id: freebsd_bind960.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_bind960.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 90cc1494-10ac-11e1-b3ec-0024e830109b
 #
@@ -31,11 +30,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.70599");
   script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_cve_id("CVE-2011-4313");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11757 $");
+  script_version("$Revision: 11762 $");
   script_name("FreeBSD Ports: bind96");
 
   script_xref(name:"URL", value:"https://www.isc.org/software/bind/advisories/cve-2011-4313");

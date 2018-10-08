@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_routers_information_disclosure.nasl 10665 2018-07-27 14:42:41Z cfischer $
+# $Id: gb_netgear_routers_information_disclosure.nasl 11768 2018-10-05 14:07:38Z cfischer $
 #
 # Netgear DGN2200 & DGND3700 Admin Password Disclosure
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112333");
-  script_version("$Revision: 10665 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 16:42:41 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 11768 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 16:07:38 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-25 09:39:41 +0200 (Wed, 25 Jul 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_http_parsing_unspecified_vuln_lin.nasl 10849 2018-08-09 07:20:42Z santu $
+# $Id: gb_php_http_parsing_unspecified_vuln_lin.nasl 11771 2018-10-08 05:52:02Z asteins $
 #
 # PHP 'HTTP Parsing' Function Unspecified Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813904");
-  script_version("$Revision: 10849 $");
+  script_version("$Revision: 11771 $");
   script_cve_id("CVE-2018-14884");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 09:20:42 +0200 (Thu, 09 Aug 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 07:52:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-07 13:29:04 +0530 (Tue, 07 Aug 2018)");
   script_name("PHP 'HTTP Parsing' Function Unspecified Vulnerability (Linux)");
 

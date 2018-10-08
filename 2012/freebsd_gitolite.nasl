@@ -1,7 +1,6 @@
 ###############################################################################
-# VID f94befcd-1289-11e2-a25e-525400272390
 # OpenVAS Vulnerability Test
-# $Id: freebsd_gitolite.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_gitolite.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID f94befcd-1289-11e2-a25e-525400272390
 #
@@ -33,8 +32,8 @@ if(description)
   script_cve_id("CVE-2012-4506");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-22 08:43:21 -0400 (Mon, 22 Oct 2012)");
   script_name("FreeBSD Ports: gitolite");
   script_category(ACT_GATHER_INFO);

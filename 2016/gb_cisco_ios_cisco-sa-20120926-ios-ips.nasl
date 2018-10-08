@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20120926-ios-ips.nasl 5836 2017-04-03 09:37:08Z teissa $
+# $Id: gb_cisco_ios_cisco-sa-20120926-ios-ips.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Cisco IOS Software Intrusion Prevention System Denial of Service Vulnerability
 #
@@ -29,43 +29,44 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105656");
- script_cve_id("CVE-2012-3950");
- script_tag(name:"cvss_base", value:"7.1");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5836 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105656");
+  script_cve_id("CVE-2012-3950");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11772 $");
 
- script_name("Cisco IOS Software Intrusion Prevention System Denial of Service Vulnerability");
+  script_name("Cisco IOS Software Intrusion Prevention System Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20120926-bundle");
- 
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityBundle/cisco-sa-20120926-bundle");
+  script_xref(name:"URL", value:"http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_sep12.html");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"Cisco IOS Software contains a vulnerability in the Intrusion Prevention System (IPS) feature that could allow an unauthenticated, remote attacker to cause a reload of an affected device if specific Cisco IOS IPS configurations exist.
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"Cisco IOS Software contains a vulnerability in the Intrusion Prevention System (IPS)
+feature that could allow an unauthenticated, remote attacker to cause a reload of an affected device if specific Cisco IOS IPS configurations exist.
 
-Cisco has released software updates that address this vulnerability. 
+Cisco has released software updates that address this vulnerability.
 
 Workarounds that mitigate this vulnerability are available.
 
-Note: The September 26, 2012, Cisco IOS Software Security Advisory bundled publication includes nine Cisco Security Advisories. Eight of the advisories address vulnerabilities in Cisco IOS Software, and one advisory addresses a vulnerability in Cisco Unified Communications Manager. Each Cisco IOS Software Security Advisory lists the Cisco IOS Software releases that correct the vulnerability or vulnerabilities detailed in the advisory as well as the Cisco IOS Software releases that correct all Cisco IOS Software vulnerabilities in the September 2012 bundled publication. 
+Note: The September 26, 2012, Cisco IOS Software Security Advisory bundled publication includes nine Cisco Security Advisories.
+Eight of the advisories address vulnerabilities in Cisco IOS Software, and one advisory addresses a vulnerability in Cisco Unified Communications Manager.
+Each Cisco IOS Software Security Advisory lists the Cisco IOS Software releases that correct the vulnerability or vulnerabilities detailed in the advisory
+as well as the Cisco IOS Software releases that correct all Cisco IOS Software vulnerabilities in the September 2012 bundled publication.
 
-Individual publication links are in `Cisco Event Response: Semi-Annual Cisco IOS Software Security Advisory Bundled Publication` at the following link: 
+Individual publication links are in `Cisco Event Response: Semi-Annual Cisco IOS Software Security Advisory Bundled Publication` at the referenced link.");
 
-http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_sep12.html
-");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
-
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
- script_tag(name:"creation_date", value:"2016-05-06 14:09:55 +0200 (Fri, 06 May 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-06 14:09:55 +0200 (Fri, 06 May 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version");
  exit(0);
 }
 
@@ -74,7 +75,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'12.4(22)GC1',
 		'12.4(22)GC1a',
 		'12.4(24)GC1',

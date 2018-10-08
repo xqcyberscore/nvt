@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodi_web_server_server_remote_dos_vuln.nasl 9490 2018-04-16 07:16:29Z cfischer $
+# $Id: gb_kodi_web_server_server_remote_dos_vuln.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Kodi Web Server Remote Denial Of Service Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:kodi:kodi";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808283");
-  script_version("$Revision: 9490 $");
+  script_version("$Revision: 11772 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 09:16:29 +0200 (Mon, 16 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-08 18:13:32 +0530 (Mon, 08 Aug 2016)");
   script_name("Kodi Web Server Remote Denial Of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -56,16 +56,13 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to cause the application to crash, creating a denial-of-service
-  condition.
-
-  Impact Level: Application");
+  condition.");
 
   script_tag(name:"affected", value:"Kodi Web Server version 16.1, other versions may also be affected.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since
-  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
-  upgrade to a newer release, disable respective features, remove the product or replace the product by
-  another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -74,7 +71,7 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );

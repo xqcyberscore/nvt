@@ -1,7 +1,6 @@
 ###############################################################################
-# VID b9f3ffa3-dd6c-11e0-b7fc-000a5e1e33c6
 # OpenVAS Vulnerability Test
-# $Id: freebsd_libsndfile1.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_libsndfile1.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID b9f3ffa3-dd6c-11e0-b7fc-000a5e1e33c6
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.70247");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-21 05:47:11 +0200 (Wed, 21 Sep 2011)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");

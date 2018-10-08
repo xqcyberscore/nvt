@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_badlock_vuln.nasl 10398 2018-07-04 12:11:48Z cfischer $
+# $Id: gb_samba_badlock_vuln.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Samba Badlock Critical Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807646");
-  script_version("$Revision: 10398 $");
+  script_version("$Revision: 11772 $");
   script_cve_id("CVE-2016-2118", "CVE-2015-5370", "CVE-2016-2110", "CVE-2016-2111",
                 "CVE-2016-2112", "CVE-2016-2113", "CVE-2016-2114", "CVE-2016-2115",
                 "CVE-2016-0128");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-14 14:39:10 +0530 (Thu, 14 Apr 2016)");
   script_name("Samba Badlock Critical Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -53,6 +53,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The multiple flaws are due to,
+
   - The Multiple errors in DCE-RPC code.
 
   - A spoofing Vulnerability in NETLOGON.
@@ -71,17 +72,15 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   leads to Man-in-the-middle (MITM) attacks, to causes denial of service, to spoof
-  and to obtain sensitive session information.
-
-  Impact Level: Application");
+  and to obtain sensitive session information.");
 
   script_tag(name:"affected", value:"Samba versions 3.0.x through 4.4.1
 
-  -----
+  - ----
 
   NOTE: Samba versions 4.2.11, 4.3.8 are not affected
 
-  -----");
+  - ----");
 
   script_tag(name:"solution", value:"Upgrade to samba version 4.2.11, or 4.3.8,
   or 4.4.2, or later.");

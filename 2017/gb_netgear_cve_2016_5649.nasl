@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_cve_2016_5649.nasl 5054 2017-01-20 13:52:19Z cfi $
+# $Id: gb_netgear_cve_2016_5649.nasl 11768 2018-10-05 14:07:38Z cfischer $
 #
 # Netgear DGN2000, DGND3700 Password Disclosure Vulnerability
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106497");
-  script_version("$Revision: 5054 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-20 14:52:19 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 11768 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-10-05 16:07:38 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name: "creation_date", value: "2017-01-06 12:45:06 +0700 (Fri, 06 Jan 2017)");
-  script_tag(name:"cvss_base", value: "10.0");
-  script_tag(name:"cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-5649");
 

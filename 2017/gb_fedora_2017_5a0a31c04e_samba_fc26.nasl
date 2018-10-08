@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2017_5a0a31c04e_samba_fc26.nasl 7315 2017-09-28 12:38:29Z santu $
+# $Id: gb_fedora_2017_5a0a31c04e_samba_fc26.nasl 11771 2018-10-08 05:52:02Z asteins $
 #
 # Fedora Update for samba FEDORA-2017-5a0a31c04e
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.873454");
-  script_version("$Revision: 7315 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-28 14:38:29 +0200 (Thu, 28 Sep 2017) $");
+  script_version("$Revision: 11771 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 07:52:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-28 09:16:01 +0200 (Thu, 28 Sep 2017)");
   script_cve_id("CVE-2017-12150", "CVE-2017-12151", "CVE-2017-12163");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for samba FEDORA-2017-5a0a31c04e");
   script_tag(name: "summary", value: "Check the version of samba");

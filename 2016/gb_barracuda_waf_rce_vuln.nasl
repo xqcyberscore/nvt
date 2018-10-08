@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_waf_rce_vuln.nasl 8597 2018-01-31 08:42:52Z cfischer $
+# $Id: gb_barracuda_waf_rce_vuln.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Barracuda Web Application Firewall Remote Command Execution Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:barracuda:web_application_firewall';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106150");
-  script_version("$Revision: 8597 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2016-07-25 12:59:46 +0700 (Mon, 25 Jul 2016)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11772 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-25 12:59:46 +0700 (Mon, 25 Jul 2016)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Barracuda Web Application Firewall Remote Command Execution Vulnerability");
 
@@ -49,22 +49,22 @@ if (description)
   script_dependencies("barracuda_web_application_firewall_detect.nasl");
   script_mandatory_keys("barracuda_waf/installed");
 
-  script_tag(name: "summary", value: "Barracuda Web Application Firewall is prone to a remote code exectuion
+  script_tag(name:"summary", value:"Barracuda Web Application Firewall is prone to a remote code exectuion
 vulnerability.");
 
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "By sending a specially crafted request an authenticated attacker may
+  script_tag(name:"insight", value:"By sending a specially crafted request an authenticated attacker may
 inject system commands while escalating to root do to relaxed sudo configurations on the appliances.");
 
-  script_tag(name: "impact", value: "An authenticated attacker may execute arbitrary system commands.");
+  script_tag(name:"impact", value:"An authenticated attacker may execute arbitrary system commands.");
 
-  script_tag(name: "affected", value: "Version <= 8.0.1.007");
+  script_tag(name:"affected", value:"Version <= 8.0.1.007");
 
-  script_tag(name: "solution", value: "Upgrade to Version 8.0.1.008 or later");
+  script_tag(name:"solution", value:"Upgrade to Version 8.0.1.008 or later");
 
-  script_xref(name: "URL", value: "https://packetstormsecurity.com/files/138020/Barracuda-Web-App-Firewall-Load-Balancer-Remote-Root.html");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/138020/Barracuda-Web-App-Firewall-Load-Balancer-Remote-Root.html");
 
   exit(0);
 }

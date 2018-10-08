@@ -1,7 +1,6 @@
 ###############################################################################
-# VID f2b43905-3545-11e0-8e81-0022190034c0
 # OpenVAS Vulnerability Test
-# $Id: freebsd_openoffice.org0.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_openoffice.org0.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID f2b43905-3545-11e0-8e81-0022190034c0
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.68949");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-05 22:25:39 +0100 (Sat, 05 Mar 2011)");
   script_cve_id("CVE-2010-2935", "CVE-2010-2936", "CVE-2010-3450", "CVE-2010-3451",
                "CVE-2010-3452", "CVE-2010-3453", "CVE-2010-3454", "CVE-2010-3689",

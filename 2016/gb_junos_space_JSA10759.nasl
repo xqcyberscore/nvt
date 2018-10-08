@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_space_JSA10759.nasl 4357 2016-10-26 15:42:21Z mime $
+# $Id: gb_junos_space_JSA10759.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Junos Space OpenSSL Security Updates
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:juniper:junos_space";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140019");
-  script_version("$Revision: 4357 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-10-26 17:42:21 +0200 (Wed, 26 Oct 2016) $");
-  script_tag(name: "creation_date", value: "2016-10-26 14:51:46 +0200 (Wed, 26 Oct 2016)");
+  script_version("$Revision: 11772 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-26 14:51:46 +0200 (Wed, 26 Oct 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_cve_id("CVE-2016-0703","CVE-2016-0800","CVE-2016-2108","CVE-2016-6304","CVE-2015-3194","CVE-2015-3195","CVE-2016-0704","CVE-2015-3197","CVE-2016-0702","CVE-2016-0797","CVE-2016-0799","CVE-2016-2105","CVE-2016-2106","CVE-2016-2109","CVE-2016-6303","CVE-2016-2179","CVE-2016-2182","CVE-2016-2180","CVE-2016-2181","CVE-2016-6302","CVE-2016-2177","CVE-2016-2178","CVE-2016-6306");
+  script_cve_id("CVE-2016-0703", "CVE-2016-0800", "CVE-2016-2108", "CVE-2016-6304", "CVE-2015-3194", "CVE-2015-3195", "CVE-2016-0704", "CVE-2015-3197", "CVE-2016-0702", "CVE-2016-0797", "CVE-2016-0799", "CVE-2016-2105", "CVE-2016-2106", "CVE-2016-2109", "CVE-2016-6303", "CVE-2016-2179", "CVE-2016-2182", "CVE-2016-2180", "CVE-2016-2181", "CVE-2016-6302", "CVE-2016-2177", "CVE-2016-2178", "CVE-2016-6306");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos Space OpenSSL Security Updates");
 
@@ -51,15 +51,15 @@ if (description)
   script_dependencies("gb_junos_space_version.nasl");
   script_mandatory_keys("junos_space/installed");
 
-  script_tag(name: "summary", value: "The OpenSSL project has published a set of security advisories for vulnerabilities resolved in the OpenSSL library in December 2015, March, May, June, August and September 2016. Junos Space is potentially affected by many of these issues.");
+  script_tag(name:"summary", value:"The OpenSSL project has published a set of security advisories for vulnerabilities resolved in the OpenSSL library in December 2015, March, May, June, August and September 2016. Junos Space is potentially affected by many of these issues.");
 
-  script_tag(name: "affected", value: "Junos Space < 16.1R1");
+  script_tag(name:"affected", value:"Junos Space < 16.1R1");
 
-  script_tag(name: "solution", value: "OpenSSL software has been upgraded to 1.0.1t in Junos Space 16.1R1 (pending release) to resolve all the issues ");
+  script_tag(name:"solution", value:"OpenSSL software has been upgraded to 1.0.1t in Junos Space 16.1R1 (pending release) to resolve all the issues ");
 
-  script_xref(name: "URL", value: "https://kb.juniper.net/InfoCenter/index?page=content&id=JSA10759");
+  script_xref(name:"URL", value:"https://kb.juniper.net/InfoCenter/index?page=content&id=JSA10759");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   exit(0);
 }

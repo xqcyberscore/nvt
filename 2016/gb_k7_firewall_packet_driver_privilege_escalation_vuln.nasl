@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k7_firewall_packet_driver_privilege_escalation_vuln.nasl 11392 2018-09-14 14:36:38Z cfischer $
+# $Id: gb_k7_firewall_packet_driver_privilege_escalation_vuln.nasl 11767 2018-10-05 13:34:39Z cfischer $
 #
 # K7Firewall Packet Driver Privilege Escalation Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809088");
-  script_version("$Revision: 11392 $");
+  script_version("$Revision: 11767 $");
   script_cve_id("CVE-2014-7136");
   script_bugtraq_id(71611);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 16:36:38 +0200 (Fri, 14 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-07 14:25:26 +0530 (Mon, 07 Nov 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("K7Firewall Packet Driver Privilege Escalation Vulnerability");
@@ -55,8 +55,7 @@ if(description)
   and possibly earlier.");
 
   script_tag(name:"solution", value:"Upgrade to K7Firewall Packet Driver
-  version 14.0.1.16 or later.
-  For updates refer to https://www.k7computing.com");
+  version 14.0.1.16 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -83,19 +82,15 @@ if(!registry_key_exists(key:"SOFTWARE\K7 Computing") &&
 }
 
 infos = kb_smb_wmi_connectinfo();
-if (!infos) exit(0);
+if(!infos) exit(0);
 
 handle = wmi_connect(host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"]);
-if(!handle){
-  exit(0);
-}
+if(!handle) exit(0);
 
 query = 'SELECT Version FROM CIM_DataFile WHERE FileName = ' + raw_string(0x22) + 'K7FWFilt' + raw_string(0x22) + ' AND Extension = ' + raw_string(0x22) + 'sys' + raw_string(0x22);
 fileVer = wmi_query(wmi_handle:handle, query:query);
 wmi_close(wmi_handle:handle);
-if(!fileVer){
-  exit(0);
-}
+if(!fileVer) exit(0);
 
 foreach ver (split(fileVer)){
   ver = eregmatch(pattern:"\k7fwfilt.sys.?([0-9.]+)", string:ver);

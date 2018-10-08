@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 9da3834b-6a50-11e1-91af-003067b2972c
 # OpenVAS Vulnerability Test
-# $Id: freebsd_linux-f10-flashplugin0.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_linux-f10-flashplugin0.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 9da3834b-6a50-11e1-91af-003067b2972c
 #
@@ -33,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2012-0768", "CVE-2012-0769");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-12 11:35:07 -0400 (Mon, 12 Mar 2012)");
   script_name("FreeBSD Ports: linux-f10-flashplugin");
   script_category(ACT_GATHER_INFO);
@@ -47,15 +46,15 @@ if(description)
 
 CVE-2012-0768
 The Matrix3D component in Adobe Flash Player before 10.3.183.16 and
-11.x before 11.1.102.63 on Windows, Mac OS X, Linux, and Solaris;
-before 11.1.111.7 on Android 2.x and 3.x; and before 11.1.115.7 on
+11.x before 11.1.102.63 on Windows, Mac OS X, Linux, and Solaris,
+before 11.1.111.7 on Android 2.x and 3.x, and before 11.1.115.7 on
 Android 4.x allows attackers to execute arbitrary code or cause a
 denial of service (memory corruption) via unspecified vectors.
 
 CVE-2012-0769
 Adobe Flash Player before 10.3.183.16 and 11.x before 11.1.102.63 on
-Windows, Mac OS X, Linux, and Solaris; before 11.1.111.7 on Android
-2.x and 3.x; and before 11.1.115.7 on Android 4.x does not properly
+Windows, Mac OS X, Linux, and Solaris, before 11.1.111.7 on Android
+2.x and 3.x, and before 11.1.115.7 on Android 4.x does not properly
 handle integers, which allows attackers to obtain sensitive
 information via unspecified vectors.");
 

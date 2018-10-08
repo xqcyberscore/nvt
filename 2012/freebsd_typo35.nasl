@@ -1,7 +1,6 @@
 ###############################################################################
-# VID c28ee9cd-916e-4dcf-8ed3-e97e5846db6c
 # OpenVAS Vulnerability Test
-# $Id: freebsd_typo35.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_typo35.nasl 11768 2018-10-05 14:07:38Z cfischer $
 #
 # Auto generated from VID c28ee9cd-916e-4dcf-8ed3-e97e5846db6c
 #
@@ -30,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.71527");
-  script_version("$Revision: 11757 $");
+  script_version("$Revision: 11768 $");
   script_cve_id("CVE-2012-3414");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 16:07:38 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-10 03:22:17 -0400 (Fri, 10 Aug 2012)");
   script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("FreeBSD Ports: typo3");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");

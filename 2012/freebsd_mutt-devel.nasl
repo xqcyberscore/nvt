@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 49314321-7fd4-11e1-9582-001b2134ef46
 # OpenVAS Vulnerability Test
-# $Id: freebsd_mutt-devel.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_mutt-devel.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 49314321-7fd4-11e1-9582-001b2134ef46
 #
@@ -33,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_cve_id("CVE-2011-1429");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-30 07:59:26 -0400 (Mon, 30 Apr 2012)");
   script_name("FreeBSD Ports: mutt-devel");
   script_category(ACT_GATHER_INFO);

@@ -1,7 +1,6 @@
 ###############################################################################
-# VID a460035e-d111-11e1-aff7-001fd056c417
 # OpenVAS Vulnerability Test
-# $Id: freebsd_libjpeg-turbo.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_libjpeg-turbo.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID a460035e-d111-11e1-aff7-001fd056c417
 #
@@ -33,8 +32,8 @@ if(description)
   script_cve_id("CVE-2012-2806");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-10 03:22:17 -0400 (Fri, 10 Aug 2012)");
   script_name("FreeBSD Ports: libjpeg-turbo");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tiv_tsm_info_disclosure_vuln.nasl 5877 2017-04-06 09:01:48Z teissa $ 
+# $Id: gb_ibm_tiv_tsm_info_disclosure_vuln.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # IBM Tivoli Storage Manager Information Disclosure Vulnerability
 #
@@ -29,28 +29,25 @@ CPE = "cpe:/a:ibm:tivoli_storage_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808637");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 11772 $");
   script_cve_id("CVE-2016-2894");
   script_bugtraq_id(91534);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-04 13:52:16 +0530 (Tue, 04 Oct 2016)");
   script_name("IBM Tivoli Storage Manager Information Disclosure Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with IBM Tivoli Storage
   Manager and is prone to information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw is due to the ACL associated with a 
+  script_tag(name:"insight", value:"The flaw is due to the ACL associated with a
   file or directory object may be lost after an archive/retrieve on some condition.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow a local 
-  user to access files they are otherwise not allowed to access.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow a local
+  user to access files they are otherwise not allowed to access.");
 
   script_tag(name:"affected", value:"IBM Tivoli Storage Manager version 5.5 through
   6.3 before 6.3.2.6, 6.4 before 6.4.3.3, and 7.1 before 7.1.6");
@@ -62,7 +59,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21985579");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21985579");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -76,21 +73,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-tivVer = "";
-
-## Get version
 if(!tivVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check for vulnerable version
 if(version_in_range(version:tivVer, test_version:"5.5", test_version2:"6.3.2.5"))
 {
   fix = "6.3.2.6";
   VULN = TRUE;
 }
- 
+
 else if(version_in_range(version:tivVer, test_version:"6.4", test_version2:"6.4.3.2"))
 {
   fix = "6.4.3.3";

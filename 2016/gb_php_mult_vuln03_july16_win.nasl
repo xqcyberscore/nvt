@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln03_july16_win.nasl 10457 2018-07-09 06:23:47Z cfischer $
+# $Id: gb_php_mult_vuln03_july16_win.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # PHP Multiple Vulnerabilities - 03 - Jul16 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808602");
-  script_version("$Revision: 10457 $");
+  script_version("$Revision: 11772 $");
   script_cve_id("CVE-2016-4537", "CVE-2016-4538", "CVE-2016-4539", "CVE-2016-4540",
                 "CVE-2016-4541", "CVE-2016-4542", "CVE-2016-4543", "CVE-2016-4544");
   script_bugtraq_id(89844, 90172, 90173, 90174);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:23:47 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 12:14:00 +0530 (Thu, 14 Jul 2016)");
   script_name("PHP Multiple Vulnerabilities - 03 - Jul16 (Windows)");
 
@@ -52,7 +52,7 @@ if(description)
   - An improper validation of IFD sizes in 'exif_process_TIFF_in_JPEG' function
     in 'ext/exif/exif.c' script.
 
-  - An improper construction of spprintf arguments,in 'exif_process_TIFF_in_JPEG'
+  - An improper construction of spprintf arguments, in 'exif_process_TIFF_in_JPEG'
     function in 'ext/exif/exif.c' script.
 
   - An error in 'grapheme_strpos function' in 'ext/intl/grapheme/grapheme_string.c'.
@@ -70,9 +70,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to cause a denial of service (out-of-bounds read) or possibly
-  have unspecified other impact.
-
-  Impact Level: Application");
+  have unspecified other impact.");
 
   script_tag(name:"affected", value:"PHP versions prior to 5.5.35, 5.6.x before
   5.6.21, and 7.x before 7.0.6 on Windows.");

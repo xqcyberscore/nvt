@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 174b8864-6237-11e1-be18-14dae938ec40
 # OpenVAS Vulnerability Test
-# $Id: freebsd_postgresql-client0.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_postgresql-client0.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 174b8864-6237-11e1-be18-14dae938ec40
 #
@@ -33,8 +32,8 @@ if(description)
   script_cve_id("CVE-2012-0866", "CVE-2012-0867", "CVE-2012-0868");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-12 11:35:07 -0400 (Mon, 12 Mar 2012)");
   script_name("FreeBSD Ports: postgresql-client");
   script_category(ACT_GATHER_INFO);

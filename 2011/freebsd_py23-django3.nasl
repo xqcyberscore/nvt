@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 14a37474-1383-11e0-8a58-00215c6a37bb
 # OpenVAS Vulnerability Test
-# $Id: freebsd_py23-django3.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_py23-django3.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 14a37474-1383-11e0-8a58-00215c6a37bb
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.68824");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-24 17:55:59 +0100 (Mon, 24 Jan 2011)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");

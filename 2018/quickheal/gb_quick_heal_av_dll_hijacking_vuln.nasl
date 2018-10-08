@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_heal_av_dll_hijacking_vuln.nasl 10758 2018-08-03 12:49:20Z santu $
+# $Id: gb_quick_heal_av_dll_hijacking_vuln.nasl 11771 2018-10-08 05:52:02Z asteins $
 #
 # Quick Heal Anti-Virus Pro DLL Hijacking Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:quickheal:antivirus_pro";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813594");
-  script_version("$Revision: 10758 $");
+  script_version("$Revision: 11771 $");
   script_cve_id("CVE-2018-8090");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 14:49:20 +0200 (Fri, 03 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 07:52:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-02 16:39:04 +0530 (Thu, 02 Aug 2018)");
   script_name("Quick Heal Anti-Virus Pro DLL Hijacking Vulnerability");
 

@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 32b05547-6913-11e0-bdc4-001b2134ef46
 # OpenVAS Vulnerability Test
-# $Id: freebsd_linux-flashplugin14.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_linux-flashplugin14.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 32b05547-6913-11e0-bdc4-001b2134ef46
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.69593");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-05-12 19:21:50 +0200 (Thu, 12 May 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -51,8 +50,8 @@ if(description)
 
 CVE-2011-0611
 Adobe Flash Player before 10.2.154.27 on Windows, Mac OS X, Linux, and
-Solaris and 10.2.156.12 and earlier on Android; Adobe AIR before
-2.6.19140; and Authplay.dll (aka AuthPlayLib.bundle) in Adobe Reader
+Solaris and 10.2.156.12 and earlier on Android, Adobe AIR before
+2.6.19140, and Authplay.dll (aka AuthPlayLib.bundle) in Adobe Reader
 9.x before 9.4.4 and 10.x through 10.0.1 on Windows, Adobe Reader 9.x
 before 9.4.4 and 10.x before 10.0.3 on Mac OS X, and Adobe Acrobat 9.x
 before 9.4.4 and 10.x before 10.0.3 on Windows and Mac OS X allow

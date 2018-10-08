@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 91be81e7-3fea-11e1-afc7-2c4138874f7d
 # OpenVAS Vulnerability Test
-# $Id: freebsd_jruby.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_jruby.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 91be81e7-3fea-11e1-afc7-2c4138874f7d
 #
@@ -33,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_cve_id("CVE-2011-4838", "CVE-2011-4815", "CVE-2011-5036", "CVE-2011-5037");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-12 07:27:20 -0500 (Sun, 12 Feb 2012)");
   script_name("FreeBSD Ports: jruby");
   script_category(ACT_GATHER_INFO);

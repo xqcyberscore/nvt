@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 06a12e26-142e-11e0-bea2-0015f2db7bde
 # OpenVAS Vulnerability Test
-# $Id: freebsd_webkit-gtk22.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_webkit-gtk22.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 06a12e26-142e-11e0-bea2-0015f2db7bde
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.68823");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-24 17:55:59 +0100 (Mon, 24 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -54,15 +53,15 @@ service via vectors involving a JavaScript array index.
 CVE-2010-3812
 Integer overflow in the Text::wholeText method in dom/Text.cpp in
 WebKit, as used in Apple Safari before 5.0.3 on Mac OS X 10.5 through
-10.6 and Windows, and before 4.1.3 on Mac OS X 10.4; webkitgtk before
-1.2.6; and possibly other products allows remote attackers to execute
+10.6 and Windows, and before 4.1.3 on Mac OS X 10.4, webkitgtk before
+1.2.6, and possibly other products allows remote attackers to execute
 arbitrary code or cause a denial of service via vectors involving Text objects.
 
 CVE-2010-3813
 The WebCore::HTMLLinkElement::process function in
 WebCore/html/HTMLLinkElement.cpp in WebKit, as used in Apple Safari
 before 5.0.3 on Mac OS X 10.5 through 10.6 and Windows, and before
-4.1.3 on Mac OS X 10.4; webkitgtk before 1.2.6; and possibly other
+4.1.3 on Mac OS X 10.4, webkitgtk before 1.2.6, and possibly other
 products does not verify whether DNS prefetching is enabled when
 processing an HTML LINK element, which allows remote attackers to
 bypass intended access restrictions, as demonstrated by an HTML e-mail

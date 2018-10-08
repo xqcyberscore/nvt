@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 4cdfe875-e8d6-11e1-bea0-002354ed89bc
 # OpenVAS Vulnerability Test
-# $Id: freebsd_wireshark7.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_wireshark7.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 4cdfe875-e8d6-11e1-bea0-002354ed89bc
 #
@@ -33,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2012-4048", "CVE-2012-4049", "CVE-2012-4285", "CVE-2012-4286", "CVE-2012-4287", "CVE-2012-4288", "CVE-2012-4289", "CVE-2012-4290", "CVE-2012-4291", "CVE-2012-4292", "CVE-2012-4293", "CVE-2012-4294", "CVE-2012-4295", "CVE-2012-4296", "CVE-2012-4297", "CVE-2012-4298");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 11:34:18 -0400 (Thu, 30 Aug 2012)");
   script_name("FreeBSD Ports: wireshark");
   script_category(ACT_GATHER_INFO);

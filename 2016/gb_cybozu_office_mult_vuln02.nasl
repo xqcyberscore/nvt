@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_office_mult_vuln02.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_cybozu_office_mult_vuln02.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Cybozu Office Multiple Vulnerabilities-02 Feb16
 #
@@ -29,18 +29,18 @@ CPE = "cpe:/a:cybozu:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807277");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11772 $");
   script_cve_id("CVE-2016-1150", "CVE-2016-1149", "CVE-2015-7798", "CVE-2015-7797",
                 "CVE-2015-7796", "CVE-2015-7795", "CVE-2015-8487");
-  script_bugtraq_id(83286, 83289 );
+  script_bugtraq_id(83286, 83289);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-03 18:23:43 +0530 (Thu, 03 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cybozuo Office Multiple Vulnerabilities-02 Feb16");
 
-  script_tag(name:"summary" , value:"The host is installed with Cybozu Office
+  script_tag(name:"summary", value:"The host is installed with Cybozu Office
   and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help of
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause information disclosure or arbitrary script may be executed
-  on the user's web browser.
- 
-  Impact Level: Application");
+  on the user's web browser.");
 
   script_tag(name:"affected", value:"Cybozu Office version 9.0.0 to 10.3.0");
   script_tag(name:"solution", value:"Upgrade to Cybozu Office version 10.4.0
@@ -76,11 +74,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-cybVer = "";
-cybPort = "";
-
-## Get version
 if(!cybPort = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -89,7 +82,6 @@ if(!cybVer = get_app_version(port:cybPort, cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_in_range(version:cybVer, test_version:"9.0.0", test_version2:"10.3.0"))
 {
   report = report_fixed_ver(installed_version:cybVer, fixed_version:"10.4.0");

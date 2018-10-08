@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powershell_editor_services_rce_vuln.nasl 11317 2018-09-11 08:57:27Z asteins $
+# $Id: gb_powershell_editor_services_rce_vuln.nasl 11767 2018-10-05 13:34:39Z cfischer $
 #
 # Microsoft PowerShell Editor Services Remote Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813676");
-  script_version("$Revision: 11317 $");
+  script_version("$Revision: 11767 $");
   script_cve_id("CVE-2018-8327");
   script_bugtraq_id(104649);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 14:49:04 +0530 (Tue, 17 Jul 2018)");
   script_name("Microsoft PowerShell Editor Services Remote Code Execution Vulnerability");
 
@@ -46,14 +46,12 @@ if(description)
   local connections by PowerShell Editor Services.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to execute malicious code on a vulnerable system.
-
-  Impact Level: System/Application");
+  to execute malicious code on a vulnerable system.");
 
   script_tag(name:"affected", value:"PowerShell Editor Services 1.7.0 and below.");
 
   script_tag(name:"solution", value:"Upgrade PowerShell Editor Services to
-  version 1.8.0 or later. For updates refer to Reference links.");
+  version 1.8.0 or later. Please see the references for more info.");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -64,8 +62,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
-
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
+
   exit(0);
 }
 
@@ -74,24 +72,17 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-host    = get_host_ip();
-usrname = get_kb_item( "SMB/login" );
-passwd  = get_kb_item( "SMB/password" );
-if( ! host || ! usrname || ! passwd ) exit( 0 );
+infos = kb_smb_wmi_connectinfo();
+if( ! infos ) exit( 0 );
 
-domain  = get_kb_item( "SMB/domain" );
-if( domain ) usrname = domain + '\\' + usrname;
-
-handle = wmi_connect( host:host, username:usrname, password:passwd );
+handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
 query = 'Select Version from CIM_DataFile Where FileName ='
         + raw_string(0x22) + 'Microsoft.PowerShell.EditorServices' + raw_string(0x22) + ' AND Extension ='
         + raw_string(0x22) + 'dll' + raw_string(0x22);
 fileVer = wmi_query( wmi_handle:handle, query:query);
-
 wmi_close( wmi_handle:handle );
-
 if(!fileVer) exit( 0 );
 
 foreach ver(split( fileVer ))

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_eb5ea0abaf_NetworkManager-vpnc_fc28.nasl 10637 2018-07-26 09:34:03Z santu $
+# $Id: gb_fedora_2018_eb5ea0abaf_NetworkManager-vpnc_fc28.nasl 11768 2018-10-05 14:07:38Z cfischer $
 #
 # Fedora Update for NetworkManager-vpnc FEDORA-2018-eb5ea0abaf
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874848");
-  script_version("$Revision: 10637 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 11:34:03 +0200 (Thu, 26 Jul 2018) $");
+  script_version("$Revision: 11768 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 16:07:38 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-24 06:10:09 +0200 (Tue, 24 Jul 2018)");
   script_cve_id("CVE-2018-10900");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for NetworkManager-vpnc FEDORA-2018-eb5ea0abaf");
   script_tag(name:"summary", value:"Check the version of NetworkManager-vpnc");

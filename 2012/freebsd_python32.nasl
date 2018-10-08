@@ -1,7 +1,6 @@
 ###############################################################################
-# VID b4f8be9e-56b2-11e1-9fb7-003067b2972c
 # OpenVAS Vulnerability Test
-# $Id: freebsd_python32.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_python32.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID b4f8be9e-56b2-11e1-9fb7-003067b2972c
 #
@@ -33,8 +32,8 @@ if(description)
   script_cve_id("CVE-2012-0845");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-12 11:35:07 -0400 (Mon, 12 Mar 2012)");
   script_name("FreeBSD Ports: python32");
   script_category(ACT_GATHER_INFO);

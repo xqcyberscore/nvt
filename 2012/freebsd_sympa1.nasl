@@ -1,7 +1,6 @@
 ###############################################################################
-# VID de6d8290-aef7-11e1-898f-14dae938ec40
 # OpenVAS Vulnerability Test
-# $Id: freebsd_sympa1.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_sympa1.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID de6d8290-aef7-11e1-898f-14dae938ec40
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.71543");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-10 03:22:17 -0400 (Fri, 10 Aug 2012)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");

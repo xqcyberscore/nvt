@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_animate_memory_corruption_vuln_win.nasl 4839 2016-12-22 11:01:44Z antu123 $
+# $Id: gb_adobe_animate_memory_corruption_vuln_win.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Adobe Animate Memory Corruption Vulnerability-(Windows)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:adobe:animate";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809769");
-  script_version("$Revision: 4839 $");
+  script_version("$Revision: 11772 $");
   script_cve_id("CVE-2016-7866");
   script_bugtraq_id(94872);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-22 12:01:44 +0100 (Thu, 22 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-19 18:47:54 +0530 (Mon, 19 Dec 2016)");
   script_name("Adobe Animate Memory Corruption Vulnerability-(Windows)");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Animate
   and is prone to memory corruption vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists when creating '.FLA' files
   with ActionScript Classes that use overly long Class names. This causes memory
@@ -50,9 +49,7 @@ if(description)
   created '.Fla' Flash file.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to
-  run arbitrary code execution or conduct a denial of service condition.
-
-  Impact Level: System/Application");
+  run arbitrary code execution or conduct a denial of service condition.");
 
   script_tag(name:"affected", value:"Adobe Animate version 15.2.1.95 and earlier
   on Windows");
@@ -81,15 +78,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-adVer = "";
-
-## Get version
 if(!adVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:adVer, test_version:"16.0.0.112"))
 {
   report = report_fixed_ver(installed_version:adVer, fixed_version:"16.0.0.112");

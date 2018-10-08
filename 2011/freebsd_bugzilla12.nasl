@@ -1,7 +1,6 @@
 ###############################################################################
-# VID c8c927e5-2891-11e0-8f26-00151735203a
 # OpenVAS Vulnerability Test
-# $Id: freebsd_bugzilla12.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_bugzilla12.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID c8c927e5-2891-11e0-8f26-00151735203a
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.68959");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-05 22:25:39 +0100 (Sat, 05 Mar 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -47,8 +46,8 @@ if(description)
   script_tag(name:"insight", value:"The following package is affected: bugzilla
 
 CVE-2010-4568
-Bugzilla 2.14 through 2.22.7; 3.0.x, 3.1.x, and 3.2.x before 3.2.10;
-3.4.x before 3.4.10; 3.6.x before 3.6.4; and 4.0.x before 4.0rc2 does
+Bugzilla 2.14 through 2.22.7, 3.0.x, 3.1.x, and 3.2.x before 3.2.10,
+3.4.x before 3.4.10, 3.6.x before 3.6.4 and 4.0.x before 4.0rc2 does
 not properly generate random values for cookies and tokens, which
 allows remote attackers to obtain access to arbitrary accounts via
 unspecified vectors.

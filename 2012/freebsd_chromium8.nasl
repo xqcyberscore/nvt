@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 057130e6-7f61-11e1-8a43-00262d5ed8ee
 # OpenVAS Vulnerability Test
-# $Id: freebsd_chromium8.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_chromium8.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 057130e6-7f61-11e1-8a43-00262d5ed8ee
 #
@@ -33,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2011-3066", "CVE-2011-3067", "CVE-2011-3068", "CVE-2011-3069", "CVE-2011-3070", "CVE-2011-3071", "CVE-2011-3072", "CVE-2011-3073", "CVE-2011-3074", "CVE-2011-3075", "CVE-2011-3076", "CVE-2011-3077");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-30 07:59:26 -0400 (Mon, 30 Apr 2012)");
   script_name("FreeBSD Ports: chromium");
   script_category(ACT_GATHER_INFO);

@@ -1,7 +1,6 @@
 ###############################################################################
-# VID f63bf080-619d-11e1-91af-003067b2972c
 # OpenVAS Vulnerability Test
-# $Id: freebsd_linux-f10-flashplugin1.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_linux-f10-flashplugin1.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID f63bf080-619d-11e1-91af-003067b2972c
 #
@@ -33,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2012-0751", "CVE-2012-0752", "CVE-2012-0753", "CVE-2012-0754", "CVE-2012-0755", "CVE-2012-0756", "CVE-2012-0767");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-12 11:35:07 -0400 (Mon, 12 Mar 2012)");
   script_name("FreeBSD Ports: linux-f10-flashplugin");
   script_category(ACT_GATHER_INFO);

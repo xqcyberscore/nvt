@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 45f102cd-4456-11e0-9580-4061862b8c22
 # OpenVAS Vulnerability Test
-# $Id: freebsd_firefox54.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_firefox54.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 45f102cd-4456-11e0-9580-4061862b8c22
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.69147");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-09 05:54:11 +0100 (Wed, 09 Mar 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

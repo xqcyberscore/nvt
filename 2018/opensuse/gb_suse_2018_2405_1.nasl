@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2405_1.nasl 11092 2018-08-23 09:40:58Z santu $
+# $Id: gb_suse_2018_2405_1.nasl 11771 2018-10-08 05:52:02Z asteins $
 #
 # SuSE Update for php7 openSUSE-SU-2018:2405-1 (php7)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851861");
-  script_version("$Revision: 11092 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 11:40:58 +0200 (Thu, 23 Aug 2018) $");
+  script_version("$Revision: 11771 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 07:52:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-18 06:33:27 +0200 (Sat, 18 Aug 2018)");
   script_cve_id("CVE-2017-9120", "CVE-2018-14851");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for php7 openSUSE-SU-2018:2405-1 (php7)");
   script_tag(name:"summary", value:"Check the version of php7");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_system_io_pipelines_dos_vuln_sep18_win.nasl 11389 2018-09-14 14:20:05Z bshakeel $
+# $Id: gb_system_io_pipelines_dos_vuln_sep18_win.nasl 11767 2018-10-05 13:34:39Z cfischer $
 #
 # 'System.IO.Pipelines' Denial of Service Vulnerability Sep18 (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814210");
-  script_version("$Revision: 11389 $");
+  script_version("$Revision: 11767 $");
   script_cve_id("CVE-2018-8409");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-14 16:20:05 +0200 (Fri, 14 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-14 16:54:50 +0530 (Fri, 14 Sep 2018)");
   script_name("'System.IO.Pipelines' Denial of Service Vulnerability Sep18 (Windows)");
 
@@ -46,14 +46,12 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to cause a denial of service against an application that is leveraging
-  System.IO.Pipelines.
-
-  Impact Level: System/Application");
+  System.IO.Pipelines.");
 
   script_tag(name:"affected", value:"System.IO.Pipelines package version 4.5.0");
 
   script_tag(name:"solution", value:"Upgrade to  System.IO.Pipelines package
-  version 4.5.1 or later. For updates refer to Reference links.");
+  version 4.5.1 or later. Please see the referenced links for more info.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -69,6 +67,7 @@ if(description)
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
+
   exit(0);
 }
 
@@ -77,24 +76,17 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-host    = get_host_ip();
-usrname = get_kb_item( "SMB/login" );
-passwd  = get_kb_item( "SMB/password" );
-if( ! host || ! usrname || ! passwd ) exit( 0 );
+infos = kb_smb_wmi_connectinfo();
+if( ! infos ) exit( 0 );
 
-domain  = get_kb_item( "SMB/domain" );
-if( domain ) usrname = domain + '\\' + usrname;
-
-handle = wmi_connect( host:host, username:usrname, password:passwd );
+handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
 query1 = 'Select Version from CIM_DataFile Where FileName ='
         + raw_string(0x22) + 'system.io.pipelines.4.5.0' + raw_string(0x22) + ' AND Extension ='
         + raw_string(0x22) + 'nupkg' + raw_string(0x22);
 fileVer1 = wmi_query( wmi_handle:handle, query:query1);
-
 wmi_close( wmi_handle:handle );
-
 if(!fileVer1) exit( 0 );
 
 foreach ver(split( fileVer1 ))

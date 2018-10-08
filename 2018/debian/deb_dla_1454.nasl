@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1454.nasl 10693 2018-07-31 14:04:24Z cfischer $
+# $Id: deb_dla_1454.nasl 11768 2018-10-05 14:07:38Z cfischer $
 #
 # Auto-generated from advisory DLA 1454-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891454");
-  script_version("$Revision: 10693 $");
+  script_version("$Revision: 11768 $");
   script_cve_id("CVE-2018-10900");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1454-1] network-manager-vpnc security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 16:04:24 +0200 (Tue, 31 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 16:07:38 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-31 00:00:00 +0200 (Tue, 31 Jul 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

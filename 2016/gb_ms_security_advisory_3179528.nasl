@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_security_advisory_3179528.nasl 5650 2017-03-21 10:00:45Z teissa $
+# $Id: gb_ms_security_advisory_3179528.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Microsoft Kernel Mode Blacklist Update Security Advisory (3179528)
 #
@@ -27,29 +27,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808655");
-  script_version("$Revision: 5650 $");
+  script_version("$Revision: 11772 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-17 11:46:52 +0530 (Wed, 17 Aug 2016)");
   script_name("Microsoft Kernel Mode Blacklist Update Security Advisory (3179528)");
 
   script_tag(name:"summary", value:"This host is missing a security
   update according to Microsoft advisory (3179528).");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw is due to Windows Secure Kernel Mode 
+  script_tag(name:"insight", value:"The flaw is due to Windows Secure Kernel Mode
   improperly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a
-  locally-authenticated attacker to read sensitive information on the target system.
+  locally-authenticated attacker to read sensitive information on the target system.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 10 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64
   Windows 10 Version 1511 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -62,14 +58,15 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3176493");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3176492");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/3179528");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3176493");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/3176492");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/3179528");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -80,38 +77,28 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-edgedllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-## Get Version from Edgehtml.dll
 edgedllVer = fetch_file_version(sysPath, file_name:"system32\edgehtml.dll");
 if(!edgedllVer){
   exit(0);
 }
 
-## Windows 10
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Check for Edgehtml.dll version
   if(version_is_less(version:edgedllVer, test_version:"11.0.10240.17071"))
   {
     Vulnerable_range = "Less than 11.0.10240.17071";
     VULN = TRUE ;
   }
 
-  ##Windows 10 Version 1511
   else if(version_in_range(version:edgedllVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.544"))
   {
     Vulnerable_range = "11.0.10586.0 - 11.0.10586.544";

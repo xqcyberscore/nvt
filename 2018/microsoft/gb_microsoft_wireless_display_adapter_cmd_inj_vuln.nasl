@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_wireless_display_adapter_cmd_inj_vuln.nasl 11292 2018-09-10 03:14:17Z ckuersteiner $
+# $Id: gb_microsoft_wireless_display_adapter_cmd_inj_vuln.nasl 11767 2018-10-05 13:34:39Z cfischer $
 #
 # Microsoft Wireless Display Adapter Command Injection Vulnerability
 #
@@ -27,35 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813702");
-  script_version("$Revision: 11292 $");
+  script_version("$Revision: 11767 $");
   script_cve_id("CVE-2018-8306");
   script_tag(name:"cvss_base", value:"5.2");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 05:14:17 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 15:16:38 +0530 (Tue, 17 Jul 2018)");
   script_name("Microsoft Wireless Display Adapter Command Injection Vulnerability");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Advisory for CVE-2018-8306.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error when the
   Microsoft Wireless Display Adapter does not properly manage user input.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to send administrative commands to the MWDA, including commands with illegal
-  characters which could cause the MWDA to stop functioning correctly.
-
-  Impact Level: Application");
+  characters which could cause the MWDA to stop functioning correctly.");
 
   script_tag(name:"affected", value:"Microsoft Wireless Display Adapter V2
   Software Version 2.0.8350, 2.0.8365 and 2.0.8372");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the Reference link.");
+  from the referenced link.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -67,6 +64,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "WMI/access_successful");
   script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -89,23 +87,19 @@ if(storelocation){
   exit(0);
 }
 
-host    = get_host_ip();
-usrname = get_kb_item( "SMB/login" );
-passwd  = get_kb_item( "SMB/password" );
-if( !host || !usrname || !passwd ) exit(0);
+infos = kb_smb_wmi_connectinfo();
+if( ! infos ) exit( 0 );
 
-domain  = get_kb_item( "SMB/domain" );
-if(domain) usrname = domain + '\\' + usrname;
-
-handle = wmi_connect( host:host, username:usrname, password:passwd );
-
+handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
 query = 'Select Version from CIM_DataFile Where FileName ='
         + raw_string(0x22) + 'wirelessdisplayadapter' + raw_string(0x22)
         + ' AND Extension =' + raw_string(0x22) + 'dll' + raw_string(0x22);
-
 fileVer = wmi_query( wmi_handle:handle, query:query);
+wmi_close(wmi_handle:handle);
+if(!fileVer) exit(0);
+
 foreach ver(split(fileVer))
 {
   if( ver == "Version" ) continue;
@@ -127,10 +121,9 @@ foreach ver(split(fileVer))
     {
       report = report_fixed_ver(installed_version:version, fixed_version:"3.0.124.0", install_path:filePath);
       security_message(data:report);
-      wmi_close( wmi_handle:handle );
       exit(0);
     }
   }
 }
-wmi_close( wmi_handle:handle );
+
 exit(0);

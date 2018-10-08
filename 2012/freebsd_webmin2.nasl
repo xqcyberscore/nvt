@@ -1,7 +1,6 @@
 ###############################################################################
-# VID ec89dc70-2515-11e2-8eda-000a5e1e33c6
 # OpenVAS Vulnerability Test
-# $Id: freebsd_webmin2.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_webmin2.nasl 11768 2018-10-05 14:07:38Z cfischer $
 #
 # Auto generated from VID ec89dc70-2515-11e2-8eda-000a5e1e33c6
 #
@@ -30,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.72613");
-  script_version("$Revision: 11757 $");
+  script_version("$Revision: 11768 $");
   script_cve_id("CVE-2012-4893", "CVE-2012-2983", "CVE-2012-2982", "CVE-2012-2981");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 16:07:38 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 12:47:33 -0500 (Mon, 26 Nov 2012)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("FreeBSD Ports: webmin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");

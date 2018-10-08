@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 65b25acc-e63b-11e1-b81c-001b77d09812
 # OpenVAS Vulnerability Test
-# $Id: freebsd_rssh4.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_rssh4.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 65b25acc-e63b-11e1-b81c-001b77d09812
 #
@@ -34,8 +33,8 @@ if(description)
   script_bugtraq_id(53430);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 11:34:18 -0400 (Thu, 30 Aug 2012)");
   script_name("FreeBSD Ports: rssh");
   script_category(ACT_GATHER_INFO);

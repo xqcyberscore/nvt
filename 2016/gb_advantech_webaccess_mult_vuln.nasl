@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_mult_vuln.nasl 5732 2017-03-27 09:00:59Z teissa $
+# $Id: gb_advantech_webaccess_mult_vuln.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Advantech WebAccess Multiple Vulnerabilities Jan16
 #
@@ -28,48 +28,57 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807033");
-  script_version("$Revision: 5732 $");
+  script_version("$Revision: 11772 $");
   script_cve_id("CVE-2015-3948", "CVE-2015-3943", "CVE-2015-3946", "CVE-2015-3947",
                 "CVE-2015-6467", "CVE-2016-0851", "CVE-2016-0852", "CVE-2016-0853",
                 "CVE-2016-0854", "CVE-2016-0855", "CVE-2016-0856", "CVE-2016-0857",
                 "CVE-2016-0858", "CVE-2016-0859", "CVE-2016-0860");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-22 10:47:51 +0530 (Fri, 22 Jan 2016)");
   script_name("Advantech WebAccess Multiple Vulnerabilities Jan16");
 
   script_tag(name:"summary", value:"This host is running Advantech WebAccess
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - The web server does not filter user input correctly.
+
   - Email project accounts are stored in clear text.
+
   - The web server accepts commands via specific scripts that imitate trusted
     accounts.
+
   - The Web server settings, accounts, and projects may be modified through
     scripted commands.
+
   - WebAccess can be made to run remote code through the use of a browser
     plug-in.
+
   - The software reads or writes to a buffer using an index or pointer that
     references a memory location after the end of the buffer.
+
   - Normal and remote users have access to files and folders that only
     administrators should be allowed to access.
+
   - Unrestricted file upload vulnerability.
+
   - Insufficient sanitization of filenames containing directory traversal
     sequences.
+
   - Multiple stack-based buffer overflows.
+
   - Multiple heap-based buffer overflows.
+
   - Integer overflow in the Kernel service.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attacker to upload, create, or delete arbitrary files on the target
-  system, deny access to valid users and remotely execute arbitrary code.
-
-  Impact Level: Application");
+  system, deny access to valid users and remotely execute arbitrary code.");
 
   script_tag(name:"affected", value:"Advantech WebAccess versions before 8.1");
 
@@ -81,7 +90,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "https://ics-cert.us-cert.gov/advisories/ICSA-16-014-01");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-16-014-01");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -94,21 +103,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-adPort = "";
-adVer = "";
-
-## get the port
 if(!adPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!adVer = get_app_version(cpe:CPE, port:adPort)){
   exit(0);
 }
 
-## Check for version
 if(version_is_less(version:adVer, test_version:"8.1"))
 {
   report = 'Installed Version: ' + adVer + '\n' +

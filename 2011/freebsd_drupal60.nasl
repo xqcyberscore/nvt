@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 1acf9ec5-877d-11e0-b937-001372fd0af2
 # OpenVAS Vulnerability Test
-# $Id: freebsd_drupal60.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_drupal60.nasl 11768 2018-10-05 14:07:38Z cfischer $
 #
 # Auto generated from VID 1acf9ec5-877d-11e0-b937-001372fd0af2
 #
@@ -30,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.69756");
-  script_version("$Revision: 11757 $");
+  script_version("$Revision: 11768 $");
   script_cve_id("CVE-2011-2687");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 16:07:38 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-03 04:36:20 +0200 (Wed, 03 Aug 2011)");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("FreeBSD Ports: drupal6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 E-Soft Inc. http://www.securityspace.com");

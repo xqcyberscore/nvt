@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mega_extension_trojan_win.nasl 11350 2018-09-12 08:17:35Z santu $
+# $Id: gb_google_chrome_mega_extension_trojan_win.nasl 11767 2018-10-05 13:34:39Z cfischer $
 #
 # Google Chrome MEGA Extension Trojan-Windows
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813789");
-  script_version("$Revision: 11350 $");
+  script_version("$Revision: 11767 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 10:17:35 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-10 12:21:10 +0530 (Mon, 10 Sep 2018)");
   script_name("Google Chrome MEGA Extension Trojan-Windows");
 
@@ -48,9 +48,7 @@ if(description)
   version, extension would exfiltrate credentials for sites including amazon.com,
   live.com, github.com, google.com (or webstore login), myetherwallet.com,
   mymonero.com, idex.market and HTTP POST requests to any other sites. Then it
-  will send them to a server located in Ukraine.
-
-  Impact Level: Application");
+  will send them to a server located in Ukraine.");
 
   script_tag(name:"affected", value:"MEGA extension version 3.39.4 for Chrome on Windows");
 
@@ -70,6 +68,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl", "smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver", "WMI/access_successful", "SMB/WindowsVersion");
+
   exit(0);
 }
 
@@ -78,21 +77,17 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-host    = get_host_ip();
-usrname = get_kb_item( "SMB/login" );
-passwd  = get_kb_item( "SMB/password" );
-if( ! host || ! usrname || ! passwd ) exit( 0 );
+infos = kb_smb_wmi_connectinfo();
+if( ! infos ) exit( 0 );
 
-domain  = get_kb_item( "SMB/domain" );
-if( domain ) usrname = domain + '\\' + usrname;
-
-handle = wmi_connect( host:host, username:usrname, password:passwd );
+handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
 query1 = 'Select Version from CIM_DataFile Where FileName ='
         + raw_string(0x22) + 'Mega' + raw_string(0x22) + ' AND Extension ='
         + raw_string(0x22) + 'html' + raw_string(0x22);
 fileVer1 = wmi_query( wmi_handle:handle, query:query1);
+wmi_close( wmi_handle:handle );
 if(!fileVer1){
   exit(0);
 }

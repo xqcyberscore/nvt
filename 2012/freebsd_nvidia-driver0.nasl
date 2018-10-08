@@ -1,7 +1,6 @@
 ###############################################################################
-# VID b91234e7-9a8b-11e1-b666-001636d274f3
 # OpenVAS Vulnerability Test
-# $Id: freebsd_nvidia-driver0.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_nvidia-driver0.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID b91234e7-9a8b-11e1-b666-001636d274f3
 #
@@ -33,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2012-0946", "CVE-2012-4225");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-31 11:53:51 -0400 (Thu, 31 May 2012)");
   script_name("FreeBSD Ports: nvidia-driver");
   script_category(ACT_GATHER_INFO);

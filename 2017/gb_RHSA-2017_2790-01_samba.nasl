@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_2790-01_samba.nasl 7312 2017-09-28 11:22:27Z santu $
+# $Id: gb_RHSA-2017_2790-01_samba.nasl 11771 2018-10-08 05:52:02Z asteins $
 #
 # RedHat Update for samba RHSA-2017:2790-01
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811793");
-  script_version("$Revision: 7312 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-28 13:22:27 +0200 (Thu, 28 Sep 2017) $");
+  script_version("$Revision: 11771 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 07:52:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-24 09:59:06 +0200 (Sun, 24 Sep 2017)");
   script_cve_id("CVE-2017-12150", "CVE-2017-12151", "CVE-2017-12163");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for samba RHSA-2017:2790-01");
   script_tag(name: "summary", value: "Check the version of samba");

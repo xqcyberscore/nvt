@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_csrf_vuln_lin.nasl 9011 2018-03-02 13:09:15Z cfischer $
+# $Id: gb_elasticsearch_kibana_csrf_vuln_lin.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Elasticsearch Kibana Cross-site Request Forgery (CSRF) Vulnerability (Linux)
 #
@@ -29,28 +29,25 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808501");
-  script_version("$Revision: 9011 $");
+  script_version("$Revision: 11772 $");
   script_cve_id("CVE-2015-8131");
   script_bugtraq_id(77657);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-02 14:09:15 +0100 (Fri, 02 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-28 16:01:44 +0530 (Tue, 28 Jun 2016)");
   script_name("Elasticsearch Kibana Cross-site Request Forgery (CSRF) Vulnerability (Linux)");
 
   script_tag(name:"summary", value:"This host is running Elasticsearch Kibana
   and is prone to Cross-site Request Forgery (CSRF) vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The Flaw is due to an improper validation
   in the administrative console.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote
-  attackers to hijack the authentication of unspecified victims.
-
-  Impact Level: Application");
+  attackers to hijack the authentication of unspecified victims.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
@@ -71,7 +68,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_elasticsearch_kibana_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("Elasticsearch/Kibana/Installed","Host/runs_unixoide");
+  script_mandatory_keys("Elasticsearch/Kibana/Installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 5601);
   exit(0);
 }

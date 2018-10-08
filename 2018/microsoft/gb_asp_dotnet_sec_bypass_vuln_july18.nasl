@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_sec_bypass_vuln_july18.nasl 11370 2018-09-13 11:32:51Z asteins $
+# $Id: gb_asp_dotnet_sec_bypass_vuln_july18.nasl 11767 2018-10-05 13:34:39Z cfischer $
 #
 # Microsoft ASP.NET Core Security Feature Bypass Vulnerability July18
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813674");
-  script_version("$Revision: 11370 $");
+  script_version("$Revision: 11767 $");
   script_cve_id("CVE-2018-8171");
   script_bugtraq_id(104659);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 13:32:51 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-13 15:50:36 +0530 (Fri, 13 Jul 2018)");
   script_name("Microsoft ASP.NET Core Security Feature Bypass Vulnerability July18");
 
@@ -46,9 +46,7 @@ if(description)
   validate the number of incorrect login attempts.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to bypass security controls on the target system.
-
-  Impact Level: Application.");
+  attackers to bypass security controls on the target system.");
 
   script_tag(name:"affected", value:"Any ASP.NET Core based application that uses
   'Microsoft.AspNetCore.Identity' with versions 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4,
@@ -56,8 +54,8 @@ if(description)
   2.1.0, 2.1.1.");
 
   script_tag(name:"solution", value:"Upgrade 'Microsoft.AspNetCore.Identity' package
-  versions to 1.0.6 or 1.1.6 or 2.0.4 or 2.1.2 or later.
-  For updates refer to Reference links.");
+  versions to 1.0.6 or 1.1.6 or 2.0.4 or 2.1.2 or later. Please see the references
+  for more info.");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -68,8 +66,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
-
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
+
   exit(0);
 }
 
@@ -78,24 +76,17 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-host    = get_host_ip();
-usrname = get_kb_item( "SMB/login" );
-passwd  = get_kb_item( "SMB/password" );
-if( ! host || ! usrname || ! passwd ) exit( 0 );
+infos = kb_smb_wmi_connectinfo();
+if( ! infos ) exit( 0 );
 
-domain  = get_kb_item( "SMB/domain" );
-if( domain ) usrname = domain + '\\' + usrname;
-
-handle = wmi_connect( host:host, username:usrname, password:passwd );
+handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
 query1 = 'Select Version from CIM_DataFile Where FileName ='
         + raw_string(0x22) + 'Microsoft.AspNetCore.Identity' + raw_string(0x22) + ' AND Extension ='
         + raw_string(0x22) + 'dll' + raw_string(0x22);
 fileVer1 = wmi_query( wmi_handle:handle, query:query1);
-
 wmi_close( wmi_handle:handle );
-
 if(!fileVer1) exit( 0 );
 
 foreach ver(split( fileVer1 ))

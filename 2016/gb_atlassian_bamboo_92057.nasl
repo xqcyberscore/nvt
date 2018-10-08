@@ -29,44 +29,44 @@ CPE = "cpe:/a:atlassian:bamboo";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105830");
- script_bugtraq_id(92057);
- script_cve_id("CVE-2016-5229");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9438 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105830");
+  script_bugtraq_id(92057);
+  script_cve_id("CVE-2016-5229");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11772 $");
 
- script_name("Atlassian Bamboo  Remote Code Execution Vulnerability");
+  script_name("Atlassian Bamboo  Remote Code Execution Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/92057");
- script_xref(name:"URL", value:"https://jira.atlassian.com/browse/BAM-17736?src=confmacro&_ga=1.65705644.34970059.1459525314");
- script_xref(name:"URL", value:"https://www.atlassian.com/software/bamboo/download");
- script_xref(name:"URL", value:"https://confluence.atlassian.com/bamboo/bamboo-security-advisory-2016-07-20-831660461.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/92057");
+  script_xref(name:"URL", value:"https://jira.atlassian.com/browse/BAM-17736?src=confmacro&_ga=1.65705644.34970059.1459525314");
+  script_xref(name:"URL", value:"https://www.atlassian.com/software/bamboo/download");
+  script_xref(name:"URL", value:"https://confluence.atlassian.com/bamboo/bamboo-security-advisory-2016-07-20-831660461.html");
 
- script_tag(name: "impact" , value:"An attacker can exploit this issue to execute arbitrary code within the context of the affected application.");
- script_tag(name: "vuldetect" , value:"Send a serialized java object and check the response");
- script_tag(name: "insight" , value:"Unsafe deserialization allows unauthenticated remote attackers to run arbitrary code on the bamboo server.");
- script_tag(name: "solution" , value:"Updates are available. Please see the references or vendor advisory for more information.");
- script_tag(name: "summary" , value:"Atlassian Bamboo is prone to remote code-execution vulnerability.");
- script_tag(name: "affected" , value:"The following versions are affected:
+  script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary code within the context of the affected application.");
+  script_tag(name:"vuldetect", value:"Send a serialized java object and check the response");
+  script_tag(name:"insight", value:"Unsafe deserialization allows unauthenticated remote attackers to run arbitrary code on the bamboo server.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
+  script_tag(name:"summary", value:"Atlassian Bamboo is prone to remote code-execution vulnerability.");
+  script_tag(name:"affected", value:"The following versions are affected:
 
 Bamboo 2.3.1 and later
 
 Bamboo 5.11.x versions prior to 5.11.4.1
 
 Bamboo 5.12.x versions prior to 5.12.3.1");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:28:36 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2016-07-27 17:57:26 +0200 (Wed, 27 Jul 2016)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_atlassian_bamboo_detect.nasl");
- script_require_ports("Services/www", 80, 8085);
- script_mandatory_keys("AtlassianBamboo/Installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-27 17:57:26 +0200 (Wed, 27 Jul 2016)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_atlassian_bamboo_detect.nasl");
+  script_require_ports("Services/www", 80, 8085);
+  script_mandatory_keys("AtlassianBamboo/Installed");
 
  exit(0);
 }
@@ -87,7 +87,7 @@ if( isnull( fp[1] ) ) exit( 0 );
 
 fingerprint = fp[1];
 
-payload = 'rO0ABXNyADJzdW4ucmVmbGVjdC5hbm5vdGF0aW9uLkFubm90YXRpb25JbnZvY2F0aW9uSGFuZGxl' + 
+payload = 'rO0ABXNyADJzdW4ucmVmbGVjdC5hbm5vdGF0aW9uLkFubm90YXRpb25JbnZvY2F0aW9uSGFuZGxl' +
           'clXK9Q8Vy36lAgACTAAMbWVtYmVyVmFsdWVzdAAPTGphdmEvdXRpbC9NYXA7TAAEdHlwZXQAEUxq' +
           'YXZhL2xhbmcvQ2xhc3M7eHBzfQAAAAEADWphdmEudXRpbC5NYXB4cgAXamF2YS5sYW5nLnJlZmxl' +
           'Y3QuUHJveHnhJ9ogzBBDywIAAUwAAWh0ACVMamF2YS9sYW5nL3JlZmxlY3QvSW52b2NhdGlvbkhh' +

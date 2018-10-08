@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 38195f00-b215-11e1-8132-003067b2972c
 # OpenVAS Vulnerability Test
-# $Id: freebsd_linux-f10-flashplugin3.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_linux-f10-flashplugin3.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 38195f00-b215-11e1-8132-003067b2972c
 #
@@ -33,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2012-2034", "CVE-2012-2035", "CVE-2012-2036", "CVE-2012-2037", "CVE-2012-2038", "CVE-2012-2039", "CVE-2012-2040");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-10 03:22:17 -0400 (Fri, 10 Aug 2012)");
   script_name("FreeBSD Ports: linux-f10-flashplugin");
   script_category(ACT_GATHER_INFO);
@@ -47,53 +46,59 @@ if(description)
 
 CVE-2012-2034
 Adobe Flash Player before 10.3.183.20 and 11.x before 11.3.300.257 on
-Windows and Mac OS X; before 10.3.183.20 and 11.x before 11.2.202.236
-on Linux; before 11.1.111.10 on Android 2.x and 3.x; and before
+Windows and Mac OS X, before 10.3.183.20 and 11.x before 11.2.202.236
+on Linux, before 11.1.111.10 on Android 2.x and 3.x, and before
 11.1.115.9 on Android 4.x, and Adobe AIR before 3.3.0.3610, allows
 attackers to execute arbitrary code or cause a denial of service
 (memory corruption) via unspecified vectors, a different vulnerability
 than CVE-2012-2037.
+
 CVE-2012-2035
 Stack-based buffer overflow in Adobe Flash Player before 10.3.183.20
-and 11.x before 11.3.300.257 on Windows and Mac OS X; before
-10.3.183.20 and 11.x before 11.2.202.236 on Linux; before 11.1.111.10
-on Android 2.x and 3.x; and before 11.1.115.9 on Android 4.x, and
+and 11.x before 11.3.300.257 on Windows and Mac OS X, before
+10.3.183.20 and 11.x before 11.2.202.236 on Linux, before 11.1.111.10
+on Android 2.x and 3.x, and before 11.1.115.9 on Android 4.x, and
 Adobe AIR before 3.3.0.3610, allows attackers to execute arbitrary
 code via unspecified vectors.
+
 CVE-2012-2036
 Integer overflow in Adobe Flash Player before 10.3.183.20 and 11.x
-before 11.3.300.257 on Windows and Mac OS X; before 10.3.183.20 and
-11.x before 11.2.202.236 on Linux; before 11.1.111.10 on Android 2.x
-and 3.x; and before 11.1.115.9 on Android 4.x, and Adobe AIR before
+before 11.3.300.257 on Windows and Mac OS X, before 10.3.183.20 and
+11.x before 11.2.202.236 on Linux, before 11.1.111.10 on Android 2.x
+and 3.x, and before 11.1.115.9 on Android 4.x, and Adobe AIR before
 3.3.0.3610, allows attackers to execute arbitrary code via unspecified
 vectors.
+
 CVE-2012-2037
 Adobe Flash Player before 10.3.183.20 and 11.x before 11.3.300.257 on
-Windows and Mac OS X; before 10.3.183.20 and 11.x before 11.2.202.236
-on Linux; before 11.1.111.10 on Android 2.x and 3.x; and before
+Windows and Mac OS X, before 10.3.183.20 and 11.x before 11.2.202.236
+on Linux, before 11.1.111.10 on Android 2.x and 3.x, and before
 11.1.115.9 on Android 4.x, and Adobe AIR before 3.3.0.3610, allows
 attackers to execute arbitrary code or cause a denial of service
 (memory corruption) via unspecified vectors, a different vulnerability
 than CVE-2012-2034.
+
 CVE-2012-2038
 Adobe Flash Player before 10.3.183.20 and 11.x before 11.3.300.257 on
-Windows and Mac OS X; before 10.3.183.20 and 11.x before 11.2.202.236
-on Linux; before 11.1.111.10 on Android 2.x and 3.x; and before
+Windows and Mac OS X, before 10.3.183.20 and 11.x before 11.2.202.236
+on Linux, before 11.1.111.10 on Android 2.x and 3.x, and before
 11.1.115.9 on Android 4.x, and Adobe AIR before 3.3.0.3610, allows
 attackers to bypass intended access restrictions and obtain sensitive
 information via unspecified vectors.
+
 CVE-2012-2039
 Adobe Flash Player before 10.3.183.20 and 11.x before 11.3.300.257 on
-Windows and Mac OS X; before 10.3.183.20 and 11.x before 11.2.202.236
-on Linux; before 11.1.111.10 on Android 2.x and 3.x; and before
+Windows and Mac OS X, before 10.3.183.20 and 11.x before 11.2.202.236
+on Linux, before 11.1.111.10 on Android 2.x and 3.x, and before
 11.1.115.9 on Android 4.x, and Adobe AIR before 3.3.0.3610, allows
 attackers to execute arbitrary code or cause a denial of service (NULL
 pointer dereference) via unspecified vectors.
+
 CVE-2012-2040
 Untrusted search path vulnerability in the installer in Adobe Flash
 Player before 10.3.183.20 and 11.x before 11.3.300.257 on Windows and
-Mac OS X; before 10.3.183.20 and 11.x before 11.2.202.236 on Linux;
-before 11.1.111.10 on Android 2.x and 3.x; and before 11.1.115.9 on
+Mac OS X, before 10.3.183.20 and 11.x before 11.2.202.236 on Linux,
+before 11.1.111.10 on Android 2.x and 3.x, and before 11.1.115.9 on
 Android 4.x, and Adobe AIR before 3.3.0.3610, allows local users to
 gain privileges via a Trojan horse executable file in an unspecified
 directory.");

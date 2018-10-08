@@ -1,7 +1,6 @@
 ###############################################################################
-# VID be3dfe33-410b-11e0-9e02-00215c6a37bb
 # OpenVAS Vulnerability Test
-# $Id: freebsd_openldap-server2.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_openldap-server2.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID be3dfe33-410b-11e0-9e02-00215c6a37bb
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.68939");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-05 22:25:39 +0100 (Sat, 05 Mar 2011)");
   script_cve_id("CVE-2011-1024", "CVE-2011-1025", "CVE-2011-1081");
   script_bugtraq_id(46363, 46831);

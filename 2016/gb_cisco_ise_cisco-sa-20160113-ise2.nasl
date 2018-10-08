@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_cisco-sa-20160113-ise2.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_cisco_ise_cisco-sa-20160113-ise2.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Cisco Identity Services Engine Unauthorized Access Vulnerability
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/a:cisco:identity_services_engine";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105524");
- script_cve_id("CVE-2015-6317");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:C/A:N");
- script_version ("$Revision: 5598 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105524");
+  script_cve_id("CVE-2015-6317");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:C/A:N");
+  script_version("$Revision: 11772 $");
 
- script_name("Cisco Identity Services Engine Unauthorized Access Vulnerability ");
+  script_name("Cisco Identity Services Engine Unauthorized Access Vulnerability ");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160113-ise2");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160113-ise2");
 
- script_tag(name: "impact" , value:"An attacker could exploit this vulnerability by authenticating at a low-privileged account and then accessing the web resources directly. An exploit could allow the attacker to access web pages that are reserved for higher-privileged administrative users.");
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "insight" , value:"The vulnerability occurs because specific types of web resources are not correctly filtered for administrative users with different privileges.");
- script_tag(name: "solution" , value:"Cisco has released software updates that address these vulnerabilities.");
- script_tag(name: "summary" , value:"Cisco Identity Services Engine versions prior to 2.0 contain a vulnerability that could allow a low-privileged authenticated, remote attacker to access specific web resources that are designed to be accessed only by higher-privileged administrative users.");
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by authenticating at a low-privileged account and then accessing the web resources directly. An exploit could allow the attacker to access web pages that are reserved for higher-privileged administrative users.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"insight", value:"The vulnerability occurs because specific types of web resources are not correctly filtered for administrative users with different privileges.");
+  script_tag(name:"solution", value:"Cisco has released software updates that address these vulnerabilities.");
+  script_tag(name:"summary", value:"Cisco Identity Services Engine versions prior to 2.0 contain a vulnerability that could allow a low-privileged authenticated, remote attacker to access specific web resources that are designed to be accessed only by higher-privileged administrative users.");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-01-20 12:43:15 +0100 (Wed, 20 Jan 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ise_version.nasl");
- script_mandatory_keys("cisco_ise/version", "cisco_ise/patch");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-01-20 12:43:15 +0100 (Wed, 20 Jan 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ise_version.nasl");
+  script_mandatory_keys("cisco_ise/version", "cisco_ise/patch");
 
  exit(0);
 }

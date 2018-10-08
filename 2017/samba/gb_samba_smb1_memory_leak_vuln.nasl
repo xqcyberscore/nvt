@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_smb1_memory_leak_vuln.nasl 10398 2018-07-04 12:11:48Z cfischer $
+# $Id: gb_samba_smb1_memory_leak_vuln.nasl 11771 2018-10-08 05:52:02Z asteins $
 #
 # Samba Server 'SMB1' Memory Information Leak Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811905");
-  script_version("$Revision: 10398 $");
+  script_version("$Revision: 11771 $");
   script_cve_id("CVE-2017-12163");
   script_bugtraq_id(100925);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"4.8");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 07:52:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-22 13:09:22 +0530 (Fri, 22 Sep 2017)");
   script_name("Samba Server 'SMB1' Memory Information Leak Vulnerability");
   script_category(ACT_GATHER_INFO);

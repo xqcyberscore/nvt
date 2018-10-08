@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_azure_iot_sdk_spoofing_vuln_sep18_win.nasl 11434 2018-09-17 12:53:25Z bshakeel $
+# $Id: gb_microsoft_azure_iot_sdk_spoofing_vuln_sep18_win.nasl 11767 2018-10-05 13:34:39Z cfischer $
 #
 # Azure IoT SDK Spoofing Vulnerability Sep18 (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814212");
-  script_version("$Revision: 11434 $");
+  script_version("$Revision: 11767 $");
   script_cve_id("CVE-2018-8479");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 14:53:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-17 14:45:59 +0530 (Mon, 17 Sep 2018)");
   script_name("Azure IoT SDK Spoofing Vulnerability Sep18 (Windows)");
 
@@ -64,6 +64,7 @@ if(description)
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
+
   exit(0);
 }
 
@@ -72,21 +73,15 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-host    = get_host_ip();
-usrname = get_kb_item( "SMB/login" );
-passwd  = get_kb_item( "SMB/password" );
-if( ! host || ! usrname || ! passwd ) exit( 0 );
+infos = kb_smb_wmi_connectinfo();
+if( ! infos ) exit( 0 );
 
-domain  = get_kb_item( "SMB/domain" );
-if( domain ) usrname = domain + '\\' + usrname;
-
-handle = wmi_connect( host:host, username:usrname, password:passwd );
+handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
 query1 = 'Select Version from CIM_DataFile Where FileName ='
         + raw_string(0x22) + 'Microsoft.Azure.IoTHub.IoTHubClient' + raw_string(0x22);
 fileVer1 = wmi_query( wmi_handle:handle, query:query1);
-
 wmi_close( wmi_handle:handle );
 if(!fileVer1) exit( 0 );
 

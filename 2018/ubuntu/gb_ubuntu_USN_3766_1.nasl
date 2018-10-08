@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3766_1.nasl 11507 2018-09-20 13:34:54Z cfischer $
+# $Id: gb_ubuntu_USN_3766_1.nasl 11771 2018-10-08 05:52:02Z asteins $
 #
 # Ubuntu Update for php7.2 USN-3766-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843637");
-  script_version("$Revision: 11507 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:34:54 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 11771 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 07:52:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-19 08:15:54 +0200 (Wed, 19 Sep 2018)");
   script_cve_id("CVE-2015-9253", "CVE-2018-14851", "CVE-2018-14883");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for php7.2 USN-3766-1");
   script_tag(name:"summary", value:"Check the version of php7.2");

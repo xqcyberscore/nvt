@@ -1,7 +1,6 @@
 ###############################################################################
-# VID edf47177-fe3f-11e0-a207-0014a5e3cda6
 # OpenVAS Vulnerability Test
-# $Id: freebsd_phpldapadmin.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_phpldapadmin.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID edf47177-fe3f-11e0-a207-0014a5e3cda6
 #
@@ -31,8 +30,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.70614");
   script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
-  script_version("$Revision: 11757 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("FreeBSD Ports: phpldapadmin");

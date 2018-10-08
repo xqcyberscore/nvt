@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 5ab9fb2a-23a5-11e0-a835-0003ba02bf30
 # OpenVAS Vulnerability Test
-# $Id: freebsd_asterisk14.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_asterisk14.nasl 11768 2018-10-05 14:07:38Z cfischer $
 #
 # Auto generated from VID 5ab9fb2a-23a5-11e0-a835-0003ba02bf30
 #
@@ -30,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.68814");
-  script_version("$Revision: 11757 $");
+  script_version("$Revision: 11768 $");
   script_cve_id("CVE-2011-0495");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 16:07:38 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-01-24 17:55:59 +0100 (Mon, 24 Jan 2011)");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
   script_name("FreeBSD Ports: asterisk14");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 E-Soft Inc. http://www.securityspace.com");

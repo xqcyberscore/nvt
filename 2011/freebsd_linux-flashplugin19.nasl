@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 53e531a7-e559-11e0-b481-001b2134ef46
 # OpenVAS Vulnerability Test
-# $Id: freebsd_linux-flashplugin19.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_linux-flashplugin19.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 53e531a7-e559-11e0-b481-001b2134ef46
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.70414");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-10-16 23:01:53 +0200 (Sun, 16 Oct 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");

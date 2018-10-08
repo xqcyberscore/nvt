@@ -1,7 +1,6 @@
 ###############################################################################
-# VID a537b449-2b19-11e2-b339-90e6ba652cce
 # OpenVAS Vulnerability Test
-# $Id: freebsd_opendkim.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_opendkim.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID a537b449-2b19-11e2-b339-90e6ba652cce
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.72603");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 12:47:33 -0500 (Mon, 26 Nov 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");

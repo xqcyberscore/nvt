@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3214296.nasl 7051 2017-09-04 11:38:56Z cfischer $
+# $Id: gb_microsoft_security_advisory_3214296.nasl 11767 2018-10-05 13:34:39Z cfischer $
 #
 # Microsoft Identity Model Extensions Token Signing Verification Advisory (3214296)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810269");
-  script_version("$Revision: 7051 $");
+  script_version("$Revision: 11767 $");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:38:56 +0200 (Mon, 04 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-12 18:49:43 +0530 (Thu, 12 Jan 2017)");
   script_name("Microsoft Identity Model Extensions Token Signing Verification Advisory (3214296)");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -56,16 +56,13 @@ if(description)
   make incorrect decisions.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  allows attackers to cause elevation of privilege.
-
-  Impact Level: System");
+  attackers to cause elevation of privilege.");
 
   script_tag(name:"affected", value:"Microsoft.IdentityModel.Tokens package
   version 5.1.0 on Microsoft .NET Core or .NET Framework project.");
 
   script_tag(name:"solution", value:"Upgrade to Microsoft.IdentityModel.Tokens
-  version 5.1.1 or later.
-  For updates refer to https://technet.microsoft.com/library/security/3214296.aspx");
+  version 5.1.1 or later. Please see the references for more info.");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -80,14 +77,10 @@ include("version_func.inc");
 key = "SOFTWARE\Microsoft\ASP.NET\";
 if( ! registry_key_exists( key:key ) ) exit( 0 );
 
-host    = get_host_ip();
-usrname = get_kb_item( "SMB/login" );
-passwd  = get_kb_item( "SMB/password" );
-if( ! host || ! usrname || ! passwd ) exit( 0 );
-domain  = get_kb_item( "SMB/domain" );
-if( domain ) usrname = domain + '\\' + usrname;
+infos = kb_smb_wmi_connectinfo();
+if( ! infos ) exit( 0 );
 
-handle = wmi_connect( host:host, username:usrname, password:passwd );
+handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
 query = 'Select Version from CIM_DataFile Where FileName ='
@@ -100,7 +93,6 @@ if( ! fileVer ) exit( 0 );
 foreach ver( split( fileVer ) ) {
   ver = eregmatch( pattern:"\microsoft.identitymodel.tokens.dll.?([0-9.]+)", string:ver );
   if( ver[1] ) {
-    ##Check for vulnerable version of Microsoft.IdentityModel.Tokens package
     if( version_is_equal( version:ver[1], test_version:"5.1.0" ) ) {
       report = report_fixed_ver( installed_version:ver[1], fixed_version:"5.1.1" );
       security_message( data:report );

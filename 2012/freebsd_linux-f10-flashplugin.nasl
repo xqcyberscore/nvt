@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 0e8e1212-0ce5-11e1-849b-003067b2972c
 # OpenVAS Vulnerability Test
-# $Id: freebsd_linux-f10-flashplugin.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_linux-f10-flashplugin.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 0e8e1212-0ce5-11e1-849b-003067b2972c
 #
@@ -31,11 +30,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.70604");
   script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2011-2445", "CVE-2011-2450", "CVE-2011-2451", "CVE-2011-2452", "CVE-2011-2453", "CVE-2011-2454", "CVE-2011-2455", "CVE-2011-2456", "CVE-2011-2457", "CVE-2011-2458", "CVE-2011-2459", "CVE-2011-2460");
-  script_version("$Revision: 11757 $");
+  script_version("$Revision: 11762 $");
   script_name("FreeBSD Ports: linux-f10-flashplugin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");

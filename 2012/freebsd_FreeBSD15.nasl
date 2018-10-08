@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 0f020b7b-e033-11e1-90a2-000c299b62e1
 # OpenVAS Vulnerability Test
-# $Id: freebsd_FreeBSD15.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_FreeBSD15.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 0f020b7b-e033-11e1-90a2-000c299b62e1
 #
@@ -33,8 +32,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_cve_id("CVE-2012-3817");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-10 03:22:17 -0400 (Fri, 10 Aug 2012)");
   script_name("FreeBSD Ports: FreeBSD");
   script_category(ACT_GATHER_INFO);
@@ -46,8 +45,8 @@ if(description)
   script_tag(name:"insight", value:"The following package is affected: FreeBSD
 
 CVE-2012-3817
-ISC BIND 9.4.x, 9.5.x, 9.6.x, and 9.7.x before 9.7.6-P2; 9.8.x before
-9.8.3-P2; 9.9.x before 9.9.1-P2; and 9.6-ESV before 9.6-ESV-R7-P2,
+ISC BIND 9.4.x, 9.5.x, 9.6.x, and 9.7.x before 9.7.6-P2, 9.8.x before
+9.8.3-P2, 9.9.x before 9.9.1-P2, and 9.6-ESV before 9.6-ESV-R7-P2,
 when DNSSEC validation is enabled, does not properly initialize the
 failing-query cache, which allows remote attackers to cause a denial
 of service (assertion failure and daemon exit) by sending many

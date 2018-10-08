@@ -1,11 +1,11 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop_13-2016-09_lin.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop_13-2016-09_lin.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop_13-2016-09)-Linux
 #
 # Authors:
-# Rinu Kuriakose <krinu@secpod.com> 
+# Rinu Kuriakose <krinu@secpod.com>
 #
 # Copyright:
 # Copyright (C) 2016 Greenbone Networks GmbH, http://www.greenbone.net
@@ -29,43 +29,47 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809046");
-  script_version("$Revision: 5745 $");
-  script_cve_id("CVE-2016-5170", "CVE-2016-5171", "CVE-2016-5172", "CVE-2016-5173", 
+  script_version("$Revision: 11772 $");
+  script_cve_id("CVE-2016-5170", "CVE-2016-5171", "CVE-2016-5172", "CVE-2016-5173",
                 "CVE-2016-5174", "CVE-2016-5175", "CVE-2016-7549", "CVE-2016-5176");
   script_bugtraq_id(92942, 93160, 93234);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-15 11:32:52 +0530 (Thu, 15 Sep 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_13-2016-09)-Linux");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
+
   - Multiple use after free errors in Blink.
+
   - An arbitrary Memory Read error in v8
+
   - An extension resource access error.
+
   - The popup is not correctly suppressed.
-  - Not ensuring that the recipient of a certain IPC message is a valid 
+
+  - Not ensuring that the recipient of a certain IPC message is a valid
     RenderFrame or RenderWidget.
+
   - An improper SafeBrowsing protection mechanism.
+
   - The various fixes from internal audits, fuzzing and other initiatives.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
-  vulnerability will allow remote attackers to corrupt memory, to bypass security, 
-  to reduce performance, to bypass the SafeBrowsing protection mechanism, to 
-  cause a denial of service and other unspecified impact.
+  script_tag(name:"impact", value:"Successful exploitation of this
+  vulnerability will allow remote attackers to corrupt memory, to bypass security,
+  to reduce performance, to bypass the SafeBrowsing protection mechanism, to
+  cause a denial of service and other unspecified impact.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Google Chrome version 
+  script_tag(name:"affected", value:"Google Chrome version
   prior to 53.0.2785.113 on Linux");
 
-  script_tag(name: "solution", value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   53.0.2785.113 or later.
   For updates refer to http://www.google.com/chrome");
 
@@ -73,7 +77,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2016/09/stable-channel-update-for-desktop_13.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2016/09/stable-channel-update-for-desktop_13.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -86,15 +90,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-chr_ver = "";
-
-## Get version
 if(!chr_ver = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:chr_ver, test_version:"53.0.2785.113"))
 {
   report = report_fixed_ver(installed_version:chr_ver, fixed_version:"53.0.2785.113");

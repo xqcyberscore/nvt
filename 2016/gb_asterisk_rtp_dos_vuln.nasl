@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_rtp_dos_vuln.nasl 7702 2017-11-09 04:34:57Z ckuersteiner $
+# $Id: gb_asterisk_rtp_dos_vuln.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Asterisk RTP Resource Exhaustion Vulnerability
 #
@@ -30,18 +30,18 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106239");
-  script_version("$Revision: 7702 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-09 05:34:57 +0100 (Thu, 09 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2016-09-12 12:33:46 +0700 (Mon, 12 Sep 2016)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11772 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-12 12:33:46 +0700 (Mon, 12 Sep 2016)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2016-7551");
   script_bugtraq_id(92888);
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Asterisk RTP Resource Exhaustion Vulnerability");
 
@@ -52,24 +52,24 @@ if (description)
   script_dependencies("secpod_asterisk_detect.nasl");
   script_mandatory_keys("Asterisk-PBX/Installed");
 
-  script_tag(name: "summary", value: "Asterisk is prone to a RTP resource exhaustion vulnerability.");
+  script_tag(name:"summary", value:"Asterisk is prone to a RTP resource exhaustion vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The overlap dialing feature in chan_sip allows chan_sip to report to
+  script_tag(name:"insight", value:"The overlap dialing feature in chan_sip allows chan_sip to report to
 a device that the number that has been dialed is incomplete and more digits are required. If this functionality
 is used with a device that has performed username/password authentication RTP resources are leaked. This
 occurs because the code fails to release the old RTP resources before allocating new ones in this scenario.
 If all resources are used then RTP port exhaustion will occur and no RTP sessions are able to be set up.");
 
-  script_tag(name: "impact", value: "An authenticated remote attacker may cause a partial denial of service
+  script_tag(name:"impact", value:"An authenticated remote attacker may cause a partial denial of service
 condition.");
 
-  script_tag(name: "affected", value: "Asterisk Open Source 11.x, 13.x and Certified Asterisk 11.6 and 13.8.");
+  script_tag(name:"affected", value:"Asterisk Open Source 11.x, 13.x and Certified Asterisk 11.6 and 13.8.");
 
-  script_tag(name: "solution", value: "Upgrade to Version 11.23.1, 13.11.1, 11.6-cert15, 13.8-cert3 or later.");
+  script_tag(name:"solution", value:"Upgrade to Version 11.23.1, 13.11.1, 11.6-cert15, 13.8-cert3 or later.");
 
-  script_xref(name: "URL", value: "http://downloads.asterisk.org/pub/security/AST-2016-007.html");
+  script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2016-007.html");
 
   exit(0);
 }

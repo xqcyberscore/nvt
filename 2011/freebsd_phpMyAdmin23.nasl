@@ -1,7 +1,6 @@
 ###############################################################################
-# VID cd68ff50-362b-11e0-ad36-00215c6a37bb
 # OpenVAS Vulnerability Test
-# $Id: freebsd_phpMyAdmin23.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_phpMyAdmin23.nasl 11768 2018-10-05 14:07:38Z cfischer $
 #
 # Auto generated from VID cd68ff50-362b-11e0-ad36-00215c6a37bb
 #
@@ -30,12 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.68943");
-  script_version("$Revision: 11757 $");
+  script_version("$Revision: 11768 $");
   script_cve_id("CVE-2011-0987", "CVE-2011-0986");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 16:07:38 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-05 22:25:39 +0100 (Sat, 05 Mar 2011)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_name("FreeBSD Ports: phpMyAdmin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 E-Soft Inc. http://www.securityspace.com");

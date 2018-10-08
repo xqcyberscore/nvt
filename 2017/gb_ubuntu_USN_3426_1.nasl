@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3426_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_3426_1.nasl 11771 2018-10-08 05:52:02Z asteins $
 #
 # Ubuntu Update for samba USN-3426-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843315");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11771 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 07:52:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-24 10:00:43 +0200 (Sun, 24 Sep 2017)");
   script_cve_id("CVE-2017-12150", "CVE-2017-12151", "CVE-2017-12163");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for samba USN-3426-1");
   script_tag(name:"summary", value:"Check the version of samba");

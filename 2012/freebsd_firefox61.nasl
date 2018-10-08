@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 6c8ad3e8-0a30-11e1-9580-4061862b8c22
 # OpenVAS Vulnerability Test
-# $Id: freebsd_firefox61.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_firefox61.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 6c8ad3e8-0a30-11e1-9580-4061862b8c22
 #
@@ -31,11 +30,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.70609");
   script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2011-3647", "CVE-2011-3648", "CVE-2011-3649", "CVE-2011-3650", "CVE-2011-3651", "CVE-2011-3652", "CVE-2011-3653", "CVE-2011-3654", "CVE-2011-3655");
-  script_version("$Revision: 11757 $");
+  script_version("$Revision: 11762 $");
   script_name("FreeBSD Ports: firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");

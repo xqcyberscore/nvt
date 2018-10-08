@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telepresence_te_ce_com_inj_vuln.nasl 8597 2018-01-31 08:42:52Z cfischer $
+# $Id: gb_cisco_telepresence_te_ce_com_inj_vuln.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Cisco TelePresence CE and TC Software Command Injection Vulnerability(cisco-sa-20161102-tp)
 #
@@ -29,31 +29,28 @@ CPE = "cpe:/a:cisco:telepresence_mcu_mse_series_software";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809729");
-  script_version("$Revision: 8597 $");
+  script_version("$Revision: 11772 $");
   script_cve_id("CVE-2016-6459");
   script_bugtraq_id(94075);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:42:52 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-21 11:42:31 +0530 (Mon, 21 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cisco TelePresence CE and TC Software Command Injection Vulnerability(cisco-sa-20161102-tp)");
 
-  script_tag(name: "summary" , value:"The host is running Cisco TelePresence
+  script_tag(name:"summary", value:"The host is running Cisco TelePresence
   Endpoint and is prone to local command injection vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The vulnerability is due to incomplete input
+  script_tag(name:"insight", value:"The vulnerability is due to incomplete input
   sanitization of some commands.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute local shell commands with commands injected as parameters.
   Also the attacker can retrieve full information from the device including
-  private keys.
-
-  Impact Level: System/Application");
+  private keys.");
 
   script_tag(name:"affected", value:"All TelePresence endpoints running following
   CE or TC software are affected:
@@ -69,17 +66,15 @@ if (description)
   Cisco TelePresence TC Software 7.1.3,
   Cisco TelePresence TC Software 7.1.4");
 
-  script_tag(name:"solution", value:"Apply updates as available from vendor.
-  For details refer,
-  https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161102-tp");
+  script_tag(name:"solution", value:"Apply updates as available from vendor.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value: "https://bst.cloudapps.cisco.com/bugsearch/bug/CSCvb25010");
-  script_xref(name : "URL" , value : "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161102-tp");
+  script_xref(name:"URL", value:"https://bst.cloudapps.cisco.com/bugsearch/bug/CSCvb25010");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161102-tp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("CISCO");
-  script_dependencies("gb_cisco_telepresence_detect_snmp.nasl","gb_cisco_telepresence_detect_ftp.nasl");
+  script_dependencies("gb_cisco_telepresence_detect_snmp.nasl", "gb_cisco_telepresence_detect_ftp.nasl");
   script_mandatory_keys("cisco/telepresence/version");
   exit(0);
 }

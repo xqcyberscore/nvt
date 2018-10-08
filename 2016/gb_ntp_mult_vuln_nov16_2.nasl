@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_mult_vuln_nov16_2.nasl 4592 2016-11-22 10:51:27Z ckuerste $
+# $Id: gb_ntp_mult_vuln_nov16_2.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # NTP.org 'ntp' Zero Origin Timestamp Regression Vulnerability
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106406");
-  script_version("$Revision: 4592 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-11-22 11:51:27 +0100 (Tue, 22 Nov 2016) $");
-  script_tag(name: "creation_date", value: "2016-06-03 11:18:33 +0700 (Fri, 03 Jun 2016)");
+  script_version("$Revision: 11772 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-03 11:18:33 +0700 (Fri, 03 Jun 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2016-7431");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("NTP.org 'ntp' Zero Origin Timestamp Regression Vulnerability");
 
@@ -50,19 +50,19 @@ if (description)
   script_mandatory_keys("NTP/Installed", "NTP/Linux/Ver");
   script_require_udp_ports(123);
 
-  script_tag(name: "summary", value: "ntpd is prone to a zero origin timestamp regression vulnerability.");
+  script_tag(name:"summary", value:"ntpd is prone to a zero origin timestamp regression vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Zero Origin timestamp problems were fixed in ntp-4.2.8p6. However,
+  script_tag(name:"insight", value:"Zero Origin timestamp problems were fixed in ntp-4.2.8p6. However,
 subsequent timestamp validation checks introduced a regression in the handling of some Zero origin timestamp
 checks.");
 
-  script_tag(name: "affected", value: "Version 4.2.8p8 and 4.3.93");
+  script_tag(name:"affected", value:"Version 4.2.8p8 and 4.3.93");
 
-  script_tag(name: "solution", value: "Upgrade to NTP version 4.2.8p9, 4.3.94 or later.");
+  script_tag(name:"solution", value:"Upgrade to NTP version 4.2.8p9, 4.3.94 or later.");
 
-  script_xref(name: "URL", value: "https://www.kb.cert.org/vuls/id/633847");
+  script_xref(name:"URL", value:"https://www.kb.cert.org/vuls/id/633847");
 
   exit(0);
 }

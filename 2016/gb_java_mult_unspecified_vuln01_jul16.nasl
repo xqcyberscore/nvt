@@ -29,47 +29,50 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808621");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 11772 $");
   script_cve_id("CVE-2016-3458", "CVE-2016-3485", "CVE-2016-3500", "CVE-2016-3503",
                 "CVE-2016-3508", "CVE-2016-3550");
   script_bugtraq_id(91945, 91996, 91972, 91951);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-25 11:28:15 +0530 (Mon, 25 Jul 2016)");
   script_name("Oracle Java SE Multiple Unspecified Vulnerabilities-01 July 2016 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
+  script_tag(name:"summary", value:"The host is installed with Oracle Java SE
   and is prone to multiple unspecified vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - A flaw in the Hotspot component.
+
   - A flaw in the Install component.
+
   - A flaw in the JAXP component.
+
   - A flaw in the CORBA component.
+
   - A flaw in the Networking component.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote user
+  script_tag(name:"impact", value:"Successful exploitation will allow remote user
   to access and modify data on the target system, can cause denial of service
   conditions on the target system, a remote or local user can obtain elevated
   privileges on the  target system, also a local user can modify data on the
-  target system.
+  target system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Oracle Java SE 6 update 115 and prior,
+  script_tag(name:"affected", value:"Oracle Java SE 6 update 115 and prior,
   7 update 101 and prior, and 8 update 92 and prior on Windows.");
 
-  script_tag(name: "solution" , value:"Apply the patch from below link,
+  script_tag(name:"solution", value:"Apply the patch from below link,
   http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

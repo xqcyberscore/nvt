@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_priv_esc_vuln.nasl 10967 2018-08-15 05:53:29Z cfischer $
+# $Id: gb_asp_dotnet_core_priv_esc_vuln.nasl 11767 2018-10-05 13:34:39Z cfischer $
 #
 # Microsoft ASP.NET Core Elevation Of Privilege Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812098");
-  script_version("$Revision: 10967 $");
+  script_version("$Revision: 11767 $");
   script_cve_id("CVE-2017-11879");
   script_bugtraq_id(101713);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-20 14:14:33 +0530 (Mon, 20 Nov 2017)");
   script_name("Microsoft ASP.NET Core Elevation Of Privilege Vulnerability");
 
@@ -49,17 +49,15 @@ if(description)
   vulnerability in ASP.NET Core.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to gain elevated privileges on affected system.
-
-  Impact Level: System/Application.");
+  attackers to gain elevated privileges on affected system.");
 
   script_tag(name:"affected", value:"Microsoft ASP.NET Core 2.0 using packages
   'Microsoft.AspNetCore.All' or 'Microsoft.AspNetCore.Mvc.Core' version 2.0.0");
 
   script_tag(name:"solution", value:"Upgrade Microsoft ASP.NET Core 2.0 to use
   package 'Microsoft.AspNetCore.All' version 2.0.3 and package
-  'Microsoft.AspNetCore.Mvc.Core' version 2.0.1 or latest. For details refer to,
-  https://github.com/aspnet/announcements/issues/277");
+  'Microsoft.AspNetCore.Mvc.Core' version 2.0.1 or latest. Please see the references
+  for more info.");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -68,26 +66,20 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
-
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-host    = get_host_ip();
-usrname = get_kb_item( "SMB/login" );
-passwd  = get_kb_item( "SMB/password" );
-if( ! host || ! usrname || ! passwd ) exit( 0 );
+infos = kb_smb_wmi_connectinfo();
+if( ! infos ) exit( 0 );
 
-domain  = get_kb_item( "SMB/domain" );
-if( domain ) usrname = domain + '\\' + usrname;
-
-handle = wmi_connect( host:host, username:usrname, password:passwd );
+handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
 query1 = 'Select Version from CIM_DataFile Where FileName ='

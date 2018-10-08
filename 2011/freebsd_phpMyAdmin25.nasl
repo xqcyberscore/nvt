@@ -1,7 +1,6 @@
 ###############################################################################
-# VID e44fe906-df27-11e0-a333-001cc0a36e12
 # OpenVAS Vulnerability Test
-# $Id: freebsd_phpMyAdmin25.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_phpMyAdmin25.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID e44fe906-df27-11e0-a333-001cc0a36e12
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.70244");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-09-21 05:47:11 +0200 (Wed, 21 Sep 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");

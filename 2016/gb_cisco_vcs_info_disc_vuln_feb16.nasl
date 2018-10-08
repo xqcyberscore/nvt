@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_info_disc_vuln_feb16.nasl 11345 2018-09-12 07:02:17Z cfischer $
+# $Id: gb_cisco_vcs_info_disc_vuln_feb16.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Cisco Video Communications Server Information Disclosure Vulnerability - Feb16
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:cisco:telepresence_video_communication_server_software";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806683");
-  script_version("$Revision: 11345 $");
+  script_version("$Revision: 11772 $");
   script_cve_id("CVE-2016-1316");
   script_bugtraq_id(82948);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:02:17 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-12 11:59:34 +0530 (Fri, 12 Feb 2016)");
   script_name("Cisco Video Communications Server Information Disclosure Vulnerability - Feb16");
 
@@ -48,9 +48,7 @@ if(description)
   protect an informational URL that contains aggregated call statistics.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to read and disclose certain sensitive data.
-
-  Impact Level: Application");
+  to read and disclose certain sensitive data.");
 
   script_tag(name:"affected", value:"Cisco TelePresence Video Communication
   Server (VCS) version X8.1 through X8.7 when used in conjunction with Jabber

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_heap_overflow_vuln_lin.nasl 10849 2018-08-09 07:20:42Z santu $
+# $Id: gb_php_mult_heap_overflow_vuln_lin.nasl 11771 2018-10-08 05:52:02Z asteins $
 #
 # PHP Multiple Heap Buffer Overflow Vulnerabilities (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813901");
-  script_version("$Revision: 10849 $");
+  script_version("$Revision: 11771 $");
   script_cve_id("CVE-2018-14851");
-  script_tag(name:"cvss_base", value:"5.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 09:20:42 +0200 (Thu, 09 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 07:52:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-07 13:28:46 +0530 (Tue, 07 Aug 2018)");
   script_name("PHP Multiple Heap Buffer Overflow Vulnerabilities (Linux)");
 

@@ -1,7 +1,6 @@
 ###############################################################################
-# VID 30cb4522-b94d-11e0-8182-485d60cb5385
 # OpenVAS Vulnerability Test
-# $Id: freebsd_libsoup.nasl 11757 2018-10-05 09:43:25Z cfischer $
+# $Id: freebsd_libsoup.nasl 11762 2018-10-05 10:54:12Z cfischer $
 #
 # Auto generated from VID 30cb4522-b94d-11e0-8182-485d60cb5385
 #
@@ -30,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.70062");
-  script_version("$Revision: 11757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 11:43:25 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:54:12 +0200 (Fri, 05 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-08-07 17:37:07 +0200 (Sun, 07 Aug 2011)");
   script_cve_id("CVE-2011-2054");
   script_tag(name:"cvss_base", value:"7.5");

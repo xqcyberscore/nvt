@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_was_ms16-070.nasl 9316 2018-04-05 07:06:02Z cfischer $
+# $Id: gb_sharepoint_server_was_ms16-070.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # Microsoft SharePoint Server WAS Multiple Vulnerabilities (3163610)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807848");
-  script_version("$Revision: 9316 $");
+  script_version("$Revision: 11772 $");
   script_cve_id("CVE-2016-0025", "CVE-2016-3234");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 09:06:02 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-16 10:32:35 +0530 (Thu, 16 Jun 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft SharePoint Server WAS Multiple Vulnerabilities (3163610)");
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS16-070.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
 
@@ -53,9 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to execute arbitrary code on affected system and gain access to
-  potentially sensitive information.
-
-  Impact Level: System/Application");
+  potentially sensitive information.");
 
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2010 Service Pack 2 Word Automation Services,
 
@@ -67,14 +64,15 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115014");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115196");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-070");
- 
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3115014");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3115196");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS16-070");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/SharePoint/Server/Ver");
   exit(0);
 }

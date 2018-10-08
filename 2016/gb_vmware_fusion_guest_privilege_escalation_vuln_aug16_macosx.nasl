@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_fusion_guest_privilege_escalation_vuln_aug16_macosx.nasl 5712 2017-03-24 10:00:49Z teissa $
+# $Id: gb_vmware_fusion_guest_privilege_escalation_vuln_aug16_macosx.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # VMware Fusion Guest Privilege Escalation Vulnerability Aug16 (Mac OS X)
 #
@@ -29,43 +29,40 @@ CPE = "cpe:/a:vmware:fusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809004");
-  script_version("$Revision: 5712 $");
+  script_version("$Revision: 11772 $");
   script_cve_id("CVE-2015-6933");
   script_bugtraq_id(79958);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-19 11:02:52 +0530 (Fri, 19 Aug 2016)");
   script_name("VMware Fusion Guest Privilege Escalation Vulnerability Aug16 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"The host is installed with VMware Fusion
+  script_tag(name:"summary", value:"The host is installed with VMware Fusion
   and is prone to an important guest privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to a kernel memory
+  script_tag(name:"insight", value:"The flaw is due to a kernel memory
   corruption vulnerability is present in the VMware Tools 'Shared Folders'
   (HGFS) feature running on Microsoft Windows.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow an
+  script_tag(name:"impact", value:"Successful exploitation will allow an
   authenticated attacker on a guest operating system to gain elevated
-  privileges on the guest operating system.
+  privileges on the guest operating system.");
 
-  Impact Level: System");
-
-  script_tag(name: "affected" , value:"VMware Fusion 7.x before 7.1.2 on
+  script_tag(name:"affected", value:"VMware Fusion 7.x before 7.1.2 on
   Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to VMware Fusion version
+  script_tag(name:"solution", value:"Upgrade to VMware Fusion version
   7.1.2 or later, For updates refer to http://www.vmware.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2016-0001.html");
-  script_xref(name : "URL" , value : "https://tools.cisco.com/security/center/viewAlert.x?alertId=42939");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0001.html");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/viewAlert.x?alertId=42939");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -77,15 +74,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-vmwareVer = "";
-
-## Get version
 if(!vmwareVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(vmwareVer =~ "^7\.")
 {
   if(version_is_less(version:vmwareVer, test_version:"7.1.2"))

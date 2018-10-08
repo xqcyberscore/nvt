@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pqi_air_pen_express_mult_vuln.nasl 5894 2017-04-07 14:08:34Z teissa $
+# $Id: gb_pqi_air_pen_express_mult_vuln.nasl 11772 2018-10-08 07:20:02Z asteins $
 #
 # PQI Air Pen Express Wireless Router Multiple Vulnerabilities
 #
@@ -29,44 +29,47 @@ CPE = "cpe:/a:pqi:air:pen:express";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807536");
-  script_version("$Revision: 5894 $");
+  script_version("$Revision: 11772 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 16:08:34 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 09:20:02 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-07 11:07:14 +0530 (Thu, 07 Apr 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("PQI Air Pen Express Wireless Router Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"This host has PQI Air Pen Express 
+  script_tag(name:"summary", value:"This host has PQI Air Pen Express
   Wireless Router and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and
   check whether it is able read the sensitive information");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to:
+  script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Not restricting some files which are containing sensitive information.
+
   - Insufficient validation of user supplied input via parameters 'mssid_0',
     'ssid', 'hostname', 'admpass' in Basic Wireless Settings, 'hostname',
     in Wide Area Network (WAN) Settings and 'addURLFilter', 'addHostFilter'
     in Webs URL Filter Settings.
+
   - The users are allowed to set the administrative credential.
-  - An insecure default permission settting.
+
+  - An insecure default permission setting.
+
   - Any action, whether sensitive or not is transmitted in plain text because
     HTTPS is not used");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote 
-  attackers to gain access to potentially sensitive information and to execute 
-  arbitrary script code in a user's browser session within the trust 
-  relationship between their browser and the server.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to gain access to potentially sensitive information and to execute
+  arbitrary script code in a user's browser session within the trust
+  relationship between their browser and the server.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"PQI Air Pen Express - Wireless Router 6W51-0000R2 and 6W51-0000R2XXX");
 
-  script_tag(name: "affected" , value:"
-  PQI Air Pen Express - Wireless Router 6W51-0000R2 and 6W51-0000R2XXX");
-
-  script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one. 
-");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/39659");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39659");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_category(ACT_ATTACK);
@@ -83,19 +86,12 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-url = "";
-pqiPort = "";
-
-## Get HTTP Port
 if(!pqiPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Construct vulnerable url
 url = "/cgi-bin/ExportSettings.sh";
 
-# Confirm the Exploit
 if(http_vuln_check(port:pqiPort, url:url, check_header:TRUE,
    pattern:"staWirelessMode",
    extra_check:make_list("wanConnectionMode", "HostName", "lan_ipaddr", "WAN_MAC_ADDR")))
