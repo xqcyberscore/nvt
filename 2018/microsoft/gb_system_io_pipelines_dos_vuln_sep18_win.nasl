@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_system_io_pipelines_dos_vuln_sep18_win.nasl 11767 2018-10-05 13:34:39Z cfischer $
+# $Id: gb_system_io_pipelines_dos_vuln_sep18_win.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # 'System.IO.Pipelines' Denial of Service Vulnerability Sep18 (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814210");
-  script_version("$Revision: 11767 $");
+  script_version("$Revision: 11782 $");
   script_cve_id("CVE-2018-8409");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-14 16:54:50 +0530 (Fri, 14 Sep 2018)");
   script_name("'System.IO.Pipelines' Denial of Service Vulnerability Sep18 (Windows)");
 
@@ -72,9 +72,9 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("host_details.inc");
 include("version_func.inc");
-include("secpod_smb_func.inc");
+include("misc_func.inc");
+include("wmi_file.inc");
 
 infos = kb_smb_wmi_connectinfo();
 if( ! infos ) exit( 0 );
@@ -82,21 +82,26 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-query1 = 'Select Version from CIM_DataFile Where FileName ='
-        + raw_string(0x22) + 'system.io.pipelines.4.5.0' + raw_string(0x22) + ' AND Extension ='
-        + raw_string(0x22) + 'nupkg' + raw_string(0x22);
-fileVer1 = wmi_query( wmi_handle:handle, query:query1);
+# TODO: Limit to a possible known common path
+fileList = wmi_file_file_search( handle:handle, fileName:"system.io.pipelines.4.5.0", fileExtn:"nupkg", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
-if(!fileVer1) exit( 0 );
+if( ! fileList || ! is_array( fileList ) ) {
+  exit( 0 );
+}
 
-foreach ver(split( fileVer1 ))
-{
-  path = eregmatch(pattern:".*system.io.pipelines.4.5.0.nupkg", string:ver );
-  if(path[0])
-  {
-    report = report_fixed_ver( installed_version:"4.5.0", fixed_version:"4.5.1", file_checked:path[0]);
-    security_message( data:report);
-    exit(0);
+report = "";
+
+foreach filePath( fileList ) {
+
+  if( eregmatch( pattern:".*system.io.pipelines.4.5.0.nupkg", string:filePath ) ) {
+    VULN = TRUE;
+    report += report_fixed_ver( file_version:"4.5.0", file_checked:filePath, fixed_version:"4.5.1" ) + '\n';
   }
 }
-exit(99);
+
+if( VULN ) {
+  security_message( port:0, data:report );
+  exit( 0 );
+}
+
+exit( 99 );

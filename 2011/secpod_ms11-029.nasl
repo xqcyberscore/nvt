@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-029.nasl 11767 2018-10-05 13:34:39Z cfischer $
+# $Id: secpod_ms11-029.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # Microsoft GDI+ Remote Code Execution Vulnerability (2489979)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902365");
-  script_version("$Revision: 11767 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11782 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_cve_id("CVE-2011-0041");
   script_bugtraq_id(47250);
@@ -76,6 +76,8 @@ if(description)
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
+include("misc_func.inc");
+include("wmi_file.inc");
 
 if( hotfix_check_sp( xp:4, xpx64:3, win2003:3, win2003x64:3, winVista:3, win2008:3 ) <= 0 ) exit( 0 );
 
@@ -85,62 +87,83 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-query = 'Select Version from CIM_DataFile Where FileName ='
-        + raw_string(0x22) + 'gdiplus' + raw_string(0x22) + ' AND Extension ='
-        + raw_string(0x22) + 'dll' + raw_string(0x22);
-fileVer = wmi_query( wmi_handle:handle, query:query );
+# TODO: Limit to a possible known common path
+fileList = wmi_file_fileversion( handle:handle, fileName:"gdiplus", fileExtn:"dll", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
-if( ! fileVer ) exit( 0 );
+if( ! fileList || ! is_array( fileList ) ) {
+  exit( 0 );
+}
 
-foreach ver( split( fileVer ) ) {
+# Don't pass NULL to version functions below
+maxVer = "unknown";
+fix = "unknown";
 
-  ver = eregmatch(pattern:"\gdiplus.dll.?([0-9.]+)", string:ver);
-  if( ver[1] ) {
-    if( hotfix_check_sp( xp:4 ) > 0 ) {
-      if( version_is_greater_equal( version:ver[1], test_version:"5.2.6002.22509" ) ) {
-         flag = TRUE;
-         break;
-      }
+foreach filePath( keys( fileList ) ) {
+
+  vers = fileList[filePath];
+
+  if( vers && version = eregmatch( string:vers, pattern:"^([0-9.]+)" ) ) {
+
+    if( version_is_less( version:version[1], test_version:maxVer ) ) {
+      continue;
+    } else {
+      foundMax = TRUE;
+      maxVer = version[1];
+      maxPath = filePath;
+    }
+  }
+}
+
+if( foundMax ) {
+  if( hotfix_check_sp( xp:4 ) > 0 ) {
+    if( version_is_greater_equal( version:maxVer, test_version:"5.2.6002.22509" ) ) {
+      flag = TRUE;
+    } else {
+      fix = ">= 5.2.6002.22509";
+    }
+  }
+
+  else if( hotfix_check_sp(win2003:3, xpx64:3, win2003x64:3 ) > 0 ) {
+    if( version_is_greater_equal( version:maxVer, test_version:"5.2.6002.22507" ) ) {
+      flag = TRUE;
+    } else {
+      fix = ">= 5.2.6002.22507";
+    }
+  }
+
+  else if( hotfix_check_sp( winVista:3, win2008:3 ) > 0 ) {
+    SP = get_kb_item( "SMB/WinVista/ServicePack" );
+    if( ! SP ) {
+      SP = get_kb_item( "SMB/Win2008/ServicePack" );
     }
 
-    else if( hotfix_check_sp(win2003:3, xpx64:3, win2003x64:3 ) > 0 ) {
-      if( version_is_greater_equal( version:ver[1], test_version:"5.2.6002.22507" ) ) {
+    if( "Service Pack 1" >< SP ) {
+      if( version_in_range( version:maxVer, test_version:"5.2.6001.18551", test_version2:"5.2.6001.21999" ) ||
+          version_is_greater_equal( version:maxVer, test_version:"5.2.6001.22791" ) ||
+          version_in_range( version:maxVer, test_version:"6.0.6001.18551", test_version2:"6.0.6001.21999" ) ||
+          version_is_greater_equal( version:maxVer, test_version:"6.0.6001.22791" ) ) {
         flag = TRUE;
-        break;
+      } else {
+        fix = ">= 5.2.6001.22791 or >= 6.0.6001.22791";
       }
     }
 
-    else if( hotfix_check_sp( winVista:3, win2008:3 ) > 0 ) {
-      SP = get_kb_item( "SMB/WinVista/ServicePack" );
-      if( ! SP ) {
-        SP = get_kb_item( "SMB/Win2008/ServicePack" );
-      }
-
-      if( "Service Pack 1" >< SP ) {
-        if( version_in_range( version:ver[1], test_version:"5.2.6001.18551", test_version2:"5.2.6001.21999" ) ||
-            version_is_greater_equal( version:ver[1], test_version:"5.2.6001.22791" ) ||
-            version_in_range( version:ver[1], test_version:"6.0.6001.18551", test_version2:"6.0.6001.21999" ) ||
-            version_is_greater_equal( version:ver[1], test_version:"6.0.6001.22791" ) ) {
-          flag = TRUE;
-          break;
-        }
-      }
-
-      if( "Service Pack 2" >< SP ) {
-        if( version_in_range( version:ver[1], test_version:"5.2.6002.18342", test_version2:"5.2.6002.21999" ) ||
-            version_is_greater_equal( version:ver[1], test_version:"5.2.6002.22519" ) ||
-            version_in_range( version:ver[1], test_version:"6.0.6002.18342", test_version2:"6.0.6002.21999" ) ||
-            version_is_greater_equal( version:ver[1], test_version:"6.0.6002.22519" ) ) {
-          flag = TRUE;
-          break;
-        }
+    if( "Service Pack 2" >< SP ) {
+      if( version_in_range( version:maxVer, test_version:"5.2.6002.18342", test_version2:"5.2.6002.21999" ) ||
+          version_is_greater_equal( version:maxVer, test_version:"5.2.6002.22519" ) ||
+          version_in_range( version:maxVer, test_version:"6.0.6002.18342", test_version2:"6.0.6002.21999" ) ||
+          version_is_greater_equal( version:maxVer, test_version:"6.0.6002.22519" ) ) {
+        flag = TRUE;
+      } else {
+        fix = ">= 5.2.6002.22519 or >= 6.0.6002.22519";
       }
     }
   }
 }
 
 if( ! flag ) {
-  security_message( port:0 );
+  report = report_fixed_ver( file_version:maxVer, file_checked:maxPath, fixed_version:fix );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

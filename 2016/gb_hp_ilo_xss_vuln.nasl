@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_xss_vuln.nasl 11640 2018-09-27 07:15:20Z asteins $
+# $Id: gb_hp_ilo_xss_vuln.nasl 11790 2018-10-09 08:36:59Z ckuersteiner $
 #
 # HP Integrated Lights-Out XSS Vulnerability
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106481");
-  script_version("$Revision: 11640 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 09:15:20 +0200 (Thu, 27 Sep 2018) $");
+  script_version("$Revision: 11790 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:36:59 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-19 15:31:29 +0700 (Mon, 19 Dec 2016)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2016-4406");
 

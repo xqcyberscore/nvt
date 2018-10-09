@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4042067.nasl 11767 2018-10-05 13:34:39Z cfischer $
+# $Id: gb_ms_kb4042067.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4042067)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811860");
-  script_version("$Revision: 11767 $");
+  script_version("$Revision: 11782 $");
   script_cve_id("CVE-2017-11771", "CVE-2017-11772");
   script_bugtraq_id(101114, 101116);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 10:00:54 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4042067)");
 
@@ -76,9 +76,11 @@ if(description)
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
+include("misc_func.inc");
+include("wmi_file.inc");
 
-if(hotfix_check_sp(win2008:3, win2008x64:3) <= 0){
-  exit(0);
+if( hotfix_check_sp( win2008:3, win2008x64:3 ) <= 0 ) {
+  exit( 0 );
 }
 
 infos = kb_smb_wmi_connectinfo();
@@ -87,41 +89,37 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-query = 'Select Version from CIM_DataFile Where FileName ='
-        + raw_string(0x22) + 'tquery' + raw_string(0x22) + ' AND Extension ='
-        + raw_string(0x22) + 'dll' + raw_string(0x22);
-
-fileVer = wmi_query( wmi_handle:handle, query:query );
-
+fileList = wmi_file_fileversion( handle:handle, dirPathLike:"%windowssearchengine%", fileName:"tquery", fileExtn:"dll", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
-if( ! fileVer ) exit( 0 );
+if( ! fileList || ! is_array( fileList ) ) {
+  exit( 0 );
+}
 
-# Don't pass NULL to version function below
-maxVer = "";
+# Don't pass NULL to version functions below
+maxVer = "unknown";
 
-##Multiple files found
-##On update old as well as new files come, so checking for highest version
-foreach ver( split( fileVer ) ) {
-  ver1 = eregmatch( pattern:"(.*)(windowssearchengine.*)\tquery.dll.?([0-9.]+)", string:ver );
-  version = ver1[3];
-  winPath = ver1[1] + ver1[2];
+foreach filePath( keys( fileList ) ) {
 
-  if( version_is_less( version:version, test_version:maxVer ) ) {
-    continue;
-  } else {
-    maxVer = version;
+  vers = fileList[filePath];
+
+  if( vers && version = eregmatch( string:vers, pattern:"^([0-9.]+)" ) ) {
+
+    if( version_is_less( version:version[1], test_version:maxVer ) ) {
+      continue;
+    } else {
+      foundMax = TRUE;
+      maxVer = version[1];
+      maxPath = filePath;
+    }
   }
 }
 
-if( maxVer ) {
-  if( version_is_less( version:maxVer, test_version:"7.0.6002.24201" ) )
-  {
-    report = 'File checked:     ' + winPath + "tquery.dll" + '\n' +
-             'File version:     ' + maxVer  + '\n' +
-             'Vulnerable range: Less than 7.0.6002.24201\n' ;
+if( foundMax ) {
+  if( version_is_less( version:maxVer, test_version:"7.0.6002.24201" ) ) {
+    report = report_fixed_ver( file_checked:maxPath, file_version:maxVer, vulnerable_range:"Less than 7.0.6002.24201" );
     security_message( port:0, data:report );
     exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powershell_editor_services_rce_vuln.nasl 11767 2018-10-05 13:34:39Z cfischer $
+# $Id: gb_powershell_editor_services_rce_vuln.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # Microsoft PowerShell Editor Services Remote Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813676");
-  script_version("$Revision: 11767 $");
+  script_version("$Revision: 11782 $");
   script_cve_id("CVE-2018-8327");
   script_bugtraq_id(104649);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 14:49:04 +0530 (Tue, 17 Jul 2018)");
   script_name("Microsoft PowerShell Editor Services Remote Code Execution Vulnerability");
 
@@ -68,9 +68,9 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("host_details.inc");
 include("version_func.inc");
-include("secpod_smb_func.inc");
+include("misc_func.inc");
+include("wmi_file.inc");
 
 infos = kb_smb_wmi_connectinfo();
 if( ! infos ) exit( 0 );
@@ -78,24 +78,31 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-query = 'Select Version from CIM_DataFile Where FileName ='
-        + raw_string(0x22) + 'Microsoft.PowerShell.EditorServices' + raw_string(0x22) + ' AND Extension ='
-        + raw_string(0x22) + 'dll' + raw_string(0x22);
-fileVer = wmi_query( wmi_handle:handle, query:query);
+# TODO: Limit to a possible known common path
+fileList = wmi_file_fileversion( handle:handle, fileName:"Microsoft.PowerShell.EditorServices", fileExtn:"dll", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
-if(!fileVer) exit( 0 );
+if( ! fileList || ! is_array( fileList ) ) {
+  exit( 0 );
+}
 
-foreach ver(split( fileVer ))
-{
-  ver = eregmatch(pattern:"(.*)\microsoft.powershell.editorservices.dll.?([0-9.]+)", string:ver );
-  version = ver[2];
-  file = ver[1] + "Microsoft.PowerShell.EditorServices.dll";
+report = "";
 
-  if(version_is_less(version:version, test_version:"1.8.0"))
-  {
-    report = report_fixed_ver( installed_version:version, fixed_version:"1.8.0", file_checked:file);
-    security_message( data:report );
-    exit(0);
+foreach filePath( keys( fileList ) ) {
+
+  vers = fileList[filePath];
+
+  if( vers && version = eregmatch( string:vers, pattern:"^([0-9.]+)" ) ) {
+
+    if( version_is_less( version:version[1], test_version:"1.8.0" ) ) {
+      VULN = TRUE;
+      report += report_fixed_ver( file_version:version[1], file_checked:filePath, fixed_version:"1.8.0" ) + '\n';
+    }
   }
 }
-exit(0);
+
+if( VULN ) {
+  security_message( port:0, data:report );
+  exit( 0 );
+}
+
+exit( 99 );

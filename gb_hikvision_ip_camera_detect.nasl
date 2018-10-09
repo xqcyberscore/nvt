@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hikvision_ip_camera_detect.nasl 11769 2018-10-05 14:52:24Z tpassfeld $
+# $Id: gb_hikvision_ip_camera_detect.nasl 11783 2018-10-08 20:10:21Z tpassfeld $
 #
 # Hikvision IP Camera Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114037");
-  script_version("$Revision: 11769 $");
+  script_version("$Revision: 11783 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 16:52:24 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 22:10:21 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-05 14:33:50 +0200 (Fri, 05 Oct 2018)");
   script_name("Hikvision IP Camera Remote Detection");
   script_category(ACT_GATHER_INFO);
@@ -58,22 +58,31 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 8081);
 
-url = "/doc/script/global_config.js";
+url = "/doc/script/config/system/channelDigital.js";
 res = http_get_cache(port: port, item: url);
 
-if("Document Error: Not Found" >< res) {
-  url = "/doc/script/lib/seajs/config/sea-config.js";
+if("<u>The requested resource is not available.</u>" >< res || "Document Error: Not Found" >< res
+  || "HTTP/1.1 404 Not Found" >< res) {
+  url = "/doc/script/inc.js";
   res = http_get_cache(port: port, item: url);
 }
 
-if("seajs.config" >< res && "seajs.web_version=" >< res || "global_config" >< res && "web_version:" >< res) {
+if('"/hikvision://"' >< res || '{case"HIKVISION"' >< res) {
 
   version = "unknown";
 
+  url2 = "/doc/script/global_config.js";
+  res = http_get_cache(port: port, item: url2);
+  if("<u>The requested resource is not available.</u>" >< res || "Document Error: Not Found" >< res
+    || "HTTP/1.1 404 Not Found" >< res) {
+    url2 = "/doc/script/lib/seajs/config/sea-config.js";
+    res = http_get_cache(port: port, item: url2);
+  }
+
   #seajs.web_version="V4.0.1build171121" #web_version:"3.1.3.131126" #web_version: "3.0.51.170214"
-  ver = eregmatch(pattern: 'seajs.web_version="V([0-9.a-z]+)"|web_version:\\s?"([0-9.]+)"', string: res);
-  if(!isnull(ver[1])) version = ver[1];
-  if(!isnull(ver[2])) version = ver[2];
+  ver = eregmatch(pattern: 'seajs.web_version="V([0-9.]+)[a-zA-Z]+([0-9]+)"|web_version:\\s?"([0-9.]+)"', string: res);
+  if(!isnull(ver[1]) && !isnull(ver[2])) version = ver[1] + "." + ver[2]; #Unifying the extracted versions for later use
+  if(!isnull(ver[3])) version = ver[3];
 
   set_kb_item(name: "hikvision/ip_camera/detected", value: TRUE);
   set_kb_item(name: "hikvision/ip_camera/" + port + "/detected", value: TRUE);
@@ -81,7 +90,7 @@ if("seajs.config" >< res && "seajs.web_version=" >< res || "global_config" >< re
 
   cpe = "cpe:/a:hikvision:ip_camera:";
 
-  conclUrl = report_vuln_url(port: port, url: url, url_only: TRUE);
+  conclUrl = report_vuln_url(port: port, url: url2, url_only: TRUE);
 
   register_and_report_cpe(app: "Hikvision IP Camera",
                           ver: version,

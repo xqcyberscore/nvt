@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_azure_iot_sdk_spoofing_vuln_sep18_win.nasl 11767 2018-10-05 13:34:39Z cfischer $
+# $Id: gb_microsoft_azure_iot_sdk_spoofing_vuln_sep18_win.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # Azure IoT SDK Spoofing Vulnerability Sep18 (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.814212");
-  script_version("$Revision: 11767 $");
+  script_version("$Revision: 11782 $");
   script_cve_id("CVE-2018-8479");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-17 14:45:59 +0530 (Mon, 17 Sep 2018)");
   script_name("Azure IoT SDK Spoofing Vulnerability Sep18 (Windows)");
 
@@ -69,9 +69,9 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("host_details.inc");
 include("version_func.inc");
-include("secpod_smb_func.inc");
+include("misc_func.inc");
+include("wmi_file.inc");
 
 infos = kb_smb_wmi_connectinfo();
 if( ! infos ) exit( 0 );
@@ -79,26 +79,31 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-query1 = 'Select Version from CIM_DataFile Where FileName ='
-        + raw_string(0x22) + 'Microsoft.Azure.IoTHub.IoTHubClient' + raw_string(0x22);
-fileVer1 = wmi_query( wmi_handle:handle, query:query1);
+# TODO: Limit to a possible known common path
+fileList = wmi_file_file_search( handle:handle, fileName:"Microsoft.Azure.IoTHub.IoTHubClient", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
-if(!fileVer1) exit( 0 );
+if( ! fileList || ! is_array( fileList ) ) {
+  exit( 0 );
+}
 
-foreach ver(split( fileVer1 ))
-{
-  ver = eregmatch(pattern:".*(M|m)icrosoft.(A|a)zure.(I|i)o(T|t)(H|h)ub.(I|i)o(T|t)(H|h)ub(C|c)lient.([0-9.]+)([-a-zA-Z0-9]+)?", string:ver);
-  if(!ver[10]){
-    continue;
-  }
-  version = ver[10];
-  filePath = ver[0];
+report = "";
 
-  if(version && version_is_less(version:version, test_version:"1.2.9"))
-  {
-    report = report_fixed_ver(installed_version:version, fixed_version:"1.2.9", install_path:filePath);
-    security_message(data:report);
-    exit(0);
+foreach filePath( keys( fileList ) ) {
+
+  vers = fileList[filePath];
+
+  if( vers && version = eregmatch( string:vers, pattern:"^([0-9.]+)" ) ) {
+
+    if( version_is_less( version:version[1], test_version:"1.2.9" ) ) {
+      VULN = TRUE;
+      report += report_fixed_ver( file_version:version[1], file_checked:filePath, fixed_version:"1.2.9" ) + '\n';
+    }
   }
 }
-exit(0);
+
+if( VULN ) {
+  security_message( port:0, data:report );
+  exit( 0 );
+}
+
+exit( 99 );

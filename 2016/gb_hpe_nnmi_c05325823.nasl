@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_nnmi_c05325823.nasl 11702 2018-10-01 07:31:38Z asteins $
+# $Id: gb_hpe_nnmi_c05325823.nasl 11790 2018-10-09 08:36:59Z ckuersteiner $
 #
 # HPE Network Node Manager i (NNMi) Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:hp:network_node_manager_i";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106401");
-  script_version("$Revision: 11702 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 09:31:38 +0200 (Mon, 01 Oct 2018) $");
+  script_version("$Revision: 11790 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:36:59 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-18 10:07:02 +0700 (Fri, 18 Nov 2016)");
-  script_tag(name:"cvss_base", value:"9.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-4398", "CVE-2016-4399", "CVE-2016-4400");
 

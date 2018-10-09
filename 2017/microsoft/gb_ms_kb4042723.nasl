@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4042723.nasl 11771 2018-10-08 05:52:02Z asteins $
+# $Id: gb_ms_kb4042723.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # Windows Server 2008 Defense in Depth (KB4042723)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811950");
-  script_version("$Revision: 11771 $");
+  script_version("$Revision: 11782 $");
   script_cve_id("CVE-2017-13080");
   script_tag(name:"cvss_base", value:"2.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-08 07:52:02 +0200 (Mon, 08 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-10 18:23:04 +0530 (Fri, 10 Nov 2017)");
   script_name("Windows Server 2008 Defense in Depth (KB4042723)");
 
@@ -69,9 +69,11 @@ if(description)
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
+include("misc_func.inc");
+include("wmi_file.inc");
 
-if(hotfix_check_sp(win2008:3, win2008x64:3) <= 0){
-  exit(0);
+if( hotfix_check_sp( win2008:3, win2008x64:3 ) <= 0 ) {
+  exit( 0 );
 }
 
 infos = kb_smb_wmi_connectinfo();
@@ -80,32 +82,38 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-query = 'Select Version from CIM_DataFile Where FileName ='
-        + raw_string(0x22) + 'nwifi' + raw_string(0x22) + ' AND Extension ='
-        + raw_string(0x22) + 'sys' + raw_string(0x22);
-fileVer = wmi_query( wmi_handle:handle, query:query );
-
+# TODO: Limit to a possible known common path
+fileList = wmi_file_fileversion( handle:handle, fileName:"nwifi", fileExtn:"sys", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
-if( ! fileVer ) exit( 0 );
-maxVer = NULL;
+if( ! fileList || ! is_array( fileList ) ) {
+  exit( 0 );
+}
 
-foreach ver( split( fileVer ) ) {
-  ver1 = eregmatch( pattern:"(.*)\nwifi.sys.?([0-9.]+)", string:ver );
-  version = ver1[2];
-  winPath = ver1[1];
-  if( version_is_less( version:version, test_version:maxVer ) ) {
-    continue;
-  } else {
-    maxVer = version;
+# Don't pass NULL to version functions below
+maxVer = "unknown";
+
+foreach filePath( keys( fileList ) ) {
+
+  vers = fileList[filePath];
+
+  if( vers && version = eregmatch( string:vers, pattern:"^([0-9.]+)" ) ) {
+
+    if( version_is_less( version:version[1], test_version:maxVer ) ) {
+      continue;
+    } else {
+      foundMax = TRUE;
+      maxVer = version[1];
+      maxPath = filePath;
+    }
   }
 }
 
-if(maxVer){
-  if(version_is_less(version:maxVer, test_version:"6.0.6002.24202")){
-    report = report_fixed_ver(file_checked:winPath + "Nwifi.sys",
-                              file_version:maxVer, vulnerable_range:"Less than 6.0.6002.24202");
-    security_message(data:report);
-    exit(0);
+if( foundMax ) {
+  if(version_is_less( version:maxVer, test_version:"6.0.6002.24202" ) ) {
+    report = report_fixed_ver( file_checked:maxPath, file_version:maxVer, vulnerable_range:"Less than 6.0.6002.24202" );
+    security_message( port:0, data:report );
+    exit( 0 );
   }
 }
-exit(0);
+
+exit( 99 );

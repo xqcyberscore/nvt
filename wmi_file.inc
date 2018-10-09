@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test Library functions
-# $Id: wmi_file.inc 11752 2018-10-04 13:54:55Z cfischer $
+# $Id: wmi_file.inc 11781 2018-10-08 12:34:17Z cfischer $
 #
 # WMI Client Functions for Directories and Files
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11752 $
+# $Revision: 11781 $
 #
 ###############################################################################
 
@@ -368,6 +368,7 @@ function wmi_file_check_file_exists( handle, filePath ) {
 #
 # @param handle        the WMI handle for the request
 # @param dirPath       the path to limit the query to (optional), Example: "\\Windows\\" (Without the drive letter and with the doubled trailing backslashes)
+# @param dirPathLike   the path to limit the query to (optional) which is used in a LIKE statement, Example: "%windowssearchengine%"
 # @param fileName      the file name to search for (mandatory, without the file extension), Example: "Safari"
 # @param fileExtn      the file extension to limit the query to (optional), Example: "exe" (without a dot)
 # @param includeHeader if set to TRUE the header "Name" will be returned in the list
@@ -375,7 +376,7 @@ function wmi_file_check_file_exists( handle, filePath ) {
 # @return A list of files matching the query, FALSE if no files exists matching the query or NULL
 #         if not all required information are passed or the target system has denied the access.
 #
-function wmi_file_file_search( handle, dirPath, fileName, fileExtn, includeHeader ) {
+function wmi_file_file_search( handle, dirPath, dirPathLike, fileName, fileExtn, includeHeader ) {
 
   local_var handle, dirPath, fileName, fileExtn, includeHeader, query, queryres, splitList, _list, item;
   local_var kb_proxy_key, kb_proxy_key_list;
@@ -385,8 +386,13 @@ function wmi_file_file_search( handle, dirPath, fileName, fileExtn, includeHeade
     return NULL;
   }
 
-  if( ! dirPath && ! fileName && ! fileExtn ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#dirPath, fileName and fileExtn#-#wmi_file_file_search" );
+  if( ! dirPath && ! dirPathLike && ! fileName && ! fileExtn ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#dirPath, dirPathLike, fileName and fileExtn#-#wmi_file_file_search" );
+    return NULL;
+  }
+
+  if( dirPath && dirPathLike ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#wmi_file_file_search: dirPath and dirPathLike passed but only one of both can be used" );
     return NULL;
   }
 
@@ -395,8 +401,13 @@ function wmi_file_file_search( handle, dirPath, fileName, fileExtn, includeHeade
     return NULL;
   }
 
-  if( fileExtn && ( ! fileName && ! dirPath ) ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fileExtn passed but not fileName and dirPath#-#wmi_file_file_search" );
+  if( dirPathLike && ( ! fileName && ! fileExtn ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#dirPathLike passed but not fileName and fileExtn#-#wmi_file_file_search" );
+    return NULL;
+  }
+
+  if( fileExtn && ( ! fileName && ! dirPath && ! dirPathLike ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fileExtn passed but not fileName and dirPath/dirPathLike#-#wmi_file_file_search" );
     return NULL;
   }
 
@@ -406,11 +417,13 @@ function wmi_file_file_search( handle, dirPath, fileName, fileExtn, includeHeade
   }
 
   if( dirPath && fileName && fileExtn ) {
-    kb_proxy_key = "WMI//wmi_file_file_search_cache//by_path_name_extn//" + tolower( dirPath ) + "//" + tolower( fileName ) + "//" + tolower( fileExtn );
+    kb_proxy_key = "WMI//wmi_file_file_search_cache//by_dirpath_filename_fileextn//" + tolower( dirPath ) + "//" + tolower( fileName ) + "//" + tolower( fileExtn );
+  } else if( dirPathLike && fileName && fileExtn ) {
+    kb_proxy_key = "WMI//wmi_file_file_search_cache//by_dirpathlike_filename_fileextn//" + tolower( dirPathLike ) + "//" + tolower( fileName ) + "//" + tolower( fileExtn );
   } else if( fileName && fileExtn ) {
-    kb_proxy_key = "WMI//wmi_file_file_search_cache//by_name_extn//" + tolower( fileName ) + "//" + tolower( fileExtn );
+    kb_proxy_key = "WMI//wmi_file_file_search_cache//by_filename_fileextn//" + tolower( fileName ) + "//" + tolower( fileExtn );
   } else if( fileName ) {
-    kb_proxy_key = "WMI//wmi_file_file_search_cache//by_name//" + tolower( fileName );
+    kb_proxy_key = "WMI//wmi_file_file_search_cache//by_filename//" + tolower( fileName );
   }
 
   if( includeHeader )
@@ -422,6 +435,8 @@ function wmi_file_file_search( handle, dirPath, fileName, fileExtn, includeHeade
 
   if( dirPath && fileName && fileExtn ) {
     query = 'SELECT Name FROM CIM_DataFile WHERE Path = ' + raw_string( 0x22 ) + dirPath + raw_string( 0x22 ) + ' AND FileName = ' + raw_string( 0x22 ) + fileName + raw_string( 0x22 ) + ' AND Extension = ' + raw_string( 0x22 ) + fileExtn + raw_string( 0x22 );
+  } else if( dirPathLike && fileName && fileExtn ) {
+    query = 'SELECT Name FROM CIM_DataFile WHERE Path LIKE ' + raw_string( 0x22 ) + dirPathLike + raw_string( 0x22 ) + ' AND FileName = ' + raw_string( 0x22 ) + fileName + raw_string( 0x22 ) + ' AND Extension = ' + raw_string( 0x22 ) + fileExtn + raw_string( 0x22 );
   } else if( fileName && fileExtn ) {
     query = 'SELECT Name FROM CIM_DataFile WHERE FileName = ' + raw_string( 0x22 ) + fileName + raw_string( 0x22 ) + ' AND Extension = ' + raw_string( 0x22 ) + fileExtn + raw_string( 0x22 );
   } else if( fileName ) {
@@ -496,15 +511,19 @@ function wmi_file_fileinfo( handle, filePath ) {
 #        was already found and cached and if not it tries to establish a WMI connection to the remote host.
 #
 # @param handle        the WMI handle for the request
-# @param filePath      the path to the file to query (including the file extension), Example: "c:\\windows\\system32\\cmd.exe"
+# @param filePath      the full path to the file to query (including the file extension), Example: "c:\\windows\\system32\\cmd.exe"
+# @param dirPath       the path to limit the query to (optional), Example: "\\Windows\\" (Without the drive letter and with the doubled trailing backslashes)
+# @param dirPathLike   the path to limit the query to (optional) which is used in a LIKE statement, Example: "%windowssearchengine%"
+# @param fileName      the file name to search for (mandatory, without the file extension), Example: "Safari"
+# @param fileExtn      the file extension to limit the query to (optional), Example: "exe" (without a dot)
 # @param includeHeader if set to TRUE the headers "Name" and "Version" will be returned in the array
 #
 # @return An array of files as the key and the version of the file as a value, FALSE if the file doesn't
 #         exist and NULL if not all required information are passed or the target system has denied the access.
 #
-function wmi_file_fileversion( handle, filePath, includeHeader ) {
+function wmi_file_fileversion( handle, filePath, dirPath, dirPathLike, fileName, fileExtn, includeHeader ) {
 
-  local_var handle, filePath, includeHeader, query, queryres, splitList, _array, item, _item;
+  local_var handle, filePath, dirPath, dirPathLike, fileName, fileExtn, includeHeader, query, queryres, splitList, _array, item, _item;
   local_var kb_proxy_key, kb_proxy_list;
 
   if( isnull( handle ) ) {
@@ -512,13 +531,53 @@ function wmi_file_fileversion( handle, filePath, includeHeader ) {
     return NULL;
   }
 
-  if( ! filePath ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#filePath#-#wmi_file_fileinfo" );
+  if( ! filePath && ! dirPath && ! dirPathLike && ! fileName && ! fileExtn ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#filePath, dirPath, dirPathLike, fileName and fileExtn#-#wmi_file_fileversion" );
     return NULL;
   }
 
-  # Query KB ("proxy") first.
-  kb_proxy_key = "WMI//wmi_file_fileversion_cache//" + tolower( filePath );
+  if( filePath && ( dirPath || dirPathLike || fileName || fileExtn ) ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#wmi_file_fileversion: filePath can be used only alone without other parameters" );
+    return NULL;
+  }
+
+  if( dirPath && dirPathLike ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#wmi_file_fileversion: dirPath and dirPathLike passed but only one of both can be used" );
+    return NULL;
+  }
+
+  if( dirPath && ( ! fileName && ! fileExtn ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#dirPath passed but not fileName and fileExtn#-#wmi_file_fileversion" );
+    return NULL;
+  }
+
+  if( dirPathLike && ( ! fileName && ! fileExtn ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#dirPathLike passed but not fileName and fileExtn#-#wmi_file_fileversion" );
+    return NULL;
+  }
+
+  if( fileExtn && ( ! fileName && ! dirPath && ! dirPathLike ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fileExtn passed but not fileName and dirPath/dirPathLike#-#wmi_file_fileversion" );
+    return NULL;
+  }
+
+  if( fileExtn && ! fileName ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fileExtn passed but not fileName#-#wmi_file_fileversion" );
+    return NULL;
+  }
+
+  if( filePath ) {
+    kb_proxy_key = "WMI//wmi_file_fileversion_cache//by_filepath//" + tolower( filePath );
+  } else if( dirPath && fileName && fileExtn ) {
+    kb_proxy_key = "WMI//wmi_file_fileversion_cache//by_dirpath_filename_fileextn//" + tolower( dirPath ) + "//" + tolower( fileName ) + "//" + tolower( fileExtn );
+  } else if( dirPathLike && fileName && fileExtn ) {
+    kb_proxy_key = "WMI//wmi_file_fileversion_cache//by_dirpathlike_filename_fileextn//" + tolower( dirPathLike ) + "//" + tolower( fileName ) + "//" + tolower( fileExtn );
+  } else if( fileName && fileExtn ) {
+    kb_proxy_key = "WMI//wmi_file_fileversion_cache//by_filename_fileextn//" + tolower( fileName ) + "//" + tolower( fileExtn );
+  } else if( fileName ) {
+    kb_proxy_key = "WMI//wmi_file_fileversion_cache//by_filename//" + tolower( fileName );
+  }
+
   if( includeHeader )
     kb_proxy_list = get_kb_list( kb_proxy_key + "//withheader" );
   else
@@ -535,7 +594,18 @@ function wmi_file_fileversion( handle, filePath, includeHeader ) {
   }
 
   # nb: Name is always returned so include it in the query as well.
-  query    = 'SELECT Name, Version FROM CIM_DataFile WHERE Name = ' + raw_string( 0x22 ) + filePath + raw_string( 0x22 );
+  if( filePath ) {
+    query = 'SELECT Name, Version FROM CIM_DataFile WHERE Name = ' + raw_string( 0x22 ) + filePath + raw_string( 0x22 );
+  } else if( dirPath && fileName && fileExtn ) {
+    query = 'SELECT Name, Version FROM CIM_DataFile WHERE Path = ' + raw_string( 0x22 ) + dirPath + raw_string( 0x22 ) + ' AND FileName = ' + raw_string( 0x22 ) + fileName + raw_string( 0x22 ) + ' AND Extension = ' + raw_string( 0x22 ) + fileExtn + raw_string( 0x22 );
+  } else if( dirPathLike && fileName && fileExtn ) {
+    query = 'SELECT Name, Version FROM CIM_DataFile WHERE Path LIKE ' + raw_string( 0x22 ) + dirPathLike + raw_string( 0x22 ) + ' AND FileName = ' + raw_string( 0x22 ) + fileName + raw_string( 0x22 ) + ' AND Extension = ' + raw_string( 0x22 ) + fileExtn + raw_string( 0x22 );
+  } else if( fileName && fileExtn ) {
+    query = 'SELECT Name, Version FROM CIM_DataFile WHERE FileName = ' + raw_string( 0x22 ) + fileName + raw_string( 0x22 ) + ' AND Extension = ' + raw_string( 0x22 ) + fileExtn + raw_string( 0x22 );
+  } else if( fileName ) {
+    query = 'SELECT Name, Version FROM CIM_DataFile WHERE FileName = ' + raw_string( 0x22 ) + fileName + raw_string( 0x22 );
+  }
+
   queryres = wmi_query( wmi_handle:handle, query:query );
   if( "NTSTATUS" >< queryres )
     return NULL;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3214296.nasl 11767 2018-10-05 13:34:39Z cfischer $
+# $Id: gb_microsoft_security_advisory_3214296.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # Microsoft Identity Model Extensions Token Signing Verification Advisory (3214296)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810269");
-  script_version("$Revision: 11767 $");
+  script_version("$Revision: 11782 $");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-12 18:49:43 +0530 (Thu, 12 Jan 2017)");
   script_name("Microsoft Identity Model Extensions Token Signing Verification Advisory (3214296)");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -71,8 +71,9 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("host_details.inc");
 include("version_func.inc");
+include("misc_func.inc");
+include("wmi_file.inc");
 
 key = "SOFTWARE\Microsoft\ASP.NET\";
 if( ! registry_key_exists( key:key ) ) exit( 0 );
@@ -83,19 +84,22 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-query = 'Select Version from CIM_DataFile Where FileName ='
-        + raw_string(0x22) + 'Microsoft.IdentityModel.Tokens' + raw_string(0x22) + ' AND Extension ='
-        + raw_string(0x22) + 'dll' + raw_string(0x22);
-fileVer = wmi_query( wmi_handle:handle, query:query );
+# TODO: Limit to a possible known common path
+fileList = wmi_file_fileversion( handle:handle, fileName:"Microsoft.IdentityModel.Tokens", fileExtn:"dll", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
-if( ! fileVer ) exit( 0 );
+if( ! fileList || ! is_array( fileList ) ) {
+  exit( 0 );
+}
 
-foreach ver( split( fileVer ) ) {
-  ver = eregmatch( pattern:"\microsoft.identitymodel.tokens.dll.?([0-9.]+)", string:ver );
-  if( ver[1] ) {
-    if( version_is_equal( version:ver[1], test_version:"5.1.0" ) ) {
-      report = report_fixed_ver( installed_version:ver[1], fixed_version:"5.1.1" );
-      security_message( data:report );
+foreach filePath( keys( fileList ) ) {
+
+  vers = fileList[filePath];
+
+  if( vers && version = eregmatch( string:vers, pattern:"^([0-9.]+)" ) ) {
+
+    if( version_is_equal( version:version[1], test_version:"5.1.0" ) ) {
+      report = report_fixed_ver( file_version:version[1], file_checked:filePath, fixed_version:"5.1.1" );
+      security_message( port:0, data:report );
       exit( 0 );
     }
   }

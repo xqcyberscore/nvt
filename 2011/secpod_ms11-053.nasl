@@ -1,14 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-053.nasl 11767 2018-10-05 13:34:39Z cfischer $
+# $Id: secpod_ms11-053.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # Microsoft Bluetooth Stack Remote Code Execution Vulnerability (2566220)
 #
 # Authors:
 # Madhuri D <dmadhuri@secpod.com>
-#
-# Updated By: Madhuri D <dmadhuri@secpod.com>
-#  - Used WMI functions to get the file version
 #
 # Copyright:
 # Copyright (c) 2011 SecPod, http://www.secpod.com
@@ -30,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902395");
-  script_version("$Revision: 11767 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11782 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-13 17:31:13 +0200 (Wed, 13 Jul 2011)");
   script_cve_id("CVE-2011-1265");
   script_bugtraq_id(48617);
@@ -77,6 +74,8 @@ if(description)
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
+include("misc_func.inc");
+include("wmi_file.inc");
 
 if( hotfix_check_sp( winVista:3, win7:2, win7x64:2 ) <= 0 ) exit( 0 );
 
@@ -86,49 +85,70 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-query = 'Select Version from CIM_DataFile Where FileName ='
-        + raw_string(0x22) + 'fsquirt' + raw_string(0x22) + ' AND Extension ='
-        + raw_string(0x22) + 'exe' + raw_string(0x22);
-fileVer = wmi_query( wmi_handle:handle, query:query );
+# TODO: Limit to a possible known common path
+fileList = wmi_file_fileversion( handle:handle, fileName:"fsquirt", fileExtn:"exe", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
-if( ! fileVer ) exit( 0 );
+if( ! fileList || ! is_array( fileList ) ) {
+  exit( 0 );
+}
 
-foreach ver( split( fileVer ) ) {
+# Don't pass NULL to version functions below
+maxVer = "unknown";
+fix = "unknown";
 
-  ver = eregmatch( pattern:"\fsquirt.exe.?([0-9.]+)", string:ver );
-  if( ver[1] ) {
-    if( hotfix_check_sp( winVista:3 ) > 0 ) {
+foreach filePath( keys( fileList ) ) {
 
-      SP = get_kb_item( "SMB/WinVista/ServicePack" );
+  vers = fileList[filePath];
 
-      if( "Service Pack 1" >< SP ) {
-        if( version_is_greater_equal( version:ver[1], test_version:"6.1.6001.22204" ) ) {
-          flag = TRUE;
-          break;
-        }
-      }
+  if( vers && version = eregmatch( string:vers, pattern:"^([0-9.]+)" ) ) {
 
-      if( "Service Pack 2" >< SP ) {
-        if( version_in_range( version:ver[1], test_version:"6.0.6002.18005", test_version2:"6.0.6002.21999" ) ||
-            version_is_greater_equal( version:ver[1], test_version:"6.0.6002.22629" ) ) {
-          flag = TRUE;
-          break;
-        }
+    if( version_is_less( version:version[1], test_version:maxVer ) ) {
+      continue;
+    } else {
+      foundMax = TRUE;
+      maxVer = version[1];
+      maxPath = filePath;
+    }
+  }
+}
+
+if( foundMax ) {
+
+  if( hotfix_check_sp( winVista:3 ) > 0 ) {
+
+    SP = get_kb_item( "SMB/WinVista/ServicePack" );
+
+    if( "Service Pack 1" >< SP ) {
+      if( version_is_greater_equal( version:version[1], test_version:"6.1.6001.22204" ) ) {
+        flag = TRUE;
+      } else {
+        fix = ">= 6.1.6001.22204";
       }
     }
 
-    if( hotfix_check_sp( win7:2, win7x64:2 ) > 0 ) {
-      if( version_in_range( version:ver[1], test_version:"6.1.7600.16385", test_version2:"6.1.7600.19999" ) ||
-          version_is_greater_equal( version:ver[1], test_version:"6.1.7601.17514" ) ) {
+    if( "Service Pack 2" >< SP ) {
+      if( version_in_range( version:version[1], test_version:"6.0.6002.18005", test_version2:"6.0.6002.21999" ) ||
+          version_is_greater_equal( version:version[1], test_version:"6.0.6002.22629" ) ) {
         flag = TRUE;
-        break;
+      } else {
+        fix = ">= 6.0.6002.22629";
       }
+    }
+  }
+
+  if( hotfix_check_sp( win7:2, win7x64:2 ) > 0 ) {
+    if( version_in_range( version:version[1], test_version:"6.1.7600.16385", test_version2:"6.1.7600.19999" ) ||
+        version_is_greater_equal( version:version[1], test_version:"6.1.7601.17514" ) ) {
+      flag = TRUE;
+    } else {
+      fix = ">= 6.1.7601.17514";
     }
   }
 }
 
 if( ! flag ) {
-  security_message( port:0 );
+  report = report_fixed_ver( file_version:maxVer, file_checked:maxPath, fixed_version:fix );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

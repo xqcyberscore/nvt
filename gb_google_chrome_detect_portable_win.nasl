@@ -76,34 +76,26 @@ if( ! fileList ) {
 # From gb_google_chrome_detect_win.nasl to avoid a doubled detection of a registry-based installation.
 detectedList = get_kb_list( "GoogleChrome/Win/InstallLocations" );
 
-foreach filePath( fileList ) {
+foreach filePath( keys( fileList ) ) {
 
-  # wmi_file_file_search returns the .exe filename so we're stripping it away
+  # wmi_file_fileversion returns the .exe filename so we're stripping it away
   # to keep the install location registration the same way like in gb_google_chrome_detect_win.nasl
   location = filePath - "\chrome.exe";
   if( detectedList && in_array( search:tolower( location ), array:detectedList ) ) continue; # We already have detected this installation...
 
-  # nb: wmi_file_fileversion needs doubled backslash in the path but
-  # wmi_file_file_search returns single backslash in the path...
-  filePath = ereg_replace( pattern:"\\", replace:"\\", string:filePath );
+  vers = fileList[filePath];
 
-  versList = wmi_file_fileversion( handle:handle, filePath:filePath, includeHeader:FALSE );
-  if( ! versList || ! is_array( versList ) ) continue;
-  foreach vers( keys( versList ) ) {
+  # Version of the chrome.exe file is something like 66.0.3359.181
+  # so we need to catch only the first three parts of the version.
+  if( vers && version = eregmatch( string:vers, pattern:"^([0-9]+\.[0-9]+\.[0-9]+)" ) ) {
 
-    # Version of the chrome.exe file is something like 66.0.3359.181
-    # so we need to catch only the first three parts of the version.
-    if( versList[vers] && version = eregmatch( string:versList[vers], pattern:"^([0-9]+\.[0-9]+\.[0-9]+)" ) ) {
+    set_kb_item( name:"GoogleChrome/Win/InstallLocations", value:tolower( location ) );
+    set_kb_item( name:"GoogleChrome/Win/Ver", value:version[1] );
 
-      set_kb_item( name:"GoogleChrome/Win/InstallLocations", value:tolower( location ) );
-      set_kb_item( name:"GoogleChrome/Win/Ver", value:version[1] );
-
-      # The portableapps.com installer creates a single instance of Google Chrome that does not differ between 32bit or 64bit.
-      cpe = "cpe:/a:google:chrome:";
-      register_and_report_cpe( app:"Google Chrome Portable", ver:version[1], concluded:versList[vers], base:cpe, expr:"^([0-9.]+)", insloc:location );
-    }
+    # The portableapps.com installer creates a single instance of Google Chrome that does not differ between 32bit or 64bit.
+    cpe = "cpe:/a:google:chrome:";
+    register_and_report_cpe( app:"Google Chrome Portable", ver:version[1], concluded:vers, base:cpe, expr:"^([0-9.]+)", insloc:location );
   }
 }
 
-wmi_close( wmi_handle:handle );
 exit( 0 );

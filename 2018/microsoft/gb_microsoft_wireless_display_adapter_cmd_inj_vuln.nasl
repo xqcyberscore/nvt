@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_wireless_display_adapter_cmd_inj_vuln.nasl 11767 2018-10-05 13:34:39Z cfischer $
+# $Id: gb_microsoft_wireless_display_adapter_cmd_inj_vuln.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # Microsoft Wireless Display Adapter Command Injection Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813702");
-  script_version("$Revision: 11767 $");
+  script_version("$Revision: 11782 $");
   script_cve_id("CVE-2018-8306");
   script_tag(name:"cvss_base", value:"5.2");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 15:16:38 +0530 (Tue, 17 Jul 2018)");
   script_name("Microsoft Wireless Display Adapter Command Injection Vulnerability");
 
@@ -70,22 +70,16 @@ if(description)
 
 include("secpod_reg.inc");
 include("smb_nt.inc");
-include("host_details.inc");
 include("version_func.inc");
-include("secpod_smb_func.inc");
+include("misc_func.inc");
+include("wmi_file.inc");
 
-if(hotfix_check_sp(win10:1, win10x64:1) <= 0){
-  exit(0);
+if( hotfix_check_sp( win10:1, win10x64:1 ) <= 0 ) {
+  exit( 0 );
 }
 
-key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Appx" ;
-storelocation = registry_get_sz(key:key, item:"PackageRoot");
-
-if(storelocation){
-  mailPath = storelocation ;
-} else {
-  exit(0);
-}
+storelocation = registry_get_sz( key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Appx", item:"PackageRoot" );
+if( ! storelocation ) exit( 0 );
 
 infos = kb_smb_wmi_connectinfo();
 if( ! infos ) exit( 0 );
@@ -93,37 +87,32 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-query = 'Select Version from CIM_DataFile Where FileName ='
-        + raw_string(0x22) + 'wirelessdisplayadapter' + raw_string(0x22)
-        + ' AND Extension =' + raw_string(0x22) + 'dll' + raw_string(0x22);
-fileVer = wmi_query( wmi_handle:handle, query:query);
-wmi_close(wmi_handle:handle);
-if(!fileVer) exit(0);
+fileList = wmi_file_fileversion( handle:handle, dirPathLike:"%wirelessdisplayadapter%", fileName:"wirelessdisplayadapter", fileExtn:"dll", includeHeader:FALSE );
+wmi_close( wmi_handle:handle );
+if( ! fileList || ! is_array( fileList ) ) {
+  exit( 0 );
+}
 
-foreach ver(split(fileVer))
-{
-  if( ver == "Version" ) continue;
+report = "";
 
-  if((tolower(mailPath) >< ver) || (mailPath >< ver))
-  {
-    ver = eregmatch(pattern:"(.*wirelessdisplayadapter.*)wirelessdisplayadapter.dll.([0-9.]+)", string:ver);
-    if(!ver[2]){
-      continue;
-    }
-    version = ver[2];
-    if(ver[1]){
-      filePath = ver[1];
-    } else {
-      filePath = "Unknown" ;
-    }
+foreach filePath( keys( fileList ) ) {
 
-    if(version_is_less(version:version, test_version:"3.0.124.0"))
-    {
-      report = report_fixed_ver(installed_version:version, fixed_version:"3.0.124.0", install_path:filePath);
-      security_message(data:report);
-      exit(0);
+  if( storelocation >!< filePath && tolower( storelocation ) >!< filePath ) continue;
+
+  vers = fileList[filePath];
+
+  if( vers && version = eregmatch( string:vers, pattern:"^([0-9.]+)" ) ) {
+
+    if( version_is_less( version:version[1], test_version:"3.0.124.0" ) ) {
+      VULN = TRUE;
+      report += report_fixed_ver( file_version:version[1], file_checked:filePath, fixed_version:"3.0.124.0" ) + '\n';
     }
   }
 }
 
-exit(0);
+if( VULN ) {
+  security_message( port:0, data:report );
+  exit( 0 );
+}
+
+exit( 99 );

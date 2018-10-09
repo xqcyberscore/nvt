@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_norton_security_cids_dos_vuln.nasl 11767 2018-10-05 13:34:39Z cfischer $
+# $Id: gb_symantec_norton_security_cids_dos_vuln.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # Symantec Norton Security 'CIDS' Driver Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:norton_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808624");
-  script_version("$Revision: 11767 $");
+  script_version("$Revision: 11782 $");
   script_cve_id("CVE-2016-5308");
   script_bugtraq_id(91608);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-07 13:20:51 +0530 (Fri, 07 Oct 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec Norton Security 'CIDS' Driver Denial of Service Vulnerability");
@@ -72,10 +72,10 @@ if(description)
 include("smb_nt.inc");
 include("version_func.inc");
 include("host_details.inc");
+include("misc_func.inc");
+include("wmi_file.inc");
 
-if(!nor_ver = get_app_version(cpe:CPE)){
-  exit(0);
-}
+if( ! get_app_version( cpe:CPE ) ) exit( 0 );
 
 infos = kb_smb_wmi_connectinfo();
 if( ! infos ) exit( 0 );
@@ -83,25 +83,25 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-query = 'Select Version from CIM_DataFile Where FileName ='
-        + raw_string(0x22) +'IDSvix86' +raw_string(0x22) + ' AND Extension ='
-        + raw_string(0x22) +'sys' + raw_string(0x22);
-fileVer = wmi_query(wmi_handle:handle, query:query);
-wmi_close(wmi_handle:handle);
-if(!fileVer){
-  exit(0);
+# TODO: Limit to a possible known common path, maybe from the Detection-NVT?
+fileList = wmi_file_fileversion( handle:handle, fileName:"IDSvix86", fileExtn:"sys", includeHeader:FALSE );
+wmi_close( wmi_handle:handle );
+if( ! fileList || ! is_array( fileList ) ) {
+  exit( 0 );
 }
 
-foreach ver (split(fileVer))
-{
-  ver = eregmatch(pattern:"\idsvix86.sys.?([0-9.]+)", string:ver);
-  if(ver[1])
-  {
-    if(version_is_less(version:ver[1], test_version:"15.1.2"))
-    {
-      report = report_fixed_ver(installed_version:ver[1], fixed_version:"15.1.2");
-      security_message(data:report);
-      exit(0);
+foreach filePath( keys( fileList ) ) {
+
+  vers = fileList[filePath];
+
+  if( vers && version = eregmatch( string:vers, pattern:"^([0-9.]+)" ) ) {
+
+    if( version_is_less( version:version[1], test_version:"15.1.2" ) ) {
+      report = report_fixed_ver( file_version:version[1], file_checked:filePath, fixed_version:"15.1.2" );
+      security_message( port:0, data:report );
+      exit( 0 );
     }
   }
 }
+
+exit( 99 );

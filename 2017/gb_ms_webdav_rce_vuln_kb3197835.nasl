@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_webdav_rce_vuln_kb3197835.nasl 11767 2018-10-05 13:34:39Z cfischer $
+# $Id: gb_ms_webdav_rce_vuln_kb3197835.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # Microsoft Windows 'WebDAV' Remote Code Execution Vulnerability (KB3197835)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811206");
-  script_version("$Revision: 11767 $");
+  script_version("$Revision: 11782 $");
   script_cve_id("CVE-2017-7269");
   script_bugtraq_id(97127);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-16 12:56:08 +0530 (Fri, 16 Jun 2017)");
   script_name("Microsoft Windows 'WebDAV' Remote Code Execution Vulnerability (KB3197835)");
   script_category(ACT_GATHER_INFO);
@@ -74,6 +74,8 @@ if(description)
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
+include("misc_func.inc");
+include("wmi_file.inc");
 
 if( hotfix_check_sp( xp:4, xpx64:3, win2003:3, win2003x64:3 ) <= 0 ) exit( 0 );
 
@@ -83,34 +85,33 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-query = 'Select Version from CIM_DataFile Where FileName ='
-        + raw_string(0x22) + 'httpext' + raw_string(0x22) + ' AND Extension ='
-        + raw_string(0x22) + 'dll' + raw_string(0x22);
-fileVer = wmi_query( wmi_handle:handle, query:query );
+# TODO: Limit to a possible known common path
+fileList = wmi_file_fileversion( handle:handle, fileName:"httpext", fileExtn:"dll", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
-if( ! fileVer ) exit( 0 );
+if( ! fileList || ! is_array( fileList ) ) {
+  exit( 0 );
+}
 
-# Don't pass NULL to version function below
-maxVer = "";
+# Don't pass NULL to version functions below
+maxVer = "unknown";
 
-##Multiple files found
-##On update old as well as new files come, so checking for highest version
-foreach ver( split( fileVer ) ) {
+foreach filePath( keys( fileList ) ) {
 
-  ver1 = eregmatch( pattern:"(.*)\httpext.dll.?([0-9.]+)", string:ver );
-  if( ! ver1 ) exit( 0 );
+  vers = fileList[filePath];
 
-  version = ver1[2];
-  winPath = ver1[1];
+  if( vers && version = eregmatch( string:vers, pattern:"^([0-9.]+)" ) ) {
 
-  if( version_is_less( version:version, test_version:maxVer ) ) {
-    continue;
-  } else {
-    maxVer = version;
+    if( version_is_less( version:version[1], test_version:maxVer ) ) {
+      continue;
+    } else {
+      foundMax = TRUE;
+      maxVer = version[1];
+      maxPath = filePath;
+    }
   }
 }
 
-if( maxVer ) {
+if( foundMax ) {
   if( hotfix_check_sp( xp:4 ) > 0 ) {
     if( version_is_less( version:maxVer, test_version:"6.0.2600.7150" ) ) {
       Vulnerable_range = "Less than 6.0.2600.7150";
@@ -127,9 +128,7 @@ if( maxVer ) {
 }
 
 if( VULN ) {
-  report = 'File checked:     ' + winPath + "httpext.dll" + '\n' +
-           'File version:     ' + maxVer  + '\n' +
-           'Vulnerable range: ' + Vulnerable_range + '\n' ;
+  report = report_fixed_ver( file_version:maxVer, file_checked:maxPath, vulnerable_range:Vulnerable_range );
   security_message( port:0, data:report );
   exit( 0 );
 }

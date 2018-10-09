@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_sec_bypass_vuln_july18.nasl 11767 2018-10-05 13:34:39Z cfischer $
+# $Id: gb_asp_dotnet_sec_bypass_vuln_july18.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # Microsoft ASP.NET Core Security Feature Bypass Vulnerability July18
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813674");
-  script_version("$Revision: 11767 $");
+  script_version("$Revision: 11782 $");
   script_cve_id("CVE-2018-8171");
   script_bugtraq_id(104659);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-13 15:50:36 +0530 (Fri, 13 Jul 2018)");
   script_name("Microsoft ASP.NET Core Security Feature Bypass Vulnerability July18");
 
@@ -72,9 +72,9 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("host_details.inc");
 include("version_func.inc");
-include("secpod_smb_func.inc");
+include("misc_func.inc");
+include("wmi_file.inc");
 
 infos = kb_smb_wmi_connectinfo();
 if( ! infos ) exit( 0 );
@@ -82,47 +82,40 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-query1 = 'Select Version from CIM_DataFile Where FileName ='
-        + raw_string(0x22) + 'Microsoft.AspNetCore.Identity' + raw_string(0x22) + ' AND Extension ='
-        + raw_string(0x22) + 'dll' + raw_string(0x22);
-fileVer1 = wmi_query( wmi_handle:handle, query:query1);
+# TODO: Limit to a possible known common path
+fileList = wmi_file_fileversion( handle:handle, fileName:"Microsoft.AspNetCore.Identity", fileExtn:"dll", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
-if(!fileVer1) exit( 0 );
-
-foreach ver(split( fileVer1 ))
-{
-  ver = eregmatch(pattern:"(.*)\microsoft.aspnetcore.identity.dll.?([0-9.]+)", string:ver );
-  version = ver[2];
-  file = ver[1] + "Microsoft.AspNetCore.Identity.dll";
-
-  if(version_in_range(version:version, test_version:"1.0", test_version2:"1.0.5"))
-  {
-    fix = "1.0.6";
-    break;
-  }
-  else if(version_in_range(version:version, test_version:"1.1", test_version2:"1.1.5"))
-  {
-    fix = "1.1.6";
-    break;
-  }
-  else if(version_in_range(version:version, test_version:"2.0", test_version2:"2.0.3"))
-  {
-    fix = "2.0.4";
-    break;
-  }
-  else if(version_in_range(version:version, test_version:"2.1", test_version2:"2.1.1"))
-  {
-    fix = "2.1.2";
-    break;
-  }
-
+if( ! fileList || ! is_array( fileList ) ) {
+  exit( 0 );
 }
 
-if(fix)
-{
-  report = report_fixed_ver( installed_version:version, fixed_version:fix, file_checked:file);
-  security_message( data:report );
-  exit(0);
+report = "";
+
+foreach filePath( keys( fileList ) ) {
+
+  vers = fileList[filePath];
+
+  if( vers && version = eregmatch( string:vers, pattern:"^([0-9.]+)" ) ) {
+
+    if( version_in_range( version:version[1], test_version:"1.0", test_version2:"1.0.5" ) ) {
+      VULN = TRUE;
+      report += report_fixed_ver( file_version:version[1], file_checked:filePath, fixed_version:"1.0.6" ) + '\n';
+    } else if( version_in_range( version:version[1], test_version:"1.1", test_version2:"1.1.5" ) ) {
+      VULN = TRUE;
+      report += report_fixed_ver( file_version:version[1], file_checked:filePath, fixed_version:"1.1.6" ) + '\n';
+    } else if( version_in_range( version:version[1], test_version:"2.0", test_version2:"2.0.3" ) ) {
+      VULN = TRUE;
+      report += report_fixed_ver( file_version:version[1], file_checked:filePath, fixed_version:"2.0.4" ) + '\n';
+    } else if( version_in_range( version:version[1], test_version:"2.1", test_version2:"2.1.1" ) ) {
+      VULN = TRUE;
+      report += report_fixed_ver( file_version:version[1], file_checked:filePath, fixed_version:"2.1.2" ) + '\n';
+    }
+  }
 }
 
-exit(0);
+if( VULN ) {
+  security_message( port:0, data:report );
+  exit( 99 );
+}
+
+exit( 99 );

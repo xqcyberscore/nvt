@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_info_disc_vuln.nasl 11767 2018-10-05 13:34:39Z cfischer $
+# $Id: gb_asp_dotnet_core_info_disc_vuln.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # Microsoft ASP.NET Core Information Disclosure Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812097");
-  script_version("$Revision: 11767 $");
+  script_version("$Revision: 11782 $");
   script_cve_id("CVE-2017-8700");
   script_bugtraq_id(101712);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-17 12:17:13 +0530 (Fri, 17 Nov 2017)");
   script_name("Microsoft ASP.NET Core Information Disclosure Vulnerability");
 
@@ -74,9 +74,9 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("host_details.inc");
 include("version_func.inc");
-include("secpod_smb_func.inc");
+include("misc_func.inc");
+include("wmi_file.inc");
 
 infos = kb_smb_wmi_connectinfo();
 if( ! infos ) exit( 0 );
@@ -84,67 +84,57 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-query1 = 'Select Version from CIM_DataFile Where FileName ='
-         + raw_string(0x22) + 'Microsoft.AspNetCore.Mvc.Core' + raw_string(0x22) + ' AND Extension ='
-         + raw_string(0x22) + 'dll' + raw_string(0x22);
-fileVer1 = wmi_query( wmi_handle:handle, query:query1);
-
-query2 = 'Select Version from CIM_DataFile Where FileName ='
-         + raw_string(0x22) + 'Microsoft.AspNetCore.Mvc.Cors' + raw_string(0x22) + ' AND Extension ='
-         + raw_string(0x22) + 'dll' + raw_string(0x22);
-fileVer2 = wmi_query( wmi_handle:handle, query:query2 );
-
+# TODO: Limit to a possible known common path
+fileList1 = wmi_file_fileversion( handle:handle, fileName:"Microsoft.AspNetCore.Mvc.Core", fileExtn:"dll", includeHeader:FALSE );
+fileList2 = wmi_file_fileversion( handle:handle, fileName:"Microsoft.AspNetCore.Mvc.Cors", fileExtn:"dll", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
-
-if(!fileVer1 && !fileVer2) exit( 0 );
-foreach ver(split( fileVer1 ))
-{
-  ver = eregmatch(pattern:"(.*)\microsoft.aspnetcore.mvc.core.dll.?([0-9.]+)", string:ver );
-  version = ver[2];
-  file = ver[1] + "Microsoft.AspNetCore.Mvc.Core.dll";
-
-  if(version =~ "^(1\.0)" && version_is_less(version:version, test_version:"1.0.6"))
-  {
-    fix = "1.0.6";
-    break;
-  }
-
-  else if(version =~ "^(1\.1)" && version_is_less(version:version, test_version:"1.1.5"))
-  {
-    fix = "1.1.5";
-    break;
-  }
+if( ! fileList1 && ! fileList2 ) {
+  exit( 0 );
 }
 
-foreach ver2(split( fileVer2 ))
-{
-  ver2 = eregmatch(pattern:"(.*)\microsoft.aspnetcore.mvc.cors.dll.?([0-9.]+)", string:ver2 );
-  version2 = ver2[2];
-  file2 = ver2[1] + "Microsoft.AspNetCore.Mvc.Cors.dll";
+report = "";
 
-  if(version2 =~ "^(1\.0)" && version_is_less(version:version2, test_version:"1.0.6"))
-  {
-    fix2 = "1.0.6";
-    break;
-  }
+if( fileList1 && is_array( fileList1 ) ) {
 
-  if(version2 =~ "^(1\.1)" && version_is_less(version:version2, test_version:"1.1.5"))
-  {
-    fix2 = "1.1.5";
-    break;
+  foreach filePath1( keys( fileList1 ) ) {
+
+    vers1 = fileList1[filePath1];
+
+    if( vers1 && version1 = eregmatch( string:vers1, pattern:"^([0-9.]+)" ) ) {
+
+      if( version1[1] =~ "^1\.0" && version_is_less( version:version1[1], test_version:"1.0.6" ) ) {
+        VULN = TRUE;
+        report += report_fixed_ver( file_version:version1[1], file_checked:filePath1, fixed_version:"1.0.6" ) + '\n';
+      } else if( version1[1] =~ "^1\.1" && version_is_less( version:version1[1], test_version:"1.1.5" ) ) {
+        VULN = TRUE;
+        report += report_fixed_ver( file_version:version1[1], file_checked:filePath1, fixed_version:"1.1.5" ) + '\n';
+      }
+    }
   }
 }
 
-if(fix)
-{
-  report = report_fixed_ver( installed_version:version, fixed_version:fix, file_checked:file);
-  security_message( data:report );
+if( fileList2 && is_array( fileList2 ) ) {
+
+  foreach filePath2( keys( fileList2 ) ) {
+
+    vers2 = fileList2[filePath2];
+
+    if( vers2 && version2 = eregmatch( string:vers2, pattern:"^([0-9.]+)" ) ) {
+
+      if( version2[1] =~ "^1\.0" && version_is_less( version:version2[1], test_version:"1.0.6" ) ) {
+        VULN = TRUE;
+        report += report_fixed_ver( file_version:version2[1], file_checked:filePath2, fixed_version:"1.0.6" ) + '\n';
+      } else if( version2[1] =~ "^1\.1" && version_is_less( version:version2[1], test_version:"1.1.5" ) ) {
+        VULN = TRUE;
+        report += report_fixed_ver( file_version:version2[1], file_checked:filePath2, fixed_version:"1.1.5" ) + '\n';
+      }
+    }
+  }
 }
 
-if(fix2)
-{
-  report1 = report_fixed_ver( installed_version:version2, fixed_version:fix2, file_checked:file2);
-  security_message( data:report1);
-  exit(0);
+if( VULN ) {
+  security_message( port:0, data:report );
+  exit( 0 );
 }
-exit(0);
+
+exit( 99 );

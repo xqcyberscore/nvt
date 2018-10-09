@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_priv_esc_vuln.nasl 10784 2018-08-06 09:36:27Z asteins $
+# $Id: gb_otrs_priv_esc_vuln.nasl 11790 2018-10-09 08:36:59Z ckuersteiner $
 #
 # OTRS < 4.0.31, 5.0.29, 6.0.10 Privilege Escalation Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112347");
-  script_version("$Revision: 10784 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 11:36:27 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 11790 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:36:59 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 11:16:33 +0200 (Mon, 06 Aug 2018)");
-  script_tag(name:"cvss_base", value:"8.7");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:P");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

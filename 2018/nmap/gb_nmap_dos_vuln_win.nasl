@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_dos_vuln_win.nasl 11110 2018-08-25 05:03:07Z santu $
+# $Id: gb_nmap_dos_vuln_win.nasl 11790 2018-10-09 08:36:59Z ckuersteiner $
 #
 # Nmap Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nmap:nmap";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813825");
-  script_version("$Revision: 11110 $");
+  script_version("$Revision: 11790 $");
   script_cve_id("CVE-2018-15173");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-25 07:03:07 +0200 (Sat, 25 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:36:59 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-14 12:02:26 +0530 (Tue, 14 Aug 2018)");
   script_name("Nmap Denial of Service Vulnerability (Windows)");
 
@@ -48,9 +48,7 @@ if(description)
   of the component TCP Connection Handler.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause stack consumption leading to denial of service condition.
-
-  Impact Level: Application");
+  attackers to cause stack consumption leading to denial of service condition.");
 
   script_tag(name:"affected", value:"Nmap versions 7.70 and prior on Windows.");
 

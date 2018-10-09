@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_mult_dos_vuln_aug18.nasl 10897 2018-08-10 13:27:38Z santu $
+# $Id: gb_xnview_mult_dos_vuln_aug18.nasl 11790 2018-10-09 08:36:59Z ckuersteiner $
 #
 # XnView Multiple Denial of Service Vulnerabilities Aug18
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:xnview:xnview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813820");
-  script_version("$Revision: 10897 $");
+  script_version("$Revision: 11790 $");
   script_cve_id("CVE-2018-15175", "CVE-2018-15176", "CVE-2018-15174");
-  script_tag(name:"cvss_base", value:"4.4");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:27:38 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:36:59 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-10 10:11:02 +0530 (Fri, 10 Aug 2018)");
   script_name("XnView Multiple Denial of Service Vulnerabilities Aug18");
 
@@ -52,9 +52,7 @@ if(description)
     component 'ICO File Handler'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to cause a denial of service or possibly have unspecified other impact.
-
-  Impact Level: Application");
+  to cause a denial of service or possibly have unspecified other impact.");
   script_tag(name:"affected", value:"XnView Version 2.45");
   script_tag(name:"solution", value:"No known solution is available as of
   10th August, 2018. Information regarding this issue will be updated once

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_priv_esc_vuln.nasl 11767 2018-10-05 13:34:39Z cfischer $
+# $Id: gb_asp_dotnet_core_priv_esc_vuln.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # Microsoft ASP.NET Core Elevation Of Privilege Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812098");
-  script_version("$Revision: 11767 $");
+  script_version("$Revision: 11782 $");
   script_cve_id("CVE-2017-11879");
   script_bugtraq_id(101713);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-20 14:14:33 +0530 (Mon, 20 Nov 2017)");
   script_name("Microsoft ASP.NET Core Elevation Of Privilege Vulnerability");
 
@@ -72,9 +72,10 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
+include("misc_func.inc");
+include("wmi_file.inc");
 
 infos = kb_smb_wmi_connectinfo();
 if( ! infos ) exit( 0 );
@@ -82,55 +83,51 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-query1 = 'Select Version from CIM_DataFile Where FileName ='
-        + raw_string(0x22) + 'Microsoft.AspNetCore.All' + raw_string(0x22) + ' AND Extension ='
-        + raw_string(0x22) + 'dll' + raw_string(0x22);
-fileVer1 = wmi_query( wmi_handle:handle, query:query1);
-
-query2 = 'Select Version from CIM_DataFile Where FileName ='
-        + raw_string(0x22) + 'Microsoft.AspNetCore.Mvc.Core' + raw_string(0x22) + ' AND Extension ='
-        + raw_string(0x22) + 'dll' + raw_string(0x22);
-fileVer2 = wmi_query( wmi_handle:handle, query:query2 );
-
+# TODO: Limit to a possible known common path
+fileList1 = wmi_file_fileversion( handle:handle, fileName:"Microsoft.AspNetCore.All", fileExtn:"dll", includeHeader:FALSE );
+fileList2 = wmi_file_fileversion( handle:handle, fileName:"Microsoft.AspNetCore.Mvc.Core", fileExtn:"dll", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
+if( ! fileList1 && ! fileList2 ) {
+  exit( 0 );
+}
 
-if(!fileVer1 && !fileVer2) exit( 0 );
-foreach ver(split( fileVer1 ))
-{
-  ver = eregmatch(pattern:"(.*)\microsoft.aspnetcore.all.dll.?([0-9.]+)", string:ver );
-  version = ver[2];
-  file = ver[1] + "Microsoft.AspNetCore.All.dll";
+report = "";
 
-  if(version =~ "^(2\.0\.0)")
-  {
-    fix = "2.0.3";
-    break;
+if( fileList1 && is_array( fileList1 ) ) {
+
+  foreach filePath1( keys( fileList1 ) ) {
+
+    vers1 = fileList1[filePath1];
+
+    if( vers1 && version1 = eregmatch( string:vers1, pattern:"^([0-9.]+)" ) ) {
+
+      if( version1[1] =~ "^2\.0\.0" ) {
+        VULN = TRUE;
+        report += report_fixed_ver( file_version:version1[1], file_checked:filePath1, fixed_version:"2.0.3" ) + '\n';
+      }
+    }
   }
 }
 
-foreach ver2(split( fileVer2 ))
-{
-  ver2 = eregmatch(pattern:"(.*)\microsoft.aspnetcore.mvc.core.dll.?([0-9.]+)", string:ver2 );
-  version2 = ver2[2];
-  file2 = ver2[1] + "Microsoft.AspNetCore.Mvc.Core.dll";
+if( fileList2 && is_array( fileList2 ) ) {
 
-  if(version2 =~ "^(2\.0\.0)")
-  {
-    fix2 = "2.0.1";
-    break;
+  foreach filePath2( keys( fileList2 ) ) {
+
+    vers2 = fileList2[filePath2];
+
+    if( vers2 && version2 = eregmatch( string:vers2, pattern:"^([0-9.]+)" ) ) {
+
+      if( version2[1] =~ "^2\.0\.0" ) {
+        VULN = TRUE;
+        report += report_fixed_ver( file_version:version2[1], file_checked:filePath2, fixed_version:"2.0.1" ) + '\n';
+      }
+    }
   }
 }
 
-if(fix)
-{
-  report = report_fixed_ver( installed_version:version, fixed_version:fix, file_checked:file);
-  security_message( data:report );
+if( VULN ) {
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-if(fix2)
-{
-  report1 = report_fixed_ver( installed_version:version2, fixed_version:fix2, file_checked:file2);
-  security_message( data:report1);
-  exit(0);
-}
-exit(0);
+exit( 99 );

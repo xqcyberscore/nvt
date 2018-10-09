@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grammarly_ext_google_chrome_info_disc_vuln_win.nasl 11767 2018-10-05 13:34:39Z cfischer $
+# $Id: gb_grammarly_ext_google_chrome_info_disc_vuln_win.nasl 11782 2018-10-08 14:01:44Z cfischer $
 #
 # Grammarly Extension For Google Chrome Information Disclosure Vulnerability - Windows
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812696");
-  script_version("$Revision: 11767 $");
+  script_version("$Revision: 11782 $");
   script_cve_id("CVE-2018-6654");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 15:34:39 +0200 (Fri, 05 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-08 16:01:44 +0200 (Mon, 08 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 14:22:37 +0530 (Thu, 08 Feb 2018)");
   script_name("Grammarly Extension For Google Chrome Information Disclosure Vulnerability - Windows");
 
@@ -72,9 +72,9 @@ if(description)
 }
 
 include("smb_nt.inc");
-include("host_details.inc");
 include("version_func.inc");
-include("secpod_smb_func.inc");
+include("misc_func.inc");
+include("wmi_file.inc");
 
 infos = kb_smb_wmi_connectinfo();
 if( ! infos ) exit( 0 );
@@ -82,28 +82,31 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-query1 = 'Select Version from CIM_DataFile Where FileName ='
-        + raw_string(0x22) + 'Grammarly' + raw_string(0x22) + ' AND Extension ='
-        + raw_string(0x22) + 'html' + raw_string(0x22);
-fileVer1 = wmi_query( wmi_handle:handle, query:query1);
+fileList = wmi_file_file_search( handle:handle, dirPathLike:"%google%chrome%extensions%", fileName:"Grammarly", fileExtn:"html", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
-if(!fileVer1){
-  exit(0);
+if( ! fileList || ! is_array( fileList ) ) {
+  exit( 0 );
 }
 
-foreach ver(split( fileVer1 ))
-{
-  ver = eregmatch(pattern:"(.*(g|G)oogle.(c|C)hrome.*(e|E)xtensions.*[A-za-z]+\\([0-9.]+).*)(g|G)rammarly.html", string:ver);
-  if(!ver[5]){
-    continue;
-  }
-  version = ver[5];
-  filePath = ver[1];
-  if(version && version_is_less(version:version, test_version:"14.826.1446"))
-  {
-    report = report_fixed_ver(installed_version:version, fixed_version:"14.826.1446", install_path:filePath);
-    security_message(data:report);
-    exit(0);
+report = "";
+
+foreach filePath( fileList ) {
+
+  info = eregmatch( pattern:"(.*(g|G)oogle.(c|C)hrome.*(e|E)xtensions.*[A-za-z]+\\([0-9.]+).*)(g|G)rammarly.html", string:filePath );
+  if( ! info[5] ) continue;
+
+  version = info[5];
+  path = info[1];
+
+  if( version_is_less( version:version, test_version:"14.826.1446" ) ) {
+    VULN = TRUE;
+    report += report_fixed_ver( installed_version:version, install_path:path, fixed_version:"14.826.1446" ) + '\n';
   }
 }
-exit(0);
+
+if( VULN ) {
+  security_message( port:0, data:report );
+  exit( 0 );
+}
+
+exit( 99 );
