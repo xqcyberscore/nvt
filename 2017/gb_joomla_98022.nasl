@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_98022.nasl 6081 2017-05-08 12:36:22Z cfi $
+# $Id: gb_joomla_98022.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Joomla! CVE-2017-7988 Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108154");
-  script_version("$Revision: 6081 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2017-7988");
   script_bugtraq_id(98022);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 14:36:22 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-08 10:00:00 +0200 (Mon, 08 May 2017)");
   script_name("Joomla! CVE-2017-7988 Security Bypass Vulnerability");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -49,15 +49,12 @@ if(description)
   script_tag(name:"summary", value:"This host is running Joomla and is prone
   to a security-bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to inadequate filtering of form contents.");
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to bypass certain security
-  restrictions and perform unauthorized actions; this may aid in launching further attacks.
-
-  Impact Level: Application");
+  restrictions and perform unauthorized actions; this may aid in launching further attacks.");
 
   script_tag(name:"affected", value:"Joomla core versions 1.6.0 through 3.6.5");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln_win2.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_mantisbt_xss_vuln_win2.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # MantisBT XSS Vulnerability (Windows)
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:mantisbt:mantisbt';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106644");
-  script_version("$Revision: 7543 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-03-13 14:33:08 +0700 (Mon, 13 Mar 2017)");
+  script_version("$Revision: 11795 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-13 14:33:08 +0700 (Mon, 13 Mar 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-6799");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("MantisBT XSS Vulnerability (Windows)");
 
@@ -49,20 +49,20 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("mantis_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("mantisbt/installed","Host/runs_windows");
+  script_mandatory_keys("mantisbt/installed", "Host/runs_windows");
 
-  script_tag(name: "summary", value: "MantisBT is prone to a cross-site scripting vulnerability.");
+  script_tag(name:"summary", value:"MantisBT is prone to a cross-site scripting vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "A cross-site scripting (XSS) vulnerability in view_filters_page.php allows
+  script_tag(name:"insight", value:"A cross-site scripting (XSS) vulnerability in view_filters_page.php allows
 remote attackers to inject arbitrary JavaScript via the 'view_type' parameter.");
 
-  script_tag(name: "affected", value: "MantisBT version 2.1.x and 2.2.0.");
+  script_tag(name:"affected", value:"MantisBT version 2.1.x and 2.2.0.");
 
-  script_tag(name: "solution", value: "Update to MantisBT 2.2.1 or later.");
+  script_tag(name:"solution", value:"Update to MantisBT 2.2.1 or later.");
 
-  script_xref(name: "URL", value: "https://mantisbt.org/bugs/view.php?id=20956");
+  script_xref(name:"URL", value:"https://mantisbt.org/bugs/view.php?id=20956");
 
   exit(0);
 }

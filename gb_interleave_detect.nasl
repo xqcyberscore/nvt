@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_interleave_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_interleave_detect.nasl 11792 2018-10-09 09:50:39Z asteins $
 #
 # Interleave Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103111");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11792 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 11:50:39 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-08 14:02:18 +0100 (Tue, 08 Mar 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Interleave Detection");
@@ -43,45 +43,46 @@ if (description)
   script_tag(name:"summary", value:"This host is running Interleave, an Open source Business Process
 Management software.");
   script_xref(name:"URL", value:"http://www.interleave.nl");
- exit(0);
+  exit(0);
 }
 
+include("cpe.inc");
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-
 port = get_http_port(default:80);
-if(!can_host_php(port:port))exit(0);
+if(!can_host_php(port:port)) exit(0);
 
-foreach dir( make_list_unique( "/interleave", cgi_dirs( port:port ) ) ) {
+foreach dir(make_list_unique("/interleave", cgi_dirs(port:port))) {
 
- install = dir;
- if( dir == "/" ) dir = "";
- url = dir + "/index.php";
- buf = http_get_cache( item:url, port:port );
- if( buf == NULL ) continue;
+  install = dir;
+  if(dir == "/") dir = "";
 
- if(egrep(pattern: "<title>Interleave Business Process Management", string: buf, icase: TRUE) &&
+  url = dir + "/index.php";
+  buf = http_get_cache(item:url, port:port);
+
+  if(buf == NULL) continue;
+
+  if(egrep(pattern:"<title>Interleave Business Process Management", string:buf, icase:TRUE) &&
     "Please enter your username and password" >< buf)  {
 
-    vers = string("unknown");
-    url = string(dir, "/README");
+    set_kb_item(name:"interleave/detected", value:TRUE);
+
+    vers = "unknown";
+
+    url = dir +"/README";
     req = http_get(item:url, port:port);
     buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-    version = eregmatch(string: buf, pattern: "Current version is ([0-9.]+)",icase:TRUE);
+
+    version = eregmatch(string:buf, pattern:"Current version is ([0-9.]+)", icase:TRUE);
 
     if ( !isnull(version[1]) ) {
-       vers=chomp(version[1]);
+      vers=chomp(version[1]);
     }
 
-    set_kb_item(name: string("www/", port, "/interleave"), value: string(vers," under ",install));
+    register_and_report_cpe(app:"Interleave", ver:vers, concluded:version[0], base:"cpe:/a:atomos:interleave", expr:"^([0-9.]+)", insloc:install, regPort:port, conclUrl:url);
 
-    info = string("Interleave Version '");
-    info += string(vers);
-    info += string("' was detected on the remote host in the following directory(s):\n\n");
-    info += string(install, "\n");
-
-    log_message(port:port,data:info);
     exit(0);
   }
 }

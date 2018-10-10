@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_mult_xss_vuln_jun17.nasl 9300 2018-04-04 11:55:01Z cfischer $
+# $Id: gb_open_xchange_appsuite_mult_xss_vuln_jun17.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Open-Xchange (OX) AppSuite Multiple Cross Site Scripting Vulnerabilities Jun17
 #
@@ -29,34 +29,31 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811134");
-  script_version("$Revision: 9300 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2015-1588");
   script_bugtraq_id(74350);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 13:55:01 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-21 16:24:33 +0530 (Wed, 21 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Multiple Cross Site Scripting Vulnerabilities Jun17");
 
-  script_tag(name: "summary" , value:"The host is installed with
+  script_tag(name:"summary", value:"The host is installed with
   Open-Xchange (OX) AppSuite and is prone to multiple xss vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to the sanitation and 
-  cleaner engine does not properly filter HTML code from user-supplied input 
-  before displaying the input. A remote user can cause arbitrary scripting 
+  script_tag(name:"insight", value:"The flaw is due to the sanitation and
+  cleaner engine does not properly filter HTML code from user-supplied input
+  before displaying the input. A remote user can cause arbitrary scripting
   code to be executed by the target user's browser.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject arbitrary web script or HTML in the browser of an
-  unsuspecting user. This can lead to session hijacking or triggering unwanted 
-  actions via the web interface (sending mail, deleting data etc.). Potential 
-  attack vectors are E-Mail (via attachments) or Drive.
-
-  Impact Level: Application");
+  unsuspecting user. This can lead to session hijacking or triggering unwanted
+  actions via the web interface (sending mail, deleting data etc.). Potential
+  attack vectors are E-Mail (via attachments) or Drive.");
 
   script_tag(name:"affected", value:"Open-Xchange (OX) AppSuite versions
   7.6.1-rev0 - 7.6.1-rev20,
@@ -68,7 +65,7 @@ if(description)
   For updates refer to https://www.open-xchange.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/535388/100/1100/threaded");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/535388/100/1100/threaded");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -96,7 +93,6 @@ if(oxRev)
   ## Updating version with revision number
   oxVer = oxVer + "." + oxRev;
 
-  ##Check for vulnerable version
   if(version_is_less( version:oxVer, test_version:"7.4.2.43")){
     fix = "7.4.2-rev43";
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_plugin_detect_win.nasl 11376 2018-09-13 12:51:39Z cfischer $
+# $Id: gb_adobe_flash_player_plugin_detect_win.nasl 11797 2018-10-09 14:36:13Z cfischer $
 #
 # Adobe Flash Player Plugin Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107320");
-  script_version("$Revision: 11376 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:51:39 +0200 (Thu, 13 Sep 2018) $");
+  script_version("$Revision: 11797 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 16:36:13 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-24 11:23:58 +0200 (Tue, 24 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,20 +59,14 @@ include("misc_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 include("smb_nt.inc");
-include("version_func.inc");
 
-host    = get_host_ip();
-usrname = kb_smb_login();
-passwd  = kb_smb_password();
-if( ! host || ! usrname || ! passwd ) exit( 0 );
+infos = kb_smb_wmi_connectinfo();
+if( ! infos ) exit( 0 );
 
-domain = kb_smb_domain();
-if( domain ) usrname = domain + '\\' + usrname;
-
-handle = wmi_connect( host:host, username:usrname, password:passwd );
+handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-query = "SELECT Name FROM CIM_DataFile WHERE NOT PathName LIKE '%c:\\windows\\installer%' AND FileName LIKE 'NPSWF%' AND Extension = 'dll'";
+query = "SELECT Name FROM CIM_DataFile WHERE NOT Path LIKE '%\\windows\\install%' AND FileName LIKE 'NPSWF%' AND Extension = 'dll'";
 fileList = wmi_query( wmi_handle:handle, query:query );
 if( "NTSTATUS" >< fileList || ! fileList ) {
   wmi_close( wmi_handle:handle );

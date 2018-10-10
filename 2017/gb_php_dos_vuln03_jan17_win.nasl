@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_dos_vuln03_jan17_win.nasl 10454 2018-07-09 05:32:41Z cfischer $
+# $Id: gb_php_dos_vuln03_jan17_win.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # PHP Denial of Service Vulnerability - 03 - Jan17 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108057");
-  script_version("$Revision: 10454 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2016-10162");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:32:41 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-25 11:00:00 +0100 (Wed, 25 Jan 2017)");
   script_name("PHP Denial of Service Vulnerability - 03 - Jan17 (Windows)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -56,9 +56,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to cause a denial of service (NULL pointer dereference
-  and application crash).
-
-  Impact Level: Application");
+  and application crash).");
 
   script_tag(name:"affected", value:"PHP versions 7.0.x before 7.0.15 and 7.1.x before 7.1.1.");
 

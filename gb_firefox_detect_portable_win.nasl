@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_detect_portable_win.nasl 11787 2018-10-09 06:48:35Z cfischer $
+# $Id: gb_firefox_detect_portable_win.nasl 11793 2018-10-09 11:25:57Z cfischer $
 #
 # Mozilla Firefox Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108443");
-  script_version("$Revision: 11787 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 08:48:35 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 11793 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 13:25:57 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 11:47:59 +0200 (Fri, 20 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -66,7 +66,7 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-fileList = wmi_file_file_search( handle:handle, fileName:"firefox", fileExtn:"exe", includeHeader:FALSE );
+fileList = wmi_file_fileversion( handle:handle, fileName:"firefox", fileExtn:"exe", includeHeader:FALSE );
 wmi_close( wmi_handle:handle );
 if( ! fileList || ! is_array( fileList ) ) {
   exit( 0 );

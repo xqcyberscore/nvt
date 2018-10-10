@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_xss_vuln_win3.nasl 7625 2017-11-02 09:03:47Z jschulte $
+# $Id: gb_cacti_xss_vuln_win3.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Cacti XSS Vulnerability (Windows)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:cacti:cacti";
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113044");
-  script_version("$Revision: 7625 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-02 10:03:47 +0100 (Thu, 02 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2017-11-02 10:07:48 +0200 (Thu, 02 Nov 2017)");
+  script_version("$Revision: 11795 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-02 10:07:48 +0200 (Thu, 02 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-15194");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cacti XSS Vulnerability (Windows)");
 
@@ -51,16 +51,16 @@ if( description )
   script_dependencies("cacti_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("cacti/installed", "Host/runs_windows");
 
-  script_tag(name: "summary", value: "Cross-site scripting (XSS) vulnerabilities in include/global_session.php in Cacti
+  script_tag(name:"summary", value:"Cross-site scripting (XSS) vulnerabilities in include/global_session.php in Cacti
 allow remote attackers to inject arbitrary web scripts or HTML.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Cacti version 1.1.25 and prior.");
+  script_tag(name:"affected", value:"Cacti version 1.1.25 and prior.");
 
-  script_tag(name: "solution", value: "Upgrade to version 1.1.26 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 1.1.26 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/Cacti/cacti/issues/1010");
+  script_xref(name:"URL", value:"https://github.com/Cacti/cacti/issues/1010");
 
   exit( 0 );
 }

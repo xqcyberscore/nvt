@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20170719-wsa4.nasl 6851 2017-08-04 07:31:24Z asteins $
+# $Id: gb_cisco_wsa_cisco-sa-20170719-wsa4.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Cisco Web Security Appliance Static Credentials Vulnerability
 #
@@ -29,42 +29,42 @@ CPE = "cpe:/h:cisco:web_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106974");
- script_cve_id("CVE-2017-6750");
- script_tag(name: "cvss_base", value: "5.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 6851 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106974");
+  script_cve_id("CVE-2017-6750");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11795 $");
 
- script_name("Cisco Web Security Appliance Static Credentials Vulnerability");
+  script_name("Cisco Web Security Appliance Static Credentials Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170719-wsa4");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170719-wsa4");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in AsyncOS for the Cisco Web Security Appliance (WSA) could
+  script_tag(name:"summary", value:"A vulnerability in AsyncOS for the Cisco Web Security Appliance (WSA) could
 allow an unauthenticated, local attacker to log in to the device with the privileges of a limited user or an
 unauthenticated, remote attacker to authenticate to certain areas of the web GUI.");
 
- script_tag(name: "insight", value: "The vulnerability is due to a user account that has a default and static
+  script_tag(name:"insight", value:"The vulnerability is due to a user account that has a default and static
 password. An attacker could exploit this vulnerability by connecting to the affected system using this default
 account.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to log in with the default credentials,
+  script_tag(name:"impact", value:"An exploit could allow the attacker to log in with the default credentials,
 allowing the attacker to view the system's serial number by using the CLI or to download reports by using the web
 interface.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-08-04 09:31:24 +0200 (Fri, 04 Aug 2017) $");
- script_tag(name: "creation_date", value: "2017-07-20 14:43:16 +0700 (Thu, 20 Jul 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_wsa_version.nasl");
- script_mandatory_keys("cisco_wsa/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-20 14:43:16 +0700 (Thu, 20 Jul 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_wsa_version.nasl");
+  script_mandatory_keys("cisco_wsa/installed");
 
  exit(0);
 }

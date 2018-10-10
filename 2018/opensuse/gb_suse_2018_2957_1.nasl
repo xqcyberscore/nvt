@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2957_1.nasl 11789 2018-10-09 08:34:17Z santu $
+# $Id: gb_suse_2018_2957_1.nasl 11801 2018-10-10 03:24:32Z ckuersteiner $
 #
 # SuSE Update for openssl openSUSE-SU-2018:2957-1 (openssl)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851920");
-  script_version("$Revision: 11789 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 10:34:17 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 11801 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 05:24:32 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-01 06:53:01 +0200 (Mon, 01 Oct 2018)");
   script_cve_id("CVE-2018-0737");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for openssl openSUSE-SU-2018:2957-1 (openssl)");
   script_tag(name:"summary", value:"Check the version of openssl");

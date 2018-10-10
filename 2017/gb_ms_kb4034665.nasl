@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4034665.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_ms_kb4034665.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Microsoft Windows Server 2012 Multiple Vulnerabilities (KB4034665)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811605");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2017-0174", "CVE-2017-0250", "CVE-2017-0293", "CVE-2017-8591",
                 "CVE-2017-8593", "CVE-2017-8620", "CVE-2017-8624", "CVE-2017-8633",
                 "CVE-2017-8635", "CVE-2017-8636", "CVE-2017-8641", "CVE-2017-8651",
@@ -36,15 +36,14 @@ if(description)
                     100055, 100056, 100057, 100058, 100059, 100085, 100089, 100092);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-09 08:53:58 +0530 (Wed, 09 Aug 2017)");
   script_name("Microsoft Windows Server 2012 Multiple Vulnerabilities (KB4034665)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4034665");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
 

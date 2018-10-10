@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022884.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_ms_kb4022884.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4022884)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811150");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2017-8527", "CVE-2017-8528", "CVE-2017-0282", "CVE-2017-8531",
                 "CVE-2017-0283", "CVE-2017-0284", "CVE-2017-8532", "CVE-2017-8533",
                 "CVE-2017-0285", "CVE-2017-0287", "CVE-2017-8534", "CVE-2017-0288",
@@ -36,15 +36,14 @@ if(description)
                     98922, 98822, 98923, 98929);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 08:23:45 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4022884)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4022884");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists,
 

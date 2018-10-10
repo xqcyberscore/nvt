@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powerdns_recursor_label_decompression_dos_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_powerdns_recursor_label_decompression_dos_vuln_lin.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # PowerDNS Recursor Label Decompression Denial of Service Vulnerability (Linux)
 #
@@ -29,28 +29,25 @@ CPE = "cpe:/a:powerdns:recursor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809860");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2015-1868", "CVE-2015-5470");
   script_bugtraq_id(74306);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-04 15:18:12 +0530 (Wed, 04 Jan 2017)");
   script_name("PowerDNS Recursor Label Decompression Denial of Service Vulnerability (Linux)");
-  
+
   script_tag(name:"summary", value:"This host is running PowerDNS Recursor
   and is prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists due to an error in the 
+  script_tag(name:"insight", value:"The flaw exists due to an error in the
   handling of DNS packets by label decompression functionality.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause the target service to crash or consume excessive CPU resource.
-
-  Impact Level: Application");
+  attackers to cause the target service to crash or consume excessive CPU resource.");
 
   script_tag(name:"affected", value:"PowerDNS Recursor 3.5.x, 3.6.x before 3.6.4,
   and 3.7.x before 3.7.3 on Linux");
@@ -75,12 +72,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-# Get Port
 if(!dnsPort = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-## Get Version
 if(!infos = get_app_version_and_proto(cpe:CPE, port:dnsPort)){
   exit(0);
 }
@@ -88,7 +83,6 @@ if(!infos = get_app_version_and_proto(cpe:CPE, port:dnsPort)){
 version = infos["version"];
 proto = infos["proto"];
 
-## Check for vulnerable version
 if(version_in_range(version:version, test_version:"3.5.0", test_version2:"3.6.3"))
 {
   fix = "3.6.4";

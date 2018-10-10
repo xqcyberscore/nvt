@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20170517-nss1.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_cisco_nx_os_cisco-sa-20170517-nss1.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Cisco Nexus 5000 Series Switches Telnet CLI Command Injection Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/o:cisco:nx-os";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106813");
- script_cve_id("CVE-2017-6650");
- script_tag(name:"cvss_base", value:"4.6");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 7571 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106813");
+  script_cve_id("CVE-2017-6650");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11795 $");
 
- script_name("Cisco Nexus 5000 Series Switches Telnet CLI Command Injection Vulnerability");
+  script_name("Cisco Nexus 5000 Series Switches Telnet CLI Command Injection Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170517-nss1");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170517-nss1");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value: "A vulnerability in the Telnet CLI command of Cisco NX-OS System Software
+  script_tag(name:"summary", value:"A vulnerability in the Telnet CLI command of Cisco NX-OS System Software
 running on Cisco Nexus 5000 Series Switches could allow an authenticated, local attacker to perform a command
 injection attack.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient input validation of command
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient input validation of command
 arguments. An attacker could exploit this vulnerability by injecting crafted command arguments into the Telnet
 CLI command.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to read or write arbitrary files at the
+  script_tag(name:"impact", value:"An exploit could allow the attacker to read or write arbitrary files at the
 user's privilege level outside of the user's path.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
- script_tag(name: "creation_date", value: "2017-05-18 09:57:58 +0700 (Thu, 18 May 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version","cisco_nx_os/model","cisco_nx_os/device");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-18 09:57:58 +0700 (Thu, 18 May 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_nx_os_version.nasl");
+  script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
 
  exit(0);
 }

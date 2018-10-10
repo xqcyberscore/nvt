@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_hypervisor_kb3217845.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_ms_hypervisor_kb3217845.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Microsoft Windows Hypervisor Code Integrity Privilege Escalation Vulnerability (KB3217845)
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811211");
-  script_version("$Revision: 11474 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2017-0193");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-20 17:50:43 +0530 (Tue, 20 Jun 2017)");
   script_name("Microsoft Windows Hypervisor Code Integrity Privilege Escalation Vulnerability (KB3217845)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB3217845");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in the
   Windows Hyper-V instruction emulation which fails to properly enforce privilege

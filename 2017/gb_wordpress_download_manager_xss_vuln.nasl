@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_download_manager_xss_vuln.nasl 6746 2017-07-18 04:18:27Z ckuersteiner $
+# $Id: gb_wordpress_download_manager_xss_vuln.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # WordPress Download Manager Plugin XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106959");
-  script_version("$Revision: 6746 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-18 06:18:27 +0200 (Tue, 18 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-18 10:05:48 +0700 (Tue, 18 Jul 2017)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11795 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-18 10:05:48 +0700 (Tue, 18 Jul 2017)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-2216");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress Download Manager Plugin XSS Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "Cross-site scripting vulnerability in WordPress Download Manager allows
+  script_tag(name:"summary", value:"Cross-site scripting vulnerability in WordPress Download Manager allows
 remote attackers to inject arbitrary web script or HTML via unspecified vectors.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "WordPress Download Manager plugin 2.9.49 and prior.");
+  script_tag(name:"affected", value:"WordPress Download Manager plugin 2.9.49 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 2.9.50 or later.");
+  script_tag(name:"solution", value:"Update to version 2.9.50 or later.");
 
-  script_xref(name: "URL", value: "https://wordpress.org/plugins/download-manager/#developers");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/download-manager/#developers");
 
   exit(0);
 }

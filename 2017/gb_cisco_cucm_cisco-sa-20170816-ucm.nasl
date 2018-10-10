@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-20170816-ucm.nasl 6947 2017-08-17 04:21:42Z ckuersteiner $
+# $Id: gb_cisco_cucm_cisco-sa-20170816-ucm.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Cisco Unified Communications Manager Horizontal Privilege Escalation Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/a:cisco:unified_communications_manager";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140311");
- script_cve_id("CVE-2017-6785");
- script_tag(name: "cvss_base", value: "4.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:P/A:N");
- script_version("$Revision: 6947 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140311");
+  script_cve_id("CVE-2017-6785");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_version("$Revision: 11795 $");
 
- script_name("Cisco Unified Communications Manager Horizontal Privilege Escalation Vulnerability");
+  script_name("Cisco Unified Communications Manager Horizontal Privilege Escalation Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170816-ucm");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170816-ucm");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in configuration modification permissions validation for
+  script_tag(name:"summary", value:"A vulnerability in configuration modification permissions validation for
 Cisco Unified Communications Manager could allow an authenticated, remote attacker to perform a horizontal
 privilege escalation where one user can modify another user's configuration.");
 
- script_tag(name: "insight", value: "The vulnerability is due to lack of proper Role Based Access Control (RBAC)
+  script_tag(name:"insight", value:"The vulnerability is due to lack of proper Role Based Access Control (RBAC)
 when certain user configuration changes are requested. An attacker could exploit this vulnerability by sending an
 authenticated, crafted HTTP request to the targeted application.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to impact the integrity of the application
+  script_tag(name:"impact", value:"An exploit could allow the attacker to impact the integrity of the application
 where one user can modify the configuration of another user's information.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-08-17 06:21:42 +0200 (Thu, 17 Aug 2017) $");
- script_tag(name: "creation_date", value: "2017-08-17 10:57:29 +0700 (Thu, 17 Aug 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_cucm_version.nasl");
- script_mandatory_keys("cisco/cucm/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-17 10:57:29 +0700 (Thu, 17 Aug 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_cucm_version.nasl");
+  script_mandatory_keys("cisco/cucm/version");
 
  exit(0);
 }

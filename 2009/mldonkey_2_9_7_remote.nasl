@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mldonkey_2_9_7_remote.nasl 11554 2018-09-22 15:11:42Z cfischer $
+# $Id: mldonkey_2_9_7_remote.nasl 11802 2018-10-10 03:31:34Z ckuersteiner $
 #
 # MLdonkey HTTP Request Arbitrary File Download Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100057");
-  script_version("$Revision: 11554 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 17:11:42 +0200 (Sat, 22 Sep 2018) $");
+  script_version("$Revision: 11802 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 05:31:34 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-03-17 18:51:21 +0100 (Tue, 17 Mar 2009)");
   script_bugtraq_id(33865);
   script_cve_id("CVE-2009-0753");
@@ -38,14 +38,13 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Peer-To-Peer File Sharing");
-  script_dependencies("mldonkey_www.nasl");
+  script_dependencies("mldonkey_www.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 4080);
   script_mandatory_keys("MLDonkey/www/port/");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/33865");
 
-  script_tag(name:"solution", value:"Fixes are available. Please see the http://www.nongnu.org/mldonkey/ for more
-  information.");
+  script_tag(name:"solution", value:"Fixes are available.");
 
   script_tag(name:"summary", value:"MLdonkey is prone to a vulnerability that lets attackers download arbitrary
   files. The issue occurs because the application fails to sufficiently sanitize
@@ -59,6 +58,8 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.nongnu.org/mldonkey/");
+
   exit(0);
 }
 
@@ -69,30 +70,36 @@ include("http_keepalive.inc");
 port = get_kb_item("MLDonkey/www/port/");
 if(isnull(port))exit(0);
 
-url = string("//etc/passwd");
-req = http_get(item:url, port:port);
-buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-if(isnull(buf)) exit(0);
+files = traversal_files();
 
-if( egrep(pattern:"root:.*:0:[01]:.*", string: buf) ) {
-  report = report_vuln_url(port:port, url:url);
-  security_message(port:port, data:report);
-  exit(0);
-} else {
+foreach pattern(keys(files)) {
 
-  # server allows connections only from localhost by default. So check the version
-  version = get_kb_item(string("www/", port, "/MLDonkey/version"));
-  if(isnull(version) || version >< "unknown")exit(0);
+  file = files[pattern];
 
-  if(version <= "2.9.7") {
-    info  = string("According to its version number (");
-    info += version;
-    info += string(") MLDonkey is\nvulnerable, but seems to be reject connections from ");
-    info += this_host_name();
-    info += string(".\n\n");
-    security_message(port:port, data:info);
+  url = string("//" + file);
+  req = http_get(item:url, port:port);
+  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+  if(isnull(buf)) continue;
+
+  if( egrep(pattern:pattern, string: buf) ) {
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
     exit(0);
   }
+}
+
+# server allows connections only from localhost by default. So check the version
+version = get_kb_item(string("www/", port, "/MLDonkey/version"));
+if(isnull(version) || version >< "unknown")exit(0);
+
+if(version <= "2.9.7") {
+  info  = string("According to its version number (");
+  info += version;
+  info += string(") MLDonkey is\nvulnerable, but seems to be reject connections from ");
+  info += this_host_name();
+  info += string(".\n\n");
+  security_message(port:port, data:info);
+  exit(0);
 }
 
 exit(99);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX222657.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
+# $Id: gb_citrix_netscaler_CTX222657.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Citrix NetScaler Gateway Heap Overflow Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:citrix:netscaler";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106808");
-  script_version("$Revision: 8384 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2017-05-17 13:56:33 +0700 (Wed, 17 May 2017)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11795 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-17 13:56:33 +0700 (Wed, 17 May 2017)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-7219");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Citrix NetScaler Gateway Heap Overflow Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_citrix_netscaler_version.nasl");
   script_mandatory_keys("citrix_netscaler/detected");
 
-  script_tag(name: "summary", value: "Citrix NetScaler Gateway is prone to a heap overflow vulnerability which
+  script_tag(name:"summary", value:"Citrix NetScaler Gateway is prone to a heap overflow vulnerability which
 allows remote authenticated attackers to run arbitrary commands.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "A heap overflow vulnerability has been identified in Citrix NetScaler
+  script_tag(name:"insight", value:"A heap overflow vulnerability has been identified in Citrix NetScaler
 Gateway that could allow a remote, authenticated user to execute arbitrary commands on the NetScaler Gateway
 appliance as a root user.");
 
-  script_tag(name: "affected", value: "Citrix NetScaler Gateway 10.1, 10.5, 11.0 and 11.1.");
+  script_tag(name:"affected", value:"Citrix NetScaler Gateway 10.1, 10.5, 11.0 and 11.1.");
 
-  script_tag(name: "solution", value: "Update to version 10.1 Build 135.8/135.12, 10.5 Build 65.11,
+  script_tag(name:"solution", value:"Update to version 10.1 Build 135.8/135.12, 10.5 Build 65.11,
 11.0 Build 70.12, 11.1 Build 52.13 or later versions.");
 
-  script_xref(name: "URL", value: "https://support.citrix.com/article/CTX222657");
+  script_xref(name:"URL", value:"https://support.citrix.com/article/CTX222657");
 
   exit(0);
 }

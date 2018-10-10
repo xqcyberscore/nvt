@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_suite_rce_kb3141529.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_ms_office_suite_rce_kb3141529.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Microsoft Office Suite Remote Code Execution Vulnerability (KB3141529)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810686");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2017-0199");
   script_bugtraq_id(97498);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-12 10:22:37 +0530 (Wed, 12 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Suite Remote Code Execution Vulnerability (KB3141529)");
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical update for
   Microsoft Office Suite according to Microsoft KB3141529.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to error in the way
   Microsoft Office and WordPad parse specially crafted files.");

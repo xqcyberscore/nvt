@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-019.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_ms17-019.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Microsoft Active Directory Federation Services Information Disclosure Vulnerability (4010320)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810813");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2017-0043");
   script_bugtraq_id(96628);
   script_tag(name:"cvss_base", value:"2.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 11:04:14 +0530 (Wed, 15 Mar 2017)");
   script_name("Microsoft Active Directory Federation Services Information Disclosure Vulnerability (4010320)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS17-019.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists when Windows Active Directory
   Federation Services (ADFS) honors XML External Entities.");

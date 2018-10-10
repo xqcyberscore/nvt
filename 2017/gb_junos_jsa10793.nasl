@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10793.nasl 6959 2017-08-18 07:24:59Z asteins $
+# $Id: gb_junos_jsa10793.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Junos SNMPD RCE Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106941");
-  script_version ("$Revision: 6959 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-13 09:23:17 +0700 (Thu, 13 Jul 2017)");
+  script_version("$Revision: 11795 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-13 09:23:17 +0700 (Thu, 13 Jul 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-2345");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos SNMPD RCE Vulnerability");
 
@@ -48,25 +48,25 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version");
 
-  script_tag(name: "summary", value: "Junos OS is prone to a remote code execution vulnerability when receiving
+  script_tag(name:"summary", value:"Junos OS is prone to a remote code execution vulnerability when receiving
 a crafted SNMP packet.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value: "On Junos OS devices with SNMP enabled, a network based attacker with
+  script_tag(name:"insight", value:"On Junos OS devices with SNMP enabled, a network based attacker with
 unfiltered access to the RE can cause the Junos OS snmpd daemon to crash and restart by sending a crafted SNMP
 packet. Repeated crashes of the snmpd daemon can result in a partial denial of service condition. Additionally,
 it may be possible to craft a malicious SNMP packet in a way that can result in remote code execution.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may cause a denial of service condition or
+  script_tag(name:"impact", value:"An unauthenticated attacker may cause a denial of service condition or
 execute arbitrary code.");
 
-  script_tag(name: "affected", value: "Junos OS 10.2 and above.");
+  script_tag(name:"affected", value:"Junos OS 10.2 and above.");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10793");
 

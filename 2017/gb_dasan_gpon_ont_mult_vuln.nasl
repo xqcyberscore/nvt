@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dasan_gpon_ont_mult_vuln.nasl 9895 2018-05-18 04:24:05Z ckuersteiner $
+# $Id: gb_dasan_gpon_ont_mult_vuln.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Dasan Networks GPON ONT Devices Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:dansan_networks:gpon_ont";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106952");
-  script_version("$Revision: 9895 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-18 06:24:05 +0200 (Fri, 18 May 2018) $");
-  script_tag(name: "creation_date", value: "2017-07-14 11:20:16 +0700 (Fri, 14 Jul 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11795 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-14 11:20:16 +0700 (Fri, 14 Jul 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("Dasan Networks GPON ONT Devices Multiple Vulnerabilities");
 
@@ -49,25 +49,25 @@ if (description)
   script_dependencies("gb_dasan_gpon_ont_detect.nasl");
   script_mandatory_keys("dasan_gpon_ont/detected");
 
-  script_tag(name: "summary", value: "Dasan Networks GPON ONT devices are prone to multiple vulnerabilities:
+  script_tag(name:"summary", value:"Dasan Networks GPON ONT devices are prone to multiple vulnerabilities:
 
-- Authentication Bypass.
+  - Authentication Bypass.
 
-- Cross-Site Request Forgery.
+  - Cross-Site Request Forgery.
 
-- Privilege Escalation
+  - Privilege Escalation
 
-- System Config Download and Upload.");
+  - System Config Download and Upload.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "No known solution is available as of 18th May, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 18th May, 2018. Information regarding
 this issue will be updated once solution details are available..");
 
-  script_xref(name: "URL", value: "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5421.php");
-  script_xref(name: "URL", value: "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5422.php");
-  script_xref(name: "URL", value: "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5423.php");
-  script_xref(name: "URL", value: "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5424.php");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5421.php");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5422.php");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5423.php");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5424.php");
 
   exit(0);
 }
@@ -82,7 +82,7 @@ if (!port = get_app_port(cpe: CPE))
 url = '/cgi-bin/sysinfo.cgi';
 cookie = 'Grant=1; Language=english; silverheader=3c';
 
-if (http_vuln_check(port: port, url: url, pattern: "System Information", check_header: TRUE, 
+if (http_vuln_check(port: port, url: url, pattern: "System Information", check_header: TRUE,
                     extra_check: "lbl_version", cookie: cookie)) {
   report = "It was possible to bypass authentication and access '/cgi-bin/sysinfo.cgi'.";
   security_message(port: port, data: report);

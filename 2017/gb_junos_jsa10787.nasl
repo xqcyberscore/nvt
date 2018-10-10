@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10787.nasl 6812 2017-07-31 06:15:43Z cfischer $
+# $Id: gb_junos_jsa10787.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Junos Privilege Escalation Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106946");
-  script_version ("$Revision: 6812 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-31 08:15:43 +0200 (Mon, 31 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-13 13:32:10 +0700 (Thu, 13 Jul 2017)");
+  script_version("$Revision: 11795 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-13 13:32:10 +0700 (Thu, 13 Jul 2017)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-2341");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos Privilege Escalation Vulnerability");
 
@@ -48,22 +48,22 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version", "Junos/model");
 
-  script_tag(name: "summary", value: "Junos OS is prone to a privilege escalation vulnerability.");
+  script_tag(name:"summary", value:"Junos OS is prone to a privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value: "An insufficient authentication vulnerability on platforms where Junos OS
+  script_tag(name:"insight", value:"An insufficient authentication vulnerability on platforms where Junos OS
 instances are run in a virtualized environment, may allow unprivileged users on the Junos OS instance to gain
 access to the host operating environment, and thus escalate privileges.");
 
-  script_tag(name: "affected", value: "This issue affects Junos OS 14.1X53, 15.1, 15.1X49, 16.1. Affected
+  script_tag(name:"affected", value:"This issue affects Junos OS 14.1X53, 15.1, 15.1X49, 16.1. Affected
 platforms: QFX5110, QFX5200, QFX10002, QFX10008, QFX10016, EX4600 and NFX250, EX4600, vSRX, SRX1500, SRX4100,
 SRX4200, ACX5000 series.");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10787");
 

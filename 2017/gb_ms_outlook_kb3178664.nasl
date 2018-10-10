@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_outlook_kb3178664.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_ms_outlook_kb3178664.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Microsoft Office Outlook Security Bypass and Remote Code Execution Vulnerabilities (KB3178664)
 #
@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810738");
-  script_version("$Revision: 11474 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2017-0106", "CVE-2017-0204");
   script_bugtraq_id(97413, 97458);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-12 14:08:41 +0530 (Wed, 12 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Outlook Security Bypass and Remote Code Execution Vulnerabilities (KB3178664)");
@@ -39,8 +39,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft security update KB3178664");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"- A remote code execution vulnerability exists in the way that Microsoft
     Outlook parses specially crafted email messages

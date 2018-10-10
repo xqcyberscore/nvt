@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_mult_vuln.nasl 11100 2018-08-24 07:42:42Z ckuersteiner $
+# $Id: gb_mikrotik_mult_vuln.nasl 11806 2018-10-10 07:58:15Z cfischer $
 #
 # MikroTik RouterOS Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:mikrotik:routeros";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141395");
-  script_version("$Revision: 11100 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 09:42:42 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 11806 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 09:58:15 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-24 14:27:31 +0700 (Fri, 24 Aug 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -67,8 +67,9 @@ if (description)
 
   script_tag(name:"affected", value:"MikroTik RouterOS prior to version 6.42.7 and 6.40.9.");
 
-  script_tag(name:"solution", value:"Update to version 6.42.7, 6.40.9 or later.");
+  script_tag(name:"solution", value:"Update to version 6.43, 6.42.7, 6.40.9 or later.");
 
+  script_xref(name:"URL", value:"https://blog.mikrotik.com/security/security-issues-discovered-by-tenable.html");
   script_xref(name:"URL", value:"https://mikrotik.com/download/changelogs/bugfix-release-tree");
   script_xref(name:"URL", value:"https://mikrotik.com/download/changelogs/release-candidate-release-tree");
 

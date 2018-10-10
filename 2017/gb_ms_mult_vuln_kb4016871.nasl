@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_mult_vuln_kb4016871.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_ms_mult_vuln_kb4016871.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4016871)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811108");
-  script_version("$Revision: 11501 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2017-0064", "CVE-2017-0077", "CVE-2017-0212", "CVE-2017-0213",
                 "CVE-2017-0214", "CVE-2017-0222", "CVE-2017-0224", "CVE-2017-0226",
                 "CVE-2017-0227", "CVE-2017-0228", "CVE-2017-0229", "CVE-2017-0230",
@@ -45,7 +45,7 @@ if(description)
                     98270, 98271, 98272, 98273);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 08:52:53 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4016871)");
@@ -53,8 +53,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Security update KB4016871.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"This monthly rollup,
 

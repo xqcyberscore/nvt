@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_compat_pack_kb3191835.nasl 6169 2017-05-19 08:26:16Z antu123 $
+# $Id: gb_ms_office_compat_pack_kb3191835.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerability (KB3191835)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811024");
-  script_version("$Revision: 6169 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2017-0254");
   script_bugtraq_id(98101);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 10:26:16 +0200 (Fri, 19 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 09:00:39 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerability (KB3191835)");
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update for Microsoft Office Compatibility Pack according to Microsoft KB3191835.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as the software fails to
   properly handle objects in memory.");
@@ -50,9 +49,7 @@ if(description)
   attacker to run arbitrary code in the context of the current user. If the
   current user is logged on with administrative user rights, an attacker could
   take control of the affected system. An attacker could then install programs;
-  view, change, or delete data; or create new accounts with full user rights.
-
-  Impact Level: System/Application");
+  view, change, or delete data; or create new accounts with full user rights.");
 
   script_tag(name:"affected", value:"Microsoft Office Compatibility Pack Service
   Pack 3 and prior.");
@@ -64,13 +61,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3191835");
-  script_xref(name : "URL" , value : "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2017-0254");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3191835");
+  script_xref(name:"URL", value:"https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2017-0254");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/Office/ComptPack/Version", "SMB/Office/WordCnv/Version");
   exit(0);
 }
@@ -81,19 +79,12 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-wordcnvVer = "";
-path = "";
-sysVer = "";
-offpath = "";
-
 path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                               item:"ProgramFilesDir");
 if(!path){
   exit(0);
 }
 
-# Check for Office Compatibility Pack 2007
 if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
 {
   wordcnvVer = get_kb_item("SMB/Office/WordCnv/Version");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_mult_vuln.nasl 9965 2018-05-25 14:06:08Z cfischer $
+# $Id: gb_zabbix_mult_vuln.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Zabbix Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106796");
-  script_version("$Revision: 9965 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-25 16:06:08 +0200 (Fri, 25 May 2018) $");
-  script_tag(name: "creation_date", value: "2017-04-28 08:43:22 +0200 (Fri, 28 Apr 2017)");
+  script_version("$Revision: 11795 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-28 08:43:22 +0200 (Fri, 28 Apr 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-2824", "CVE-2017-2825");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Zabbix Multiple Vulnerabilities");
 
@@ -51,23 +51,23 @@ if (description)
   script_dependencies("zabbix_web_detect.nasl");
   script_mandatory_keys("Zabbix/installed");
 
-  script_tag(name: "summary", value: "Zabbix is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Zabbix is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Zabbix is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Zabbix is prone to multiple vulnerabilities:
 
-- Zabbix Server Active Proxy Trapper Remote Code Execution Vulnerability (CVE-2017-2824)
+  - Zabbix Server Active Proxy Trapper Remote Code Execution Vulnerability (CVE-2017-2824)
 
-- Zabbix Proxy Server SQL Database Write Vulnerability (CVE-2017-2825)");
+  - Zabbix Proxy Server SQL Database Write Vulnerability (CVE-2017-2825)");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may execute arbitrary code.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may execute arbitrary code.");
 
-  script_tag(name: "affected", value: "Zabbix version prior to 2.0.21, 2.2.x, 3.0.x and 3.2.x.");
+  script_tag(name:"affected", value:"Zabbix version prior to 2.0.21, 2.2.x, 3.0.x and 3.2.x.");
 
-  script_tag(name: "solution", value: "Update to 2.0.21, 2.2.18, 3.0.9, 3.2.5 or newer versions.");
+  script_tag(name:"solution", value:"Update to 2.0.21, 2.2.18, 3.0.9, 3.2.5 or newer versions.");
 
-  script_xref(name: "URL", value: "http://blog.talosintelligence.com/2017/04/zabbix-multiple-vulns.html");
+  script_xref(name:"URL", value:"http://blog.talosintelligence.com/2017/04/zabbix-multiple-vulns.html");
 
   exit(0);
 }

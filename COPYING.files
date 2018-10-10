@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 09 Oct 2018 11:26:16 +0200
+# Automatically created on:  Wed, 10 Oct 2018 11:29:20 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39138,6 +39138,7 @@
 2018/debian/deb_4310.nasl: GPLv2+
 2018/debian/deb_4311.nasl: GPLv2+
 2018/debian/deb_4312.nasl: GPLv2+
+2018/debian/deb_4313.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -41075,7 +41076,9 @@
 2018/isc/gb_isc_bind_dos_vuln_jan18_lin.nasl: GPLv2+
 2018/isc/gb_isc_bind_dos_vuln_jan18_win.nasl: GPLv2+
 2018/isc/gb_isc_bind_mult_dos_vuln_may18.nasl: GPLv2+
+2018/joomla/gb_joomla_access_viol_vuln.nasl: GPLv2+
 2018/joomla/gb_joomla_acl_violation_vuln_aug18.nasl: GPLv2+
+2018/joomla/gb_joomla_acl_violation_vuln_oct18.nasl: GPLv2+
 2018/joomla/gb_joomla_chromes_module_xss_vuln.nasl: GPLv2+
 2018/joomla/gb_joomla_com_fields_rce_vuln.nasl: GPLv2+
 2018/joomla/gb_joomla_language_switcher_module_xss_vuln.nasl: GPLv2+
@@ -41083,7 +41086,9 @@
 2018/joomla/gb_joomla_mult_vuln01_may18.nasl: GPLv2+
 2018/joomla/gb_joomla_mult_vuln02_may18.nasl: GPLv2+
 2018/joomla/gb_joomla_mult_vuln_aug18.nasl: GPLv2+
+2018/joomla/gb_joomla_mult_vuln_oct18.nasl: GPLv2+
 2018/joomla/gb_joomla_php_local_file_inclusion_vuln.nasl: GPLv2+
+2018/joomla/gb_joomla_rce_vuln.nasl: GPLv2+
 2018/joomla/gb_joomla_redirect_method_xss_vuln.nasl: GPLv2+
 2018/joomla/gb_joomla_sql_inj_n_xss_vuln.nasl: GPLv2+
 2018/joomla/gb_joomla_unpublished_tags_info_disc_vuln.nasl: GPLv2+
@@ -42555,6 +42560,7 @@
 2018/wordpress/gb_wordpress_wp-google-map-plugin_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_wp-inject_mult_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_wp_statistics_xss_vuln_jun18.nasl: GPLv2+
+2018/xiongmai/gb_xiongmai_net_surveillance_default_credentials.nasl: GPLv2+
 2018/xnview/gb_xnview_mult_dos_vuln_aug18.nasl: GPLv2+
 2018/yawcam/gb_yawcam_dir_trav_vuln.nasl: GPLv2+
 2018/zabbix/gb_zabbix_info_disclosure_may18.nasl: GPLv2+
@@ -44378,6 +44384,7 @@ gb_xenserver_version.nasl: GPLv2+
 gb_xenserver_web_detect.nasl: GPLv2+
 gb_xerox_printer_detect.nasl: GPLv2+
 gb_xerver_http_server_detect.nasl: GPLv2+
+gb_xiongmai_net_surveillance_detect.nasl: GPLv2+
 gb_xm_easy_personal_ftp_detect.nasl: GPLv2+
 gb_xoops_celepar_detect.nasl: GPLv2+
 gb_xovis_pc_sensor_detect.nasl: GPLv2+
@@ -59962,6 +59969,7 @@ gsf/2018/f5/gb_f5_big_ip_K05018525.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K05112543.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K05263202.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K05513373.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K07550539.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K08044291.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K08306700.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K08613310.nasl: GPLv2+
@@ -60220,7 +60228,10 @@ gsf/2018/ibm/gb_ibm_websphere_mq_priv_esc_vuln_swg22009918_lin.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_priv_esc_vuln_swg22009918_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_swg22012983.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_swg22012992.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_portal_ibm10732287.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_portal_info_disc_vuln_swg21642097.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_portal_mult_vuln.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_portal_swg22014276.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_portal_xss_vuln_swg22012409.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_portal_xss_vuln_swg22012416.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_portal_xss_vuln_swg22013097.nasl: GPLv2+
@@ -60697,6 +60708,8 @@ gsf/2018/siemens/gb_simatic_cp_auth_bypass_vuln.nasl: GPLv2+
 gsf/2018/siemens/gb_simatic_cp_mult_vuln1.nasl: GPLv2+
 gsf/2018/siemens/gb_simatic_cp_mult_vuln2.nasl: GPLv2+
 gsf/2018/siemens/gb_simatic_cp_mult_vuln.nasl: GPLv2+
+gsf/2018/siemens/gb_simatic_s7-1200_csrf_vuln.nasl: GPLv2+
+gsf/2018/siemens/gb_simatic_s7-1500_dos_vuln.nasl: GPLv2+
 gsf/2018/siemens/gb_simatic_s7_dos_vuln.nasl: GPLv2+
 gsf/2018/siemens/gb_simatic_s7_openssl_vuln.nasl: GPLv2+
 gsf/2018/silverpeak/gb_silverpeak_edgeconnect_mult_vuln.nasl: GPLv2+

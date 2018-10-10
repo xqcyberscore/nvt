@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011041.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_ms_kb4011041.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Microsoft PowerPoint 2016 Multiple RCE Vulnerabilities (KB4011041)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811753");
-  script_version("$Revision: 11474 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2017-8742", "CVE-2017-8743");
   script_bugtraq_id(100741, 100746);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-13 11:16:30 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft PowerPoint 2016 Multiple RCE Vulnerabilities (KB4011041)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4011041");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to an error in
   Microsoft Office software when the software fails to properly handle objects

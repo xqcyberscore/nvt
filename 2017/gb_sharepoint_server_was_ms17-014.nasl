@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_was_ms17-014.nasl 9313 2018-04-05 06:23:26Z cfischer $
+# $Id: gb_sharepoint_server_was_ms17-014.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Microsoft SharePoint Server WAS Multiple Vulnerabilities (4013241)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810713");
-  script_version("$Revision: 9313 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2017-0030", "CVE-2017-0105");
   script_bugtraq_id(96051, 96746);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 15:14:27 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft SharePoint Server WAS Multiple Vulnerabilities (4013241)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS17-014");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
 
@@ -54,9 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to execute arbitrary code on affected system and gain access to
-  potentially sensitive information.
-
-  Impact Level: System/Application");
+  potentially sensitive information.");
 
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2010 Service Pack 2 Word Automation Services");
 
@@ -66,12 +63,13 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3178684");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS17-014");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3178684");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS17-014");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/SharePoint/Server/Ver");
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_mult_code_exec_vuln_feb17_win.nasl 5192 2017-02-03 13:55:47Z teissa $
+# $Id: gb_vmware_workstation_mult_code_exec_vuln_feb17_win.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # VMware Workstation Multiple Code Execution Vulnerabilities Feb17 (Windows)
 #
@@ -29,44 +29,45 @@ CPE = "cpe:/a:vmware:workstation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810535");
-  script_version("$Revision: 5192 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2016-7081", "CVE-2016-7082", "CVE-2016-7083", "CVE-2016-7084",
                 "CVE-2016-7085", "CVE-2016-7086");
   script_bugtraq_id(92935, 92934, 92940, 92941);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 14:55:47 +0100 (Fri, 03 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-03 13:26:13 +0530 (Fri, 03 Feb 2017)");
   script_name("VMware Workstation Multiple Code Execution Vulnerabilities Feb17 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with VMware Workstation
+  script_tag(name:"summary", value:"The host is installed with VMware Workstation
   and is prone to multiple code execution vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Multiple heap-based buffer overflows via Cortado Thinprint.
+
   - Multiple memory corruption vulnerabilities via Cortado Thinprint.
+
   - An untrusted search path vulnerability in the installer.
+
   - An insecure executable loading vulnerability.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
-  attackers to execute arbitrary code and do local privilege escalation.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  attackers to execute arbitrary code and do local privilege escalation.");
 
-  Impact Level: System");
-
-  script_tag(name: "affected" , value:"VMware Workstation 12.x before
+  script_tag(name:"affected", value:"VMware Workstation 12.x before
   12.5.0 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Workstation version
+  script_tag(name:"solution", value:"Upgrade to Workstation version
   12.5.0 or later, For updates refer to http://www.vmware.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   ## Exploitation is only possible if virtual printing has been enabled
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2016-0014.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0014.html");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -79,16 +80,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-vmwareVer = "";
-
-## Get version
 if(!vmwareVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
-if(vmwareVer =~ "^(12)")
+if(vmwareVer =~ "^12")
 {
   if(version_is_less(version:vmwareVer, test_version:"12.5.0"))
   {

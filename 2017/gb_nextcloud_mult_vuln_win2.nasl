@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_mult_vuln_win2.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_nextcloud_mult_vuln_win2.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Nextcloud Multiple Vulnerabilities (Windows)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106705");
-  script_version("$Revision: 7585 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-03-30 14:13:45 +0700 (Thu, 30 Mar 2017)");
+  script_version("$Revision: 11795 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-30 14:13:45 +0700 (Thu, 30 Mar 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2016-9465", "CVE-2016-9466");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Nextcloud Multiple Vulnerabilities (Windows)");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_nextcloud_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("nextcloud/installed", "Host/runs_windows");
 
-  script_tag(name: "summary", value: "Nextcloud is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Nextcloud is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Nextcloud is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Nextcloud is prone to multiple vulnerabilities:
 
-- Stored XSS in CardDAV image export. (CVE-2016-9465)
+  - Stored XSS in CardDAV image export. (CVE-2016-9465)
 
-- Reflected XSS in the Gallery application (CVE-2016-9466)");
+  - Reflected XSS in the Gallery application (CVE-2016-9466)");
 
-  script_tag(name: "affected", value: "Nextcloud Server prior to 10.0.1");
+  script_tag(name:"affected", value:"Nextcloud Server prior to 10.0.1");
 
-  script_tag(name: "solution", value: "Update 10.0.1 or later versions.");
+  script_tag(name:"solution", value:"Update 10.0.1 or later versions.");
 
-  script_xref(name: "URL", value: "https://nextcloud.com/security/advisory/?id=nc-sa-2016-008");
-  script_xref(name: "URL", value: "https://nextcloud.com/security/advisory/?id=nc-sa-2016-009");
+  script_xref(name:"URL", value:"https://nextcloud.com/security/advisory/?id=nc-sa-2016-008");
+  script_xref(name:"URL", value:"https://nextcloud.com/security/advisory/?id=nc-sa-2016-009");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_excel_services_kb3178724.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_sharepoint_server_excel_services_kb3178724.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # MS SharePoint Server Excel Services Elevation of Privilege Vulnerability (3178724)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810856");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2017-0195");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-12 16:20:26 +0530 (Wed, 12 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server Excel Services Elevation of Privilege Vulnerability (3178724)");
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft security updates KB3178724");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists when an Office Web Apps server
   does not properly sanitize a specially crafted request.");

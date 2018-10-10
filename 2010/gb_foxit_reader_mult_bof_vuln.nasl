@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_bof_vuln.nasl 11561 2018-09-24 06:20:05Z cfischer $
+# $Id: gb_foxit_reader_mult_bof_vuln.nasl 11809 2018-10-10 08:57:55Z jschulte $
 #
 # Foxit Reader Multiple Buffer Overflow Vulnerabilities
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801425");
   script_cve_id("CVE-2010-1797");
-  script_version("$Revision: 11561 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 08:20:05 +0200 (Mon, 24 Sep 2018) $");
+  script_version("$Revision: 11809 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 10:57:55 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2010-08-10 14:39:31 +0200 (Tue, 10 Aug 2010)");
   script_bugtraq_id(42241);
   script_tag(name:"cvss_base", value:"9.3");
@@ -51,11 +51,11 @@ if(description)
   script_tag(name:"affected", value:"Foxit Reader version prior to 4.1.1 (4.1.1.0805)");
   script_tag(name:"insight", value:"Multiple flaws are due to an error in the handling of 'PDF'
   documents. It is not properly rendering the PDF documents.");
-  script_tag(name:"solution", value:"Upgrade to the Foxit Reader version 4.1.1 or later,
-  For updates refer to http://www.foxitsoftware.com/downloads/index.php");
+  script_tag(name:"solution", value:"Upgrade to the Foxit Reader version 4.1.1 or later,");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"The host is installed with Foxit Reader and is prone to multiple
   buffer overflow vulnerabilities.");
+  script_xref(name:"URL", value:"http://www.foxitsoftware.com/downloads/index.php");
   exit(0);
 }
 

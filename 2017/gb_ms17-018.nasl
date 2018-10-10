@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-018.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_ms17-018.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (4013083)
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810594");
-  script_version("$Revision: 11474 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2017-0024", "CVE-2017-0026", "CVE-2017-0056", "CVE-2017-0078",
                 "CVE-2017-0079", "CVE-2017-0080", "CVE-2017-0081", "CVE-2017-0082");
   script_bugtraq_id(96029, 96032, 96630, 96631, 96632, 96633, 96634, 96635);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 08:10:02 +0530 (Wed, 15 Mar 2017)");
   script_name("Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (4013083)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS17-018.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists when the Windows
   kernel-mode driver fails to properly handle objects in memory.");

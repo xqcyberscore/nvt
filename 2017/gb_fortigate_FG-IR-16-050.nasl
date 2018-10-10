@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortigate_FG-IR-16-050.nasl 5910 2017-04-10 08:31:29Z teissa $
+# $Id: gb_fortigate_FG-IR-16-050.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # FortiOS: Local Admin Password Hash Leak Vulnerability
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:fortinet:fortigate";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140156");
- script_cve_id("CVE-2016-7542");
- script_tag(name:"cvss_base", value:"4.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
- script_version ("$Revision: 5910 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140156");
+  script_cve_id("CVE-2016-7542");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_version("$Revision: 11795 $");
 
- script_name("FortiOS: Local Admin Password Hash Leak Vulnerability");
+  script_name("FortiOS: Local Admin Password Hash Leak Vulnerability");
 
- script_xref(name:"URL", value:"http://fortiguard.com/advisory/FG-IR-16-050");
+  script_xref(name:"URL", value:"http://fortiguard.com/advisory/FG-IR-16-050");
 
- script_tag(name: "impact" , value:"A read-only administrator may have access to read-write administrators password hashes (not including super-admins) stored on the appliance via the webui REST API , and may therefore be able to crack them.");
+  script_tag(name:"impact", value:"A read-only administrator may have access to read-write administrators password hashes (not including super-admins) stored on the appliance via the webui REST API, and may therefore be able to crack them.");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Upgrade to 5.4.2 GA
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Upgrade to 5.4.2 GA
 Upgrade to 5.2.10 GA");
 
- script_tag(name: "summary" , value:"FortiOS Local Admin Password Hash Leak Vulnerability");
+  script_tag(name:"summary", value:"FortiOS Local Admin Password Hash Leak Vulnerability");
 
- script_tag(name: "affected" , value:"FortiOS 5.2.0 - 5.2.9, 5.4.1");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"FortiOS 5.2.0 - 5.2.9, 5.4.1");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-10 10:31:29 +0200 (Mon, 10 Apr 2017) $");
- script_tag(name:"creation_date", value:"2017-02-09 13:57:20 +0100 (Thu, 09 Feb 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("FortiOS Local Security Checks");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_fortigate_version.nasl");
- script_mandatory_keys("fortigate/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-09 13:57:20 +0100 (Thu, 09 Feb 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("FortiOS Local Security Checks");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_fortigate_version.nasl");
+  script_mandatory_keys("fortigate/version");
 
  exit(0);
 }

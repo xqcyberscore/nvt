@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_google_analyticator_csrf_vuln.nasl 7125 2017-09-14 08:26:29Z cfischer $
+# $Id: gb_wordpress_google_analyticator_csrf_vuln.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # WordPress Google Analyticator Plugin CSRF Vulnerability
 #
@@ -30,18 +30,18 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112037");
-  script_version("$Revision: 7125 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-14 10:26:29 +0200 (Thu, 14 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2017-09-11 08:11:31 +0200 (Mon, 11 Sep 2017)");
+  script_version("$Revision: 11795 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-11 08:11:31 +0200 (Mon, 11 Sep 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2015-4697");
   script_bugtraq_id(75325);
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress Google Analyticator Plugin CSRF Vulnerability");
 
@@ -52,17 +52,17 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "The administrative actions in WordPress Google Analyticator allowed by the plugin can be exploited using
+  script_tag(name:"summary", value:"The administrative actions in WordPress Google Analyticator allowed by the plugin can be exploited using
       CSRF which could be used to disrupt the functionality provided by the
       plugin.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "WordPress Google Analyticator plugin before 6.4.9.4.");
+  script_tag(name:"affected", value:"WordPress Google Analyticator plugin before 6.4.9.4.");
 
-  script_tag(name: "solution", value: "Update to version 6.4.9.4 or later.");
+  script_tag(name:"solution", value:"Update to version 6.4.9.4 or later.");
 
-  script_xref(name: "URL", value: "https://wordpress.org/plugins/google-analyticator/#developers");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/google-analyticator/#developers");
 
   exit(0);
 }

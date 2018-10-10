@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10792.nasl 6959 2017-08-18 07:24:59Z asteins $
+# $Id: gb_junos_jsa10792.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Junos Sockets Library Buffer Overflow Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106942");
-  script_version ("$Revision: 6959 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-13 10:12:57 +0700 (Thu, 13 Jul 2017)");
+  script_version("$Revision: 11795 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-13 10:12:57 +0700 (Thu, 13 Jul 2017)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-2344");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos Sockets Library Buffer Overflow Vulnerability");
 
@@ -48,21 +48,21 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version");
 
-  script_tag(name: "summary", value: "Junos OS is prone to a buffer overlow vulnerability in the sockets
+  script_tag(name:"summary", value:"Junos OS is prone to a buffer overlow vulnerability in the sockets
 library.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value: "A routine within an internal Junos OS sockets library is vulnerable to a
+  script_tag(name:"insight", value:"A routine within an internal Junos OS sockets library is vulnerable to a
 buffer overflow. Malicious exploitation of this issue may lead to a denial of service (kernel panic) or be
 leveraged as a privilege escalation through local code execution. The routines are only accessible via programs
 running on the device itself, and veriexec restricts arbitrary programs from running on Junos OS. There are no
 known exploit vectors utilizing signed binaries shipped with Junos OS itself.");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10792");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_azure_ad_connect_priv_elev_vuln_4033453.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_ms_azure_ad_connect_priv_elev_vuln_4033453.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Microsoft Azure AD Connect Privilege Elevation Vulnerability (4033453)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811425");
-  script_version("$Revision: 11501 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2017-8613");
   script_bugtraq_id(99294);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-05 13:42:34 +0530 (Wed, 05 Jul 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Azure AD Connect Privilege Elevation Vulnerability (4033453)");
@@ -40,8 +40,7 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Security Advisory 4033453");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to misconfiguration of
   Azure AD Connect Password writeback during enablement.");

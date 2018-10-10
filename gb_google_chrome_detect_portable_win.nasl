@@ -67,7 +67,7 @@ if( ! infos ) exit( 0 );
 handle = wmi_connect( host:infos["host"], username:infos["username_wmi_smb"], password:infos["password"] );
 if( ! handle ) exit( 0 );
 
-fileList = wmi_file_file_search( handle:handle, fileName:"chrome", fileExtn:"exe", includeHeader:FALSE );
+fileList = wmi_file_fileversion( handle:handle, fileName:"chrome", fileExtn:"exe", includeHeader:FALSE );
 if( ! fileList ) {
   wmi_close( wmi_handle:handle );
   exit( 0 );

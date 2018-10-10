@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_multiple_dos_vuln02_jan17_lin.nasl 10454 2018-07-09 05:32:41Z cfischer $
+# $Id: gb_php_multiple_dos_vuln02_jan17_lin.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # PHP Multiple Denial of Service Vulnerabilities - 02 - Jan17 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108054");
-  script_version("$Revision: 10454 $");
+  script_version("$Revision: 11795 $");
   script_cve_id("CVE-2016-10159", "CVE-2016-10160");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:32:41 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-25 11:00:00 +0100 (Wed, 25 Jan 2017)");
   script_name("PHP Multiple Denial of Service Vulnerabilities - 02 - Jan17 (Linux)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -60,9 +60,7 @@ if(description)
   via a crafted PHAR archive with an alias mismatch.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
-  remote attackers to cause a denial of service (memory consumption or application crash).
-
-  Impact Level: Application");
+  remote attackers to cause a denial of service (memory consumption or application crash).");
 
   script_tag(name:"affected", value:"PHP versions before 5.6.30 and 7.0.x before 7.0.15");
 

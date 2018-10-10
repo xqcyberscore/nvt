@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10777.nasl 6101 2017-05-11 08:27:07Z teissa $
+# $Id: gb_junos_jsa10777.nasl 11795 2018-10-09 13:03:20Z mmartin $
 #
 # Junos LDP DoS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106753");
-  script_version ("$Revision: 6101 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-11 10:27:07 +0200 (Thu, 11 May 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-13 08:24:49 +0200 (Thu, 13 Apr 2017)");
+  script_version("$Revision: 11795 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-13 08:24:49 +0200 (Thu, 13 Apr 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
 
   script_cve_id("CVE-2017-2312");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos LDP DoS Vulnerability");
 
@@ -48,26 +48,26 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version");
 
-  script_tag(name: "summary", value: "Junos OS is prone to denial of service vulnerability when receiving crafted
+  script_tag(name:"summary", value:"Junos OS is prone to denial of service vulnerability when receiving crafted
 LDP packets.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value: "A specific LDP packet destined to the RE (Routing Engine) will consume a
+  script_tag(name:"insight", value:"A specific LDP packet destined to the RE (Routing Engine) will consume a
 small amount of the memory allocated for the rpd process. Over time, repeatedly receiving this type of LDP
 packet(s) will cause the memory to exhaust and the rpd process to crash and restart. It is not possible to free
 up the memory that has been consumed without restarting the rpd process. This issue affects Junos OS based
 devices with either IPv4 or IPv6 LDP enabled via the [protocols ldp] configuration. The interface on which the
 packet arrives needs to have LDP enabled.");
 
-  script_tag(name: "impact", value: "An attacker may cause a denial of service condition.");
+  script_tag(name:"impact", value:"An attacker may cause a denial of service condition.");
 
-  script_tag(name: "affected", value: "Junos OS 13.3, 14.1, 14.2, 15.1 and 16.1");
+  script_tag(name:"affected", value:"Junos OS 13.3, 14.1, 14.2, 15.1 and 16.1");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper. As a
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As a
 workaround use access lists or firewall filters to limit access to the device via LDP only from trusted networks
 or hosts, or enable MD5 authentication on all authorized LDP sessions.");
 
@@ -105,7 +105,7 @@ if (version =~ "^14") {
   }
 }
 
-if (version =~ "^15") {  
+if (version =~ "^15") {
   if ((revcomp(a: version, b: "15.1F7") < 0) &&
       (revcomp(a: version, b: "15.1F") >= 0)) {
     report = report_fixed_ver(installed_version: version, fixed_version: "15.1F7");
