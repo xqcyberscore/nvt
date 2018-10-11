@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cogent_cascade_n_opc_datahub_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_cogent_cascade_n_opc_datahub_mult_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Cogent OPC DataHub and Cascade DataHub XSS and CRLF Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802565");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2012-0310", "CVE-2012-0309");
   script_bugtraq_id(51375);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-20 18:01:09 +0530 (Fri, 20 Jan 2012)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -51,8 +51,7 @@ if(description)
   remote attackers to inject arbitrary web script or HTML via unspecified
   vectors.");
   script_tag(name:"solution", value:"Upgrade to the OPC DataHub version 7.2 0r later
-  Upgrade to the Cascade DataHub version 7.2 0r later
-  For updates refer to http://www.cogentdatahub.com/index.html");
+  Upgrade to the Cascade DataHub version 7.2 0r later");
   script_tag(name:"summary", value:"This host is installed with OPC DataHub or Cascade DataHub and is
   prone to cross site scripting and CRLF vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
@@ -62,6 +61,7 @@ if(description)
   script_tag(name:"affected", value:"OPC DataHub version 6.4.20 and prior
   Cascade DataHub version 6.4.20 and prior");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.cogentdatahub.com/index.html");
   exit(0);
 }
 

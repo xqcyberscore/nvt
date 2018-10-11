@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_apsb17-01_win.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_adobe_reader_apsb17-01_win.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Adobe Reader Security Updates(apsb17-01)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810334");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-2939", "CVE-2017-2940", "CVE-2017-2941", "CVE-2017-2942",
                 "CVE-2017-2943", "CVE-2017-2944", "CVE-2017-2945", "CVE-2017-2946",
                 "CVE-2017-2947", "CVE-2017-2948", "CVE-2017-2949", "CVE-2017-2950",
@@ -41,7 +41,7 @@ if(description)
                 "CVE-2017-3009", "CVE-2017-3010");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-11 08:28:14 +0530 (Wed, 11 Jan 2017)");
   script_name("Adobe Reader Security Updates(apsb17-01)-Windows");
 
@@ -70,8 +70,7 @@ if(description)
   11.0.19 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Reader version
-  11.0.19 or later.
-  For updates refer to http://www.adobe.com/in/products/acrobat.html");
+  11.0.19 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -81,6 +80,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Reader/Win/Installed");
+  script_xref(name:"URL", value:"http://www.adobe.com/in/products/acrobat.html");
   exit(0);
 }
 

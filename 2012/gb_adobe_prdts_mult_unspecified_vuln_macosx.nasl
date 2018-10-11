@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_unspecified_vuln_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_adobe_prdts_mult_unspecified_vuln_macosx.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Adobe Reader Multiple Unspecified Vulnerabilities - Mac OS X
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802955");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2012-4363");
   script_bugtraq_id(55055);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-24 16:05:37 +0530 (Fri, 24 Aug 2012)");
   script_name("Adobe Reader Multiple Unspecified Vulnerabilities - Mac OS X");
 
@@ -46,8 +46,7 @@ vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code in the
 context of the affected application.");
   script_tag(name:"affected", value:"Adobe Reader versions 9.x to 9.5.2 and 10.x to 10.1.4 on Mac OS X");
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader 9.5.3, 10.1.5 or later,
-For updates refer to http://www.adobe.com");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader 9.5.3, 10.1.5 or later,");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -57,6 +56,7 @@ For updates refer to http://www.adobe.com");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Reader/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 

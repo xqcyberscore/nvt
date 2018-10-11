@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807404");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2015-5174");
   script_bugtraq_id(83329);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-25 11:25:47 +0530 (Thu, 25 Feb 2016)");
   script_name("Apache Tomcat Limited Directory Traversal Vulnerability - Feb16 (Windows)");
 
@@ -56,8 +56,7 @@ if(description)
   7.x before 7.0.65, and 8.0.0.RC1 before 8.0.27 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to version 6.0.45 or 7.0.65 or
-  8.0.27 or later.
-  For updates refer to http://tomcat.apache.org");
+  8.0.27 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -72,6 +71,7 @@ if(description)
   script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("ApacheTomcat/installed", "Host/runs_windows");
   script_require_ports("Services/www", 8080);
+  script_xref(name:"URL", value:"http://tomcat.apache.org");
   exit(0);
 }
 

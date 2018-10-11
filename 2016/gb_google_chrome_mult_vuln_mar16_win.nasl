@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_mar16_win.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_google_chrome_mult_vuln_mar16_win.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities Mar16 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807457");
-  script_version("$Revision: 11607 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-2845", "CVE-2016-2844", "CVE-2016-2843", "CVE-2016-1642",
                 "CVE-2016-1641", "CVE-2016-1640", "CVE-2016-1639", "CVE-2016-1637",
                 "CVE-2016-1638", "CVE-2016-1636", "CVE-2016-1635", "CVE-2016-1634",
                 "CVE-2016-1633", "CVE-2016-1632", "CVE-2016-1631", "CVE-2016-1630");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-08 10:58:48 +0530 (Tue, 08 Mar 2016)");
   script_name("Google Chrome Multiple Vulnerabilities Mar16 (Windows)");
 
@@ -88,7 +88,7 @@ if(description)
   49.0.2623.75 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version
-  49.0.2623.75 or later, For updates refer to http://www.google.com/chrome");
+  49.0.2623.75 or later, ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -101,6 +101,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sit_mult_sql_inj_and_xss_vuln.nasl 11591 2018-09-25 08:09:20Z asteins $
+# $Id: gb_sit_mult_sql_inj_and_xss_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Support Incident Tracker SiT! Multiple SQL Injection And XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802388");
-  script_version("$Revision: 11591 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2011-5071", "CVE-2011-5072", "CVE-2011-5073", "CVE-2011-5074",
                 "CVE-2011-5075");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 10:09:20 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-01 15:15:30 +0530 (Wed, 01 Feb 2012)");
   script_name("Support Incident Tracker SiT! Multiple SQL Injection And XSS Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46019");
@@ -55,9 +55,7 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to improper input validation errors in multiple
   scripts before being used in SQL queries and also allows attackers to
   execute arbitrary HTML.");
-  script_tag(name:"solution", value:"Upgrade to the Support Incident Tracker version 3.65 or later.
-
-  For updates refer to http://sitracker.org/");
+  script_tag(name:"solution", value:"Upgrade to the Support Incident Tracker version 3.65 or later.");
   script_tag(name:"summary", value:"This host is running Support Incident Tracker and is prone to
   multiple sql injection and cross-site scripting vulnerabilities.");
   exit(0);

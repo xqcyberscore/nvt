@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_mult_vuln_kb4019474.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_ms_mult_vuln_kb4019474.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4019474)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811111");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-0064", "CVE-2017-0077", "CVE-2017-0190", "CVE-2017-0212",
                 "CVE-2017-0213", "CVE-2017-0214", "CVE-2017-0222", "CVE-2017-0226",
                 "CVE-2017-0227", "CVE-2017-0228", "CVE-2017-0229", "CVE-2017-0231",
@@ -45,7 +45,7 @@ if(description)
                     98273);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 08:55:53 +0530 (Wed, 10 May 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4019474)");
 
@@ -66,9 +66,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-gb/help/4019474");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -79,6 +77,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-gb/help/4019474");
   exit(0);
 }
 

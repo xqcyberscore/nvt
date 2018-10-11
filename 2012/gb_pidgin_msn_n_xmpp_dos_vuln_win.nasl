@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_msn_n_xmpp_dos_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_pidgin_msn_n_xmpp_dos_vuln_win.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Pidgin MSN and XMPP Denial of Service Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802906");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2012-2318", "CVE-2012-2214");
   script_bugtraq_id(53400, 53706);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-04 16:00:59 +0530 (Wed, 04 Jul 2012)");
   script_name("Pidgin MSN and XMPP Denial of Service Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49036/");
@@ -55,12 +55,12 @@ if(description)
   - An error in SOCKS5 proxy handling code can be exploited to dereference an
     invalid pointer and cause a crash by sending multiple specially crafted
     file transfer requests.");
-  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.10.4 or later,
-  For updates refer to http://pidgin.im/download");
+  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.10.4 or later,");
   script_tag(name:"summary", value:"This host has installed with Pidgin and is prone to denial of
   service vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://pidgin.im/download");
   exit(0);
 }
 

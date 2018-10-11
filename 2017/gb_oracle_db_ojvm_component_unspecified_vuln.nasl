@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_ojvm_component_unspecified_vuln.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_oracle_db_ojvm_component_unspecified_vuln.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
 # Oracle Database Server 'OJVM' Component Unspecified Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811532");
-  script_version("$Revision: 11474 $");
+  script_version("$Revision: 11836 $");
   script_cve_id("CVE-2017-10202", "CVE-2017-10321", "CVE-2017-10190", "CVE-2017-10292");
   script_bugtraq_id(99865, 101329, 101335, 101350);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-19 12:14:58 +0530 (Wed, 19 Jul 2017)");
   script_name("Oracle Database Server 'OJVM' Component Unspecified Vulnerability");
 
@@ -54,9 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle Database Server versions
   11.2.0.4, 12.1.0.2, 12.2.0.1");
 
-  script_tag(name:"solution", value:"Apply patches from below links,
-  http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html
-  http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
+  script_tag(name:"solution", value:"Apply Vendor patches.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +67,7 @@ if(description)
   script_family("Databases");
   script_dependencies("oracle_tnslsnr_version.nasl");
   script_mandatory_keys("OracleDatabaseServer/installed");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html");
   exit(0);
 }
 

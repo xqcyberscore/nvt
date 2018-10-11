@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_virit_explorer_lite_dos_vuln.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_virit_explorer_lite_dos_vuln.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # TG Soft Vir.IT eXplorer Lite Denial Of Service Vulnerability
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:tg_soft:vir.it_explorer_lite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107266");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11835 $");
   script_cve_id("CVE-2017-16948");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-27 09:50:38 +0700 (Mon, 27 Nov 2017)");
   script_name("TG Soft Vir.IT eXplorer Lite Denial Of Service Vulnerability");
 
   script_tag(name:"summary", value:"The host is installed with TG Soft Vir.IT eXplorer Lite and is prone to
 Denial Of Service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to a NULL value in a 0x82730008 DeviceIoControl request to
 \\\\.\\Viragtlt.");

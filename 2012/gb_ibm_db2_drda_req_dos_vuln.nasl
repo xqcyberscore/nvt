@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_drda_req_dos_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_ibm_db2_drda_req_dos_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # IBM DB2 Distributed Relational Database Architecture Request DoS Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802729");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2012-0710");
   script_bugtraq_id(52326);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-03 10:37:46 +0530 (Tue, 03 Apr 2012)");
   script_name("IBM DB2 Distributed Relational Database Architecture Request DoS Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48279/");
@@ -57,8 +57,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is caused due an error within the server component can be exploited
   to cause a crash by sending a specially crafted Distributed Relational
   Database Architecture request.");
-  script_tag(name:"solution", value:"Upgrade to IBM DB2 version 9.1 FP11, 9.5 FP8, 9.7 FP5, 9.8 FP4 or later,
-  For updates refer to http://www-01.ibm.com/support/docview.wss?uid=swg27007053");
+  script_tag(name:"solution", value:"Upgrade to IBM DB2 version 9.1 FP11, 9.5 FP8, 9.7 FP5, 9.8 FP4 or later,");
   script_tag(name:"summary", value:"The host is running IBM DB2 and is prone to denial of service
   vulnerability.");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_riverbed_steelhead_file_read_vuln.nasl 9895 2018-05-18 04:24:05Z ckuersteiner $
+# $Id: gb_riverbed_steelhead_file_read_vuln.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Riverbed SteelHead Arbitrary File Read Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:riverbed:steelhead";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106846");
-  script_version("$Revision: 9895 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-18 06:24:05 +0200 (Fri, 18 May 2018) $");
-  script_tag(name: "creation_date", value: "2017-06-06 08:53:41 +0700 (Tue, 06 Jun 2017)");
-  script_tag(name: "cvss_base", value: "6.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:N/A:N");
+  script_version("$Revision: 11816 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-06 08:53:41 +0700 (Tue, 06 Jun 2017)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("Riverbed SteelHead Arbitrary File Read Vulnerability");
 
@@ -49,17 +49,17 @@ if (description)
   script_dependencies("gb_riverbed_steelhead_ssh_detect.nasl", "gb_riverbed_steelhead_http_detect.nasl");
   script_mandatory_keys("riverbed/steelhead/detected");
 
-  script_tag(name: "summary", value: "Riverbed SteelHead VCX is prone to an authenticated arbitrary file read
+  script_tag(name:"summary", value:"Riverbed SteelHead VCX is prone to an authenticated arbitrary file read
 vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Riverbed Steelhead VCX 9.6.0a");
+  script_tag(name:"affected", value:"Riverbed Steelhead VCX 9.6.0a");
 
-  script_tag(name: "solution", value: "No known solution is available as of 18th May, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 18th May, 2018. Information regarding
 this issue will be updated once solution details are available..");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/42101/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42101/");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_homematic_mult_vuln.nasl 11022 2018-08-17 07:57:39Z cfischer $
+# $Id: gb_homematic_mult_vuln.nasl 11813 2018-10-10 10:05:37Z ckuersteiner $
 #
 # HomeMatic CCU2 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:eq-3:homematic_ccu2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140807");
-  script_version("$Revision: 11022 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11813 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:05:37 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-23 16:19:23 +0700 (Fri, 23 Feb 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -58,25 +58,25 @@ if(description)
 
   script_tag(name:"insight", value:"HomeMatic CCU2 is prone to multiple vulnerabilities:
 
-- Directory Traversal / Arbitrary File Read in User.getLanguage method allows remote attackers to read the first
+  - Directory Traversal / Arbitrary File Read in User.getLanguage method allows remote attackers to read the first
 line of an arbitrary file on the CCU2's filesystem. (CVE-2018-7296)
 
-- Remote Code Execution in the TCL script interpreter allows remote attackers to obtain read/write access and
+  - Remote Code Execution in the TCL script interpreter allows remote attackers to obtain read/write access and
 execute system commands on the device. (CVE-2018-7297)
 
-- In /usr/local/etc/config/addons/mh/loopupd.sh software update packages are downloaded via the HTTP protocol,
+  - In /usr/local/etc/config/addons/mh/loopupd.sh software update packages are downloaded via the HTTP protocol,
 which does not provide any cryptographic protection of the downloaded contents. (CVE-2018-7298)
 
-- Remote Code Execution in the addon installation process allows authenticated attackers to create or overwrite
+  - Remote Code Execution in the addon installation process allows authenticated attackers to create or overwrite
 arbitrary files or install malicious software on the device. (CVE-2018-7299)
 
-- Directory Traversal / Arbitrary File Write / Remote Code Execution in the User.setLanguage method allows remote
+  - Directory Traversal / Arbitrary File Write / Remote Code Execution in the User.setLanguage method allows remote
 attackers to write arbitrary files to the device's filesystem. (CVE-2018-7300)
 
-- Open XML-RPC port without authentication. This can be exploited by sending arbitrary XML-RPC requests to control
-the attached BidCos devices. (CVE-2018-7301)");
+  - Open XML-RPC port without authentication. This can be exploited by sending arbitrary XML-RPC requests to
+control the attached BidCos devices. (CVE-2018-7301)");
 
-  script_tag(name:"solution", value:"No known solution is available as of 17th May, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 10th October, 2018. Information regarding
 this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://atomic111.github.io/article/homematic-ccu2-fileread");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_imap_server_bof_vuln.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_ibm_domino_imap_server_bof_vuln.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
 # IBM Domino IMAP Server Buffer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810961");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11836 $");
   script_bugtraq_id(23172);
   script_cve_id("CVE-2007-1675");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-27 14:09:35 +0530 (Tue, 27 Jun 2017)");
   script_name("IBM Domino IMAP Server Buffer Overflow Vulnerability");
 
@@ -54,8 +54,7 @@ if(description)
   and 7.x before 7.0.2 FP1.");
 
   script_tag(name:"solution", value:"Upgrade to IBM Domino 6.5.5 Fix Pack 3 (FP3)
-  or 6.5.6 or 7.0.2 Fix Pack 1 (FP1) or 7.0.3 or later.
-  For more information refer to http://www-01.ibm.com/support/docview.wss?uid=swg21257028");
+  or 6.5.6 or 7.0.2 Fix Pack 1 (FP1) or 7.0.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

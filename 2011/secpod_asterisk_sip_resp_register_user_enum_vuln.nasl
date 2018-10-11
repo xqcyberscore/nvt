@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_asterisk_sip_resp_register_user_enum_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_asterisk_sip_resp_register_user_enum_vuln.nasl 11829 2018-10-11 02:52:58Z ckuersteiner $
 #
 # Asterisk SIP REGISTER Response Username Enumeration Vulnerability
 #
@@ -29,11 +29,12 @@ CPE = 'cpe:/a:digium:asterisk';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900293");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 11829 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 04:52:58 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_cve_id("CVE-2011-2536");
   script_name("Asterisk SIP REGISTER Response Username Enumeration Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
@@ -46,9 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2011-011.html");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain valid username that
-  could aid in further attacks.
-
-  Impact Level: Application");
+  could aid in further attacks.");
 
   script_tag(name:"affected", value:"Asterisk Business Edition C.3.x
   Asterisk Open Source Version 1.4.x, 1.6.2.x, 1.8.x");
@@ -57,8 +56,7 @@ if(description)
   an invalid username in REGISTER messages. This can be exploited to determine
   valid usernames by sending specially crafted REGISTER messages.");
 
-  script_tag(name:"solution", value:"Please refer below link for updates,
-  http://downloads.asterisk.org/pub/security/AST-2011-011.html");
+  script_tag(name:"solution", value:"Updates are available. Please see the referenced AST advisory for more information.");
 
   script_tag(name:"summary", value:"This host is running Asterisk Server and is prone to username
   enumeration vulnerability.");
@@ -77,7 +75,6 @@ if( ! infos = get_app_location_and_proto( cpe:CPE, port:port ) ) exit( 0 );
 
 proto = infos["proto"];
 
-## Construct "REGISTER" request with invalid user
 req = string(
   "REGISTER sip:", get_host_name(), " SIP/2.0", "\r\n",
   "CSeq: 123 REGISTER", "\r\n",
@@ -94,10 +91,8 @@ req = string(
   "Content-Length: 28000", "\r\n",
   "Max-Forwards: 70", "\r\n",
   "\r\n" );
+res = sip_send_recv( port:port, data:req, proto:proto );
 
-exp = sip_send_recv( port:port, data:req, proto:proto );
-
-## Confirm the application and check it's vulnerable or not
 if( res =~ "SIP\/[0-9].[0-9] 100 Trying" ) {
   security_message( port:port, proto:proto );
   exit( 0 );

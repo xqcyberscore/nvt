@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_cisco-sa-20170816-apic1.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_cisco_apic_cisco-sa-20170816-apic1.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
 # Cisco Application Policy Infrastructure Controller SSH Privilege Escalation Vulnerability
 #
@@ -29,48 +29,48 @@ CPE = "cpe:/o:cisco:application_policy_infrastructure_controller_(apic)";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140306");
- script_version("$Revision: 7571 $");
- script_tag(name: "last_modification", value: "$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
- script_tag(name: "creation_date", value: "2017-08-17 09:20:52 +0700 (Thu, 17 Aug 2017)");
- script_tag(name:"cvss_base", value:"4.6");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.140306");
+  script_version("$Revision: 11836 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-17 09:20:52 +0700 (Thu, 17 Aug 2017)");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
 
- script_cve_id("CVE-2017-6767");
+  script_cve_id("CVE-2017-6767");
 
- script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_name("Cisco Application Policy Infrastructure Controller SSH Privilege Escalation Vulnerability");
+  script_name("Cisco Application Policy Infrastructure Controller SSH Privilege Escalation Vulnerability");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_family("CISCO");
- script_dependencies("gb_cisco_apic_web_detect.nasl");
- script_mandatory_keys("cisco/application_policy_infrastructure_controller/installed");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("CISCO");
+  script_dependencies("gb_cisco_apic_web_detect.nasl");
+  script_mandatory_keys("cisco/application_policy_infrastructure_controller/installed");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "summary", value: "A vulnerability in Cisco Application Policy Infrastructure Controller (APIC)
+  script_tag(name:"summary", value:"A vulnerability in Cisco Application Policy Infrastructure Controller (APIC)
 could allow an authenticated, remote attacker to gain higher privileges than the account is assigned. The attacker
 will be granted the privileges of the last user to log in, regardless of whether those privileges are higher or
 lower than what should have been granted. The attacker cannot gain root-level privileges.");
 
- script_tag(name: "insight", value: "The vulnerability is due to a limitation with how Role-Based Access Control
+  script_tag(name:"insight", value:"The vulnerability is due to a limitation with how Role-Based Access Control
 (RBAC) grants privileges to remotely authenticated users when login occurs via SSH directly to the local
 management interface of the APIC. An attacker could exploit this vulnerability by authenticating to the targeted
 device. The attacker's privilege level will be modified to match that of the last user to log in via SSH.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to gain elevated privileges and perform
+  script_tag(name:"impact", value:"An exploit could allow the attacker to gain elevated privileges and perform
 CLI commands that should be restricted by the attacker's configured role.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170816-apic1");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170816-apic1");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

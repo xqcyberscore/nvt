@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10786.nasl 6116 2017-05-12 10:10:27Z teissa $
+# $Id: gb_junos_jsa10786.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # Junos PFE DoS Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106749");
-  script_version ("$Revision: 6116 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-12 12:10:27 +0200 (Fri, 12 May 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-13 08:24:49 +0200 (Thu, 13 Apr 2017)");
+  script_version("$Revision: 11835 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-13 08:24:49 +0200 (Thu, 13 Apr 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-2340");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos PFE DoS Vulnerabilities");
 
@@ -48,25 +48,25 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version");
 
-  script_tag(name: "summary", value: "Junos OS is prone to a denial of service vulnerability while handling IPv6
+  script_tag(name:"summary", value:"Junos OS is prone to a denial of service vulnerability while handling IPv6
 ND advertisements.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value: "A vulnerability in processing IPv6 ND packets originating from subscribers
+  script_tag(name:"insight", value:"A vulnerability in processing IPv6 ND packets originating from subscribers
 and destined to M/MX series routers configured with Enhanced Subscriber Management for DHCPv6 subscribers can
 result in a PFE (Packet Forwarding Engine) hang or crash.
 
 This issue does not affect devices with only IPv4 configured.");
 
-  script_tag(name: "impact", value: "An attacker may cause a denial of service condition.");
+  script_tag(name:"impact", value:"An attacker may cause a denial of service condition.");
 
-  script_tag(name: "affected", value: "Junos OS 15.1 and 16.1");
+  script_tag(name:"affected", value:"Junos OS 15.1 and 16.1");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10786");
 

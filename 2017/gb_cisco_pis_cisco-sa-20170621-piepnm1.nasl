@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_cisco-sa-20170621-piepnm1.nasl 6585 2017-07-07 05:33:18Z cfischer $
+# $Id: gb_cisco_pis_cisco-sa-20170621-piepnm1.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
-# Cisco Prime Infrastructure XML Injection Vulnerability 
+# Cisco Prime Infrastructure XML Injection Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -29,41 +29,41 @@ CPE = "cpe:/a:cisco:prime_infrastructure";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106897");
- script_cve_id("CVE-2017-6662");
- script_tag(name:"cvss_base", value:"6.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
- script_version("$Revision: 6585 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106897");
+  script_cve_id("CVE-2017-6662");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_version("$Revision: 11836 $");
 
- script_name("Cisco Prime Infrastructure XML Injection Vulnerability");
+  script_name("Cisco Prime Infrastructure XML Injection Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170621-piepnm1");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170621-piepnm1");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the web-based user interface of Cisco Prime Infrastructure
+  script_tag(name:"summary", value:"A vulnerability in the web-based user interface of Cisco Prime Infrastructure
 (PI) could allow an authenticated, remote attacker read and write access to information stored in the affected
 system as well as perform remote code execution. The attacker must have valid user credentials.");
 
- script_tag(name: "insight", value: "The vulnerability is due to improper handling of XML External Entity (XXE)
+  script_tag(name:"insight", value:"The vulnerability is due to improper handling of XML External Entity (XXE)
 entries when parsing an XML file. An attacker could exploit this vulnerability by convincing the administrator
 of an affected system to import a crafted XML file with malicious entries which could allow the attacker to read
 and write files and execute remote code within the application.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-07-07 07:33:18 +0200 (Fri, 07 Jul 2017) $");
- script_tag(name: "creation_date", value: "2017-06-22 12:07:33 +0700 (Thu, 22 Jun 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_pis_version.nasl");
- script_mandatory_keys("cisco_pis/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-22 12:07:33 +0700 (Thu, 22 Jun 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_pis_version.nasl");
+  script_mandatory_keys("cisco_pis/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

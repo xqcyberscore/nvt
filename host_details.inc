@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 11412 2018-09-16 10:21:40Z cfischer $
+# $Id: host_details.inc 11833 2018-10-11 08:18:59Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11412 $
+# $Revision: 11833 $
 #
 ###############################################################################
 
@@ -95,6 +95,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.106413", # gb_extremeos_snmp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106513", # gb_cisco_asa_version_snmp.nasl
     "1.3.6.1.4.1.25623.1.0.105222", # gb_cisco_asa_version.nasl
+    "1.3.6.1.4.1.25623.1.0.105033", # gb_cisco_asa_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106494", # gb_arista_eos_snmp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108307", # gb_netgear_prosafe_consolidation.nasl
     "1.3.6.1.4.1.25623.1.0.108311", # gb_hirschmann_consolidation.nasl
@@ -184,6 +185,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.106413", # gb_extremeos_snmp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106513", # gb_cisco_asa_version_snmp.nasl
     "1.3.6.1.4.1.25623.1.0.105222", # gb_cisco_asa_version.nasl
+    "1.3.6.1.4.1.25623.1.0.105033", # gb_cisco_asa_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106494", # gb_arista_eos_snmp_detect.nasl
     "1.3.6.1.4.1.25623.1.0.106875", # gb_aerohive_hiveos_detect.nasl
     "1.3.6.1.4.1.25623.1.0.103875", # gb_qnap_nas_detect.nasl

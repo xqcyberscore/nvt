@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_nport_mult_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_moxa_nport_mult_vuln.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # Moxa NPort Devices Multiple Vulnerabilities
 #
@@ -28,18 +28,18 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106589");
-  script_version("$Revision: 7585 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-16 09:18:30 +0700 (Thu, 16 Feb 2017)");
+  script_version("$Revision: 11835 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-16 09:18:30 +0700 (Thu, 16 Feb 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-9361", "CVE-2016-9369", "CVE-2016-9363", "CVE-2016-9371", "CVE-2016-9365",
 "CVE-2016-9366", "CVE-2016-9348", "CVE-2016-9367");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Moxa NPort Devices Multiple Vulnerabilities");
 
@@ -50,42 +50,42 @@ if (description)
   script_dependencies("gb_moxa_nport_telnet_detect.nasl");
   script_mandatory_keys("moxa/nport/detected", "moxa/nport/model", "moxa/nport/version");
 
-  script_tag(name: "summary", value: "Moxa NPort devices are prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Moxa NPort devices are prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Moxa NPort devices are prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Moxa NPort devices are prone to multiple vulnerabilities:
 
-- Administration passwords can be retried without authenticating (CVE-2016-9361)
+  - Administration passwords can be retried without authenticating (CVE-2016-9361)
 
-- Firmware can be updated over the network without authentication, which may allow remote code execution.
+  - Firmware can be updated over the network without authentication, which may allow remote code execution.
 (CVE-2016-9369)
 
-- Buffer overflow vulnerability may allow an unauthenticated attacker to remotely execute arbitrary code.
+  - Buffer overflow vulnerability may allow an unauthenticated attacker to remotely execute arbitrary code.
 (CVE-2016-9363)
 
-- User-controlled input is not neutralized before being output to web page. (CVE-2016-9371)
+  - User-controlled input is not neutralized before being output to web page. (CVE-2016-9371)
 
-- Requests are not verified to be intentionally submitted by the proper user. (CVE-2016-9365)
+  - Requests are not verified to be intentionally submitted by the proper user. (CVE-2016-9365)
 
-- An attacker can freely use brute force to determine parameters needed to bypass authentication. (CVE-2016-9366)
+  - An attacker can freely use brute force to determine parameters needed to bypass authentication. (CVE-2016-9366)
 
-- A configuration file contains parameters that represent passwords in plaintext. (CVE-2016-9348)
+  - A configuration file contains parameters that represent passwords in plaintext. (CVE-2016-9348)
 
-- The amount of resources requested by a malicious actor is not restricted, leading to a denial-of-service caused
+  - The amount of resources requested by a malicious actor is not restricted, leading to a denial-of-service caused
 by resource exhaustion. (CVE-2016-9367)");
 
-  script_tag(name: "impact", value: "Successful exploitation of these vulnerabilities could lead to the complete
+  script_tag(name:"impact", value:"Successful exploitation of these vulnerabilities could lead to the complete
 compromise of an affected system.");
 
-  script_tag(name: "affected", value: "Moxa NPort 5110, 5130/5150 Series, 5200 Series, 5400 Series, 5600 Series,
+  script_tag(name:"affected", value:"Moxa NPort 5110, 5130/5150 Series, 5200 Series, 5400 Series, 5600 Series,
 5100A Series, P5150A, 5200A Series, 5150AI-M12 Series, 5250AI-M12 Series, 5450AI-M12 Series, 5600-8-DT Series,
 5600-8-DTL Series, 6x50 Series and IA5450A.");
 
-  script_tag(name: "solution", value: "Moxa has released new firmware versions which addresses the identified
+  script_tag(name:"solution", value:"Moxa has released new firmware versions which addresses the identified
 vulnerabilities.");
 
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-16-336-02");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-16-336-02");
 
   exit(0);
 }
@@ -172,7 +172,7 @@ if (model == "5600-8-DTL") {
   exit(0);
 }
 
-if (model =~ "^6.50") {
+if (model =~ "^6\.50") {
   if (version_is_less(version: version, test_version: "1.16")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "1.16");
     security_message(port: 0, data: report);

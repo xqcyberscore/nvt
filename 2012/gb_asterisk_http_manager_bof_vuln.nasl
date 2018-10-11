@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_http_manager_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_asterisk_http_manager_bof_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Asterisk HTTP Manager Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802838");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2012-1184");
   script_bugtraq_id(52815);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-23 16:56:33 +0530 (Mon, 23 Apr 2012)");
   script_name("Asterisk HTTP Manager Buffer Overflow Vulnerability");
 
@@ -53,8 +53,7 @@ if(description)
   (main/utils.c) in HTTP Manager, which fails to handle
   'HTTP Digest Authentication' information sent via a crafted request with
   an overly long string.");
-  script_tag(name:"solution", value:"Upgrade to Asterisk 1.8.10.1, 10.2.1 or later,
-  For updates refer to http://downloads.asterisk.org/pub/security/AST-2012-003.html");
+  script_tag(name:"solution", value:"Upgrade to Asterisk 1.8.10.1, 10.2.1 or later,");
   script_tag(name:"summary", value:"This host is running Asterisk and is prone to buffer overflow
   vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to execute arbitrary code

@@ -1,12 +1,12 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sugarcrm_multiple_sql_inj_vuln.nasl 9877 2018-05-17 05:03:18Z ckuersteiner $
+# $Id: gb_sugarcrm_multiple_sql_inj_vuln.nasl 11813 2018-10-10 10:05:37Z ckuersteiner $
 #
 # SugarCRM Multiple SQL Injection Vulnerabilities
 #
 # Authors:
 # Rajat Mishra <rajatm@secpod.com>
-# 
+#
 # Copyright:
 # Copyright (C) 2018 Greenbone Networks GmbH, http://www.greenbone.net
 #
@@ -29,14 +29,15 @@ CPE = "cpe:/a:sugarcrm:sugarcrm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812802");
-  script_version("$Revision: 9877 $");
+  script_version("$Revision: 11813 $");
   script_cve_id("CVE-2018-6308");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 07:03:18 +0200 (Thu, 17 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:05:37 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 15:40:09 +0530 (Thu, 08 Feb 2018)");
+
   script_name("SugarCRM Multiple SQL Injection Vulnerabilities");
- 
+
   script_tag(name:"summary", value:"This host is running SugarCRM Community
   Edition and is prone to SQL injection vulnerability.");
 
@@ -47,27 +48,26 @@ if(description)
   parameter '$track' of '\modules\Campaigns\Tracker.php' file, the parameter
   '$clicked_url_key' of '\modules\Campaigns\utils.php' file.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a remote
+  script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attackers to manipulate the argument load_signed_id as part of a parameter
-  that leads to SQL injection vulnerability.
+  that leads to SQL injection vulnerability.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"SugarCRM Community Edition 6.5.26 and prior.");
 
-  script_tag(name: "affected" , value:"SugarCRM Community Edition 6.5.26 and prior.");
-
-  script_tag(name: "solution" , value: "No known solution is available as of 17th May, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 10th October, 2018. Information
+regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
-  script_tag(name:"qod_type", value: "remote_banner");
-  script_xref(name : "URL" , value : "http://www.defensecode.com/advisories/DC-2018-01-011_SugarCRM_Community_Edition_Advisory.pdf");
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  script_xref(name:"URL", value:"http://www.defensecode.com/advisories/DC-2018-01-011_SugarCRM_Community_Edition_Advisory.pdf");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_sugarcrm_detect.nasl");
-  script_mandatory_keys("sugarcrm/installed", "sugarcrm/edition");                                                               
+  script_mandatory_keys("sugarcrm/installed", "sugarcrm/edition");
   script_require_ports("Services/www", 80, 443);
   exit(0);
 }

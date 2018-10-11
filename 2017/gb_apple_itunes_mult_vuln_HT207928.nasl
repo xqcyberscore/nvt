@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_HT207928.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_apple_itunes_mult_vuln_HT207928.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Apple iTunes Multiple Vulnerabilities-HT207928 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811535");
-  script_version("$Revision: 11501 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-7053", "CVE-2017-7010", "CVE-2017-7013", "CVE-2017-7018",
                 "CVE-2017-7020", "CVE-2017-7030", "CVE-2017-7034", "CVE-2017-7037",
                 "CVE-2017-7039", "CVE-2017-7040", "CVE-2017-7041", "CVE-2017-7042",
@@ -39,7 +39,7 @@ if(description)
   script_bugtraq_id(99884, 99889, 99879, 99885, 99890);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-20 11:40:40 +0530 (Thu, 20 Jul 2017)");
   script_name("Apple iTunes Multiple Vulnerabilities-HT207928 (Windows)");
 
@@ -63,8 +63,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apple iTunes versions before 12.6.2 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.6.2 or later,
-  For updates refer to http://www.apple.com/itunes");
+  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.6.2 or later, ");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -74,6 +73,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
   script_mandatory_keys("iTunes/Win/Installed");
+  script_xref(name:"URL", value:"http://www.apple.com/itunes");
   exit(0);
 }
 

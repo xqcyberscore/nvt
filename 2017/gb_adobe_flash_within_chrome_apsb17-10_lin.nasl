@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_within_chrome_apsb17-10_lin.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_adobe_flash_within_chrome_apsb17-10_lin.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Adobe Flash Player Within Google Chrome Security Update (apsb17-10) - Linux
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810843");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-3058", "CVE-2017-3059", "CVE-2017-3060", "CVE-2017-3061",
                 "CVE-2017-3062", "CVE-2017-3063", "CVE-2017-3064", "CVE-2015-5122",
                 "CVE-2015-5123");
   script_bugtraq_id(97551, 97557, 75712, 75710);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-12 10:07:04 +0530 (Wed, 12 Apr 2017)");
   script_name("Adobe Flash Player Within Google Chrome Security Update (apsb17-07) - Linux");
 
@@ -60,7 +60,7 @@ if(description)
   before 25.0.0.127 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player for chrome
-  25.0.0.148, or later. For updates refer to http://get.adobe.com/flashplayer");
+  25.0.0.148, or later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -70,6 +70,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_flash_player_within_google_chrome_detect_lin.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Chrome/Lin/Ver");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

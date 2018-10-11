@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln01_feb17.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_apple_safari_mult_vuln01_feb17.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Apple Safari Multiple Vulnerabilities-01 February17
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810564");
-  script_version("$Revision: 11501 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-2359", "CVE-2017-2350", "CVE-2017-2362", "CVE-2017-2373",
                 "CVE-2017-2354", "CVE-2017-2355", "CVE-2017-2356", "CVE-2017-2366",
                 "CVE-2017-2369", "CVE-2017-2363", "CVE-2017-2364", "CVE-2017-2365");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-22 14:46:57 +0530 (Wed, 22 Feb 2017)");
   script_name("Apple Safari Multiple Vulnerabilities-01 February17");
 
@@ -65,7 +65,7 @@ if(description)
   script_tag(name:"affected", value:"Apple Safari versions before 10.0.3");
 
   script_tag(name:"solution", value:"Upgrade to Apple Safari version 10.0.3 or
-  later. For updates refer to http://www.apple.com/support.");
+  later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -75,6 +75,7 @@ if(description)
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
   script_mandatory_keys("AppleSafari/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.apple.com/support.");
   exit(0);
 }
 

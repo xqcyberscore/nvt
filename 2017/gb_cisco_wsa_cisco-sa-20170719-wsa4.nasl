@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20170719-wsa4.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_cisco_wsa_cisco-sa-20170719-wsa4.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
 # Cisco Web Security Appliance Static Credentials Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2017-6750");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11836 $");
 
   script_name("Cisco Web Security Appliance Static Credentials Vulnerability");
 
@@ -58,7 +58,7 @@ interface.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-20 14:43:16 +0700 (Thu, 20 Jul 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -66,7 +66,7 @@ interface.");
   script_dependencies("gb_cisco_wsa_version.nasl");
   script_mandatory_keys("cisco_wsa/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_fingerprint.nasl 11412 2018-09-16 10:21:40Z cfischer $
+# $Id: os_fingerprint.nasl 11833 2018-10-11 08:18:59Z cfischer $
 #
 # ICMP based OS Fingerprinting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("$Revision: 11412 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-16 12:21:40 +0200 (Sun, 16 Sep 2018) $");
+  script_version("$Revision: 11833 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:18:59 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -51,6 +51,7 @@ if(description)
                       "gb_palo_alto_panOS_version.nasl", "gb_screenos_version.nasl",
                       "gb_extremeos_snmp_detect.nasl",
                       "gb_cisco_asa_version_snmp.nasl", "gb_cisco_asa_version.nasl",
+                      "gb_cisco_asa_detect.nasl",
                       "gb_arista_eos_snmp_detect.nasl", "gb_netgear_prosafe_consolidation.nasl",
                       "gb_hirschmann_consolidation.nasl", "gb_mikrotik_router_routeros_consolidation.nasl",
                       "gb_xenserver_version.nasl", "gb_cisco_ios_xe_version.nasl",

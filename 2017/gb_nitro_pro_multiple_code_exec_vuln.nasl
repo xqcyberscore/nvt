@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nitro_pro_multiple_code_exec_vuln.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_nitro_pro_multiple_code_exec_vuln.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Nitro Pro Multiple Code Execution Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:nitro_software:nitro_pro";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811272");
-  script_version("$Revision: 11474 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2016-8713", "CVE-2016-8709", "CVE-2016-8711");
   script_bugtraq_id(96155);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 15:46:10 +0530 (Fri, 04 Aug 2017)");
   script_name("Nitro Pro Multiple Code Execution Vulnerabilities (Windows)");
 
@@ -58,8 +58,7 @@ if(description)
 
   script_tag(name:"affected", value:"Nitro Pro version 10.5.9.9");
 
-  script_tag(name:"solution", value:"Upgrade to Nitro Pro version 11 or later.
-  For updates refer to https://www.gonitro.com");
+  script_tag(name:"solution", value:"Upgrade to Nitro Pro version 11 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -75,6 +74,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_nitro_pro_detect_win.nasl");
   script_mandatory_keys("Nitro/Pro/Win/Ver");
+  script_xref(name:"URL", value:"https://www.gonitro.com");
   exit(0);
 }
 

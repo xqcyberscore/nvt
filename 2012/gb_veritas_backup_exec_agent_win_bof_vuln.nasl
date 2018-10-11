@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_veritas_backup_exec_agent_win_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_veritas_backup_exec_agent_win_bof_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # VERITAS Backup Exec Remote Agent Windows Servers BOF Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802985");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2005-0773");
   script_bugtraq_id(14022);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 10:32:37 +0530 (Mon, 15 Oct 2012)");
   script_name("VERITAS Backup Exec Remote Agent Windows Servers BOF Vulnerability");
   script_category(ACT_DENIAL);
@@ -55,14 +55,14 @@ if(description)
   requests. CONNECT_CLIENT_AUTH requests sent with an authentication method type
   '3' indicating Windows user credentials, and an overly long password argument
   can overflow the buffer and lead to arbitrary code execution.");
-  script_tag(name:"solution", value:"Upgrade to Veritas Backup Exec Remote Agent 10.0 rev. 5520 for Windows Servers
-  For updates refer to http://www.symantec.com/index.jsp");
+  script_tag(name:"solution", value:"Upgrade to Veritas Backup Exec Remote Agent 10.0 rev. 5520 for Windows Servers");
   script_tag(name:"summary", value:"This host is running VERITAS Backup Exec Remote Agent for Windows
   Servers and is prone to buffer overflow vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.symantec.com/index.jsp");
   exit(0);
 }
 

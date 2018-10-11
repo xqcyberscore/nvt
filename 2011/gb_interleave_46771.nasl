@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_interleave_46771.nasl 11792 2018-10-09 09:50:39Z asteins $
+# $Id: gb_interleave_46771.nasl 11826 2018-10-10 14:38:27Z cfischer $
 #
 # Interleave 'basicstats.php' Multiple Cross Site Scripting Vulnerabilities
 #
@@ -24,61 +24,64 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103112");
-  script_version("$Revision: 11792 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 11:50:39 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 11826 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 16:38:27 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-08 14:02:18 +0100 (Tue, 08 Mar 2011)");
   script_bugtraq_id(46771);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-
   script_name("Interleave 'basicstats.php' Multiple Cross Site Scripting Vulnerabilities");
-
-  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/46771");
-  script_xref(name:"URL", value:"http://www.interleave.nl/");
-
-  script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
   script_dependencies("gb_interleave_detect.nasl");
-  script_mandatory_keys("interleave/detected");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("interleave/detected");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/46771");
+  script_xref(name:"URL", value:"http://www.interleave.nl/");
+
   script_tag(name:"summary", value:"Interleave is prone to multiple cross-site scripting vulnerabilities
-because it fails to properly sanitize user-supplied input.");
+  because it fails to properly sanitize user-supplied input.");
+
   script_tag(name:"impact", value:"An attacker may leverage these issues to execute arbitrary script code
-in the browser of an unsuspecting user in the context of the affected
-site. This may let the attacker steal cookie-based authentication
-credentials and launch other attacks.");
+  in the browser of an unsuspecting user in the context of the affected site. This may let the attacker steal
+  cookie-based authentication credentials and launch other attacks.");
+
   script_tag(name:"affected", value:"Interleave 5.5.0.2 is vulnerable. Other versions may also be affected.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the
-disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade
-to a newer release, disable respective features, remove the product or replace the product by another one.");
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade
+  to a newer release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("version_func.inc");
 include("host_details.inc");
 
 CPE = "cpe:/a:atomos:interleave";
 
 if(!port = get_app_port(cpe:CPE)) exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port)) exit(0);
+if(dir == "/") dir = "";
 
 vt_string = get_vt_string(lowercase:TRUE);
 
 url = string(dir,"/basicstats.php?AjaxHandler=0&e=1&eid=2&id=3&recordid=4&templateid=5&fileid=6&tid=7&username=8&password=9&repository=10<script>alert(/",vt_string,"-xss-test/)<%2fscript>&GetCSS=11&GetjQueryUiPlacementJS=12&ShowEntityList=13&ShowTable=14&nonavbar=15&tab=16&CT=17 ");
 
 if(http_vuln_check(port:port, url:url, pattern:"<script>alert\(/" + vt_string + "-xss-test/\)</script>", check_header:TRUE)) {
-  security_message(port:port);
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
   exit(0);
 }
 
-exit(0);
+exit(99);

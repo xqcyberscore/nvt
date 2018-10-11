@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_xss_vuln01_jul17.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_elasticsearch_kibana_xss_vuln01_jul17.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Elasticsearch Kibana Cross Site Scripting Vulnerability01 - Jul17
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811417");
-  script_version("$Revision: 11474 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2015-9056");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-03 20:28:56 +0530 (Mon, 03 Jul 2017)");
   script_name("Elasticsearch Kibana Cross Site Scripting Vulnerability01 - Jul17");
 
@@ -52,7 +52,7 @@ if(description)
   and 4.2.1.");
 
   script_tag(name:"solution", value:"Upgrade to Elasticsearch Kibana version
-  4.1.3 or 4.2.1 or later. For updates refer to https://www.elastic.co");
+  4.1.3 or 4.2.1 or later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -63,6 +63,7 @@ if(description)
   script_dependencies("gb_elasticsearch_kibana_detect.nasl");
   script_mandatory_keys("Elasticsearch/Kibana/Installed");
   script_require_ports("Services/www", 5601);
+  script_xref(name:"URL", value:"https://www.elastic.co");
   exit(0);
 }
 

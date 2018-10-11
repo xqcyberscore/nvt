@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_fcms_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
+# $Id: secpod_fcms_detect.nasl 11823 2018-10-10 13:57:02Z asteins $
 #
 # Haudenschilt Family Connections CMS (FCMS) Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902309");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10902 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11823 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 15:57:02 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2010-09-23 08:13:58 +0200 (Thu, 23 Sep 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Haudenschilt Family Connections CMS (FCMS) Version Detection");
@@ -48,13 +48,11 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## GET HTTP port
 port = get_http_port( default:80 );
 
 if( ! can_host_php( port:port ) ) exit( 0 );
@@ -68,13 +66,12 @@ foreach dir( make_list_unique( "/fcms", "/FCMS", "/", cgi_dirs( port:port ) ) ) 
 
   if( rcvRes =~ "HTTP/1.. 200" && "- powered by Family Connections" >< rcvRes ) {
 
+    set_kb_item(name:"fcms/detected", value:TRUE);
+
     version = "unknown";
 
     ver = eregmatch( pattern:"Family Connections ([0-9.]+)", string:rcvRes );
     if( ver[1] != NULL ) version = ver[1];
-
-    tmp_version = version + " under " + install;
-    set_kb_item( name:"www/" + port + "/FCMS", value:tmp_version );
 
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:haudenschilt:family_connections_cms:" );
     if( isnull( cpe ) )

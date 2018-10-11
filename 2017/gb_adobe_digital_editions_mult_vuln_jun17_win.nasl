@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_editions_mult_vuln_jun17_win.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_adobe_digital_editions_mult_vuln_jun17_win.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Adobe Digital Editions Multiple Vulnerabilities Jun17 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811116");
-  script_version("$Revision: 11474 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-3088", "CVE-2017-3089", "CVE-2017-3093", "CVE-2017-3096",
                 "CVE-2017-3090", "CVE-2017-3092", "CVE-2017-3097", "CVE-2017-3094",
                 "CVE-2017-3095");
   script_bugtraq_id(99020, 99024, 99021);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-20 10:45:13 +0530 (Tue, 20 Jun 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Digital Editions Multiple Vulnerabilities Jun17 (Windows)");
@@ -62,7 +62,7 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Digital Edition version
-  4.5.5 or later. For updates refer to http://www.adobe.com");
+  4.5.5 or later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/Digital-Editions/apsb17-20.html");
@@ -71,6 +71,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_digital_edition_detect_win.nasl");
   script_mandatory_keys("AdobeDigitalEdition/Win/Ver");
+  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 

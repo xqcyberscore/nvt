@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-004.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_ms17-004.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Microsoft Windows LSASS Local Denial of Service Vulnerability (3216771)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809861");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-0004");
   script_bugtraq_id(95318);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-11 08:59:09 +0530 (Wed, 11 Jan 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows LSASS Local Denial of Service Vulnerability (3216771)");
@@ -55,9 +55,7 @@ if(description)
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS17-004");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3216771");
@@ -68,6 +66,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS17-004");
   exit(0);
 }
 

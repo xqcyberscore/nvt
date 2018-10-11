@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_virusscan_ent_mem_corrupt_vul.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_mcafee_virusscan_ent_mem_corrupt_vul.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # McAfee VirusScan Enterprise CVE-2016-8030 Memory Corruption Vulnerability (Windows)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:mcafee:virusscan_enterprise_for_windows';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107159");
-  script_version("$Revision: 11795 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 11835 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-27 13:33:12 +0200 (Thu, 27 Apr 2017)");
   script_cve_id("CVE-2016-8030");
 
@@ -43,8 +43,7 @@ if(description)
   script_tag(name:"summary", value:"McAfee VirusScan Enterprise for Windows is prone to a remote
   memory-corruption vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and
-  check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"A Memory Corruption vulnerability in the Scriptscan COM Object
   in McAfee VirusScan Enterprise 8.8 Patch 8 and earlier allows a remote attacker to create a Denial
   of Service on the active Internet Explorer tab via a crafted HTML link.");

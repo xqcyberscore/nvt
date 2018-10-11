@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_http2_dos_vuln_lin.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_apache_mod_http2_dos_vuln_lin.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Apache HTTP Server 'mod_http2' Denial-Of-Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811239");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-9789");
   script_bugtraq_id(99568);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-17 18:25:12 +0530 (Mon, 17 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server 'mod_http2' Denial-Of-Service Vulnerability (Linux)");
@@ -54,7 +54,7 @@ if(description)
   Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Apache HTTP Server 2.4.27 or
-  later. For updates refer to https://httpd.apache.org");
+  later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +68,7 @@ if(description)
   script_dependencies("secpod_apache_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("apache/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://httpd.apache.org");
   exit(0);
 }
 

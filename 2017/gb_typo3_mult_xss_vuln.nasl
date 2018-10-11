@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_xss_vuln.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_typo3_mult_xss_vuln.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # TYPO3 Multiple XSS Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112112");
-  script_version("$Revision: 11795 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 11835 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-08 13:15:49 +0100 (Wed, 08 Nov 2017)");
   script_bugtraq_id(42029);
   script_cve_id("CVE-2010-3659");
@@ -41,11 +41,11 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("TYPO3 Multiple XSS Vulnerabilities");
   script_tag(name:"summary", value:"TYPO3 is prone to multiple cross-site scripting (XSS) vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple cross-site scripting (XSS) vulnerabilities in TYPO3 CMS allow remote authenticated backend users
   to inject arbitrary web script or HTML via unspecified parameters to the extension manager, or unspecified parameters to unknown backend forms.");
   script_tag(name:"affected", value:"TYPO3 CMS 4.1.x before 4.1.14, 4.2.x before 4.2.13, 4.3.x before 4.3.4, and 4.4.x before 4.4.1");
-  script_tag(name:"solution", value:"Update to TYPO3 version 4.1.14, 4.2.13, 4.3.4 or 4.4.1. For updates, refer to : https://typo3.org/");
+  script_tag(name:"solution", value:"Update to TYPO3 version 4.1.14, 4.2.13, 4.3.4 or 4.4.1.");
 
   script_xref(name:"URL", value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-sa-2010-012/");
 

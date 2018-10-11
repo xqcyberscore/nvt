@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tiv_endpoint_manager_scheduleparam_xss_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_ibm_tiv_endpoint_manager_scheduleparam_xss_vuln.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # IBM Tivoli Endpoint Manager 'ScheduleParam' Cross Site Scripting Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:tivoli_endpoint_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809398");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2012-0719");
   script_bugtraq_id(52514);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-15 13:41:38 +0100 (Tue, 15 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Tivoli Endpoint Manager 'ScheduleParam' Cross Site Scripting Vulnerability");
@@ -55,8 +55,7 @@ if (description)
   before 8.2.1175.");
 
   script_tag(name:"solution", value:"Upgrade to IBM Tivoli Endpoint Manager
-  version 8.2.1175, or 8.2 patch 3, or later.
-  For updates refer to http://www-03.ibm.com/software/products/en/endpoint-manager-family");
+  version 8.2.1175, or 8.2 patch 3, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +67,7 @@ if (description)
   script_dependencies("gb_ibm_endpoint_manager_web_detect.nasl");
   script_mandatory_keys("ibm_endpoint_manager/installed");
   script_require_ports("Services/www", 52311);
+  script_xref(name:"URL", value:"http://www-03.ibm.com/software/products/en/endpoint-manager-family");
   exit(0);
 }
 

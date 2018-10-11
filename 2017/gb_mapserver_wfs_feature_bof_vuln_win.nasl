@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mapserver_wfs_feature_bof_vuln_win.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_mapserver_wfs_feature_bof_vuln_win.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # MapServer WFS Feature Requests Buffer Overflow Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:umn:mapserver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810790");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-5522");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-06 11:47:44 +0530 (Tue, 06 Jun 2017)");
   script_name("MapServer WFS Feature Requests Buffer Overflow Vulnerability (Windows)");
 
@@ -54,7 +54,7 @@ if(description)
   6.2.x before 6.2.4, 6.4.x before 6.4.5, and 7.0.x before 7.0.4 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to version 6.0.6, 6.2.4, 6.4.5,
-  7.0.4 or later. For updates refer to http://www.mapserver.org");
+  7.0.4 or later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +68,7 @@ if(description)
   script_dependencies("os_detection.nasl", "gb_mapserver_detect.nasl");
   script_mandatory_keys("MapServer/Installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.mapserver.org");
   exit(0);
 }
 

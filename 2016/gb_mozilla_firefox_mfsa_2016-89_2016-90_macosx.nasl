@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-89_2016-90_macosx.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_mozilla_firefox_mfsa_2016-89_2016-90_macosx.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # Mozilla Firefox Security Updates (mfsa_2016-89_2016-90)-MAC OS X
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809804");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-5296", "CVE-2016-5292", "CVE-2016-5297", "CVE-2016-9064",
                 "CVE-2016-9066", "CVE-2016-9067", "CVE-2016-5290", "CVE-2016-9068",
                 "CVE-2016-9072", "CVE-2016-9075", "CVE-2016-9077", "CVE-2016-5291",
@@ -38,7 +38,7 @@ if(description)
   script_bugtraq_id(94336, 94337, 94342, 94339);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-16 12:25:23 +0530 (Wed, 16 Nov 2016)");
   script_name("Mozilla Firefox Security Updates (mfsa_2016-89_2016-90)-MAC OS X");
 
@@ -92,7 +92,7 @@ if(description)
   50 on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 50
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  or later, ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -106,6 +106,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

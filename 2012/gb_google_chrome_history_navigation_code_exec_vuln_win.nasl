@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_history_navigation_code_exec_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_google_chrome_history_navigation_code_exec_vuln_win.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Google Chrome 'History navigation' Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802717");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2011-3046");
   script_bugtraq_id(52369);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-20 11:56:00 +0530 (Tue, 20 Mar 2012)");
   script_name("Google Chrome 'History navigation' Arbitrary Code Execution Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48321/");
@@ -49,12 +49,12 @@ if(description)
   script_tag(name:"affected", value:"Google Chrome version prior to 17.0.963.78 on Windows");
   script_tag(name:"insight", value:"The flaws are due to unspecified errors when handling certain
   JavaScript and navigating history.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 17.0.963.78 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 17.0.963.78 or later,");
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to arbitrary
   code execution vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

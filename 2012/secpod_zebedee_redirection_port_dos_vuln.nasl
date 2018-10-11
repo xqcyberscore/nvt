@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_zebedee_redirection_port_dos_vuln.nasl 11425 2018-09-17 09:11:30Z asteins $
+# $Id: secpod_zebedee_redirection_port_dos_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Zebedee Allowed Redirection Port Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903028");
-  script_version("$Revision: 11425 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2005-2904");
   script_bugtraq_id(14796);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:11:30 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-24 11:08:06 +0530 (Thu, 24 May 2012)");
   script_name("Zebedee Allowed Redirection Port Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -50,14 +50,14 @@ if(description)
   script_tag(name:"affected", value:"Zebedee version 2.4.1");
   script_tag(name:"insight", value:"The flaw is due to an error, while handling a connection request that
   contains a port number value '0'.");
-  script_tag(name:"solution", value:"Upgrade to Zebedee 2.4.1A or later,
-  For updates refer to http://www.winton.org.uk/zebedee/download.html");
+  script_tag(name:"solution", value:"Upgrade to Zebedee 2.4.1A or later,");
   script_tag(name:"summary", value:"The host is running Zebedee server and is prone to denial
   of service vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://www.winton.org.uk/zebedee/download.html");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_emet_rop_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_microsoft_emet_rop_vuln.nasl 11817 2018-10-10 10:52:18Z jschulte $
 #
 # Microsoft Enhanced Mitigation Experience Toolkit (EMET) ROP Vulnerability
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803972");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11817 $");
   script_cve_id("CVE-2013-6791");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:52:18 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-03 13:41:01 +0530 (Tue, 03 Dec 2013)");
   script_name("Microsoft Enhanced Mitigation Experience Toolkit (EMET) ROP Vulnerability");
 
 
   script_tag(name:"summary", value:"The host is installed with Microsoft Enhanced Mitigation Experience Toolkit
 (EMET) and is prone to return-oriented programming (ROP) vulnerability.");
-  script_tag(name:"vuldetect", value:"Get the installed version through the windows registry and check the version
-is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Upgrade to Microsoft Enhanced Mitigation Experience Toolkit (EMET) version
-4.0 or later, For updates refer to http://support.microsoft.com/kb/2458544");
+4.0 or later, ");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"The flaw is in the application which uses predictable addresses for hooked
 functions.");
@@ -58,6 +57,7 @@ mechanism via a return-oriented programming (ROP) attack.");
   script_dependencies("gb_smb_windows_detect.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2458544");
   exit(0);
 }
 

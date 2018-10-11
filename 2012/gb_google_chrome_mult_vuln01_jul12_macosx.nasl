@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jul12_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_google_chrome_mult_vuln01_jul12_macosx.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities(01) - July 12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802919");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2012-2842", "CVE-2012-2843", "CVE-2012-2844");
   script_bugtraq_id(54386);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-24 12:06:53 +0530 (Tue, 24 Jul 2012)");
   script_name("Google Chrome Multiple Vulnerabilities(01) - July 12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49906");
@@ -53,12 +53,12 @@ if(description)
 
   - An unspecified error when handling JavaScript within PDFs can be
     exploited to access certain objects.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 20.0.1132.57 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 20.0.1132.57 or later,");
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

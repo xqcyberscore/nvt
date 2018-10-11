@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_mailwise_mul_vuln_aug16.nasl 9523 2018-04-18 21:57:48Z asteins $
+# $Id: gb_cybozu_mailwise_mul_vuln_aug16.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # Cybozu Mailwise Multiple Vulnerabilities Aug-2016
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cybozu:mailwise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107163");
-  script_version("$Revision: 9523 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-18 23:57:48 +0200 (Wed, 18 Apr 2018) $");
+  script_version("$Revision: 11835 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-11 12:30:22 +0200 (Thu, 11 May 2017)");
   script_cve_id("CVE-2016-4842", "CVE-2016-4844", "CVE-2016-4843", "CVE-2016-4841");
 
@@ -39,18 +39,18 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cybozu Mailwise Multiple Vulnerabilities Aug-2016");
-  script_tag(name: "summary", value: "This host is installed with Cybozu Mailwise
+  script_tag(name:"summary", value:"This host is installed with Cybozu Mailwise
   and is prone to multiple vulnerabilities");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote attackers to obtain information on when an email is read,
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain information on when an email is read,
   conduct clickjacking attacks, obtain sensitive cookie information and inject arbitrary email headers.");
-  script_tag(name: "affected", value: "Cybozu Mailwise before version 5.4.0.");
-  script_tag(name: "solution", value: "Update to Cybozu Mailwise 5.4.0 or later.");
+  script_tag(name:"affected", value:"Cybozu Mailwise before version 5.4.0.");
+  script_tag(name:"solution", value:"Update to Cybozu Mailwise 5.4.0 or later.");
 
-  script_xref(name: "URL", value: "http://www.securityfocus.com/bid/92460");
-  script_xref(name: "URL", value: "http://www.securityfocus.com/bid/92459");
-  script_xref(name: "URL", value: "http://www.securityfocus.com/bid/92461");
-  script_xref(name: "URL", value: "http://www.securityfocus.com/bid/92462");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/92460");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/92459");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/92461");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/92462");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);

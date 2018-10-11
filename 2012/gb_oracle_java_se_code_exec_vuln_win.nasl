@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_code_exec_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_oracle_java_se_code_exec_vuln_win.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Oracle Java SE Java Runtime Environment Code Execution Vulnerability - (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802947");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2012-0507");
   script_bugtraq_id(52161);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-22 15:52:21 +0530 (Wed, 22 Aug 2012)");
   script_name("Oracle Java SE Java Runtime Environment Code Execution Vulnerability - (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48589");
@@ -51,8 +51,7 @@ if(description)
   script_tag(name:"insight", value:"The 'AtomicReferenceArray' class implementation does not ensure that the
   array is of the Object[] type, which allows attackers to cause a denial of
   service (JVM crash) or bypass Java sandbox restrictions.");
-  script_tag(name:"solution", value:"Apply the patch from below link
-  http://www.oracle.com/technetwork/topics/security/javacpufeb2012-366318.html");
+  script_tag(name:"solution", value:"Apply the patch ");
   script_tag(name:"summary", value:"This host is installed with Oracle Java SE and is prone to code
   execution vulnerability.");
   script_tag(name:"qod_type", value:"registry");

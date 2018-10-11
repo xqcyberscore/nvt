@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_vuln_win_1114.nasl 7968 2017-12-01 08:26:28Z asteins $
+# $Id: gb_cacti_mult_vuln_win_1114.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
 # Cacti 1.1.27 multiple vulnerabilities (Windows)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113051");
-  script_version("$Revision: 7968 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 09:26:28 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 11836 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-14 12:30:30 +0100 (Tue, 14 Nov 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -63,7 +63,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://github.com/Cacti/cacti/issues/1066");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:cacti:cacti";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_hyper_v_multiple_vul_kb3211308.nasl 10017 2018-05-30 07:17:29Z cfischer $
+# $Id: gb_ms_hyper_v_multiple_vul_kb3211308.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Microsoft Windows Hyper-V Multiple Vulnerabilities (KB3211308)
 #
@@ -27,46 +27,42 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810848");
-  script_version("$Revision: 10017 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-0163", "CVE-2017-0168", "CVE-2017-0180");
   script_bugtraq_id(97465, 97418, 97444);
   script_tag(name:"cvss_base", value:"7.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-12 12:24:16 +0530 (Wed, 12 Apr 2017)");
   script_name("Microsoft Windows Hyper-V Multiple Vulnerabilities (KB3211308)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB3211308.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists when the Windows Hyper-V
+  script_tag(name:"insight", value:"The flaw exists when the Windows Hyper-V
   Network Switch on a host operating system fails to properly validate input from
   an authenticated user on a guest operating system.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to gain access to information on the Hyper-V host operating system.
-
-  Impact Level: System");
+  to gain access to information on the Hyper-V host operating system.");
 
   script_tag(name:"affected", value:"Microsoft Windows Server 2008 x64 Edition Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-
-  https://support.microsoft.com/en-us/help/3211308/security-update-for-hyper-v-in-windows-server-2008");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3211308");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3211308");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3211308/security-update-for-hyper-v-in-windows-server-2008");
   exit(0);
 }
 
@@ -89,7 +85,6 @@ if(!qzVer){
   exit(0);
 }
 
-## Windows Server 2008
 if(hotfix_check_sp(win2008x64:3) > 0)
 {
   if(version_is_less(version:qzVer, test_version:"6.0.6002.18688"))

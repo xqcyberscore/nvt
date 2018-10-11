@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_player_VMSA-2017-0008_win.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_vmware_workstation_player_VMSA-2017-0008_win.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # VMware Workstation VMSA-2017-0008.2 Multiple Security Vulnerabilities (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:vmware:player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107208");
-  script_version("$Revision: 11501 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 11835 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-29 18:50:37 +0200 (Mon, 29 May 2017)");
   script_cve_id("CVE-2017-4912", "CVE-2017-4908", "CVE-2017-4909", "CVE-2017-4910",
                 "CVE-2017-4911", "CVE-2017-4913", "CVE-2017-4900", "CVE-2017-4899",
@@ -44,8 +44,7 @@ if(description)
   script_tag(name:"summary", value:"VMware Workstation updates resolve multiple
   security vulnerabilities (Windows)");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to multiple heap
   buffer-overflow vulnerabilities in JPEG2000 and TrueType Font (TTF) parsers in

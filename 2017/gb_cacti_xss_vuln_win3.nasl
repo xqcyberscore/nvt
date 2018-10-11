@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_xss_vuln_win3.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_cacti_xss_vuln_win3.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
 # Cacti XSS Vulnerability (Windows)
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cacti:cacti";
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113044");
-  script_version("$Revision: 11795 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 11836 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-02 10:07:48 +0200 (Thu, 02 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -62,7 +62,7 @@ allow remote attackers to inject arbitrary web scripts or HTML.");
 
   script_xref(name:"URL", value:"https://github.com/Cacti/cacti/issues/1010");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

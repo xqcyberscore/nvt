@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_72p2.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_openssh_72p2.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # OpenSSH <= 7.2p1 - Xauth Injection
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105581");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-3115");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-21 11:45:13 +0100 (Mon, 21 Mar 2016)");
   script_name("OpenSSH <= 7.2p1 - Xauth Injection");
 
@@ -46,8 +46,7 @@ if(description)
 
   script_tag(name:"affected", value:"OpenSSH versions before 7.2p2");
 
-  script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.2p2 or later.
-  For updates refer to http://www.openssh.com");
+  script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.2p2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -61,6 +60,7 @@ if(description)
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("openssh/detected");
+  script_xref(name:"URL", value:"http://www.openssh.com");
   exit(0);
 }
 

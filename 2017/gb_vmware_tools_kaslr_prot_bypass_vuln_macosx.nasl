@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_tools_kaslr_prot_bypass_vuln_macosx.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_vmware_tools_kaslr_prot_bypass_vuln_macosx.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # VMware Tools kASLR Protection Bypass Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:tools";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810267");
-  script_version("$Revision: 11474 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2016-5328");
   script_bugtraq_id(93886);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-10 12:53:05 +0530 (Tue, 10 Jan 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VMware Tools kASLR Protection Bypass Vulnerability (Mac OS X)");
@@ -55,7 +55,7 @@ if(description)
   on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to VMware Tool version 10.1.0 or
-  later. For updates refer to https://www.vmware.com");
+  later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +65,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_vmware_tools_detect_macosx.nasl");
   script_mandatory_keys("VMwareTools/MacOSX/Version");
+  script_xref(name:"URL", value:"https://www.vmware.com");
   exit(0);
 }
 

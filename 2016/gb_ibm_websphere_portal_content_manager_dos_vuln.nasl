@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_portal_content_manager_dos_vuln.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_ibm_websphere_portal_content_manager_dos_vuln.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # IBM WebSphere Portal Content Manager Denial Of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:ibm:websphere_portal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810315");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-5954");
   script_bugtraq_id(93017);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-20 15:28:21 +0530 (Tue, 20 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM WebSphere Portal Content Manager Denial Of Service Vulnerability");
@@ -58,8 +58,7 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to IBM WebSphere Portal 6.1.0.6
   with Cumulative Fix 27 (CF27), or 6.1.5.3 with Cumulative Fix 27 (CF27), or
   7.0.0.2 with Cumulative Fix 30 (CF30), or 8.0.0.1 with Cumulative Fix 21 (CF21),
-  or 8.5.0 with Cumulative Fix 12 (CF12), or later.
-  For updates refer to https://www.ibm.com/developerworks/downloads/ls/wpe ");
+  or 8.5.0 with Cumulative Fix 12 (CF12), or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21989993");
@@ -70,6 +69,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_ibm_websphere_portal_detect.nasl");
   script_mandatory_keys("ibm_websphere_portal/installed");
+  script_xref(name:"URL", value:"https://www.ibm.com/developerworks/downloads/ls/wpe");
   exit(0);
 }
 

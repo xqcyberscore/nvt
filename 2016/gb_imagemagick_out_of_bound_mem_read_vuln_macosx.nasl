@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_out_of_bound_mem_read_vuln_macosx.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_imagemagick_out_of_bound_mem_read_vuln_macosx.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # ImageMagick Out Of Bounds Memory Read Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810256");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-5687");
   script_bugtraq_id(91283);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-06 18:38:55 +0530 (Mon, 06 Jun 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("ImageMagick Out Of Bounds Memory Read Vulnerability (Mac OS X)");
@@ -55,7 +55,7 @@ if(description)
   and 7.x before 7.0.1-4 on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to ImageMagick version
-  7.0.1-4 or 6.9.4-3 or later. For updates refer to http://www.imagemagick.org");
+  7.0.1-4 or 6.9.4-3 or later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_imagemagick_detect_macosx.nasl");
   script_mandatory_keys("ImageMagick/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
 

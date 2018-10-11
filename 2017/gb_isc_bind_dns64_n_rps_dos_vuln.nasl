@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_dns64_n_rps_dos_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_isc_bind_dns64_n_rps_dos_vuln.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
-# ISC BIND DNS64 and RPZ Denial of Service Vulnerability 
+# ISC BIND DNS64 and RPZ Denial of Service Vulnerability
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -29,49 +29,46 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810547");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11836 $");
   script_cve_id("CVE-2017-3135");
   script_bugtraq_id(96150);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-27 13:12:12 +0530 (Mon, 27 Feb 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND DNS64 and RPZ Denial of Service Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with ISC BIND and is
+  script_tag(name:"summary", value:"The host is installed with ISC BIND and is
   prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to using both DNS64 
-  and RPZ to rewrite query responses, query processing can resume in an 
+  script_tag(name:"insight", value:"The flaw exists due to using both DNS64
+  and RPZ to rewrite query responses, query processing can resume in an
   inconsistent state.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause an INSIST assertion failure (and subsequent abort) or an 
-  attempt to read through a NULL pointer.  On most platforms a NULL pointer 
-  read leads to a segmentation fault (SEGFAULT), which causes the process to 
-  be terminated.
+  attackers to cause an INSIST assertion failure (and subsequent abort) or an
+  attempt to read through a NULL pointer.  On most platforms a NULL pointer
+  read leads to a segmentation fault (SEGFAULT), which causes the process to
+  be terminated.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"ISC BIND versions 9.8.8, 9.9.3-S1 through 9.9.9-S7, 
-  9.9.3 through 9.9.9-P5, 9.9.10b1, 9.10.0 through 9.10.4-P5, 9.10.5b1, 9.11.0 
+  script_tag(name:"affected", value:"ISC BIND versions 9.8.8, 9.9.3-S1 through 9.9.9-S7,
+  9.9.3 through 9.9.9-P5, 9.9.10b1, 9.10.0 through 9.10.4-P5, 9.10.5b1, 9.11.0
   through 9.11.0-P2 and 9.11.1b1");
 
-  script_tag(name:"solution", value:"Upgrade to ISC BIND version 9.9.9-P6 or 
-  9.10.4-P6 or 9.11.0-P3 or  9.9.9-S8 or later.
-  For updates refer to https://www.isc.org");
+  script_tag(name:"solution", value:"Upgrade to ISC BIND version 9.9.9-P6 or
+  9.10.4-P6 or 9.11.0-P3 or  9.9.9-S8 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://kb.isc.org/article/AA-01453");
+  script_xref(name:"URL", value:"https://kb.isc.org/article/AA-01453");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("bind_version.nasl");
   script_mandatory_keys("ISC BIND/installed");
+  script_xref(name:"URL", value:"https://www.isc.org");
   exit(0);
 }
 
@@ -80,22 +77,20 @@ include("version_func.inc");
 include("host_details.inc");
 include("revisions-lib.inc");
 
-## Get port
 if( ! bindPort = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! infos = get_app_version_and_proto( cpe:CPE, port:bindPort ) ) exit( 0 );
 
 bindVer = infos["version"];
 proto = infos["proto"];
 
-## Check for vulnerable version
 if(bindVer =~ "^9")
 {
-  if (bindVer =~ "9\.9\.[3-9]\.S[1-7]") 
+  if (bindVer =~ "9\.9\.[3-9]\.S[1-7]")
   {
     fix = "9.9.9-S8";
     VULN = TRUE;
   }
-  
+
   else if(bindVer =~ "^(9\.9\.[3-9])")
   {
     if(revcomp(a: bindVer, b: "9.9.9.P6") < 0)

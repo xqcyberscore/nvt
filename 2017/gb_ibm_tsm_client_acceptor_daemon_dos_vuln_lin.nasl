@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tsm_client_acceptor_daemon_dos_vuln_lin.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_ibm_tsm_client_acceptor_daemon_dos_vuln_lin.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # IBM TSM Client 'Client Acceptor Daemon' Denial-of-Service Vulnerability - Linux
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:tivoli_storage_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811076");
-  script_version("$Revision: 11474 $");
+  script_version("$Revision: 11835 $");
   script_cve_id("CVE-2015-4951");
   script_bugtraq_id(81436);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-05 10:20:10 +0530 (Mon, 05 Jun 2017)");
   script_name("IBM TSM Client 'Client Acceptor Daemon' Denial-of-Service Vulnerability - Linux");
 
@@ -55,8 +55,7 @@ if(description)
   6.2, 6.1, and 5.5 all levels.");
 
   script_tag(name:"solution", value:"Upgrade to IBM Tivoli Storage Manager Client
-  version 7.1.3 or 6.4.3.1 or 6.3.2.5 or later. For updates refer to
-  http://www-01.ibm.com/support/docview.wss?uid=swg21973484");
+  version 7.1.3 or 6.4.3.1 or 6.3.2.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

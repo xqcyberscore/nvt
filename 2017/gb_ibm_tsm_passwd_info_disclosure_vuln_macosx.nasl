@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tsm_passwd_info_disclosure_vuln_macosx.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_ibm_tsm_passwd_info_disclosure_vuln_macosx.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # IBM TSM Client 'Password' Information Disclosure Vulnerability - Mac OS X
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:tivoli_storage_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811065");
-  script_version("$Revision: 11501 $");
+  script_version("$Revision: 11835 $");
   script_cve_id("CVE-2016-0371");
   script_bugtraq_id(94148);
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-02 15:14:24 +0530 (Fri, 02 Jun 2017)");
   script_name("IBM TSM Client 'Password' Information Disclosure Vulnerability - Mac OS X");
 
@@ -54,8 +54,7 @@ if(description)
   6.2, 6.1, and 5.5 all levels.");
 
   script_tag(name:"solution", value:"Upgrade to IBM Tivoli Storage Manager Client
-  version 7.1.6.3 or 6.4.3.4 or 6.3.2.6 or later. For updates refer to
-  http://www-01.ibm.com/support/docview.wss?uid=swg21985114");
+  version 7.1.6.3 or 6.4.3.4 or 6.3.2.6 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

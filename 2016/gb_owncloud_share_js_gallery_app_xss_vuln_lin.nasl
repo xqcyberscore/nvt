@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_share_js_gallery_app_xss_vuln_lin.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_owncloud_share_js_gallery_app_xss_vuln_lin.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # ownCloud 'share.js' Gallery Application XSS Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809298");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-7419");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-26 17:23:26 +0530 (Mon, 26 Sep 2016)");
   script_name("ownCloud 'share.js' Gallery Application XSS Vulnerability (Linux)");
 
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"ownCloud Server before 9.0.4 on Linux.");
 
-  script_tag(name:"solution", value:"Upgrade to ownCloud Server 9.0.4 or later.
-  For updates refer to http://owncloud.org");
+  script_tag(name:"solution", value:"Upgrade to ownCloud Server 9.0.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +65,7 @@ if(description)
   script_dependencies("gb_owncloud_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("owncloud/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://owncloud.org");
   exit(0);
 }
 

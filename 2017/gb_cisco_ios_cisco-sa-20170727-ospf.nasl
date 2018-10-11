@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20170727-ospf.nasl 7046 2017-09-04 05:19:39Z asteins $
+# $Id: gb_cisco_ios_cisco-sa-20170727-ospf.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
 # Cisco IOS Software OSPF LSA Manipulation Vulnerability
 #
@@ -29,26 +29,26 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106995");
- script_cve_id("CVE-2017-6770");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:P/A:P");
- script_version("$Revision: 7046 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106995");
+  script_cve_id("CVE-2017-6770");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:P/A:P");
+  script_version("$Revision: 11836 $");
 
- script_name("Cisco IOS Software OSPF LSA Manipulation Vulnerability");
+  script_name("Cisco IOS Software OSPF LSA Manipulation Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170727-ospf");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170727-ospf");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "Cisco IOS Software is affected by a vulnerability involving the Open Shortest
+  script_tag(name:"summary", value:"Cisco IOS Software is affected by a vulnerability involving the Open Shortest
 Path First (OSPF) Routing Protocol Link State Advertisement (LSA) database. This vulnerability could allow an
 unauthenticated, remote attacker to take full control of the OSPF Autonomous System (AS) domain routing table,
 allowing the attacker to intercept or black-hole traffic.");
 
- script_tag(name: "insight", value: "The attacker could exploit this vulnerability by injecting crafted OSPF
+  script_tag(name:"insight", value:"The attacker could exploit this vulnerability by injecting crafted OSPF
 packets. To exploit this vulnerability, an attacker must accurately determine certain parameters within the LSA
 database on the target router. This vulnerability can only be triggered by sending crafted unicast or multicast
 OSPF LSA type 1 packets. No other LSA type packets can trigger this vulnerability.
@@ -56,21 +56,21 @@ OSPF LSA type 1 packets. No other LSA type packets can trigger this vulnerabilit
 OSPFv3 is not affected by this vulnerability. Fabric Shortest Path First (FSPF) protocol is not affected by this
 vulnerability.");
 
- script_tag(name: "impact", value: "Successful exploitation could cause the targeted router to flush its routing
+  script_tag(name:"impact", value:"Successful exploitation could cause the targeted router to flush its routing
 table and propagate the crafted OSPF LSA type 1 update throughout the OSPF AS domain.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-09-04 07:19:39 +0200 (Mon, 04 Sep 2017) $");
- script_tag(name: "creation_date", value: "2017-07-28 08:38:44 +0700 (Fri, 28 Jul 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-28 08:38:44 +0700 (Fri, 28 Jul 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");
@@ -79,7 +79,7 @@ include("version_func.inc");
 if (!version = get_app_version(cpe: CPE))
   exit(0);
 
-affected = make_list( 
+affected = make_list(
 		'15.1(2.0)' );
 
 foreach af (affected) {

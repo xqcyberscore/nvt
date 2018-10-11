@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20170201-fmc.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20170201-fmc.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
 # Cisco Firepower Management Center Incomplete Rule Set Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2017-3809");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11501 $");
+  script_version("$Revision: 11836 $");
 
   script_name("Cisco Firepower Management Center Incomplete Rule Set Vulnerability");
 
@@ -55,7 +55,7 @@ An attacker could exploit this vulnerability by spoofing certain Object IDs of P
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-02 12:29:03 +0700 (Thu, 02 Feb 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -63,7 +63,7 @@ An attacker could exploit this vulnerability by spoofing certain Object IDs of P
   script_dependencies("gb_cisco_firepower_management_center_version.nasl");
   script_mandatory_keys("cisco_firepower_management_center/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

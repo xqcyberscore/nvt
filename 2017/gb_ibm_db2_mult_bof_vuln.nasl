@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_mult_bof_vuln.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_ibm_db2_mult_bof_vuln.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # IBM DB2 Multiple Buffer OVerflow Vulnerabilities
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811403");
-  script_version("$Revision: 11501 $");
+  script_version("$Revision: 11835 $");
   script_cve_id("CVE-2017-1297");
   script_bugtraq_id(99264);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-29 13:12:55 +0530 (Thu, 29 Jun 2017)");
   script_name("IBM DB2 Command Line Processor Buffer Overflow Vulnerability Jun17");
 
   script_tag(name:"summary", value:"This host is running IBM DB2 and is
   prone to buffer overflow vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of IBM DB2
-  with the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an improper
   bounds checking.");
@@ -55,8 +54,7 @@ if(description)
   IBM DB2 versions 10.5 before FP8
   IBM DB2 versions 11.1.2 before FP2");
 
-  script_tag(name:"solution", value:"Apply the appropriate fix from below links,
-  http://www-01.ibm.com/support/docview.wss?uid=swq22004878");
+  script_tag(name:"solution", value:"Apply the appropriate fix");
 
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg22004878");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -66,6 +64,7 @@ if(description)
   script_family("Databases");
   script_dependencies("gb_ibm_db2_remote_detect.nasl");
   script_mandatory_keys("IBM-DB2/installed");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swq22004878");
   exit(0);
 }
 

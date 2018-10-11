@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_git_privilege_escalation_vuln_win.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_git_privilege_escalation_vuln_win.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # Git Privilege Escalation Vulnerability - Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:git_for_windows_project:git_for_windows";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809816");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-9274");
   script_bugtraq_id(94289);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-22 11:18:59 +0530 (Tue, 22 Nov 2016)");
   script_name("Git Privilege Escalation Vulnerability - Windows");
 
@@ -52,8 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"Git version prior to 2.0 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to Git version 2.0 or later
-  For updates refer to https://git-scm.com/download/win");
+  script_tag(name:"solution", value:"Upgrade to Git version 2.0 or later");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +65,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_git_detect_win.nasl");
   script_mandatory_keys("Git/Win/Ver");
+  script_xref(name:"URL", value:"https://git-scm.com/download/win");
   exit(0);
 }
 

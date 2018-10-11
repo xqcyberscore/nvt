@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-076.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_ms12-076.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2720184)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902930");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2012-1885", "CVE-2012-1886", "CVE-2012-1887", "CVE-2012-2543");
   script_bugtraq_id(56425, 56426, 56430, 56431);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-14 08:46:19 +0530 (Wed, 14 Nov 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2720184)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51242/");
@@ -69,8 +69,7 @@ if(description)
   - An error when processing certain data structures can be exploited to
     cause a stack-based buffer overflow via a specially crafted file.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-076");
+  update mentioned hotfixes in the advisory ");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-076.");
   script_tag(name:"qod_type", value:"registry");

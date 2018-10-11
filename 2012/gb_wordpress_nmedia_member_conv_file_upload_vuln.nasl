@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nmedia_member_conv_file_upload_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_wordpress_nmedia_member_conv_file_upload_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # WordPress Nmedia Member Conversation Plugin Arbitrary File Upload Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802642");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11818 $");
   script_bugtraq_id(53790);
   script_cve_id("CVE-2012-3577");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-20 12:12:12 +0530 (Wed, 20 Jun 2012)");
   script_name("WordPress Nmedia Member Conversation Plugin Arbitrary File Upload Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49375");
@@ -57,9 +57,7 @@ if(description)
   conversation/doupload.php script allowing the upload of files with arbitrary
   extensions to a folder inside the webroot. This can be exploited to execute
   arbitrary PHP code by uploading a malicious PHP script.");
-  script_tag(name:"solution", value:"Upgrade to WordPress Nmedia Member Conversation Plugin version 1.4 or later,
-
-  For updates refer to http://wordpress.org/extend/plugins/wordpress-member-private-conversation/");
+  script_tag(name:"solution", value:"Upgrade to WordPress Nmedia Member Conversation Plugin version 1.4 or later,");
   script_tag(name:"summary", value:"This host is running WordPress Nmedia Member Conversation Plugin
   and is prone to file upload vulnerability.");
 

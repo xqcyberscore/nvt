@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_nsid_request_dos_vuln_win.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_isc_bind_nsid_request_dos_vuln_win.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # ISC BIND NSID Request Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809460");
-  script_version("$Revision: 11607 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-2848");
   script_bugtraq_id(93814);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-24 18:23:32 +0530 (Mon, 24 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ISC BIND NSID Request Denial of Service Vulnerability (Windows)");
@@ -56,8 +56,7 @@ if(description)
   and 9.9.0 through 9.9.2-P2 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to ISC BIND version 9.9.9-P3 or
-  9.10.4-P3 or 9.11.0 or later on Windows.
-  For updates refer to https://www.isc.org");
+  9.10.4-P3 or 9.11.0 or later on Windows.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +67,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("bind_version.nasl", "os_detection.nasl");
   script_mandatory_keys("ISC BIND/installed", "Host/runs_windows");
+  script_xref(name:"URL", value:"https://www.isc.org");
   exit(0);
 }
 

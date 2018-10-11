@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_web_gateway_mult_vuln_SB10205.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_mcafee_web_gateway_mult_vuln_SB10205.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # McAfee Web Gateway Multiple Vulnerabilities (SB10205)
 #
@@ -29,22 +29,20 @@ CPE = "cpe:/a:mcafee:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811258");
-  script_version("$Revision: 11501 $");
+  script_version("$Revision: 11835 $");
   script_cve_id("CVE-2012-6706", "CVE-2017-1000364", "CVE-2017-1000366",
                 "CVE-2017-1000368");
   script_bugtraq_id(98838, 99127, 99130);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-28 12:24:03 +0530 (Fri, 28 Jul 2017)");
   script_name("McAfee Web Gateway Multiple Vulnerabilities (SB10205)");
 
   script_tag(name:"summary", value:"This host is installed with McAfee Web
   Gateway and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of McAfee Web
-  Gateway with the help of detect NVT and check the version is vulnerable or
-  not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -70,7 +68,7 @@ if(description)
   7.7.x before 7.7.2.3");
 
   script_tag(name:"solution", value:"Upgrade to McAfee Web Gateway version
-  7.6.2.15 or 7.7.2.3 or later, For updates refer to http://www.mcafee.com/us");
+  7.6.2.15 or 7.7.2.3 or later, ");
 
   script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10205");
 
@@ -84,6 +82,7 @@ if(description)
   script_dependencies("gb_mcafee_web_gateway_detect.nasl");
   script_mandatory_keys("McAfee/Web/Gateway/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.mcafee.com/us");
   exit(0);
 }
 

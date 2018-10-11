@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_privilege_escalation_vuln.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_vtiger_crm_privilege_escalation_vuln.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # VTiger CRM Privilege Escalation and Unrestricted File Upload Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vtiger:vtiger_crm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808752");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-4834", "CVE-2016-1713");
   script_bugtraq_id(92076);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-05 19:05:51 +0530 (Fri, 05 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("VTiger CRM Privilege Escalation and Unrestricted File Upload Vulnerability");
@@ -57,8 +57,7 @@ if(description)
 
   script_tag(name:"affected", value:"VTiger CRM before version 6.5.0.");
 
-  script_tag(name:"solution", value:"Upgrade to vTiger CRM version 6.5.0 or later.
-  For updates refer to https://www.vtiger.com");
+  script_tag(name:"solution", value:"Upgrade to vTiger CRM version 6.5.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_vtiger_crm_detect.nasl");
   script_mandatory_keys("vtiger/installed");
+  script_xref(name:"URL", value:"https://www.vtiger.com");
   exit(0);
 }
 

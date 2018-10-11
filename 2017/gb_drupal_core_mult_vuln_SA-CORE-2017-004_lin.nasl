@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_mult_vuln_SA-CORE-2017-004_lin.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_drupal_core_mult_vuln_SA-CORE-2017-004_lin.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Drupal Core Multiple Vulnerabilities (SA-CORE-2017-004) (Linux)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811705");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-6923", "CVE-2017-6924", "CVE-2017-6925");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-17 10:13:39 +0530 (Thu, 17 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal Core Multiple Vulnerabilities (SA-CORE-2017-004) (Linux)");
@@ -62,7 +62,7 @@ if(description)
   8.3.7 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Drupal core version 8.3.7 or
-  later. For updates refer to https://www.drupal.org");
+  later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.drupal.org/SA-CORE-2017-004");
@@ -72,6 +72,7 @@ if(description)
   script_dependencies("drupal_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("drupal/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.drupal.org");
   exit(0);
 }
 

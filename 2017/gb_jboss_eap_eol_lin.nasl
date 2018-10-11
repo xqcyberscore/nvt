@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_eap_eol_lin.nasl 11474 2018-09-19 11:38:50Z mmartin $
+# $Id: gb_jboss_eap_eol_lin.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
 # JBoss EAP End of Life Detection (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113019");
-  script_version("$Revision: 11474 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:38:50 +0200 (Wed, 19 Sep 2018) $");
+  script_version("$Revision: 11836 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-16 13:54:55 +0200 (Mon, 16 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,11 +52,11 @@ if( description )
   script_tag(name:"impact", value:"An end of life version of JBoss EAP is not receiving any security updates from the vendor. Unfixed security vulnerabilities
     might be leveraged by an attacker to compromise the security of this host.");
   script_tag(name:"solution", value:"Update the JBoss EAP version on the remote host to a still supported version.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check if the version is unsupported.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_xref(name:"URL", value:"https://access.redhat.com/support/policy/updates/jboss_notes/#Life_cycle_dates");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:redhat:jboss_enterprise_application_platform";

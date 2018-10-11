@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tikiwiki_jhot_remote_cmd_exec_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
+# $Id: gb_tikiwiki_jhot_remote_cmd_exec_vuln.nasl 11819 2018-10-10 11:59:51Z cfischer $
 #
 # Tiki Wiki CMS Groupware jhot.php Remote Command Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802946");
-  script_version("$Revision: 11431 $");
+  script_version("$Revision: 11819 $");
   script_cve_id("CVE-2006-4602");
   script_bugtraq_id(19819);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:59:51 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-22 13:59:26 +0530 (Wed, 22 Aug 2012)");
   script_name("Tiki Wiki CMS Groupware jhot.php Remote Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -49,18 +49,22 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary system
   commands with the privileges of the webserver process.");
+
   script_tag(name:"affected", value:"Tiki Wiki CMS Groupware version 1.9.4 and prior");
+
   script_tag(name:"insight", value:"The flaw is due to 'jhot.php' script not correctly verifying
   uploaded files. This can be exploited to execute arbitrary PHP code by
   uploading a malicious PHP script to the 'img/wiki' directory.");
-  script_tag(name:"solution", value:"Upgrade to Tiki Wiki CMS Groupware version 1.9.5 or later
-  For updates refer to http://info.tiki.org/Download");
+
+  script_tag(name:"solution", value:"Upgrade to Tiki Wiki CMS Groupware version 1.9.5 or later");
+
   script_tag(name:"summary", value:"This host is running Tiki Wiki CMS Groupware and is prone to remote command
   execution vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://info.tiki.org/Download");
   exit(0);
 }
 
@@ -72,10 +76,8 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 if( dir == "/" ) dir = "";
 
-req = http_get( item:dir + "/jhot.php", port:port );
-buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-
-if( res !~ "HTTP/1\.. 200" ) exit( 0 );
+buf = http_get_cache( item:dir + "/jhot.php", port:port );
+if( buf !~ "^HTTP/1\.[01] 200" ) exit( 0 );
 
 useragent = get_http_user_agent();
 host = http_host_name( port:port );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limny_theme_param_dir_trav_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_limny_theme_param_dir_trav_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Limny admin/preview.php theme Parameter Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:limny:limny";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802984");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2011-5210");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-12 15:41:59 +0530 (Fri, 12 Oct 2012)");
   script_name("Limny admin/preview.php theme Parameter Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -49,8 +49,7 @@ if(description)
 
   script_tag(name:"insight", value:"Input passed via 'theme' parameter to admin/preview.php is not properly
   sanitised before being used to include files.");
-  script_tag(name:"solution", value:"Upgrade to Limny version 3.0.1 or later,
-  For updates refer to http://www.limny.org/download");
+  script_tag(name:"solution", value:"Upgrade to Limny version 3.0.1 or later,");
   script_tag(name:"summary", value:"This host is running Limny and is prone to directory traversal vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform directory traversal
   attacks and read arbitrary files on the affected application.");
@@ -59,6 +58,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://www.limny.org/download");
   exit(0);
 }
 

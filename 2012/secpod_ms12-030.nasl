@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-030.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_ms12-030.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2663830)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903026");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2012-0141", "CVE-2012-0142", "CVE-2012-0143", "CVE-2012-0184",
                 "CVE-2012-0185", "CVE-2012-1847");
   script_bugtraq_id(53342, 53373, 53374, 53375, 53379);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 10:19:21 +0530 (Wed, 09 May 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2663830)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2597086");
@@ -65,8 +65,7 @@ if(description)
   SXLI record, MergeCells record and an mismatch error when handling the Series
   record within Excel files.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-030");
+  update mentioned hotfixes in the advisory ");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-030.");
   script_tag(name:"qod_type", value:"registry");

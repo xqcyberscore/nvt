@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20170405-cfpw.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20170405-cfpw.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
 # Cisco Firepower Detection Engine SSL Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2017-3885");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11836 $");
 
   script_name("Cisco Firepower Detection Engine SSL Denial of Service Vulnerability");
 
@@ -58,7 +58,7 @@ condition.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-07 09:19:25 +0200 (Fri, 07 Apr 2017)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -66,7 +66,7 @@ condition.");
   script_dependencies("gb_cisco_firepower_management_center_version.nasl");
   script_mandatory_keys("cisco_firepower_management_center/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

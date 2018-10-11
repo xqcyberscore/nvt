@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_dos_vuln_jan12_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_google_chrome_mult_dos_vuln_jan12_win.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Google Chrome Multiple Denial of Service Vulnerabilities - January12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802374");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2011-3919", "CVE-2011-3921", "CVE-2011-3922");
   script_bugtraq_id(51300);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-10 14:35:57 +0530 (Tue, 10 Jan 2012)");
   script_name("Google Chrome Multiple Denial of Service Vulnerabilities - January12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47449/");
@@ -54,12 +54,12 @@ if(description)
     libxml2
 
   - A stack based buffer overflow error in glyph handling.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 16.0.912.75 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 16.0.912.75 or later,");
   script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
   denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

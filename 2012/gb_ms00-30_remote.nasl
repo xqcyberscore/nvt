@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms00-30_remote.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_ms00-30_remote.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Microsoft IIS Malformed File Extension Denial of Service Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802439");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11818 $");
   script_bugtraq_id(1190);
   script_cve_id("CVE-2000-0408");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"creation_date", value:"2012-07-03 16:55:41 +0530 (Tue, 03 Jul 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_name("Microsoft IIS Malformed File Extension Denial of Service Vulnerability");
   script_xref(name:"URL", value:"http://www.ussrback.com/labs40.html");
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms00-030");
@@ -54,9 +54,7 @@ if(description)
   from a web server via an URL containing specially malformed file extension
   data, the server will become unresponsive for some period of time.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link.
-
-  http://technet.microsoft.com/en-us/security/bulletin/ms00-030");
+  update mentioned hotfixes in the advisory ");
   script_tag(name:"summary", value:"This host is missing important security update according to
   Microsoft Bulletin MS00-030.");
 

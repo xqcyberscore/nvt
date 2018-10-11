@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-042.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: secpod_ms12-042.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Microsoft Windows Kernel Privilege Elevation Vulnerabilities (2711167)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902916");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2012-0217", "CVE-2012-1515");
   script_bugtraq_id(53856, 52820);
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-13 09:21:39 +0530 (Wed, 13 Jun 2012)");
   script_name("Microsoft Windows Kernel Privilege Elevation Vulnerabilities (2711167)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49454/");
@@ -61,8 +61,7 @@ if(description)
   - Error in incorrect protection of BIOS ROM can be exploited to execute
     arbitrary code.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-042");
+  update mentioned hotfixes in the advisory ");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-042.");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_directory_traversal_vuln_lin.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_elasticsearch_directory_traversal_vuln_lin.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # Elasticsearch < 1.6.1 Multiple Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:elasticsearch";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808502");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2015-5531", "CVE-2015-5377");
   script_bugtraq_id(75935);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-28 18:11:01 +0530 (Tue, 28 Jun 2016)");
   script_name("Elasticsearch < 1.6.1 Multiple Vulnerabilities (Linux)");
 
@@ -58,8 +58,7 @@ if(description)
   on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Elasticsearch version 1.6.1,
-  or later.
-  For updates refer to https://www.elastic.co");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -72,6 +71,7 @@ if(description)
   script_dependencies("gb_elastsearch_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("elasticsearch/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 9200);
+  script_xref(name:"URL", value:"https://www.elastic.co");
   exit(0);
 }
 

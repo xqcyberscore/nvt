@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_forti_80581.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_forti_80581.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
 # Fortinet FortiOS SSH Undocumented Interactive Login Security Bypass Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2016-1909");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11501 $");
+  script_version("$Revision: 11836 $");
 
   script_name("Fortinet FortiOS SSH Undocumented Interactive Login Security Bypass Vulnerability");
 
@@ -49,7 +49,7 @@ further attacks.");
 
   script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-07 16:08:03 +0200 (Fri, 07 Apr 2017)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -57,7 +57,7 @@ further attacks.");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
 
- exit(0);
+  exit(0);
 }
 
 

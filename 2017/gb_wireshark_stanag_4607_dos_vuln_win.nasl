@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_stanag_4607_dos_vuln_win.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_wireshark_stanag_4607_dos_vuln_win.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Wireshark 'STANAG 4607' Capture File Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807399");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-6014");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-21 14:26:53 +0530 (Tue, 21 Feb 2017)");
   script_name("Wireshark 'STANAG 4607' Capture File Denial of Service Vulnerability (Windows)");
 
@@ -56,8 +56,7 @@ if(description)
   script_tag(name:"affected", value:"Wireshark versions 2.2.4 and prior
   on Windows.");
 
-  script_tag(name:"solution", value:"Update to Wireshark 2.2.5 or later.
-  For updates refer to https://www.wireshark.org");
+  script_tag(name:"solution", value:"Update to Wireshark 2.2.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -68,6 +67,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_wireshark_detect_win.nasl");
   script_mandatory_keys("Wireshark/Win/Ver");
+  script_xref(name:"URL", value:"https://www.wireshark.org");
   exit(0);
 }
 

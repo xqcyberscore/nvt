@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_partial_http_req_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_apache_tomcat_partial_http_req_dos_vuln_win.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Apache Tomcat Partial HTTP Requests DoS Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802682");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2012-5568");
   script_bugtraq_id(56686);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-05 12:17:34 +0530 (Wed, 05 Dec 2012)");
   script_name("Apache Tomcat Partial HTTP Requests DoS Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -59,14 +59,14 @@ if(description)
   script_tag(name:"summary", value:"The host is running Apache Tomcat Server and is prone to denial of
   service vulnerability. This NVT has been deprecated for the reasons explained by
   the Apache Tomcat team in https://tomcat.apache.org/security-7.html#Not_a_vulnerability_in_Tomcat");
-  script_tag(name:"solution", value:"Upgrade to Apache Tomcat 7.0.52  or later,
-  For updates refer to http://tomcat.apache.org/");
+  script_tag(name:"solution", value:"Upgrade to Apache Tomcat 7.0.52  or later,");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"deprecated", value:TRUE);
 
+  script_xref(name:"URL", value:"http://tomcat.apache.org/");
   exit(0);
 }
 

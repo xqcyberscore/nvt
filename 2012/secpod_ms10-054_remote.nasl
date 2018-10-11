@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-054_remote.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: secpod_ms10-054_remote.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Microsoft SMB Server Trans2 Request Remote Code Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902662");
-  script_version("$Revision: 11372 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2010-2550", "CVE-2010-2551", "CVE-2010-2552");
   script_bugtraq_id(42224, 42263, 42267);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-29 12:16:56 +0530 (Wed, 29 Feb 2012)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -67,9 +67,7 @@ if(description)
   system by sending a malformed SMB Trans2 request.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://technet.microsoft.com/en-us/security/bulletin/MS10-054");
+  update mentioned hotfixes in the advisory ");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS10-054.");

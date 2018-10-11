@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_certificate_key_length_spoofing_vuln.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: gb_ms_certificate_key_length_spoofing_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Microsoft Windows Minimum Certificate Key Length Spoofing Vulnerability (2661254)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803007");
-  script_version("$Revision: 11372 $");
+  script_version("$Revision: 11818 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-23 16:14:43 +0530 (Thu, 23 Aug 2012)");
   script_name("Microsoft Windows Minimum Certificate Key Length Spoofing Vulnerability (2661254)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2661254");
@@ -59,9 +59,7 @@ if(description)
   bits in length can be derived and could allow an attacker to duplicate the
   certificates. An duplicate certificate could be used to spoof content,
   perform phishing attacks, or perform man-in-the-middle attacks.");
-  script_tag(name:"solution", value:"Apply the Patch from below link:
-
-  http://technet.microsoft.com/en-us/security/advisory/2661254");
+  script_tag(name:"solution", value:"Apply the Patch ");
   script_tag(name:"summary", value:"The host is installed with Microsoft Windows operating system and
   is prone to digital certificate key length spoofing vulnerability.");
   exit(0);

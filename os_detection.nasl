@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 11638 2018-09-27 06:42:05Z cfischer $
+# $Id: os_detection.nasl 11833 2018-10-11 08:18:59Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 11638 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:42:05 +0200 (Thu, 27 Sep 2018) $");
+  script_version("$Revision: 11833 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:18:59 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,6 +52,7 @@ if(description)
                       "gb_palo_alto_panOS_version.nasl", "gb_screenos_version.nasl",
                       "gb_extremeos_snmp_detect.nasl",
                       "gb_cisco_asa_version_snmp.nasl", "gb_cisco_asa_version.nasl",
+                      "gb_cisco_asa_detect.nasl",
                       "gb_arista_eos_snmp_detect.nasl", "gb_netgear_prosafe_consolidation.nasl",
                       "gb_hirschmann_consolidation.nasl", "gb_mikrotik_router_routeros_consolidation.nasl",
                       "gb_xenserver_version.nasl", "gb_cisco_ios_xe_version.nasl",
@@ -86,12 +87,14 @@ if(description)
                       "netbios_name_get.nasl",
                       "gb_nmap_os_detection.nasl", "os_fingerprint.nasl");
 
+  script_xref(name:"URL", value:"https://community.greenbone.net/c/vulnerability-tests");
+
   script_tag(name:"summary", value:"This script consolidates the OS information detected by several NVTs and tries to find the best matching OS.
 
   Furthermore it reports all previously collected information leading to this best matching OS. It also reports possible additional information
   which might help to improve the OS detection.
 
-  If any of this information is wrong or could be improved please consider to report these to https://community.greenbone.net/c/vulnerability-tests.");
+  If any of this information is wrong or could be improved please consider to report these to the references community portal.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

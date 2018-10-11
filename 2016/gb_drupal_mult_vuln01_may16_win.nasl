@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln01_may16_win.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_drupal_mult_vuln01_may16_win.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # Drupal Multiple Vulnerabilities01- May16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808042");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-3171", "CVE-2016-3167", "CVE-2016-3165", "CVE-2016-3166");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-18 15:39:00 +0530 (Wed, 18 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Drupal Multiple Vulnerabilities01- May16 (Windows)");
@@ -62,8 +62,7 @@ if(description)
 
   script_tag(name:"affected", value:"Drupal 6.x before 6.38 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to version 6.38 or later.
-  For updates refer to https://www.drupal.org");
+  script_tag(name:"solution", value:"Upgrade to version 6.38 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -75,6 +74,7 @@ if(description)
   script_dependencies("drupal_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("drupal/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.drupal.org");
   exit(0);
 }
 

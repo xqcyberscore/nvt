@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_info_disc_vuln01_july16_lin.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_oracle_virtualbox_info_disc_vuln01_july16_lin.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # Oracle Virtualbox Information Disclosure Vulnerability-01 July16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808262");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-3612");
   script_bugtraq_id(91860);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-21 12:24:33 +0530 (Thu, 21 Jul 2016)");
   script_name("Oracle Virtualbox Information Disclosure Vulnerability-01 July16 (Linux)");
 
@@ -53,7 +53,7 @@ if(description)
   on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Oracle VirtualBox version
-  5.0.22 or later on Linux. For updates refer to https://www.virtualbox.org");
+  5.0.22 or later on Linux. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_lin.nasl");
   script_mandatory_keys("Sun/VirtualBox/Lin/Ver");
+  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
 

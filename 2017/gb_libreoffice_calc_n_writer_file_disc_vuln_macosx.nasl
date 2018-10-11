@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_calc_n_writer_file_disc_vuln_macosx.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_libreoffice_calc_n_writer_file_disc_vuln_macosx.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # LibreOffice Calc And Writer File Disclosure Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810579");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11835 $");
   script_cve_id("CVE-2017-3157");
   script_bugtraq_id(96402);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-07 13:15:32 +0530 (Tue, 07 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("LibreOffice Calc And Writer File Disclosure Vulnerability (Mac OS X)");
@@ -58,8 +58,7 @@ if(description)
   prior to 5.2.5 on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to LibreOffice version
-  5.1.6 or 5.2.5 or 5.3.0 later. For updates refer to
-  http://www.libreoffice.org");
+  5.1.6 or 5.2.5 or 5.3.0 later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_mxview_2_8_private_key_disclosure.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_moxa_mxview_2_8_private_key_disclosure.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
 # Moxa MXview Private Key Disclosure
 #
@@ -33,8 +33,8 @@ if (description)
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2017-7455", "CVE-2017-7456");
-  script_version("$Revision: 11795 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_version("$Revision: 11836 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-11 13:15:09 +0200 (Tue, 11 Apr 2017)");
   script_name("Moxa MXview Private Key Disclosure");
 
@@ -52,7 +52,7 @@ Remote attackers can easily access/read this private key `mxview.key` file by ma
   script_dependencies("gb_moxa_mxview_web_detect.nasl");
   script_require_ports("Services/www", 80, 81);
   script_mandatory_keys("moxa/mxviev/installed");
- exit(0);
+  exit(0);
 }
 
 

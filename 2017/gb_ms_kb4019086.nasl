@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4019086.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_ms_kb4019086.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # Microsoft SQL Server 2016 CU Information Disclosure Vulnerability (KB4019086)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811565");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11835 $");
   script_cve_id("CVE-2017-8516");
   script_bugtraq_id(100041);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-09 16:24:37 +0530 (Wed, 09 Aug 2017)");
   script_name("Microsoft SQL Server 2016 CU Information Disclosure Vulnerability (KB4019086)");
 
@@ -51,9 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft SQL Server 2016 CU.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4019086");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");

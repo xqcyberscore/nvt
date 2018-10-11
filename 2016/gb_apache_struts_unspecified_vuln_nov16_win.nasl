@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809474");
-  script_version("$Revision: 11607 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-4436");
   script_bugtraq_id(91280);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-18 11:00:43 +0530 (Fri, 18 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Struts Unspecified Vulnerability Nov16 (Windows)");
@@ -55,8 +55,7 @@ if(description)
   and 2.5.x before 2.5.1 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Apache Struts Version 2.3.29
-  or 2.5.1 or later.
-  For updates refer to http://struts.apache.org");
+  or 2.5.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +67,7 @@ if(description)
   script_dependencies("gb_apache_struts_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("ApacheStruts/installed", "Host/runs_windows");
+  script_xref(name:"URL", value:"http://struts.apache.org");
   exit(0);
 }
 

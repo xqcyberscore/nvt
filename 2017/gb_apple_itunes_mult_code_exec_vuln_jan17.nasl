@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_code_exec_vuln_jan17.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_apple_itunes_mult_code_exec_vuln_jan17.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Apple iTunes Multiple Code Execution Vulnerabilities Jan17 (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810526");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-2354", "CVE-2017-2355", "CVE-2017-2356", "CVE-2017-2366");
   script_bugtraq_id(95736, 95733);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-30 13:20:32 +0530 (Mon, 30 Jan 2017)");
   script_name("Apple iTunes Multiple Code Execution Vulnerabilities Jan17 (Windows)");
 
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Apple iTunes versions before 12.5.5
   on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.5.5 or later,
-  For updates refer to http://www.apple.com/itunes");
+  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.5.5 or later, ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +65,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
   script_mandatory_keys("iTunes/Win/Installed");
+  script_xref(name:"URL", value:"http://www.apple.com/itunes");
   exit(0);
 }
 

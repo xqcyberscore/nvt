@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10779.nasl 6959 2017-08-18 07:24:59Z asteins $
+# $Id: gb_junos_jsa10779.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
 # Junos RPD DoS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106948");
-  script_version ("$Revision: 6959 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-13 14:46:37 +0700 (Thu, 13 Jul 2017)");
+  script_version("$Revision: 11836 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-13 14:46:37 +0700 (Thu, 13 Jul 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-2314");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos RPD DoS Vulnerability");
 
@@ -48,21 +48,21 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version");
 
-  script_tag(name: "summary", value: "Junos OS is prone to a denial of service vulnerability in RPD due to
+  script_tag(name:"summary", value:"Junos OS is prone to a denial of service vulnerability in RPD due to
 malformed BGP OPEN message.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value: "Receipt of a malformed BGP OPEN message may cause the routing protocol
+  script_tag(name:"insight", value:"Receipt of a malformed BGP OPEN message may cause the routing protocol
 daemon (rpd) process to crash and restart. By continuously sending specially crafted  BGP OPEN message packets,
 an attacker can repetitively crash the rpd process causing prolonged denial of service.");
 
-  script_tag(name: "affected", value: "This issue affects Junos OS 12.3, 13.3, 14.1, 14.2 and 15.1.");
+  script_tag(name:"affected", value:"This issue affects Junos OS 12.3, 13.3, 14.1, 14.2 and 15.1.");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10779");
 

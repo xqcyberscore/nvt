@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_active_record_security_bypass_vuln_win.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_ruby_on_rails_active_record_security_bypass_vuln_win.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # Ruby on Rails Acrive Record Security Bypass Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809358");
-  script_version("$Revision: 11607 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2015-7577");
   script_bugtraq_id(81806);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-17 18:48:40 +0530 (Mon, 17 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Ruby on Rails Acrive Record Security Bypass Vulnerability (Windows)");
@@ -57,7 +57,7 @@ if(description)
   Ruby on Rails 4.2.x before 4.2.5.1 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Ruby on Rails 3.2.22.1 or 4.1.14.1 or
-  4.2.5.1, or later. For updates refer to http://rubyonrails.org");
+  4.2.5.1, or later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +69,7 @@ if(description)
   script_dependencies("secpod_ruby_rails_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("RubyOnRails/installed", "Host/runs_windows");
   script_require_ports("Services/www", 3000);
+  script_xref(name:"URL", value:"http://rubyonrails.org");
   exit(0);
 }
 

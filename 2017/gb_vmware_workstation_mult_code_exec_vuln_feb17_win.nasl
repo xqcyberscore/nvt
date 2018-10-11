@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_mult_code_exec_vuln_feb17_win.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_vmware_workstation_mult_code_exec_vuln_feb17_win.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # VMware Workstation Multiple Code Execution Vulnerabilities Feb17 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:vmware:workstation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810535");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2016-7081", "CVE-2016-7082", "CVE-2016-7083", "CVE-2016-7084",
                 "CVE-2016-7085", "CVE-2016-7086");
   script_bugtraq_id(92935, 92934, 92940, 92941);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-03 13:26:13 +0530 (Fri, 03 Feb 2017)");
   script_name("VMware Workstation Multiple Code Execution Vulnerabilities Feb17 (Windows)");
 
@@ -61,7 +61,7 @@ if(description)
   12.5.0 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Workstation version
-  12.5.0 or later, For updates refer to http://www.vmware.com");
+  12.5.0 or later, ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -73,6 +73,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_vmware_prdts_detect_win.nasl");
   script_mandatory_keys("VMware/Win/Installed");
+  script_xref(name:"URL", value:"http://www.vmware.com");
   exit(0);
 }
 

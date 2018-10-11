@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln_may16_lin.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_wordpress_mult_vuln_may16_lin.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # WordPress Core Multiple Vulnerabilities May16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808035");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-4029", "CVE-2016-6634", "CVE-2016-6635");
   script_bugtraq_id(92400, 92390, 92355);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-17 11:24:06 +0530 (Tue, 17 May 2016)");
   script_name("WordPress Core Multiple Vulnerabilities May16 (Linux)");
 
@@ -56,8 +56,7 @@ if(description)
 
   script_tag(name:"affected", value:"WordPress versions prior to 4.5 on Linux.");
 
-  script_tag(name:"solution", value:"Upgrade to WordPress version 4.5 or later.
-  For updates refer to https://wordpress.org");
+  script_tag(name:"solution", value:"Upgrade to WordPress version 4.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -73,6 +72,7 @@ if(description)
   script_dependencies("os_detection.nasl", "secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://wordpress.org");
   exit(0);
 }
 

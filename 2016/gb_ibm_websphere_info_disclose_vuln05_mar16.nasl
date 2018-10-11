@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_info_disclose_vuln05_mar16.nasl 11516 2018-09-21 11:15:17Z asteins $
+# $Id: gb_ibm_websphere_info_disclose_vuln05_mar16.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # IBM Websphere Apllication Server Information Disclosure Vulnerability-05 Mar16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806893");
-  script_version("$Revision: 11516 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2014-6164");
   script_bugtraq_id(71837);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 13:15:17 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-03 18:23:58 +0530 (Thu, 03 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("IBM Websphere Apllication Server Information Disclosure Vulnerability-05 Mar16");
@@ -54,8 +54,7 @@ if(description)
   8.5.x before 8.5.5.4");
 
   script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
-  Server (WAS) 8.5.5.4, or later.
-  For updates refer to http://www-01.ibm.com/support/docview.wss?uid=swg21671835");
+  Server (WAS) 8.5.5.4, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_mandatory_keys("ibm_websphere_application_server/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21671835");
   exit(0);
 }
 

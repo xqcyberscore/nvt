@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln01_mar11_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_wireshark_mult_vuln01_mar11_macosx.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Wireshark Multiple Vulnerabilities-01 March 11 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802903");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2011-1140", "CVE-2011-1141");
   script_bugtraq_id(46626);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-27 15:40:58 +0530 (Wed, 27 Jun 2012)");
   script_name("Wireshark Multiple Vulnerabilities-01 March 11 (Mac OS X)");
   script_xref(name:"URL", value:"http://www.wireshark.org/security/wnpa-sec-2011-03.html");
@@ -58,12 +58,12 @@ if(description)
   - Error in 'epan/dissectors/packet-ldap.c' which allows attackers to cause
     a denial of service via a long LDAP filter string or an LDAP filter string
     containing many elements.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.4 or 1.2.15
-  For updates refer to http://www.wireshark.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.4 or 1.2.15");
   script_tag(name:"summary", value:"The host is installed with Wireshark and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download.html");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_iox_cisco-sa-20170322-iox.nasl 5678 2017-03-23 04:08:39Z ckuerste $
+# $Id: gb_cisco_iox_cisco-sa-20170322-iox.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
 # Cisco IOx Data in Motion Stack Overflow Vulnerability
 #
@@ -8,7 +8,7 @@
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2016 Greenbone Networks GmbH
+# Copyright (c) 2017 Greenbone Networks GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -29,42 +29,42 @@ CPE = "cpe:/a:cisco:iox";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106685");
- script_cve_id("CVE-2017-3853");
- script_tag(name: "cvss_base", value: "10.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5678 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106685");
+  script_cve_id("CVE-2017-3853");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11836 $");
 
- script_name("Cisco IOx Data in Motion Stack Overflow Vulnerability");
+  script_name("Cisco IOx Data in Motion Stack Overflow Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170322-iox");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170322-iox");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "Update to version 1.2.4.2");
+  script_tag(name:"solution", value:"Update to version 1.2.4.2");
 
- script_tag(name: "summary", value: "A vulnerability in the Data-in-Motion (DMo) process installed with the
+  script_tag(name:"summary", value:"A vulnerability in the Data-in-Motion (DMo) process installed with the
 Cisco IOx application environment could allow an unauthenticated, remote attacker to cause a stack overflow that
 could allow remote code execution with root privileges in the virtual instance running on an affected device.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient bounds checking in the DMo process.
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient bounds checking in the DMo process.
 An attacker could exploit this vulnerability by sending crafted packets that are forwarded to the DMo process for
 evaluation.");
 
- script_tag(name: "impact", value: "The impacts of a successful exploit are limited to the scope of the virtual
+  script_tag(name:"impact", value:"The impacts of a successful exploit are limited to the scope of the virtual
 instance and do not impact the router that is hosting Cisco IOx.");
 
- script_tag(name: "qod_type", value: "remote_banner");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-23 05:08:39 +0100 (Thu, 23 Mar 2017) $");
- script_tag(name: "creation_date", value: "2017-03-23 09:56:15 +0700 (Thu, 23 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_iox_web_detect.nasl");
- script_mandatory_keys("cisco_iox/installed");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-23 09:56:15 +0700 (Thu, 23 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_iox_web_detect.nasl");
+  script_mandatory_keys("cisco_iox/installed");
+  exit(0);
 }
 
 include("host_details.inc");

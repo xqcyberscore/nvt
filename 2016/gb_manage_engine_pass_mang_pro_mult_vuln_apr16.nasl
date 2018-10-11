@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_pass_mang_pro_mult_vuln_apr16.nasl 11426 2018-09-17 09:38:26Z asteins $
+# $Id: gb_manage_engine_pass_mang_pro_mult_vuln_apr16.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # ManageEngine Password Manager Pro Multiple Vulnerabilities
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:manageengine:password_manager_pro";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807677");
-  script_version("$Revision: 11426 $");
+  script_version("$Revision: 11811 $");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-26 16:33:12 +0530 (Tue, 26 Apr 2016)");
   script_name("ManageEngine Password Manager Pro Multiple Vulnerabilities");
 
@@ -67,8 +67,7 @@ if (description)
   8.1 build 8102 to 8.3 build 8302 and probably earlier versions.");
 
   script_tag(name:"solution", value:"Upgrade to ManageEngine Password Manager Pro
-  version 8.3 build 8303 or later.
-  For updates refer to https://www.manageengine.com/products/passwordmanagerpro/");
+  version 8.3 build 8303 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -82,6 +81,7 @@ if (description)
   script_dependencies("gb_manage_engine_pass_mang_pro_detect.nasl");
   script_mandatory_keys("ManageEngine/Password_Manager/installed");
   script_require_ports("Services/www", 7272);
+  script_xref(name:"URL", value:"https://www.manageengine.com/products/passwordmanagerpro/");
   exit(0);
 }
 

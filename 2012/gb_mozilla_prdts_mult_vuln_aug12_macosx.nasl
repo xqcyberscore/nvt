@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_aug12_macosx.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: gb_mozilla_prdts_mult_vuln_aug12_macosx.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Mozilla Products Multiple Vulnerabilities - August12 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803012");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2012-3959", "CVE-2012-3958", "CVE-2012-3957", "CVE-2012-3972",
                 "CVE-2012-3956", "CVE-2012-3971", "CVE-2012-1976", "CVE-2012-3970",
                 "CVE-2012-1975", "CVE-2012-3969", "CVE-2012-1974", "CVE-2012-3968",
@@ -36,7 +36,7 @@ if(description)
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 12:20:04 +0530 (Thu, 30 Aug 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - August12 (Mac OS X)");
 
@@ -79,16 +79,17 @@ if(description)
   - Use-after-free error exists within the WebGL implementation.");
   script_tag(name:"summary", value:"This host is installed with Mozilla firefox/thunderbird/seamonkey and is
   prone to multiple vulnerabilities.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 15.0 or ESR version 10.0.7 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 15.0 or ESR version 10.0.7 or later.
 
-  Upgrade to SeaMonkey version to 2.12 or later,
-  http://www.mozilla.org/projects/seamonkey/
+  Upgrade to SeaMonkey version to 2.12 or later.
 
-  Upgrade to Thunderbird version to 15.0 or ESR 10.0.7 or later,
-  http://www.mozilla.org/en-US/thunderbird/");
+  Upgrade to Thunderbird version to 15.0 or ESR 10.0.7 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/projects/seamonkey/");
+  script_xref(name:"URL", value:"http://www.mozilla.org/en-US/thunderbird/");
+
   exit(0);
 }
 

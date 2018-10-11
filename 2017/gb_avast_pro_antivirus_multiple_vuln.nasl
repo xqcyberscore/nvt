@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_pro_antivirus_multiple_vuln.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_avast_pro_antivirus_multiple_vuln.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Avast Pro Antivirus Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:avast:avast_pro_antivirus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811021");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-8308", "CVE-2017-8307");
   script_bugtraq_id(98084, 98086);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-05 13:59:15 +0530 (Fri, 05 May 2017)");
   script_name("Avast Pro Antivirus Multiple Vulnerabilities");
 
@@ -56,7 +56,7 @@ if(description)
   version 17.0");
 
   script_tag(name:"solution", value:"Upgrade to Avast Pro Antivirus version
-  17.0 or later. For updates refer to https://www.avast.com");
+  17.0 or later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -66,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_avast_pro_detect.nasl");
   script_mandatory_keys("Avast/Pro_Antivirus/Win/Ver");
+  script_xref(name:"URL", value:"https://www.avast.com");
   exit(0);
 }
 

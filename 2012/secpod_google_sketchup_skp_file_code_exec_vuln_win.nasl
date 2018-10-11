@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_sketchup_skp_file_code_exec_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: secpod_google_sketchup_skp_file_code_exec_vuln_win.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Google SketchUp '.SKP' File Remote Code Execution Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902679");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2011-2478");
   script_bugtraq_id(48363);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-21 14:56:42 +0530 (Mon, 21 May 2012)");
   script_name("Google SketchUp '.SKP' File Remote Code Execution Vulnerability (Windows)");
 
@@ -48,8 +48,7 @@ if(description)
   script_tag(name:"affected", value:"Google SketchUp version 7.1 Maintenance Release 2 and prior on Windows");
   script_tag(name:"insight", value:"The flaw is due to an error when handling certain types of invalid
   edge geometry in a specially crafted SketchUp (.SKP) file.");
-  script_tag(name:"solution", value:"Upgrade to Google SketchUp version 8.0 or later,
-  For updates refer to http://sketchup.google.com/download/index2.html");
+  script_tag(name:"solution", value:"Upgrade to Google SketchUp version 8.0 or later,");
   script_tag(name:"summary", value:"This host is installed with Google SketchUp and is prone to
   to remote code execution vulnerability.");
   script_tag(name:"qod_type", value:"registry");
@@ -57,6 +56,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/38187");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/68147");
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/msvr/msvr11-006");
+  script_xref(name:"URL", value:"http://sketchup.google.com/download/index2.html");
   exit(0);
 }
 

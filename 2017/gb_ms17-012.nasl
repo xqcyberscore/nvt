@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-012.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_ms17-012.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (4013078)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810593");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-0007", "CVE-2017-0016", "CVE-2017-0039", "CVE-2017-0057",
                 "CVE-2017-0100", "CVE-2017-0104");
   script_bugtraq_id(96018, 95969, 96024, 96695, 96700, 96697);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 08:10:02 +0530 (Wed, 15 Mar 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (4013078)");
 
@@ -93,10 +93,7 @@ if(description)
   Microsoft Windows Server 2016.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-
-  https://technet.microsoft.com/library/security/MS17-012");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -109,6 +106,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS17-012");
   exit(0);
 }
 

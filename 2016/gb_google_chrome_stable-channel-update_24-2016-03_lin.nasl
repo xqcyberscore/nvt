@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update_24-2016-03_lin.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_google_chrome_stable-channel-update_24-2016-03_lin.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update_24-2016-03)-Linux
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807643");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-1646", "CVE-2016-1647", "CVE-2016-1648", "CVE-2016-1649",
 		        "CVE-2016-1650", "CVE-2016-3679");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-28 10:36:52 +0530 (Mon, 28 Mar 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update_24-2016-03)-Linux");
 
@@ -66,8 +66,7 @@ if(description)
   prior to 49.0.2623.108 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version
-  49.0.2623.108 or later.
-  For updates refer to http://www.google.com/chrome");
+  49.0.2623.108 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -80,6 +79,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

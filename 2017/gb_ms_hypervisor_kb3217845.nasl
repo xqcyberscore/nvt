@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_hypervisor_kb3217845.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_ms_hypervisor_kb3217845.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Microsoft Windows Hypervisor Code Integrity Privilege Escalation Vulnerability (KB3217845)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811211");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-0193");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-20 17:50:43 +0530 (Tue, 20 Jun 2017)");
   script_name("Microsoft Windows Hypervisor Code Integrity Privilege Escalation Vulnerability (KB3217845)");
 
@@ -51,9 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Windows Server 2008 for x64-based Systems Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/3217845");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -65,6 +63,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3217845");
   exit(0);
 }
 

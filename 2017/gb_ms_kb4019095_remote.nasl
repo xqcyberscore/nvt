@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4019095_remote.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_ms_kb4019095_remote.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Microsoft SQL Server 2016 Information Disclosure Vulnerability-KB4019095 (Remote)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sql_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811292");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-8516");
   script_bugtraq_id(100041);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-09 15:25:00 +0530 (Wed, 09 Aug 2017)");
   script_name("Microsoft SQL Server 2016 Information Disclosure Vulnerability-KB4019095 (Remote)");
 
@@ -53,9 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft SQL Server 2016 x64 Service Pack 1 (CU)");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4019095");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +65,7 @@ if(description)
   script_dependencies("mssqlserver_detect.nasl");
   script_mandatory_keys("MS/SQLSERVER/Running");
   script_require_ports(1433);
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4019095");
   exit(0);
 }
 

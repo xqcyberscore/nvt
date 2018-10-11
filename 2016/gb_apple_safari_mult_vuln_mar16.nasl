@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_mar16.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_apple_safari_mult_vuln_mar16.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # Apple Safari Multiple Vulnerabilities-01 Mar16 (Mac OS X)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806692");
-  script_version("$Revision: 11607 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-1779", "CVE-2016-1771", "CVE-2016-1772", "CVE-2016-1762",
                 "CVE-2009-2197", "CVE-2016-1786", "CVE-2016-1785", "CVE-2016-1784",
                 "CVE-2016-1782", "CVE-2016-1783", "CVE-2016-1781", "CVE-2016-1778",
                 "CVE-2016-1864");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:23 +0530 (Fri, 01 Apr 2016)");
   script_name("Apple Safari Multiple Vulnerabilities-01 Mar16 (Mac OS X)");
 
@@ -80,7 +80,7 @@ if(description)
   script_tag(name:"affected", value:"Apple Safari versions before 9.1");
 
   script_tag(name:"solution", value:"Upgrade to Apple Safari version 9.1 or
-  later. For updates refer to http://www.apple.com/support.");
+  later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -92,6 +92,7 @@ if(description)
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
   script_mandatory_keys("AppleSafari/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.apple.com/support.");
   exit(0);
 }
 

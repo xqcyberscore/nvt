@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powerdns_eol.nasl 7976 2017-12-04 07:09:00Z cfischer $
+# $Id: gb_powerdns_eol.nasl 11836 2018-10-11 08:56:08Z mmartin $
 #
 # PowerDNS End of Life Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113017");
-  script_version("$Revision: 7976 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-04 08:09:00 +0100 (Mon, 04 Dec 2017) $");
+  script_version("$Revision: 11836 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:56:08 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-16 13:11:12 +0200 (Mon, 16 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,23 +47,15 @@ if( description )
   script_dependencies("pdns_version.nasl");
   script_mandatory_keys("powerdns/authoritative_server/installed");
 
-  tag_summary = "The PowerDNS version on the remote host has reached the end of life and should not be used anymore.";
-
-  tag_impact = "An end of life version of PowerDNS is not receiving any security updates from the vendor. Unfixed security vulnerabilities
-    might be leveraged by an attacker to compromise the security of this host.";
-
-  tag_solution = "Update the PowerDNS version on the remote host to a still supported version.";
-
-  tag_vuldetect = "Get the installed version with the help of the detection NVT and check if the version is unsupported.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
+  script_tag(name:"summary", value:"The PowerDNS version on the remote host has reached the end of life and should not be used anymore.");
+  script_tag(name:"impact", value:"An end of life version of PowerDNS is not receiving any security updates from the vendor. Unfixed security vulnerabilities
+    might be leveraged by an attacker to compromise the security of this host.");
+  script_tag(name:"solution", value:"Update the PowerDNS version on the remote host to a still supported version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_xref(name:"URL", value:"https://doc.powerdns.com/md/end-of-life/#end-of-life-statements");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:powerdns:authoritative_server";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsa_xss_vuln_0116.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_gsa_xss_vuln_0116.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # Greenbone Security Assistant 6.0 < 6.0.8 Cross-Site Scripting Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:greenbone:greenbone_security_assistant";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108196");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11835 $");
   script_cve_id("CVE-2016-1926");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-26 13:00:00 +0200 (Wed, 26 Jul 2017)");
   script_name("Greenbone Security Assistant 6.0 < 6.0.8 Cross-Site Scripting Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw exists due to a improper handling of the parameters of the get_aggregate command.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detect NVT and check if the
-  version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Given the attacker has access to a session token of the browser session, the cross site scripting
   can be executed.");

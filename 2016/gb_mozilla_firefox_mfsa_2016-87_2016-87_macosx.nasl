@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-87_2016-87_macosx.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_mozilla_firefox_mfsa_2016-87_2016-87_macosx.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # Mozilla Firefox Security Updates( mfsa_2016-87_2016-87 )-MAC OS X
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809391");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-5287", "CVE-2016-5288");
   script_bugtraq_id(93810);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-21 15:25:13 +0530 (Fri, 21 Oct 2016)");
   script_name("Mozilla Firefox Security Updates( mfsa_2016-87_2016-87 )-MAC OS X");
 
@@ -58,7 +58,7 @@ if(description)
   49.0.2 on MAC OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 49.0.2
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  or later, ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +71,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

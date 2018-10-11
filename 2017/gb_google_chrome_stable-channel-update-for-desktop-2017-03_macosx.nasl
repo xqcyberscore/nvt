@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-03_macosx.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-03_macosx.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2017-03)-MAC OS X
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810588");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-5030", "CVE-2017-5031", "CVE-2017-5032", "CVE-2017-5029",
                 "CVE-2017-5034", "CVE-2017-5035", "CVE-2017-5036", "CVE-2017-5037",
                 "CVE-2017-5039", "CVE-2017-5040", "CVE-2017-5041", "CVE-2017-5033",
@@ -37,7 +37,7 @@ if(description)
                 "CVE-2017-5045", "CVE-2017-5046");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-10 10:42:40 +0530 (Fri, 10 Mar 2017)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2017-03)-MAC OS X");
 
@@ -84,8 +84,7 @@ if(description)
   prior to 57.0.2987.98 on MAC OS X");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version
-  57.0.2987.98 or later.
-  For updates refer to http://www.google.com/chrome");
+  57.0.2987.98 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -98,6 +97,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("GoogleChrome/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

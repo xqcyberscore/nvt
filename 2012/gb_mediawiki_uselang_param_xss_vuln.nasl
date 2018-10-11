@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_uselang_param_xss_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_mediawiki_uselang_param_xss_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # MediaWiki 'uselang' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802910");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2012-2698");
   script_bugtraq_id(53998);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-09 13:41:49 +0530 (Mon, 09 Jul 2012)");
   script_name("MediaWiki 'uselang' Parameter Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49484");
@@ -57,14 +57,13 @@ if(description)
   script_tag(name:"insight", value:"Input passed via the 'uselang' parameter to 'index.php/Main_page' is not
   properly sanitised in the 'outputPage()' function, before being returned
   to the user.");
-  script_tag(name:"solution", value:"Upgrade to MediaWiki version 1.17.5, 1.18.4, or 1.19.1 or later.
-
-  For updates refer to http://www.mediawiki.org/wiki/MediaWiki");
+  script_tag(name:"solution", value:"Upgrade to MediaWiki version 1.17.5, 1.18.4, or 1.19.1 or later.");
   script_tag(name:"summary", value:"This host is running MediaWiki and is prone to cross site scripting
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.mediawiki.org/wiki/MediaWiki");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: aas_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: aas_detect.nasl 11831 2018-10-11 07:49:24Z jschulte $
 #
 # A A S Application Access Server Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100196");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11831 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 09:49:24 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-05-12 22:04:51 +0200 (Tue, 12 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
 
@@ -43,11 +43,11 @@ if (description)
   script_require_ports("Services/www", 6262);
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name:"summary", value:"The A A S Application Access Server is running at this port. The A A S
-Application Access Server makes the PC administration possible over LAN and WANs.");
+  Application Access Server makes the PC administration possible over LAN and WANs.");
 
   script_xref(name:"URL", value:"http://www.klinzmann.name/a-a-s/index_en.html");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_ds_resource_record_dos_vuln_lin.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_isc_bind_ds_resource_record_dos_vuln_lin.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # ISC BIND Unusual DS Record Response Denial of Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810284");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2016-9444");
   script_bugtraq_id(95393);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-16 16:59:09 +0530 (Mon, 16 Jan 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("ISC BIND Unusual DS Record Response Denial of Service Vulnerability (Linux)");
@@ -57,8 +57,7 @@ if(description)
   9.10.4-P4 and 9.11.0 through 9.11.0-P1 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to ISC BIND version 9.9.9-P5 or
-  9.10.4-P5 or 9.11.0-P2 or 9.9.9-S7 or later on Linux.
-  For updates refer to https://www.isc.org");
+  9.10.4-P5 or 9.11.0-P2 or 9.9.9-S7 or later on Linux.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("bind_version.nasl", "os_detection.nasl");
   script_mandatory_keys("ISC BIND/installed", "Host/runs_unixoide");
+  script_xref(name:"URL", value:"https://www.isc.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_decompressing_heap_overflow_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_xnview_decompressing_heap_overflow_vuln_win.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # XnView Multiple Image Decompression Heap Overflow Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802444");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2012-0276", "CVE-2012-0277", "CVE-2012-0282");
   script_bugtraq_id(54125);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-24 15:21:56 +0530 (Tue, 24 Jul 2012)");
   script_name("XnView Multiple Image Decompression Heap Overflow Vulnerabilities (Windows)");
 
@@ -45,8 +45,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code on the
   system or cause a denial of service condition.");
   script_tag(name:"affected", value:"XnView versions prior to 1.99 on windows");
-  script_tag(name:"solution", value:"Update to XnView version 1.99 or later,
-  For updates refer to http://www.xnview.com/");
+  script_tag(name:"solution", value:"Update to XnView version 1.99 or later,");
   script_tag(name:"summary", value:"This host has XnView installed and is prone to multiple heap
   based buffer overflow vulnerabilities.
 
@@ -72,6 +71,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.protekresearchlab.com/index.php?option=com_content&view=article&id=48");
   script_xref(name:"URL", value:"http://www.protekresearchlab.com/index.php?option=com_content&view=article&id=49");
   script_xref(name:"URL", value:"http://www.protekresearchlab.com/index.php?option=com_content&view=article&id=50");
+  script_xref(name:"URL", value:"http://www.xnview.com/");
   exit(0);
 }
 

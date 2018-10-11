@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-019.nasl 11706 2018-10-01 09:48:48Z cfischer $
+# $Id: secpod_ms12-019.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Microsoft Windows DirectWrite Denial of Service Vulnerability (2665364)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902908");
-  script_version("$Revision: 11706 $");
+  script_version("$Revision: 11818 $");
   script_cve_id("CVE-2012-0156");
   script_bugtraq_id(52332);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-14 09:53:40 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Windows DirectWrite Denial of Service Vulnerability (2665364)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48361");
@@ -59,9 +59,7 @@ if(description)
   cause an application using the API to stop responding via a specially crafted sequence of unicode characters.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-019");
+  update mentioned hotfixes in the advisory ");
 
   script_tag(name:"summary", value:"This host has moderate security update missing according to
   Microsoft Bulletin MS12-019.");

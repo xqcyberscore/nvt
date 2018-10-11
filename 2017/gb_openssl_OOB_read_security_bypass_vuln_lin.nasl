@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_OOB_read_security_bypass_vuln_lin.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_openssl_OOB_read_security_bypass_vuln_lin.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # OpenSSL 'OOB read' Security Bypass Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811720");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-3735");
   script_bugtraq_id(100515);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-31 11:14:51 +0530 (Thu, 31 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL 'OOB read' Security Bypass Vulnerability (Linux)");
@@ -56,7 +56,7 @@ if(description)
   prior to 1.0.2m-dev, all 1.0.1x, all 0.9.8x and all 1.0.0x versions on Linux");
 
   script_tag(name:"solution", value:"Upgrade to OpenSSL version 1.1.0g-dev or
-  1.0.2m-dev or later. For updates refer to https://www.openssl.org");
+  1.0.2m-dev or later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +69,7 @@ if(description)
   script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("OpenSSL/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.openssl.org");
   exit(0);
 }
 

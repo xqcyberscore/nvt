@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mat_file_mult_dos_vuln_win.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_imagemagick_mat_file_mult_dos_vuln_win.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # ImageMagick Mat File Multiple Denial of Service Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810506");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2016-10070", "CVE-2016-10071");
   script_bugtraq_id(95221, 95222);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-16 15:59:02 +0530 (Mon, 16 Jan 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick Mat File Multiple Denial of Service Vulnerabilities (Windows)");
@@ -54,7 +54,7 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to ImageMagick version
-  6.9.4-0 or later. For updates refer to http://www.imagemagick.org");
+  6.9.4-0 or later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +66,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
   script_mandatory_keys("ImageMagick/Win/Installed");
+  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
 

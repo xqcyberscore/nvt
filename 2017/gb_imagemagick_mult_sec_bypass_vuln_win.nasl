@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_sec_bypass_vuln_win.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_imagemagick_mult_sec_bypass_vuln_win.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # ImageMagick Multiple Security Bypass Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810278");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2016-10060", "CVE-2016-10061", "CVE-2016-10062");
   script_bugtraq_id(95208, 95207, 95209);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-13 15:10:00 +0530 (Fri, 13 Jan 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick Multiple Security Bypass Vulnerabilities (Windows)");
@@ -55,7 +55,7 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to ImageMagick version
-  7.0.1-10 or later. For updates refer to http://www.imagemagick.org");
+  7.0.1-10 or later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
   script_mandatory_keys("ImageMagick/Win/Installed");
+  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teamviewer_ses_hijack_vuln.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_teamviewer_ses_hijack_vuln.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # Teamviewer Session Hijacking Vulnerability
 #
@@ -29,18 +29,17 @@ CPE = "cpe:/a:teamviewer:teamviewer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107273");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11835 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-11 09:50:38 +0700 (Mon, 11 Dec 2017)");
   script_name("Teamviewer Session Hijacking Vulnerability");
 
   script_tag(name:"summary", value:"Teamviewer is vulnerable to session hijacking.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is caused through an injectable C++ DLL which takes advantage of the bug to change TeamViewer permissions");
 

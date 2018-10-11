@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017-0014.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_panos_pan_sa-2017-0014.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # Palo Alto Networks PAN-OS CVE-2017-7945 Brute Force Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107176");
-  script_version("$Revision: 11501 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 11835 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-19 12:42:40 +0200 (Fri, 19 May 2017)");
 
   script_cve_id("CVE-2017-7945");
@@ -42,7 +42,7 @@ if(description)
 
   script_name("Palo Alto Networks PAN-OS CVE-2017-7945 Brute Force Vulnerability");
   script_tag(name:"summary", value:"A vulnerability exists in PAN-OS GlobalProtect external interface that could allow for an attacker to brute force a username on PAN-OS GlobalProtect external Interface.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerability is caused by PAN-OS provided different responses when supplying login credentials. ");
 

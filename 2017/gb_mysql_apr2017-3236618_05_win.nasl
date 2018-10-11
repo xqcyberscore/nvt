@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_apr2017-3236618_05_win.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_mysql_apr2017-3236618_05_win.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Oracle Mysql Security Updates (apr2017-3236618) 05 - Windows
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810888");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-3459", "CVE-2017-3458", "CVE-2017-3457", "CVE-2017-3455",
                 "CVE-2017-3454", "CVE-2017-3460", "CVE-2017-3467", "CVE-2017-3465",
                 "CVE-2017-3468");
   script_bugtraq_id(97847, 97837, 97845, 97820, 97791, 97826, 97825, 97822, 97848);
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-19 16:47:07 +0530 (Wed, 19 Apr 2017)");
   script_name("Oracle Mysql Security Updates (apr2017-3236618) 05 - Windows");
 
@@ -58,8 +58,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle MySQL version 5.7.17 and earlier
   on Windows");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html");
+  script_tag(name:"solution", value:"Apply the patch ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -73,6 +72,7 @@ if(description)
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed", "Host/runs_windows");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html");
   exit(0);
 }
 

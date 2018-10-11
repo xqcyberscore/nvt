@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_apsb16-14_win.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_adobe_acrobat_apsb16-14_win.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # Adobe Acrobat Security Updates(apsb16-14)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807697");
-  script_version("$Revision: 11607 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-1037", "CVE-2016-1038", "CVE-2016-1039", "CVE-2016-1040",
 		"CVE-2016-1041", "CVE-2016-1042", "CVE-2016-1043", "CVE-2016-1044",
 		"CVE-2016-1045", "CVE-2016-1046", "CVE-2016-1047", "CVE-2016-1048",
@@ -55,7 +55,7 @@ if(description)
 		"CVE-2016-4104", "CVE-2016-4105", "CVE-2016-4106", "CVE-2016-4107");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-12 10:27:43 +0530 (Thu, 12 May 2016)");
   script_name("Adobe Acrobat Security Updates(apsb16-14)-Windows");
 
@@ -83,8 +83,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Acrobat version 11.x before 11.0.16 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Acrobat version
-  11.0.16 or later.
-  For updates refer to http://www.adobe.com/in/products/acrobat.html");
+  11.0.16 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -97,6 +96,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Acrobat/Win/Installed");
+  script_xref(name:"URL", value:"http://www.adobe.com/in/products/acrobat.html");
   exit(0);
 }
 

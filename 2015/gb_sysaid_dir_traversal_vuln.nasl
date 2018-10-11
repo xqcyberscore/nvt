@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_dir_traversal_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_sysaid_dir_traversal_vuln.nasl 11821 2018-10-10 12:44:18Z jschulte $
 #
 # SysAid Directory Traversal Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:sysaid:sysaid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106007");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 11821 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 14:44:18 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
@@ -48,19 +48,19 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_sysaid_detect.nasl");
+  script_dependencies("gb_sysaid_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("sysaid/installed");
 
   script_tag(name:"summary", value:"SysAid Help Desktop Software is prone to a path traversal
-vulnerability");
+  vulnerability");
 
   script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response.");
 
   script_tag(name:"insight", value:"The vulnerability allows unauthenticated attackers to download
-arbitrary files through path traversal.");
+  arbitrary files through path traversal.");
 
   script_tag(name:"impact", value:"An unauthenticated attacker can obtain potentially sensitive
-information.");
+  information.");
 
   script_tag(name:"affected", value:"SysAid Help Desktop version 15.1.x and before.");
 
@@ -74,6 +74,7 @@ information.");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);
@@ -84,12 +85,19 @@ if (!dir = get_app_location(cpe: CPE, port: port))
 if (dir == "/")
   dir = "";
 
-url = dir + '/getGfiUpgradeFile?fileName=../../../../../../../etc/passwd';
+files = traversal_files();
 
-if (http_vuln_check(port: port, url: url, pattern: "root:.*:0:[01]:")) {
-  report = report_vuln_url( port:port, url:url );
-  security_message(port: port, data:report);
-  exit(0);
+foreach pattern(keys(files)) {
+
+  file = files[pattern];
+
+  url = dir + '/getGfiUpgradeFile?fileName=../../../../../../../' + file;
+
+  if (http_vuln_check(port: port, url: url, pattern: pattern)) {
+    report = report_vuln_url(port:port, url:url);
+    security_message(port: port, data:report);
+    exit(0);
+  }
 }
 
-exit(0);
+exit(99);

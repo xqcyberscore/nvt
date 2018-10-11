@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_csrf_vuln_feb18.nasl 9877 2018-05-17 05:03:18Z ckuersteiner $
+# $Id: gb_mybb_csrf_vuln_feb18.nasl 11813 2018-10-10 10:05:37Z ckuersteiner $
 #
 # MyBB Cross Site Request Forgery Vulnerability
 #
@@ -30,14 +30,15 @@ CPE = "cpe:/a:mybb:mybb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812807");
-  script_version("$Revision: 9877 $");
+  script_version("$Revision: 11813 $");
   script_cve_id("CVE-2018-7305");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 07:03:18 +0200 (Thu, 17 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:05:37 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-22 15:03:22 +0530 (Thu, 22 Feb 2018)");
+
   script_name("MyBB Cross Site Request Forgery Vulnerability");
-  
+
   script_tag(name:"summary", value:"The host is installed with MyBB and is
   prone to cross site request forgery vulnerability.");
 
@@ -48,15 +49,13 @@ if (description)
   for a valid CSRF token.");
 
   script_tag(name:"impact", value:"Successfully exploitation will allows an
-  attackers to delete arbitrary user accounts.
-
-  Impact Level: Application");
+  attackers to delete arbitrary user accounts.");
 
   script_tag(name:"affected", value:"MyBB version 1.8.14");
 
-  script_tag(name:"solution", value:"No known solution is available as of 17th May, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 10th October, 2018. Information regarding
 this issue will be updated once solution details are available.");
-  
+
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_banner");
   script_xref(name:"URL", value:"https://websecnerd.blogspot.in/2018/02/mybb-forum-1_21.html");
@@ -65,6 +64,7 @@ this issue will be updated once solution details are available.");
   script_family("Web application abuses");
   script_dependencies("sw_mybb_detect.nasl");
   script_mandatory_keys("MyBB/installed");
+
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_open_redirect_vuln.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_elasticsearch_kibana_open_redirect_vuln.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Elasticsearch Kibana Open Redirect Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811412");
-  script_version("$Revision: 11501 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2016-10365");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-03 20:40:53 +0530 (Mon, 03 Jul 2017)");
   script_name("Elasticsearch Kibana Open Redirect Vulnerability");
 
@@ -52,7 +52,7 @@ if(description)
   and 5.0.1");
 
   script_tag(name:"solution", value:"Upgrade to Elasticsearch Kibana version
-  4.6.3 or 5.0.1 or later. For updates refer to https://www.elastic.co");
+  4.6.3 or 5.0.1 or later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -63,6 +63,7 @@ if(description)
   script_dependencies("gb_elasticsearch_kibana_detect.nasl");
   script_mandatory_keys("Elasticsearch/Kibana/Installed");
   script_require_ports("Services/www", 5601);
+  script_xref(name:"URL", value:"https://www.elastic.co");
   exit(0);
 }
 

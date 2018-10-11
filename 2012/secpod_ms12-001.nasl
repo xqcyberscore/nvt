@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-001.nasl 11706 2018-10-01 09:48:48Z cfischer $
+# $Id: secpod_ms12-001.nasl 11818 2018-10-10 11:35:42Z asteins $
 #
 # Microsoft Windows Kernel Security Feature Bypass Vulnerability (2644615)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902783");
-  script_version("$Revision: 11706 $");
+  script_version("$Revision: 11818 $");
   script_bugtraq_id(51296);
   script_cve_id("CVE-2012-0001");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2012-01-11 10:01:06 +0530 (Wed, 11 Jan 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
   script_name("Microsoft Windows Kernel Security Feature Bypass Vulnerability (2644615)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47356/");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2644615");
@@ -64,9 +64,7 @@ if(description)
   vulnerabilities in affected applications to execute code.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-001");
+  update mentioned hotfixes in the advisory ");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-001.");

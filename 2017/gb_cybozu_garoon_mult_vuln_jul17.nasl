@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_garoon_mult_vuln_jul17.nasl 6757 2017-07-19 05:57:31Z cfischer $
+# $Id: gb_cybozu_garoon_mult_vuln_jul17.nasl 11835 2018-10-11 08:38:49Z mmartin $
 #
 # Cybozu Garoon Multiple Vulnerabilities - Jul17
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cybozu:garoon";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108194");
-  script_version("$Revision: 6757 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 07:57:31 +0200 (Wed, 19 Jul 2017) $");
+  script_version("$Revision: 11835 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-18 11:54:29 +0200 (Tue, 18 Jul 2017)");
   script_cve_id("CVE-2017-2144", "CVE-2017-2145", "CVE-2017-2146");
   script_tag(name:"cvss_base", value:"5.8");
@@ -46,8 +46,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Cybozu Garoon
   and is vulnerable to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of a detect NVT
-  and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Cybozu Garoon is prone to multiple vulnerabilities");
 

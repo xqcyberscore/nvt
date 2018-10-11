@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_x11_forwarding_security_bypass_vuln_lin.nasl 11795 2018-10-09 13:03:20Z mmartin $
+# $Id: gb_openssh_x11_forwarding_security_bypass_vuln_lin.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # OpenSSH X11 Forwarding Security Bypass Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810769");
-  script_version("$Revision: 11795 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2016-1908");
   script_bugtraq_id(84427);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 15:03:20 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-21 16:34:59 +0530 (Fri, 21 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSH X11 Forwarding Security Bypass Vulnerability (Linux)");
@@ -56,8 +56,7 @@ if(description)
 
   script_tag(name:"affected", value:"OpenSSH versions before 7.2 on Linux.");
 
-  script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.2 or later.
-  For updates refer to http://www.openssh.com");
+  script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2016/01/15/13");
@@ -71,6 +70,7 @@ if(description)
   script_dependencies("ssh_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("openssh/detected", "Host/runs_unixoide");
   script_require_ports("Services/ssh", 22);
+  script_xref(name:"URL", value:"http://www.openssh.com");
   exit(0);
 }
 

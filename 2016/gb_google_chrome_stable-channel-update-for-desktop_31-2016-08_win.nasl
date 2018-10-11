@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop_31-2016-08_win.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop_31-2016-08_win.nasl 11811 2018-10-10 09:55:00Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop_31-2016-08)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809032");
-  script_version("$Revision: 11607 $");
+  script_version("$Revision: 11811 $");
   script_cve_id("CVE-2016-5147", "CVE-2016-5148", "CVE-2016-5149", "CVE-2016-5150",
                 "CVE-2016-5151", "CVE-2016-5152", "CVE-2016-5153", "CVE-2016-5154",
                 "CVE-2016-5155", "CVE-2016-5156", "CVE-2016-5157", "CVE-2016-5158",
@@ -39,7 +39,7 @@ if(description)
   script_bugtraq_id(92717);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-06 14:41:40 +0530 (Tue, 06 Sep 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_31-2016-08)-Windows");
 
@@ -82,8 +82,7 @@ if(description)
   53.0.2785.89 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version
-  53.0.2785.89 or later.
-  For updates refer to http://www.google.com/chrome");
+  53.0.2785.89 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -96,6 +95,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

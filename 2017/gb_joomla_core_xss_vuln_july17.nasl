@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_core_xss_vuln_july17.nasl 11472 2018-09-19 11:20:06Z mmartin $
+# $Id: gb_joomla_core_xss_vuln_july17.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # Joomla! Core Cross-Site Scripting Vulnerability - July17
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811257");
-  script_version("$Revision: 11472 $");
+  script_version("$Revision: 11816 $");
   script_cve_id("CVE-2017-11612");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:20:06 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-26 11:07:10 +0530 (Wed, 26 Jul 2017)");
   script_name("Joomla! Core Cross-Site Scripting Vulnerability - July17");
 
@@ -50,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"Joomla core versions 1.5.0 through 3.7.3");
 
-  script_tag(name:"solution", value:"Upgrade to Joomla version 3.7.4 or later.
-  For updates refer to https://www.joomla.org");
+  script_tag(name:"solution", value:"Upgrade to Joomla version 3.7.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -64,6 +63,7 @@ if(description)
   script_dependencies("joomla_detect.nasl");
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.joomla.org");
   exit(0);
 }
 

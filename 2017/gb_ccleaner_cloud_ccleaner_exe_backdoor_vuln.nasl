@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ccleaner_cloud_ccleaner_exe_backdoor_vuln.nasl 11501 2018-09-20 12:19:13Z mmartin $
+# $Id: gb_ccleaner_cloud_ccleaner_exe_backdoor_vuln.nasl 11816 2018-10-10 10:42:56Z mmartin $
 #
 # CCleaner Cloud 'CCleaner.exe' Backdoor Trojan Vulnerability (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:piriform:ccleaner_cloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811780");
-  script_version("$Revision: 11501 $");
+  script_version("$Revision: 11816 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:19:13 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-19 13:28:32 +0530 (Tue, 19 Sep 2017)");
   script_name("CCleaner Cloud 'CCleaner.exe' Backdoor Trojan Vulnerability (Windows)");
 
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"affected", value:"CCleaner Cloud Agent version 1.07.3191");
 
   script_tag(name:"solution", value:"Upgrade to CCleaner Cloud version
-  1.7.0.3214 or later.For updates refer to https://www.piriform.com");
+  1.7.0.3214 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -63,6 +63,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_ccleaner_cloud_agent_detect_win.nasl");
   script_mandatory_keys("CCleaner/Cloud/Win/Ver");
+  script_xref(name:"URL", value:"https://www.piriform.com");
   exit(0);
 }
 
