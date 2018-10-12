@@ -7,9 +7,6 @@
 # Authors:
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
-#
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
 #
@@ -30,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120662");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-03-31 08:02:05 +0300 (Thu, 31 Mar 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Amazon Linux Local Check: alas-2016-672");
   script_tag(name:"insight", value:"An integer truncation flaw (CVE-2016-2315 ) and an integer overflow flaw (CVE-2016-2324 ), both leading to a heap-based buffer overflow, were found in the way Git processed certain path information. A remote attacker could create a specially crafted Git repository that would cause a Git client or server to crash or, possibly, execute arbitrary code.");
   script_tag(name:"solution", value:"Run yum update git to update your system.");

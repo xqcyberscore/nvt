@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wwh_55387.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_wwh_55387.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wiki Web Help 'configpath' Parameter Remote File Include Vulnerability
 #
@@ -31,7 +31,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103562");
   script_bugtraq_id(55387);
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://wikiwebhelp.org/");
   script_xref(name:"URL", value:"http://sourceforge.net/projects/wwh/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-10 11:39:24 +0200 (Mon, 10 Sep 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,7 +62,7 @@ Likely none will be provided anymore. General solution options are to upgrade to
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

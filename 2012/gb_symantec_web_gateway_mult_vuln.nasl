@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_mult_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_symantec_web_gateway_mult_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Symantec Web Gateway Multiple Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:symantec:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802661");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(54426, 54429, 54424, 54425, 54427, 54430);
   script_cve_id("CVE-2012-2953", "CVE-2012-2957", "CVE-2012-2574", "CVE-2012-2961",
                 "CVE-2012-2976", "CVE-2012-2977");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-24 15:15:15 +0530 (Tue, 24 Jul 2012)");
   script_name("Symantec Web Gateway Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -73,8 +73,7 @@ if(description)
     console and can be exploited to change the password of an arbitrary user
     of the application.");
 
-  script_tag(name:"solution", value:"Upgrade to Symantec Web Gateway version 5.0.3.18 or later,
-  For updates refer to http://www.symantec.com/business/web-gateway");
+  script_tag(name:"solution", value:"Upgrade to Symantec Web Gateway version 5.0.3.18 or later,");
 
   script_tag(name:"summary", value:"This host is running Symantec Web Gateway and is prone to multiple
   vulnerabilities.");
@@ -82,6 +81,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.symantec.com/business/web-gateway");
   exit(0);
 }
 

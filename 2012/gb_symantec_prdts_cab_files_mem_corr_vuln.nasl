@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_prdts_cab_files_mem_corr_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_symantec_prdts_cab_files_mem_corr_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Symantec Products CAB Files Memory Corruption Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803054");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-4953");
   script_bugtraq_id(56399);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-22 12:16:15 +0530 (Thu, 22 Nov 2012)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -52,11 +52,7 @@ if(description)
   when parsing files from CAB archives.");
   script_tag(name:"summary", value:"This host is installed with Symantec Product and is prone to
   memory corruption vulnerability.");
-  script_tag(name:"solution", value:"Upgrade to Symantec Endpoint Protection (SEP) version 12.1 or later
-  For updates refer to http://www.symantec.com/business/support/index?page=content&id=TECH163602
-
-
-  *****
+  script_tag(name:"solution", value:"Upgrade to Symantec Endpoint Protection (SEP) version 12.1 or later  *****
 
   NOTE: Ignore this warning if patch or mentioned workaround is applied already.
         For patch or workaround refer to
@@ -67,6 +63,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/49248/");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/985625");
   script_xref(name:"URL", value:"http://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=&suid=20121107_00");
+  script_xref(name:"URL", value:"http://www.symantec.com/business/support/index?page=content&id=TECH163602");
   exit(0);
 }
 

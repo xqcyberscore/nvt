@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln01_mar11_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_wireshark_dos_vuln01_mar11_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wireshark Denial of Service Vulnerability-01 March 11 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802799");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-1142");
   script_bugtraq_id(46626);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-27 15:59:15 +0530 (Wed, 27 Jun 2012)");
   script_name("Wireshark Denial of Service Vulnerability-01 March 11 (Mac OS X)");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/65912");
@@ -49,12 +49,12 @@ denial of service via vectors involving self-referential ASN.1 CHOICE values.");
 Wireshark version 1.4.0 through 1.4.4");
   script_tag(name:"insight", value:"The flaw is due to stack consumption vulnerability in the
 'dissect_ber_choice function' in the 'BER dissector'.");
-  script_tag(name:"solution", value:"Upgrade to version 1.4.4-1 or later,
-For updates refer to http://www.wireshark.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to version 1.4.4-1 or later,");
   script_tag(name:"summary", value:"The host is installed with Wireshark and is prone to denial of
 service vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download.html");
   exit(0);
 }
 

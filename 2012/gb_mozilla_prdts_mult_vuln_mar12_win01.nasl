@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_mar12_win01.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: gb_mozilla_prdts_mult_vuln_mar12_win01.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities - Mar12 (Win 01)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802822");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0451", "CVE-2012-0454", "CVE-2012-0459", "CVE-2012-0460",
                 "CVE-2012-0462");
   script_bugtraq_id(52463, 52455, 52457, 52456, 52467);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-19 19:20:23 +0530 (Mon, 19 Mar 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - Mar12 (Win 01)");
 
@@ -74,10 +74,7 @@ if(description)
   - An error when handling Content Security Policy headers.");
   script_tag(name:"summary", value:"The host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
   to multiple vulnerabilities.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 11.0 or ESR version 10.0.3 later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html
-
-  Upgrade to SeaMonkey version to 2.8 or later,
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 11.0 or ESR version 10.0.3 later,  Upgrade to SeaMonkey version to 2.8 or later,
   http://www.mozilla.org/projects/seamonkey/
 
   Upgrade to Thunderbird version to 11 or ESR version 10.0.3 later,
@@ -85,6 +82,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

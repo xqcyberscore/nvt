@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0165.nasl 11692 2018-09-28 16:55:19Z cfischer $
+# $Id: mgasa-2016-0165.nasl 11856 2018-10-12 07:45:29Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -8,10 +8,8 @@
 # Eero Volotinen <eero.volotinen@solinor.com>
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
+# Copyright (c) 2016 Eero Volotinen, http://www.solinor.com
 #
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -30,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131287");
-  script_version("$Revision: 11692 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-05-09 14:17:50 +0300 (Mon, 09 May 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 18:55:19 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0165");
   script_tag(name:"insight", value:"Updated quagga packages fix security vulnerability: A denial of dervice vulnerability have been found in BGP daemon from Quagga routing software (bgpd): if the following conditions are satisfied: - regular dumping is enabled - bgpd instance has many BGP peers then BGP message packets that are big enough cause bgpd to crash. The situation when the conditions above are satisfied is quite common. Moreover, it is easy to craft a packet which is much bigger than a typical packet, and hence such crafted packet can much more likely cause the crash (CVE-2016-4049).");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

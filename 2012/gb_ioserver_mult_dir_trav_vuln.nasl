@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ioserver_mult_dir_trav_vuln.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: gb_ioserver_mult_dir_trav_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # IOServer Trailing Backslash Multiple Directory Traversal Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802445");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-4680");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-20 16:21:46 +0530 (Mon, 20 Aug 2012)");
   script_name("IOServer Trailing Backslash Multiple Directory Traversal Vulnerabilities");
 
@@ -51,14 +51,14 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to improper validation of URI containing
   ../ (dot dot) sequences, which allows attackers to read arbitrary files
    via directory traversal attacks.");
-  script_tag(name:"solution", value:"Upgrade to IOServer version 1.0.19.0 or later,
-  For updates refer to http://www.ioserver.com/");
+  script_tag(name:"solution", value:"Upgrade to IOServer version 1.0.19.0 or later,");
   script_tag(name:"summary", value:"This host is running IOServer and is prone to multiple directory
   traversal vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://www.ioserver.com/");
   exit(0);
 }
 

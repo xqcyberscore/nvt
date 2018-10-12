@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-133.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_ms_office_ms16-133.nasl 11837 2018-10-11 09:17:05Z asteins $
 #
 # Microsoft Office Suite Multiple Vulnerabilities (3199168)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809718");
-  script_version("$Revision: 11607 $");
+  script_version("$Revision: 11837 $");
   script_cve_id("CVE-2016-7232", "CVE-2016-7244", "CVE-2016-7245", "CVE-2016-7233",
                 "CVE-2016-7234", "CVE-2016-7235");
   script_bugtraq_id(94005, 94022, 94026, 94020, 94031, 94029);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 11:41:38 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Suite Multiple Vulnerabilities (3199168)");
@@ -59,9 +59,7 @@ if(description)
   Microsoft Office 2016");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-133");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

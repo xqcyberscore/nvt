@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntop_54792.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_ntop_54792.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # ntop 'arbfile' Parameter Cross Site Scripting Vulnerability
 #
@@ -33,9 +33,9 @@ if(description)
   script_bugtraq_id(54792);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11435 $");
+  script_version("$Revision: 11855 $");
   script_name("ntop 'arbfile' Parameter Cross Site Scripting Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-07 11:41:07 +0200 (Tue, 07 Aug 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -59,7 +59,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

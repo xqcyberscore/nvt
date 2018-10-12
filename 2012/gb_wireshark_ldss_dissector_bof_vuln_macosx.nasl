@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ldss_dissector_bof_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_wireshark_ldss_dissector_bof_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wireshark LDSS Dissector Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802847");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2010-4300");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-04 18:49:10 +0530 (Fri, 04 May 2012)");
   script_name("Wireshark LDSS Dissector Buffer Overflow Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/42290");
@@ -50,12 +50,12 @@ if(description)
   LDSS dissector, which allows attackers to cause a denial of service (crash)
   and possibly execute arbitrary code via an LDSS packet with a long digest
   line.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark 1.4.2 or 1.2.13 later.
-  For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"solution", value:"Upgrade to Wireshark 1.4.2 or 1.2.13 later.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to buffer
   overflow vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download");
   exit(0);
 }
 

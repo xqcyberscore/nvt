@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kingview_heap_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_kingview_heap_bof_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # WellinTech KingView 'HistoryServer.exe' Heap Based Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802550");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-4536");
   script_bugtraq_id(51159);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-02 14:11:32 +0530 (Mon, 02 Jan 2012)");
   script_name("WellinTech KingView 'HistoryServer.exe' Heap Based Buffer Overflow Vulnerability");
 
@@ -54,10 +54,7 @@ if(description)
   packet sent to TCP port 777.");
   script_tag(name:"summary", value:"This host is installed with KingView and is prone to heap based
   buffer overflow vulnerability.");
-  script_tag(name:"solution", value:"Apply the patch from below link
-  http://www.kingview.com/news/detail.aspx?contentid=587
-
-  *****
+  script_tag(name:"solution", value:"Apply the patch  *****
   NOTE : Ignore this warning, if above mentioned patch is applied already.
   *****");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
@@ -65,6 +62,7 @@ if(description)
   denial-of-service conditions.");
   script_tag(name:"affected", value:"KingView version 6.53 and 65.30.2010.18018");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.kingview.com/news/detail.aspx?contentid=587");
   exit(0);
 }
 

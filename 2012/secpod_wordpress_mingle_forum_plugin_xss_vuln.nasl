@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_mingle_forum_plugin_xss_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
+# $Id: secpod_wordpress_mingle_forum_plugin_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # WordPress Mingle Forum Plugin 'search' Parameter XSS Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902665");
-  script_version("$Revision: 11431 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-29 16:02:43 +0530 (Thu, 29 Mar 2012)");
   script_name("WordPress Mingle Forum Plugin 'search' Parameter XSS Vulnerability");
   script_category(ACT_ATTACK);
@@ -49,13 +49,13 @@ site.");
   script_tag(name:"affected", value:"WordPress Mingle Forum Plugin version 1.0.33");
   script_tag(name:"insight", value:"The flaw is due to an input passed via the 'search' parameter is
 not properly sanitized before being returned to the user.");
-  script_tag(name:"solution", value:"Upgrade to WordPress Mingle Forum Plugin version 1.0.34.
-For updates refer to http://wordpress.org/extend/plugins/mingle-forum/");
+  script_tag(name:"solution", value:"Upgrade to WordPress Mingle Forum Plugin version 1.0.34.");
   script_tag(name:"summary", value:"This host is installed with WordPress Mingle Forum plugin and is
 prone to cross-site scripting vulnerability.");
   script_xref(name:"URL", value:"http://www.1337day.com/exploits/17826");
   script_xref(name:"URL", value:"http://tunisianseven.blogspot.in/2012/03/mingle-forum-wordpress-plugin-xss.html");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/mingle-forum/");
   exit(0);
 }
 

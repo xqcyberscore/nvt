@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_unspecified_vuln_macosx.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: gb_opera_unspecified_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Opera Unspecified Vulnerability - June12 (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802655");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-3559");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-22 10:10:10 +0530 (Fri, 22 Jun 2012)");
   script_name("Opera Unspecified Vulnerability - June12 (Mac OS X)");
   script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/mac/1200/");
@@ -44,8 +44,7 @@ if(description)
   script_tag(name:"impact", value:"Unknown impact and attack vectors.");
   script_tag(name:"affected", value:"Opera version prior to 12.00 on Mac OS X");
   script_tag(name:"insight", value:"The flaw is due to an unspecified error in the application.");
-  script_tag(name:"solution", value:"Upgrade to Opera version 12 or later,
-  For updates refer to http://www.opera.com/");
+  script_tag(name:"solution", value:"Upgrade to Opera version 12 or later,");
   script_tag(name:"summary", value:"The host is installed with Opera and is prone to unspecified
   vulnerability.");
   script_tag(name:"qod_type", value:"package");

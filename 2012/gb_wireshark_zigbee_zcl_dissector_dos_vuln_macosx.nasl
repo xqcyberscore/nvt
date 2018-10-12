@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_zigbee_zcl_dissector_dos_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_wireshark_zigbee_zcl_dissector_dos_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wireshark ZigBee ZCL Dissector Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802846");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2010-4301");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-04 18:39:35 +0530 (Fri, 04 May 2012)");
   script_name("Wireshark ZigBee ZCL Dissector Denial of Service Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/42290");
@@ -48,12 +48,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error in 'epan/dissectors/packet-zbee-zcl.c' in
   the ZigBee ZCL dissector, which allows remote attackers to cause a denial of
   service (infinite loop) via a crafted ZCL packet.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark 1.4.2 or later.
-  For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"solution", value:"Upgrade to Wireshark 1.4.2 or later.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to denial of
   service vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download");
   exit(0);
 }
 

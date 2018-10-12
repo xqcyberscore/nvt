@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_turboftp_server_port_cmd_bof_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: gb_turboftp_server_port_cmd_bof_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # TurboFTP Server PORT Command Processing Buffer Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803105");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(55764);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-22 18:55:24 +0530 (Mon, 22 Oct 2012)");
   script_name("TurboFTP Server PORT Command Processing Buffer Overflow Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50595/");
@@ -50,7 +50,7 @@ stack-based buffer overflow via an overly long IP octet string.");
   script_tag(name:"affected", value:"TurboFTP Server version 1.30.823");
   script_tag(name:"insight", value:"A boundary error occurs during the parsing of an FTP port command,
 which will result in a stack-based buffer overflow.");
-  script_tag(name:"solution", value:"Update to version Versio 1.30 Build 826 or later,");
+  script_tag(name:"solution", value:"Update to version Versio 1.30 Build 826 or later, ");
   script_tag(name:"summary", value:"This host is running TurboFTP server and is prone to buffer
 overflow vulnerability.");
 

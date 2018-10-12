@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_media_service_handshake_seq_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_ms_win_media_service_handshake_seq_dos_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft Windows Media Service Handshake Sequence DoS Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802888");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2000-0211");
   script_bugtraq_id(1000);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 13:22:23 +0530 (Mon, 30 Jul 2012)");
   script_name("Microsoft Windows Media Service Handshake Sequence DoS Vulnerability");
   script_category(ACT_DENIAL);
@@ -59,8 +59,7 @@ if(description)
   constraints, the server attempts to use a resource before it has been
   initialized causing the Windows Media Unicast Service to crash.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms00-013");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"summary", value:"This host is running Microsoft Windows Media Service and is prone
   to denial of service vulnerability.");
 
@@ -120,7 +119,7 @@ if(!mms_res || "MMS" >!< mms_res)
   exit(0);
 }
 
-## Microsoft Media Service Transer Request to Server
+## Microsoft Media Service Transfer Request to Server
 mss_req2 = raw_string(0x01, 0x00, 0x00, 0x00, 0xce, 0xfa, 0x0b, 0xb0, 0x20,
                       0x00, 0x00, 0x00, 0x4d, 0x4d, 0x53, 0x20, 0x04, 0x00,
                       0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x5e, 0xba, 0x49,

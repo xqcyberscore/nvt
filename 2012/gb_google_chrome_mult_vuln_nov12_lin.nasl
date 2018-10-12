@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_nov12_lin.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_google_chrome_mult_vuln_nov12_lin.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - Nov2012 (Linux)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802491");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-5117", "CVE-2012-5116", "CVE-2012-5128", "CVE-2012-5127",
                 "CVE-2012-5126", "CVE-2012-5125", "CVE-2012-5124", "CVE-2012-5123",
                 "CVE-2012-5122", "CVE-2012-5121", "CVE-2012-5119");
   script_bugtraq_id(56413);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-09 11:41:50 +0530 (Fri, 09 Nov 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - Nov2012 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51210/");
@@ -71,12 +71,12 @@ if(description)
   - An error in texture handling can be exploited to corrupt memory.
 
   - An error in v8 can be exploited to corrupt memory.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 23.0.1271.64 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 23.0.1271.64 or later,");
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

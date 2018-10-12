@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0148.nasl 11692 2018-09-28 16:55:19Z cfischer $
+# $Id: mgasa-2016-0148.nasl 11856 2018-10-12 07:45:29Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -9,9 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
-#
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -30,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131301");
-  script_version("$Revision: 11692 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-05-09 14:18:03 +0300 (Mon, 09 May 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 18:55:19 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0148");
   script_tag(name:"insight", value:"Updated squid packages fix security vulnerability: Due to incorrect buffer management Squid cachemgr.cgi tool is vulnerable to a buffer overflow when processing remotely supplied inputs relayed to it from Squid. This problem allows any client to seed the Squid manager reports with data that will cause a buffer overflow when processed by the cachemgr.cgi tool (CVE-2016-4051).");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

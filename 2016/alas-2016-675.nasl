@@ -7,9 +7,6 @@
 # Authors:
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
-#
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
 #
@@ -30,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120665");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-03-31 08:02:09 +0300 (Thu, 31 Mar 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Amazon Linux Local Check: alas-2016-675");
   script_tag(name:"insight", value:"An access flaw was discovered in the OpenSSH client where it did not correctly handle failures to generate authentication cookies for untrusted X11 forwarding. A malicious or compromised remote X application could possibly use this flaw to establish a trusted connection to the local X server, even if only untrusted X11 forwarding was requested.");
   script_tag(name:"solution", value:"Run yum update openssh to update your system.");

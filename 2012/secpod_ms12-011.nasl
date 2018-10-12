@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-011.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_ms12-011.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft SharePoint Privilege Elevation Vulnerabilities (2663841)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902919");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0017", "CVE-2012-0144", "CVE-2012-0145");
   script_bugtraq_id(51928, 51934, 51937);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-28 15:51:26 +0530 (Thu, 28 Jun 2012)");
   script_name("Microsoft SharePoint Privilege Elevation Vulnerabilities (2663841)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48029/");
@@ -57,8 +57,7 @@ if(description)
   user. This can be exploited to execute arbitrary HTML and script code in a
   user's browser session in context of an affected site.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-011");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-011.");
   script_tag(name:"qod_type", value:"registry");

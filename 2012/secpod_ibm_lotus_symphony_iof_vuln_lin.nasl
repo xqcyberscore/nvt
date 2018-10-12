@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_symphony_iof_vuln_lin.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_ibm_lotus_symphony_iof_vuln_lin.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # IBM Lotus Symphony Image Object Integer Overflow Vulnerability (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902809");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0192");
   script_bugtraq_id(51591);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-25 12:12:12 +0530 (Wed, 25 Jan 2012)");
   script_name("IBM Lotus Symphony Image Object Integer Overflow Vulnerability (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -53,14 +53,14 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an integer overflow error when processing embedded
   image objects. This can be exploited to cause a heap-based buffer overflow
   via a specially crafted JPEG object within a DOC file.");
-  script_tag(name:"solution", value:"Upgrade to IBM Lotus Symphony version 3.0.1 or later,
-  For updates refer to http://www.ibm.com/software/lotus/symphony/home.nsf/home");
+  script_tag(name:"solution", value:"Upgrade to IBM Lotus Symphony version 3.0.1 or later,");
   script_tag(name:"summary", value:"This host is installed with IBM Lotus Symphony and is prone to
   integer overflow vulnerability.");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.ibm.com/software/lotus/symphony/home.nsf/home");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dissector_mult_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_wireshark_mult_dissector_mult_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wireshark LDP PPP and HSRP dissector Multiple Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802978");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-5237", "CVE-2012-5238", "CVE-2012-5240");
   script_bugtraq_id(55754);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-08 14:20:21 +0530 (Mon, 08 Oct 2012)");
   script_name("Wireshark LDP PPP and HSRP dissector Multiple Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50843/");
@@ -54,12 +54,12 @@ if(description)
   script_tag(name:"insight", value:"Errors in the HSRP, PPP and LDP dissectors when processing certain
   packets can be exploited to cause an infinite loop and consume CPU
   resources or a buffer overflow.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.8.3 or later,
-  For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.8.3 or later,");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download");
   exit(0);
 }
 

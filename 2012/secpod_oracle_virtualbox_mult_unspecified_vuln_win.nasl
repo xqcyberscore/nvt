@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_virtualbox_mult_unspecified_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: secpod_oracle_virtualbox_mult_unspecified_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Oracle VM VirtualBox Multiple Unspecified Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902786");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0111", "CVE-2012-0105");
   script_bugtraq_id(51465, 51461);
   script_tag(name:"cvss_base", value:"3.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-24 11:43:28 +0530 (Tue, 24 Jan 2012)");
   script_name("Oracle VM VirtualBox Multiple Unspecified Vulnerabilities (Windows)");
 
@@ -52,14 +52,12 @@ if(description)
   'Guest Additions for Windows' and 'Shared Folders' sub components.");
   script_tag(name:"summary", value:"This host is installed with Oracle VM VirtualBox and is prone to
   multiple unspecified vulnerabilities.");
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/topics/security/cpujan2012-366304.html
-
-  *****
+  script_tag(name:"solution", value:"Apply the patch  *****
   NOTE: Ignore this warning, if above mentioned workaround is manually applied.
   *****");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujan2012-366304.html");
   exit(0);
 }
 

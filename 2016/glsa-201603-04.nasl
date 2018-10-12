@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa-201603-04.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa-201603-04.nasl 11856 2018-10-12 07:45:29Z cfischer $
 #
 # Gentoo Linux security check
 #
@@ -9,9 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://solinor.com
-#
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -30,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.121446");
-  script_version("$Revision: 11671 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-03-10 07:16:47 +0200 (Thu, 10 Mar 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Gentoo Security Advisory GLSA 201603-04");
   script_tag(name:"insight", value:"The fusermount binary calls setuid(geteuid()) to reset the RUID when it invokes /bin/mount so that it can use privileged mount options that are normally restricted if RUID != EUID. FUSE does not properly clear environment variables before invoking mount or umount as root allowing this to be passed to operations using elevated privileges such as LIBMOUNT_MTAB that is used by the mount commands debugging feature.");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

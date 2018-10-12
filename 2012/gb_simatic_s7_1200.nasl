@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_1200.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_simatic_s7_1200.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Siemens SIMATIC S7-1200 SSL Private Key Reuse Spoofing Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2012-3037");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11855 $");
 
   script_name("Siemens SIMATIC S7-1200 SSL Private Key Reuse Spoofing Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://subscriber.communications.siemens.com/");
   script_xref(name:"URL", value:"http://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-240718.pdf");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-20 10:18:56 +0200 (Thu, 20 Sep 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -64,7 +64,7 @@ if (description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

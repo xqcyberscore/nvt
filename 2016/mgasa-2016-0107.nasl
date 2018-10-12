@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0107.nasl 11692 2018-09-28 16:55:19Z cfischer $
+# $Id: mgasa-2016-0107.nasl 11856 2018-10-12 07:45:29Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -9,9 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
-#
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -30,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131266");
-  script_version("$Revision: 11692 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-03-14 15:57:16 +0200 (Mon, 14 Mar 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 18:55:19 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0107");
   script_tag(name:"insight", value:"In ISC BIND before 9.10.3-P4, an error parsing input received by the rndc control channel can cause an assertion failure in sexpr.c or alist.c (CVE-2016-1285). In ISC BIND before 9.10.3-P4, a problem parsing resource record signatures for DNAME resource records can lead to an assertion failure in resolver.c or db.c (CVE-2016-1286). In ISC BIND before 9.10.3-P4, A response containing multiple DNS cookies causes servers with cookie support enabled to exit with an assertion failure in resolver.c (CVE-2016-2088).");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

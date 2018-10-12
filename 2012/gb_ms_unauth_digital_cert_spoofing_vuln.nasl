@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_unauth_digital_cert_spoofing_vuln.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: gb_ms_unauth_digital_cert_spoofing_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft Unauthorized Digital Certificates Spoofing Vulnerability (2728973)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802912");
-  script_version("$Revision: 11372 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-12 17:17:25 +0530 (Thu, 12 Jul 2012)");
   script_name("Microsoft Unauthorized Digital Certificates Spoofing Vulnerability (2728973)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2728973");
@@ -65,9 +65,7 @@ if(description)
   secure storage practices can be misused. An attacker could use these
   certificates to spoof content, perform phishing attacks, or perform
   man-in-the-middle attacks.");
-  script_tag(name:"solution", value:"Apply the Patch from below link:
-
-  http://support.microsoft.com/kb/2728973");
+  script_tag(name:"solution", value:"Apply the Patch");
   script_tag(name:"summary", value:"This host is installed with Microsoft Windows operating system and
   is prone to Spoofing vulnerability.");
   exit(0);

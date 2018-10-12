@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_collaboration_server_38202.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_cisco_collaboration_server_38202.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Cisco Collaboration Server Source Code Disclosure Vulnerabilities
 #
@@ -30,7 +30,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.103403");
   script_cve_id("CVE-2010-0642");
   script_bugtraq_id(38202);
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Cisco Collaboration Server Source Code Disclosure Vulnerabilities");
@@ -38,7 +38,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38202");
   script_xref(name:"URL", value:"http://www.cisco.com/en/US/products/sw/custcosw/ps747/prod_eol_notice09186a008032d4d0.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-27 13:35:51 +0100 (Fri, 27 Jan 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,7 +62,7 @@ NOTE: The vendor has discontinued this product.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

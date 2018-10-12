@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panasonic_fpwin_pro_mult_vuln.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_panasonic_fpwin_pro_mult_vuln.nasl 11837 2018-10-11 09:17:05Z asteins $
 #
 # Panasonic FPWIN Pro Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:panasonic:fpwin_pro";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809029");
-  script_version("$Revision: 11607 $");
+  script_version("$Revision: 11837 $");
   script_cve_id("CVE-2016-4496", "CVE-2016-4497", "CVE-2016-4498", "CVE-2016-4499");
   script_bugtraq_id(90520, 90523, 90521, 90522);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-01 13:08:12 +0530 (Thu, 01 Sep 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Panasonic FPWIN Pro Multiple Vulnerabilities");
@@ -61,8 +61,7 @@ if(description)
   before 7.130");
 
   script_tag(name:"solution", value:"Upgrade to Panasonic FPWIN Pro version
-  7.130 or later, For updates refer to
-  https://www.panasonic-electric-works.com/eu/plc-software-control-fpwin-pro.htm");
+  7.130 or later, ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -76,6 +75,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_panasonic_fpwin_pro_detect_win.nasl");
   script_mandatory_keys("Panasonic/FPWIN/Pro/Win/Ver");
+  script_xref(name:"URL", value:"https://www.panasonic-electric-works.com/eu/plc-software-control-fpwin-pro.htm");
   exit(0);
 }
 

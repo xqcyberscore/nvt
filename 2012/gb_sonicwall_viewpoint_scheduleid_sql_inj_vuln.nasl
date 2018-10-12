@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonicwall_viewpoint_scheduleid_sql_inj_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
+# $Id: gb_sonicwall_viewpoint_scheduleid_sql_inj_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # SonicWall Viewpoint 'scheduleID' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803033");
-  script_version("$Revision: 11429 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-5169");
   script_bugtraq_id(49906);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-25 15:47:29 +0530 (Tue, 25 Sep 2012)");
   script_name("SonicWall Viewpoint 'scheduleID' Parameter SQL Injection Vulnerability");
 
@@ -51,14 +51,14 @@ if(description)
   script_tag(name:"insight", value:"Input passed to 'scheduleID' parameter in
   'sgms/reports/scheduledreports/configure/scheduleProps.jsp' page is not
   properly verified before being used in SQL queries.");
-  script_tag(name:"solution", value:"Apply SonicWALL Viewpoint hotfix 104767 from below link,
-  For updates refer to https://www.mysonicwall.com/");
+  script_tag(name:"solution", value:"Apply SonicWALL Viewpoint hotfix 104767 from below link,");
   script_tag(name:"summary", value:"This host is running SonicWall Viewpoint and is prone to sql
   injection vulnerability.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46115");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2011/Oct/5");
   script_xref(name:"URL", value:"http://www.sonicwall.com/app/projects/file_downloader/document_lib.php?t=RN&id=379");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/105493/SonicWall-Viewpoint-6.0-SP2-Blind-SQL-Injection.html");
+  script_xref(name:"URL", value:"https://www.mysonicwall.com/");
   exit(0);
 }
 

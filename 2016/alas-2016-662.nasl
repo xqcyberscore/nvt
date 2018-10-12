@@ -7,9 +7,6 @@
 # Authors:
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
-#
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
 #
@@ -30,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120652");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-03-11 07:09:15 +0200 (Fri, 11 Mar 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Amazon Linux Local Check: alas-2016-662");
   script_tag(name:"insight", value:"An integer overflow flaw, leading to a heap-based buffer overflow, was found in the PostgreSQL handling code for regular expressions. A remote attacker could use a specially crafted regular expression to cause PostgreSQL to crash or possibly execute arbitrary code.");
   script_tag(name:"solution", value:"Run yum update postgresql94 to update your system.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_comment_rating_plugin_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wordpress_comment_rating_plugin_mult_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # WordPress Comment Rating Plugin Multiple Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802289");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(51241);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -66,7 +66,7 @@ if(description)
   session in the context of an affected site.");
 
   script_tag(name:"solution", value:"Upgrade to WordPress Comment Rating plugin version 2.9.24 or
-  later. For updates refer to http://wordpress.org/extend/plugins/comment-rating/");
+  later.");
 
   script_tag(name:"summary", value:"This host is running WordPress Comment Rating Plugin and prone
   to cross site scripting and SQL injection vulnerabilities.");
@@ -74,6 +74,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/comment-rating/");
   exit(0);
 }
 

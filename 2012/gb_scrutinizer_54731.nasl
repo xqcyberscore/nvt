@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrutinizer_54731.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_scrutinizer_54731.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Scrutinizer Default Password Security Bypass Vulnerability
 #
@@ -34,14 +34,14 @@ if (description)
   script_cve_id("CVE-2012-3951");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11855 $");
 
   script_name("Scrutinizer Default Password Security Bypass Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54731");
   script_xref(name:"URL", value:"http://www.plixer.com");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-08 12:18:06 +0200 (Wed, 08 Aug 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -60,7 +60,7 @@ information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mp4_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_vlc_media_player_mp4_dos_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # VLC Media Player 'MP4' Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802920");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-2396");
   script_bugtraq_id(53535, 53169);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-25 13:06:00 +0530 (Wed, 25 Jul 2012)");
   script_name("VLC Media Player 'MP4' Denial of Service Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49159");
@@ -52,12 +52,12 @@ application, denying service to legitimate users.");
   script_tag(name:"affected", value:"VLC media player version 2.0.1 on Windows");
   script_tag(name:"insight", value:"A division by zero error exists when handling MP4 files, which
 can be exploited to cause a crash.");
-  script_tag(name:"solution", value:"Update to version 2.0.2 or later,
-For updates refer to http://www.videolan.org/vlc");
+  script_tag(name:"solution", value:"Update to version 2.0.2 or later,");
   script_tag(name:"summary", value:"This host is installed with VLC Media Player and is prone to
 denial of service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.videolan.org/vlc");
   exit(0);
 }
 

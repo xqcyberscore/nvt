@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-062.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_ms12-062.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft System Center Configuration Manager XSS Vulnerability (2741528)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902688");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-2536");
   script_bugtraq_id(55430);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-12 09:31:18 +0530 (Wed, 12 Sep 2012)");
   script_name("Microsoft System Center Configuration Manager XSS Vulnerability (2741528)");
 
@@ -52,8 +52,7 @@ if(description)
   handles specially crafted requests, which can be exploited to insert
   arbitrary HTML and script code.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-062");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-062.");
   script_tag(name:"qod_type", value:"registry");
@@ -61,6 +60,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/50497");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2741528");
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/MS12-062");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms12-062");
   exit(0);
 }
 

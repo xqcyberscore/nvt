@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_sec_bypass_vuln_oct12_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_mozilla_prdts_sec_bypass_vuln_oct12_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Mozilla Firefox Security Bypass Vulnerabilities - Oct 12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802992");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-4192", "CVE-2012-4193");
   script_bugtraq_id(55889);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 17:11:30 +0530 (Mon, 15 Oct 2012)");
   script_name("Mozilla Firefox Security Bypass Vulnerabilities - Oct 12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50856");
@@ -48,12 +48,12 @@ if(description)
   script_tag(name:"affected", value:"Mozilla Firefox versions before 16.0.1 on Mac OS X");
   script_tag(name:"insight", value:"Security wrappers are unwrapped without doing a security check in
   defaultValue(). This can allow for improper access to the Location object.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 16.0.1 or later
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 16.0.1 or later");
   script_tag(name:"summary", value:"The host is installed with Mozilla Firefox and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

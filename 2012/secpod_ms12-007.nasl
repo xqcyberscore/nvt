@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-007.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_ms12-007.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft AntiXSS Library Information Disclosure Vulnerability (2607664)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902785");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0007");
   script_bugtraq_id(51291);
   script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"creation_date", value:"2012-01-11 13:30:24 +0530 (Wed, 11 Jan 2012)");
   script_name("Microsoft AntiXSS Library Information Disclosure Vulnerability (2607664)");
@@ -55,8 +55,7 @@ if(description)
   HTML code from user-supplied input. A remote user may be able to exploit a
   target application that uses the library to cause arbitrary scripting code to
   be executed by the target user's browser.");
-  script_tag(name:"solution", value:"Upgrade to Microsoft Anti-Cross Site Scripting Library version 4.2.1
-  For updates refer to http://technet.microsoft.com/en-us/security/bulletin/ms12-007");
+  script_tag(name:"solution", value:"Upgrade to Microsoft Anti-Cross Site Scripting Library version 4.2.1");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-007.");
   script_tag(name:"qod_type", value:"registry");

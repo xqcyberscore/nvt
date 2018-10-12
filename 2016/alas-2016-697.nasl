@@ -7,9 +7,6 @@
 # Authors:
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
-#
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
 #
@@ -30,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120686");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-05-09 14:12:02 +0300 (Mon, 09 May 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Amazon Linux Local Check: alas-2016-697");
   script_tag(name:"insight", value:"It was discovered that Mercurial failed to properly check Git sub-repository URLs. A Mercurial repository that includes a Git sub-repository with a specially crafted URL could cause Mercurial to execute arbitrary code. (CVE-2016-3068 )The binary delta decoder in Mercurial before 3.7.3 allows remote attackers to execute arbitrary code via a (1) clone, (2) push, or (3) pull command, related to (a) a list sizing rounding error and (b) short records. (CVE-2016-3630 )It was discovered that the Mercurial convert extension failed to sanitize special characters in Git repository names. A Git repository with a specially crafted name could cause Mercurial to execute arbitrary code when the Git repository was converted to a Mercurial repository. (CVE-2016-3069 )");
   script_tag(name:"solution", value:"Run yum update mercurial to update your system.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_thunderbird_mult_vuln_aug12_win.nasl 11355 2018-09-12 10:32:04Z asteins $
+# $Id: gb_mozilla_firefox_thunderbird_mult_vuln_aug12_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities - August12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803015");
-  script_version("$Revision: 11355 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-3974", "CVE-2012-3980");
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 14:20:04 +0530 (Thu, 30 Aug 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - August12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50088");
@@ -54,12 +54,12 @@ if(description)
 
   - An error in the web console can be exploited to inject arbitrary code that
     will be executed with chrome privileges.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 15.0 or later
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 15.0 or later");
   script_tag(name:"summary", value:"This host is installed with Mozilla Firefox and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

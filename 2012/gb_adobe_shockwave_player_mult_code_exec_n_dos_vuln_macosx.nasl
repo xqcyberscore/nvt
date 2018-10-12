@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_code_exec_n_dos_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_adobe_shockwave_player_mult_code_exec_n_dos_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Adobe Shockwave Player Multiple Code Execution and DoS Vulnerabilities (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802780");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(53420);
   script_cve_id("CVE-2012-2029", "CVE-2012-2030", "CVE-2012-2031", "CVE-2012-2032",
                 "CVE-2012-2033");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-15 12:12:47 +0530 (Tue, 15 May 2012)");
   script_name("Adobe Shockwave Player Multiple Code Execution and DoS Vulnerabilities (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49086/");
@@ -52,12 +52,12 @@ if(description)
   - An error within the IMLLib, DPLib and IMLLib modules when parsing a '.dir'.
 
   - An unspecified errors.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player version 11.6.5.635 or later,
-  For updates refer to http://get.adobe.com/shockwave/otherversions/");
+  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player version 11.6.5.635 or later,");
   script_tag(name:"summary", value:"This host is installed with Adobe Shockwave Player and is prone
   to multiple code execution and denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://get.adobe.com/shockwave/otherversions/");
   exit(0);
 }
 

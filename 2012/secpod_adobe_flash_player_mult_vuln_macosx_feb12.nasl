@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_flash_player_mult_vuln_macosx_feb12.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_adobe_flash_player_mult_vuln_macosx_feb12.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities (Mac OS X) - Feb12
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802805");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0752", "CVE-2012-0753", "CVE-2012-0754", "CVE-2012-0757",
                 "CVE-2012-0756", "CVE-2012-0767");
   script_bugtraq_id(52032, 52033, 52034, 51999, 52036, 52040);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-22 14:54:18 +0530 (Wed, 22 Feb 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities (Mac OS X) - Feb12");
 
@@ -63,8 +63,7 @@ if(description)
   - Improper validation of user supplied input which allows
     attackers to execute arbitrary HTML and script code in a user's browser
     session");
-  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 10.3.183.15 or 11.1.102.62 or later,
-  For updates refer to http://www.adobe.com/downloads/");
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 10.3.183.15 or 11.1.102.62 or later,");
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
@@ -73,6 +72,7 @@ if(description)
   script_xref(name:"URL", value:"http://securitytracker.com/id/1026694");
   script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/48033");
   script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb12-03.html");
+  script_xref(name:"URL", value:"http://www.adobe.com/downloads/");
   exit(0);
 }
 

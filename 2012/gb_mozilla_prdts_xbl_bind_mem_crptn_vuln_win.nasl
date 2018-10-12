@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_xbl_bind_mem_crptn_vuln_win.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: gb_mozilla_prdts_xbl_bind_mem_crptn_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Mozilla Products XBL Binding Memory Corruption Vulnerability - (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802592");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0452");
   script_bugtraq_id(51975);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-14 15:40:12 +0530 (Tue, 14 Feb 2012)");
   script_name("Mozilla Products XBL Binding Memory Corruption Vulnerability - (Windows)");
 
@@ -57,16 +57,14 @@ if(description)
   cycle collector to call an invalid virtual function.");
   script_tag(name:"summary", value:"The host is installed with Mozilla firefox/seamonkey/thunderbird
   and is prone to memory corruption vulnerability.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 10.0.1 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html
-
-  Upgrade to SeaMonkey version to 2.7.1 or later
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 10.0.1 or later,  Upgrade to SeaMonkey version to 2.7.1 or later
   http://www.mozilla.org/projects/seamonkey/
 
   Upgrade to Thunderbird version 10.0.1 or later
   http://www.mozilla.org/en-US/thunderbird/");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

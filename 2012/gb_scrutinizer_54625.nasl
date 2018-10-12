@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrutinizer_54625.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_scrutinizer_54625.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Dell SonicWALL Scrutinizer 'q' Parameter SQL Injection Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2012-2962");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_version("$Revision: 11435 $");
+  script_version("$Revision: 11855 $");
   script_name("Dell SonicWALL Scrutinizer 'q' Parameter SQL Injection Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-21 09:30:41 +0200 (Tue, 21 Aug 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -59,7 +59,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

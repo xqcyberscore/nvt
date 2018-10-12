@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_support_plus_mult_fields_xss_vuln.nasl 11430 2018-09-17 10:16:03Z cfischer $
+# $Id: gb_manageengine_support_plus_mult_fields_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Zoho ManageEngine Support Center Plus Multiple Fields XSS Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802839");
-  script_version("$Revision: 11430 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(53019);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:16:03 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-24 13:18:35 +0530 (Tue, 24 Apr 2012)");
   script_name("Zoho ManageEngine Support Center Plus Multiple Fields XSS Vulnerabilities");
   script_xref(name:"URL", value:"http://1337day.com/exploits/18057");
@@ -50,14 +50,14 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to inputs passed to the 'Name' and 'E-mail'
   parameters via 'sd/Request.sd' script is not properly sanitised before
   being returned to the user.");
-  script_tag(name:"solution", value:"Upgrade to ManageEngine Support Center Plus 7.9 Upgrade Pack 7908 or later
-  For updates refer to http://www.manageengine.com/products/support-center/");
+  script_tag(name:"solution", value:"Upgrade to ManageEngine Support Center Plus 7.9 Upgrade Pack 7908 or later");
   script_tag(name:"summary", value:"This host is running Zoho ManageEngine Support Center Plus and is
   prone to multiple cross site scripting vulnerabilities.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.manageengine.com/products/support-center/");
   exit(0);
 }
 

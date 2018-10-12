@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netdecision_traffic_grapher_srv_info_disc_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_netdecision_traffic_grapher_srv_info_disc_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Netmechanica NetDecision Traffic Grapher Server Information Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802704");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-1466");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-09 13:50:32 +0530 (Fri, 09 Mar 2012)");
   script_name("Netmechanica NetDecision Traffic Grapher Server Information Disclosure Vulnerability");
 
@@ -51,14 +51,14 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an improper validation of malicious HTTP GET
   request to 'default.nd' with invalid HTTP version number followed by multiple
   'CRLF', which discloses the source code of 'default.nd'.");
-  script_tag(name:"solution", value:"Upgrade to Traffic Grapher Server 4.6.1 or later
-  For updates refer to http://www.netmechanica.com/downloads/");
+  script_tag(name:"solution", value:"Upgrade to Traffic Grapher Server 4.6.1 or later");
   script_tag(name:"summary", value:"This host is running NetDecision Traffic Grapher Server and is
   prone to information disclosure vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://www.netmechanica.com/downloads/");
   exit(0);
 }
 

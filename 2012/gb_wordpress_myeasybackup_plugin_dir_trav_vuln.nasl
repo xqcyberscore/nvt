@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_myeasybackup_plugin_dir_trav_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wordpress_myeasybackup_plugin_dir_trav_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # WordPress myEASYbackup Plugin 'dwn_file' Parameter Directory Traversal Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802380");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0898");
   script_bugtraq_id(51433);
   script_tag(name:"cvss_base", value:"5.0");
@@ -59,7 +59,7 @@ if(description)
   attackers to read arbitrary files via a ../(dot dot) sequences.");
 
   script_tag(name:"solution", value:"Upgrade to WordPress myEASYbackup Plugin version 1.0.9 or
-  later. For updates refer to http://wordpress.org/extend/plugins/myeasybackup/");
+  later.");
 
   script_tag(name:"summary", value:"This host is running with WordPress myEASYbackup Plugin and is
   prone to directory traversal vulnerability.");
@@ -67,6 +67,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/myeasybackup/");
   exit(0);
 }
 

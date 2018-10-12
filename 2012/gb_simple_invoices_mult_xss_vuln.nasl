@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simple_invoices_mult_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_simple_invoices_mult_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Simple Invoices Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803073");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-4932");
   script_bugtraq_id(56882);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-11 13:59:06 +0530 (Tue, 11 Dec 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -56,8 +56,7 @@ if(description)
   (when 'module' and 'view' are set to different actions) is not properly
   sanitised before it is returned to the user.");
 
-  script_tag(name:"solution", value:"Upgrade to Simple Invoices version 2012-1 or later.
-  For updates refer to http://www.simpleinvoices.org/");
+  script_tag(name:"solution", value:"Upgrade to Simple Invoices version 2012-1 or later.");
 
   script_tag(name:"summary", value:"This host is running Simple Invoices and is prone to multiple
   cross site scripting vulnerabilities.");
@@ -65,6 +64,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.simpleinvoices.org/");
   exit(0);
 }
 

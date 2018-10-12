@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_symposium_plugin_uid_param_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wordpress_wp_symposium_plugin_uid_param_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # WordPress WP Symposium Plugin 'uid' Parameter Cross-Site Scripting Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802288");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(51017);
   script_cve_id("CVE-2011-3841");
   script_tag(name:"cvss_base", value:"4.3");
@@ -60,8 +60,7 @@ if(description)
   profile_avatar.php, which allows attackers to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site.");
 
-  script_tag(name:"solution", value:"Upgrade to Wordpress WP Symposium plugin version 11.12.08 or later.
-  For updates refer to http://wordpress.org/extend/plugins/wp-symposium");
+  script_tag(name:"solution", value:"Upgrade to Wordpress WP Symposium plugin version 11.12.08 or later.");
 
   script_tag(name:"summary", value:"This host is running WordPress WP Symposium plugin and is prone to
   cross site scripting vulnerability.");
@@ -69,6 +68,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/wp-symposium");
   exit(0);
 }
 

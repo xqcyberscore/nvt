@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_51281.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_openssl_51281.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # OpenSSL Multiple Vulnerabilities
 #
@@ -36,7 +36,7 @@ if (description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11855 $");
 
   script_name("OpenSSL Multiple Vulnerabilities");
 
@@ -44,7 +44,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.openssl.org");
   script_xref(name:"URL", value:"http://www.openssl.org/news/secadv_20120104.txt");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-20 11:28:16 +0100 (Fri, 20 Jan 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -56,7 +56,7 @@ if (description)
 
 An attacker may leverage these issues to obtain sensitive information,
 cause a denial-of-service condition and perform unauthorized actions.");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

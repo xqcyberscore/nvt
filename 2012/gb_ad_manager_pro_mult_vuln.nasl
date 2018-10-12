@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ad_manager_pro_mult_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
+# $Id: gb_ad_manager_pro_mult_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Ad Manager Pro Multiple SQL Injection And XSS Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803019");
-  script_version("$Revision: 11431 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 17:10:10 +0530 (Thu, 30 Aug 2012)");
   script_name("Ad Manager Pro Multiple SQL Injection And XSS Vulnerabilities");
 
@@ -52,8 +52,7 @@ if(description)
   - Inputs passed via 'username', 'password' 'image_control' and 'email'
   parameters to 'advertiser.php' and 'publisher.php' is not properly
   sanitised before being returned to the user.");
-  script_tag(name:"solution", value:"Upgrade to the latest version
-  For updates refer to http://www.phpwebscripts.com/ad-manager-pro/");
+  script_tag(name:"solution", value:"Upgrade to the latest version");
   script_tag(name:"summary", value:"This host is running Ad Manager Pro and is prone to multiple sql
   injection and cross site scripting vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to to manipulate SQL
@@ -64,6 +63,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.phpwebscripts.com/ad-manager-pro/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-006.nasl 11706 2018-10-01 09:48:48Z cfischer $
+# $Id: secpod_ms12-006.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft Windows SSL/TLS Information Disclosure Vulnerability (2643584)
 #
@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902900");
-  script_version("$Revision: 11706 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-3389");
   script_bugtraq_id(49778);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-11 09:47:46 +0530 (Wed, 11 Jan 2012)");
   script_name("Microsoft Windows SSL/TLS Information Disclosure Vulnerability (2643584)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2585542");
@@ -62,9 +62,7 @@ if(description)
   when modifying the way that the Windows Secure Channel (SChannel) component sends and receives encrypted network packets.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-006");
+  update mentioned hotfixes in the advisory");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-006.");

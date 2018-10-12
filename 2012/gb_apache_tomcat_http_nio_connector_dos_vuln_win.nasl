@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_http_nio_connector_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_apache_tomcat_http_nio_connector_dos_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Apache Tomcat HTTP NIO Denial Of Service Vulnerability (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802679");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-2733");
   script_bugtraq_id(56402);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-27 18:17:31 +0530 (Tue, 27 Nov 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -58,16 +58,14 @@ if(description)
   connector, which does not properly restrict the request-header size.");
   script_tag(name:"summary", value:"This host is running Apache Tomcat Server and is prone to denial
   of service vulnerability.");
-  script_tag(name:"solution", value:"Apply patch or upgrade Apache Tomcat to 6.0.36, 7.0.28 or later,
-  For updates refer to http://tomcat.apache.org/
-
-  *****
+  script_tag(name:"solution", value:"Apply patch or upgrade Apache Tomcat to 6.0.36, 7.0.28 or later,  *****
   NOTE: Ignore this warning, if above mentioned patch is manually applied.
   *****");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://tomcat.apache.org/");
   exit(0);
 }
 

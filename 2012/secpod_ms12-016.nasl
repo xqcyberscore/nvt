@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-016.nasl 11706 2018-10-01 09:48:48Z cfischer $
+# $Id: secpod_ms12-016.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft .NET Framework and Microsoft Silverlight Remote Code Execution Vulnerabilities (2651026)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902811");
-  script_version("$Revision: 11706 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0014", "CVE-2012-0015");
   script_bugtraq_id(51938, 51940);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 10:10:10 +0530 (Wed, 15 Feb 2012)");
   script_name("Microsoft .NET Framework and Microsoft Silverlight Remote Code Execution Vulnerabilities (2651026)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48030");
@@ -68,9 +68,7 @@ if(description)
     memory via a specially crafted XAML Browser Application (XBAP).");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-016");
+  update mentioned hotfixes in the advisory");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-016.");

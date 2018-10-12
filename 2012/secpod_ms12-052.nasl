@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-052.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: secpod_ms12-052.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2722913)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902923");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-1526", "CVE-2012-2521", "CVE-2012-2522", "CVE-2012-2523");
   script_bugtraq_id(54950, 54952, 54951, 54945);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-15 12:59:29 +0530 (Wed, 15 Aug 2012)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2722913)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50237/");
@@ -61,8 +61,7 @@ if(description)
     size of an object in memory during a copy operation can be exploited
     to corrupt memory.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-052");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-052.");
   script_tag(name:"qod_type", value:"registry");

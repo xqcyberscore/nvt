@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_dos_vuln_may12_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_google_chrome_mult_dos_vuln_may12_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Google Chrome Multiple Denial of Service Vulnerabilities - May 12 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802848");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-3078", "CVE-2011-3079", "CVE-2011-3080", "CVE-2011-3081",
                 "CVE-2012-1521");
   script_bugtraq_id(53309);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-07 15:15:45 +0530 (Mon, 07 May 2012)");
   script_name("Google Chrome Multiple Denial of Service Vulnerabilities - May 12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48992/");
@@ -57,12 +57,12 @@ if(description)
   - An error exists within the IPC validation.
 
   - A race condition exists within the sandbox IPC.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 18.0.1025.168 or later.
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 18.0.1025.168 or later.");
   script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
   denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

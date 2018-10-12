@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_x509_cert_spoofing_vuln_lin.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_opera_x509_cert_spoofing_vuln_lin.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Opera 'X.509' Certificates Spoofing Vulnerability (Linux)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802436");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-1251");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-12 16:15:21 +0530 (Tue, 12 Jun 2012)");
   script_name("Opera 'X.509' Certificates Spoofing Vulnerability (Linux)");
   script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN39707339/index.html");
@@ -48,8 +48,7 @@ if(description)
   script_tag(name:"affected", value:"Opera version prior to 9.63 on Linux");
   script_tag(name:"insight", value:"The flaw is due to an error in handling of certificates, it does not properly
   verify 'X.509' certificates from SSL servers.");
-  script_tag(name:"solution", value:"Upgrade to Opera 9.63 or later,
-  For updates refer to http://www.opera.com/");
+  script_tag(name:"solution", value:"Upgrade to Opera 9.63 or later,");
   script_tag(name:"summary", value:"The host is installed with Opera and is prone to a spoofing
   vulnerability");
   script_tag(name:"qod_type", value:"executable_version");

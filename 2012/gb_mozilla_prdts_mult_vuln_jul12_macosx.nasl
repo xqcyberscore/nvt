@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_jul12_macosx.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: gb_mozilla_prdts_mult_vuln_jul12_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities - July12 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802890");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-1948", "CVE-2012-1951", "CVE-2012-1952", "CVE-2012-1953",
                 "CVE-2012-1954", "CVE-2012-1955", "CVE-2012-1957", "CVE-2012-1958",
                 "CVE-2012-1959", "CVE-2012-1961", "CVE-2012-1962", "CVE-2012-1963",
@@ -36,7 +36,7 @@ if(description)
                     54575, 54582, 54573);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-23 17:31:44 +0530 (Mon, 23 Jul 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - July12 (Mac OS X)");
 
@@ -82,16 +82,14 @@ if(description)
     exploited to corrupt memory");
   script_tag(name:"summary", value:"This host is installed with Mozilla firefox/thunderbird/seamonkey and is
   prone to multiple vulnerabilities.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 14.0 or ESR version 10.0.6 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html
-
-  Upgrade to SeaMonkey version to 2.11 or later,
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 14.0 or ESR version 10.0.6 or later,  Upgrade to SeaMonkey version to 2.11 or later,
   http://www.mozilla.org/projects/seamonkey/
 
   Upgrade to Thunderbird version to 14.0 or ESR 10.0.6 or later,
   http://www.mozilla.org/en-US/thunderbird/");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

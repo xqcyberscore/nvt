@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_mar12_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_apple_safari_webkit_mult_vuln_mar12_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Apple Safari Webkit Multiple Vulnerabilities - March12 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802813");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0647", "CVE-2012-0585", "CVE-2011-3881", "CVE-2012-0586",
                 "CVE-2012-0587", "CVE-2012-0588", "CVE-2012-0589", "CVE-2011-3887",
                 "CVE-2012-0590", "CVE-2011-2825", "CVE-2011-2833", "CVE-2011-2846",
@@ -62,7 +62,7 @@ if(description)
                     52363, 52423, 52421);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-13 18:17:52 +0530 (Tue, 13 Mar 2012)");
   script_name("Apple Safari Webkit Multiple Vulnerabilities - March12 (Mac OS X)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5190");
@@ -79,12 +79,12 @@ if(description)
   and compromise a user's system.");
   script_tag(name:"affected", value:"Apple Safari versions prior to 5.1.4 on Mac OS X");
   script_tag(name:"insight", value:"For more information on the vulnerabilities refer the reference section.");
-  script_tag(name:"solution", value:"Upgrade to Apple Safari version 5.1.4 or later,
-  For updates refer to http://www.apple.com/support/downloads/");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 5.1.4 or later,");
   script_tag(name:"summary", value:"The host is installed with Apple Safari web browser and is prone
   to multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.apple.com/support/downloads/");
   exit(0);
 }
 

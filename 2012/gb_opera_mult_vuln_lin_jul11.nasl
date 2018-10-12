@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_lin_jul11.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_opera_mult_vuln_lin_jul11.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Opera Browser Multiple Vulnerabilities July-11 (Linux)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802739");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-1337", "CVE-2011-2609", "CVE-2011-2610", "CVE-2011-2611",
                 "CVE-2011-2612", "CVE-2011-2613", "CVE-2011-2614", "CVE-2011-2615",
                 "CVE-2011-2616", "CVE-2011-2617", "CVE-2011-2618", "CVE-2011-2619",
@@ -36,7 +36,7 @@ if(description)
   script_bugtraq_id(48501, 48500, 48556);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-10 11:44:51 +0530 (Tue, 10 Apr 2012)");
   script_name("Opera Browser Multiple Vulnerabilities July-11 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/45060");
@@ -54,10 +54,10 @@ if(description)
   and cause a denial of service.");
   script_tag(name:"affected", value:"Opera Web Browser version prior 11.50 on Linux");
   script_tag(name:"insight", value:"For information about vulnerability refer the references.");
-  script_tag(name:"solution", value:"Upgrade to Opera Web Browser version 11.50 or later,
-  For updates refer to http://www.opera.com/download/");
+  script_tag(name:"solution", value:"Upgrade to Opera Web Browser version 11.50 or later,");
   script_tag(name:"summary", value:"The host is installed with Opera browser and is prone to multiple
   vulnerabilities.");
+  script_xref(name:"URL", value:"http://www.opera.com/download/");
   exit(0);
 }
 

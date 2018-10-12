@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flashfxp_mult_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_flashfxp_mult_bof_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # FlashFXP Multiple Buffer Overflow Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:flashfxp:flashfxp';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802965");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-4992");
   script_bugtraq_id(52259);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-24 14:23:56 +0530 (Mon, 24 Sep 2012)");
   script_name("FlashFXP Multiple Buffer Overflow Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -53,14 +53,14 @@ if(description)
   script_tag(name:"affected", value:"FlashFXP version 4.1.8.1701");
   script_tag(name:"insight", value:"The flaw is due to improper bounds checking by the TListbox or
   TComboBox.");
-  script_tag(name:"solution", value:"Upgrade to FlashFXP version 4.2 or later
-  For updates refer to http://www.flashfxp.com/download");
+  script_tag(name:"solution", value:"Upgrade to FlashFXP version 4.2 or later");
   script_tag(name:"summary", value:"This host is installed with FlashFXP and is prone to multiple
   buffer overflow vulnerabilities.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.flashfxp.com/download");
   exit(0);
 }
 

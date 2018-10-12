@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_ms16-070.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_ms_word_ms16-070.nasl 11837 2018-10-11 09:17:05Z asteins $
 #
 # Microsoft Office Word Multiple Vulnerabilities (3163610)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807845");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 11837 $");
   script_cve_id("CVE-2016-0025", "CVE-2016-3234");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-15 14:56:53 +0530 (Wed, 15 Jun 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Multiple Vulnerabilities (3163610)");
@@ -59,9 +59,7 @@ if(description)
   Microsoft Word 2016 Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link,
-  https://technet.microsoft.com/library/security/MS16-070");
+  hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

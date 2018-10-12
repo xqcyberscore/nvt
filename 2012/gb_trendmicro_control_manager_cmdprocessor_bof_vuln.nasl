@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_control_manager_cmdprocessor_bof_vuln.nasl 11421 2018-09-17 06:58:23Z cfischer $
+# $Id: gb_trendmicro_control_manager_cmdprocessor_bof_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Trend Micro Control Manager 'CmdProcessor.exe' Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802876");
-  script_version("$Revision: 11421 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-5001");
   script_bugtraq_id(50965);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-02 17:04:06 +0530 (Mon, 02 Jul 2012)");
   script_name("Trend Micro Control Manager 'CmdProcessor.exe' Buffer Overflow Vulnerability");
 
@@ -57,8 +57,7 @@ if(description)
   in 'CmdProcessor.exe' fails to process a specially crafted IPC packet sent on
   TCP port 20101, which could be exploited by remote attackers to cause a buffer overflow.");
 
-  script_tag(name:"solution", value:"Apply Critical Patch Build 1613 for Trend Micro Control Manager 5.5,
-  For updates refer to http://downloadcenter.trendmicro.com/index.php?prodid=7");
+  script_tag(name:"solution", value:"Apply Critical Patch Build 1613 for Trend Micro Control Manager 5.5,");
 
   script_tag(name:"summary", value:"This host is running Trend Micro Control Manager and is prone to
   buffer overflow vulnerability.");
@@ -66,6 +65,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://downloadcenter.trendmicro.com/index.php?prodid=7");
   exit(0);
 }
 

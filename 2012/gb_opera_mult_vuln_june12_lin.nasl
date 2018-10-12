@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_june12_lin.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: gb_opera_mult_vuln_june12_lin.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Opera Multiple Vulnerabilities - June12 (Linux)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802648");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(54011);
   script_cve_id("CVE-2012-3555", "CVE-2012-3556", "CVE-2012-3557", "CVE-2012-3558",
                 "CVE-2012-3560");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 15:15:15 +0530 (Thu, 21 Jun 2012)");
   script_name("Opera Multiple Vulnerabilities - June12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49533/");
@@ -68,8 +68,7 @@ if(description)
 
   - An error when handling page loads can be exploited to display arbitrary
     content while showing the URL of a trusted web site in the address.");
-  script_tag(name:"solution", value:"Upgrade to Opera version 11.65 or 12 or later,
-  For updates refer to http://www.opera.com/");
+  script_tag(name:"solution", value:"Upgrade to Opera version 11.65 or 12 or later,");
   script_tag(name:"summary", value:"The host is installed with Opera and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");

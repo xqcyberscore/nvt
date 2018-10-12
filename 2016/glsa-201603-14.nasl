@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa-201603-14.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa-201603-14.nasl 11856 2018-10-12 07:45:29Z cfischer $
 #
 # Gentoo Linux security check
 #
@@ -9,9 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://solinor.com
-#
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -30,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.121456");
-  script_version("$Revision: 11671 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-03-14 15:52:48 +0200 (Mon, 14 Mar 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Gentoo Security Advisory GLSA 201603-14");
   script_tag(name:"insight", value:"Various OpenJDK attack vectors in IcedTea, such as 2D, Corba, Hotspot, Libraries, and JAXP, exist which allows remote attackers to affect the confidentiality, integrity, and availability of vulnerable systems. This includes the possibility of remote execution of arbitrary code, information disclosure, or Denial of Service. Many of the vulnerabilities can only be exploited through sandboxed Java Web Start applications and java applets. Please reference the CVEs listed for specific details.");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

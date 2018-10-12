@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_rce_10_2012.nasl 11148 2018-08-28 14:25:49Z asteins $
+# $Id: gb_zabbix_rce_10_2012.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # ZABBIX 'locales.php' 'extlang' Parameter Remote Code Execution
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:zabbix:zabbix";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103581");
-  script_version("$Revision: 11148 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"9.7");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:C");
   script_name("ZABBIX 'locales.php' 'extlang' Parameter Remote Code Execution");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-02 10:27:14 +0200 (Tue, 02 Oct 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -56,7 +56,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

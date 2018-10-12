@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-037.nasl 11355 2018-09-12 10:32:04Z asteins $
+# $Id: secpod_ms12-037.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2699988)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902682");
-  script_version("$Revision: 11355 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-1523", "CVE-2012-1858", "CVE-2012-1872", "CVE-2012-1873",
                 "CVE-2012-1874", "CVE-2012-1875", "CVE-2012-1876", "CVE-2012-1877",
                 "CVE-2012-1878", "CVE-2012-1879", "CVE-2012-1880", "CVE-2012-1881",
@@ -36,7 +36,7 @@ if(description)
                     53867, 53868, 53869, 53870, 53871);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-13 09:16:32 +0530 (Wed, 13 Jun 2012)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2699988)");
 
@@ -72,8 +72,7 @@ if(description)
 
   - Handles 'Scrolling' event.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-037");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-037.");
   script_tag(name:"qod_type", value:"registry");

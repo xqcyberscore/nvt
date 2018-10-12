@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-016.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_ms16-016.nasl 11837 2018-10-11 09:17:05Z asteins $
 #
 # Microsoft Windows WebDAV Elevation Of Privilege Vulnerability (3136041)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806863");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 11837 $");
   script_cve_id("CVE-2016-0051");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-10 10:51:05 +0530 (Wed, 10 Feb 2016)");
   script_name("Microsoft Windows WebDAV Elevation Of Privilege Vulnerability (3136041)");
 
@@ -55,9 +55,7 @@ if(description)
   Microsoft Windows 10 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-016");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

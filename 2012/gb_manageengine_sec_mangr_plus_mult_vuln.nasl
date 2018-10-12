@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_sec_mangr_plus_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_manageengine_sec_mangr_plus_mult_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Zoho ManageEngine Security Manager Plus Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802483");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-22 13:33:50 +0530 (Mon, 22 Oct 2012)");
   script_name("Zoho ManageEngine Security Manager Plus Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/22092/");
@@ -64,18 +64,17 @@ and prior");
   validated correctly.");
   script_tag(name:"solution", value:"Apply the patch from the below link or update to latest version,
 
-http://bonitas.zohocorp.com/4264259/scanfi/31May2012/SMP_Vul_fix.zip
-
-For updates refer to http://www.manageengine.com/products/security-manager
-
-*****
-NOTE: Ignore this warning if above mentioned patch is installed.
+http://bonitas.zohocorp.com/4264259/scanfi/31May2012/SMP_Vul_fix.zip Ignore this warning if above mentioned patch is installed.
 *****");
   script_tag(name:"summary", value:"This host is running Zoho ManageEngine Security Manager Plus
 and is prone to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.manageengine.com/products/security-manager
+
+*****
+NOTE:");
   exit(0);
 }
 

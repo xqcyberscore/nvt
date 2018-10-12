@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-021.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_ms12-021.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft Visual Studio Privilege Elevation Vulnerability (2651019)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902817");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0008");
   script_bugtraq_id(52329);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-14 10:10:10 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Visual Studio Privilege Elevation Vulnerability (2651019)");
 
@@ -50,8 +50,7 @@ if(description)
   This can be exploited to gain additional privileges by placing malicious add-
   ins in certain directories and tricking a user into starting Visual Studio.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-021");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-021.");
   script_tag(name:"qod_type", value:"registry");

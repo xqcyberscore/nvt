@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_libpurple_cipher_api_info_disc_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_pidgin_libpurple_cipher_api_info_disc_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Pidgin 'Libpurple' Cipher API Information Disclosure Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802935");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-4922");
   script_bugtraq_id(46307);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-17 17:21:39 +0530 (Fri, 17 Aug 2012)");
   script_name("Pidgin 'Libpurple' Cipher API Information Disclosure Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/43271/");
@@ -51,12 +51,12 @@ if(description)
   functions in libpurple/cipher.c not properly clearing certain sensitive
   structures, which can lead to potentially sensitive information disclosure
   remaining in memory.");
-  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.7.10 or later,
-  For updates refer to http://pidgin.im/download");
+  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.7.10 or later,");
   script_tag(name:"summary", value:"This host is installed with Pidgin and is prone to an information
   disclosure vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://pidgin.im/download");
   exit(0);
 }
 

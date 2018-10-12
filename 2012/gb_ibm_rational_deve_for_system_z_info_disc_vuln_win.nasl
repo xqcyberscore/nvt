@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_rational_deve_for_system_z_info_disc_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_ibm_rational_deve_for_system_z_info_disc_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # IBM Rational Developer for System z Information Disclosure Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802687");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-4862");
   script_bugtraq_id(56725);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-21 19:17:26 +0530 (Fri, 21 Dec 2012)");
   script_name("IBM Rational Developer for System z Information Disclosure Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51401/");
@@ -50,12 +50,12 @@ if(description)
   script_tag(name:"affected", value:"IBM Rational Developer for System z version 7.1 through 8.5.1 on Windows");
   script_tag(name:"insight", value:"The flaw is due to error in the application, which does not properly store the
   SSL certificate password.");
-  script_tag(name:"solution", value:"Upgrade to IBM Rational Developer for System z version 8.5.2 or later,
-  For updates refer to http://www.ibm.com/developerworks/downloads/r/rdz/index.html");
+  script_tag(name:"solution", value:"Upgrade to IBM Rational Developer for System z version 8.5.2 or later,");
   script_tag(name:"summary", value:"This host is installed with IBM Rational Developer for System z and
   is prone information disclosure vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.ibm.com/developerworks/downloads/r/rdz/index.html");
   exit(0);
 }
 

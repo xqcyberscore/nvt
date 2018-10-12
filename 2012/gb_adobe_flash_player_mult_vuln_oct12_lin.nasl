@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_oct12_lin.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_adobe_flash_player_mult_vuln_oct12_lin.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities - Oct12 (Linux)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802988");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-5248", "CVE-2012-5249", "CVE-2012-5250", "CVE-2012-5251",
                 "CVE-2012-5252", "CVE-2012-5253", "CVE-2012-5254", "CVE-2012-5255",
                 "CVE-2012-5256", "CVE-2012-5257", "CVE-2012-5258", "CVE-2012-5259",
@@ -39,7 +39,7 @@ if(description)
   script_bugtraq_id(55827, 56374, 56375, 56376, 56377);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 12:53:03 +0530 (Mon, 15 Oct 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - Oct12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50876/");
@@ -56,12 +56,12 @@ if(description)
   script_tag(name:"affected", value:"Adobe Flash Player version before 10.3.183.29, 11.x before 11.2.202.243 on Linux");
   script_tag(name:"insight", value:"The flaws are due to memory corruption, buffer overflow errors that
   could lead to code execution.");
-  script_tag(name:"solution", value:"Update to Adobe Flash Player version 10.3.183.29 or 11.2.202.243 or later,
-  For updates refer to http://get.adobe.com/flashplayer/");
+  script_tag(name:"solution", value:"Update to Adobe Flash Player version 10.3.183.29 or 11.2.202.243 or later,");
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer/");
   exit(0);
 }
 

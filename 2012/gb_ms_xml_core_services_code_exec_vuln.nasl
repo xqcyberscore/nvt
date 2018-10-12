@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_xml_core_services_code_exec_vuln.nasl 11576 2018-09-24 14:59:42Z cfischer $
+# $Id: gb_ms_xml_core_services_code_exec_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft XML Core Services Remote Code Execution Vulnerability (2719615)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802864");
-  script_version("$Revision: 11576 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-1889");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-14 12:09:11 +0530 (Thu, 14 Jun 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft XML Core Services Remote Code Execution Vulnerability (2719615)");
@@ -64,9 +64,7 @@ if(description)
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
 
-  script_tag(name:"solution", value:"Apply the Patch from below links,
-  http://technet.microsoft.com/en-us/security/advisory/2719615
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-043");
+  script_tag(name:"solution", value:"Apply the Patch  http://technet.microsoft.com/en-us/security/bulletin/ms12-043");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -85,6 +83,7 @@ if(description)
                       "gb_ms_expression_web_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/advisory/2719615");
   exit(0);
 }
 

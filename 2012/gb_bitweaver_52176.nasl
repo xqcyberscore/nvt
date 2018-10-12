@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitweaver_52176.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_bitweaver_52176.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Bitweaver 'rankings.php' Local File Include Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.103438");
   script_bugtraq_id(52176);
   script_cve_id("CVE-2010-5086");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Bitweaver 'rankings.php' Local File Include Vulnerability");
@@ -40,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52176");
   script_xref(name:"URL", value:"http://sourceforge.net/projects/bitweaver/files/bitweaver2.x/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-28 11:12:27 +0100 (Tue, 28 Feb 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -60,7 +60,7 @@ further attacks.");
 Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

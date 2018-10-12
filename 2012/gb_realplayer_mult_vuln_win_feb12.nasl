@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mult_vuln_win_feb12.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_realplayer_mult_vuln_win_feb12.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities (Windows) - Feb12
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802800");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0922", "CVE-2012-0923", "CVE-2012-0924", "CVE-2012-0925",
                 "CVE-2012-0926", "CVE-2012-0927");
   script_bugtraq_id(51883, 51884, 51885, 51887, 51888, 51889);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 13:01:53 +0530 (Tue, 21 Feb 2012)");
   script_name("RealNetworks RealPlayer Multiple Vulnerabilities (Windows) - Feb12");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47896/");
@@ -64,11 +64,11 @@ if(description)
 
   - An unspecified error in the RV40 and RV10 codec, which allows to execute
     arbitrary code via a crafted RV40 or RV10 RealVideo video stream.");
-  script_tag(name:"solution", value:"Upgrade to RealPlayer version 15.02.71 or later,
-  For updates refer to http://www.real.com/player");
+  script_tag(name:"solution", value:"Upgrade to RealPlayer version 15.02.71 or later,");
   script_tag(name:"summary", value:"This host is installed with RealPlayer which is prone to multiple
   vulnerabilities");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.real.com/player");
   exit(0);
 }
 

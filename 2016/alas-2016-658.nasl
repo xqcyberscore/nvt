@@ -7,11 +7,9 @@
 # Authors:
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
 #
 # Copyright:
-# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
+# Copyright (c) 2016 Eero Volotinen, http://ping-viini.org
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -30,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120648");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-03-11 07:09:12 +0200 (Fri, 11 Mar 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Amazon Linux Local Check: alas-2016-658");
   script_tag(name:"insight", value:"A directory traversal vulnerability in RequestUtil.java was discovered which allows remote authenticated users to bypass intended SecurityManager restrictions and list a parent directory via a /.. (slash dot dot) in a pathname used by a web application in a getResource, getResourceAsStream, or getResourcePaths call. (CVE-2015-5174 )The Mapper component processes redirects before considering security constraints and Filters, which allows remote attackers to determine the existence of a directory via a URL that lacks a trailing / (slash) character. (CVE-2015-5345 )It was found that the expression language resolver evaluated expressions within a privileged code section. A malicious web application could use this flaw to bypass security manager protections. (CVE-2014-7810 )");
   script_tag(name:"solution", value:"Run yum update tomcat8 to update your system.");

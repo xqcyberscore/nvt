@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netdecision_http_server_long_req_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_netdecision_http_server_long_req_dos_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # NetDecision HTTP Server Long HTTP Request Remote Denial of Service Vulnerability
 #
@@ -28,11 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802617");
   script_bugtraq_id(52208);
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-1465");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-08 15:19:34 +0530 (Thu, 08 Mar 2012)");
   script_name("NetDecision HTTP Server Long HTTP Request Remote Denial of Service Vulnerability");
 
@@ -56,14 +56,14 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to a boundary error in the HTTP server when handling
   web requests can be exploited to cause a stack-based buffer overflow via an
   overly-long URL.");
-  script_tag(name:"solution", value:"Upgrade to Netmechanica NetDecision 4.6.1 or later,
-  For updates refer to http://www.netmechanica.com/products/?cat_id=2");
+  script_tag(name:"solution", value:"Upgrade to Netmechanica NetDecision 4.6.1 or later,");
   script_tag(name:"summary", value:"The host is running NetDecision HTTP Server and is prone to denial
   of service vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"exploit");
 
+  script_xref(name:"URL", value:"http://www.netmechanica.com/products/?cat_id=2");
   exit(0);
 }
 

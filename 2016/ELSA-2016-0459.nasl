@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ELSA-2016-0459.nasl 11688 2018-09-28 13:36:28Z cfischer $
+# $Id: ELSA-2016-0459.nasl 11856 2018-10-12 07:45:29Z cfischer $
 #
 # Oracle Linux Local Check
 #
@@ -9,9 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://solinor.fi
-#
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -30,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.122902");
-  script_version("$Revision: 11688 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-03-17 16:00:55 +0200 (Thu, 17 Mar 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 15:36:28 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Oracle Linux Local Check: ELSA-2016-0459");
   script_tag(name:"insight", value:"ELSA-2016-0459 - bind security update. Please see the references for more insight.");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

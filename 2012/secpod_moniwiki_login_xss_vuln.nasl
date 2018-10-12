@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_moniwiki_login_xss_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: secpod_moniwiki_login_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # MoniWiki 'login_id' Cross-Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902794");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 17:36:32 +0530 (Tue, 21 Feb 2012)");
   script_name("MoniWiki 'login_id' Cross-Site Scripting Vulnerability");
 
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an input passed to the 'login_id' POST
   parameter in 'wiki.php' (when 'action' is set to 'userform') is not properly
   sanitised before being returned to the user.");
-  script_tag(name:"solution", value:"Upgrade to MoniWiki 1.0.9 or later,");
+  script_tag(name:"solution", value:"Upgrade to MoniWiki 1.0.9 or later, ");
   script_tag(name:"summary", value:"This host is running MoniWiki and is prone to cross site scripting
   vulnerability.");
 

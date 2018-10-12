@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_rokbok_plugin_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wordpress_rokbok_plugin_mult_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # WordPress Rokbox Plugin Multiple Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803079");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Di, 18 Apr 2017)$");
   script_tag(name:"creation_date", value:"2012-12-18 14:38:17 +0530 (Tue, 18 Dec 2012)");
   script_tag(name:"cvss_base", value:"7.5");
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"insight", value:"Flaws are due to an improper validation of user supplied inputs to the
   'src' parameter in 'thumb.php' and 'aboutlink', 'file' and 'config' parameters in 'jwplayer.swf'.");
 
-  script_tag(name:"solution", value:"Upgrade to the WordPress Rokbox Plugin version 2.1.3,
-  For updates refer to http://www.rockettheme.com/wordpress-downloads/plugins/free/2625-rokbox");
+  script_tag(name:"solution", value:"Upgrade to the WordPress Rokbox Plugin version 2.1.3,");
 
   script_tag(name:"summary", value:"This host is installed with WordPress Rokbox Plugin and is prone to multiple
   vulnerabilities.");
@@ -63,6 +62,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.rockettheme.com/wordpress-downloads/plugins/free/2625-rokbox");
   exit(0);
 }
 

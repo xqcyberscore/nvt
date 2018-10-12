@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-014.nasl 11706 2018-10-01 09:48:48Z cfischer $
+# $Id: secpod_ms12-014.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # MS Windows Indeo Codec Remote Code Execution Vulnerability (2661637)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902792");
-  script_version("$Revision: 11706 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2010-3138");
   script_bugtraq_id(42730);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 13:02:52 +0530 (Wed, 15 Feb 2012)");
   script_name("MS Windows Indeo Codec Remote Code Execution Vulnerability (2661637)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/41114/");
@@ -56,9 +56,7 @@ if(description)
   (e.g. iacenc.dll) in an insecure manner.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-014");
+  update mentioned hotfixes in the advisory");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-014.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_code_exec_n_dos_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_adobe_prdts_code_exec_n_dos_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Adobe Flash Player Code Execution and DoS Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903014");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0772", "CVE-2012-0773", "CVE-2012-0724", "CVE-2012-0725");
   script_bugtraq_id(52748, 52916, 52914);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-30 11:21:49 +0530 (Fri, 30 Mar 2012)");
   script_name("Adobe Flash Player Code Execution and DoS Vulnerabilities (Windows)");
 
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
 code execution and denial of service vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Update to Adobe Flash Player version 10.3.183.18 or 11.2.202.228 or later,
-For updates refer to http://get.adobe.com/flashplayer");
+  script_tag(name:"solution", value:"Update to Adobe Flash Player version 10.3.183.18 or 11.2.202.228 or later,");
   script_tag(name:"insight", value:"The flaws are due to
 
   - An error within an ActiveX Control when checking the URL security domain.
@@ -64,6 +63,7 @@ code or cause a denial of service (memory corruption) via unknown vectors.");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

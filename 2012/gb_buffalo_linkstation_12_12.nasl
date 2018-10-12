@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_buffalo_linkstation_12_12.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_buffalo_linkstation_12_12.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Buffalo Linkstation Privilege Escalation / Information Disclosure
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103617");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
@@ -36,7 +36,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/118532/Buffalo-Linkstation-Privilege-Escalation-Information-Disclosure.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-03 17:27:36 +0100 (Mon, 03 Dec 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -53,7 +53,7 @@ Likely none will be provided anymore. General solution options are to upgrade to
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

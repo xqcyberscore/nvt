@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 11027 2018-08-17 08:57:39Z cfischer $
+# $Id: http_func.inc 11853 2018-10-12 06:40:08Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11027 $
+# $Revision: 11853 $
 #
 ###############################################################################
 
@@ -89,7 +89,7 @@ function headers_split( h ) {
 
   local_var ret, array, item, subarray, end;
 
-  if( ! h ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#h#-#headers_split" );
+  if( ! h ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#h#-#headers_split" );
 
   end = strstr( h, '\r\n\r\n' );
   if( end ) h -= end;
@@ -121,7 +121,7 @@ function hex2dec( xvalue ) {
   local_var ret, l, i, n, m;
 
   if( ! xvalue ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#xvalue#-#hex2dec" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#xvalue#-#hex2dec" );
     return(0);
   }
 
@@ -168,7 +168,7 @@ function get_http_banner( port, file, ignore_broken ) {
   local_var soc, sb, banner, req, body;
 
   if( ! port ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_http_banner" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_http_banner" );
     return NULL;
   }
 
@@ -283,8 +283,8 @@ function php_ver_match( banner, pattern ) {
 
   local_var line;
 
-  if( ! banner ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#banner#-#php_ver_match" );
-  if( ! pattern ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pattern#-#php_ver_match" );
+  if( ! banner ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#banner#-#php_ver_match" );
+  if( ! pattern ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pattern#-#php_ver_match" );
 
   line = egrep( pattern:"^Server:.*", string:banner, icase:TRUE );
 
@@ -441,7 +441,7 @@ function http_recv_headers2( socket ) {
 
   local_var buf, line, counter;
 
-  if( ! socket ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#http_recv_headers2" );
+  if( ! socket ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#http_recv_headers2" );
 
   while( TRUE ) {
     counter ++;
@@ -467,7 +467,7 @@ function http_recv_body( socket, headers, length ) {
 
   local_var h, cl, l, min, max, x, n, to, gzip;
 
-  if( ! socket ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#http_recv_body" );
+  if( ! socket ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#http_recv_body" );
 
   if( ! headers ) {
     h = http_recv_headers2( socket:socket );
@@ -494,7 +494,10 @@ function http_recv_body( socket, headers, length ) {
 
     while( 1 ) {
       tmp = recv_line( socket:socket, length:4096 );
-      l = hex2dec( xvalue:tmp );
+      if( ! tmp )
+        l = 0;
+      else
+        l = hex2dec( xvalue:tmp );
       body = strcat( body, recv( socket:socket, length:l, min:l ) );
       # "\r\n"
       recv( socket:socket, length:2, min:2 );
@@ -539,7 +542,7 @@ function http_recv( socket, code ) {
 
   local_var h, b, l;
 
-  if( ! socket ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#http_recv" );
+  if( ! socket ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#http_recv" );
 
   if( code ) {
     h = strcat( code ); # Convert to string, just in case
@@ -564,8 +567,8 @@ function http_recv_length( socket, bodylength ) {
 
   local_var h, b;
 
-  if( ! socket ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#http_recv_length" );
-  if( ! bodylength ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#bodylength#-#http_recv_length" );
+  if( ! socket ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#http_recv_length" );
+  if( ! bodylength ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#bodylength#-#http_recv_length" );
 
   h = http_recv_headers2( socket:socket );
   b = http_recv_body( socket:socket, headers:h, length:bodylength );
@@ -576,8 +579,8 @@ function http_send_recv( port, data ) {
 
   local_var s, r;
 
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_send_recv" );
-  if( ! data ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#http_send_recv" );
+  if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_send_recv" );
+  if( ! data ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#http_send_recv" );
 
   s = http_open_socket( port );
   if( ! s ) return;
@@ -778,7 +781,7 @@ function http_gunzip( buf, onlybody ) {
   local_var onlybody, lines, line, sep, header, body, h, tmpdir, tmpfile, tmpfile_gz, res;
 
   if( ! buf ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#buf#-#http_gunzip" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#buf#-#http_gunzip" );
     return FALSE;
   }
 

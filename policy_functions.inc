@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test support library
-# $Id: policy_functions.inc 11098 2018-08-23 14:32:47Z emoss $
+# $Id: policy_functions.inc 11843 2018-10-11 14:33:21Z emoss $
 #
 # Supporting methods for Policy NVTs.
 #
@@ -50,6 +50,13 @@ function policy_set_compliance(compliant){
 function policy_set_kb(val){
   local_var val;
   name = get_script_oid() + "/RESULT";
+  # save as string, because value can be "0", which would lead to not set the kb_entry
+  set_kb_item(name:name, value:chomp(string(val)));
+}
+
+function policy_set_kb_hcu(id, val){
+  local_var id, val;
+  name = get_script_oid() + "/RESULT/" + id;
   # save as string, because value can be "0", which would lead to not set the kb_entry
   set_kb_item(name:name, value:chomp(string(val)));
 }

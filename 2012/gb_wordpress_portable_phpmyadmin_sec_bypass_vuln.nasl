@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_portable_phpmyadmin_sec_bypass_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wordpress_portable_phpmyadmin_sec_bypass_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # WordPress Portable phpMyAdmin Plugin 'wp-pma-mod' Security Bypass Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803077");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-5469");
   script_bugtraq_id(56920);
   script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fr, 14 Apr 2017)$");
@@ -60,8 +60,7 @@ if(description)
   with the privilege level of the MySQL configuration of WordPress by
   accessing 'wp-content/plugins/portable-phpmyadmin/wp-pma-mod'.");
 
-  script_tag(name:"solution", value:"Upgrade to the WordPress Portable phpMyAdmin Plugin 1.3.1 or later,
-  For updates refer to http://wordpress.org/extend/plugins/portable-phpmyadmin/");
+  script_tag(name:"solution", value:"Upgrade to the WordPress Portable phpMyAdmin Plugin 1.3.1 or later,");
 
   script_tag(name:"summary", value:"This host is installed with WordPress Portable phpMyAdmin Plugin and is
   prone to security bypass vulnerability.");
@@ -69,6 +68,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/portable-phpmyadmin/");
   exit(0);
 }
 

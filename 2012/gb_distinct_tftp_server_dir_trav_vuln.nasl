@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_distinct_tftp_server_dir_trav_vuln.nasl 11355 2018-09-12 10:32:04Z asteins $
+# $Id: gb_distinct_tftp_server_dir_trav_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Distinct TFTP Server Directory Traversal Vulnerability
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802623");
   script_bugtraq_id(52938);
-  script_version("$Revision: 11355 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-09 15:15:15 +0530 (Mon, 09 Apr 2012)");
   script_name("Distinct TFTP Server Directory Traversal Vulnerability");
 
@@ -51,8 +51,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is caused due an input validation error within the TFTP
   service and can be exploited to download or manipulate files in arbitrary locations outside the
   TFTP root via specially crafted directory traversal sequences.");
-  script_tag(name:"solution", value:"Upgrade to Distinct TFTP Server version 3.11 or later.
-  For updates refer to http://www.distinct.com");
+  script_tag(name:"solution", value:"Upgrade to Distinct TFTP Server version 3.11 or later.");
   script_tag(name:"summary", value:"This host is running Distinct TFTP Server and is prone to
   directory traversal vulnerability.");
 
@@ -60,6 +59,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://www.distinct.com");
   exit(0);
 }
 

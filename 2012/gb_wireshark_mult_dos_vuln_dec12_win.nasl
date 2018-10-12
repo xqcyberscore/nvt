@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_dec12_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_wireshark_mult_dos_vuln_dec12_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wireshark Multiple Dissector Multiple DoS Vulnerabilities - Dec12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803068");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-6053", "CVE-2012-6062", "CVE-2012-6061", "CVE-2012-6060",
                 "CVE-2012-6059", "CVE-2012-6058");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-07 18:39:59 +0530 (Fri, 07 Dec 2012)");
   script_name("Wireshark Multiple Dissector Multiple DoS Vulnerabilities - Dec12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51422");
@@ -53,12 +53,12 @@ if(description)
   script_tag(name:"affected", value:"Wireshark 1.6.x before 1.6.12, 1.8.x before 1.8.4 on Windows");
   script_tag(name:"insight", value:"The flaws are due to an errors in USB, RTCP, WTP, iSCSI, ISAKMP and ICMPv6
   dissectors, which can be exploited to cause a crash.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.12 or 1.8.4 or later,
-  For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.12 or 1.8.4 or later,");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to multiple
   denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download");
   exit(0);
 }
 

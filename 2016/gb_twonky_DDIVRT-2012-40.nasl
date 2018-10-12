@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twonky_DDIVRT-2012-40.nasl 5867 2017-04-05 09:01:13Z teissa $
+# $Id: gb_twonky_DDIVRT-2012-40.nasl 11837 2018-10-11 09:17:05Z asteins $
 #
 # Twonky Server Directory Traversal Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:twonky:twonky_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108005");
-  script_version("$Revision: 5867 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_version("$Revision: 11837 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-27 12:00:00 +0200 (Tue, 27 Sep 2016)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
@@ -51,8 +51,7 @@ if(description)
   script_tag(name:"impact", value:"An unauthenticated remote attacker can use this vulnerability to retrieve
   arbitrary files that are located outside the root of the web server.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detect
-  NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Versions prior to Twonky Server 7.0.8 are vulnerable.");
 

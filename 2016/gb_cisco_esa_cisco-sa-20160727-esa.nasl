@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20160727-esa.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_cisco_esa_cisco-sa-20160727-esa.nasl 11837 2018-10-11 09:17:05Z asteins $
 #
 # Cisco Email Security Appliance File Type Filtering Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-1461");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11837 $");
 
   script_name("Cisco Email Security Appliance File Type Filtering Vulnerability");
 
@@ -42,8 +42,7 @@ if (description)
   script_tag(name:"vuldetect", value:"Check the version.");
 
   script_tag(name:"solution", value:"Upgrade to Cisco ESA version 9.1.1-038 or
- later. For updates refer to
- http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160727-esa.");
+ later.");
 
   script_tag(name:"summary", value:"A vulnerability in the email message filtering feature of Cisco AsyncOS
 for Cisco Email Security Appliance (ESA) could allow an unauthenticated, remote attacker to cause an ESA to
@@ -57,14 +56,15 @@ the attacker to cause the ESA to fail to detect and act upon possible malware in
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-29 11:42:15 +0700 (Fri, 29 Jul 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_esa_version.nasl");
   script_mandatory_keys("cisco_esa/installed");
- exit(0);
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160727-esa.");
+  exit(0);
 }
 
 include("host_details.inc");

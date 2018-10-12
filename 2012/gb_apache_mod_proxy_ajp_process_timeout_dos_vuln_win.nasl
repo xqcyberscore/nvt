@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_proxy_ajp_process_timeout_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_apache_mod_proxy_ajp_process_timeout_dos_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Apache HTTP Server mod_proxy_ajp Process Timeout DoS Vulnerability (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802683");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-4557");
   script_bugtraq_id(56753);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-06 18:00:42 +0530 (Thu, 06 Dec 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -51,16 +51,14 @@ if(description)
   node into an error state upon detection of a long request-processing time.");
   script_tag(name:"summary", value:"The host is running Apache HTTP Server and is prone to denial
   of service vulnerability.");
-  script_tag(name:"solution", value:"Apply patch or upgrade Apache HTTP Server 2.2.22 or later,
-  For updates refer to http://svn.apache.org/viewvc?view=revision&revision=1227298
-
-  *****
+  script_tag(name:"solution", value:"Apply patch or upgrade Apache HTTP Server 2.2.22 or later,  *****
   NOTE: Ignore this warning, if above mentioned patch is manually applied.
   *****");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=871685");
   script_xref(name:"URL", value:"http://httpd.apache.org/security/vulnerabilities_22.html#2.2.22");
+  script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=revision&revision=1227298");
   script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=revision&revision=1227298");
   exit(0);
 }

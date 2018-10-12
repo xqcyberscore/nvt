@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_unspecified_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_oracle_java_se_unspecified_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Oracle Java SE Java Runtime Environment Unspecified Vulnerability - (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802950");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-1726");
   script_bugtraq_id(53948);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-22 19:06:04 +0530 (Wed, 22 Aug 2012)");
   script_name("Oracle Java SE Java Runtime Environment Unspecified Vulnerability - (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48589");
@@ -47,8 +47,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to gain sensitive information.");
   script_tag(name:"affected", value:"Oracle Java SE versions 7 Update 4 and earlier");
   script_tag(name:"insight", value:"Unspecified errors related to Libraries component.");
-  script_tag(name:"solution", value:"Apply the patch from below link
-  http://www.oracle.com/technetwork/topics/security/javacpufeb2012-366318.html");
+  script_tag(name:"solution", value:"Apply the patch");
   script_tag(name:"summary", value:"This host is installed with Oracle Java SE and is prone to
   unspecified vulnerability.");
   script_tag(name:"qod_type", value:"registry");

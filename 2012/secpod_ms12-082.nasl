@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-082.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: secpod_ms12-082.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft Windows DirectPlay Remote Code Execution Vulnerability (2770660)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901212");
-  script_version("$Revision: 11372 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-1537");
   script_bugtraq_id(56839);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-12 09:44:20 +0530 (Wed, 12 Dec 2012)");
   script_name("Microsoft Windows DirectPlay Remote Code Execution Vulnerability (2770660)");
   script_category(ACT_GATHER_INFO);
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"insight", value:"The vulnerability is caused when Windows DirectPlay fails to properly handle
   specially crafted office document with embedded content.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-082");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-082.");
   script_tag(name:"qod_type", value:"registry");

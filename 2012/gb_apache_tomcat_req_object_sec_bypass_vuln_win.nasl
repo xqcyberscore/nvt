@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_req_object_sec_bypass_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_apache_tomcat_req_object_sec_bypass_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Apache Tomcat Request Object Security Bypass Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802385");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-3375");
   script_bugtraq_id(51442);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-20 13:19:54 +0530 (Fri, 20 Jan 2012)");
   script_name("Apache Tomcat Request Object Security Bypass Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -61,8 +61,7 @@ if(description)
   is being carried forward to the next request.");
   script_tag(name:"summary", value:"The host is running Apache Tomcat Server and is prone to security
   bypass vulnerability.");
-  script_tag(name:"solution", value:"Upgrade Apache Tomcat to 6.0.34, 7.0.22 or later,
-  For updates refer to http://tomcat.apache.org/");
+  script_tag(name:"solution", value:"Upgrade Apache Tomcat to 6.0.34, 7.0.22 or later,");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_lfi_16_07_2012.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_magento_lfi_16_07_2012.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Magento eCommerce Local File Disclosure
 #
@@ -30,7 +30,7 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103518");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -53,7 +53,7 @@ if (description)
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-16 10:24:55 +0200 (Mon, 16 Jul 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -64,7 +64,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_active");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

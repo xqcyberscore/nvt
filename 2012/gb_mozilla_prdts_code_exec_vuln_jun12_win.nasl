@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_code_exec_vuln_jun12_win.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: gb_mozilla_prdts_code_exec_vuln_jun12_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Mozilla Products 'nsHTMLSelectElement' Remote Code Execution Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802874");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-3671");
   script_bugtraq_id(54080);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-20 13:13:30 +0530 (Wed, 20 Jun 2012)");
   script_name("Mozilla Products 'nsHTMLSelectElement' Remote Code Execution Vulnerability (Windows)");
 
@@ -55,16 +55,14 @@ if(description)
   of the element is no longer active.");
   script_tag(name:"summary", value:"This host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
   to remote code execution vulnerability.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 9.0 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html
-
-  Upgrade to SeaMonkey version to 2.6 or later,
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 9.0 or later,  Upgrade to SeaMonkey version to 2.6 or later,
   http://www.mozilla.org/projects/seamonkey/
 
   Upgrade to Thunderbird version to 9.0 or later,
   http://www.mozilla.org/en-US/thunderbird/");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

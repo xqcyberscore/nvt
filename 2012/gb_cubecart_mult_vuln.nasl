@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cubecart_mult_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
+# $Id: gb_cubecart_mult_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # CubeCart Multiple Vulnerabilities
 #
@@ -29,9 +29,9 @@ CPE = "cpe:/a:cubecart:cubecart";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803090");
-  script_version("$Revision: 11431 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(57031);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-25 15:26:41 +0530 (Tue, 25 Dec 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,13 +54,13 @@ if(description)
   script_tag(name:"affected", value:"CubeCart version 3.0.x through 3.0.20");
   script_tag(name:"insight", value:"Inputs passed via multiple parameters to 'index.php', 'cart.php' and Admin
   Interface is not properly sanitised before it is returned to the user.");
-  script_tag(name:"solution", value:"Upgrade to CubeCart version 5.0 or later,
-  For updates refer to http://www.cubecart.com");
+  script_tag(name:"solution", value:"Upgrade to CubeCart version 5.0 or later,");
   script_tag(name:"summary", value:"This host is installed with CubeCart and is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.cubecart.com");
   exit(0);
 }
 

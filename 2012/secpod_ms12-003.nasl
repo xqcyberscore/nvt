@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-003.nasl 11706 2018-10-01 09:48:48Z cfischer $
+# $Id: secpod_ms12-003.nasl 11848 2018-10-11 15:35:17Z cfischer $
 #
 # MS Windows Client/Server Run-time Subsystem Privilege Escalation Vulnerability (2646524)
 #
@@ -30,12 +30,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902499");
-  script_version("$Revision: 11706 $");
+  script_version("$Revision: 11848 $");
   script_cve_id("CVE-2012-0005");
   script_bugtraq_id(51270);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 11:48:48 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 17:35:17 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-11 08:42:52 +0530 (Wed, 11 Jan 2012)");
   script_name("MS Windows Client/Server Run-time Subsystem Privilege Escalation Vulnerability (2646524)");
   script_category(ACT_GATHER_INFO);
@@ -47,7 +47,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/47479/");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2646524");
-  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms12-003");
+  script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/security-updates/SecurityBulletins/2012/ms12-003");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attacker to execute arbitrary code with
   system-level privileges. Successfully exploiting this issue will result in
@@ -62,9 +62,7 @@ if(description)
   Microsoft Windows Server 2008 Service Pack 2 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-003");
+  update mentioned hotfixes in the advisory from the referenced link.");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-003.");
@@ -118,7 +116,7 @@ if( "Locale = 0404" >< windows_info || "Locale = 0804" >< windows_info ||
   sysPath = smb_get_systemroot();
   if( ! sysPath ) exit( 0 );
 
-  sysVer = fetch_file_version( sysPath, file_name:"system32\winsrv.dll" );
+  sysVer = fetch_file_version( sysPath:sysPath, file_name:"system32\winsrv.dll" );
   if( sysVer ) {
     if( hotfix_check_sp( xp:4 ) > 0 ) {
       if( version_is_less( version:sysVer, test_version:"5.1.2600.6179" ) ) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_igss_dll_code_execution_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_igss_dll_code_execution_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Interactive Graphical SCADA System DLL Loading Arbitrary Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802297");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-4053");
   script_bugtraq_id(51438);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 15:15:15 +0530 (Mon, 23 Jan 2012)");
   script_name("Interactive Graphical SCADA System DLL Loading Arbitrary Code Execution Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51438");
@@ -52,11 +52,11 @@ if(description)
   libraries from the current working directory, which could allow attackers
   to execute arbitrary code by tricking a user into opening a file from a
   network share.");
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.7t.dk/igss/igssupdates/v90/progupdatesv90.zip");
+  script_tag(name:"solution", value:"Apply the patch");
   script_tag(name:"summary", value:"This host is installed with Interactive Graphical SCADA System
   and is prone to code execution vulnerability.");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.7t.dk/igss/igssupdates/v90/progupdatesv90.zip");
   exit(0);
 }
 

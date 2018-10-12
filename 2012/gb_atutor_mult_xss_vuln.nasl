@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atutor_mult_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_atutor_mult_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Atutor Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802561");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(51423);
   script_cve_id("CVE-2012-6528");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-17 12:09:44 +0530 (Tue, 17 Jan 2012)");
   script_name("Atutor Multiple Cross Site Scripting Vulnerabilities");
 
@@ -53,13 +53,13 @@ if(description)
   script_tag(name:"affected", value:"ATutor version 2.0.3");
   script_tag(name:"insight", value:"Multiple flaws are due to an input passed to the various pages are not
   properly sanitised before being returned to the user.");
-  script_tag(name:"solution", value:"Update to ATutor Version 2.1
-  For updates refer to http://atutor.ca/atutor/change_log.php");
+  script_tag(name:"solution", value:"Update to ATutor Version 2.1");
   script_tag(name:"summary", value:"This host is running Atutor and is prone to multiple cross site
   scripting vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+  script_xref(name:"URL", value:"http://atutor.ca/atutor/change_log.php");
   exit(0);
 }
 

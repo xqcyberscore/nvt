@@ -7,9 +7,6 @@
 # Authors:
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
-#
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
 #
@@ -30,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120687");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-05-09 14:12:03 +0300 (Mon, 09 May 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Amazon Linux Local Check: alas-2016-698");
   script_tag(name:"insight", value:"The following security-related issues were resolved:Buffer over-write in finfo_open with malformed magic file (CVE-2015-8865 )Signedness vulnerability causing heap overflow in libgd (CVE-2016-3074 )Integer overflow in php_raw_url_encode (CVE-2016-4070 )Format string vulnerability in php_snmp_error() (CVE-2016-4071 )Invalid memory write in phar on filename containing \\0 inside name (CVE-2016-4072 )Negative size parameter in memcpy (CVE-2016-4073 )");
   script_tag(name:"solution", value:"Run yum update php56 to update your system.

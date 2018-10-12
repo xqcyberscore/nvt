@@ -7,9 +7,6 @@
 # Authors:
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
-#
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
 #
@@ -30,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120680");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-05-09 14:11:55 +0300 (Mon, 09 May 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Amazon Linux Local Check: alas-2016-690");
   script_tag(name:"insight", value:"It was discovered that foomatic-rip failed to remove all shell special characters from inputs used to construct command lines for external programs run by the filter. An attacker could possibly use this flaw to execute arbitrary commands. (CVE-2015-8560 )It was discovered that the unhtmlify() function of foomatic-rip did not correctly calculate buffer sizes, possibly leading to a heap-based memory corruption. A malicious attacker could exploit this flaw to cause foomatic-rip to crash or, possibly, execute arbitrary code. (CVE-2010-5325 )");
   script_tag(name:"solution", value:"Run yum update foomatic to update your system.");

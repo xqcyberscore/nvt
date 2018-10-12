@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_iprint_client_mult_code_exec_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: secpod_novell_iprint_client_mult_code_exec_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Novell iPrint Client Multiple Remote Code Execution Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:novell:iprint";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902674");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-4185", "CVE-2011-4186", "CVE-2011-4187");
   script_bugtraq_id(51926);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-26 12:20:02 +0530 (Thu, 26 Apr 2012)");
   script_name("Novell iPrint Client Multiple Remote Code Execution Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47867/");
@@ -59,7 +59,7 @@ if(description)
 
   - A boundary error within nipplib.dll, when parsing the 'client-file-name'
     parameter.");
-  script_tag(name:"solution", value:"Upgrade to the Novell iPrint Client version 5.78 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Novell iPrint Client version 5.78 or later, ");
   script_tag(name:"summary", value:"This host is installed with Novell iPrint Client and is prone to
   multiple remote code execution vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code,

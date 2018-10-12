@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_bugtrackernet_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_bugtrackernet_mult_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # BugTracker.NET Multiple Security Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:ifdefined:bugtracker.net";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901303");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-29 15:57:44 +0530 (Thu, 29 Nov 2012)");
   script_name("BugTracker.NET Multiple Security Vulnerabilities");
 
@@ -89,14 +89,14 @@ if(description)
   - 'url' parameter in util.cs
 
   - 'bg_id' parameter in delete_subscriber.aspx");
-  script_tag(name:"solution", value:"Upgrade to BugTracker.NET 3.8.9
-  For updates refer to http://ifdefined.com/bugtrackernet.html");
+  script_tag(name:"solution", value:"Upgrade to BugTracker.NET 3.8.9");
   script_tag(name:"summary", value:"This host is installed with BugTracker.NET and is prone to SQL injection or
   XSS or file disclosure or HTTP response splitting vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://ifdefined.com/bugtrackernet.html");
   exit(0);
 }
 

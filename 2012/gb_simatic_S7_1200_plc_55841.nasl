@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_S7_1200_plc_55841.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: gb_simatic_S7_1200_plc_55841.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Siemens SIMATIC S7-1200 PLC 'web server' Component Cross Site Scripting Vulnerability
 #
@@ -31,7 +31,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103584");
   script_bugtraq_id(55841);
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55841");
   script_xref(name:"URL", value:"http://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-279823.pdf");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-10 12:27:02 +0200 (Wed, 10 Oct 2012)");
 
   script_category(ACT_GATHER_INFO);
@@ -64,7 +64,7 @@ if (description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

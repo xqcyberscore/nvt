@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mutiny_56165.nasl 11132 2018-08-27 10:12:32Z ckuersteiner $
+# $Id: gb_mutiny_56165.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Mutiny  Command Injection Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2012-3001");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11132 $");
+  script_version("$Revision: 11855 $");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -42,7 +42,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56165");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 12:12:32 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-23 10:29:30 +0200 (Tue, 23 Oct 2012)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -60,7 +60,7 @@ Attackers can exploit this issue to execute arbitrary commands with root privile
 
 Mutiny versions prior to 4.5-1.12 are vulnerable.");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

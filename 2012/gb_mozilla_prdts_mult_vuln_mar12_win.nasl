@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_mar12_win.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: gb_mozilla_prdts_mult_vuln_mar12_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Mozilla Products Multiple Vulnerabilities - Mar12 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802820");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0461", "CVE-2012-0463", "CVE-2012-0458", "CVE-2012-0457",
                 "CVE-2012-0455", "CVE-2012-0464", "CVE-2012-0456");
   script_bugtraq_id(52464, 52466, 52460, 52459, 52458, 52465, 52461);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-19 17:59:17 +0530 (Mon, 19 Mar 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - Mar12 (Windows)");
 
@@ -71,16 +71,14 @@ if(description)
   - An improper implementation of SVG Filters.");
   script_tag(name:"summary", value:"The host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
   to multiple vulnerabilities.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.28 or 11.0 or later,
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html
-
-  Upgrade to SeaMonkey version to 2.8 or later,
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.28 or 11.0 or later,  Upgrade to SeaMonkey version to 2.8 or later,
   http://www.mozilla.org/projects/seamonkey/
 
   Upgrade to Thunderbird version to 3.1.20 or 11 or later,
   http://www.mozilla.org/en-US/thunderbird/");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

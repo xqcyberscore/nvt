@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_op5_55191.nasl 11425 2018-09-17 09:11:30Z asteins $
+# $Id: gb_op5_55191.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # op5 Monitor HTML Injection and SQL Injection Vulnerabilities
 #
@@ -30,7 +30,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103556");
   script_bugtraq_id(55191);
-  script_version("$Revision: 11425 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:P/A:N");
 
@@ -38,7 +38,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55191");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:11:30 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 10:46:24 +0200 (Thu, 30 Aug 2012)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -63,7 +63,7 @@ also possible.");
   script_tag(name:"affected", value:"op5 Monitor 5.4.2 is vulnerable, other versions may also be affected.");
 
   script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

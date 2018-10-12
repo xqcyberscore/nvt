@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_mar12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_apple_itunes_mult_vuln_mar12_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Apple iTunes Multiple Vulnerabilities - Mar12 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802824");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-2825", "CVE-2011-2833", "CVE-2011-2846", "CVE-2011-2847",
                 "CVE-2011-2854", "CVE-2011-2855", "CVE-2011-2857", "CVE-2011-2860",
                 "CVE-2011-2866", "CVE-2011-2867", "CVE-2011-2868", "CVE-2011-2869",
@@ -51,7 +51,7 @@ if(description)
   script_bugtraq_id(49279, 52365, 49658, 52363, 49938, 50360, 50642, 51041);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-20 16:59:10 +0530 (Tue, 20 Mar 2012)");
   script_name("Apple iTunes Multiple Vulnerabilities - Mar12 (Windows)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5191");
@@ -67,12 +67,12 @@ if(description)
   possibly execute arbitrary code or inject html code via unknown vectors.");
   script_tag(name:"affected", value:"Apple iTunes version prior to 10.6 (10.6.0.40) on Windows");
   script_tag(name:"insight", value:"For more details about the vulnerabilities refer to the links given below.");
-  script_tag(name:"solution", value:"Upgrade to Apple Apple iTunes version 10.6 or later,
-  For updates refer to http://www.apple.com/itunes/download/");
+  script_tag(name:"solution", value:"Upgrade to Apple Apple iTunes version 10.6 or later,");
   script_tag(name:"summary", value:"This host is installed with Apple iTunes and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.apple.com/itunes/download/");
   exit(0);
 }
 

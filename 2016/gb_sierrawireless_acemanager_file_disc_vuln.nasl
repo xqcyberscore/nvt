@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sierrawireless_acemanager_file_disc_vuln.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_sierrawireless_acemanager_file_disc_vuln.nasl 11837 2018-10-11 09:17:05Z asteins $
 #
 # Sierra Wireless AceManager File Disclosure Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/h:sierra_wireless:acemanager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106076");
-  script_version("$Revision: 5598 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2016-05-17 09:27:34 +0700 (Tue, 17 May 2016)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11837 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2016-05-17 09:27:34 +0700 (Tue, 17 May 2016)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_cve_id("CVE-2015-6479");
 
@@ -51,25 +51,25 @@ if (description)
   script_dependencies("gb_sierrawireless_acemanager_detect.nasl");
   script_mandatory_keys("sierra_wireless_acemanager/installed");
 
-  script_tag(name: "summary", value: "Sierra Wireless AceManager is prone to a file disclosure
+  script_tag(name:"summary", value:"Sierra Wireless AceManager is prone to a file disclosure
 vulnerability");
 
-  script_tag(name: "vuldetect", value: "Checks if the file filteredlogs.txt is accessible.");
+  script_tag(name:"vuldetect", value:"Checks if the file filteredlogs.txt is accessible.");
 
-  script_tag(name: "insight", value: "The file filteredlogs.txt is available without authorization. No
+  script_tag(name:"insight", value:"The file filteredlogs.txt is available without authorization. No
 sensitive information is written to the accessible log file, although because of the diagnostic nature of
 such files an attacker may be able to learn operational characteristics of the device, e.g., the sequence of
 operations at boot time. The accessible log file only persists until the next log view operation or until
 the device reboots.");
 
-  script_tag(name: "impact", value: "An attacker may be able to learn operational characteristics of the
+  script_tag(name:"impact", value:"An attacker may be able to learn operational characteristics of the
 gateway, e.g., the sequence of operations at boot time.");
 
-  script_tag(name: "affected", value: "ALEOS 4.4.2 and earlier.");
+  script_tag(name:"affected", value:"ALEOS 4.4.2 and earlier.");
 
-  script_tag(name: "solution", value: "Upgrade to version 4.4.4 or later");
+  script_tag(name:"solution", value:"Upgrade to version 4.4.4 or later");
 
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-16-105-01");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-16-105-01");
 
   exit(0);
 }

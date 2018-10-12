@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_http_srv_cookie_info_disc_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_apache_http_srv_cookie_info_disc_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Apache HTTP Server 'httpOnly' Cookie Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:apache:http_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902830");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(51706);
   script_cve_id("CVE-2012-0053");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-26 12:12:12 +0530 (Thu, 26 Apr 2012)");
   script_name("Apache HTTP Server 'httpOnly' Cookie Information Disclosure Vulnerability");
 
@@ -51,8 +51,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error within the default error response for
   status code 400 when no custom ErrorDocument is configured, which can be
   exploited to expose 'httpOnly' cookies.");
-  script_tag(name:"solution", value:"Upgrade to Apache HTTP Server version 2.2.22 or later,
-  For updates refer to http://httpd.apache.org/");
+  script_tag(name:"solution", value:"Upgrade to Apache HTTP Server version 2.2.22 or later,");
   script_tag(name:"summary", value:"This host is running Apache HTTP Server and is prone to cookie
   information disclosure vulnerability.");
 

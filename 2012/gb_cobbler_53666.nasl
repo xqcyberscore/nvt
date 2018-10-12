@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cobbler_53666.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_cobbler_53666.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Cobbler Remote Command Injection Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2012-2395");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11855 $");
 
   script_name("Cobbler Remote Command Injection Vulnerability");
 
@@ -44,7 +44,7 @@ if (description)
   script_xref(name:"URL", value:"https://github.com/cobbler/cobbler/issues/141");
   script_xref(name:"URL", value:"https://github.com/cobbler/cobbler/commit/6d9167e5da44eca56bdf42b5776097a6779aaadf");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-12 16:50:33 +0200 (Thu, 12 Jul 2012)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -60,7 +60,7 @@ context of the affected application.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

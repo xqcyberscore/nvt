@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-068.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: secpod_ms12-068.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft Windows Kernel Privilege Elevation Vulnerability (2724197)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903041");
-  script_version("$Revision: 11372 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-2529");
   script_bugtraq_id(55793);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-10 08:54:58 +0530 (Wed, 10 Oct 2012)");
   script_name("Microsoft Windows Kernel Privilege Elevation Vulnerability (2724197)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50862/");
@@ -59,8 +59,7 @@ if(description)
   objects in memory and can be exploited to execute arbitrary code with
   kernel privileges.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-068");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-068.");
   script_tag(name:"qod_type", value:"registry");

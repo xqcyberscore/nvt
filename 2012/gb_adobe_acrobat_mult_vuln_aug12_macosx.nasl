@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln_aug12_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_adobe_acrobat_mult_vuln_aug12_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Adobe Acrobat Multiple Vulnerabilities - Mac OS X
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803478");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-4149", "CVE-2012-4148", "CVE-2012-4147", "CVE-2012-2051",
                 "CVE-2012-2050", "CVE-2012-4160", "CVE-2012-2049", "CVE-2012-4159",
                 "CVE-2012-4158", "CVE-2012-4157", "CVE-2012-4156", "CVE-2012-4155",
@@ -38,7 +38,7 @@ if(description)
                     55022, 55023);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-20 11:01:35 +0530 (Mon, 20 Aug 2012)");
   script_name("Adobe Acrobat Multiple Vulnerabilities - Mac OS X");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50281");
@@ -53,8 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Acrobat versions 9.x through 9.5.1 and 10.x through 10.1.3 on Mac OS X");
   script_tag(name:"insight", value:"The flaws are due to unspecified errors which can be exploited to
   corrupt memory.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Acrobat version 9.5.2 or 10.1.4 or later
-  For updates refer to http://www.adobe.com");
+  script_tag(name:"solution", value:"Upgrade to Adobe Acrobat version 9.5.2 or 10.1.4 or later");
   script_tag(name:"summary", value:"This host is installed with Adobe Acrobat and is prone to
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"package");

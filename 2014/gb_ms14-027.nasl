@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-027.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-027.nasl 11846 2018-10-11 15:26:58Z cfischer $
 #
 # Microsoft Windows Shell Handler Privilege Escalation Vulnerability (2962488)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804295");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11846 $");
   script_cve_id("CVE-2014-1807");
   script_bugtraq_id(67276);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 17:26:58 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-14 08:27:46 +0530 (Wed, 14 May 2014)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Shell Handler Privilege Escalation Vulnerability (2962488)");
@@ -50,32 +50,39 @@ if(description)
   account.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
+
   Microsoft Windows 8.1 x32/x64
+
   Microsoft Windows Server 2012
+
   Microsoft Windows 7 x32/x64 Service Pack 1 and prior
+
   Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
+
   Microsoft Windows Vista x32/x64 Service Pack 2 and prior
+
   Microsoft Windows Server 2008 R2 x64 Service Pack 1 and prior
+
   Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
-  link, https://technet.microsoft.com/en-us/security/bulletin/ms14-027");
+  references.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"https://support.microsoft.com/kb/2926765");
   script_xref(name:"URL", value:"https://support.microsoft.com/kb/2962123");
-  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms14-027");
+  script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/security-updates/SecurityBulletins/2014/ms14-027");
   script_category(ACT_GATHER_INFO);
   script_family("Windows : Microsoft Bulletins");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
@@ -94,7 +101,7 @@ if(!sysPath){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath,file_name:"\system32\shlwapi.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"\system32\shlwapi.dll");
 if(sysVer)
 {
   if(hotfix_check_sp(win2003:3, win2003x64:3) > 0)
@@ -107,7 +114,7 @@ if(sysVer)
   }
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"\system32\shell32.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"\system32\shell32.dll");
 if(!sysVer){
   exit(0);
 }

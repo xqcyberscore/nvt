@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_mem_crptn_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_adobe_prdts_mult_mem_crptn_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Adobe Reader/Acrobat Multiple Memory Corruption Vulnerabilities - Windows
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802558");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-4370", "CVE-2011-4371", "CVE-2011-4372", "CVE-2011-4373");
   script_bugtraq_id(51348, 51351, 51349, 51350);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-16 11:41:01 +0530 (Mon, 16 Jan 2012)");
   script_name("Adobe Reader/Acrobat Multiple Memory Corruption Vulnerabilities - Windows");
 
@@ -52,8 +52,7 @@ context of the affected application or cause a denial of service.");
 
 Adobe Acrobat versions 9.x through 9.4.7 and 10.x through 10.1.1 on Windows.");
   script_tag(name:"solution", value:"Upgrade to Adobe Reader version 9.5 or 10.1.2 or later.
-Upgrade to Adobe Acrobat version 9.5 or 10.1.2 or later.
-For updates refer to http://www.adobe.com/");
+Upgrade to Adobe Acrobat version 9.5 or 10.1.2 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

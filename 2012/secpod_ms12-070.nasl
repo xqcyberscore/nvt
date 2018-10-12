@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-070.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: secpod_ms12-070.nasl 11848 2018-10-11 15:35:17Z cfischer $
 #
 # Microsoft SQL Server Report Manager Cross Site Scripting Vulnerability (2754849)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902689");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11848 $");
   script_cve_id("CVE-2012-2552");
   script_bugtraq_id(55783);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 17:35:17 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-10 09:46:39 +0530 (Wed, 10 Oct 2012)");
   script_name("Microsoft SQL Server Report Manager Cross Site Scripting Vulnerability (2754849)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50901");
@@ -49,29 +49,37 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to gain sensitive
   information or execute arbitrary code in the context of the current user.");
+
   script_tag(name:"affected", value:"Microsoft SQL Server 2012
+
   Microsoft SQL Server 2005 Service Pack 4 and prior
+
   Microsoft SQL Server 2008 Service Pack 2 and prior
+
   Microsoft SQL Server 2008 Service Pack 3 and prior
+
   Microsoft SQL Server 2000 Reporting Services Service Pack 2");
+
   script_tag(name:"insight", value:"An error exists in the SQL Server Reporting Services (SSRS), which can be
   exploited to insert client-side script code.");
+
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory ");
+  update mentioned hotfixes in the referenced advisory.");
+
   script_tag(name:"summary", value:"This host has important security update missing according to
   Microsoft Bulletin MS12-070.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Microsoft SQL Server 2000 Reporting Service
 key = "SOFTWARE\Microsoft\Microsoft SQL Server\Reporting Services\Version";
 if(registry_key_exists(key:key))
 {
@@ -101,8 +109,7 @@ if(registry_key_exists(key:key))
 
     if("Microsoft SQL Server" >< sysPath)
     {
-      sysVer = fetch_file_version(sysPath,
-                file_name:"Binn\VSShell\Common7\IDE\Microsoft.reportingservices.diagnostics.dll");
+      sysVer = fetch_file_version(sysPath:sysPath, file_name:"Binn\VSShell\Common7\IDE\Microsoft.reportingservices.diagnostics.dll");
 
       if(sysVer)
       {

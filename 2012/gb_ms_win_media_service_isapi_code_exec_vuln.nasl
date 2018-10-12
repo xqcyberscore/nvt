@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_media_service_isapi_code_exec_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_ms_win_media_service_isapi_code_exec_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft Windows Media Services ISAPI Extension Code Execution Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802897");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2003-0227", "CVE-2003-0349");
   script_bugtraq_id(7727, 8035);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-25 16:04:16 +0530 (Wed, 25 Jul 2012)");
   script_name("Microsoft Windows Media Services ISAPI Extension Code Execution Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/9115");
@@ -62,16 +62,13 @@ if(description)
   implemented as ISAPI extension (nsiislog.dll), which fails to processes
   incoming client or malicious HTTP requests.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://technet.microsoft.com/en-us/security/bulletin/ms03-019
-
-  http://technet.microsoft.com/en-us/security/bulletin/ms03-022");
+  update mentioned hotfixes in the advisory  http://technet.microsoft.com/en-us/security/bulletin/ms03-022");
   script_tag(name:"summary", value:"This host is running Microsoft Windows Media Services and is prone
   to remote code execution vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms03-019");
   exit(0);
 }
 

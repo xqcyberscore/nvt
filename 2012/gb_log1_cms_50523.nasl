@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_log1_cms_50523.nasl 11144 2018-08-28 11:37:19Z asteins $
+# $Id: gb_log1_cms_50523.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Log1 CMS 'data.php' PHP Code Injection Vulnerability
 #
@@ -29,12 +29,12 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.103496");
   script_cve_id("CVE-2011-4825");
   script_bugtraq_id(50523);
-  script_version("$Revision: 11144 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Log1 CMS 'data.php' PHP Code Injection Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50523");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 13:37:19 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-18 17:36:01 +0100 (Mon, 18 Jun 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -54,7 +54,7 @@ Likely none will be provided anymore. General solution options are to upgrade to
 
   script_tag(name:"qod_type", value:"remote_app");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vivotek_network_cameras_54476.nasl 11058 2018-08-20 14:18:06Z asteins $
+# $Id: gb_vivotek_network_cameras_54476.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Vivotek Network Cameras Information Disclosure Vulnerability
 #
@@ -29,7 +29,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103521");
   script_bugtraq_id(54476);
-  script_version("$Revision: 11058 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2013-1594", "CVE-2013-1595", "CVE-2013-1596", "CVE-2013-1597", "CVE-2013-1598");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -37,7 +37,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54476");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-17 14:10:13 +0200 (Tue, 17 Jul 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -59,7 +59,7 @@ Likely none will be provided anymore. General solution options are to upgrade to
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

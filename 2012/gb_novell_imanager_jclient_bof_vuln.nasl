@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_imanager_jclient_bof_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
+# $Id: gb_novell_imanager_jclient_bof_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Novell iManager jclient 'EnteredAttrName' Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802852");
-  script_version("$Revision: 11429 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(40485, 40480);
   script_cve_id("CVE-2011-4188");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-11 18:09:51 +0530 (Fri, 11 May 2012)");
   script_name("Novell iManager jclient 'EnteredAttrName' Buffer Overflow Vulnerability");
 
@@ -59,13 +59,11 @@ if (description)
   to cause a buffer overflow.");
   script_tag(name:"summary", value:"The host is running Novell iManager and is prone to buffer overflow
   vulnerability.");
-  script_tag(name:"solution", value:"Apply the patch.
-  For updates refer to http://www.novell.com/support/viewContent.do?externalId=7002971
-
-  *****
+  script_tag(name:"solution", value:"Apply the patch.  *****
   NOTE : Ignore this warning, if above patch has been applied.
   *****");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.novell.com/support/viewContent.do?externalId=7002971");
   exit(0);
 }
 

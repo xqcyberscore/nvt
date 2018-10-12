@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_jul12_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_apple_safari_mult_vuln_jul12_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Apple Safari Multiple Vulnerabilities - July 2012 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802924");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-3426", "CVE-2011-3016", "CVE-2011-3021", "CVE-2011-3027",
                 "CVE-2011-3032", "CVE-2011-3034", "CVE-2011-3035", "CVE-2011-3036",
                 "CVE-2011-3037", "CVE-2011-3038", "CVE-2011-3039", "CVE-2011-3040",
@@ -64,7 +64,7 @@ if(description)
                     54687, 54203, 54693, 54694, 54695, 54700, 54697, 54703);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:35:41 +0530 (Mon, 30 Jul 2012)");
   script_name("Apple Safari Multiple Vulnerabilities - July 2012 (Mac OS X)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5400");
@@ -82,12 +82,12 @@ if(description)
   system.");
   script_tag(name:"affected", value:"Apple Safari versions prior to 6.0");
   script_tag(name:"insight", value:"For more details about the vulnerabilities refer the reference section.");
-  script_tag(name:"solution", value:"Upgrade to Apple Safari version 6.0 or later,
-  For updates refer to http://www.apple.com/safari/download/");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 6.0 or later,");
   script_tag(name:"summary", value:"This host is installed with Apple Safari web browser and is prone
   to multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.apple.com/safari/download/");
   exit(0);
 }
 

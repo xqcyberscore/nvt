@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_mult_unspecified_vuln01_july16.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_oracle_glassfish_mult_unspecified_vuln01_july16.nasl 11837 2018-10-11 09:17:05Z asteins $
 #
 # Oracle GlassFish Server Multiple Unspecified Vulnerabilities -01 July16
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808704");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 11837 $");
   script_cve_id("CVE-2016-3607", "CVE-2015-3237", "CVE-2017-3239", "CVE-2017-10391",
                 "CVE-2017-10385", "CVE-2017-10393");
   script_bugtraq_id(75387, 95493, 101364, 101360, 101347);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-22 11:55:11 +0530 (Fri, 22 Jul 2016)");
   script_name("Oracle GlassFish Server Multiple Unspecified Vulnerabilities -01 July16");
 
@@ -55,13 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle GlassFish Server versions 3.0.1,
   and 3.1.2");
 
-  script_tag(name:"solution", value:"Apply patches from below link,
-
-  http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html
-
-  http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html
-
-  http://www.oracle.com/technetwork/security-advisory/cpuoct2017-3236626.html");
+  script_tag(name:"solution", value:"Apply patches.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -76,6 +70,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("GlassFish_detect.nasl");
   script_mandatory_keys("GlassFish/installed");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
   exit(0);
 }
 

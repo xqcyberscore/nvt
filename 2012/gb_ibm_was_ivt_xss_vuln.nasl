@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_ivt_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_ibm_was_ivt_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # IBM WebSphere Application Server IVT Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802413");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-1362");
   script_bugtraq_id(46736);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-18 18:06:52 +0530 (Wed, 18 Jan 2012)");
   script_name("IBM WebSphere Application Server IVT Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/69731");
@@ -53,10 +53,10 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error in Installation Verification Test (IVT)
   application in the Install component, which allows remote attackers to inject
   arbitrary web script or HTML via unspecified vectors.");
-  script_tag(name:"solution", value:"Upgrade to version 6.1.0.41 or 7.0.0.19 or later,
-  For updates refer to  http://www-01.ibm.com/support/docview.wss?rs=180&uid=swg24031034");
+  script_tag(name:"solution", value:"Upgrade to version 6.1.0.41 or 7.0.0.19 or later,");
   script_tag(name:"summary", value:"The host is running IBM WebSphere Application Server and is prone to cross site
   scripting vulnerability.");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?rs=180&uid=swg24031034");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_loganalyzer_sql_inj_n_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: secpod_loganalyzer_sql_inj_n_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Adiscon LogAnalyzer Multiple SQL Injection and XSS Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902840");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(53664);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-28 15:15:15 +0530 (Mon, 28 May 2012)");
   script_name("Adiscon LogAnalyzer Multiple SQL Injection and XSS Vulnerabilities");
 
@@ -59,8 +59,7 @@ if(description)
 
   - Input passed via the 'Columns[]' parameter to admin/views.php is not
     properly sanitised before being used in SQL queries.");
-  script_tag(name:"solution", value:"Upgrade to Adiscon LogAnalyzer version 3.4.3 or later,
-  For updates refer to http://loganalyzer.adiscon.com/");
+  script_tag(name:"solution", value:"Upgrade to Adiscon LogAnalyzer version 3.4.3 or later,");
   script_tag(name:"summary", value:"This host is running Adiscon LogAnalyzer and is prone to multiple
   SQL injection and cross site scripting vulnerabilities.");
 

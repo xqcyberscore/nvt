@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sielco_sistemi_winlog_mult_vuln.nasl 11421 2018-09-17 06:58:23Z cfischer $
+# $Id: gb_sielco_sistemi_winlog_mult_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Sielco Sistemi Winlog Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802879");
-  script_version("$Revision: 11421 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-4353", "CVE-2012-4354", "CVE-2012-4355", "CVE-2012-4356",
                 "CVE-2012-4357", "CVE-2012-4358", "CVE-2012-4359");
   script_bugtraq_id(54212);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-28 12:12:09 +0530 (Thu, 28 Jun 2012)");
   script_name("Sielco Sistemi Winlog Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -61,8 +61,7 @@ if(description)
   - An input validation error when processing certain user supplied inputs
   allows attackers to write arbitrary files via directory traversal attacks.");
 
-  script_tag(name:"solution", value:"Upgrade to version 2.07.17 or higher,
-  For updates refer to http://www.sielcosistemi.com/en/products/winlog_scada_hmi");
+  script_tag(name:"solution", value:"Upgrade to version 2.07.17 or higher,");
 
   script_tag(name:"summary", value:"This host is running Sielco Sistemi Winlog and is prone to
   multiple vulnerabilities.");
@@ -70,6 +69,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://www.sielcosistemi.com/en/products/winlog_scada_hmi");
   exit(0);
 }
 

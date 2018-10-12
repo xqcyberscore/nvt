@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_52999.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_nginx_52999.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # nginx 'ngx_http_mp4_module.c' Buffer Overflow Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11855 $");
 
   script_name("nginx 'ngx_http_mp4_module.c' Buffer Overflow Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://nginx.org/en/security_advisories.html");
   script_xref(name:"URL", value:"http://nginx.org/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-17 10:16:44 +0200 (Tue, 17 Apr 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
@@ -60,7 +60,7 @@ vulnerable. Other versions may also be affected.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

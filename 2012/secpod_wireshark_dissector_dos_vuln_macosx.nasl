@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_dissector_dos_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: secpod_wireshark_dissector_dos_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wireshark X.509if Dissector Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903022");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-1590");
   script_bugtraq_id(47392);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-26 10:21:42 +0530 (Thu, 26 Apr 2012)");
   script_name("Wireshark X.509if Dissector Denial of Service Vulnerability (Mac OS X)");
 
@@ -48,14 +48,14 @@ if(description)
   Wireshark version 1.4.0 through 1.4.4");
   script_tag(name:"insight", value:"The flaw is caused by an error in the 'X.509if' dissector when processing
   malformed data, which could be exploited to crash an affected application.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.5 or 1.2.16 or later,
-  For updates refer to http://www.wireshark.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.5 or 1.2.16 or later,");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to denial of
   service vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://securitytracker.com/id?1025388");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/1022");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download.html");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_nodes_perm_weak_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_ibm_db2_nodes_perm_weak_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # IBM DB2 'nodes.reg' Permission Weakness Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802727");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-1797");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-03 10:43:50 +0530 (Tue, 03 Apr 2012)");
   script_name("IBM DB2 'nodes.reg' Permission Weakness Vulnerability");
 
@@ -47,12 +47,12 @@ if(description)
   script_tag(name:"affected", value:"IBM DB2 version 9.5");
   script_tag(name:"insight", value:"The flaw is due to the 'nodes.reg' file, which is having insecure
 world writable permissions.");
-  script_tag(name:"solution", value:"Upgrade to IBM DB2 version 9.5 Fix Pack 9.
-For updates refer to http://www-01.ibm.com/support/docview.wss?rs=71&uid=swg27007053");
+  script_tag(name:"solution", value:"Upgrade to IBM DB2 version 9.5 Fix Pack 9.");
   script_tag(name:"summary", value:"The host is running IBM DB2 and is prone to permission weakness
 vulnerability.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48279/");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?crawler=1&uid=swg1IC79518");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?rs=71&uid=swg27007053");
   exit(0);
 }
 

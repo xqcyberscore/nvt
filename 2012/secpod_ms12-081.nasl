@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-081.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: secpod_ms12-081.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft Windows File Handling Component Remote Code Execution Vulnerability (2758857)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901304");
-  script_version("$Revision: 11372 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-4774");
   script_bugtraq_id(56443);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-12 09:40:29 +0530 (Wed, 12 Dec 2012)");
   script_name("Microsoft Windows File Handling Component Remote Code Execution Vulnerability (2758857)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51493/");
@@ -59,8 +59,7 @@ if(description)
   browses to a folder that contains a file or sub folder names and can be
   exploited to corrupt memory via a file with a specially crafted filename.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms12-081.mspx");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-081.");
   script_tag(name:"qod_type", value:"registry");

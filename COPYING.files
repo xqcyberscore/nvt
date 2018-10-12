@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 11 Oct 2018 11:08:47 +0200
+# Automatically created on:  Fri, 12 Oct 2018 10:23:12 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38487,8 +38487,10 @@
 2018/adobe/gb_adobe_creative_cloud_apsb18-12_win.nasl: GPLv2+
 2018/adobe/gb_adobe_creative_cloud_apsb18-32_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_creative_cloud_apsb18-32_win.nasl: GPLv2+
+2018/adobe/gb_adobe_digital_editions_muln_vuln_apsb18-27_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_digital_editions_mult_info_disc_vuln_apsb18-13_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_digital_editions_mult_info_disc_vuln_apsb18-13_win.nasl: GPLv2+
+2018/adobe/gb_adobe_digital_editions_mult_vuln_apsb18-27_win.nasl: GPLv2+
 2018/adobe/gb_adobe_dreamweaver_cmd_inj_vuln_win.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_apsa18-01_lin.nasl: GPLv2+
 2018/adobe/gb_adobe_flash_player_apsa18-01_macosx.nasl: GPLv2+
@@ -39139,6 +39141,7 @@
 2018/debian/deb_4311.nasl: GPLv2+
 2018/debian/deb_4312.nasl: GPLv2+
 2018/debian/deb_4313.nasl: GPLv2+
+2018/debian/deb_4314.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -41065,6 +41068,7 @@
 2018/icewarp/gb_icewarp_CVE-2015-1503_dir_trav.nasl: GPLv2+
 2018/icewarp/gb_icewarp_mail_server_xss_vuln.nasl: GPLv2+
 2018/icinga/gb_icinga2_mult_vuln.nasl: GPLv2+
+2018/ideamk/gb_epsviewer_buffer_overflow_vuln.nasl: GPLv2+
 2018/igniterealtime/gb_openfire_xss_vuln.nasl: GPLv2+
 2018/ikarussecurity/gb_ikarus_anti_virus_multiple_dos_vulnerabilities.nasl: GPLv2+
 2018/ikarussecurity/gb_ikarus_anti_virus_multiple_write_vulnerabilities.nasl: GPLv2+
@@ -43243,6 +43247,7 @@ gb_endian_firewall_version.nasl: GPLv2+
 gb_enterasys_switch_detect.nasl: GPLv2+
 gb_epesi_detect.nasl: GPLv2+
 gb_episerver_cms_detect_win.nasl: GPLv2+
+gb_epsviewer_detect_win.nasl: GPLv2+
 gb_esignal_detect.nasl: GPLv2+
 gb_esxi_authorization.nasl: GPLv2+
 gb_etcd_detect.nasl: GPLv2+
@@ -60324,12 +60329,18 @@ gsf/2018/juniper/gb_junos_jsa10866.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10868.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10869.nasl: GPLv2
 gsf/2018/juniper/gb_junos_jsa10871.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10877.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10878.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10879.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa1087.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_jsa10882.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10883.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10884.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10885.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_jsa10886.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_space_jsa10838.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_space_jsa10880.nasl: GPLv2+
+gsf/2018/juniper/gb_junos_space_jsa10881.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_space_mult_vuln_apr18.nasl: GPLv2+
 gsf/2018/juniper/gb_pulse_connect_secure_dos_vuln.nasl: GPLv2+
 gsf/2018/kaspersky/gb_kaspersky_smg_mult_vuln.nasl: GPLv2+
@@ -62078,17 +62089,30 @@ Policy/Microsoft/Office2013/office2013_trust_bar_notifications.nasl: GPLv2+
 Policy/Microsoft/Office2013/office2013_vml_for_browser_graphics.nasl: GPLv2+
 Policy/Microsoft/Office2013/office_activex_install.nasl: GPLv2+
 Policy/Microsoft/Office2013/office_addon_management.nasl: GPLv2+
+Policy/Microsoft/Office2013/office_auto_expand_dls.nasl: GPLv2+
 Policy/Microsoft/Office2013/office_bind_to_object.nasl: GPLv2+
 Policy/Microsoft/Office2013/office_consistent_mime_handling.nasl: GPLv2+
 Policy/Microsoft/Office2013/office_disable_user_name_passwd.nasl: GPLv2+
+Policy/Microsoft/Office2013/office_excel_converters.nasl: GPLv2+
 Policy/Microsoft/Office2013/office_information_bar.nasl: GPLv2+
 Policy/Microsoft/Office2013/office_lockdown_security.nasl: GPLv2+
 Policy/Microsoft/Office2013/office_mime_sniffing_safety.nasl: GPLv2+
 Policy/Microsoft/Office2013/office_navigate_url.nasl: GPLv2+
+Policy/Microsoft/Office2013/office_never_allow_dls.nasl: GPLv2+
+Policy/Microsoft/Office2013/office_no_ui_extending_access.nasl: GPLv2+
+Policy/Microsoft/Office2013/office_no_ui_extending_excel.nasl: GPLv2+
+Policy/Microsoft/Office2013/office_no_ui_extending_infopath.nasl: GPLv2+
+Policy/Microsoft/Office2013/office_no_ui_extending_outlook.nasl: GPLv2+
+Policy/Microsoft/Office2013/office_no_ui_extending_powerpoint.nasl: GPLv2+
+Policy/Microsoft/Office2013/office_no_ui_extending_publisher.nasl: GPLv2+
+Policy/Microsoft/Office2013/office_no_ui_extending_word.nasl: GPLv2+
 Policy/Microsoft/Office2013/office_object_caching_protection.nasl: GPLv2+
+Policy/Microsoft/Office2013/office_optin_wizard.nasl: GPLv2+
+Policy/Microsoft/Office2013/office_ppt_converters.nasl: GPLv2+
 Policy/Microsoft/Office2013/office_restrict_file_download.nasl: GPLv2+
 Policy/Microsoft/Office2013/office_saved_from_url.nasl: GPLv2+
 Policy/Microsoft/Office2013/office_scripted_window.nasl: GPLv2+
+Policy/Microsoft/Office2013/office_send_personal_information.nasl: GPLv2+
 Policy/Microsoft/Office2013/office_zone_elevation.nasl: GPLv2+
 Policy/Microsoft/Windows10/Network/win_autoconnect_allowed_oem.nasl: GPLv2+
 Policy/Microsoft/Windows10/SecurityOptions/win10_block_microsoft_accounts.nasl: GPLv2+

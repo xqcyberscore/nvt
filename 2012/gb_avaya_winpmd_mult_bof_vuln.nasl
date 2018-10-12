@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avaya_winpmd_mult_bof_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_avaya_winpmd_mult_bof_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Avaya WinPDM Multiple Buffer Overflow Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802469");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(47947);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-12 12:33:59 +0530 (Fri, 12 Oct 2012)");
   script_name("Avaya WinPDM Multiple Buffer Overflow Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/44062/");
@@ -70,9 +70,10 @@ if(description)
   - PMServer.exe when processing certain requests can be exploited to cause
     a heap-based buffer overflow via a specially crafted overly long string
     sent to UDP port 10138.");
-  script_tag(name:"solution", value:"Upgrade to Avaya WinPDM 3.8.5 or later. For updates refer to http://support.avaya.com/products/");
+  script_tag(name:"solution", value:"Upgrade to Avaya WinPDM 3.8.5 or later.");
   script_tag(name:"summary", value:"The host is running Avaya WinPDM and is prone to multiple buffer overflow vulnerabilities.");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://support.avaya.com/products/");
   exit(0);
 }
 

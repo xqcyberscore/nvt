@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_jet_direct_unauthenticated_access.nasl 11425 2018-09-17 09:11:30Z asteins $
+# $Id: gb_hp_jet_direct_unauthenticated_access.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # HP LaserJet Printers Unauthenticated Access
 #
@@ -31,11 +31,11 @@ if (description)
   script_cve_id("CVE-1999-1061");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11425 $");
+  script_version("$Revision: 11855 $");
 
   script_name("HP LaserJet Printers Unauthenticated Access");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:11:30 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-13 10:43:06 +0100 (Fri, 13 Jan 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -50,7 +50,7 @@ TCP/IP, can be configured without a password, which allows remote
 attackers to connect to the printer and change its IP address or
 disable logging.");
   script_tag(name:"solution_type", value:"Mitigation");
- exit(0);
+  exit(0);
 }
 
 include('telnet_func.inc');

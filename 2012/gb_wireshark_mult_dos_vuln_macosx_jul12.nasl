@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_macosx_jul12.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_wireshark_mult_dos_vuln_macosx_jul12.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities - July 12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802908");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-2392", "CVE-2012-2393", "CVE-2012-3825", "CVE-2012-3826");
   script_bugtraq_id(53651, 53652);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-05 14:35:27 +0530 (Thu, 05 Jul 2012)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities - July 12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49226/");
@@ -54,12 +54,12 @@ if(description)
 
   - An error in the DIAMETER dissector does not properly allocate memory and
     can be exploited to cause a crash via a specially crafted packet.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.13, 1.6.8 or later,
-  For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.13, 1.6.8 or later,");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to multiple
   denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download");
   exit(0);
 }
 

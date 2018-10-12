@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_admin_server_bof_vuln_lin.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_ibm_db2_admin_server_bof_vuln_lin.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # IBM DB2 Administration Server Buffer Overflow Vulnerability (Linux)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802728");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0711");
   script_bugtraq_id(52326);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-02 18:37:15 +0530 (Mon, 02 Apr 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,12 +53,12 @@ if(description)
   IBM DB2 version 9.7 through FP5");
   script_tag(name:"insight", value:"This flaw is due to an unspecified error within the DAS component can be
   exploited to compromise the component or cause a denial of service.");
-  script_tag(name:"solution", value:"Upgrade to IBM DB2 version 9.5 FP9 or later,
-  For updates refer to http://www-01.ibm.com/support/docview.wss?uid=swg21588098");
+  script_tag(name:"solution", value:"Upgrade to IBM DB2 version 9.5 FP9 or later,");
   script_tag(name:"summary", value:"This host is installed with IBM DB2 and is prone to buffer overflow
   vulnerability.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21588098");
   exit(0);
 }
 

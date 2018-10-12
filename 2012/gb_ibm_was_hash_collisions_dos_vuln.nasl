@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_hash_collisions_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_ibm_was_hash_collisions_dos_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # IBM WebSphere Application Server Hash Collisions DOS Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802418");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0193");
   script_bugtraq_id(51441);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 14:06:41 +0530 (Mon, 23 Jan 2012)");
   script_name("IBM WebSphere Application Server Hash Collisions DOS Vulnerability");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg24031821");
@@ -55,10 +55,10 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error in computing hash values for 'form'
   parameters without restricting the ability to trigger hash collisions
   predictably which allows remote attackers to cause a denial of service.");
-  script_tag(name:"solution", value:"Upgrade to version 6.1.0.43 or 7.0.0.23 or 8.0.0.3 or later,
-  For updates refer to http://www-01.ibm.com/support/docview.wss?rs=180&uid=swg24031034");
+  script_tag(name:"solution", value:"Upgrade to version 6.1.0.43 or 7.0.0.23 or 8.0.0.3 or later,");
   script_tag(name:"summary", value:"The host is running IBM WebSphere Application Server and is prone to denial
   of service vulnerability.");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?rs=180&uid=swg24031034");
   exit(0);
 }
 

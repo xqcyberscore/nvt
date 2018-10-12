@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln01_aug12_win.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: gb_wireshark_mult_vuln01_aug12_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wireshark Multiple Vulnerabilities(01) - August 2012 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802945");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-4298", "CVE-2012-4295", "CVE-2012-4294", "CVE-2012-4287",
                 "CVE-2012-4286");
   script_bugtraq_id(55035);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-21 14:03:40 +0530 (Tue, 21 Aug 2012)");
   script_name("Wireshark Multiple Vulnerabilities(01) - August 2012 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50276/");
@@ -59,7 +59,7 @@ if(description)
 
   - An error within the MongoDB dissector can be exploited to trigger an
     infinite loop and consume excessive CPU resources.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.8.2 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.8.2 or later, ");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

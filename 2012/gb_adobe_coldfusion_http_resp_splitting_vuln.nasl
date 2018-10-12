@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_http_resp_splitting_vuln.nasl 11435 2018-09-17 13:44:25Z cfischer $
+# $Id: gb_adobe_coldfusion_http_resp_splitting_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Adobe ColdFusion HTTP Response Splitting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802660");
-  script_version("$Revision: 11435 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(53941);
   script_cve_id("CVE-2012-2041");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 15:44:25 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-23 14:14:14 +0530 (Mon, 23 Jul 2012)");
   script_name("Adobe ColdFusion HTTP Response Splitting Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49517");
@@ -54,13 +54,13 @@ if(description)
   script_tag(name:"insight", value:"This flaw exists because the application does not validate an unspecified
   HTTP header before returning it to the user. This can be exploited to insert
   arbitrary HTTP headers, which will be included in a response sent to the user.");
-  script_tag(name:"solution", value:"Apply patch from below link,
-  http://helpx.adobe.com/coldfusion/kb/coldfusion-security-hotfix-apsb12-15.html");
+  script_tag(name:"solution", value:"Apply patch");
   script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is prone to response
   splitting vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://helpx.adobe.com/coldfusion/kb/coldfusion-security-hotfix-apsb12-15.html");
   exit(0);
 }
 

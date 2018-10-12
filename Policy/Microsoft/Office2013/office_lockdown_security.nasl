@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: office_lockdown_security.nasl 11729 2018-10-02 14:12:24Z emoss $
+# $Id: office_lockdown_security.nasl 11843 2018-10-11 14:33:21Z emoss $
 #
 # Check value for Local Machine Zone Lockdown Security
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109653");
-  script_version("$Revision: 11729 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 16:12:24 +0200 (Tue, 02 Oct 2018) $");
+  script_version("$Revision: 11843 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 16:33:21 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-02 15:09:21 +0200 (Tue, 02 Oct 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -37,10 +37,10 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
-  script_dependencies("secpod_ms_office_detection_900025.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("secpod_ms_office_detection_900025.nasl", "os_detection.nasl");
   script_add_preference(name:"Office Applications", type:"entry", value:"groove.exe, excel.exe, mspub.exe, powerpnt.exe, pptview.exe, visio.exe, winproj.exe, outlook.exe, spDesign.exe, exprwd.exe, msaccess.exe, onent.exe, mse7.exe");
   script_add_preference(name:"Value", type:"radio", value:"1;0");
-  script_mandatory_keys("Compliance/Launch", "MS/Office/Ver");
+  script_mandatory_keys("Compliance/Launch", "Host/runs_windows", "MS/Office/Ver");
   script_tag(name:"summary", value:"This test checks the setting for policy 'Local Machine Zone
 Lockdown Security' for Microsoft Office 2013 (at least) on Windows hosts.");
   exit(0);
@@ -51,20 +51,22 @@ include("policy_functions.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-if(!get_kb_item("SMB/WindowsVersion")){
-  policy_logging(text:'Host is no Microsoft Windows System or it is not possible to query the registry.');
-  exit(0);
+cpe = get_app_version(cpe:"cpe:/a:microsoft:office");
+if(!cpe){
+	policy_logging(text:'Not found at least Microsoft Office 2013 installation.');
+	exit(0);
 }
+office_year = substr(cpe,0,3);
 
-vers = get_app_version(cpe:"cpe:/a:microsoft:office");
-if(vers !~ "^201(3|6)"){
+full_version = get_kb_item("MS/Office/Ver");
+if(version_is_less(version:full_version, test_version:'15')){
 	policy_logging(text:'Not found at least Microsoft Office 2013 installation.');
 	exit(0);
 }
 
 title = 'Local Machine Zone Lockdown Security';
 fixtext = 'Set following UI path accordingly:
-Computer Configuration/Administrative Templates/Microsoft Office 2016 (Machine)/Security Settings/IE Security/' + title;
+Computer Configuration/Administrative Templates/Microsoft Office ' + office_year + ' (Machine)/Security Settings/IE Security/' + title;
 type = 'HKLM';
 key = 'Software\\microsoft\\internet explorer\\main\\featurecontrol\\feature_localmachine_lockdown';
 default = script_get_preference('Value');

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sockso_dir_trav_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_sockso_dir_trav_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Sockso Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802817");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(52509);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-16 13:28:19 +0530 (Fri, 16 Mar 2012)");
   script_name("Sockso Directory Traversal Vulnerability");
 
@@ -52,14 +52,14 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to improper validation of URI containing '../' or
   '..\' sequences, which allows attackers to read arbitrary files via directory
   traversal attacks.");
-  script_tag(name:"solution", value:"Upgrade to Sockso version 1.5.1 or later.
-  For updates refer to http://sockso.pu-gh.com/");
+  script_tag(name:"solution", value:"Upgrade to Sockso version 1.5.1 or later.");
   script_tag(name:"summary", value:"The host is running Sockso and is prone to directory traversal
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://sockso.pu-gh.com/");
   exit(0);
 }
 

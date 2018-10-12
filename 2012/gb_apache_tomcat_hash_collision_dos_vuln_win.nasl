@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_hash_collision_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_apache_tomcat_hash_collision_dos_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Apache Tomcat Hash Collision Denial Of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802378");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-4858");
   script_bugtraq_id(51200);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-12 13:35:57 +0530 (Thu, 12 Jan 2012)");
   script_name("Apache Tomcat Hash Collision Denial Of Service Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -60,16 +60,14 @@ if(description)
   a specially crafted form sent in a HTTP POST request.");
   script_tag(name:"summary", value:"The host is running Apache Tomcat Server and is prone to denial of
   service vulnerability.");
-  script_tag(name:"solution", value:"Apply patch or upgrade Apache Tomcat to 5.5.35, 6.0.35, 7.0.23 or later,
-  For updates refer to http://tomcat.apache.org/
-
-  *****
+  script_tag(name:"solution", value:"Apply patch or upgrade Apache Tomcat to 5.5.35, 6.0.35, 7.0.23 or later,  *****
   NOTE: Ignore this warning, if above mentioned patch is manually applied.
   *****");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://tomcat.apache.org/");
   exit(0);
 }
 

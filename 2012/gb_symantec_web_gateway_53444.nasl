@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_53444.nasl 11657 2018-09-27 13:32:51Z cfischer $
+# $Id: gb_symantec_web_gateway_53444.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Symantec Web Gateway 'relfile' Parameter Directory Traversal Vulnerability
 #
@@ -33,11 +33,11 @@ if (description)
   script_cve_id("CVE-2012-0298");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_version("$Revision: 11657 $");
+  script_version("$Revision: 11855 $");
 
   script_name("Symantec Web Gateway 'relfile' Parameter Directory Traversal Vulnerability");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 15:32:51 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-18 10:03:57 +0200 (Fri, 18 May 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -52,8 +52,7 @@ if (description)
   script_tag(name:"insight", value:"The flaw is due to an improper validation of user-supplied input
   passed  via the 'relfile' parameter to the '/spywall/releasenotes.php',
   which allows  attackers to read arbitrary files via a ../(dot dot) sequences.");
-  script_tag(name:"solution", value:"Upgrade to Symantec Web Gateway version 5.0.3 or later
-  For updates refer to http://www.symantec.com/business/web-gateway");
+  script_tag(name:"solution", value:"Upgrade to Symantec Web Gateway version 5.0.3 or later");
   script_tag(name:"summary", value:"This host is running Symantec Web Gateway and is prone to directory
   traversal vulnerability.");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53442");

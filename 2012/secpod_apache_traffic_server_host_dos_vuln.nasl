@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_traffic_server_host_dos_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: secpod_apache_traffic_server_host_dos_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Apache Traffic Server HTTP Host Header Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902664");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0256");
   script_bugtraq_id(52696);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-28 13:46:18 +0530 (Wed, 28 Mar 2012)");
   script_name("Apache Traffic Server HTTP Host Header Denial of Service Vulnerability");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1026847");
@@ -55,11 +55,11 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an improper allocation of heap memory when
   processing  HTTP request with a large 'HOST' header value and can be
   exploited to cause a denial of service via a specially crafted packet.");
-  script_tag(name:"solution", value:"Upgrade to Apache Traffic Server 3.0.4 or 3.1.3 or later,
-  For updates refer to http://trafficserver.apache.org/downloads");
+  script_tag(name:"solution", value:"Upgrade to Apache Traffic Server 3.0.4 or 3.1.3 or later,");
   script_tag(name:"summary", value:"This host is running Apache Traffic Server and is prone to denial
   of service vulnerability.");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://trafficserver.apache.org/downloads");
   exit(0);
 }
 

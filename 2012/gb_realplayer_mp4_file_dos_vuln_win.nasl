@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mp4_file_dos_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_realplayer_mp4_file_dos_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # RealNetworks RealPlayer MP4 File Handling Denial of Service Vulnerability (Windows)
 #
@@ -31,12 +31,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802826");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(53555);
   script_cve_id("CVE-2012-1904", "CVE-2012-2406", "CVE-2012-2411");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-02 16:18:38 +0530 (Mon, 02 Apr 2012)");
   script_name("RealNetworks RealPlayer MP4 File Handling Denial of Service Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49193");
@@ -66,12 +66,12 @@ if(description)
 
   - An error within the RealJukebox Media parser, which allows to cause a
     buffer overflow.");
-  script_tag(name:"solution", value:"Upgrade to RealPlayer version 15.0.4.53 or later,
-  For updates refer to http://www.real.com/player");
+  script_tag(name:"solution", value:"Upgrade to RealPlayer version 15.0.4.53 or later,");
   script_tag(name:"summary", value:"This host is installed with RealPlayer which is prone to denial of
   service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.real.com/player");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln_feb12_win_03.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_oracle_java_se_mult_vuln_feb12_win_03.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Oracle Java SE JRE Multiple Vulnerabilities - February 2012 (Windows - 03)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802612");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0498", "CVE-2012-0501");
   script_bugtraq_id(52013, 52019);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 17:17:17 +0530 (Tue, 21 Feb 2012)");
   script_name("Oracle Java SE JRE Multiple Vulnerabilities - February 2012 (Windows - 03)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48009");
@@ -59,8 +59,7 @@ if(description)
 
   - Java Runtime Environment");
   script_tag(name:"solution", value:"Upgrade to Oracle Java SE JRE versions 7 Update 3, 6 Update 31, 5.0 Update
-  34 or later. For updates refer to
-  http://www.oracle.com/technetwork/topics/security/javacpufeb2012-366318.html");
+  34 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with Oracle Java SE JRE and is prone to
   multiple vulnerabilities.");

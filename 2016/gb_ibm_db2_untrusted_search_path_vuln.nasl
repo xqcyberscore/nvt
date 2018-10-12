@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_untrusted_search_path_vuln.nasl 11596 2018-09-25 09:49:46Z asteins $
+# $Id: gb_ibm_db2_untrusted_search_path_vuln.nasl 11837 2018-10-11 09:17:05Z asteins $
 #
 # IBM DB2 Untrusted Search Path Vulnerability
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809431");
-  script_version("$Revision: 11596 $");
+  script_version("$Revision: 11837 $");
   script_cve_id("CVE-2016-5995");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 11:49:46 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-04 17:08:20 +0530 (Tue, 04 Oct 2016)");
   script_name("IBM DB2 Untrusted Search Path Vulnerability");
 
   script_tag(name:"summary", value:"This host is running IBM DB2 and is
-  prone to untrusted search path vulnerability.");
+  prone to an untrusted search path vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of IBM DB2
-  with the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to loading libraries
   from insecure locations.");
@@ -49,12 +48,13 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow local
   user to gain elevated privilege.");
 
-  script_tag(name:"affected", value:"IBM DB2 versions 9.7 through FP11
-  IBM DB2 versions 10.1 through FP5
+  script_tag(name:"affected", value:"IBM DB2 versions 9.7 through FP11,
+
+  IBM DB2 versions 10.1 through FP5,
+
   IBM DB2 versions 10.5 through FP7");
 
-  script_tag(name:"solution", value:"Apply the appropriate fix from below link,
-  http://www-01.ibm.com/support/docview.wss?uid=swg21990061");
+  script_tag(name:"solution", value:"Apply the appropriate fix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

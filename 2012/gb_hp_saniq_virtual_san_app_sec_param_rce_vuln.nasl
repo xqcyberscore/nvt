@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_saniq_virtual_san_app_sec_param_rce_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: gb_hp_saniq_virtual_san_app_sec_param_rce_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # HP SAN/iQ Virtual SAN Appliance Second Parameter Command Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802454");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-4361");
   script_bugtraq_id(55132);
   script_tag(name:"cvss_base", value:"7.7");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-05 14:44:25 +0530 (Wed, 05 Sep 2012)");
   script_name("HP SAN/iQ Virtual SAN Appliance Second Parameter Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -50,7 +50,7 @@ if(description)
   script_tag(name:"affected", value:"HP SAN/iQ version prior to 9.5 on HP Virtual SAN Appliance");
   script_tag(name:"insight", value:"The flaw is due to an error in 'lhn/public/network/ping' which does not
   properly handle shell meta characters in the second parameter.");
-  script_tag(name:"solution", value:"Upgrade to HP SAN/iQ 9.5 or later,");
+  script_tag(name:"solution", value:"Upgrade to HP SAN/iQ 9.5 or later, ");
   script_tag(name:"summary", value:"This host is running HP SAN/iQ Virtual SAN Appliance and is prone
   to remote command execution vulnerability.");
 

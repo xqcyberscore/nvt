@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-044.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: secpod_ms12-044.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2719177)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902686");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-1522", "CVE-2012-1524");
   script_bugtraq_id(54293, 54294);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-11 09:42:59 +0530 (Wed, 11 Jul 2012)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2719177)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/45690");
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"insight", value:"Multiple vulnerabilities are due to the way that Internet Explorer
   accesses an object that has been deleted.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-044");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-044.");
   script_tag(name:"qod_type", value:"registry");

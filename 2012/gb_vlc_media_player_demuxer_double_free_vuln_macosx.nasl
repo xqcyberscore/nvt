@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_demuxer_double_free_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_vlc_media_player_demuxer_double_free_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # VLC Media Player TiVo Demuxer Double Free Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802487");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0023", "CVE-2011-5231");
   script_bugtraq_id(51147, 51231);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 12:41:07 +0530 (Fri, 02 Nov 2012)");
   script_name("VLC Media Player TiVo Demuxer Double Free Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47325");
@@ -51,12 +51,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to a double-free error within the 'get_chunk_header()'
   function in 'modules/demux/ty.c' of the TiVo demuxer when opening a specially
   crafted TiVo (*.ty) file.");
-  script_tag(name:"solution", value:"Upgrade VLC media player to 1.1.13 or later,
-  For updates refer to http://www.videolan.org/vlc/");
+  script_tag(name:"solution", value:"Upgrade VLC media player to 1.1.13 or later,");
   script_tag(name:"summary", value:"This host is installed with VLC Media Player and is prone to
   double free vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.videolan.org/vlc/");
   exit(0);
 }
 

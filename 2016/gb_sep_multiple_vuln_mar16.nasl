@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sep_multiple_vuln_mar16.nasl 11523 2018-09-21 13:37:35Z asteins $
+# $Id: gb_sep_multiple_vuln_mar16.nasl 11837 2018-10-11 09:17:05Z asteins $
 #
 # Symantec Endpoint Protection Multiple Vulnerabilities - Mar16
 #
@@ -24,16 +24,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:symantec:endpoint_protection";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806691");
-  script_version("$Revision: 11523 $");
+  script_version("$Revision: 11837 $");
   script_cve_id("CVE-2015-8154", "CVE-2015-8153", "CVE-2015-8152");
   script_tag(name:"cvss_base", value:"8.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 15:37:35 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:51 +0530 (Wed, 06 Apr 2016)");
   script_name("Symantec Endpoint Protection Multiple Vulnerabilities - Mar16");
 
@@ -57,8 +58,7 @@ if(description)
   before version 12.1-RU6-MP4");
 
   script_tag(name:"solution", value:"Update to Symantec Endpoint Protection (SEP)
-  version 12.1-RU6-MP4 or later. For updates refer to
-  http://www.symantec.com/en/in/endpoint-protection");
+  version 12.1-RU6-MP4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -69,6 +69,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("secpod_symantec_prdts_detect.nasl");
   script_mandatory_keys("Symantec/Endpoint/Protection");
+  script_xref(name:"URL", value:"http://www.symantec.com/en/in/endpoint-protection");
   exit(0);
 }
 
@@ -81,13 +82,12 @@ if(!sepVer = get_app_version(cpe:CPE)){
 
 sepType = get_kb_item("Symantec/SEP/SmallBusiness");
 
-## https://en.wikipedia.org/wiki/Symantec_Endpoint_Protection#Version_history
 if(isnull(sepType) &&
    version_in_range(version:sepVer, test_version:"12.1", test_version2:"12.1.6860.6399"))
 {
-
   report = report_fixed_ver(installed_version:sepVer, fixed_version:"12.1 RU6-MP4");
   security_message(data:report);
   exit(0);
 }
-exit(0);
+
+exit(99);

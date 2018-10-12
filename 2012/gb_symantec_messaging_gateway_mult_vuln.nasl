@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_mult_vuln.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: gb_symantec_messaging_gateway_mult_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Symantec Messaging Gateway Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802453");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0307", "CVE-2012-0308", "CVE-2012-3579", "CVE-2012-3580",
                 "CVE-2012-3581");
   script_bugtraq_id(55138, 55137, 55143, 55141, 55142);
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-04 17:27:04 +0530 (Tue, 04 Sep 2012)");
   script_name("Symantec Messaging Gateway Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -68,14 +68,14 @@ if(description)
 
   - Disclose of excessive component version information during successful
     reconnaissance.");
-  script_tag(name:"solution", value:"Upgrade to Symantec Messaging Gateway version 10.0 or later,
-  For updates refer to http://www.symantec.com/messaging-gateway");
+  script_tag(name:"solution", value:"Upgrade to Symantec Messaging Gateway version 10.0 or later,");
   script_tag(name:"summary", value:"This host is running Symantec Messaging Gateway and is prone to
   multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://www.symantec.com/messaging-gateway");
   exit(0);
 }
 

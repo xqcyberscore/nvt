@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freepbx_mult_xss_n_rce_vuln.nasl 11648 2018-09-27 09:32:28Z asteins $
+# $Id: secpod_freepbx_mult_xss_n_rce_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # FreePBX Multiple Cross Site Scripting and Remote Command Execution Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902823");
-  script_version("$Revision: 11648 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(52630);
   script_cve_id("CVE-2012-4869", "CVE-2012-4870");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:32:28 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-27 16:35:51 +0530 (Tue, 27 Mar 2012)");
   script_name("FreePBX Multiple Cross Site Scripting and Remote Command Execution Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48475");
@@ -63,8 +63,7 @@ if(description)
   - Input passed to the 'callmenum' parameter in recordings/misc/callme_page.php
     (when 'action' is set to 'c') is not properly verified before being used.
     This can be exploited to inject and execute arbitrary shell commands.");
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.freepbx.org/trac/ticket/5711");
+  script_tag(name:"solution", value:"Apply the patch");
   script_tag(name:"summary", value:"This host is running FreePBX and is prone to multiple cross site
   scripting and remote command execution vulnerabilities.");
   script_tag(name:"solution_type", value:"VendorFix");

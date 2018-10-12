@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_count_per_day_plugin_stored_xss_vuln.nasl 11431 2018-09-17 11:54:52Z cfischer $
+# $Id: gb_wordpress_count_per_day_plugin_stored_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # WordPress Count per Day Plugin 'note' Parameter Persistent XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803009");
-  script_version("$Revision: 11431 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(55231);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 13:54:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-28 12:46:18 +0530 (Tue, 28 Aug 2012)");
   script_name("WordPress Count per Day Plugin 'note' Parameter Persistent XSS Vulnerability");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/20862/");
@@ -54,13 +54,13 @@ session in the context of an affected site.");
 '/wp-content/plugins/count-per-day/notes.php' script is not properly
 validated, which allows attackers to execute arbitrary HTML and script code
 in a user's browser session in the context of an affected site.");
-  script_tag(name:"solution", value:"Upgrade to version 3.2.4 or later,
-For updates refer to http://wordpress.org/extend/plugins/count-per-day");
+  script_tag(name:"solution", value:"Upgrade to version 3.2.4 or later,");
   script_tag(name:"summary", value:"This host is running WordPress with Count per Day plugin and is
 prone to cross site scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/count-per-day");
   exit(0);
 }
 

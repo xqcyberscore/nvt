@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0114.nasl 11692 2018-09-28 16:55:19Z cfischer $
+# $Id: mgasa-2016-0114.nasl 11856 2018-10-12 07:45:29Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -9,9 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
-#
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -30,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131269");
-  script_version("$Revision: 11692 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-03-17 16:02:32 +0200 (Thu, 17 Mar 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 18:55:19 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0114");
   script_tag(name:"insight", value:"Updated rootcerts and nss packages fix security vulnerability: A heap-based buffer overflow flaw was found in the way NSS parsed certain ASN.1 structures. An attacker could use this flaw to create a specially crafted certificate which, when parsed by NSS, could cause it to crash, or execute arbitrary code, using the permissions of the user running an application compiled against the NSS library (CVE-2016-1950). This issue was supposed to have been fixed in MGASA-2016-0105, but Mozilla did not include the fix until the following nss releases.");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

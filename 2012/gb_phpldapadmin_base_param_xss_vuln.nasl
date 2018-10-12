@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpldapadmin_base_param_xss_vuln.nasl 11648 2018-09-27 09:32:28Z asteins $
+# $Id: gb_phpldapadmin_base_param_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # phpLDAPadmin 'base' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802602");
-  script_version("$Revision: 11648 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0834");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:32:28 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-02 16:16:16 +0530 (Thu, 02 Feb 2012)");
   script_name("phpLDAPadmin 'base' Parameter Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47852/");
@@ -53,12 +53,11 @@ session in the  context of an affected site.");
 to the 'base' parameter in 'cmd.php', which allows attackers to execute
 arbitrary HTML and script code in a user's browser session in the context
 of an affected site.");
-  script_tag(name:"solution", value:"Upgrade to phpLDAPadmin 1.2.3 or later.
-
-For updates refer to http://phpldapadmin.sourceforge.net/wiki/index.php/Main_Page");
+  script_tag(name:"solution", value:"Upgrade to phpLDAPadmin 1.2.3 or later.");
   script_tag(name:"summary", value:"This host is running phpLDAPadmin and is prone to a cross-site
 scripting vulnerability.");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://phpldapadmin.sourceforge.net/wiki/index.php/Main_Page");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simple_groupware_export_xss_vuln.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: gb_simple_groupware_export_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # SimpleGroupware 'export' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802589");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-1028");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-09 17:20:45 +0530 (Thu, 09 Feb 2012)");
   script_name("SimpleGroupware 'export' Parameter Cross Site Scripting Vulnerability");
 
@@ -49,13 +49,13 @@ if(description)
   script_tag(name:"affected", value:"SimpleGroupware 0.742 and prior.");
   script_tag(name:"insight", value:"The flaw is due to an input passed via 'export' parameter to 'bin/index.php'
   is not properly sanitised before being returned to the user.");
-  script_tag(name:"solution", value:"Upgrade to SimpleGroupware version 0.743 or later
-  For updates refer to http://www.simple-groupware.de/cms/");
+  script_tag(name:"solution", value:"Upgrade to SimpleGroupware version 0.743 or later");
   script_tag(name:"summary", value:"This host is running SimpleGroupware and is prone to cross site
   scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+  script_xref(name:"URL", value:"http://www.simple-groupware.de/cms/");
   exit(0);
 }
 

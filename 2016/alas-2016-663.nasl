@@ -7,9 +7,6 @@
 # Authors:
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
-#
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
 #
@@ -30,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120653");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-03-11 07:09:15 +0200 (Fri, 11 Mar 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Amazon Linux Local Check: alas-2016-663");
   script_tag(name:"insight", value:"The remove_chunked_transfer_coding function allows remote attackers to cause a denial of service (invalid read and crash) via crafted chunk-encoded content. (CVE-2016-1982 )The client_host function in parsers.c allows remote attackers to cause a denial of service (invalid read and crash) via an empty HTTP Host header. (CVE-2016-1983 )");
   script_tag(name:"solution", value:"Run yum update privoxy to update your system.");

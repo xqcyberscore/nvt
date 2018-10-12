@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_atrac_sample_code_exec_vuln_macosx.nasl 11355 2018-09-12 10:32:04Z asteins $
+# $Id: gb_realplayer_atrac_sample_code_exec_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # RealNetworks RealPlayer Atrac Sample Decoding Remote Code Execution Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802802");
-  script_version("$Revision: 11355 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0928");
   script_bugtraq_id(51890);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 15:31:43 +0530 (Tue, 21 Feb 2012)");
   script_name("RealNetworks RealPlayer Atrac Sample Decoding Remote Code Execution Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1026643");
@@ -50,13 +50,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an improper decoding of samples by ATRAC codec,
   which allows remote attackers to execute arbitrary code via a crafted ATRAC
   audio file.");
-  script_tag(name:"solution", value:"Upgrade to RealPlayer version 12.0.0.1703 or later,
-
-  For updates refer to http://www.real.com/player");
+  script_tag(name:"solution", value:"Upgrade to RealPlayer version 12.0.0.1703 or later,");
   script_tag(name:"summary", value:"This host is installed with RealPlayer which is prone to a remote
   code execution vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.real.com/player");
   exit(0);
 }
 

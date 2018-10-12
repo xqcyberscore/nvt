@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_built_in_web_srv_dos_vuln.nasl 11429 2018-09-17 10:08:59Z cfischer $
+# $Id: secpod_php_built_in_web_srv_dos_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # PHP Built-in WebServer 'Content-Length' Denial of Service Vulnerability
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902822");
   script_bugtraq_id(52704);
-  script_version("$Revision: 11429 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 12:08:59 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-26 15:15:15 +0530 (Mon, 26 Mar 2012)");
   script_name("PHP Built-in WebServer 'Content-Length' Denial of Service Vulnerability");
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=61461");
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error when processing HTTP request with a large
   'Content-Length' header value and can be exploited to cause a denial of
   service via a specially crafted packet.");
-  script_tag(name:"solution", value:"Upgrade to PHP 5.4.1RC1-DEV or 5.5.0-DEV or later.
-  For updates refer to http://php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to PHP 5.4.1RC1-DEV or 5.5.0-DEV or later.");
   script_tag(name:"summary", value:"This host is running PHP Built-in WebServer and is prone to denial
   of service vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause the application
@@ -63,6 +62,7 @@ if(description)
   NOTE: This NVT reports, if similar vulnerability present in different
   web-server.");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://php.net/downloads.php");
   exit(0);
 }
 

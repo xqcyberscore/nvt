@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_asn1ber_dissector_dos_vuln_mac.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_wireshark_asn1ber_dissector_dos_vuln_mac.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wireshark ASN.1 BER Dissector Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802665");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(45775);
   script_cve_id("CVE-2011-0445");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:17:17 +0530 (Mon, 30 Jul 2012)");
   script_name("Wireshark ASN.1 BER Dissector Denial of Service Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/64625");
@@ -50,11 +50,11 @@ if(description)
   script_tag(name:"affected", value:"Wireshark versions 1.4.0 through 1.4.2 on Mac OS X");
   script_tag(name:"insight", value:"The flaw is caused by an assertion error in the ASN.1 BER dissector, which
   could be exploited to crash an affected application.");
-  script_tag(name:"solution", value:"Upgrade to the latest version of Wireshark 1.4.3 or later,
-  For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"solution", value:"Upgrade to the latest version of Wireshark 1.4.3 or later,");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to denial of
   service vulnerability.");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download");
   exit(0);
 }
 

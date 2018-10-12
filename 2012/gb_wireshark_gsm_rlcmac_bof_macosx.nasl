@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_gsm_rlcmac_bof_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_wireshark_gsm_rlcmac_bof_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wireshark GSM RLC MAC dissector Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803133");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-4297");
   script_bugtraq_id(55035);
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-28 14:46:17 +0530 (Fri, 28 Dec 2012)");
   script_name("Wireshark GSM RLC MAC dissector Buffer Overflow Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50276/");
@@ -49,12 +49,12 @@ if(description)
   script_tag(name:"affected", value:"Wireshark 1.6.x before 1.6.10 and 1.8.x before 1.8.2 on Mac OS X");
   script_tag(name:"insight", value:"An error within the GSM RLC MAC dissector can be exploited to cause a buffer
   overflow.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.10, 1.8.2 or later,
-  For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.10, 1.8.2 or later,");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to buffer
   overflow vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download");
   exit(0);
 }
 

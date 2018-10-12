@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_spider_calendar_plugin_mult_sql_inj_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: gb_wordpress_spider_calendar_plugin_mult_sql_inj_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # WordPress Spider Calendar Plugin Multiple SQL Injection Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803101");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(55779);
   script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Di, 25 Apr 2017)$");
   script_tag(name:"creation_date", value:"2012-10-18 19:07:20 +0530 (Thu, 18 Oct 2012)");
@@ -58,7 +58,7 @@ if(description)
   of an available event) is not properly sanitised before being used in a SQL
   query.");
 
-  script_tag(name:"solution", value:"Upgrade to WordPress Spider Calendar Plugin version 1.1.0 or later,");
+  script_tag(name:"solution", value:"Upgrade to WordPress Spider Calendar Plugin version 1.1.0 or later, ");
 
   script_tag(name:"summary", value:"This host is running WordPress Spider Calendar Plugin and is prone to
   multiple SQL Injection vulnerabilities.");

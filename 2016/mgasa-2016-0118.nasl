@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mgasa-2016-0118.nasl 11692 2018-09-28 16:55:19Z cfischer $
+# $Id: mgasa-2016-0118.nasl 11856 2018-10-12 07:45:29Z cfischer $
 #
 # Mageia Linux security check
 #
@@ -9,9 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
-#
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -30,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.131280");
-  script_version("$Revision: 11692 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-03-31 08:05:04 +0300 (Thu, 31 Mar 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 18:55:19 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Mageia Linux Local Check: mgasa-2016-0118");
   script_tag(name:"insight", value:"Many versions of PSCP in PuTTY prior to 0.67 have a stack corruption vulnerability in their treatment of the 'sink' direction (i.e. downloading from server to client) of the old-style SCP protocol. In order for this vulnerability to be exploited, the user must connect to a malicious server and attempt to download any file (CVE-2016-2563). FileZilla was vulnerable to this issue as it bundles a copy of PuTTY. The filezilla package has been updated to version 3.16.1, which fixes this issue and has many other fixes and enhancements.");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");

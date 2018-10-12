@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_aug12_lin.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: gb_opera_mult_vuln_aug12_lin.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Opera Multiple Vulnerabilities - August12 (Linux)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803002");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(54782, 54788, 54780);
   script_cve_id("CVE-2012-4142", "CVE-2012-4143", "CVE-2012-4144", "CVE-2012-4145",
                 "CVE-2012-4146");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-08 10:50:33 +0530 (Wed, 08 Aug 2012)");
   script_name("Opera Multiple Vulnerabilities - August12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50044");
@@ -63,8 +63,7 @@ if(description)
     XSS attacks.
 
   - An error caused via a crafted web site on Lenovos 'Shop now' page.");
-  script_tag(name:"solution", value:"Upgrade to Opera version 12.01 or later,
-  For updates refer to http://www.opera.com/");
+  script_tag(name:"solution", value:"Upgrade to Opera version 12.01 or later,");
   script_tag(name:"summary", value:"This host is installed with Opera and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");

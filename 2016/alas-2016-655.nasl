@@ -7,9 +7,6 @@
 # Authors:
 # Eero Volotinen <eero.volotinen@iki.fi>
 #
-# OpenVAS and security consultance available from openvas@solinor.com
-# see https://solinor.fi/openvas-en/ for more information
-#
 # Copyright:
 # Copyright (c) 2015 Eero Volotinen, http://ping-viini.org
 #
@@ -30,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.120645");
-  script_version("$Revision: 11703 $");
+  script_version("$Revision: 11856 $");
   script_tag(name:"creation_date", value:"2016-03-08 07:12:17 +0200 (Tue, 08 Mar 2016)");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-01 10:05:31 +0200 (Mon, 01 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:45:29 +0200 (Fri, 12 Oct 2018) $");
   script_name("Amazon Linux Local Check: alas-2016-655");
   script_tag(name:"insight", value:"It was discovered that nginx could perform an out of bound read and dereference an invalid pointer when resolving CNAME DNS records. An attacker able to manipulate DNS responses received by nginx could use this flaw to cause a worker process to crash if nginx enabled the resolver in its configuration. (CVE-2016-0742 )A use-after-free flaw was found in the way nginx resolved certain CNAME DNS records. An attacker able to manipulate DNS responses received by nginx could use this flaw to cause a worker process to crash or, possibly, execute arbitrary code if nginx enabled the resolver in its configuration. (CVE-2016-0746 )It was discovered that nginx did not limit recursion when resolving CNAME DNS records. An attacker able to manipulate DNS responses received by nginx could use this flaw to cause a worker process to use an excessive amount of resources if nginx enabled the resolver in its configuration. (CVE-2016-0747 )");
   script_tag(name:"solution", value:"Run yum update nginx to update your system.");

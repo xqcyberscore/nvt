@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_url_code_exec_vuln_win.nasl 11580 2018-09-25 06:06:13Z cfischer $
+# $Id: gb_opera_url_code_exec_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Opera URL Processing Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802652");
-  script_version("$Revision: 11580 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-3561");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:06:13 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 17:17:17 +0530 (Thu, 21 Jun 2012)");
   script_name("Opera URL Processing Arbitrary Code Execution Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1027066");
@@ -49,8 +49,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to improper allocation of memory for URL strings,
   which allows remote attackers to execute arbitrary code or cause a denial
   of service (memory corruption and application crash) via a crafted string.");
-  script_tag(name:"solution", value:"Upgrade to Opera version 11.64 or later,
-  For updates refer to http://www.opera.com/");
+  script_tag(name:"solution", value:"Upgrade to Opera version 11.64 or later,");
   script_tag(name:"summary", value:"The host is installed with Opera and is prone to code execution
   vulnerability.");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_vuln_mar12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: gb_vlc_media_player_mult_vuln_mar12_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # VLC Media Player Multiple Vulnerabilities - Mar 12 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802722");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-1775", "CVE-2012-1776");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-21 11:52:20 +0530 (Wed, 21 Mar 2012)");
   script_name("VLC Media Player Multiple Vulnerabilities - Mar 12 (Windows)");
   script_xref(name:"URL", value:"http://www.videolan.org/security/sa1201.html");
@@ -50,12 +50,12 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to multiple buffer overflow errors in the
   application, which allows remote attackers to execute arbitrary code via
   crafted MMS:// stream and Real RTSP streams.");
-  script_tag(name:"solution", value:"Upgrade to VLC media player version 2.0.1 or later,
-  For updates refer to http://www.videolan.org/vlc/");
+  script_tag(name:"solution", value:"Upgrade to VLC media player version 2.0.1 or later,");
   script_tag(name:"summary", value:"This host is installed with VLC Media Player and is prone to
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.videolan.org/vlc/");
   exit(0);
 }
 

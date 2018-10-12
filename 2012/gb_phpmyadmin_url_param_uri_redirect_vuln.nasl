@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_url_param_uri_redirect_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_phpmyadmin_url_param_uri_redirect_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # phpMyAdmin 'url' Parameter URI Redirection Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802607");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(47943);
   script_cve_id("CVE-2011-1941");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-09 17:17:17 +0530 (Thu, 09 Feb 2012)");
   script_name("phpMyAdmin 'url' Parameter URI Redirection Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/44641");
@@ -55,10 +55,10 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an improper validation of user-supplied input to
   the 'url' parameter in url.php, which allows attackers to redirect a user to
   an arbitrary website.");
-  script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 3.4.1 or later.
-  For updates refer to http://www.phpmyadmin.net/home_page/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to phpMyAdmin version 3.4.1 or later.");
   script_tag(name:"summary", value:"This host is running phpMyAdmin and is prone to URI redirection
   vulnerability.");
+  script_xref(name:"URL", value:"http://www.phpmyadmin.net/home_page/downloads.php");
   exit(0);
 }
 

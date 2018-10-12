@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-034_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: secpod_ms12-034_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft Silverlight Code Execution Vulnerabilities - 2681578 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902678");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-3402", "CVE-2012-0159");
   script_bugtraq_id(50462, 53335);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-14 13:06:50 +0530 (Mon, 14 May 2012)");
   script_name("Microsoft Silverlight Code Execution Vulnerabilities - 2681578 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49121");
@@ -51,12 +51,12 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Silverlight versions 4 and 5");
   script_tag(name:"insight", value:"The flaws are due to an error exists when parsing TrueType fonts.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/MS12-034");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-034.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/MS12-034");
   exit(0);
 }
 

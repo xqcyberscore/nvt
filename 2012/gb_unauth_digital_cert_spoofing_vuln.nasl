@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unauth_digital_cert_spoofing_vuln.nasl 11355 2018-09-12 10:32:04Z asteins $
+# $Id: gb_unauth_digital_cert_spoofing_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft Windows Unauthorized Digital Certificates Spoofing Vulnerability (2718704)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802634");
-  script_version("$Revision: 11355 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-04 14:14:14 +0530 (Mon, 04 Jun 2012)");
   script_name("Microsoft Windows Unauthorized Digital Certificates Spoofing Vulnerability (2718704)");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1027114");
@@ -56,8 +56,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to unauthorized digital certificates derived from a Microsoft
   Certificate Authority. An unauthorized certificate could be used to spoof
   content, perform phishing attacks, or perform man-in-the-middle attacks.");
-  script_tag(name:"solution", value:"Apply the Patch from below link,
-  http://technet.microsoft.com/en-us/security/advisory/2718704");
+  script_tag(name:"solution", value:"Apply the Patch");
   script_tag(name:"summary", value:"The host is installed with Microsoft Windows operating system and
   is prone to a digital certificates spoofing vulnerability.");
   script_tag(name:"solution_type", value:"VendorFix");

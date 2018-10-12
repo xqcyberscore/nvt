@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_DPC2420_12_12.nasl 11057 2018-08-20 13:59:30Z asteins $
+# $Id: gb_cisco_DPC2420_12_12.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Cisco DPC2420 Cross Site Scripting / File Disclosure
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103620");
-  script_version("$Revision: 11057 $");
+  script_version("$Revision: 11855 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
@@ -36,7 +36,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/118711/Cisco-DPC2420-Cross-Site-Scripting-File-Disclosure.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:59:30 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-10 11:09:30 +0100 (Mon, 10 Dec 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -53,7 +53,7 @@ Likely none will be provided anymore. General solution options are to upgrade to
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

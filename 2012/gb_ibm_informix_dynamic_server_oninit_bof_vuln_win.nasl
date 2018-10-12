@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_informix_dynamic_server_oninit_bof_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_ibm_informix_dynamic_server_oninit_bof_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # IBM Informix Dynamic Server 'oninit.exe' Buffer Overflow Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802292");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(44192);
   script_cve_id("CVE-2010-4053");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-12 17:17:17 +0530 (Thu, 12 Jan 2012)");
   script_name("IBM Informix Dynamic Server 'oninit.exe' Buffer Overflow Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/41913");
@@ -50,12 +50,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to a boundary error within the logging function in
   oninit.exe and can be exploited to cause a stack-based buffer overflow by
   sending a specially crafted request to TCP ports 9088 or 1526.");
-  script_tag(name:"solution", value:"Upgrade to IBM Informix IDS version 11.50.xC1, 11.10.xC2W2 or later.
-  For updates refer to http://www-01.ibm.com/software/data/informix/");
+  script_tag(name:"solution", value:"Upgrade to IBM Informix IDS version 11.50.xC1, 11.10.xC2W2 or later.");
   script_tag(name:"summary", value:"This host is installed with IBM Informix Dynamic Server and is
   prone to buffer overflow vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/software/data/informix/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_pdf_viewer_mult_vuln_win.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: gb_google_chrome_pdf_viewer_mult_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Google Chrome PDF Viewer Multiple Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802932");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-2862", "CVE-2012-2863");
   script_bugtraq_id(54897);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-14 17:03:39 +0530 (Tue, 14 Aug 2012)");
   script_name("Google Chrome PDF Viewer Multiple Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50222/");
@@ -47,7 +47,7 @@ if(description)
   the context of the browser or cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 21.0.1180.75 on Windows");
   script_tag(name:"insight", value:"A use-after-free and out-of-bounds write errors exists within the PDF viewer.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 21.0.1180.75 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 21.0.1180.75 or later, ");
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to use after
   free and denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ber_dissector_stack_consumption_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_wireshark_ber_dissector_stack_consumption_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wireshark BER Dissector Stack Consumption Vulnerability (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802845");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2010-3445");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-04 18:26:03 +0530 (Fri, 04 May 2012)");
   script_name("Wireshark BER Dissector Stack Consumption Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2010/10/12/1");
@@ -50,12 +50,12 @@ if(description)
   BER dissector, which allows remote attackers to cause a denial of service
   (NULL pointer dereference and crash) via a long string in an unknown
   'ASN.1/BER' encoded packet.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark 1.4.1 or 1.2.12 or later.
-  For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"solution", value:"Upgrade to Wireshark 1.4.1 or 1.2.12 or later.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to stack
   consumption vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download");
   exit(0);
 }
 

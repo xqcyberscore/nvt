@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_hash_collision_dos_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_oracle_java_se_hash_collision_dos_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Oracle Java SE Hash Collision DoS Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802681");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-2739");
   script_bugtraq_id(51236);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-04 15:27:32 +0530 (Tue, 04 Dec 2012)");
   script_name("Oracle Java SE Hash Collision DoS Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/903934");
@@ -52,12 +52,12 @@ if(description)
   script_tag(name:"affected", value:"Oracle Java SE 7 to 7 Update 5");
   script_tag(name:"insight", value:"The flaw is due to computes hash values without restricting the ability to
   trigger hash collisions predictably.");
-  script_tag(name:"solution", value:"Upgrade to Oracle Java SE version 7 Update 6
-  For updates refer to http://www.oracle.com/technetwork/java/javase/downloads/index.html");
+  script_tag(name:"solution", value:"Upgrade to Oracle Java SE version 7 Update 6");
   script_tag(name:"summary", value:"This host is installed with Oracle Java SE and is prone to denial of
   service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/java/javase/downloads/index.html");
   exit(0);
 }
 

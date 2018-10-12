@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_detect.nasl 11833 2018-10-11 08:18:59Z cfischer $
+# $Id: gb_cisco_asa_detect.nasl 11840 2018-10-11 12:25:12Z cfischer $
 #
 # Cisco ASA SSL VPN Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105033");
-  script_version("$Revision: 11833 $");
+  script_version("$Revision: 11840 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:18:59 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 14:25:12 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-26 15:00:41 +0200 (Mon, 26 May 2014)");
   script_name("Cisco ASA SSL VPN Detection");
   script_category(ACT_GATHER_INFO);
@@ -70,7 +70,7 @@ buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( buf !~ "^HTTP/1\.[01] 200" ) exit( 0 );
 
-set_kb_item( name:"cisco_asa/webvpn/installed",value:TRUE );
+set_kb_item( name:"cisco_asa/webvpn/installed", value:TRUE );
 
 xml = '<?xml version="1.0" encoding="UTF-8"?>\r\n' +
       '<config-auth client="vpn" type="init" aggregate-auth-version="2">\r\n' +
@@ -96,6 +96,8 @@ req = 'POST / HTTP/1.1\r\n' +
       xml;
 buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
 
+# nb: Newer versions of the ASA VPN Portal doesn't offer the version anymore
+# and requires the user to login first to continue.
 vers = "unknown";
 install = "/";
 version = eregmatch( string:buf, pattern:'<version.*>([^<]+)</version>' );

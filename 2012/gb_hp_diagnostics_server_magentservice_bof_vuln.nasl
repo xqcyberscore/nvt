@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_diagnostics_server_magentservice_bof_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: gb_hp_diagnostics_server_magentservice_bof_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # HP Diagnostics Server 'magentservice.exe' Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802386");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-4789");
   script_bugtraq_id(51398);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-01 14:14:14 +0530 (Wed, 01 Feb 2012)");
   script_name("HP Diagnostics Server 'magentservice.exe' Buffer Overflow Vulnerability");
 
@@ -57,7 +57,7 @@ when processing a specially crafted request sent to TCP port 23472 and causing
 a stack-based buffer overflow.");
   script_tag(name:"summary", value:"This host is running HP Diagnostics Server and is prone to
 buffer overflow vulnerability.");
-  script_tag(name:"solution", value:"Upgrade to HP LoadRunner 11.0 patch4 or later,");
+  script_tag(name:"solution", value:"Upgrade to HP LoadRunner 11.0 patch4 or later, ");
   script_xref(name:"URL", value:"http://www.hp.com/");
   exit(0);
 }

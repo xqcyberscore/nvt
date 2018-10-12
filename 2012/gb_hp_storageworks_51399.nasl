@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_storageworks_51399.nasl 11049 2018-08-20 08:53:50Z asteins $
+# $Id: gb_hp_storageworks_51399.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # HP StorageWorks Default Accounts and Directory Traversal Vulnerabilities
 #
@@ -32,9 +32,9 @@ if(description)
   script_cve_id("CVE-2011-4788", "CVE-2012-0697");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11049 $");
+  script_version("$Revision: 11855 $");
   script_name("HP StorageWorks Default Accounts and Directory Traversal Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 13:19:06 +0100 (Tue, 21 Feb 2012)");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51399");
@@ -62,7 +62,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
- exit(0);
+  exit(0);
 }
 
 include("ssh_func.inc");

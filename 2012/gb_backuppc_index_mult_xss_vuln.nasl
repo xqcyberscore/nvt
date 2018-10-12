@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_backuppc_index_mult_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_backuppc_index_mult_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # BackupPC 'index.cgi' Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802622");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(47628, 50406);
   script_cve_id("CVE-2011-3361", "CVE-2011-5081", "CVE-2011-4923");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-04 14:49:38 +0530 (Wed, 04 Apr 2012)");
   script_name("BackupPC 'index.cgi' Multiple Cross Site Scripting Vulnerabilities");
 
@@ -59,13 +59,13 @@ if(description)
   input to 'num' and 'share' parameters in index.cgi, which allows attackers to
   execute arbitrary HTML and script code in a user's browser session in the
   context of an affected site.");
-  script_tag(name:"solution", value:"Upgrade to BackupPC vesion 3.2.1 or later.
-  For updates refer to http://backuppc.sourceforge.net/");
+  script_tag(name:"solution", value:"Upgrade to BackupPC vesion 3.2.1 or later.");
   script_tag(name:"summary", value:"This host is running BackupPC and is prone to multiple cross site
   scripting vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+  script_xref(name:"URL", value:"http://backuppc.sourceforge.net/");
   exit(0);
 }
 

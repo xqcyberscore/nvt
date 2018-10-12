@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libre_office_doc_file_dos_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_libre_office_doc_file_dos_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # LibreOffice 'DOC' File Denial of Service Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802557");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-2713");
   script_bugtraq_id(49969);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-10 16:22:59 +0530 (Tue, 10 Jan 2012)");
   script_name("LibreOffice 'DOC' File Denial of Service Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2011/Oct/21");
@@ -48,8 +48,7 @@ if(description)
   a specially crafted Word document that, when loaded by the target user, will
   trigger an out-of-bounds read and potentially execute arbitrary code on the
   target system.");
-  script_tag(name:"solution", value:"Upgrade to LibreOffice version 3.4.3 or later.
-  For updates refer to http://www.libreoffice.org/download/");
+  script_tag(name:"solution", value:"Upgrade to LibreOffice version 3.4.3 or later.");
   script_tag(name:"summary", value:"This host is installed with LibreOffice and is prone to denial of
   service vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
@@ -58,6 +57,7 @@ if(description)
   script_tag(name:"affected", value:"LibreOffice version 3.3.0 and 3.4.0 through 3.4.2");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.libreoffice.org/download/");
   exit(0);
 }
 

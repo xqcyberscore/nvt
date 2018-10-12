@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_dect_bof_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: secpod_wireshark_dect_bof_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wireshark DECT Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903023");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-1591");
   script_bugtraq_id(47392);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-25 18:34:41 +0530 (Wed, 25 Apr 2012)");
   script_name("Wireshark DECT Buffer Overflow Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/44172");
@@ -51,12 +51,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to error in the 'DECT' dissector when processing
   malformed data, which could allow code execution via malformed packets or
   a malicious PCAP file.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.5 or later,
-  For updates refer to http://www.wireshark.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.5 or later,");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to buffer
   overflow vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download.html");
   exit(0);
 }
 

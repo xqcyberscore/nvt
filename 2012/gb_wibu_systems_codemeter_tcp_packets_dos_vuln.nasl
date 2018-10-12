@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wibu_systems_codemeter_tcp_packets_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wibu_systems_codemeter_tcp_packets_dos_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wibu-Systems CodeMeter RunTime TCP Packets Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wibu:codemeter_webadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802382");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-4057");
   script_bugtraq_id(51382);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-19 15:06:52 +0530 (Thu, 19 Jan 2012)");
   script_name("Wibu-Systems CodeMeter Runtime TCP Packets Denial of Service Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -53,14 +53,14 @@ if(description)
   script_tag(name:"affected", value:"Wibu-Systems CodeMeter version before 4.40");
   script_tag(name:"insight", value:"The flaw is due to an unspecified error which fails to handle
   crafted packets to TCP port 22350.");
-  script_tag(name:"solution", value:"Upgrade to Wibu-Systems CodeMeter version 4.40 or later
-  For updates refer to  http://www.wibu.com/en/home.html");
+  script_tag(name:"solution", value:"Upgrade to Wibu-Systems CodeMeter version 4.40 or later");
   script_tag(name:"summary", value:"The host is running Wibu-Systems CodeMeter Runtime and is prone to denial of service
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://www.wibu.com/en/home.html");
   exit(0);
 }
 

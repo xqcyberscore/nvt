@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_dec12_macosx.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: gb_wireshark_mult_vuln_dec12_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wireshark Multiple Dissector Multiple Vulnerabilities - Dec12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803071");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-6052", "CVE-2012-6054", "CVE-2012-6055", "CVE-2012-6056",
                 "CVE-2012-6057");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-10 10:30:54 +0530 (Mon, 10 Dec 2012)");
   script_name("Wireshark Multiple Dissector Multiple Vulnerabilities - Dec12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51422");
@@ -59,7 +59,7 @@ if(description)
 
   - Errors in 3GPP2 A11, SCTP and EIGRP dissectors, which can be exploited
     to cause a crash.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.8.4 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.8.4 or later, ");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"package");

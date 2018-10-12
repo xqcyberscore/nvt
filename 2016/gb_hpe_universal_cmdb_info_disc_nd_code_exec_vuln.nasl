@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_universal_cmdb_info_disc_nd_code_exec_vuln.nasl 11607 2018-09-25 13:53:15Z asteins $
+# $Id: gb_hpe_universal_cmdb_info_disc_nd_code_exec_vuln.nasl 11837 2018-10-11 09:17:05Z asteins $
 #
 # HP Universal CMDB Remote Information Disclosure And Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:hp:universal_cmbd_foundation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808251");
-  script_version("$Revision: 11607 $");
+  script_version("$Revision: 11837 $");
   script_cve_id("CVE-2016-4367", "CVE-2016-4368");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 15:53:15 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 16:30:56 +0530 (Thu, 14 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("HP Universal CMDB Remote Information Disclosure And Code Execution Vulnerabilities");
@@ -55,9 +55,7 @@ if(description)
   script_tag(name:"affected", value:"HPE Universal CMDB versions
   10.0, 10.01, 10.10, 10.11, 10.20, and 10.21");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  https://softwaresupport.hpe.com/group/softwaresupport/search-result/-/facetsearch/document/KM02241206
-  https://softwaresupport.hpe.com/group/softwaresupport/search-result/-/facetsearch/document/KM02310095");
+  script_tag(name:"solution", value:"Apply the available patch.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +63,7 @@ if(description)
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/137370");
   script_xref(name:"URL", value:"https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05164813");
   script_xref(name:"URL", value:"https://h20566.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05164408");
+  script_xref(name:"URL", value:"https://softwaresupport.hpe.com/group/softwaresupport/search-result/-/facetsearch/document/KM02310095");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -72,6 +71,7 @@ if(description)
   script_dependencies("gb_hpe_universal_cmdb_detect.nasl");
   script_mandatory_keys("HP/UCMDB/Installed");
   script_require_ports("Services/www", 8080);
+  script_xref(name:"URL", value:"https://softwaresupport.hpe.com/group/softwaresupport/search-result/-/facetsearch/document/KM02241206");
   exit(0);
 }
 

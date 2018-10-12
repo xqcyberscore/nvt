@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linux_kernel_igmp_dos_vuln.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: gb_linux_kernel_igmp_dos_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Linux Kernel IGMP Remote Denial Of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802295");
-  script_version("$Revision: 11372 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(51343);
   script_cve_id("CVE-2012-0207");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-19 14:14:14 +0530 (Thu, 19 Jan 2012)");
   script_name("Linux Kernel IGMP Remote Denial Of Service Vulnerability");
   script_category(ACT_KILL_HOST);
@@ -56,9 +56,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error in IGMP protocol implementation, which
   can be exploited to cause a kernel crash via specially crafted IGMP queries.");
 
-  script_tag(name:"solution", value:"Upgrade to Linux Kernel version 3.0.17, 3.1.9 or 3.2.1
-
-  For updates refer to http://www.kernel.org");
+  script_tag(name:"solution", value:"Upgrade to Linux Kernel version 3.0.17, 3.1.9 or 3.2.1");
 
   script_tag(name:"summary", value:"This host is running Linux and prone to remote denial of service
   vulnerability.");
@@ -66,6 +64,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.kernel.org");
   exit(0);
 }
 

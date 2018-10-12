@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_vuln_win_may12.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_apple_quicktime_mult_vuln_win_may12.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Apple QuickTime Multiple Vulnerabilities - (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802795");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-0663", "CVE-2012-0665", "CVE-2011-3458", "CVE-2011-3459",
                 "CVE-2012-0658", "CVE-2012-0659", "CVE-2012-0666", "CVE-2011-3460",
                 "CVE-2012-0667", "CVE-2012-0661", "CVE-2012-0668", "CVE-2012-0669",
@@ -38,7 +38,7 @@ if(description)
                     53469);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-18 13:04:18 +0530 (Fri, 18 May 2012)");
   script_name("Apple QuickTime Multiple Vulnerabilities - (Windows)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5261");
@@ -79,11 +79,11 @@ if(description)
 
   - A boundary error in QuickTime.qts when extending a file path based on its
     short path.");
-  script_tag(name:"solution", value:"Upgrade to QuickTime Player version 7.7.2 or later,
-  For updates refer to http://support.apple.com/downloads/");
+  script_tag(name:"solution", value:"Upgrade to QuickTime Player version 7.7.2 or later,");
   script_tag(name:"summary", value:"This host is installed with Apple QuickTime and is prone to
   multiple vulnerabilities.");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://support.apple.com/downloads/");
   exit(0);
 }
 

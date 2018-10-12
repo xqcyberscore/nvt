@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_bof_n_dos_vuln_macosx.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: gb_wireshark_bof_n_dos_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wireshark Heap Based BOF and Denial of Service Vulnerabilities (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802767");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-4102", "CVE-2011-4101");
   script_bugtraq_id(50486, 50481);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-02 17:03:46 +0530 (Wed, 02 May 2012)");
   script_name("Wireshark Heap Based BOF and Denial of Service Vulnerabilities (Mac OS X)");
 
@@ -53,7 +53,7 @@ if(description)
   - An error in dissect_infiniband_common function in
     'epan/dissectors/packet-infiniband.c' in the Infiniband dissector,
     could dereference a NULL pointer.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.3 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.3 or later, ");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to heap based
   buffer overflow and denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"package");

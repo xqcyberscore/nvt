@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: version_func.inc 9111 2018-03-15 15:16:12Z cfischer $
+# $Id: version_func.inc 11845 2018-10-11 14:57:09Z cfischer $
 #
 # Helper functions for various version related tests
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 9111 $
+# $Revision: 11845 $
 #
 ###############################################################################
 
@@ -32,25 +32,26 @@
 
 function get_string_version( text, ver_pattern ) {
 
-  local_var loc_version, text, ver_pattern;
+  local_var text, ver_pattern, loc_version;
 
-  if( ! text ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#text#-#get_string_version" );
+  if( ! text ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#text#-#get_string_version" );
 
-  if( isnull( ver_pattern) ) {           # Standard Version Pattern for most cases
-    ver_pattern = "([0-9\.]+)";
+  if( isnull( ver_pattern) ) {
+    ver_pattern = "([0-9\.]+)"; # Standard Version Pattern for most cases
   }
 
   loc_version = eregmatch( pattern:ver_pattern, string:text );
-  if( loc_version != NULL ) loc_version[max_index( loc_version )] = text;
-  return( loc_version );
+  if( ! isnull( loc_version ) )
+    loc_version[max_index( loc_version )] = text;
+  return loc_version;
 }
 
 function version_is_less( version, test_version, icase, debug ) {
 
   local_var version, test_version, icase, debug;
 
-  if( ! version ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_is_less" );
-  if( ! test_version ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_is_less" );
+  if( ! version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_is_less" );
+  if( ! test_version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_is_less" );
   return( version_test( version:version, test_version:test_version, less:TRUE, icase:icase, debug:debug ) );
 }
 
@@ -58,8 +59,8 @@ function version_is_equal( version, test_version, icase, debug ) {
 
   local_var version, test_version, icase, debug;
 
-  if( ! version ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_is_equal" );
-  if( ! test_version ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_is_equal" );
+  if( ! version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_is_equal" );
+  if( ! test_version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_is_equal" );
   return( version_test( version:version, test_version:test_version, less:FALSE, icase:icase, debug:debug ) );
 }
 
@@ -84,7 +85,7 @@ function version_test( version, test_version, less, icase, debug ) {
   ver_sep = "."; # Set Standard Separator
 
   # Replace commonly used version separators (e.g. 1.0 rc1, or 1.0-rc1) with the standard separator.
-  # nb: The "\.\." replacement is a fallback for NVTs passing doubled dots to the version comparsion functions.
+  # nb: The "\.\." replacement is a fallback for NVTs passing doubled dots to the version comparison functions.
   # Such a doubled point would e.g. report "1.0..99" to be a lower version then 1.0.1
   ##For Java NVTs updated regex, 'update_' to be replaced by '.'. 1.8.0_151 , 1.8.0update_51, 1.7.0update1
   version = ereg_replace( pattern:"( |\-|\.\.|_|update_)", string:version, replace:"." );
@@ -153,8 +154,8 @@ function version_test( version, test_version, less, icase, debug ) {
       if( isnull( r ) ) {
         ver_ary[i] = ord( s[0] );
       } else {
-        if( ! less ) return FALSE;      # If char found in test_version and no char in version it is not equal
-        ver_ary[i] = int(r[0]) * 128;  # No chars if test_version has no chars on this position else 1.1.1a is > 1.1.2
+        if( ! less ) return FALSE;    # If char found in test_version and no char in version it is not equal
+        ver_ary[i] = int(r[0]) * 128; # No chars if test_version has no chars on this position else 1.1.1a is > 1.1.2
       }
     }
 
@@ -165,16 +166,18 @@ function version_test( version, test_version, less, icase, debug ) {
       if( ver_ary[i] != test_ary[i] ) return FALSE;
     }
   }
-  if( less ) return FALSE;
-  else return TRUE;
+  if( less )
+    return FALSE;
+  else
+    return TRUE;
 }
 
 function version_is_less_equal( version, test_version, icase, debug ) {
 
   local_var version, test_version, icase, debug;
 
-  if( ! version ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_is_less_equal" );
-  if( ! test_version ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_is_less_equal" );
+  if( ! version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_is_less_equal" );
+  if( ! test_version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_is_less_equal" );
   if( version_is_equal( version:version, test_version:test_version, icase:icase, debug:debug ) ) return TRUE;
   if( version_is_less( version:version, test_version:test_version, icase:icase, debug:debug ) ) return TRUE;
   return FALSE;
@@ -184,8 +187,8 @@ function version_is_greater_equal( version, test_version, icase, debug ) {
 
   local_var version, test_version, icase, debug;
 
-  if( ! version ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_is_greater_equal" );
-  if( ! test_version ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_is_greater_equal" );
+  if( ! version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_is_greater_equal" );
+  if( ! test_version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_is_greater_equal" );
   if( version_is_equal( version:version, test_version:test_version, icase:icase, debug:debug ) ) return TRUE;
   if( version_is_less( version:test_version, test_version:version, icase:icase, debug:debug ) ) return TRUE;
   return FALSE;
@@ -195,19 +198,19 @@ function version_is_greater( version, test_version, icase, debug ) {
 
   local_var version, test_version, icase, debug;
 
-  if( ! version ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_is_greater" );
-  if( ! test_version ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_is_greater" );
+  if( ! version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_is_greater" );
+  if( ! test_version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_is_greater" );
   if( version_is_less( version:test_version, test_version:version, icase:icase, debug:debug ) ) return TRUE;
   return FALSE;
 }
 
 function version_in_range( version, test_version, test_version2, icase, debug ) {
 
-  local_var version, test_version, test_version2;
+  local_var version, test_version, test_version2, icase, debug;
 
-  if( ! version ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_in_range" );
-  if( ! test_version ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_in_range" );
-  if( ! test_version2 ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version2#-#version_in_range" );
+  if( ! version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#version_in_range" );
+  if( ! test_version ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version#-#version_in_range" );
+  if( ! test_version2 ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#test_version2#-#version_in_range" );
   if( version_is_greater_equal( version:version, test_version:test_version, icase:icase, debug:debug ) ) {
     if( version_is_less_equal( version:version, test_version:test_version2, icase:icase, debug:debug ) ) return TRUE;
   }
@@ -216,10 +219,10 @@ function version_in_range( version, test_version, test_version2, icase, debug ) 
 
 function get_version_from_kb( port, app ) {
 
-  local_var port, app, vers, version, matches;
+  local_var port, app, version, matches, vers;
 
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_version_from_kb" );
-  if( ! app ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#app#-#get_version_from_kb" );
+  if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_version_from_kb" );
+  if( ! app ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#app#-#get_version_from_kb" );
 
   if( isnull( port ) || isnull( app ) ) return FALSE;
 
@@ -229,7 +232,7 @@ function get_version_from_kb( port, app ) {
   vers = matches[1];
 
   if( isnull( vers ) ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#vers#-#get_version_from_kb" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#vers#-#get_version_from_kb" );
     return FALSE;
   }
 
@@ -240,10 +243,10 @@ function get_version_from_kb( port, app ) {
 
 function get_dir_from_kb( port, app ) {
 
-  local_var port, app, dir, version, matches;
+  local_var port, app, version, matches, dir;
 
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_dir_from_kb" );
-  if( ! app ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#app#-#get_dir_from_kb" );
+  if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_dir_from_kb" );
+  if( ! app ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#app#-#get_dir_from_kb" );
 
   if( isnull( port ) || isnull( app ) ) return FALSE;
 
@@ -253,16 +256,16 @@ function get_dir_from_kb( port, app ) {
   dir = matches[2];
 
   if( isnull( dir ) ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#dir#-#get_dir_from_kb" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#dir#-#get_dir_from_kb" );
     return FALSE;
   }
-
   return string( dir );
-
 }
 
 # add  "script_dependencies("smb_nativelanman.nasl");" to your NVT to make this function work
 function get_samba_version() {
+
+  local_var lanman, version;
 
   if( ! lanman = get_kb_item( "SMB/NativeLanManager" ) ) return FALSE;
   if( "Samba" >!< lanman ) return FALSE;
@@ -277,7 +280,7 @@ function get_samba_version() {
 ## nb: If you use this you need to include secpod_smb_func.inc
 function fetch_file_version( sysPath, file_name ) {
 
-  local_var share, file, file_name, sysVer, kb_proxy_file, kb_proxy, kbsysPath ;
+  local_var file_name, kbsysPath, kb_proxy_file, kb_proxy, share, file, sysVer;
   # nb: Don't add sysPath to local_var as quite a lot LSCs are calling fetch_file_version(sysPath)
 
   if( ! sysPath )   set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#sysPath#-#fetch_file_version" );
@@ -302,7 +305,7 @@ function fetch_file_version( sysPath, file_name ) {
   }
 
   share = ereg_replace( pattern:"([A-Za-z]):.*", replace:"\1$", string:sysPath );
-  file =  ereg_replace( pattern:"[A-Za-z]:(.*)", replace:"\1", string:sysPath + "\" + file_name );
+  file  = ereg_replace( pattern:"[A-Za-z]:(.*)", replace:"\1", string:sysPath + "\" + file_name );
 
   sysVer = GetVer( file:file, share:share ); # from secpod_smb_func.inc
   if( ! sysVer || isnull( sysVer ) || sysVer == "" || sysVer == 0 || sysVer == '0' ) {
@@ -323,7 +326,8 @@ function fetch_file_version( sysPath, file_name ) {
 ########################################################################
 function get_version( dllPath, string, offs ) {
 
-  local_var name, login,  pass, domain,  port,  share, file, soc, r, prot, uid, tid, fid, prVersion;
+  local_var dllPath, string, offs;
+  local_var name, login, pass, domain, port, share, file, soc, r, prot, uid, tid, fid, prVersion;
 
   if( ! dllPath ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#dllPath#-#get_version" );
@@ -399,11 +403,11 @@ function get_version( dllPath, string, offs ) {
 function report_fixed_ver( installed_version, installed_build, installed_patch, vulnerable_range, file_checked,
                            file_version, fixed_version, fixed_build, fixed_patch, extra, install_path, install_url ) {
 
-  local_var report, installed_version, installed_build, installed_patch, vulnerable_range, file_checked;
-  local_var file_version, fixed_version, fixed_build, fixed_patch, extra, install_path, install_url;
+  local_var installed_version, installed_build, installed_patch, vulnerable_range, file_checked;
+  local_var file_version, fixed_version, fixed_build, fixed_patch, extra, install_path, install_url, report;
 
-  if( ! installed_version && ! file_checked ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#installed_version/file_checked#-#report_fixed_ver" );
-  if( ! fixed_version && ! vulnerable_range ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fixed_version/vulnerable_range#-#report_fixed_ver" );
+  if( ! installed_version && ! file_checked ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#installed_version/file_checked#-#report_fixed_ver" );
+  if( ! fixed_version && ! vulnerable_range ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fixed_version/vulnerable_range#-#report_fixed_ver" );
 
   if( installed_version ) report += 'Installed version: ' + installed_version + '\n';
   if( file_checked )      report += 'File checked:      ' + file_checked + '\n';

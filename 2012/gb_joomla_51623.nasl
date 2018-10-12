@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_51623.nasl 11144 2018-08-28 11:37:19Z asteins $
+# $Id: gb_joomla_51623.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Joomla! 'com_kp' Component 'controller' Parameter Local File Include Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2011-4804");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11144 $");
+  script_version("$Revision: 11855 $");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -42,7 +42,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51623");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 13:37:19 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-24 10:42:33 +0100 (Tue, 24 Jan 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -59,7 +59,7 @@ An attacker can exploit this vulnerability to obtain potentially sensitive infor
 scripts in the context of the webserver process. This may allow the attacker to compromise the application and the
 computer.");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: office2013_open_as_read_write_browsing.nasl 11535 2018-09-21 19:39:46Z cfischer $
+# $Id: office2013_open_as_read_write_browsing.nasl 11843 2018-10-11 14:33:21Z emoss $
 #
 # Check value for Open Office documents as read/write while browsing
 #
@@ -27,46 +27,84 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109066");
-  script_version("$Revision: 11535 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:39:46 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 11843 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-11 16:33:21 +0200 (Thu, 11 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-04-16 09:42:28 +0200 (Mon, 16 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
   script_tag(name:"qod", value:"97");
-  script_name('Microsoft Office 2013: Open Office documents as read/write while browsing');
+  script_name('Microsoft Office: Open Office documents as read/write while browsing');
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
-  script_dependencies("secpod_ms_office_detection_900025.nasl");
-  script_require_keys("MS/Office/Ver");
-  script_mandatory_keys("Compliance/Launch");
-  script_tag(name:"summary", value:'Check Setting "Open Office documents as read/write while browsing" (Microsoft Office 2013).');
+  script_dependencies("secpod_ms_office_detection_900025.nasl", "os_detection.nasl");
+  script_add_preference(name:"Value", type:"radio", value:"0;1");
+  script_mandatory_keys("Compliance/Launch", "Host/runs_windows", "MS/Office/Ver");
+  script_tag(name:"summary", value:"This test checks the setting for policy 'Open Office documents
+as read/write while browsing' for Microsoft Office 2013 (at least) on Windows hosts.
+
+The setting controls whether users can edit and save Office documents on Web servers that they have
+opened using Internet Explorer.");
   exit(0);
 }
 
 include("smb_nt.inc");
 include("policy_functions.inc");
+include("host_details.inc");
+include("secpod_smb_func.inc");
+include("version_func.inc");
 
-if(!get_kb_item("SMB/WindowsVersion")){
-  policy_logging(text:'Host is no Microsoft Windows System or it is not possible
-to query the registry.');
-  exit(0);
+cpe = get_app_version(cpe:"cpe:/a:microsoft:office");
+if(!cpe){
+	policy_logging(text:'Not found any Microsoft Office installation.');
+	exit(0);
+}
+office_year = substr(cpe,0,3);
+
+full_version = get_kb_item("MS/Office/Ver");
+if(version_is_less(version:full_version, test_version:'15')){
+	policy_logging(text:'Not found at least Microsoft Office 2013 installation.');
+	exit(0);
+}
+major_version = substr(full_version,0,3);
+
+title = 'Open Office documents as read write while browsing';
+fixtext = 'Set following UI path accordingly:
+User Configuration/Administrative Templates/Microsoft Office ' + office_year + '/Tools Options
+General Web Options/Files/' + title;
+type = 'HKU';
+key_root = 'software\\policies\\microsoft\\office\\' + major_version + '\\common\\internet';
+item = 'opendocumentsreadwritewhilebrowsing';
+default = script_get_preference('Value');
+v = make_array();
+
+uids = registry_enum_keys(key:'SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProfileList', type:'HKLM');
+foreach uid (uids){
+  if(uid =~ "S-1-5-21-"){
+    if(registry_key_exists(key:uid, type:'HKU')){
+      key = uid + '\\' + key_root;
+      value = registry_get_dword(key:key, item:item, type:type);
+      if(!value){
+        value = '0';
+      }
+      v = uid + ': ' + value + '\n';
+      policy_set_kb_hcu(id:uid, val:value);
+      if(value != default){
+        compliant = 'no';
+      }
+    }
+  }
 }
 
-Office_Ver = get_kb_item("MS/Office/Ver");
-if(ereg(string:Office_Ver, pattern:"^15.0") != 1){
-  policy_logging(text:'Unable to find Microsoft Office 2013 on Host System.');
-  exit(0);
+if(!compliant){
+  compliant = 'yes';
 }
 
-type = 'HKCU';
-key = 'Software\\Policies\\Microsoft\\Office\\15.0\\common\\internet';
-item = 'OpenDocumentsReadWriteWhileBrowsing';
-value = registry_get_dword(key:key, item:item, type:type);
-if( value == ''){
-  value = 'none';
-}
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+policy_logging(text:'"' + title + '" is set to: ' + v);
+policy_add_oid();
+policy_set_dval(dval:default);
+policy_fixtext(fixtext:fixtext);
+policy_control_name(title:title);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

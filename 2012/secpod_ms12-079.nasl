@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-079.nasl 11357 2018-09-12 10:57:05Z asteins $
+# $Id: secpod_ms12-079.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Microsoft Office Word Remote Code Execution Vulnerability (2780642)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902937");
-  script_version("$Revision: 11357 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-2539");
   script_bugtraq_id(56834);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-12 10:23:39 +0530 (Wed, 12 Dec 2012)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerability (2780642)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51467/");
@@ -69,8 +69,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error when parsing Rich Text Format (RTF) data related
   to the listoverridecount and can be exploited to corrupt memory.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-079");
+  update mentioned hotfixes in the advisory");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-079.");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ansi_map_dos_vuln_macosx.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_wireshark_ansi_map_dos_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Wireshark ANSI A MAP Files Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802766");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-2698");
   script_bugtraq_id(49071);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-02 16:03:18 +0530 (Wed, 02 May 2012)");
   script_name("Wireshark ANSI A MAP Files Denial of Service Vulnerability (Mac OS X)");
 
@@ -50,8 +50,7 @@ if(description)
   dissector of the Wireshark network traffic analyzer processed certain ANSI A
   MAP capture files. If Wireshark read a malformed packet off a network or
   opened a malicious packet capture file, it could lead to denial of service.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.4.8 or 1.6.1 or later,
-  For updates refer to http://www.wireshark.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.4.8 or 1.6.1 or later,");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to denial of
   service vulnerability.");
   script_tag(name:"qod_type", value:"package");
@@ -59,6 +58,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/45086");
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2011/07/20/2");
   script_xref(name:"URL", value:"http://anonsvn.wireshark.org/viewvc?view=revision&revision=37930");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download.html");
   exit(0);
 }
 

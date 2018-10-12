@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_address_bar_spoofin_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_apple_safari_address_bar_spoofin_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # Apple Safari 'setInterval()' Address Bar Spoofing Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802818");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2011-3844");
   script_bugtraq_id(52323);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-13 18:17:52 +0530 (Tue, 13 Mar 2012)");
   script_name("Apple Safari 'setInterval()' Address Bar Spoofing Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/44976");
@@ -50,12 +50,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an improper implementation of the setInterval
   function, which allows remote attackers to spoof the address bar via a
   crafted web page.");
-  script_tag(name:"solution", value:"Upgrade to Apple Safari version 5.1.2 or later,
-  For updates refer to http://www.apple.com/support/downloads/");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 5.1.2 or later,");
   script_tag(name:"summary", value:"This host is installed with Apple Safari web browser and is prone
   to address bar spoofing vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.apple.com/support/downloads/");
   exit(0);
 }
 

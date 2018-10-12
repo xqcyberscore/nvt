@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wellintech_kingview_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wellintech_kingview_mult_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # WellinTech KingView Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802911");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_cve_id("CVE-2012-1830", "CVE-2012-1831", "CVE-2012-1832", "CVE-2012-2560");
   script_bugtraq_id(54280);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-10 17:26:36 +0530 (Tue, 10 Jul 2012)");
   script_name("WellinTech KingView Multiple Vulnerabilities");
   script_category(ACT_DENIAL);
@@ -62,9 +62,7 @@ if(description)
   - A specially crafted GET request via HTTP on Port 8001/TCP, an attacker
     may access arbitrary information from the KingView application.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-
-  http://www.wellintech.com/index.php/news/33-patch-for-kingview653");
+  script_tag(name:"solution", value:"Apply the patch");
 
   script_tag(name:"summary", value:"This host is running WellinTech KingView and is prone to multiple
   vulnerabilties.");

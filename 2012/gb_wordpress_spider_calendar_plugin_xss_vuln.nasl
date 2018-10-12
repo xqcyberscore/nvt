@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_spider_calendar_plugin_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
+# $Id: gb_wordpress_spider_calendar_plugin_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
 #
 # WordPress Spider Calendar Plugin Cross Site Scripting Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802998");
-  script_version("$Revision: 11374 $");
+  script_version("$Revision: 11855 $");
   script_bugtraq_id(55779);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -56,8 +56,7 @@ if(description)
   script_tag(name:"insight", value:"Input passed via the 'date' parameter to 'front_end/spidercalendarbig.php'
   is not properly sanitised before being returned to the user.");
 
-  script_tag(name:"solution", value:"Update to version 1.1.3 or later,
-  For updates refer to http://wordpress.org/extend/plugins/spider-calendar");
+  script_tag(name:"solution", value:"Update to version 1.1.3 or later,");
 
   script_tag(name:"summary", value:"This host is running WordPress Spider Calendar Plugin and is
   prone to cross site scripting vulnerability.");
@@ -65,6 +64,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/spider-calendar");
   exit(0);
 }
 
