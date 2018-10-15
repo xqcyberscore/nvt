@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lg_smart_ip_device_detect.nasl 11455 2018-09-18 11:44:40Z jschulte $
+# $Id: gb_lg_smart_ip_device_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # LG Smart IP Device Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113270");
-  script_version("$Revision: 11455 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:44:40 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-09-18 11:50:00 +0200 (Tue, 18 Sep 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.lg.com/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/h:lg:smart_ip:";

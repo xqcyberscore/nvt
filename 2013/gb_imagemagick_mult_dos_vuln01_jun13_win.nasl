@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_dos_vuln01_jun13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_imagemagick_mult_dos_vuln01_jun13_win.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # ImageMagick Multiple Denial of Service Vulnerabilities - 01 June13 (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803815");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2012-0260", "CVE-2012-0259", "CVE-2012-1798");
   script_bugtraq_id(52898);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 12:32:12 +0530 (Mon, 24 Jun 2013)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -58,8 +58,8 @@ if(description)
 
   - Error occurs when parsing TIFF EXIF IFD of the 'TIFFGetEXIFProperties()'
     function in coders/tiff.c");
-  script_tag(name:"solution", value:"Upgrade to ImageMagick version 6.7.6-3 or later.
-  http://www.imagemagick.org/script/download.php");
+  script_tag(name:"solution", value:"Upgrade to ImageMagick version 6.7.6-3 or later.");
+  script_xref(name:"URL", value:"http://www.imagemagick.org/script/download.php");
   script_tag(name:"summary", value:"The host is installed with ImageMagick and is prone to multiple
   denial of service Vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

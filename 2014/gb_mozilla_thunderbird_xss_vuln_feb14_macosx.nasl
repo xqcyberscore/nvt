@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_xss_vuln_feb14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_mozilla_thunderbird_xss_vuln_feb14_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Mozilla Thunderbird Multiple XSS Vulnerabilities Feb14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804504");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-6674", "CVE-2014-2018");
   script_bugtraq_id(65158, 65620);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-19 16:29:45 +0530 (Wed, 19 Feb 2014)");
   script_name("Mozilla Thunderbird Multiple XSS Vulnerabilities Feb14 (Mac OS X)");
 
@@ -48,8 +48,7 @@ IFRAME elements or EMBED or OBJECT element before returning it to users.");
 in a user's browser session within the trust relationship between their
 browser and the server.");
   script_tag(name:"affected", value:"Mozilla Thunderbird version 17.x through 17.0.8 on Mac OS X");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 23.0 or later,
-For updates refer to http://www.mozilla.com/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 23.0 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -61,6 +60,7 @@ For updates refer to http://www.mozilla.com/en-US/thunderbird");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("ThunderBird/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/thunderbird");
   exit(0);
 }
 

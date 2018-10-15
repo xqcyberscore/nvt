@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_mozilla_firefox_mult_vuln_macosx.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806100");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-4497", "CVE-2015-4498");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-31 16:06:00 +0530 (Mon, 31 Aug 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities (Mac OS X");
 
@@ -61,7 +61,7 @@ if(description)
   (Mac OS X)");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 40.0.3
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -74,6 +74,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

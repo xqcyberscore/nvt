@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_email_gateway_sb10085.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mcafee_email_gateway_sb10085.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # McAfee Email Gateway - Bash Shellshock Code Injection Exploit
 #
@@ -33,21 +33,21 @@ if (description)
   script_cve_id("CVE-2014-6271", "CVE-2014-6277", "CVE-2014-6278", "CVE-2014-7169", "CVE-2014-7186", "CVE-2014-7187");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11872 $");
 
   script_name("McAfee Email Gateway - Bash Shellshock Code Injection Exploit");
 
   script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10085");
 
   script_tag(name:"vuldetect", value:"Check the installed version and hotfixes");
-  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory.");
 
   script_tag(name:"summary", value:"A number of security vulnerabilities have been identified in the
 `bash' component of several McAfee products.  These issues include those known as `Shellshock'");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-07 17:42:14 +0100 (Wed, 07 Jan 2015)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -56,7 +56,7 @@ if (description)
   script_dependencies("gb_mcafee_email_gateway_version.nasl");
   script_mandatory_keys("mcafee_email_gateway/product_version", "mcafee_email_gateway/patches");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horizon_qcms_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_horizon_qcms_mult_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Horizon QCMS Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804224");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-7138", "CVE-2013-7139");
   script_bugtraq_id(64715, 64717);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-17 15:28:29 +0530 (Fri, 17 Jan 2014)");
   script_name("Horizon QCMS Multiple Vulnerabilities");
 
@@ -44,9 +44,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute SQL commands
   or obtain sensitive information.");
   script_tag(name:"affected", value:"Horizon QCMS version 4.0, Other versions may also be affected.");
-  script_tag(name:"solution", value:"Upgrade to Horizon QCMS version 4.1 or later.
-  For updates refer to http://www.hnqcms.com/
-  A patch has been released, for more information refer below link
+  script_tag(name:"solution", value:"Upgrade to Horizon QCMS version 4.1 or later.  A patch has been released, for more information refer below link
   http://sourceforge.net/projects/hnqcms/files/patches/");
 
   script_xref(name:"URL", value:"https://www.htbridge.com/advisory/HTB23191");
@@ -60,6 +58,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+  script_xref(name:"URL", value:"http://www.hnqcms.com/");
   exit(0);
 }
 

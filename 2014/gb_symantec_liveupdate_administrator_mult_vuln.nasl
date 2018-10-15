@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_liveupdate_administrator_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_symantec_liveupdate_administrator_mult_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Symantec LiveUpdate Administrator Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:liveupdate_administrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804359");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1644", "CVE-2014-1645");
   script_bugtraq_id(66399, 66400);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-03 15:36:12 +0530 (Thu, 03 Apr 2014)");
   script_name("Symantec LiveUpdate Administrator Multiple Vulnerabilities");
 
@@ -51,8 +51,7 @@ multiple vulnerabilities.");
 restrictions and inject or manipulate SQL queries in the back-end database,
 allowing for the manipulation or disclosure of arbitrary data.");
   script_tag(name:"affected", value:"Symantec LiveUpdate Administrator before version 2.x before 2.3.2.110");
-  script_tag(name:"solution", value:"Upgrade to Symantec LiveUpdate Administrator version 2.3.2.110 or later,
-For updates refer to http://www.symantec.com");
+  script_tag(name:"solution", value:"Upgrade to Symantec LiveUpdate Administrator version 2.3.2.110 or later.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/57659");
   script_xref(name:"URL", value:"http://securitytracker.com/id?1029972");
@@ -67,6 +66,7 @@ For updates refer to http://www.symantec.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.symantec.com");
   exit(0);
 }
 

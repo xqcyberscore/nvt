@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_xml_core_services_code_exec_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_ms_xml_core_services_code_exec_vuln.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft XML Core Services Remote Code Execution Vulnerability (2719615)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802864");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2012-1889");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-14 12:09:11 +0530 (Thu, 14 Jun 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft XML Core Services Remote Code Execution Vulnerability (2719615)");
@@ -103,7 +103,7 @@ if(! sysPath){
    exit(0);
 }
 
-dllVer3 = fetch_file_version(sysPath, file_name:"system32\Msxml3.dll");
+dllVer3 = fetch_file_version(sysPath:sysPath, file_name:"system32\Msxml3.dll");
 
 if(dllVer3)
 {
@@ -159,7 +159,7 @@ if(dllVer3)
   location = sysPath + "\system32\Msxml3.dll";
 }
 
-dllVer4 = fetch_file_version(sysPath, file_name:"system32\Msxml4.dll");
+dllVer4 = fetch_file_version(sysPath:sysPath, file_name:"system32\Msxml4.dll");
 
 if(dllVer4)
 {
@@ -172,9 +172,9 @@ if(dllVer4)
   }
 }
 
-dllVer6 = fetch_file_version(sysPath, file_name:"system32\Msxml6.dll");
+dllVer6 = fetch_file_version(sysPath:sysPath, file_name:"system32\Msxml6.dll");
 
-dllVer6 = fetch_file_version(sysPath, file_name:"system32\Msxml6.dll");
+dllVer6 = fetch_file_version(sysPath:sysPath, file_name:"system32\Msxml6.dll");
 if(dllVer6)
 {
   if(hotfix_check_sp(xp:4) > 0)
@@ -256,7 +256,7 @@ if(get_kb_item("MS/Office/Ver") =~ "^[11|12].*" ||
   {
     sysPath = sysPath + "\Microsoft Shared\" + ver ;
 
-    dllVer5 = fetch_file_version(sysPath, file_name:"Msxml5.dll");
+    dllVer5 = fetch_file_version(sysPath:sysPath, file_name:"Msxml5.dll");
 
     if(! dllVer5){
      continue;

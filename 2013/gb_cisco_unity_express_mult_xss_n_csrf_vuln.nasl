@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_unity_express_mult_xss_n_csrf_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_cisco_unity_express_mult_xss_n_csrf_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # Cisco Unity Express Multiple XSS and CSRF Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803167");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2013-1114", "CVE-2013-1120");
   script_bugtraq_id(57677, 57678);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-06 11:33:49 +0530 (Wed, 06 Feb 2013)");
   script_name("Cisco Unity Express Multiple XSS and CSRF Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52045");
@@ -56,8 +56,7 @@ if(description)
 
   - The application allows users to perform certain actions via HTTP requests
     without performing proper validity checks to verify the requests.");
-  script_tag(name:"solution", value:"Upgrade to Cisco Unity Express 8.0 or later,
-  For updated refer to https://sso.cisco.com/autho/forms/CDClogin.html");
+  script_tag(name:"solution", value:"Upgrade to Cisco Unity Express 8.0 or later.");
   script_tag(name:"summary", value:"The host is installed with Cisco Unity Express and is prone to
   multiple cross-site scripting and request forgery vulnerabilities.");
 

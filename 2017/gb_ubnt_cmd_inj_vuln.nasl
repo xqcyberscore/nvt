@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubnt_cmd_inj_vuln.nasl 5845 2017-04-04 05:30:13Z ckuerste $
+# $Id: gb_ubnt_cmd_inj_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Ubiquiti Networks Products Command Injection Vulnerability
 #
@@ -28,15 +28,15 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106717");
-  script_version("$Revision: 5845 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-04 07:30:13 +0200 (Tue, 04 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-04 09:13:22 +0700 (Tue, 04 Apr 2017)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-04 09:13:22 +0700 (Tue, 04 Apr 2017)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Ubiquiti Networks Products Command Injection Vulnerability");
 
@@ -47,20 +47,20 @@ if (description)
   script_dependencies("gb_ubnt_discovery_protocol_detect.nasl");
   script_mandatory_keys("ubnt_discovery_proto/detected", "ubnt_discovery_proto/firmware");
 
-  script_tag(name: "summary", value: "Multiple Ubiquiti Networks products are prone to an authenticated command
+  script_tag(name:"summary", value:"Multiple Ubiquiti Networks products are prone to an authenticated command
 injection vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "A command injection vulnerability was found in 'pingtest_action.cgi'. The
+  script_tag(name:"insight", value:"A command injection vulnerability was found in 'pingtest_action.cgi'. The
 vulnerability can be exploited by luring an attacked user to click on a crafted link or just surf on a malicious
 website. The whole attack can be performed via a single GET-request and is very simple since there is no CSRF
 protection.");
 
-  script_tag(name: "solution", value: "Update to the latest firmware.");
+  script_tag(name:"solution", value:"Update to the latest firmware.");
 
-  script_xref(name: "URL", value: "https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20170316-0_Ubiquiti_Networks_authenticated_command_injection_v10.txt");
-  script_xref(name: "URL", value: "https://community.ubnt.com/t5/airMAX-AC/AirOS-Vulnerability-Issue-Update-3-18-17/m-p/1869507");
+  script_xref(name:"URL", value:"https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20170316-0_Ubiquiti_Networks_authenticated_command_injection_v10.txt");
+  script_xref(name:"URL", value:"https://community.ubnt.com/t5/airMAX-AC/AirOS-Vulnerability-Issue-Update-3-18-17/m-p/1869507");
 
   exit(0);
 }

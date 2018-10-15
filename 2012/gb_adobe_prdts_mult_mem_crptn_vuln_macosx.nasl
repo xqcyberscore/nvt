@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_mem_crptn_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_adobe_prdts_mult_mem_crptn_vuln_macosx.nasl 11870 2018-10-12 11:12:45Z cfischer $
 #
 # Adobe Reader/Acrobat Multiple Memory Corruption Vulnerabilities - MAC OS X
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802559");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11870 $");
   script_cve_id("CVE-2011-4370", "CVE-2011-4371", "CVE-2011-4372", "CVE-2011-4373");
   script_bugtraq_id(51348, 51351, 51349, 51350);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:12:45 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-16 11:41:01 +0530 (Mon, 16 Jan 2012)");
   script_name("Adobe Reader/Acrobat Multiple Memory Corruption Vulnerabilities - MAC OS X");
-
 
   script_tag(name:"summary", value:"This host is installed with Adobe products and are prone to multiple memory
 corruption vulnerabilities.");
@@ -67,11 +66,9 @@ Upgrade to Adobe Acrobat version 9.5 or 10.1.2 or later.");
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Function to check the versions of abode reader and acrobat
 function version_check(ver)
 {
   if(version_in_range(version:ver, test_version:"9.0", test_version2:"9.4.7") ||
@@ -82,7 +79,6 @@ function version_check(ver)
   }
 }
 
-##CPE for adobe reader
 CPE = "cpe:/a:adobe:acrobat_reader";
 
 if(!readerVer = get_app_version(cpe:CPE))

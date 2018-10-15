@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_priv_esc_vuln.nasl 7803 2017-11-17 08:14:49Z teissa $
+# $Id: gb_nagios_priv_esc_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Nagios Privilege Escalation Vulnerability
 #
@@ -30,18 +30,18 @@ CPE = 'cpe:/a:nagios:nagios';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106606");
-  script_version("$Revision: 7803 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-17 09:14:49 +0100 (Fri, 17 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-17 10:06:51 +0700 (Fri, 17 Feb 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-17 10:06:51 +0700 (Fri, 17 Feb 2017)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-10089");
   script_bugtraq_id(95171);
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Nagios Privilege Escalation Vulnerability");
 
@@ -52,22 +52,22 @@ if (description)
   script_dependencies("nagios_detect.nasl");
   script_mandatory_keys("nagios/installed");
 
-  script_tag(name: "summary", value: "Nagios is prone to a privilege escalation vulnerability.");
+  script_tag(name:"summary", value:"Nagios is prone to a privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The init script for Nagios calls 'chown' on a path under the control of
+  script_tag(name:"insight", value:"The init script for Nagios calls 'chown' on a path under the control of
 Nagios. CVE-2016-8641 describes an attack wherein that restricted user replaces the aforementioned path with a
 symlink. An identical attack not addressed by CVE-2016-8641 works with hardlinks.");
 
-  script_tag(name: "impact", value: "A local attacker may gain root privileges.");
+  script_tag(name:"impact", value:"A local attacker may gain root privileges.");
 
-  script_tag(name: "affected", value: "Nagios before 4.3.3 (4.x.x).");
+  script_tag(name:"affected", value:"Nagios before 4.3.3 (4.x.x).");
 
-  script_tag(name: "solution", value: "Update to Nagios 4.3.3 or a later version.");
+  script_tag(name:"solution", value:"Update to Nagios 4.3.3 or a later version.");
 
-  script_xref(name: "URL", value: "http://seclists.org/oss-sec/2016/q4/783");
-  script_xref(name: "URL", value: "https://github.com/NagiosEnterprises/nagioscore/blob/nagios-4.3.3/daemon-init.in");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2016/q4/783");
+  script_xref(name:"URL", value:"https://github.com/NagiosEnterprises/nagioscore/blob/nagios-4.3.3/daemon-init.in");
 
   exit(0);
 }

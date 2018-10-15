@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902978");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2013-1300", "CVE-2013-1340", "CVE-2013-1345", "CVE-2013-3129",
                 "CVE-2013-3167", "CVE-2013-3172", "CVE-2013-3173", "CVE-2013-3660");
   script_bugtraq_id(60946, 60947, 60948, 60978, 60949, 60951, 60950, 60051);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-10 08:46:58 +0530 (Wed, 10 Jul 2013)");
   script_name("MS Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2850851)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53435/");
@@ -66,8 +66,7 @@ if(description)
 
   - An error exists within the GDI+ subsystem.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  https://technet.microsoft.com/en-us/security/bulletin/ms13-053");
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS13-053.");
   script_tag(name:"qod_type", value:"registry");
@@ -91,7 +90,7 @@ if(!sysPath){
   exit(0);
 }
 
-Win32sysVer = fetch_file_version(sysPath, file_name:"system32\Win32k.sys");
+Win32sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Win32k.sys");
 if(!Win32sysVer){
   exit(0);
 }

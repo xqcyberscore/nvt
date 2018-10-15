@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_pgp_n_enc_desktop_prev_escl_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_symantec_pgp_n_enc_desktop_prev_escl_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Symantec PGP Desktop and Encryption Desktop Local Privilege Escalation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:pgp_desktop";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803886");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1610");
   script_bugtraq_id(61489);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-03 17:08:26 +0530 (Tue, 03 Sep 2013)");
   script_name("Symantec PGP Desktop and Encryption Desktop Local Privilege Escalation Vulnerability");
 
@@ -42,8 +42,7 @@ if (description)
   script_tag(name:"summary", value:"The host is installed with Symantec PGP/Encryption Desktop and is prone to
 local privilege escalation vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Upgrade to version 10.3.0 MP3 or later,
-For updates refer to http://www.symantec.com");
+  script_tag(name:"solution", value:"Upgrade to version 10.3.0 MP3 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Flaw is due to an unquoted search path in the RDDService.");
   script_tag(name:"affected", value:"Symantec PGP Desktop 10.0.x, 10.1.x, and 10.2.x
@@ -58,6 +57,7 @@ arbitrary code, gain escalated privileges.");
   script_family("General");
   script_dependencies("gb_pgp_desktop_detect_win.nasl");
   script_mandatory_keys("PGPDesktop_or_EncryptionDesktop/Win/Installed");
+  script_xref(name:"URL", value:"http://www.symantec.com");
   exit(0);
 }
 

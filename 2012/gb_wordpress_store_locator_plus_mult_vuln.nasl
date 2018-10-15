@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_store_locator_plus_mult_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_wordpress_store_locator_plus_mult_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # WordPress Google Maps Via Store Locator Plus Plugin Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802644");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_bugtraq_id(53795);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 12:12:12 +0530 (Thu, 21 Jun 2012)");
   script_name("WordPress Google Maps Via Store Locator Plus Plugin Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49391");
@@ -60,7 +60,7 @@ if(description)
     locator-le/downloadcsv.php is not properly sanitised before being used
     in a SQL query. This can be exploited to manipulate SQL queries by
     injecting arbitrary SQL code.");
-  script_tag(name:"solution", value:"Upgrade to Google Maps Via Store Locator Plus Plugin version 3.0.5 or later,");
+  script_tag(name:"solution", value:"Upgrade to Google Maps Via Store Locator Plus Plugin version 3.0.5 or later.");
   script_tag(name:"summary", value:"This host is running WordPress Google Maps Via Store Locator Plus
   Plugin and is prone to multiple vulnerabilities.");
 

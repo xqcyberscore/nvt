@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_CVE_2017_5638.nasl 10724 2018-08-02 06:39:54Z cfischer $
+# $Id: gb_apache_struts_CVE_2017_5638.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # Apache Struts Remote Code Execution Vulnerability (Active Check)
 #
@@ -32,13 +32,13 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Apache Struts Remote Code Execution Vulnerability (Active Check)");
-  script_version("$Revision: 10724 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 08:39:54 +0200 (Thu, 02 Aug 2018) $");
+  script_version("$Revision: 11901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-08 12:19:09 +0100 (Wed, 08 Mar 2017)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl","gb_vmware_vcenter_detect.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl", "gb_vmware_vcenter_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("www/action_jsp_do");
 

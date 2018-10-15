@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20170405-ios.nasl 5890 2017-04-07 11:51:34Z ckuerste $
+# $Id: gb_cisco_ios_xr_cisco-sa-20170405-ios.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Cisco IOS XR Software Denial of Service Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/o:cisco:ios_xr";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106722");
- script_cve_id("CVE-2017-6599");
- script_tag(name: "cvss_base", value: "5.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5890 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106722");
+  script_cve_id("CVE-2017-6599");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11863 $");
 
- script_name("Cisco IOS XR Software Denial of Service Vulnerability");
+  script_name("Cisco IOS XR Software Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170405-ios");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170405-ios");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"A vulnerability in Google-defined remote procedure call (gRPC) handling in
+  script_tag(name:"summary", value:"A vulnerability in Google-defined remote procedure call (gRPC) handling in
 Cisco IOS XR Software could allow an unauthenticated, remote attacker to cause the Event Management Service daemon
 (emsd) to crash due to a system memory leak, resulting in a denial of service (DoS) condition.");
 
-  script_tag(name: "insight", value: "The vulnerability is due to improper handling of gRPC requests. An attacker
+  script_tag(name:"insight", value:"The vulnerability is due to improper handling of gRPC requests. An attacker
 could exploit this vulnerability by sending malformed gRPC requests repeatedly to the affected device.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause the emsd process to crash.");
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause the emsd process to crash.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 13:51:34 +0200 (Fri, 07 Apr 2017) $");
- script_tag(name:"creation_date", value:"2017-04-07 10:30:46 +0200 (Fri, 07 Apr 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xr_version.nasl");
- script_mandatory_keys("cisco/ios_xr/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-07 10:30:46 +0200 (Fri, 07 Apr 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xr_version.nasl");
+  script_mandatory_keys("cisco/ios_xr/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");
@@ -71,7 +71,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'6.1.1',
 		'6.2.1' );
 

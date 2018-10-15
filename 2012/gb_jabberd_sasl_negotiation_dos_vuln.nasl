@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jabberd_sasl_negotiation_dos_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_jabberd_sasl_negotiation_dos_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Jabber Studio Jabberd Server SASL Negotiation Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802825");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2006-1329");
   script_bugtraq_id(17155);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-02 13:27:16 +0530 (Mon, 02 Apr 2012)");
   script_name("Jabber Studio Jabberd Server SASL Negotiation Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is caused  due to an error within the handling of SASL negotiation.
   This can be exploited to cause a crash by sending a 'response' stanza before
   an 'auth' stanza.");
-  script_tag(name:"solution", value:"Upgrade to Jabber Studio jabberd Server version 2.0s11 or later,");
+  script_tag(name:"solution", value:"Upgrade to Jabber Studio jabberd Server version 2.0s11 or later.");
   script_tag(name:"summary", value:"This host is running Jabberd server and is prone to denial
   of service vulnerability.");
 

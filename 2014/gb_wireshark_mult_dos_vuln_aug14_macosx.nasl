@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_aug14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_wireshark_mult_dos_vuln_aug14_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities-01 Aug14 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804801");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-5161", "CVE-2014-5162", "CVE-2014-5163", "CVE-2014-5164",
                 "CVE-2014-5165");
   script_bugtraq_id(69001, 69003, 69005, 69002, 69000);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-08-07 09:40:53 +0530 (Thu, 07 Aug 2014)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities-01 Aug14 (Mac OS X)");
 
@@ -62,8 +62,7 @@ epan/dissectors/packet-ber.c within the ASN.1 BER dissector.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct a DoS (Denial of
 Service).");
   script_tag(name:"affected", value:"Wireshark version 1.10.x before 1.10.9 on Mac OS X");
-  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.10.9 or later,
-For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.10.9 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -77,6 +76,7 @@ For updates refer to http://www.wireshark.org/download");
   script_family("Denial of Service");
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_mandatory_keys("Wireshark/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download");
   exit(0);
 }
 

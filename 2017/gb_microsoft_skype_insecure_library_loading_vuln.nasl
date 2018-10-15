@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_skype_insecure_library_loading_vuln.nasl 9340 2018-04-06 04:54:54Z ckuersteiner $
+# $Id: gb_microsoft_skype_insecure_library_loading_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Microsoft Skype Insecure Library Loading Vulnerability
 #
@@ -29,36 +29,33 @@ CPE = "cpe:/a:skype:skype";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810905");
-  script_version("$Revision: 9340 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-6517");
   script_bugtraq_id(96969);
-  script_tag(name:"cvss_base",value:"10.0");
+  script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 06:54:54 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-05 16:33:26 +0530 (Wed, 05 Apr 2017)");
   script_name("Microsoft Skype Insecure Library Loading Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with Microsoft Skype
+  script_tag(name:"summary", value:"This host is installed with Microsoft Skype
   and is prone to insecure library loading vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to the way '.dll'
+  script_tag(name:"insight", value:"The flaw exists due to the way '.dll'
   files are loaded by Skype. The specific flaw exists within the handling of DLL
   (api-ms-win-core-winrt-string-l1-1-0.dll) loading by the Skype.exe process.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allow remote attackers to execute arbitrary code on the target system
-  without the user's knowledge.
+  without the user's knowledge.");
 
-  Impact Level: Application.");
+  script_tag(name:"affected", value:"Microsoft Skype version 7.16.0.102 on Windows.");
 
-  script_tag(name: "affected" , value:"Microsoft Skype version 7.16.0.102 on Windows.");
-
-  script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since
-disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
-a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"registry");

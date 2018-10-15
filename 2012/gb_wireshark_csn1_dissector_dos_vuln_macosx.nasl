@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_csn1_dissector_dos_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_wireshark_csn1_dissector_dos_vuln_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Wireshark CSN.1 Dissector Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802768");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-4100");
   script_bugtraq_id(50479);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-02 17:24:26 +0530 (Wed, 02 May 2012)");
   script_name("Wireshark CSN.1 Dissector Denial of Service Vulnerability (Mac OS X)");
 
@@ -48,7 +48,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error in csnStreamDissector function in
   'epan/dissectors/packet-csn1.c' in the CSN.1 dissector, which fails to
   initialize a certain variable.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.3 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.3 or later.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to denial of
   service vulnerability.");
   script_tag(name:"qod_type", value:"package");

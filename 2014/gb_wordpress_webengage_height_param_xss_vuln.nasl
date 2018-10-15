@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_webengage_height_param_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_wordpress_webengage_height_param_xss_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # WordPress WebEngage Plugin 'height' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804755");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-4574");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-08-26 15:32:07 +0530 (Tue, 26 Aug 2014)");
   script_name("WordPress WebEngage Plugin 'height' Parameter Cross Site Scripting Vulnerability");
 
@@ -47,8 +47,7 @@ cookie or not.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
 script code in a user's browser session in the context of an affected site.");
   script_tag(name:"affected", value:"WordPress WebEngage Plugin version 2.0.0");
-  script_tag(name:"solution", value:"Upgrade to version 2.0.1 or higher,
-For updates refer to http://wordpress.org/plugins/webengage");
+  script_tag(name:"solution", value:"Upgrade to version 2.0.1 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://codevigilant.com/disclosure/wp-plugin-webengage-a3-cross-site-scripting-xss");
@@ -59,6 +58,7 @@ For updates refer to http://wordpress.org/plugins/webengage");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://wordpress.org/plugins/webengage");
   exit(0);
 }
 

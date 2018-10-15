@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_traffic_syn_health_checks_dos_vuln.nasl 11422 2018-09-17 07:30:48Z mmartin $
+# $Id: gb_apache_traffic_syn_health_checks_dos_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Apache Traffic Server Synthetic Health Checks Remote DoS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:traffic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805129");
-  script_version("$Revision: 11422 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-3525");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-21 12:21:54 +0530 (Wed, 21 Jan 2015)");
   script_name("Apache Traffic Server Synthetic Health Checks Remote DoS Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -63,11 +63,12 @@ if(description)
   3.2.5, 4.x before 4.2.1.1, and 5.x before 5.0.1");
 
   script_tag(name:"solution", value:"Upgrade to version 4.2.1.1 or 5.0.1
-  or later, For updates refer to http://trafficserver.apache.org");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://trafficserver.apache.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_pro_dll_loading_local_code_injection_vuln.nasl 6271 2017-06-02 08:42:43Z cfischer $
+# $Id: gb_avast_pro_dll_loading_local_code_injection_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Avast Pro DoubleAgent Attack Local Code Injection Vulnerability
 #
@@ -29,67 +29,60 @@ CPE = "cpe:/a:avast:avast_pro_antivirus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810900");
-  script_version("$Revision: 6271 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-5567");
   script_bugtraq_id(97017);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-02 10:42:43 +0200 (Fri, 02 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-05 10:13:58 +0530 (Wed, 05 Apr 2017)");
   script_name("Avast Pro DoubleAgent Attack Local Code Injection Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with Avast Pro
   and is prone to local code injection vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to the product do not
-  use the Protected Processes feature, and therefore an attacker can enter an 
-  arbitrary Application Verifier Provider DLL under Image File Execution Options 
-  in the registry; the self-protection mechanism is intended to block all local 
+  use the Protected Processes feature, and therefore an attacker can enter an
+  arbitrary Application Verifier Provider DLL under Image File Execution Options
+  in the registry; the self-protection mechanism is intended to block all local
   processes (regardless of privileges) from modifying Image File Execution Options
-  for this product; and this mechanism can be bypassed by an attacker who 
+  for this product; and this mechanism can be bypassed by an attacker who
   temporarily renames Image File Execution Options during the attack.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
   attacker to execute arbitrary code in the context of the system running the
   affected application; this can also result in the attacker gaining complete
-  control of the affected application.
-
-  Impact Level: System/Application");
+  control of the affected application.");
 
   script_tag(name:"affected", value:"Avast Pro versions prior to 17.0");
 
   script_tag(name:"solution", value:"Upgrade to Avast Pro version
-  17.0 or later. For updates refer to https://www.avast.com");
+  17.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://forum.avast.com/index.php?topic=199290.0");
-  script_xref(name : "URL" , value : "http://feeds.security-database.com/~r/Last100Alerts/~3/M6mwzAVFo-U/detail.php");
-  script_xref(name : "URL" , value : "https://www.engadget.com/2017/03/21/doubleagent-attack-anti-virus-hijack-your-pc");
+  script_xref(name:"URL", value:"https://forum.avast.com/index.php?topic=199290.0");
+  script_xref(name:"URL", value:"http://feeds.security-database.com/~r/Last100Alerts/~3/M6mwzAVFo-U/detail.php");
+  script_xref(name:"URL", value:"https://www.engadget.com/2017/03/21/doubleagent-attack-anti-virus-hijack-your-pc");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_avast_pro_detect.nasl");
   script_mandatory_keys("Avast/Pro_Antivirus/Win/Ver");
+  script_xref(name:"URL", value:"https://www.avast.com");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-avastVer = "";
-
-## Get version
 if(!avastVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:avastVer, test_version:"17.0"))
 {
   report = report_fixed_ver(installed_version:avastVer, fixed_version:"17.0");

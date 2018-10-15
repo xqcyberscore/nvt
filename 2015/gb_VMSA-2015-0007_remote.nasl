@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2015-0007_remote.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_VMSA-2015-0007_remote.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # VMSA-2015-0007: VMware ESXi OpenSLP Remote Code Execution (remote check)
 #
@@ -31,7 +31,7 @@ if (description)
   script_cve_id("CVE-2015-5177", "CVE-2015-2342", "CVE-2015-1047");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
 
   script_name("VMSA-2015-0007: VMware ESXi OpenSLP Remote Code Execution (remote check)");
 
@@ -61,7 +61,7 @@ VMware vCenter Server 5.5 prior to version 5.5 update 3
 VMware vCenter Server 5.1 prior to version 5.1 update u3b
 VMware vCenter Server 5.0 prior to version 5.u update u3e");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-05 10:47:03 +0200 (Mon, 05 Oct 2015)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -90,7 +90,7 @@ if( ! fixed_builds[esxVersion] ) exit( 0 );
 if( int( esxBuild ) < int( fixed_builds[esxVersion] ) )
 {
   security_message( port:0, data: esxi_remote_report( ver:esxVersion, build: esxBuild, fixed_build: fixed_builds[esxVersion] ) );
-  exit( 0 );
+  exit(0);
 }
 
 exit( 99 );

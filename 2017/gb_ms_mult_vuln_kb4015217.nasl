@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_mult_vuln_kb4015217.nasl 11816 2018-10-10 10:42:56Z mmartin $
+# $Id: gb_ms_mult_vuln_kb4015217.nasl 11879 2018-10-12 12:48:49Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4015217)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810926");
-  script_version("$Revision: 11816 $");
+  script_version("$Revision: 11879 $");
   script_cve_id("CVE-2013-6629", "CVE-2017-0058", "CVE-2017-0093", "CVE-2017-0156",
                 "CVE-2017-0158", "CVE-2017-0159", "CVE-2017-0160", "CVE-2017-0162",
                 "CVE-2017-0163", "CVE-2017-0164", "CVE-2017-0166", "CVE-2017-0167",
@@ -38,7 +38,7 @@ if(description)
                 "CVE-2017-0205", "CVE-2017-0208", "CVE-2017-0210", "CVE-2017-0211");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-13 10:05:40 +0530 (Thu, 13 Apr 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4015217)");
 
@@ -128,7 +128,7 @@ if(!sysPath ){
   exit(0);
 }
 
-edgeVer = fetch_file_version(sysPath, file_name:"Edgehtml.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"Edgehtml.dll");
 if(!edgeVer){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_csrf_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_hp_smh_csrf_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # HP System Management Homepage Cross-Site Request Forgery Vulnerability
 #
@@ -28,20 +28,19 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804416");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-6188");
   script_bugtraq_id(66128);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-19 13:49:55 +0530 (Wed, 19 Mar 2014)");
   script_name("HP System Management Homepage Cross-Site Request Forgery Vulnerability");
 
 
   script_tag(name:"summary", value:"This host is running HP System Management Homepage (SMH) and is prone to
 cross-site request forgery vulnerability.");
-  script_tag(name:"vuldetect", value:"Get the installed version of HP SMH with the help of detect NVT and check
-it is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The application allows users to perform certain actions via HTTP requests
 without performing proper validity checks to verify the requests.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to perform certain unspecified

@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804521");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-0033");
   script_bugtraq_id(65769);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-25 16:52:35 +0530 (Tue, 25 Mar 2014)");
   script_name("Apache Tomcat Multiple Vulnerabilities - 03 - Mar14");
   script_category(ACT_GATHER_INFO);
@@ -48,8 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125392");
 
   script_tag(name:"summary", value:"This host is running Apache Tomcat and is prone to multiple vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version of Apache Tomcat with the help of detect NVT
-  and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaws are due to the org/apache/catalina/connector/CoyoteAdapter.java
   which does not consider the disableURLRewriting setting when handling a
   session ID in a URL.");

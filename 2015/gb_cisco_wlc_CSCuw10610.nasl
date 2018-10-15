@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_CSCuw10610.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_cisco_wlc_CSCuw10610.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco Wireless LAN Controller Client Disconnection Vulnerability
 #
@@ -31,8 +31,8 @@ if (description)
   script_cve_id("CVE-2015-6341");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 11872 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-21 14:29:20 +0200 (Wed, 21 Oct 2015)");
   script_name("Cisco Wireless LAN Controller Client Disconnection Vulnerability");
 
@@ -53,7 +53,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_wlc_version.nasl");
   script_mandatory_keys("cisco_wlc/version");
- exit(0);
+  exit(0);
 }
 
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_web_gateway_dir_trav_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_mcafee_web_gateway_dir_trav_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # McAfee Web Gateway Directory Traversal Vulnerability
 #
@@ -28,27 +28,25 @@ CPE = "cpe:/a:mcafee:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804420");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-2535");
   script_bugtraq_id(66193);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-08 13:16:45 +0530 (Tue, 08 Apr 2014)");
   script_name("McAfee Web Gateway Directory Traversal Vulnerability");
 
 
   script_tag(name:"summary", value:"This host is running McAfee Web Gateway and is prone to directory traversal
 vulnerability.");
-  script_tag(name:"vuldetect", value:"Get the installed version of McAfee Web Gateway with the help of detect NVT
-and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaw is due to an error within the MWG web filtering port when processing
 requests.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to disclose potentially sensitive
 information.");
   script_tag(name:"affected", value:"McAfee Web Gateway 7.4.x before 7.4.1, 7.3.x before 7.3.2.6, 7.2.0.9 and earlier");
-  script_tag(name:"solution", value:"Upgrade to McAfee Web Gateway 7.3.2.6 or 7.4.1 or later,
-For updates refer to http://www.mcafee.com/us/products/web-gateway.aspx");
+  script_tag(name:"solution", value:"Upgrade to McAfee Web Gateway 7.3.2.6 or 7.4.1 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/56958");
@@ -61,6 +59,7 @@ For updates refer to http://www.mcafee.com/us/products/web-gateway.aspx");
   script_dependencies("gb_mcafee_web_gateway_detect.nasl");
   script_mandatory_keys("McAfee/Web/Gateway/installed");
   script_require_ports("Services/www", 8080);
+  script_xref(name:"URL", value:"http://www.mcafee.com/us/products/web-gateway.aspx");
   exit(0);
 }
 

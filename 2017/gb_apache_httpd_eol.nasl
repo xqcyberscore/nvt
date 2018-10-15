@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_httpd_eol.nasl 7217 2017-09-21 10:02:58Z cfischer $
+# $Id: gb_apache_httpd_eol.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Apache Web Server End Of Life Detection (Linux)
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108085");
-  script_version("$Revision: 7217 $");
+  script_version("$Revision: 11863 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-21 12:02:58 +0200 (Thu, 21 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-27 11:48:20 +0100 (Mon, 27 Feb 2017)");
   script_name("Apache Web Server End Of Life Detection (Linux)");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -48,20 +48,12 @@ if(description)
   script_xref(name:"URL", value:"https://www.apache.org/dist/httpd/Announcement2.2.html");
   script_xref(name:"URL", value:"https://en.wikipedia.org/wiki/Apache_HTTP_Server#Versions");
 
-  tag_summary = "The Apache Web Server version on the remote host has reached the end of life and should
-  not be used anymore.";
-
-  tag_impact = "An end of life version of Apache Web Server is not receiving any security updates from the vendor. Unfixed security vulnerabilities
-  might be leveraged by an attacker to compromise the security of this host.";
-
-  tag_solution = "Update the Apache Web Server version on the remote host to a still supported version.";
-
-  tag_vuldetect = "Get the installed version with the help of the detect NVT and check if the version is unsupported.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
+  script_tag(name:"summary", value:"The Apache Web Server version on the remote host has reached the end of life and should
+  not be used anymore.");
+  script_tag(name:"impact", value:"An end of life version of Apache Web Server is not receiving any security updates from the vendor. Unfixed security vulnerabilities
+  might be leveraged by an attacker to compromise the security of this host.");
+  script_tag(name:"solution", value:"Update the Apache Web Server version on the remote host to a still supported version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

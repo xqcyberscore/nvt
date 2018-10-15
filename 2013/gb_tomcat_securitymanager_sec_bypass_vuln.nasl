@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tomcat_securitymanager_sec_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_tomcat_securitymanager_sec_bypass_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Apache Tomcat SecurityManager Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803781");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2010-3718");
   script_bugtraq_id(46177);
   script_tag(name:"cvss_base", value:"1.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-11-27 15:51:40 +0530 (Wed, 27 Nov 2013)");
   script_name("Apache Tomcat SecurityManager Security Bypass Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -49,10 +49,8 @@ if(description)
 
   script_tag(name:"summary", value:"This host is running Apache Tomcat and is prone to security bypass
   vulnerability.");
-  script_tag(name:"vuldetect", value:"Get the installed version of Apache Tomcat with the help of detect NVT
-  and check the version is vulnerable or not.");
-  script_tag(name:"solution", value:"Upgrade Apache Tomcat version to 5.5.30, 6.0.30, 7.0.4 or later,
-  For updates refer to http://tomcat.apache.org");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade Apache Tomcat version to 5.5.30, 6.0.30, 7.0.4 or later.");
   script_tag(name:"insight", value:"The flaw is due to the ServletContect attribute being improperly restricted
   to read-only setting.");
   script_tag(name:"affected", value:"Apache Tomcat version 5.5.x before 5.5.30
@@ -64,6 +62,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://tomcat.apache.org");
   exit(0);
 }
 

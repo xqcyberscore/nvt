@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0027.nasl 8721 2018-02-08 13:40:24Z cfischer $
+# $Id: gb_panos_pan_sa-2016_0027.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Palo Alto Networks web management server denial-of-service attack. (PAN-SA-2016-0027)
 #
@@ -29,35 +29,35 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140116");
- script_cve_id("CVE-2014-9708");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 8721 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140116");
+  script_cve_id("CVE-2014-9708");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11863 $");
 
- script_name("Palo Alto Networks web management server denial-of-service attack. (PAN-SA-2016-0027)");
+  script_name("Palo Alto Networks web management server denial-of-service attack. (PAN-SA-2016-0027)");
 
- script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/60");
+  script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/60");
 
- script_tag(name: "summary" , value:"Palo Alto Networks web management server is vulnerable to a denial-of-service attack.");
+  script_tag(name:"summary", value:"Palo Alto Networks web management server is vulnerable to a denial-of-service attack.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
- script_tag(name: "solution" , value:"Update to PAN-OS 5.0.20 and later, PAN-OS 5.1.13 and later, PAN-OS 6.0.15 and later, PAN-OS 6.1.15 and later, PAN-OS 7.0.11 and later, PAN-OS 7.1.6 and later");
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"solution", value:"Update to PAN-OS 5.0.20 and later, PAN-OS 5.1.13 and later, PAN-OS 6.0.15 and later, PAN-OS 6.1.15 and later, PAN-OS 7.0.11 and later, PAN-OS 7.1.6 and later");
 
- script_tag(name:"affected" , value:"PAN-OS 5.0.19 and earlier, PAN-OS 5.1.12 and earlier, PAN-OS 6.0.14 and earlier, PAN-OS 6.1.14 and earlier, PAN-OS 7.0.10 and earlier, PAN-OS 7.1.5 and earlier");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"PAN-OS 5.0.19 and earlier, PAN-OS 5.1.12 and earlier, PAN-OS 6.0.14 and earlier, PAN-OS 6.1.14 and earlier, PAN-OS 7.0.10 and earlier, PAN-OS 7.1.5 and earlier");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:40:24 +0100 (Thu, 08 Feb 2018) $");
- script_tag(name:"creation_date", value:"2017-01-06 09:37:03 +0100 (Fri, 06 Jan 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("Palo Alto PAN-OS Local Security Checks");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_palo_alto_panOS_version.nasl");
- script_mandatory_keys("palo_alto_pan_os/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-06 09:37:03 +0100 (Fri, 06 Jan 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Palo Alto PAN-OS Local Security Checks");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_palo_alto_panOS_version.nasl");
+  script_mandatory_keys("palo_alto_pan_os/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

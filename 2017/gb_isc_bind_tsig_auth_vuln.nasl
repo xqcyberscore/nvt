@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_tsig_auth_vuln.nasl 6662 2017-07-11 09:49:16Z ckuersteiner $
+# $Id: gb_isc_bind_tsig_auth_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
-# ISC BIND Security Bypass Vulnerability 
+# ISC BIND Security Bypass Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,17 +30,17 @@ CPE = "cpe:/a:isc:bind";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106937");
-  script_version("$Revision: 6662 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-11 11:49:16 +0200 (Tue, 11 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-11 11:31:58 +0700 (Tue, 11 Jul 2017)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:C/A:N");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-11 11:31:58 +0700 (Tue, 11 Jul 2017)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:N");
 
   script_cve_id("CVE-2017-3143");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("ISC BIND Security Bypass Vulnerability");
 
@@ -51,19 +51,19 @@ if (description)
   script_dependencies("bind_version.nasl");
   script_mandatory_keys("ISC BIND/installed");
 
-  script_tag(name: "summary", value: "A flaw was found in the way BIND handled TSIG authentication for dynamic
+  script_tag(name:"summary", value:"A flaw was found in the way BIND handled TSIG authentication for dynamic
 updates. A remote attacker able to communicate with an authoritative BIND server could use this flaw to
 manipulate the contents of a zone, by forging a valid TSIG or SIG(0) signature for a dynamic update request.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "ISC BIND versions 9.4.0-9.8.8, 9.9.0-9.9.10-P1, 9.10.0-9.10.5-P1,
+  script_tag(name:"affected", value:"ISC BIND versions 9.4.0-9.8.8, 9.9.0-9.9.10-P1, 9.10.0-9.10.5-P1,
 9.11.0-9.11.1-P1, 9.9.3-S1-9.9.10-S2 and 9.10.5-S1-9.10.5-S2");
 
-  script_tag(name: "solution", value: "Update to version 9.9.10-P2, 9.10.5-P2, 9.11.1-P2, 9.9.10-S3, 9.10.5-S3
+  script_tag(name:"solution", value:"Update to version 9.9.10-P2, 9.10.5-P2, 9.11.1-P2, 9.9.10-S3, 9.10.5-S3
 or later.");
 
-  script_xref(name: "URL", value: "https://kb.isc.org/article/AA-01503/0");
+  script_xref(name:"URL", value:"https://kb.isc.org/article/AA-01503/0");
 
   exit(0);
 }

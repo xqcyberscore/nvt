@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_shoreware_director_63019.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_shoreware_director_63019.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # ShoreTel ShoreWare Director Remote Security Bypass Vulnerability
 #
@@ -30,7 +30,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103814");
   script_bugtraq_id(63019);
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -39,7 +39,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/63019");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-16 12:02:38 +0200 (Wed, 16 Oct 2013)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -72,10 +72,10 @@ information as a step in a more complex attack.");
   script_tag(name:"solution", value:"Ask the Vendor for an update.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"ShoreWare Director is prone to a remote security-bypass vulnerability.");
-  script_tag(name:"affected", value:"ShoreWare Director 18.61.7500.0 is vulnerable; other versions may also
+  script_tag(name:"affected", value:"ShoreWare Director 18.61.7500.0 is vulnerable. Other versions may also
 be affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

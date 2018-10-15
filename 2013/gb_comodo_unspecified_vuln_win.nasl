@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_unspecified_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_comodo_unspecified_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Comodo Internet Security Unspecified Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803688");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2010-5185");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-05 15:51:39 +0530 (Fri, 05 Jul 2013)");
   script_name("Comodo Internet Security Unspecified Vulnerability");
   script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/429014.php");
@@ -46,8 +46,7 @@ if(description)
   script_tag(name:"affected", value:"Comodo Internet Security versions before 5.3.174622.1216");
   script_tag(name:"insight", value:"Flaw related to the antivirus component, does not validate the revocation
   status of the X.509 certificates in signed binaries.");
-  script_tag(name:"solution", value:"Upgrade to Comodo Internet Security version 5.3.174622.1216 or later,
-  For updates refer to http://personalfirewall.comodo.com");
+  script_tag(name:"solution", value:"Upgrade to Comodo Internet Security version 5.3.174622.1216 or later.");
   script_tag(name:"summary", value:"The host is installed with Comodo Internet Security and is prone
   to unspecified vulnerability.");
   script_tag(name:"qod_type", value:"registry");

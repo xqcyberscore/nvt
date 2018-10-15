@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_b2evolution_mult_xss_vuln.nasl 5048 2017-01-20 07:04:36Z ckuerste $
+# $Id: gb_b2evolution_mult_xss_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # b2evolution Multiple XSS Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:b2evolution:b2evolution";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106535");
-  script_version("$Revision: 5048 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-20 08:04:36 +0100 (Fri, 20 Jan 2017) $");
-  script_tag(name: "creation_date", value: "2017-01-20 13:43:59 +0700 (Fri, 20 Jan 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-20 13:43:59 +0700 (Fri, 20 Jan 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2016-7149", "CVE-2016-7150");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("b2evolution Multiple XSS Vulnerabilities");
 
@@ -51,23 +51,23 @@ if (description)
   script_dependencies("gb_b2evolution_detect.nasl");
   script_mandatory_keys("b2evolution/installed");
 
-  script_tag(name: "summary", value: "b2evolution is prone to multiple cross-site scripting vulnerabilities.");
+  script_tag(name:"summary", value:"b2evolution is prone to multiple cross-site scripting vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "b2evolution is prone to multiple cross-site scripting vulnerabilities:
+  script_tag(name:"insight", value:"b2evolution is prone to multiple cross-site scripting vulnerabilities:
 
-- Cross-site scripting (XSS) vulnerability allows remote attackers to inject arbitrary web script or HTML via
+  - Cross-site scripting (XSS) vulnerability allows remote attackers to inject arbitrary web script or HTML via
 vectors related to the autolink function. (CVE-2016-7149)
 
-- Cross-site scripting (XSS) vulnerability allows remote authenticated users to inject arbitrary web script or
+  - Cross-site scripting (XSS) vulnerability allows remote authenticated users to inject arbitrary web script or
 HTML via the site name. (CVE-2016-7150)");
 
-  script_tag(name: "affected", value: "b2evolution 6.7.6 and prior.");
+  script_tag(name:"affected", value:"b2evolution 6.7.6 and prior.");
 
-  script_tag(name: "solution", value: "Upgrade to version 6.7.7 or later");
+  script_tag(name:"solution", value:"Upgrade to version 6.7.7 or later");
 
-  script_xref(name: "URL", value: "http://b2evolution.net/downloads/6-7-7#more361454");
+  script_xref(name:"URL", value:"http://b2evolution.net/downloads/6-7-7#more361454");
 
   exit(0);
 }

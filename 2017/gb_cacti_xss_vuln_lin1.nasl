@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_xss_vuln_lin1.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_cacti_xss_vuln_lin1.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Cacti XSS Vulnerability (Linux)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:cacti:cacti";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106997");
-  script_version("$Revision: 7543 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-28 12:40:07 +0700 (Fri, 28 Jul 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-28 12:40:07 +0700 (Fri, 28 Jul 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-11691");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cacti XSS Vulnerability (Linux)");
 
@@ -49,18 +49,18 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("cacti_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("cacti/installed","Host/runs_unixoide");
+  script_mandatory_keys("cacti/installed", "Host/runs_unixoide");
 
-  script_tag(name: "summary", value: "Cross-site scripting (XSS) vulnerability in auth_profile.php in Cacti
+  script_tag(name:"summary", value:"Cross-site scripting (XSS) vulnerability in auth_profile.php in Cacti
 allows remote attackers to inject arbitrary web script or HTML via specially crafted HTTP Referer headers.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Cacti version 1.1.13 and prior.");
+  script_tag(name:"affected", value:"Cacti version 1.1.13 and prior.");
 
-  script_tag(name: "solution", value: "Upgrade to version 1.1.14 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 1.1.14 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/Cacti/cacti/issues/867");
+  script_xref(name:"URL", value:"https://github.com/Cacti/cacti/issues/867");
 
   exit(0);
 }

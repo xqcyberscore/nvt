@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_titan_ftp_server_mult_dir_trav_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_titan_ftp_server_mult_dir_trav_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Titan FTP Server Multiple Directory Traversal Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:southrivertech:titan_ftp_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804400");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1841", "CVE-2014-1842", "CVE-2014-1843");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-11 16:31:02 +0530 (Tue, 11 Feb 2014)");
   script_name("Titan FTP Server Multiple Directory Traversal Vulnerabilities");
 
@@ -58,8 +58,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to read arbitrary files
   and information on the target system.");
   script_tag(name:"affected", value:"Titan FTP Server version 10.32 Build 1816");
-  script_tag(name:"solution", value:"Upgrade to Titan FTP Server 10.40 Build 1829 or later,
-  For updates refer to http://webdrive.com/products/titan-ftp-server");
+  script_tag(name:"solution", value:"Upgrade to Titan FTP Server 10.40 Build 1829 or later.");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125150");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Feb/92");
@@ -68,6 +67,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://webdrive.com/products/titan-ftp-server");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_memcached_remote_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: secpod_memcached_remote_dos_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Memcached < 1.4.17 Remote Denial of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:memcached:memcached";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902966");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2011-4971");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-30 12:50:48 +0530 (Tue, 30 Apr 2013)");
   script_name("Memcached < 1.4.17 Remote Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -51,15 +51,14 @@ if(description)
   script_tag(name:"affected", value:"Memcached version 1.4.15 and prior.");
   script_tag(name:"insight", value:"The flaw is due to an error in handling of a specially crafted
   packet, that results to the Memcached segfault and essentially die.");
-  script_tag(name:"solution", value:"Upgrade to  Memcached version 1.4.17 or later,
-
-  For updates refer to http://memcached.org");
+  script_tag(name:"solution", value:"Upgrade to  Memcached version 1.4.17 or later.");
   script_tag(name:"summary", value:"This host is running Memcached and is prone to denial of service
   vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://memcached.org");
   exit(0);
 }
 

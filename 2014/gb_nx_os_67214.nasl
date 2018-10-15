@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nx_os_67214.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_nx_os_67214.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Cisco Nexus 7000 Series Switches Local Denial of Service Vulnerability
 #
@@ -34,14 +34,14 @@ if (description)
   script_cve_id("CVE-2014-0684");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:N/I:N/A:C");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Cisco Nexus 7000 Series Switches Local Denial of Service Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/67214");
   script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCui56136");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 11:19:57 +0200 (Tue, 06 May 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -60,7 +60,7 @@ service conditions.");
 denial-of-service vulnerability.");
   script_tag(name:"affected", value:"Cisco Nexus 7000 Series switches running on NX-OS 6.2(2)S30");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

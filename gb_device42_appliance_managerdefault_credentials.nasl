@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_device42_appliance_managerdefault_credentials.nasl 11407 2018-09-15 11:02:05Z cfischer $
+# $Id: gb_device42_appliance_managerdefault_credentials.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Device42 DCIM Appliance Manager Default Credentials
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105123");
-  script_version("$Revision: 11407 $");
+  script_version("$Revision: 11885 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Device42 DCIM Appliance Manager Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:02:05 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-28 12:02:06 +0200 (Fri, 28 Nov 2014)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -41,15 +41,15 @@ if(description)
   script_require_ports("Services/www", 4242);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value: 'The remote Device42 DCIM Appliance Manager web interface
+  script_tag(name:"summary", value:'The remote Device42 DCIM Appliance Manager web interface
   is prone to a default account authentication bypass vulnerability.');
 
   script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain
   access to sensitive information or modify system configuration.');
 
-  script_tag(name:"vuldetect", value: 'Try to login with default credentials.');
-  script_tag(name:"insight", value: 'It was possible to login with default credentials: d42admin/default');
-  script_tag(name:"solution", value: 'Change the password.');
+  script_tag(name:"vuldetect", value:'Try to login with default credentials.');
+  script_tag(name:"insight", value:'It was possible to login with default credentials: d42admin/default');
+  script_tag(name:"solution", value:'Change the password.');
 
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_app");

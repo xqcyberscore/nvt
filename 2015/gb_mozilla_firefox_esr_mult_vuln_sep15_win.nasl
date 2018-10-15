@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln_sep15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_mozilla_firefox_esr_mult_vuln_sep15_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities - Sep15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805756");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-7180", "CVE-2015-7179", "CVE-2015-7178", "CVE-2015-7177",
                 "CVE-2015-7176", "CVE-2015-7175", "CVE-2015-7174", "CVE-2015-4522",
                 "CVE-2015-4521", "CVE-2015-4520", "CVE-2015-4519", "CVE-2015-4517",
@@ -37,7 +37,7 @@ if(description)
                 "CVE-2015-4500");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-29 18:11:28 +0530 (Tue, 29 Sep 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities - Sep15 (Windows)");
 
@@ -63,7 +63,7 @@ if(description)
   script_tag(name:"affected", value:"Mozilla Firefox ESR version 38.x before 38.3 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version
-  38.3 or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  38.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -76,6 +76,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

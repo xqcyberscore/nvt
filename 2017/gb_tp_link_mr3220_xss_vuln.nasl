@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tp_link_mr3220_xss_vuln.nasl 10055 2018-06-04 04:44:00Z ckuersteiner $
+# $Id: gb_tp_link_mr3220_xss_vuln.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # TP-Link TL-MR3220 Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/h:tp-link:wireless-n_router";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811881");
-  script_version("$Revision: 10055 $");
+  script_version("$Revision: 11901 $");
   script_cve_id("CVE-2017-15291");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 06:44:00 +0200 (Mon, 04 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-25 15:11:30 +0530 (Wed, 25 Oct 2017)");
   script_name("TP-Link TL-MR3220 Cross-Site Scripting Vulnerability");
 
@@ -50,9 +50,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   users to execute arbitrary script code in the browser of an unsuspecting user
   in the context of the affected site. This may allow the attacker to steal
-  cookie-based authentication credentials and launch other attacks.
-
-  Impact Level: Application");
+  cookie-based authentication credentials and launch other attacks.");
 
   script_tag(name:"affected", value:"TP-LINK TL-MR3220");
 
@@ -64,8 +62,8 @@ this issue will be updated once solution details are available.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "https://fireshellsecurity.team/assets/pdf/Router-TP-LINK-TL-MR3220-Vulnerability-XSS.pdf");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/43023");
+  script_xref(name:"URL", value:"https://fireshellsecurity.team/assets/pdf/Router-TP-LINK-TL-MR3220-Vulnerability-XSS.pdf");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/43023");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

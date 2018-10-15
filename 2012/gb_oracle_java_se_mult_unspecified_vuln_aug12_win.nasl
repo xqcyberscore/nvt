@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_unspecified_vuln_aug12_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_oracle_java_se_mult_unspecified_vuln_aug12_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Oracle Java SE Java Runtime Environment Multiple Unspecified Vulnerabilities - (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802948");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-1718", "CVE-2012-1711", "CVE-2012-1713", "CVE-2012-1719",
                 "CVE-2012-1720", "CVE-2012-1723");
   script_bugtraq_id(53951, 53949, 53946, 53950, 53956, 53960);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-22 18:44:44 +0530 (Wed, 22 Aug 2012)");
   script_name("Oracle Java SE Java Runtime Environment Multiple Unspecified Vulnerabilities - (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48589");
@@ -50,7 +50,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle Java SE 7 update 4 and earlier, 6 update 32 and earlier,
   5 update 35 and earlier, and 1.4.2_37 and earlier");
   script_tag(name:"insight", value:"Many unspecified vulnerabilities in the application.");
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"summary", value:"This host is installed with Oracle Java SE and is prone to multiple
   unspecified vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

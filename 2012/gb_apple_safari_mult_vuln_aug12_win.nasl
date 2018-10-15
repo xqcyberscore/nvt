@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_aug12_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_apple_safari_mult_vuln_aug12_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Apple Safari Multiple Vulnerabilities - Aug 2012 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802925");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-0678", "CVE-2012-0679", "CVE-2012-0680", "CVE-2012-0682",
                 "CVE-2012-1520", "CVE-2012-1521", "CVE-2012-3589", "CVE-2012-3590",
                 "CVE-2012-3591", "CVE-2012-3592", "CVE-2012-3593", "CVE-2012-3594",
@@ -52,7 +52,7 @@ if(description)
                     54694, 54695, 54700, 54697, 54703);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-01 10:16:52 +0530 (Wed, 01 Aug 2012)");
   script_name("Apple Safari Multiple Vulnerabilities - Aug 2012 (Windows)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5400");
@@ -71,7 +71,7 @@ system.");
   script_tag(name:"affected", value:"Apple Safari versions 5.1.7 and prior");
   script_tag(name:"insight", value:"For more details about the vulnerabilities refer the reference
 section.");
-  script_tag(name:"solution", value:"Upgrade to Safari version 6.0 or later,");
+  script_tag(name:"solution", value:"Upgrade to Safari version 6.0 or later.");
   script_tag(name:"summary", value:"This host is installed with Apple Safari web browser and is prone
 to multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

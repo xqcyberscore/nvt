@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_video_conference_lfi_02_14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_php_video_conference_lfi_02_14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # PHP Webcam Video Conference Local File Inclusion / XSS
 #
@@ -28,12 +28,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103902");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("PHP Webcam Video Conference Local File Inclusion / XSS");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31458/");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-07 11:53:08 +0100 (Fri, 07 Feb 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -52,7 +52,7 @@ information that could aid in further attacks.");
   script_tag(name:"summary", value:"PHP Webcam Video Conferenceis prone to a directory-traversal
 vulnerability because it fails to sufficiently sanitize user-supplied input.");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

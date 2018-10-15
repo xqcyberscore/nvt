@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-003.nasl 11612 2018-09-26 05:47:26Z cfischer $
+# $Id: gb_ms15-003.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows User Profile Service Privilege Escalation (3021674)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805126");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-0004");
   script_bugtraq_id(71967);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-14 09:49:42 +0530 (Wed, 14 Jan 2015)");
   script_name("Microsoft Windows User Profile Service Privilege Escalation (3021674)");
 
@@ -95,7 +95,7 @@ if(!sysPath ){
 
 if(hotfix_check_sp(win2003:3, win2003x64:3) > 0)
 {
-  userVer = fetch_file_version(sysPath, file_name:"system32\Userenv.dll");
+  userVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Userenv.dll");
   if(!userVer){
     exit(0);
   }
@@ -106,7 +106,7 @@ if(hotfix_check_sp(win2003:3, win2003x64:3) > 0)
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Profsvc.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Profsvc.dll");
 if(!dllVer){
   exit(0);
 }

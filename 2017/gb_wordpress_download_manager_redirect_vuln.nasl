@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_download_manager_redirect_vuln.nasl 6746 2017-07-18 04:18:27Z ckuersteiner $
+# $Id: gb_wordpress_download_manager_redirect_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # WordPress Download Manager Plugin Open Redirect Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106958");
-  script_version("$Revision: 6746 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-18 06:18:27 +0200 (Tue, 18 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-18 10:05:48 +0700 (Tue, 18 Jul 2017)");
-  script_tag(name: "cvss_base", value: "5.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-18 10:05:48 +0700 (Tue, 18 Jul 2017)");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
 
   script_cve_id("CVE-2017-2217");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress Download Manager Plugin Open Redirect Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "Open redirect vulnerability in WordPress Download Manager allows remote
+  script_tag(name:"summary", value:"Open redirect vulnerability in WordPress Download Manager allows remote
 attackers to redirect users to arbitrary web sites and conduct phishing attacks via unspecified vectors.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "WordPress Download Manager plugin 2.9.50 and prior.");
+  script_tag(name:"affected", value:"WordPress Download Manager plugin 2.9.50 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 2.9.51 or later.");
+  script_tag(name:"solution", value:"Update to version 2.9.51 or later.");
 
-  script_xref(name: "URL", value: "https://wordpress.org/plugins/download-manager/#developers");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/download-manager/#developers");
 
   exit(0);
 }

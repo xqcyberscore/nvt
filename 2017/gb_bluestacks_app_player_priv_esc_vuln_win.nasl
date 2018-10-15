@@ -1,9 +1,9 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bluestacks_app_player_priv_esc_vuln_win.nasl 5098 2017-01-25 09:14:20Z antu123 $
+# $Id: gb_bluestacks_app_player_priv_esc_vuln_win.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # BlueStacks App Player Privilege Escalation Vulnerability
-# 
+#
 # Authors:
 # Shakeel <bshakeel@secpod.com>
 #
@@ -29,33 +29,30 @@ CPE = "cpe:/a:bluestacks:bluestacks";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809786");
-  script_version("$Revision: 5098 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2016-4288");
   script_bugtraq_id(92426);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 10:14:20 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-24 15:57:11 +0530 (Tue, 24 Jan 2017)");
   script_name("BlueStacks App Player Privilege Escalation Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with BlueStacks App
-  Player and is prone to privelege escalation vulnerability.");
+  Player and is prone to privilege escalation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as the installer creates a
   registry key with weak permissions.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow users to
-  execute arbitrary programs with SYSTEM privileges.
-
-  Impact Level: System/Application.");
+  execute arbitrary programs with SYSTEM privileges.");
 
   script_tag(name:"affected", value:"BlueStacks App Player version 2.1.3.5650");
 
   script_tag(name:"solution", value:"Upgrade to BlueStacks App Player 2.4.43.6254
-  or later. For updates refer to http://www.bluestacks.com");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -66,21 +63,17 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_bluestacks_app_player_detect_win.nasl");
   script_mandatory_keys("Bluestacks/App/Player/Win/Ver");
+  script_xref(name:"URL", value:"http://www.bluestacks.com");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-blVer= "";
-
-## Get version
 if(!blVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check For Version 2.1.3.5650
 if(version_is_equal(version:blVer, test_version:"2.1.3.5650"))
 {
   report = report_fixed_ver(installed_version:blVer, fixed_version:"2.4.43.6254 or later");

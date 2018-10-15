@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortiweb_FG-IR-17-076.nasl 6828 2017-08-01 09:56:41Z ckuersteiner $
+# $Id: gb_fortiweb_FG-IR-17-076.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # FortiWeb XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:fortinet:fortiweb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140265");
-  script_version("$Revision: 6828 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-01 11:56:41 +0200 (Tue, 01 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-01 16:47:59 +0700 (Tue, 01 Aug 2017)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-01 16:47:59 +0700 (Tue, 01 Aug 2017)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-3129");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("FortiWeb XSS Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("gb_fortiweb_version.nasl");
   script_mandatory_keys("fortiweb/version");
 
-  script_tag(name: "summary", value: "The Site Publisher functionality of FortiWeb has been found vulnerable to a
+  script_tag(name:"summary", value:"The Site Publisher functionality of FortiWeb has been found vulnerable to a
 Cross-Site Scripting vulnerability via an improperly sanitized parameter in a POST request.");
 
-  script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "impact", value: "Execute unauthorized code or commands.");
+  script_tag(name:"impact", value:"Execute unauthorized code or commands.");
 
-  script_tag(name: "affected", value: "FortiWeb version 5.7.1 and prior.");
+  script_tag(name:"affected", value:"FortiWeb version 5.7.1 and prior.");
 
-  script_tag(name: "solution", value: "Upgrade to version 5.8.0 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 5.8.0 or later.");
 
-  script_xref(name: "URL", value: "https://fortiguard.com/psirt/FG-IR-17-076");
+  script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-17-076");
 
   exit(0);
 }

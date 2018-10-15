@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_cisco-sa-20170310-struts2.nasl 5608 2017-03-20 04:16:04Z ckuerste $
+# $Id: gb_cisco_ise_cisco-sa-20170310-struts2.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Cisco Identity Services Engine Apache Struts2 Jakarta Multipart Parser File Upload Code Execution Vulnerability
 #
@@ -29,38 +29,38 @@ CPE = "cpe:/a:cisco:identity_services_engine";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106640");
- script_cve_id("CVE-2017-5638");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5608 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106640");
+  script_cve_id("CVE-2017-5638");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11863 $");
 
- script_name("Cisco Identity Services Engine Apache Struts2 Jakarta Multipart Parser File Upload Code Execution Vulnerability");
+  script_name("Cisco Identity Services Engine Apache Struts2 Jakarta Multipart Parser File Upload Code Execution Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170310-struts2");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170310-struts2");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "Cisco ISE is prone to a vulnerability in Apache Struts2.");
+  script_tag(name:"summary", value:"Cisco ISE is prone to a vulnerability in Apache Struts2.");
 
- script_tag(name: "insight", value: "On March 6, 2017, Apache disclosed a vulnerability in the Jakarta multipart
+  script_tag(name:"insight", value:"On March 6, 2017, Apache disclosed a vulnerability in the Jakarta multipart
 parser used in Apache Struts2 that could allow an attacker to execute commands remotely on the targeted system
 using a crafted Content-Type header value.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-20 05:16:04 +0100 (Mon, 20 Mar 2017) $");
- script_tag(name: "creation_date", value: "2017-03-13 11:35:28 +0700 (Mon, 13 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ise_version.nasl");
- script_mandatory_keys("cisco_ise/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-13 11:35:28 +0700 (Mon, 13 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ise_version.nasl");
+  script_mandatory_keys("cisco_ise/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

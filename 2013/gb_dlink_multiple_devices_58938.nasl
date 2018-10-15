@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_multiple_devices_58938.nasl 11219 2018-09-04 11:52:00Z cfischer $
+# $Id: gb_dlink_multiple_devices_58938.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Multiple D-Link Products Command Injection and Multiple Information Disclosue Vulnerabilities
 #
@@ -29,7 +29,7 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103691");
   script_bugtraq_id(58938);
-  script_version("$Revision: 11219 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -39,7 +39,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.dlink.com/");
   script_xref(name:"URL", value:"http://www.s3cur1ty.de/m1adv2013-017");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-09 12:07:13 +0200 (Tue, 09 Apr 2013)");
 
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -58,7 +58,7 @@ vulnerability and multiple information-disclosure vulnerabilities.
 Exploiting these issues could allow an attacker to gain access to
 potentially sensitive information and execute arbitrary commands in
 the context of the affected device.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

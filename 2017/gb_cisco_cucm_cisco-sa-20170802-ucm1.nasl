@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-20170802-ucm1.nasl 6950 2017-08-17 12:54:04Z asteins $
+# $Id: gb_cisco_cucm_cisco-sa-20170802-ucm1.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Cisco Unified Communications Manager Directory Traversal Vulnerability
 #
@@ -29,43 +29,43 @@ CPE = "cpe:/a:cisco:unified_communications_manager";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140276");
- script_cve_id("CVE-2017-6758");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
- script_version("$Revision: 6950 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140276");
+  script_cve_id("CVE-2017-6758");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
+  script_version("$Revision: 11863 $");
 
- script_name("Cisco Unified Communications Manager Directory Traversal Vulnerability");
+  script_name("Cisco Unified Communications Manager Directory Traversal Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170802-ucm1");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170802-ucm1");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the web framework of Cisco Unified Communications Manager
+  script_tag(name:"summary", value:"A vulnerability in the web framework of Cisco Unified Communications Manager
 could allow an authenticated, remote attacker to access arbitrary files in the context of the web root directory
 structure on an affected device.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient input validation by the affected
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient input validation by the affected
 software.");
 
- script_tag(name: "impact", value: "An attacker could exploit this vulnerability by using directory traversal
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by using directory traversal
 techniques to read files in the web root directory structure on the Cisco Unified Communications Manager
 filesystem.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-08-17 14:54:04 +0200 (Thu, 17 Aug 2017) $");
- script_tag(name: "creation_date", value: "2017-08-03 11:04:08 +0700 (Thu, 03 Aug 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_cucm_version.nasl");
- script_mandatory_keys("cisco/cucm/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-03 11:04:08 +0700 (Thu, 03 Aug 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_cucm_version.nasl");
+  script_mandatory_keys("cisco/cucm/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_lem_hf2.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_solarwinds_lem_hf2.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # SolarWinds Log and Event Manager XML External Entity Injection Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105451");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11872 $");
 
   script_name("SolarWinds Log and Event Manager XML External Entity Injection Vulnerability");
 
@@ -49,7 +49,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-13 11:00:23 +0100 (Fri, 13 Nov 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -57,7 +57,7 @@ if (description)
   script_dependencies("gb_solarwinds_log_event_manager_version.nasl");
   script_mandatory_keys("solarwinds_lem/version", "solarwinds_lem/hotfix");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

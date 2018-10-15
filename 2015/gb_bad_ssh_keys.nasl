@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bad_ssh_keys.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_bad_ssh_keys.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Static SSH Key Used
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105398");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Static SSH Key Used");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 11:48:40 +0200 (Wed, 14 Oct 2015)");
   script_category(ACT_ATTACK);
   script_family("Gain a shell remotely");
@@ -50,7 +50,7 @@ attackers to completely compromise the devices.");
   script_tag(name:"qod_type", value:"remote_active");
   script_tag(name:"solution_type", value:"Workaround");
 
- exit(0);
+  exit(0);
 }
 
 include("bad_ssh_keys.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tenable_nessus_tns_2017_08.nasl 5746 2017-03-28 10:02:45Z ckuerste $
+# $Id: gb_tenable_nessus_tns_2017_08.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Tenable Nessus Privilege Escalation Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:tenable:nessus";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106699");
-  script_version("$Revision: 5746 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-28 12:02:45 +0200 (Tue, 28 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2017-03-28 11:42:33 +0700 (Tue, 28 Mar 2017)");
-  script_tag(name: "cvss_base", value: "7.2");
-  script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-28 11:42:33 +0700 (Tue, 28 Mar 2017)");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-7199");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Tenable Nessus Privilege Escalation Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("gb_nessus_web_server_detect.nasl");
   script_mandatory_keys("nessus/installed");
 
-  script_tag(name: "summary", value: "Nessus is prone to a local privelege escalation vulnerability.");
+  script_tag(name:"summary", value:"Nessus is prone to a local privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Nessus contains a flaw related to insecure permissions that may allow a
+  script_tag(name:"insight", value:"Nessus contains a flaw related to insecure permissions that may allow a
 local attacker to escalate privileges when the software is running in Agent Mode.");
 
-  script_tag(name: "affected", value: "Tenable Nessus 6.6.2 until 6.10.3.");
+  script_tag(name:"affected", value:"Tenable Nessus 6.6.2 until 6.10.3.");
 
-  script_tag(name: "solution", value: "Upgrade to version 6.10.4 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 6.10.4 or later.");
 
-  script_xref(name: "URL", value: "https://www.tenable.com/security/tns-2017-08");
+  script_xref(name:"URL", value:"https://www.tenable.com/security/tns-2017-08");
 
   exit(0);
 }

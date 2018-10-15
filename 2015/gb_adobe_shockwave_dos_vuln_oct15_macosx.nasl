@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_dos_vuln_oct15_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_adobe_shockwave_dos_vuln_oct15_macosx.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Adobe Shockwave Player Denial of Service Vulnerability Oct15 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:shockwave_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806521");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-7649");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-30 12:40:17 +0530 (Fri, 30 Oct 2015)");
   script_name("Adobe Shockwave Player Denial of Service Vulnerability Oct15 (Mac OS X)");
 
@@ -52,7 +52,7 @@ if(description)
   12.2.1.171 on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player version
-  12.2.0.171 or later. For updates refer to http://get.adobe.com/shockwave");
+  12.2.0.171 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +65,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("secpod_adobe_shockwave_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Shockwave/MacOSX/Version");
+  script_xref(name:"URL", value:"http://get.adobe.com/shockwave");
   exit(0);
 }
 

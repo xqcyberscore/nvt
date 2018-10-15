@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitdefender_ts_dll_loading_local_code_injection_vuln.nasl 11348 2018-09-12 07:38:26Z cfischer $
+# $Id: gb_bitdefender_ts_dll_loading_local_code_injection_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Bitdefender Total Security DLL Loading Local Code Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:bitdefender:total_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810939");
-  script_version("$Revision: 11348 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-6186");
   script_bugtraq_id(97024);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-04 10:17:21 +0530 (Thu, 04 May 2017)");
   script_name("Bitdefender Total Security DLL Loading Local Code Injection Vulnerability");
 
@@ -53,9 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
   attacker to bypass a self-protection mechanism, inject arbitrary code, and take
-  full control of any Bitdefender process via a 'DoubleAgent' attack.
-
-  Impact Level: System/Application");
+  full control of any Bitdefender process via a 'DoubleAgent' attack.");
 
   script_tag(name:"affected", value:"Bitdefender Total Security 12.0
   (and earlier).");

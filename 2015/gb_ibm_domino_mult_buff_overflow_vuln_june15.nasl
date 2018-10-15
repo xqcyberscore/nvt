@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_mult_buff_overflow_vuln_june15.nasl 11445 2018-09-18 08:09:39Z mmartin $
+# $Id: gb_ibm_domino_mult_buff_overflow_vuln_june15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # IBM Domino Multiple Stack-based Buffer Overflow Vulnerabilities - June15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805644");
-  script_version("$Revision: 11445 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-1903", "CVE-2015-1902");
   script_bugtraq_id(74598, 74597);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-04 12:22:20 +0530 (Thu, 04 Jun 2015)");
   script_name("IBM Domino Multiple Stack-based Buffer Overflow Vulnerabilities - June15");
 
@@ -59,8 +59,7 @@ if(description)
   before 9.0.1 FP3 IF3.");
 
   script_tag(name:"solution", value:"Upgrade to IBM Domino 8.5.3 FP6 IF7 or
-  9.0.1 FP3 IF3 or later. For more information refer to,
-  http://www-01.ibm.com/support/docview.wss?uid=swg21700029");
+  9.0.1 FP3 IF3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -73,6 +72,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_lotus_domino_detect.nasl");
   script_mandatory_keys("Domino/Version");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21700029");
   exit(0);
 }
 

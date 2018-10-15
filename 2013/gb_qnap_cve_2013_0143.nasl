@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_cve_2013_0143.nasl 11030 2018-08-17 09:42:15Z mmartin $
+# $Id: gb_qnap_cve_2013_0143.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # VioStor NVR and QNAP NAS Remote Code Execution Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103731");
-  script_version("$Revision: 11030 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-0143");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/927644");
   script_xref(name:"URL", value:"http://www.h-online.com/security/news/item/Serious-vulnerabilities-in-QNAP-storage-and-surveillance-systems-1883263.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:42:15 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-07 10:32:41 +0200 (Fri, 07 Jun 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -57,7 +57,7 @@ function.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

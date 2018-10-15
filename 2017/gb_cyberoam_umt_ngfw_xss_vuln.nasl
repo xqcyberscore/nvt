@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cyberoam_umt_ngfw_xss_vuln.nasl 6314 2017-06-12 10:07:50Z ckuersteiner $
+# $Id: gb_cyberoam_umt_ngfw_xss_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Sophos Cyberoam UMT/NGFW XSS Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/o:cyberoam:cyberoam_os";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106865");
-  script_version("$Revision: 6314 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-12 12:07:50 +0200 (Mon, 12 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-12 16:35:53 +0700 (Mon, 12 Jun 2017)");
-  script_tag(name: "cvss_base", value: "6.1");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:H/Au:N/C:C/I:P/A:N");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-12 16:35:53 +0700 (Mon, 12 Jun 2017)");
+  script_tag(name:"cvss_base", value:"6.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Sophos Cyberoam UMT/NGFW XSS Vulnerability");
 
@@ -49,19 +49,19 @@ if (description)
   script_dependencies("gb_cyberoam_umt_ngfw_detect.nasl");
   script_mandatory_keys("cyberoam_umt_ngfw/detected");
 
-  script_tag(name: "summary", value: "Sophos Cyberoam UMT/NGFW is prone to a cross-site scripting vulnerability");
+  script_tag(name:"summary", value:"Sophos Cyberoam UMT/NGFW is prone to a cross-site scripting vulnerability");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The flaw exists within the handling of request to 'LiveConnectionDetail.jsp'
+  script_tag(name:"insight", value:"The flaw exists within the handling of request to 'LiveConnectionDetail.jsp'
 application. GET parameters 'applicationname' and 'username' are not improperly sanitized allowing an attacker to
 inject arbitrary javascript into the page.");
 
-  script_tag(name: "affected", value: "Sophos Cyberoam UMT/NGFW 10.6.4 and prior");
+  script_tag(name:"affected", value:"Sophos Cyberoam UMT/NGFW 10.6.4 and prior");
 
-  script_tag(name: "solution", value: "Update to version 10.6.5 or later.");
+  script_tag(name:"solution", value:"Update to version 10.6.5 or later.");
 
-  script_xref(name: "URL", value: "http://seclists.org/bugtraq/2017/Jun/4");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2017/Jun/4");
 
   exit(0);
 }

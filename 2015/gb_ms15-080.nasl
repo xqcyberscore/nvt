@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805081");
-  script_version("$Revision: 11635 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-2432", "CVE-2015-2458", "CVE-2015-2459", "CVE-2015-2460",
                 "CVE-2015-2461", "CVE-2015-2462", "CVE-2015-2435", "CVE-2015-2455",
                 "CVE-2015-2456", "CVE-2015-2463", "CVE-2015-2464", "CVE-2015-2433",
                 "CVE-2015-2453", "CVE-2015-2454", "CVE-2015-2465");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 11:28:42 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Graphics Component Remote Code Executioon Vulnerabilities (3078662)");
@@ -94,7 +94,7 @@ if(!sysPath ){
   exit(0);
 }
 
-userVer = fetch_file_version(sysPath, file_name:"system32\Atmfd.dll");
+userVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Atmfd.dll");
 if(!userVer){
   exit(0);
 }

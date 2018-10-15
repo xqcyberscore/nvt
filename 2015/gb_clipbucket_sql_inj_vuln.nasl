@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clipbucket_sql_inj_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_clipbucket_sql_inj_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # ClipBucket 'view_item.php' SQL Injection Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:clipbucket_project:clipbucket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805347");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-2102");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-05 15:20:26 +0530 (Thu, 05 Mar 2015)");
   script_name("ClipBucket 'view_item.php' SQL Injection Vulnerability");
 
@@ -53,8 +53,7 @@ if(description)
   script_tag(name:"affected", value:"ClipBucket version 2.7.0.4.v2929, other
   versions may also be affected.");
 
-  script_tag(name:"solution", value:"Upgrade to version 2.7.0.5 or later,
-  For updates refer to http://clip-bucket.com");
+  script_tag(name:"solution", value:"Upgrade to version 2.7.0.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ if(description)
   script_dependencies("gb_clipbucket_detect.nasl");
   script_mandatory_keys("clipbucket/Installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://clip-bucket.com");
   exit(0);
 }
 

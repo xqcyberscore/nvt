@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_agent_dir_trav_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_mcafee_agent_dir_trav_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # McAfee Agent (MA) Log Viewing Functionality Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:mcafee_agent";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806638");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-7237");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-02 11:14:16 +0530 (Wed, 02 Dec 2015)");
   script_name("McAfee Agent (MA) Log Viewing Functionality Directory Traversal Vulnerability");
 
@@ -46,13 +46,12 @@ if(description)
   functionality where the inputs passed to the URL are not completely validated.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to gain access to potentially sensitive information.;.");
+  attacker to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"McAfee Agent (MA) version 5.x before
   5.0.2");
 
-  script_tag(name:"solution", value:"Upgrade to McAfee Agent (MA) 5.0.2 or later.
-  For updates refer to http://www.mcafee.com/us/");
+  script_tag(name:"solution", value:"Upgrade to McAfee Agent (MA) 5.0.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +64,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mcafee_agent_detect.nasl");
   script_mandatory_keys("McAfee/Agent/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mcafee.com/us/");
   exit(0);
 }
 

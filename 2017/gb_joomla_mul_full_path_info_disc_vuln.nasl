@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mul_full_path_info_disc_vuln.nasl 9475 2018-04-13 10:10:45Z asteins $
+# $Id: gb_joomla_mul_full_path_info_disc_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Joomla! CVE-2017-8057 Multiple Full Path Information Disclosure Vulnerabilities
 #
@@ -28,8 +28,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107158");
-  script_version("$Revision: 9475 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 12:10:45 +0200 (Fri, 13 Apr 2018) $");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-27 14:05:12 +0200 (Thu, 27 Apr 2017)");
   script_cve_id("CVE-2017-8057");
 
@@ -38,19 +38,18 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Joomla! CVE-2017-8057 Multiple Full Path Information Disclosure Vulnerabilities");
-  script_tag(name: "summary", value: "Joomla is vulnerable to multiple full path information
+  script_tag(name:"summary", value:"Joomla is vulnerable to multiple full path information
   disclosure vulnerabilities.");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and
-  check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "Remote attackers can exploit these issues to obtain sensitive
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Remote attackers can exploit these issues to obtain sensitive
   information that may lead to further attacks.");
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote attackers to obtain
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain
   sensitive information.");
-  script_tag(name: "affected", value: "Joomla! 3.4.0 through 3.6.5 are vulnerable");
-  script_tag(name: "solution", value: "Updates are available. Please see the references or vendor
+  script_tag(name:"affected", value:"Joomla! 3.4.0 through 3.6.5 are vulnerable");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor
   advisory for more information.");
 
-  script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/98028");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/98028");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

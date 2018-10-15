@@ -28,12 +28,12 @@ CPE = "cpe:/a:mcafee:vulnerability_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804250");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1472", "CVE-2014-1473", "CVE-2013-5094");
   script_bugtraq_id(64795, 58401);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-20 14:52:54 +0530 (Thu, 20 Mar 2014)");
   script_name("McAfee Vulnerability Manager Multiple Vulnerabilities");
 
@@ -50,11 +50,7 @@ multiple vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow a local attacker to steal the victim's
 cookie-based authentication credentials.");
   script_tag(name:"affected", value:"McAfee Vulnerability Manager 7.5.5 and earlier.");
-  script_tag(name:"solution", value:"Vendor has released a patch to fix this issue, refer below link for more info.
-
-https://kc.mcafee.com/corporate/index?page=content&amp;id=SB10061
-
-For updates refer to http://www.mcafee.com/in/products/vulnerability-manager.aspx");
+  script_tag(name:"solution", value:"Vendor has released a patch to fix this issue, please the the references for more info.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://secunia.com/advisories/56394");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/90244");
@@ -66,6 +62,7 @@ For updates refer to http://www.mcafee.com/in/products/vulnerability-manager.asp
   script_family("General");
   script_dependencies("gb_mcafee_vulnerability_manager_detect.nasl");
   script_mandatory_keys("McAfee/Vulnerability/Manager");
+  script_xref(name:"URL", value:"http://www.mcafee.com/in/products/vulnerability-manager.aspx");
   exit(0);
 }
 

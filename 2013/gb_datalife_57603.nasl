@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_datalife_57603.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_datalife_57603.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # DataLife Engine 'catlist' Parameter PHP Code Injection Vulnerability
 #
@@ -32,10 +32,10 @@ if (description)
   script_cve_id("CVE-2013-1412");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11865 $");
   script_name("DataLife Engine 'catlist' Parameter PHP Code Injection Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57603");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-02 12:26:45 +0100 (Sat, 02 Feb 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -50,12 +50,11 @@ if (description)
 
 An attacker can exploit this issue to inject and execute arbitrary PHP
 code in the context of the affected application. This may facilitate a
-compromise of the application and the underlying system; other attacks
+compromise of the application and the underlying system. Other attacks
 are also possible.
 
-DataLife Engine 9.7 is vulnerable; other versions may also be
-affected.");
- exit(0);
+DataLife Engine 9.7 is vulnerable. Other versions may also be affected.");
+  exit(0);
 }
 
 include("http_func.inc");

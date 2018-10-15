@@ -29,12 +29,12 @@ CPE = "cpe:/a:cisco:asa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805759");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-4241");
   script_bugtraq_id(75581);
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-07 18:52:56 +0530 (Wed, 07 Oct 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("Cisco ASA DoS Vulnerability");
@@ -52,8 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"Cisco ASA 9.3.2");
 
-  script_tag(name:"solution", value:"Apply the patch from Cisco.
-  For updates refer to http://www.cisco.com/");
+  script_tag(name:"solution", value:"Apply the patch from Cisco.");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=39641");
 
@@ -63,6 +62,7 @@ if(description)
   script_family("CISCO");
   script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
   script_mandatory_keys("cisco_asa/version");
+  script_xref(name:"URL", value:"http://www.cisco.com/");
   exit(0);
 }
 

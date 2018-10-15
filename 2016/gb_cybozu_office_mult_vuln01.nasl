@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_office_mult_vuln01.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_cybozu_office_mult_vuln01.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Cybozu Office Multiple Vulnerabilities-01 Feb16
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:cybozu:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807276");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2016-1153", "CVE-2016-1152", "CVE-2016-1151", "CVE-2015-8489",
                 "CVE-2015-8486", "CVE-2015-8485", "CVE-2015-8484");
   script_bugtraq_id(83288, 83287, 83284);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-03 18:23:55 +0530 (Thu, 03 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cybozu Office Multiple Vulnerabilities-01 Feb16");
@@ -58,7 +58,7 @@ if(description)
 
   script_tag(name:"affected", value:"Cybozu Office version 9.9.0 to 10.3.0");
   script_tag(name:"solution", value:"Upgrade to Cybozu Office version 10.4.0
-  or later, ");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

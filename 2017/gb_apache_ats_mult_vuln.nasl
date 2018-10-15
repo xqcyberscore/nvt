@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ats_mult_vuln.nasl 6711 2017-07-13 06:53:09Z cfischer $
+# $Id: gb_apache_ats_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Apache Traffic Server (ATS) Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:apache:traffic_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106789");
-  script_version("$Revision: 6711 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-13 08:53:09 +0200 (Thu, 13 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-25 13:31:59 +0200 (Tue, 25 Apr 2017)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-25 13:31:59 +0200 (Tue, 25 Apr 2017)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_cve_id("CVE-2017-5659", "CVE-2016-5396");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Apache Traffic Server (ATS) Multiple Vulnerabilities");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_apache_traffic_detect.nasl");
   script_mandatory_keys("apache_trafficserver/installed");
 
-  script_tag(name: "summary", value: "Apache Traffic Server is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Apache Traffic Server is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Apache Traffic Server is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Apache Traffic Server is prone to multiple vulnerabilities:
 
-- Crash when there is a mismatch between content length and chunked encoding. (CVE-2017-5659)
+  - Crash when there is a mismatch between content length and chunked encoding. (CVE-2017-5659)
 
-- Vulnerable to HPACK Bomb Attack (CVE-2016-5396)");
+  - Vulnerable to HPACK Bomb Attack (CVE-2016-5396)");
 
-  script_tag(name: "affected", value: "Apache Traffic Server 6.2.0 and prior.");
+  script_tag(name:"affected", value:"Apache Traffic Server 6.2.0 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 6.2.1 or later.");
+  script_tag(name:"solution", value:"Update to version 6.2.1 or later.");
 
-  script_xref(name: "URL", value: "https://issues.apache.org/jira/browse/TS-4819");
-  script_xref(name: "URL", value: "https://issues.apache.org/jira/browse/TS-5019");
+  script_xref(name:"URL", value:"https://issues.apache.org/jira/browse/TS-4819");
+  script_xref(name:"URL", value:"https://issues.apache.org/jira/browse/TS-5019");
 
   exit(0);
 }

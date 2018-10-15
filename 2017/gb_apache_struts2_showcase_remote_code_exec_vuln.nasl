@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_showcase_remote_code_exec_vuln.nasl 10724 2018-08-02 06:39:54Z cfischer $
+# $Id: gb_apache_struts2_showcase_remote_code_exec_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Apache Struts2 Showcase Remote Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811309");
-  script_version("$Revision: 10724 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-9791");
   script_bugtraq_id(99484);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 08:39:54 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-10 10:54:29 +0530 (Mon, 10 Jul 2017)");
   script_name("Apache Struts2 Showcase Remote Code Execution Vulnerability");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -59,17 +59,13 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting these issues allow
   remote attackers to execute arbitrary code in the context of the affected
-  application.
-
-  Impact Level: System/Application");
+  application.");
 
   script_tag(name:"affected", value:"Apache Struts 2.3.x with Struts 1 plugin and Struts 1 action");
 
   script_tag(name:"solution", value:"As mitigation always use resource keys
   instead of passing a raw message to the ActionMessage as shown below, never
-  pass a raw value directly.
-
-  For mitigation refer to http://struts.apache.org/docs/s2-048.html");
+  pass a raw value directly.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"exploit");

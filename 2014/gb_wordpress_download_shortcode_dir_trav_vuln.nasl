@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_download_shortcode_dir_trav_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_wordpress_download_shortcode_dir_trav_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # WordPress ShortCode Plugin Directory Traversal Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804837");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-5465");
   script_bugtraq_id(69440);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-09-08 13:34:59 +0530 (Mon, 08 Sep 2014)");
 
   script_name("WordPress ShortCode Plugin Directory Traversal Vulnerability");
@@ -55,8 +55,7 @@ if(description)
   script_tag(name:"affected", value:"WordPress Download Shortcode plugin
   version 0.2.3 and earlier.");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.1 or later,
-  For updates refer to http://wordpress.org/plugins/download-shortcode");
+  script_tag(name:"solution", value:"Upgrade to version 1.1 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/34436/");
@@ -68,6 +67,7 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl", "os_detection.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://wordpress.org/plugins/download-shortcode");
   exit(0);
 }
 

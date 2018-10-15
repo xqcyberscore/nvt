@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-056.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: secpod_ms12-056.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Microsoft JScript and VBScript Engines Remote Code Execution Vulnerability (2706045)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903037");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-2523");
   script_bugtraq_id(54945);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-15 11:13:45 +0530 (Wed, 15 Aug 2012)");
   script_name("Microsoft JScript and VBScript Engines Remote Code Execution Vulnerability (2706045)");
   script_category(ACT_GATHER_INFO);
@@ -64,8 +64,8 @@ if(description)
   script_tag(name:"insight", value:"The flaw is caused by an integer overflow error in the JScript and VBScript
   scripting engines when calculating the size of an object in memory.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory ");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-056.");

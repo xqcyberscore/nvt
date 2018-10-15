@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arkeia_virtual_appliance_mult_vuln.nasl 11504 2018-09-20 12:55:48Z cfischer $
+# $Id: gb_arkeia_virtual_appliance_mult_vuln.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Arkeia Appliance Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:knox_software:arkeia_appliance";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803760");
-  script_version("$Revision: 11504 $");
+  script_version("$Revision: 11888 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:55:48 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-18 15:16:06 +0530 (Wed, 18 Sep 2013)");
   script_name("Arkeia Appliance Multiple Vulnerabilities");
 
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Send the crafted HTTP GET request and check is it possible to read
   the system file or not.");
 
-  script_tag(name:"solution", value:"Upgrade to Arkeia Appliance 10.1.10 or later,
-  For updates refer to http://www.arkeia.com/download ");
+  script_tag(name:"solution", value:"Upgrade to Arkeia Appliance 10.1.10 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +70,7 @@ if(description)
   script_mandatory_keys("ArkeiaAppliance/installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"http://www.arkeia.com/download");
   exit(0);
 }
 

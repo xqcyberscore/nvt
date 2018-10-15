@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuxeo_platform_dir_trav_vuln.nasl 5806 2017-03-31 07:21:48Z teissa $
+# $Id: gb_nuxeo_platform_dir_trav_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Nuxeo Platform Directory Traversal Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:nuxeo:platform";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106696");
-  script_version("$Revision: 5806 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-31 09:21:48 +0200 (Fri, 31 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2017-03-27 14:18:27 +0700 (Mon, 27 Mar 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-27 14:18:27 +0700 (Mon, 27 Mar 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-5869");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Nuxeo Platform Directory Traversal Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_nuxeo_platform_detect.nasl");
   script_mandatory_keys("nuxeo_platform/installed");
 
-  script_tag(name: "summary", value: "Nuxeo Platform is prone to a authenticated directory traversal
+  script_tag(name:"summary", value:"Nuxeo Platform is prone to a authenticated directory traversal
 vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Directory traversal vulnerability in the file import feature allows remote
+  script_tag(name:"insight", value:"Directory traversal vulnerability in the file import feature allows remote
 authenticated users to upload and execute arbitrary JSP code via a .. (dot dot) in the X-File-Name header.");
 
-  script_tag(name: "impact", value: "An authenticated attacker may upload and execute arbitrary JSP code.");
+  script_tag(name:"impact", value:"An authenticated attacker may upload and execute arbitrary JSP code.");
 
-  script_tag(name: "affected", value: "Nuxeo Platform 6.0, 7.1, 7.2 and 7.3.");
+  script_tag(name:"affected", value:"Nuxeo Platform 6.0, 7.1, 7.2 and 7.3.");
 
-  script_tag(name: "solution", value: "Update to version 7.4 or later.");
+  script_tag(name:"solution", value:"Update to version 7.4 or later.");
 
-  script_xref(name: "URL", value: "http://www.openwall.com/lists/oss-security/2017/03/23/6");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2017/03/23/6");
 
   exit(0);
 }

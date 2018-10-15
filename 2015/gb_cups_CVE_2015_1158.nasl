@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cups_CVE_2015_1158.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_cups_CVE_2015_1158.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # CUPS < 2.0.3 Multiple Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
   script_bugtraq_id(75098, 75106);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
 
   script_name("CUPS < 2.0.3 Multiple Vulnerabilities");
 
@@ -78,7 +78,7 @@ to a privilege escalation due to a memory management error.");
 
   script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-15 15:24:12 +0200 (Mon, 15 Jun 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -87,7 +87,7 @@ to a privilege escalation due to a memory management error.");
   script_require_ports("Services/www", 631);
   script_mandatory_keys("CUPS/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

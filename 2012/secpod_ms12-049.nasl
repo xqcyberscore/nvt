@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-049.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: secpod_ms12-049.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows TLS Protocol Information Disclosure Vulnerability (2655992)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902846");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11876 $");
   script_bugtraq_id(54304);
   script_cve_id("CVE-2012-1870");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-11 10:10:10 +0530 (Wed, 11 Jul 2012)");
   script_name("Microsoft Windows TLS Protocol Information Disclosure Vulnerability (2655992)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49874");
@@ -60,8 +60,8 @@ if(description)
   (TLS) Handshake Protocol when the Cipher-block chaining (CBC) mode of
   operation is used. This flaw may allow a remote attacker to gain access to
   decrypted traffic.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory ");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-049.");
   script_tag(name:"qod_type", value:"registry");
@@ -85,7 +85,7 @@ if(! sysPath){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Schannel.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Schannel.dll");
 if(! dllVer){
   exit(0);
 }

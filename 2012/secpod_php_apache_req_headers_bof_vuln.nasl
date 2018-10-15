@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_apache_req_headers_bof_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_php_apache_req_headers_bof_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # PHP 'apache_request_headers()' Function Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902837");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_bugtraq_id(53455);
   script_cve_id("CVE-2012-2329");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-23 16:16:16 +0530 (Wed, 23 May 2012)");
   script_name("PHP 'apache_request_headers()' Function Buffer Overflow Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -59,7 +59,7 @@ if(description)
   function, which can be exploited to cause a denial of service via a long
   string in the header of an HTTP request.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP Version 5.4.3 or later,");
+  script_tag(name:"solution", value:"Upgrade to PHP Version 5.4.3 or later.");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone to buffer overflow
   vulnerability.");

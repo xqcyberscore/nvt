@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_ms14-083.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms_excel_ms14-083.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Microsoft Office Excel Remote Code Execution Vulnerabilities (3017347)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805023");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-6360", "CVE-2014-6361");
   script_bugtraq_id(71500, 71501);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-10 10:25:07 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft Office Excel Remote Code Execution Vulnerabilities (3017347)");
 
@@ -56,9 +56,7 @@ if(description)
   Microsoft Excel 2010 Service Pack 2 and prior");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link,
-  https://technet.microsoft.com/en-us/security/bulletin/ms14-083");
+  hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

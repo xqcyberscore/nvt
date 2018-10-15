@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_vuln_jan17_lin.nasl 7889 2017-11-23 14:34:33Z cfischer $
+# $Id: gb_cacti_mult_vuln_jan17_lin.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Cacti < 1.0.0 Multiple Vulnerabilities (Linux)
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:cacti:cacti";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108297");
-  script_version("$Revision: 7889 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2014-4000", "CVE-2016-2313");
-  script_tag(name:"last_modification", value: "$Date: 2017-11-23 15:34:33 +0100 (Thu, 23 Nov 2017) $");
-  script_tag(name:"creation_date", value: "2017-11-23 13:54:25 +0100 (Thu, 23 Nov 2017)");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-23 13:54:25 +0100 (Thu, 23 Nov 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_name("Cacti < 1.0.0 Multiple Vulnerabilities (Linux)");
@@ -58,9 +58,9 @@ if(description)
 
   script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name:"affected", value: "Cacti versions prior to 1.0.0.");
+  script_tag(name:"affected", value:"Cacti versions prior to 1.0.0.");
 
-  script_tag(name:"solution", value: "Update to version 1.0.0 or later.");
+  script_tag(name:"solution", value:"Update to version 1.0.0 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_media_service_handshake_seq_dos_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_ms_win_media_service_handshake_seq_dos_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Microsoft Windows Media Service Handshake Sequence DoS Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802888");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2000-0211");
   script_bugtraq_id(1000);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 13:22:23 +0530 (Mon, 30 Jul 2012)");
   script_name("Microsoft Windows Media Service Handshake Sequence DoS Vulnerability");
   script_category(ACT_DENIAL);
@@ -58,8 +58,8 @@ if(description)
   are sent in a particular misordered sequence, with certain timing
   constraints, the server attempts to use a resource before it has been
   initialized causing the Windows Media Unicast Service to crash.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is running Microsoft Windows Media Service and is prone
   to denial of service vulnerability.");
 

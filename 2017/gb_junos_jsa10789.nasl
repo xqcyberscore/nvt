@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10789.nasl 6832 2017-08-02 05:57:34Z cfischer $
+# $Id: gb_junos_jsa10789.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Junos SRX Series: DHCP DoS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106945");
-  script_version ("$Revision: 6832 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-02 07:57:34 +0200 (Wed, 02 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-13 12:42:35 +0700 (Thu, 13 Jul 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-13 12:42:35 +0700 (Thu, 13 Jul 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-10605");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos SRX Series: DHCP DoS Vulnerability");
 
@@ -48,25 +48,25 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version", "Junos/model");
 
-  script_tag(name: "summary", value: "Junos OS on SRX series is prone to a denial of service vulnerability in
+  script_tag(name:"summary", value:"Junos OS on SRX series is prone to a denial of service vulnerability in
 flowd due to crafted DHCP packet.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value: "On all vSRX and SRX Series devices, when the DHCP or DHCP relay is
+  script_tag(name:"insight", value:"On all vSRX and SRX Series devices, when the DHCP or DHCP relay is
 configured, specially crafted packet might cause the flowd process to crash, halting or interrupting traffic
 from flowing through the device(s).
 
 Repeated crashes of the flowd process may constitute an extended denial of service condition for the device(s).");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may cause a denial of service condition.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may cause a denial of service condition.");
 
-  script_tag(name: "affected", value: "Junos OS 12.1X46, 12.3X48 and 15.1X49 on SRX Series.");
+  script_tag(name:"affected", value:"Junos OS 12.1X46, 12.3X48 and 15.1X49 on SRX Series.");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10789");
 

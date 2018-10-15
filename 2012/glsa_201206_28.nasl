@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201206_28.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201206_28.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-1284", "CVE-2010-0739", "CVE-2010-0827", "CVE-2010-1440");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-10 03:22:53 -0400 (Fri, 10 Aug 2012)");
   script_name("Gentoo Security Advisory GLSA 201206-28 (TeX Live)");
   script_category(ACT_GATHER_INFO);
@@ -47,12 +47,11 @@ attackers to execute arbitrary code.");
   script_tag(name:"solution", value:"All texlive-core users should upgrade to the latest version:
 
       # emerge --sync
-      # emerge --ask --oneshot --verbose '>=app-text/texlive-core-2009-r2'
+      # emerge --ask --oneshot --verbose '>=app-text/texlive-core-2009-r2'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201206-28
-http://bugs.gentoo.org/show_bug.cgi?id=264598
-http://bugs.gentoo.org/show_bug.cgi?id=324019");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201206-28");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=264598");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=324019");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201206-28.");
   script_tag(name:"qod_type", value:"package");

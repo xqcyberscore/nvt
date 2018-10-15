@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_xililanguage_plugin_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_wordpress_xililanguage_plugin_xss_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # WordPress Xili Language Plugin XSS Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803600");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-14 12:10:16 +0530 (Tue, 14 May 2013)");
   script_name("WordPress Xili Language Plugin XSS Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53364");
@@ -50,13 +50,13 @@ if(description)
   script_tag(name:"affected", value:"WordPress Xili Language Plugin version 2.8.4.3 and prior");
   script_tag(name:"insight", value:"The input passed via 'lang' parameter to index.php script is not properly
   validated.");
-  script_tag(name:"solution", value:"Update to Xili Language Plugin version 2.8.5 or later,
-  For updates refer to http://wordpress.org/extend/plugins/xili-language");
+  script_tag(name:"solution", value:"Update to Xili Language Plugin version 2.8.5 or later.");
   script_tag(name:"summary", value:"This host is running WordPress with Xili Language plugin and is
   prone to cross site scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/xili-language");
   exit(0);
 }
 

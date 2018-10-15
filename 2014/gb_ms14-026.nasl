@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-026.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-026.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft .NET Framework Privilege Elevation Vulnerability (2958732)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804452");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-1806");
   script_bugtraq_id(67286);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-14 16:10:33 +0530 (Wed, 14 May 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerability (2958732)");
@@ -47,8 +47,7 @@ application objects related to TypeFilterLevel checks.");
 restrictions.");
   script_tag(name:"affected", value:"Microsoft .NET Framework 1.1, 2.0, 3.5, 3.5.1, 4.0 and 4.5 and 4.5.1");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-http://technet.microsoft.com/en-us/security/bulletin/ms14-026");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/58271");

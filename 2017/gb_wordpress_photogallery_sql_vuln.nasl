@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_photogallery_sql_vuln.nasl 8881 2018-02-20 10:30:22Z asteins $
+# $Id: gb_wordpress_photogallery_sql_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # WordPress Photo Gallery Plugin SQL Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112029");
-  script_version("$Revision: 8881 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-20 11:30:22 +0100 (Tue, 20 Feb 2018) $");
-  script_tag(name: "creation_date", value: "2017-08-25 10:34:31 +0200 (Fri, 25 Aug 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-25 10:34:31 +0200 (Fri, 25 Aug 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-12977");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress Photo Gallery Plugin SQL Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "WordPress plugin Photo Gallery by Web-Dorado has a SQL injection vulnerability related to bwg_edit_tag() in photo-gallery.php and edit_tag() in admin/controllers/BWGControllerTags_bwg.php. It is exploitable by administrators via the tag_id parameter.");
+  script_tag(name:"summary", value:"WordPress plugin Photo Gallery by Web-Dorado has a SQL injection vulnerability related to bwg_edit_tag() in photo-gallery.php and edit_tag() in admin/controllers/BWGControllerTags_bwg.php. It is exploitable by administrators via the tag_id parameter.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "WordPress Web-Dorado 'Photo Gallery by WD - Responsive Photo Gallery' plugin before 1.3.51.");
+  script_tag(name:"affected", value:"WordPress Web-Dorado 'Photo Gallery by WD - Responsive Photo Gallery' plugin before 1.3.51.");
 
-  script_tag(name: "solution", value: "Update to version 1.3.51 or later.");
+  script_tag(name:"solution", value:"Update to version 1.3.51 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/jgj212/Advisories/blob/master/photo-gallery.1.3.50-SQL");
-  script_xref(name: "URL", value: "https://wordpress.org/plugins/photo-gallery/#developers");
+  script_xref(name:"URL", value:"https://github.com/jgj212/Advisories/blob/master/photo-gallery.1.3.50-SQL");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/photo-gallery/#developers");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_rce_vuln.nasl 8595 2018-01-31 08:04:59Z cfischer $
+# $Id: gb_apache_solr_rce_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Apache Solr Remote Code Execution Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113042");
-  script_version("$Revision: 8595 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-25 15:03:04 +0200 (Wed, 25 Oct 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -61,7 +61,7 @@ if( description )
   script_xref(name:"URL", value:"http://lucene.472066.n3.nabble.com/Re-Several-critical-vulnerabilities-discovered-in-Apache-Solr-XXE-amp-RCE-td4358308.html");
   script_xref(name:"URL", value:"https://marc.info/?l=apache-announce&m=150786685013286");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:apache:solr";

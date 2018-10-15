@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_ms17-014.nasl 5752 2017-03-29 04:01:01Z teissa $
+# $Id: gb_ms_excel_ms17-014.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Microsoft Office Excel Multiple Vulnerabilities (4013241)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810708");
-  script_version("$Revision: 5752 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-0006", "CVE-2017-0027", "CVE-2017-0020", "CVE-2017-0052");
   script_bugtraq_id(96740, 96043, 96050, 96741);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 13:18:25 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Excel Multiple Vulnerabilities (4013241)");
@@ -40,38 +40,35 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS17-014.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists as
+
   - Microsoft Office improperly handles input.
+
   - Microsoft Office software reads out of bound memory.
+
   - Microsoft Office software improperly handles the parsing of file formats.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to run arbitrary code in the context of the current user and gain
-  access to potentially sensitive information.
+  access to potentially sensitive information.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft Excel 2007 Service Pack 3,
+  script_tag(name:"affected", value:"Microsoft Excel 2007 Service Pack 3,
   Microsoft Excel 2010 Service Pack 2,
   Microsoft Excel 2013 Service Pack 1,
   Microsoft Excel 2016 Service Pack 1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link,
-  https://technet.microsoft.com/library/security/ms17-014");
+  hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4013241");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3178676"); 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3178690");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3172542");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3178673");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms17-014");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4013241");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3178676");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3178690");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3172542");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3178673");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms17-014");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -84,10 +81,6 @@ if(description)
 include("smb_nt.inc");
 include("version_func.inc");
 
-# Variable Initialization
-excelVer = "";
-
-## Check for Office Excel 2007/2010/2013/2016
 excelVer = get_kb_item("SMB/Office/Excel/Version");
 if(!excelVer){
   exit(0);
@@ -100,20 +93,19 @@ if(!excelPath){
 
 if(excelVer =~ "^(12|14|15|16)\..*")
 {
-  if(excelVer =~ "^(12)"){
+  if(excelVer =~ "^12"){
     Vulnerable_range  =  "12 - 12.0.6765.4999";
   }
-  else if(excelVer =~ "^(14)"){
+  else if(excelVer =~ "^14"){
     Vulnerable_range  =  "14 - 14.0.7179.4999";
   }
-  else if(excelVer =~ "^(15)"){
+  else if(excelVer =~ "^15"){
     Vulnerable_range  =  "15 - 15.0.4911.0999";
   }
-  else if(excelVer =~ "^(16)"){
+  else if(excelVer =~ "^16"){
     Vulnerable_range  =  "16 - 16.0.4510.0999";
   }
 
-  ## Check version Excel.exe
   if(version_in_range(version:excelVer, test_version:"12.0", test_version2:"12.0.6765.4999")||
      version_in_range(version:excelVer, test_version:"14.0", test_version2:"14.0.7179.4999")||
      version_in_range(version:excelVer, test_version:"15.0", test_version2:"15.0.4911.0999")||

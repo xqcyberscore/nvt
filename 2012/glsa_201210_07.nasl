@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201210_07.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201210_07.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2012-2859", "CVE-2012-2860", "CVE-2012-2865", "CVE-2012-2866", "CVE-2012-2867", "CVE-2012-2868", "CVE-2012-2869", "CVE-2012-2872", "CVE-2012-2874", "CVE-2012-2876", "CVE-2012-2877", "CVE-2012-2878", "CVE-2012-2879", "CVE-2012-2880", "CVE-2012-2881", "CVE-2012-2882", "CVE-2012-2883", "CVE-2012-2884", "CVE-2012-2885", "CVE-2012-2886", "CVE-2012-2887", "CVE-2012-2888", "CVE-2012-2889", "CVE-2012-2891", "CVE-2012-2892", "CVE-2012-2894", "CVE-2012-2896", "CVE-2012-2900", "CVE-2012-5108", "CVE-2012-5110", "CVE-2012-5111", "CVE-2012-5112", "CVE-2012-5376");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-22 08:43:44 -0400 (Mon, 22 Oct 2012)");
   script_name("Gentoo Security Advisory GLSA 201210-07 (chromium)");
   script_category(ACT_GATHER_INFO);
@@ -48,18 +48,17 @@ if(description)
 
       # emerge --sync
       # emerge --ask --oneshot --verbose
-      '>=www-client/chromium-22.0.1229.94'
+      '>=www-client/chromium-22.0.1229.94'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201210-07
-http://bugs.gentoo.org/show_bug.cgi?id=433551
-http://bugs.gentoo.org/show_bug.cgi?id=436234
-http://bugs.gentoo.org/show_bug.cgi?id=437664
-http://bugs.gentoo.org/show_bug.cgi?id=437984
-http://googlechromereleases.blogspot.com/2012/08/stable-channel-update_30.html
-http://googlechromereleases.blogspot.com/2012/09/stable-channel-update_25.html
-http://googlechromereleases.blogspot.com/2012/10/stable-channel-update.html
-http://googlechromereleases.blogspot.com/2012/10/stable-channel-update_6105.html");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201210-07");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=433551");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=436234");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=437664");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=437984");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.com/2012/08/stable-channel-update_30.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.com/2012/09/stable-channel-update_25.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.com/2012/10/stable-channel-update.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.com/2012/10/stable-channel-update_6105.html");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201210-07.");
   script_tag(name:"qod_type", value:"package");

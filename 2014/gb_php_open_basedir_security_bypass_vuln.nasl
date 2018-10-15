@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_open_basedir_security_bypass_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_php_open_basedir_security_bypass_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # PHP 'open_basedir' Security Bypass Vulnerability
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804241");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2012-1171");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-19 16:40:59 +0530 (Wed, 19 Feb 2014)");
   script_name("PHP 'open_basedir' Security Bypass Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone to security bypass
   vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of PHP with the help of detect NVT and check
-  the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is in libxml RSHUTDOWN function which allows to bypass open_basedir
   protection mechanism through stream_close method call.");

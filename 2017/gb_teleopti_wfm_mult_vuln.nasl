@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teleopti_wfm_mult_vuln.nasl 5216 2017-02-07 09:48:11Z ckuerste $
+# $Id: gb_teleopti_wfm_mult_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Teleopti WFM Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:teleopit:wfm";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106575");
-  script_version("$Revision: 5216 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-07 10:48:11 +0100 (Tue, 07 Feb 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-07 15:18:23 +0700 (Tue, 07 Feb 2017)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-07 15:18:23 +0700 (Tue, 07 Feb 2017)");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Teleopti WFM Multiple Vulnerabilities");
 
@@ -49,23 +49,23 @@ if (description)
   script_dependencies("gb_teleopti_wfm_detect.nasl");
   script_mandatory_keys("teleopti_wfm/installed");
 
-  script_tag(name: "summary", value: "Teleopti WFM is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Teleopti WFM is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Teleopti WFM is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Teleopti WFM is prone to multiple vulnerabilities:
 
-- Server Response Contains Plaintext Username and Password
+  - Server Response Contains Plaintext Username and Password
 
-- Server Response Contains Password Hashes and Authorization Tokens
+  - Server Response Contains Password Hashes and Authorization Tokens
 
-- Improper Data Validation Allowing Unauthenticated Admin User Creation");
+  - Improper Data Validation Allowing Unauthenticated Admin User Creation");
 
-  script_tag(name: "affected", value: "Version 7.1.0 and previous versions.");
+  script_tag(name:"affected", value:"Version 7.1.0 and previous versions.");
 
-  script_tag(name: "solution", value: "Check with the vendor which version resolves the vulnerabilities.");
+  script_tag(name:"solution", value:"Check with the vendor which version resolves the vulnerabilities.");
 
-  script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2017/Feb/13");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Feb/13");
 
   exit(0);
 }

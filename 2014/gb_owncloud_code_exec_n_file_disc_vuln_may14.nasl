@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_code_exec_n_file_disc_vuln_may14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_owncloud_code_exec_n_file_disc_vuln_may14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # ownCloud Multiple Code Execution & Local File Disclosure Vulnerabilities May14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804280");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-1850", "CVE-2013-1851");
   script_bugtraq_id(58481, 58483);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-05 14:00:11 +0530 (Mon, 05 May 2014)");
   script_name("ownCloud Multiple Code Execution & Local File Disclosure Vulnerabilities May14");
 
@@ -51,8 +51,7 @@ apps/contacts/ajax/uploadimport.php scripts.
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary PHP
 code by uploading a '.htaccess' file and gain access to arbitrary files.");
   script_tag(name:"affected", value:"ownCloud Server before version 4.0.13 and 4.5.x before version 4.5.8");
-  script_tag(name:"solution", value:"Upgrade to ownCloud version 4.0.13 or 4.5.8 or later,
-For updates refer to http://owncloud.org");
+  script_tag(name:"solution", value:"Upgrade to ownCloud version 4.0.13 or 4.5.8 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2013/q1/652");

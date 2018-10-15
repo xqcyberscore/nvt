@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_apr12_lin.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_google_chrome_mult_vuln_apr12_lin.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - April 12 (Linux)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802733");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-3058", "CVE-2011-3065", "CVE-2011-3064", "CVE-2011-3063",
                 "CVE-2011-3062", "CVE-2011-3061", "CVE-2011-3060", "CVE-2011-3059");
   script_bugtraq_id(52762);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-05 15:48:59 +0530 (Thu, 05 Apr 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - April 12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48618/");
@@ -70,7 +70,7 @@ if(description)
 
   - An error in SVG text handling can be exploited to cause an out-of-bounds
     read.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 18.0.1025.142 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 18.0.1025.142 or later.");
   script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_awk_info_disc_vuln1.nasl 7191 2017-09-20 04:14:22Z ckuersteiner $
+# $Id: gb_moxa_awk_info_disc_vuln1.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Moxa AWK Series Systemlog Information Disclosure Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/h:moxa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106741");
-  script_version("$Revision: 7191 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-20 06:14:22 +0200 (Wed, 20 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-11 14:59:45 +0200 (Tue, 11 Apr 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-11 14:59:45 +0200 (Tue, 11 Apr 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-8725");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Moxa AWK Series Systemlog Information Disclosure Vulnerability");
 
@@ -52,19 +52,19 @@ if (description)
   script_mandatory_keys("moxa_awk/detected");
   script_require_ports("Services/www", 80);
 
-  script_tag(name: "summary", value: "Moxa AWK series wireless access points are prone to a systemlog.log
+  script_tag(name:"summary", value:"Moxa AWK series wireless access points are prone to a systemlog.log
 information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Sends a HTTP request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a HTTP request and checks the response.");
 
-  script_tag(name: "insight", value: "The file systemlog.log can be accessed without any authentication which
+  script_tag(name:"insight", value:"The file systemlog.log can be accessed without any authentication which
 might reveal sensitive information.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may obtain sentive information.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may obtain sentive information.");
 
-  script_tag(name: "solution", value: "Update to version 1.4 or later.");
+  script_tag(name:"solution", value:"Update to version 1.4 or later.");
 
-  script_xref(name: "URL", value: "http://www.talosintelligence.com/reports/TALOS-2016-0239/");
+  script_xref(name:"URL", value:"http://www.talosintelligence.com/reports/TALOS-2016-0239/");
 
   exit(0);
 }

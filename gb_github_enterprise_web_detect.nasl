@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_github_enterprise_web_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_github_enterprise_web_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # GitHub Enterprise Management Console Detection
 #
@@ -30,8 +30,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.140195");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-17 16:36:11 +0100 (Fri, 17 Mar 2017)");
   script_name("GitHub Enterprise Management Console Detection");
 
@@ -45,7 +45,7 @@ if (description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8443, 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
- exit(0);
+  exit(0);
 }
 
 

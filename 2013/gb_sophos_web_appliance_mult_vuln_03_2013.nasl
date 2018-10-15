@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sophos_web_appliance_mult_vuln_03_2013.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_sophos_web_appliance_mult_vuln_03_2013.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Sophos Web Protection Appliance Web Interface Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = 'cpe:/a:sophos:web_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103688");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-2641", "CVE-2013-2642", "CVE-2013-2643");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Sophos Web Protection Appliance Web Interface Multiple Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-04 14:28:20 +0200 (Thu, 04 Apr 2013)");
   script_xref(name:"URL", value:"http://www.sophos.com/en-us/support/knowledgebase/118969.aspx");
   script_category(ACT_ATTACK);
@@ -60,7 +60,7 @@ if (description)
 
 3) Reflected Cross Site Scripting (XSS)");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

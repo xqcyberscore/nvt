@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_listener_sec_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_oracle_database_listener_sec_bypass_vuln.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Oracle Database Server listener Security Bypass Vulnerability
 #
@@ -28,13 +28,13 @@ CPE = 'cpe:/a:oracle:database_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803960");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2000-0818");
   script_bugtraq_id(1853);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-11-06 19:08:11 +0530 (Wed, 06 Nov 2013)");
   script_name("Oracle Database Server listener Security Bypass Vulnerability");
 
@@ -45,15 +45,10 @@ system account and execute commands.");
   script_tag(name:"insight", value:"A flaw exist in Oracle listener program, which allows attacker to cause
 logging information to be appended to arbitrary files and execute commands
 via the SET TRC_FILE or SET LOG_FILE commands");
-  script_tag(name:"solution", value:"Apply patches from below link,
-http://metalink.oracle.com
-
-*****
-NOTE: Ignore this warning if above mentioned patch is installed.
+  script_tag(name:"solution", value:"Apply patches Ignore this warning if above mentioned patch is installed.
 *****");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of tnslsnr service and check it is
-vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"summary", value:"This host is installed with Oracle Database Server and is prone to security
 bypass vulnerability.");
 
@@ -64,6 +59,10 @@ bypass vulnerability.");
   script_family("Databases");
   script_dependencies("oracle_tnslsnr_version.nasl");
   script_mandatory_keys("OracleDatabaseServer/installed");
+  script_xref(name:"URL", value:"http://metalink.oracle.com
+
+*****
+NOTE:");
   exit(0);
 }
 

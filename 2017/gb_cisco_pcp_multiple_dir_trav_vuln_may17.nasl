@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pcp_multiple_dir_trav_vuln_may17.nasl 6302 2017-06-10 17:10:53Z cfischer $
+# $Id: gb_cisco_pcp_multiple_dir_trav_vuln_may17.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Cisco Prime Collaboration Provisioning Multiple Directory Traversal Vulnerabilities - May17
 #
@@ -30,20 +30,19 @@ CPE = "cpe:/a:cisco:prime_collaboration_provisioning";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811056");
-  script_version("$Revision: 6302 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-6637", "CVE-2017-6636");
   script_bugtraq_id(98530, 98526);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-10 19:10:53 +0200 (Sat, 10 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-29 13:39:30 +0530 (Mon, 29 May 2017)");
   script_name("Cisco Prime Collaboration Provisioning Multiple Directory Traversal Vulnerabilities - May17");
 
   script_tag(name:"summary", value:"This host is running cisco prime collaboration
   provisioning and is prone to multiple directory traversal vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist as the affected software
   does not perform proper input validation of HTTP requests and fails to apply
@@ -51,9 +50,7 @@ if (description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
   authenticated, remote attacker to view or delete any file on an affected
-  system.
-
-  Impact Level: System/Application");
+  system.");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -86,7 +83,6 @@ if(!version = get_app_version(cpe:CPE)) exit(0);
 
 if(version =~ "^((9|10|11)\.)")
 {
-  ## Checking for vulnerable version
   if((version == "9.0.0")|| (version == "9.5.0")|| (version == "10.0.0")||
      (version == "10.5.0")||(version == "10.5.1")||(version == "10.6.0")||
      (version == "10.6.2")||(version == "11.0.0"))

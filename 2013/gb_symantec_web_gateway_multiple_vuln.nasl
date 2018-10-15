@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_multiple_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_symantec_web_gateway_multiple_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Symantec Web Gateway Multiple Vulnerabilities-Aug2013
 #
@@ -28,21 +28,20 @@ CPE = "cpe:/a:symantec:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803732");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_bugtraq_id(61106, 61101, 61103, 61102, 61104);
   script_cve_id("CVE-2013-1616", "CVE-2013-1617", "CVE-2013-4670", "CVE-2013-4671",
                 "CVE-2013-4672");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-06 15:41:47 +0530 (Tue, 06 Aug 2013)");
   script_name("Symantec Web Gateway Multiple Vulnerabilities-Aug2013");
   script_tag(name:"summary", value:"This host is running Symantec Web Gateway and is prone to multiple
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Get the installed version Symantec Web Gateway with the help detect NVT and
 check the version is vulnerable or not.");
-  script_tag(name:"solution", value:"Upgrade to Symantec Web Gateway version 5.1.1 or later,
-For updates refer to http://www.symantec.com/business/web-gateway");
+  script_tag(name:"solution", value:"Upgrade to Symantec Web Gateway version 5.1.1 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -68,6 +67,7 @@ compromise a vulnerable system.");
   script_dependencies("gb_symantec_web_gateway_detect.nasl");
   script_mandatory_keys("symantec_web_gateway/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.symantec.com/business/web-gateway");
   exit(0);
 }
 

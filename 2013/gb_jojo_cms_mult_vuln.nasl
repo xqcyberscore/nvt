@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jojo_cms_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_jojo_cms_mult_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Jojo CMS Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803703");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-3081", "CVE-2013-3082");
   script_bugtraq_id(59934, 59933);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-23 15:54:25 +0530 (Thu, 23 May 2013)");
   script_name("Jojo CMS Multiple Vulnerabilities");
 
@@ -58,8 +58,7 @@ if(description)
 
   - An insufficient filtration of user-supplied data passed to 'search' HTTP
     POST parameter in '/forgot-password/' URI.");
-  script_tag(name:"solution", value:"Update to Jojo CMS 1.2.2 or later,
-  For updates refer to  http://www.jojocms.org");
+  script_tag(name:"solution", value:"Update to Jojo CMS 1.2.2 or later.");
   script_tag(name:"summary", value:"This host is installed with Jojo CMS and is prone to multiple
   vulnerabilities.");
 

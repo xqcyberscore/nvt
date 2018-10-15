@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2017-18_2017-19_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2017-18_2017-19_win.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Mozilla Firefox Security Updates(mfsa_2017-18_2017-19)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811571");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2017-7798", "CVE-2017-7800", "CVE-2017-7801", "CVE-2017-7809",
                 "CVE-2017-7784", "CVE-2017-7802", "CVE-2017-7785", "CVE-2017-7786",
                 "CVE-2017-7806", "CVE-2017-7753", "CVE-2017-7787", "CVE-2017-7807",
@@ -39,16 +39,16 @@ if(description)
                 "CVE-2017-7790", "CVE-2017-7796", "CVE-2017-7797", "CVE-2017-7780");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-10 11:40:27 +0530 (Thu, 10 Aug 2017)");
   script_name("Mozilla Firefox Security Updates( mfsa_2017-18_2017-19 )-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with
+  script_tag(name:"summary", value:"This host is installed with
   Mozilla Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
 
   - XUL injection in the style editor in devtools.
 
@@ -106,17 +106,15 @@ if(description)
 
   - Memory safety bugs fixed in Firefox 55 and Firefox ESR 52.3.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of these
+  script_tag(name:"impact", value:"Successful exploitation of these
   vulnerabilities will allow remote attackers to run arbitrary code, obtain
   sensitive information, cause denial of service, conduct cross-site scripting (XSS)
-  attack, spoofing attack and bypass existing memory protections.
+  attack, spoofing attack and bypass existing memory protections.");
 
-  Impact Level: Application.");
+  script_tag(name:"affected", value:"Mozilla Firefox version before 55.0 on Windows.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 55.0 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 55.0
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 55.0
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -129,6 +127,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_server_object_prop_xss_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_open_xchange_server_object_prop_xss_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Open-Xchange (OX) Server Object Properties Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806526");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-5375");
   script_bugtraq_id(76837);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-02 12:36:19 +0530 (Mon, 02 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) Server Object Properties Cross Site Scripting Vulnerability");
@@ -57,9 +57,7 @@ if(description)
   prior.");
 
   script_tag(name:"solution", value:"Upgrade to Open-Xchange (OX) Server version
-  6.22.9-rev15m or later.
-
-  For updates refer to https://www.open-xchange.com");
+  6.22.9-rev15m or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +69,7 @@ if(description)
   script_dependencies("gb_ox_server_detect.nasl");
   script_mandatory_keys("open_xchange_server/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.open-xchange.com");
   exit(0);
 }
 

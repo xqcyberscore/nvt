@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mailListIsPdf_bof_vuln_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_reader_mailListIsPdf_bof_vuln_lin.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Adobe Reader 'mailListIsPdf' Buffer Overflow Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804383");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2004-1152");
   script_bugtraq_id(11923);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-10 15:00:46 +0530 (Thu, 10 Apr 2014)");
   script_name("Adobe Reader 'mailListIsPdf' Buffer Overflow Vulnerability (Linux)");
 
@@ -47,8 +47,7 @@ input files.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code and
 compromise a user's system.");
   script_tag(name:"affected", value:"Adobe Reader version 5.0.9 on Linux.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 5.0.10 or later. For updates refer to
-http://get.adobe.com/reader");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 5.0.10 or later.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -61,6 +60,7 @@ http://get.adobe.com/reader");
   script_family("Buffer overflow");
   script_dependencies("gb_adobe_prdts_detect_lin.nasl");
   script_mandatory_keys("Adobe/Reader/Linux/Version");
+  script_xref(name:"URL", value:"http://get.adobe.com/reader");
   exit(0);
 }
 

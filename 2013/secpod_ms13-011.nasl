@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-011.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: secpod_ms13-011.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Media Decompression Remote Code Execution Vulnerability (2780091)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902947");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2013-0077");
   script_bugtraq_id(57857);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-13 09:05:59 +0530 (Wed, 13 Feb 2013)");
   script_name("Microsoft Windows Media Decompression Remote Code Execution Vulnerability (2780091)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52130/");
@@ -57,8 +57,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error in DirectShow when handling the decompression
   of media content, which can be exploited via specially crafted media content.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms13-011");
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS13-011.");
   script_tag(name:"qod_type", value:"registry");
@@ -81,7 +80,7 @@ if(!sysPath ){
   exit(0);
 }
 
-exeVer = fetch_file_version(sysPath, file_name:"system32\Quartz.dll");
+exeVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Quartz.dll");
 if(!exeVer){
   exit(0);
 }

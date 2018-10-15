@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln05_jul15.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_mysql_unspecified_vuln05_jul15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Oracle MySQL Unspecified Vulnerability-05 Jul15
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805932");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-4756");
   script_bugtraq_id(75785);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-21 11:40:41 +0530 (Tue, 21 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle MySQL Unspecified Vulnerability-05 Jul15");
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"Oracle MySQL Server 5.6.22 and earlier on Windows.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

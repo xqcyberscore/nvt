@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_vuln05_jan13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_mozilla_thunderbird_vuln05_jan13_macosx.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-05 January13 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803175");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2013-0760", "CVE-2013-0770");
   script_bugtraq_id(57199, 57207);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-16 17:04:59 +0530 (Wed, 16 Jan 2013)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-05 January13 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51752");
@@ -56,8 +56,8 @@ if(description)
 
   - Unspecified error in the browser engine can be exploited to corrupt memory.");
 
-  script_tag(name:"solution", value:"Upgrade to Thunderbird version to 17.0.2 or later,
-  For updates refers to http://www.mozilla.org/en-US/thunderbird/");
+  script_tag(name:"solution", value:"Upgrade to Thunderbird version to 17.0.2 or later.");
+  script_xref(name:"URL", value:"http://www.mozilla.org/en-US/thunderbird/");
 
   script_tag(name:"summary", value:"This host is installed with Mozilla Thunderbird and is prone to multiple
   vulnerabilities.");

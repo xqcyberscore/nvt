@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_md2_enabled.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_ipmi_md2_enabled.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # IPMI MD2 Auth Type Support Enabled
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103839");
-  script_version("$Revision: 11103 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 11865 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-11-26 12:33:03 +0100 (Tue, 26 Nov 2013)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -46,7 +46,7 @@ if (description)
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"summary", value:"IPMI MD2 auth type support is enabled on the remote host.");
 
- exit(0);
+  exit(0);
 }
 
 port = get_kb_item("Services/udp/ipmi");

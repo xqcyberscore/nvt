@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elite_bulletin_board_mult_sql_inj_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_elite_bulletin_board_mult_sql_inj_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Elite Bulletin Board Multiple SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803132");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-5874");
   script_bugtraq_id(57000);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-27 15:24:00 +0530 (Thu, 27 Dec 2012)");
   script_name("Elite Bulletin Board Multiple SQL Injection Vulnerabilities");
 
@@ -56,7 +56,7 @@ if(description)
   script_tag(name:"insight", value:"Input appended to the URL after multiple scripts is not properly sanitised
   within the 'update_whosonline_reg()' and 'update_whosonline_guest()'
   functions (includes/user_function.php) before being used in a SQL query.");
-  script_tag(name:"solution", value:"Upgrade to Elite Bulletin Board 2.1.22 or later,");
+  script_tag(name:"solution", value:"Upgrade to Elite Bulletin Board 2.1.22 or later.");
   script_tag(name:"summary", value:"This host is installed with Elite Bulletin Board and is prone to
   multiple SQL injection vulnerabilities.");
 

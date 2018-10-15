@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysax_multi_server_ssh_dos_vuln.nasl 11582 2018-09-25 06:26:12Z cfischer $
+# $Id: gb_sysax_multi_server_ssh_dos_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Sysax Multi Server SSH Component NULL Pointer Dereference DOS Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803191");
-  script_version("$Revision: 11582 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-16 11:21:21 +0530 (Tue, 16 Apr 2013)");
   script_name("Sysax Multi Server SSH Component NULL Pointer Dereference DOS Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52934");
@@ -50,11 +50,11 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to a NULL pointer dereference error within the SSH component
   when negotiating cipher keys and can be exploited to cause a crash via a
   specially crafted cipher.");
-  script_tag(name:"solution", value:"Upgrade to Sysax Multi Server 6.11 or later,
-  For updates refer to http://www.sysax.com/server");
+  script_tag(name:"solution", value:"Upgrade to Sysax Multi Server 6.11 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"The host is running Sysax Multi Server and is prone to denial of
   service vulnerability.");
+  script_xref(name:"URL", value:"http://www.sysax.com/server");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201204_03.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201204_03.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2011-3066", "CVE-2011-3067", "CVE-2011-3068", "CVE-2011-3069", "CVE-2011-3070", "CVE-2011-3071", "CVE-2011-3072", "CVE-2011-3073", "CVE-2011-3074", "CVE-2011-3075", "CVE-2011-3076", "CVE-2011-3077");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-30 07:59:57 -0400 (Mon, 30 Apr 2012)");
   script_name("Gentoo Security Advisory GLSA 201204-03 (chromium)");
   script_category(ACT_GATHER_INFO);
@@ -47,12 +47,11 @@ if(description)
   script_tag(name:"solution", value:"All Chromium users should upgrade to the latest version:
 
       # emerge --sync
-      # emerge --ask --oneshot --verbose '>=www-client/chromium-18.0.1025.151'
+      # emerge --ask --oneshot --verbose '>=www-client/chromium-18.0.1025.151'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201204-03
-http://bugs.gentoo.org/show_bug.cgi?id=410963
-http://googlechromereleases.blogspot.com/2012/04/stable-and-beta-channel-updates.html");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201204-03");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=410963");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.com/2012/04/stable-and-beta-channel-updates.html");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201204-03.");
   script_tag(name:"qod_type", value:"package");

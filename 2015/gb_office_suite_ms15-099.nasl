@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806109");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-2545");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 10:11:44 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Suite Remote Code Execution Vulnerabilities (3089664)");
@@ -54,8 +54,7 @@ if(description)
   Microsoft Office 2013 Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link, https://technet.microsoft.com/library/security/MS15-099");
+  hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

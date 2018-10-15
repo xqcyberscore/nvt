@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_showcase_java_method_exec_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_apache_struts_showcase_java_method_exec_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Apache Struts2 Showcase Arbitrary Java Method Execution vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802425");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-0838");
   script_bugtraq_id(49728);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-13 14:59:53 +0530 (Tue, 13 Mar 2012)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts2 Showcase Arbitrary Java Method Execution vulnerability");
@@ -53,7 +53,7 @@ if(description)
   denial of service or an arbitrary OS command can be executed.");
 
   script_tag(name:"affected", value:"Apache Struts2 (Showcase) version 2.x to 2.2.3");
-  script_tag(name:"solution", value:"Upgrade to Apache Struts2  2.2.3.1 or later,");
+  script_tag(name:"solution", value:"Upgrade to Apache Struts2  2.2.3.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

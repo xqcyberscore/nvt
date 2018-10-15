@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2014-0004_remote.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_VMSA-2014-0004_remote.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # VMSA-2014-0004: VMware product updates address OpenSSL security vulnerabilities (remote check)
 #
@@ -31,13 +31,13 @@ if (description)
   script_cve_id("CVE-2014-0076", "CVE-2014-0160");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
   script_name("VMSA-2014-0004 VMware product updates address OpenSSL security vulnerabilities");
 
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0004.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-08 13:04:01 +0100 (Thu, 08 May 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -75,7 +75,7 @@ if( ! fixed_builds[esxVersion] ) exit( 0 );
 if( int( esxBuild ) < int( fixed_builds[esxVersion] ) )
 {
   security_message(port:0, data: esxi_remote_report( ver:esxVersion, build: esxBuild, fixed_build: fixed_builds[esxVersion] ) );
-  exit( 0 );
+  exit(0);
 }
 
 exit( 99 );

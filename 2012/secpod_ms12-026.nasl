@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-026.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ms12-026.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # MS Forefront Unified Access Gateway Information Disclosure Vulnerability (2663860)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903018");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-0146", "CVE-2012-0147");
   script_bugtraq_id(52909, 52903);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-12 16:00:48 +0530 (Thu, 12 Apr 2012)");
   script_name("MS Forefront Unified Access Gateway Information Disclosure Vulnerability (2663860)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48787");
@@ -59,8 +59,8 @@ if(description)
 
   - Within the default website configuration allows access to certain content
     from the external network.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-026.");
   script_tag(name:"qod_type", value:"registry");

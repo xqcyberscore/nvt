@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-077.nasl 11576 2018-09-24 14:59:42Z cfischer $
+# $Id: secpod_ms13-077.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # MS Windows Service Control Manager Privilege Elevation Vulnerability (2872339)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902993");
-  script_version("$Revision: 11576 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-3862");
   script_bugtraq_id(62182);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 08:13:01 +0530 (Wed, 11 Sep 2013)");
   script_name("MS Windows Service Control Manager Privilege Elevation Vulnerability (2872339)");
 
@@ -40,9 +40,8 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security update according to
 Microsoft Bulletin MS13-077.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms13-077");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
   script_tag(name:"insight", value:"The flaw is due to a double-free error in the Service Control Manager
 (services.exe) when handling service descriptions from the registry.");
   script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
@@ -81,7 +80,7 @@ if(!sysPath ){
   exit(0);
 }
 
-exeVer = fetch_file_version(sysPath, file_name:"system32\Kernel32.dll");
+exeVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Kernel32.dll");
 if(!exeVer){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_seowonintech_devices_lfi_06_13.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_multiple_seowonintech_devices_lfi_06_13.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Seowonintech Routers Local File Include Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103744");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
@@ -36,7 +36,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/seowonintech-routers-remote-root-file-dumper");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 12:38:49 +0200 (Mon, 24 Jun 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -53,11 +53,11 @@ fails to properly sanitize user-supplied input.
 An attacker can exploit this vulnerability to obtain potentially
 sensitive information and to execute arbitrary local scripts in
 the context of the webserver process. This may allow the attacker
-to compromise the application and the computer; other attacks are
+to compromise the application and the computer. Other attacks are
 also possible.
 
-Seowonintech Router Firmware <= 2.3.9 is vulnerable; other versions may also be affected.");
- exit(0);
+Seowonintech Router Firmware <= 2.3.9 is vulnerable. Other versions may also be affected.");
+  exit(0);
 }
 
 

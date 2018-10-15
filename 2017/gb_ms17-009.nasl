@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-009.nasl 11816 2018-10-10 10:42:56Z mmartin $
+# $Id: gb_ms17-009.nasl 11879 2018-10-12 12:48:49Z mmartin $
 #
 # Microsoft Windows PDF Library Memory Corruption Vulnerability (4010319)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810622");
-  script_version("$Revision: 11816 $");
+  script_version("$Revision: 11879 $");
   script_cve_id("CVE-2017-0023");
   script_bugtraq_id(96075);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 08:29:25 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows PDF Library Memory Corruption Vulnerability (4010319)");
@@ -90,9 +90,9 @@ if(!sysPath ){
   exit(0);
 }
 
-pdfVer = fetch_file_version(sysPath, file_name:"system32\Windows.data.pdf.dll");
-pdfVer1 = fetch_file_version(sysPath, file_name:"system32\Win32k.sys");
-edgeVer = fetch_file_version(sysPath, file_name:"system32\Edgehtml.dll");
+pdfVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Windows.data.pdf.dll");
+pdfVer1 = fetch_file_version(sysPath:sysPath, file_name:"system32\Win32k.sys");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Edgehtml.dll");
 if(!pdfVer && !pdfVer1 && !edgeVer){
   exit(0);
 }

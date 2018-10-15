@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_fusion_catid_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_php_fusion_catid_xss_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # PHP-Fusion 'cat-id' Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php-fusion:php-fusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803221");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2012-6043");
   script_bugtraq_id(51365);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-01 10:26:58 +0530 (Fri, 01 Feb 2013)");
   script_name("PHP-Fusion 'cat-id' Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -50,8 +50,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to input passed via the 'cat_id' parameter to
   'downloads.php' is not properly sanitized before being it is
   returned to the user.");
-  script_tag(name:"solution", value:"Apply the patch or upgrade to 7.02.05 or later,
-  For updates refer to http://www.php-fusion.co.uk/index.php");
+  script_tag(name:"solution", value:"Apply the patch or upgrade to 7.02.05 or later.");
   script_tag(name:"summary", value:"This host is installed with PHP-Fusion and is prone cross site
   scripting vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to insert arbitrary HTML and
@@ -62,6 +61,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.php-fusion.co.uk/index.php");
   exit(0);
 }
 

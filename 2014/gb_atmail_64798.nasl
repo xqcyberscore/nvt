@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atmail_64798.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_atmail_64798.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Atmail Multiple Unspecified Security Vulnerabilities.
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2013-5034", "CVE-2013-5033", "CVE-2013-5032", "CVE-2013-5031");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Atmail Multiple Unspecified Security Vulnerabilities.");
 
@@ -45,7 +45,7 @@ if (description)
   script_xref(name:"URL", value:"http://blog.atmail.com/2013/atmail-7-1-2-security-hotfix/");
   script_xref(name:"URL", value:"http://atmail.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-14 12:23:14 +0100 (Tue, 14 Jan 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -67,7 +67,7 @@ if (description)
 
   script_tag(name:"affected", value:"Versions prior to Atmail 6.6.4 and 7.1.2 are vulnerable.");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

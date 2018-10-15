@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gom_player_dos_vuln_sep14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_gom_player_dos_vuln_sep14_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # GOM Media Player Denial of Service Vulnerability Sep14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:gomlab:gom_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804903");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-3899");
   script_bugtraq_id(69182);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-09-15 12:54:27 +0530 (Mon, 15 Sep 2014)");
 
   script_name("GOM Media Player Denial of Service Vulnerability Sep14 (Windows)");
@@ -55,7 +55,7 @@ if(description)
   and prior on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to GOM Media Player version 2.2.62.5209
-  or later, For updates refer to http://www.gomlab.com/eng/");
+  or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +67,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("secpod_gom_player_detect_win.nasl");
   script_mandatory_keys("GOM/Player/Ver/Win");
+  script_xref(name:"URL", value:"http://www.gomlab.com/eng/");
   exit(0);
 }
 

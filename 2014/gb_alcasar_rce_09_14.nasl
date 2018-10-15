@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alcasar_rce_09_14.nasl 11207 2018-09-04 07:22:57Z mmartin $
+# $Id: gb_alcasar_rce_09_14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # ALCASAR Remote Code Execution Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105082");
-  script_version("$Revision: 11207 $");
+  script_version("$Revision: 11867 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("ALCASAR Remote Code Execution Vulnerability");
@@ -43,7 +43,7 @@ if (description)
   script_tag(name:"summary", value:"ALCASARis prone to a remote code execution vulnerability.");
   script_tag(name:"affected", value:"ALCASAR <= 2.8");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 09:22:57 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-09-08 11:48:21 +0200 (Mon, 08 Sep 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -53,7 +53,7 @@ if (description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

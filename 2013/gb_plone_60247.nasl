@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plone_60247.nasl 11041 2018-08-17 14:03:47Z mmartin $
+# $Id: gb_plone_60247.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # PloneFormGen Arbitrary Code Execution Vulnerability
 #
@@ -30,7 +30,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103736");
   script_bugtraq_id(60247);
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
 
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60247");
   script_xref(name:"URL", value:"http://plone.org/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-12 11:35:33 +0200 (Wed, 12 Jun 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -58,7 +58,7 @@ the context of the application.
 
 PloneFormGen 1.7.4 through 1.7.8 are vulnerable, other versions may
 also be affected.");
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

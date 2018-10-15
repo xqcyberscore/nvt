@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mult_vuln_sep12_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_realplayer_mult_vuln_sep12_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities - Sep12 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803030");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-2407", "CVE-2012-2408", "CVE-2012-2409", "CVE-2012-2410",
                 "CVE-2012-3234");
   script_bugtraq_id(55473);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-21 16:04:53 +0530 (Fri, 21 Sep 2012)");
   script_name("RealNetworks RealPlayer Multiple Vulnerabilities - Sep12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47896/");
@@ -57,7 +57,7 @@ if(description)
 
   - Handling RealMedia files, which can be exploited to cause a buffer
     overflow.");
-  script_tag(name:"solution", value:"Upgrade to RealPlayer version 15.0.6.14 or later,");
+  script_tag(name:"solution", value:"Upgrade to RealPlayer version 15.0.6.14 or later.");
   script_tag(name:"summary", value:"This host is installed with RealPlayer which is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

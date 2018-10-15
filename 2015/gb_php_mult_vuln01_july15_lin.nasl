@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805684");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-1353", "CVE-2013-6501");
   script_bugtraq_id(72267, 72530);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 13:10:57 +0530 (Thu, 23 Jul 2015)");
   script_name("PHP Multiple Vulnerabilities - 01 - Jul15 (Linux)");
 
@@ -58,8 +58,7 @@ if(description)
 
   script_tag(name:"affected", value:"PHP versions through 5.6.7");
 
-  script_tag(name:"solution", value:"Upgrade to PHP 5.6.8 or later.
-  For updates refer to http://www.php.net");
+  script_tag(name:"solution", value:"Upgrade to PHP 5.6.8 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -73,6 +72,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_unixoide");
+  script_xref(name:"URL", value:"http://www.php.net");
   exit(0);
 }
 

@@ -29,12 +29,12 @@ CPE = "cpe:/a:apple:quicktime";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804053");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2010-1819");
   script_bugtraq_id(42774);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-31 12:44:42 +0530 (Tue, 31 Dec 2013)");
   script_name("Apple QuickTime Pictureviewer Arbitrary Code Execution Vulnerability Dec13 (Windows)");
 
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apple QuickTime and is prone to code execution
 vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Upgrade to Apple QuickTime version 7.6.8 or later,
-For updates refer to http://support.apple.com/downloads");
+  script_tag(name:"solution", value:"Upgrade to Apple QuickTime version 7.6.8 or later.");
   script_tag(name:"insight", value:"Flaw is due to the PictureViewer application loading libraries
 (e.g. CoreGraphics.dll) in an insecure manner.");
   script_tag(name:"affected", value:"Apple QuickTime version before 7.6.8 on Windows");
@@ -60,6 +59,7 @@ compromise a vulnerable system.");
   script_family("General");
   script_dependencies("secpod_apple_quicktime_detection_win_900124.nasl");
   script_mandatory_keys("QuickTime/Win/Ver");
+  script_xref(name:"URL", value:"http://support.apple.com/downloads");
   exit(0);
 }
 

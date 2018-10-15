@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_quidway_priv_esc_vuln.nasl 5208 2017-02-06 10:00:07Z ckuerste $
+# $Id: gb_huawei_quidway_priv_esc_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Huawei Quidway Switches Privilege Escalation Vulnerability
 #
@@ -29,17 +29,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106571");
-  script_version("$Revision: 5208 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-06 11:00:07 +0100 (Mon, 06 Feb 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-06 14:03:54 +0700 (Mon, 06 Feb 2017)");
-  script_tag(name: "cvss_base", value: "7.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-06 14:03:54 +0700 (Mon, 06 Feb 2017)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_cve_id("CVE-2015-1460");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Huawei Quidway Switches Privilege Escalation Vulnerability");
 
@@ -50,22 +50,22 @@ if (description)
   script_dependencies("gb_huawei_switch_detect.nasl");
   script_mandatory_keys("huawei_switch/detected", "huawei_switch/model", "huawei_switch/version");
 
-  script_tag(name: "summary", value: "Huawei Quidway switches are prone to a privilege escalation vulnerability.");
+  script_tag(name:"summary", value:"Huawei Quidway switches are prone to a privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Huawei Quidway switches allows remote attackers to gain privileges via a
+  script_tag(name:"insight", value:"Huawei Quidway switches allows remote attackers to gain privileges via a
 crafted packet.");
 
-  script_tag(name: "impact", value: "Attackers may exploit this vulnerability to obtain higher access
+  script_tag(name:"impact", value:"Attackers may exploit this vulnerability to obtain higher access
 permissions.");
 
-  script_tag(name: "affected", value: "Quidway S2350, S2750, S5300, S5700, S6300, S6700, S7700, S9300, S9300E and
+  script_tag(name:"affected", value:"Quidway S2350, S2750, S5300, S5700, S6300, S6700, S7700, S9300, S9300E and
 S9700 with versions prior to V200R005C00SPC300");
 
-  script_tag(name: "solution", value: "Upgrade to Version V200R005C00SPC300 or later");
+  script_tag(name:"solution", value:"Upgrade to Version V200R005C00SPC300 or later");
 
-  script_xref(name: "URL", value: "http://www.huawei.com/en/psirt/security-advisories/hw-411975");
+  script_xref(name:"URL", value:"http://www.huawei.com/en/psirt/security-advisories/hw-411975");
 
   exit(0);
 }

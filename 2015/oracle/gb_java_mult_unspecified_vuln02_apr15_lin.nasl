@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln02_apr15_lin.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_java_mult_unspecified_vuln02_apr15_lin.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Apr 2015 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108397");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-0491", "CVE-2015-0488", "CVE-2015-0480", "CVE-2015-0478",
                 "CVE-2015-0477", "CVE-2015-0469", "CVE-2015-0460", "CVE-2015-0459");
   script_bugtraq_id(74094, 74111, 74104, 74147, 74119, 74072, 74097, 74083);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-21 16:34:06 +0530 (Tue, 21 Apr 2015)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Apr 2015 (Linux)");
 
@@ -75,9 +75,7 @@ if(description)
   6 update 91 and prior, 7 update 76 and prior, and 8 update 40 and prior on
   Linux.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-
-  http://www.oracle.com/technetwork/topics/security/cpuapr2015-2365600.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

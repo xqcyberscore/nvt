@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printer_66690.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: gb_hp_printer_66690.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # HP Officejet Pro X Printers, Certain Officejet Pro Printers, Remote Disclosure of Information
 #
@@ -32,14 +32,14 @@ if (description)
   script_cve_id("CVE-2014-0160");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11194 $");
+  script_version("$Revision: 11867 $");
 
   script_name("HP Officejet Pro X Printers, Certain Officejet Pro Printers, Remote Disclosure of Information");
 
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/531993");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-03 16:01:41 +0200 (Tue, 03 Jun 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -75,7 +75,7 @@ HP Officejet Pro 8630    < FDP1CN1416AR
 HP Officejet Pro 8640    < FDP1CN1416AR
 HP Officejet Pro 8660    < FDP1CN1416AR");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

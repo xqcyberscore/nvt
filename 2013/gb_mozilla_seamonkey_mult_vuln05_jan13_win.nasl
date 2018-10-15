@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_seamonkey_mult_vuln05_jan13_win.nasl 11582 2018-09-25 06:26:12Z cfischer $
+# $Id: gb_mozilla_seamonkey_mult_vuln05_jan13_win.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # Mozilla SeaMonkey Multiple Vulnerabilities-05 January13 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803178");
-  script_version("$Revision: 11582 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2013-0760", "CVE-2013-0770");
   script_bugtraq_id(57199, 57207);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-16 17:04:59 +0530 (Wed, 16 Jan 2013)");
   script_name("Mozilla SeaMonkey Multiple Vulnerabilities-05 January13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51752");
@@ -52,8 +52,8 @@ if(description)
     exploited to cause a buffer overflow.
 
   - Unspecified error in the browser engine can be exploited to corrupt memory.");
-  script_tag(name:"solution", value:"Upgrade to SeaMonkey version to 2.15 or later,
-  http://www.mozilla.org/projects/seamonkey/");
+  script_tag(name:"solution", value:"Upgrade to SeaMonkey version to 2.15 or later.");
+  script_xref(name:"URL", value:"http://www.mozilla.org/projects/seamonkey/");
   script_tag(name:"summary", value:"This host is installed with Mozilla SeaMonkey and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

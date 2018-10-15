@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-059.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ms12-059.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Office Visio/Viewer Remote Code Execution Vulnerability (2733918)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902921");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2012-1888");
   script_bugtraq_id(54934);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-15 09:48:21 +0530 (Wed, 15 Aug 2012)");
   script_name("Microsoft Office Visio/Viewer Remote Code Execution Vulnerability (2733918)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50228/");
@@ -53,8 +53,8 @@ if(description)
   script_tag(name:"insight", value:"Error in the way that Microsoft Office Visio/Viewer validates data when
   parsing specially crafted Visio files and can be exploited to corrupt memory
   via a specially crafted Visio file.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-059.");
   script_tag(name:"qod_type", value:"registry");
@@ -73,7 +73,7 @@ sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
                              "\App Paths\visio.exe", item:"Path");
 if(sysPath)
 {
-  exeVer = fetch_file_version(sysPath, file_name:"visio.exe");
+  exeVer = fetch_file_version(sysPath:sysPath, file_name:"visio.exe");
   if(exeVer)
   {
     if(version_in_range(version:exeVer, test_version:"14.0", test_version2:"14.0.6122.4999"))

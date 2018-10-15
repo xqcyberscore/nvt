@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winamp_mult_code_exec_n_dos_vuln.nasl 10787 2018-08-06 10:11:55Z asteins $
+# $Id: gb_winamp_mult_code_exec_n_dos_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Winamp '.flv' File Processing Denial of Service And Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nullsoft:winamp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811547");
-  script_version("$Revision: 10787 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-10725", "CVE-2017-10726", "CVE-2017-10727", "CVE-2017-10728");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 12:11:55 +0200 (Mon, 06 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-02 16:51:17 +0530 (Wed, 02 Aug 2017)");
   script_name("Winamp '.flv' File Processing Denial of Service And Code Execution Vulnerabilities");
 
@@ -46,9 +46,7 @@ if(description)
   corruption errors when handling malicious '.flv' files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code or cause a denial of service.
-
-  Impact Level: Application");
+  attackers to execute arbitrary code or cause a denial of service.");
 
   script_tag(name:"affected", value:"Winamp version 5.666 Build 3516(x86).");
 

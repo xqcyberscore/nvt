@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201209_25.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201209_25.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2007-5269", "CVE-2007-5503", "CVE-2007-5671", "CVE-2008-0967", "CVE-2008-1340", "CVE-2008-1361", "CVE-2008-1362", "CVE-2008-1363", "CVE-2008-1364", "CVE-2008-1392", "CVE-2008-1447", "CVE-2008-1806", "CVE-2008-1807", "CVE-2008-1808", "CVE-2008-2098", "CVE-2008-2100", "CVE-2008-2101", "CVE-2008-4915", "CVE-2008-4916", "CVE-2008-4917", "CVE-2009-0040", "CVE-2009-0909", "CVE-2009-0910", "CVE-2009-1244", "CVE-2009-2267", "CVE-2009-3707", "CVE-2009-3732", "CVE-2009-3733", "CVE-2009-4811", "CVE-2010-1137", "CVE-2010-1138", "CVE-2010-1139", "CVE-2010-1140", "CVE-2010-1141", "CVE-2010-1142", "CVE-2010-1143", "CVE-2011-3868");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-03 11:11:29 -0400 (Wed, 03 Oct 2012)");
   script_name("Gentoo Security Advisory GLSA 201209-25 (vmware-server vmware-player vmware-workstation)");
   script_category(ACT_GATHER_INFO);
@@ -67,19 +67,18 @@ however these packages are not currently stable.
 Gentoo discontinued support for VMware Server. We recommend that users
   unmerge VMware Server:
 
-      # emerge --unmerge 'app-emulation/vmware-server'
+      # emerge --unmerge 'app-emulation/vmware-server'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201209-25
-http://bugs.gentoo.org/show_bug.cgi?id=213548
-http://bugs.gentoo.org/show_bug.cgi?id=224637
-http://bugs.gentoo.org/show_bug.cgi?id=236167
-http://bugs.gentoo.org/show_bug.cgi?id=245941
-http://bugs.gentoo.org/show_bug.cgi?id=265139
-http://bugs.gentoo.org/show_bug.cgi?id=282213
-http://bugs.gentoo.org/show_bug.cgi?id=297367
-http://bugs.gentoo.org/show_bug.cgi?id=335866
-http://bugs.gentoo.org/show_bug.cgi?id=385727");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201209-25");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=213548");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=224637");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=236167");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=245941");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=265139");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=282213");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=297367");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=335866");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=385727");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201209-25.");
   script_tag(name:"qod_type", value:"package");

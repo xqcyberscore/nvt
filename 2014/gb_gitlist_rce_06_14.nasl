@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gitlist_rce_06_14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_gitlist_rce_06_14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Gitlist Remote Code Execution Vulnerability
 #
@@ -31,10 +31,10 @@ if (description)
   script_cve_id("CVE-2014-4511");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
   script_name("Gitlist Remote Code Execution Vulnerability");
   script_xref(name:"URL", value:"http://hatriot.github.io/blog/2014/06/29/gitlist-rce/");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-30 13:00:23 +0200 (Mon, 30 Jun 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -54,7 +54,7 @@ complete lack of input sanitizatioin");
   script_tag(name:"summary", value:"Gitlist is prone to remote code execution vulnerability.");
   script_tag(name:"affected", value:"Gitlist <= 0.4.0");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

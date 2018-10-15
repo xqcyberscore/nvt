@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_pretty_link_plugin_mult_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_wordpress_pretty_link_plugin_mult_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # WordPress Pretty Link Lite Plugin SQL Injection And XSS Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802857");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_bugtraq_id(53531);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -63,7 +63,7 @@ if(description)
   - 'page' parameter to '/wp-admin/admin.php', which allows attacker to
     manipulate SQL queries by injecting arbitrary SQL code.");
 
-  script_tag(name:"solution", value:"Upgrade to Pretty Link Lite Plugin version 1.5.4 or later,");
+  script_tag(name:"solution", value:"Upgrade to Pretty Link Lite Plugin version 1.5.4 or later.");
 
   script_tag(name:"summary", value:"This host is running WordPress with Pretty Link Lite plugin and is
   prone to sql injection and cross site scripting vulnerabilities.");

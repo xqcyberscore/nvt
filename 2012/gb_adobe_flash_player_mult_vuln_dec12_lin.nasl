@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_dec12_lin.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_adobe_flash_player_mult_vuln_dec12_lin.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities - December12 (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803076");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-5676", "CVE-2012-5677", "CVE-2012-5678");
   script_bugtraq_id(56892, 56896, 56898);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-14 15:33:01 +0530 (Fri, 14 Dec 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - December12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51560/");
@@ -50,7 +50,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Flash Player version before 10.3.183.48, 11.x before 11.2.202.258 on Linux");
   script_tag(name:"insight", value:"Multiple unspecified errors and integer overflow exists that could lead to
   code execution.");
-  script_tag(name:"solution", value:"Update to Adobe Flash Player version 10.3.183.48 or 11.2.202.258 or later,");
+  script_tag(name:"solution", value:"Update to Adobe Flash Player version 10.3.183.48 or 11.2.202.258 or later.");
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");

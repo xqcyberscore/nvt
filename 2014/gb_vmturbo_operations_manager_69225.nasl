@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmturbo_operations_manager_69225.nasl 11497 2018-09-20 10:31:54Z mmartin $
+# $Id: gb_vmturbo_operations_manager_69225.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # VMTurbo Operations Manager '/cgi-bin/vmtadmin.cgi' Remote Command Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-5073");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11497 $");
+  script_version("$Revision: 11867 $");
 
   script_name("VMTurbo Operations Manager '/cgi-bin/vmtadmin.cgi' Remote Command Execution Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/69225");
   script_xref(name:"URL", value:"http://secunia.com/secunia_research/2014-8/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-08-18 14:14:43 +0200 (Mon, 18 Aug 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -66,7 +66,7 @@ and execute arbitrary shell commands with privileges of the 'wwwrun' user.");
 vulnerability.");
   script_tag(name:"affected", value:"VMTurbo Operations Manager 4.6 and prior are vulnerable.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

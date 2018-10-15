@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-021.nasl 11612 2018-09-26 05:47:26Z cfischer $
+# $Id: gb_ms15-021.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Adobe Font Driver Remote Code Execution Vulnerabilities (3032323)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805052");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-0074", "CVE-2015-0087", "CVE-2015-0088", "CVE-2015-0089",
                 "CVE-2015-0090", "CVE-2015-0091", "CVE-2015-0092", "CVE-2015-0093");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-11 08:54:31 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Adobe Font Driver Remote Code Execution Vulnerabilities (3032323)");
@@ -93,7 +93,7 @@ if(!sysPath ){
   exit(0);
 }
 
-userVer = fetch_file_version(sysPath, file_name:"system32\Atmfd.dll");
+userVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Atmfd.dll");
 if(!userVer){
   exit(0);
 }

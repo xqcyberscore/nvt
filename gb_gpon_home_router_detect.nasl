@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gpon_home_router_detect.nasl 9726 2018-05-04 08:43:38Z jschulte $
+# $Id: gb_gpon_home_router_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # GPON Home Router Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113169");
-  script_version("$Revision: 9726 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-04 10:43:38 +0200 (Fri, 04 May 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-03 16:40:00 +0200 (Thu, 03 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,7 +48,7 @@ if( description )
 
   script_tag(name:"summary", value:"GPON Home Router Detection.");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

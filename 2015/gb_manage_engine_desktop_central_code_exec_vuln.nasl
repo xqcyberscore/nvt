@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_code_exec_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_manage_engine_desktop_central_code_exec_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # ManageEngine Desktop Central MSP Arbitrary Code Execution Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805716");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-08 18:54:23 +0530 (Wed, 08 Jul 2015)");
 
   script_name("ManageEngine Desktop Central MSP Arbitrary Code Execution Vulnerability");
@@ -53,8 +53,7 @@ if (description)
   before 90075.");
 
   script_tag(name:"solution", value:"Upgrade to ManageEngine Desktop Central
-  MSP 90075 or later.
-  For updates refer to https://www.manageengine.com/desktop-management-msp");
+  MSP 90075 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ if (description)
   script_mandatory_keys("ManageEngine/Desktop_Central/installed");
   script_require_ports("Services/www", 8383);
 
+  script_xref(name:"URL", value:"https://www.manageengine.com/desktop-management-msp");
   exit(0);
 }
 

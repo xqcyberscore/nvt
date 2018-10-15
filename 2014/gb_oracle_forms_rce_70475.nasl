@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_forms_rce_70475.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_oracle_forms_rce_70475.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Oracle E-Business Suite/Oracle Forms Remote Security Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2014-4278");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Oracle E-Business Suite/Oracle Forms Remote Security Vulnerability");
 
@@ -54,7 +54,7 @@ Oracle E-Business Suite 12..6, 12.1.3, 12.2.2, 12.2.3, 12.2.4
 Oracle Forms 10g");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-13 14:38:29 +0100 (Thu, 13 Nov 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -64,7 +64,7 @@ Oracle Forms 10g");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

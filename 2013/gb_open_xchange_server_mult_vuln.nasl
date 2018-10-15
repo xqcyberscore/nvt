@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_server_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_open_xchange_server_mult_vuln.nasl 11866 2018-10-12 10:12:29Z cfischer $
 #
 # Open-Xchange Server Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803182");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11866 $");
   script_cve_id("CVE-2013-1646", "CVE-2013-1647", "CVE-2013-1648", "CVE-2013-1650",
                 "CVE-2013-1651");
   script_bugtraq_id(58465, 58473, 58475, 58469, 58470);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:12:29 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-03-18 10:14:58 +0530 (Mon, 18 Mar 2013)");
   script_name("Open-Xchange Server Multiple Vulnerabilities");
 
@@ -74,14 +74,14 @@ if(description)
 
   - Certain input related to RSS feed contents is not properly sanitized before
     being used. This can be exploited to insert arbitrary HTML and script code.");
-  script_tag(name:"solution", value:"Update to versions 6.20.7-rev14, 6.22.0-rev13, or 6.22.1-rev14,
-  For updates refer to http://www.open-xchange.com/home.html");
+  script_tag(name:"solution", value:"Update to versions 6.20.7-rev14, 6.22.0-rev13, or 6.22.1-rev14.");
   script_tag(name:"summary", value:"This host is running Open-Xchange Server and is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.open-xchange.com/home.html");
   exit(0);
 }
 

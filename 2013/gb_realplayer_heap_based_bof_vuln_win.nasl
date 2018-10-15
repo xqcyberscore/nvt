@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_heap_based_bof_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_realplayer_heap_based_bof_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # RealNetworks RealPlayer Heap Based BoF Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803601");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1750");
   script_bugtraq_id(58539);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-14 18:27:30 +0530 (Tue, 14 May 2013)");
   script_name("RealNetworks RealPlayer Heap Based BoF Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://www.scip.ch/en/?vuldb.8026");
@@ -49,12 +49,12 @@ if(description)
   script_tag(name:"affected", value:"RealPlayer version 16.0.0.0 and prior");
   script_tag(name:"insight", value:"Flaw due to improper sanitization of user-supplied input when parsing MP4
   files.");
-  script_tag(name:"solution", value:"Upgrade to RealPlayer version 16.0.1.18 or later,
-  For updates refer to http://www.real.com/player");
+  script_tag(name:"solution", value:"Upgrade to RealPlayer version 16.0.1.18 or later.");
   script_tag(name:"summary", value:"This host is installed with RealPlayer which is prone to heap
   based buffer overflow vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.real.com/player");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201211_01.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201211_01.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2010-3303", "CVE-2010-3763", "CVE-2010-4348", "CVE-2010-4349", "CVE-2010-4350", "CVE-2011-2938", "CVE-2011-3356", "CVE-2011-3357", "CVE-2011-3358", "CVE-2011-3578", "CVE-2011-3755", "CVE-2012-1118", "CVE-2012-1119", "CVE-2012-1120", "CVE-2012-1121", "CVE-2012-1122", "CVE-2012-1123", "CVE-2012-2691", "CVE-2012-2692");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-16 03:21:29 -0500 (Fri, 16 Nov 2012)");
   script_name("Gentoo Security Advisory GLSA 201211-01 (MantisBT)");
   script_category(ACT_GATHER_INFO);
@@ -47,15 +47,14 @@ which allowing for local file inclusion.");
   script_tag(name:"solution", value:"All MantisBT users should upgrade to the latest version:
 
       # emerge --sync
-      # emerge --ask --oneshot --verbose '>=www-apps/mantisbt-1.2.11'
+      # emerge --ask --oneshot --verbose '>=www-apps/mantisbt-1.2.11'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201211-01
-http://bugs.gentoo.org/show_bug.cgi?id=348761
-http://bugs.gentoo.org/show_bug.cgi?id=381417
-http://bugs.gentoo.org/show_bug.cgi?id=386153
-http://bugs.gentoo.org/show_bug.cgi?id=407121
-http://bugs.gentoo.org/show_bug.cgi?id=420375");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201211-01");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=348761");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=381417");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=386153");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=407121");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=420375");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201211-01.");
   script_tag(name:"qod_type", value:"package");

@@ -28,10 +28,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804059");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-09 17:04:49 +0530 (Thu, 09 Jan 2014)");
   script_name("WordPress WP-Members Multiple Cross Site Scripting Vulnerabilities");
 
@@ -40,8 +40,7 @@ if(description)
 multiple cross site scripting vulnerabilities.");
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to read
 cookie or not.");
-  script_tag(name:"solution", value:"Upgrade to version Wordpress WP-Members Plugin 2.8.10 or later,
-For updates refer to http://wordpress.org/plugins/wp-members");
+  script_tag(name:"solution", value:"Upgrade to version Wordpress WP-Members Plugin 2.8.10 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Flaws are due to input sanitation errors in multiple GET and POST parameter.");
   script_tag(name:"affected", value:"Wordpress WP-Members Plugin version 2.8.9, Other versions may also be affected.");

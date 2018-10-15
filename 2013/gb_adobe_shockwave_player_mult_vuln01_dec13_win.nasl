@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln01_dec13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_adobe_shockwave_player_mult_vuln01_dec13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities-01 Dec13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:shockwave_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804172");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-5334", "CVE-2013-5333");
   script_bugtraq_id(64197, 64200);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-18 18:10:27 +0530 (Wed, 18 Dec 2013)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities-01 Dec13 (Windows)");
 
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Adobe Shockwave Player and is prone to multiple
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Upgrade to version 12.0.7.148 or later
-For updates refer to http://get.adobe.com/shockwave");
+  script_tag(name:"solution", value:"Upgrade to version 12.0.7.148 or later.");
   script_tag(name:"insight", value:"Flaws are due to multiple unspecified errors.");
   script_tag(name:"affected", value:"Adobe Shockwave Player before 12.0.7.148 on Windows.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code, cause
@@ -58,6 +57,7 @@ memory corruption and compromise a user's system.");
   script_family("General");
   script_dependencies("secpod_adobe_shockwave_player_detect.nasl");
   script_mandatory_keys("Adobe/ShockwavePlayer/Ver");
+  script_xref(name:"URL", value:"http://get.adobe.com/shockwave");
   exit(0);
 }
 

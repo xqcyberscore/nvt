@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln02_oct14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_mysql_unspecified_vuln02_oct14_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Oracle MySQL Multiple Unspecified vulnerabilities-02 Oct14 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804781");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-6559", "CVE-2014-6555", "CVE-2014-6507", "CVE-2014-6500",
                 "CVE-2014-6496", "CVE-2014-6494", "CVE-2014-6491", "CVE-2014-6469",
                 "CVE-2014-6464");
   script_bugtraq_id(70487, 70530, 70550, 70478, 70469, 70497, 70444, 70446, 70451);
   script_tag(name:"cvss_base", value:"8.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-20 13:30:37 +0530 (Mon, 20 Oct 2014)");
 
   script_name("Oracle MySQL Multiple Unspecified vulnerabilities-02 Oct14 (Windows)");
@@ -58,8 +58,7 @@ if(description)
   script_tag(name:"affected", value:"MySQL Server version 5.5.39 and earlier,
   and 5.6.20 and earlier on Windows.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/topics/security/cpuoct2014-1972960.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/60599");
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2014-1972960.html");

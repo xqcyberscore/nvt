@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_searchblox_mult_vuln_sept13.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_searchblox_mult_vuln_sept13.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # SearchBlox Multiple Vulnerabilities Sept-13
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802060");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_bugtraq_id(61973, 61974, 61975);
   script_cve_id("CVE-2013-3598", "CVE-2013-3597", "CVE-2013-3590");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-03 10:46:51 +0530 (Tue, 03 Sep 2013)");
   script_name("SearchBlox Multiple Vulnerabilities Sept-13");
 
   script_tag(name:"summary", value:"This host is running SearchBlox and is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to
   get confidential information.");
-  script_tag(name:"solution", value:"Upgrade to SearchBlox version 7.5 build 1 or later,
-  For updates refer to http://www.searchblox.com");
+  script_tag(name:"solution", value:"Upgrade to SearchBlox version 7.5 build 1 or later.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - Input passed via 'name' parameter to 'servlet/CreateTemplateServlet' not

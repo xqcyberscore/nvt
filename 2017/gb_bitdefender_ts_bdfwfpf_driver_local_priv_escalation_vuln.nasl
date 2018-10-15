@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitdefender_ts_bdfwfpf_driver_local_priv_escalation_vuln.nasl 9297 2018-04-04 10:04:33Z ckuersteiner $
+# $Id: gb_bitdefender_ts_bdfwfpf_driver_local_priv_escalation_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Bitdefender Total Security 'bdfwfpf' Kernel Driver Privilege Escalation Vulnerability
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:bitdefender:total_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811803");
-  script_version("$Revision: 9297 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-10950");
   script_bugtraq_id(100418);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 12:04:33 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-05 16:45:12 +0530 (Tue, 05 Sep 2017)");
   script_name("Bitdefender Total Security 'bdfwfpf' Kernel Driver Privilege Escalation Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with Bitdefender
   Total Security and is prone to local privilege escalation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error with the
   processing of the 0x8000E038 IOCTL in the bdfwfpf driver. The issue results
@@ -51,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow local
   attacker to execute arbitrary code in the context of SYSTEM with elevated
-  privileges.
-
-  Impact Level: System/Application");
+  privileges.");
 
   script_tag(name:"affected", value:"Bitdefender Total Security 21.0.24.62.");
 
@@ -61,8 +58,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name: "URL" , value: "https://vuldb.com/de/?id.105907");
-  script_xref(name: "URL", value: "https://www.zerodayinitiative.com/advisories/ZDI-17-693/");
+  script_xref(name:"URL", value:"https://vuldb.com/de/?id.105907");
+  script_xref(name:"URL", value:"https://www.zerodayinitiative.com/advisories/ZDI-17-693/");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

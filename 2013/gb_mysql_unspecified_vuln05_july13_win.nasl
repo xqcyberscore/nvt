@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln05_july13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_mysql_unspecified_vuln05_july13_win.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # MySQL Unspecified vulnerabilities-05 July-2013 (Windows)
 #
@@ -29,22 +29,20 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803727");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-3811", "CVE-2013-3806", "CVE-2013-3810", "CVE-2013-3807",
                 "CVE-2013-3798", "CVE-2013-3796", "CVE-2013-3795");
   script_bugtraq_id(61252, 61235, 61214, 61238, 61274, 61233, 61241);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-29 17:57:32 +0530 (Mon, 29 Jul 2013)");
   script_name("MySQL Unspecified vulnerabilities-05 July-2013 (Windows)");
 
   script_tag(name:"summary", value:"This host is running MySQL and is prone to multiple unspecified
 vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version of MySQL with the help of detect NVT and
-check it is vulnerable or not.");
-  script_tag(name:"solution", value:"Apply the patch from below link,
-http://www.oracle.com/technetwork/topics/security/cpujuly2013-1899826.html ");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"insight", value:"Unspecified errors in the MySQL Server component via unknown vectors related
 to InnoDB, XA Transactions, Server Privileges, MemCached, Server Optimizer and
 Data Manipulation Language.");

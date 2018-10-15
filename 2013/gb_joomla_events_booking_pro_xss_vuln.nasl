@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_events_booking_pro_xss_vuln.nasl 11101 2018-08-24 09:42:11Z ckuersteiner $
+# $Id: gb_joomla_events_booking_pro_xss_vuln.nasl 11866 2018-10-12 10:12:29Z cfischer $
 #
 # Joomla Joomseller Events Booking Pro 'info' Parameter XSS Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803851");
-  script_version("$Revision: 11101 $");
+  script_version("$Revision: 11866 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 11:42:11 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:12:29 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-06 14:53:07 +0530 (Tue, 06 Aug 2013)");
 
   script_name("Joomla Joomseller Events Booking Pro 'info' Parameter XSS Vulnerability");
@@ -42,8 +42,7 @@ to xss vulnerability.");
 
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and checks the response.");
 
-  script_tag(name:"solution", value:"Upgrade to JSE Event version 1.0.3,
-For updates refer to http://joomseller.com/joomla-components/jse-event.html");
+  script_tag(name:"solution", value:"Upgrade to JSE Event version 1.0.3.");
 
   script_tag(name:"insight", value:"Input passed via 'info' parameter to 'mod_eb_v5_mini_calendar/tmpl/tootip.php'
 is not properly sanitised before being returned to the user.");
@@ -67,6 +66,7 @@ script code and or discloses sensitive information resulting in loss of confiden
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://joomseller.com/joomla-components/jse-event.html");
   exit(0);
 }
 

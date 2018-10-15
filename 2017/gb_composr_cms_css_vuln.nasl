@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_composr_cms_css_vuln.nasl 9951 2018-05-24 13:51:37Z cfischer $
+# $Id: gb_composr_cms_css_vuln.nasl 11900 2018-10-15 07:44:31Z mmartin $
 #
 # Composr CMS v10.0.0 - Cross-Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:composr:cms';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107215");
-  script_version("$Revision: 9951 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-24 15:51:37 +0200 (Thu, 24 May 2018) $");
+  script_version("$Revision: 11900 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-13 11:59:56 +0200 (Tue, 13 Jun 2017)");
 
   script_tag(name:"cvss_base", value:"4.3");
@@ -39,23 +39,23 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Composr CMS v10.0.0 - Cross-Site Scripting Vulnerability");
 
-  script_tag(name: "summary", value: "This host is installed with Composr CMS and is prone to a Cross-Site Scripting vulnerability.");
+  script_tag(name:"summary", value:"This host is installed with Composr CMS and is prone to a Cross-Site Scripting vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "The vulnerability is located in the 'Error Exception' of the 'Delete File' function. The remote attacker is
+  script_tag(name:"insight", value:"The vulnerability is located in the 'Error Exception' of the 'Delete File' function. The remote attacker is
   able to inject own malicious code via GET method request in the 'file' parameter to provoke an execution. The injection point is the 'file'
   parameter and the execution point occurs in the error exception that displays the content to confirm a delete.");
 
-  script_tag(name: "impact" , value: "Successful exploitation of the vulnerability results in session hijacking, non-persistent phishing attacks, non-persistent external redirects to
+  script_tag(name:"impact", value:"Successful exploitation of the vulnerability results in session hijacking, non-persistent phishing attacks, non-persistent external redirects to
   malicious sources and non-persistent manipulation of affected or connected application modules.");
 
-  script_tag(name: "affected", value: "Composr CMS version 10.0.0.");
+  script_tag(name:"affected", value:"Composr CMS version 10.0.0.");
 
-  script_tag(name: "solution", value: "No known solution is available as of 24th May, 2018. Information regarding this issue will be updated once
-  solution details are available. For updates refer to https://compo.sr/start.htm");
+  script_tag(name:"solution", value:"No known solution is available as of 24th May, 2018. Information regarding this issue will be updated once
+  solution details are available.");
 
-  script_xref(name: "URL" , value: "http://seclists.org/fulldisclosure/2017/Jun/15");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Jun/15");
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -66,6 +66,7 @@ if(description)
   script_mandatory_keys("composr_cms/installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"https://compo.sr/start.htm");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nx_os_CSCuw13560.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_nx_os_CSCuw13560.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco NX-OS Nexus 9000 (N9K) Series Switch Reserved VLAN Tag Vulnerability
 #
@@ -32,12 +32,12 @@ if (description)
   script_cve_id("CVE-2015-6295");
   script_tag(name:"cvss_base", value:"4.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:P");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Cisco NX-OS Software TACACS+ Server Local Privilege Escalation Vulnerability");
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=40990");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-21 11:41:15 +0200 (Mon, 21 Sep 2015)");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -55,7 +55,7 @@ if (description)
   script_tag(name:"solution", value:"See the vendor advisory for a solution");
   script_tag(name:"summary", value:"Cisco Nexus 9000 Series Switches contain a vulnerability that could allow an unauthenticated, adjacent attacker to cause a denial of service condition.");
   script_tag(name:"affected", value:"Nexus 9000 Series 7.0(3)I1(1) and 6.1(2)I3(4)");
- exit(0);
+  exit(0);
 }
 
 if( ! device = get_kb_item( "cisco_nx_os/device" ) ) exit( 0 );

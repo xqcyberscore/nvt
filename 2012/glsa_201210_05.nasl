@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201210_05.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201210_05.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2008-5374", "CVE-2012-3410");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-22 08:43:44 -0400 (Mon, 22 Oct 2012)");
   script_name("Gentoo Security Advisory GLSA 201210-05 (bash)");
   script_category(ACT_GATHER_INFO);
@@ -47,12 +47,11 @@ if(description)
   script_tag(name:"solution", value:"All Bash users should upgrade to the latest version:
 
       # emerge --sync
-      # emerge --ask --oneshot --verbose '>=app-shells/bash-4.2_p37'
+      # emerge --ask --oneshot --verbose '>=app-shells/bash-4.2_p37'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201210-05
-http://bugs.gentoo.org/show_bug.cgi?id=251319
-http://bugs.gentoo.org/show_bug.cgi?id=431850");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201210-05");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=251319");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=431850");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201210-05.");
   script_tag(name:"qod_type", value:"package");

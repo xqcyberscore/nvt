@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencast_rce_vuln.nasl 8053 2017-12-08 11:43:10Z cfischer $
+# $Id: gb_opencast_rce_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Opencast Remote Code Execution Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113061");
-  script_version("$Revision: 8053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 12:43:10 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-06 14:32:33 +0100 (Wed, 06 Dec 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -60,7 +60,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://groups.google.com/a/opencast.org/forum/#!topic/security-notices/sCpt0pIPEFg");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:opencast:opencast";

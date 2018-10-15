@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arbor_networks_peakflow_sp_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_arbor_networks_peakflow_sp_xss_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Arbor Networks Peakflow SP 'index/' Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802958");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-4685");
   script_bugtraq_id(52881);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-11 11:47:18 +0530 (Tue, 11 Sep 2012)");
   script_name("Arbor Networks Peakflow SP 'index/' Cross Site Scripting Vulnerability");
 
@@ -56,7 +56,7 @@ if(description)
   script_tag(name:"insight", value:"Input appended to the URL after 'index/' in the login interface is not
   properly sanitised before being returned to the user.");
   script_tag(name:"solution", value:"Upgrade to Arbor Networks Peakflow SP 5.1.1 patch 6,
-  5.5 patch 4, 5.6.0 patch 1 or later");
+  5.5 patch 4, 5.6.0 patch 1 or later.");
   script_tag(name:"summary", value:"This host is running Arbor Networks Peakflow SP and is prone to
   cross site scripting vulnerability.");
 

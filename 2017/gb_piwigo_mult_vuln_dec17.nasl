@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_mult_vuln_dec17.nasl 9410 2018-04-09 14:01:43Z asteins $
+# $Id: gb_piwigo_mult_vuln_dec17.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Piwigo Multiple Vulnerabilities
 #
@@ -30,18 +30,18 @@ CPE = 'cpe:/a:piwigo:piwigo';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140626");
-  script_version("$Revision: 9410 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-09 16:01:43 +0200 (Mon, 09 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-12-22 15:02:56 +0700 (Fri, 22 Dec 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-22 15:02:56 +0700 (Fri, 22 Dec 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-17774", "CVE-2017-17775", "CVE-2017-17826", "CVE-2017-17827", "CVE-2017-17822",
                 "CVE-2017-17823", "CVE-2017-17824", "CVE-2017-17825");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Piwigo Multiple Vulnerabilities");
 
@@ -52,46 +52,46 @@ if (description)
   script_dependencies("gb_piwigo_detect.nasl");
   script_mandatory_keys("piwigo/installed");
 
-  script_tag(name: "summary", value: "Piwigo is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Piwigo is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Piwigo is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Piwigo is prone to multiple vulnerabilities:
 
-- admin/configuration.php has a CSRF. (CVE-2017-17774)
+  - admin/configuration.php has a CSRF. (CVE-2017-17774)
 
-- XSS via the name parameter in an admin.php?page=album-3-properties request. (CVE-2017-17775)
+  - XSS via the name parameter in an admin.php?page=album-3-properties request. (CVE-2017-17775)
 
-- Persistent XSS via the gallery_title parameter in an admin.php?page=configuration&section=main request. An
+  - Persistent XSS via the gallery_title parameter in an admin.php?page=configuration&section=main request. An
 attacker can exploit this to hijack a client's browser along with the data stored in it. (CVE-2017-17826)
 
-- Cross-Site Request Forgery via /admin.php?page=configuration&section=main or
+  - Cross-Site Request Forgery via /admin.php?page=configuration&section=main or
 /admin.php?page=batch_manager&mode=unit. An attacker can exploit this to coerce an admin user into performing
 unintended actions. (CVE-2017-17827)
 
-- SQL Injection via the /admin/user_list_backend.php sSortDir_0 parameter. An attacker can exploit this to gain
+  - SQL Injection via the /admin/user_list_backend.php sSortDir_0 parameter. An attacker can exploit this to gain
 access to the data in a connected MySQL database. (CVE-2017-17822)
 
-- SQL Injection via the admin/configuration.php order_by array parameter. An attacker can exploit this to gain
+  - SQL Injection via the admin/configuration.php order_by array parameter. An attacker can exploit this to gain
 access to the data in a connected MySQL database. (CVE-2017-17823)
 
-- SQL Injection via the admin/batch_manager_unit.php element_ids parameter in unit mode. An attacker can exploit
+  - SQL Injection via the admin/batch_manager_unit.php element_ids parameter in unit mode. An attacker can exploit
 this to gain access to the data in a connected MySQL database. (CVE-2017-17824)
 
-- Persistent Cross Site Scripting via tags-* array parameters in an admin.php?page=batch_manager&mode=unit
+  - Persistent Cross Site Scripting via tags-* array parameters in an admin.php?page=batch_manager&mode=unit
 request. An attacker can exploit this to hijack a client's browser along with the data stored in it.
 (CVE-2017-17825)");
 
-  script_tag(name: "affected", value: "Piwigo version 2.9.2 and probably prior.");
+  script_tag(name:"affected", value:"Piwigo version 2.9.2 and probably prior.");
 
-  script_tag(name: "solution", value: "Update to version 2.9.3 or later.");
+  script_tag(name:"solution", value:"Update to version 2.9.3 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/d4wner/Vulnerabilities-Report/blob/master/piwigo.md");
-  script_xref(name: "URL", value: "https://github.com/Piwigo/Piwigo/issues/822");
-  script_xref(name: "URL", value: "https://github.com/Piwigo/Piwigo/issues/823");
-  script_xref(name: "URL", value: "https://github.com/Piwigo/Piwigo/issues/825");
-  script_xref(name: "URL", value: "https://github.com/Piwigo/Piwigo/issues/826");
-  script_xref(name: "URL", value: "https://github.com/sahildhar/sahildhar.github.io/blob/master/research/reports/Piwigo_2.9.2/Stored%20XSS%20Vulnerabilities%20in%20Piwigo%202.9.2.md");
+  script_xref(name:"URL", value:"https://github.com/d4wner/Vulnerabilities-Report/blob/master/piwigo.md");
+  script_xref(name:"URL", value:"https://github.com/Piwigo/Piwigo/issues/822");
+  script_xref(name:"URL", value:"https://github.com/Piwigo/Piwigo/issues/823");
+  script_xref(name:"URL", value:"https://github.com/Piwigo/Piwigo/issues/825");
+  script_xref(name:"URL", value:"https://github.com/Piwigo/Piwigo/issues/826");
+  script_xref(name:"URL", value:"https://github.com/sahildhar/sahildhar.github.io/blob/master/research/reports/Piwigo_2.9.2/Stored%20XSS%20Vulnerabilities%20in%20Piwigo%202.9.2.md");
 
   exit(0);
 }

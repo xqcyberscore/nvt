@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3203390.nasl 9313 2018-04-05 06:23:26Z cfischer $
+# $Id: gb_ms_kb3203390.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Microsoft SharePoint Enterprise Server Excel Services Multiple Vulnerabilities (KB3203390)
 #
@@ -27,43 +27,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811156");
-  script_version("$Revision: 9313 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-8511", "CVE-2017-8512");
   script_bugtraq_id(98815, 98816);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 12:37:51 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft SharePoint Enterprise Server Excel Services Multiple Vulnerabilities (KB3203390)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB3203390");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
 
   - when the Office software fails to properly handle objects in memory.
- 
+
   - when the Office software fails to properly handle objects in memory. ");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to use a specially crafted file to perform actions in the security context of
-  the current user.
-
-  Impact Level: System/Application");
+  the current user.");
 
   script_tag(name:"affected", value:"Excel Services Microsoft SharePoint Enterprise Server 2013 Service Pack 1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/3203390");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3203390");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3203390");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -85,12 +80,10 @@ if(!path || "Could not find the install location" >< path){
   exit(0);
 }
 
-## Check for SharePoint Server 2013
 if(shareVer =~ "^(15\.)")
 {
   path = path + "\15.0\Bin";
 
-  ## Get Version from 'xlsrv.dll' file
   dllVer = fetch_file_version(sysPath:path, file_name:"xlsrv.dll");
   if(dllVer)
   {

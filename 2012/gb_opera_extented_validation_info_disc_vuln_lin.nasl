@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_extented_validation_info_disc_vuln_lin.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_opera_extented_validation_info_disc_vuln_lin.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Opera Extended Validation Information Disclosure Vulnerabilities (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802830");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-3388", "CVE-2011-3389");
   script_bugtraq_id(49388);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-06 12:13:30 +0530 (Fri, 06 Apr 2012)");
   script_name("Opera Extended Validation Information Disclosure Vulnerabilities (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/45791");
@@ -52,7 +52,7 @@ if(description)
   information dialog to contain security information based on the trusted site
   and loading an insecure site to appear secure via unspecified actions related
   to Extended Validation.");
-  script_tag(name:"solution", value:"Upgrade to Opera version 11.51 or later,");
+  script_tag(name:"solution", value:"Upgrade to Opera version 11.51 or later.");
   script_tag(name:"summary", value:"The host is installed with Opera and is prone to information
   disclosure vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");

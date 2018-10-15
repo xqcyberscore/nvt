@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-058.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-058.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # MS Windows Kernel-Mode Driver Privilege Escalation and RCE Vulnerabilities (3000061)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804859");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2014-4113", "CVE-2014-4148");
   script_bugtraq_id(70364, 70429);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-15 08:28:55 +0530 (Wed, 15 Oct 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -59,9 +59,7 @@ if(description)
   Microsoft Windows Server 2012/R2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS14-058");
+  listed hotfixes or download and install the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/60970/");
@@ -73,6 +71,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS14-058");
   exit(0);
 }
 
@@ -92,7 +91,7 @@ if(!sysPath ){
   exit(0);
 }
 
-win32SysVer = fetch_file_version(sysPath, file_name:"system32\win32k.sys");
+win32SysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\win32k.sys");
 if(!win32SysVer){
   exit(0);
 }

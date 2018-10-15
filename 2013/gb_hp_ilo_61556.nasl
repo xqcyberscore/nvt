@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_61556.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_hp_ilo_61556.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # HP Integrated Lights-Out Unspecified Authentication Bypass Vulnerability
 #
@@ -32,9 +32,9 @@ if (description)
   script_cve_id("CVE-2013-4805");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11865 $");
   script_name("HP Integrated Lights-Out  Unspecified Authentication Bypass Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-10 14:47:03 +0200 (Tue, 10 Sep 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -64,7 +64,7 @@ firmware before 1.30");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

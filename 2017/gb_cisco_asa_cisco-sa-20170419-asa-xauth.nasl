@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_cisco-sa-20170419-asa-xauth.nasl 5986 2017-04-20 07:10:53Z ckuerste $
+# $Id: gb_cisco_asa_cisco-sa-20170419-asa-xauth.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Cisco ASA Software Internet Key Exchange Version 1 XAUTH Denial of Service Vulnerability
 #
@@ -29,24 +29,24 @@ CPE = "cpe:/a:cisco:asa";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106769");
- script_cve_id("CVE-2017-6610");
- script_tag(name: "cvss_base", value: "6.8");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:N/A:C");
- script_version("$Revision: 5986 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106769");
+  script_cve_id("CVE-2017-6610");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_version("$Revision: 11863 $");
 
- script_name("Cisco ASA Software Internet Key Exchange Version 1 XAUTH Denial of Service Vulnerability");
+  script_name("Cisco ASA Software Internet Key Exchange Version 1 XAUTH Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170419-asa-xauth");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170419-asa-xauth");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the Internet Key Exchange Version 1 (IKEv1) XAUTH code of
+  script_tag(name:"summary", value:"A vulnerability in the Internet Key Exchange Version 1 (IKEv1) XAUTH code of
 Cisco ASA Software could allow an authenticated, remote attacker to cause a reload of an affected system.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient validation of the IKEv1 XAUTH
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient validation of the IKEv1 XAUTH
 parameters passed during an IKEv1 negotiation. An attacker could exploit this vulnerability by sending crafted
 parameters.
 
@@ -56,18 +56,18 @@ be triggered by IPv4 or IPv6 traffic. A valid IKEv1 Phase 1 needs to be establis
 which means that an attacker would need to have knowledge of a pre-shared key or have a valid certificate for
 phase 1 authentication.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-04-20 09:10:53 +0200 (Thu, 20 Apr 2017) $");
- script_tag(name: "creation_date", value: "2017-04-20 08:47:39 +0200 (Thu, 20 Apr 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
- script_mandatory_keys("cisco_asa/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-20 08:47:39 +0200 (Thu, 20 Apr 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
+  script_mandatory_keys("cisco_asa/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

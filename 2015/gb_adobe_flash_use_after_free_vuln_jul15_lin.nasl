@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_use_after_free_vuln_jul15_lin.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_adobe_flash_use_after_free_vuln_jul15_lin.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Adobe Flash Player Use-After-Free Vulnerability July15 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805904");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-5119", "CVE-2014-0578", "CVE-2015-3114", "CVE-2015-3115",
                 "CVE-2015-3116", "CVE-2015-3117", "CVE-2015-3118", "CVE-2015-3119",
                 "CVE-2015-3120", "CVE-2015-3121", "CVE-2015-3122", "CVE-2015-3123",
@@ -42,7 +42,7 @@ if(description)
   script_bugtraq_id(75568, 75594, 75593, 75591, 75590, 75595, 75596, 75592);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-08 14:25:09 +0530 (Wed, 08 Jul 2015)");
   script_name("Adobe Flash Player Use-After-Free Vulnerability July15 (Linux)");
 
@@ -76,8 +76,7 @@ if(description)
   11.2.202.481 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
-  11.2.202.481 or later. For updates refer to
-  http://get.adobe.com/flashplayer");
+  11.2.202.481 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -92,6 +91,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

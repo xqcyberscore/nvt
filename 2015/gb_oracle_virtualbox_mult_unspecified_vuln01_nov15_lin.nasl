@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_unspecified_vuln01_nov15_lin.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_oracle_virtualbox_mult_unspecified_vuln01_nov15_lin.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Oracle Virtualbox Multiple Unspecified Vulnerabilities-01 Nov15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806604");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-4896", "CVE-2015-4813");
   script_bugtraq_id(77198, 77185);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-02 13:04:44 +0530 (Mon, 02 Nov 2015)");
   script_name("Oracle Virtualbox Multiple Unspecified Vulnerabilities-01 Nov15 (Linux)");
 
@@ -53,8 +53,7 @@ if(description)
   4.1.42, 4.2.34, 4.3.32, and 5.0.8 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Oracle VirtualBox version
-  4.0.34, 4.1.42, 4.2.34, 4.3.32, 5.0.8  or later. For updates refer to
-  https://www.virtualbox.org");
+  4.0.34, 4.1.42, 4.2.34, 4.3.32, 5.0.8  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_lin.nasl");
   script_mandatory_keys("Sun/VirtualBox/Lin/Ver");
+  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
 

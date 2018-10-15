@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_memory_corruption_vuln_macosx.nasl 5404 2017-02-23 12:41:31Z antu123 $
+# $Id: gb_imagemagick_mult_memory_corruption_vuln_macosx.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # ImageMagick Multiple Memory Corruption Vulnerabilities (Mac OS X)
 #
@@ -29,64 +29,57 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810563");
-  script_version("$Revision: 5404 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2016-8862", "CVE-2016-8866");
   script_bugtraq_id(93794);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 13:41:31 +0100 (Thu, 23 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-21 13:23:30 +0530 (Tue, 21 Feb 2017)");
   script_name("ImageMagick Multiple Memory Corruption Vulnerabilities (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with ImageMagick
+  script_tag(name:"summary", value:"This host is installed with ImageMagick
   and is prone to multiple memory corruption vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to
-  memory corruption error in 'AcquireMagickMemory' function in 
+  script_tag(name:"insight", value:"Multiple flaws exists due to
+  memory corruption error in 'AcquireMagickMemory' function in
   MagickCore/memory.c script.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote 
-  attackers to cause some unspecified impacts.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to cause some unspecified impacts.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"ImageMagick version before 7.0.3.8 
+  script_tag(name:"affected", value:"ImageMagick version before 7.0.3.8
   on Mac OS X");
 
-  script_tag(name: "solution" , value: "Upgrade to ImageMagick version 7.0.3.8
-  or later. For updates refer to http://www.graphicsmagick.org");
+  script_tag(name:"solution", value:"Upgrade to ImageMagick version 7.0.3.8
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://blogs.gentoo.org/ago/2016/10/17/imagemagick-memory-allocation-failure-in-acquiremagickmemory-memory-c");
-  script_xref(name : "URL" , value : "https://blogs.gentoo.org/ago/2016/10/20/imagemagick-memory-allocation-failure-in-acquiremagickmemory-memory-c-incomplete-fix-for-cve-2016-8862");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2016/10/20/3");
+  script_xref(name:"URL", value:"https://blogs.gentoo.org/ago/2016/10/17/imagemagick-memory-allocation-failure-in-acquiremagickmemory-memory-c");
+  script_xref(name:"URL", value:"https://blogs.gentoo.org/ago/2016/10/20/imagemagick-memory-allocation-failure-in-acquiremagickmemory-memory-c-incomplete-fix-for-cve-2016-8862");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2016/10/20/3");
 
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_imagemagick_detect_macosx.nasl");
   script_mandatory_keys("ImageMagick/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.graphicsmagick.org");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-gmVer = "";
-
-## Get the version
 if(!gmVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check for the vulnerable version 
 ## CVE-2016-8866 is due to an incomplete fix for CVE-2016-8862
 ## CVE-2016-8862 , not fixed completly in 7.0.3.3, complete fix is in 7.0.3.8
 if(version_is_less(version:gmVer, test_version:"7.0.3.8"))

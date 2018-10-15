@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_kace_k1000_sma_mult_sql_inj_vuln.nasl 11065 2018-08-21 09:49:00Z mmartin $
+# $Id: gb_dell_kace_k1000_sma_mult_sql_inj_vuln.nasl 11866 2018-10-12 10:12:29Z cfischer $
 #
 # Dell KACE K1000 SMA Multiple SQL Injection Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:quest:kace_systems_management_appliance";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803735");
-  script_version("$Revision: 11065 $");
+  script_version("$Revision: 11866 $");
   script_cve_id("CVE-2014-1671");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 11:49:00 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:12:29 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-12 20:18:38 +0530 (Mon, 12 Aug 2013)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -43,11 +43,9 @@ if(description)
   script_tag(name:"summary", value:"This host is running Dell KACE K1000 Systems Management Appliance and is
 prone to multiple SQL injection vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of Dell KACE K1000 SMA with the help of detect
-NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"solution", value:"Upgrade to latest version of Dell KACE K1000 SMA or Apply the patch, For
-updates refer to http://www.kace.com/products/systems-management-appliance");
+  script_tag(name:"solution", value:"Upgrade to latest version of Dell KACE K1000 SMA.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to asset.php, asset_type.php, metering.php, mi.php,
 replshare.php, kbot.php, history_log.php and service.php scripts are not properly sanitizing user-supplied
@@ -69,6 +67,7 @@ SQL queries in the back-end database, allowing for the manipulation or disclosur
   script_mandatory_keys("quest_kace_sma/detected", "quest_kace_sma/model");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"http://www.kace.com/products/systems-management-appliance");
   exit(0);
 }
 

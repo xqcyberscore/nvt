@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_security_bypass_vuln_apr14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_owncloud_security_bypass_vuln_apr14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # ownCloud Local Filesystem Mounting Security Bypass Vulnerability Apr14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804363");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-2585");
   script_bugtraq_id(66451);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-04 18:54:56 +0530 (Fri, 04 Apr 2014)");
   script_name("ownCloud Local Filesystem Mounting Security Bypass Vulnerability Apr14");
 
@@ -46,8 +46,7 @@ configurations.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to mount the local
 filesystem and gain access to the information contained within it.");
   script_tag(name:"affected", value:"ownCloud Server version 5.x before 5.0.15 and 6.x before 6.0.2");
-  script_tag(name:"solution", value:"Upgrade to ownCloud version 5.0.15 or 6.0.2 or later,
-For updates refer to http://owncloud.org");
+  script_tag(name:"solution", value:"Upgrade to ownCloud version 5.0.15 or 6.0.2 or later.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/57283");
   script_xref(name:"URL", value:"http://owncloud.org/about/security/advisories/oC-SA-2014-008");

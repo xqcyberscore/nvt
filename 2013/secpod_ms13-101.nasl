@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903417");
-  script_version("$Revision: 11576 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-3899", "CVE-2013-3902", "CVE-2013-3903", "CVE-2013-3907",
                 "CVE-2013-5058");
   script_bugtraq_id(64080, 64084, 64090, 64087, 64091);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-11 08:49:46 +0530 (Wed, 11 Dec 2013)");
   script_name("Microsoft Windows Kernel Local Privilege Escalation Vulnerabilities (2880430)");
 
@@ -41,9 +41,8 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security update according to
 Microsoft Bulletin MS13-101");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms13-101");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - An error within the win32k.sys driver can be exploited to corrupt memory.
@@ -58,13 +57,21 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-101");
   - An integer overflow error exists within the win32k.sys driver.");
   script_tag(name:"affected", value:"Microsoft Windows 8
 Windows 8.1 x32/x64 Edition
+
 Microsoft Windows Server 2012
+
 Microsoft Windows XP x32 Edition Service Pack 3 and prior
+
 Microsoft Windows XP x64 Edition Service Pack 2 and prior
+
 Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
 Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
+
 Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
 Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
+
 Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a DoS (Denial of
 Service) and gain escalated privileges.");
@@ -82,7 +89,7 @@ Service) and gain escalated privileges.");
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
-   exit(0);
+  exit(0);
 }
 
 
@@ -102,7 +109,7 @@ if(!sysPath){
   exit(0);
 }
 
-win32SysVer = fetch_file_version(sysPath, file_name:"system32\win32k.sys");
+win32SysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\win32k.sys");
 if(!win32SysVer){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_rce_vuln.nasl 5385 2017-02-21 10:02:58Z ckuerste $
+# $Id: gb_dotcms_rce_vuln.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # dotCMS H2 Database Remote Code Execution Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:dotcms:dotcms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106614");
-  script_version("$Revision: 5385 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-21 11:02:58 +0100 (Tue, 21 Feb 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-21 13:40:30 +0700 (Tue, 21 Feb 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-21 13:40:30 +0700 (Tue, 21 Feb 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "Mitigation");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   script_name("dotCMS H2 Database Remote Code Execution Vulnerability");
 
@@ -49,23 +49,23 @@ if (description)
   script_dependencies("gb_dotcms_detect.nasl");
   script_mandatory_keys("dotCMS/installed");
 
-  script_tag(name: "summary", value: "dotCMS is prone to a remote code execution vulnerability if used with the
+  script_tag(name:"summary", value:"dotCMS is prone to a remote code execution vulnerability if used with the
 default H2 database.");
 
-  script_tag(name: "vuldetect", value: "Sends crafted HTTP request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends crafted HTTP request and checks the response.");
 
-  script_tag(name: "insight", value: "dotCMS offers a Tomcat server with a preconfigured dotCms installation which
+  script_tag(name:"insight", value:"dotCMS offers a Tomcat server with a preconfigured dotCms installation which
 uses the H2 database. The getCreateSortChildren() function of the 'H2CategorySQL' class suffers of an SQL
 injection vulnerability into the 'inode' parameter of a GET request, when the 'reorder' parameter is set to
 'TRUE'.");
 
-  script_tag(name: "affected", value: "dotCMS with H2 database used.");
+  script_tag(name:"affected", value:"dotCMS with H2 database used.");
 
-  script_tag(name: "solution", value: "dotCMS will not fix this vulnerability since the H2 database is just for
+  script_tag(name:"solution", value:"dotCMS will not fix this vulnerability since the H2 database is just for
 testing and trying out and is not recommended or supported in a productive environment. Please change the used
 database to something else than H2 and restrict access to 'categoriesServlet'.");
 
-  script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/2936");
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/2936");
 
   exit(0);
 }

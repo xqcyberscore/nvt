@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sea_monkey_mult_vuln01_dec14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_sea_monkey_mult_vuln01_dec14_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # SeaMonkey Multiple Vulnerabilities-01 Dec14 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:seamonkey";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805223");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1594", "CVE-2014-1593", "CVE-2014-1592", "CVE-2014-1590",
                 "CVE-2014-1589", "CVE-2014-1588", "CVE-2014-1587", "CVE-2014-8632",
                 "CVE-2014-8631", "CVE-2014-1591");
@@ -37,7 +37,7 @@ if(description)
                     71399);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-16 11:56:05 +0530 (Tue, 16 Dec 2014)");
   script_name("SeaMonkey Multiple Vulnerabilities-01 Dec14 (Windows)");
 
@@ -78,8 +78,7 @@ if(description)
 
   script_tag(name:"affected", value:"SeaMonkey version before 2.31 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to SeaMonkey version 2.31 or later,
-  For updates refer to http://www.mozilla.com/en-US/seamonkey");
+  script_tag(name:"solution", value:"Upgrade to SeaMonkey version 2.31 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -92,6 +91,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_seamonkey_detect_win.nasl");
   script_mandatory_keys("Seamonkey/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/seamonkey");
   exit(0);
 }
 

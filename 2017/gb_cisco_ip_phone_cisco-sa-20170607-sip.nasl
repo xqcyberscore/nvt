@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_cisco-sa-20170607-sip.nasl 7450 2017-10-17 03:43:34Z ckuersteiner $
+# $Id: gb_cisco_ip_phone_cisco-sa-20170607-sip.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Cisco IP Phone 8800 Series SIP Denial of Service Vulnerability
 #
@@ -28,43 +28,43 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106860");
-  script_version("$Revision: 7450 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-17 05:43:34 +0200 (Tue, 17 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-08 13:49:55 +0700 (Thu, 08 Jun 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-08 13:49:55 +0700 (Thu, 08 Jun 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-6656");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cisco IP Phone 8800 Series SIP Denial of Service Vulnerability");
 
   script_category(ACT_GATHER_INFO);
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("CISCO");
   script_dependencies("gb_cisco_ip_phone_detect.nasl");
   script_mandatory_keys("cisco/ip_phone/model");
 
-  script_tag(name: "summary", value: "A vulnerability in Session Initiation Protocol (SIP) call handling of
+  script_tag(name:"summary", value:"A vulnerability in Session Initiation Protocol (SIP) call handling of
 Cisco IP Phone 8800 Series devices could allow an unauthenticated, remote attacker to cause a denial of service
 (DoS) condition due to the SIP process unexpectedly restarting. All active phone calls are dropped as the SIP
 process restarts.");
 
-  script_tag(name: "insight", value: "The vulnerability is due to incomplete input validation of the SIP packet
+  script_tag(name:"insight", value:"The vulnerability is due to incomplete input validation of the SIP packet
 header. An attacker could exploit this vulnerability by sending a malformed SIP packet to a targeted phone.");
 
-  script_tag(name: "impact", value: "An exploit could allow the attacker to cause a DoS condition when all phone
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause a DoS condition when all phone
 calls are dropped, due to the SIP process unexpectedly restarting.");
 
-  script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
-  script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170607-sip");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170607-sip");
 
   exit(0);
 }

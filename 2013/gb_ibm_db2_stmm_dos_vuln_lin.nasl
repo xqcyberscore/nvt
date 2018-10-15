@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_stmm_dos_vuln_lin.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_ibm_db2_stmm_dos_vuln_lin.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # IBM DB2 STMM Denial Of Service Vulnerability (Linux)
 #
@@ -28,21 +28,19 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803766");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2011-1373");
   script_bugtraq_id(50686);
   script_tag(name:"cvss_base", value:"1.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-30 17:51:03 +0530 (Mon, 30 Sep 2013)");
   script_name("IBM DB2 STMM Denial Of Service Vulnerability (Linux)");
 
 
   script_tag(name:"summary", value:"This host is running IBM DB2 and is prone to denial of service vulnerability.");
-  script_tag(name:"vuldetect", value:"Get the installed version of IBM DB2 with the help of detect NVT and check
-the version is vulnerable or not.");
-  script_tag(name:"solution", value:"Upgrade to IBM DB2 9.7 FP5 or later,
-For updates refer to http://www-01.ibm.com ");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade to IBM DB2 9.7 FP5 or later.");
   script_tag(name:"insight", value:"The flaw is due an error when the Self Tuning Memory Manager (STMM) feature
 and the AUTOMATIC DATABASE_MEMORY setting are configured.");
   script_tag(name:"affected", value:"IBM DB2 version 9.7 before FP5 on Linux.");

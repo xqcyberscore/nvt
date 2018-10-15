@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_provisioning_services_soapserver_bof_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_citrix_provisioning_services_soapserver_bof_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Citrix Provisioning Services SoapServer Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803000");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-4068");
   script_bugtraq_id(53330);
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-02 18:48:06 +0530 (Thu, 02 Aug 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"insight", value:"The SoapServer service improperly calculates a buffer index pointer value
   for a date and time string, which references a location outside the fixed
   sized heap buffer resulting in a heap buffer overflow.");
-  script_tag(name:"solution", value:"Apply the hotfix for Citrix Provisioning Services,");
+  script_tag(name:"solution", value:"Apply the hotfix for Citrix Provisioning Services from the referenced advisory.");
   script_tag(name:"summary", value:"This host is installed with Citrix Provisioning Services and is
   prone to buffer overflow vulnerability.");
   exit(0);

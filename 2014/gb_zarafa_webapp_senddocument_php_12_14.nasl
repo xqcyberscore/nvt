@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zarafa_webapp_senddocument_php_12_14.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_zarafa_webapp_senddocument_php_12_14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Zarafa WebApp Denial of Service Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:zarafa:webapp";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105139");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11867 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
@@ -54,7 +54,7 @@ or update to 2.0 beta 3 (SVN 46848).");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-08 13:27:31 +0100 (Mon, 08 Dec 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -64,7 +64,7 @@ or update to 2.0 beta 3 (SVN 46848).");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("zarafa_webapp/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gimp_script_fu_bof_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_gimp_script_fu_bof_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # GIMP Script-Fu Server Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802878");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-2763");
   script_bugtraq_id(53741);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-27 13:12:09 +0530 (Wed, 27 Jun 2012)");
   script_name("GIMP Script-Fu Server Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"insight", value:"The script-fu server process in GIMP fails to handle a specially crafted
   command input sent to TCP port 10008, which could be exploited by remote
   attackers to cause a buffer overflow.");
-  script_tag(name:"solution", value:"Upgrade to GIMP version 2.8.0 or later,");
+  script_tag(name:"solution", value:"Upgrade to GIMP version 2.8.0 or later.");
   script_tag(name:"summary", value:"This host is running GIMP Script-Fu Server and is prone to buffer
   overflow vulnerability.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvas_scanner_prev_escl_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_openvas_scanner_prev_escl_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # OpenVAS Scanner Symlink Attack Local Privilege Escalation Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801979");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-3351");
   script_bugtraq_id(49460);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-10 17:29:46 +0530 (Tue, 10 Jan 2012)");
   script_name("OpenVAS Scanner Symlink Attack Local Privilege Escalation Vulnerability");
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2011/q3/432");
@@ -52,7 +52,7 @@ if(description)
   gain access to the administrator or root account thus taking full control
   of the system.");
   script_tag(name:"affected", value:"OpenVAS Project OpenVAS Scanner 3.2.4");
-  script_tag(name:"solution", value:"Upgrade to OpenVAS Scanner 4 or later,");
+  script_tag(name:"solution", value:"Upgrade to OpenVAS Scanner 4 or later.");
   script_tag(name:"summary", value:"This host is installed with OpenVAS Scanner and is prone to
   privilege escalation vulnerability.");
   script_tag(name:"insight", value:"The flaw is due to the application passing a predictable temporary

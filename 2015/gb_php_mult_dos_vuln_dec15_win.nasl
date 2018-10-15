@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_dos_vuln_dec15_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_php_mult_dos_vuln_dec15_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # PHP Multiple Denial of Service Vulnerabilities - 01 - Dec15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806648");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-7804", "CVE-2015-7803");
   script_bugtraq_id(76959);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-15 15:05:43 +0530 (Tue, 15 Dec 2015)");
   script_name("PHP Multiple Denial of Service Vulnerabilities - 01 - Dec15 (Windows)");
 
@@ -58,7 +58,7 @@ if(description)
   before 5.6.14");
 
   script_tag(name:"solution", value:"Upgrade to PHP 5.5.30 or 5.6.14 or
-  later. For updates refer to http://www.php.net");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_excel_service_ms15-116.nasl 11612 2018-09-26 05:47:26Z cfischer $
+# $Id: gb_sharepoint_server_excel_service_ms15-116.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # MS SharePoint Server Excel Services Multiple Vulnerabilities (3104540)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806166");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-6038", "CVE-2015-6094");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 16:35:07 +0530 (Wed, 11 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server Excel Services Multiple Vulnerabilities (3104540)");
@@ -59,8 +59,7 @@ if(description)
   Microsoft SharePoint Server 2010 Service Pack 2 Excel Services.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link, https://technet.microsoft.com/en-us/library/security/MS15-116");
+  hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -75,6 +74,7 @@ if(description)
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/SharePoint/Server/Ver");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS15-116");
   exit(0);
 }
 

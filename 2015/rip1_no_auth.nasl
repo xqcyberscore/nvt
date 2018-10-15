@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rip1_no_auth.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: rip1_no_auth.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # RIP-1 Poisoning Routing Table
 #
@@ -30,7 +30,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105236");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11872 $");
 
   script_name("RIP-1 Poisoning Routing Table");
 
@@ -49,7 +49,7 @@ RIP-2 and implement authentication'");
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-13 09:16:37 +0100 (Fri, 13 Mar 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -58,7 +58,7 @@ RIP-2 and implement authentication'");
   script_require_udp_ports("Services/udp/rip", 520);
   script_mandatory_keys("RIP-1/enabled");
 
- exit(0);
+  exit(0);
 }
 
 port = get_kb_item("Services/udp/rip");

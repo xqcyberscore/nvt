@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_jre_awt_comp_unspecified_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_oracle_java_se_jre_awt_comp_unspecified_vuln_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Oracle Java SE JRE AWT Component Unspecified Vulnerability - (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803021");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   #Remark: NIST don't see "security-in-depth fixes" as software flaws so this CVSS has a value of 0.0.
   #However we still should report missing security fixes with a criticality so this has been commented
   #out to avoid that the automatic CVSS score correction is setting the CVSS back to 0.0
@@ -35,7 +35,7 @@ if(description)
   script_bugtraq_id(55339);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-03 12:12:23 +0530 (Mon, 03 Sep 2012)");
   script_name("Oracle Java SE JRE AWT Component Unspecified Vulnerability - (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"impact", value:"Has no impact and remote attack vectors. The missing patch is a security-in-depth fix released by Oracle.");
   script_tag(name:"affected", value:"Oracle Java SE versions 7 Update 6, 6 Update 34 and earlier");
   script_tag(name:"insight", value:"Unspecified vulnerability in the JRE component related to AWT sub-component.");
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"summary", value:"This host is installed with Oracle Java SE JRE and is prone to
   unspecified vulnerability.");
 

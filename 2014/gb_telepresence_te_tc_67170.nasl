@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telepresence_te_tc_67170.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_telepresence_te_tc_67170.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Cisco TelePresence TC and TE Software Multiple Security Vulnerabilities
 #
@@ -34,14 +34,14 @@ if (description)
   script_cve_id("CVE-2014-2162", "CVE-2014-2163", "CVE-2014-2164", "CVE-2014-2165", "CVE-2014-2166", "CVE-2014-2167", "CVE-2014-2168", "CVE-2014-2169", "CVE-2014-2170", "CVE-2014-2171", "CVE-2014-2172", "CVE-2014-2173", "CVE-2014-2175");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Cisco TelePresence TC and TE Software Multiple Security Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/67170");
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140430-tcte");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-12 16:46:52 +0200 (Mon, 12 May 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -53,32 +53,45 @@ if (description)
   script_tag(name:"impact", value:"Attackers can exploit these issues to execute arbitrary code in the
 context of the device, bypass authentication mechanisms, gain
 unauthorized access, execute arbitrary commands, or cause denial-of-
-service conditions; other attacks may also be possible.");
+service conditions. Other attacks may also be possible.");
   script_tag(name:"vuldetect", value:"Check the Firmware-Version.");
   script_tag(name:"insight", value:"Cisco TelePresence TC and TE Software are prone to
 the following security vulnerabilities:
 
 1. Multiple remote denial-of-service vulnerabilities
+
 2. A buffer-overflow vulnerability
+
 3. A command-injection vulnerability
+
 4. A command-injection vulnerability
+
 5. A heap-based buffer-overflow vulnerability
+
 6. A local buffer-overflow vulnerability
+
 7. A local authentication-bypass vulnerability
+
 8. A remote denial-of-service vulnerability");
   script_tag(name:"solution", value:"Updates are available.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"Cisco TelePresence TC and TE Software are prone to multiple
 security vulnerabilities.");
   script_tag(name:"affected", value:"Cisco TelePresence MX Series
+
 Cisco TelePresence System EX Series
+
 Cisco TelePresence Integrator C Series
+
 Cisco TelePresence Profiles Series
+
 Cisco TelePresence Quick Set Series
+
 Cisco TelePresence System T Series
+
 Cisco TelePresence VX Clinical Assistant");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

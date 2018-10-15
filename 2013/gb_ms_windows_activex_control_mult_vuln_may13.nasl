@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_activex_control_mult_vuln_may13.nasl 11716 2018-10-02 03:28:37Z ckuersteiner $
+# $Id: gb_ms_windows_activex_control_mult_vuln_may13.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Microsoft Windows ActiveX Control Multiple Vulnerabilities (2820197)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803701");
-  script_version("$Revision: 11716 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-02 05:28:37 +0200 (Tue, 02 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-21 13:06:04 +0530 (Tue, 21 May 2013)");
   script_name("Microsoft Windows ActiveX Control Multiple Vulnerabilities (2820197)");
   script_cve_id("CVE-2013-0108");
@@ -73,11 +73,7 @@ if(description)
   script_tag(name:"summary", value:"This script will list all the vulnerable activex controls installed
   on the remote windows machine with references and cause.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-
-  http://support.microsoft.com/kb/2820197
-
-  Workaround:
+  script_tag(name:"solution", value:"Apply the patch  Workaround:
   Set the killbit for the following CLSIDs,
 
   {0d080d7d-28d2-4f86-bfa1-d582e5ce4867},
@@ -86,6 +82,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2820197");
   exit(0);
 }
 

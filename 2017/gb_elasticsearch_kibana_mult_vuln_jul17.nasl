@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_mult_vuln_jul17.nasl 9011 2018-03-02 13:09:15Z cfischer $
+# $Id: gb_elasticsearch_kibana_mult_vuln_jul17.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Elasticsearch Kibana Multiple Vulnerabilities - Jul17
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811414");
-  script_version("$Revision: 9011 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2016-1000219", "CVE-2016-1000220");
   script_bugtraq_id(99179, 99178);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-02 14:09:15 +0100 (Fri, 02 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-03 20:40:53 +0530 (Mon, 03 Jul 2017)");
   script_name("Elasticsearch Kibana Multiple Vulnerabilities - Jul17");
 
   script_tag(name:"summary", value:"This host is running Elasticsearch Kibana
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to
 
@@ -53,15 +52,13 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will lead an attacker
   to execute arbitrary JavaScript in users' browsers, also attackers can hijack
-  sessions of other users.
-
-  Impact Level: Application");
+  sessions of other users.");
 
   script_tag(name:"affected", value:"Elasticsearch Kibana version before 4.5.4
   and 4.1.11.");
 
   script_tag(name:"solution", value:"Upgrade to Elasticsearch Kibana version
-  4.5.4 or 4.1.11 or later. For updates refer to https://www.elastic.co");
+  4.5.4 or 4.1.11 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

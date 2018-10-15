@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pandora_fms_5_0_rc1_rce.nasl 11536 2018-09-21 19:44:30Z cfischer $
+# $Id: gb_pandora_fms_5_0_rc1_rce.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Pandora FMS Remote Command Execution Vulnerability
 #
@@ -32,13 +32,13 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.103897");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11536 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Pandora FMS Remote Command Execution Vulnerability");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124983/Pandora-FMS-5.0RC1-Code-Execution.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:44:30 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-30 13:13:42 +0100 (Thu, 30 Jan 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -62,7 +62,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_app");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

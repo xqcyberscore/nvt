@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_mult_vulns_06_13.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_qnap_mult_vulns_06_13.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Qnap Multiple Vulnerabilities
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103732");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-0142", "CVE-2013-0144");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/927644");
   script_xref(name:"URL", value:"http://www.h-online.com/security/news/item/Serious-vulnerabilities-in-QNAP-storage-and-surveillance-systems-1883263.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-07 10:32:41 +0200 (Fri, 07 Jun 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -68,7 +68,7 @@ malicious link while they are currently logged into the webserver.");
   script_tag(name:"solution", value:"Updates are available.");
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

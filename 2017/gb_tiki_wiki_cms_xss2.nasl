@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiki_wiki_cms_xss2.nasl 6746 2017-07-18 04:18:27Z ckuersteiner $
+# $Id: gb_tiki_wiki_cms_xss2.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Tiki Wiki CMS Groupware XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106962");
-  script_version("$Revision: 6746 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-18 06:18:27 +0200 (Tue, 18 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-18 11:04:20 +0700 (Tue, 18 Jul 2017)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-18 11:04:20 +0700 (Tue, 18 Jul 2017)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-9145");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Tiki Wiki CMS Groupware XSS Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("secpod_tikiwiki_detect.nasl");
   script_mandatory_keys("TikiWiki/installed");
 
-  script_tag(name: "summary", value: "TikiFilter.php in Tiki Wiki CMS Groupware does not properly validate the
+  script_tag(name:"summary", value:"TikiFilter.php in Tiki Wiki CMS Groupware does not properly validate the
 imgsize or lang parameter to prevent XSS.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Tiki Wiki CMS Groupware 12.x through 16.x.");
+  script_tag(name:"affected", value:"Tiki Wiki CMS Groupware 12.x through 16.x.");
 
-  script_tag(name: "solution", value: "Upgrade to version 17.0 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 17.0 or later.");
 
-  script_xref(name: "URL", value: "https://sourceforge.net/p/tikiwiki/code/62386");
+  script_xref(name:"URL", value:"https://sourceforge.net/p/tikiwiki/code/62386");
 
   exit(0);
 }

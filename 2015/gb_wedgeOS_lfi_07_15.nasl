@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wedgeOS_lfi_07_15.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_wedgeOS_lfi_07_15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # WedgeOS Multiple Vulnerabilities
 #
@@ -32,7 +32,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105311");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11872 $");
 
   script_name("WedgeOS Multiple Vulnerabilities");
 
@@ -51,7 +51,7 @@ functionality.");
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-02 13:50:31 +0200 (Thu, 02 Jul 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -60,7 +60,7 @@ functionality.");
   script_require_ports("Services/www", 443);
   script_mandatory_keys("wedgeOS/management_console/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

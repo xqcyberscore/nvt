@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_overflow_bug_lin.nasl 9403 2018-04-09 07:48:27Z asteins $
+# $Id: gb_openssl_overflow_bug_lin.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # OpenSSL Overflow Vulnerability - DEC 2017 (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107269");
-  script_version("$Revision: 9403 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:48:27 +0200 (Mon, 09 Apr 2018) $");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-08 12:22:37 +0100 (Fri, 08 Dec 2017)");
   script_cve_id("CVE-2017-3738");
   script_bugtraq_id(102118);
@@ -41,24 +41,24 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Overflow Vulnerability - DEC 2017 (Linux)");
 
-  script_tag(name: "summary", value: "This host is running OpenSSL and is prone
+  script_tag(name:"summary", value:"This host is running OpenSSL and is prone
   to an overflow bug.");
 
-  script_tag(name: "vuldetect", value: "Get the installed version and check if it is vulnerable.");
+  script_tag(name:"vuldetect", value:"Get the installed version and check if it is vulnerable.");
 
-  script_tag(name: "insight", value: "The overflow bug is in the AVX2 Montgomery multiplication procedure
+  script_tag(name:"insight", value:"The overflow bug is in the AVX2 Montgomery multiplication procedure
 used in exponentiation with 1024-bit moduli.");
 
-  script_tag(name: "impact" , value: "Successfully exploiting this issue would allow an attacker to derive information about the private key.");
+  script_tag(name:"impact", value:"Successfully exploiting this issue would allow an attacker to derive information about the private key.");
 
-  script_tag(name: "affected", value: "OpenSSL 1.0.2 before 1.0.2n. OpenSSL 1.1.0 before 1.1.0h.
+  script_tag(name:"affected", value:"OpenSSL 1.0.2 before 1.0.2n. OpenSSL 1.1.0 before 1.1.0h.
 
   NOTE: This issue only affects 64-bit installations.");
 
- script_tag(name: "solution", value: "OpenSSL 1.0.2 users should upgrade to 1.0.2n. OpenSSL 1.1.0 should upgrade to 1.1.0h
+  script_tag(name:"solution", value:"OpenSSL 1.0.2 users should upgrade to 1.0.2n. OpenSSL 1.1.0 should upgrade to 1.1.0h
   when it is available, a fix is also available in commit e502cc86d in the OpenSSL git repository.");
 
-  script_xref(name: "URL" , value: "https://www.openssl.org/news/secadv/20171207.txt");
+  script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20171207.txt");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -66,7 +66,7 @@ used in exponentiation with 1024-bit moduli.");
   script_family("General");
 
   script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed","Host/runs_unixoide");
+  script_mandatory_keys("OpenSSL/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
 
   exit(0);

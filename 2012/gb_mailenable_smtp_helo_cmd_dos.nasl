@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mailenable_smtp_helo_cmd_dos.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_mailenable_smtp_helo_cmd_dos.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # MailEnable SMTP HELO Command Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802914");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2006-3277");
   script_bugtraq_id(18630);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-12 17:17:25 +0530 (Thu, 12 Jul 2012)");
   script_name("MailEnable SMTP HELO Command Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"insight", value:"MailEnable SMTP service fails to handle the HELO command. This can be
   exploited to crash the service via a HELO command with specially crafted
   arguments.");
-  script_tag(name:"solution", value:"Upgrade MailEnable version 6 or later,");
+  script_tag(name:"solution", value:"Upgrade MailEnable version 6 or later.");
   script_tag(name:"summary", value:"This host is running MailEnable and is prone to denial of service
   vulnerability.");
 

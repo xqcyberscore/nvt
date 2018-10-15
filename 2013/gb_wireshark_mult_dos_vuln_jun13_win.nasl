@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_jun13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_wireshark_mult_dos_vuln_jun13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Wireshark Multiple DoS Vulnerabilities - June 13 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803652");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-4081", "CVE-2013-4074");
   script_bugtraq_id(60505, 60500);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-28 13:30:52 +0530 (Tue, 28 May 2013)");
   script_name("Wireshark Multiple DoS Vulnerabilities - June 13 (Windows)");
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1028648");
@@ -51,12 +51,12 @@ if(description)
 
   - 'dissect_capwap_data' function in epan/dissectors/packet-capwap.c in CAPWAP
     dissector incorrectly uses a -1 data value to represent an error condition.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.16 or 1.8.8 or later,
-  For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.16 or 1.8.8 or later.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to multiple
   denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download");
   exit(0);
 }
 

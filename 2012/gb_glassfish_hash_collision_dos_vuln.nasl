@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_glassfish_hash_collision_dos_vuln.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: gb_glassfish_hash_collision_dos_vuln.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Oracle GlassFish Server Hash Collision Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:oracle:glassfish_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802409");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2011-5035");
   script_bugtraq_id(51194);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-05 16:15:38 +0530 (Thu, 05 Jan 2012)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -61,12 +61,12 @@ service via a specially crafted form sent in a HTTP POST request.");
 form posts and updating a hash table. This can be exploited to cause a hash collision resulting in high CPU
 consumption via a specially crafted form sent in a HTTP POST request.");
 
-  script_tag(name:"solution", value:"Apply the updates from below link,
-http://www.oracle.com/technetwork/topics/security/cpujan2012-366304.html");
+  script_tag(name:"solution", value:"Apply the updates");
 
   script_tag(name:"summary", value:"The host is running GlassFish Server and is prone to denial of service
 vulnerability.");
 
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujan2012-366304.html");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_lin02_jul11.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_opera_mult_vuln_lin02_jul11.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Opera Browser Multiple Vulnerabilities-02 July-11 (Linux)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802741");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-2635", "CVE-2011-2634", "CVE-2011-2636", "CVE-2011-2637",
                 "CVE-2011-2638", "CVE-2011-2639", "CVE-2011-2640");
   script_bugtraq_id(48569);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-10 12:16:51 +0530 (Tue, 10 Apr 2012)");
   script_name("Opera Browser Multiple Vulnerabilities-02 July-11 (Linux)");
   script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/unix/1110/");
@@ -65,7 +65,7 @@ if(description)
   - A Hidden animated '.gif' causing high CPU load, because of constant repaints.
 
   - A crash when passing empty parameter to a Java applet.");
-  script_tag(name:"solution", value:"Upgrade to Opera Web Browser version 11.10 or later,");
+  script_tag(name:"solution", value:"Upgrade to Opera Web Browser version 11.10 or later.");
   script_tag(name:"summary", value:"The host is installed with Opera browser and is prone to multiple
   vulnerabilities.");
   script_xref(name:"URL", value:"http://www.opera.com/download/");

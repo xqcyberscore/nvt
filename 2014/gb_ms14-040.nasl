@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804671");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-1767");
   script_bugtraq_id(68394);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-07-09 09:19:40 +0530 (Wed, 09 Jul 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("MS Windows Ancillary Function Driver Elevation of Privilege Vulnerability (2975684)");
@@ -56,8 +56,7 @@ Microsoft Windows 8.1 x32/x64
 Microsoft Windows Server 2012
 Microsoft Windows Server 2012 R2");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/library/security/ms14-040");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/59778");
@@ -91,7 +90,7 @@ if(!sysPath){
   exit(0);
 }
 
-afdSysVer = fetch_file_version(sysPath, file_name:"system32\Drivers\afd.sys");
+afdSysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Drivers\afd.sys");
 if(!afdSysVer){
   exit(0);
 }

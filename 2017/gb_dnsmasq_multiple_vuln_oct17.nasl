@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnsmasq_multiple_vuln_oct17.nasl 10928 2018-08-11 11:29:48Z cfischer $
+# $Id: gb_dnsmasq_multiple_vuln_oct17.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Dnsmasq Multiple Vulnerabilities - Oct17
 #
@@ -30,13 +30,13 @@ CPE = 'cpe:/a:thekelleys:dnsmasq';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812010");
-  script_version("$Revision: 10928 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-13704", "CVE-2017-14491", "CVE-2017-14492", "CVE-2017-14493",
                 "CVE-2017-14494", "CVE-2017-14496", "CVE-2017-14495");
   script_bugtraq_id(101085);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:29:48 +0200 (Sat, 11 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-04 16:39:44 +0530 (Wed, 04 Oct 2017)");
   script_name("Dnsmasq Multiple Vulnerabilities - Oct17");
 
@@ -46,26 +46,30 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - A regression error.
+
   - A heap overflow in DNS code.
+
   - A heap overflow in IPv6 router advertisement code.
+
   - A stack overflow in DHCPv6 code.
+
   - An information leak in DHCPv6, causing dnsmasq to forward memory from
     outside the packet buffer to a DHCPv6 server when acting as a relay.
+
   - Invalid boundary checks in the 'add_pseudoheader' function allows a memcpy
     call with negative size.
+
   - An out-of-memory error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to cause a Denial-of-Service condition, take control of affected system and gain
-  access to potentially sensitive information.
-
-  Impact Level: Application");
+  access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"Dnsmasq all versions less than 2.78");
 
-  script_tag(name:"solution", value:"Upgrade to version 2.78 or later.
-  For updates refer to http://www.thekelleys.org.uk");
+  script_tag(name:"solution", value:"Upgrade to version 2.78 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

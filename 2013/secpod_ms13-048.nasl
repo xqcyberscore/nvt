@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-048.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: secpod_ms13-048.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Kernel Information Disclosure Vulnerability (2839229)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902974");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2013-3136");
   script_bugtraq_id(60357);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-12 08:18:44 +0530 (Wed, 12 Jun 2013)");
   script_name("Microsoft Windows Kernel Information Disclosure Vulnerability (2839229)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53739/");
@@ -56,8 +56,7 @@ if(description)
   script_tag(name:"insight", value:"The weakness is due to an error when handling certain page fault system calls,
   which can be exploited to disclose information from kernel memory.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  https://technet.microsoft.com/en-us/security/bulletin/ms13-048");
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS13-048.");
   script_tag(name:"qod_type", value:"registry");
@@ -80,7 +79,7 @@ if(!sysPath ){
   exit(0);
 }
 
-exeVer = fetch_file_version(sysPath, file_name:"system32\ntoskrnl.exe");
+exeVer = fetch_file_version(sysPath:sysPath, file_name:"system32\ntoskrnl.exe");
 if(!exeVer){
   exit(0);
 }

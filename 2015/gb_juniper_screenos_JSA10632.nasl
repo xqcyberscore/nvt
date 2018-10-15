@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_JSA10632.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_juniper_screenos_JSA10632.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Juniper NetScreen Firewall DNS lookup/Malformed IPv6 packet Denial of Service Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-3814");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Juniper NetScreen Firewall DNS lookup/Malformed IPv6 packet Denial of Service Vulnerability");
 
@@ -62,7 +62,7 @@ vendor advisory for more information.");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-08 15:40:14 +0200 (Fri, 08 May 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -70,7 +70,7 @@ vendor advisory for more information.");
   script_dependencies("gb_screenos_version.nasl");
   script_mandatory_keys("ScreenOS/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

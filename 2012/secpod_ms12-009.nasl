@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-009.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: secpod_ms12-009.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # MS Windows Ancillary Function Driver Privilege Elevation Vulnerabilities (2645640)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902424");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2012-0148", "CVE-2012-0149");
   script_bugtraq_id(51930, 51936);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 13:25:41 +0530 (Wed, 15 Feb 2012)");
   script_name("MS Windows Ancillary Function Driver Privilege Elevation Vulnerabilities (2645640)");
   script_category(ACT_GATHER_INFO);
@@ -50,8 +50,8 @@ if(description)
   script_tag(name:"insight", value:"The flaws are caused due an error in Ancillary Function Driver (AFD) which
   does not properly validate input passed from user mode to the Windows kernel.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory ");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-009.");
@@ -85,7 +85,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"system32\drivers\afd.sys");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\drivers\afd.sys");
 if(!sysVer){
   exit(0);
 }

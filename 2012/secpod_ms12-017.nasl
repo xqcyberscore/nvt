@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-017.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ms12-017.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows DNS Server Denial of Service Vulnerability (2647170)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902906");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11876 $");
   script_bugtraq_id(52374);
   script_cve_id("CVE-2012-0006");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-14 08:31:02 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Windows DNS Server Denial of Service Vulnerability (2647170)");
   script_category(ACT_GATHER_INFO);
@@ -52,8 +52,8 @@ if(description)
   script_tag(name:"insight", value:"The flaws are exists when Windows DNS server processing certain lookup
   queries and can be exploited to restart the DNS server.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-017.");
@@ -91,7 +91,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"system32\Dns.exe");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Dns.exe");
 if(!sysVer){
   exit(0);
 }

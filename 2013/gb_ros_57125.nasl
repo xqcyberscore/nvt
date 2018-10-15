@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ros_57125.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: gb_ros_57125.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Rugged Operating System Web UI Multiple Security Vulnerabilities
 #
@@ -44,14 +44,14 @@ Rugged Operating System versions prior to 3.12.1 are vulnerable.");
   script_bugtraq_id(57125);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11865 $");
 
   script_name("Rugged Operating System Web UI Multiple Security Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57125");
   script_xref(name:"URL", value:"http://www.ruggedcom.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-04 12:49:46 +0100 (Fri, 04 Jan 2013)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"solution_type", value:"VendorFix");
@@ -61,7 +61,7 @@ Rugged Operating System versions prior to 3.12.1 are vulnerable.");
   script_dependencies("gb_ros_detect.nasl");
   script_require_ports("Services/www", 80, "Services/telnet", 23);
   script_mandatory_keys("rugged_os/installed");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

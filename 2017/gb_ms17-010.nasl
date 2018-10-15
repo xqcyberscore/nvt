@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-010.nasl 11835 2018-10-11 08:38:49Z mmartin $
+# $Id: gb_ms17-010.nasl 11879 2018-10-12 12:48:49Z mmartin $
 #
 # Microsoft Windows SMB Server Multiple Vulnerabilities (4013389)
 #
@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810810");
-  script_version("$Revision: 11835 $");
+  script_version("$Revision: 11879 $");
   script_cve_id("CVE-2017-0143", "CVE-2017-0144", "CVE-2017-0145", "CVE-2017-0146",
                 "CVE-2017-0147", "CVE-2017-0148");
   script_bugtraq_id(96703, 96704, 96705, 96707, 96709, 96706);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 09:07:19 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows SMB Server Multiple Vulnerabilities (4013389)");
@@ -111,7 +111,7 @@ if(!sysPath ){
   exit(0);
 }
 
-vistVer = fetch_file_version(sysPath, file_name:"drivers\srv.sys");
+vistVer = fetch_file_version(sysPath:sysPath, file_name:"drivers\srv.sys");
 if(vistVer)
 {
   if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0)
@@ -169,7 +169,7 @@ if(vistVer)
   }
 }
 
-winVer  = fetch_file_version(sysPath, file_name:"Win32k.sys");
+winVer  = fetch_file_version(sysPath:sysPath, file_name:"Win32k.sys");
 if(winVer)
 {
   if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && winVer)
@@ -209,7 +209,7 @@ if(winVer)
   }
 }
 
-edgeVer = fetch_file_version(sysPath, file_name:"Edgehtml.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"Edgehtml.dll");
 if(!edgeVer){
   exit(0);
 }

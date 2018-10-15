@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_diskstation_xss_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_synology_diskstation_xss_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Synology DiskStation Manager Cross-Site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/o:synology:dsm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805391");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-28 13:19:38 +0530 (Thu, 28 May 2015)");
   script_tag(name:"qod", value:"50"); # Prone to false positives and doesn't match existing qod_types
   script_name("Synology DiskStation Manager Cross-Site Scripting Vulnerability");
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Synology DiskStation Manager 5.2-5565");
 
   script_tag(name:"solution", value:"Upgrade to the Synology DiskStation Manager
-  5.2-5565 Update 1 or later, For updates refer to
-  https://www.synology.com/en-global/releaseNote/DS214play");
+  5.2-5565 Update 1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +70,7 @@ if(description)
 
   # This script was deprecated to avoid false positive,since the extra check is not possible.
   script_tag(name:"deprecated", value:TRUE);
+  script_xref(name:"URL", value:"https://www.synology.com/en-global/releaseNote/DS214play");
   exit(0);
 }
 

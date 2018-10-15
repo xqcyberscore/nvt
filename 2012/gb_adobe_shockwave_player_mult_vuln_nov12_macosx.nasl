@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_nov12_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_adobe_shockwave_player_mult_vuln_nov12_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities Nov-2012 (MAC OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802486");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-4172", "CVE-2012-4173", "CVE-2012-4174", "CVE-2012-4175",
                 "CVE-2012-4176", "CVE-2012-5273");
   script_bugtraq_id(56194, 56195, 56190, 56193, 56188, 56187);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 15:48:07 +0530 (Fri, 02 Nov 2012)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities Nov-2012 (MAC OS X)");
   script_xref(name:"URL", value:"http://seclists.org/cert/2012/108");
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Shockwave Player Versions prior to 11.6.8.638 on MAC OS X");
   script_tag(name:"insight", value:"The flaws are due to memory corruption errors and array indexing error
   when processing malformed file.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player 11.6.8.638 or later,");
+  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player 11.6.8.638 or later.");
   script_tag(name:"summary", value:"This host is installed with Adobe Shockwave Player and is prone
   to multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"package");

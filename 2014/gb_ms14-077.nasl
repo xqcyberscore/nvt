@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-077.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-077.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # MS Active Directory Federation Services Information Disclosure Vulnerability (3003381)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804792");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2014-6331");
   script_bugtraq_id(70938);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 15:02:25 +0530 (Wed, 12 Nov 2014)");
   script_name("MS Active Directory Federation Services Information Disclosure Vulnerability (3003381)");
 
@@ -119,7 +119,7 @@ if(ProgramFilesDir)
 sysPath = smb_get_systemroot();
 if(sysPath)
 {
-  adfs2_ver = fetch_file_version(sysPath, file_name:"\ADFS\Microsoft.identityserver.dll");
+  adfs2_ver = fetch_file_version(sysPath:sysPath, file_name:"\ADFS\Microsoft.identityserver.dll");
   if(adfs2_ver)
   {
     if((hotfix_check_sp(win2012:1) > 0) &&

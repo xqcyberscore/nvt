@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_cisco_default_ssh_host_key_75418.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_multiple_cisco_default_ssh_host_key_75418.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Multiple Cisco Products Default SSH Host Keys Security Bypass Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2015-4217");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Multiple Cisco Products Default SSH Host Keys Security Bypass Vulnerability");
 
@@ -56,14 +56,14 @@ between any WSAv, ESAv, or SMAv. An exploit could allow the attacker to decrypt 
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-14 13:28:44 +0200 (Fri, 14 Aug 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("ssh_proto_version.nasl");
   script_require_ports("Services/ssh", 22);
- exit(0);
+  exit(0);
 }
 
 port = get_kb_item("Services/ssh");

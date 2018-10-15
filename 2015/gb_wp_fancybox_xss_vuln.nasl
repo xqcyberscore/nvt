@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_fancybox_xss_vuln.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_wp_fancybox_xss_vuln.nasl 11890 2018-10-12 16:13:30Z cfischer $
 #
 # FancyBox for Wordpress XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105958");
-  script_version("$Revision: 11299 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_version("$Revision: 11890 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 18:13:30 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-02 09:33:03 +0700 (Mon, 02 Mar 2015)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -58,7 +58,7 @@ if (description)
 
   script_tag(name:"insight", value:"The FancyBox for WordPress plugin before 3.0.3 does not
   properly restrict access, which allows remote attackers to conduct XSS attacks via the mfbfw parameter
-  in an update action to wp-admin/admin-post.php, ");
+  in an update action to wp-admin/admin-post.php.");
 
   script_tag(name:"impact", value:"Remote attackers may be able to inject arbitrary web script
   or HTML.");

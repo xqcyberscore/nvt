@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coremailxt_detect.nasl 10037 2018-05-31 10:25:24Z jschulte $
+# $Id: gb_coremailxt_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Coremail XT Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113191");
-  script_version("$Revision: 10037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 12:25:24 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-22 14:26:37 +0200 (Tue, 22 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,7 @@ if( description )
 
   script_xref(name:"URL", value:"http://www.coremail.cn/");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

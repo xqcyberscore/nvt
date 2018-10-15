@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_info_discl_vuln.nasl 9462 2018-04-12 13:12:54Z cfischer $
+# $Id: gb_hp_ilo_info_discl_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
-# HP Integrated Lights-Out 3 Information Disclosure Vulnerability 
+# HP Integrated Lights-Out 3 Information Disclosure Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,17 +30,17 @@ CPE = "cpe:/o:hp:integrated_lights-out_3_firmware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106493");
-  script_version("$Revision: 9462 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-12 15:12:54 +0200 (Thu, 12 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-01-05 12:42:59 +0700 (Thu, 05 Jan 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-05 12:42:59 +0700 (Thu, 05 Jan 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-4379");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("HP Integrated Lights-Out 3 Information Disclosure Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("ilo_detect.nasl");
   script_mandatory_keys("HP_ILO/installed");
 
-  script_tag(name: "summary", value: "HP Integrated Lights-Out 3 is prone to an information disclosure
+  script_tag(name:"summary", value:"HP Integrated Lights-Out 3 is prone to an information disclosure
 vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The TLS implementation in HPE Integrated Lights-Out 3 firmware does no
+  script_tag(name:"insight", value:"The TLS implementation in HPE Integrated Lights-Out 3 firmware does no
 properly use a MAC protection mechanism in conjunction with CBC padding, which allows remote attackers to obtain
 sensitive information via a padding-oracle attack, aka a Vaudenay attack.");
 
-  script_tag(name: "affected", value: "HPE Integrated Lights-Out 3 (iLO 3) prior to v1.88.");
+  script_tag(name:"affected", value:"HPE Integrated Lights-Out 3 (iLO 3) prior to v1.88.");
 
-  script_tag(name: "solution", value: "HPE has provided firmware updates to resolve this vulnerability. iLO 3
+  script_tag(name:"solution", value:"HPE has provided firmware updates to resolve this vulnerability. iLO 3
 version v1.88 or subsequent.");
 
-  script_xref(name: "URL", value: "https://h20566.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05249760");
+  script_xref(name:"URL", value:"https://h20566.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05249760");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln01_dec15_win.nasl 11445 2018-09-18 08:09:39Z mmartin $
+# $Id: gb_openssl_mult_vuln01_dec15_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # OpenSSL Multiple Vulnerabilities -01 Dec15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806653");
-  script_version("$Revision: 11445 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-3193", "CVE-2015-1794");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-18 08:22:17 +0530 (Fri, 18 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Multiple Vulnerabilities -01 Dec15 (Windows)");
@@ -57,8 +57,7 @@ if(description)
   script_tag(name:"affected", value:"OpenSSL versions 1.0.2 before 1.0.2e on
   Windows");
 
-  script_tag(name:"solution", value:"Upgrade to OpenSSL 1.0.2e or later.
-  For updates refer to https://www.openssl.org");
+  script_tag(name:"solution", value:"Upgrade to OpenSSL 1.0.2e or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://openssl.org/news/secadv/20151203.txt");
@@ -69,6 +68,7 @@ if(description)
   script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("OpenSSL/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.openssl.org");
   exit(0);
 }
 

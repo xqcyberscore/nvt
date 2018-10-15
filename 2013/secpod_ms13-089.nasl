@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-089.nasl 11576 2018-09-24 14:59:42Z cfischer $
+# $Id: secpod_ms13-089.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Windows Graphics Device Interface RCE Vulnerability (2876331)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903226");
-  script_version("$Revision: 11576 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-3940");
   script_bugtraq_id(63546);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-11-13 09:04:19 +0530 (Wed, 13 Nov 2013)");
   script_name("Microsoft Windows Graphics Device Interface RCE Vulnerability (2876331)");
 
@@ -41,8 +41,7 @@ if(description)
 Bulletin MS13-089.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms13-089");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"insight", value:"Flaw is due to when Microsoft Windows improperly handles image in a Windows
 Write (.wri) document.");
   script_tag(name:"affected", value:"Microsoft Windows XP Service Pack 3 and prior
@@ -92,7 +91,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"system32\Gdi32.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Gdi32.dll");
 if(!sysVer){
   exit(0);
 }

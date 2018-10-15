@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverstripe_cms_info_disc_vuln.nasl 6041 2017-04-27 14:49:50Z ckuerste $
+# $Id: gb_silverstripe_cms_info_disc_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # SilverStripe CMS Information Disclosure Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:silverstripe:silverstripe";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106795");
-  script_version("$Revision: 6041 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-27 16:49:50 +0200 (Thu, 27 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-27 14:38:21 +0200 (Thu, 27 Apr 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-27 14:38:21 +0200 (Thu, 27 Apr 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("SilverStripe CMS Information Disclosure Vulnerability");
 
@@ -49,19 +49,19 @@ if (description)
   script_dependencies("gb_silverstripe_cms_detect.nasl");
   script_mandatory_keys("silverstripe_cms/installed");
 
-  script_tag(name: "summary", value: "SilverStripe CMS is prone to a path disclosure vulnerability.");
+  script_tag(name:"summary", value:"SilverStripe CMS is prone to a path disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Sends a HTTP request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a HTTP request and checks the response.");
 
-  script_tag(name: "insight", value: "Accessing /dev/build/ may return the installation path which may lead
+  script_tag(name:"insight", value:"Accessing /dev/build/ may return the installation path which may lead
 to further attacks.");
 
-  script_tag(name: "affected", value: "SilverStripe 3.1.9 and prior.");
+  script_tag(name:"affected", value:"SilverStripe 3.1.9 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 3.1.10 or later.");
+  script_tag(name:"solution", value:"Update to version 3.1.10 or later.");
 
-  script_xref(name: "URL", value: "https://www.osisecurity.com.au/silverstripe-cms---path-disclosure.html");
-  script_xref(name: "URL", value: "https://github.com/silverstripe/silverstripe-framework/pull/3854");
+  script_xref(name:"URL", value:"https://www.osisecurity.com.au/silverstripe-cms---path-disclosure.html");
+  script_xref(name:"URL", value:"https://github.com/silverstripe/silverstripe-framework/pull/3854");
 
   exit(0);
 }

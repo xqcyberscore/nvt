@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_xss_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_cacti_xss_vuln_lin.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Cacti XSS Vulnerability (Linux)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:cacti:cacti";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106932");
-  script_version("$Revision: 7543 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-07 15:56:34 +0700 (Fri, 07 Jul 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-07 15:56:34 +0700 (Fri, 07 Jul 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-10970", "CVE-2017-11163");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cacti XSS Vulnerability (Linux)");
 
@@ -49,20 +49,20 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("cacti_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("cacti/installed","Host/runs_unixoide");
+  script_mandatory_keys("cacti/installed", "Host/runs_unixoide");
 
-  script_tag(name: "summary", value: "Cross-site scripting (XSS) vulnerability in link.php in Cacti allows remote
+  script_tag(name:"summary", value:"Cross-site scripting (XSS) vulnerability in link.php in Cacti allows remote
 anonymous users to inject arbitrary web script or HTML via the id parameter, related to the die_html_input_error
 function in lib/html_validate.php.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Cacti version 1.1.12 and prior.");
+  script_tag(name:"affected", value:"Cacti version 1.1.12 and prior.");
 
-  script_tag(name: "solution", value: "Upgrade to version 1.1.13 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 1.1.13 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/Cacti/cacti/issues/838");
-  script_xref(name: "URL", value: "https://github.com/Cacti/cacti/issues/847");
+  script_xref(name:"URL", value:"https://github.com/Cacti/cacti/issues/838");
+  script_xref(name:"URL", value:"https://github.com/Cacti/cacti/issues/847");
 
   exit(0);
 }

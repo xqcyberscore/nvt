@@ -29,13 +29,13 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804016");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-5718", "CVE-2013-5719", "CVE-2013-5720", "CVE-2013-5721",
                 "CVE-2013-5722");
   script_bugtraq_id(62315, 62318, 62319, 62320, 62321);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-26 19:35:17 +0530 (Thu, 26 Sep 2013)");
   script_name("Wireshark Multiple Vulnerabilities-01 Sep13 (Windows)");
 
@@ -43,8 +43,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to multiple
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.8.10 or 1.10.2 or later,
-For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.8.10 or 1.10.2 or later.");
   script_tag(name:"insight", value:"Multiple flaws are due to error in,
 
   - ASSA R3 dissector (dissectors/packet-assa_r3.c)
@@ -71,6 +70,7 @@ and potentially compromise a vulnerable system.");
   script_family("General");
   script_dependencies("gb_wireshark_detect_win.nasl");
   script_mandatory_keys("Wireshark/Win/Ver");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download");
   exit(0);
 }
 

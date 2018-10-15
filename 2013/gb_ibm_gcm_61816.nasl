@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_gcm_61816.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_ibm_gcm_61816.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # IBM 1754 GCM16 and GCM32 Global Console Managers Multiple Command Execution Vulnerabilities
 #
@@ -32,13 +32,13 @@ if (description)
   script_cve_id("CVE-2013-0526");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
 
   script_name("IBM 1754 GCM16 and GCM32 Global Console Managers Multiple Command Execution Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61816");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-19 15:12:16 +0200 (Mon, 19 Aug 2013)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -61,7 +61,7 @@ IBM 1754 GCM32 Global Console Manager 1.18.0.22011 and prior ");
   script_tag(name:"summary", value:"IBM 1754 GCM16 and GCM32 Global Console Managers are prone to multiple
 command-execution vulnerabilities because they fail to sanitize user-supplied input.");
 
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

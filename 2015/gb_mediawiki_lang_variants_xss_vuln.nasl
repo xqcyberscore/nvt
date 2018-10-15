@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_lang_variants_xss_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_mediawiki_lang_variants_xss_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # MediaWiki Language Variants Cross-site scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805387");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-2933");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-19 11:28:49 +0530 (Tue, 19 May 2015)");
   script_name("MediaWiki Language Variants Cross-site scripting Vulnerability");
 
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Language variants for Mediawiki before 1.19.24,
   1.2x before 1.23.9, and 1.24.x before 1.24.2");
 
-  script_tag(name:"solution", value:"Upgrade to Mediawiki 1.19.24, 1.23.9 or 1.24.2 or later.
-  For updates refer to http://www.mediawiki.org");
+  script_tag(name:"solution", value:"Upgrade to Mediawiki 1.19.24, 1.23.9 or 1.24.2 or later.");
 
   script_tag(name:"qod_type", value:"remote_active");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -68,6 +67,7 @@ if(description)
   script_dependencies("find_service.nasl", "secpod_mediawiki_detect.nasl");
   script_mandatory_keys("mediawiki/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.mediawiki.org");
   exit(0);
 }
 

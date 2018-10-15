@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_koha_staff_client_mult_xss.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_koha_staff_client_mult_xss.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Koha Multiple XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805355");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-9446");
   script_bugtraq_id(71803);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-27 19:14:22 +0530 (Fri, 27 Mar 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Koha Multiple XSS Vulnerabilities");
@@ -55,8 +55,7 @@ if(description)
 
   script_tag(name:"affected", value:"Koha before 3.16.6 and 3.18.x before 3.18.2");
 
-  script_tag(name:"solution", value:"Upgrade to version 3.16.6 or 3.18.2 or later,
-  For updates refer to http://www.koha.org");
+  script_tag(name:"solution", value:"Upgrade to version 3.16.6 or 3.18.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/71803/info");
@@ -67,6 +66,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+  script_xref(name:"URL", value:"http://www.koha.org");
   exit(0);
 }
 

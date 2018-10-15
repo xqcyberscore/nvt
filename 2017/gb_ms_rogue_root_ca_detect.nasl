@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_rogue_root_ca_detect.nasl 7968 2017-12-01 08:26:28Z asteins $
+# $Id: gb_ms_rogue_root_ca_detect.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Microsoft Windows Rogue Root Certificate Authorities Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112140");
-  script_version("$Revision: 7968 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-01 09:26:28 +0100 (Fri, 01 Dec 2017) $");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-24 13:11:25 +0100 (Fri, 24 Nov 2017)");
 
   script_cve_id("CVE-2015-2077", "CVE-2015-2078");
@@ -55,10 +55,10 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation might allow attackers to use Man in the Middle attacks against the target and its users to show them manipulated HTTPS webpages or read their encrypted data.");
   script_tag(name:"solution", value:"Ensure that the affected certificates are not being trusted anymore.");
 
-  script_xref(name: "URL", value: "https://blog.hboeck.de/archives/876-Superfish-2.0-Dangerous-Certificate-on-Dell-Laptops-breaks-encrypted-HTTPS-Connections.html");
-  script_xref(name: "URL", value: "https://support.lenovo.com/de/en/product_security/superfish");
-  script_xref(name: "URL", value: "https://blog.dell.com/en-us/response-to-concerns-regarding-edellroot-certificate/");
-  script_xref(name: "URL", value: "https://docs.microsoft.com/en-us/security-updates/securityadvisories/2015/3119884");
+  script_xref(name:"URL", value:"https://blog.hboeck.de/archives/876-Superfish-2.0-Dangerous-Certificate-on-Dell-Laptops-breaks-encrypted-HTTPS-Connections.html");
+  script_xref(name:"URL", value:"https://support.lenovo.com/de/en/product_security/superfish");
+  script_xref(name:"URL", value:"https://blog.dell.com/en-us/response-to-concerns-regarding-edellroot-certificate/");
+  script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/security-updates/securityadvisories/2015/3119884");
 
 
   exit(0);
@@ -104,7 +104,6 @@ certs = make_list(
 
 report = 'The following self-signed certificates have been identified and should be untrusted and/or removed from the host machine:\n';
 
-## Check if certificates are added by checking registry key
 foreach key (keys) {
   foreach cert (certs) {
     if (registry_key_exists(key:key+cert)) {

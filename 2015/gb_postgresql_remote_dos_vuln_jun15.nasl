@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_remote_dos_vuln_jun15.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_postgresql_remote_dos_vuln_jun15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # PostgreSQL Remote Denial Of Service Vulnerability June15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805194");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-3165");
   script_bugtraq_id(74787);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-08 14:53:21 +0530 (Mon, 08 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("PostgreSQL Remote Denial Of Service Vulnerability June15 (Windows)");
@@ -55,7 +55,7 @@ if(description)
   on windows.");
 
   script_tag(name:"solution", value:"Upgrade to version 9.0.20, 9.1.16, 9.2.11,
-  9.3.7, 9.4.2 or higher, For updates refer to http://www.postgresql.org/download");
+  9.3.7, 9.4.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +67,7 @@ if(description)
   script_dependencies("postgresql_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/postgresql", 5432);
   script_mandatory_keys("PostgreSQL/installed", "Host/runs_windows");
+  script_xref(name:"URL", value:"http://www.postgresql.org/download");
   exit(0);
 }
 

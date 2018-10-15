@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_unified_commu_manager_mult_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_cisco_unified_commu_manager_mult_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco Unified Communications Manager Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:cisco:unified_communications_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805097");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-24 17:37:08 +0530 (Mon, 24 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Cisco Unified Communications Manager Multiple Vulnerabilities");
@@ -71,7 +71,7 @@ if(description)
   10.x < 10.5.2, 11.x < 11.0.1 ");
 
   script_tag(name:"solution", value:"Upgrade to CUCM version 9.2, 10.5.2 or
-  11.0.1 pr later. For updates refer to http://www.cisco.com ");
+  11.0.1 pr later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -83,6 +83,7 @@ if(description)
   script_dependencies("gb_cisco_unified_commu_manager_detect.nasl");
   script_mandatory_keys("Cisco/CUCM/Installed");
   script_require_ports("Services/www", 443);
+  script_xref(name:"URL", value:"http://www.cisco.com");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_star57_rce_03_14.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_star57_rce_03_14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # STAR57 6.20.090330 Remote Command Execution
 #
@@ -30,10 +30,10 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.103928");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11867 $");
   script_name("STAR57 6.20.090330 Remote Command Execution");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125824/STAR57-6.20.090330-Remote-Command-Execution.html");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-24 11:15:12 +0100 (Mon, 24 Mar 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -51,7 +51,7 @@ commands within the context of the application.");
   script_tag(name:"summary", value:"STAR57 6.20.090330 suffer from a code execution vulnerability.");
   script_tag(name:"affected", value:"STAR57 6.20.090330");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mult_vuln_aug13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_realplayer_mult_vuln_aug13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities August13 (Windows)
 #
@@ -27,20 +27,19 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803841");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-4973", "CVE-2013-4974");
   script_bugtraq_id(61989, 61990);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-29 10:15:44 +0530 (Thu, 29 Aug 2013)");
   script_name("RealNetworks RealPlayer Multiple Vulnerabilities August13 (Windows)");
 
 
   script_tag(name:"summary", value:"The host is installed with RealPlayer and is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Upgrade to version 16.0.3.51 or later,
-For updates refer to http://www.real.com/player");
+  script_tag(name:"solution", value:"Upgrade to version 16.0.3.51 or later.");
   script_tag(name:"insight", value:"Flaws are due to errors when handling filenames in RMP and when parsing
 RealMedia files.");
   script_tag(name:"affected", value:"RealPlayer version prior to 16.0.3.51 on Windows.");
@@ -58,6 +57,7 @@ arbitrary code with the privileges of the application.");
   script_family("General");
   script_dependencies("gb_realplayer_detect_win.nasl");
   script_mandatory_keys("RealPlayer/Win/Ver");
+  script_xref(name:"URL", value:"http://www.real.com/player");
   exit(0);
 }
 

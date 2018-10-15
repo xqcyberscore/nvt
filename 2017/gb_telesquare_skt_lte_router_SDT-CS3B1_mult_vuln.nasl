@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telesquare_skt_lte_router_SDT-CS3B1_mult_vuln.nasl 10087 2018-06-06 05:55:17Z cfischer $
+# $Id: gb_telesquare_skt_lte_router_SDT-CS3B1_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Telesquare SKT LTE Router SDT-CS3B1 Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/h:telesquare:sdt-cs3b1";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812367");
-  script_version("$Revision: 10087 $");
+  script_version("$Revision: 11863 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-06 07:55:17 +0200 (Wed, 06 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-28 11:04:35 +0530 (Thu, 28 Dec 2017)");
   script_name("Telesquare SKT LTE Router SDT-CS3B1 Multiple Vulnerabilities");
 
@@ -54,24 +54,21 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to gain access to potentially sensitive information, bypass
   authorization and access resources and functionalities in the system and
-  conduct a denial of service condition.
-
-  Impact Level: System/Application");
+  conduct a denial of service condition.");
 
   script_tag(name:"affected", value:"Telesquare SKT LTE Router SDT-CS3B1");
 
   script_tag(name:"solution", value:"No known solution is available as of
   06th June, 2018. Information regarding this issue will be updated once solution
-  details are available. For updates refer to,
-  http://www.telesquare.co.kr");
+  details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "https://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5445.php");
-  script_xref(name : "URL" , value : "https://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5444.php");
-  script_xref(name : "URL" , value : "https://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5443.php");
+  script_xref(name:"URL", value:"https://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5445.php");
+  script_xref(name:"URL", value:"https://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5444.php");
+  script_xref(name:"URL", value:"https://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5443.php");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -79,6 +76,7 @@ if(description)
   script_dependencies("gb_telesquare_skt_lte_router_SDT-CS3B1_detect.nasl");
   script_mandatory_keys("telesquare/SDT-CS3B1/detected");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.telesquare.co.kr");
   exit(0);
 }
 

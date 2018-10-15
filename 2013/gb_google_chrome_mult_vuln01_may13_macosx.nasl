@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_may13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_google_chrome_mult_vuln01_may13_macosx.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 May13 (MAC OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803706");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-2836", "CVE-2013-2837", "CVE-2013-2838", "CVE-2013-2839",
                 "CVE-2013-2840", "CVE-2013-2841", "CVE-2013-2842", "CVE-2013-2843",
                 "CVE-2013-2844", "CVE-2013-2845", "CVE-2013-2846", "CVE-2013-2847",
@@ -36,7 +36,7 @@ if(description)
                     60076, 60070, 60071, 60073, 60063);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-24 11:44:26 +0530 (Fri, 24 May 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 May13 (MAC OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53430");
@@ -52,12 +52,12 @@ if(description)
   compromise a users system.");
   script_tag(name:"affected", value:"Google Chrome version prior to 27.0.1453.93 on MAC OS X");
   script_tag(name:"insight", value:"For more information about the vulnerabilities refer the reference links.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 27.0.1453.93 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 27.0.1453.93 or later.");
   script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

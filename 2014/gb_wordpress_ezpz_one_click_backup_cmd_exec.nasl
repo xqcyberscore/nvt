@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ezpz_one_click_backup_cmd_exec.nasl 11497 2018-09-20 10:31:54Z mmartin $
+# $Id: gb_wordpress_ezpz_one_click_backup_cmd_exec.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # WordPress Plugin 'ezpz-one-click-backup' 'cmd' Parameter OS Code Execution Vulnerability
 #
@@ -32,14 +32,14 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105029");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11497 $");
+  script_version("$Revision: 11867 $");
 
   script_name("WordPress Plugin 'ezpz-one-click-backup' 'cmd' Parameter OS Code Execution Vulnerability");
 
 
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2014/05/01/11");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-21 11:38:56 +0200 (Wed, 21 May 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -60,7 +60,7 @@ is not properly sanitized.");
 execution vulnerability because it fails to properly validate user supplied input.");
   script_tag(name:"affected", value:"12.03.10 and some earlier versions");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zavio_ip_cameras_multiple_vulns_05_13.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_zavio_ip_cameras_multiple_vulns_05_13.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Zavio IP Cameras Multiple Vulnerabilities
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2013-2567", "CVE-2013-2569", "CVE-2013-2568", "CVE-2013-2570");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11865 $");
 
   script_name("Zavio IP Cameras Multiple Vulnerabilities");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60188");
   script_xref(name:"URL", value:"http://www.coresecurity.com/advisories/zavio-IP-cameras-multiple-vulnerabilities");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-29 16:28:20 +0200 (Wed, 29 May 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -66,7 +66,7 @@ if (description)
 
 Zavio IP Cameras running firmware version 1.6.03 and below are
 vulnerable.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_solr_xxe_vuln02_jan14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: secpod_apache_solr_xxe_vuln02_jan14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Apache Solr XML External Entity(XXE) Vulnerability-02 Jan-14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:solr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903509");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-6407", "CVE-2012-6612");
   script_bugtraq_id(64008, 64427);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-29 16:29:04 +0530 (Wed, 29 Jan 2014)");
   script_name("Apache Solr XML External Entity(XXE) Vulnerability-02 Jan-14");
 
@@ -48,8 +48,7 @@ when parsing XML entities.");
 sensitive information, cause denial of service and potentially perform
 other more advanced XXE attacks.");
   script_tag(name:"affected", value:"Apache Solr before version 4.1");
-  script_tag(name:"solution", value:"Upgrade to Apache Solr version 4.1 or later.
-For updates refer to http://lucene.apache.org/solr");
+  script_tag(name:"solution", value:"Upgrade to Apache Solr version 4.1 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/55542");
@@ -60,6 +59,7 @@ For updates refer to http://lucene.apache.org/solr");
   script_family("Web application abuses");
   script_dependencies("secpod_apache_solr_detect.nasl");
   script_mandatory_keys("Apache/Solr/Version");
+  script_xref(name:"URL", value:"http://lucene.apache.org/solr");
   exit(0);
 }
 

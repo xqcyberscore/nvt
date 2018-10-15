@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_live_meeting_ms15-097.nasl 11635 2018-09-27 06:07:37Z cfischer $
+# $Id: gb_ms_live_meeting_ms15-097.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Microsoft Live Meeting Buffer Overflow Vulnerability (3089656)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:office_live_meeting";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806119");
-  script_version("$Revision: 11635 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-2510");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 14:49:04 +0530 (Wed, 09 Sep 2015)");
   script_name("Microsoft Live Meeting Buffer Overflow Vulnerability (3089656)");
 
@@ -51,9 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Live Meeting 2007 Console");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS15-097");
+  listed hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

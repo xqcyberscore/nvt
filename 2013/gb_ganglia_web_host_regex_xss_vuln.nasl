@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ganglia_web_host_regex_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_ganglia_web_host_regex_xss_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Ganglia Web 'host_regex' Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ganglia:ganglia-web";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803786");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-6395");
   script_bugtraq_id(63921);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-18 15:34:41 +0530 (Wed, 18 Dec 2013)");
   script_name("Ganglia Web 'host_regex' Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -53,8 +53,7 @@ if(description)
   vulnerability.");
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able
   read the cookie or not.");
-  script_tag(name:"solution", value:"Upgrade to Ganglia Web version 3.5.11 or later.
-  For updates refer to http://ganglia.info/");
+  script_tag(name:"solution", value:"Upgrade to Ganglia Web version 3.5.11 or later.");
   script_tag(name:"insight", value:"Input passed via the 'host_regex' GET parameter to index.php (when 'c' is set
   to to '1') is not properly sanitised before being returned to the user.");
   script_tag(name:"affected", value:"Ganglia Web version 3.5.10 Other versions may also be affected.");
@@ -65,6 +64,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://ganglia.info/");
   exit(0);
 }
 

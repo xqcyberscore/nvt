@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediatrix_65108.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_mediatrix_65108.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Mediatrix 4402 Web Management Interface 'login' Page Cross Site Scripting Vulnerability
 #
@@ -32,14 +32,14 @@ if (description)
   script_cve_id("CVE-2014-1612");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Mediatrix 4402 Web Management Interface 'login' Page Cross Site Scripting Vulnerability");
 
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65108");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-04 14:02:25 +0100 (Tue, 04 Feb 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -63,10 +63,10 @@ vulnerable parameter 'username'");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"summary", value:"Mediatrix 4402 is prone to a cross-site scripting vulnerability
 because it fails to properly sanitize user-supplied input.");
-  script_tag(name:"affected", value:"Mediatrix 4402 running firmware Dgw 1.1.13.186 is vulnerable; other
+  script_tag(name:"affected", value:"Mediatrix 4402 running firmware Dgw 1.1.13.186 is vulnerable. Other
 versions may also be affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

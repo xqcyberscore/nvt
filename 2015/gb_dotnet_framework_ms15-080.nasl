@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms15-080.nasl 11635 2018-09-27 06:07:37Z cfischer $
+# $Id: gb_dotnet_framework_ms15-080.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerabilities (3078662)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805082");
-  script_version("$Revision: 11635 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-2460", "CVE-2015-2462", "CVE-2015-2455", "CVE-2015-2456",
                 "CVE-2015-2463", "CVE-2015-2464");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 11:47:28 +0530 (Wed, 12 Aug 2015)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerabilities (3078662)");
 
@@ -56,9 +56,7 @@ if(description)
   Microsoft .NET Framework 4.6 and 4.6 RC");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS15-080");
+  listed hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -146,7 +144,7 @@ if(sysPath)
   key = "SOFTWARE\Microsoft\.NETFramework\AssemblyFolders\v3.0";
   if(registry_key_exists(key:key))
   {
-    sysVer = fetch_file_version(sysPath, file_name:"system32\XPSViewer\XPSViewer.exe");
+    sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\XPSViewer\XPSViewer.exe");
     if(sysVer)
     {
       ## .NET Framework 3.0 Service Pack 2 on Windows Vista and Windows Server 2008

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_mult_dos_vuln01_may16_lin.nasl 11569 2018-09-24 10:29:54Z asteins $
+# $Id: gb_squid_mult_dos_vuln01_may16_lin.nasl 11889 2018-10-12 16:05:33Z cfischer $
 #
 # Squid Multiple Denial of Service Vulnerabilities-01 May16 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808039");
-  script_version("$Revision: 11569 $");
+  script_version("$Revision: 11889 $");
   script_cve_id("CVE-2016-4555", "CVE-2016-4556");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 12:29:54 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 18:05:33 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-18 10:54:56 +0530 (Wed, 18 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid Multiple Denial of Service Vulnerabilities-01 May16 (Linux)");
@@ -53,7 +53,7 @@ if(description)
   before 4.0.10 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Squid version 3.5.18 or 4.0.10
-  or later, For updates refer to http://www.squid-cache.org");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +65,7 @@ if(description)
   script_dependencies("secpod_squid_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("squid_proxy_server/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 3128, 8080);
+
   exit(0);
 }
 

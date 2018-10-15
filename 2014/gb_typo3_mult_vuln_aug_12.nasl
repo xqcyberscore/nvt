@@ -28,14 +28,14 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804201");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2012-3527", "CVE-2012-3528", "CVE-2012-3529",
                 "CVE-2012-3530", "CVE-2012-3531");
   script_bugtraq_id(55052);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-03 13:01:59 +0530 (Fri, 03 Jan 2014)");
   script_name("TYPO3 Multiple Vulnerabilities Aug12");
 
@@ -58,8 +58,7 @@ configuration module is accessed.
 specially crafted HTML injections.
 
   - An error exist in Install Tool, which fails to sanitize user input properly.");
-  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.5.19, 4.6.12, 4.7.4 or later,
-For updates refer to, http://typo3.org/");
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.5.19, 4.6.12, 4.7.4 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with TYPO3 and is prone to multiple vulnerabilities.");
   script_tag(name:"affected", value:"TYPO3 version 4.5.0 up to 4.5.18, 4.6.0 up to 4.6.11, 4.7.0 up to 4.7.3");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_mult_vuln_may14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_flash_mult_vuln_may14_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities - May14 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804589");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-0516", "CVE-2014-0517", "CVE-2014-0518", "CVE-2014-0519",
                 "CVE-2014-0520");
   script_bugtraq_id(67361, 67364, 67371, 67373, 67372);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-22 12:37:43 +0530 (Thu, 22 May 2014)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - May14 (Windows)");
 
@@ -47,8 +47,7 @@ objects and multiple unspecified errors.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
 restrictions and compromise a user's system.");
   script_tag(name:"affected", value:"Adobe Flash Player version before 13.0.0.214 on Windows");
-  script_tag(name:"solution", value:"Update to Adobe Flash Player version 13.0.0.214 or later,
-For updates refer to http://get.adobe.com/flashplayer");
+  script_tag(name:"solution", value:"Update to Adobe Flash Player version 13.0.0.214 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -59,6 +58,7 @@ For updates refer to http://get.adobe.com/flashplayer");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

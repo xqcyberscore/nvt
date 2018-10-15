@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_invoiceplane_mult_vuln.nasl 6221 2017-05-26 10:26:20Z ckuerste $
+# $Id: gb_invoiceplane_mult_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # InvoicePlane Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:invoiceplane:invoiceplane";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106832");
-  script_version("$Revision: 6221 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-26 12:26:20 +0200 (Fri, 26 May 2017) $");
-  script_tag(name: "creation_date", value: "2017-05-26 12:18:19 +0700 (Fri, 26 May 2017)");
-  script_tag(name: "cvss_base", value: "5.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-26 12:18:19 +0700 (Fri, 26 May 2017)");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("InvoicePlane Multiple Vulnerabilities");
 
@@ -49,24 +49,24 @@ if (description)
   script_dependencies("gb_invoiceplane_detect.nasl");
   script_mandatory_keys("invoiceplane/installed");
 
-  script_tag(name: "summary", value: "InvoicePlane is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"InvoicePlane is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "InvoicePlane is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"InvoicePlane is prone to multiple vulnerabilities:
 
-- Arbitrary File Upload
+  - Arbitrary File Upload
 
-- Stored Cross Site Scripting");
+  - Stored Cross Site Scripting");
 
-  script_tag(name: "impact", value: "An authenticated attacker may compromise the web server. Potentially
+  script_tag(name:"impact", value:"An authenticated attacker may compromise the web server. Potentially
 sensitive invoice data might get exposed through this attack.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "InvoicePlane prior to version 1.5.2.");
+  script_tag(name:"affected", value:"InvoicePlane prior to version 1.5.2.");
 
-  script_tag(name: "solution", value: "Update to version 1.5.2 or later.");
+  script_tag(name:"solution", value:"Update to version 1.5.2 or later.");
 
-  script_xref(name: "URL", value: "https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20170523-0_InvoicePlane_Upload_arbitrary_files_stored_XSS_v10.txt");
+  script_xref(name:"URL", value:"https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20170523-0_InvoicePlane_Upload_arbitrary_files_stored_XSS_v10.txt");
 
   exit(0);
 }

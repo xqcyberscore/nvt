@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-038.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ms12-038.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (2706726)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902841");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_bugtraq_id(53861);
   script_cve_id("CVE-2012-1855");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-13 09:09:09 +0530 (Wed, 13 Jun 2012)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (2706726)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49418");
@@ -54,8 +54,8 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error within the framework when handling
   pointers and can be exploited to corrupt memory via a specially crafted
   web page.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-038.");
   script_tag(name:"qod_type", value:"registry");

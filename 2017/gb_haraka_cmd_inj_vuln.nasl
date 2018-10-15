@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_haraka_cmd_inj_vuln.nasl 5117 2017-01-27 07:37:57Z ckuerste $
+# $Id: gb_haraka_cmd_inj_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Haraka Command Injection Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:haraka:haraka";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106547");
-  script_version("$Revision: 5117 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-27 08:37:57 +0100 (Fri, 27 Jan 2017) $");
-  script_tag(name: "creation_date", value: "2017-01-27 12:28:21 +0700 (Fri, 27 Jan 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-27 12:28:21 +0700 (Fri, 27 Jan 2017)");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
 
   script_cve_id("CVE-2016-1000282");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Haraka Command Injection Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("gb_haraka_detect.nasl");
   script_mandatory_keys("haraka/installed");
 
-  script_tag(name: "summary", value: "Haraka is prone to a remote command injection vulnerability.");
+  script_tag(name:"summary", value:"Haraka is prone to a remote command injection vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Haraka comes with a plugin for processing attachments. Versions before
+  script_tag(name:"insight", value:"Haraka comes with a plugin for processing attachments. Versions before
 2.8.9 can be vulnerable to command injection.");
 
-  script_tag(name: "affected", value: "Haraka version 2.8.8 and prior.");
+  script_tag(name:"affected", value:"Haraka version 2.8.8 and prior.");
 
-  script_tag(name: "solution", value: "Update to 2.8.9 or later versions.");
+  script_tag(name:"solution", value:"Update to 2.8.9 or later versions.");
 
-  script_xref(name: "URL", value: "https://github.com/outflankbv/Exploits/blob/master/harakiri-CVE-2016-1000282.py");
+  script_xref(name:"URL", value:"https://github.com/outflankbv/Exploits/blob/master/harakiri-CVE-2016-1000282.py");
 
   exit(0);
 }

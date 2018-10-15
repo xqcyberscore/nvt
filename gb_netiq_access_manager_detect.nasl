@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netiq_access_manager_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_netiq_access_manager_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # NetIQ Access Manager Detection
 #
@@ -30,8 +30,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105148");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-19 14:59:27 +0100 (Fri, 19 Dec 2014)");
   script_name("NetIQ Access Manager Detection");
 
@@ -50,7 +50,7 @@ NetIQ Access Manager from the response.");
 
   script_xref(name:"URL", value:"https://www.netiq.com/products/access-manager/");
 
- exit(0);
+  exit(0);
 }
 
 include("cpe.inc");

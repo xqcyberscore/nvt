@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_java_method_exec_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_apache_struts2_java_method_exec_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Apache Struts2 'URL' & 'Anchor' tags Arbitrary Java Method Execution Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803837");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1966", "CVE-2013-2115");
   script_bugtraq_id(60166, 60167);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-23 17:54:59 +0530 (Tue, 23 Jul 2013)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Apache Struts2 'URL' & 'Anchor' tags Arbitrary Java Method Execution Vulnerabilities");
@@ -54,8 +54,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apache Struts 2 before 2.3.14.2");
 
-  script_tag(name:"solution", value:"Upgrade to Apache Struts 2 version 2.3.14.2 or later,
-  For updates refer to http://struts.apache.org");
+  script_tag(name:"solution", value:"Upgrade to Apache Struts 2 version 2.3.14.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_code_exec_vuln_mar15_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_mozilla_firefox_esr_code_exec_vuln_mar15_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Mozilla Firefox ESR Just-in-time (JIT) Code Execution Vulnerability Mar15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805510");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-0817");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-27 11:46:34 +0530 (Fri, 27 Mar 2015)");
   script_name("Mozilla Firefox ESR Just-in-time (JIT) Code Execution Vulnerability Mar15 (Windows)");
 
@@ -53,8 +53,7 @@ if(description)
   Windows");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version
-  31.5.2 or later, For updates refer to
-  https://www.mozilla.org/en-US/firefox/organizations");
+  31.5.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +67,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
+  script_xref(name:"URL", value:"https://www.mozilla.org/en-US/firefox/organizations");
   exit(0);
 }
 

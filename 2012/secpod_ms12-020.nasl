@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-020.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: secpod_ms12-020.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Remote Desktop Protocol Remote Code Execution Vulnerabilities (2671387)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902663");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2012-0002", "CVE-2012-0152");
   script_bugtraq_id(52353, 52354);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-14 09:43:49 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Remote Desktop Protocol Remote Code Execution Vulnerabilities (2671387)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48395");
@@ -59,8 +59,8 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to the way Remote Desktop Protocol accesses an
   object in memory that has been improperly initialized or has been deleted
   and the way RDP service processes the packets.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory ");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-020.");
   script_tag(name:"qod_type", value:"registry");
@@ -84,8 +84,8 @@ if(!sysPath ){
   exit(0);
 }
 
-rdpVer1 = fetch_file_version(sysPath, file_name:"system32\drivers\Rdpwd.sys");
-rdpVer2 = fetch_file_version(sysPath, file_name:"system32\Rdpwsx.dll");
+rdpVer1 = fetch_file_version(sysPath:sysPath, file_name:"system32\drivers\Rdpwd.sys");
+rdpVer2 = fetch_file_version(sysPath:sysPath, file_name:"system32\Rdpwsx.dll");
 if(!rdpVer1 && !rdpVer2){
   exit(0);
 }

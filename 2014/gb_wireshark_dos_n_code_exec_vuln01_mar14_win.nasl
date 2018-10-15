@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_n_code_exec_vuln01_mar14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_wireshark_dos_n_code_exec_vuln01_mar14_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Wireshark Denial of Service and Code Execution Vulnerabilities-01 Mar14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804331");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-2281", "CVE-2014-2283", "CVE-2014-2299");
   script_bugtraq_id(66066, 66072, 66068);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-14 10:57:29 +0530 (Fri, 14 Mar 2014)");
   script_name("Wireshark Denial of Service and Code Execution Vulnerabilities-01 Mar14 (Windows)");
 
@@ -48,8 +48,7 @@ MPEG parser (wiretap/mpeg.c).");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a DoS (Denial of Service)
 and compromise a vulnerable system.");
   script_tag(name:"affected", value:"Wireshark version 1.8.x before 1.8.13 and 1.10.x before 1.10.6 on Windows");
-  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.8.13 or 1.10.6 or later,
-For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.8.13 or 1.10.6 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -62,6 +61,7 @@ For updates refer to http://www.wireshark.org/download");
   script_family("General");
   script_dependencies("gb_wireshark_detect_win.nasl");
   script_mandatory_keys("Wireshark/Win/Ver");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download");
   exit(0);
 }
 

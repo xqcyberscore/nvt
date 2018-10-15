@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx200223.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_xenserver_ctx200223.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Citrix XenServer Shellshock Security Update (CTX200223)
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2014-6271", "CVE-2014-6277", "CVE-2014-6278", "CVE-2014-7169", "CVE-2014-7186", "CVE-2014-7187");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Citrix XenServer Shellshock Security Update (CTX200223)");
 
   script_xref(name:"URL", value:"http://support.citrix.com/article/CTX200223");
 
   script_tag(name:"vuldetect", value:"Check the installed hotfixes");
-  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory.");
 
   script_tag(name:"summary", value:"A number of security vulnerabilities have been identified in the
 `bash' component of Citrix XenServer.  These issues include those known as `Shellshock'");
@@ -52,7 +52,7 @@ to and including Citrix XenServer 6.2 Service Pack 1.");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-18 17:37:46 +0100 (Thu, 18 Dec 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("Citrix Xenserver Local Security Checks");
@@ -60,7 +60,7 @@ to and including Citrix XenServer 6.2 Service Pack 1.");
   script_dependencies("gb_xenserver_version.nasl");
   script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

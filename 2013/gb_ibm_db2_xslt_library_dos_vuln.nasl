@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_xslt_library_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_ibm_db2_xslt_library_dos_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # IBM DB2 XSLT Library Denial of Service Vulnerability
 #
@@ -28,33 +28,33 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803789");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2013-5466");
   script_bugtraq_id(64334);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-26 17:51:52 +0530 (Thu, 26 Dec 2013)");
   script_name("IBM DB2 XSLT Library Denial of Service Vulnerability");
 
 
   script_tag(name:"summary", value:"This host is running IBM DB2 and is prone to denial of service
 vulnerability.");
-  script_tag(name:"vuldetect", value:"Get the installed version of IBM DB2 with the help of detect NVT and check
-the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"The fix for this vulnerability is available for download for DB2 V9.7 FP9
-http://www-01.ibm.com/support/docview.wss?uid=swg24036646
 
-For DB2 V9.5, V9.8, V10.1 and V10.5, the fix is planned to be made available in
-future fix packs.
-http://www-01.ibm.com/support/docview.wss?uid=swg21660041 ");
+For DB2 V9.5, V9.8, V10.1 and V10.5, the fix is planned to be made available in future fix packs.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Flaw is due to a NULL pointer dereference error within the XLST library.");
   script_tag(name:"affected", value:"IBM DB2 versions 9.5 through FP9
+
 IBM DB2 versions 9.7 through FP9
+
 IBM DB2 versions 9.8 through FP5
+
 IBM DB2 versions 10.1 through FP3
-IBM DB2 versions 10.5 through FP2 ");
+
+IBM DB2 versions 10.5 through FP2");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause denial of service
 conditions.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/56012");

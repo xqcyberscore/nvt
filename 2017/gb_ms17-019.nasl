@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-019.nasl 11816 2018-10-10 10:42:56Z mmartin $
+# $Id: gb_ms17-019.nasl 11879 2018-10-12 12:48:49Z mmartin $
 #
 # Microsoft Active Directory Federation Services Information Disclosure Vulnerability (4010320)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810813");
-  script_version("$Revision: 11816 $");
+  script_version("$Revision: 11879 $");
   script_cve_id("CVE-2017-0043");
   script_bugtraq_id(96628);
   script_tag(name:"cvss_base", value:"2.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 11:04:14 +0530 (Wed, 15 Mar 2017)");
   script_name("Microsoft Active Directory Federation Services Information Disclosure Vulnerability (4010320)");
 
@@ -88,7 +88,7 @@ if(!sysPath ){
   exit(0);
 }
 
-winVer = fetch_file_version(sysPath, file_name:"System32\Win32k.sys");
+winVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Win32k.sys");
 if(!winVer){
   exit(0);
 }
@@ -110,7 +110,7 @@ else if(hotfix_check_sp(win2008:3, win2008x64:3) > 0)
       exit(0);
     }
 
-    dllVer = fetch_file_version(sysPath, file_name:"\ADFS\Microsoft.identityserver.dll");
+    dllVer = fetch_file_version(sysPath:sysPath, file_name:"\ADFS\Microsoft.identityserver.dll");
     if(!dllVer){
       exit(0);
     }

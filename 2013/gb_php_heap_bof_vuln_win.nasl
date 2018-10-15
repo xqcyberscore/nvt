@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_heap_bof_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_php_heap_bof_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # PHP 'phar/tar.c' Heap Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803342");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2012-2386");
   script_bugtraq_id(47545);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-03-21 18:05:46 +0530 (Thu, 21 Mar 2013)");
   script_name("PHP 'phar/tar.c' Heap Buffer Overflow Vulnerability (Windows)");
 
@@ -56,8 +56,7 @@ if(description)
   script_tag(name:"insight", value:"Flaw related to overflow in phar_parse_tarfile()function in ext/phar/tar.c
   in the phar extension.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP 5.4.4 or 5.3.14 or later
-  For updates refer to http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to PHP 5.4.4 or 5.3.14 or later.");
 
   script_tag(name:"summary", value:"This host is running PHP and is prone to heap buffer overflow
   vulnerability.");
@@ -65,6 +64,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.php.net/downloads.php");
   exit(0);
 }
 

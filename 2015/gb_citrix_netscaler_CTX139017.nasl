@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX139017.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_citrix_netscaler_CTX139017.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Citrix NetScaler Denial of Service Vulnerability (CTX139017)
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2013-6011");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Citrix NetScaler Denial of Service Vulnerability (CTX139017)");
 
@@ -53,7 +53,7 @@ vulnerability.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-12 13:12:00 +0200 (Tue, 12 May 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -61,7 +61,7 @@ vulnerability.");
   script_dependencies("gb_citrix_netscaler_version.nasl");
   script_mandatory_keys("citrix_netscaler/detected");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

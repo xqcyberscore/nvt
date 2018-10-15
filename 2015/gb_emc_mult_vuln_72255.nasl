@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_mult_vuln_72255.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_emc_mult_vuln_72255.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # EMC M&R (Watch4net) Multiple Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-0513", "CVE-2015-0515", "CVE-2015-0516");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
 
   script_name("EMC M&R (Watch4net) Multiple Vulnerabilities");
 
@@ -80,7 +80,7 @@ Alerting Frontend.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-20 10:57:29 +0100 (Fri, 20 Mar 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -89,7 +89,7 @@ Alerting Frontend.");
   script_require_ports("Services/www", 58080);
   script_mandatory_keys("emc_m_r/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

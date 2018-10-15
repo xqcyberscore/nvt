@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln_mar15_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_mediawiki_mult_vuln_mar15_lin.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # MediaWiki Multiple Vulnerabilities - Mar15 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108112");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2015-2931", "CVE-2015-2932", "CVE-2015-2933", "CVE-2015-2934",
                 "CVE-2015-2935", "CVE-2015-2936", "CVE-2015-2937", "CVE-2015-2938",
                 "CVE-2015-2941", "CVE-2015-2942");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-29 07:49:40 +0200 (Wed, 29 Mar 2017)");
   script_name("MediaWiki Multiple Vulnerabilities - Mar15 (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -50,8 +50,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with MediaWiki
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to:
 
@@ -78,15 +77,13 @@ if(description)
   file or (2) XMP metadata in a PDF file, aka a 'billion laughs attack', a different vulnerability than CVE-2015-2937.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct XSS attacks, gain access to sensitive information and
-  have other some unspecified impact.
-
-  Impact Level: Application");
+  have other some unspecified impact.");
 
   script_tag(name:"affected", value:"MediaWiki before 1.19.24, 1.2x before 1.23.9, and 1.24.x before 1.24.2");
 
   script_tag(name:"solution", value:"Upgrade to version 1.19.24 or 1.23.9
-  or 1.24.2 or later. For updates refer http://www.mediawiki.org");
-
+  or 1.24.2 or later.");
+  script_xref(name:"URL", value:"http://www.mediawiki.org");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 

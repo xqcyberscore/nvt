@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20171203_lin.nasl 9461 2018-04-12 12:11:15Z jschulte $
+# $Id: gb_jenkins_20171203_lin.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Jenkins 2.93 XSS Vulnerability (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113063");
-  script_version("$Revision: 9461 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-12 14:11:15 +0200 (Thu, 12 Apr 2018) $");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-07 12:28:29 +0100 (Thu, 07 Dec 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -59,7 +59,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://jenkins.io/security/advisory/2017-12-05/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:cloudbees:jenkins";

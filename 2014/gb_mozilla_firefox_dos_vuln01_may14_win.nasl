@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804570");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1518");
   script_bugtraq_id(67133);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 16:23:01 +0530 (Tue, 06 May 2014)");
   script_name("Mozilla Firefox Denial of Service Vulnerability-01 May14 (Windows)");
 
@@ -47,8 +47,7 @@ vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code
 or cause a denial of service.");
   script_tag(name:"affected", value:"Mozilla Firefox version 28.0 on Windows");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 29.0 or later,
-For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 29.0 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -59,6 +58,7 @@ For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

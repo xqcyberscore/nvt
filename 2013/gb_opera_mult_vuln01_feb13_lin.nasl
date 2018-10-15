@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803310");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1618", "CVE-2013-1637", "CVE-2013-1638", "CVE-2013-1639");
   script_bugtraq_id(57773, 57633);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-11 14:20:02 +0530 (Mon, 11 Feb 2013)");
   script_name("Opera Multiple Vulnerabilities -01 Feb 13 (Linux)");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1043");
@@ -63,8 +63,7 @@ if(description)
   - Does not properly consider timing side-channel attacks on a MAC check
     operation during the processing of malformed CBC padding.");
 
-  script_tag(name:"solution", value:"Upgrade to Opera version 12.13 or later,
-  For updates refer to http://www.opera.com");
+  script_tag(name:"solution", value:"Upgrade to Opera version 12.13 or later.");
 
   script_tag(name:"summary", value:"This host is installed with Opera and is prone to multiple
   vulnerabilities.");

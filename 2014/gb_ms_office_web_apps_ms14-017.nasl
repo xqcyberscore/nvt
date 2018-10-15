@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms14-017.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms_office_web_apps_ms14-017.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Office Web Apps Memory Corruption Vulnerability (2949660)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804426");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-1761");
   script_bugtraq_id(66385);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 12:19:57 +0530 (Wed, 09 Apr 2014)");
   script_name("Microsoft Office Web Apps Memory Corruption Vulnerability (2949660)");
 
@@ -47,9 +47,8 @@ code and take complete control of the affected system.");
   script_tag(name:"affected", value:"Microsoft Office Web Apps 2010 Service Pack 2 and prior
 
 Microsoft Office Web Apps 2013 Service Pack 1 and prior");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms14-017");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -63,6 +62,7 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-017");
   script_dependencies("gb_ms_office_web_apps_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Web/Apps/Ver");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms14-017");
   exit(0);
 }
 

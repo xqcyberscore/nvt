@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_websockets_dos_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_mozilla_thunderbird_websockets_dos_macosx.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # Mozilla Thunderbird 'WebSockets' Denial of Service Vulnerability (Mac OS X)
 #
@@ -32,17 +32,17 @@ if(description)
   script_tag(name:"affected", value:"Thunderbird versions before 16.0.1 on Mac OS X");
   script_tag(name:"insight", value:"Error in the WebSockets implementation, allows remote attackers to cause a
   denial of service.");
-  script_tag(name:"solution", value:"Upgrade to Thunderbird version to 16.0.1 or later,
-  http://www.mozilla.org/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Thunderbird version to 16.0.1 or later.");
+  script_xref(name:"URL", value:"http://www.mozilla.org/en-US/thunderbird");
   script_tag(name:"summary", value:"The host is installed with Mozilla Thunderbird and is prone to multiple
   vulnerabilities.");
   script_oid("1.3.6.1.4.1.25623.1.0.803394");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2012-4191");
   script_bugtraq_id(55889);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 17:43:07 +0530 (Mon, 15 Oct 2012)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_oct12_lin.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_google_chrome_mult_vuln02_oct12_lin.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-02 Oct12 (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802474");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-5112", "CVE-2012-5376");
   script_bugtraq_id(55867);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 12:50:25 +0530 (Mon, 15 Oct 2012)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Oct12 (Linux)");
   script_xref(name:"URL", value:"http://blog.chromium.org/2012/10/pwnium-2-results-and-wrap-up_10.html");
@@ -54,7 +54,7 @@ if(description)
   - An error in Inter-process Communication (IPC) implementation, allows
     remote attackers to bypass intended sandbox restrictions and write to
     arbitrary files by leveraging access to a renderer process.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 22.0.1229.94 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 22.0.1229.94 or later.");
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");

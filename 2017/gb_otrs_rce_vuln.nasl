@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_rce_vuln.nasl 8091 2017-12-13 06:22:57Z teissa $
+# $Id: gb_otrs_rce_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # OTRS Remote Code Execution Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:otrs:otrs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112139");
-  script_version("$Revision: 8091 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-13 07:22:57 +0100 (Wed, 13 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-11-24 08:52:38 +0100 (Fri, 24 Nov 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-24 08:52:38 +0100 (Fri, 24 Nov 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-16664");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("OTRS Remote Code Execution Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("secpod_otrs_detect.nasl");
   script_mandatory_keys("OTRS/installed");
 
-  script_tag(name: "summary", value: "OTRS is prone to a remote code execution vulnerability.");
+  script_tag(name:"summary", value:"OTRS is prone to a remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "An attacker who is logged into OTRS as an agent can request special URLs
+  script_tag(name:"insight", value:"An attacker who is logged into OTRS as an agent can request special URLs
 from OTRS which can lead to the execution of shell commands with the permissions of the web server user.");
 
-  script_tag(name: "affected", value: "OTRS 5.0.x up to and including 5.0.23, OTRS 4.0.x up to and including 4.0.25 and OTRS 3.3.x up to and including 3.3.19");
+  script_tag(name:"affected", value:"OTRS 5.0.x up to and including 5.0.23, OTRS 4.0.x up to and including 4.0.25 and OTRS 3.3.x up to and including 3.3.19");
 
-  script_tag(name: "solution", value: "Upgrade to OTRS 3.3.20, 4.0.26, 5.0.24 or later.");
+  script_tag(name:"solution", value:"Upgrade to OTRS 3.3.20, 4.0.26, 5.0.24 or later.");
 
-  script_xref(name: "URL", value: "https://www.otrs.com/security-advisory-2017-07-security-update-otrs-framework/");
+  script_xref(name:"URL", value:"https://www.otrs.com/security-advisory-2017-07-security-update-otrs-framework/");
 
   exit(0);
 }

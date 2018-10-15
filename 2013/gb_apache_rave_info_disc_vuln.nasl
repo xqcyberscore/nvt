@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_rave_info_disc_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_apache_rave_info_disc_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Apache Rave User Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:rave";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803180");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1814");
   script_bugtraq_id(58455);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-03-14 16:32:56 +0530 (Thu, 14 Mar 2013)");
   script_name("Apache Rave User Information Disclosure Vulnerability");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/82758");
@@ -55,13 +55,13 @@ if(description)
   script_tag(name:"affected", value:"Apache Rave versions 0.11 to 0.20");
   script_tag(name:"insight", value:"The flaw is due to error in handling of User RPC API, returns the full user
   object, including the salted and hashed password.");
-  script_tag(name:"solution", value:"Upgrade to Apache Rave 0.20.1 or later,
-  For updates refer to http://rave.apache.org/downloads.html");
+  script_tag(name:"solution", value:"Upgrade to Apache Rave 0.20.1 or later.");
   script_tag(name:"summary", value:"The host is running Apache Rave and is prone to information
   disclosure vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://rave.apache.org/downloads.html");
   exit(0);
 }
 

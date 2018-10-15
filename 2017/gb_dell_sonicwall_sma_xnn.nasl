@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_sma_xnn.nasl 9522 2018-04-18 16:47:22Z asteins $
+# $Id: gb_dell_sonicwall_sma_xnn.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Dell SonicWALL Secure Mobile Access - Cross-Site Scripting / Cross-Site Request Forgery Vulnerability
 #
@@ -29,27 +29,24 @@ CPE = "cpe:/o:dell:sonicwall_secure_mobile_access";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107119");
-  script_version("$Revision: 9522 $");
+  script_version("$Revision: 11874 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-18 18:47:22 +0200 (Wed, 18 Apr 2018) $");
-  script_tag(name:"creation_date", value: "2017-01-09 13:26:09 +0700 (Mon, 09 Jan 2017)");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-09 13:26:09 +0700 (Mon, 09 Jan 2017)");
   script_tag(name:"qod_type", value:"remote_app");
   script_name("Dell SonicWALL Secure Mobile Access - Cross-Site Scripting / Cross-Site Request Forgery Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with Dell SonicWALL Secure Mobile Access and prone to Cross-Site Scripting / Cross-Site Request Forgery
   vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"SonicWALL SMA suffers from an XSS issue due to a failure to properly sanitize
   user-supplied input to several parameters.");
 
   script_tag(name:"impact", value:"Attackers can exploit this weakness to execute arbitrary HTML and script code
-  in a user's browser session. The WAF was bypassed via form-based CSRF.
-
-  Impact Level: System/Application");
+  in a user's browser session. The WAF was bypassed via form-based CSRF.");
 
   script_tag(name:"affected", value:"Dell SonicWALL Secure Mobile Access SMA 8.1 below 8.1.0.3.");
 

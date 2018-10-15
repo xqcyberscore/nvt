@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_froxlor_info_discl.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_froxlor_info_discl.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Froxlor Information Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:froxlor:froxlor';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106036");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 11872 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-03 13:44:55 +0700 (Mon, 03 Aug 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -64,7 +64,7 @@ SQL password and username or other sensitive information.");
 
   script_tag(name:"affected", value:"Froxlor version 0.9.33.1 and before.");
 
-  script_tag(name:"solution", value:"Update to version 0.9.33.2 or later");
+  script_tag(name:"solution", value:"Update to version 0.9.33.2 or later.");
 
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/07/29/8");
 

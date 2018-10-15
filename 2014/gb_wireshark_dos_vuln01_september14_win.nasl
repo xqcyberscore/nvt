@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln01_september14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_wireshark_dos_vuln01_september14_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Wireshark DOS Vulnerability-01 Sep14 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804909");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-6430", "CVE-2014-6428", "CVE-2014-6427", "CVE-2014-6432",
                 "CVE-2014-6431", "CVE-2014-6429", "CVE-2014-6423", "CVE-2014-6424");
   script_bugtraq_id(69857, 69865, 69861, 69859, 69858, 69853, 69860, 69862);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-09-23 15:24:29 +0530 (Tue, 23 Sep 2014)");
 
   script_name("Wireshark DOS Vulnerability-01 Sep14 (Windows)");
@@ -67,8 +67,7 @@ if(description)
   script_tag(name:"affected", value:"Wireshark version 1.10.x
   before 1.10.10 and 1.12.x before 1.12.1 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.12.1, 1.10.10 or later,
-  For updates refer to https://www.wireshark.org");
+  script_tag(name:"solution", value:"Upgrade to version 1.12.1, 1.10.10 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -78,6 +77,7 @@ if(description)
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("gb_wireshark_detect_win.nasl");
   script_mandatory_keys("Wireshark/Win/Ver");
+  script_xref(name:"URL", value:"https://www.wireshark.org");
   exit(0);
 }
 

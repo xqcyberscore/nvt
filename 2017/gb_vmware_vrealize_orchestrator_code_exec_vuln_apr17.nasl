@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_orchestrator_code_exec_vuln_apr17.nasl 10017 2018-05-30 07:17:29Z cfischer $
+# $Id: gb_vmware_vrealize_orchestrator_code_exec_vuln_apr17.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # VMware vRealize Orchestrator Remote Code Execution Vulnerability - Apr17
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:vmware:vrealize_orchestrator';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811005");
-  script_version("$Revision: 10017 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2015-6934");
   script_bugtraq_id(79648);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-20 18:03:53 +0530 (Thu, 20 Apr 2017)");
   script_name("VMware vRealize Orchestrator Remote Code Execution Vulnerability - Apr17");
 
@@ -48,16 +48,13 @@ if(description)
   classes exists.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code in the context of current user.
-
-  Impact Level: Application");
+  attackers to execute arbitrary code in the context of current user.");
 
   script_tag(name:"affected", value:"VMware vRealize Orchestrator 6.x before
   6.0.5, 4.2.x and 5.x");
 
   script_tag(name:"solution", value:"Upgrade VMware vRealize Orchestrator to
-  version 6.0.5 or apply patch available from vendor. For details refer to
-  http://www.vmware.com/security/advisories/VMSA-2015-0009.html");
+  version 6.0.5 or apply patch available from vendor.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); # unreliable as patch is also available
   script_tag(name:"solution_type", value:"VendorFix");

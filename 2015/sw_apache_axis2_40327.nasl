@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_axis2_40327.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: sw_apache_axis2_40327.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Apache Axis2 'engagingglobally' Cross-Site Scripting Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:apache:axis2';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111005");
-  script_version("$Revision: 11218 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 11872 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-17 08:00:00 +0100 (Tue, 17 Mar 2015)");
 
   script_tag(name:"cvss_base", value:"4.3");
@@ -67,7 +67,7 @@ if (description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

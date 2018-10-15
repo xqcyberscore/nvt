@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-084.nasl 11635 2018-09-27 06:07:37Z cfischer $
+# $Id: gb_ms15-084.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # MS Windows XML Core Services Information Disclosure Vulnerability (3080129)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805950");
-  script_version("$Revision: 11635 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-2434", "CVE-2015-2471", "CVE-2015-2440");
   script_bugtraq_id(76232, 76257, 76229);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 08:40:04 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows XML Core Services Information Disclosure Vulnerability (3080129)");
@@ -64,9 +64,7 @@ if(description)
   Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/ms15-084");
+  listed hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3076895");
@@ -99,9 +97,9 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer3 = fetch_file_version(sysPath, file_name:"system32\Msxml3.dll");
+dllVer3 = fetch_file_version(sysPath:sysPath, file_name:"system32\Msxml3.dll");
 
-dllVer6 = fetch_file_version(sysPath, file_name:"system32\Msxml6.dll");
+dllVer6 = fetch_file_version(sysPath:sysPath, file_name:"system32\Msxml6.dll");
 
 if(dllVer3)
 {

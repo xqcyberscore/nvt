@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_core_mult_vuln_SA-CORE-2017-003_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $ 
+# $Id: gb_drupal_core_mult_vuln_SA-CORE-2017-003_lin.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Drupal Core Multiple Vulnerabilities (SA-CORE-2017-003) (Linux)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810959");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-6920", "CVE-2017-6921", "CVE-2017-6922");
   script_bugtraq_id(99211, 99222, 99219);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-22 14:36:14 +0530 (Thu, 22 Jun 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal Core Multiple Vulnerabilities (SA-CORE-2017-003) (Linux)");
@@ -42,31 +42,30 @@ if(description)
   script_tag(name:"summary", value:"This host is running Drupal and is prone
   to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
-  - PECL YAML parser does not handle PHP objects safely during certain 
+
+  - PECL YAML parser does not handle PHP objects safely during certain
     operations within Drupal core.
-  - The file REST resource does not properly validate some fields when 
+
+  - The file REST resource does not properly validate some fields when
     manipulating files.
-  - Private files that have been uploaded by an anonymous user but not 
-    permanently attached to content on the site is visible to the anonymous 
+
+  - Private files that have been uploaded by an anonymous user but not
+    permanently attached to content on the site is visible to the anonymous
     user, Drupal core did not provide sufficient protection.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code, get or register a user account on the 
-  site with permissions to upload files into a private file system and 
-  modify the file resource.
+  attackers to execute arbitrary code, get or register a user account on the
+  site with permissions to upload files into a private file system and
+  modify the file resource.");
 
-  Impact Level: Application");
-
-  script_tag(name:"affected", value:"Drupal core version 7.x versions prior to 
+  script_tag(name:"affected", value:"Drupal core version 7.x versions prior to
   7.56 and 8.x versions prior to 8.3.4.");
 
-  script_tag(name:"solution", value:"Upgrade to Drupal core version 7.56 or 
-  8.3.4 or later.
-  For updates refer to https://www.drupal.org");
+  script_tag(name:"solution", value:"Upgrade to Drupal core version 7.56 or
+  8.3.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.drupal.org/SA-CORE-2017-003");
@@ -83,22 +82,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-report = "";
-drupalPort= 0;
-drupalVer = "";
-
-## Get HTTP Port
 if(!drupalPort= get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!drupalVer = get_app_version(cpe:CPE, port:drupalPort, version_regex:"^[0-9]\.[0-9.]+")){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(drupalVer =~ "^(8\.)")
 {
   if(version_is_less(version:drupalVer, test_version:"8.3.4")){

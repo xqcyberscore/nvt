@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortimail_webgui_xss_vuln.nasl 11445 2018-09-18 08:09:39Z mmartin $
+# $Id: gb_fortimail_webgui_xss_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Fortinet FortiMail WebGUI Cross Site Scripting Vulnerability (FG-IR-15-005)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:fortinet:fortimail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805297");
-  script_version("$Revision: 11445 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-8617");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-04 15:19:22 +0530 (Wed, 04 Mar 2015)");
   script_name("Fortinet FortiMail WebGUI Cross Site Scripting Vulnerability (FG-IR-15-005)");
 
@@ -55,8 +55,7 @@ if(description)
   5.0.x before 5.0.8, 5.1.x before 5.1.5 and 5.2.x before 5.2.3");
 
   script_tag(name:"solution", value:"Upgrade to FortiMail version 4.3.9 or
-  5.0.8 or 5.1.5 or 5.2.3 or later.
-  For updates refer to http://www.fortinet.com/products/fortimail");
+  5.0.8 or 5.1.5 or 5.2.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
@@ -69,6 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_fortimail_version.nasl");
   script_mandatory_keys("fortimail/version");
+  script_xref(name:"URL", value:"http://www.fortinet.com/products/fortimail");
   exit(0);
 }
 

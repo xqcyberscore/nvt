@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_sketchup_skp_file_code_exec_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_google_sketchup_skp_file_code_exec_vuln_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Google SketchUp '.SKP' File Remote Code Execution Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902681");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-2478");
   script_bugtraq_id(48363);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-21 14:56:42 +0530 (Mon, 21 May 2012)");
   script_name("Google SketchUp '.SKP' File Remote Code Execution Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/38187");
@@ -50,7 +50,7 @@ if(description)
   script_tag(name:"affected", value:"Google SketchUp version 7.1 Maintenance Release 2 and prior on Mac OS X");
   script_tag(name:"insight", value:"The flaw is due to an error when handling certain types of invalid
   edge geometry in a specially crafted SketchUp (.SKP) file.");
-  script_tag(name:"solution", value:"Upgrade to Google SketchUp version 8.0 or later,");
+  script_tag(name:"solution", value:"Upgrade to Google SketchUp version 8.0 or later.");
   script_tag(name:"summary", value:"This host is installed with Google SketchUp and is prone to
   to remote code execution vulnerability.");
   script_tag(name:"qod_type", value:"package");

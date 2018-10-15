@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_posh_mult_vuln.nasl 11584 2018-09-25 07:02:39Z cfischer $
+# $Id: gb_posh_mult_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # POSH Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804244");
-  script_version("$Revision: 11584 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-2211", "CVE-2014-2212", "CVE-2014-2213", "CVE-2014-2214");
   script_bugtraq_id(65817, 65818, 65840, 65843);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-10 15:56:43 +0530 (Mon, 10 Mar 2014)");
   script_name("POSH Multiple Vulnerabilities");
 
@@ -58,8 +58,7 @@ if(description)
 
   script_tag(name:"affected", value:"POSH version before 3.3.0");
 
-  script_tag(name:"solution", value:"Upgrade to version POSH version 3.3.0 or later.
-  For updates refer to http://sourceforge.net/projects/posh");
+  script_tag(name:"solution", value:"Upgrade to version POSH version 3.3.0 or later.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/56988");
   script_xref(name:"URL", value:"http://www.sysdream.com/CVE-2014-2211_2214");
@@ -74,6 +73,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/posh");
   exit(0);
 }
 

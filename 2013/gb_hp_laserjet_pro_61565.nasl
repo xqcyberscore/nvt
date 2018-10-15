@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_laserjet_pro_61565.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_hp_laserjet_pro_61565.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Multiple HP LaserJet Pro Printers  Unspecified Information Disclosure Vulnerability
 #
@@ -32,14 +32,14 @@ if (description)
   script_cve_id("CVE-2013-4807");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:N");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
 
   script_name("Multiple HP LaserJet Pro Printers  Unspecified Information Disclosure Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61565");
   script_xref(name:"URL", value:"http://www.hp.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-12 16:59:44 +0200 (Mon, 12 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -77,7 +77,7 @@ HP LaserJet Pro CP1025nw");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

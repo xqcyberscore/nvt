@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_xss_vuln02_apr14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_owncloud_mult_xss_vuln02_apr14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # ownCloud Multiple XSS Vulnerabilities-02 Apr14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804362");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-2057");
   script_bugtraq_id(66224);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-04 16:00:56 +0530 (Fri, 04 Apr 2014)");
   script_name("ownCloud Multiple XSS Vulnerabilities-02 Apr14");
 
@@ -47,8 +47,7 @@ input.");
 code in a user's browser within the trust relationship between their browser
 and the server.");
   script_tag(name:"affected", value:"ownCloud Server before version 6.0.2");
-  script_tag(name:"solution", value:"Upgrade to ownCloud version 6.0.2 or later,
-For updates refer to http://owncloud.org");
+  script_tag(name:"solution", value:"Upgrade to ownCloud version 6.0.2 or later.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/57283");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/91975");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_race_cond_vuln01_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_comodo_race_cond_vuln01_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Comodo Internet Security Race Condition Vulnerability-01
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803684");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2011-5119");
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-05 15:20:22 +0530 (Fri, 05 Jul 2013)");
   script_name("Comodo Internet Security Race Condition Vulnerability-01");
   script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/429023.php");
@@ -45,8 +45,7 @@ if(description)
   feature.");
   script_tag(name:"affected", value:"Comodo Internet Security versions before 5.8.211697.2124");
   script_tag(name:"insight", value:"Unspecified flaw that is triggered by multiple race conditions.");
-  script_tag(name:"solution", value:"Upgrade to Comodo Internet Security version 5.8.211697.2124 or later,
-  For updates refer to http://personalfirewall.comodo.com");
+  script_tag(name:"solution", value:"Upgrade to Comodo Internet Security version 5.8.211697.2124 or later.");
   script_tag(name:"summary", value:"The host is installed with Comodo Internet Security and is prone
   to race condition vulnerability.");
   script_tag(name:"qod_type", value:"registry");

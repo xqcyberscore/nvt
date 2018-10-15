@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_viewer_ms15-033.nasl 11612 2018-09-26 05:47:26Z cfischer $
+# $Id: gb_ms_word_viewer_ms15-033.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Microsoft Office Word Viewer Remote Code Execution Vulnerabilities (3048019)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805061");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-1650", "CVE-2015-1649", "CVE-2015-1651");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 11:05:27 +0530 (Wed, 15 Apr 2015)");
   script_name("Microsoft Office Word Viewer Remote Code Execution Vulnerabilities (3048019)");
 
@@ -55,8 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Word Viewer 2007 Service Pack 3 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link, https://technet.microsoft.com/en-us/security/bulletin/ms15-033");
+  hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -67,6 +66,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/WordView/Version");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms15-033");
   exit(0);
 }
 

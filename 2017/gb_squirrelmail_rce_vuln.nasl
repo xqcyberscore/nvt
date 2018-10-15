@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squirrelmail_rce_vuln.nasl 9577 2018-04-24 07:43:22Z asteins $
+# $Id: gb_squirrelmail_rce_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # SquirrelMail < 1.4.23 Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:squirrelmail:squirrelmail';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106785");
-  script_version("$Revision: 9577 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-24 09:43:22 +0200 (Tue, 24 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-04-21 17:09:27 +0200 (Fri, 21 Apr 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-21 17:09:27 +0200 (Fri, 21 Apr 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-7692", "CVE-2018-8741");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "Workaround");
+  script_tag(name:"solution_type", value:"Workaround");
 
   script_name("SquirrelMail < 1.4.23 Multiple Vulnerabilities");
 
@@ -51,34 +51,34 @@ if (description)
   script_dependencies("squirrelmail_detect.nasl");
   script_mandatory_keys("squirrelmail/installed");
 
-  script_tag(name: "summary", value: "SquirrelMail is prone to authenticated remote code execution
+  script_tag(name:"summary", value:"SquirrelMail is prone to authenticated remote code execution
 and directory traversal vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "SquirrelMail allows:
+  script_tag(name:"insight", value:"SquirrelMail allows:
 
-- post-authentication remote code execution via a sendmail.cf file that is mishandled in a popen call.
+  - post-authentication remote code execution via a sendmail.cf file that is mishandled in a popen call.
 It's possible to exploit this vulnerability to execute arbitrary shell commands on the remote server.
 
-- uploading a mail attachment a temporary file is generated on the server that the client later references
+  - uploading a mail attachment a temporary file is generated on the server that the client later references
 when sending the mail. The filename is not sanitized in any way, so by passing a filename of the form
 '../../../../some_path/some_filename' one can use this to attach arbitrary files from the server that can
 be accessed by the PHP process to a mail.");
 
-  script_tag(name: "impact", value: "An authenticated attacker may execute arbitrary shell commands or
+  script_tag(name:"impact", value:"An authenticated attacker may execute arbitrary shell commands or
 read files from the filesystem.");
 
-  script_tag(name: "affected", value: "SquirrelMail 1.4.22 and prior as well as the trunk version
+  script_tag(name:"affected", value:"SquirrelMail 1.4.22 and prior as well as the trunk version
   (before r14650).");
 
-  script_tag(name: "solution", value: "Source-Code patches for both issues are available in the linked references.");
+  script_tag(name:"solution", value:"Source-Code patches for both issues are available in the linked references.");
 
-  script_xref(name: "URL", value: "https://www.wearesegment.com/research/Squirrelmail-Remote-Code-Execution.html");
-  script_xref(name: "URL", value: "https://insinuator.net/2018/03/squirrelmail-full-disclosure-troopers18/");
-  script_xref(name: "URL", value: "https://legalhackers.com/advisories/SquirrelMail-Exploit-Remote-Code-Exec-CVE-2017-7692-Vuln.html");
-  script_xref(name: "URL", value: "https://gist.github.com/hannob/3c4f86863c418930ad08853c1109364e");
-  script_xref(name: "URL", value: "https://sourceforge.net/p/squirrelmail/code/14650/");
+  script_xref(name:"URL", value:"https://www.wearesegment.com/research/Squirrelmail-Remote-Code-Execution.html");
+  script_xref(name:"URL", value:"https://insinuator.net/2018/03/squirrelmail-full-disclosure-troopers18/");
+  script_xref(name:"URL", value:"https://legalhackers.com/advisories/SquirrelMail-Exploit-Remote-Code-Exec-CVE-2017-7692-Vuln.html");
+  script_xref(name:"URL", value:"https://gist.github.com/hannob/3c4f86863c418930ad08853c1109364e");
+  script_xref(name:"URL", value:"https://sourceforge.net/p/squirrelmail/code/14650/");
 
   exit(0);
 }

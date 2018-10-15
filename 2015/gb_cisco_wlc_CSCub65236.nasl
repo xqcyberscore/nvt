@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_CSCub65236.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_cisco_wlc_CSCub65236.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco Wireless LAN Controller 802.11i Management Frame DoS
 #
@@ -31,8 +31,8 @@ if (description)
   script_cve_id("CVE-2015-6311");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11225 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 11872 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 14:24:59 +0200 (Wed, 14 Oct 2015)");
   script_name("Cisco Wireless LAN Controller 802.11i Management Frame DoS");
 
@@ -53,7 +53,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_wlc_version.nasl");
   script_mandatory_keys("cisco_wlc/version");
- exit(0);
+  exit(0);
 }
 
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sws_dir_traversal_01_2013.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_sws_dir_traversal_01_2013.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Simple Webserver Directory Traversal Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103632");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -36,7 +36,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/119239/Simple-Webserver-2.3-rc1-Directory-Traversal.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-04 10:25:13 +0100 (Fri, 04 Jan 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -56,7 +56,7 @@ of the application.
 
 Exploiting this issue may allow an attacker to obtain sensitive
 information that could aid in further attacks.");
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

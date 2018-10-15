@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_table_rename_information_disclosure_vuln.nasl 5536 2017-03-10 13:04:45Z antu123 $
+# $Id: gb_ibm_db2_table_rename_information_disclosure_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # IBM DB2 Table Rename Information Disclosure Vulnerability
 #
@@ -29,42 +29,37 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810704");
-  script_version("$Revision: 5536 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-1150");
   script_bugtraq_id(96597);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 14:04:45 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-09 15:35:12 +0530 (Thu, 09 Mar 2017)");
   script_name("IBM DB2 Table Rename Information Disclosure Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is running IBM DB2 and is
+  script_tag(name:"summary", value:"This host is running IBM DB2 and is
   prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version of IBM DB2
-  with the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists when a table is renamed
+  script_tag(name:"insight", value:"The flaw exists when a table is renamed
   and a new table is created with the old name, users who had access on the old
   table may be able to access the new table.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow an
+  script_tag(name:"impact", value:"Successful exploitation will allow an
   authenticated attacker with specialized access to tables that they should
-  not be permitted to view. 
+  not be permitted to view.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"
-  IBM DB2 versions 11.1
+  script_tag(name:"affected", value:"IBM DB2 versions 11.1
   IBM DB2 versions 10.1 through FP5
   IBM DB2 versions 10.5 through FP7");
 
-  script_tag(name: "solution" , value:"Apply the appropriate fix from below link,
-  http://www-01.ibm.com/support/docview.wss?uid=swg21999515");
+  script_tag(name:"solution", value:"Apply the appropriate fix");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21999515");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21999515");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Databases");
@@ -77,21 +72,14 @@ include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ibmVer  = "";
-ibmPort = "";
-
-##Fetch ibmdb2 port
 if(!ibmPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Fetch ibmdb2 version
 if(!ibmVer = get_app_version(cpe:CPE, port:ibmPort)){
   exit(0);
 }
 
-##Check for IBM DB2 10.1 through FP5
 if(ibmVer =~ "^1001\.*")
 {
   ## IBM DB2 10.1 through FP5
@@ -101,7 +89,6 @@ if(ibmVer =~ "^1001\.*")
   }
 }
 
-##Check for IBM DB2 10.5 through FP7
 if(ibmVer =~ "^1005\.*")
 {
   ## IBM DB2 10.5 through FP7
@@ -111,7 +98,6 @@ if(ibmVer =~ "^1005\.*")
   }
 }
 
-##Check for IBM DB2 11.1
 if(ibmVer =~ "^1101\.*")
 {
   ## IBM DB2 11.1 FP 0

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bitbucket_dir_trav_vuln.nasl 6291 2017-06-07 12:58:24Z cfischer $
+# $Id: gb_atlassian_bitbucket_dir_trav_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Atlassian Bitbucket Directory Traversal Vulnerability
 #
@@ -30,18 +30,18 @@ CPE = 'cpe:/a:atlassian:bitbucket';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106760");
-  script_version("$Revision: 6291 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-07 14:58:24 +0200 (Wed, 07 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-18 11:24:13 +0200 (Tue, 18 Apr 2017)");
-  script_tag(name: "cvss_base", value: "4.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-18 11:24:13 +0200 (Tue, 18 Apr 2017)");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-4320");
   script_bugtraq_id(97515);
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Atlassian Bitbucket Directory Traversal Vulnerability");
 
@@ -52,18 +52,18 @@ if (description)
   script_dependencies("gb_atlassian_bitbucket_detect.nasl");
   script_mandatory_keys("atlassian_bitbucket/installed");
 
-  script_tag(name: "summary", value: "Atlassian Bitbucket is prone to a directory traversal vulnerability.");
+  script_tag(name:"summary", value:"Atlassian Bitbucket is prone to a directory traversal vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Atlassian Bitbucket allows remote attackers to read the first line of an
+  script_tag(name:"insight", value:"Atlassian Bitbucket allows remote attackers to read the first line of an
 arbitrary file via a directory traversal attack on the pull requests resource.");
 
-  script_tag(name: "affected", value: "Atlassian Bitbucket prior to version 4.7.1.");
+  script_tag(name:"affected", value:"Atlassian Bitbucket prior to version 4.7.1.");
 
-  script_tag(name: "solution", value: "Update to version 4.7.1 or later.");
+  script_tag(name:"solution", value:"Update to version 4.7.1 or later.");
 
-  script_xref(name: "URL", value: "https://jira.atlassian.com/browse/BSERV-8819");
+  script_xref(name:"URL", value:"https://jira.atlassian.com/browse/BSERV-8819");
 
   exit(0);
 }

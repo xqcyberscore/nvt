@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810765");
-  script_version("$Revision: 11816 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2017-5648");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-21 15:57:53 +0530 (Fri, 21 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat 'SecurityManager' Information Disclosure Vulnerability (Linux)");
@@ -59,7 +59,7 @@ if(description)
   Apache Tomcat versions 7.0.0 to 7.0.75 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to version 9.0.0.M18,
-  8.5.12, 8.0.42, 7.0.76 or later, ");
+  8.5.12, 8.0.42, 7.0.76 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-9.html");

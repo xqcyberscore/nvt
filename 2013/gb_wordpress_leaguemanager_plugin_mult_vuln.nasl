@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_leaguemanager_plugin_mult_vuln.nasl 11620 2018-09-26 09:10:24Z asteins $
+# $Id: gb_wordpress_leaguemanager_plugin_mult_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Wordpress LeagueManager Plugin Multiple Vulnerabilities
 #
@@ -37,17 +37,16 @@ not properly sanitized before being returned to the user.
 
   - Not sufficiently verify authorization when accessing the CSV export
 functionality.");
-  script_tag(name:"solution", value:"Update to version 3.8.1 or later,
-For updates refer to http://wordpress.org/support/plugin/leaguemanager");
+  script_tag(name:"solution", value:"Update to version 3.8.1 or later.");
   script_tag(name:"summary", value:"This host is installed with Wordpress LeagueManager Plugin and
 is prone to multiple vulnerabilities.");
   script_oid("1.3.6.1.4.1.25623.1.0.803439");
-  script_version("$Revision: 11620 $");
+  script_version("$Revision: 11865 $");
   script_bugtraq_id(58503);
   script_cve_id("CVE-2013-1852");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 11:10:24 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-03-18 10:46:35 +0530 (Mon, 18 Mar 2013)");
   script_name("Wordpress LeagueManager Plugin Multiple Vulnerabilities");
 
@@ -66,6 +65,7 @@ is prone to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/support/plugin/leaguemanager");
   exit(0);
 }
 

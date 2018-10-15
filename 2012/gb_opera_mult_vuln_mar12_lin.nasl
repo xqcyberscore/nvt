@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_mar12_lin.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_opera_mult_vuln_mar12_lin.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Opera Multiple Vulnerabilities - March12 (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802828");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-1924", "CVE-2012-1925", "CVE-2012-1926", "CVE-2012-1927",
                 "CVE-2012-1928", "CVE-2012-1930", "CVE-2012-1931");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-29 19:43:23 +0530 (Thu, 29 Mar 2012)");
   script_name("Opera Multiple Vulnerabilities - March12 (Linux)");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1010/");
@@ -70,7 +70,7 @@ if(description)
 
   - printing issues which allows data leaks to other system users or
     allows them to corrupt data.");
-  script_tag(name:"solution", value:"Upgrade to the Opera version 11.62 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Opera version 11.62 or later.");
   script_tag(name:"summary", value:"The host is installed with Opera and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_auth_check_vuln_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_nextcloud_auth_check_vuln_win.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Nextcloud Authorization Check Vulnerability (Windows)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106706");
-  script_version("$Revision: 7543 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-03-30 14:13:45 +0700 (Thu, 30 Mar 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-30 14:13:45 +0700 (Thu, 30 Mar 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2016-9464");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Nextcloud Authorization Check Vulnerability (Windows)");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("gb_nextcloud_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("nextcloud/installed", "Host/runs_windows");
 
-  script_tag(name: "summary", value: "Nextcloud is prone to a improper authorization check vulnerability on
+  script_tag(name:"summary", value:"Nextcloud is prone to a improper authorization check vulnerability on
 removing shares");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The Sharing Backend as implemented in Nextcloud does differentiate between
+  script_tag(name:"insight", value:"The Sharing Backend as implemented in Nextcloud does differentiate between
 shares to users and groups. In case of a received group share, users should be able to unshare the file to
 themselves but not to the whole group.");
 
-  script_tag(name: "affected", value: "Nextcloud Server prior to 9.0.54");
+  script_tag(name:"affected", value:"Nextcloud Server prior to 9.0.54");
 
-  script_tag(name: "solution", value: "Update 9.0.54 or later versions.");
+  script_tag(name:"solution", value:"Update 9.0.54 or later versions.");
 
-  script_xref(name: "URL", value: "https://nextcloud.com/security/advisory/?id=nc-sa-2016-007");
+  script_xref(name:"URL", value:"https://nextcloud.com/security/advisory/?id=nc-sa-2016-007");
 
   exit(0);
 }

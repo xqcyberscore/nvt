@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-080.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: secpod_ms12-080.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # MS Exchange Server Remote Code Execution Vulnerabilities (2784126)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902697");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-3214", "CVE-2012-3217", "CVE-2012-4791");
   script_bugtraq_id(55977, 55993, 56836);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-12 12:01:07 +0530 (Wed, 12 Dec 2012)");
   script_name("MS Exchange Server Remote Code Execution Vulnerabilities (2784126)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51474");
@@ -61,8 +61,8 @@ if(description)
   - Improper handling of RSS feeds rendering the Information Store service
     unresponsive until the process is forcibly terminated and corrupt the
     databases.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory ");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-080.");
   script_tag(name:"qod_type", value:"registry");

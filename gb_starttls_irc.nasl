@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_irc.nasl 5286 2017-02-13 10:38:25Z cfi $
+# $Id: gb_starttls_irc.nasl 11898 2018-10-15 07:17:45Z cfischer $
 #
-# IRC STARTTLS Detection
+# SSL/TLS: IRC 'STARTTLS' Command Detection
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -27,21 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108072");
-  script_version("$Revision: 5286 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-13 11:38:25 +0100 (Mon, 13 Feb 2017) $");
+  script_version("$Revision: 11898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:17:45 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-07 11:18:02 +0100 (Tue, 07 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("IRC STARTTLS Detection");
+  script_name("SSL/TLS: IRC 'STARTTLS' Command Detection");
   script_category(ACT_GATHER_INFO);
-  script_family("Service detection");
+  script_family("SSL and TLS");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "find_service2.nasl");
   script_require_ports("Services/irc", 6667);
 
-  script_add_preference(name:"Run IRC STARTTLS Detection", type:"checkbox", value:"no");
+  script_add_preference(name:"Run routine", type:"checkbox", value:"no");
 
-  script_tag(name:"summary", value:"The remote IRC Server supports the STARTTLS command.
+  script_tag(name:"summary", value:"Checks if the remote IRC Server SSL/TLS with the 'STARTTLS' command.
 
   Note: This script is not running by default as most IRC servers are throttling too many
   connections and rejecting further requests. If you want to test your IRC server please
@@ -49,10 +49,12 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"https://ircv3.net/specs/extensions/tls-3.1.html");
+
   exit(0);
 }
 
-run_script = script_get_preference( "Run IRC STARTTLS Detection" );
+run_script = script_get_preference( "Run routine" );
 if( "no" >< run_script ) exit( 0 );
 
 port = get_kb_item( "Services/irc" );
@@ -70,12 +72,11 @@ while( buf = recv_line( socket:soc, length:2048 ) ) {
   if( ":STARTTLS successful" >< buf ) {
     set_kb_item( name:"irc/" + port + "/starttls", value:TRUE );
     set_kb_item( name:"starttls_typ/" + port, value:"irc" );
-    log_message( port:port );
+    log_message( port:port, data:"The remote IRC Server SSL/TLS with the 'STARTTLS' command." );
     close( soc );
     exit( 0 );
   }
 }
 
 close( soc );
-
 exit( 0 );

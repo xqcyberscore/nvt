@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln01_feb13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_adobe_shockwave_player_mult_vuln01_feb13_macosx.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities -01 Feb13 (Mac OS X)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803414");
-  script_version("$Revision: 11401 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_version("$Revision: 11865 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-15 19:12:08 +0530 (Fri, 15 Feb 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,13 +48,13 @@ if(description)
   remote code execution, and corrupt system memory.");
   script_tag(name:"affected", value:"Adobe Shockwave Player Version 11.6.8.638 and prior on Mac OS X");
   script_tag(name:"insight", value:"Multiple flaws due to unspecified error.");
-  script_tag(name:"solution", value:"Update to version 12.0.0.112 or later,
-  For updates refer to http://get.adobe.com/shockwave");
+  script_tag(name:"solution", value:"Update to version 12.0.0.112 or later.");
   script_tag(name:"summary", value:"This host is installed with Adobe Shockwave player and is prone to
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://get.adobe.com/shockwave");
   exit(0);
 }
 

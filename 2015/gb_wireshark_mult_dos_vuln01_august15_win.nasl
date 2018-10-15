@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln01_august15_win.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_wireshark_mult_dos_vuln01_august15_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Wireshark Multiple Denial-of-Service Vulnerabilities-01 August15 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806029");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-6241", "CVE-2015-6242", "CVE-2015-6243", "CVE-2015-6244",
                 "CVE-2015-6245", "CVE-2015-6246", "CVE-2015-6247", "CVE-2015-6248",
                 "CVE-2015-6249");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-28 11:37:57 +0530 (Fri, 28 Aug 2015)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-01 August15 (Windows)");
 
@@ -81,7 +81,7 @@ if(description)
   on Windows");
 
   script_tag(name:"solution", value:"Upgrade Wireshark to version 1.12.7 or
-  later, For updates refer to https://www.wireshark.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

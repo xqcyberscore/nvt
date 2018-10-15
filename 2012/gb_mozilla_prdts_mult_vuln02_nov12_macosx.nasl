@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln02_nov12_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_mozilla_prdts_mult_vuln02_nov12_macosx.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities-02 November12 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803058");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2012-4212", "CVE-2012-4213", "CVE-2012-4217", "CVE-2012-4217",
                 "CVE-2012-4204", "CVE-2012-4205", "CVE-2012-4208", "CVE-2012-5843",
                 "CVE-2012-5836", "CVE-2012-5838");
@@ -35,7 +35,7 @@ if(description)
                     56627, 56612, 56616, 56644);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 1:30:03 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-02 November12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51358");
@@ -66,7 +66,7 @@ if(description)
 
   - Within 'str_unescape' in the Javascript engin and in 'XMLHttpRequest'
     objects created within sandboxes.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 17.0 or later, ");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 17.0 or later.");
   script_tag(name:"summary", value:"This host is installed with Mozilla Firefox and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"package");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0003.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_VMSA-2013-0003.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # VMSA-2013-0003 VMware vCenter Server, ESXi and ESX address an NFC Protocol memory corruption and third party library security issues.
 #
@@ -33,11 +33,11 @@ if (description)
   script_cve_id("CVE-2013-1659", "CVE-2012-2110");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11865 $");
   script_name("VMSA-2013-0003 VMware vCenter Server, ESXi and ESX address an NFC Protocol memory corruption and third party library security issues.");
 
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-27 11:04:01 +0100 (Wed, 27 Feb 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("VMware Local Security Checks");
@@ -101,7 +101,7 @@ Apply the missing patch(es).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://lists.vmware.com/pipermail/security-announce/2013/000205.html");
- exit(0);
+  exit(0);
 }
 
 include("vmware_esx.inc");

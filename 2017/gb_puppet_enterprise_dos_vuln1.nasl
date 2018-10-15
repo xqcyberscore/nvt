@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_puppet_enterprise_dos_vuln1.nasl 8990 2018-03-01 07:43:09Z cfischer $
+# $Id: gb_puppet_enterprise_dos_vuln1.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
-# Puppet Enterprise 2017 < 2017.2.2 DoS Vulnerability 
+# Puppet Enterprise 2017 < 2017.2.2 DoS Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,17 +30,17 @@ CPE = "cpe:/a:puppet:enterprise";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106930");
-  script_version("$Revision: 8990 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-01 08:43:09 +0100 (Thu, 01 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2017-07-06 15:23:17 +0700 (Thu, 06 Jul 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-06 15:23:17 +0700 (Thu, 06 Jul 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-2296");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Puppet Enterprise 2017 < 2017.2.2 DoS Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("gb_puppet_enterprise_detect.nasl");
   script_mandatory_keys("puppet_enterprise/installed");
 
-  script_tag(name: "summary", value: "Puppet Enterprise is prone to a denial of service vulnerability.");
+  script_tag(name:"summary", value:"Puppet Enterprise is prone to a denial of service vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Using specially formatted strings with certain formatting characters as
+  script_tag(name:"insight", value:"Using specially formatted strings with certain formatting characters as
 Classifier node group names or RBAC role display names causes errors, effectively causing a DOS to the service.");
 
-  script_tag(name: "affected", value: "Puppet Enterprise 2017.1.x and 2017.2.1.");
+  script_tag(name:"affected", value:"Puppet Enterprise 2017.1.x and 2017.2.1.");
 
-  script_tag(name: "solution", value: "Update to version 2017.2.2 or later.");
+  script_tag(name:"solution", value:"Update to version 2017.2.2 or later.");
 
-  script_xref(name: "URL", value: "https://puppet.com/security/cve/cve-2017-2296");
+  script_xref(name:"URL", value:"https://puppet.com/security/cve/cve-2017-2296");
 
   exit(0);
 }

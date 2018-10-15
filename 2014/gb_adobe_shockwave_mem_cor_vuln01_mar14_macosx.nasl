@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:shockwave_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804518");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-0505");
   script_bugtraq_id(66182);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-21 14:15:03 +0530 (Fri, 21 Mar 2014)");
   script_name("Adobe Shockwave Player Memory Corruption Vulnerability Mar14 (Mac OS X)");
 
@@ -46,8 +46,7 @@ corruption vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code, cause
 memory corruption and compromise a user's system.");
   script_tag(name:"affected", value:"Adobe Shockwave Player version before 12.1.0.150 on Mac OS X.");
-  script_tag(name:"solution", value:"Upgrade to version 12.1.0.150 or later,
-For updates refer to http://get.adobe.com/shockwave");
+  script_tag(name:"solution", value:"Upgrade to version 12.1.0.150 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -59,6 +58,7 @@ For updates refer to http://get.adobe.com/shockwave");
   script_family("General");
   script_dependencies("secpod_adobe_shockwave_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Shockwave/MacOSX/Version");
+  script_xref(name:"URL", value:"http://get.adobe.com/shockwave");
   exit(0);
 }
 

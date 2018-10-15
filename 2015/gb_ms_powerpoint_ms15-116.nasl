@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powerpoint_ms15-116.nasl 11612 2018-09-26 05:47:26Z cfischer $
+# $Id: gb_ms_powerpoint_ms15-116.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Microsoft Office PowerPoint Privilege Elevation Vulnerability (3104540)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806164");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-2503");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 15:31:03 +0530 (Wed, 11 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office PowerPoint Privilege Elevation Vulnerability (3104540)");
@@ -55,8 +55,7 @@ if(description)
   Microsoft PowerPoint 2016 Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link, https://technet.microsoft.com/en-us/security/bulletin/ms15-116");
+  hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +70,7 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Ver", "SMB/Office/PowerPnt/Version");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms15-116");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_activeperl_cgipm_module_header_inje_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_activeperl_cgipm_module_header_inje_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Active Perl CGI.pm 'Set-Cookie' and 'P3P' HTTP Header Injection Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803344");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2012-5526");
   script_bugtraq_id(56562);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-23 18:18:09 +0530 (Wed, 23 Jan 2013)");
   script_name("Active Perl CGI.pm 'Set-Cookie' and 'P3P' HTTP Header Injection Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/80098");
@@ -53,8 +53,7 @@ if(description)
   script_tag(name:"insight", value:"The 'CGI.pm' module does not properly filter carriage returns from user
   supplied input to be used in Set-Cookie and P3P headers.");
 
-  script_tag(name:"solution", value:"Upgrade to Active Perl CGI.pm module version 3.63 or later,
-  For updates refer to http://www.perl.org/get.html");
+  script_tag(name:"solution", value:"Upgrade to Active Perl CGI.pm module version 3.63 or later.");
 
   script_tag(name:"summary", value:"The host is installed with Active Perl and is prone to HTTP header
   injection vulnerability.");
@@ -62,6 +61,7 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.perl.org/get.html");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_csrf_vuln_win.nasl 11422 2018-09-17 07:30:48Z mmartin $
+# $Id: gb_wordpress_csrf_vuln_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # WordPress 'admin impersonation via comments' CSRF Vulnerability (Windows)
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805946");
-  script_version("$Revision: 11422 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-07 11:29:02 +0530 (Fri, 07 Aug 2015)");
   script_name("WordPress 'admin impersonation via comments' CSRF Vulnerability (Windows)");
 
@@ -50,7 +50,7 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to WordPress version 4.3.1
-  or later, For updates refer to https://wordpress.org");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -64,6 +64,7 @@ if(description)
   script_dependencies("os_detection.nasl", "secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://wordpress.org");
   exit(0);
 }
 

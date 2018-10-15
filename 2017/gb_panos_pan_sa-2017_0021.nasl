@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0021.nasl 8721 2018-02-08 13:40:24Z cfischer $
+# $Id: gb_panos_pan_sa-2017_0021.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Palo Alto PAN-OS DNS-Proxy RCE Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106978");
-  script_version("$Revision: 8721 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-08 14:40:24 +0100 (Thu, 08 Feb 2018) $");
-  script_tag(name: "creation_date", value: "2017-07-21 11:50:18 +0700 (Fri, 21 Jul 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-21 11:50:18 +0700 (Fri, 21 Jul 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-8390");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Palo Alto PAN-OS DNS-Proxy RCE Vulnerability");
 
@@ -51,24 +51,24 @@ if (description)
   script_dependencies("gb_palo_alto_panOS_version.nasl");
   script_mandatory_keys("palo_alto_pan_os/version");
 
-  script_tag(name: "summary", value: "A Remote Code Execution vulnerability exists in the PAN-OS DNS Proxy.");
+  script_tag(name:"summary", value:"A Remote Code Execution vulnerability exists in the PAN-OS DNS Proxy.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "This issue affects customers who have DNS Proxy enabled in PAN-OS. This
+  script_tag(name:"insight", value:"This issue affects customers who have DNS Proxy enabled in PAN-OS. This
 issue affects both the Data and Management planes of the firewall. When DNS Proxy processes a specially crafted
 fully qualified domain names (FQDN), it is possible to execute code on the firewall.");
 
-  script_tag(name: "impact", value: "Successful exploitation of this issue could allow an attacker to execute
+  script_tag(name:"impact", value:"Successful exploitation of this issue could allow an attacker to execute
 code on the firewall.");
 
-  script_tag(name: "affected", value: "PAN-OS 6.1.17 and earlier, PAN-OS 7.0.15 and earlier, PAN-OS 7.1.9 and
+  script_tag(name:"affected", value:"PAN-OS 6.1.17 and earlier, PAN-OS 7.0.15 and earlier, PAN-OS 7.1.9 and
 earlier, PAN-OS 8.0.2 and earlier");
 
-  script_tag(name: "solution", value: "Update to PAN-OS 6.1.18, PAN-OS 7.0.16, PAN-OS 7.1.10, PAN-OS 8.0.3 or
+  script_tag(name:"solution", value:"Update to PAN-OS 6.1.18, PAN-OS 7.0.16, PAN-OS 7.1.10, PAN-OS 8.0.3 or
 later.");
 
-  script_xref(name: "URL", value: "https://securityadvisories.paloaltonetworks.com/Home/Detail/89");
+  script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/89");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_mul_sql_inj_jan15.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_zabbix_mul_sql_inj_jan15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Zabbix Multiple SQL injection Vulnerabilities - Jan15
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:zabbix:zabbix";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805319");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-9450");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 10:22:50 +0530 (Fri, 23 Jan 2015)");
   script_name("Zabbix Multiple SQL injection Vulnerabilities - Jan15");
 
   script_tag(name:"summary", value:"The host is installed with Zabbix
   and is prone to multiple SQL injection vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of Zabbix
-  with the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist as input passed via
   the 'periods' and 'itemid' GET parameter to chart_bar.php is not properly
@@ -54,7 +53,7 @@ if(description)
   before 2.0.14, and 2.2.x before 2.2.8.");
 
   script_tag(name:"solution", value:"Upgrade to Zabbix version 1.8.22 or
-  2.0.14 or 2.2.8 or later. For updates refer to https://www.zabbix.com");
+  2.0.14 or 2.2.8 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -70,6 +69,7 @@ if(description)
   script_dependencies("zabbix_web_detect.nasl");
   script_mandatory_keys("Zabbix/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.zabbix.com");
   exit(0);
 }
 

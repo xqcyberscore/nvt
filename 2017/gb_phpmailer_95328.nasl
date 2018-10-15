@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmailer_95328.nasl 11485 2018-09-20 06:25:34Z cfischer $
+# $Id: gb_phpmailer_95328.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # PHPMailer < 5.2.22 Local Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmailer_project:phpmailer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108051");
-  script_version("$Revision: 11485 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-5223");
   script_bugtraq_id(95130);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 08:25:34 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-25 11:00:00 +0100 (Wed, 25 Jan 2017)");
   script_name("PHPMailer < 5.2.22 Local Information Disclosure Vulnerability");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -64,8 +64,7 @@ if(description)
 
   script_tag(name:"affected", value:"PHPMailer versions 5.0.0 through 5.2.20 are vulnerable. ");
 
-  script_tag(name:"solution", value:"Upgrade to PHPMailer 5.2.22 or later.
-  For updates refer to https://github.com/PHPMailer/PHPMailer");
+  script_tag(name:"solution", value:"Upgrade to PHPMailer 5.2.22 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

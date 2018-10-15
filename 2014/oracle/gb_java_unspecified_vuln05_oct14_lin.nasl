@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_unspecified_vuln05_oct14_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_java_unspecified_vuln05_oct14_lin.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Oracle Java SE JRE Unspecified Vulnerability-05 Oct 2014 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108426");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-6504");
   script_bugtraq_id(70564);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-20 14:00:18 +0530 (Mon, 20 Oct 2014)");
 
   script_name("Oracle Java SE JRE Unspecified Vulnerability-05 Oct 2014 (Linux)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with Oracle Java SE JRE
   and is prone to unspecified vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of Oracle Java
-  SE JRE with the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error related to C2
   optimizations and range checks in the Hotspot subcomponent.");
@@ -54,9 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle Java SE 5.0u71 and prior, 6u81 and
   prior, and 7u67 and prior on Linux");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-
-  http://www.oracle.com/technetwork/topics/security/cpuoct2014-1972960.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");

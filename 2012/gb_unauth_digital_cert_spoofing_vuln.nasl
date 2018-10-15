@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unauth_digital_cert_spoofing_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_unauth_digital_cert_spoofing_vuln.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Unauthorized Digital Certificates Spoofing Vulnerability (2718704)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802634");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11876 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-04 14:14:14 +0530 (Mon, 04 Jun 2012)");
   script_name("Microsoft Windows Unauthorized Digital Certificates Spoofing Vulnerability (2718704)");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1027114");
@@ -49,14 +49,18 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to spoof content, perform
   phishing attacks or perform man-in-the-middle attacks.");
   script_tag(name:"affected", value:"Windows 7 Service Pack 1 and prior,
+
   Windows XP Service Pack 3 and prior,
+
   Windows Vista Service Pack 2 and prior,
+
   Windows Server 2003 Service Pack 2 and prior,
+
   Windows Server 2008 Service Pack 2 and prior.");
   script_tag(name:"insight", value:"The flaw is due to unauthorized digital certificates derived from a Microsoft
   Certificate Authority. An unauthorized certificate could be used to spoof
   content, perform phishing attacks, or perform man-in-the-middle attacks.");
-  script_tag(name:"solution", value:"Apply the Patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"summary", value:"The host is installed with Microsoft Windows operating system and
   is prone to a digital certificates spoofing vulnerability.");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -112,7 +116,7 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Crypt32.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Crypt32.dll");
 if(!dllVer){
   exit(0);
 }

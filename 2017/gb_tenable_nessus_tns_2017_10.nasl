@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tenable_nessus_tns_2017_10.nasl 6044 2017-04-28 08:14:10Z teissa $
+# $Id: gb_tenable_nessus_tns_2017_10.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # Tenable Nessus 6.10.x < 6.10.5 Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:tenable:nessus';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108148");
-  script_version("$Revision: 6044 $");
+  script_version("$Revision: 11901 $");
   script_cve_id("CVE-2017-7849", "CVE-2017-7849");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 10:14:10 +0200 (Fri, 28 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-20 08:08:04 +0200 (Thu, 20 Apr 2017)");
   script_name("Tenable Nessus 6.10.x < 6.10.5 Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -58,12 +58,12 @@ if(description)
 
   script_tag(name:"affected", value:"Tenable Nessus versions 6.10.x before 6.10.5 when running in agent mode.");
 
-  script_tag(name:"solution", value:"Upgrade Tenable Nessus to 6.10.5 or later. For updates refer to
-  http://www.tenable.com/products/nessus");
+  script_tag(name:"solution", value:"Upgrade Tenable Nessus to 6.10.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://www.tenable.com/products/nessus");
   exit(0);
 }
 

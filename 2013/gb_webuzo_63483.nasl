@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webuzo_63483.nasl 11069 2018-08-21 12:29:19Z mmartin $
+# $Id: gb_webuzo_63483.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Webuzo Cookie Value Handling Remote Command Injection Vulnerability
 #
@@ -36,14 +36,14 @@ if (description)
   script_cve_id("CVE-2013-6041", "CVE-2013-6042", "CVE-2013-6043");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11069 $");
+  script_version("$Revision: 11865 $");
 
   script_name("Webuzo Cookie Value Handling Remote Command Injection Vulnerability");
 
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/63483");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 14:29:19 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-11-13 18:18:47 +0100 (Wed, 13 Nov 2013)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -64,9 +64,9 @@ the server system, and may result in server compromise. ");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"Webuzo is prone to a remote command-injection vulnerability because it
 fails to adequately sanitize user-supplied input.");
-  script_tag(name:"affected", value:"Webuzo <= 2.1.3 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"Webuzo <= 2.1.3 is vulnerable. Other versions may also be affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

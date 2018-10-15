@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903424");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-0262");
   script_bugtraq_id(64725);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-15 08:05:29 +0530 (Wed, 15 Jan 2014)");
   script_name("Microsoft Windows Kernel-Mode Drivers Privilege Escalation Vulnerability (2913602)");
 
@@ -40,9 +40,8 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security update according to
 Microsoft Bulletin MS14-003");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms14-003");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
   script_tag(name:"insight", value:"The flaw is due to the improper use of window handle thread-owned objects
 in memory. This may allow local attacker to gain elevated privileges.");
   script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
@@ -60,7 +59,7 @@ privileges.");
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
-   exit(0);
+  exit(0);
 }
 
 
@@ -78,7 +77,7 @@ if(!sysPath){
   exit(0);
 }
 
-win32SysVer = fetch_file_version(sysPath, file_name:"system32\win32k.sys");
+win32SysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\win32k.sys");
 if(!win32SysVer){
   exit(0);
 }

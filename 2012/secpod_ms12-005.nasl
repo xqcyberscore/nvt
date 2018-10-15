@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-005.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ms12-005.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Windows ClickOnce Application Installer Remote Code Execution Vulnerability (2584146)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902657");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2012-0013");
   script_bugtraq_id(51284);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-11 09:53:59 +0530 (Wed, 11 Jan 2012)");
   script_name("Windows ClickOnce Application Installer Remote Code Execution Vulnerability (2584146)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47480");
@@ -62,8 +62,8 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error within the Windows Packager when
   loading ClickOnce applications embedded in Microsoft Office files.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-005.");
@@ -93,7 +93,7 @@ if(!sysPath){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"system32\Packager.exe");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Packager.exe");
 if( sysVer != NULL)
 {
   if(hotfix_check_sp(xp:4) > 0)
@@ -124,7 +124,7 @@ if( sysVer != NULL)
   }
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Packager.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Packager.dll");
 if(!dllVer){
   exit(0);
 }

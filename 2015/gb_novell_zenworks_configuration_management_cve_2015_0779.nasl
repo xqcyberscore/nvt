@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zenworks_configuration_management_cve_2015_0779.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_novell_zenworks_configuration_management_cve_2015_0779.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Novell ZENworks Configuration Management Arbitrary File Upload
 #
@@ -31,7 +31,7 @@ if (description)
   script_cve_id("CVE-2015-0779");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Novell ZENworks Configuration Management Arbitrary File Upload");
 
@@ -50,7 +50,7 @@ arbitrary file upload vulnerability");
 
   script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-10 20:01:11 +0200 (Fri, 10 Apr 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -59,7 +59,7 @@ arbitrary file upload vulnerability");
   script_require_ports("Services/www", 443);
   script_mandatory_keys("novell_zenworks_configuration_management/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

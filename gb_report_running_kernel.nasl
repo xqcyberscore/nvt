@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_report_running_kernel.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_report_running_kernel.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Report running Kernel
 #
@@ -30,8 +30,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105885");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-05 13:45:04 +0200 (Mon, 05 Sep 2016)");
   script_name("Report running Kernel");
 
@@ -44,7 +44,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_gather_linux_host_infos.nasl");
   script_mandatory_keys("Host/running_kernel_version");
- exit(0);
+  exit(0);
 }
 
 if( ! kv = get_kb_item( "Host/running_kernel_version" ) ) exit( 0 );

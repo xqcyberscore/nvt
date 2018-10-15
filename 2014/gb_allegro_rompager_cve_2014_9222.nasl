@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_allegro_rompager_cve_2014_9222.nasl 11497 2018-09-20 10:31:54Z mmartin $
+# $Id: gb_allegro_rompager_cve_2014_9222.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Allegro RomPager `Misfortune Cookie` Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-9222");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11497 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Allegro RomPager `Misfortune Cookie` Vulnerability");
 
@@ -46,7 +46,7 @@ if (description)
 
   script_tag(name:"affected", value:"RomPager services with versions before 4.34");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-23 10:22:44 +0100 (Tue, 23 Dec 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -58,7 +58,7 @@ if (description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

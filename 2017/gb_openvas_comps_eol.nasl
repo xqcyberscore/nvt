@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvas_comps_eol.nasl 9518 2018-04-18 09:33:37Z cfischer $
+# $Id: gb_openvas_comps_eol.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # OpenVAS Framework Components End Of Life Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108197");
-  script_version("$Revision: 9518 $");
+  script_version("$Revision: 11874 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-18 11:33:37 +0200 (Wed, 18 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-26 15:00:00 +0200 (Wed, 26 Jul 2017)");
   script_name("OpenVAS Framework Components End Of Life Detection");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -60,8 +60,7 @@ if(description)
   script_tag(name:"solution", value:"Update the OpenVAS framework component version on the remote host to a
   still supported version.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detect NVT and check if
-  the version is unsupported.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

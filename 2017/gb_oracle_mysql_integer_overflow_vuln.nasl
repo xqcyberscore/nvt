@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_integer_overflow_vuln.nasl 10114 2018-06-07 10:06:23Z cfischer $
+# $Id: gb_oracle_mysql_integer_overflow_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Oracle MySQL Server Integer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810773");
-  script_version("$Revision: 10114 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-3599");
   script_bugtraq_id(97754);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 12:06:23 +0200 (Thu, 07 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-04 11:10:40 +0530 (Thu, 04 May 2017)");
   script_name("Oracle MySQL Server Integer Overflow Vulnerability");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -60,19 +60,17 @@ if (description)
   '/sql/auth/sql_authentication.cc'.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attacker to cause a denial of service via a crafted authentication packet.
-
-  Impact Level: Application");
+  attacker to cause a denial of service via a crafted authentication packet.");
 
   script_tag(name:"affected", value:"Oracle MySQL version 5.6.x branch up to 5.6.35
   and 5.7.X branch up to 5.7.17");
 
-  script_tag(name:"solution", value:"Upgrade to MySQL 5.6.36, 5.7.18 or later.
-  For updates refer to https://www.oracle.com/mysql/index.html");
+  script_tag(name:"solution", value:"Upgrade to MySQL 5.6.36, 5.7.18 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"exploit");
 
+  script_xref(name:"URL", value:"https://www.oracle.com/mysql/index.html");
   exit(0);
 }
 

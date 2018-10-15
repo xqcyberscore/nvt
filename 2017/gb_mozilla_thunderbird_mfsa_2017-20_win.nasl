@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2017-20_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_thunderbird_mfsa_2017-20_win.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Mozilla Thunderbird Security Updates( mfsa_2017-20 )-Windows
 #
@@ -29,25 +29,25 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811711");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-7800", "CVE-2017-7801", "CVE-2017-7809", "CVE-2017-7784",
                 "CVE-2017-7802", "CVE-2017-7785", "CVE-2017-7786", "CVE-2017-7753",
                 "CVE-2017-7787", "CVE-2017-7807", "CVE-2017-7792", "CVE-2017-7804",
-                "CVE-2017-7791", "CVE-2017-7782", "CVE-2017-7803", "CVE-2017-7779" );
+                "CVE-2017-7791", "CVE-2017-7782", "CVE-2017-7803", "CVE-2017-7779");
   script_bugtraq_id(100196, 100197, 100203, 100202, 100206, 100315, 100234, 100242,
                     100240, 100243, 100201);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-21 11:51:43 +0530 (Mon, 21 Aug 2017)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2017-20 )-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exist due to,
+  script_tag(name:"insight", value:"The multiple flaws exist due to,
 
   - Use-after-free in WebSockets during disconnection.
 
@@ -81,24 +81,21 @@ if(description)
 
   - Memory safety bugs.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allow remote attackers to gain access to potentially sensitive information,
-  execute arbitrary code and conduct a denial-of-service condition.
+  execute arbitrary code and conduct a denial-of-service condition.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name: "affected" , value:"Mozilla Thunderbird version before 52.3
+  script_tag(name:"affected", value:"Mozilla Thunderbird version before 52.3
   on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version 52.3
-  For updates refer https://www.mozilla.org/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 52.3.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2017-20/");
-
+  script_xref(name:"URL", value:"https://www.mozilla.org/en-US/thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_w-cms_rce_08_13.nasl 11497 2018-09-20 10:31:54Z mmartin $
+# $Id: gb_w-cms_rce_08_13.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # w-CMS 2.0.1 Remote Code Execution
 #
@@ -28,13 +28,13 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103762");
-  script_version("$Revision: 11497 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
   script_name("w-CMS 2.0.1 Remote Code Execution");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/122833/w-CMS-2.0.1-Remote-Code-Execution.html");
   script_xref(name:"URL", value:"http://w-cms.info/");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-16 11:12:08 +0200 (Fri, 16 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -55,7 +55,7 @@ and check the response if it was successful.");
   script_tag(name:"summary", value:"w-CMS is prone to a remote code execution vulnerability.");
   script_tag(name:"affected", value:"w-CMS 2.0.1 is vulnerablei, other versions may also be affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

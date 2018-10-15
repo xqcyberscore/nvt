@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvpn_access_server_default_root.nasl 11536 2018-09-21 19:44:30Z cfischer $
+# $Id: gb_openvpn_access_server_default_root.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # OpenVPN Access Server SSH Default Credentials
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105345");
-  script_version("$Revision: 11536 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("OpenVPN Access Server SSH Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:44:30 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-04 11:18:30 +0200 (Fri, 04 Sep 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"Workaround");
 
- exit(0);
+  exit(0);
 }
 
 include("ssh_func.inc");

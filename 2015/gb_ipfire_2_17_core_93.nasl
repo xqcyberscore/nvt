@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipfire_2_17_core_93.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ipfire_2_17_core_93.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # IPFire 2.17 - Core Update 93
 #
@@ -31,7 +31,7 @@ if (description)
   script_cve_id("CVE-2015-5073");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11872 $");
 
   script_name("IPFire 2.17 - Core Update 93");
 
@@ -47,7 +47,7 @@ server and the Perl-compatible regular expressions library.");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-18 13:36:54 +0200 (Tue, 18 Aug 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -55,7 +55,7 @@ server and the Perl-compatible regular expressions library.");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ipfire/system-release");
 
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

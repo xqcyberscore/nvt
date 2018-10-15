@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-061.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ms12-061.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # MS Visual Studio Team Foundation Server Privilege Elevation Vulnerability (2719584)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903040");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_bugtraq_id(55409);
   script_cve_id("CVE-2012-1892");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-12 11:38:17 +0530 (Wed, 12 Sep 2012)");
   script_name("MS Visual Studio Team Foundation Server Privilege Elevation Vulnerability (2719584)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50463/");
@@ -51,8 +51,8 @@ if(description)
   script_tag(name:"insight", value:"The application does not validate certain unspecified input before returning
   it to the user. This may allow a user to create a specially crafted request
   that would execute arbitrary script code in a user's browser.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-061.");
   script_tag(name:"qod_type", value:"registry");

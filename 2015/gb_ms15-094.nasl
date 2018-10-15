@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-094.nasl 11635 2018-09-27 06:07:37Z cfischer $
+# $Id: gb_ms15-094.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (3089548)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805736");
-  script_version("$Revision: 11635 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-2483", "CVE-2015-2484", "CVE-2015-2485", "CVE-2015-2486",
                 "CVE-2015-2487", "CVE-2015-2489", "CVE-2015-2490", "CVE-2015-2491",
                 "CVE-2015-2492", "CVE-2015-2493", "CVE-2015-2494", "CVE-2015-2498",
@@ -37,7 +37,7 @@ if(description)
                 "CVE-2015-2542");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 10:16:10 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (3089548)");
@@ -101,7 +101,7 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Mshtml.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Mshtml.dll");
 if(!dllVer){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plone_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_plone_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Plone  Detection
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103735");
-  script_version("$Revision: 11015 $");
+  script_version("$Revision: 11885 $");
   script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017)$");
   script_tag(name:"creation_date", value:"2013-06-12 11:17:19 +0200 (Wed, 12 Jun 2013)");
   script_tag(name:"cvss_base", value:"0.0");
@@ -51,7 +51,7 @@ extract its version.");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
- exit(0);
+  exit(0);
 }
 
 include("cpe.inc");

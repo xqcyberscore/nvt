@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-031.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-031.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Windows TCP Protocol Denial of Service Vulnerability (2962478)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804636");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-1811");
   script_bugtraq_id(67888);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-11 12:45:39 +0530 (Wed, 11 Jun 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows TCP Protocol Denial of Service Vulnerability (2962478)");
@@ -53,8 +53,7 @@ Microsoft Windows 7 x32/x64 Service Pack 1 and prior
 Microsoft Windows Vista x32/x64 Service Pack 2 and prior
 Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/library/security/ms14-031");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms14-031");
@@ -66,6 +65,7 @@ https://technet.microsoft.com/en-us/library/security/ms14-031");
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/ms14-031");
   exit(0);
 }
 
@@ -87,7 +87,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"system32\drivers\tcpip.sys");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\drivers\tcpip.sys");
 if(!sysVer){
   exit(0);
 }

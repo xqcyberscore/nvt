@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_buffalo_teraStation_57634.nasl 11024 2018-08-17 08:18:16Z mmartin $
+# $Id: gb_buffalo_teraStation_57634.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Buffalo TeraStation Multiple Security Vulnerabilities
 #
@@ -31,13 +31,13 @@ if (description)
   script_bugtraq_id(57634);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-  script_version("$Revision: 11024 $");
+  script_version("$Revision: 11865 $");
 
   script_name("Buffalo TeraStation Multiple Security Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57634");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:18:16 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-31 12:41:05 +0100 (Thu, 31 Jan 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -57,7 +57,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_app");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

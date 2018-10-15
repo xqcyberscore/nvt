@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_typo3_back_path_lfi_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_typo3_back_path_lfi_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # TYPO3 'BACK_PATH' Parameter Local File Include Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902795");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-4614");
   script_bugtraq_id(51090);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-22 13:46:49 +0530 (Wed, 22 Feb 2012)");
   script_name("TYPO3 'BACK_PATH' Parameter Local File Include Vulnerability");
 
@@ -45,7 +45,7 @@ information.");
   script_tag(name:"insight", value:"The flaw is due to an input passed to the 'BACK_PATH' parameter in
 'typo3/sysext/workspaces/Classes/Controller/AbstractController.php' is not
 properly verified before being used to include files.");
-  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.5.9 or 4.6.2 or later,");
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.5.9 or 4.6.2 or later.");
   script_tag(name:"summary", value:"This host is running TYPO3 and is prone to local file inclusion vulnerability.");
   script_tag(name:"affected", value:"TYPO3 version 4.5.x before 4.5.9, 4.6.x before 4.6.2 and development versions
 of 4.7");

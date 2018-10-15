@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_garoon_directory_traversal_vuln.nasl 7077 2017-09-07 13:41:54Z santu $
+# $Id: gb_cybozu_garoon_directory_traversal_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Cybozu Garoon Directory Traversal Vulnerability
 #
@@ -29,42 +29,39 @@ CPE = 'cpe:/a:cybozu:garoon';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811594");
-  script_version("$Revision: 7077 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-2258");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 15:41:54 +0200 (Thu, 07 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-01 11:50:27 +0530 (Fri, 01 Sep 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cybozu Garoon Directory Traversal Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with Cybozu Garoon
+  script_tag(name:"summary", value:"This host is installed with Cybozu Garoon
   and is prone to directory traversal vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The flaw is due to an input validation 
+  script_tag(name:"insight", value:"The flaw is due to an input validation
   error in SOAP API 'WorkflowHandleApplications'.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to read arbitrary files.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to read arbitrary files.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Cybozu Garoon 4.2.4 to 4.2.5");
 
-  script_tag(name: "affected" , value:"Cybozu Garoon 4.2.4 to 4.2.5");
-
-  script_tag(name: "solution" , value:"Update to the Cybozu Garoon version 4.2.6
-  or later. For updates refer to
-  https://cs.cybozu.co.jp/2017/006442.html");
+  script_tag(name:"solution", value:"Update to the Cybozu Garoon version 4.2.6
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://jvn.jp/en/jp/JVN63564682/index.html");
+  script_xref(name:"URL", value:"https://jvn.jp/en/jp/JVN63564682/index.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_cybozu_products_detect.nasl");
   script_mandatory_keys("CybozuGaroon/Installed");
+  script_xref(name:"URL", value:"https://cs.cybozu.co.jp/2017/006442.html");
   exit(0);
 }
 
@@ -72,16 +69,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable initialization
-cyPort = 0;
-cyVer = "";
-
-## Get port
 if(!cyPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!cyVer = get_app_version(cpe:CPE, port:cyPort)){
   exit(0);
 }

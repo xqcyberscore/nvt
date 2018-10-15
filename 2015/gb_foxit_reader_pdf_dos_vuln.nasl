@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_pdf_dos_vuln.nasl 11475 2018-09-19 12:12:13Z cfischer $
+# $Id: gb_foxit_reader_pdf_dos_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Foxit Reader Denial of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805361");
-  script_version("$Revision: 11475 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-2790");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 14:12:13 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-07 18:04:50 +0530 (Tue, 07 Apr 2015)");
   script_name("Foxit Reader Denial of Service Vulnerability");
 
@@ -52,7 +52,7 @@ if(description)
   7.1.");
 
   script_tag(name:"solution", value:"Upgrade to Foxit Reader version
-  7.1 or later, For updates refer to http://www.foxitsoftware.com");
+  7.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

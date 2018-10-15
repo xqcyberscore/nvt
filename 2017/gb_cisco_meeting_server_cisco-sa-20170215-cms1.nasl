@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_meeting_server_cisco-sa-20170215-cms1.nasl 5304 2017-02-16 08:49:37Z ckuerste $
+# $Id: gb_cisco_meeting_server_cisco-sa-20170215-cms1.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # Cisco Meeting Server HTTP Packet Processing Vulnerability
 #
@@ -29,44 +29,44 @@ CPE = "cpe:/a:cisco:meeting_server";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106596");
- script_cve_id("CVE-2017-3837");
- script_tag(name: "cvss_base", value: "5.5");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:N/A:P");
- script_version("$Revision: 5304 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106596");
+  script_cve_id("CVE-2017-3837");
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
+  script_version("$Revision: 11901 $");
 
- script_name("Cisco Meeting Server HTTP Packet Processing Vulnerability");
+  script_name("Cisco Meeting Server HTTP Packet Processing Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170215-cms1");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170215-cms1");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the Web Bridge interface of the Cisco Meeting Server
+  script_tag(name:"summary", value:"A vulnerability in the Web Bridge interface of the Cisco Meeting Server
 (CMS), formerly Acano Conferencing Server, could allow an authenticated, remote attacker to retrieve memory
 contents, which could lead to the disclosure of confidential information. In addition, the attacker could
 potentially cause the application to crash unexpectedly, resulting in a denial of service (DoS) condition. The
 attacker would need to be authenticated and have a valid session with the Web Bridge.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient input validation of an HTTP request.
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient input validation of an HTTP request.
 An attacker could exploit this vulnerability by sending a crafted HTTP packet to a targeted application.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to retrieve memory contents,
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to retrieve memory contents,
 which could lead to the disclosure of confidential information or cause a DoS condition.");
 
- script_tag(name: "qod_type", value: "remote_banner");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-02-16 09:49:37 +0100 (Thu, 16 Feb 2017) $");
- script_tag(name: "creation_date", value: "2017-02-16 12:05:59 +0700 (Thu, 16 Feb 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_meeting_server_snmp_detect.nasl");
- script_mandatory_keys("cisco/meeting_server/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-16 12:05:59 +0700 (Thu, 16 Feb 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_meeting_server_snmp_detect.nasl");
+  script_mandatory_keys("cisco/meeting_server/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");
@@ -75,7 +75,7 @@ include("version_func.inc");
 if (!version = get_app_version(cpe: CPE))
   exit(0);
 
-affected = make_list( 
+affected = make_list(
                 '2.0.0',
                 '2.0.1',
                 '2.0.3',

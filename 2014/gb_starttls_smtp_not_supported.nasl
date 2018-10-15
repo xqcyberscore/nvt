@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_smtp_not_supported.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_starttls_smtp_not_supported.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # SMTP Missing Support For STARTTLS
 #
@@ -28,8 +28,8 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105091");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11191 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_version("$Revision: 11867 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-09-23 14:29:22 +0100 (Tue, 23 Sep 2014)");
   script_tag(name:"cvss_base", value:"0.0");
 
@@ -45,7 +45,7 @@ if (description)
 
   script_tag(name:"summary", value:"The remote Mailserver does not support the STARTTLS command.");
 
- exit(0);
+  exit(0);
 }
 
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_sec_bypass_vuln_win.nasl 9403 2018-04-09 07:48:27Z asteins $
+# $Id: gb_openssl_sec_bypass_vuln_win.nasl 11900 2018-10-15 07:44:31Z mmartin $
 #
 # OpenSSL Security Bypass Vulnerability - DEC 2017 (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107268");
-  script_version("$Revision: 9403 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:48:27 +0200 (Mon, 09 Apr 2018) $");
+  script_version("$Revision: 11900 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-08 12:22:37 +0100 (Fri, 08 Dec 2017)");
   script_cve_id("CVE-2017-3737");
   script_bugtraq_id(102103);
@@ -41,21 +41,21 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Security Bypass Vulnerability - DEC 2017 (Windows)");
 
-  script_tag(name: "summary", value: "This host is running OpenSSL and is prone
+  script_tag(name:"summary", value:"This host is running OpenSSL and is prone
   to a security bypass vulnerability.");
-  script_tag(name: "vuldetect", value: "Get the installed version and check if it is vulnerable.");
+  script_tag(name:"vuldetect", value:"Get the installed version and check if it is vulnerable.");
 
-  script_tag(name: "insight", value: "When SSL_read()/SSL_write() is subsequently called by the
+  script_tag(name:"insight", value:"When SSL_read()/SSL_write() is subsequently called by the
   application for the same SSL object then it will succeed and the data is passed without being
   decrypted/encrypted directly from the SSL/TLS record layer.");
 
-  script_tag(name: "impact" , value: "Successfully exploiting this issue would allow an attacker to cause a denial of service.");
+  script_tag(name:"impact", value:"Successfully exploiting this issue would allow an attacker to cause a denial of service.");
 
-  script_tag(name: "affected", value: "OpenSSL 1.0.2: from 1.0.2b to 1.0.2m");
-  script_tag(name: "solution", value: "OpenSSL 1.0.2 users should upgrade to 1.0.2n.");
+  script_tag(name:"affected", value:"OpenSSL 1.0.2: from 1.0.2b to 1.0.2m");
+  script_tag(name:"solution", value:"OpenSSL 1.0.2 users should upgrade to 1.0.2n.");
 
-  script_xref(name: "URL" , value: "https://www.openssl.org/news/secadv/20171207.txt");
-  script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/102103");
+  script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20171207.txt");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/102103");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

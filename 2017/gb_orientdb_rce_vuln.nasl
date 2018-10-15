@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orientdb_rce_vuln.nasl 7434 2017-10-13 13:25:05Z cfischer $
+# $Id: gb_orientdb_rce_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # OrientDB Server Remote Code Execution Vulnerability
 #
@@ -29,22 +29,21 @@ CPE = "cpe:/a:orientdb:orientdb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112079");
-  script_version("$Revision: 7434 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-11467");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 15:25:05 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-12 09:13:31 +0200 (Thu, 12 Oct 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OrientDB Server Remote Code Execution Vulnerability");
 
-  script_tag(name: "summary" , value:"OrientDB does not enforce privilege requirements during 'where' or 'fetchplan'
+  script_tag(name:"summary", value:"OrientDB does not enforce privilege requirements during 'where' or 'fetchplan'
   or 'order by' use, which allows remote attackers to execute arbitrary OS commands via a crafted request.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"OrientDB uses RBAC model for authentication schemes. By default an OrientDB has 3 roles - admin, writer and reader.
+  script_tag(name:"insight", value:"OrientDB uses RBAC model for authentication schemes. By default an OrientDB has 3 roles - admin, writer and reader.
   These have their usernames same as the role. For each database created on the server, it assigns by default these 3 users.
 
   The privileges of the users are:
@@ -64,15 +63,14 @@ if(description)
   Since OrientDB has a function where one could execute groovy functions and this groovy wrapper doesn't have a sandbox and exposes system functionalities,
   it is possible to run any command.");
 
-  script_tag(name: "affected" , value:"OrientDB Server version 2.2.x to 2.2.22");
+  script_tag(name:"affected", value:"OrientDB Server version 2.2.x to 2.2.22");
 
-  script_tag(name: "solution" , value:"Upgrade to OrientDB Server version 2.2.23 or later.
-  For updates refer to http://orientdb.com/");
+  script_tag(name:"solution", value:"Upgrade to OrientDB Server version 2.2.23 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "URL", value: "http://www.heavensec.org/?p=1703");
-  script_xref(name: "URL", value: "https://github.com/orientechnologies/orientdb/wiki/OrientDB-2.2-Release-Notes#2223---july-11-2017");
+  script_xref(name:"URL", value:"http://www.heavensec.org/?p=1703");
+  script_xref(name:"URL", value:"https://github.com/orientechnologies/orientdb/wiki/OrientDB-2.2-Release-Notes#2223---july-11-2017");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -80,6 +78,7 @@ if(description)
   script_dependencies("gb_orientdb_server_detect.nasl");
   script_mandatory_keys("OrientDB/Installed");
   script_require_ports("Services/www", 2480);
+  script_xref(name:"URL", value:"http://orientdb.com/");
   exit(0);
 }
 

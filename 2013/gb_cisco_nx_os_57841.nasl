@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_57841.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_cisco_nx_os_57841.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Cisco Nexus 7000 Series Switches  Remote Denial of Service Vulnerability
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2013-1122");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11865 $");
 
   script_name("Cisco Nexus 7000 Series Switches  Remote Denial of Service Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57841");
   script_xref(name:"URL", value:"http://www.cisco.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-10 12:14:44 +0200 (Thu, 10 Oct 2013)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -59,7 +59,7 @@ denial-of-service conditions.");
 remote denial-of-service vulnerability.");
   script_tag(name:"affected", value:"Cisco Nexus 7000 Series running on NX-OS.");
 
- exit(0);
+  exit(0);
 }
 
 if( ! device = get_kb_item( "cisco_nx_os/device" ) ) exit( 0 );

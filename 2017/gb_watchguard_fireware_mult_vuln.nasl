@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_watchguard_fireware_mult_vuln.nasl 8602 2018-01-31 12:19:39Z cfischer $
+# $Id: gb_watchguard_fireware_mult_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # WatchGuard Fireware XTM Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:watchguard:fireware';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106641");
-  script_version("$Revision: 8602 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-31 13:19:39 +0100 (Wed, 31 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2017-03-13 13:02:48 +0700 (Mon, 13 Mar 2017)");
-  script_tag(name: "cvss_base", value: "6.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-13 13:02:48 +0700 (Mon, 13 Mar 2017)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-5387", "CVE-2016-5388", "CVE-2016-5386");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WatchGuard Fireware XTM Multiple Vulnerabilities");
 
@@ -51,25 +51,25 @@ if (description)
   script_dependencies("gb_snmp_os_detection.nasl", "gb_watchguard_fireware_detect.nasl");
   script_mandatory_keys("watchguard_fireware/installed");
 
-  script_tag(name: "summary", value: "WatchGuard Fireware XMT Web UI is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"WatchGuard Fireware XMT Web UI is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "WatchGuard Fireware XMT Web UI is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"WatchGuard Fireware XMT Web UI is prone to multiple vulnerabilities:
 
-- Cross-Site Request Forgery vulnerability on the Fireware Web UI login page.
+  - Cross-Site Request Forgery vulnerability on the Fireware Web UI login page.
 
-- Multiple vulnerabilities in the ighttpd component used by Fireware. (CVE-2016-5387, CVE-2106-5388, and
+  - Multiple vulnerabilities in the ighttpd component used by Fireware. (CVE-2016-5387, CVE-2106-5388, and
 CVE-2016-5386)
 
-- Vulnerability in the Fireware Web UI that could allow an attacker to enumerate management user login IDs.");
+  - Vulnerability in the Fireware Web UI that could allow an attacker to enumerate management user login IDs.");
 
-  script_tag(name: "affected", value: "Version prior to 11.12.1.");
+  script_tag(name:"affected", value:"Version prior to 11.12.1.");
 
-  script_tag(name: "solution", value: "Upgrade to version 11.12.1 or later");
+  script_tag(name:"solution", value:"Upgrade to version 11.12.1 or later");
 
-  script_xref(name: "URL", value: "https://www.watchguard.com/support/release-notes/fireware/11/en-US/EN_ReleaseNotes_Fireware_11_12_1/index.html#Fireware/en-US/resolved_issues.html%3FTocPath%3D_____13");
-  script_xref(name: "URL", value: "https://www.korelogic.com/Resources/Advisories/KL-001-2017-004.txt");
+  script_xref(name:"URL", value:"https://www.watchguard.com/support/release-notes/fireware/11/en-US/EN_ReleaseNotes_Fireware_11_12_1/index.html#Fireware/en-US/resolved_issues.html%3FTocPath%3D_____13");
+  script_xref(name:"URL", value:"https://www.korelogic.com/Resources/Advisories/KL-001-2017-004.txt");
 
   exit(0);
 }

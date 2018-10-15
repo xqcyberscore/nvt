@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quixplorer_mult_vuln_nov.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_quixplorer_mult_vuln_nov.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Quixplorer Multiple Vulnerabilities - Nov14
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804876");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-1641", "CVE-2013-1642");
   script_bugtraq_id(63964, 63962);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-04 17:05:21 +0530 (Tue, 04 Nov 2014)");
   script_name("Quixplorer Multiple Vulnerabilities - Nov14");
 
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Quixplorer version 2.5.4 and prior.");
 
   script_tag(name:"solution", value:"Upgrade to Quixplorer version 2.5.5 or
-  later. For updates refer to https://github.com/realtimeprojects/quixplorer");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -69,6 +69,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"https://github.com/realtimeprojects/quixplorer");
   exit(0);
 }
 

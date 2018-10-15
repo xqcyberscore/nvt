@@ -28,12 +28,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804216");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_bugtraq_id(38366);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-08 17:10:27 +0530 (Wed, 08 Jan 2014)");
   script_name("TYPO3 Multiple Vulnerabilities Feb10");
 
@@ -47,8 +47,7 @@ information or execute arbitrary scripts.");
 
   - An error exist in the frontend, which is caused by improper validation of
 user-supplied input by the index.php script .");
-  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.2.12, 4.3.2 or later,
-For updates refer to, http://typo3.org/");
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.2.12, 4.3.2 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with TYPO3 and is prone to multiple vulnerabilities.");
   script_tag(name:"affected", value:"TYPO3 versions 4.2.11 and below, 4.3.1 and below");

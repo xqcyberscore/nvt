@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_mult_vuln01_nov14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_flash_mult_vuln01_nov14_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities(APSB14-24)-(Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804793");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-0573", "CVE-2014-0574", "CVE-2014-0576", "CVE-2014-0577",
                 "CVE-2014-0581", "CVE-2014-0582", "CVE-2014-0583", "CVE-2014-0584",
                 "CVE-2014-0585", "CVE-2014-0586", "CVE-2014-0588", "CVE-2014-0589",
@@ -39,7 +39,7 @@ if(description)
                     71045, 71048, 71051, 71046, 71036, 71049, 71047, 71050, 71040);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-14 11:33:04 +0530 (Fri, 14 Nov 2014)");
   script_name("Adobe Flash Player Multiple Vulnerabilities(APSB14-24)-(Windows)");
 
@@ -68,8 +68,7 @@ if(description)
   13.0.0.252 and 14.x and 15.x before 15.0.0.223 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
-  13.0.0.252 or 15.0.0.223 or later. For updates refer to
-  http://get.adobe.com/flashplayer");
+  13.0.0.252 or 15.0.0.223 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -82,6 +81,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

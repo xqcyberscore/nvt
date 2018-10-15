@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4025331.nasl 6706 2017-07-12 14:51:44Z santu $
+# $Id: gb_ms_kb4025331.nasl 11879 2018-10-12 12:48:49Z mmartin $
 #
 # Microsoft Windows Server 2012 Multiple Vulnerabilities (KB4025331)
 #
@@ -27,28 +27,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811517");
-  script_version("$Revision: 6706 $");
-  script_cve_id("CVE-2017-0170", "CVE-2017-8463", "CVE-2017-8606", "CVE-2017-8467", 
-                "CVE-2017-8486", "CVE-2017-8607", "CVE-2017-8608", "CVE-2017-8495", 
-                "CVE-2017-8556", "CVE-2017-8618", "CVE-2017-8557", "CVE-2017-8561", 
-                "CVE-2017-8562", "CVE-2017-8563", "CVE-2017-8564", "CVE-2017-8565", 
-                "CVE-2017-8573", "CVE-2017-8577", "CVE-2017-8578", "CVE-2017-8580", 
-                "CVE-2017-8581", "CVE-2017-8582", "CVE-2017-8587", "CVE-2017-8588", 
+  script_version("$Revision: 11879 $");
+  script_cve_id("CVE-2017-0170", "CVE-2017-8463", "CVE-2017-8606", "CVE-2017-8467",
+                "CVE-2017-8486", "CVE-2017-8607", "CVE-2017-8608", "CVE-2017-8495",
+                "CVE-2017-8556", "CVE-2017-8618", "CVE-2017-8557", "CVE-2017-8561",
+                "CVE-2017-8562", "CVE-2017-8563", "CVE-2017-8564", "CVE-2017-8565",
+                "CVE-2017-8573", "CVE-2017-8577", "CVE-2017-8578", "CVE-2017-8580",
+                "CVE-2017-8581", "CVE-2017-8582", "CVE-2017-8587", "CVE-2017-8588",
                 "CVE-2017-8589", "CVE-2017-8590", "CVE-2017-8592");
-  script_bugtraq_id(99389, 99408, 99409, 99414, 99410, 99412, 99424, 99439, 99399, 
-                    99398, 99426, 99397, 99402, 99428, 99394, 99431, 99416, 99419, 
+  script_bugtraq_id(99389, 99408, 99409, 99414, 99410, 99412, 99424, 99439, 99399,
+                    99398, 99426, 99397, 99402, 99428, 99394, 99431, 99416, 99419,
                     99421, 99423, 99429, 99413, 99400, 99425, 99427, 99396);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 16:51:44 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-12 10:01:25 +0530 (Wed, 12 Jul 2017)");
   script_name("Microsoft Windows Server 2012 Multiple Vulnerabilities (KB4025331)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB4025331");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
 
@@ -101,7 +100,7 @@ if(description)
   - Windows Explorer attempts to open a non-existent file.
 
   - Windows improperly handles objects in memory.");
-  
+
   script_tag(name:"impact", value:"Successful exploitation will allow
   an attacker to obtain information to further compromise the user's system,
   gain the same user rights as the current user, run arbitrary
@@ -113,26 +112,23 @@ if(description)
   force the browser to send data that would otherwise be restricted to a
   destination web site of their choice, bypass Extended Protection for
   Authentication, read arbitrary files via an XML external entity (XXE)
-  declaration and cause a denial of service.
-
-  Impact Level: System");
+  declaration and cause a denial of service.");
 
   script_tag(name:"affected", value:"Microsoft Windows Server 2012");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4025331");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4025331");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4025331");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -143,28 +139,20 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-fileVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2012:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of 'mshtml.dll'
-fileVer = fetch_file_version(sysPath, file_name:"mshtml.dll");
+fileVer = fetch_file_version(sysPath:sysPath, file_name:"mshtml.dll");
 if(!fileVer){
   exit(0);
 }
 
-## Check for mshtml.dll version
 if(version_is_less(version:fileVer, test_version:"10.0.9200.22207"))
 {
   report = 'File checked:     ' + sysPath + "\mshtml.dll" + '\n' +

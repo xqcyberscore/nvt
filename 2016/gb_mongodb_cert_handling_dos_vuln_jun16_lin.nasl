@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_cert_handling_dos_vuln_jun16_lin.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_mongodb_cert_handling_dos_vuln_jun16_lin.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # MongoDB mongod Malformed X.509 Certificate Handling Remote DoS Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mongodb:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808151");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2014-3971");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 10:43:02 +0530 (Tue, 07 Jun 2016)");
   script_name("MongoDB mongod Malformed X.509 Certificate Handling Remote DoS Vulnerability (Linux)");
 
@@ -50,7 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"MongoDB version 2.6.x before 2.6.2 on Linux");
 
-  script_tag(name:"solution", value:"Upgrade to MongoDB version 2.6.2 or later, ");
+  script_tag(name:"solution", value:"Upgrade to MongoDB version 2.6.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

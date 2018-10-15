@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fex_fup_mult_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_fex_fup_mult_xss_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # F*EX (Frams's Fast File EXchange) Multiple XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803034");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-0869", "CVE-2012-1293");
   script_bugtraq_id(52085);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-27 16:41:55 +0530 (Thu, 27 Sep 2012)");
   script_name("F*EX (Frams's Fast File EXchange) Multiple XSS Vulnerabilities");
 
@@ -56,7 +56,7 @@ if(description)
   script_tag(name:"insight", value:"The inputs passed via 'to', 'from' and 'id' parameter to 'fup' is not
   properly validated, which allows attackers to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site.");
-  script_tag(name:"solution", value:"Upgrade to Frams' Fast File EXchange version 20111129-2 or later");
+  script_tag(name:"solution", value:"Upgrade to Frams' Fast File EXchange version 20111129-2 or later.");
   script_tag(name:"summary", value:"This host is running F*EX (Frams's Fast File EXchange) and is
   prone to multiple cross site scripting vulnerabilities.");
 

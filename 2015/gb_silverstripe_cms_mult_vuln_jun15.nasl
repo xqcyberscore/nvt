@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverstripe_cms_mult_vuln_jun15.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_silverstripe_cms_mult_vuln_jun15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # SilverStripe CMS Multiple Vulnerabilities - June15
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805592");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-5063", "CVE-2015-5062");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-22 12:00:20 +0530 (Mon, 22 Jun 2015)");
   script_name("SilverStripe CMS Multiple Vulnerabilities - June15");
 
@@ -58,7 +58,7 @@ if(description)
   script_tag(name:"affected", value:"SilverStripe CMS version 3.1.13");
 
   script_tag(name:"solution", value:"Upgrade to SilverStripe CMS version 3.1.14
-  or later, For updates refer to http://www.silverstripe.com");
+  or later.");
 
   script_tag(name:"qod_type", value:"exploit");
 
@@ -74,6 +74,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+  script_xref(name:"URL", value:"http://www.silverstripe.com");
   exit(0);
 }
 

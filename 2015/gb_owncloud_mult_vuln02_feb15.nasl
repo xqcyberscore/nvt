@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln02_feb15.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_owncloud_mult_vuln02_feb15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # ownCloud Multiple Vulnerabilities -02 Feb15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805280");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-9046", "CVE-2014-9043", "CVE-2014-9042", "CVE-2014-9041");
   script_bugtraq_id(71383, 71389, 71373, 71369);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-19 15:54:16 +0530 (Thu, 19 Feb 2015)");
   script_name("ownCloud Multiple Vulnerabilities -02 Feb15");
 
@@ -68,7 +68,7 @@ if(description)
   before 6.0.6, and 7.x before 7.0.3");
 
   script_tag(name:"solution", value:"Upgrade to ownCloud Server 5.0.18 or 6.0.6
-  or 7.0.3 or later. For updates refer to http://owncloud.org");
+  or 7.0.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -85,6 +85,7 @@ if(description)
   script_dependencies("gb_owncloud_detect.nasl");
   script_mandatory_keys("owncloud/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://owncloud.org");
   exit(0);
 }
 

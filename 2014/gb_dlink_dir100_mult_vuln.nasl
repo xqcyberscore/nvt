@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir100_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_dlink_dir100_mult_vuln.nasl 11868 2018-10-12 10:53:07Z cfischer $
 #
 # D-Link DIR-100 Router Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803797");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11868 $");
   script_cve_id("CVE-2013-7051", "CVE-2013-7052", "CVE-2013-7053", "CVE-2013-7054",
                 "CVE-2013-7055");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:53:07 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-05 12:25:02 +0530 (Wed, 05 Feb 2014)");
   script_name("D-Link DIR-100 Router Multiple Vulnerabilities");
 
@@ -56,9 +56,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause denial of service or
   execute arbitrary HTML and script code in a user's browser session in context of an affected website.");
   script_tag(name:"affected", value:"D-Link DIR-100 Hardware Revision: D1 Software Version: 4.03B07");
-  script_tag(name:"solution", value:"Apply the patch or upgrade to version 4.03B13 or later,
-  For updates refer to http://more.dlink.de/sicherheit/index.html
-  For Patch refer to http://exploitsdownload.com/exploit/na/d-link-dir-100-csrf-xss-disclosure-authentication");
+  script_tag(name:"solution", value:"Apply the patch or upgrade to version 4.03B13 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31425");
   script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2014020019");
@@ -72,6 +70,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("http_server/banner");
 
+  script_xref(name:"URL", value:"http://more.dlink.de/sicherheit/index.html");
   exit(0);
 }
 

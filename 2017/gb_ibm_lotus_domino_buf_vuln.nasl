@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_domino_buf_vuln.nasl 9494 2018-04-16 09:16:25Z asteins $
+# $Id: gb_ibm_lotus_domino_buf_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # IBM Lotus Domino Server Stack Buffer Overflow Vulnerability
 #
@@ -30,8 +30,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107155");
 
-  script_version("$Revision: 9494 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 11:16:25 +0200 (Mon, 16 Apr 2018) $");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
 
   script_tag(name:"creation_date", value:"2017-04-26 07:07:25 +0200 (Wed, 26 Apr 2017)");
 
@@ -47,11 +47,11 @@ if(description)
 
   script_tag(name:"summary", value:"IBM Lotus Domino Server is prone to a stack-based buffer overflow vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"IBM Domino is vulnerable to a stack-based buffer overflow, caused by improper bounds checking when parsing BMP images.");
 
-  script_tag(name:"impact" , value:"Attackers can exploit this issue to execute arbitrary code within the context of the affected application. Failed exploit attempts will likely cause a denial-of-service condition.");
+  script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary code within the context of the affected application. Failed exploit attempts will likely cause a denial-of-service condition.");
 
   script_tag(name:"affected", value:"IBM Domino 9.0.1 Fix Pack 3 (plus Interim Fixes) and earlier.
   IBM Domino 8.5.3 Fix Pack 6 (plus Interim Fixes) and earlier All 9.0 and 8.5.x releases of IBM Domino prior to those listed above.");

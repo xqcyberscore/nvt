@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805337");
-  script_version("$Revision: 11635 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-0003", "CVE-2015-0010", "CVE-2015-0057", "CVE-2015-0058",
                 "CVE-2015-0059", "CVE-2015-0060");
   script_bugtraq_id(72457, 72461, 72466, 72468, 72470, 72472);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 16:14:14 +0530 (Wed, 11 Feb 2015)");
   script_name("MS Windows Kernel-Mode Driver RCE Vulnerabilities (3036220)");
 
@@ -65,9 +65,7 @@ if(description)
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS15-010");
+  listed hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -105,7 +103,7 @@ if(!sysPath ){
 
 
 ##Elevation of Privilege KB3036220
-dllVer = fetch_file_version(sysPath, file_name:"system32\Win32k.sys");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Win32k.sys");
 if(!dllVer){
   exit(0);
 }
@@ -162,7 +160,7 @@ if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 
 
 ##Security Feature Bypass KB3023562
-dllVer = fetch_file_version(sysPath, file_name:"system32\Msv1_0.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Msv1_0.dll");
 if(!dllVer){
   exit(0);
 }
@@ -207,7 +205,7 @@ if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
   }
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Msobjs.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Msobjs.dll");
 if(!dllVer){
   exit(0);
 }

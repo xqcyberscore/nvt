@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_irfanview_jpeg2000_bof_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_irfanview_jpeg2000_bof_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # IrfanView JPEG-2000 Plugin Remote Stack Based Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802576");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-0897");
   script_bugtraq_id(51426);
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-01 11:28:20 +0530 (Wed, 01 Feb 2012)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error in the JPEG2000 plug-in when processing
   the Quantization Default (QCD) marker segment. This can be exploited to cause
   a stack-based buffer overflow via a specially crafted JPEG2000 (JP2) file.");
-  script_tag(name:"solution", value:"Upgrade IrfanView JPEG-2000 Plugin version to 4.33 or later");
+  script_tag(name:"solution", value:"Upgrade IrfanView JPEG-2000 Plugin version to 4.33 or later.");
   script_tag(name:"summary", value:"This host has IrfanView with JPEG-2000 plugin installed and is
   prone to stack based buffer overflow vulnerability.");
   exit(0);

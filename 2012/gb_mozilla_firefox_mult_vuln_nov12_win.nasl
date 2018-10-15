@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_nov12_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_mozilla_firefox_mult_vuln_nov12_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities - November12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803059");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-4203", "CVE-2012-5837");
   script_bugtraq_id(56623, 56645);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 13:47:00 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - November12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51358/");
@@ -54,7 +54,7 @@ if(description)
 
   - The 'Javascript:' URLs when opened in a New Tab page inherits the
     privileges of the privileged 'new tab' page.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 17.0 or later,");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 17.0 or later.");
   script_tag(name:"summary", value:"This host is installed with Mozilla Firefox and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_expandtemplates_mul_xss_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_mediawiki_expandtemplates_mul_xss_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # MediaWiki ExpandTemplates extension Multiple Vulnerabilities - Jan15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805327");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-9276", "CVE-2014-9478");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 12:37:41 +0530 (Fri, 23 Jan 2015)");
   script_name("MediaWiki ExpandTemplates extension Multiple Vulnerabilities - Jan15");
 
@@ -56,7 +56,7 @@ if(description)
   extension for MediaWiki.");
 
   script_tag(name:"solution", value:"Upgrade to ExpandTemplates version 1.24.1
-  or later. For updates refer to http://www.mediawiki.org/wiki/Extension:ExpandTemplates");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://phabricator.wikimedia.org/T773111");
@@ -68,6 +68,7 @@ if(description)
   script_dependencies("find_service.nasl", "secpod_mediawiki_detect.nasl");
   script_mandatory_keys("mediawiki/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.mediawiki.org/wiki/Extension:ExpandTemplates");
   exit(0);
 }
 

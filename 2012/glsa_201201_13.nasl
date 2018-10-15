@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201201_13.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201201_13.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-3295", "CVE-2009-4212", "CVE-2010-0283", "CVE-2010-0629", "CVE-2010-1320", "CVE-2010-1321", "CVE-2010-1322", "CVE-2010-1323", "CVE-2010-1324", "CVE-2010-4020", "CVE-2010-4021", "CVE-2010-4022", "CVE-2011-0281", "CVE-2011-0282", "CVE-2011-0283", "CVE-2011-0284", "CVE-2011-0285", "CVE-2011-1527", "CVE-2011-1528", "CVE-2011-1529", "CVE-2011-1530", "CVE-2011-4151");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-12 10:04:42 -0500 (Sun, 12 Feb 2012)");
   script_name("Gentoo Security Advisory GLSA 201201-13 (mit-krb5)");
   script_category(ACT_GATHER_INFO);
@@ -47,21 +47,20 @@ if(description)
   script_tag(name:"solution", value:"All MIT Kerberos 5 users should upgrade to the latest version:
 
       # emerge --sync
-      # emerge --ask --oneshot --verbose '>=app-crypt/mit-krb5-1.9.2-r1'
+      # emerge --ask --oneshot --verbose '>=app-crypt/mit-krb5-1.9.2-r1'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201201-13
-http://bugs.gentoo.org/show_bug.cgi?id=303723
-http://bugs.gentoo.org/show_bug.cgi?id=308021
-http://bugs.gentoo.org/show_bug.cgi?id=321935
-http://bugs.gentoo.org/show_bug.cgi?id=323525
-http://bugs.gentoo.org/show_bug.cgi?id=339866
-http://bugs.gentoo.org/show_bug.cgi?id=347369
-http://bugs.gentoo.org/show_bug.cgi?id=352859
-http://bugs.gentoo.org/show_bug.cgi?id=359129
-http://bugs.gentoo.org/show_bug.cgi?id=363507
-http://bugs.gentoo.org/show_bug.cgi?id=387585
-http://bugs.gentoo.org/show_bug.cgi?id=393429");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201201-13");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=303723");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=308021");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=321935");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=323525");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=339866");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=347369");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=352859");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=359129");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=363507");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=387585");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=393429");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201201-13.");
   script_tag(name:"qod_type", value:"package");

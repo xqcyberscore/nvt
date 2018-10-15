@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_keywords_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_mybb_keywords_xss_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # MyBB keywords Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804234");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1840");
   script_bugtraq_id(65344);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-05 15:23:57 +0530 (Wed, 05 Feb 2014)");
   script_name("MyBB keywords Cross Site Scripting Vulnerability");
 
@@ -46,8 +46,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to steal the victim's
   cookie-based authentication credentials.");
   script_tag(name:"affected", value:"MyBB version 1.6.12, Other versions may also be affected.");
-  script_tag(name:"solution", value:"Upgrade to version 1.6.13 or later,
-  For updates refer to http://www.mybb.com");
+  script_tag(name:"solution", value:"Upgrade to version 1.6.13 or later.");
 
   script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/mybb-1612-post-cross-site-scripting");
   script_xref(name:"URL", value:"http://osandamalith.wordpress.com/2014/02/02/mybb-1-6-12-post-xss-0day/");
@@ -62,6 +61,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.mybb.com");
   exit(0);
 }
 

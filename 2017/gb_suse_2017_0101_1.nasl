@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_0101_1.nasl 8048 2017-12-08 09:05:48Z santu $
+# $Id: gb_suse_2017_0101_1.nasl 11897 2018-10-15 05:26:22Z cfischer $
 #
 # SuSE Update for jasper openSUSE-SU-2017:0101-1 (jasper)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851469");
-  script_version("$Revision: 8048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 10:05:48 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 11897 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-11 05:38:52 +0100 (Wed, 11 Jan 2017)");
   script_cve_id("CVE-2016-8654", "CVE-2016-9395", "CVE-2016-9398", "CVE-2016-9560", 
                 "CVE-2016-9591");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for jasper openSUSE-SU-2017:0101-1 (jasper)");
   script_tag(name: "summary", value: "Check the version of jasper");

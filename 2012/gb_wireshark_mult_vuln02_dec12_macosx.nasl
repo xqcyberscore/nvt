@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln02_dec12_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_wireshark_mult_vuln02_dec12_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Wireshark Multiple Vulnerabilities-02 Dec 2012 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803135");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-4295", "CVE-2012-4294", "CVE-2012-4287");
   script_bugtraq_id(55035);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-28 14:58:22 +0530 (Fri, 28 Dec 2012)");
   script_name("Wireshark Multiple Vulnerabilities-02 Dec 2012 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50276/");
@@ -58,7 +58,7 @@ if(description)
 
   - An error within the MongoDB dissector can be exploited to trigger an
     infinite loop and consume excessive CPU resources.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.8.2 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.8.2 or later.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"package");

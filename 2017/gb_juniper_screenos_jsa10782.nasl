@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_jsa10782.nasl 6800 2017-07-26 06:58:22Z cfischer $
+# $Id: gb_juniper_screenos_jsa10782.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
-# Juniper ScreenOS Multiple XSS Vulnerabilities 
+# Juniper ScreenOS Multiple XSS Vulnerabilities
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:screenos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106947");
-  script_version ("$Revision: 6800 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-26 08:58:22 +0200 (Wed, 26 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-13 14:37:40 +0700 (Thu, 13 Jul 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-13 14:37:40 +0700 (Thu, 13 Jul 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-2335", "CVE-2017-2336", "CVE-2017-2337", "CVE-2017-2338", "CVE-2017-2339");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Juniper ScreenOS Multiple XSS Vulnerabilities");
 
@@ -51,17 +51,17 @@ if (description)
   script_dependencies("gb_screenos_version.nasl");
   script_mandatory_keys("ScreenOS/version");
 
-  script_tag(name: "summary", value: "ScreenOS is prone to multiple XSS vulnerabilities.");
+  script_tag(name:"summary", value:"ScreenOS is prone to multiple XSS vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "insight", value: "A security researcher testing a Juniper NetScreen Firewall+VPN found
+  script_tag(name:"insight", value:"A security researcher testing a Juniper NetScreen Firewall+VPN found
 multiple stored cross-site scripting vulnerabilities that could be used to elevate privileges through the
 NetScreen WebUI.  A user with the 'security' role can inject HTML/JavaScript content into the management session
 of other users including the administrator.  This enables the lower-privileged user to effectively execute
 commands with the permissions of an administrator.");
 
-  script_tag(name: "solution" , value: "Update to ScreenOS 6.3.0r24 or later.");
+  script_tag(name:"solution", value:"Update to ScreenOS 6.3.0r24 or later.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10782");
 

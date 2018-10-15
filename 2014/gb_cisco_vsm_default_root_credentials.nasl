@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vsm_default_root_credentials.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_cisco_vsm_default_root_credentials.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Cisco Video Surveillance Manager Default Root Credentials
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:cisco:video_surveillance_manager';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103896");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 11867 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Cisco Video Surveillance Manager Default Root Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-28 15:02:06 +0200 (Tue, 28 Jan 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -53,7 +53,7 @@ access to sensitive information or modify system configuration.");
   script_tag(name:"solution", value:"Change the password.");
   script_tag(name:"solution_type", value:"Mitigation");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

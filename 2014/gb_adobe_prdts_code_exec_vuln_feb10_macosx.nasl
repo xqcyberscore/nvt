@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_code_exec_vuln_feb10_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_prdts_code_exec_vuln_feb10_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Adobe Acrobat and Reader PDF Handling Code Execution Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804267");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2010-0188", "CVE-2010-0186");
   script_bugtraq_id(38195, 38198);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-16 15:25:45 +0530 (Wed, 16 Apr 2014)");
   script_name("Adobe Acrobat and Reader PDF Handling Code Execution Vulnerability (Mac OS X)");
 
@@ -48,8 +48,7 @@ intended sandbox restrictions allowing cross-domain requests.");
   script_tag(name:"affected", value:"Adobe Reader version 8.x before 8.2.1 and 9.x before 9.3.1 on Mac OS X.
 
   Adobe Acrobat version 8.x before 8.2.1 and 9.x before 9.3.1 on Mac OS X");
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader/Acrobat version 9.3.1 or 8.2.1 or later. For updates
-refer to http://www.adobe.com");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader/Acrobat version 9.3.1 or 8.2.1 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 

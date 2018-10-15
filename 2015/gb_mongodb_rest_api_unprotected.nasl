@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_rest_api_unprotected.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_mongodb_rest_api_unprotected.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # MongoDB Unauthenticated REST API
 #
@@ -30,7 +30,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105234");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
 
   script_name("MongoDB Unauthenticated REST API");
 
@@ -49,7 +49,7 @@ interface");
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-13 09:16:37 +0100 (Fri, 13 Mar 2015)");
   script_category(ACT_ATTACK);
   script_family("Databases");
@@ -58,7 +58,7 @@ interface");
   script_require_ports("Services/www", 28017);
   script_mandatory_keys("mongodb/webadmin/port");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

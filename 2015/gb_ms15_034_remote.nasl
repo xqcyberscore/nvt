@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15_034_remote.nasl 10724 2018-08-02 06:39:54Z cfischer $
+# $Id: gb_ms15_034_remote.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # MS15-034 HTTP.sys Remote Code Execution Vulnerability (remote check)
 #
@@ -33,9 +33,9 @@ if(description)
   script_cve_id("CVE-2015-1635");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 10724 $");
+  script_version("$Revision: 11872 $");
   script_name("MS15-034 HTTP.sys Remote Code Execution Vulnerability (remote check)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 08:39:54 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 18:02:08 +0200 (Wed, 15 Apr 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -56,10 +56,8 @@ if(description)
   script_tag(name:"insight", value:"Flaw exists due to the HTTP protocol stack 'HTTP.sys' that is triggered
   when parsing HTTP requests.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-  mentioned hotfixes in the advisory from the below link,
-
-  https://technet.microsoft.com/library/security/MS15-034");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to Microsoft
   Bulletin MS15-034.");

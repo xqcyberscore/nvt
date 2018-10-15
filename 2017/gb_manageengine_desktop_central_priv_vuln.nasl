@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_desktop_central_priv_vuln.nasl 6758 2017-07-19 09:21:22Z ckuersteiner $
+# $Id: gb_manageengine_desktop_central_priv_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # ManageEngine Desktop Central Remote Control Privilege Violation Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106809");
-  script_version("$Revision: 6758 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-19 11:21:22 +0200 (Wed, 19 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-05-17 16:32:04 +0700 (Wed, 17 May 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-17 16:32:04 +0700 (Wed, 17 May 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-7213");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("ManageEngine Desktop Central Remote Control Privilege Violation Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("gb_manage_engine_desktop_central_detect.nasl");
   script_mandatory_keys("ManageEngine/Desktop_Central/installed");
 
-  script_tag(name: "summary", value: "Zoho ManageEngine Desktop Central allows remote attackers to obtain control
+  script_tag(name:"summary", value:"Zoho ManageEngine Desktop Central allows remote attackers to obtain control
 over all connected active desktops via unspecified vectors.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "ManageEngine Desktop Central before build 100082.");
+  script_tag(name:"affected", value:"ManageEngine Desktop Central before build 100082.");
 
-  script_tag(name: "solution", value: "Upgrade to build 100082 or later.");
+  script_tag(name:"solution", value:"Upgrade to build 100082 or later.");
 
-  script_xref(name: "URL", value: "https://www.manageengine.com/products/desktop-central/cve-2017-7213-remote-control-privilege-violation.html");
+  script_xref(name:"URL", value:"https://www.manageengine.com/products/desktop-central/cve-2017-7213-remote-control-privilege-violation.html");
 
   exit(0);
 }

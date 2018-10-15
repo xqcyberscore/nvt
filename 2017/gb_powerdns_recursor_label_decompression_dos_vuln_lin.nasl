@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powerdns_recursor_label_decompression_dos_vuln_lin.nasl 11816 2018-10-10 10:42:56Z mmartin $
+# $Id: gb_powerdns_recursor_label_decompression_dos_vuln_lin.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # PowerDNS Recursor Label Decompression Denial of Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:powerdns:recursor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809860");
-  script_version("$Revision: 11816 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2015-1868", "CVE-2015-5470");
   script_bugtraq_id(74306);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-04 15:18:12 +0530 (Wed, 04 Jan 2017)");
   script_name("PowerDNS Recursor Label Decompression Denial of Service Vulnerability (Linux)");
 
@@ -53,7 +53,7 @@ if(description)
   and 3.7.x before 3.7.3 on Linux");
 
   script_tag(name:"solution", value:"Upgrade to PowerDNS Recursor 3.6.4, or 3.7.3.
-  or later, ");
+  or later.");
 
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1032220");
   script_xref(name:"URL", value:"https://doc.powerdns.com/md/security/powerdns-advisory-2015-01");

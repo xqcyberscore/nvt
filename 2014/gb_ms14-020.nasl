@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-020.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-020.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Office Publisher Remote Code Execution Vulnerability (2950145)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804422");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-1759");
   script_bugtraq_id(66622);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 07:45:13 +0530 (Wed, 09 Apr 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Office Publisher Remote Code Execution Vulnerability (2950145)");
@@ -49,8 +49,7 @@ features.");
   script_tag(name:"affected", value:"Microsoft Publisher 2003 Service Pack 3 and prior
 Microsoft Publisher 2007 Service Pack 3 and prior");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms14-020");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/57652");
@@ -64,6 +63,7 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-020");
                       "gb_smb_windows_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/Office/Publisher/Version");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms14-020");
   exit(0);
 }
 

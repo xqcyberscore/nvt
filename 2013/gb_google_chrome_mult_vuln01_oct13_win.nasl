@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_oct13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_google_chrome_mult_vuln01_oct13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 Oct2013 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804105");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-2906", "CVE-2013-2923", "CVE-2013-2924", "CVE-2013-2922",
                 "CVE-2013-2921", "CVE-2013-2907", "CVE-2013-2908", "CVE-2013-2909",
                 "CVE-2013-2910", "CVE-2013-2911", "CVE-2013-2912", "CVE-2013-2913",
@@ -38,17 +38,15 @@ if(description)
   script_bugtraq_id(62752);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-07 14:27:23 +0530 (Mon, 07 Oct 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Oct2013 (Windows)");
 
 
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
 vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version of Google Chrome with the help of detect NVT and
-check it is vulnerable or not.");
-  script_tag(name:"solution", value:"Upgrade to version 30.0.1599.66 or later
-For updates refer to http://www.google.com/chrome");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade to version 30.0.1599.66 or later.");
   script_tag(name:"insight", value:"Multiple flaws exists, For more details refer the reference section.");
   script_tag(name:"affected", value:"Google Chrome version before 30.0.1599.66 on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
@@ -65,6 +63,7 @@ impacts via some known or unknown vectors.");
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

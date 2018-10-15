@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webmin_mul_vuln_oct_2017_win.nasl 7739 2017-11-13 05:04:18Z teissa $
+# $Id: gb_webmin_mul_vuln_oct_2017_win.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Webmin Multiple Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:webmin:webmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107250");
-  script_version("$Revision: 7739 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-15644", "CVE-2017-15645", "CVE-2017-15646");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-13 06:04:18 +0100 (Mon, 13 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-16 12:05:05 +0530 (Mon, 16 Oct 2017)");
   script_name("Webmin Multiple Vulnerabilities (Windows)");
 
@@ -54,14 +54,11 @@ if(description)
 
   - CSRF Schedule arbitrary commands
 
-  - Server Side Request Forgery
-
-  Impact Level: Application");
+  - Server Side Request Forgery.");
 
   script_tag(name:"affected", value:"Webmin version prior to 1.860");
 
-  script_tag(name:"solution", value:"Upgrade to webmin version 1.860
-  For more information refer to http://www.webmin.com/security.html");
+  script_tag(name:"solution", value:"Upgrade to webmin version 1.860");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -73,6 +70,7 @@ if(description)
   script_dependencies("webmin.nasl", "os_detection.nasl");
   script_mandatory_keys("webmin/installed", "Host/runs_windows");
   script_require_ports("Services/www", 10000, 20000);
+  script_xref(name:"URL", value:"http://www.webmin.com/security.html");
   exit(0);
 }
 

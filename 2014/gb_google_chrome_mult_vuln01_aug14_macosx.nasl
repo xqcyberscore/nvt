@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_aug14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_google_chrome_mult_vuln01_aug14_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - 01 Aug14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804811");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-3165", "CVE-2014-3166", "CVE-2014-3167");
   script_bugtraq_id(69201, 69202, 69203);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-08-19 11:25:08 +0530 (Tue, 19 Aug 2014)");
   script_name("Google Chrome Multiple Vulnerabilities - 01 Aug14 (Mac OS X)");
 
@@ -52,8 +52,7 @@ script within the Web Sockets implementation in Blink.
 sensitive information, conduct a denial of service attack and potentially
 execute arbitrary code or possibly have other impact via unknown vectors.");
   script_tag(name:"affected", value:"Google Chrome version prior to 36.0.1985.143 on Mac OS X.");
-  script_tag(name:"solution", value:"Upgrade to Google Chrome 36.0.1985.143 or later,
-For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to Google Chrome 36.0.1985.143 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +64,7 @@ For updates refer to http://www.google.com/chrome");
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("GoogleChrome/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

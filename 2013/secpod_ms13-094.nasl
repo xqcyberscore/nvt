@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-094.nasl 11576 2018-09-24 14:59:42Z cfischer $
+# $Id: secpod_ms13-094.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Outlook Information Disclosure Vulnerability (2894514)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903413");
-  script_version("$Revision: 11576 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-3905");
   script_bugtraq_id(63603);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-11-13 09:27:15 +0530 (Wed, 13 Nov 2013)");
   script_name("Microsoft Outlook Information Disclosure Vulnerability (2894514)");
 
@@ -40,9 +40,8 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security update according to
 Microsoft Bulletin MS13-094.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms13-094");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
   script_tag(name:"insight", value:"The flaw is due to an error during the expansion of the S/MIME certificate
 metadata when validating the X.509 certificate chain and can be exploited
 to gain knowledge IP addresses and open TCP ports from the host and the
@@ -67,6 +66,7 @@ sensitive information.");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/Outlook/Version");
   script_require_ports(139, 445);
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms13-094");
   exit(0);
 }
 

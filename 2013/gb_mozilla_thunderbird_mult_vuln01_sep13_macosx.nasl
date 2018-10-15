@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804010");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1718", "CVE-2013-1719", "CVE-2013-1720", "CVE-2013-1722",
                 "CVE-2013-1723", "CVE-2013-1724", "CVE-2013-1725", "CVE-2013-1726",
                 "CVE-2013-1728", "CVE-2013-1730", "CVE-2013-1732", "CVE-2013-1735",
@@ -38,7 +38,7 @@ if(description)
                     62468, 62473, 62469, 62479, 62478, 62475, 62466);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-24 15:23:59 +0530 (Tue, 24 Sep 2013)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 Sep13 (Mac OS X)");
 
@@ -46,8 +46,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Mozilla Thunderbird and is prone to multiple
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 24.0 or later,
-For updates refer to http://www.mozilla.com/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 24.0 or later.");
   script_tag(name:"insight", value:"For more details about the vulnerabilities, refer the reference section.");
   script_tag(name:"affected", value:"Mozilla Thunderbird version before 24.0 on Mac OS X");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain escalated privileges,
@@ -63,6 +62,7 @@ restrictions, and compromise a user's system.");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("ThunderBird/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/thunderbird");
   exit(0);
 }
 

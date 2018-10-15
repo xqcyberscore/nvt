@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_symposium_mult_sql_inj_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_wp_symposium_mult_sql_inj_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # WordPress WP Symposium Multiple SQL Injection Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806026");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-24 15:13:35 +0530 (Mon, 24 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("WordPress WP Symposium Multiple SQL Injection Vulnerabilities");
@@ -56,7 +56,7 @@ if(description)
   15.5.1 and probably all existing previous versions may also be affected.");
 
   script_tag(name:"solution", value:"Update to WP Symposium version 15.8 or
-  later, For updates refer to http://www.wpsymposium.com/");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37824");
@@ -67,6 +67,7 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.wpsymposium.com/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-046.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: secpod_ms13-046.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2840221)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903208");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2013-1332", "CVE-2013-1333", "CVE-2013-1334");
   script_bugtraq_id(59782, 59749, 59750);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-15 10:20:25 +0530 (Wed, 15 May 2013)");
   script_name("Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2840221)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2829361");
@@ -63,8 +63,7 @@ if(description)
 
   - An unspecified error within the Windows kernel-mode driver (win32k.sys)");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  https://technet.microsoft.com/en-us/security/bulletin/ms13-046");
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS13-046.");
   script_tag(name:"qod_type", value:"registry");
@@ -88,9 +87,9 @@ if(!sysPath){
   exit(0);
 }
 
-winSysVer = fetch_file_version(sysPath, file_name:"system32\Win32k.sys");
-ntosVer = fetch_file_version(sysPath, file_name:"system32\Ntoskrnl.exe");
-DxgVer = fetch_file_version(sysPath, file_name:"system32\drivers\Dxgkrnl.sys");
+winSysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Win32k.sys");
+ntosVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Ntoskrnl.exe");
+DxgVer = fetch_file_version(sysPath:sysPath, file_name:"system32\drivers\Dxgkrnl.sys");
 if(winSysVer ||  ntosVer || DxgVer)
 {
   if(hotfix_check_sp(xp:4) > 0)

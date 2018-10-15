@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_rdp.nasl 10344 2018-06-27 13:00:46Z cfischer $
+# $Id: gb_starttls_rdp.nasl 11898 2018-10-15 07:17:45Z cfischer $
 #
-# Microsoft Remote Desktop Protocol STARTTLS Detection
+# SSL/TLS: Microsoft Remote Desktop Protocol 'PROTOCOL_SSL' Detection
 #
 # Authors:
 # Michael Meyer
@@ -29,21 +29,22 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.140152");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_version("$Revision: 10344 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 15:00:46 +0200 (Wed, 27 Jun 2018) $");
+  script_version("$Revision: 11898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:17:45 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-08 11:18:12 +0100 (Wed, 08 Feb 2017)");
-  script_name("Microsoft Remote Desktop Protocol STARTTLS Detection");
+  script_name("SSL/TLS: Microsoft Remote Desktop Protocol STARTTLS Detection");
   script_category(ACT_GATHER_INFO);
-  script_family("Service detection");
+  script_family("SSL and TLS");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("ms_rdp_detect.nasl");
   script_require_ports("Services/ms-wbt-server", 3389);
   script_mandatory_keys("rdp/detected");
 
-  script_tag(name:"summary", value:"A service supporting the Microsoft Remote Desktop Protocol(RDP) and STARTTLS
-  is running at this host.");
+  script_tag(name:"summary", value:"Checks if the remote Microsoft Remote Desktop Protocol (RDP) service supports the 'PROTOCOL_SSL' flag.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+
+  script_xref(name:"URL", value:"https://msdn.microsoft.com/de-de/library/cc240500.aspx");
 
   exit(0);
 }
@@ -76,6 +77,7 @@ req = raw_string( 0x03,       # version
 send( socket:soc, data:req );
 buf = recv( socket:soc, length:19 );
 close( soc );
+if( ! buf ) exit( 0 );
 
 # https://msdn.microsoft.com/en-us/library/cc240501.aspx
 #
@@ -98,7 +100,7 @@ if( len != 8 ) exit( 0 );
 if( type == 2 && ( sproto == 1 || sproto == 2 ) ) {
   set_kb_item( name:"msrdp/" + port + "/starttls", value:TRUE );
   set_kb_item( name:"starttls_typ/" + port, value:"msrdp" );
-  log_message( port:port );
+  log_message( port:port, data:"The remote Microsoft Remote Desktop Protocol (RDP) service supports the 'PROTOCOL_SSL' flag." );
 }
 
 exit( 0 );

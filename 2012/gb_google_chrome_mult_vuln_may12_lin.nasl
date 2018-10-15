@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_may12_lin.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_google_chrome_mult_vuln_may12_lin.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - May 12 (Linux)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802791");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-3100", "CVE-2011-3084", "CVE-2011-3099", "CVE-2011-3083",
                 "CVE-2011-3097", "CVE-2011-3096", "CVE-2011-3095", "CVE-2011-3094",
                 "CVE-2011-3093", "CVE-2011-3092", "CVE-2011-3091", "CVE-2011-3090",
@@ -36,7 +36,7 @@ if(description)
   script_bugtraq_id(53540);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-17 12:20:37 +0530 (Thu, 17 May 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - May 12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49194/");
@@ -53,7 +53,7 @@ if(description)
   cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 19.0.1084.46 on Linux");
   script_tag(name:"insight", value:"Refer to the reference links for more information on the vulnerabilities.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 19.0.1084.46 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 19.0.1084.46 or later.");
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");

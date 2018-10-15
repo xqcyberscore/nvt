@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_universal_cmdb_rce_vuln.nasl 9144 2018-03-20 09:25:46Z asteins $
+# $Id: gb_hpe_universal_cmdb_rce_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
-# HPE Universal CMDB Remote Code Execution Vulnerability 
+# HPE Universal CMDB Remote Code Execution Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,17 +30,17 @@ CPE = "cpe:/a:hp:universal_cmbd_foundation";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106868");
-  script_version("$Revision: 9144 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-20 10:25:46 +0100 (Tue, 20 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2017-06-13 14:33:13 +0700 (Tue, 13 Jun 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-13 14:33:13 +0700 (Tue, 13 Jun 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-8947");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("HPE Universal CMDB Remote Code Execution Vulnerability");
 
@@ -51,17 +51,17 @@ if (description)
   script_dependencies("gb_hpe_universal_cmdb_detect.nasl");
   script_mandatory_keys("HP/UCMDB/Installed");
 
-  script_tag(name: "summary", value: "A potential security vulnerability has been identified in HPE UCMDB. The
+  script_tag(name:"summary", value:"A potential security vulnerability has been identified in HPE UCMDB. The
 vulnerability could be remotely exploited to allow execution of code.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "HP UCMDB Configuration Manager Software version 10.10, 10.11, 10.20, 10.21,
+  script_tag(name:"affected", value:"HP UCMDB Configuration Manager Software version 10.10, 10.11, 10.20, 10.21,
 10.22, 10.30 and 10.31.");
 
-  script_tag(name: "solution", value: "See the advisory for a solution.");
+  script_tag(name:"solution", value:"See the advisory for a solution.");
 
-  script_xref(name: "URL", value: "https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-hpesbgn03758en_us");
+  script_xref(name:"URL", value:"https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-hpesbgn03758en_us");
 
   exit(0);
 }

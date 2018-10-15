@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_dvr_dir_traversal_05_2013.nasl 11069 2018-08-21 12:29:19Z mmartin $
+# $Id: gb_multiple_dvr_dir_traversal_05_2013.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Multiple DVR HTTP Server Directory Traversal Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103714");
-  script_version("$Revision: 11069 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
@@ -36,7 +36,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60010");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 14:29:19 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-23 09:50:08 +0200 (Thu, 23 May 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -53,7 +53,7 @@ because it fails to sufficiently sanitize user-supplied input.
 Exploiting this issue will allow an attacker to view arbitrary local
 files within the context of the web server. Information harvested may
 aid in launching further attacks.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

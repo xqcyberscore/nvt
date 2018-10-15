@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_frame_dos_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_google_chrome_frame_dos_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Google Chrome Frame Plugin For Microsoft IE Denial Of Service Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803461");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-2493");
   script_bugtraq_id(58562);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-02 12:21:11 +0530 (Tue, 02 Apr 2013)");
   script_name("Google Chrome Frame Plugin For Microsoft IE Denial Of Service Vulnerability (Windows)");
   script_xref(name:"URL", value:"https://chromiumcodereview.appspot.com/12395021");
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"insight", value:"Flaw due to an improper handling of an attach tab request in the
   Hook_Terminate function in chrome_frame/protocol_sink_wrap.cc.");
 
-  script_tag(name:"solution", value:"Upgrade to Google Chrome Frame plugin 26.0.1410.28 or later,
-  For updates refer to http://www.google.com/chromeframe");
+  script_tag(name:"solution", value:"Upgrade to Google Chrome Frame plugin 26.0.1410.28 or later.");
 
   script_tag(name:"summary", value:"This host is installed with google chrome frame plugin for
   microsoft ie and is prone to denial of service vulnerability.");
@@ -63,6 +62,7 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.google.com/chromeframe");
   exit(0);
 }
 

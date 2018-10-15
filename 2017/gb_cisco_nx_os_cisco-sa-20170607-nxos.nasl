@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20170607-nxos.nasl 6585 2017-07-07 05:33:18Z cfischer $
+# $Id: gb_cisco_nx_os_cisco-sa-20170607-nxos.nasl 11900 2018-10-15 07:44:31Z mmartin $
 #
 # Cisco NX-OS Software Fibre Channel over Ethernet Denial of Service Vulnerability
 #
@@ -29,44 +29,44 @@ CPE = "cpe:/o:cisco:nx-os";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106858");
- script_cve_id("CVE-2017-6655");
- script_tag(name:"cvss_base", value:"3.3");
- script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 6585 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106858");
+  script_cve_id("CVE-2017-6655");
+  script_tag(name:"cvss_base", value:"3.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11900 $");
 
- script_name("Cisco NX-OS Software Fibre Channel over Ethernet Denial of Service Vulnerability");
+  script_name("Cisco NX-OS Software Fibre Channel over Ethernet Denial of Service Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170607-nxos");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170607-nxos");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the Fibre Channel over Ethernet (FCoE) protocol
+  script_tag(name:"summary", value:"A vulnerability in the Fibre Channel over Ethernet (FCoE) protocol
 implementation in Cisco NX-OS Software could allow an unauthenticated, adjacent attacker to cause a denial of
 service (DoS) condition when an FCoE-related process unexpectedly reloads.");
 
- script_tag(name: "insight", value: "The vulnerability is due to a lack of proper FCoE frame padding validation.
+  script_tag(name:"insight", value:"The vulnerability is due to a lack of proper FCoE frame padding validation.
 An attacker could exploit this vulnerability by sending a stream of crafted FCoE frames to the targeted device.
 The attacker's server must be directly connected to the FCoE interface on the device that is running Cisco
 NX-OS Software to exploit this vulnerability.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause a DoS condition, which would
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause a DoS condition, which would
 impact FCoE traffic passing through the device.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-07-07 07:33:18 +0200 (Fri, 07 Jul 2017) $");
- script_tag(name: "creation_date", value: "2017-06-08 12:12:26 +0700 (Thu, 08 Jun 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version","cisco_nx_os/model","cisco_nx_os/device");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-08 12:12:26 +0700 (Thu, 08 Jun 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_nx_os_version.nasl");
+  script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

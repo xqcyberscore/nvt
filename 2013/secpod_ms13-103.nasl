@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-103.nasl 11576 2018-09-24 14:59:42Z cfischer $
+# $Id: secpod_ms13-103.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Microsoft VS Team Foundation Server SignalR XSS Vulnerability (2905244)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:visual_studio_team_foundation_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901227");
-  script_version("$Revision: 11576 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-5042");
   script_bugtraq_id(64093);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-11 10:49:08 +0530 (Wed, 11 Dec 2013)");
   script_name("Microsoft VS Team Foundation Server SignalR XSS Vulnerability (2905244)");
 
@@ -42,9 +42,7 @@ if(description)
   Bulletin MS13-103.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  https://technet.microsoft.com/en-us/security/bulletin/ms13-103");
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"insight", value:"Flaw is due ASP.NET SignalR improperly encodes user input before returning
   it to the user.");
   script_tag(name:"affected", value:"Microsoft Visual Studio Team Foundation Server 2013");

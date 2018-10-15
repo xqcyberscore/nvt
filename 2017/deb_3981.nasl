@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_3981.nasl 7249 2017-09-25 09:32:53Z teissa $
+# $Id: deb_3981.nasl 11897 2018-10-15 05:26:22Z cfischer $
 #
 # Auto-generated from advisory DSA 3981-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.703981");
-  script_version("$Revision: 7249 $");
+  script_version("$Revision: 11897 $");
   script_cve_id("CVE-2017-1000111", "CVE-2017-1000112", "CVE-2017-1000251", "CVE-2017-1000252", "CVE-2017-1000370", "CVE-2017-1000371", "CVE-2017-1000380", "CVE-2017-10661", "CVE-2017-11600", "CVE-2017-12134", "CVE-2017-12146", "CVE-2017-12153", "CVE-2017-12154", "CVE-2017-14106", "CVE-2017-14140", "CVE-2017-14156", "CVE-2017-14340", "CVE-2017-14489", "CVE-2017-14497", "CVE-2017-7518", "CVE-2017-7558");
   script_name("Debian Security Advisory DSA 3981-1 (linux - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-25 11:32:53 +0200 (Mon, 25 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-20 00:00:00 +0200 (Wed, 20 Sep 2017)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"8.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

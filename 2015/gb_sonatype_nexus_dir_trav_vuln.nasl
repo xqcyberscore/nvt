@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonatype_nexus_dir_trav_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_sonatype_nexus_dir_trav_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Sonatype Nexus OSS/Pro Directory Traversal Vulnerability
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:sonatype:nexus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805325");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-9389");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-20 13:00:12 +0530 (Tue, 20 Jan 2015)");
   script_name("Sonatype Nexus OSS/Pro Directory Traversal Vulnerability -Jan15");
 
   script_tag(name:"summary", value:"This host is installed with Nexus OSS/Pro
   and is prone to directory traversal vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of Nexus OSS/Pro
-  with the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Certain unspecified input is not properly
   verified before being used to read files.");

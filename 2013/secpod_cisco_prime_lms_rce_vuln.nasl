@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cisco_prime_lms_rce_vuln.nasl 11582 2018-09-25 06:26:12Z cfischer $
+# $Id: secpod_cisco_prime_lms_rce_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # Cisco Prime LAN Management Solution Remote Command Execution Vulnerability
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901215");
-  script_version("$Revision: 11582 $");
+  script_version("$Revision: 11883 $");
   script_bugtraq_id(57221);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 16:05:48 +0530 (Thu, 24 Jan 2013)");
   script_cve_id("CVE-2012-6392");
   script_tag(name:"cvss_base", value:"10.0");
@@ -51,8 +51,8 @@ if(description)
   script_tag(name:"affected", value:"Cisco Prime LMS Virtual Appliance Version 4.1 through 4.2.2 on Linux");
   script_tag(name:"insight", value:"Flaw is due to improper validation of authentication and authorization
   commands sent to certain TCP ports.");
-  script_tag(name:"solution", value:"Upgrade to Cisco Prime LMS Virtual Appliance to 4.2.3 or later,
-  http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20130109-lms");
+  script_tag(name:"solution", value:"Upgrade to Cisco Prime LMS Virtual Appliance to 4.2.3 or later.");
+
   script_tag(name:"summary", value:"The host is installed with Cisco Prime LAN Management Solution and
   is prone to remote command execution vulnerability.");
 

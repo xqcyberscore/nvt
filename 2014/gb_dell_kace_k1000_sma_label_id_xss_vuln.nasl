@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_kace_k1000_sma_label_id_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_dell_kace_k1000_sma_label_id_xss_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Dell KACE K1000 LABEL_ID Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:quest:kace_systems_management_appliance";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804238");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-0330");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-14 15:46:39 +0530 (Fri, 14 Feb 2014)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -43,8 +43,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running Dell KACE K1000 Systems Management Appliance and is
 prone to cross site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of Dell KACE K1000 SMA with the help of detect
-NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is in adminui/user_list.php script which fails to properly
 sanitizing user-supplied input to LABEL_ID parameter.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011038.nasl 7131 2017-09-14 14:03:44Z santu $
+# $Id: gb_ms_kb4011038.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Microsoft Office 2016 Defense in Depth Update (KB4011038)
 #
@@ -27,37 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811676");
-  script_version("$Revision: 7131 $");
+  script_version("$Revision: 11874 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-14 16:03:44 +0200 (Thu, 14 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-13 10:51:35 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Office 2016 Defense in Depth Update (KB4011038)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4011038");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Microsoft has released an update for Microsoft
   Office that provides enhanced security as a defense-in-depth measure.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to
-  affect on integrity, availability and confidentiality of the system.
-
-  Impact Level: System/Application");
+  affect on integrity, availability and confidentiality of the system.");
 
   script_tag(name:"affected", value:"Microsoft Office 2016");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4011038");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4011038");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4011038");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -74,19 +69,11 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 
-## variable Initialization
-officeVer = "";
-offPath = "";
-offexeVer = "";
-propath = "";
-
-## Get MS Office Version
 officeVer = get_kb_item("MS/Office/Ver");
 if(!officeVer){
   exit(0);
 }
 
-## Get Common Files Directory Path
 propath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                             item:"ProgramFilesDir");
 if(!propath){
@@ -99,10 +86,8 @@ if(officeVer =~ "^16\.")
   ## Office Path
   offPath = propath + "\Microsoft Office\root\VFS\ProgramFilesCommonX86\Microsoft Shared\Office16";
 
-  ## Fetch version from the 'mso99lres.dll' file
   offexeVer = fetch_file_version(sysPath:offPath, file_name:"mso99lres.dll");
 
-  ## Check for vulnerable versions
   if(offexeVer && version_in_range(version:offexeVer, test_version:"16.0", test_version2:"16.0.4519.0999"))
   {
     report = 'File checked:     ' + offPath + "\mso99lres.dll" + '\n' +

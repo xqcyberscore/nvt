@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_player_insecure_lib_code_exec_vuln_lin.nasl 11816 2018-10-10 10:42:56Z mmartin $
+# $Id: gb_vmware_player_insecure_lib_code_exec_vuln_lin.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # VMware Player Insecure 'tpfc.dll' Code Execution Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809791");
-  script_version("$Revision: 11816 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2012-1666");
   script_bugtraq_id(55421);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-01 11:10:47 +0530 (Wed, 01 Feb 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VMware Player Insecure 'tpfc.dll' Code Execution Vulnerability (Linux)");
@@ -54,7 +54,7 @@ if(description)
   script_tag(name:"affected", value:"VMware Player 4.x before 4.0.4 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to VMware Player version
-  4.0.4 or later, ");
+  4.0.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://cve.circl.lu/cve/CVE-2012-1666");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol15931.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_f5_big_ip_sol15931.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # F5 BIG-IP - Remote Denial of Service Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-8602");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11872 $");
 
   script_name("F5 BIG-IP - Remote Denial of Service Vulnerability");
 
@@ -54,7 +54,7 @@ of referrals. ");
   script_tag(name:"summary", value:"F5 BIG-IP is prone to a remote denial-of-service vulnerability.");
   script_tag(name:"affected", value:"F5 BIG-IP LTM 11.2.0-11.6.0");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-09 14:08:36 +0100 (Fri, 09 Jan 2015)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -63,7 +63,7 @@ of referrals. ");
   script_dependencies("gb_f5_big_ip_version.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

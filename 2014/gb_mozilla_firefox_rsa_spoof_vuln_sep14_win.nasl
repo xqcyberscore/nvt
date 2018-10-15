@@ -1,6 +1,6 @@
 #############################################################################/##
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_rsa_spoof_vuln_sep14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_mozilla_firefox_rsa_spoof_vuln_sep14_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Mozilla Firefox RSA Spoof Vulnerability September14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804918");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1568");
   script_bugtraq_id(70116);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-09-29 16:24:03 +0530 (Mon, 29 Sep 2014)");
 
   script_name("Mozilla Firefox RSA Spoof Vulnerability September14 (Windows)");
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Mozilla Firefox before 32.0.3 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 32.0.3
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

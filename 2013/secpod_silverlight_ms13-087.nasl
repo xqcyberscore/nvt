@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_silverlight_ms13-087.nasl 11582 2018-09-25 06:26:12Z cfischer $
+# $Id: secpod_silverlight_ms13-087.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Silverlight Information Disclosure Vulnerability (2890788)
 #
@@ -29,21 +29,20 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901223");
-  script_version("$Revision: 11582 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-3896");
   script_bugtraq_id(62793);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 11:03:47 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Silverlight Information Disclosure Vulnerability (2890788)");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
 Microsoft Bulletin MS13-087.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms13-087");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Flaw is caused when Silverlight improperly handles certain objects in
 memory.");
@@ -59,6 +58,7 @@ sensitive information.");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_silverlight_detect.nasl");
   script_mandatory_keys("Microsoft/Silverlight/Installed");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms13-087");
   exit(0);
 }
 

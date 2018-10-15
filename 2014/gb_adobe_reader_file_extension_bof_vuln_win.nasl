@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_file_extension_bof_vuln_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_reader_file_extension_bof_vuln_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Adobe Reader 'File Extension' Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804260");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2004-0632");
   script_bugtraq_id(10696);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-16 10:27:12 +0530 (Wed, 16 Apr 2014)");
   script_name("Adobe Reader 'File Extension' Buffer Overflow Vulnerability (Windows)");
 
@@ -46,8 +46,7 @@ into components.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to conduct denial of service and
 possibly execute arbitrary code.");
   script_tag(name:"affected", value:"Adobe Reader version 6.0 and 6.0.1 on Windows.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader 6.0.2 or later. For
-updates refer to http://get.adobe.com/reader");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader 6.0.2 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -59,6 +58,7 @@ updates refer to http://get.adobe.com/reader");
   script_family("Buffer overflow");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Reader/Win/Installed");
+  script_xref(name:"URL", value:"http://get.adobe.com/reader");
   exit(0);
 }
 

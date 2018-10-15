@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-033_macosx.nasl 11612 2018-09-26 05:47:26Z cfischer $
+# $Id: gb_ms15-033_macosx.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities-3048019 (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805064");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-1641", "CVE-2015-1639");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 11:36:46 +0530 (Wed, 15 Apr 2015)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities-3048019 (Mac OS X)");
 
@@ -54,8 +54,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Office 2011 on Mac OS X");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  https://technet.microsoft.com/en-us/security/bulletin/ms15-033");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -67,6 +66,7 @@ if(description)
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gb_microsoft_office_detect_macosx.nasl");
   script_mandatory_keys("MS/Office/MacOSX/Ver");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms15-033");
   exit(0);
 }
 

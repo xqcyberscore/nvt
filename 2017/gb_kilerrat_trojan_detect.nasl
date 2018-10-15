@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kilerrat_trojan_detect.nasl 10447 2018-07-06 16:49:22Z cfischer $
+# $Id: gb_kilerrat_trojan_detect.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # KilerRat Trojan Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140235");
-  script_version("$Revision: 10447 $");
+  script_version("$Revision: 11874 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-06 18:49:22 +0200 (Fri, 06 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-05 15:14:52 +0200 (Wed, 05 Apr 2017)");
   script_name("KilerRat Trojan Detection");
   script_category(ACT_GATHER_INFO);
@@ -67,7 +67,6 @@ if( ! buf || ! strlen( buf ) > 0 ) exit( 0 );
 # The check itself is also quite error prone and AFAICS would only check for a C&C and not for the trojan
 if( buf =~ '^ACK' + data + '$' )
 {
-  #register_service( port:port, proto:"KilerRat", message:"The KilerRat trojan seems to be running at this port" );
   security_message( port:port, data:'The KilerRat trojan seems to be running at this port.\n\nResponse:\n\n' + buf );
   exit( 0 );
 }

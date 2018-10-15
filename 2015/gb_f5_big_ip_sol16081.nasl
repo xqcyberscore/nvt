@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16081.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_f5_big_ip_sol16081.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # F5 BIG-IP - ASM cross-site scripting (XSS) vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-1050");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
 
   script_name("F5 BIG-IP - ASM cross-site scripting (XSS) vulnerability");
 
@@ -52,7 +52,7 @@ allows an authenticated user to inject arbitrary web script or HTML via the Resp
   script_tag(name:"affected", value:"F5 BIG-IP before 11.6.0");
 
   script_tag(name:"qod_type", value:"package");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-03 11:43:44 +0100 (Tue, 03 Mar 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");
@@ -60,7 +60,7 @@ allows an authenticated user to inject arbitrary web script or HTML via the Resp
   script_dependencies("gb_f5_big_ip_version.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

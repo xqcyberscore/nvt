@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201210_02.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201210_02.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2010-0668", "CVE-2010-0669", "CVE-2010-0717", "CVE-2010-0828", "CVE-2010-1238", "CVE-2010-2487", "CVE-2010-2969", "CVE-2010-2970", "CVE-2011-1058");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-22 08:43:43 -0400 (Mon, 22 Oct 2012)");
   script_name("Gentoo Security Advisory GLSA 201210-02 (MoinMoin)");
   script_category(ACT_GATHER_INFO);
@@ -47,12 +47,11 @@ if(description)
   script_tag(name:"solution", value:"All MoinMoin users should upgrade to the latest version:
 
       # emerge --sync
-      # emerge --ask --oneshot --verbose '>=www-apps/moinmoin-1.9.4'
+      # emerge --ask --oneshot --verbose '>=www-apps/moinmoin-1.9.4'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201210-02
-http://bugs.gentoo.org/show_bug.cgi?id=305663
-http://bugs.gentoo.org/show_bug.cgi?id=339295");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201210-02");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=305663");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=339295");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201210-02.");
   script_tag(name:"qod_type", value:"package");

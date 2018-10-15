@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_maygion_ipcamera_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_maygion_ipcamera_mult_vuln.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # MayGion IP Cameras Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803774");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11888 $");
   script_bugtraq_id(60192, 60196);
   script_cve_id("CVE-2013-1604", "CVE-2013-1605");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-28 15:46:55 +0530 (Mon, 28 Oct 2013)");
   script_name("MayGion IP Cameras Multiple Vulnerabilities");
 
@@ -48,8 +48,7 @@ if(description)
    crafted GET request. This may allow a remote attacker to cause a buffer
    overflow, resulting in a denial of service or potentially allowing the
    execution of arbitrary code.");
-  script_tag(name:"solution", value:"Upgrade to H.264 ipcam firmware 2013.04.22 or later,
-  For updates refer to http://www.maygion.com ");
+  script_tag(name:"solution", value:"Upgrade to H.264 ipcam firmware 2013.04.22 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is running MayGion IP Camera and is prone to multiple
   vulnerabilities.");
@@ -66,6 +65,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("WebServer_IPCamera_Logo/banner");
 
+  script_xref(name:"URL", value:"http://www.maygion.com");
   exit(0);
 }
 

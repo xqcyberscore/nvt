@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-018.nasl 11816 2018-10-10 10:42:56Z mmartin $
+# $Id: gb_ms17-018.nasl 11879 2018-10-12 12:48:49Z mmartin $
 #
 # Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (4013083)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810594");
-  script_version("$Revision: 11816 $");
+  script_version("$Revision: 11879 $");
   script_cve_id("CVE-2017-0024", "CVE-2017-0026", "CVE-2017-0056", "CVE-2017-0078",
                 "CVE-2017-0079", "CVE-2017-0080", "CVE-2017-0081", "CVE-2017-0082");
   script_bugtraq_id(96029, 96032, 96630, 96631, 96632, 96633, 96634, 96635);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 08:10:02 +0530 (Wed, 15 Mar 2017)");
   script_name("Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (4013083)");
 
@@ -108,8 +108,8 @@ if(!sysPath ){
   exit(0);
 }
 
-winVer = fetch_file_version(sysPath, file_name:"System32\Win32k.sys");
-gdiVer = fetch_file_version(sysPath, file_name:"System32\Gdi32.dll");
+winVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Win32k.sys");
+gdiVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Gdi32.dll");
 
 if(!winVer && !gdiVer){
   exit(0);

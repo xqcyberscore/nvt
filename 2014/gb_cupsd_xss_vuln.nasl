@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cupsd_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_cupsd_xss_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # CUPS Web Interface Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apple:cups";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802071");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-2856");
   script_bugtraq_id(66788);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-22 13:16:12 +0530 (Tue, 22 Apr 2014)");
   script_name("CUPS Web Interface Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -62,12 +62,12 @@ if(description)
 
   script_tag(name:"affected", value:"Common Unix Printing System(CUPS)version before 1.7.2");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.7.2, or higher,
-  For updates refer to http://www.cups.org/software.php");
+  script_tag(name:"solution", value:"Upgrade to version 1.7.2, or later.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.cups.org/software.php");
   exit(0);
 }
 

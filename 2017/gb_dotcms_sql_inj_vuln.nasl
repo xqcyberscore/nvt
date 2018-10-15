@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_sql_inj_vuln.nasl 5385 2017-02-21 10:02:58Z ckuerste $
+# $Id: gb_dotcms_sql_inj_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # dotCMS SQL Injection Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:dotcms:dotcms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106616");
-  script_version("$Revision: 5385 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-21 11:02:58 +0100 (Tue, 21 Feb 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-21 15:43:41 +0700 (Tue, 21 Feb 2017)");
-  script_tag(name: "cvss_base", value: "7.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-21 15:43:41 +0700 (Tue, 21 Feb 2017)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-5344");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("dotCMS SQL Injection Vulnerability");
 
@@ -51,11 +51,11 @@ if (description)
   script_dependencies("gb_dotcms_detect.nasl");
   script_mandatory_keys("dotCMS/installed");
 
-  script_tag(name: "summary", value: "dotCMS is prone to a blind SQL injection vulnerability.");
+  script_tag(name:"summary", value:"dotCMS is prone to a blind SQL injection vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The findChildrenByFilter() function which is called by the web accessible
+  script_tag(name:"insight", value:"The findChildrenByFilter() function which is called by the web accessible
 path /categoriesServlet performs string interpolation and direct SQL query execution. SQL quote escaping and a
 keyword blacklist were implemented in a new class, SQLUtil (main/java/com/dotmarketing/common/util/SQLUtil.java),
 as part of the remediation of CVE-2016-8902; however, these can be overcome in the case of the q and inode
@@ -63,11 +63,11 @@ parameters to the /categoriesServlet path. Overcoming these controls permits a n
 injection vectors in either parameter. The /categoriesServlet web path can be accessed remotely and without
 authentication in a default dotCMS deployment.");
 
-  script_tag(name: "affected", value: "Version 3.6.1 and previous versions.");
+  script_tag(name:"affected", value:"Version 3.6.1 and previous versions.");
 
-  script_tag(name: "solution", value: "Update to version 3.6.2 or later.");
+  script_tag(name:"solution", value:"Update to version 3.6.2 or later.");
 
-  script_xref(name: "URL", value: "http://dotcms.com/security/SI-39");
+  script_xref(name:"URL", value:"http://dotcms.com/security/SI-39");
 
   exit(0);
 }

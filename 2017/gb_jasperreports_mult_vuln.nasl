@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jasperreports_mult_vuln.nasl 6618 2017-07-07 14:17:52Z cfischer $
+# $Id: gb_jasperreports_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # TIBCO JasperReports Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:tibco:jasperreports_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106923");
-  script_version("$Revision: 6618 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-07 16:17:52 +0200 (Fri, 07 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-05 13:59:32 +0700 (Wed, 05 Jul 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-05 13:59:32 +0700 (Wed, 05 Jul 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-5528", "CVE-2017-5529");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("TIBCO JasperReports Multiple Vulnerabilities");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_jasperreports_detect.nasl");
   script_mandatory_keys("jasperreports/installed");
 
-  script_tag(name: "summary", value: "TIBCO JasperReports is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"TIBCO JasperReports is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "TIBCO JasperReports is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"TIBCO JasperReports is prone to multiple vulnerabilities:
 
-- Cross-site scripting (XSS) and cross-site request forgery (CSRF) vulnerabilities (CVE-2017-5528)
+  - Cross-site scripting (XSS) and cross-site request forgery (CSRF) vulnerabilities (CVE-2017-5528)
 
-- Information disclosure vulnerability (CVE-2017-5529)");
+  - Information disclosure vulnerability (CVE-2017-5529)");
 
-  script_tag(name: "affected", value: "TIBCO JasperReports Server 6.3.0 and prior.");
+  script_tag(name:"affected", value:"TIBCO JasperReports Server 6.3.0 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 6.4.0 or later.");
+  script_tag(name:"solution", value:"Update to version 6.4.0 or later.");
 
-  script_xref(name: "URL", value: "https://www.tibco.com/support/advisories/2017/06/tibco-security-advisory-june-28-2017-tibco-jasperreports-server-2017");
-  script_xref(name: "URL", value: "https://www.tibco.com/support/advisories/2017/06/tibco-security-advisory-june-28-2017-tibco-jasperreports-server-2017-0");
+  script_xref(name:"URL", value:"https://www.tibco.com/support/advisories/2017/06/tibco-security-advisory-june-28-2017-tibco-jasperreports-server-2017");
+  script_xref(name:"URL", value:"https://www.tibco.com/support/advisories/2017/06/tibco-security-advisory-june-28-2017-tibco-jasperreports-server-2017-0");
 
   exit(0);
 }

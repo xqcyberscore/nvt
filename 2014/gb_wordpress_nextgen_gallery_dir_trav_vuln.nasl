@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nextgen_gallery_dir_trav_vuln.nasl 11504 2018-09-20 12:55:48Z cfischer $
+# $Id: gb_wordpress_nextgen_gallery_dir_trav_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # WordPress NextGEN Gallery 'jqueryFileTree.php' Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804510");
-  script_version("$Revision: 11504 $");
+  script_version("$Revision: 11867 $");
   script_bugtraq_id(65637);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:55:48 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-07 17:46:21 +0530 (Fri, 07 Mar 2014)");
   script_name("WordPress NextGEN Gallery 'jqueryFileTree.php' Directory Traversal Vulnerability");
 
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"WordPress NextGEN Gallery Plugin version 2.0.0, Other versions may also be
   affected.");
 
-  script_tag(name:"solution", value:"Upgrade to WordPress NextGEN Gallery version 2.0.7 or later,
-  For updates refer to http://wordpress.org/plugins/nextgen-gallery");
+  script_tag(name:"solution", value:"Upgrade to WordPress NextGEN Gallery version 2.0.7 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ if(description)
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"http://wordpress.org/plugins/nextgen-gallery");
   exit(0);
 }
 

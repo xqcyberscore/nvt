@@ -1,9 +1,9 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_600_mult_vuln.nasl 7284 2017-09-27 06:26:15Z jschulte $ 
+# $Id: gb_dolibarr_600_mult_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Dolibarr Version 6.0.0 is vulnerable to different attacks, like XSS or arbitrary code execution
-# 
+#
 # Authors:
 # Jan Philipp Schulte <jan.schulte@greenbone.net>
 #
@@ -28,12 +28,12 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.113000"); 
-  script_version("$Revision: 7284 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:26:15 +0200 (Wed, 27 Sep 2017) $");
-  script_tag(name:"creation_date", value:"2017-09-19 08:36:42 +0200 (Tue, 19 Sep 2017)"); 
+  script_oid("1.3.6.1.4.1.25623.1.0.113000");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-19 08:36:42 +0200 (Tue, 19 Sep 2017)");
   script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");        
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -42,16 +42,16 @@ if(description)
 
   script_name("Dolibarr CRM Version 6.0.0 multiple vulnerabilities");
 
-  script_category(ACT_GATHER_INFO); 
+  script_category(ACT_GATHER_INFO);
 
-  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH"); 
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_dolibarr_detect.nasl");         
+  script_dependencies("gb_dolibarr_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Dolibarr/installed");
 
   script_tag(name:"summary", value:"This host is running an older version of Dolibarr ERP/CRM and is prone to multiple vulnerabilities");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of a detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws exist:
 
   - SQL Injection in admin/menus/edit.php via the menuId parameter
@@ -60,20 +60,18 @@ if(description)
 
   - XSS in htdocs/admin/company.php via the (1) CompanyName, (2) CompanyAddress, (3) CompanyZip, (4) CompanyTown, (5) Fax, (6) EMail, (7) Web, (8) ManagingDirectors, (9) Note, (10) Capital, (11) ProfId1, (12) ProfId2, (13) ProfId3, (14) ProfId4, (15) ProfId5, or (16) ProfId6 parameter
 
-  - XSS in htdocs/admin/menus/edit.php via the Title parameter 
+  - XSS in htdocs/admin/menus/edit.php via the Title parameter
 
   - Sensititve information disclosure in document.php via the file parameter");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow an attacker to execute arbitrary HTML and script code in a user's browser session in the context of a vulnerable site and to cause SQL Injection attacks to gain sensitive information.
-
-  Impact Level: Application/System"); 
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker to execute arbitrary HTML and script code in a user's browser session in the context of a vulnerable site and to cause SQL Injection attacks to gain sensitive information.");
   script_tag(name:"affected", value:"Dolibarr version 6.0.0");
   script_tag(name:"solution", value:"The vendor has implemented a fix for the vulnerabilities. Please upgrade your software to version 6.0.1.");
 
   script_xref(name:"URL", value:"https://github.com/Dolibarr/dolibarr/commit/d26b2a694de30f95e46ea54ea72cc54f0d38e548");
   script_xref(name:"URL", value:"https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:dolibarr:dolibarr";
@@ -91,5 +89,5 @@ if( version_is_equal( version: version, test_version: "6.0.0" ) )
 }
 
 exit( 99 );
-                 
+
 

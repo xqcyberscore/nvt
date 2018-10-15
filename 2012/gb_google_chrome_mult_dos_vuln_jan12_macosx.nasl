@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_dos_vuln_jan12_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_google_chrome_mult_dos_vuln_jan12_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Google Chrome Multiple Denial of Service Vulnerabilities - January12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802376");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-3919", "CVE-2011-3921", "CVE-2011-3922");
   script_bugtraq_id(51300);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-10 15:35:57 +0530 (Tue, 10 Jan 2012)");
   script_name("Google Chrome Multiple Denial of Service Vulnerabilities - January12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47449/");
@@ -54,7 +54,7 @@ if(description)
     libxml2
 
   - A stack based buffer overflow error in glyph handling.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 16.0.912.75 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 16.0.912.75 or later.");
   script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
   denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"package");

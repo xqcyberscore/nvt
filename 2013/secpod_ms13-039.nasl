@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-039.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: secpod_ms13-039.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows 'HTTP.sys' Denial of Service Vulnerability (2829254)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903209");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2013-1305");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-15 09:45:43 +0530 (Wed, 15 May 2013)");
   script_name("Microsoft Windows 'HTTP.sys' Denial of Service Vulnerability (2829254)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2829254");
@@ -51,8 +51,7 @@ if(description)
   script_tag(name:"insight", value:"Flaw is due to an error within the HTTP protocol stack (HTTP.sys) when handling
   HTTP headers.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  https://technet.microsoft.com/en-us/security/bulletin/ms13-039");
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS13-039.");
   script_tag(name:"qod_type", value:"registry");
@@ -75,7 +74,7 @@ if(!sysPath){
   exit(0);
 }
 
-httpVer = fetch_file_version(sysPath, file_name:"system32\drivers\http.sys");
+httpVer = fetch_file_version(sysPath:sysPath, file_name:"system32\drivers\http.sys");
 if(!httpVer){
   exit(0);
 }

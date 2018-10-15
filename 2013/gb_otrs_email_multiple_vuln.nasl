@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_email_multiple_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_otrs_email_multiple_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # OTRS Email Multiple Vulnerability
 #
@@ -28,21 +28,19 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803915");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2008-7280", "CVE-2008-7281");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-17 16:43:34 +0530 (Tue, 17 Sep 2013)");
   script_name("OTRS Email Multiple Vulnerability");
 
 
   script_tag(name:"summary", value:"This host is installed with OTRS (Open Ticket Request System) and is prone to
 multiple vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version of OTRS with the help of detect NVT and check the
-version is vulnerable or not.");
-  script_tag(name:"solution", value:"Upgrade to OTRS (Open Ticket Request System) version 2.2.7 or later,
-For updates refer to http://www.otrs.com/en/");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade to OTRS (Open Ticket Request System) version 2.2.7 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"-An error exists in Kernel/System/EmailParser.pm in PostmasterPOP3.pl which
 does not properly handle e-mail messages containing malformed UTF-8 characters
@@ -60,6 +58,7 @@ creating a denial of service condition.");
   script_dependencies("secpod_otrs_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("OTRS/installed");
+  script_xref(name:"URL", value:"http://www.otrs.com/en/");
   exit(0);
 }
 

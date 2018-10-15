@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tikiwiki_jhot_remote_cmd_exec_vuln.nasl 11819 2018-10-10 11:59:51Z cfischer $
+# $Id: gb_tikiwiki_jhot_remote_cmd_exec_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Tiki Wiki CMS Groupware jhot.php Remote Command Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802946");
-  script_version("$Revision: 11819 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2006-4602");
   script_bugtraq_id(19819);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:59:51 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-22 13:59:26 +0530 (Wed, 22 Aug 2012)");
   script_name("Tiki Wiki CMS Groupware jhot.php Remote Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -56,7 +56,7 @@ if(description)
   uploaded files. This can be exploited to execute arbitrary PHP code by
   uploading a malicious PHP script to the 'img/wiki' directory.");
 
-  script_tag(name:"solution", value:"Upgrade to Tiki Wiki CMS Groupware version 1.9.5 or later");
+  script_tag(name:"solution", value:"Upgrade to Tiki Wiki CMS Groupware version 1.9.5 or later.");
 
   script_tag(name:"summary", value:"This host is running Tiki Wiki CMS Groupware and is prone to remote command
   execution vulnerability.");

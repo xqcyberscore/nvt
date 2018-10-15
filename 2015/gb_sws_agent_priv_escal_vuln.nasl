@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sws_agent_priv_escal_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_sws_agent_priv_escal_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Symantec Workspace Streaming Agent Privilege Escalation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:workspace_streaming";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805542");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-1484");
   script_bugtraq_id(73925);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-29 16:34:56 +0530 (Wed, 29 Apr 2015)");
   script_name("Symantec Workspace Streaming Agent Privilege Escalation Vulnerability");
 
@@ -53,8 +53,7 @@ if(description)
   7.5 before SP1 HF4.");
 
   script_tag(name:"solution", value:"Upgrade to Symantec Workspace Streaming Agent
-  version 7.5 SP1 HF4 or 7.6 or later.
-  For updates refer to http://www.symantec.com/workspace-streaming");
+  version 7.5 SP1 HF4 or 7.6 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_symantec_workspace_streaming_detect.nasl");
   script_mandatory_keys("Symantec/Workspace/Streaming/Agent/Win6432/Installed");
+  script_xref(name:"URL", value:"http://www.symantec.com/workspace-streaming");
   exit(0);
 }
 

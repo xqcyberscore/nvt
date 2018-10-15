@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_oct10_lin.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_opera_mult_vuln_oct10_lin.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Opera Browser Multiple Vulnerabilities October-10 (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802731");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2010-4043", "CVE-2010-4044", "CVE-2010-4046", "CVE-2010-4045",
                 "CVE-2010-4047", "CVE-2010-4049", "CVE-2010-4048", "CVE-2010-4050");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-05 14:23:48 +0530 (Thu, 05 Apr 2012)");
   script_name("Opera Browser Multiple Vulnerabilities October-10 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/41740");
@@ -70,7 +70,7 @@ if(description)
     with an error page.
 
   - Error in 'SVG' document in an 'IMG' element.");
-  script_tag(name:"solution", value:"Upgrade to Opera Web Browser version 10.63 or later,");
+  script_tag(name:"solution", value:"Upgrade to Opera Web Browser version 10.63 or later.");
   script_tag(name:"summary", value:"The host is installed with Opera browser and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");

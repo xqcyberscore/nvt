@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_sec_bypass_vuln_oct12_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_mozilla_firefox_esr_sec_bypass_vuln_oct12_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Mozilla Firefox ESR Security Bypass Vulnerabilities - Oct 12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803667");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2012-4192", "CVE-2012-4193");
   script_bugtraq_id(55889);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-12 12:20:16 +0530 (Fri, 12 Jul 2013)");
   script_name("Mozilla Firefox ESR Security Bypass Vulnerabilities - Oct 12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50856");
@@ -48,12 +48,12 @@ if(description)
   script_tag(name:"affected", value:"Mozill Firefox ESR versions 10.x before 10.0.9 on Windows");
   script_tag(name:"insight", value:"Security wrappers are unwrapped without doing a security check in
   defaultValue(). This can allow for improper access to the Location object.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR 10.0.9 or later
-  For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR 10.0.9 or later.");
   script_tag(name:"summary", value:"The host is installed with Mozilla Firefox ESR and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

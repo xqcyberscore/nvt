@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_docker_minergate_cli_detect.nasl 5895 2017-04-07 14:44:59Z mime $
+# $Id: gb_docker_minergate_cli_detect.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Docker is running minergate-cli Container
 #
@@ -27,30 +27,30 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140237");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 5895 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140237");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11874 $");
 
- script_name("Docker is running `minergate-cli` Container");
+  script_name("Docker is running `minergate-cli` Container");
 
- script_tag(name: "summary" , value:"The remote docker is running one or more `minergate-cli` container.
-https://hub.docker.com/r/minecoins/minergate-cli/");
+  script_tag(name:"summary", value:"The remote docker is running one or more `minergate-cli` container.");
+  script_xref(name:"URL", value:"https://hub.docker.com/r/minecoins/minergate-cli/");
 
- script_tag(name: "vuldetect" , value:"Check running containers.");
- script_tag(name:"solution_type", value: "Workaround");
+  script_tag(name:"vuldetect", value:"Check running containers.");
+  script_tag(name:"solution_type", value:"Workaround");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 16:44:59 +0200 (Fri, 07 Apr 2017) $");
- script_tag(name:"creation_date", value:"2017-04-06 11:47:35 +0200 (Thu, 06 Apr 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_docker_remote_detect.nasl","gb_docker_service_detection_lsc.nasl");
- script_mandatory_keys("docker/container/present");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-06 11:47:35 +0200 (Thu, 06 Apr 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_docker_remote_detect.nasl", "gb_docker_service_detection_lsc.nasl");
+  script_mandatory_keys("docker/container/present");
 
- exit(0);
+  exit(0);
 }
 
 include("docker.inc");
@@ -61,7 +61,7 @@ foreach container ( c )
 {
   if( container['image'] == "minecoins/minergate-cli" )
   {
-    ac += 'ID:    ' + docker_truncate_id( container['id'] ) + '\n' + 
+    ac += 'ID:    ' + docker_truncate_id( container['id'] ) + '\n' +
           'Name:  ' + container['name'] + '\n' +
           'Image: ' + container['image'] + '\n\n';
   }

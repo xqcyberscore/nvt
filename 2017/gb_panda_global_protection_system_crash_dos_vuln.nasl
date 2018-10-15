@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_global_protection_system_crash_dos_vuln.nasl 10128 2018-06-08 03:58:14Z ckuersteiner $
+# $Id: gb_panda_global_protection_system_crash_dos_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Panda Global Protection System Crash DoS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108315");
-  script_version("$Revision: 10128 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 05:58:14 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-20 12:31:33 +0100 (Wed, 20 Dec 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -65,7 +65,7 @@ this issue will be updated once solution details are available.");
   script_xref(name:"URL", value:"https://github.com/k0keoyo/Driver-Loaded-PoC/tree/master/Panda-Antivirus/Panda_Security_Antivirus_0xb3702c04_");
   script_xref(name:"URL", value:"https://github.com/k0keoyo/Driver-Loaded-PoC/tree/master/Panda-Antivirus/Panda_Security_Antivirus_0xb3702c44");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

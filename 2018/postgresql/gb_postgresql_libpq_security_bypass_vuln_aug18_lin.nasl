@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_libpq_security_bypass_vuln_aug18_lin.nasl 10979 2018-08-15 12:00:56Z santu $
+# $Id: gb_postgresql_libpq_security_bypass_vuln_aug18_lin.nasl 11884 2018-10-12 13:33:40Z cfischer $
 #
 # PostgreSQL 'libpq' Security Bypass Vulnerability Aug18 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813752");
-  script_version("$Revision: 10979 $");
+  script_version("$Revision: 11884 $");
   script_cve_id("CVE-2018-10915");
   script_bugtraq_id(105054);
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:00:56 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:33:40 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-13 18:05:39 +0530 (Mon, 13 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL 'libpq' Security Bypass Vulnerability Aug18 (Linux)");

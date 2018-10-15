@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sendio_74786.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_sendio_74786.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Sendio ESP Multiple Information Disclosure Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-0999", "CVE-2014-8391");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Sendio ESP Multiple Information Disclosure Vulnerabilities");
 
@@ -53,7 +53,7 @@ sessions by reading the jsessionid parameter in the Referrer HTTP header.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-10 11:20:38 +0200 (Wed, 10 Jun 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -62,7 +62,7 @@ sessions by reading the jsessionid parameter in the Referrer HTTP header.");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("sendio/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

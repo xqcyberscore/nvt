@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_cacti_mult_vuln.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Cacti Multiple Vulnerabilities-June15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cacti:cacti";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805664");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2015-4454", "CVE-2015-4342", "CVE-2015-2665", "CVE-2015-2967");
   script_bugtraq_id(75270, 75108, 75669);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-20 10:16:48 +0530 (Mon, 20 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cacti Multiple Vulnerabilities-June15");
@@ -59,8 +59,7 @@ commands, inject arbitrary web script or HTML via unspecified vectors.");
 
   script_tag(name:"affected", value:"Cacti version before 0.8.8d.");
 
-  script_tag(name:"solution", value:"Upgrade to version 0.8.8d or later, For updates refer to
-http://www.cacti.net");
+  script_tag(name:"solution", value:"Upgrade to version 0.8.8d or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -76,6 +75,7 @@ http://www.cacti.net");
   script_mandatory_keys("cacti/installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"http://www.cacti.net");
   exit(0);
 }
 

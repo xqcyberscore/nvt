@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ppp_n_nfs_dos_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_wireshark_ppp_n_nfs_dos_vuln_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Wireshark PPP And NFS Dissector Denial of Service Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802898");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-4048", "CVE-2012-4049");
   script_bugtraq_id(54649);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-27 10:00:50 +0530 (Fri, 27 Jul 2012)");
   script_name("Wireshark PPP And NFS Dissector Denial of Service Vulnerabilities (Windows)");
 
@@ -48,7 +48,7 @@ if(description)
   1.6.x before 1.6.9 and 1.8.x before 1.8.1 on Windows");
   script_tag(name:"insight", value:"Erros within the PPP and 'epan/dissectors/packet-nfs.c' in the NFS
   dissector can be exploited to cause a crash via specially crafted packets.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.14, 1.6.9, 1.8.1 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.14, 1.6.9, 1.8.1 or later.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to denial
   of service vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

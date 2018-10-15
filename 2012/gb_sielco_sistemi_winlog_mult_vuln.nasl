@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sielco_sistemi_winlog_mult_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_sielco_sistemi_winlog_mult_vuln.nasl 11861 2018-10-12 09:29:59Z cfischer $
 #
 # Sielco Sistemi Winlog Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802879");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11861 $");
   script_cve_id("CVE-2012-4353", "CVE-2012-4354", "CVE-2012-4355", "CVE-2012-4356",
                 "CVE-2012-4357", "CVE-2012-4358", "CVE-2012-4359");
   script_bugtraq_id(54212);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:29:59 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-28 12:12:09 +0530 (Thu, 28 Jun 2012)");
   script_name("Sielco Sistemi Winlog Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -53,7 +53,7 @@ if(description)
   information cause buffer overflow condition or execute arbitrary code under
   the context of the user.");
 
-  script_tag(name:"affected", value:"Sielco Sistemi Winlog version 2.07.16 and prior");
+  script_tag(name:"affected", value:"Sielco Sistemi Winlog version 2.07.16 and prior.");
 
   script_tag(name:"insight", value:"- Multiple errors in RunTime.exe and TCPIPS_Story.dll when
   processing a specially crafted packet sent to TCP port 46824.
@@ -61,7 +61,7 @@ if(description)
   - An input validation error when processing certain user supplied inputs
   allows attackers to write arbitrary files via directory traversal attacks.");
 
-  script_tag(name:"solution", value:"Upgrade to version 2.07.17 or higher,");
+  script_tag(name:"solution", value:"Upgrade to version 2.07.17 or higher.");
 
   script_tag(name:"summary", value:"This host is running Sielco Sistemi Winlog and is prone to
   multiple vulnerabilities.");

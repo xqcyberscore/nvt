@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_servicedesk_plus_path_traversal_vuln_oct15.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_manage_engine_servicedesk_plus_path_traversal_vuln_oct15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # ManageEngine ServiceDesk Plus 'fName' Parameter Path Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:manageengine:servicedesk_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806510");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-21 13:10:53 +0530 (Wed, 21 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ManageEngine ServiceDesk Plus 'fName' Parameter Path Traversal Vulnerability");
@@ -54,8 +54,7 @@ if(description)
   9.1 build 9110 and previous versions.");
 
   script_tag(name:"solution", value:"Upgrade to ManageEngine ServiceDesk Plus
-  version 9.1 build 9111 or later.
-  For updates refer to https://www.manageengine.com");
+  version 9.1 build 9111 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38395");
@@ -66,6 +65,7 @@ if(description)
   script_dependencies("gb_ManageEngine_ServiceDesk_Plus_detect.nasl");
   script_mandatory_keys("ManageEngine/ServiceDeskPlus/installed");
   script_require_ports("Services/www", 8080);
+  script_xref(name:"URL", value:"https://www.manageengine.com");
   exit(0);
 }
 

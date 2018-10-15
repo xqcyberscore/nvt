@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-001.nasl 11635 2018-09-27 06:07:37Z cfischer $
+# $Id: gb_ms15-001.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Application Compatibility Cache Privilege Escalation (3023266)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805125");
-  script_version("$Revision: 11635 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-0002");
   script_bugtraq_id(71972);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-14 07:55:13 +0530 (Wed, 14 Jan 2015)");
   script_name("Microsoft Windows Application Compatibility Cache Privilege Escalation (3023266)");
 
@@ -91,7 +91,7 @@ if(!sysPath ){
 ## Win 8.1 and win2012R2
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  sysVer = fetch_file_version(sysPath, file_name:"system32\Drivers\Ahcache.sys");
+  sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Drivers\Ahcache.sys");
   if(!sysVer){
     exit(0);
   }
@@ -102,7 +102,7 @@ if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\ntoskrnl.exe");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\ntoskrnl.exe");
 if(!dllVer){
   exit(0);
 }

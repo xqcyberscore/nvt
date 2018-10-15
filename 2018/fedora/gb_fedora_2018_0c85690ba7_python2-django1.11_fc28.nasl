@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_0c85690ba7_python2-django1.11_fc28.nasl 11042 2018-08-18 06:42:47Z santu $
+# $Id: gb_fedora_2018_0c85690ba7_python2-django1.11_fc28.nasl 11884 2018-10-12 13:33:40Z cfischer $
 #
 # Fedora Update for python2-django1.11 FEDORA-2018-0c85690ba7
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874942");
-  script_version("$Revision: 11042 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 08:42:47 +0200 (Sat, 18 Aug 2018) $");
+  script_version("$Revision: 11884 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:33:40 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 06:36:18 +0200 (Wed, 15 Aug 2018)");
   script_cve_id("CVE-2018-14574");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for python2-django1.11 FEDORA-2018-0c85690ba7");
   script_tag(name:"summary", value:"Check the version of python2-django1.11");

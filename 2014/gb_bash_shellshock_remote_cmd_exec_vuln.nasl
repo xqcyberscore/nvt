@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_remote_cmd_exec_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_bash_shellshock_remote_cmd_exec_vuln.nasl 11868 2018-10-12 10:53:07Z cfischer $
 #
 # GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804489");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11868 $");
   script_cve_id("CVE-2014-6271", "CVE-2014-6278");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:53:07 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-09-25 18:47:16 +0530 (Thu, 25 Sep 2014)");
   script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -67,14 +67,14 @@ if(description)
 
   script_tag(name:"affected", value:"GNU Bash through 4.3");
 
-  script_tag(name:"solution", value:"Apply the patch or upgrade to latest version,
-  For updates refer to http://www.gnu.org/software/bash/");
+  script_tag(name:"solution", value:"Apply the patch or upgrade to latest version.");
 
   script_timeout(600);
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.gnu.org/software/bash/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netmri_detect.nasl 11306 2018-09-10 14:58:09Z mmartin $
+# $Id: gb_netmri_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # NetMRI Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103575");
-  script_version("$Revision: 11306 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 16:58:09 +0200 (Mon, 10 Sep 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-25 12:05:19 +0200 (Tue, 25 Sep 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,7 @@ The script sends a connection request to the server and attempts to extract the 
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

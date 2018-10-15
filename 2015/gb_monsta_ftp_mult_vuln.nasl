@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monsta_ftp_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_monsta_ftp_mult_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Monsta FTP Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:monsta:ftp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806050");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-15 09:23:14 +0530 (Tue, 15 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Monsta FTP Multiple Vulnerabilities");
@@ -57,7 +57,7 @@ if(description)
   script_tag(name:"affected", value:"Monsta FTP version 1.6.2.");
 
   script_tag(name:"solution", value:"Upgrade to Monsta FTP version 1.6.3
-  or later, For updates refer to http://www.monstaftp.com");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38148");
@@ -68,6 +68,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Monsta-FTP-master/Installed");
 
+  script_xref(name:"URL", value:"http://www.monstaftp.com");
   exit(0);
 }
 

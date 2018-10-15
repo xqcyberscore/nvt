@@ -29,39 +29,37 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810938");
-  script_version("$Revision: 6049 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-3008", "CVE-2017-3066");
   script_bugtraq_id(98003, 98002);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 13:07:48 +0200 (Fri, 28 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-26 12:35:27 +0530 (Wed, 26 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Remote Code Execution And Cross Site Scripting Vulnerabilities");
 
-  script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is 
+  script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is
   prone to cross site scripting and remote code execution vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An unspecified input validation error.
+
   - A java deserialization error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code in the context of the affected application. 
-  Failed exploits will result in denial-of-service conditions, steal cookie-based 
-  authentication credentials and to launch other attacks.
-
-  Impact Level: System/Application");
+  attackers to execute arbitrary code in the context of the affected application.
+  Failed exploits will result in denial-of-service conditions, steal cookie-based
+  authentication credentials and to launch other attacks.");
 
   script_tag(name:"affected", value:"ColdFusion 11 before 11 Update 12,
   and 10 before 10 Update 23, ColdFusion 2016 before update 4.");
 
-  script_tag(name:"solution", value:"Upgrade to version 11 Update 12 or 
-  10 Update 23 or 2016 update 4 or later.
-  For updates refer to http://www.adobe.com");
+  script_tag(name:"solution", value:"Upgrade to version 11 Update 12 or
+  10 Update 23 or 2016 update 4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -73,6 +71,7 @@ if(description)
   script_dependencies("gb_coldfusion_detect.nasl");
   script_mandatory_keys("coldfusion/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 
@@ -80,22 +79,15 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-cfPort = 0;
-cfdVer = "";
-
-## Get HTTP Port
 if(!cfPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 cfdVer = get_app_version(cpe:CPE, port:cfPort);
 if(!cfdVer){
   exit(0);
 }
 
-## Checking for Vulnerable version
 ## https://helpx.adobe.com/coldfusion/kb/coldfusion-10-update-23.html
 if(version_in_range(version:cfdVer, test_version:"10.0", test_version2:"10.0.23.302579"))
 {

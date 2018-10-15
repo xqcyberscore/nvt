@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_xenmobile_CTX220138.nasl 6385 2017-06-21 07:06:43Z ckuersteiner $
+# $Id: gb_citrix_xenmobile_CTX220138.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
-# Citrix XenMobile Server XXE Processing Vulnerability 
+# Citrix XenMobile Server XXE Processing Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,15 +30,15 @@ CPE = "cpe:/a:citrix:xenmobile_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106887");
-  script_version("$Revision: 6385 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-21 09:06:43 +0200 (Wed, 21 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-20 15:46:37 +0700 (Tue, 20 Jun 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-20 15:46:37 +0700 (Tue, 20 Jun 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Citrix XenMobile Server XXE Processing Vulnerability");
 
@@ -49,17 +49,17 @@ if (description)
   script_dependencies("gb_citrix_xenmobile_detect.nasl");
   script_mandatory_keys("citrix_xenmobile_server/installed");
 
-  script_tag(name: "summary", value: "An XML External Entity (XXE) processing vulnerability has been identified
+  script_tag(name:"summary", value:"An XML External Entity (XXE) processing vulnerability has been identified
 in Citrix XenMobile Server that could allow an unauthenticated attacker to retrieve potentially sensitive
 information from the server.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Citrix XenMobile Server 9.x and 10.x");
+  script_tag(name:"affected", value:"Citrix XenMobile Server 9.x and 10.x");
 
-  script_tag(name: "solution", value: "Update to version 10.5 Rolling Patch 3 or later.");
+  script_tag(name:"solution", value:"Update to version 10.5 Rolling Patch 3 or later.");
 
-  script_xref(name: "URL", value: "https://support.citrix.com/article/CTX220138");
+  script_xref(name:"URL", value:"https://support.citrix.com/article/CTX220138");
 
   exit(0);
 }

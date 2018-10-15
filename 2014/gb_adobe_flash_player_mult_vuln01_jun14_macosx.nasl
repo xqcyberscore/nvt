@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_jun14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_flash_player_mult_vuln01_jun14_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities-01 June14 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804646");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-0531", "CVE-2014-0532", "CVE-2014-0533", "CVE-2014-0534",
                 "CVE-2014-0535", "CVE-2014-0536");
   script_bugtraq_id(67962, 67973, 67974, 67963, 67970, 67961);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-19 12:33:33 +0530 (Thu, 19 Jun 2014)");
   script_name("Adobe Flash Player Multiple Vulnerabilities-01 June14 (Mac OS X)");
 
@@ -58,8 +58,7 @@ restrictions.");
 attacks, bypass certain security restrictions, and compromise a user's system.");
   script_tag(name:"affected", value:"Adobe Flash Player before version 13.0.0.223, 14.x before 14.0.0.125 on
 Mac OS X.");
-  script_tag(name:"solution", value:"Update to Adobe Flash Player version 13.0.0.223 or 14.0.0.125 or later
-For updates refer to  http://get.adobe.com/flashplayer");
+  script_tag(name:"solution", value:"Update to Adobe Flash Player version 13.0.0.223 or 14.0.0.125 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ For updates refer to  http://get.adobe.com/flashplayer");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Flash/Player/MacOSX/Version");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-018.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ms12-018.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Windows Kernel-Mode Drivers Privilege Elevation Vulnerability (2641653)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902907");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2012-0157");
   script_bugtraq_id(52317);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-14 09:00:53 +0530 (Wed, 14 Mar 2012)");
   script_name("Windows Kernel-Mode Drivers Privilege Elevation Vulnerability (2641653)");
 
@@ -59,8 +59,8 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error in win32k.sys when handling the 'PostMessage()'
   function and can be exploited via an application passing specially crafted input to the function.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-018.");
@@ -95,7 +95,7 @@ if(! sysPath){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"system32\Win32k.sys");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Win32k.sys");
 if(! sysVer){
   exit(0);
 }

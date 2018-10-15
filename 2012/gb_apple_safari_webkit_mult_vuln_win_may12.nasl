@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_win_may12.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_apple_safari_webkit_mult_vuln_win_may12.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Apple Safari Webkit Multiple Vulnerabilities - May 12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802796");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-3046", "CVE-2011-3056", "CVE-2012-0672", "CVE-2012-0676");
   script_bugtraq_id(52369, 53407, 53404, 53446);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-18 19:02:04 +0530 (Fri, 18 May 2012)");
   script_name("Apple Safari Webkit Multiple Vulnerabilities - May 12 (Windows)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5282");
@@ -55,7 +55,7 @@ if(description)
   - Multiple cross site scripting and memory corruption issues in webkit.
 
   - A state tracking issue existed in WebKit's handling of forms.");
-  script_tag(name:"solution", value:"Upgrade to Apple Safari version 5.1.7 or later,");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 5.1.7 or later.");
   script_tag(name:"summary", value:"The host is installed with Apple Safari web browser and is prone
   to multiple vulnerabilities.");
   script_xref(name:"URL", value:"http://www.apple.com/support/downloads/");

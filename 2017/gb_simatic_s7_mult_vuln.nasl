@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_mult_vuln.nasl 8637 2018-02-02 10:23:08Z ckuersteiner $
+# $Id: gb_simatic_s7_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Siemens SIMATIC S7 PLC Multiple Vulnerabilities
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140312");
-  script_version("$Revision: 8637 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-02 11:23:08 +0100 (Fri, 02 Feb 2018) $");
-  script_tag(name: "creation_date", value: "2017-08-18 11:51:47 +0700 (Fri, 18 Aug 2017)");
-  script_tag(name: "cvss_base", value: "6.1");
-  script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-18 11:51:47 +0700 (Fri, 18 Aug 2017)");
+  script_tag(name:"cvss_base", value:"6.1");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
 
   script_cve_id("CVE-2017-2680", "CVE-2017-2681");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Siemens SIMATIC S7 PLC Multiple Vulnerabilities");
 
@@ -49,25 +49,25 @@ if (description)
   script_dependencies("gb_simatic_s7_version.nasl");
   script_mandatory_keys("simatic_s7/detected", "simatic_s7/version");
 
-  script_tag(name: "summary", value: "Siemens SIMATIC S7 devices are prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Siemens SIMATIC S7 devices are prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the firmware version.");
+  script_tag(name:"vuldetect", value:"Checks the firmware version.");
 
-  script_tag(name: "insight", value: "Siemens SIMATIC devices are prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Siemens SIMATIC devices are prone to multiple vulnerabilities:
 
-- Specially crafted PROFINET DCP broadcast packets could cause a denial-of-service condition of affected products
+  - Specially crafted PROFINET DCP broadcast packets could cause a denial-of-service condition of affected products
 on a local Ethernet segment (Layer 2). Human interaction is required to recover the systems. PROFIBUS interfaces
 are not affected. (CVE-2017-2680)
 
-- Specially crafted PROFINET DCP packets sent on a local Ethernet segment (Layer 2) to an affected product could
+  - Specially crafted PROFINET DCP packets sent on a local Ethernet segment (Layer 2) to an affected product could
 cause a denial-of-service condition in that product. Human interaction is required to recover the system. PROFIBUS
 interfaces are not affected. (CVE-2017-2681)");
 
-  script_tag(name: "impact", value: "A remote attacker may cause a DoS condition.");
+  script_tag(name:"impact", value:"A remote attacker may cause a DoS condition.");
 
-  script_tag(name: "solution", value: "Siemens provides updated firmware versions.");
+  script_tag(name:"solution", value:"Siemens provides updated firmware versions.");
 
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-17-129-02");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-17-129-02");
 
   exit(0);
 }

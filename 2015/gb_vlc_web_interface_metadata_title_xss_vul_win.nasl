@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_web_interface_metadata_title_xss_vul_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_vlc_web_interface_metadata_title_xss_vul_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # VLC Media Player Web Interface Cross Site Scripting Vulnerability Dec15 (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806752");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-01 10:33:43 +0530 (Tue, 01 Dec 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VLC Media Player Web Interface Cross Site Scripting Vulnerability Dec15 (Windows)");
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"VideoLAN VLC media player 2.2.1 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to VideoLAN VLC media player version
-  2.2.2 or later.
-  For updates refer to http://www.videolan.org");
+  2.2.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -64,6 +63,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
   script_mandatory_keys("VLCPlayer/Win/Installed");
+  script_xref(name:"URL", value:"http://www.videolan.org");
   exit(0);
 }
 

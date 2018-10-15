@@ -1,8 +1,8 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_imsva_multiple_vuln.nasl 6036 2017-04-27 06:04:46Z antu123 $ 
+# $Id: gb_trend_micro_imsva_multiple_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
-# Trend Micro InterScan Messaging Security Virtual Appliance (IMSVA) Multiple Vulnerabilities 
+# Trend Micro InterScan Messaging Security Virtual Appliance (IMSVA) Multiple Vulnerabilities
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -29,36 +29,32 @@ CPE = 'cpe:/a:trendmicro:interscan_messaging_security_virtual_appliance';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811007");
-  script_version("$Revision: 6036 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-7896");
   script_bugtraq_id(97938);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 08:04:46 +0200 (Thu, 27 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-25 12:30:07 +0530 (Tue, 25 Apr 2017)");
   script_name("Trend Micro InterScan Messaging Security Virtual Appliance (IMSVA) Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is running Trend Micro InterScan
   Messaging Security Virtual Appliance and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as the appliance fails to
   sufficiently sanitize user-supplied input.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code in the context of current user, conduct
-  cross-site scripting (XSS) and XML External Entity (XXE) attacks.
-
-  Impact Level: System");
+  cross-site scripting (XSS) and XML External Entity (XXE) attacks.");
 
   script_tag(name:"affected", value:"Trend Micro InterScan Messaging Virtual
   Appliance (IMSVA) 9.1 before CP 1644");
 
   script_tag(name:"solution", value:"Upgrade Trend Micro InterScan Messaging
-  Virtual Appliance (IMSVA) to 9.1 CP 1644 or later. For details refer to,
-  https://success.trendmicro.com/solution/1116821-security-bulletin-trend-micro-interscan-messaging-security-virtual-appliance-imsva-9-1-multiple-v#");
+  Virtual Appliance (IMSVA) to 9.1 CP 1644 or later.");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -77,22 +73,15 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-report = "";
-tmVer = "";
-
-## Get Version
 tmVer = get_app_version(cpe:CPE);
 if(!tmVer){
   exit(0);
 }
 
-##Get Build Version
 if(!build = get_kb_item("IMSVA/build")){
   exit(0);
 }
-  
-## Grep for vulnerable version
+
 if((tmVer == "9.1") && (version_is_less(version:build, test_version:"1644")))
 {
   report = report_fixed_ver(installed_version:"9.1 build " + build, fixed_version:"9.1 build 1644");

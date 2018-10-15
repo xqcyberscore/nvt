@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bonita_bpm_path_traversal_vuln.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_bonita_bpm_path_traversal_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Bonita BPM < 6.5.3 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:bonitasoft:bonita_bpm';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106010");
-  script_version("$Revision: 11271 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 11872 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-16 09:22:17 +0700 (Tue, 16 Jun 2015)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -70,7 +70,7 @@ of file name. (CVE-2015-3897)
 
   script_tag(name:"affected", value:"Bonita BPM 6.5.2 an prior.");
 
-  script_tag(name:"solution", value:"Upgrade to version 6.5.3 or later");
+  script_tag(name:"solution", value:"Upgrade to version 6.5.3 or later.");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37260/");
 

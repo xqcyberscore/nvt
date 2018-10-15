@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dokuwiki_target_param_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_dokuwiki_target_param_xss_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # DokuWiki 'target' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:dokuwiki:dokuwiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803008");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-2129");
   script_bugtraq_id(53041);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-28 11:26:53 +0530 (Tue, 28 Aug 2012)");
   script_name("DokuWiki 'target' Parameter Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -57,7 +57,7 @@ if(description)
   set to 'edit') is not properly validated, which allows attackers to execute
   arbitrary HTML and script code in a user's browser session in the context
   of an affected site.");
-  script_tag(name:"solution", value:"Upgrade to DokuWiki version 2012-01-25a or later");
+  script_tag(name:"solution", value:"Upgrade to DokuWiki version 2012-01-25a or later.");
   script_tag(name:"summary", value:"This host is running DokuWiki and is prone to cross site scripting
   vulnerability.");
 

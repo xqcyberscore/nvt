@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_pdf_viewer_mult_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_google_chrome_pdf_viewer_mult_vuln_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Google Chrome PDF Viewer Multiple Vulnerabilities (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802933");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-2862", "CVE-2012-2863");
   script_bugtraq_id(54897);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-14 17:07:50 +0530 (Tue, 14 Aug 2012)");
   script_name("Google Chrome PDF Viewer Multiple Vulnerabilities (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50222/");
@@ -47,7 +47,7 @@ if(description)
   the context of the browser or cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 21.0.1180.75 on Mac OS X");
   script_tag(name:"insight", value:"A use-after-free and out-of-bounds write errors exists within the PDF viewer.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 21.0.1180.75 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 21.0.1180.75 or later.");
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to use after
   free and denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"package");

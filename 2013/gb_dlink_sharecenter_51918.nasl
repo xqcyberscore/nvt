@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_sharecenter_51918.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_dlink_sharecenter_51918.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # D-Link ShareCenter Products Multiple Remote Code Execution Vulnerabilities
 #
@@ -29,7 +29,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103699");
   script_bugtraq_id(51918);
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -40,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://blog.emaze.net/2012/02/advisory-information-title.html");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/521532");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-18 12:07:07 +0200 (Thu, 18 Apr 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -63,7 +63,7 @@ D-Link DNS-320 ShareCenter D-Link DNS-325 ShareCenter");
   script_tag(name:"solution", value:"Updates are available.");
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

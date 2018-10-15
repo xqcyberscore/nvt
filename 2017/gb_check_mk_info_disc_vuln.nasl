@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_check_mk_info_disc_vuln.nasl 7554 2017-10-25 05:33:21Z cfischer $
+# $Id: gb_check_mk_info_disc_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Check_MK Information Disclosure Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:check_mk_project:check_mk";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140449");
-  script_version("$Revision: 7554 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-25 07:33:21 +0200 (Wed, 25 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-10-24 14:59:40 +0700 (Tue, 24 Oct 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-10-24 14:59:40 +0700 (Tue, 24 Oct 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-14955");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Check_MK Information Disclosure Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_check_mk_web_detect.nasl");
   script_mandatory_keys("check_mk/detected");
 
-  script_tag(name: "summary", value: "Check_MK is prone to a race condition vulnerability which could lead to
+  script_tag(name:"summary", value:"Check_MK is prone to a race condition vulnerability which could lead to
 information disclosure.");
 
-  script_tag(name: "insight", value: "Check_MK mishandles certain errors within the failed-login save feature
+  script_tag(name:"insight", value:"Check_MK mishandles certain errors within the failed-login save feature
 because of a race condition, which allows remote attackers to obtain sensitive user information by reading a GUI
 crash report.");
 
-  script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "affected", value: "Check_MK before version 1.2.8p26.");
+  script_tag(name:"affected", value:"Check_MK before version 1.2.8p26.");
 
-  script_tag(name: "solution", value: "Update to version 1.2.8p26 or later.");
+  script_tag(name:"solution", value:"Update to version 1.2.8p26 or later.");
 
-  script_xref(name: "URL", value: "https://www.rcesecurity.com/2017/10/cve-2017-14955-win-a-race-against-check-mk-to-dump-all-your-login-data/");
-  script_xref(name: "URL", value: "https://mathias-kettner.de/check_mk_werks.php?werk_id=5208&HTML=yes");
+  script_xref(name:"URL", value:"https://www.rcesecurity.com/2017/10/cve-2017-14955-win-a-race-against-check-mk-to-dump-all-your-login-data/");
+  script_xref(name:"URL", value:"https://mathias-kettner.de/check_mk_werks.php?werk_id=5208&HTML=yes");
 
   exit(0);
 }

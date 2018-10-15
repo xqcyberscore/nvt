@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sepm_mult_vuln_august15.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_sepm_mult_vuln_august15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Symantec Endpoint Protection Manager Multiple Vulnerabilities August15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806004");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-1492", "CVE-2015-1491", "CVE-2015-1490", "CVE-2015-1489",
                 "CVE-2015-1488", "CVE-2015-1487", "CVE-2015-1486");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-14 12:49:14 +0530 (Fri, 14 Aug 2015)");
   script_name("Symantec Endpoint Protection Manager Multiple Vulnerabilities August15");
 
@@ -62,8 +62,7 @@ if(description)
   versions 12.1 before 12.1-RU6-MP1.");
 
   script_tag(name:"solution", value:"Upgrade to Symantec Endpoint Protection
-  Manager 12.1 RU6 MP1.
-  For updates refer to http://www.symantec.com/en/in/endpoint-protection/");
+  Manager 12.1 RU6 MP1.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -77,6 +76,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_symantec_prdts_detect.nasl");
   script_mandatory_keys("Symantec/Endpoint/Protection");
+  script_xref(name:"URL", value:"http://www.symantec.com/en/in/endpoint-protection/");
   exit(0);
 }
 

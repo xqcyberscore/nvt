@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_CSCuf49554.nasl 11077 2018-08-22 09:40:33Z mmartin $
+# $Id: gb_cisco_nx_os_CSCuf49554.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Cisco NX-OS Denial of Service Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2013-1121");
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11077 $");
+  script_version("$Revision: 11865 $");
 
   script_name("Cisco NX-OS Denial of Service Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62446");
   script_xref(name:"URL", value:"http://tools.cisco.com/Support/BugToolKit/search/getBugDetails.do?method=fetchBugDetails&bugId=CSCuf49554");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-22 17:24:45 +0200 (Tue, 22 Oct 2013)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -60,7 +60,7 @@ for more information.");
   script_tag(name:"summary", value:"Cisco NX-OS is prone to a denial-of-service vulnerability.");
   script_tag(name:"affected", value:"Cisco Nexus 7000 Series running on NX-OS.");
 
- exit(0);
+  exit(0);
 }
 
 if( ! device = get_kb_item( "cisco_nx_os/device" ) ) exit( 0 );

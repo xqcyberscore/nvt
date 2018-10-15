@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_speedport_02_19.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_speedport_02_19.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Speedport DSL-Router Multiple Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = 'cpe:/a:t-com:speedport';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105901");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.telekom.com/verantwortung/sicherheit/216230");
   script_xref(name:"URL", value:"http://www.heise.de/newsticker/meldung/Fritzbox-Luecke-Vier-Speedport-Modelle-der-Telekom-betroffen-2118595.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-14 12:11:28 +0700 (Fri, 14 Mar 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -55,7 +55,7 @@ for more information.");
   script_tag(name:"summary", value:"Speedport DSL-Router is prone to multiple vulnerabilities");
   script_tag(name:"affected", value:"See the list at http://www.telekom.com/verantwortung/sicherheit/216230");
 
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

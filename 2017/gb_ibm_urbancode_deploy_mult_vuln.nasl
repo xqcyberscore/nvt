@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_urbancode_deploy_mult_vuln.nasl 5187 2017-02-03 09:59:11Z ckuerste $
+# $Id: gb_ibm_urbancode_deploy_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # IBM UrbanCode Deploy Multiple Vulnerabilities
 #
@@ -30,18 +30,18 @@ CPE = 'cpe:/a:ibm:urbancode_deploy';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106563");
-  script_version("$Revision: 5187 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-03 10:59:11 +0100 (Fri, 03 Feb 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-03 09:38:09 +0700 (Fri, 03 Feb 2017)");
-  script_tag(name:"cvss_base", value: "10.0");
-  script_tag(name:"cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-03 09:38:09 +0700 (Fri, 03 Feb 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-2942", "CVE-2016-2941", "CVE-2016-0320", "CVE-2016-6068", "CVE-2016-8938",
 "CVE-2016-9008");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("IBM UrbanCode Deploy Multiple Vulnerabilities");
 
@@ -52,39 +52,39 @@ if (description)
   script_dependencies("gb_ibm_urbancode_deploy_detect.nasl");
   script_mandatory_keys("ibm_urbancode_deplay/installed");
 
-  script_tag(name: "summary", value: "IBM UrbanCode Deploy is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"IBM UrbanCode Deploy is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "IBM UrbanCode Deploy is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"IBM UrbanCode Deploy is prone to multiple vulnerabilities:
 
-- Pre-processing and post-processing scripts can access the entire domain model of server or agent.
+  - Pre-processing and post-processing scripts can access the entire domain model of server or agent.
 (CVE-2016-2942)
 
-- Property files on agent file system during plugin step execution contain secure info in plain text.
+  - Property files on agent file system during plugin step execution contain secure info in plain text.
 (CVE-2016-2941)
 
-- REST endpoints do not properly authorize, allowing users to modify data with insufficient permissions.
+  - REST endpoints do not properly authorize, allowing users to modify data with insufficient permissions.
 (CVE-2016-0320)
 
-- API and CLI getResource expose secured role properties. (CVE-2016-6068)
+  - API and CLI getResource expose secured role properties. (CVE-2016-6068)
 
-- Remote code execution possible due to insecure REST endpoint. (CVE-2016-8938)
+  - Remote code execution possible due to insecure REST endpoint. (CVE-2016-8938)
 
-- Agent Relay ActiveMQ Broker unauthenticated JMX interface can be accessed from remote hosts. (CVE-2016-9008 )");
+  - Agent Relay ActiveMQ Broker unauthenticated JMX interface can be accessed from remote hosts. (CVE-2016-9008 )");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may execute arbitrary code.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may execute arbitrary code.");
 
-  script_tag(name: "affected", value: "IBM UrbanCode Deploy before version 6.0.1.15, 6.1.3.4 and 6.2.3.");
+  script_tag(name:"affected", value:"IBM UrbanCode Deploy before version 6.0.1.15, 6.1.3.4 and 6.2.3.");
 
-  script_tag(name: "solution", value: "Check the referenced advisories for the right version to upgrade.");
+  script_tag(name:"solution", value:"Check the referenced advisories for the right version to upgrade.");
 
-  script_xref(name: "URL", value: "https://www-01.ibm.com/support/docview.wss?uid=swg2C1000218");
-  script_xref(name: "URL", value: "https://www-01.ibm.com/support/docview.wss?uid=swg2C1000220");
-  script_xref(name: "URL", value: "https://www-01.ibm.com/support/docview.wss?uid=swg2C1000222");
-  script_xref(name: "URL", value: "https://www-01.ibm.com/support/docview.wss?uid=swg2C1000229");
-  script_xref(name: "URL", value: "https://www-01.ibm.com/support/docview.wss?uid=swg2C1000237");
-  script_xref(name: "URL", value: "https://www-01.ibm.com/support/docview.wss?uid=swg2C1000238");
+  script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg2C1000218");
+  script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg2C1000220");
+  script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg2C1000222");
+  script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg2C1000229");
+  script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg2C1000237");
+  script_xref(name:"URL", value:"https://www-01.ibm.com/support/docview.wss?uid=swg2C1000238");
 
   exit(0);
 }

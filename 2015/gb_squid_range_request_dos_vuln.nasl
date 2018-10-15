@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_range_request_dos_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_squid_range_request_dos_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Squid HTTP Range Request Handling Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806106");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-3609");
   script_bugtraq_id(69453);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 16:31:16 +0530 (Tue, 08 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid HTTP Range Request Handling Denial of Service Vulnerability");
@@ -55,8 +55,7 @@ if(description)
   Squid 3.4 -> 3.4.6");
 
   script_tag(name:"solution", value:"Apply the patch or upgrade to version
-  Squid 3.4.7, 3.3.13 or later.
-  For updates refer to http://www.squid-cache.org/Advisories/SQUID-2014_2.txt");
+  Squid 3.4.7, 3.3.13 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.squid-cache.org/Advisories/SQUID-2014_2.txt");

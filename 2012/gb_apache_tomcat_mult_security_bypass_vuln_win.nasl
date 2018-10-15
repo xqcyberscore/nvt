@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_mult_security_bypass_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_apache_tomcat_mult_security_bypass_vuln_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Apache Tomcat Multiple Security Bypass Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802415");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-1184", "CVE-2011-5062", "CVE-2011-5063", "CVE-2011-5064");
   script_bugtraq_id(49762);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-16 15:35:35 +0530 (Mon, 16 Jan 2012)");
   script_name("Apache Tomcat Multiple Security Bypass Vulnerabilities (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -66,7 +66,7 @@ if(description)
   - which fails to have the expected countermeasures against replay attacks.");
   script_tag(name:"summary", value:"The host is running Apache Tomcat Server and is prone to multiple
   security bypass vulnerabilities.");
-  script_tag(name:"solution", value:"Upgrade Apache Tomcat to 5.5.34, 6.0.33, 7.0.12 or later,");
+  script_tag(name:"solution", value:"Upgrade Apache Tomcat to 5.5.34, 6.0.33, 7.0.12 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtscada_mult_vuln.nasl 6414 2017-06-23 09:35:47Z ckuersteiner $
+# $Id: gb_vtscada_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # VTScada Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:trihedral:vtscada';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106906");
-  script_version("$Revision: 6414 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-23 11:35:47 +0200 (Fri, 23 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-23 16:17:12 +0700 (Fri, 23 Jun 2017)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-23 16:17:12 +0700 (Fri, 23 Jun 2017)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_cve_id("CVE-2017-6043", "CVE-2017-6045", "CVE-2017-6053");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("VTScada Multiple Vulnerabilities");
 
@@ -51,26 +51,26 @@ if (description)
   script_dependencies("gb_vtscada_detect.nasl");
   script_mandatory_keys("vtscada/detected");
 
-  script_tag(name: "summary", value: "VTScada is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"VTScada is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "VTScada is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"VTScada is prone to multiple vulnerabilities:
 
-- The client does not properly validate the input or limit the amount of resources that are utilized by an
+  - The client does not properly validate the input or limit the amount of resources that are utilized by an
 attacker, which can be used to consume more resources than are available. (CVE-2017-6043)
 
-- Some files are exposed within the web server application to unauthenticated users. These files may contain
+  - Some files are exposed within the web server application to unauthenticated users. These files may contain
 sensitive configuration information. (CVE-2017-6045)
 
-- A cross-site scripting vulnerability may allow JavaScript code supplied by the attacker to execute within the
+  - A cross-site scripting vulnerability may allow JavaScript code supplied by the attacker to execute within the
 user's browser. (CVE-2017-6053)");
 
-  script_tag(name: "affected", value: "VTScada Versions prior to 11.2.26");
+  script_tag(name:"affected", value:"VTScada Versions prior to 11.2.26");
 
-  script_tag(name: "solution", value: "Update to version 11.2.26 or later.");
+  script_tag(name:"solution", value:"Update to version 11.2.26 or later.");
 
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-17-164-01");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-17-164-01");
 
   exit(0);
 }

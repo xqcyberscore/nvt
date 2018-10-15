@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_cisco-sa-20170419-asa-norm.nasl 6067 2017-05-04 13:15:52Z teissa $
+# $Id: gb_cisco_asa_cisco-sa-20170419-asa-norm.nasl 11900 2018-10-15 07:44:31Z mmartin $
 #
 # Cisco ASA Software TCP Normalizer Denial of Service Vulnerability
 #
@@ -29,44 +29,44 @@ CPE = "cpe:/a:cisco:asa";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106767");
- script_cve_id("CVE-2017-3793");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 6067 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106767");
+  script_cve_id("CVE-2017-3793");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11900 $");
 
- script_name("Cisco ASA Software TCP Normalizer Denial of Service Vulnerability");
+  script_name("Cisco ASA Software TCP Normalizer Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170419-asa-norm");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170419-asa-norm");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the TCP normalizer of Cisco Adaptive Security Appliance
+  script_tag(name:"summary", value:"A vulnerability in the TCP normalizer of Cisco Adaptive Security Appliance
 (ASA) Software could allow an unauthenticated, remote attacker to cause Cisco ASA to drop any further incoming
 traffic on all interfaces, resulting in a denial of service (DoS) condition.");
 
- script_tag(name: "insight", value: "The vulnerability is due to improper limitation of the global out-of-order
+  script_tag(name:"insight", value:"The vulnerability is due to improper limitation of the global out-of-order
 TCP queue for specific block sizes. An attacker could exploit this vulnerability by sending a large number of
 unique permitted TCP connections with out-of-order segments.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to exhaust available blocks in the global
+  script_tag(name:"impact", value:"An exploit could allow the attacker to exhaust available blocks in the global
 out-of-order TCP queue, causing the dropping of any further incoming traffic on all interfaces and resulting in
 a DoS condition.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-05-04 15:15:52 +0200 (Thu, 04 May 2017) $");
- script_tag(name: "creation_date", value: "2017-04-20 08:21:20 +0200 (Thu, 20 Apr 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
- script_mandatory_keys("cisco_asa/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-20 08:21:20 +0200 (Thu, 20 Apr 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
+  script_mandatory_keys("cisco_asa/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

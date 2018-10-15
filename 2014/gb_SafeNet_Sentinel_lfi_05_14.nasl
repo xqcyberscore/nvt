@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SafeNet_Sentinel_lfi_05_14.nasl 11207 2018-09-04 07:22:57Z mmartin $
+# $Id: gb_SafeNet_Sentinel_lfi_05_14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # SafeNet Sentinel Protection Server and Sentinel Keys Server Directory Traversal
 #
@@ -31,14 +31,14 @@ if (description)
   script_cve_id("CVE-2007-6483");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11207 $");
+  script_version("$Revision: 11867 $");
 
   script_name("SafeNet Sentinel Protection Server and Sentinel Keys Server Directory Traversal");
 
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/33428/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 09:22:57 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-20 12:17:04 +0200 (Tue, 20 May 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -60,7 +60,7 @@ user-supplied input.");
   script_tag(name:"affected", value:"SafeNet Sentinel Protection Server 7.0.0 through 7.4.0 and Sentinel Keys
 Server 1.0.3 and 1.0.4");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

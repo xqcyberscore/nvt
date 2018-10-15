@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_infusionsoft_gravity_forms_file_upload_vuln.nasl 11497 2018-09-20 10:31:54Z mmartin $
+# $Id: gb_wp_infusionsoft_gravity_forms_file_upload_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Wordpress Infusionsoft Gravity Forms Add-on Arbitrary File Upload Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804769");
-  script_version("$Revision: 11497 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-6446");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-09-29 17:24:16 +0530 (Mon, 29 Sep 2014)");
 
   script_name("Wordpress Infusionsoft Gravity Forms Add-on Arbitrary File Upload Vulnerability");
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"WordPress Infusionsoft Gravity Forms Add-on
   version 1.5.3 to 1.5.10");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.5.11 or later,
-  For updates refer to https://wordpress.org/plugins/infusionsoft");
+  script_tag(name:"solution", value:"Upgrade to version 1.5.11 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://research.g0blin.co.uk/cve-2014-6446");
   script_xref(name:"URL", value:"https://wordpress.org/plugins/infusionsoft/changelog/");

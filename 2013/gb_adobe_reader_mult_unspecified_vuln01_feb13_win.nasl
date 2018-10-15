@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_unspecified_vuln01_feb13_win.nasl 11525 2018-09-21 15:19:23Z cfischer $
+# $Id: gb_adobe_reader_mult_unspecified_vuln01_feb13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Adobe Reader Multiple Unspecified Vulnerabilities -01 Feb13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803415");
-  script_version("$Revision: 11525 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-0640", "CVE-2013-0641");
   script_bugtraq_id(57931, 57947);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 17:19:23 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-19 18:24:49 +0530 (Tue, 19 Feb 2013)");
   script_name("Adobe Reader Multiple Unspecified Vulnerabilities -01 Feb13 (Windows)");
 
@@ -49,8 +49,7 @@ a denial of service via a crafted PDF document.");
 Adobe Reader X Version 10.x prior to 10.1.6 on Windows
 
 Adobe Reader XI Version 11.x prior to 11.0.02 on Windows");
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 9.5.4, 10.1.6, 11.0.02 or later.
-For updates refer to http://www.adobe.com");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 9.5.4, 10.1.6, 11.0.02 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

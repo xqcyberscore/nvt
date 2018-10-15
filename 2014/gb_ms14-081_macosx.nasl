@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-081_macosx.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-081_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities-3017301 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805029");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-6356", "CVE-2014-6357");
   script_bugtraq_id(71469, 71470);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-10 13:24:58 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities-3017301 (Mac OS X)");
 
@@ -55,8 +55,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Office 2011 on Mac OS X");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  https://technet.microsoft.com/en-us/security/bulletin/ms14-081");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
@@ -68,6 +67,7 @@ if(description)
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gb_microsoft_office_detect_macosx.nasl");
   script_mandatory_keys("MS/Office/MacOSX/Ver");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms14-081");
   exit(0);
 }
 

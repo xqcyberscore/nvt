@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms15-044.nasl 11612 2018-09-26 05:47:26Z cfischer $
+# $Id: gb_dotnet_framework_ms15-044.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (3057110)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805563");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-1670", "CVE-2015-1671");
   script_bugtraq_id(74490, 74485);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-14 19:19:40 +0530 (Thu, 14 May 2015)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (3057110)");
 
@@ -55,9 +55,7 @@ if(description)
   Microsoft .NET Framework 4.5, 4.5.1, and 4.5.2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS15-044");
+  listed hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -131,7 +129,7 @@ if(sysPath)
   key = "SOFTWARE\Microsoft\.NETFramework\AssemblyFolders\v3.0";
   if(registry_key_exists(key:key))
   {
-    sysVer = fetch_file_version(sysPath, file_name:"system32\XPSViewer\XPSViewer.exe");
+    sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\XPSViewer\XPSViewer.exe");
     if(sysVer)
     {
       ## .NET Framework 3.0 Service Pack 2 on Windows Vista and Windows Server 2008

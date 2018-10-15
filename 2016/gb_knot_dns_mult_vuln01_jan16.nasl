@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_knot_dns_mult_vuln01_jan16.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_knot_dns_mult_vuln01_jan16.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Knot DNS Server Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:knot:dns";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806811");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 11888 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-08 11:38:56 +0530 (Fri, 08 Jan 2016)");
   script_name("Knot DNS Server Multiple Vulnerabilities");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -64,7 +64,7 @@ if(description)
   script_tag(name:"affected", value:"Knot DNS version before 1.6.3");
 
   script_tag(name:"solution", value:"Upgrade to Knot DNS version 1.6.3
-  or later, ");
+  or later.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

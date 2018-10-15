@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_email_message_mult_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_ibm_domino_email_message_mult_xss_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # IBM Domino Email Message Cross-Site Scripting Vulnerabilities
 #
@@ -23,26 +23,25 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:ibm:lotus_domino";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803787");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2013-4063", "CVE-2013-4064", "CVE-2013-4065");
   script_bugtraq_id(64445, 64451, 64444);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-26 10:59:41 +0530 (Thu, 26 Dec 2013)");
   script_name("IBM Domino Email Message Cross-Site Scripting Vulnerabilities");
-
 
   script_tag(name:"summary", value:"The host is running IBM Lotus Domino and is prone to  multiple cross site
 scripting vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Upgrade to IBM Lotus Domino version 8.5.3 FP6, 9.0.1 or later,
-http://www-01.ibm.com/support/docview.wss?uid=swg21647740");
+  script_tag(name:"solution", value:"Upgrade to IBM Lotus Domino version 8.5.3 FP6, 9.0.1 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Multiple flaws are due to certain unspecified input related to active content
 in e-mail messages, ultra-light mode, is not properly sanitised before being

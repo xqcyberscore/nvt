@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201204_04.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201204_04.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2012-1126", "CVE-2012-1127", "CVE-2012-1128", "CVE-2012-1129", "CVE-2012-1130", "CVE-2012-1131", "CVE-2012-1132", "CVE-2012-1133", "CVE-2012-1134", "CVE-2012-1135", "CVE-2012-1136", "CVE-2012-1137", "CVE-2012-1138", "CVE-2012-1139", "CVE-2012-1140", "CVE-2012-1141", "CVE-2012-1142", "CVE-2012-1143", "CVE-2012-1144");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-30 07:59:57 -0400 (Mon, 30 Apr 2012)");
   script_name("Gentoo Security Advisory GLSA 201204-04 (FreeType)");
   script_category(ACT_GATHER_INFO);
@@ -48,11 +48,10 @@ if(description)
   script_tag(name:"solution", value:"All FreeType users should upgrade to the latest version:
 
       # emerge --sync
-      # emerge --ask --oneshot --verbose '>=media-libs/freetype-2.4.9'
+      # emerge --ask --oneshot --verbose '>=media-libs/freetype-2.4.9'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201204-04
-http://bugs.gentoo.org/show_bug.cgi?id=407257");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201204-04");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=407257");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201204-04.");
   script_tag(name:"qod_type", value:"package");

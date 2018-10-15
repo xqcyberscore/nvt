@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serendipity_205.nasl 6257 2017-05-31 14:33:17Z cfi $
+# $Id: gb_serendipity_205.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Serendipity <= 2.0.5 Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:s9y:serendipity";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108060");
-  script_version("$Revision: 6257 $");
+  script_version("$Revision: 11874 $");
   script_bugtraq_id(95652, 95656, 95659);
   script_cve_id("CVE-2017-5474", "CVE-2017-5475", "CVE-2017-5476", "CVE-2017-5609");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-30 11:00:00 +0100 (Mon, 30 Jan 2017)");
   script_name("Serendipity <= 2.0.5 Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -53,8 +53,7 @@ if(description)
   script_tag(name:"summary", value:"Serendipity is prone to multiple vulnerabilities because of
   insufficient CSRF protection / sanitized user-supplied input.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
 
@@ -74,24 +73,22 @@ if(description)
 
   - execute arbitrary SQL commands via the cat parameter
 
-  Other attacks are also possible.
-
-  Impact Level: Application");
+  Other attacks are also possible.");
 
   script_tag(name:"affected", value:"Serendipity versions up to 2.0.5.");
 
-  script_tag(name:"solution", value:"Update to version 2.1-rc1 or later. For updates refer to
-  http://www.s9y.org/");
+  script_tag(name:"solution", value:"Update to version 2.1-rc1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://www.s9y.org/");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
-   
+
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 

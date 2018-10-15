@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_62858.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_cisco_nx_os_62858.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Cisco NX-OS Border Gateway Protocol Component Denial of Service Vulnerability
 #
@@ -35,7 +35,7 @@ if (description)
   script_cve_id("CVE-2012-4098");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11865 $");
 
   script_name("Cisco NX-OS Border Gateway Protocol Component Denial of Service Vulnerability");
 
@@ -43,7 +43,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62858");
   script_xref(name:"URL", value:"http://tools.cisco.com/Support/BugToolKit/search/getBugDetails.do?method=fetchBugDetails&bugId=CSCtn13055");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-18 10:24:45 +0200 (Fri, 18 Oct 2013)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -63,7 +63,7 @@ for more information.");
 fails to properly sanitize user-supplied input.");
   script_tag(name:"affected", value:"Cisco Nexus 7000 Series running on NX-OS.");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20170118-catalyst.nasl 5608 2017-03-20 04:16:04Z ckuerste $
+# $Id: gb_cisco_ios_cisco-sa-20170118-catalyst.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Cisco IOS for Catalyst 2960X and 3750X Switches Denial of Service Vulnerability
 #
@@ -29,42 +29,42 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106523");
- script_cve_id("CVE-2017-3803");
- script_tag(name:"cvss_base", value:"3.3");
- script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5608 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106523");
+  script_cve_id("CVE-2017-3803");
+  script_tag(name:"cvss_base", value:"3.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11863 $");
 
- script_name("Cisco IOS for Catalyst 2960X and 3750X Switches Denial of Service Vulnerability");
+  script_name("Cisco IOS for Catalyst 2960X and 3750X Switches Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170118-catalyst");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170118-catalyst");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"A vulnerability in the Cisco IOS Software forwarding queue of Cisco 2960X
+  script_tag(name:"summary", value:"A vulnerability in the Cisco IOS Software forwarding queue of Cisco 2960X
 and 3750X switches could allow an unauthenticated, adjacent attacker to cause a memory leak in the software
 forwarding queue that would eventually lead to a partial denial of service (DoS) condition.");
 
- script_tag(name: "insight", value: "The vulnerability is due to improper processing of IPv6 Neighbor Discovery
+  script_tag(name:"insight", value:"The vulnerability is due to improper processing of IPv6 Neighbor Discovery
 (ND) packets. An attacker could exploit this vulnerability by sending a number of IPv6 ND packets to be processed
 by an affected device.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause a memory leak in the software
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause a memory leak in the software
 forwarding queue that would eventually lead to a partial DoS service condition.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 05:16:04 +0100 (Mon, 20 Mar 2017) $");
- script_tag(name:"creation_date", value:"2017-01-19 09:15:35 +0700 (Thu, 19 Jan 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version", "cisco_ios/image");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-19 09:15:35 +0700 (Thu, 19 Jan 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version", "cisco_ios/image");
+  exit(0);
 }
 
 include("host_details.inc");

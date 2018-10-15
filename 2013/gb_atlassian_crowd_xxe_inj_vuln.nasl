@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_crowd_xxe_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_atlassian_crowd_xxe_inj_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Atlassian Crowd Xml eXternal Entity (XXE) Injection Vulnerability
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803830");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-3925");
   script_bugtraq_id(60899);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-09 15:27:15 +0530 (Tue, 09 Jul 2013)");
   script_name("Atlassian Crowd Xml eXternal Entity (XXE) Injection Vulnerability");
   script_tag(name:"summary", value:"This host is running Atlassian Crowd and is prone to xml external
 entity injection vulnerability.");
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP POST request and check whether it is able to
 read the system file or not.");
-  script_tag(name:"solution", value:"Upgrade to version 2.5.4, 2.6.3, 2.7 or higher,
-For updates refer to http://www.atlassian.com/software/crowd/download");
+  script_tag(name:"solution", value:"Upgrade to version 2.5.4, 2.6.3, 2.7 or higher.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Flaw is due to an incorrectly configured XML parser accepting XML external
 entities from an untrusted source.");
@@ -58,6 +57,7 @@ files by sending specially crafted XML data.");
   script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"http://www.atlassian.com/software/crowd/download");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_csrf_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_hp_smh_csrf_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # HP System Management Homepage Cross-site Request Forgery Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802758");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-3846");
   script_bugtraq_id(52974);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-23 13:36:33 +0530 (Mon, 23 Apr 2012)");
   script_name("HP System Management Homepage Cross-site Request Forgery Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -49,7 +49,7 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw is due to certain actions via HTTP requests without
   performing any validity checks to verify the requests.");
-  script_tag(name:"solution", value:"Upgrade to HP System Management Homepage (SMH) version 7.0 or later,");
+  script_tag(name:"solution", value:"Upgrade to HP System Management Homepage (SMH) version 7.0 or later.");
   script_tag(name:"summary", value:"This host is running HP System Management Homepage (SMH) and is
   prone to cross-site request forgery vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to create an arbitrary

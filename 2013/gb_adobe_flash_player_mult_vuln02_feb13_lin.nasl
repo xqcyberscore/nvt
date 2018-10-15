@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln02_feb13_lin.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_adobe_flash_player_mult_vuln02_feb13_lin.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities -02 Feb13 (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803409");
-  script_version("$Revision: 11401 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_version("$Revision: 11865 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-14 13:44:47 +0530 (Thu, 14 Feb 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -64,8 +64,7 @@ if(description)
 
   - Integer overflow and some unspecified error.");
 
-  script_tag(name:"solution", value:"Update to version 11.2.202.270 or later,
-  For updates refer to http://www.adobe.com/products/flash.html");
+  script_tag(name:"solution", value:"Update to version 11.2.202.270 or later.");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
   multiple vulnerabilities.");
@@ -73,6 +72,7 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.adobe.com/products/flash.html");
   exit(0);
 }
 

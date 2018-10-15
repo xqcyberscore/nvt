@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_mult_vuln.nasl 4964 2017-01-06 14:48:44Z cfi $
+# $Id: gb_ntp_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # NTP Multiple Vulnerabilities
 #
@@ -29,71 +29,59 @@ CPE = "cpe:/a:ntp:ntp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809858");
-  script_version("$Revision: 4964 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2014-9751", "CVE-2014-9750");
   script_bugtraq_id(72584, 72583);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-06 15:48:44 +0100 (Fri, 06 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-05 12:03:35 +0530 (Thu, 05 Jan 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NTP Multiple Vulnerabilities");
-  script_tag(name: "summary" , value:"The host is running NTP and is prone to
+  script_tag(name:"summary", value:"The host is running NTP and is prone to
   multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to
+  script_tag(name:"insight", value:"Multiple flaws exists due to
+
   - The 'read_network_packet' function in 'ntp_io.c' in ntpd does not properly
     determine whether a source IP address is an IPv6 loopback address.
+
   - An error in 'ntp_crypto.c' script in ntpd when Autokey Authentication is
     enabled.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allows remote 
+  script_tag(name:"impact", value:"Successful exploitation will allows remote
   attackers to obtain sensitive information from process memory or cause a denial
-  of service, to conduct spoofing attack and this can lead to further attacks.
-
-  Impact Level: Application");
+  of service, to conduct spoofing attack and this can lead to further attacks.");
 
   script_tag(name:"affected", value:"NTP versions 4.x before 4.2.8p1");
 
-  script_tag(name:"solution", value:"Upgrade to NTP version 4.2.8p1 or later.
-  For updates refer to http://www.ntp.org");
+  script_tag(name:"solution", value:"Upgrade to NTP version 4.2.8p1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://bugs.ntp.org/show_bug.cgi?id=2672");
-  script_xref(name : "URL" , value : "http://bugs.ntp.org/show_bug.cgi?id=2671");
-  script_xref(name : "URL" , value : "https://github.com/ntp-project/ntp/blob/stable/ChangeLog"); 
+  script_xref(name:"URL", value:"http://bugs.ntp.org/show_bug.cgi?id=2672");
+  script_xref(name:"URL", value:"http://bugs.ntp.org/show_bug.cgi?id=2671");
+  script_xref(name:"URL", value:"https://github.com/ntp-project/ntp/blob/stable/ChangeLog");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("ntp_open.nasl");
   script_mandatory_keys("NTP/Running", "NTP/Linux/Ver");
   script_require_udp_ports(123);
+  script_xref(name:"URL", value:"http://www.ntp.org");
   exit(0);
 }
 
-
-##
-## Code Starts Here
-##
 
 include("version_func.inc");
 include("revisions-lib.inc");
 include("host_details.inc");
 
-## Variable initialization
-ntpVer = 0;
-report = "";
-ntpPort = "";
-
-# Get Port
 if(!ntpPort = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-## Get Version
 if(!ntpVer = get_app_version(cpe:CPE, port:ntpPort)){
   exit(0);
 }

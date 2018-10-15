@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_mult_vuln_jan17.nasl 5103 2017-01-25 11:55:05Z antu123 $
+# $Id: gb_piwigo_mult_vuln_jan17.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Piwigo Multiple Vulnerabilities Jan17
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:piwigo:piwigo';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106496");
-  script_version("$Revision: 5103 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-25 12:55:05 +0100 (Wed, 25 Jan 2017) $");
-  script_tag(name: "creation_date", value: "2017-01-05 16:26:14 +0700 (Thu, 05 Jan 2017)");
-  script_tag(name:"cvss_base", value: "7.5");
-  script_tag(name:"cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-05 16:26:14 +0700 (Thu, 05 Jan 2017)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-10105", "CVE-2016-10033", "CVE-2016-10045", "CVE-2016-10083");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Piwigo Multiple Vulnerabilities Jan17");
 
@@ -51,25 +51,25 @@ if (description)
   script_dependencies("gb_piwigo_detect.nasl");
   script_mandatory_keys("piwigo/installed");
 
-  script_tag(name: "summary", value: "Piwigo is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Piwigo is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Piwigo is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Piwigo is prone to multiple vulnerabilities:
 
-- Remote code execution in PHPMailer (CVE-2016-10033, CVE-2016-10045)
+  - Remote code execution in PHPMailer (CVE-2016-10033, CVE-2016-10045)
 
-- File Inclusion with Possible RCE (CVE-2016-10105)
+  - File Inclusion with Possible RCE (CVE-2016-10105)
 
-- Cross-site scripting on admin page (CVE-2016-10083)");
+  - Cross-site scripting on admin page (CVE-2016-10083)");
 
-  script_tag(name: "impact", value: "An attacker may execute arbitrary code.");
+  script_tag(name:"impact", value:"An attacker may execute arbitrary code.");
 
-  script_tag(name: "affected", value: "Piwigo version 2.8.4 and prior.");
+  script_tag(name:"affected", value:"Piwigo version 2.8.4 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 2.8.5");
+  script_tag(name:"solution", value:"Update to version 2.8.5");
 
-  script_xref(name: "URL", value: "https://github.com/Piwigo/Piwigo/issues/559");
+  script_xref(name:"URL", value:"https://github.com/Piwigo/Piwigo/issues/559");
 
   exit(0);
 }

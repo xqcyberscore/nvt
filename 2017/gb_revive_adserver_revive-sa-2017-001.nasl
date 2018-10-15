@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_revive_adserver_revive-sa-2017-001.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_revive_adserver_revive-sa-2017-001.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Revive Adserver Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:revive:adserver';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106559");
-  script_version("$Revision: 7585 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-02 13:44:37 +0700 (Thu, 02 Feb 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-02 13:44:37 +0700 (Thu, 02 Feb 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-5830", "CVE-2017-5831", "CVE-2017-5832", "CVE-2017-5833");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Revive Adserver Multiple Vulnerabilities");
 
@@ -51,34 +51,34 @@ if (description)
   script_dependencies("gb_revive_adserver_detect.nasl");
   script_mandatory_keys("ReviveAdserver/Installed");
 
-  script_tag(name: "summary", value: "Revive Adserver is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Revive Adserver is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "Revive Adserver is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Revive Adserver is prone to multiple vulnerabilities:
 
-- Revive Adserver does unserializing untrusted data submitted via cookies in the delivery scripts. An attacker
+  - Revive Adserver does unserializing untrusted data submitted via cookies in the delivery scripts. An attacker
 could use such vector to either perform generic RCE attacks (e.g. when a vulnerable PHP version is being used) or,
 potentially, application-specific attacks.
 
-- Revive Adserver isn't properly invalidating the current session when setting a new password via the forgot
+  - Revive Adserver isn't properly invalidating the current session when setting a new password via the forgot
 password mechanism. This could allow attackers having access to the session ID to keep the authenticated session
 alive.
 
-- Revive Adserver is vulnerable to a persistent XSS attack: an authenticated user could set their own email
+  - Revive Adserver is vulnerable to a persistent XSS attack: an authenticated user could set their own email
 address to a specifically crafted string which is then displayed without proper escaping in the context of other
 users (e.g. the administrator user), giving them an opportunity to steal a session with elevated privileges.
 
-- Revive Adserver is vulnerable to a reflected XSS attack: several of the parameters used in the invocation code
+  - Revive Adserver is vulnerable to a reflected XSS attack: several of the parameters used in the invocation code
 generation for interstitial zones aren't properly escaped when displayed.");
 
-  script_tag(name: "impact", value: "A remote attacker may gain complete control.");
+  script_tag(name:"impact", value:"A remote attacker may gain complete control.");
 
-  script_tag(name: "affected", value: "Revive Adserver version 4.0.0 and prior.");
+  script_tag(name:"affected", value:"Revive Adserver version 4.0.0 and prior.");
 
-  script_tag(name: "solution", value: "Upgrade to version 4.0.1 or later");
+  script_tag(name:"solution", value:"Upgrade to version 4.0.1 or later");
 
-  script_xref(name: "URL", value: "https://www.revive-adserver.com/security/revive-sa-2017-001/");
+  script_xref(name:"URL", value:"https://www.revive-adserver.com/security/revive-sa-2017-001/");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
   exit(0);
 }

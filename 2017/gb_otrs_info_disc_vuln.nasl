@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_info_disc_vuln.nasl 8016 2017-12-07 06:31:25Z asteins $
+# $Id: gb_otrs_info_disc_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # OTRS Information Disclosure Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:otrs:otrs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112126");
-  script_version("$Revision: 8016 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-07 07:31:25 +0100 (Thu, 07 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-11-17 09:39:38 +0100 (Fri, 17 Nov 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-17 09:39:38 +0100 (Fri, 17 Nov 2017)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-15864");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("OTRS Information Disclosure Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("secpod_otrs_detect.nasl");
   script_mandatory_keys("OTRS/installed");
 
-  script_tag(name: "summary", value: "OTRS is prone to an information disclosure vulnerability.");
+  script_tag(name:"summary", value:"OTRS is prone to an information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "An attacker who is logged into OTRS as an agent can request special URLs
+  script_tag(name:"insight", value:"An attacker who is logged into OTRS as an agent can request special URLs
 from OTRS which can lead to the disclosure of any configuration information, including database credentials.");
 
-  script_tag(name: "affected", value: "OTRS 3.3.x through 3.3.18");
+  script_tag(name:"affected", value:"OTRS 3.3.x through 3.3.18");
 
-  script_tag(name: "solution", value: "Upgrade to OTRS 3.3.19 or later.");
+  script_tag(name:"solution", value:"Upgrade to OTRS 3.3.19 or later.");
 
-  script_xref(name: "URL", value: "https://www.otrs.com/security-advisory-2017-06-security-update-otrs-3-3/");
+  script_xref(name:"URL", value:"https://www.otrs.com/security-advisory-2017-06-security-update-otrs-3-3/");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openfire_server_multiple_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_openfire_server_multiple_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # OpenFire Server Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:igniterealtime:openfire";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806061");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-6972", "CVE-2015-6973", "CVE-2015-7707");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-19 15:36:42 +0530 (Mon, 19 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenFire Server Multiple Vulnerabilities");
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with OpenFire
   Server and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect nvt and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
 

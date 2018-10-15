@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cambium_nss_information_disclosure.nasl 8430 2018-01-16 04:26:26Z ckuersteiner $
+# $Id: gb_cambium_nss_information_disclosure.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Cambium Networks Services Server Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113060");
-  script_version("$Revision: 8430 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-16 05:26:26 +0100 (Tue, 16 Jan 2018) $");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-30 11:49:50 +0100 (Thu, 30 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -57,7 +57,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3526");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:cambium-networks:services-server";

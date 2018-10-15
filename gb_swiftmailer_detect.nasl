@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_swiftmailer_detect.nasl 11408 2018-09-15 11:35:21Z cfischer $
+# $Id: gb_swiftmailer_detect.nasl 11894 2018-10-13 07:46:55Z cfischer $
 #
 # SwiftMailer Detection
 #
@@ -27,19 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809772");
-  script_version("$Revision: 11408 $");
+  script_version("$Revision: 11894 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:35:21 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-13 09:46:55 +0200 (Sat, 13 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-29 17:59:59 +0530 (Thu, 29 Dec 2016)");
   script_name("SwiftMailer Detection");
-
-  script_tag(name:"summary", value:"Detection of SwiftMailer Library.
-
-  This script sends HTTP GET request and try to get the version from the
-  response.");
-
-  script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -47,15 +40,21 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_tag(name:"summary", value:"Detection of SwiftMailer Library.
+
+  This script sends HTTP GET request and try to get the version from the
+  response.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
-
-include("cpe.inc");
 include("http_func.inc");
+include("http_keepalive.inc");
+include("cpe.inc");
 include("host_details.inc");
 
 phpPort = get_http_port(default:80);
-
 if(!can_host_php(port:phpPort)) exit(0);
 
 foreach dir(make_list_unique("/", "/swiftmailer", "/SwiftMailer", cgi_dirs(port:phpPort)))
@@ -65,24 +64,22 @@ foreach dir(make_list_unique("/", "/swiftmailer", "/SwiftMailer", cgi_dirs(port:
 
   foreach path (make_list("", "/lib"))
   {
-    foreach file (make_list("/composer.json", "/README", "/CHANGES", ""))
+    foreach file (make_list("/composer.json", "/README", "/CHANGES", "/"))
     {
-      sndReq = http_get(item: dir + path + file, port:phpPort);
-      rcvRes = http_send_recv(port:phpPort, data:sndReq);
+      res = http_get_cache(item: dir + path + file, port:phpPort);
 
-      if((rcvRes =~ "^HTTP/.* 200 OK") &&
-         ('swiftmailer"' >< rcvRes && '"MIT"' >< rcvRes && 'swiftmailer.org"' >< rcvRes) ||
-         ("Swift Mailer, by Chris Corbyn" >< rcvRes && "swiftmailer.org" >< rcvRes)||
-         ("Swift_Mailer::batchSend" >< rcvRes && "Swiftmailer" >< rcvRes))
+      if((res =~ "^HTTP/1\.[01] 200") &&
+         ('swiftmailer"' >< res && '"MIT"' >< res && 'swiftmailer.org"' >< res) ||
+         ("Swift Mailer, by Chris Corbyn" >< res && "swiftmailer.org" >< res)||
+         ("Swift_Mailer::batchSend" >< res && "Swiftmailer" >< res))
       {
         foreach verfile (make_list("/VERSION", "/version"))
         {
-          sndReq1 = http_get(item: dir + path + verfile, port:phpPort);
-          rcvRes1 = http_send_recv(port:phpPort, data:sndReq1);
+          res1 = http_get_cache(item: dir + path + verfile, port:phpPort);
 
-          if(rcvRes1 =~ "^HTTP/.* 200 OK")
+          if(res1 =~ "^HTTP/1\.[01] 200")
           {
-            version = eregmatch(pattern:'Swift-([0-9.]+)([A-Za-z0-9]-)?', string: rcvRes1);
+            version = eregmatch(pattern:'Swift-([0-9.]+)([A-Za-z0-9]-)?', string: res1);
             if(version[1])
             {
               version = version[1];

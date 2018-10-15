@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201110_05.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201110_05.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-2730", "CVE-2009-3555");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-12 10:04:39 -0500 (Sun, 12 Feb 2012)");
   script_name("Gentoo Security Advisory GLSA 201110-05 (gnutls)");
   script_category(ACT_GATHER_INFO);
@@ -53,11 +53,11 @@ if(description)
 NOTE: This is a legacy GLSA. Updates for all affected architectures are
       available since August 6, 2010. It is likely that your system is
 already
-      no longer affected by this issue.
+      no longer affected by this issue.");
 
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201110-05
-http://bugs.gentoo.org/show_bug.cgi?id=281224
-http://bugs.gentoo.org/show_bug.cgi?id=292025");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201110-05");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=281224");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=292025");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201110-05.");
   script_tag(name:"qod_type", value:"package");

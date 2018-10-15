@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_dos_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_apache_tomcat_dos_vuln_win.nasl 11866 2018-10-12 10:12:29Z cfischer $
 #
 # Apache Tomcat Denial Of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803637");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11866 $");
   script_cve_id("CVE-2012-3544");
   script_bugtraq_id(59797);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:12:29 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-06 13:10:27 +0530 (Thu, 06 Jun 2013)");
   script_name("Apache Tomcat Denial Of Service Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -58,8 +58,7 @@ if(description)
   end of data chunks are processed by chunked transfer encoding.");
   script_tag(name:"summary", value:"The host is running Apache Tomcat Server and is prone to denial of
   service vulnerability.");
-  script_tag(name:"solution", value:"Apply patch or upgrade Apache Tomcat to 7.0.30 or 6.0.38 or later,
-  For updates refer to http://tomcat.apache.org
+  script_tag(name:"solution", value:"Apply patch or upgrade Apache Tomcat to 7.0.30 or 6.0.38 or later.
 
   *****
   NOTE: Ignore this warning, if above mentioned patch is manually applied.
@@ -68,6 +67,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://tomcat.apache.org");
   exit(0);
 }
 

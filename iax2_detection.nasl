@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iax2_detection.nasl 11018 2018-08-17 07:13:05Z cfischer $
+# $Id: iax2_detection.nasl 11885 2018-10-12 13:47:20Z cfischer $
 # Description: Inter-Asterisk eXchange Protocol Detection
 #
 # Authors:
@@ -25,8 +25,8 @@
 if (description) {
   script_oid("1.3.6.1.4.1.25623.1.0.20834");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:13:05 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
 
@@ -51,7 +51,7 @@ clients/servers to enable voice communication between them.");
 
   script_xref(name:"URL", value:"http://en.wikipedia.org/wiki/IAX");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

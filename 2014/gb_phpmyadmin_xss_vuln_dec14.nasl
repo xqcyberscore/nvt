@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_xss_vuln_dec14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_phpmyadmin_xss_vuln_dec14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # phpMyAdmin 'url.php' Cross Site Scripting Vulnerability - Dec14
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805306");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-9219");
   script_bugtraq_id(71435);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-22 13:17:25 +0530 (Mon, 22 Dec 2014)");
   script_name("phpMyAdmin 'url.php' Cross Site Scripting Vulnerability - Dec14");
 
@@ -52,8 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"phpMyAdmin 4.2.x versions before 4.2.13.1");
 
-  script_tag(name:"solution", value:"Upgrade to phpMyAdmin 4.2.13.1 or later.
-  For updates refer to http://www.phpmyadmin.net");
+  script_tag(name:"solution", value:"Upgrade to phpMyAdmin 4.2.13.1 or later.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");

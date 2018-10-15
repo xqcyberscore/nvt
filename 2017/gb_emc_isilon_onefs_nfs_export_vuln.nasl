@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_onefs_nfs_export_vuln.nasl 6302 2017-06-10 17:10:53Z cfischer $
+# $Id: gb_emc_isilon_onefs_nfs_export_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # EMC Isilon OneFS NFS Export Upgrade Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/o:emc:isilon_onefs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106805");
-  script_version("$Revision: 6302 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-10 19:10:53 +0200 (Sat, 10 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2017-05-16 16:14:35 +0700 (Tue, 16 May 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-16 16:14:35 +0700 (Tue, 16 May 2017)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-4979");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("EMC Isilon OneFS NFS Export Upgrade Vulnerability");
 
@@ -52,20 +52,20 @@ if (description)
 "gb_emc_isilon_onefs_ntp_detect.nasl");
   script_mandatory_keys("emc_isilon_onefs/detected");
 
-  script_tag(name: "summary", value: "EMC Isilon OneFS is affected by an NFS export vulnerability.");
+  script_tag(name:"summary", value:"EMC Isilon OneFS is affected by an NFS export vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "EMC Isilon OneFS is affected by the OneFS NFS Export Upgrade Vulnerability.
+  script_tag(name:"insight", value:"EMC Isilon OneFS is affected by the OneFS NFS Export Upgrade Vulnerability.
 Changing the default export permissions, after having created exports and then upgrading OneFS, can result in
 giving access to users that shouldn't have it, or in prohibiting access to those that should have access.");
 
-  script_tag(name: "affected", value: "EMC Isilon OneFS 7.2.0.x, 7.2.1.0 - 7.2.1.3, 8.0.0.0 - 8.0.0.2 and
+  script_tag(name:"affected", value:"EMC Isilon OneFS 7.2.0.x, 7.2.1.0 - 7.2.1.3, 8.0.0.0 - 8.0.0.2 and
 8.0.1.0.");
 
-  script_tag(name: "solution", value: "Update to 7.2.1.4, 8.0.0.3, 8.0.1.1 or later versions.");
+  script_tag(name:"solution", value:"Update to 7.2.1.4, 8.0.0.3, 8.0.1.1 or later versions.");
 
-  script_xref(name: "URL", value: "http://seclists.org/bugtraq/2017/May/att-28/ESA-2017-027.txt");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2017/May/att-28/ESA-2017-027.txt");
 
   exit(0);
 }

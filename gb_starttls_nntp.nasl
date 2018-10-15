@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_nntp.nasl 10792 2018-08-06 12:08:30Z cfischer $
+# $Id: gb_starttls_nntp.nasl 11898 2018-10-15 07:17:45Z cfischer $
 #
-# NNTP STARTTLS Detection
+# SSL/TLS: NNTP 'STARTTLS' Command Detection
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -27,22 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105015");
-  script_version("$Revision: 10792 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 14:08:30 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 11898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:17:45 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-25 14:18:02 +0100 (Fri, 25 Apr 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("NNTP STARTTLS Detection");
+  script_name("SSL/TLS: NNTP 'STARTTLS' Command Detection");
   script_category(ACT_GATHER_INFO);
-  script_family("Service detection");
+  script_family("SSL and TLS");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("nntpserver_detect.nasl");
   script_require_ports("Services/nntp", 119);
   script_mandatory_keys("nntp/detected");
 
-  script_tag(name:"summary", value:"The remote NNTP Server supports STARTTLS.");
+  script_tag(name:"summary", value:"Checks if the remote NNTP Server supports SSL/TLS with the 'STARTTLS' command.");
 
   script_tag(name:"qod_type", value:"remote_banner");
+
+  script_xref(name:"URL", value:"https://tools.ietf.org/html/rfc4642");
 
   exit(0);
 }
@@ -56,14 +58,13 @@ if( ! soc ) exit( 0 );
 
 send( socket:soc, data:'STARTTLS\r\n' );
 recv = recv( socket:soc, length:512 );
-
 close( soc );
+if( ! recv ) exit( 0 );
 
 if( "382 Continue" >< recv ) {
   set_kb_item( name:"nntp/" + port + "/starttls", value:TRUE );
   set_kb_item( name:"starttls_typ/" + port, value:"nntp" );
-  log_message( port:port );
-  exit( 0 );
+  log_message( port:port, data:"The remote NNTP Server supports SSL/TLS with the 'STARTTLS' command." );
 }
 
 exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_sambacry_remote_code_exec_vuln.nasl 10398 2018-07-04 12:11:48Z cfischer $
+# $Id: gb_samba_sambacry_remote_code_exec_vuln.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Samba Remote Code Execution Vulnerability (SambaCry)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811055");
-  script_version("$Revision: 10398 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2017-7494");
   script_bugtraq_id(98636);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-25 10:55:47 +0530 (Thu, 25 May 2017)");
   script_name("Samba Remote Code Execution Vulnerability (SambaCry)");
 
@@ -47,9 +47,7 @@ if(description)
   which allows a malicious client to upload a shared library to a writable share.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue will allow
-  remote attackers to execute arbitrary code as root on an affected system.
-
-  Impact Level: System/Application");
+  remote attackers to execute arbitrary code as root on an affected system.");
 
   script_tag(name:"affected", value:"All Samba Server versions 3.5.0 onwards,
 
@@ -59,8 +57,7 @@ if(description)
 
   Samba Server versions 4.6.x before 4.6.4");
 
-  script_tag(name:"solution", value:"Upgrade to Samba 4.6.4 or 4.5.10 or 4.4.14 or later,
-  For updates refer to https://www.samba.org ");
+  script_tag(name:"solution", value:"Upgrade to Samba 4.6.4 or 4.5.10 or 4.4.14 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

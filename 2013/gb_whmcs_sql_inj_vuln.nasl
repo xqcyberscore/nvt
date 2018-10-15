@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_whmcs_sql_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_whmcs_sql_inj_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # WHMCS SQL Injection Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803197");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-14 11:27:14 +0530 (Tue, 14 May 2013)");
   script_name("WHMCS SQL Injection Vulnerability");
 
@@ -45,8 +45,7 @@ if(description)
 
   script_tag(name:"insight", value:"Flaw is due to improper sanitation of user supplied input via the 'id'
   parameter to '/whmcs/dl.php' script.");
-  script_tag(name:"solution", value:"Upgrade to WHMCS 5.2 or later,
-  For updates refer to http://www.whmcs.com");
+  script_tag(name:"solution", value:"Upgrade to WHMCS 5.2 or later.");
   script_tag(name:"summary", value:"This host is installed with WHMCS and is prone to sql injection
   vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to disclose credentials

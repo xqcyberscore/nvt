@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zenworks_mobile_management_xss_06_15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_novell_zenworks_mobile_management_xss_06_15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Novell ZENworks Mobile Management Cross Site Scripting
 #
@@ -32,7 +32,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105297");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Novell ZENworks Mobile Management Cross Site Scripting");
 
@@ -55,7 +55,7 @@ General solution options are to upgrade to a newer release, disable respective f
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-15 13:34:59 +0200 (Mon, 15 Jun 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -64,7 +64,7 @@ General solution options are to upgrade to a newer release, disable respective f
   script_require_ports("Services/www", 80);
   script_mandatory_keys("zenworks_mobile_management/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

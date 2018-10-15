@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_count_per_day_plugin_mult_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_wordpress_count_per_day_plugin_mult_xss_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # WordPress Count per Day Plugin 'userperspan.php' Multiple XSS Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803010");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-3434");
   script_bugtraq_id(54258);
   script_tag(name:"cvss_base", value:"4.3");
@@ -60,7 +60,7 @@ if(description)
   validated, which allows attackers to execute arbitrary HTML and script code
   in a user's browser session in the context of an affected site.");
 
-  script_tag(name:"solution", value:"Upgrade to WordPress Count per Day Plugin version 3.2 or later");
+  script_tag(name:"solution", value:"Upgrade to WordPress Count per Day Plugin version 3.2 or later.");
 
   script_tag(name:"summary", value:"This host is running WordPress with Count per Day plugin and is
   prone to multiple cross site scripting vulnerabilities.");

@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805690");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-2301");
   script_bugtraq_id(73037);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 13:10:57 +0530 (Thu, 23 Jul 2015)");
   script_name("PHP Use-After-Free Remote Code Execution Vulnerability - 01 - Jul15 (Windows)");
 
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"PHP versions before 5.5.22 and 5.6.x before
   5.6.6");
 
-  script_tag(name:"solution", value:"Upgrade to PHP 5.5.22 or 5.6.6 or later.
-  For updates refer to http://www.php.net");
+  script_tag(name:"solution", value:"Upgrade to PHP 5.5.22 or 5.6.6 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -67,6 +66,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_windows");
+  script_xref(name:"URL", value:"http://www.php.net");
   exit(0);
 }
 

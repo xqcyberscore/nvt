@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx140984.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: gb_xenserver_ctx140984.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Citrix XenServer Multiple Security Updates (CTX200892)
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2014-8106", "CVE-2014-7815", "CVE-2014-3615");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11334 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Citrix XenServer Multiple Security Updates (CTX200892)");
 
   script_xref(name:"URL", value:"http://support.citrix.com/article/CTX200892");
 
   script_tag(name:"vuldetect", value:"Check the installed hotfixes");
-  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory.");
 
   script_tag(name:"summary", value:"A number of security vulnerabilities have
 been identified in Citrix XenServer. These vulnerabilities could, if exploited,
@@ -66,7 +66,7 @@ XenServer 6.0");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-17 14:24:28 +0200 (Fri, 17 Apr 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Citrix Xenserver Local Security Checks");
@@ -74,7 +74,7 @@ XenServer 6.0");
   script_dependencies("gb_xenserver_version.nasl");
   script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

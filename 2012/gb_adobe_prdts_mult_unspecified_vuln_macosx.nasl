@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_unspecified_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_adobe_prdts_mult_unspecified_vuln_macosx.nasl 11870 2018-10-12 11:12:45Z cfischer $
 #
 # Adobe Reader Multiple Unspecified Vulnerabilities - Mac OS X
 #
@@ -29,15 +29,14 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802955");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11870 $");
   script_cve_id("CVE-2012-4363");
   script_bugtraq_id(55055);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:12:45 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-24 16:05:37 +0530 (Fri, 24 Aug 2012)");
   script_name("Adobe Reader Multiple Unspecified Vulnerabilities - Mac OS X");
-
 
   script_tag(name:"summary", value:"This host is installed with Adobe Reader and is prone to multiple unspecified
 vulnerabilities.");
@@ -46,7 +45,7 @@ vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code in the
 context of the affected application.");
   script_tag(name:"affected", value:"Adobe Reader versions 9.x to 9.5.2 and 10.x to 10.1.4 on Mac OS X");
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader 9.5.3, 10.1.5 or later, ");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader 9.5.3, 10.1.5 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -60,21 +59,14 @@ context of the affected application.");
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Function to check the versions of abode reader
-function version_check(ver)
-{
+if(readerVer = get_app_version(cpe:CPE)){
   if(version_is_less(version:ver, test_version:"9.5.3") ||
      version_in_range(version:ver, test_version:"10.0", test_version2:"10.1.4"))
   {
     security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
-}
-
-if(readerVer = get_app_version(cpe:CPE)){
-  version_check(ver:readerVer);
 }

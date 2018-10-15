@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-004.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ms12-004.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Media Could Allow Remote Code Execution Vulnerabilities (2636391)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902807");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11876 $");
   script_bugtraq_id(51292, 51295);
   script_cve_id("CVE-2012-0003", "CVE-2012-0004");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-11 10:10:10 +0530 (Wed, 11 Jan 2012)");
   script_name("Microsoft Windows Media Could Allow Remote Code Execution Vulnerabilities (2636391)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47485");
@@ -70,8 +70,8 @@ if(description)
   - An unspecified error exists in the Line21 DirectShow filter (Quartz.dll
     and Qdvd.dll) when parsing specially crafted media files.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-004.");
@@ -112,8 +112,8 @@ if(!sysPath){
   exit(0);
 }
 
-mciseqVer = fetch_file_version(sysPath, file_name:"system32\Mciseq.dll");
-quartzVer = fetch_file_version(sysPath, file_name:"system32\Quartz.dll");
+mciseqVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Mciseq.dll");
+quartzVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Quartz.dll");
 
 if(hotfix_check_sp(xp:4) > 0)
 {
@@ -153,7 +153,7 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 
   if(mediaTVPackVer && ("5.1" >< mediaTVPackVer))
   {
-    mstvVer = fetch_file_version(sysPath, file_name:"ehome\Mstvcapn.dll");
+    mstvVer = fetch_file_version(sysPath:sysPath, file_name:"ehome\Mstvcapn.dll");
     if(mstvVer && version_is_less(version:mstvVer, test_version:"6.1.1000.18311"))
     {
       security_message( port: 0, data: "The target host was found to be vulnerable" );

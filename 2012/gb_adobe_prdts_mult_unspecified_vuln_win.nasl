@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_unspecified_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_adobe_prdts_mult_unspecified_vuln_win.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Adobe Reader Multiple Unspecified Vulnerabilities - Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802954");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2012-4363");
   script_bugtraq_id(55055);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-24 16:05:37 +0530 (Fri, 24 Aug 2012)");
   script_name("Adobe Reader Multiple Unspecified Vulnerabilities - Windows");
 
@@ -45,7 +45,7 @@ vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code in the
 context of the affected application.");
   script_tag(name:"affected", value:"Adobe Reader versions 9.x to 9.5.2 and 10.x to 10.1.4 on Windows");
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader 9.5.3, 10.1.5 or later, ");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader 9.5.3, 10.1.5 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

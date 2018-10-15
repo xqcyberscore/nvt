@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_select_dos_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_opera_select_dos_vuln_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Opera Web Browser Select Object Denial Of Service Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802754");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2009-2540", "CVE-2009-1692");
   script_bugtraq_id(35446);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-19 10:28:43 +0530 (Thu, 19 Apr 2012)");
   script_name("Opera Web Browser Select Object Denial Of Service Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/9160");
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an improper boundary check while passing data into
   the select() method and can be exploited by passing a large integer value
   resulting in memory exhaustion.");
-  script_tag(name:"solution", value:"Upgrade to opera version 10 beta 1 or later,");
+  script_tag(name:"solution", value:"Upgrade to opera version 10 beta 1 or later.");
   script_tag(name:"summary", value:"The host is installed with Opera Web Browser and is prone to select object
   denial of service vulnerability.");
   script_tag(name:"qod_type", value:"package");

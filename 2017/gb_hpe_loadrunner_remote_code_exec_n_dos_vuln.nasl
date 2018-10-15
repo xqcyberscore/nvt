@@ -1,9 +1,9 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_loadrunner_remote_code_exec_n_dos_vuln.nasl 6043 2017-04-28 08:00:52Z teissa $
+# $Id: gb_hpe_loadrunner_remote_code_exec_n_dos_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # HPE LoadRunner Multiple Remote Code Execution and Denial of Service Vulnerabilities
-# 
+#
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
 #
@@ -29,43 +29,43 @@ CPE = "cpe:/a:hp:loadrunner";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810935");
-  script_version("$Revision: 6043 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2016-4359", "CVE-2016-4360", "CVE-2016-4361");
   script_bugtraq_id(90975);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 10:00:52 +0200 (Fri, 28 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-20 16:22:23 +0530 (Thu, 20 Apr 2017)");
   script_name("HPE LoadRunner Multiple Remote Code Execution and Denial of Service Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is installed with HPE LoadRunner
-  and is prone to multiple remote code execution and denial of service 
+  and is prone to multiple remote code execution and denial of service
   vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
-  - An error within the import_csv functionality. The issue lies in the failure 
-    to restrict file paths sent to an unlink call which allows for the deletion 
+
+  - An error within the import_csv functionality. The issue lies in the failure
+    to restrict file paths sent to an unlink call which allows for the deletion
     of arbitrary files as SYSTEM.
-  - An error within mchan.dll when constructing a shared memory file name. 
-    The issue lies in the failure to validate the size of a user-supplied string 
+
+  - An error within mchan.dll when constructing a shared memory file name.
+    The issue lies in the failure to validate the size of a user-supplied string
     prior to copying it to a stack-based buffer.
+
   - A NULL pointer dereference error.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow remote 
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to cause a denial-of-service condition and execute arbitrary code
-  on affected system.
+  on affected system.");
 
-  Impact Level: System/Application.");
-
-  script_tag(name:"affected", value:"HPE LoadRunner versions 11.52 through 
-  patch 3, 12.00 through patch 1, 12.01 through patch 3, 12.02 through 
+  script_tag(name:"affected", value:"HPE LoadRunner versions 11.52 through
+  patch 3, 12.00 through patch 1, 12.01 through patch 3, 12.02 through
   patch 2, and 12.50 through patch 3.");
 
   script_tag(name:"solution", value:"Apply the mitigation actions provided
-  in the link mentioned in the reference. For updates refer to https://www.hpe.com");
+  in the link mentioned in the reference.");
 
   script_tag(name:"solution_type", value:"Mitigation");
 
@@ -77,21 +77,17 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_dependencies("gb_hpe_loadrunner_detect.nasl");
   script_mandatory_keys("HPE/LoadRunner/Win/Ver");
+  script_xref(name:"URL", value:"https://www.hpe.com");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-hpVer= "";
-
-## Get version
 if(!hpVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check For Version 11.52, 12.00, 12.01, 12.02, 12.50
 ## Version is coming as 11.52.xx, 12.00.xx etc
 ## no version change after applying patch
 ## qod is reduced

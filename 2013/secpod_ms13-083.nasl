@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-083.nasl 11576 2018-09-24 14:59:42Z cfischer $
+# $Id: secpod_ms13-083.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Comctl32 Integer Overflow Vulnerability (2864058)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903225");
-  script_version("$Revision: 11576 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-3195");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 08:59:40 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Comctl32 Integer Overflow Vulnerability (2864058)");
 
@@ -40,8 +40,7 @@ if(description)
 Bulletin MS13-083.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-http://technet.microsoft.com/en-us/security/bulletin/ms13-083");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"insight", value:"A flaw exist in Comctl32.dll file which is caused by an integer overflow in
 the common control library.");
   script_tag(name:"affected", value:"Microsoft Windows 8
@@ -68,6 +67,7 @@ system with elevated privileges.");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-083");
   exit(0);
 }
 
@@ -88,7 +88,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"system32\Comctl32.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Comctl32.dll");
 if(!sysVer){
   exit(0);
 }

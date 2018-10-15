@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nx_os_65074.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_nx_os_65074.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Cisco NX-OS Label Distribution Protocol Message Remote Denial of Service Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2014-0677");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Cisco NX-OS Label Distribution Protocol Message Remote Denial of Service Vulnerability");
 
@@ -40,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65074");
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityNotice/CVE-2014-0677");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-23 12:42:53 +0100 (Thu, 23 Jan 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -58,7 +58,7 @@ denial-of-service conditions.");
   script_tag(name:"summary", value:"Cisco NX-OS is prone to a remote denial-of-service vulnerability.");
   script_tag(name:"affected", value:"Cisco Nexus 7000 Series Switches running NX-OS 6.2(2)S42");
 
- exit(0);
+  exit(0);
 }
 
 if( ! device = get_kb_item( "cisco_nx_os/device" ) ) exit( 0 );

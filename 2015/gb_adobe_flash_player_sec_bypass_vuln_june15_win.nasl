@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_sec_bypass_vuln_june15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_adobe_flash_player_sec_bypass_vuln_june15_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Adobe Flash Player Security Bypass Vulnerability - June15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805589");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-3097");
   script_bugtraq_id(75090);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-15 13:00:22 +0530 (Mon, 15 Jun 2015)");
   script_name("Adobe Flash Player Security Bypass Vulnerability - June15 (Windows)");
 
@@ -54,8 +54,7 @@ if(description)
   13.0.0.302 and 14.x through 18.x before 18.0.0.203 on Windows-7 64-bit platform.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
-  13.0.0.302 or 18.0.0.203 or later. For updates refer to
-  http://get.adobe.com/flashplayer");
+  13.0.0.302 or 18.0.0.203 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

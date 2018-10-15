@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_doc_man_65775.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: gb_open_doc_man_65775.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # OpenDocMan 'ajax_udf.php' Multiple SQL Injection Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-1945");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11449 $");
+  script_version("$Revision: 11867 $");
 
   script_name("OpenDocMan 'ajax_udf.php' Multiple SQL Injection Vulnerabilities");
 
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65775");
   script_xref(name:"URL", value:"http://opendocman.sourceforge.net/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-11 15:18:54 +0100 (Tue, 11 Mar 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -61,9 +61,9 @@ for more information.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"OpenDocMan is prone to multiple SQL-injection vulnerabilities because
 it fails to sufficiently sanitize user-supplied data.");
-  script_tag(name:"affected", value:"OpenDocMan 1.2.7.1 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"OpenDocMan 1.2.7.1 is vulnerable. Other versions may also be affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

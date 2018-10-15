@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20170320-aniipv6.nasl 5806 2017-03-31 07:21:48Z teissa $
+# $Id: gb_cisco_ios_cisco-sa-20170320-aniipv6.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Cisco IOS Software IPv6 Denial of Service Vulnerability
 #
@@ -29,49 +29,49 @@ CPE = "cpe:/o:cisco:ios";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106673");
- script_cve_id("CVE-2017-3850");
- script_tag(name:"cvss_base", value:"7.1");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 5806 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106673");
+  script_cve_id("CVE-2017-3850");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11874 $");
 
- script_name("Cisco IOS Software IPv6 Denial of Service Vulnerability");
+  script_name("Cisco IOS Software IPv6 Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170320-aniipv6"); 
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170320-aniipv6");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the Autonomic Networking Infrastructure (ANI) feature of
+  script_tag(name:"summary", value:"A vulnerability in the Autonomic Networking Infrastructure (ANI) feature of
 Cisco IOS Software could allow an unauthenticated, remote attacker to cause a denial of service (DoS)
 condition.");
 
- script_tag(name: "insight", value: "The vulnerability is due to incomplete input validation on certain crafted
+  script_tag(name:"insight", value:"The vulnerability is due to incomplete input validation on certain crafted
 packets. An attacker could exploit this vulnerability by sending a crafted IPv6 packet to a device that is
 running a Cisco IOS Software release that supports the ANI feature.
 
 A device must meet two conditions to be affected by this vulnerability:
 
-- The device must be running a version of Cisco IOS Software that supports ANI (regardless of whether ANI is
+  - The device must be running a version of Cisco IOS Software that supports ANI (regardless of whether ANI is
 configured)
 
-- The device must have a reachable IPv6 interface.");
+  - The device must have a reachable IPv6 interface.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause the affected device to reload.");
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause the affected device to reload.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-31 09:21:48 +0200 (Fri, 31 Mar 2017) $");
- script_tag(name: "creation_date", value: "2017-03-21 09:54:47 +0700 (Tue, 21 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
- script_mandatory_keys("cisco_ios/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-21 09:54:47 +0700 (Tue, 21 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_ssh_cisco_ios_get_version.nasl");
+  script_mandatory_keys("cisco_ios/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");
@@ -79,7 +79,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
 		'15.2(3)E',
 		'15.2(3)E1',
 		'15.2(3)E2',

@@ -29,22 +29,20 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803968");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-6802", "CVE-2013-6632");
   script_bugtraq_id(63729, 63727);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-11-25 14:00:39 +0530 (Mon, 25 Nov 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Nov2013 (Linux)");
 
 
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
 vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version of Google Chrome and check the version
-is vulnerable or not.");
-  script_tag(name:"solution", value:"Upgrade to Google Chrome version 31.0.1650.57 or later.
-For updates refer to http://www.google.com/chrome");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version 31.0.1650.57 or later.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - Unspecified security-bypass vulnerability in sandbox restrictions
@@ -63,6 +61,7 @@ possibly have other impact via unknown vectors.");
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

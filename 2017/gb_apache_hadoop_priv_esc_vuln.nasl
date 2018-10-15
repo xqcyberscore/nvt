@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_priv_esc_vuln.nasl 6330 2017-06-14 05:02:45Z ckuersteiner $
+# $Id: gb_apache_hadoop_priv_esc_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Apache Hadoop Privilege Escalation Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:apache:hadoop";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106870");
-  script_version("$Revision: 6330 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-14 07:02:45 +0200 (Wed, 14 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-14 10:24:52 +0700 (Wed, 14 Jun 2017)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-14 10:24:52 +0700 (Wed, 14 Jun 2017)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Apache Hadoop Privilege Escalation Vulnerability");
 
@@ -49,20 +49,20 @@ if (description)
   script_dependencies("gb_apache_hadoop_detect.nasl");
   script_mandatory_keys("Apache/Hadoop/Installed");
 
-  script_tag(name: "summary", value: "Apache Hadoop is prone to a privilege escalation vulnerability.");
+  script_tag(name:"summary", value:"Apache Hadoop is prone to a privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The LinuxContainerExecutor runs docker commands as root with insufficient
+  script_tag(name:"insight", value:"The LinuxContainerExecutor runs docker commands as root with insufficient
 input validation. When the docker feature is enabled, authenticated users can run commands as root.");
 
-  script_tag(name: "affected", value: "Apache Hadoop version 2.8.0, 3.0.0-alpha1, 3.0.0-alpha2");
+  script_tag(name:"affected", value:"Apache Hadoop version 2.8.0, 3.0.0-alpha1, 3.0.0-alpha2");
 
-  script_tag(name: "solution", value: "Users of Apache Hadoop 2.8.0 should leave Docker functionality disabled
+  script_tag(name:"solution", value:"Users of Apache Hadoop 2.8.0 should leave Docker functionality disabled
 until Hadoop 2.8.1 is released. Users of Apache Hadoop 3.0.0-alpha1 and Hadoop 3.0.0-alpha2 should upgrade to
 Hadoop 3.0.0-alpha3 or later.");
 
-  script_xref(name: "URL", value: "http://seclists.org/oss-sec/2017/q2/394");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2017/q2/394");
 
   exit(0);
 }

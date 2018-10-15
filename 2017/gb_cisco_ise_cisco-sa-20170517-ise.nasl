@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_cisco-sa-20170517-ise.nasl 6152 2017-05-18 05:28:16Z ckuerste $
+# $Id: gb_cisco_ise_cisco-sa-20170517-ise.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Cisco Identity Services Engine GUI Denial of Service Vulnerability
 #
@@ -29,44 +29,44 @@ CPE = "cpe:/a:cisco:identity_services_engine";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106811");
- script_cve_id("CVE-2017-6653");
- script_tag(name: "cvss_base", value: "5.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 6152 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106811");
+  script_cve_id("CVE-2017-6653");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11863 $");
 
- script_name("Cisco Identity Services Engine GUI Denial of Service Vulnerability");
+  script_name("Cisco Identity Services Engine GUI Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170517-ise");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170517-ise");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the TCP throttling process for the GUI of the Cisco
+  script_tag(name:"summary", value:"A vulnerability in the TCP throttling process for the GUI of the Cisco
 Identity Services Engine (ISE) could allow an unauthenticated, remote attacker to cause a denial of service (DoS)
 condition on an affected device where the ISE GUI may fail to respond to new or established connection
 requests.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient TCP rate limiting protection on the
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient TCP rate limiting protection on the
 GUI. An attacker could exploit this vulnerability by sending the affected device a high rate of TCP connections
 to the GUI.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to cause the GUI to stop responding while
+  script_tag(name:"impact", value:"An exploit could allow the attacker to cause the GUI to stop responding while
 the high rate of connections is in progress.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-05-18 07:28:16 +0200 (Thu, 18 May 2017) $");
- script_tag(name: "creation_date", value: "2017-05-18 09:31:21 +0700 (Thu, 18 May 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ise_version.nasl");
- script_mandatory_keys("cisco_ise/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-18 09:31:21 +0700 (Thu, 18 May 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ise_version.nasl");
+  script_mandatory_keys("cisco_ise/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

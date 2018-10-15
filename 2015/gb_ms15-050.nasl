@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-050.nasl 11612 2018-09-26 05:47:26Z cfischer $
+# $Id: gb_ms15-050.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows SCM Privilege_Escalation Vulnerability (3055642)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805615");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-1702");
   script_bugtraq_id(74492);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-13 11:46:24 +0530 (Wed, 13 May 2015)");
   script_name("Microsoft Windows SCM Privilege_Escalation Vulnerability (3055642)");
 
@@ -92,7 +92,7 @@ if(!sysPath ){
   exit(0);
 }
 
-exeVer = fetch_file_version(sysPath, file_name:"system32\Services.exe");
+exeVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Services.exe");
 if(!exeVer){
   exit(0);
 }

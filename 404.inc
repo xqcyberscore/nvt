@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: 404.inc 10775 2018-08-04 21:43:07Z cfischer $
+# $Id: 404.inc 11891 2018-10-12 19:46:20Z cfischer $
 #
 # Include to provide common error messages interpreted as a 404
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10775 $
+# $Revision: 11891 $
 #
 ###############################################################################
 
@@ -77,7 +77,8 @@ errmessages_404 = make_list(
 # Discourse, should throw an 404 Not Found but there might be other deployments where this doesn't apply.
 # nb: the "." between doesn and t is expected as we can't use UTF-8 chars in NVTs yet...
 "Oops! That page doesn.t exist or is private\.",
-"Requested resource does not exist" ); # SAP NetWeaver
+"Requested resource does not exist", # SAP NetWeaver
+"<TITLE>Invalid URL</TITLE>" ); # AkamaiGHost might throw a 400 instead of 404 on non-existing files, see e.g. https://seclists.org/pen-test/2003/Oct/2
 
 global_var errmessges_404;
 

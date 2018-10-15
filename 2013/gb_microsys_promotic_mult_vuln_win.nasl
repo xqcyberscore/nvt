@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsys_promotic_mult_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_microsys_promotic_mult_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Microsys Promotic Multiple Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803660");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2011-4520", "CVE-2011-4519", "CVE-2011-4518");
   script_bugtraq_id(50133);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-17 17:30:15 +0530 (Mon, 17 Jun 2013)");
   script_name("Microsys Promotic Multiple Vulnerabilities (Windows)");
   script_category(ACT_ATTACK);
@@ -58,14 +58,14 @@ if(description)
 
   - Error in 'vCfg' and 'sID' parameters in 'SaveCfg()'and 'AddTrend()' methods
     within the PmTrendViewer ActiveX control.");
-  script_tag(name:"solution", value:"Upgrade to Promotic version 8.1.5 or later,
-  For updates refer to http://www.promotic.eu/en/index.htm");
+  script_tag(name:"solution", value:"Upgrade to Promotic version 8.1.5 or later.");
   script_tag(name:"summary", value:"This host is installed with Microsys Promotic and is prone to
   multiple vulnerabilities.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.promotic.eu/en/index.htm");
   exit(0);
 }
 

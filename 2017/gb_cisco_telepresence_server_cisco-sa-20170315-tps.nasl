@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telepresence_server_cisco-sa-20170315-tps.nasl 5587 2017-03-16 09:17:37Z ckuerste $
+# $Id: gb_cisco_telepresence_server_cisco-sa-20170315-tps.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
-# Cisco TelePresence Server API Privilege Vulnerability 
+# Cisco TelePresence Server API Privilege Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -29,42 +29,42 @@ CPE = "cpe:/a:cisco:telepresence_server_software";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106664");
- script_cve_id("CVE-2017-3815");
- script_tag(name: "cvss_base", value: "5.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 5587 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106664");
+  script_cve_id("CVE-2017-3815");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11874 $");
 
- script_name("Cisco TelePresence Server API Privilege Vulnerability");
+  script_name("Cisco TelePresence Server API Privilege Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170315-tps");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170315-tps");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value: "A vulnerability in Cisco TelePresence Server Software could allow an
+  script_tag(name:"summary", value:"A vulnerability in Cisco TelePresence Server Software could allow an
 unauthenticated, remote attacker to emulate Cisco TelePresence Server endpoints.");
 
- script_tag(name: "insight", value: "The vulnerability is due to how session identification information is
+  script_tag(name:"insight", value:"The vulnerability is due to how session identification information is
 maintained by a specific API of the affected software. An attacker could exploit this vulnerability by snooping
 temporary, unencrypted keys on an affected system.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to emulate a Cisco TelePresence
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to emulate a Cisco TelePresence
 Server endpoint.");
 
- script_tag(name: "qod_type", value: "remote_banner");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-16 10:17:37 +0100 (Thu, 16 Mar 2017) $");
- script_tag(name: "creation_date", value: "2017-03-16 14:46:37 +0700 (Thu, 16 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_telepresence_server_detect.nasl");
- script_mandatory_keys("cisco_telepresence_server/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-16 14:46:37 +0700 (Thu, 16 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_telepresence_server_detect.nasl");
+  script_mandatory_keys("cisco_telepresence_server/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

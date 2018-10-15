@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_code_exec_n_dos_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_wireshark_code_exec_n_dos_vuln_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Wireshark Code Execution and Denial of Service Vulnerabilities (Mac OS X)
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802626");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_bugtraq_id(49528, 49377);
   script_cve_id("CVE-2011-3360", "CVE-2011-3266");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-02 12:12:12 +0530 (Wed, 02 May 2012)");
   script_name("Wireshark Code Execution and Denial of Service Vulnerabilities (Mac OS X)");
   script_xref(name:"URL", value:"http://www.wireshark.org/security/wnpa-sec-2011-15.html");
@@ -56,7 +56,7 @@ if(description)
   - An error in 'IKEv1' protocol dissector and 'proto_tree_add_item()', when
     add more than 1000000 items to a proto_tree, that will cause a denial of
     service.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.9, 1.6.2 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.9, 1.6.2 or later.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to code
   execution and denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"package");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-023.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-023.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2961037)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804450");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-1756", "CVE-2014-1808");
   script_bugtraq_id(67274, 67279);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-14 12:01:21 +0530 (Wed, 14 May 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2961037)");
@@ -41,9 +41,8 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security update according to
 Microsoft Bulletin MS14-023.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms14-023");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
   script_tag(name:"insight", value:"- The flaw is due to the Grammar Checker feature for Chinese (Simplified)
    loading libraries in an insecure manner.
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nx_os_67426.nasl 11217 2018-09-04 11:30:56Z jschulte $
+# $Id: gb_nx_os_67426.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Cisco NX-OS Software Arbitrary File Read Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2013-6975");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:N/A:N");
-  script_version("$Revision: 11217 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Cisco NX-OS Software Arbitrary File Read Vulnerability");
 
@@ -40,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/67426");
   script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCul23419");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:30:56 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-08-21 11:10:24 +0100 (Thu, 21 Aug 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -73,7 +73,7 @@ Cisco Connected Grid Router 1000 Series
 Cisco Unified Computing System Fabric Interconnect 6200
 Cisco Unified Computing System Fabric Interconnect 6100");
 
- exit(0);
+  exit(0);
 }
 
 if( ! device = get_kb_item( "cisco_nx_os/device" ) ) exit( 0 );

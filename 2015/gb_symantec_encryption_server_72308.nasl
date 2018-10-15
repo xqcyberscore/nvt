@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_encryption_server_72308.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_symantec_encryption_server_72308.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Symantec Encryption Management Server Local Command Injection Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-7288");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Symantec Encryption Management Server  Local Command Injection Vulnerability");
 
@@ -51,7 +51,7 @@ Symantec Encryption Management Server is susceptible to an email header injectio
 The injection could potentially allow a malicious individual to manipulate specific areas of the confirmation email, for example, modifying the contents of some of the email
 fields such as the subject field.");
 
-  script_tag(name:"solution", value:"Update to 3.3.2 MP7 or higher");
+  script_tag(name:"solution", value:"Update to 3.3.2 MP7 or later.");
 
   script_tag(name:"summary", value:"Symantec Encryption Management Server is prone to a local command-injection vulnerability.");
   script_tag(name:"affected", value:"Symantec Encryption Management Server / Symantec PGP Universal Server 3.3.2 MP6 and prior");
@@ -59,7 +59,7 @@ fields such as the subject field.");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-18 15:29:34 +0200 (Thu, 18 Jun 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -67,7 +67,7 @@ fields such as the subject field.");
   script_dependencies("gb_symantec_encryption_server_version.nasl");
   script_mandatory_keys("symantec_encryption_server/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

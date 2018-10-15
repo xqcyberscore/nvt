@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ckeditor_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: secpod_ckeditor_mult_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # CKEditor Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:ckeditor:ckeditor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903302");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-26 18:00:48 +0530 (Tue, 26 Feb 2013)");
   script_name("CKEditor Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -52,14 +52,14 @@ if(description)
   script_tag(name:"affected", value:"CKEditor Version 4.0.1");
   script_tag(name:"insight", value:"Input passed via POST parameters to /ckeditor/samples/sample_posteddata.php
   is not properly sanitized before being returned to the user.");
-  script_tag(name:"solution", value:"Update to CKEditor Version 4.0.1.1 or later
-  For updates refer to http://ckeditor.com/download");
+  script_tag(name:"solution", value:"Update to CKEditor Version 4.0.1.1 or later.");
   script_tag(name:"summary", value:"This host is installed with CKEditor and is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://ckeditor.com/download");
   exit(0);
 }
 

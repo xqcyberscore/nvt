@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:seamonkey";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804571");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1518");
   script_bugtraq_id(67133);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 16:31:32 +0530 (Tue, 06 May 2014)");
   script_name("SeaMonkey Denial of Service Vulnerability-01 May14 (Windows)");
 
@@ -47,8 +47,7 @@ vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code
 or cause a denial of service.");
   script_tag(name:"affected", value:"SeaMonkey version 2.25 on Windows");
-  script_tag(name:"solution", value:"Upgrade to SeaMonkey version 2.26 or later,
-For updates refer to http://www.mozilla.com/en-US/seamonkey");
+  script_tag(name:"solution", value:"Upgrade to SeaMonkey version 2.26 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -59,6 +58,7 @@ For updates refer to http://www.mozilla.com/en-US/seamonkey");
   script_family("General");
   script_dependencies("gb_seamonkey_detect_win.nasl");
   script_mandatory_keys("Seamonkey/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/seamonkey");
   exit(0);
 }
 

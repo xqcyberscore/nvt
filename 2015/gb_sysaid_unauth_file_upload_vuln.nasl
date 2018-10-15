@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_unauth_file_upload_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_sysaid_unauth_file_upload_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # SysAid Unauthenticated File Upload Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:sysaid:sysaid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106006");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 11872 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -67,7 +67,7 @@ lead to remote code execution.");
 
   script_tag(name:"affected", value:"SysAid Help Desktop version 15.1.x and before.");
 
-  script_tag(name:"solution", value:"Upgrade to version 15.2 or later");
+  script_tag(name:"solution", value:"Upgrade to version 15.2 or later.");
 
   script_xref(name:"URL", value:"https://www.security-database.com/detail.php?alert=CVE-2015-2995");
 

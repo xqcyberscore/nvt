@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_NTWebServer_56871.nasl 11030 2018-08-17 09:42:15Z mmartin $
+# $Id: gb_advantech_NTWebServer_56871.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Advantech Studio 'NTWebServer.exe' Directory Traversal Vulnerability
 #
@@ -31,14 +31,14 @@ if (description)
   script_bugtraq_id(56871);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_version("$Revision: 11030 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1627");
   script_name("Advantech Studio 'NTWebServer.exe' Directory Traversal Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56871");
   script_xref(name:"URL", value:"http://www.advantech.com/products/Advantech-Studio/mod_3D1B45B0-B0AF-405C-A9CC-A27B35774634.aspx");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:42:15 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-07 11:53:56 +0100 (Mon, 07 Jan 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -59,7 +59,7 @@ affected.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

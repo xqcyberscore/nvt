@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_oct15_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_apple_safari_mult_vuln_oct15_macosx.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Apple Safari Multiple Vulnerabilities-01 Oct15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805989");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-5764", "CVE-2015-5765", "CVE-2015-5767", "CVE-2015-5780",
                 "CVE-2015-5788", "CVE-2015-5789", "CVE-2015-5790", "CVE-2015-5791",
                 "CVE-2015-5792", "CVE-2015-5793", "CVE-2015-5794", "CVE-2015-5795",
@@ -45,7 +45,7 @@ if(description)
   script_bugtraq_id(76764, 76766, 76763, 76765);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 13:40:06 +0530 (Tue, 13 Oct 2015)");
   script_name("Apple Safari Multiple Vulnerabilities-01 Oct15 (Mac OS X)");
 
@@ -88,8 +88,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apple Safari versions before 9.0");
 
-  script_tag(name:"solution", value:"Upgrade to Apple Safari version 9.0 or later.
-  For updates refer to http://www.apple.com/support.");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 9.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -103,6 +102,7 @@ if(description)
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
   script_mandatory_keys("AppleSafari/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.apple.com/support.");
   exit(0);
 }
 

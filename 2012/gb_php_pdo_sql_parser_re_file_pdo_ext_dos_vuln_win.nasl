@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_pdo_sql_parser_re_file_pdo_ext_dos_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_php_pdo_sql_parser_re_file_pdo_ext_dos_vuln_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # PHP pdo_sql_parser.re 'PDO' extension DoS vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802670");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-3450");
   script_bugtraq_id(54777);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-27 17:03:25 +0530 (Mon, 27 Aug 2012)");
   script_name("PHP pdo_sql_parser.re 'PDO' extension DoS vulnerability (Windows)");
 
@@ -58,7 +58,7 @@ if(description)
   file, which fails to determine the end of the query string during parsing of
   prepared statements.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP Version 5.3.14 or 5.4.4 or later,");
+  script_tag(name:"solution", value:"Upgrade to PHP Version 5.3.14 or 5.4.4 or later.");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone denial of service
   vulnerability.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bftpd__mem_leak_vuln.nasl 8018 2017-12-07 07:32:50Z teissa $
+# $Id: gb_bftpd__mem_leak_vuln.nasl 11900 2018-10-15 07:44:31Z mmartin $
 #
 # Bftpd Memory Leak Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:bftpd:bftpd";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140515");
-  script_version("$Revision: 8018 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-07 08:32:50 +0100 (Thu, 07 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-11-21 10:35:01 +0700 (Tue, 21 Nov 2017)");
+  script_version("$Revision: 11900 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-21 10:35:01 +0700 (Tue, 21 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-16892");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Bftpd Memory Leak Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("gb_bftpd_detect.nasl");
   script_mandatory_keys("bftpd/installed");
 
-  script_tag(name: "summary", value: "Bftp FTP server is prone to a memory leak vulnerability in the file
+  script_tag(name:"summary", value:"Bftp FTP server is prone to a memory leak vulnerability in the file
 rename function.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Bftp version 4.6 and prior.");
+  script_tag(name:"affected", value:"Bftp version 4.6 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 4.7 or later.");
+  script_tag(name:"solution", value:"Update to version 4.7 or later.");
 
-  script_xref(name: "URL", value: "http://bftpd.sourceforge.net/news.html#032390");
+  script_xref(name:"URL", value:"http://bftpd.sourceforge.net/news.html#032390");
 
   exit(0);
 }

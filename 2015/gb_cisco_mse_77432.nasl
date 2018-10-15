@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_mse_77432.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_cisco_mse_77432.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco Mobility Services Engine Multiple Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-6316", "CVE-2015-4282");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Cisco Mobility Services Engine Multiple Vulnerabilities");
 
@@ -56,7 +56,7 @@ A local attacker may exploit this issue to gain elevated root privileges on the 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-20 14:02:20 +0100 (Fri, 20 Nov 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -64,7 +64,7 @@ A local attacker may exploit this issue to gain elevated root privileges on the 
   script_dependencies("gb_cisco_mse_cmx_version.nasl");
   script_mandatory_keys("cisco_mse/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

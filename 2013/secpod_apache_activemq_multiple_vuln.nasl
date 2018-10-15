@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_activemq_multiple_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: secpod_apache_activemq_multiple_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Apache ActiveMQ Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903306");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2012-6092", "CVE-2012-6551", "CVE-2013-3060");
   script_bugtraq_id(59400, 59401, 59402);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-27 12:08:18 +0530 (Sat, 27 Apr 2013)");
   script_name("Apache ActiveMQ Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -61,9 +61,7 @@ if(description)
 
   - Improper sanitation of HTTP request by the sample web applications in
     the out of box broker when it is enabled.");
-  script_tag(name:"solution", value:"Upgrade to version 5.8.0 or later,
-
-  For updates refer to http://activemq.apache.org");
+  script_tag(name:"solution", value:"Upgrade to version 5.8.0 or later.");
   script_tag(name:"summary", value:"This host is installed with Apache ActiveMQ and is prone to
   multiple vulnerabilities.");
 

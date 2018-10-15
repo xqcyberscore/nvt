@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_mult_vuln_july13.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_hp_smh_mult_vuln_july13.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # HP System Management Homepage Multiple Vulnerabilities-July2013
 #
@@ -23,12 +23,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:hp:system_management_homepage";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803845");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2012-5217", "CVE-2013-2355", "CVE-2013-2356", "CVE-2013-2357",
                 "CVE-2013-2358", "CVE-2013-2359", "CVE-2013-2360", "CVE-2013-2361",
                 "CVE-2013-2362", "CVE-2013-2363", "CVE-2013-2364", "CVE-2013-4821");
@@ -36,17 +37,15 @@ if(description)
                     61335, 61341);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-30 11:22:25 +0530 (Tue, 30 Jul 2013)");
   script_name("HP System Management Homepage Multiple Vulnerabilities-July2013");
 
 
   script_tag(name:"summary", value:"This host is running HP System Management Homepage (SMH) and is prone to
 multiple vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version of HP SMH with the help of detect NVT and check
-it is vulnerable or not.");
-  script_tag(name:"solution", value:"Upgrade to version 7.2.1 or later,
-http://h18013.www1.hp.com/products/servers/management/agents/index.html");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade to version 7.2.1 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Multiple unspecified errors exists and certain unspecified input is not
 properly sanitised before being returned to the user.");

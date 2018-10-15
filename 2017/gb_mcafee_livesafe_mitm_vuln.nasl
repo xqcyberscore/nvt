@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_livesafe_mitm_vuln.nasl 7183 2017-09-19 05:53:11Z asteins $
+# $Id: gb_mcafee_livesafe_mitm_vuln.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # McAfee LiveSafe Man-in-the-Middle Vulnerability
 #
@@ -29,26 +29,25 @@ CPE = "cpe:/a:mcafee:livesafe";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112047");
-  script_version("$Revision: 7183 $");
+  script_version("$Revision: 11901 $");
   script_cve_id("CVE-2017-3898");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-19 07:53:11 +0200 (Tue, 19 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-18 08:36:57 +0200 (Mon, 18 Sep 2017)");
   script_name("McAfee LiveSafe Man-in-the-Middle Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with McAfee LiveSafe
   and is prone to a man-in-the-middle vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"A man-in-the-middle attack vulnerability in the non-certificate-based authentication mechanism
   allows network attackers to modify the Windows registry value associated with the McAfee update via the HTTP backend-response.");
 
   script_tag(name:"affected", value:"McAfee LiveSafe 16.0.2 and lower");
 
-  script_tag(name:"solution", value:"Update to version 16.0.3 or later. For updates refer to http://www.mcafee.com/us/");
+  script_tag(name:"solution", value:"Update to version 16.0.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -61,6 +60,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mcafee_livesafe_detect.nasl");
   script_mandatory_keys("McAfee/LiveSafe/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mcafee.com/us/");
   exit(0);
 }
 

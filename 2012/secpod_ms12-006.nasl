@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-006.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ms12-006.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows SSL/TLS Information Disclosure Vulnerability (2643584)
 #
@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902900");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2011-3389");
   script_bugtraq_id(49778);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-11 09:47:46 +0530 (Wed, 11 Jan 2012)");
   script_name("Microsoft Windows SSL/TLS Information Disclosure Vulnerability (2643584)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2585542");
@@ -61,8 +61,8 @@ if(description)
   script_tag(name:"insight", value:"A flaw exists is due to an error in Microsoft Windows SChannel (Secure Channel),
   when modifying the way that the Windows Secure Channel (SChannel) component sends and receives encrypted network packets.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-006.");
@@ -91,7 +91,7 @@ if(hotfix_check_sp(win2003:3) > 0)
 {
   if(hotfix_missing(name:"2585542") == 1)
   {
-    sysVer = fetch_file_version(sysPath, file_name:"system32\Schannel.dll");
+    sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Schannel.dll");
     if(sysVer)
     {
       SP = get_kb_item("SMB/Win2003/ServicePack");
@@ -116,7 +116,7 @@ if(hotfix_missing(name:"2585542") == 0){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"system32\Schannel.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Schannel.dll");
 if(!sysVer){
   exit(0);
 }

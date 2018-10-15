@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir645_mult_vuln.nasl 11582 2018-09-25 06:26:12Z cfischer $
+# $Id: gb_dlink_dir645_mult_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # D-Link DIR-645 Router Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803730");
-  script_version("$Revision: 11582 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-7389");
   script_bugtraq_id(61579);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-05 15:17:38 +0530 (Mon, 05 Aug 2013)");
   script_name("D-Link DIR-645 Router Multiple Vulnerabilities");
 
@@ -40,8 +40,7 @@ if(description)
   vulnerabilities.");
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP request and check whether it is able to read
   the cookie or not.");
-  script_tag(name:"solution", value:"Upgrade to version 1.04B11, or higher,
-  For updates refer to http://www.dlink.com/ca/en/home-solutions/connect/routers/dir-645-wireless-n-home-router-1000");
+  script_tag(name:"solution", value:"Upgrade to version 1.04B11, or higher.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -71,6 +70,7 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("DIR-645/banner");
 
+  script_xref(name:"URL", value:"http://www.dlink.com/ca/en/home-solutions/connect/routers/dir-645-wireless-n-home-router-1000");
   exit(0);
 }
 

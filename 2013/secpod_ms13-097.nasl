@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-097.nasl 11576 2018-09-24 14:59:42Z cfischer $
+# $Id: secpod_ms13-097.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2898785)
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903330");
-  script_version("$Revision: 11576 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-5045", "CVE-2013-5046", "CVE-2013-5047", "CVE-2013-5048",
                 "CVE-2013-5049", "CVE-2013-5051", "CVE-2013-5052");
   script_bugtraq_id(64115, 64120, 64117, 64119, 64123, 64124, 64126);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-11 08:03:37 +0530 (Wed, 11 Dec 2013)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2898785)");
 
@@ -43,8 +43,7 @@ if(description)
 Bulletin MS13-097.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-http://technet.microsoft.com/en-us/security/bulletin/ms13-097");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - An unspecified error exists during validation of local file installation.
@@ -68,6 +67,7 @@ compromise a user's system.");
   script_dependencies("gb_ms_ie_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-097");
   exit(0);
 }
 
@@ -92,7 +92,7 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Mshtml.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Mshtml.dll");
 if(!dllVer){
   exit(0);
 }

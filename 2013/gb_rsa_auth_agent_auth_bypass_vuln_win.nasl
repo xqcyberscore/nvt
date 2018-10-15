@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rsa_auth_agent_auth_bypass_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_rsa_auth_agent_auth_bypass_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # RSA Authentication Agent Authentication Bypass Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:emc:rsa_authentication_agent";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803749");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-0931");
   script_bugtraq_id(58248);
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-28 11:21:00 +0530 (Wed, 28 Aug 2013)");
   script_name("RSA Authentication Agent Authentication Bypass Vulnerability (Windows)");
 
@@ -42,8 +42,7 @@ if (description)
   script_tag(name:"summary", value:"The host is installed with RSA Authentication Agent and is prone to
 authentication bypass vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Upgrade to version 7.1.2 or later,
-For updates refer to http://www.rsa.com/node.aspx?id=2575");
+  script_tag(name:"solution", value:"Upgrade to version 7.1.2 or later.");
   script_tag(name:"insight", value:"The flaw is triggered when a session is activated from the active screensaver
 after the Quick PIN Unlock timeout has expired, which will result in an
 incorrect prompt for a PIN as opposed to a prompt for the full passcode.");
@@ -63,6 +62,7 @@ restrictions and gain unauthorized privileged access.");
   script_family("General");
   script_dependencies("gb_rsa_auth_agent_detect_win.nasl");
   script_mandatory_keys("RSA/AuthenticationAgent6432/Installed");
+  script_xref(name:"URL", value:"http://www.rsa.com/node.aspx?id=2575");
   exit(0);
 }
 

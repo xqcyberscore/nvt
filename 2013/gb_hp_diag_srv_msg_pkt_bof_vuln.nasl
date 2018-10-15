@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_diag_srv_msg_pkt_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_hp_diag_srv_msg_pkt_bof_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # HP Diagnostics Server Message Packet Buffer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:diagnostics_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802053");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_bugtraq_id(55159);
   script_cve_id("CVE-2012-3278");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-22 13:07:18 +0530 (Wed, 22 May 2013)");
   script_name("HP Diagnostics Server Message Packet Buffer Overflow Vulnerability");
 
@@ -55,15 +55,13 @@ if(description)
   parsing crafted message packets sent to TCP port 23472.");
   script_tag(name:"summary", value:"This host is running HP Diagnostics Server and is prone to
   stack based buffer overflow vulnerability.");
-  script_tag(name:"solution", value:"Apply vendor supplied patch from below link,
-  http://support.openview.hp.com/selfsolve/document/FID/DOCUMENTUM_DIAGSRV_00051
-
-  *****
+  script_tag(name:"solution", value:"Apply vendor supplied patch  *****
   NOTE: Ignore this warning if above mentioned patch is installed.
   *****");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://support.openview.hp.com/selfsolve/document/FID/DOCUMENTUM_DIAGSRV_00051");
   exit(0);
 }
 

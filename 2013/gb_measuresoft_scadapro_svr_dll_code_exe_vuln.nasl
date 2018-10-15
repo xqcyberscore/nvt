@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_measuresoft_scadapro_svr_dll_code_exe_vuln.nasl 11582 2018-09-25 06:26:12Z cfischer $
+# $Id: gb_measuresoft_scadapro_svr_dll_code_exe_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Measuresoft ScadaPro Server DLL Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:measuresoft:scadapro_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803949");
-  script_version("$Revision: 11582 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2012-1824");
   script_bugtraq_id(53681);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-03 12:30:46 +0530 (Thu, 03 Oct 2013)");
   script_name("Measuresoft ScadaPro Server DLL Code Execution Vulnerability");
 
@@ -42,8 +42,7 @@ if (description)
   script_tag(name:"summary", value:"The host is installed with Measuresoft ScadaPro Server and is prone to code
 execution vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Upgrade to version 4.0.0 or later,
-For updates refer to http://www.measuresoft.com/download/current_release.aspx");
+  script_tag(name:"solution", value:"Upgrade to version 4.0.0 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"A flaw exists in the application, which does not directly specify the fully
 qualified path to a dynamic-linked library.");
@@ -59,6 +58,7 @@ system via a specially-crafted library.");
   script_family("General");
   script_dependencies("gb_measuresoft_scadapro_server_detect.nasl");
   script_mandatory_keys("ScadaProServer/Win/Ver");
+  script_xref(name:"URL", value:"http://www.measuresoft.com/download/current_release.aspx");
   exit(0);
 }
 

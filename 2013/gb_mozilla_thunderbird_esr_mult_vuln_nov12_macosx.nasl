@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_mult_vuln_nov12_macosx.nasl 11582 2018-09-25 06:26:12Z cfischer $
+# $Id: gb_mozilla_thunderbird_esr_mult_vuln_nov12_macosx.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities - November12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803633");
-  script_version("$Revision: 11582 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2012-4194", "CVE-2012-4195", "CVE-2012-4196");
   script_bugtraq_id(56301, 56302, 56306);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 16:08:12 +0530 (Fri, 02 Nov 2012)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities - November12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51144");
@@ -55,8 +55,8 @@ if(description)
 
   - Within handling of 'Location' object can be exploited to bypass security
     wrapper protection.");
-  script_tag(name:"solution", value:"Upgrade to Thunderbird ESR 10.0.10 or later,
-  http://www.mozilla.org/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Thunderbird ESR 10.0.10 or later.");
+  script_xref(name:"URL", value:"http://www.mozilla.org/en-US/thunderbird");
   script_tag(name:"summary", value:"This host is installed with Mozilla Thunderbird ESR and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"package");

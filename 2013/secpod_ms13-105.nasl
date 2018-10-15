@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-105.nasl 11576 2018-09-24 14:59:42Z cfischer $
+# $Id: secpod_ms13-105.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # MS Exchange Server Remote Code Execution Vulnerabilities (2915705)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903418");
-  script_version("$Revision: 11576 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-1330", "CVE-2013-5072", "CVE-2013-5763", "CVE-2013-5791");
   script_bugtraq_id(62221, 64085, 63741, 63076);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-11 10:09:38 +0530 (Wed, 11 Dec 2013)");
   script_name("MS Exchange Server Remote Code Execution Vulnerabilities (2915705)");
 
@@ -40,9 +40,8 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security update according to Microsoft
 Bulletin MS13-105.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms13-105");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - An unspecified error in the Outlook Web Access (OWA) service account.

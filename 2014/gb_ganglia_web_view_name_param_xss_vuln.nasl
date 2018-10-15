@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ganglia_web_view_name_param_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_ganglia_web_view_name_param_xss_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Ganglia Web 'view_name' Cross-Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ganglia:ganglia-web";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804557");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-1770", "CVE-2013-0275");
   script_bugtraq_id(58204, 57870);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-25 19:23:38 +0530 (Fri, 25 Apr 2014)");
   script_name("Ganglia Web 'view_name' Cross-Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -57,12 +57,12 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
   and script code in a users browser session in context of an affected site.");
   script_tag(name:"affected", value:"Ganglia Web version 3.5.7, Other versions may also be affected.");
-  script_tag(name:"solution", value:"Update to version 3.5.8 or later,
-  For updates refer to http://ganglia.info");
+  script_tag(name:"solution", value:"Update to version 3.5.8 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://ganglia.info");
   exit(0);
 }
 

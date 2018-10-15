@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openmeetings_services_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_apache_openmeetings_services_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Apache OpenMeetings Web Services Detection
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:apache:openmeetings';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112074");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-09 11:54:21 +0200 (Mon, 09 Oct 2017)");
 
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

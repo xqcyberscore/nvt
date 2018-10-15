@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_catalyst_4500_CSCuu25770.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_cisco_catalyst_4500_CSCuu25770.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco Catalyst 4500 IOS XE Cisco Discovery Protocol Packet Processing Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-6294");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Cisco Catalyst 4500 IOS XE Cisco Discovery Protocol Packet Processing Denial of Service Vulnerability");
 
@@ -52,7 +52,7 @@ Protocol packets to be processed by an affected device. An exploit could allow t
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-21 15:09:03 +0200 (Mon, 21 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -60,7 +60,7 @@ Protocol packets to be processed by an affected device. An exploit could allow t
   script_dependencies("gb_cisco_catalyst_4500_detect.nasl");
   script_mandatory_keys("cisco_catalyst_4500/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

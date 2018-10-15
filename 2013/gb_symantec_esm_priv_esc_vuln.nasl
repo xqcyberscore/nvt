@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_esm_priv_esc_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_symantec_esm_priv_esc_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # Symantec Enterprise Security Manager/Agent Privilege Escalation Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803095");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2012-4350");
   script_bugtraq_id(56915);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-08 13:22:57 +0530 (Tue, 08 Jan 2013)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -53,14 +53,10 @@ if(description)
   script_tag(name:"insight", value:"An unquoted Windows search path flaw exists in ESM Manager and Agents.");
   script_tag(name:"summary", value:"This host is installed with Symantec Enterprise Security
   Manager/Agent and is prone to local privilege escalation vulnerability.");
-  script_tag(name:"solution", value:"Upgrade to Symantec Enterprise Security Manager version 11.0 or later
-       Or apply the patch SU44
-  http://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=&suid=20121213_00
+  script_tag(name:"solution", value:"Upgrade to Symantec Enterprise Security Manager version 11.0 or later, or apply the patch SU44.
 
   *****
   NOTE: Ignore this warning if patch is applied already.
-        For patch refer to
-        http://www.symantec.com/security_response/securityupdates/detail.jsp?fid=esm&pvid=su&year=&suid=20121207_00
   *****");
   script_tag(name:"solution_type", value:"VendorFix");
 

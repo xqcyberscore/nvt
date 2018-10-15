@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_stoneware_webnetwork_mult_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_stoneware_webnetwork_mult_xss_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Stoneware webNetwork Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803326");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2012-4352");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-03-06 11:46:39 +0530 (Wed, 06 Mar 2013)");
   script_name("Stoneware webNetwork Multiple Cross-Site Scripting Vulnerabilities");
   script_xref(name:"URL", value:"http://stoneware-docs.s3.amazonaws.com/Bulletins/Security%20Bulletin%206_1_0.pdf");
@@ -55,11 +55,11 @@ if(description)
   - 'calendarType' and 'monthNumber' parameters passed to calendar.jsp
 
   - 'flag' parameter passed to swDashboard/ajax/setAppFlag.jsp");
-  script_tag(name:"solution", value:"Upgrade to Stoneware webNetwork 6.1 SP1 or later,
-  For updates refer to http://www.stone-ware.com/webnetwork");
+  script_tag(name:"solution", value:"Upgrade to Stoneware webNetwork 6.1 SP1 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with Stoneware webNetwork and is prone to
   multiple cross-site scripting vulnerabilities.");
+  script_xref(name:"URL", value:"http://www.stone-ware.com/webnetwork");
   exit(0);
 }
 

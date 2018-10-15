@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_endpoint_71424.nasl 11196 2018-09-03 13:09:40Z mmartin $
+# $Id: gb_ibm_endpoint_71424.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # IBM Tivoli Endpoint Manager Mobile Device Management Cross Site Scripting Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-6140");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 11867 $");
 
   script_name("IBM Tivoli Endpoint Manager Mobile Device Management Cross Site Scripting Vulnerability");
 
@@ -59,7 +59,7 @@ site scripting vulnerability because it fails to sanitize user-supplied input.")
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-03 16:30:20 +0100 (Wed, 03 Dec 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -69,7 +69,7 @@ site scripting vulnerability because it fails to sanitize user-supplied input.")
   script_require_ports("Services/www", 443);
   script_mandatory_keys("ibm_endpoint_manager/MDM");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

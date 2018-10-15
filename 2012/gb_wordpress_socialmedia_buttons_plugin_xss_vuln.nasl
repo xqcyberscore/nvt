@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_socialmedia_buttons_plugin_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_wordpress_socialmedia_buttons_plugin_xss_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # WordPress 2Click Social Media Buttons Plugin 'xing-url' Parameter XSS Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802856");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_bugtraq_id(53481);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -60,7 +60,7 @@ if(description)
   allows attackers to execute arbitrary HTML and script code in a user's
   browser session in the context of an affected site.");
 
-  script_tag(name:"solution", value:"Upgrade to 2-Click-Socialmedia-Buttons Plugin version 0.35 or later,");
+  script_tag(name:"solution", value:"Upgrade to 2-Click-Socialmedia-Buttons Plugin version 0.35 or later.");
 
   script_tag(name:"summary", value:"This host is running WordPress with 2Click Social Media Buttons
   plugin and is prone to cross site scripting vulnerability.");

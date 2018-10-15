@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_ssl_vpn_70230.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_cisco_asa_ssl_vpn_70230.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco ASA Software Information Disclosure Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-3398");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Cisco ASA Software Information Disclosure Vulnerability");
 
@@ -51,7 +51,7 @@ vulnerability.");
   script_tag(name:"insight", value:"This issue is being tracked by Cisco bug ID CSCuq65542.");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-03 11:59:05 +0100 (Tue, 03 Feb 2015)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -61,7 +61,7 @@ vulnerability.");
   script_require_ports("Services/www", 443);
   script_mandatory_keys("cisco_asa/webvpn/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

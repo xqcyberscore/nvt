@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_feb13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_adobe_flash_player_mult_vuln01_feb13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities -01 Feb13 (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803404");
-  script_version("$Revision: 11401 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_version("$Revision: 11865 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-12 13:17:51 +0530 (Tue, 12 Feb 2013)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -52,12 +52,12 @@ if(description)
   on Windows");
   script_tag(name:"insight", value:"Error while processing multiple references to an unspecified object which can
   be exploited by tricking the user to accessing a malicious crafted SWF file.");
-  script_tag(name:"solution", value:"Update to version 11.5.502.149 or later,
-  For updates refer to http://www.adobe.com/products/flash.html");
+  script_tag(name:"solution", value:"Update to version 11.5.502.149 or later.");
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.adobe.com/products/flash.html");
   exit(0);
 }
 

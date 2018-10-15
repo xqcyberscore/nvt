@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_kb3178725.nasl 9313 2018-04-05 06:23:26Z cfischer $
+# $Id: gb_ms_office_web_apps_kb3178725.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Microsoft Office Web Apps XSS Elevation of Privileges Vulnerability (KB3178725)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810693");
-  script_version("$Revision: 9313 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-0195");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-13 11:14:05 +0530 (Thu, 13 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Web Apps XSS Elevation of Privileges Vulnerability (KB3178725)");
@@ -42,8 +42,7 @@ if(description)
   update for Microsoft Office Web Apps according to Microsoft security update
   KB3178725");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists when an Office Web Apps server
   does not properly sanitize a specially crafted request.");
@@ -52,23 +51,21 @@ if(description)
   vulnerability by sending a specially crafted request to an affected Office Web
   Apps server. The attacker who successfully exploited this vulnerability could then
   perform cross-site scripting attacks on affected systems and run script in the
-  security context of the current user.
-
-  Impact Level: System/Application");
+  security context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Office Web Apps Server 2013 Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  https://support.microsoft.com/en-us/help/3178725");
+  hotfixes or download and update mentioned hotfixes in the advisory below.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3178725");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3178725");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_office_web_apps_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Web/Apps/Ver");
   exit(0);
 }

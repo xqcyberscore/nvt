@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_management_center_sa_20151029_fsmc1_2.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_cisco_firesight_management_center_sa_20151029_fsmc1_2.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco FireSIGHT Management Center Cross-Site Scripting / HTML Injection Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-6354", "CVE-2015-6353");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Cisco FireSIGHT Management Center Cross-Site Scripting / HTML Injection Vulnerability");
 
@@ -53,7 +53,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-10 11:48:58 +0100 (Tue, 10 Nov 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -61,7 +61,7 @@ if (description)
   script_dependencies("gb_cisco_firesight_management_center_version.nasl",
                      "gb_cisco_firesight_management_center_http_detect.nasl");
   script_mandatory_keys("cisco_firesight_management_center/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 #############################################################################/##
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_rsa_spoof_vuln_sep14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_mozilla_firefox_esr_rsa_spoof_vuln_sep14_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Mozilla Firefox ESR RSA Spoof Vulnerability September14 (Macosx)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804925");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1568");
   script_bugtraq_id(70116);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-09-30 09:47:58 +0530 (Tue, 30 Sep 2014)");
 
   script_name("Mozilla Firefox ESR RSA Spoof Vulnerability September14 (Macosx)");
@@ -54,7 +54,7 @@ if(description)
   31.x before 31.1.1 on Macosx");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 24.8.1
-  or 31.1.1 or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  or 31.1.1 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +67,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox-ESR/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

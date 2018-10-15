@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netwave_ip_cam_detect.nasl 11145 2018-08-28 12:04:11Z jschulte $
+# $Id: gb_netwave_ip_cam_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Netwave IP Camera Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113253");
-  script_version("$Revision: 11145 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 14:04:11 +0200 (Tue, 28 Aug 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-28 11:35:00 +0200 (Tue, 28 Aug 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,7 +51,7 @@ if( description )
 
   script_xref(name:"URL", value:"http://www.netwavesystems.com/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/h:netwave:ip_camera:";

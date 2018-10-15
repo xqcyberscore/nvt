@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3213631.nasl 7260 2017-09-26 06:48:48Z asteins $
+# $Id: gb_ms_kb3213631.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Microsoft Office 2010 Service Pack 2 Remote Code Execution Vulnerability (KB3213631)
 #
@@ -27,39 +27,34 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811743");
-  script_version("$Revision: 7260 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-8696");
   script_bugtraq_id(100780);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-13 09:02:09 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Office 2010 Service Pack 2 Remote Code Execution Vulnerability (KB3213631)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft KB3213631");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to the way Windows Uniscribe
   handles objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker who
-  successfully exploited this vulnerability to take control of the affected system. 
-
-  Impact Level: System/Application");
+  successfully exploited this vulnerability to take control of the affected system.");
 
   script_tag(name:"affected", value:"Microsoft Office 2010 Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/3213631");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3213631");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3213631");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -76,12 +71,6 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 
-## variable Initialization
-msPath = "";
-msdllVer = "";
-offVer = "";
-
-# Check for Microsoft Office 2010
 offVer = get_kb_item("MS/Office/Ver");
 if(!offVer || !(offVer =~ "^14\.")){
   exit(0);
@@ -93,13 +82,11 @@ msPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
 if(msPath)
 {
   msPath =  msPath +  "\Microsoft Office\OFFICE14";
-  ## Get File Version
   msdllVer = fetch_file_version(sysPath:msPath, file_name:"Usp10.dll");
   if(!msdllVer){
     exit(0);
   }
 
-  ## Check for vulnerable version
   if(version_is_less(version:msdllVer, test_version:"1.0626.7601.23883"))
   {
     report = 'File checked:     ' + msPath + "\Usp10.dll" + '\n' +

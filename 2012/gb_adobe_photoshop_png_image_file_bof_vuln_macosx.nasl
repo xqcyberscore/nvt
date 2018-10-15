@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_png_image_file_bof_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_adobe_photoshop_png_image_file_bof_vuln_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Adobe Photoshop PNG Image Processing Buffer Overflow Vulnerabilities (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:photoshop_cs6";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803026");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-4170", "CVE-2012-0275");
   script_bugtraq_id(55333, 55372);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-03 18:23:45 +0530 (Mon, 03 Sep 2012)");
   script_name("Adobe Photoshop PNG Image Processing Buffer Overflow Vulnerabilities (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49141");
@@ -54,7 +54,7 @@ if(description)
 
   - Improper validation in Photoshop.exe when decompressing
     SGI24LogLum-compressed TIFF images.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Photoshop version CS6 (13.0.1) or later,");
+  script_tag(name:"solution", value:"Upgrade to Adobe Photoshop version CS6 (13.0.1) or later.");
   script_tag(name:"summary", value:"This host is installed with Adobe Photoshop and is prone to buffer
   overflow vulnerabilities.");
 

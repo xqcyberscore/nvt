@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804707");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1533", "CVE-2014-1538", "CVE-2014-1541");
   script_bugtraq_id(67965, 67976, 67979);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-07-04 10:30:28 +0530 (Fri, 04 Jul 2014)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 July14 (Mac OS X)");
 
@@ -55,8 +55,7 @@ vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct clickjacking attacks
 and compromise a user's system.");
   script_tag(name:"affected", value:"Mozilla Thunderbird version before 24.6 on Mac OS X");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 24.6 or later,
-For updates refer to http://www.mozilla.com/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 24.6 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ For updates refer to http://www.mozilla.com/en-US/thunderbird");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("ThunderBird/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/thunderbird");
   exit(0);
 }
 

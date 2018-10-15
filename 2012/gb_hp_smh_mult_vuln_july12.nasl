@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_mult_vuln_july12.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_hp_smh_mult_vuln_july12.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # HP System Management Homepage Multiple Vulnerabilities - Jul12
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802657");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_bugtraq_id(54218);
   script_cve_id("CVE-2012-2012", "CVE-2012-2013", "CVE-2012-2014", "CVE-2012-2015",
                 "CVE-2012-2016");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-09 15:15:15 +0530 (Mon, 09 Jul 2012)");
   script_name("HP System Management Homepage Multiple Vulnerabilities - Jul12");
   script_category(ACT_GATHER_INFO);
@@ -59,7 +59,7 @@ if(description)
   - A privilege escalation vulnerability
 
   - An information-disclosure vulnerability");
-  script_tag(name:"solution", value:"Upgrade to HP System Management Homepage (SMH) version 7.1.1 or later,");
+  script_tag(name:"solution", value:"Upgrade to HP System Management Homepage (SMH) version 7.1.1 or later.");
   script_tag(name:"summary", value:"This host is running HP System Management Homepage (SMH) and is
   prone to multiple vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain elevated privileges,

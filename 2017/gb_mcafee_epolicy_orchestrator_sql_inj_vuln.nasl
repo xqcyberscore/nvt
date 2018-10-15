@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_sql_inj_vuln.nasl 5752 2017-03-29 04:01:01Z teissa $
+# $Id: gb_mcafee_epolicy_orchestrator_sql_inj_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # McAfee ePolicy Orchestrator SQL Injection Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:mcafee:epolicy_orchestrator';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106681");
-  script_version("$Revision: 5752 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2017-03-22 13:37:15 +0700 (Wed, 22 Mar 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-22 13:37:15 +0700 (Wed, 22 Mar 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-8027");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("McAfee ePolicy Orchestrator SQL Injection Vulnerability");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_mcafee_epolicy_orchestrator_detect.nasl");
   script_mandatory_keys("mcafee_ePO/installed");
 
-  script_tag(name: "summary", value: "McAfee ePolicy Orchestrator is prone to a blind SQL injection
+  script_tag(name:"summary", value:"McAfee ePolicy Orchestrator is prone to a blind SQL injection
 vulnerability");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "An exploitable blind SQL injection vulnerability exists within ePolicy
+  script_tag(name:"insight", value:"An exploitable blind SQL injection vulnerability exists within ePolicy
 Orchestrator. A specially crafted HTTP post can allow an attacker to alter a SQL query, which can result in
 disclosure of information within the database or impersonation of an agent without authentication.");
 
-  script_tag(name: "affected", value: "ePO versions 5.1.3, 5.3.2 and prior.");
+  script_tag(name:"affected", value:"ePO versions 5.1.3, 5.3.2 and prior.");
 
-  script_tag(name: "solution", value: "Apply the appropriate hotfix.");
+  script_tag(name:"solution", value:"Apply the appropriate hotfix.");
 
-  script_xref(name: "URL", value: "https://kc.mcafee.com/corporate/index?page=content&id=SB10187");
-  script_xref(name: "URL", value: "http://blog.talosintelligence.com/2017/02/vulnerability-spotlight-mcafee-epolicy.html");
-  script_xref(name: "URL", value: "http://www.talosintelligence.com/reports/TALOS-2016-0229/");
+  script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10187");
+  script_xref(name:"URL", value:"http://blog.talosintelligence.com/2017/02/vulnerability-spotlight-mcafee-epolicy.html");
+  script_xref(name:"URL", value:"http://www.talosintelligence.com/reports/TALOS-2016-0229/");
 
   exit(0);
 }

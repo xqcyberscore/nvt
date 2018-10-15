@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monstra_cms_detect.nasl 10057 2018-06-04 07:56:17Z cfischer $
+# $Id: gb_monstra_cms_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Monstra CMS Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113203");
-  script_version("$Revision: 10057 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 09:56:17 +0200 (Mon, 04 Jun 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-05-29 15:42:35 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,7 @@ if( description )
 
   script_xref(name:"URL", value:"http://monstra.org/");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "host_details.inc" );

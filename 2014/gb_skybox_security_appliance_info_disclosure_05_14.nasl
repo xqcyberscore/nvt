@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_skybox_security_appliance_info_disclosure_05_14.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_skybox_security_appliance_info_disclosure_05_14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Skybox Security Appliance Multiple Information Disclosure Vulnerabilities
 #
@@ -31,13 +31,13 @@ if (description)
   script_cve_id("CVE-2014-2084");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Skybox Security Appliance Multiple Information Disclosure Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/33327/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-13 16:33:50 +0200 (Tue, 13 May 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -61,7 +61,7 @@ appliance's administrative menus.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_dos_vuln_june12_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_opera_mult_dos_vuln_june12_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Opera Multiple Denial of Service Vulnerabilities - June12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802650");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-3562", "CVE-2012-3563", "CVE-2012-3564", "CVE-2012-3565",
                 "CVE-2012-3566", "CVE-2012-3567", "CVE-2012-3568");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 15:15:15 +0530 (Thu, 21 Jun 2012)");
   script_name("Opera Multiple Denial of Service Vulnerabilities - June12 (Mac OS X)");
   script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/windows/1200b/");
@@ -64,7 +64,7 @@ if(description)
 
   - A denial of service (application crash) via a crafted web page that is
     not properly handled during a reload.");
-  script_tag(name:"solution", value:"Upgrade to Opera version 12.00 Beta or later,");
+  script_tag(name:"solution", value:"Upgrade to Opera version 12.00 Beta or later.");
   script_tag(name:"summary", value:"The host is installed with Opera and is prone to multiple
   denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"package");

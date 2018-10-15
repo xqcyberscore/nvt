@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netmaster_password_disclosure_08_14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_netmaster_password_disclosure_08_14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Netmaster Wireless Cable Modem Password Disclosure
 #
@@ -31,11 +31,11 @@ if (description)
   script_cve_id("CVE-2014-4862");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Netmaster Wireless Cable Modem Password Disclosure");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-08-25 12:47:34 +0100 (Mon, 25 Aug 2014)");
   script_category(ACT_ATTACK);
   script_family("General");
@@ -68,7 +68,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_vul");
 
- exit(0);
+  exit(0);
 }
 
 include("dump.inc");

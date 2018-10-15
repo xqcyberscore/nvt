@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_charts_59987.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_php_charts_59987.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # php-Charts 'index.php' Arbitrary PHP Code Execution Vulnerability
 #
@@ -31,10 +31,10 @@ if (description)
   script_bugtraq_id(59987);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11865 $");
   script_name("php-Charts 'index.php' Arbitrary PHP Code Execution Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59987");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-23 10:07:15 +0200 (Thu, 23 May 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -50,9 +50,9 @@ if (description)
 An attacker can exploit this issue to execute arbitrary PHP code
 within the context of the affected application.
 
-php-Charts 1.0 is vulnerable; other versions may also be affected.");
+php-Charts 1.0 is vulnerable. Other versions may also be affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

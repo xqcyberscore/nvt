@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_CSCuv11969.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_cisco_vcs_CSCuv11969.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco TelePresence Video Communication Server Expressway File Modification Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-6318");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Cisco TelePresence Video Communication Server Expressway File Modification Vulnerability");
 
@@ -48,7 +48,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 15:11:26 +0200 (Wed, 14 Oct 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -56,7 +56,7 @@ if (description)
   script_dependencies("gb_cisco_vcs_detect.nasl", "gb_cisco_vcs_ssh_detect.nasl");
   script_mandatory_keys("cisco_vcs/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

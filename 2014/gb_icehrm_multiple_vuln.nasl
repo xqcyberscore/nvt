@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icehrm_multiple_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_icehrm_multiple_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # IceHrm Multiple Security Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805032");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_bugtraq_id(71552);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-17 11:48:55 +0530 (Wed, 17 Dec 2014)");
   script_name("IceHrm Multiple Security Vulnerabilities");
 
@@ -75,8 +75,7 @@ if(description)
 
   script_tag(name:"affected", value:"IceHrm version 7.1 and prior.");
 
-  script_tag(name:"solution", value:"Upgrade to IceHrm 7.2 or later,
-  For updates refer to http://www.icehrm.com");
+  script_tag(name:"solution", value:"Upgrade to IceHrm 7.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -92,6 +91,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"http://www.icehrm.com");
   exit(0);
 }
 

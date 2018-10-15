@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_info_disc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_coldfusion_info_disc_vuln.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Adobe ColdFusion Unspecified Information Disclosure Vulnerability
 #
@@ -28,27 +28,25 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804446");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-0631");
   script_bugtraq_id(57166);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 16:58:52 +0530 (Tue, 06 May 2014)");
   script_name("Adobe ColdFusion Unspecified Information Disclosure Vulnerability");
 
 
   script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is prone to information disclosure
 vulnerability.");
-  script_tag(name:"vuldetect", value:"Get the installed version of Adobe ColdFusion with the help of detect NVT and
-check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaw is due to an unspecified error, which will allow a remote attacker
 to gain access to potentially sensitive information.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to disclose sensitive
 information.");
   script_tag(name:"affected", value:"Adobe ColdFusion 9.0, 9.0.1 and 9.0.2");
-  script_tag(name:"solution", value:"Apply the patch from below link,
-http://www.adobe.com/support/security/bulletins/apsb13-03.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb13-03.html");
   script_category(ACT_GATHER_INFO);

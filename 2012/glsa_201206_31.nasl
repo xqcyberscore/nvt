@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201206_31.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201206_31.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2010-3316", "CVE-2010-3430", "CVE-2010-3431", "CVE-2010-3435", "CVE-2010-3853", "CVE-2010-4706", "CVE-2010-4707", "CVE-2010-4708", "CVE-2011-3148", "CVE-2011-3149");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-10 03:22:53 -0400 (Fri, 10 Aug 2012)");
   script_name("Gentoo Security Advisory GLSA 201206-31 (pam)");
   script_category(ACT_GATHER_INFO);
@@ -53,12 +53,12 @@ of Service, corrupt data, or obtain sensitive information.");
 
 NOTE: This is a legacy GLSA. Updates for all affected architectures are
       available since November 25, 2011. It is likely that your system is
-      already no longer affected by this issue.
+      already no longer affected by this issue.");
 
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201206-31
-http://bugs.gentoo.org/show_bug.cgi?id=343399
-http://bugs.gentoo.org/show_bug.cgi?id=386273
-http://bugs.gentoo.org/show_bug.cgi?id=388431");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201206-31");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=343399");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=386273");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=388431");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201206-31.");
   script_tag(name:"qod_type", value:"package");

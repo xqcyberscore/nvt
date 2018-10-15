@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln02_oct14_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_java_mult_unspecified_vuln02_oct14_lin.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Oct 2014 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108414");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-6532", "CVE-2014-6517", "CVE-2014-6515", "CVE-2014-6513",
                 "CVE-2014-6503", "CVE-2014-6493", "CVE-2014-6492", "CVE-2014-6466",
                 "CVE-2014-6458", "CVE-2014-4288");
@@ -37,7 +37,7 @@ if(description)
                     70460, 70470);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-20 12:40:38 +0530 (Mon, 20 Oct 2014)");
 
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Oct 2014 (Linux)");
@@ -45,8 +45,7 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with Oracle Java SE JRE
   and is prone to multiple unspecified vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of Oracle Java
-  SE JRE with the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
 
@@ -65,9 +64,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle Java SE 6 update 81 and prior,
   7 update 67 and prior, and 8 update 20 and prior on Linux");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-
-  http://www.oracle.com/technetwork/topics/security/cpuoct2014-1972960.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");

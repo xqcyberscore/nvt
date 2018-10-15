@@ -30,10 +30,10 @@ CPE = "cpe:/a:zarafa:zarafa_collaboration_platform";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805708");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"6.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-03 15:19:25 +0530 (Fri, 03 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_cve_id("CVE-2015-3436");
@@ -56,8 +56,7 @@ if (description)
   script_tag(name:"affected", value:"Zarafa Collaboration Platform (ZCP)
   before 7.1.13 and 7.2.x before 7.2.1");
 
-  script_tag(name:"solution", value:"Upgrade to 7.1.13 or 7.2.1 or later,
-  For updates refer to https://www.zarafa.com");
+  script_tag(name:"solution", value:"Upgrade to 7.1.13 or 7.2.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +70,7 @@ if (description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("zarafa_zcp/installed");
 
+  script_xref(name:"URL", value:"https://www.zarafa.com");
   exit(0);
 }
 

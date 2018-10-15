@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_unspecified_vuln_oct15_lin.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_adobe_flash_player_unspecified_vuln_oct15_lin.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Adobe Flash Player Unspecified Vulnerability Oct15 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806500");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-7645", "CVE-2015-7647", "CVE-2015-7648");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 15:46:37 +0530 (Fri, 16 Oct 2015)");
   script_name("Adobe Flash Player Unspecified Vulnerability Oct15 (Linux)");
 
@@ -53,8 +53,7 @@ if(description)
   11.2.202.535 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
-  11.2.202.540 or later.
-  For updates refer to http://get.adobe.com/flashplayer");
+  11.2.202.540 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sharepoint_server_ms13-067.nasl 11576 2018-09-24 14:59:42Z cfischer $
+# $Id: secpod_sharepoint_server_ms13-067.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft SharePoint Server Remote Code Execution vulnerability (2834052)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903322");
-  script_version("$Revision: 11576 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-1330", "CVE-2013-3179", "CVE-2013-3180", "CVE-2013-0081");
   script_bugtraq_id(62221, 62227, 62254, 62205);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-13 16:29:08 +0530 (Fri, 13 Sep 2013)");
   script_name("Microsoft SharePoint Server Remote Code Execution vulnerability (2834052)");
 
@@ -42,8 +42,7 @@ if(description)
 Bulletin MS13-067.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-http://technet.microsoft.com/en-us/security/bulletin/ms13-067");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"insight", value:"Multiple Flaws are due to,
 
   - An error when handling an unassigned workflow can be exploited to cause the
@@ -77,6 +76,7 @@ attacks, cause a DoS (Denial of Service), and compromise a vulnerable system.");
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
   script_mandatory_keys("MS/SharePoint/Server/Ver");
   script_require_ports(139, 445);
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-067");
   exit(0);
 }
 

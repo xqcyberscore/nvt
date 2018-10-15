@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_info_disc_vuln.nasl 7085 2017-09-08 15:01:13Z cfischer $
+# $Id: gb_apache_hadoop_info_disc_vuln.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # Apache Hadoop Information Disclosure Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:apache:hadoop";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140342");
-  script_version("$Revision: 7085 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-08 17:01:13 +0200 (Fri, 08 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-31 16:46:30 +0700 (Thu, 31 Aug 2017)");
+  script_version("$Revision: 11901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-31 16:46:30 +0700 (Thu, 31 Aug 2017)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-5001");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Apache Hadoop Information Disclosure Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_apache_hadoop_detect.nasl");
   script_mandatory_keys("Apache/Hadoop/Installed");
 
-  script_tag(name: "summary", value: "Apache Hadoop is prone to an information disclosure vulnerability.");
+  script_tag(name:"summary", value:"Apache Hadoop is prone to an information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "This is an information disclosure vulnerability in the short-circuit reads
+  script_tag(name:"insight", value:"This is an information disclosure vulnerability in the short-circuit reads
 feature of HDFS. A local user on an HDFS DataNode may be able to craft a block token that grants unauthorized
 read access to random files by guessing certain fields in the token.");
 
-  script_tag(name: "impact", value: "A local user may be able to gain unauthorized read access to files.");
+  script_tag(name:"impact", value:"A local user may be able to gain unauthorized read access to files.");
 
-  script_tag(name: "affected", value: "Apache Hadoop version 2.7.1, 2.6.3 and earlier.");
+  script_tag(name:"affected", value:"Apache Hadoop version 2.7.1, 2.6.3 and earlier.");
 
-  script_tag(name: "solution", value: "Update to version 2.6.4, 2.7.2 or later.");
+  script_tag(name:"solution", value:"Update to version 2.6.4, 2.7.2 or later.");
 
-  script_xref(name: "URL", value: "http://seclists.org/oss-sec/2016/q4/698");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2016/q4/698");
 
   exit(0);
 }

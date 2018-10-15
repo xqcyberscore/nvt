@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_captivate_mult_vuln.nasl 6419 2017-06-23 12:48:13Z santu $
+# $Id: gb_adobe_captivate_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Adobe Captivate Multiple Vulnerabilities (Windows)
 #
@@ -29,60 +29,52 @@ CPE = "cpe:/a:adobe:captivate";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811136");
-  script_version("$Revision: 6419 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-3087", "CVE-2017-3098");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 14:48:13 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-21 18:20:28 +0530 (Wed, 21 Jun 2017)");
   ##Qod is reduced to 30, due to hotfix provided cannot be detected.
   script_tag(name:"qod", value:"30");
   script_name("Adobe Captivate Multiple Vulnerabilities (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Adobe Captivate
+  script_tag(name:"summary", value:"This host is installed with Adobe Captivate
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"Multiple flaws are due an input validation 
+  script_tag(name:"insight", value:"Multiple flaws are due an input validation
   error and secuirty bypass error in the quiz reporting feature.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code on the target system, escalate privileges 
-  and disclose sensitive information.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to execute arbitrary code on the target system, escalate privileges
+  and disclose sensitive information.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Adobe Captivate prior to 10.0.0.192
+  script_tag(name:"affected", value:"Adobe Captivate prior to 10.0.0.192
   on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Captivate version
-  10.0.0.192 or later or apply hotfix for Adobe Captivate 8 and 9.
-  For updates refer to http://www.adobe.com");
+  script_tag(name:"solution", value:"Upgrade to Captivate version
+  10.0.0.192 or later or apply hotfix for Adobe Captivate 8 and 9.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/captivate/apsb17-19.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/captivate/apsb17-19.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_captivate_detect.nasl");
   script_mandatory_keys("Adobe/Captivate/Ver");
+  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-digitalVer = "";
-
-## Get version
 if(!digitalVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check Adobe Digital Edition vulnerable versions
 ## 9 and earlier
 if(version_is_less(version:digitalVer, test_version:"10.0.0.192"))
 {

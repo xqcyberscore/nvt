@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_u3d_mem_crptn_vuln_macosx.nasl 6477 2017-06-29 07:53:14Z cfischer $
+# $Id: gb_adobe_prdts_u3d_mem_crptn_vuln_macosx.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Adobe Reader/Acrobat 'U3D' Component Memory Corruption Vulnerability - Mac OS X
 #
@@ -29,12 +29,12 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.802543";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6477 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2011-2462", "CVE-2011-4369");
   script_bugtraq_id(50922, 51092);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:53:14 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-12-09 12:46:29 +0530 (Fri, 09 Dec 2011)");
   script_name("Adobe Reader/Acrobat 'U3D' Component Memory Corruption Vulnerability - Mac OS X");
 
@@ -86,15 +86,9 @@ For updates refer to http://www.adobe.com/";
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-acrobatVer = "";
-
-## Function to check the versions of abode reader and acrobat
 function version_check(ver)
 {
   if(version_in_range(version:ver, test_version:"9.0", test_version2:"9.4.6") ||
@@ -103,10 +97,8 @@ function version_check(ver)
   }
 }
 
-#CPE for adobe reader
 CPE = "cpe:/a:adobe:acrobat_reader";
 
-## Get Reader Version
 if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
 {
   if(readerVer =~ "^(9|10)"){
@@ -114,7 +106,6 @@ if(readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
   }
 }
 
-## Get Acrobat version
 acrobatVer = get_kb_item("Adobe/Acrobat/MacOSX/Version");
 if(acrobatVer){
   version_check(ver:acrobatVer);

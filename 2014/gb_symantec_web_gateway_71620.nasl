@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_71620.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_symantec_web_gateway_71620.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Symantec Web Gateway  Command Injection Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-7285");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Symantec Web Gateway  Command Injection Vulnerability");
 
@@ -56,7 +56,7 @@ Gateway Appliance.");
   script_tag(name:"affected", value:"Versions prior to Symantec Web Gateway 5.2.2 are vulnerable.");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-18 10:41:05 +0100 (Thu, 18 Dec 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -66,7 +66,7 @@ Gateway Appliance.");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("symantec_web_gateway/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

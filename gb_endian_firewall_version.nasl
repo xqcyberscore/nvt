@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_endian_firewall_version.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_endian_firewall_version.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Endian Firewall Detection
 #
@@ -30,8 +30,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105391");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-01 12:50:18 +0200 (Thu, 01 Oct 2015)");
   script_name("Endian Firewall Detection");
 
@@ -45,7 +45,7 @@ if (description)
   script_dependencies("gather-package-list.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("endian_firewall/release");
- exit(0);
+  exit(0);
 }
 
 include("ssh_func.inc");

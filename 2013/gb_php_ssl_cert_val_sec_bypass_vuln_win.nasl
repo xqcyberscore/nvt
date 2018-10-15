@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_ssl_cert_val_sec_bypass_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_php_ssl_cert_val_sec_bypass_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # PHP SSL Certificate Validation Security Bypass Vulnerability (Windows)
 #
@@ -29,22 +29,20 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803739");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-4248");
   script_bugtraq_id(61776);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-19 17:10:43 +0530 (Mon, 19 Aug 2013)");
   script_name("PHP SSL Certificate Validation Security Bypass Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is running PHP and is prone to security bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of PHP with the help of detect NVT and check it
-  is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP version 5.4.18 or 5.5.2 or later,
-  For updates refer to http://php.net");
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.4.18 or 5.5.2 or later.");
 
   script_tag(name:"insight", value:"The flaw is due to the SSL module not properly handling NULL bytes inside
   'subjectAltNames' general names in the server SSL certificate.");
@@ -68,6 +66,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://php.net");
   exit(0);
 }
 

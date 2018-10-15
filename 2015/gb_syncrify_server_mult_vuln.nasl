@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_syncrify_server_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_syncrify_server_mult_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Syncrify Server Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:syncrify:server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805551");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-3140");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-12 10:45:47 +0530 (Tue, 12 May 2015)");
   script_name("Syncrify Server Multiple Vulnerabilities");
 
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Syncrify Server 3.6 Build 833 and prior.");
 
   script_tag(name:"solution", value:"Upgrade to Syncrify Server 3.6 Build 834
-  or later. For updates refer to http://www.synametrics.com");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +66,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_syncrify_server_detect.nasl");
   script_mandatory_keys("syncrify/installed");
+  script_xref(name:"URL", value:"http://www.synametrics.com");
   exit(0);
 }
 

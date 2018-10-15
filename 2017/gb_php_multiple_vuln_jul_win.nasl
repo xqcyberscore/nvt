@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_multiple_vuln_jul_win.nasl 10454 2018-07-09 05:32:41Z cfischer $
+# $Id: gb_php_multiple_vuln_jul_win.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # PHP Multiple Vulnerabilities - Jul17 (Windows)
 #
@@ -29,21 +29,20 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811481");
-  script_version("$Revision: 10454 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-11145", "CVE-2017-11144", "CVE-2017-11146", "CVE-2017-11628",
                 "CVE-2017-7890");
   script_bugtraq_id(99492, 99550, 99605, 99612, 99489);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:32:41 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-11 19:28:21 +0530 (Tue, 11 Jul 2017)");
   script_name("PHP Multiple Vulnerabilities - Jul17 (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to
 
@@ -63,15 +62,13 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to leak information from the interpreter, crash PHP
-  interpreter and also disclose sensitive information.
-
-  Impact Level: Application");
+  interpreter and also disclose sensitive information.");
 
   script_tag(name:"affected", value:"PHP versions before 5.6.31, 7.x before 7.0.21,
   and 7.1.x before 7.1.7");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 5.6.31, 7.0.21, 7.1.7,
-  or later. For updates refer to http://www.php.net");
+  or later.");
 
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-5.php");
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-7.php");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_dos_vuln_jun14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_php_mult_dos_vuln_jun14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # PHP CDF File Parsing Denial of Service Vulnerabilities - 01 - Jun14
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804639");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-0237", "CVE-2014-0238");
   script_bugtraq_id(67759, 67765);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-16 10:22:50 +0530 (Mon, 16 Jun 2014)");
   script_name("PHP CDF File Parsing Denial of Service Vulnerabilities - 01 - Jun14");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone to denial of service
   vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of PHP with the help of detect NVT and check
-  the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to
 
@@ -56,8 +55,7 @@ if(description)
 
   script_tag(name:"affected", value:"PHP version 5.x before 5.4.29 and 5.5.x before 5.5.13");
 
-  script_tag(name:"solution", value:"Upgrade to PHP version 5.4.29 or 5.5.13 or later. For updates refer to
-  http://php.net");
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.4.29 or 5.5.13 or later.");
 
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-5.php");
   script_xref(name:"URL", value:"http://secunia.com/advisories/58804");
@@ -72,6 +70,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://php.net");
   exit(0);
 }
 

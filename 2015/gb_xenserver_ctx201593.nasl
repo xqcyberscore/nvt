@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx201593.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_xenserver_ctx201593.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Citrix XenServer Security Update for CVE-2015-5154 (CTX201593)
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2015-5154");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Citrix XenServer Security Update for CVE-2015-5154 (CTX201593)");
 
   script_xref(name:"URL", value:"http://support.citrix.com/article/CTX201593");
 
   script_tag(name:"vuldetect", value:"Check the installed hotfixes");
-  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory.");
 
   script_tag(name:"summary", value:"A security vulnerability has been identified in Citrix XenServer that may allow a malicious administrator
 of an HVM guest VM to compromise the host. This vulnerability affects all currently supported versions of Citrix XenServer up to and including
@@ -55,7 +55,7 @@ XenServer 6.1.0");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-18 14:36:04 +0200 (Tue, 18 Aug 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Citrix Xenserver Local Security Checks");
@@ -63,7 +63,7 @@ XenServer 6.1.0");
   script_dependencies("gb_xenserver_version.nasl");
   script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonicwall_viewpoint_scheduleid_sql_inj_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_sonicwall_viewpoint_scheduleid_sql_inj_vuln.nasl 11861 2018-10-12 09:29:59Z cfischer $
 #
 # SonicWall Viewpoint 'scheduleID' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803033");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11861 $");
   script_cve_id("CVE-2011-5169");
   script_bugtraq_id(49906);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:29:59 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-25 15:47:29 +0530 (Tue, 25 Sep 2012)");
   script_name("SonicWall Viewpoint 'scheduleID' Parameter SQL Injection Vulnerability");
 
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"insight", value:"Input passed to 'scheduleID' parameter in
   'sgms/reports/scheduledreports/configure/scheduleProps.jsp' page is not
   properly verified before being used in SQL queries.");
-  script_tag(name:"solution", value:"Apply SonicWALL Viewpoint hotfix 104767 from below link,");
+  script_tag(name:"solution", value:"Apply SonicWALL Viewpoint hotfix 104767 from the referenced advisory.");
   script_tag(name:"summary", value:"This host is running SonicWall Viewpoint and is prone to sql
   injection vulnerability.");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46115");

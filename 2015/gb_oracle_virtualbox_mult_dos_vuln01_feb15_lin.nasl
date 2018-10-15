@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_dos_vuln01_feb15_lin.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_oracle_virtualbox_mult_dos_vuln01_feb15_lin.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Oracle Virtualbox Multiple DoS Vulnerabilities Feb15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805429");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-0418", "CVE-2015-0377");
   script_bugtraq_id(72194, 72219);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-02 10:04:10 +0530 (Mon, 02 Feb 2015)");
   script_name("Oracle Virtualbox Multiple DoS Vulnerabilities Feb15 (Linux)");
 
@@ -53,8 +53,7 @@ if(description)
   4.0.x before 4.0.28, 4.1.x before 4.1.36, 4.2.x before 4.2.28 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Oracle VirtualBox version
-  3.2.26 or 4.0.28 or 4.1.36 or 4.2.28 or later, For updates refer to
-  https://www.virtualbox.org");
+  3.2.26 or 4.0.28 or 4.1.36 or 4.2.28 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -66,6 +65,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("secpod_sun_virtualbox_detect_lin.nasl");
   script_mandatory_keys("Sun/VirtualBox/Lin/Ver");
+  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
 

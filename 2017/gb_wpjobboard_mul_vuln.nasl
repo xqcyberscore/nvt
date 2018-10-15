@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wpjobboard_mul_vuln.nasl 9295 2018-04-04 09:04:57Z asteins $
+# $Id: gb_wpjobboard_mul_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # WpJobBoard Multiple Cross Site Web Vulnerabilities
 #
@@ -29,18 +29,17 @@ CPE = "cpe:/a:wpjobboard:wpjobboard";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107235");
-  script_version("$Revision: 9295 $");
+  script_version("$Revision: 11863 $");
   script_tag(name:"cvss_base", value:"3.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:04:57 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-06 20:31:53 +0530 (Wed, 06 Sep 2017)");
   script_name("WpJobBoard Multiple Cross Site Web Vulnerabilities");
 
   script_tag(name:"summary", value:"The host is installed with WpJobBoard and is prone to multiple cross-site web vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The vulnerabilities are located in the query and id parameters of the wpjb-email, wpjb-job, wpjb-application and wpjb-membership modules.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_multiple_vuln.nasl 11421 2018-09-17 06:58:23Z cfischer $
+# $Id: gb_hp_data_protector_multiple_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # HP (OpenView Storage) Data Protector Multiple Vulnerabilities
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804402");
-  script_version("$Revision: 11421 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-2344", "CVE-2013-2345", "CVE-2013-2346", "CVE-2013-2347",
                 "CVE-2013-2348", "CVE-2013-2349", "CVE-2013-2350", "CVE-2013-6195",
                 "CVE-2011-0923", "CVE-2014-2623");
   script_bugtraq_id(64647, 64647, 64647, 64647, 64647, 64647, 64647, 64647, 46234);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 08:58:23 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-18 16:03:46 +0530 (Tue, 18 Feb 2014)");
   script_name("HP (OpenView Storage) Data Protector Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -80,14 +80,14 @@ if(description)
   and 263 can be exploited to a cause stack-based buffer overflow.");
   script_tag(name:"summary", value:"The host is running HP (OpenView Storage) Data Protector and is prone to multiple
   vulnerabilities.");
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  https://h20564.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c04373818");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"vuldetect", value:"Construct the crafted TCP request with command and check it is possible
   to execute the command");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"https://h20564.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c04373818");
   exit(0);
 }
 

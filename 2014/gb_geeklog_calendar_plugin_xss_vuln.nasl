@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geeklog_calendar_plugin_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_geeklog_calendar_plugin_xss_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Geeklog Calendar Plugin Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804237");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-1470");
   script_bugtraq_id(58209);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-13 18:21:52 +0530 (Thu, 13 Feb 2014)");
   script_name("Geeklog Calendar Plugin Cross Site Scripting Vulnerability");
 
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"Geeklog 1.8.2 and 2.0.0, Other versions may also be affected.");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.8.2sr1, 2.0.0rc2 or later,
-
-  For updates refer to https://www.geeklog.net");
+  script_tag(name:"solution", value:"Upgrade to version 1.8.2sr1, 2.0.0rc2 or later.");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/82326");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/120593");
@@ -67,6 +65,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"https://www.geeklog.net");
   exit(0);
 }
 

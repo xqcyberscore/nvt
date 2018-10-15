@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageupsnet_telnet_default_credentials.nasl 7796 2017-11-16 14:59:08Z cfischer $
+# $Id: gb_manageupsnet_telnet_default_credentials.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # ManageUPSNET Telnet Default Credentials
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113049");
-  script_version("$Revision: 7796 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-16 15:59:08 +0100 (Thu, 16 Nov 2017) $");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-09 15:05:05 +0100 (Thu, 09 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -55,7 +55,7 @@ if( description )
 
   script_xref(name:"URL", value:"http://005c368.netsolhost.com/pdfs/9133161c.pdf");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "telnet_func.inc" );

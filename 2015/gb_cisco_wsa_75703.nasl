@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_75703.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_cisco_wsa_75703.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco AsyncOS for Web Security Appliance Denial of Service Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-4236");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Cisco AsyncOS for Web Security Appliance Denial of Service Vulnerability");
 
@@ -57,14 +57,14 @@ the affected system to become unresponsive on the clustering and SSH configured 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-01 11:09:10 +0200 (Tue, 01 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_wsa_version.nasl");
   script_mandatory_keys("cisco_wsa/installed");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

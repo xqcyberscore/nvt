@@ -28,12 +28,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804530");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1906", "CVE-2014-1907", "CVE-2014-1905", "CVE-2014-1908");
   script_bugtraq_id(65876, 65877, 65866, 65880);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-01 12:28:38 +0530 (Tue, 01 Apr 2014)");
   script_name("WordPress VideoWhisper Live Streaming Integration Multiple Vulnerabilities");
 
@@ -58,8 +58,7 @@ script code in a user's browser session in the context of an affected site and
 read/delete arbitrary files.");
   script_tag(name:"affected", value:"WordPress VideoWhisper Live Streaming Integration Plugin version 4.27.3
 and probably prior.");
-  script_tag(name:"solution", value:"Upgrade to version 4.29.5 or later,
-For updates refer to http://wordpress.org/plugins/videowhisper-live-streaming-integration");
+  script_tag(name:"solution", value:"Upgrade to version 4.29.5 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31986");
@@ -72,6 +71,7 @@ For updates refer to http://wordpress.org/plugins/videowhisper-live-streaming-in
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://wordpress.org/plugins/videowhisper-live-streaming-integration");
   exit(0);
 }
 

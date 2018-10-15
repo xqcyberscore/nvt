@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-08_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-08_win.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2017-08)-Windows
 #
@@ -29,40 +29,38 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811640");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11863 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-29 11:53:44 +0530 (Tue, 29 Aug 2017)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2017-08)-Windows");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to an unknown vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an unknown error.");
+  script_tag(name:"insight", value:"The flaw exists due to an unknown error.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of these
+  script_tag(name:"impact", value:"Successful exploitation of these
   vulnerabilities will allow remote attacker to bypass security, execute
-  arbitrary code, cause denial of service and conduct spoofing attacks.
+  arbitrary code, cause denial of service and conduct spoofing attacks.");
 
-  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Google Chrome version prior to 60.0.3112.113 on Windows");
 
-  script_tag(name: "affected" , value:"Google Chrome version prior to 60.0.3112.113 on Windows");
-
-  script_tag(name: "solution", value:"Upgrade to Google Chrome version
-  60.0.3112.113 or later.
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
+  60.0.3112.113 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "https://chromereleases.googleblog.com/2017/08/stable-channel-update-for-desktop.html");
+  script_xref(name:"URL", value:"https://chromereleases.googleblog.com/2017/08/stable-channel-update-for-desktop.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

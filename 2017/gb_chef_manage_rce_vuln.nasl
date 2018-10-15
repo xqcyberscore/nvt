@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_chef_manage_rce_vuln.nasl 5706 2017-03-24 08:04:22Z teissa $
+# $Id: gb_chef_manage_rce_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Chef Manage RCE Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:chef:chef_manage";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106678");
-  script_version("$Revision: 5706 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-24 09:04:22 +0100 (Fri, 24 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2017-03-21 14:09:13 +0700 (Tue, 21 Mar 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-21 14:09:13 +0700 (Tue, 21 Mar 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-7174");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Chef Manage RCE Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("gb_chef_manage_detect.nasl");
   script_mandatory_keys("chef_manage/installed");
 
-  script_tag(name: "summary", value: "Chef Manage is prone to a remote code execution vulnerability.");
+  script_tag(name:"summary", value:"Chef Manage is prone to a remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The user-account creation feature allows remote attackers to execute
+  script_tag(name:"insight", value:"The user-account creation feature allows remote attackers to execute
 arbitrary code.");
 
-  script_tag(name: "affected", value: "Chef Manage 2.1.0 until 2.4.4");
+  script_tag(name:"affected", value:"Chef Manage 2.1.0 until 2.4.4");
 
-  script_tag(name: "solution", value: "Update to version 2.4.5 or later.");
+  script_tag(name:"solution", value:"Update to version 2.4.5 or later.");
 
-  script_xref(name: "URL", value: "https://discourse.chef.io/t/chef-manage-2-4-5-security-release/10599");
+  script_xref(name:"URL", value:"https://discourse.chef.io/t/chef-manage-2-4-5-security-release/10599");
 
   exit(0);
 }

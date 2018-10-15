@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_irfanview_mult_dos_vuln.nasl 10787 2018-08-06 10:11:55Z asteins $
+# $Id: gb_irfanview_mult_dos_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # IrfanView Multiple DoS Vulnerabilities
 #
@@ -29,27 +29,26 @@ CPE = "cpe:/a:irfanview:irfanview:x64";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811953");
-  script_version("$Revision: 10787 $");
-  script_cve_id("CVE-2017-15769", "CVE-2017-15768", "CVE-2017-15766", "CVE-2017-15767", 
-                "CVE-2017-15765", "CVE-2017-15764", "CVE-2017-15763", "CVE-2017-15762", 
-                "CVE-2017-15761", "CVE-2017-15759", "CVE-2017-15760", "CVE-2017-15758", 
-                "CVE-2017-15757", "CVE-2017-15756", "CVE-2017-15755", "CVE-2017-15754", 
-                "CVE-2017-15752", "CVE-2017-15753", "CVE-2017-15751", "CVE-2017-15750", 
-                "CVE-2017-15749", "CVE-2017-15748", "CVE-2017-15747", "CVE-2017-15745", 
-                "CVE-2017-15746", "CVE-2017-15744", "CVE-2017-15743", "CVE-2017-15742", 
-                "CVE-2017-15741", "CVE-2017-15740", "CVE-2017-15738", "CVE-2017-15739", 
+  script_version("$Revision: 11863 $");
+  script_cve_id("CVE-2017-15769", "CVE-2017-15768", "CVE-2017-15766", "CVE-2017-15767",
+                "CVE-2017-15765", "CVE-2017-15764", "CVE-2017-15763", "CVE-2017-15762",
+                "CVE-2017-15761", "CVE-2017-15759", "CVE-2017-15760", "CVE-2017-15758",
+                "CVE-2017-15757", "CVE-2017-15756", "CVE-2017-15755", "CVE-2017-15754",
+                "CVE-2017-15752", "CVE-2017-15753", "CVE-2017-15751", "CVE-2017-15750",
+                "CVE-2017-15749", "CVE-2017-15748", "CVE-2017-15747", "CVE-2017-15745",
+                "CVE-2017-15746", "CVE-2017-15744", "CVE-2017-15743", "CVE-2017-15742",
+                "CVE-2017-15741", "CVE-2017-15740", "CVE-2017-15738", "CVE-2017-15739",
                 "CVE-2017-15737");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 12:11:55 +0200 (Mon, 06 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-26 10:40:33 +0530 (Thu, 26 Oct 2017)");
   script_name("IrfanView Multiple DoS Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is installed with IrfanView and is
   prone to multiple denial of service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exits due to
 
@@ -62,16 +61,13 @@ if(description)
   - For more information refer to reference links ");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to to execute arbitrary code or cause a denial of service.
-
-  Impact Level: Application");
+  attackers to to execute arbitrary code or cause a denial of service.");
 
   script_tag(name:"affected", value:"IrfanView Version 4.50 64-bit");
 
   script_tag(name:"solution", value:"No known solution is available as of
   06th August, 2018. Information regarding this issue will be updated once
-  solution details are available.
-  For updates refer to http://www.irfanview.com/");
+  solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"registry");
@@ -81,6 +77,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("secpod_irfanview_detect.nasl");
   script_mandatory_keys("IrfanView/Ver/x64");
+  script_xref(name:"URL", value:"http://www.irfanview.com/");
   exit(0);
 }
 

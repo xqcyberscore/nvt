@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wepresent_wipg_mult_vuln.nasl 6001 2017-04-21 11:30:36Z ckuerste $
+# $Id: gb_wepresent_wipg_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # wePresent WiPG Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:wepresent:wipg';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106782");
-  script_version("$Revision: 6001 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-21 13:30:36 +0200 (Fri, 21 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-21 08:12:54 +0200 (Fri, 21 Apr 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-21 08:12:54 +0200 (Fri, 21 Apr 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("wePresent WiPG Multiple Vulnerabilities");
 
@@ -49,31 +49,31 @@ if (description)
   script_dependencies("gb_wepresent_wipg_detect.nasl");
   script_mandatory_keys("wepresent_wipg/model");
 
-  script_tag(name: "summary", value: "wePresent WiPG devices are prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"wePresent WiPG devices are prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP request and checks the response.");
 
-  script_tag(name: "insight", value: "wePresent WiPG devices are prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"wePresent WiPG devices are prone to multiple vulnerabilities:
 
-- Web-UI authentication bypasses
+  - Web-UI authentication bypasses
 
-- Web-UI privilege escalation
+  - Web-UI privilege escalation
 
-- OS command injection
+  - OS command injection
 
-- Arbitrary file disclosure
+  - Arbitrary file disclosure
 
-- File inclusion
+  - File inclusion
 
-- Insecure maintenance interface");
+  - Insecure maintenance interface");
 
-  script_tag(name: "impact", value: "A unauthenticed attacker may gain complete control over the device.");
+  script_tag(name:"impact", value:"A unauthenticed attacker may gain complete control over the device.");
 
-  script_tag(name: "affected", value: "wePresent WiPG-1000, WiPG-1500 and WiPG-2000 devices.");
+  script_tag(name:"affected", value:"wePresent WiPG-1000, WiPG-1500 and WiPG-2000 devices.");
 
-  script_tag(name: "solution", value: "Upgrade to firmware version 2.2.3.0 or later.");
+  script_tag(name:"solution", value:"Upgrade to firmware version 2.2.3.0 or later.");
 
-  script_xref(name: "URL", value: "https://www.redguard.ch/advisories/wepresent-wipg1000.txt");
+  script_xref(name:"URL", value:"https://www.redguard.ch/advisories/wepresent-wipg1000.txt");
 
   exit(0);
 }

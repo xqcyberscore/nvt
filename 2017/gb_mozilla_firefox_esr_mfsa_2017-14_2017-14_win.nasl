@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2017-14_2017-14_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_esr_mfsa_2017-14_2017-14_win.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Mozilla Firefox ESR Security Updates(mfsa_2017-14_2017-14)-Windows
 #
@@ -29,32 +29,30 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810789");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2017-5031");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-08 14:50:51 +0530 (Mon, 08 May 2017)");
   script_name("Mozilla Firefox ESR Security Updates(mfsa_2017-14_2017-14)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with  Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with  Mozilla Firefox
   and is prone to denial of service vulnerabilty.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to A use-after-free can
+  script_tag(name:"insight", value:"The flaw exists due to A use-after-free can
   occur during Buffer11 API calls within the ANGLE graphics library, used for WebGL
   content. This can lead to a potentially exploitable crash.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to cause denial of service.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to cause denial of service.");
 
-  Impact Level: Application.");
+  script_tag(name:"affected", value:"Mozilla Firefox Esr version before 52.1.1 on Windows.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox Esr version before 52.1.1 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox Esr version 52.1.1
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox Esr version 52.1.1
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -64,6 +62,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx220112.nasl 6959 2017-08-18 07:24:59Z asteins $
+# $Id: gb_xenserver_ctx220112.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Citrix XenServer Multiple Security Updates (CTX220112)
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/a:citrix:xenserver";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140127");
- script_cve_id("CVE-2017-5572","CVE-2017-5573","CVE-2015-5300","CVE-2015-7704","CVE-2015-7705");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6959 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140127");
+  script_cve_id("CVE-2017-5572", "CVE-2017-5573", "CVE-2015-5300", "CVE-2015-7704", "CVE-2015-7705");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11863 $");
 
- script_name("Citrix XenServer Multiple Security Updates (CTX220112)");
+  script_name("Citrix XenServer Multiple Security Updates (CTX220112)");
 
- script_xref(name:"URL", value:"https://support.citrix.com/article/CTX220112");
+  script_xref(name:"URL", value:"https://support.citrix.com/article/CTX220112");
 
- script_tag(name: "vuldetect", value:"Check the installed hotfixes");
- script_tag(name: "solution" , value:"Apply the hotfix referenced in the advisory");
+  script_tag(name:"vuldetect", value:"Check the installed hotfixes");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory");
 
- script_tag(name: "summary" , value:"Several security issues have been identified within Citrix XenServer. These issues could, if exploited, allow
+  script_tag(name:"summary", value:"Several security issues have been identified within Citrix XenServer. These issues could, if exploited, allow
 an authenticated administrator to perform a denial-of-service attack against the host, even when that administrator has a less-privileged RBAC role
 (e.g. read-only).  In addition, the issues could permit an attacker with the ability to influence NTP traffic on the management network to disrupt
 time synchronization on the host until the next reboot.
@@ -57,23 +57,23 @@ Customers who have not enabled NTP are unaffected by the NTP issues.
 Customers who have not enabled RBAC are unaffected by the RBAC issues.
 Customers using Citrix XenServer 6.0.2 in the Common Criteria configuration are unaffected by the RBAC issues.");
 
- script_tag(name: "affected" , value:"XenServer 7.0
+  script_tag(name:"affected", value:"XenServer 7.0
 XenServer 6.5
 XenServer 6.2.0
 XenServer 6.0.2");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
- script_tag(name:"creation_date", value:"2017-01-26 10:36:18 +0100 (Thu, 26 Jan 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("Citrix Xenserver Local Security Checks");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_xenserver_version.nasl");
- script_mandatory_keys("xenserver/product_version","xenserver/patches");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-26 10:36:18 +0100 (Thu, 26 Jan 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Citrix Xenserver Local Security Checks");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_xenserver_version.nasl");
+  script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

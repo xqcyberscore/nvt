@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_cisco-sa-20170705-ise1.nasl 6764 2017-07-20 05:30:52Z cfischer $
+# $Id: gb_cisco_ise_cisco-sa-20170705-ise1.nasl 11900 2018-10-15 07:44:31Z mmartin $
 #
 # Cisco Identity Services Engine Stored Cross-Site Scripting Vulnerability
 #
@@ -29,44 +29,44 @@ CPE = "cpe:/a:cisco:identity_services_engine";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106926");
- script_cve_id("CVE-2017-6733");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 6764 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106926");
+  script_cve_id("CVE-2017-6733");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11900 $");
 
- script_name("Cisco Identity Services Engine Stored Cross-Site Scripting Vulnerability");
+  script_name("Cisco Identity Services Engine Stored Cross-Site Scripting Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170705-ise1");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170705-ise1");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the web-based application interface of the Cisco Identity
+  script_tag(name:"summary", value:"A vulnerability in the web-based application interface of the Cisco Identity
 Services Engine (ISE) portal could allow an unauthenticated, remote attacker to conduct a stored cross-site
 scripting (XSS) attack against a user of the web interface of an affected system.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient input validation and output-encoding
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient input validation and output-encoding
 parameters for data that is passed between an affected client and server. An attacker could exploit this
 vulnerability by intercepting targeted user packets and injecting malicious code into the targeted traffic
 stream.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to inject script code into the
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to inject script code into the
 HTTP flow between the targeted user and the affected system.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-07-20 07:30:52 +0200 (Thu, 20 Jul 2017) $");
- script_tag(name: "creation_date", value: "2017-07-06 10:48:11 +0700 (Thu, 06 Jul 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ise_version.nasl");
- script_mandatory_keys("cisco_ise/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-06 10:48:11 +0700 (Thu, 06 Jul 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ise_version.nasl");
+  script_mandatory_keys("cisco_ise/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

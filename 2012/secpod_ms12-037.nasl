@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-037.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ms12-037.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2699988)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902682");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2012-1523", "CVE-2012-1858", "CVE-2012-1872", "CVE-2012-1873",
                 "CVE-2012-1874", "CVE-2012-1875", "CVE-2012-1876", "CVE-2012-1877",
                 "CVE-2012-1878", "CVE-2012-1879", "CVE-2012-1880", "CVE-2012-1881",
@@ -36,7 +36,7 @@ if(description)
                     53867, 53868, 53869, 53870, 53871);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-13 09:16:32 +0530 (Wed, 13 Jun 2012)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2699988)");
 
@@ -71,8 +71,8 @@ if(description)
    'insertAdjacentText' method allows to corrupt memory.
 
   - Handles 'Scrolling' event.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-037.");
   script_tag(name:"qod_type", value:"registry");
@@ -105,7 +105,7 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Mshtml.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Mshtml.dll");
 if(!dllVer){
   exit(0);
 }

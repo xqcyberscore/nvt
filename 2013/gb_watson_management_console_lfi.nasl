@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_watson_management_console_lfi.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_watson_management_console_lfi.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Watson Management Console Directory Traversal Vulnerability
 #
@@ -29,7 +29,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103641");
   script_bugtraq_id(57237);
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -38,7 +38,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57237");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/23995/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-10 13:28:43 +0100 (Thu, 10 Jan 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -60,7 +60,7 @@ by exploiting this issue may be used to aid further attacks against a
 vulnerable system.");
 
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

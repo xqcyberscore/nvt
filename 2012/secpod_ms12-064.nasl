@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-064.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: secpod_ms12-064.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities (2742319)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902926");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-0182", "CVE-2012-2528");
   script_bugtraq_id(55780, 55781);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-10 08:46:36 +0530 (Wed, 10 Oct 2012)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities (2742319)");
   script_category(ACT_GATHER_INFO);
@@ -74,8 +74,8 @@ if(description)
 
   Microsoft Office Compatibility Pack Service Pack 3");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory ");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-064.");

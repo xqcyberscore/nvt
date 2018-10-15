@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_ms17-014_macosx.nasl 11550 2018-09-22 12:21:31Z cfischer $
+# $Id: gb_lync_ms17-014_macosx.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Microsoft Lync Certificate Validation Vulnerability-4013241 (MAC OS X)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:microsoft:lync";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810817");
-  script_version("$Revision: 11550 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2017-0129");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:21:31 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-20 12:56:16 +0530 (Mon, 20 Mar 2017)");
   script_name("Microsoft Lync Certificate Validation Vulnerability-4013241 (MAC OS X)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS17-014.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists when the Lync client fails
   to properly validate certificates.");
@@ -51,8 +50,7 @@ if(description)
 
   script_tag(name:"affected", value:"Microsoft Lync version 2011 for MAC OS X");
 
-  script_tag(name:"solution", value:"Upgrade Microsoft Lync version 14.4.3.170308 or later,
-  For updates refer to https://support.microsoft.com/en-us/help/4012487");
+  script_tag(name:"solution", value:"Upgrade Microsoft Lync version 14.4.3.170308 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -64,6 +62,7 @@ if(description)
   script_dependencies("gb_microsoft_lync_detect_macosx.nasl");
   script_mandatory_keys("Microsoft/Lync/MacOSX/Version");
 
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4012487");
   exit(0);
 }
 

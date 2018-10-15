@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_90724.nasl 5146 2017-01-31 11:37:33Z teissa $
+# $Id: gb_magento_90724.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Magento < 2.0.6 Remote Code Execution Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108061");
-  script_version("$Revision: 5146 $");
+  script_version("$Revision: 11874 $");
   script_bugtraq_id(90724);
   script_cve_id("CVE-2016-4010");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 12:37:33 +0100 (Tue, 31 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-30 11:00:00 +0100 (Mon, 30 Jan 2017)");
   script_name("Magento < 2.0.6 Remote Code Execution Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -51,24 +51,20 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with Magento Web
   E-Commerce Platform and is prone to a remote code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with
-  the help of the detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue may allow an attacker to
   execute arbitrary code in the context of the affected application. Failed exploit attempts
-  may cause a denial-of-service condition. 
-
-  Impact Level: Application/System");
+  may cause a denial-of-service condition.");
 
   script_tag(name:"affected", value:"Magento CE and EE before 2.0.6.");
 
-  script_tag(name:"solution", value:"Update to Magento CE or EE 2.0.6 or later. 
-  For updates refer to 
-  https://www.magentocommerce.com/products/downloads/magento"); 
+  script_tag(name:"solution", value:"Update to Magento CE or EE 2.0.6 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"https://www.magentocommerce.com/products/downloads/magento");
   exit(0);
 }
 

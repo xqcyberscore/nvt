@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms14-007.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: secpod_ms14-007.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Windows Direct2D Remote Code Execution Vulnerability (2912390)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903431");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-0263");
   script_bugtraq_id(65393);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-12 11:41:52 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft Windows Direct2D Remote Code Execution Vulnerability (2912390)");
 
@@ -51,8 +51,7 @@ Microsoft Windows Server 2012
 Microsoft Windows 7 x32/x64 Service Pack 1 and prior
 Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-http://technet.microsoft.com/en-us/security/bulletin/ms14-007");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +65,7 @@ http://technet.microsoft.com/en-us/security/bulletin/ms14-007");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms14-007");
   exit(0);
 }
 
@@ -85,7 +85,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"system32\D2d1.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\D2d1.dll");
 if(!sysVer){
   exit(0);
 }

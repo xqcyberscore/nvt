@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotclear_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_dotclear_mult_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Dotclear Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:dotclear:dotclear";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802076");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-3781", "CVE-2014-3782", "CVE-2014-3783");
   script_bugtraq_id(67560, 67559, 67557);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-09 14:54:32 +0530 (Mon, 09 Jun 2014)");
   script_name("Dotclear Multiple Vulnerabilities");
 
@@ -52,8 +52,7 @@ if(description)
   mechanisms, inject or manipulate SQL queries in the back-end database and
   attacker can to execute uploaded script with the privileges of the web server.");
   script_tag(name:"affected", value:"DotClear version before 2.6.3");
-  script_tag(name:"solution", value:"Upgrade to version 2.6.3 or higher,
-  For updates refer to http://dotclear.org");
+  script_tag(name:"solution", value:"Upgrade to version 2.6.3 or later.");
 
   script_xref(name:"URL", value:"http://karmainsecurity.com/KIS-2014-05");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/532184");
@@ -66,6 +65,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+  script_xref(name:"URL", value:"http://dotclear.org");
   exit(0);
 }
 

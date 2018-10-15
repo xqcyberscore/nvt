@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_airlive_rce_07_15.nasl 11296 2018-09-10 09:08:51Z mmartin $
+# $Id: gb_airlive_rce_07_15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # AirLive Multiple Products OS Command Injection
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105315");
-  script_version("$Revision: 11296 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-2279", "CVE-2014-8389");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ Other devices may be affected too.");
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-07 14:11:14 +0200 (Tue, 07 Jul 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -62,7 +62,7 @@ Other devices may be affected too.");
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

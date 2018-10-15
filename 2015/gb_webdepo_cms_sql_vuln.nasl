@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webdepo_cms_sql_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_webdepo_cms_sql_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # WebDepo CMS 'wood' Parameter SQL Injection Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805374");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-23 17:22:49 +0530 (Thu, 23 Apr 2015)");
   script_name("WebDepo CMS 'wood' Parameter SQL Injection Vulnerability");
 
@@ -50,7 +50,7 @@ if(description)
   script_tag(name:"affected", value:"WebDepo CMS");
 
   script_tag(name:"solution", value:"As a workaround sanitize all requests coming
-  from the client. For updates refer to http://www.webdepot.co.il");
+  from the client.");
 
   script_tag(name:"qod_type", value:"exploit");
 
@@ -66,6 +66,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"http://www.webdepot.co.il");
   exit(0);
 }
 

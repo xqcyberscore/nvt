@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201110_21.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201110_21.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_cve_id("CVE-2011-1147", "CVE-2011-1174", "CVE-2011-1175", "CVE-2011-1507", "CVE-2011-1599", "CVE-2011-2529", "CVE-2011-2535", "CVE-2011-2536", "CVE-2011-2665", "CVE-2011-2666", "CVE-2011-4063");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-12 10:04:40 -0500 (Sun, 12 Feb 2012)");
   script_name("Gentoo Security Advisory GLSA 201110-21 (Asterisk)");
   script_category(ACT_GATHER_INFO);
@@ -53,17 +53,16 @@ if(description)
 All asterisk 1.8.x users should upgrade to the latest version:
 
       # emerge --sync
-      # emerge --ask --oneshot --verbose '>=net-misc/asterisk-1.8.7.1'
+      # emerge --ask --oneshot --verbose '>=net-misc/asterisk-1.8.7.1'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201110-21
-http://bugs.gentoo.org/show_bug.cgi?id=352059
-http://bugs.gentoo.org/show_bug.cgi?id=355967
-http://bugs.gentoo.org/show_bug.cgi?id=359767
-http://bugs.gentoo.org/show_bug.cgi?id=364887
-http://bugs.gentoo.org/show_bug.cgi?id=372793
-http://bugs.gentoo.org/show_bug.cgi?id=373409
-http://bugs.gentoo.org/show_bug.cgi?id=387453");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201110-21");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=352059");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=355967");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=359767");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=364887");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=372793");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=373409");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=387453");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201110-21.");
   script_tag(name:"qod_type", value:"package");

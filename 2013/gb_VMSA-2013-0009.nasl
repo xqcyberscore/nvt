@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0009.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_VMSA-2013-0009.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # VMSA-2013-0009 VMware ESX and ESXi updates to third party libraries
 #
@@ -32,13 +32,13 @@ if (description)
   script_cve_id("CVE-2013-0169", "CVE-2013-0166", "CVE-2013-0338", "CVE-2013-2116", "CVE-2013-0268", "CVE-2013-0871");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11865 $");
   script_name("VMSA-2013-0009 VMware ESX and ESXi updates to third party libraries");
 
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0009.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-07 14:04:01 +0100 (Wed, 07 Aug 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("VMware Local Security Checks");
@@ -76,7 +76,7 @@ VMware ESXi 4.0 without patch ESXi400-201310001
 VMware ESX 4.0 without patch ESX400-201310001");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
 include("vmware_esx.inc");

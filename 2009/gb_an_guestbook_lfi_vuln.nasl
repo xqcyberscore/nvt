@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_an_guestbook_lfi_vuln.nasl 11821 2018-10-10 12:44:18Z jschulte $
+# $Id: gb_an_guestbook_lfi_vuln.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # AN Guestbook Local File Inclusion Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800526");
-  script_version("$Revision: 11821 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 14:44:18 +0200 (Wed, 10 Oct 2018) $");
+  script_version("$Revision: 11888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-07-07 11:58:41 +0200 (Tue, 07 Jul 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -48,7 +48,7 @@ if(description)
   script_tag(name:"affected", value:"AN Guestbook version 0.7 to 0.7.8");
   script_tag(name:"insight", value:"The flaw is due to error in 'g_lang' parameter in 'ang/shared/flags.php' which
   is not properly verified before being used to include files.");
-  script_tag(name:"solution", value:"Upgrade to AN Guestbook version 1.2.1 or later, ");
+  script_tag(name:"solution", value:"Upgrade to AN Guestbook version 1.2.1 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is running AN Guestbook and is prone to Local File Inclusion
   vulnerability.");

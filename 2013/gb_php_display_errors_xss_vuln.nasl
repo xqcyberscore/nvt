@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_display_errors_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_php_display_errors_xss_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # PHP 'display_errors' Cross Site Scripting Vulnerability
 #
@@ -29,21 +29,19 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803778");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-11-26 13:02:20 +0530 (Tue, 26 Nov 2013)");
   script_name("PHP 'display_errors' Cross Site Scripting Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone to cross site scripting
   vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of PHP with the help of detect NVT and check
-  the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"solution", value:"Upgrade to latest version of PHP,
-  http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to latest version of PHP.");
 
   script_tag(name:"insight", value:"The flaw is due to an error in handling 'display_errors', when display_errors
   is set to on and html_errors is set to on.");

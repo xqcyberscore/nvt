@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_pdf_mem_crptn_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_foxit_reader_pdf_mem_crptn_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Foxit Reader PDF File Handling Memory Corruption Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802957");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-4337");
   script_bugtraq_id(55150);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-07 11:03:23 +0530 (Fri, 07 Sep 2012)");
   script_name("Foxit Reader PDF File Handling Memory Corruption Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50359");
@@ -49,7 +49,7 @@ if(description)
   script_tag(name:"affected", value:"Foxit Reader version prior to 5.3 on Windows XP and Windows 7");
   script_tag(name:"insight", value:"An unspecified error when parsing PDF files and can be exploited to corrupt
   memory.");
-  script_tag(name:"solution", value:"Upgrade to the Foxit Reader version 5.3 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Foxit Reader version 5.3 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"The host is installed with Foxit Reader and is prone to memory
   corruption vulnerability.");

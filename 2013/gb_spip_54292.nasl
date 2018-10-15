@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spip_54292.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_spip_54292.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # SPIP 'connect' Parameter PHP Code Injection Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2013-4555", "CVE-2013-4556", "CVE-2013-4557");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
 
   script_name("SPIP 'connect' Parameter PHP Code Injection Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.spip.net/en");
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1029317");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-29 12:05:48 +0200 (Thu, 29 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -64,7 +64,7 @@ parameter is not properly sanitized before being used.");
   script_tag(name:"summary", value:"SPIP is prone to a remote PHP code-injection vulnerability.");
   script_tag(name:"affected", value:"SPIP versions prior to 2.0.21, 2.1.16, and 3.0.3 are vulnerable. Other version may also affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

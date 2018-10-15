@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ge_intelligent_mult_vulns_09_13.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_ge_intelligent_mult_vulns_09_13.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # GE Intelligent Platforms Proficy Cimplicity Multiple Vulnerabilities
 #
@@ -31,12 +31,12 @@ if (description)
   script_cve_id("CVE-2013-0653", "CVE-2013-0654");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11865 $");
   script_name("GE Intelligent Platforms Proficy Cimplicity Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://ics-cert.us-cert.gov/advisories/ICSA-13-022-02");
   script_xref(name:"URL", value:"http://support.ge-ip.com/support/index?page=kbchannel&id=S:KB15153");
   script_xref(name:"URL", value:"http://support.ge-ip.com/support/index?page=kbchannel&id=S:KB15244");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 14:38:23 +0200 (Wed, 11 Sep 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -63,7 +63,7 @@ vulnerabilities.");
   script_tag(name:"affected", value:"GE Intelligent Platforms Proficy HMI/SCADA - CIMPLICITY 4.01 through 8.0, and
 Proficy Process Systems with CIMPLICITY");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_june15_lin.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_adobe_flash_player_mult_vuln01_june15_lin.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities-01 June15 (Linux)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805586");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-3108", "CVE-2015-3107", "CVE-2015-3106", "CVE-2015-3105",
                 "CVE-2015-3104", "CVE-2015-3103", "CVE-2015-3102", "CVE-2015-3101",
                 "CVE-2015-3100", "CVE-2015-3099", "CVE-2015-3098", "CVE-2015-3096");
   script_bugtraq_id(75084, 75087, 75086, 75081, 75080, 75089, 75085, 75088);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-15 12:16:31 +0530 (Mon, 15 Jun 2015)");
   script_name("Adobe Flash Player Multiple Vulnerabilities-01 June15 (Linux)");
 
@@ -72,8 +72,7 @@ if(description)
   11.2.202.466 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
-  11.2.202.466 or later. For updates refer to
-  http://get.adobe.com/flashplayer");
+  11.2.202.466 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -86,6 +85,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

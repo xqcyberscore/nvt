@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_firewall_analyzer_mult_vuln.nasl 8825 2018-02-15 10:45:17Z ckuersteiner $
+# $Id: gb_manage_engine_firewall_analyzer_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # ManageEngine Firewall Analyzer Access Bypass And Directory Traversal Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:zohocorp:manageengine_firewall_analyzer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811534");
-  script_version("$Revision: 8825 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2015-7780", "CVE-2015-7781");
   script_bugtraq_id(78211, 78213);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-15 11:45:17 +0100 (Thu, 15 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-19 14:54:04 +0530 (Wed, 19 Jul 2017)");
   script_name("ManageEngine Firewall Analyzer Access Bypass And Directory Traversal Vulnerabilities");
 
@@ -42,33 +42,30 @@ if(description)
   Firewall Analyzer and is prone to access bypass and directory traversal
   vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The multiple flaws are due to,
-  
+
   - Access permissions are not restricted.
- 
+
   - A directory traversal error.");
 
   script_tag(name:"impact", value:"Successfully exploitation will allow remote
-  attackers to obtain arbitrary files on the server and bypass security 
-  restrictions and perform unauthorized actions; this may aid in launching further 
-  attacks.
-
-  Impact Level: Application");
+  attackers to obtain arbitrary files on the server and bypass security
+  restrictions and perform unauthorized actions; this may aid in launching further
+  attacks.");
 
   script_tag(name:"affected", value:"ManageEngine Firewall Analyzer versions prior to 8.0");
 
-  script_tag(name:"solution", value:"Upgrade to ManageEngine Firewall Analyzer 
+  script_tag(name:"solution", value:"Upgrade to ManageEngine Firewall Analyzer
   8.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name: "URL", value: "http://jvn.jp/en/jp/JVN12991684/index.html");
-  script_xref(name: "URL", value: "http://jvn.jp/en/jp/JVN21968837/index.html");
+  script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN12991684/index.html");
+  script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN21968837/index.html");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

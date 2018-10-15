@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_edition_info_disc_vuln_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_digital_edition_info_disc_vuln_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Adobe Digital Edition Information Disclosure Vulnerability (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804868");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-8068");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-22 11:00:38 +0530 (Wed, 22 Oct 2014)");
 
   script_name("Adobe Digital Edition Information Disclosure Vulnerability (Mac OS X)");
@@ -41,9 +41,7 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with Adobe Digital
   Edition and is prone to information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of Adobe
-  Digital Edition with the help of detect NVT and check the version is
-  vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as sensitive data is
   insecurely transmitted to adelogs.adobe.com without any encryption.");
@@ -55,8 +53,7 @@ if(description)
   Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Digital Edition version
-  4.0.1 or later. For updates refer to
-  http://www.adobe.com/products/digital-editions/download.html");
+  4.0.1 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +64,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_digital_edition_detect_macosx.nasl");
   script_mandatory_keys("AdobeDigitalEdition/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.adobe.com/products/digital-editions/download.html");
   exit(0);
 }
 

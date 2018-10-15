@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_pinger_icmp_n_icmp6_mult_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_squid_pinger_icmp_n_icmp6_mult_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Squid Pinger ICMP Processing Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806105");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-7141", "CVE-2014-7142", "CVE-2014-6270");
   script_bugtraq_id(69688, 70022, 69686);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 15:37:01 +0530 (Tue, 08 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid Pinger ICMP Processing Multiple Vulnerabilities");
@@ -61,8 +61,7 @@ if(description)
 
   script_tag(name:"affected", value:"Squid 3.x-> 3.4.7");
 
-  script_tag(name:"solution", value:"Upgrade to version Squid 3.4.8 or later.
-  For updates refer to http://www.squid-cache.org/Advisories/SQUID-2014_4.txt");
+  script_tag(name:"solution", value:"Upgrade to version Squid 3.4.8 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.squid-cache.org/Advisories/SQUID-2014_4.txt");

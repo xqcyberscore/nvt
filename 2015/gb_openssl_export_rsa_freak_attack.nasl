@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_export_rsa_freak_attack.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_openssl_export_rsa_freak_attack.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # SSL/TLS: RSA Temporary Key Handling 'RSA_EXPORT' Downgrade Issue (FREAK)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805142");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-0204");
   script_bugtraq_id(71936);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 16:42:13 +0530 (Fri, 06 Mar 2015)");
   script_name("SSL/TLS: RSA Temporary Key Handling 'RSA_EXPORT' Downgrade Issue (FREAK)");
   script_category(ACT_GATHER_INFO);
@@ -67,11 +67,12 @@ if(description)
   suites from the service.
 
   - If running OpenSSL update to version 0.9.8zd or 1.0.0p
-  or 1.0.1k or later For updates refer to https://www.openssl.org");
+  or 1.0.1k or later.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"https://www.openssl.org");
   exit(0);
 }
 

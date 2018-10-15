@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0001.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_VMSA-2013-0001.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # VMSA-2013-0001 VMware vSphere security updates for the authentication service and third party libraries
 #
@@ -33,11 +33,11 @@ if (description)
 
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11865 $");
   script_name("VMSA-2013-0001 VMware vSphere security updates for the authentication service and third party libraries");
 
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 11:02:01 +0100 (Mon, 04 Feb 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("VMware Local Security Checks");
@@ -94,7 +94,7 @@ Apply the missing patch(es).");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0001.html");
- exit(0);
+  exit(0);
 }
 
 include("vmware_esx.inc");

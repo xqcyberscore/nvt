@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804015");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1729");
   script_bugtraq_id(62474);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-24 16:13:31 +0530 (Tue, 24 Sep 2013)");
   script_name("Mozilla Firefox Information Disclosure Vulnerability (Mac OS X)");
 
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Mozilla Firefox and is prone to information
 disclosure vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 24.0 or later,
-For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 24.0 or later.");
   script_tag(name:"insight", value:"Flaw is due to an error within the NVIDIA OS X graphics driver.");
   script_tag(name:"affected", value:"Mozilla Firefox version before 24.0 on Mac OS X, When NVIDIA graphics
 drivers used.");
@@ -59,6 +58,7 @@ data by reading from a CANVAS element.");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl", "gather-package-list.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

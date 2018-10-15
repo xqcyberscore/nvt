@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201206_24.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201206_24.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2008-5515", "CVE-2009-0033", "CVE-2009-0580", "CVE-2009-0781", "CVE-2009-0783", "CVE-2009-2693", "CVE-2009-2901", "CVE-2009-2902", "CVE-2010-1157", "CVE-2010-2227", "CVE-2010-3718", "CVE-2010-4172", "CVE-2010-4312", "CVE-2011-0013", "CVE-2011-0534", "CVE-2011-1088", "CVE-2011-1183", "CVE-2011-1184", "CVE-2011-1419", "CVE-2011-1475", "CVE-2011-1582", "CVE-2011-2204", "CVE-2011-2481", "CVE-2011-2526", "CVE-2011-2729", "CVE-2011-3190", "CVE-2011-3375", "CVE-2011-4858", "CVE-2011-5062", "CVE-2011-5063", "CVE-2011-5064", "CVE-2012-0022");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-10 03:22:53 -0400 (Fri, 10 Aug 2012)");
   script_name("Gentoo Security Advisory GLSA 201206-24 (apache tomcat)");
   script_category(ACT_GATHER_INFO);
@@ -53,21 +53,20 @@ which allowing to read, modify and overwrite arbitrary files.");
 All Apache Tomcat 7.0.x users should upgrade to the latest version:
 
       # emerge --sync
-      # emerge --ask --oneshot --verbose '>=www-servers/tomcat-7.0.23'
+      # emerge --ask --oneshot --verbose '>=www-servers/tomcat-7.0.23'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201206-24
-http://bugs.gentoo.org/show_bug.cgi?id=272566
-http://bugs.gentoo.org/show_bug.cgi?id=273662
-http://bugs.gentoo.org/show_bug.cgi?id=303719
-http://bugs.gentoo.org/show_bug.cgi?id=320963
-http://bugs.gentoo.org/show_bug.cgi?id=329937
-http://bugs.gentoo.org/show_bug.cgi?id=373987
-http://bugs.gentoo.org/show_bug.cgi?id=374619
-http://bugs.gentoo.org/show_bug.cgi?id=382043
-http://bugs.gentoo.org/show_bug.cgi?id=386213
-http://bugs.gentoo.org/show_bug.cgi?id=396401
-http://bugs.gentoo.org/show_bug.cgi?id=399227");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201206-24");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=272566");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=273662");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=303719");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=320963");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=329937");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=373987");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=374619");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=382043");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=386213");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=396401");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=399227");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201206-24.");
   script_tag(name:"qod_type", value:"package");

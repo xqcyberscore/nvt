@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendnet_cameras_51922.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: gb_trendnet_cameras_51922.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # Multiple Trendnet Camera Products Remote Security Bypass Vulnerability
 #
@@ -29,19 +29,18 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103791");
   script_bugtraq_id(51922);
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11883 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
   script_name("Multiple Trendnet Camera Products Remote Security Bypass Vulnerability");
-
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51922");
   script_xref(name:"URL", value:"http://www.trendnet.com/press/view.asp?id=1959");
   script_xref(name:"URL", value:"http://www.trendnet.com/products/proddetail.asp?prod=145_TV-IP110W");
   script_xref(name:"URL", value:"http://console-cowboys.blogspot.com.au/2012/01/trendnet-cameras-i-always-feel-like.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-19 18:42:42 +0200 (Thu, 19 Sep 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -83,7 +82,7 @@ Trendnet TV-IP110WN 1.0R
 Trendnet TV-IP110W A1.0R 0
 Trendnet TV-IP110 A1.0R 0");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

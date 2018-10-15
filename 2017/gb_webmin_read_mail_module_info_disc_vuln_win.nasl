@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webmin_read_mail_module_info_disc_vuln_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_webmin_read_mail_module_info_disc_vuln_win.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Webmin Read Mail Module Information Disclosure Vulnerability (Windows)
 #
@@ -29,33 +29,29 @@ CPE = "cpe:/a:webmin:webmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811524");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2015-1377");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-17 12:05:05 +0530 (Mon, 17 Jul 2017)");
   script_name("Webmin Read Mail Module Information Disclosure Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is running Webmin and is prone
   to an information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw is due to an error in an unknown 
-  function of the component Read Mail Module. The manipulation with an unknown 
+  script_tag(name:"insight", value:"The flaw is due to an error in an unknown
+  function of the component Read Mail Module. The manipulation with an unknown
   input leads to a information disclosure vulnerability (file).");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow local 
-  users to read arbitrary files.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow local
+  users to read arbitrary files.");
 
   script_tag(name:"affected", value:"Webmin versions 1.720 and prior.");
 
-  script_tag(name:"solution", value:"Upgrade to Webmin version 1.730 or later.
-  For updates refer to http://www.webmin.com");
+  script_tag(name:"solution", value:"Upgrade to Webmin version 1.730 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -73,17 +69,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-#Variable initialize
-wmport = "";
-wmver = "";
-report = "";
-
-## Get Port
 if(!wmport = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-## Get the version
 if(!wmver = get_app_version(cpe:CPE, port:wmport)){
  exit(0);
 }

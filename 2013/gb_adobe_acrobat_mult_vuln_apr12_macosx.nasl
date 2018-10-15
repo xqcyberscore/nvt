@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln_apr12_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_adobe_acrobat_mult_vuln_apr12_macosx.nasl 11870 2018-10-12 11:12:45Z cfischer $
 #
 # Adobe Acrobat Multiple Vulnerabilities April-2012 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803827");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11870 $");
   script_cve_id("CVE-2012-0777", "CVE-2012-0776", "CVE-2012-0774", "CVE-2012-0775");
   script_bugtraq_id(52950, 52952, 52951, 52949);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:12:45 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-11 15:26:49 +0530 (Thu, 11 Jul 2013)");
   script_name("Adobe Acrobat Multiple Vulnerabilities April-2012 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48733");
@@ -56,8 +56,7 @@ if(description)
     exploited to corrupt memory.
 
   - The application loads executables (msiexec.exe) in an insecure manner.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Acrobat version 9.5.1 or 10.1.3 on later,
-  For updates refer to http://www.adobe.com");
+  script_tag(name:"solution", value:"Upgrade to Adobe Acrobat version 9.5.1 or 10.1.3 or later.");
   script_tag(name:"summary", value:"This host is installed with Adobe Acrobat and is prone to
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
@@ -65,21 +64,14 @@ if(description)
   exit(0);
 }
 
-
 include("version_func.inc");
 
-## Function to check the versions of abode acrobat
-function version_check(ver)
-{
+acrobatVer = get_kb_item("Adobe/Acrobat/MacOSX/Version");
+if(acrobatVer && acrobatVer =~ "^(9|10)"){
   if(version_in_range(version:ver, test_version:"9.0", test_version2:"9.5") ||
      version_in_range(version:ver, test_version:"10.0", test_version2:"10.1.2"))
   {
     security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
-}
-
-acrobatVer = get_kb_item("Adobe/Acrobat/MacOSX/Version");
-if(acrobatVer && acrobatVer =~ "^(9|10)"){
-  version_check(ver:acrobatVer);
 }

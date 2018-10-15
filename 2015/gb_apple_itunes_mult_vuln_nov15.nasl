@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_nov15.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_apple_itunes_mult_vuln_nov15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Apple iTunes Multiple Vulnerabilities Nov15 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806609");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-5928", "CVE-2015-5929", "CVE-2015-5930", "CVE-2015-5931",
                 "CVE-2015-7002", "CVE-2015-7011", "CVE-2015-7012", "CVE-2015-7013",
                 "CVE-2015-7014", "CVE-2015-6975", "CVE-2015-6992", "CVE-2015-7017");
   script_bugtraq_id(77264, 77267, 77270);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-03 14:51:27 +0530 (Tue, 03 Nov 2015)");
   script_name("Apple iTunes Multiple Vulnerabilities Nov15 (Windows)");
 
@@ -58,8 +58,7 @@ if(description)
   script_tag(name:"affected", value:"Apple iTunes versions before 12.3.1
   on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.3.1 or later,
-  For updates refer to http://www.apple.com/itunes");
+  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.3.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -73,6 +72,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
   script_mandatory_keys("iTunes/Win/Installed");
+  script_xref(name:"URL", value:"http://www.apple.com/itunes");
   exit(0);
 }
 

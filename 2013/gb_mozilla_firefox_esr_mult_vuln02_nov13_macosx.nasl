@@ -29,22 +29,20 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804138");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2013-5604", "CVE-2013-5602", "CVE-2013-5601", "CVE-2013-5600",
                 "CVE-2013-5599", "CVE-2013-5597", "CVE-2013-5590", "CVE-2013-5595");
   script_bugtraq_id(63430, 63424, 63428, 63427, 63423, 63422, 63415, 63421);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-11-07 18:48:51 +0530 (Thu, 07 Nov 2013)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-02 Nov13 (Mac OS X)");
-
 
   script_tag(name:"summary", value:"This host is installed with Mozilla Firefox ESR and is prone to multiple
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 17.0.10 or 24.1 or later,
-For updates refer http://www.mozilla.org/en-US/firefox/organizations/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 17.0.10 or 24.1 or later.");
   script_tag(name:"insight", value:"Multiple flaws due to,
 
   - Improper data initialization in the 'txXPathNodeUtils::getBaseURI' function.

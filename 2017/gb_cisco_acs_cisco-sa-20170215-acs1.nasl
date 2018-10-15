@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_acs_cisco-sa-20170215-acs1.nasl 5441 2017-02-28 08:41:33Z cfi $
+# $Id: gb_cisco_acs_cisco-sa-20170215-acs1.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # Cisco Secure Access Control System XML External Entity Vulnerability
 #
@@ -29,42 +29,42 @@ CPE = "cpe:/a:cisco:secure_access_control_system";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106590");
- script_cve_id("CVE-2017-3839");
- script_tag(name:"cvss_base", value:"4.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
- script_version("$Revision: 5441 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106590");
+  script_cve_id("CVE-2017-3839");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_version("$Revision: 11901 $");
 
- script_name("Cisco Secure Access Control System XML External Entity Vulnerability");
+  script_name("Cisco Secure Access Control System XML External Entity Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170215-acs1");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170215-acs1");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the web-based user interface of the Cisco Secure Access
+  script_tag(name:"summary", value:"A vulnerability in the web-based user interface of the Cisco Secure Access
 Control System (ACS) could allow an unauthenticated, remote attacker to have read access to part of the
 information stored in the affected system.");
 
- script_tag(name: "insight", value: "The vulnerability is due to improper handling of the XML External Entity
+  script_tag(name:"insight", value:"The vulnerability is due to improper handling of the XML External Entity
 (XXE) when parsing an XML file.");
 
- script_tag(name: "impact", value: "An attacker could exploit this vulnerability by submitting a crafted XML
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by submitting a crafted XML
 header to the affected device web framework.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-02-28 09:41:33 +0100 (Tue, 28 Feb 2017) $");
- script_tag(name: "creation_date", value: "2017-02-16 10:45:57 +0700 (Thu, 16 Feb 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_acs_version.nasl");
- script_mandatory_keys("cisco_acs/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-16 10:45:57 +0700 (Thu, 16 Feb 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_acs_version.nasl");
+  script_mandatory_keys("cisco_acs/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

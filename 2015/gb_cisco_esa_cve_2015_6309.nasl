@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cve_2015_6309.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_cisco_esa_cve_2015_6309.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco Email Security Appliance Max Files Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-6309");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Cisco Email Security Appliance Format String Vulnerability");
 
@@ -51,14 +51,14 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 14:43:01 +0200 (Wed, 14 Oct 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_esa_version.nasl");
   script_mandatory_keys("cisco_esa/installed");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

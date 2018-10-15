@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_jan15_win.nasl 11445 2018-09-18 08:09:39Z mmartin $
+# $Id: gb_mozilla_firefox_mult_vuln01_jan15_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 Jan15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805248");
-  script_version("$Revision: 11445 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-8643", "CVE-2014-8642", "CVE-2014-8641", "CVE-2014-8640",
                 "CVE-2014-8639", "CVE-2014-8638", "CVE-2014-8637", "CVE-2014-8636",
                 "CVE-2014-8635", "CVE-2014-8634");
@@ -37,7 +37,7 @@ if(description)
                     72050, 72049);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-20 12:51:45 +0530 (Tue, 20 Jan 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Jan15 (Windows)");
 
@@ -81,7 +81,7 @@ if(description)
   script_tag(name:"affected", value:"Mozilla Firefox before version 35.0 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 35.0
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -101,6 +101,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

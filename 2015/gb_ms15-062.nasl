@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-062.nasl 11635 2018-09-27 06:07:37Z cfischer $
+# $Id: gb_ms15-062.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # MS Active Directory Federation Services Privilege Escalation Vulnerability (3062577)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805197");
-  script_version("$Revision: 11635 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-1757");
   script_bugtraq_id(75023);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-10 08:58:45 +0530 (Wed, 10 Jun 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Active Directory Federation Services Privilege Escalation Vulnerability (3062577)");
@@ -112,7 +112,7 @@ if(ProgramFilesDir)
 sysPath = smb_get_systemroot();
 if(sysPath)
 {
-  adfs2_ver = fetch_file_version(sysPath, file_name:"\ADFS\Microsoft.identityserver.dll");
+  adfs2_ver = fetch_file_version(sysPath:sysPath, file_name:"\ADFS\Microsoft.identityserver.dll");
   if(adfs2_ver)
   {
     if((hotfix_check_sp(win2012:1) > 0) &&

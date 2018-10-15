@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_atlas_access_vuln.nasl 7064 2017-09-06 05:47:54Z asteins $
+# $Id: gb_apache_atlas_access_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Apache Atlas Webapp Contents Access Vulnerability
 #
@@ -29,34 +29,34 @@ CPE = "cpe:/a:apache:atlas";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112032");
-  script_version("$Revision: 7064 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2016-8752");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-06 07:47:54 +0200 (Wed, 06 Sep 2017) $");
-  script_tag(name:"creation_date", value: "2017-08-31 15:29:09 +0200 (Thu, 31 Aug 2017)");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-31 15:29:09 +0200 (Thu, 31 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Atlas Webapp Contents Access Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Apache Atlas and is
   prone to an access vulnerability. Atlas users can access the webapp directory contents by pointing to URIs like /js, /img.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"Apache Atlas versions 0.6.0-incubating, 0.7.0-incubating and 0.7.1-incubating are vulnerable. ");
 
-  script_tag(name:"solution", value:"Update to 0.8. For updates refer to http://atlas.apache.org");
+  script_tag(name:"solution", value:"Update to 0.8.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://lists.apache.org/thread.html/f7435d66b840daa2a38ad1329d639b70f5a9476e7580ae885d422e86@%3Cdev.atlas.apache.org%3E");
+  script_xref(name:"URL", value:"https://lists.apache.org/thread.html/f7435d66b840daa2a38ad1329d639b70f5a9476e7580ae885d422e86@%3Cdev.atlas.apache.org%3E");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_apache_atlas_detect.nasl");
   script_mandatory_keys("Apache/Atlas/Installed");
   script_require_ports("Services/www", 21000);
+  script_xref(name:"URL", value:"http://atlas.apache.org");
   exit(0);
 }
 

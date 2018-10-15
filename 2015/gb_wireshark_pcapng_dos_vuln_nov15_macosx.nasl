@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_pcapng_dos_vuln_nov15_macosx.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_wireshark_pcapng_dos_vuln_nov15_macosx.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Wireshark Pcapng File Parser Denial-of-Service Vulnerability Nov15 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806704");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-7830");
   script_bugtraq_id(77101);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-19 12:02:31 +0530 (Thu, 19 Nov 2015)");
   script_name("Wireshark Pcapng File Parser Denial-of-Service Vulnerability Nov15 (Mac OS X)");
 
@@ -54,7 +54,7 @@ if(description)
   on Mac OS X");
 
   script_tag(name:"solution", value:"Upgrade to Wireshark version 1.12.8 or
-  later, For updates refer to https://www.wireshark.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

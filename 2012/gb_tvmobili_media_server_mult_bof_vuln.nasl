@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tvmobili_media_server_mult_bof_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_tvmobili_media_server_mult_bof_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # TVMOBiLi Media Server HTTP Request Multiple BOF Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803125");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-5451");
   script_bugtraq_id(56853);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-12-10 10:36:49 +0530 (Mon, 10 Dec 2012)");
   script_name("TVMOBiLi Media Server HTTP Request Multiple BOF Vulnerabilities");
 
@@ -54,7 +54,7 @@ if(description)
   of 161, 257, 255  or HTTP HEAD request of 255, 257 or 260 characters long
   to 30888/TCP port and cause a stack-based buffer overrun that will crash
   tvMobiliService service.");
-  script_tag(name:"solution", value:"Update to TVMOBiLi Media Server 2.1.3974 or later,");
+  script_tag(name:"solution", value:"Update to TVMOBiLi Media Server 2.1.3974 or later.");
   script_tag(name:"summary", value:"This host is running TVMOBiLi Media Server and is prone to multiple
   buffer overflow vulnerabilities.");
 

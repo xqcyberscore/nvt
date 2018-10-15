@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dgs-1500_rce.nasl 9513 2018-04-17 14:26:07Z asteins $
+# $Id: gb_dlink_dgs-1500_rce.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # D-Link DGS-1500 Ax RCE Vulnerability
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107253");
-  script_version("$Revision: 9513 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-17 16:26:07 +0200 (Tue, 17 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-11-09 14:03:54 +0700 (Thu, 09 Nov 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-09 14:03:54 +0700 (Thu, 09 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-15909");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("D-Link DGS-1500 Ax RCE Vulnerability");
 
@@ -49,22 +49,22 @@ if (description)
   script_dependencies("gb_dgs_1500_detect.nasl");
   script_mandatory_keys("dgs/1500/detected");
 
-  script_tag(name: "summary", value: "D-Link DGS-1500 Ax devices before 2.51B021 is vulnerable to remote code execution.");
+  script_tag(name:"summary", value:"D-Link DGS-1500 Ax devices before 2.51B021 is vulnerable to remote code execution.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The vulnerability is due to hardcoded password in D-Link DGS-1500 Ax devices before 2.51B021.");
+  script_tag(name:"insight", value:"The vulnerability is due to hardcoded password in D-Link DGS-1500 Ax devices before 2.51B021.");
 
-  script_tag(name : "impact" , value :"Successful exploitation will allow remote attackers to obtain shell access.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain shell access.");
 
-  script_tag(name: "affected", value: "D-Link DGS-1500 Ax devices before 2.51B021");
+  script_tag(name:"affected", value:"D-Link DGS-1500 Ax devices before 2.51B021");
 
-  script_tag(name: "solution", value: "Update the firmware to version 2.51B021 or higher.");
+  script_tag(name:"solution", value:"Update the firmware to version 2.51B021 or higher.");
 
-  script_xref(name: "URL", value: "ftp://ftp2.dlink.com/PRODUCTS/DGS-1500-20/REVA/DGS-1500_REVA_FIRMWARE_PATCH_NOTES_2.51.021_EN.pdf");
-  script_xref(name: "URL", value: "ftp://ftp2.dlink.com/PRODUCTS/DGS-1500-28/REVA/DGS-1500_REVA_FIRMWARE_PATCH_NOTES_2.51.021_EN.pdf");
-  script_xref(name: "URL", value: "ftp://ftp2.dlink.com/PRODUCTS/DGS-1500-28P/REVA/DGS-1500_REVA_FIRMWARE_PATCH_NOTES_2.51.021_EN.pdf");
-  script_xref(name: "URL", value: "ftp://ftp2.dlink.com/PRODUCTS/DGS-1500-52/REVA/DGS-1500_REVA_FIRMWARE_PATCH_NOTES_2.51.021_EN.pdf");
+  script_xref(name:"URL", value:"ftp://ftp2.dlink.com/PRODUCTS/DGS-1500-20/REVA/DGS-1500_REVA_FIRMWARE_PATCH_NOTES_2.51.021_EN.pdf");
+  script_xref(name:"URL", value:"ftp://ftp2.dlink.com/PRODUCTS/DGS-1500-28/REVA/DGS-1500_REVA_FIRMWARE_PATCH_NOTES_2.51.021_EN.pdf");
+  script_xref(name:"URL", value:"ftp://ftp2.dlink.com/PRODUCTS/DGS-1500-28P/REVA/DGS-1500_REVA_FIRMWARE_PATCH_NOTES_2.51.021_EN.pdf");
+  script_xref(name:"URL", value:"ftp://ftp2.dlink.com/PRODUCTS/DGS-1500-52/REVA/DGS-1500_REVA_FIRMWARE_PATCH_NOTES_2.51.021_EN.pdf");
 
   exit(0);
 }

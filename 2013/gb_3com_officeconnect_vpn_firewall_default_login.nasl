@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_3com_officeconnect_vpn_firewall_default_login.nasl 11219 2018-09-04 11:52:00Z cfischer $
+# $Id: gb_3com_officeconnect_vpn_firewall_default_login.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # 3Com OfficeConnect VPN Firewall Default Password Security Bypass Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/o:hp:3com_officeconnect_vpn_firewall";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103711");
-  script_version("$Revision: 11219 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("3Com OfficeConnect VPN Firewall Default Password Security Bypass Vulnerability");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-14 11:24:55 +0200 (Tue, 14 May 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -52,7 +52,7 @@ remote attacker to gain access to sensitive information or modify system
 configuration.
 
 It was possible to login as Admin with password 'admin'.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

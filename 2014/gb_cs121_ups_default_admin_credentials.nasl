@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cs121_ups_default_admin_credentials.nasl 11536 2018-09-21 19:44:30Z cfischer $
+# $Id: gb_cs121_ups_default_admin_credentials.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # CS121 UPS Default Admin Credentials
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105023");
-  script_version("$Revision: 11536 $");
+  script_version("$Revision: 11867 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("CS121 UPS Default Admin Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 21:44:30 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-12 11:02:06 +0200 (Mon, 12 May 2014)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_app");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

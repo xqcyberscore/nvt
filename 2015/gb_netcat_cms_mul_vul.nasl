@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netcat_cms_mul_vul.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_netcat_cms_mul_vul.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # NetCat CMS Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805346");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-03 17:44:58 +0530 (Tue, 03 Mar 2015)");
   script_name("NetCat CMS Multiple Vulnerabilities");
 
@@ -56,8 +56,7 @@ if(description)
   script_tag(name:"affected", value:"NetCat CMS version 5.01, 3.12, 3.0, 2.4,
   2.3, 2.2, 2.1, 2.0 and 1.1");
 
-  script_tag(name:"solution", value:"Update to NetCat CMS 5.5 or later,
-  For updates refer to http://netcat.ru");
+  script_tag(name:"solution", value:"Update to NetCat CMS 5.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -73,6 +72,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+  script_xref(name:"URL", value:"http://netcat.ru");
   exit(0);
 }
 

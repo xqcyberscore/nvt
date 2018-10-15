@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_64719.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_qnap_qts_64719.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # QNAP QTS 'f' Parameter Directory Traversal Vulnerability
 #
@@ -32,14 +32,14 @@ if (description)
   script_cve_id("CVE-2013-7174");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
 
   script_name("QNAP QTS 'f' Parameter Directory Traversal Vulnerability");
 
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64719");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-09 18:58:01 +0100 (Thu, 09 Jan 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -63,9 +63,9 @@ unrestricted file path as input.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"QNAP QTS is prone to a directory-traversal vulnerability because it
 fails to properly sanitize user-supplied input.");
-  script_tag(name:"affected", value:"QNAP QTS 4.0.3 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"QNAP QTS 4.0.3 is vulnerable. Other versions may also be affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

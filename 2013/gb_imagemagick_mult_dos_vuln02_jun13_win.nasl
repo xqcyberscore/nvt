@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_dos_vuln02_jun13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_imagemagick_mult_dos_vuln02_jun13_win.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # ImageMagick Multiple Denial of Service Vulnerabilities - 02 June13 (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803816");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2012-0248", "CVE-2012-0247");
   script_bugtraq_id(51957);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 13:05:53 +0530 (Mon, 24 Jun 2013)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -55,8 +55,8 @@ if(description)
 
   - Improper sanitation of user supplied input when parsing offset and
     count values of the ResolutionUnit tag in EXIF IFD0.");
-  script_tag(name:"solution", value:"Upgrade to ImageMagick version 6.7.5-8 or later.
-  http://www.imagemagick.org/script/download.php");
+  script_tag(name:"solution", value:"Upgrade to ImageMagick version 6.7.5-8 or later.");
+  script_xref(name:"URL", value:"http://www.imagemagick.org/script/download.php");
   script_tag(name:"summary", value:"The host is installed with ImageMagick and is prone to multiple
   denial of service Vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

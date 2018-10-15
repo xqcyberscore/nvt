@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_web_apps_ms13-100.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: secpod_ms_office_web_apps_ms13-100.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Office Web Apps Remote Code Execution vulnerability (2904244)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903334");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-5059");
   script_bugtraq_id(64081);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-09 13:37:06 +0530 (Thu, 09 Jan 2014)");
   script_name("Microsoft Office Web Apps Remote Code Execution vulnerability (2904244)");
 
@@ -42,8 +42,7 @@ if(description)
 Bulletin MS13-100.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-http://technet.microsoft.com/en-us/security/bulletin/ms13-100");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"insight", value:"Flaws is due to some input sanitisation errors related to SharePoint content");
   script_tag(name:"affected", value:"Microsoft Office Web Apps 2013");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code with
@@ -59,6 +58,7 @@ the privileges of the W3WP service account.");
   script_dependencies("gb_ms_office_web_apps_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Web/Apps/Ver");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-100");
   exit(0);
 }
 

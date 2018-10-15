@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-042.nasl 11635 2018-09-27 06:07:37Z cfischer $
+# $Id: gb_ms15-042.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Hyper-V Denial of Service Vulnerability (3047234)
 #
@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805532");
-  script_version("$Revision: 11635 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-1647");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 07:56:26 +0530 (Wed, 15 Apr 2015)");
   script_name("Microsoft Windows Hyper-V Denial of Service Vulnerability (3047234)");
 
@@ -50,9 +50,7 @@ if(description)
   Microsoft Windows 8.1 x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS15-042");
+  listed hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -84,7 +82,7 @@ if(!sysPath ){
   exit(0);
 }
 
-exeVer = fetch_file_version(sysPath, file_name:"system32\Vmms.exe");
+exeVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Vmms.exe");
 if(!exeVer){
   exit(0);
 }

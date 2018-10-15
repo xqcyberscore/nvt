@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805729");
-  script_version("$Revision: 11422 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-2659");
   script_bugtraq_id(75877);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-20 17:10:19 +0530 (Mon, 20 Jul 2015)");
   script_name("Oracle Java SE JRE Unspecified Vulnerability-04 July 2015 (Windows)");
 
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"Oracle Java SE 8 update 45 on Windows.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -80,7 +79,7 @@ if(jreVer =~ "^(1\.8)")
 {
   if(version_in_range(version:jreVer, test_version:"1.8.0", test_version2:"1.8.0.45"))
   {
-    report = report_fixed_ver(installed_version:jreVer, fixed_version: "Apply the patch");
+    report = report_fixed_ver(installed_version:jreVer, fixed_version: "Apply the patch from the referenced advisory.");
     security_message(data:report);
     exit(0);
   }

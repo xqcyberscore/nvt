@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_revive_adserver_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_revive_adserver_mult_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Revive Adserver Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:revive:adserver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805415");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-8875", "CVE-2014-8793");
   script_bugtraq_id(71721, 71718);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-13 17:38:00 +0530 (Tue, 13 Jan 2015)");
   script_name("Revive Adserver Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -62,11 +62,12 @@ if(description)
   script or HTML.");
   script_tag(name:"affected", value:"Revive Adserver version 3.0.5 and prior.");
   script_tag(name:"solution", value:"Upgrade to Revive Adserver version 3.0.6
-  or later. For updates refer to http://www.revive-adserver.com");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://www.revive-adserver.com");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_dec13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_apple_safari_mult_vuln_dec13_macosx.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Apple Safari Multiple Vulnerabilities Dec13 (Mac OS X)
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804177");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-5195", "CVE-2013-5196", "CVE-2013-5197", "CVE-2013-5198",
                 "CVE-2013-5199", "CVE-2013-5225", "CVE-2013-5227", "CVE-2013-5228");
   script_bugtraq_id(64356, 64353, 64358, 64359, 64361, 64360, 64355, 64362);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-24 11:34:57 +0530 (Tue, 24 Dec 2013)");
   script_name("Apple Safari Multiple Vulnerabilities Dec13 (Mac OS X)");
 
@@ -49,8 +49,7 @@ information, application termination or arbitrary code execution.");
   - An error related to origin tracking that can be exploited to autofill a form.
 
   - A use-after-free error exists within webkit.");
-  script_tag(name:"solution", value:"Upgrade to Apple Safari version 6.1.1 or 7.0.1 or later,
-For updates refer to http://www.apple.com/support");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 6.1.1 or 7.0.1 or later.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"summary", value:"This host is installed with Apple Safari and is prone to multiple
 vulnerabilities.");
@@ -65,6 +64,7 @@ vulnerabilities.");
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
   script_mandatory_keys("AppleSafari/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.apple.com/support");
   exit(0);
 }
 

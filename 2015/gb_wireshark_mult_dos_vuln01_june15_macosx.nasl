@@ -29,13 +29,13 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805394");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-3906", "CVE-2015-3815", "CVE-2015-3813",
                 "CVE-2015-3810", "CVE-2015-3809", "CVE-2015-3808");
   script_bugtraq_id(74837, 74630, 74629, 74633, 74632, 74628);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-02 09:52:30 +0530 (Tue, 02 Jun 2015)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-01 June15 (Mac OS X)");
 
@@ -69,8 +69,7 @@ if(description)
   script_tag(name:"affected", value:"Wireshark version 1.12.x before 1.12.5
   on Mac OS X");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.12.5 or later,
-  For updates refer to https://www.wireshark.org");
+  script_tag(name:"solution", value:"Upgrade to version 1.12.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CCTX201149.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_citrix_netscaler_CCTX201149.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Citrix NetScaler Arbitrary Command Injection (CTX201149)
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-5080");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Citrix NetScaler Arbitrary Command Injection (CTX201149)");
 
@@ -59,7 +59,7 @@ Version 10.1 earlier than 10.1.132.8");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-01 13:34:32 +0200 (Wed, 01 Jul 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -67,7 +67,7 @@ Version 10.1 earlier than 10.1.132.8");
   script_dependencies("gb_citrix_netscaler_version.nasl");
   script_mandatory_keys("citrix_netscaler/detected");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_mult_info_disc_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_oracle_database_mult_info_disc_vuln.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Oracle Database Server Multiple Information Disclosure Vulnerabilities
 #
@@ -28,13 +28,13 @@ CPE = 'cpe:/a:oracle:database_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803956");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-3826", "CVE-2013-5771");
   script_bugtraq_id(63046, 63044);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-28 14:27:36 +0530 (Mon, 28 Oct 2013)");
   script_name("Oracle Database Server Multiple Information Disclosure Vulnerabilities");
 
@@ -45,16 +45,10 @@ information and manipulate certain data.");
 are affected");
   script_tag(name:"insight", value:"Multiple flaws exist in Core RDBMS component and XML Parser component, no
 further information available at this moment.");
-  script_tag(name:"solution", value:"Apply patches from below links,
-http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html#AppendixDB
-http://www.oracle.com/technetwork/topics/security/cpuoct2013verbose-1899842.html#DB
-
-*****
-NOTE: Ignore this warning if above mentioned patch is installed.
+  script_tag(name:"solution", value:"Apply patches Ignore this warning if above mentioned patch is installed.
 *****");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of tnslsnr service and check it is
-vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"summary", value:"This host is installed with Oracle Database Server and is prone to multiple
 information disclosure vulnerabilities.");
 
@@ -66,6 +60,11 @@ information disclosure vulnerabilities.");
   script_family("Databases");
   script_dependencies("oracle_tnslsnr_version.nasl");
   script_mandatory_keys("OracleDatabaseServer/installed");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html#AppendixDB
+http://www.oracle.com/technetwork/topics/security/cpuoct2013verbose-1899842.html#DB
+
+*****
+NOTE:");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nmedia_users_file_upload_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_wordpress_nmedia_users_file_upload_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # WordPress Nmedia Users File Uploader Plugin Arbitrary File Upload Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802643");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_bugtraq_id(53786);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-20 16:16:16 +0530 (Wed, 20 Jun 2012)");
   script_name("WordPress Nmedia Users File Uploader Plugin Arbitrary File Upload Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53786");
@@ -55,7 +55,7 @@ if(description)
   doupload.php script allowing the upload of files with arbitrary extensions
   to a folder inside the webroot. This can be exploited to execute arbitrary
   PHP code by uploading a malicious PHP script.");
-  script_tag(name:"solution", value:"Upgrade to WordPress Nmedia Users File Uploader Plugin version 2.0 or later,");
+  script_tag(name:"solution", value:"Upgrade to WordPress Nmedia Users File Uploader Plugin version 2.0 or later.");
   script_tag(name:"summary", value:"This host is running WordPress Nmedia Users File Uploader Plugin
   and is prone to file upload vulnerability.");
 

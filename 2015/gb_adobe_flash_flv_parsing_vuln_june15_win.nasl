@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805802");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-3113");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-24 11:58:55 +0530 (Wed, 24 Jun 2015)");
   script_name("Adobe Flash Player Improper FLV Parsing Vulnerability June15 (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -64,12 +64,12 @@ if(description)
   13.0.0.296 and 14.x through 18.x before 18.0.0.194 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
-  13.0.0.296 or 18.0.0.194 or later. For updates refer to
-  http://get.adobe.com/flashplayer");
+  13.0.0.296 or 18.0.0.194 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

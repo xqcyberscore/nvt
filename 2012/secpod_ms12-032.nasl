@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-032.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: secpod_ms12-032.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows TCP/IP Privilege Elevation Vulnerabilities (2688338)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902676");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2012-0174", "CVE-2012-0179");
   script_bugtraq_id(53352, 53349);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 09:08:42 +0530 (Wed, 09 May 2012)");
   script_name("Microsoft Windows TCP/IP Privilege Elevation Vulnerabilities (2688338)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49114");
@@ -58,8 +58,8 @@ if(description)
 
   - Windows TCP/IP stack handles the binding of an IPv6 address to a local
     interface.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory ");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-032.");
   script_tag(name:"qod_type", value:"registry");
@@ -82,7 +82,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"system32\drivers\tcpip.sys");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\drivers\tcpip.sys");
 if(!sysVer){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_60480.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_hp_ilo_60480.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # HP Integrated Lights-Out Remote Unauthorized Access Vulnerability
 #
@@ -32,11 +32,11 @@ if (description)
   script_cve_id("CVE-2013-2338");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11865 $");
 
   script_name("HP Integrated Lights-Out Remote Unauthorized Access Vulnerability");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-10 18:32:43 +0200 (Tue, 10 Sep 2013)");
 
   script_category(ACT_GATHER_INFO);
@@ -68,7 +68,7 @@ iLO4) with firmware before 1.22, when Single-Sign-On (SSO) is used.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

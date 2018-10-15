@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3045755.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_microsoft_security_advisory_3045755.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Update To Improve PKU2U Authentication Security Advisory (3045755)
 #
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805451");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11876 $");
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-17 16:49:36 +0530 (Fri, 17 Apr 2015)");
   script_name("Microsoft Update To Improve PKU2U Authentication Security Advisory (3045755)");
 
@@ -81,7 +81,7 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Pku2u.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Pku2u.dll");
 if(!dllVer){
   exit(0);
 }

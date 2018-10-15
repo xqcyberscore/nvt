@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_opensso_dos_vul.nasl 10864 2018-08-09 15:04:27Z cfischer $
+# $Id: gb_oracle_opensso_dos_vul.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Oracle OpenSSO 'Web Agents' Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:opensso";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811405");
-  script_version("$Revision: 10864 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2016-2834");
   script_bugtraq_id(91072);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 17:04:27 +0200 (Thu, 09 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-01 15:25:23 +0530 (Tue, 01 Aug 2017)");
   script_name("Oracle OpenSSO 'Web Agents' Denial of Service Vulnerability");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -48,17 +48,14 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with oracle OpenSSO
   and is prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in Network
   Security Services (NSS) before 3.23.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to cause a denial of service (memory corruption and application
-  crash) or possibly have unspecified other impact via unknown vectors.
-
-  Impact Level: Application");
+  crash) or possibly have unspecified other impact via unknown vectors.");
 
   script_tag(name:"affected", value:"Oracle OpenSSO 3.0.0.8.");
 

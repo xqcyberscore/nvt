@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_contact_form_7integrations_mult_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_wp_contact_form_7integrations_mult_xss_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Wordpress Contact Form 7 Integrations Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804770");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-6445");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-09-30 10:23:50 +0530 (Tue, 30 Sep 2014)");
 
   script_name("Wordpress Contact Form 7 Integrations Multiple Cross Site Scripting Vulnerabilities");
@@ -55,8 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Wordpress Contact Form 7 Integrations
   version 1.0 to 1.3.10");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.3.11 or later,
-  For updates refer to https://wordpress.org/plugins/contact-form-7-integrations");
+  script_tag(name:"solution", value:"Upgrade to version 1.3.11 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://research.g0blin.co.uk/cve-2014-6445");
   script_xref(name:"URL", value:"https://wordpress.org/plugins/contact-form-7-integrations/changelog");

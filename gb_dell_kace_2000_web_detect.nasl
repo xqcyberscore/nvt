@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_kace_2000_web_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_dell_kace_2000_web_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Dell KACE K2000 Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103317");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-11-11 10:17:05 +0100 (Fri, 11 Nov 2011)");
   script_tag(name:"cvss_base", value:"0.0");
 
@@ -54,7 +54,7 @@ This NVT has been replaced by NVT 'Quest KACE Systems Management Applicance (SMA
 
   script_tag(name:"deprecated", value: TRUE);
 
- exit(0);
+  exit(0);
 }
 
 exit(66);

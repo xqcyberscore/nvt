@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-030.nasl 11635 2018-09-27 06:07:37Z cfischer $
+# $Id: gb_ms15-030.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Remote Desktop Denial of Service Vulnerability (3039976)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805500");
-  script_version("$Revision: 11635 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-0079");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-11 09:50:50 +0530 (Wed, 11 Mar 2015)");
   script_name("Microsoft Windows Remote Desktop Denial of Service Vulnerability (3039976)");
 
@@ -55,9 +55,7 @@ if(description)
   Microsoft Windows 7 x32/x64 Service Pack 1 and prior");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS15-030");
+  listed hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -94,14 +92,14 @@ if(!sysPath){
   exit(0);
 }
 
-RdpVer = fetch_file_version(sysPath, file_name:"\system32\Rdpcorets.dll");
+RdpVer = fetch_file_version(sysPath:sysPath, file_name:"\system32\Rdpcorets.dll");
 if(!RdpVer){
   exit(0);
 }
 
 if(hotfix_check_sp(win7:2, win7x64:2))
 {
-  rdpVer = fetch_file_version(sysPath, file_name:"\system32\mstsc.exe");
+  rdpVer = fetch_file_version(sysPath:sysPath, file_name:"\system32\mstsc.exe");
 
   ## Enterprise and Ultimate editions of Windows 7 are affected,
   ## All supported editions of Windows 7 are affected if RDP 8.0 is installed on the system.
@@ -140,7 +138,7 @@ if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 
 if(hotfix_check_sp(win8x64:1, win2012:1) > 0)
 {
-  sysVer2 = fetch_file_version(sysPath, file_name:"\system32\Rdpudd.dll");
+  sysVer2 = fetch_file_version(sysPath:sysPath, file_name:"\system32\Rdpudd.dll");
   if(!sysVer2){
     exit(0);
   }

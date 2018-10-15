@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_niagara_fox_detect.nasl 11075 2018-08-22 05:20:40Z ckuersteiner $
+# $Id: gb_niagara_fox_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Niagara Fox Protocol Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140278");
-  script_version("$Revision: 11075 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 07:20:40 +0200 (Wed, 22 Aug 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-07 10:20:07 +0700 (Mon, 07 Aug 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,7 +52,7 @@ automation systems.");
 
   script_xref(name:"URL", value:"https://www.tridium.com");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

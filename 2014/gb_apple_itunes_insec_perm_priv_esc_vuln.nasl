@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_insec_perm_priv_esc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_apple_itunes_insec_perm_priv_esc_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Apple iTunes Insecure Permissions Privilege Escalation Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804484");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1347");
   script_bugtraq_id(67457);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-09-18 14:45:02 +0530 (Thu, 18 Sep 2014)");
 
 
@@ -54,8 +54,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apple iTunes prior to 11.2.1 for Mac OS X.");
 
-  script_tag(name:"solution", value:"Upgrade to iTunes 11.2.1 or later,
-  For updates refer to http://www.apple.com/itunes");
+  script_tag(name:"solution", value:"Upgrade to iTunes 11.2.1 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT6251");
   script_xref(name:"URL", value:"http://secunia.com/advisories/58444");
@@ -67,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_itunes_detect_macosx.nasl");
   script_mandatory_keys("Apple/iTunes/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.apple.com/itunes");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_temp_inj_vuln.nasl 7992 2017-12-05 08:34:22Z teissa $
+# $Id: gb_cms_made_simple_temp_inj_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # CMS Made Simple Template Injection Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112121");
-  script_version("$Revision: 7992 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-11-13 14:30:33 +0100 (Mon, 13 Nov 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-13 14:30:33 +0100 (Mon, 13 Nov 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-16783");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("CMS Made Simple Template Injection Vulnerability");
 
@@ -51,18 +51,19 @@ if (description)
   script_dependencies("cms_made_simple_detect.nasl");
   script_mandatory_keys("cmsmadesimple/installed");
 
-  script_tag(name: "summary", value: "CMS Made Simple is prone to a template injection vulnerability.");
+  script_tag(name:"summary", value:"CMS Made Simple is prone to a template injection vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "There is a server-side template injection vulnerability in CMS Made Simple via the cntnt01detailtemplate parameter.");
+  script_tag(name:"insight", value:"There is a server-side template injection vulnerability in CMS Made Simple via the cntnt01detailtemplate parameter.");
 
-  script_tag(name: "affected", value: "CMS Made Simple version 2.1.6.");
+  script_tag(name:"affected", value:"CMS Made Simple version 2.1.6.");
 
-  script_tag(name: "solution", value: "Upgrade to version 2.2.3 or later. For updates refer to: https://www.cmsmadesimple.org/");
+  script_tag(name:"solution", value:"Upgrade to version 2.2.3 or later.");
 
-  script_xref(name: "URL", value: "https://www.netsparker.com/web-applications-advisories/ns-17-032-server-side-template-injection-vulnerability-in-cms-made-simple/");
+  script_xref(name:"URL", value:"https://www.netsparker.com/web-applications-advisories/ns-17-032-server-side-template-injection-vulnerability-in-cms-made-simple/");
 
+  script_xref(name:"URL", value:"https://www.cmsmadesimple.org/");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_mul_vuln_sept17.nasl 9421 2018-04-10 10:20:06Z asteins $
+# $Id: gb_magento_mul_vuln_sept17.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Magento CMS Multiple Security Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:magentocommerce:magento";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107186");
-  script_version("$Revision: 9421 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-10 12:20:06 +0200 (Tue, 10 Apr 2018) $");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-06 15:28:56 +0200 (Fri, 06 Oct 2017)");
   script_bugtraq_id(100869);
 
@@ -41,9 +41,10 @@ if(description)
   script_name("Magento CMS Multiple Security Vulnerabilities");
 
   script_tag(name:"summary", value:"Magento CMS is prone to multiple security vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detection  NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "Magento E-Commerce is prone to the following security vulnerabilities:
+  script_tag(name:"insight", value:"Magento E-Commerce is prone to the following security vulnerabilities:
+
   - Multiple HTML-injection vulnerabilities
 
   - Multiple remote-code execution vulnerabilities
@@ -63,7 +64,7 @@ if(description)
       disclose sensitive information, elevate privileges, upload arbitrary files or bypass certain security restrictions and perform unauthorized actions.");
   script_tag(name:"affected", value:"Magento Commerce prior to 1.14.3.6");
 
-  script_tag(name:"solution", value:"Update to Magento Commerce 1.14.3.6. For details refer to : https://magento.com/security/patches/supee-10266");
+  script_tag(name:"solution", value:"Update to Magento Commerce 1.14.3.6.");
 
   script_xref(name:"URL", value:"https://magento.com/security/patches/supee-10266");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/100869");

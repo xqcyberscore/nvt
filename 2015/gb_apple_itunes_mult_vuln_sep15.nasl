@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_sep15.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_apple_itunes_mult_vuln_sep15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Apple iTunes Multiple Vulnerabilities Sep15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806063");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-1157", "CVE-2015-3686", "CVE-2015-3687", "CVE-2015-3688",
                 "CVE-2015-5755", "CVE-2015-5761", "CVE-2015-5874", "CVE-2014-8146",
                 "CVE-2015-1205", "CVE-2010-3190", "CVE-2015-1152", "CVE-2015-1153",
@@ -49,7 +49,7 @@ if(description)
                 "CVE-2015-5821", "CVE-2015-5822");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-01 10:34:38 +0530 (Thu, 01 Oct 2015)");
   script_name("Apple iTunes Multiple Vulnerabilities Sep15 (Windows)");
 
@@ -76,8 +76,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apple iTunes versions before 12.3 on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.3 or later,
-  For updates refer to http://www.apple.com/itunes");
+  script_tag(name:"solution", value:"Upgrade to Apple iTunes 12.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -91,6 +90,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
   script_mandatory_keys("iTunes/Win/Installed");
+  script_xref(name:"URL", value:"http://www.apple.com/itunes");
   exit(0);
 }
 

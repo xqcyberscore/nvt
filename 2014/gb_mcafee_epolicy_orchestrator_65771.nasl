@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_65771.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_mcafee_epolicy_orchestrator_65771.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # McAfee ePolicy Orchestrator XML External Entity Information Disclosure Vulnerability
 #
@@ -34,13 +34,13 @@ if (description)
   script_cve_id("CVE-2014-2205");
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:N/A:N");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
 
   script_name("McAfee ePolicy Orchestrator XML External Entity Information Disclosure Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65771");
   script_xref(name:"URL", value:"http://www.mcafee.com/us/enterprise/products/system_security_management/epolicy_orchestrator.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-20 11:41:18 +0100 (Thu, 20 Mar 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -64,7 +64,7 @@ vulnerability");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

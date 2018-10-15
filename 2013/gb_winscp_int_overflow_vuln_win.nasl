@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winscp_int_overflow_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_winscp_int_overflow_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # WinSCP Integer Overflow Vulnerability (Windows)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:winscp:winscp";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803873");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-4852");
   script_bugtraq_id(61599);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 13:50:22 +0530 (Wed, 21 Aug 2013)");
   script_name("WinSCP Integer Overflow Vulnerability (Windows)");
   script_tag(name:"summary", value:"The host is installed with WinSCP and is prone to integer overflow
 vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Upgrade to version 5.1.6 or later,
-For updates refer to http://winscp.net");
+  script_tag(name:"solution", value:"Upgrade to version 5.1.6 or later.");
   script_tag(name:"insight", value:"Flaw is due to improper validation of message lengths in the getstring()
 function in sshrsa.c and sshdss.c when handling negative SSH handshake.");
   script_tag(name:"affected", value:"WinSCP version before 5.1.6 on Windows");

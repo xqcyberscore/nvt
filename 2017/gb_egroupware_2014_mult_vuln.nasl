@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_egroupware_2014_mult_vuln.nasl 5156 2017-02-01 10:10:45Z cfi $
+# $Id: gb_egroupware_2014_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
-# EGroupware Multiple CSRF and Remote Code Execution Vulnerabilities 
+# EGroupware Multiple CSRF and Remote Code Execution Vulnerabilities
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -29,12 +29,12 @@ CPE = "cpe:/a:egroupware:egroupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108066");
-  script_version("$Revision: 5156 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2014-2987", "CVE-2014-2988");
   script_bugtraq_id(67303, 67409);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-01 11:10:45 +0100 (Wed, 01 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-01 09:00:00 +0100 (Wed, 01 Feb 2017)");
   script_name("EGroupware Multiple CSRF and Remote Code Execution Vulnerabilities");
   script_category(ACT_GATHER_INFO);

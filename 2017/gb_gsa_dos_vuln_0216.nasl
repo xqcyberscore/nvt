@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsa_dos_vuln_0216.nasl 6871 2017-08-08 12:27:18Z emoss $
+# $Id: gb_gsa_dos_vuln_0216.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Greenbone Security Assistant 6.0 < 6.0.9 Denial-of-Service Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:greenbone:greenbone_security_assistant";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108195");
-  script_version("$Revision: 6871 $");
+  script_version("$Revision: 11874 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-08 14:27:18 +0200 (Tue, 08 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-26 13:00:00 +0200 (Wed, 26 Jul 2017)");
   script_name("Greenbone Security Assistant 6.0 < 6.0.9 Denial-of-Service Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -50,16 +50,13 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw exists due to a improper handling of UTF-8 in GET and POST requests.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detect NVT and check if the
-  version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"impact", value:"Given the attacker has access to a GSA web interface, a respective HTTP request can crash gsad. 
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Given the attacker has access to a GSA web interface, a respective HTTP request can crash gsad.");
 
   script_tag(name:"affected", value:"Greenbone Security Assistant version 6.0.x before 6.0.9.");
 
-  script_tag(name:"solution", value:"Update Greenbone Security Assistant to version 6.0.9 or later."); 
+  script_tag(name:"solution", value:"Update Greenbone Security Assistant to version 6.0.9 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

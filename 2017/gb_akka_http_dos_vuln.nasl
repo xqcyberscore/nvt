@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_akka_http_dos_vuln.nasl 7645 2017-11-03 09:39:46Z ckuersteiner $
+# $Id: gb_akka_http_dos_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # akka HTTP DoS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:akka:http";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140486");
-  script_version("$Revision: 7645 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-03 10:39:46 +0100 (Fri, 03 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2017-11-03 16:48:17 +0700 (Fri, 03 Nov 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-03 16:48:17 +0700 (Fri, 03 Nov 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-1000118");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("akka HTTP DoS Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("gb_akka_http_detect.nasl");
   script_mandatory_keys("akka_http/installed");
 
-  script_tag(name: "summary", value: "akka HTTP is prone to a denial of service vulnerability.");
+  script_tag(name:"summary", value:"akka HTTP is prone to a denial of service vulnerability.");
 
-  script_tag(name: "insight", value: "Handling a request that carries an Accept header with an unsupported media
+  script_tag(name:"insight", value:"Handling a request that carries an Accept header with an unsupported media
 range starting with a wildcard but having a specific subtype (e.g. */boom) leads to a stack overflow during
 negotiation of the content type. Per default, stack overflows are treated as fatal errors, so that the JVM
 process will shut itself down immediately.");
 
-  script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "solution", value: "Update to version 10.0.6 or later.");
+  script_tag(name:"solution", value:"Update to version 10.0.6 or later.");
 
-  script_xref(name: "URL", value: "https://doc.akka.io/docs/akka-http/10.0.6/security/2017-05-03-illegal-media-range-in-accept-header-causes-stackoverflowerror.html");
+  script_xref(name:"URL", value:"https://doc.akka.io/docs/akka-http/10.0.6/security/2017-05-03-illegal-media-range-in-accept-header-causes-stackoverflowerror.html");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2344_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_2344_1.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Ubuntu Update for php5 USN-2344-1
 #
@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841965");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11867 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-09-10 06:20:51 +0200 (Wed, 10 Sep 2014)");
   script_cve_id("CVE-2014-3587", "CVE-2014-3597");
   script_tag(name:"cvss_base", value:"6.8");
@@ -58,7 +58,7 @@ or possibly execute arbitrary code via crafted DNS records. (CVE-2014-3597)");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|12\.04 LTS|10\.04 LTS)");
-exit(0);
+  exit(0);
 }
 
 include("pkg-lib-deb.inc");

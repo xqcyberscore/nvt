@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_multiple_devices_backdoor_10_2013.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_dlink_multiple_devices_backdoor_10_2013.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # D-Link Multiple Devices Backdoor
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103810");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-6026");
   script_bugtraq_id(62990);
   script_tag(name:"cvss_base", value:"10.0");
@@ -40,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.devttys0.com/2013/10/reverse-engineering-a-d-link-backdoor/");
   script_xref(name:"URL", value:"http://www.d-link.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-14 19:24:10 +0200 (Mon, 14 Oct 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -61,7 +61,7 @@ possible to access the web interface without any authentication.");
 bypass vulnerability.");
   script_tag(name:"affected", value:"Various D-Link routers are affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

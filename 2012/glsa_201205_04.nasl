@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201205_04.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201205_04.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2011-3103", "CVE-2011-3104", "CVE-2011-3105", "CVE-2011-3106", "CVE-2011-3107", "CVE-2011-3108", "CVE-2011-3109", "CVE-2011-3111", "CVE-2011-3115");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-31 11:54:21 -0400 (Thu, 31 May 2012)");
   script_name("Gentoo Security Advisory GLSA 201205-04 (chromium v8)");
   script_category(ACT_GATHER_INFO);
@@ -53,12 +53,11 @@ if(description)
 All V8 users should upgrade to the latest version:
 
       # emerge --sync
-      # emerge --ask --oneshot --verbose '>=dev-lang/v8-3.9.24.28'
+      # emerge --ask --oneshot --verbose '>=dev-lang/v8-3.9.24.28'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201205-04
-http://bugs.gentoo.org/show_bug.cgi?id=417321
-http://googlechromereleases.blogspot.com/2012/05/stable-channel-update_23.html");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201205-04");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=417321");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.com/2012/05/stable-channel-update_23.html");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201205-04.");
   script_tag(name:"qod_type", value:"package");

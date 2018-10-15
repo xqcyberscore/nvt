@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_glfusion_mult_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_glfusion_mult_xss_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # glFusion Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803316");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1466");
   script_bugtraq_id(58058);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-03-01 11:22:26 +0530 (Fri, 01 Mar 2013)");
   script_name("glFusion Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -60,13 +60,13 @@ if(description)
     '/calendar/index.php' and '/links/index.php' via following parameters,
     'subject', 'title', 'url', 'address1', 'address2', 'calendar_type', 'city',
     'state', 'title', 'url', 'zipcode'.");
-  script_tag(name:"solution", value:"Upgrade to the latest version of glFusion 1.2.2.pl4 or later,
-  For updates refer to http://www.glfusion.org/filemgmt/index.php");
+  script_tag(name:"solution", value:"Upgrade to the latest version of glFusion 1.2.2.pl4 or later.");
   script_tag(name:"summary", value:"This host is running glFusion and is prone to multiple cross-site
   scripting vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+  script_xref(name:"URL", value:"http://www.glfusion.org/filemgmt/index.php");
   exit(0);
 }
 

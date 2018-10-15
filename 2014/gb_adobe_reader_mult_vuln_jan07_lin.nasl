@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln_jan07_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_reader_mult_vuln_jan07_lin.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities Jan07 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804394");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2006-5857", "CVE-2007-0046", "CVE-2007-0047", "CVE-2007-0044");
   script_bugtraq_id(21858, 21981);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-11 18:00:34 +0530 (Fri, 11 Apr 2014)");
   script_name("Adobe Reader Multiple Vulnerabilities Jan07 (Linux)");
 
@@ -54,8 +54,7 @@ execution of arbitrary code, execution of arbitrary script code in a user's
 browser session in context of an affected site and conduct cross site request
 forgery attacks.");
   script_tag(name:"affected", value:"Adobe Reader version 7.0.8 and prior on Linux.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 7.0.9 or later. For updates refer to
-http://get.adobe.com/reader");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 7.0.9 or later.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ http://get.adobe.com/reader");
   script_family("General");
   script_dependencies("gb_adobe_prdts_detect_lin.nasl");
   script_mandatory_keys("Adobe/Reader/Linux/Version");
+  script_xref(name:"URL", value:"http://get.adobe.com/reader");
   exit(0);
 }
 

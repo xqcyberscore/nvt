@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_server_con_spoof_vul_win.nasl 9403 2018-04-09 07:48:27Z asteins $
+# $Id: gb_nextcloud_server_con_spoof_vul_win.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # Nextcloud Server Multiple Vulnerabilities (Windows)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107146");
-  script_version("$Revision: 9403 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:48:27 +0200 (Mon, 09 Apr 2018) $");
+  script_version("$Revision: 11901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-10 09:39:06 +0200 (Mon, 10 Apr 2017)");
   script_cve_id("CVE-2017-0883", "CVE-2017-0884", "CVE-2017-0885", "CVE-2017-0886",
                 "CVE-2017-0887", "CVE-2017-0888");
@@ -40,12 +40,11 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Nextcloud Server Multiple Vulnerabilities (Windows)");
-  script_tag(name: "summary", value: "Nextcloud Server is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Nextcloud Server is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of
-  the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "The following flaws exist:
+  script_tag(name:"insight", value:"The following flaws exist:
 
   - the top navigation bar displayed in the files list contained partially
     user-controllable input leading to a potential misrepresentation of information.
@@ -67,19 +66,17 @@ if(description)
   - a logical error in the file caching layer an authenticated adversary is
     able to create empty folders inside a shared folder.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow an attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to edit files in a share, lead to a potential misrepresentation of information,
-  and can cause denial of service conditions.
+  and can cause denial of service conditions.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected", value: "Versions prior to Nextcloud Server 9.0.55
+  script_tag(name:"affected", value:"Versions prior to Nextcloud Server 9.0.55
   and 10.0.2 are vulnerable");
 
-  script_tag(name: "solution", value: "Updates are available. Please see the
+  script_tag(name:"solution", value:"Updates are available. Please see the
   references or vendor advisory for more information.");
 
-  script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/97491");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/97491");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

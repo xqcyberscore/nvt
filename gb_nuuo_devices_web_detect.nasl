@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuuo_devices_web_detect.nasl 11439 2018-09-18 03:16:57Z ckuersteiner $
+# $Id: gb_nuuo_devices_web_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # NUUO Device Detection
 #
@@ -30,8 +30,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105855");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11439 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 05:16:57 +0200 (Tue, 18 Sep 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-08 18:28:02 +0200 (Mon, 08 Aug 2016)");
 
   script_name("NUUO Device Detection");
@@ -47,7 +47,7 @@ if (description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

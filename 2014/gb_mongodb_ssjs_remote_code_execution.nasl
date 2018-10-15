@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_ssjs_remote_code_execution.nasl 11497 2018-09-20 10:31:54Z mmartin $
+# $Id: gb_mongodb_ssjs_remote_code_execution.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # MongoDB REST Interface Remote Code Execution Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mongodb:mongodb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103870");
-  script_version("$Revision: 11497 $");
+  script_version("$Revision: 11867 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://en.securitylab.ru/lab/PT-2012-40");
   script_xref(name:"URL", value:"http://blog.ptsecurity.com/2012/11/attacking-mongodb.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-08 13:56:18 +0100 (Wed, 08 Jan 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -60,7 +60,7 @@ by default, the attacker could execute SSJS code.");
 fails to properly sanitize user-supplied input.");
   script_tag(name:"affected", value:"MongoDB 2.x is vulnerable.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

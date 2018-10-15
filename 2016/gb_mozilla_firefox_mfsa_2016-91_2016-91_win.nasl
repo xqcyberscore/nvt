@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-91_2016-91_win.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_mozilla_firefox_mfsa_2016-91_2016-91_win.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Mozilla Firefox Security Updates( mfsa_2016-91_2016-91 )-Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809823");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2016-9078");
   script_bugtraq_id(94569);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-01 12:04:46 +0530 (Thu, 01 Dec 2016)");
   script_name("Mozilla Firefox Security Updates( mfsa_2016-91_2016-91 )-Windows");
 
@@ -54,7 +54,7 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 50.0.1
-  or later, ");
+  or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2016-91");

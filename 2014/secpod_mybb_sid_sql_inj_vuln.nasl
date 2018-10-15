@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mybb_sid_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: secpod_mybb_sid_sql_inj_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # MyBB sid Sql Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903231");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-26 11:23:07 +0530 (Wed, 26 Feb 2014)");
   script_name("MyBB sid Sql Injection Vulnerability");
 
@@ -44,8 +44,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL queries by
   injecting arbitrary SQL code and gain sensitive information.");
   script_tag(name:"affected", value:"MyBB 1.6.12, previous versions may also be affected.");
-  script_tag(name:"solution", value:"Upgrade to version 1.6.13 or later,
-  For updates refer to http://mybb.com");
+  script_tag(name:"solution", value:"Upgrade to version 1.6.13 or later.");
 
   script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/mybb-1612-sql-injection");
   script_category(ACT_ATTACK);
@@ -59,6 +58,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://mybb.com");
   exit(0);
 }
 

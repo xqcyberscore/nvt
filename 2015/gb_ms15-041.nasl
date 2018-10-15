@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-041.nasl 11612 2018-09-26 05:47:26Z cfischer $
+# $Id: gb_ms15-041.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Microsoft Windows .NET Framework Information Disclosure Vulnerability (3048010)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805060");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-1648");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 08:59:36 +0530 (Wed, 15 Apr 2015)");
   script_name("Microsoft Windows .NET Framework Information Disclosure Vulnerability (3048010)");
 
@@ -55,9 +55,7 @@ if(description)
   Microsoft .NET Framework 4.5, 4.5.1, and 4.5.2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS15-041");
+  listed hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

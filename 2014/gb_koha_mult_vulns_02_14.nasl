@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_koha_mult_vulns_02_14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_koha_mult_vulns_02_14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Koha Multiple Vulnerabilities
 #
@@ -31,10 +31,10 @@ if (description)
   script_cve_id("CVE-2014-1922", "CVE-2014-1923", "CVE-2014-1924", "CVE-2014-1925");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
   script_name("Koha Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://koha-community.org/security-release-february-2014/");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-10 15:39:58 +0100 (Mon, 10 Feb 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -64,7 +64,7 @@ be used to perform unexpected SQL commands");
 < 3.10.13
 < 3.8.23");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

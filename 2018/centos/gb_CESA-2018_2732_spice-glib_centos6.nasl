@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CESA-2018_2732_spice-glib_centos6.nasl 11734 2018-10-03 11:48:15Z santu $
+# $Id: gb_CESA-2018_2732_spice-glib_centos6.nasl 11897 2018-10-15 05:26:22Z cfischer $
 #
 # CentOS Update for spice-glib CESA-2018:2732 centos6
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882949");
-  script_version("$Revision: 11734 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-03 13:48:15 +0200 (Wed, 03 Oct 2018) $");
+  script_version("$Revision: 11897 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-03 17:01:57 +0530 (Wed, 03 Oct 2018)");
   script_cve_id("CVE-2018-10873");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for spice-glib CESA-2018:2732 centos6 ");
   script_tag(name:"summary", value:"Check the version of spice-glib");

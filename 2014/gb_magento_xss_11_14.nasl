@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_xss_11_14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_magento_xss_11_14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Magento Cross Site Scripting Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105110");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2011-2461"); # nb: Flex CVE for the vulnerable swfs used in Magento
@@ -50,9 +50,9 @@ steal cookie-based authentication credentials and launch other attacks.");
   script_tag(name:"summary", value:"Magento is prone to multiple cross-site scripting vulnerabilities because it
 fails to sanitize user supplied input.");
 
-  script_tag(name:"affected", value:"Magento 1.9.0.1; Previous versions may also affected.");
+  script_tag(name:"affected", value:"Magento 1.9.0.1. Previous versions may also affected.");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-05 19:20:13 +0100 (Wed, 05 Nov 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -64,7 +64,7 @@ fails to sanitize user supplied input.");
   script_tag(name:"qod_type", value:"remote_active");
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 

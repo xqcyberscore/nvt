@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonatype_nexus_pw_vuln.nasl 8307 2018-01-07 18:51:31Z asteins $
+# $Id: gb_sonatype_nexus_pw_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Sonatype Nexus Repository Manager Weak Password Encryption Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:sonatype:nexus";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140611");
-  script_version("$Revision: 8307 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-07 19:51:31 +0100 (Sun, 07 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2017-12-19 14:09:00 +0700 (Tue, 19 Dec 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-19 14:09:00 +0700 (Tue, 19 Dec 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-17717");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Sonatype Nexus Repository Manager Weak Password Encryption Vulnerability");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("gb_sonatype_nexus_detect.nasl");
   script_mandatory_keys("nexus/installed");
 
-  script_tag(name: "summary", value: "Sonatype Nexus Repository Manager has weak password encryption with a
+  script_tag(name:"summary", value:"Sonatype Nexus Repository Manager has weak password encryption with a
 hardcoded CMMDwoV value in the LDAP integration feature.");
 
-  script_tag(name: "insight", value: "he Nexus Repository Manager stores the LDAP bind password in an on-disk
+  script_tag(name:"insight", value:"he Nexus Repository Manager stores the LDAP bind password in an on-disk
 file using PBE with only 23 iterations and a hard-coded and weak password. Therefore offering as much protection
 as a rot13 would.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Nexus Repository Manager version 2.x");
+  script_tag(name:"affected", value:"Nexus Repository Manager version 2.x");
 
-  script_tag(name: "solution", value: "Update to a version from the 3.x series.");
+  script_tag(name:"solution", value:"Update to a version from the 3.x series.");
 
-  script_xref(name: "URL", value: "http://openwall.com/lists/oss-security/2017/12/17/3");
+  script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2017/12/17/3");
 
   exit(0);
 }

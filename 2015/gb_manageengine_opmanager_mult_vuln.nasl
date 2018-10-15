@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_opmanager_mult_vuln.nasl 11506 2018-09-20 13:32:45Z cfischer $
+# $Id: gb_manageengine_opmanager_mult_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # ManageEngine OpManager Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806053");
-  script_version("$Revision: 11506 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-7765", "CVE-2015-7766");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 15:32:45 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-16 11:10:46 +0530 (Wed, 16 Sep 2015)");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -54,8 +54,7 @@ if(description)
 
   script_tag(name:"affected", value:"ManageEngine OpManager versions 11.6 and earlier.");
 
-  script_tag(name:"solution", value:"Install the patch from below link,
-  https://support.zoho.com/portal/manageengine/helpcenter/articles/pgsql-submitquery-do-vulnerability");
+  script_tag(name:"solution", value:"Install the patch");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -70,6 +69,7 @@ if(description)
   script_mandatory_keys("OpManager/installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"https://support.zoho.com/portal/manageengine/helpcenter/articles/pgsql-submitquery-do-vulnerability");
   exit(0);
 }
 

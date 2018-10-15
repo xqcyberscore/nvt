@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_linksys_scfgmgr_information_disclosure.nasl 11207 2018-09-04 07:22:57Z mmartin $
+# $Id: gb_netgear_linksys_scfgmgr_information_disclosure.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Netgear/Linksys Routers Backdoor
 #
@@ -29,7 +29,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.103866");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11207 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Netgear/Linksys Routers Backdoor");
 
@@ -37,7 +37,7 @@ if (description)
   script_xref(name:"URL", value:"https://github.com/elvanderb/TCP-32764");
   script_xref(name:"URL", value:"http://www.netgear.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 09:22:57 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-02 14:46:14 +0100 (Thu, 02 Jan 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -47,7 +47,7 @@ if (description)
   script_require_ports(32764);
 
   script_tag(name:"impact", value:"An attacker can exploit this issue to disclose sensitive
-information; this may aid in further attacks.");
+information. This may aid in further attacks.");
   script_tag(name:"vuldetect", value:"Send a special crafted request and check the response.");
   script_tag(name:"insight", value:"By sending a special crafted request to port 32764 of the router, it
 is possible to gather e.g. the http username and http password or to change some
@@ -74,7 +74,7 @@ Linksys WRVS4400N
 
 The backdoor may be also present in other hardware.");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

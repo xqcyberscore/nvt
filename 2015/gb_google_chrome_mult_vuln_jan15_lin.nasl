@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_jan15_lin.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_google_chrome_mult_vuln_jan15_lin.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - Jan15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805407");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2011-1798", "CVE-2011-1796", "CVE-2011-1795", "CVE-2011-1794",
                 "CVE-2011-1793");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-02 12:27:49 +0530 (Fri, 02 Jan 2015)");
   script_name("Google Chrome Multiple Vulnerabilities - Jan15 (Linux)");
 
@@ -67,7 +67,7 @@ if(description)
   11.0.696.65 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version
-  11.0.696.65 or later, For updates refer to http://www.google.com/chrome");
+  11.0.696.65 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -81,6 +81,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

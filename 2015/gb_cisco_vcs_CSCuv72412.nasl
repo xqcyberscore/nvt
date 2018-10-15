@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_CSCuv72412.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_cisco_vcs_CSCuv72412.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco TelePresence Video Communication Server Cross-Site Request Forgery Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-6376");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Cisco TelePresence Video Communication Server Cross-Site Request Forgery Vulnerability");
 
@@ -48,7 +48,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-26 13:00:05 +0100 (Thu, 26 Nov 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -56,7 +56,7 @@ if (description)
   script_dependencies("gb_cisco_vcs_detect.nasl", "gb_cisco_vcs_ssh_detect.nasl");
   script_mandatory_keys("cisco_vcs/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

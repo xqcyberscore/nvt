@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_itsm_body_field_html_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_otrs_itsm_body_field_html_inj_vuln.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # OTRS ITSM 'Body' Field HTML Injection Vulnerability
 #
@@ -30,13 +30,13 @@ ITSMCPE = "cpe:/a:otrs:otrs_itsm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803937");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2012-2582");
   script_bugtraq_id(54890);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-25 19:02:06 +0530 (Wed, 25 Sep 2013)");
   script_name("OTRS ITSM 'Body' Field HTML Injection Vulnerability");
 
@@ -48,9 +48,7 @@ and check the OTRS and OTRS:ITSM version is vulnerable or not.");
   script_tag(name:"insight", value:"An error exists in application which fails to properly sanitize user-supplied
 input before using it");
   script_tag(name:"solution", value:"Upgrade to OTRS (Open Ticket Request System) version 2.4.13, 3.0.15 and 3.1.9
-or later, and OTRS::ITSM version 3.1.6, 3.0.6 and 2.1.5 For updates refer to
-http://www.otrs.com/en/ or Apply patch from the vendor advisory link
-http://otrs.org/advisory/OSA-2012-01-en/");
+or later, and OTRS::ITSM version 3.1.6, 3.0.6 and 2.1.5 or apply the patch from the referenced vendor advisory.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with OTRS (Open Ticket Request System) or OTRS:ITSM
 and is prone to HTML injection vulnerability.");
@@ -68,6 +66,7 @@ and 2.1.0 up to and including 2.1.4");
   script_dependencies("secpod_otrs_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("OTRS/installed");
+  script_xref(name:"URL", value:"http://www.otrs.com/en/");
   exit(0);
 }
 

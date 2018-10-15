@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mult_vuln_aug15_lin.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_apache_mult_vuln_aug15_lin.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Apache HTTP Server Multiple Vulnerabilities August15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806018");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-3185", "CVE-2015-3183");
   script_bugtraq_id(75965, 75963);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-14 12:49:14 +0530 (Fri, 14 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server Multiple Vulnerabilities August15 (Linux)");
@@ -61,7 +61,7 @@ if(description)
   2.4.14 on linux.");
 
   script_tag(name:"solution", value:"Upgrade to version 2.4.14 or
-  later, For updates refer to http://www.apache.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

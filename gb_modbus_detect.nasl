@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modbus_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_modbus_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Modbus Detection
 #
@@ -29,8 +29,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106522");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-26 10:19:28 +0700 (Thu, 26 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,7 +53,7 @@ Modbus is a serial communications protocol for use with programmable logic contr
 
   script_xref(name:"URL", value:"http://www.modbus.org/");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

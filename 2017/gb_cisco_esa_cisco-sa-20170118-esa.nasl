@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20170118-esa.nasl 5153 2017-02-01 08:40:43Z teissa $
+# $Id: gb_cisco_esa_cisco-sa-20170118-esa.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # Cisco Email Security Appliance Filter Bypass Vulnerability
 #
@@ -29,45 +29,45 @@ CPE = "cpe:/h:cisco:email_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106526");
- script_cve_id("CVE-2017-3800");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.106526");
+  script_cve_id("CVE-2017-3800");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
- script_version("$Revision: 5153 $");
+  script_version("$Revision: 11901 $");
 
- script_name("Cisco Email Security Appliance Filter Bypass Vulnerability");
+  script_name("Cisco Email Security Appliance Filter Bypass Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170118-esa");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170118-esa");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value: "A vulnerability in the content scanning engine of Cisco AsyncOS Software
+  script_tag(name:"summary", value:"A vulnerability in the content scanning engine of Cisco AsyncOS Software
 for Cisco Email Security Appliances (ESA) could allow an unauthenticated, remote attacker to bypass configured
 message or content filters on the device.");
 
- script_tag(name: "insight", value: "The vulnerability is due to incomplete input validation of email message
+  script_tag(name:"insight", value:"The vulnerability is due to incomplete input validation of email message
 attachments in different formats. An attacker could exploit this vulnerability by sending a crafted email message
 with an attachment to the ESA.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to bypass configured content or message
+  script_tag(name:"impact", value:"An exploit could allow the attacker to bypass configured content or message
 filters configured on the ESA. This message filter bypass could allow email attachments that contain malware to
 pass through the targeted device.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-02-01 09:40:43 +0100 (Wed, 01 Feb 2017) $");
- script_tag(name: "creation_date", value: "2017-01-19 10:40:17 +0700 (Thu, 19 Jan 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_esa_version.nasl");
- script_mandatory_keys("cisco_esa/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-19 10:40:17 +0700 (Thu, 19 Jan 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_esa_version.nasl");
+  script_mandatory_keys("cisco_esa/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");
@@ -75,7 +75,7 @@ include("version_func.inc");
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );
 
-affected = make_list( 
+affected = make_list(
                 '9.7.1-066',
                 '9.7.1-HP2-207',
                 '9.8.5-085' );

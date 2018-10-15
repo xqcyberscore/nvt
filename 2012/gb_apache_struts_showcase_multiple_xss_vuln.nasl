@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_showcase_multiple_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_apache_struts_showcase_multiple_xss_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Apache Struts Showcase Multiple Persistence Cross-Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802422");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_bugtraq_id(51902);
   script_cve_id("CVE-2012-1006");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-08 12:14:38 +0530 (Wed, 08 Feb 2012)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts Showcase Multiple Persistence Cross-Site Scripting Vulnerabilities");
@@ -62,7 +62,7 @@ if(description)
   script_tag(name:"affected", value:"Apache struts 1.3.10, 2.0.14 and 2.2.3 and 2.3.1.2");
 
 
-  script_tag(name:"solution", value:"Upgrade to Apache Struts to version 2.3.3 or later,");
+  script_tag(name:"solution", value:"Upgrade to Apache Struts to version 2.3.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

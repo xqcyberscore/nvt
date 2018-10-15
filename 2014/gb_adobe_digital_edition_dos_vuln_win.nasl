@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_edition_dos_vuln_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_digital_edition_dos_vuln_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Adobe Digital Edition Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804301");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-0494");
   script_bugtraq_id(65091);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-03 14:43:16 +0530 (Mon, 03 Feb 2014)");
   script_name("Adobe Digital Edition Denial of Service Vulnerability (Windows)");
 
@@ -47,8 +47,7 @@ corruption.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
 service or execute an arbitrary code.");
   script_tag(name:"affected", value:"Adobe Digital Edition version 2.0.1 on Windows.");
-  script_tag(name:"solution", value:"Upgrade to Adobe Digital Edition 3.0 or later,
-For updates refer to http://www.adobe.com/products/digital-editions/download.html");
+  script_tag(name:"solution", value:"Upgrade to Adobe Digital Edition 3.0 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -59,6 +58,7 @@ For updates refer to http://www.adobe.com/products/digital-editions/download.htm
   script_family("Denial of Service");
   script_dependencies("gb_adobe_digital_edition_detect_win.nasl");
   script_mandatory_keys("AdobeDigitalEdition/Win/Ver");
+  script_xref(name:"URL", value:"http://www.adobe.com/products/digital-editions/download.html");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_file_upload_vuln.nasl 6012 2017-04-24 04:58:27Z teissa $
+# $Id: gb_bigtree_file_upload_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # BigTree CMS < 4.2.17 Unrestricted File Upload Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:bigtree:bigtree";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108144");
-  script_version("$Revision: 6012 $");
-  script_tag(name:"last_modification", value: "$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-19 07:57:33 +0200 (Wed, 19 Apr 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,7 +57,7 @@ if(description)
 
   script_tag(name:"affected", value:"BigTree CMS versions prior to 4.2.17.");
 
-  script_tag(name: "solution", value:"Update BigTree CMS to version 4.2.17 or later.");
+  script_tag(name:"solution", value:"Update BigTree CMS to version 4.2.17 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

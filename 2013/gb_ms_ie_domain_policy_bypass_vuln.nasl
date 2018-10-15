@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_domain_policy_bypass_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_ms_ie_domain_policy_bypass_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Microsoft Internet Explorer Domain Policy Bypass Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803302");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2012-6502");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-01 11:11:56 +0530 (Fri, 01 Feb 2013)");
   script_name("Microsoft Internet Explorer Domain Policy Bypass Vulnerability");
   script_xref(name:"URL", value:"http://www.nsfocus.com/en/2012/advisories_1228/119.html");
@@ -49,12 +49,12 @@ if(description)
   script_tag(name:"insight", value:"The flaw due to error in UNC share pathname in SRC attribute of a SCRIPT
   element, which allows attackers to obtain sensitive information about the
   existence of files and read certain data from files.");
-  script_tag(name:"solution", value:"Upgrade to Internet Explorer 10.
-  For updates refer to http://ie.microsoft.com/testdrive/info/downloads");
+  script_tag(name:"solution", value:"Upgrade to Internet Explorer 10.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with Microsoft Internet Explorer and is
   prone to domain policy bypass vulnerability.");
 
+  script_xref(name:"URL", value:"http://ie.microsoft.com/testdrive/info/downloads");
   exit(0);
 }
 

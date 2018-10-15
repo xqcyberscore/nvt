@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_textpattern_cms_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_textpattern_cms_xss_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Textpattern 'index.php' Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804499");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-4737");
   script_bugtraq_id(70203);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-16 16:06:39 +0530 (Thu, 16 Oct 2014)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -56,8 +56,7 @@ if(description)
 
   script_tag(name:"affected", value:"Textpattern version 4.5.5 and probably prior");
 
-  script_tag(name:"solution", value:"Upgrade Textpattern 4.5.7 or later,
-  For updates refer to http://textpattern.com");
+  script_tag(name:"solution", value:"Upgrade Textpattern 4.5.7 or later.");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/96802");
   script_xref(name:"URL", value:"https://www.htbridge.com/advisory/HTB23223");

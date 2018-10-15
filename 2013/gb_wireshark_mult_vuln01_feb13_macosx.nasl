@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln01_feb13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_wireshark_mult_vuln01_feb13_macosx.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Wireshark Multiple Vulnerabilities(01) - Feb2013 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803166");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1572", "CVE-2013-1573", "CVE-2013-1574", "CVE-2013-1575",
                 "CVE-2013-1576", "CVE-2013-1577", "CVE-2013-1578", "CVE-2013-1579",
                 "CVE-2013-1580", "CVE-2013-1581", "CVE-2013-1582", "CVE-2013-1583",
@@ -36,7 +36,7 @@ if(description)
   script_bugtraq_id(57616);
   script_tag(name:"cvss_base", value:"2.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 19:46:29 +0530 (Mon, 04 Feb 2013)");
   script_name("Wireshark Multiple Vulnerabilities(01) - Feb2013 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51968");
@@ -75,8 +75,7 @@ if(description)
   - An error in the dissection engine when processing certain packets can be
     exploited to cause a crash via a specially crafted packet.");
 
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.13, 1.8.5 or later,
-  For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.13, 1.8.5 or later.");
 
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to multiple
   vulnerabilities.");
@@ -84,6 +83,7 @@ if(description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.wireshark.org/download");
   exit(0);
 }
 

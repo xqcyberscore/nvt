@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_dir_trav_vuln.nasl 7125 2017-09-14 08:26:29Z cfischer $
+# $Id: gb_apache_solr_dir_trav_vuln.nasl 11900 2018-10-15 07:44:31Z mmartin $
 #
 # Apache Solr Path Traversal Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:apache:solr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140341");
-  script_version("$Revision: 7125 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-14 10:26:29 +0200 (Thu, 14 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-31 15:14:14 +0700 (Thu, 31 Aug 2017)");
+  script_version("$Revision: 11900 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-31 15:14:14 +0700 (Thu, 31 Aug 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
-  script_cve_id("CVE-2017-3163"); 
+  script_cve_id("CVE-2017-3163");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Apache Solr Inter-Node Communication Vulnerability");
 
@@ -51,19 +51,19 @@ if (description)
   script_dependencies("secpod_apache_solr_detect.nasl");
   script_mandatory_keys("Apache/Solr/Installed");
 
-  script_tag(name: "summary", value: "When using the Index Replication feature, Apache Solr nodes can pull index
+  script_tag(name:"summary", value:"When using the Index Replication feature, Apache Solr nodes can pull index
 files from a master/leader node using an HTTP API which accepts a file name. However, Solr did not validate the
 file name, hence it was possible to craft a special request involving path traversal, leaving any file readable
 to the Solr server process exposed. Solr servers protected and restricted by firewall rules and/or authentication
 would not be at risk since only trusted clients and users would gain direct HTTP access.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Apache Solr before 5.5.4 and 6.x.");
+  script_tag(name:"affected", value:"Apache Solr before 5.5.4 and 6.x.");
 
-  script_tag(name: "solution", value: "Upgrade to version 5.5.4, 6.4.1 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 5.5.4, 6.4.1 or later.");
 
-  script_xref(name: "URL", value: "https://issues.apache.org/jira/browse/SOLR-10031");
+  script_xref(name:"URL", value:"https://issues.apache.org/jira/browse/SOLR-10031");
 
   exit(0);
 }

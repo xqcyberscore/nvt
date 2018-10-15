@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_70648.nasl 11186 2018-09-03 09:12:42Z mmartin $
+# $Id: gb_centreon_70648.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Centreon and Centreon Enterprise Server Multiple SQL Injection Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-3828", "CVE-2014-3829");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11186 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Centreon and Centreon Enterprise Server Multiple SQL Injection Vulnerabilities");
 
@@ -58,7 +58,7 @@ Centreon Enterprise Server 2.2 and prior versions");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-28 12:37:14 +0100 (Tue, 28 Oct 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -67,7 +67,7 @@ Centreon Enterprise Server 2.2 and prior versions");
   script_dependencies("centreon_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("centreon/installed");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

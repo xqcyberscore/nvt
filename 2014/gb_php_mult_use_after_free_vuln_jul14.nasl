@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_use_after_free_vuln_jul14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_php_mult_use_after_free_vuln_jul14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # PHP Multiple Use-After-Free Vulnerabilities - Jul14
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804682");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-4698", "CVE-2014-4670");
   script_bugtraq_id(68511, 68513);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-07-18 14:56:10 +0530 (Fri, 18 Jul 2014)");
   script_name("PHP Multiple Use-After-Free Vulnerabilities - Jul14");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone to multiple use-after-free
   vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of PHP with the help of detect NVT and check
-  the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaws are due to an use-after-free error related to SPL iterators
   and ArrayIterators.");
@@ -52,11 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"PHP version 5.x through 5.5.14");
 
-  script_tag(name:"solution", value:"Apply Patches from below links,
-
-  http://git.php.net/?p=php-src.git;a=patch;h=22882a9d89712ff2b6ebc20a689a89452bba4dcd
-
-  http://git.php.net/?p=php-src.git;a=patch;h=df78c48354f376cf419d7a97f88ca07d572f00fb
+  script_tag(name:"solution", value:"Apply the updates/patches from the referenced links.
 
   *****
   NOTE: Ignore this warning if above mentioned patch is installed.
@@ -65,6 +60,7 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/56800");
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=67539");
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=67538");
+  script_xref(name:"URL", value:"http://git.php.net/?p=php-src.git;a=patch;h=df78c48354f376cf419d7a97f88ca07d572f00fb");
 
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -75,6 +71,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://git.php.net/?p=php-src.git;a=patch;h=22882a9d89712ff2b6ebc20a689a89452bba4dcd");
   exit(0);
 }
 

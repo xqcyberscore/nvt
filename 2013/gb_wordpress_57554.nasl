@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_57554.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_wordpress_57554.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # WordPress Pingback Vulnerability
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2013-0235");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11865 $");
 
   script_name("WordPress Pingback Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57554");
   script_xref(name:"URL", value:"http://www.acunetix.com/blog/web-security-zone/wordpress-pingback-vulnerability/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-07 10:52:18 +0100 (Thu, 07 Feb 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -61,7 +61,7 @@ how the site is rendered to the user, and disclose or modify sensitive
 information. Other attacks are also possible.
 
 WordPress versions prior to 3.5.1 are vulnerable.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_anonymous_login.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_ipmi_anonymous_login.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # IPMI Anonymous Login Enabled
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103836");
-  script_version("$Revision: 11103 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 11865 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-11-26 12:03:03 +0100 (Tue, 26 Nov 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,7 +46,7 @@ if (description)
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"summary", value:"The remote IPMI service accepts anonymous logins.");
 
- exit(0);
+  exit(0);
 }
 
 port = get_kb_item("Services/udp/ipmi");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_4psa_voipnow_lfi_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_4psa_voipnow_lfi_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # 4psa Voipnow Local File Inclusion Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803195");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-22 18:28:32 +0530 (Mon, 22 Apr 2013)");
   script_name("4psa Voipnow Local File Inclusion Vulnerability");
 
@@ -49,13 +49,13 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an improper validation of user-supplied input to
   the 'screen' parameter in '/help/index.php?', which allows attackers
   to read arbitrary files via a ../(dot dot) sequences.");
-  script_tag(name:"solution", value:"Upgrade to 4psa voipnow 2.4 or later,
-  For updates refer to http://www.4psa.com/products-voipnow-spe.html");
+  script_tag(name:"solution", value:"Upgrade to 4psa voipnow 2.4 or later.");
   script_tag(name:"summary", value:"This host is running 4psa Voipnow and is prone to local file
   inclusion vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+  script_xref(name:"URL", value:"http://www.4psa.com/products-voipnow-spe.html");
   exit(0);
 }
 

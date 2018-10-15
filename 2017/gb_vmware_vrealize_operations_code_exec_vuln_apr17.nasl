@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_operations_code_exec_vuln_apr17.nasl 6002 2017-04-21 12:00:56Z antu123 $ 
+# $Id: gb_vmware_vrealize_operations_code_exec_vuln_apr17.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
-# VMware vRealize Operations Remote Code Execution Vulnerability - Apr17 
+# VMware vRealize Operations Remote Code Execution Vulnerability - Apr17
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -29,35 +29,31 @@ CPE = 'cpe:/a:vmware:vrealize_operations_manager';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811006");
-  script_version("$Revision: 6002 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2015-6934");
   script_bugtraq_id(79648);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 14:00:56 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-21 10:42:44 +0530 (Fri, 21 Apr 2017)");
   script_name("VMware vRealize Operations Remote Code Execution Vulnerability - Apr17");
 
   script_tag(name:"summary", value:"This host is running VMware vRealize
   Operations and is prone to code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to a deserialization error
   involving Apache Commons-collections and a specially constructed chain of
   classes exists.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code in the context of current user.
-
-  Impact Level: Application");
+  attackers to execute arbitrary code in the context of current user.");
 
   script_tag(name:"affected", value:"VMware vRealize Operations 6.x before 6.2");
 
   script_tag(name:"solution", value:"Upgrade VMware vRealize Operations 6.2 or
-  later. For details refer to,
-  http://www.vmware.com/security/advisories/VMSA-2015-0009.html");
+  later.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -76,17 +72,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-report = "";
-vmPort = 0;
-vmVer = "";
-
-## Get HTTP Port
 if(!vmPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!vmVer = get_app_version(cpe:CPE, port:vmPort)){
   exit(0);
 }

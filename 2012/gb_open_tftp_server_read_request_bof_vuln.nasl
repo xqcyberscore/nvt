@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_tftp_server_read_request_bof_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_open_tftp_server_read_request_bof_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # OpenTFTP Server Read Request Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802555");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-12 19:12:13 +0530 (Thu, 12 Jan 2012)");
   script_name("OpenTFTP Server Read Request Buffer Overflow Vulnerability");
 
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to a boundary error in the handling of filenames and
   can be exploited to cause a stack-based buffer overflow via a read request
   with an overly long filename.");
-  script_tag(name:"solution", value:"Upgrade to OpenTFTP Server SP version 1.5 or later");
+  script_tag(name:"solution", value:"Upgrade to OpenTFTP Server SP version 1.5 or later.");
   script_tag(name:"summary", value:"This host is running OpenTFTP Server and is prone to buffer overflow
   vulnerability.");
 

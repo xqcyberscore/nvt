@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms14-014.nasl 11583 2018-09-25 06:31:54Z cfischer $
+# $Id: gb_silverlight_ms14-014.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Silverlight DEP/ASLR Security Bypass Vulnerability (2932677)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804407");
-  script_version("$Revision: 11583 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-0319");
   script_bugtraq_id(66046);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:31:54 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-12 08:02:21 +0530 (Wed, 12 Mar 2014)");
   script_name("Microsoft Silverlight DEP/ASLR Security Bypass Vulnerability (2932677)");
 
@@ -46,9 +46,8 @@ memory.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain potentially
 sensitive information.");
   script_tag(name:"affected", value:"Microsoft Silverlight version 5 on Windows");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms14-014");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2932677");
   script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms14-014");

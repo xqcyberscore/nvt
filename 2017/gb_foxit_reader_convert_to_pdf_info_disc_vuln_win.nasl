@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_convert_to_pdf_info_disc_vuln_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_reader_convert_to_pdf_info_disc_vuln_win.nasl 11900 2018-10-15 07:44:31Z mmartin $
 #
 # Foxit Reader 'ConvertToPDF plugin' Information Disclosure Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809873");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 11900 $");
   script_cve_id("CVE-2017-5556");
   script_bugtraq_id(95353);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-24 12:28:46 +0530 (Tue, 24 Jan 2017)");
   script_name("Foxit Reader 'ConvertToPDF plugin' Information Disclosure Vulnerability (Windows)");
 
@@ -49,14 +49,12 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to get sensitive information, also an attacker can leverage this in
   conjunction with other vulnerabilities to execute code in the context of the
-  current process.
-
-  Impact Level: System/Application");
+  current process.");
 
   script_tag(name:"affected", value:"Foxit Reader version prior to 8.2");
 
   script_tag(name:"solution", value:"Upgrade to Foxit Reader version 8.2 or
-  later, For updates refer to http://www.foxitsoftware.com");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -68,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("foxit/reader/ver");
+  script_xref(name:"URL", value:"http://www.foxitsoftware.com");
   exit(0);
 }
 

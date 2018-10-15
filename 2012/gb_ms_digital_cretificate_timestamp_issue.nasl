@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_digital_cretificate_timestamp_issue.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_ms_digital_cretificate_timestamp_issue.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Compatibility Issues Affecting Signed Microsoft Binaries (2749655)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802468");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11876 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-11 17:15:51 +0530 (Thu, 11 Oct 2012)");
   script_name("Compatibility Issues Affecting Signed Microsoft Binaries (2749655)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2749655");
@@ -65,7 +65,7 @@ if(description)
   by Microsoft without proper timestamp attributes. This issue is caused by a
   missing timestamp Enhanced Key Usage (EKU) extension during certificate
   generation and signing of Microsoft core components and software.");
-  script_tag(name:"solution", value:"Apply the Patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"summary", value:"The host is installed with Microsoft Windows operating system and
   its missing updates according to Microsoft Security Advisory (2749655)");
   exit(0);
@@ -86,7 +86,7 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Wintrust.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Wintrust.dll");
 if(!dllVer){
   exit(0);
 }

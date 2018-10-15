@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_vuln_jun13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_apple_quicktime_mult_vuln_jun13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Apple QuickTime Multiple Vulnerabilities - June13 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803809");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1022", "CVE-2013-1021", "CVE-2013-1020", "CVE-2013-1019",
                 "CVE-2013-1018", "CVE-2013-1017", "CVE-2013-1016", "CVE-2013-1015",
                 "CVE-2013-0989", "CVE-2013-0988", "CVE-2013-0987", "CVE-2013-0986");
@@ -35,7 +35,7 @@ if(description)
                     60092, 60110, 60101, 60100, 60109, 60099);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-07 18:15:48 +0530 (Fri, 07 Jun 2013)");
   script_name("Apple QuickTime Multiple Vulnerabilities - June13 (Windows)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5770");
@@ -62,12 +62,12 @@ if(description)
 
   - A channel_mode value of MP3 files within the CoreAudioToolbox component
   Unspecified error when handling TeXML files, JPEG encoded data, QTIF files");
-  script_tag(name:"solution", value:"Upgrade to version 7.7.4 or later,
-  For updates refer to http://support.apple.com/downloads");
+  script_tag(name:"solution", value:"Upgrade to version 7.7.4 or later.");
   script_tag(name:"summary", value:"This host is installed with QuickTime Player and is prone
   to multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://support.apple.com/downloads");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_osclass_mult_xss_n_sql_inj_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_osclass_mult_xss_n_sql_inj_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # OSClass Multiple XSS and SQL Injection Vulnerabilities
 #
@@ -28,12 +28,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802970");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_bugtraq_id(51662);
   script_cve_id("CVE-2012-0973", "CVE-2012-0974", "CVE-2012-5162", "CVE-2012-5163");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-27 10:53:49 +0530 (Thu, 27 Sep 2012)");
   script_name("OSClass Multiple XSS and SQL Injection Vulnerabilities");
 
@@ -67,7 +67,7 @@ if (description)
 
   - Input passed via the 'id' GET parameter in enable_category action to
     index.php is not properly sanitised before being returned to the user.");
-  script_tag(name:"solution", value:"Upgrade to OSClass version 2.3.5 or later");
+  script_tag(name:"solution", value:"Upgrade to OSClass version 2.3.5 or later.");
   script_tag(name:"summary", value:"This host is running OSClass and is prone to multiple cross site scripting
   and SQL injection vulnerabilities.");
 

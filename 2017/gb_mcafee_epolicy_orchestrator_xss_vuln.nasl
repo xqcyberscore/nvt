@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_xss_vuln.nasl 5325 2017-02-17 10:15:17Z ckuerste $
+# $Id: gb_mcafee_epolicy_orchestrator_xss_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # McAfee ePolicy Orchestrator XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:mcafee:epolicy_orchestrator';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106608");
-  script_version("$Revision: 5325 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-17 11:15:17 +0100 (Fri, 17 Feb 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-17 11:25:05 +0700 (Fri, 17 Feb 2017)");
-  script_tag(name: "cvss_base", value: "3.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-17 11:25:05 +0700 (Fri, 17 Feb 2017)");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-3902");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("McAfee ePolicy Orchestrator XSS Vulnerability");
 
@@ -51,19 +51,19 @@ if (description)
   script_dependencies("gb_mcafee_epolicy_orchestrator_detect.nasl");
   script_mandatory_keys("mcafee_ePO/installed");
 
-  script_tag(name: "summary", value: "McAfee ePolicy Orchestrator is prone to a cross-site scripting
+  script_tag(name:"summary", value:"McAfee ePolicy Orchestrator is prone to a cross-site scripting
 vulnerability");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "A cross-site scripting (XSS) vulnerability in the Web user interface (UI)
+  script_tag(name:"insight", value:"A cross-site scripting (XSS) vulnerability in the Web user interface (UI)
 allows authenticated users to inject malicious Java scripts via bypassing input validation.");
 
-  script_tag(name: "affected", value: "ePO versions 5.1.0, 5.1.1, 5.1.2 and 5.1.3.");
+  script_tag(name:"affected", value:"ePO versions 5.1.0, 5.1.1, 5.1.2 and 5.1.3.");
 
-  script_tag(name: "solution", value: "Apply ePO 5.1.3 Hotfix 1110787.");
+  script_tag(name:"solution", value:"Apply ePO 5.1.3 Hotfix 1110787.");
 
-  script_xref(name: "URL", value: "https://kc.mcafee.com/corporate/index?page=content&id=SB10184");
+  script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10184");
 
   exit(0);
 }

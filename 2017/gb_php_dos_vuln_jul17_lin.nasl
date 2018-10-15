@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_dos_vuln_jul17_lin.nasl 10454 2018-07-09 05:32:41Z cfischer $
+# $Id: gb_php_dos_vuln_jul17_lin.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # PHP Denial of Service Vulnerability Jul17 (Linux)
 #
@@ -29,33 +29,30 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811487");
-  script_version("$Revision: 10454 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-11142");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:32:41 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-13 17:48:21 +0530 (Thu, 13 Jul 2017)");
   script_name("PHP Denial of Service Vulnerability Jul17 (Linux)");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to improper handling of long
   form variables in main/php_variables.c script.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
-  an attacker to cause a CPU consumption denial of service attack.
-
-  Impact Level: Application");
+  an attacker to cause a CPU consumption denial of service attack.");
 
   script_tag(name:"affected", value:"PHP versions before 5.6.31, 7.x before 7.0.17,
   and 7.1.x before 7.1.3");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 5.6.31, 7.0.17,
-  7.1.3 or later. For updates refer to http://www.php.net");
+  7.1.3 or later.");
 
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-5.php");
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-7.php");

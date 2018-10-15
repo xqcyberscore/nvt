@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_frontpage_ext_device_name_dos_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ms_frontpage_ext_device_name_dos_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Microsoft FrontPage Server Extensions MS-DOS Device Name DoS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902839");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_bugtraq_id(1608);
   script_cve_id("CVE-2000-0709");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-24 17:17:17 +0530 (Thu, 24 May 2012)");
   script_name("Microsoft FrontPage Server Extensions MS-DOS Device Name DoS Vulnerability");
   script_category(ACT_DENIAL);
@@ -54,7 +54,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error in the 'shtml.exe' component, which
   allows remote attackers to cause a denial of service in some components
   by requesting a URL whose name includes a standard DOS device name.");
-  script_tag(name:"solution", value:"Upgrade to Microsoft FrontPage 2000 Server Extensions 1.2 or later,");
+  script_tag(name:"solution", value:"Upgrade to Microsoft FrontPage 2000 Server Extensions 1.2 or later.");
   script_tag(name:"summary", value:"This host is running Microsoft FrontPage Server Extensions and is
   prone to denial of service vulnerability.");
 

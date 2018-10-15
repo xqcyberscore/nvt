@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_batavi_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_batavi_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Batavi Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103086");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-22 13:26:53 +0100 (Tue, 22 Feb 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Batavi Detection");
@@ -43,7 +43,7 @@ if (description)
   script_tag(name:"summary", value:"This host is running the open source ecommerce solution
 Batavia.");
   script_xref(name:"URL", value:"http://www.batavi.org");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

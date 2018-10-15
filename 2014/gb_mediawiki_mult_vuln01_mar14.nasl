@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln01_mar14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_mediawiki_mult_vuln01_mar14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Mediawiki Multiple Vulnerabilities-01 Mar14
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804321");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-2242", "CVE-2014-2243", "CVE-2014-2244");
   script_bugtraq_id(65910, 65883, 65906);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-04 10:37:52 +0530 (Tue, 04 Mar 2014)");
   script_name("Mediawiki Multiple Vulnerabilities-01 Mar14");
 
@@ -55,8 +55,7 @@ script code in a user's browser session in the context of an affected site
 and attacker can gain sensitive information.");
   script_tag(name:"affected", value:"Mediawiki version 1.19.x before 1.19.12, 1.20.x, 1.21.x
 before 1.21.6 and 1.22.x before 1.22.3");
-  script_tag(name:"solution", value:"Upgrade to MediaWiki 1.19.12 or 1.21.6 or 1.22.3 or later.
-For updates refer to http://www.mediawiki.org/wiki/MediaWiki");
+  script_tag(name:"solution", value:"Upgrade to MediaWiki 1.19.12 or 1.21.6 or 1.22.3 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/57184/");
@@ -68,6 +67,7 @@ For updates refer to http://www.mediawiki.org/wiki/MediaWiki");
   script_dependencies("secpod_mediawiki_detect.nasl");
   script_mandatory_keys("mediawiki/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.mediawiki.org/wiki/MediaWiki");
   exit(0);
 }
 

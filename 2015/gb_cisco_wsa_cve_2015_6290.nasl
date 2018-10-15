@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cve_2015_6290.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_cisco_wsa_cve_2015_6290.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco Web Security Appliance Malformed HTTP Response Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-6290");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Cisco Web Security Appliance Malformed HTTP Response Denial of Service Vulnerability");
 
@@ -53,14 +53,14 @@ the device to improperly close TCP connections and fail to free memory resources
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-11 13:28:16 +0200 (Fri, 11 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_wsa_version.nasl");
   script_mandatory_keys("cisco_wsa/installed");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

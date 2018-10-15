@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageupsnet_ftp_default_credentials.nasl 9552 2018-04-20 12:17:18Z cfischer $
+# $Id: gb_manageupsnet_ftp_default_credentials.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # ManageUPSNET FTP Default Credentials
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113052");
-  script_version("$Revision: 9552 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 14:17:18 +0200 (Fri, 20 Apr 2018) $");
+  script_version("$Revision: 11901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-16 11:04:05 +0100 (Thu, 16 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -56,7 +56,7 @@ if( description )
 
   script_xref(name:"URL", value:"http://005c368.netsolhost.com/pdfs/9133161c.pdf");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "ftp_func.inc" );

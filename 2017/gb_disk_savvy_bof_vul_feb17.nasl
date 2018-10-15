@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_disk_savvy_bof_vul_feb17.nasl 9522 2018-04-18 16:47:22Z asteins $
+# $Id: gb_disk_savvy_bof_vul_feb17.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # DiskSavvy Enterprise GET Buffer Overflow Vulnerability (Windows)
 #
@@ -29,36 +29,34 @@ CPE = "cpe:/a:disksavvy:disksavvy_enterprise_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107130");
-  script_version("$Revision: 9522 $");
+  script_version("$Revision: 11863 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-18 18:47:22 +0200 (Wed, 18 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-02 12:21:46 +0100 (Thu, 02 Feb 2017)");
   script_name("DiskSavvy Enterprise GET Buffer Overflow (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with DiskSavvy Enterprise and is prone to a GET buffer overflow vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the
-  help of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value: "The Vulnerability is due to an improper checking of the GET http request sent to the web server which might be exploited to cause a buffer overflow.");
+  script_tag(name:"insight", value:"The Vulnerability is due to an improper checking of the GET http request sent to the web server which might be exploited to cause a buffer overflow.");
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to cause the application to crash, creating a denial-of-service
-  condition.
-
-  Impact Level: Application. ");
+  condition.");
 
   script_tag(name:"affected", value:"DiskSavvy Enterprise 9.1.14 and 9.3.14");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability.
-  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name: "URL" , value : "https://www.exploit-db.com/exploits/41146/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/41146/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Buffer overflow");

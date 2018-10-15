@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_mult_vuln_july_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_adobe_photoshop_mult_vuln_july_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Adobe Photoshop CC Multiple Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805597");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-3112", "CVE-2015-3111", "CVE-2015-3110", "CVE-2015-3109");
   script_bugtraq_id(75245, 75240, 75243, 75242);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-02 10:41:14 +0530 (Thu, 02 Jul 2015)");
   script_name("Adobe Photoshop CC Multiple Vulnerabilities (Windows)");
 
@@ -53,8 +53,7 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Photoshop CC version
-  16.0 (2015.0.0) or later.
-  For updates refer to http://www.adobe.com/in/products/photoshop.html");
+  16.0 (2015.0.0) or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_photoshop_detect.nasl");
   script_mandatory_keys("Adobe/Photoshop/ProdVer");
+  script_xref(name:"URL", value:"http://www.adobe.com/in/products/photoshop.html");
   exit(0);
 }
 

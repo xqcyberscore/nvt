@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_emet_rop_vuln.nasl 11817 2018-10-10 10:52:18Z jschulte $
+# $Id: gb_microsoft_emet_rop_vuln.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Microsoft Enhanced Mitigation Experience Toolkit (EMET) ROP Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803972");
-  script_version("$Revision: 11817 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2013-6791");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:52:18 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-03 13:41:01 +0530 (Tue, 03 Dec 2013)");
   script_name("Microsoft Enhanced Mitigation Experience Toolkit (EMET) ROP Vulnerability");
 
@@ -40,7 +40,7 @@ if(description)
 (EMET) and is prone to return-oriented programming (ROP) vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Upgrade to Microsoft Enhanced Mitigation Experience Toolkit (EMET) version
-4.0 or later, ");
+4.0 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"The flaw is in the application which uses predictable addresses for hooked
 functions.");

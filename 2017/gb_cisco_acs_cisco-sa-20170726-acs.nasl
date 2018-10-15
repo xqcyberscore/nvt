@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_acs_cisco-sa-20170726-acs.nasl 6924 2017-08-15 11:45:18Z teissa $
+# $Id: gb_cisco_acs_cisco-sa-20170726-acs.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Cisco Access Control System Stored Cross-Site Scripting Vulnerability
 #
@@ -29,42 +29,42 @@ CPE = "cpe:/a:cisco:secure_access_control_system";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106993");
- script_cve_id("CVE-2017-6769");
- script_tag(name:"cvss_base", value:"3.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
- script_version("$Revision: 6924 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106993");
+  script_cve_id("CVE-2017-6769");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_version("$Revision: 11874 $");
 
- script_name("Cisco Access Control System Stored Cross-Site Scripting Vulnerability");
+  script_name("Cisco Access Control System Stored Cross-Site Scripting Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170215-acs1");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170215-acs1");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the web-based management interface of the Cisco Secure
+  script_tag(name:"summary", value:"A vulnerability in the web-based management interface of the Cisco Secure
 Access Control System (ACS) could allow an authenticated, remote attacker to conduct a stored cross-site scripting
 (XSS) attack against a user of the web interface of the affected system.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient input validation of user-supplied
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient input validation of user-supplied
 values and a lack of encoding of user-supplied data.");
 
- script_tag(name: "impact", value: "An attacker could exploit this vulnerability by convincing a user to click a
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by convincing a user to click a
 malicious link.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-08-15 13:45:18 +0200 (Tue, 15 Aug 2017) $");
- script_tag(name: "creation_date", value: "2017-07-28 09:27:48 +0700 (Fri, 28 Jul 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_acs_version.nasl");
- script_mandatory_keys("cisco_acs/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-28 09:27:48 +0700 (Fri, 28 Jul 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_acs_version.nasl");
+  script_mandatory_keys("cisco_acs/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

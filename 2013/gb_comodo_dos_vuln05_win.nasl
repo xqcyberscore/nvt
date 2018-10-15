@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_dos_vuln05_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_comodo_dos_vuln05_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Comodo Internet Security Denial of Service Vulnerability-05
 #
@@ -30,16 +30,15 @@ if(description)
   script_tag(name:"affected", value:"Comodo Internet Security versions before 5.4.189822.1355");
   script_tag(name:"insight", value:"Flaw related to the antivirus component, triggered when a user opens an
   unspecified malformed PST file.");
-  script_tag(name:"solution", value:"Upgrade to Comodo Internet Security version 5.4.189822.1355 or later,
-  For updates refer to http://personalfirewall.comodo.com");
+  script_tag(name:"solution", value:"Upgrade to Comodo Internet Security version 5.4.189822.1355 or later.");
   script_tag(name:"summary", value:"The host is installed with Comodo Internet Security and is prone
   to denial of service vulnerability.");
   script_oid("1.3.6.1.4.1.25623.1.0.803692");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2011-5120");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-05 16:28:19 +0530 (Fri, 05 Jul 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

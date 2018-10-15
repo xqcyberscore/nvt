@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_multiple_vuln.nasl 11333 2018-09-11 13:51:58Z mmartin $
+# $Id: gb_sysaid_multiple_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # SysAid Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:sysaid:sysaid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106005");
-  script_version("$Revision: 11333 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 11872 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -89,7 +89,7 @@ will slow down the server extensively.
 
   script_tag(name:"affected", value:"SysAid Help Desktop version 15.1.x and before.");
 
-  script_tag(name:"solution", value:"Upgrade to version 15.2 or later");
+  script_tag(name:"solution", value:"Upgrade to version 15.2 or later.");
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Jun/8");
 

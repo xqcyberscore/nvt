@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201201_09.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201201_09.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2010-1797", "CVE-2010-2497", "CVE-2010-2498", "CVE-2010-2499", "CVE-2010-2500", "CVE-2010-2519", "CVE-2010-2520", "CVE-2010-2527", "CVE-2010-2541", "CVE-2010-2805", "CVE-2010-2806", "CVE-2010-2807", "CVE-2010-2808", "CVE-2010-3053", "CVE-2010-3054", "CVE-2010-3311", "CVE-2010-3814", "CVE-2010-3855", "CVE-2011-0226", "CVE-2011-3256", "CVE-2011-3439");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-12 10:04:42 -0500 (Sun, 12 Feb 2012)");
   script_name("Gentoo Security Advisory GLSA 201201-09 (FreeType)");
   script_category(ACT_GATHER_INFO);
@@ -49,16 +49,15 @@ of
   script_tag(name:"solution", value:"All FreeType users should upgrade to the latest version:
 
       # emerge --sync
-      # emerge --ask --oneshot --verbose '>=media-libs/freetype-2.4.8'
+      # emerge --ask --oneshot --verbose '>=media-libs/freetype-2.4.8'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201201-09
-http://bugs.gentoo.org/show_bug.cgi?id=332701
-http://bugs.gentoo.org/show_bug.cgi?id=342121
-http://bugs.gentoo.org/show_bug.cgi?id=345843
-http://bugs.gentoo.org/show_bug.cgi?id=377143
-http://bugs.gentoo.org/show_bug.cgi?id=387535
-http://bugs.gentoo.org/show_bug.cgi?id=390623");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201201-09");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=332701");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=342121");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=345843");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=377143");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=387535");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=390623");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201201-09.");
   script_tag(name:"qod_type", value:"package");

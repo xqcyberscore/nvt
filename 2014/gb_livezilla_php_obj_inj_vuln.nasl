@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_livezilla_php_obj_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_livezilla_php_obj_inj_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # LiveZilla PHP Object Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:livezilla:livezilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802075");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-7034");
   script_bugtraq_id(64383);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-21 11:01:15 +0530 (Wed, 21 May 2014)");
   script_name("LiveZilla PHP Object Injection Vulnerability");
 
@@ -46,8 +46,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject PHP objects
   via a user-controller cookie.");
   script_tag(name:"affected", value:"LiveZilla version before 5.1.2.1");
-  script_tag(name:"solution", value:"Upgrade to version 5.1.2.1 or higher,
-  For updates refer to http://www.livezilla.net/downloads/en");
+  script_tag(name:"solution", value:"Upgrade to version 5.1.2.1 or later.");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/89796");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124445");
@@ -63,6 +62,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.livezilla.net/downloads/en");
   exit(0);
 }
 

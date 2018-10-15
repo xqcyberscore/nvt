@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-056.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: secpod_ms13-056.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft DirectShow Remote Code Execution Vulnerability (2845187)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903222");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2013-3174");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-10 09:10:47 +0530 (Wed, 10 Jul 2013)");
   script_name("Microsoft DirectShow Remote Code Execution Vulnerability (2845187)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2845187");
@@ -60,12 +60,12 @@ if(description)
   script_tag(name:"insight", value:"Flaw due to improper handling of malicious Graphics Interchange Format (GIF)
   files.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/MS13-056");
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS13-056.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/MS13-056");
   exit(0);
 }
 
@@ -84,7 +84,7 @@ if(!sysPath){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"\system32\qedit.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"\system32\qedit.dll");
 if(!sysVer){
   exit(0);
 }

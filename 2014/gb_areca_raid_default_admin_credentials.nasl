@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_areca_raid_default_admin_credentials.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_areca_raid_default_admin_credentials.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Areca Raid Storage Manager Default Admin Credentials
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103921");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Areca Raid Storage Manager Default Admin Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-13 12:02:06 +0200 (Thu, 13 Mar 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -52,7 +52,7 @@ access to sensitive information or modify system configuration.");
 
   script_tag(name:"solution_type", value:"Workaround");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

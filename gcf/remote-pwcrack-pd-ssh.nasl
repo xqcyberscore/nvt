@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-pwcrack-pd-ssh.nasl 11543 2018-09-21 20:25:26Z cfischer $
+# $Id: remote-pwcrack-pd-ssh.nasl 11886 2018-10-12 13:48:53Z cfischer $
 #
 # SSH Remote password cracking using phrasen|drescher
 # http://www.leidecker.info/projects/phrasendrescher/
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80106");
-  script_version("$Revision: 11543 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:25:26 +0200 (Fri, 21 Sep 2018) $");
+  script_version("$Revision: 11886 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:48:53 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-08-10 08:41:48 +0200 (Mon, 10 Aug 2009)");
   script_name("phrasen|drescher: SSH");
   script_tag(name:"cvss_base", value:"7.8");
@@ -44,7 +44,7 @@ if(description)
   script_dependencies("toolcheck.nasl", "gcf/remote-pwcrack-options.nasl", "find_service.nasl");
   script_mandatory_keys("Tools/Present/pd", "Secret/pwcrack/logins_file", "Secret/pwcrack/passwords_file");
   script_tag(name:"summary", value:"This plugin runs phrasen/drescher to find SSH accounts & passwords by brute force.");
- exit(0);
+  exit(0);
 }
 
 # Exit if nasl version is too old (<2200)

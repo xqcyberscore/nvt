@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_mult_vuln_oct14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_hp_smh_mult_vuln_oct14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # HP System Management Homepage Multiple Vulnerabilities - Oct14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804858");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-2640", "CVE-2014-2641", "CVE-2014-2642");
   script_bugtraq_id(70208);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-14 11:52:11 +0530 (Tue, 14 Oct 2014)");
 
   script_name("HP System Management Homepage Multiple Vulnerabilities - Oct14");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running HP System Management
   Homepage (SMH) and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of HP SMH with
-  the help of detect NVT and check it is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are exists due to,
 
@@ -63,8 +62,7 @@ if(description)
   version 7.4");
 
   script_tag(name:"solution", value:"Upgrade to HP System Management Homepage
-  (SMH) 7.4 or later. For updates refer to
-  http://h18013.www1.hp.com/products/servers/management/agents/index.html");
+  (SMH) 7.4 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"https://h20564.www2.hp.com/portal/site/hpsc/public/kb/docDisplay?docId=emr_na-c04463322");
@@ -75,6 +73,7 @@ if(description)
   script_dependencies("secpod_hp_smh_detect.nasl");
   script_mandatory_keys("HP/SMH/installed");
   script_require_ports("Services/www", 2381);
+  script_xref(name:"URL", value:"http://h18013.www1.hp.com/products/servers/management/agents/index.html");
   exit(0);
 }
 

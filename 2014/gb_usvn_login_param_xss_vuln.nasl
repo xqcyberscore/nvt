@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_usvn_login_param_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_usvn_login_param_xss_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # User Friendly SVN 'login' Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804725");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-4719");
   script_bugtraq_id(68155);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-07-29 17:06:00 +0530 (Tue, 29 Jul 2014)");
   script_name("User Friendly SVN 'login' Cross Site Scripting Vulnerability");
 
@@ -45,8 +45,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site.");
   script_tag(name:"affected", value:"User-Friendly SVN version before 1.0.7");
-  script_tag(name:"solution", value:"Upgrade to version 1.0.7 or later,
-  For updates refer to http://www.usvn.info");
+  script_tag(name:"solution", value:"Upgrade to version 1.0.7 or later.");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127177");
   script_xref(name:"URL", value:"http://www.zerodaylab.com/vulnerabilities/CVE-2014/CVE-2014-4719.html");
@@ -60,6 +59,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.usvn.info");
   exit(0);
 }
 

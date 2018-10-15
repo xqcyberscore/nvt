@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unitrends_mult_vulns_10_17.nasl 7528 2017-10-20 09:55:35Z jschulte $
+# $Id: gb_unitrends_mult_vulns_10_17.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Unitrends Enterprise Backup 7.3.0 multiple vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113037");
-  script_version("$Revision: 7528 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 11:55:35 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-20 12:02:03 +0200 (Fri, 20 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -60,7 +60,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://gist.github.com/brandonprry/10745756");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = 'cpe:/a:unitrends:enterprise_backup';

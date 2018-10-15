@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_kernel_memory_access_driver_code_exec_vuln.nasl 11545 2018-09-21 20:43:34Z cfischer $
+# $Id: gb_panda_kernel_memory_access_driver_code_exec_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Panda Kernel Memory Access Driver Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811556");
-  script_version("$Revision: 11545 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2015-1438");
   script_bugtraq_id(75715);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:43:34 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-07 12:12:24 +0530 (Mon, 07 Aug 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Panda Kernel Memory Access Driver Code Execution Vulnerability");
@@ -40,9 +40,7 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with Panda Security
   products and is prone to code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of
-  Panda Kernel Memory Access Driver (PSKMAD.sys) and check the version is
-  vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an insufficient
   validation of user-supplied input to the PSKMAD.sys kernel driver implemented in the
@@ -62,9 +60,7 @@ if(description)
   Panda Antivirus Pro 2015 PSKMAD.sys version 1.0.0.13.");
 
   script_tag(name:"solution", value:"Upgrade to Panda Products version 15.1.0
-  or later or apply the safeguards as mentioned in the
-  link https://tools.cisco.com/security/center/viewAlert.x?alertId=39908.
-  For updates refer to http://www.pandasecurity.com");
+  or later or apply the safeguards as mentioned below.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/132682");
@@ -78,6 +74,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
 
+  script_xref(name:"URL", value:"http://www.pandasecurity.com");
   exit(0);
 }
 

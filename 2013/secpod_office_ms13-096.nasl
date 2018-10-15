@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_office_ms13-096.nasl 11582 2018-09-25 06:26:12Z cfischer $
+# $Id: secpod_office_ms13-096.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerability (2908005)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903423");
-  script_version("$Revision: 11582 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-3906");
   script_bugtraq_id(63530);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-11 13:48:19 +0530 (Wed, 11 Dec 2013)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (2908005)");
 
@@ -40,9 +40,8 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security update according to
 Microsoft Bulletin MS13-096.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms13-096");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"The flaw is due to an error when handling TIFF files within the Microsoft
 Graphics Component (GDI+) and can be exploited to cause a memory corruption.");

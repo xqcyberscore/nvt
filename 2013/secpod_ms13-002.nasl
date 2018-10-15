@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-002.nasl 11576 2018-09-24 14:59:42Z cfischer $
+# $Id: secpod_ms13-002.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft XML Core Services Remote Code Execution Vulnerabilities (2756145)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903101");
-  script_version("$Revision: 11576 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2013-0006", "CVE-2013-0007");
   script_bugtraq_id(57116, 57122);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-09 12:27:26 +0530 (Wed, 09 Jan 2013)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft XML Core Services Remote Code Execution Vulnerabilities (2756145)");
@@ -66,8 +66,7 @@ if(description)
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms13-002");
+  install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51773/");
@@ -106,7 +105,7 @@ if(! sysPath){
    exit(0);
 }
 
-dllVer3 = fetch_file_version(sysPath, file_name:"system32\Msxml3.dll");
+dllVer3 = fetch_file_version(sysPath:sysPath, file_name:"system32\Msxml3.dll");
 
 if(dllVer3)
 {
@@ -143,7 +142,7 @@ if(dllVer3)
   location = sysPath + "\system32\Msxml3.dll";
 }
 
-dllVer4 = fetch_file_version(sysPath, file_name:"system32\Msxml4.dll");
+dllVer4 = fetch_file_version(sysPath:sysPath, file_name:"system32\Msxml4.dll");
 
 if(dllVer4)
 {
@@ -157,7 +156,7 @@ if(dllVer4)
   }
 }
 
-dllVer6 = fetch_file_version(sysPath, file_name:"system32\Msxml6.dll");
+dllVer6 = fetch_file_version(sysPath:sysPath, file_name:"system32\Msxml6.dll");
 if(dllVer6)
 {
   if(hotfix_check_sp(xp:4, win2003:3) > 0)
@@ -242,7 +241,7 @@ if(get_kb_item("MS/Office/Ver") =~ "^[11|12].*" ||
   {
     sysPath = sysPath + "\Microsoft Shared\" + ver ;
 
-    dllVer5 = fetch_file_version(sysPath, file_name:"Msxml5.dll");
+    dllVer5 = fetch_file_version(sysPath:sysPath, file_name:"Msxml5.dll");
 
     if(! dllVer5){
      continue;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pivotx_mult_vuln_jul15.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_pivotx_mult_vuln_jul15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # PivotX Multiple Vulnerabilities - Jul15
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:pivotx:pivotx";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805938");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-5456", "CVE-2015-5457", "CVE-2015-5458");
   script_bugtraq_id(75577);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-27 14:22:08 +0530 (Mon, 27 Jul 2015)");
   script_name("PivotX Multiple Vulnerabilities - Jul15");
 
@@ -63,8 +63,7 @@ if (description)
 
   script_tag(name:"affected", value:"PivotX version 2.3.10 and probably prior.");
 
-  script_tag(name:"solution", value:"Upgrade PivotX to version 2.3.11 or later.
-  For updates refer to http://pivotx.net");
+  script_tag(name:"solution", value:"Upgrade PivotX to version 2.3.11 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -79,6 +78,7 @@ if (description)
   script_dependencies("gb_pivotx_detect.nasl");
   script_mandatory_keys("PivotX/Installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://pivotx.net");
   exit(0);
 }
 

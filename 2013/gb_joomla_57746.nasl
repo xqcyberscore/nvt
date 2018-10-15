@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_57746.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_joomla_57746.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Joomla! 'highlight' Parameter PHP Object Injection Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2013-1453");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11865 $");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -43,7 +43,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57746");
   script_xref(name:"URL", value:"http://www.joomla.org/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-03-03 10:29:04 +0100 (Sun, 03 Mar 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod", value:"60");	# prone to false positives
@@ -67,7 +67,7 @@ The following versions are vulnerable:
 Joomla! 2.0.0 through versions prior to 2.5.9
 Joomla! 3.0.0 through versions prior to 3.0.3");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

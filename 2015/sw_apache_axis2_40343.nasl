@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_axis2_40343.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: sw_apache_axis2_40343.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Apache Axis2 xsd Parameter Directory Traversal Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:apache:axis2';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111007");
-  script_version("$Revision: 11291 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 11872 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-20 08:00:00 +0100 (Fri, 20 Mar 2015)");
 
   script_tag(name:"cvss_base", value:"7.5");
@@ -55,7 +55,7 @@ if (description)
  it fails to sufficiently sanitize user-supplied input.");
   script_tag(name:"impact", value:"Exploiting this issue may allow an attacker to obtain sensitive
  information that could aid in further attacks.");
-  script_tag(name:"affected", value:"Apache Axis2 1.4.1 is vulnerable; other versions may be affected.");
+  script_tag(name:"affected", value:"Apache Axis2 1.4.1 is vulnerable. Other versions may be affected.");
 
   script_xref(name:"URL", value:"https://www.securityfocus.com/bid/40343");
   script_xref(name:"URL", value:"http://ws.apache.org/axis2/");
@@ -65,7 +65,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_app");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

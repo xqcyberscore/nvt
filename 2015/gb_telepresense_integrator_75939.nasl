@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telepresense_integrator_75939.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_telepresense_integrator_75939.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco TelePresence Integrator C Series Authentication Bypass Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-4271");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Cisco TelePresence Integrator C Series Authentication Bypass Vulnerability");
 
@@ -50,7 +50,7 @@ The vulnerability is due to insufficient validation of user-supplied values. An 
 
 This issue is tracked by Cisco Bug ID CSCuv00604");
 
-  script_tag(name:"solution", value:"Update to 7.3.4 or higher");
+  script_tag(name:"solution", value:"Update to 7.3.4 or later.");
 
   script_tag(name:"summary", value:"Cisco TelePresence Integrator C Series devices running TC Software are prone to an authentication-bypass vulnerability because it fails to
 sufficiently sanitize the user-supplied input.");
@@ -60,14 +60,14 @@ sufficiently sanitize the user-supplied input.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-11 11:38:35 +0200 (Fri, 11 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_telepresence_detect_snmp.nasl", "gb_cisco_telepresence_detect_ftp.nasl");
   script_mandatory_keys("cisco/telepresence/typ", "cisco/telepresence/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

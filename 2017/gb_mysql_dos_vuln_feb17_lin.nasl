@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_dos_vuln_feb17_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_mysql_dos_vuln_feb17_lin.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Oracle MySQL Denial Of Service Vulnerability Feb17 (Linux)
 #
@@ -29,45 +29,44 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810604");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-3302");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-16 15:03:30 +0530 (Thu, 16 Feb 2017)");
   script_name("Oracle MySQL Denial Of Service Vulnerability Feb17 (Linux)");
 
   script_tag(name:"summary", value:"This host is running Oracle MySQL and is
   prone to denial-of-service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple errors exists as,
+
   - In sql-common/client.c script 'mysql_prune_stmt_list' function, the for loop
     adds elements to pruned_list without removing it from the existing list.
+
   - If application gets disconnected just before it tries to prepare a new
     statement, 'mysql_prune_stmt_list' tries to detach all previously prepared
     statements.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
-  will allow attackers to cause crash of applications using that MySQL client.
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
+  will allow attackers to cause crash of applications using that MySQL client.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Oracle MySQL version before 5.6.21 and
+  script_tag(name:"affected", value:"Oracle MySQL version before 5.6.21 and
   5.7.x before 5.7.5 on Linux");
 
   script_tag(name:"solution", value:"Upgrade to Oracle MySQL version 5.6.21 or
-  5.7.5 or later. For updates refer to https://www.mysql.com");
+  5.7.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "https://bugs.mysql.com/bug.php?id=63363");
-  script_xref(name : "URL" , value : "https://bugs.mysql.com/bug.php?id=70429");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2017/02/11/11");
+  script_xref(name:"URL", value:"https://bugs.mysql.com/bug.php?id=63363");
+  script_xref(name:"URL", value:"https://bugs.mysql.com/bug.php?id=70429");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2017/02/11/11");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -75,17 +74,13 @@ if(description)
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed", "Host/runs_unixoide");
+  script_xref(name:"URL", value:"https://www.mysql.com");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-mysqlVer = "";
-sqlPort = "";
-
-## Get port
 if(!sqlPort = get_app_port(cpe:CPE))
 {
   CPE = "cpe:/a:mysql:mysql";
@@ -96,7 +91,6 @@ if(!sqlPort = get_app_port(cpe:CPE))
 
 if( get_kb_item( "MySQL/" + sqlPort + "/blocked" ) ) exit( 0 );
 
-## Get version
 if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort)){
   exit(0);
 }

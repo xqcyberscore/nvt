@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arris_docsis_password_disclosure_08_14.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_arris_docsis_password_disclosure_08_14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Arris DOCSIS Password Disclosure
 #
@@ -31,11 +31,11 @@ if (description)
   script_cve_id("CVE-2014-4863");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Arris DOCSIS Password Disclosure");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-08-25 12:47:33 +0100 (Mon, 25 Aug 2014)");
   script_category(ACT_ATTACK);
   script_family("General");
@@ -67,7 +67,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_vul");
 
- exit(0);
+  exit(0);
 }
 
 include("dump.inc");

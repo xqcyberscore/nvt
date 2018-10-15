@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln_aug15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_drupal_mult_vuln_aug15_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Drupal Multiple Vulnerabilities - August15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806103");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-6661", "CVE-2015-6660", "CVE-2015-6658");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-28 11:55:16 +0530 (Fri, 28 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Drupal Multiple Vulnerabilities - August15 (Windows)");
@@ -60,7 +60,7 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to version 6.37 or 7.39
-  later, For updates refer to https://www.drupal.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

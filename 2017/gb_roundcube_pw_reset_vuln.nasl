@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_pw_reset_vuln.nasl 6126 2017-05-15 10:06:16Z ckuerste $
+# $Id: gb_roundcube_pw_reset_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Roundcube Webmail Password Reset Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:roundcube:webmail';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106804");
-  script_version("$Revision: 6126 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-15 12:06:16 +0200 (Mon, 15 May 2017) $");
-  script_tag(name: "creation_date", value: "2017-05-15 13:21:35 +0700 (Mon, 15 May 2017)");
-  script_tag(name:"cvss_base", value: "6.5");
-  script_tag(name:"cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-15 13:21:35 +0700 (Mon, 15 May 2017)");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-8114");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Roundcube Webmail Password Reset Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("sw_roundcube_detect.nasl");
   script_mandatory_keys("roundcube/installed");
 
-  script_tag(name: "summary", value: "Roundcube Webmail is prone to a arbitrary password reset vulnerability.");
+  script_tag(name:"summary", value:"Roundcube Webmail is prone to a arbitrary password reset vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "A vulnerability in the virtualmin and sasl drivers of the password plugin
+  script_tag(name:"insight", value:"A vulnerability in the virtualmin and sasl drivers of the password plugin
 allows authenticated users to reset arbitrary passwords.");
 
-  script_tag(name: "affected", value: "Roundcube Webmail prior version 1.0.11, 1.1.x and 1.2.x.");
+  script_tag(name:"affected", value:"Roundcube Webmail prior version 1.0.11, 1.1.x and 1.2.x.");
 
-  script_tag(name: "solution", value: "Update to version, 1.0.11, 1.1.9, 1.2.5 or later.");
+  script_tag(name:"solution", value:"Update to version, 1.0.11, 1.1.9, 1.2.5 or later.");
 
-  script_xref(name: "URL", value: "https://roundcube.net/news/2017/04/28/security-updates-1.2.5-1.1.9-and-1.0.11");
+  script_xref(name:"URL", value:"https://roundcube.net/news/2017/04/28/security-updates-1.2.5-1.1.9-and-1.0.11");
 
   exit(0);
 }

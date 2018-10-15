@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_msl_interpreter_dos_vuln_macosx.nasl 5542 2017-03-10 15:39:04Z teissa $
+# $Id: gb_imagemagick_msl_interpreter_dos_vuln_macosx.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # ImageMagick MSL Interpreter Denial of Service Vulnerability (Mac OS X)
 #
@@ -29,45 +29,43 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810293");
-  script_version("$Revision: 5542 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2016-10068");
   script_bugtraq_id(95219);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 16:39:04 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-17 15:13:31 +0530 (Tue, 17 Jan 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("ImageMagick MSL Interpreter Denial of Service Vulnerability (Mac OS X)");
 
-  script_tag(name: "summary" , value:"The host is installed with ImageMagick
+  script_tag(name:"summary", value:"The host is installed with ImageMagick
   and is prone to denial-of-service vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to the failure to handle 
+  script_tag(name:"insight", value:"The flaw is due to the failure to handle
   exceptional conditions by MSL interpreter.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
-  attackers to cause a denial-of-service condition.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  attackers to cause a denial-of-service condition.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"ImageMagick versions before 6.9.6-4
+  script_tag(name:"affected", value:"ImageMagick versions before 6.9.6-4
   on Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to ImageMagick version
-  6.9.6-4 or later. For updates refer to http://www.imagemagick.org");
+  script_tag(name:"solution", value:"Upgrade to ImageMagick version
+  6.9.6-4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2016/q4/758");
-  script_xref(name : "URL" , value : "https://github.com/ImageMagick/ImageMagick/commit/56d6e20de489113617cbbddaf41e92600a34db22");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2016/q4/758");
+  script_xref(name:"URL", value:"https://github.com/ImageMagick/ImageMagick/commit/56d6e20de489113617cbbddaf41e92600a34db22");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_imagemagick_detect_macosx.nasl");
   script_mandatory_keys("ImageMagick/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.imagemagick.org");
   exit(0);
 }
 
@@ -75,16 +73,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-imVer = "";
-report = "";
-
-## Get version
 if(!imVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:imVer, test_version:"6.9.6.4"))
 {
   report = report_fixed_ver(installed_version:imVer, fixed_version:'6.9.6-4');

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_skyipcam_rce_07_15.nasl 11343 2018-09-12 06:36:46Z cfischer $
+# $Id: gb_skyipcam_rce_07_15.nasl 11890 2018-10-12 16:13:30Z cfischer $
 #
 # AirLink101 SkyIPCam1620W OS Command Injection
 #
@@ -28,7 +28,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105318");
-  script_version("$Revision: 11343 $");
+  script_version("$Revision: 11890 $");
   script_cve_id("CVE-2015-2280");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -44,13 +44,13 @@ if(description)
 
   script_tag(name:"summary", value:"The SkyIPCam1620W Wireless N MPEG4 3GPP Network Camera is vulnerable to an OS Command Injection Vulnerability in the snwrite.cgi binary.");
 
-  script_tag(name:"affected", value:"AirLink101 SkyIPCam1620W Wireless N MPEG4 3GPP Network Camera with firmware FW_AIC1620W_1.1.0-12_20120709_r1192.pck (Aug. 2012)
-Other devices based on the same firmware are probably affected too, ");
+  script_tag(name:"affected", value:"AirLink101 SkyIPCam1620W Wireless N MPEG4 3GPP Network Camera with firmware FW_AIC1620W_1.1.0-12_20120709_r1192.pck (Aug. 2012).
+Other devices based on the same firmware are probably affected too.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 18:13:30 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-09 11:01:55 +0200 (Thu, 09 Jul 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -59,7 +59,7 @@ Other devices based on the same firmware are probably affected too, ");
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("SkyIPCam/banner");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

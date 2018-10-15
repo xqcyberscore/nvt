@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_vaadin_xss_vuln3.nasl 11334 2018-09-11 14:00:44Z mmartin $
+# $Id: sw_vaadin_xss_vuln3.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Vaadin Framework < 7.1.11 Multiple Vulnerabilities
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:vaadin:vaadin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105184");
-  script_version("$Revision: 11334 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 11872 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-22 12:00:00 +0100 (Thu, 22 Jan 2015)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -59,8 +59,7 @@ if(description)
   script_tag(name:"impact", value:"This could potentially, in certain situations, allow a malicious user
   to inject content, such as javascript, in order to perform a cross-site scripting (XSS) attack.");
   script_tag(name:"affected", value:"Vaadin Framework versions from 7.0.0 up to 7.1.10");
-  script_tag(name:"solution", value:"Upgrade to Vaadin Framework version 7.1.11 or later
-  For updates refer to http://www.vaadin.com/releases");
+  script_tag(name:"solution", value:"Upgrade to Vaadin Framework version 7.1.11 or later.");
 
   script_xref(name:"URL", value:"http://www.vaadin.com/download/release/7.1/7.1.11/release-notes.html");
 
@@ -68,6 +67,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://www.vaadin.com/releases");
   exit(0);
 }
 

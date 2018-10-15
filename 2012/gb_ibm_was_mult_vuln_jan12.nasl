@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_mult_vuln_jan12.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_ibm_was_mult_vuln_jan12.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # IBM WebSphere Application Server (WAS) Multiple Vulnerabilities - (Jan2012)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802412");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-5066", "CVE-2011-5065", "CVE-2011-1377");
   script_bugtraq_id(51560, 51559, 50310);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-18 17:27:41 +0530 (Wed, 18 Jan 2012)");
   script_name("IBM WebSphere Application Server (WAS) Multiple Vulnerabilities - (Jan2012)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46469");
@@ -62,7 +62,7 @@ if(description)
   - A SibRaRecoverableSiXaResource class in the Default Messaging Component,
     does not properly handle a Service Integration Bus (SIB) dump operation
     involving the First Failure Data Capture (FFDC) introspection code.");
-  script_tag(name:"solution", value:"Upgrade to version 6.1.0.41 or later,");
+  script_tag(name:"solution", value:"Upgrade to version 6.1.0.41 or later.");
   script_tag(name:"summary", value:"The host is running IBM WebSphere Application Server and is prone to multiple
   vulnerabilities.");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?rs=180&uid=swg24031034");

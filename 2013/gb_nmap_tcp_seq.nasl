@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_tcp_seq.nasl 11089 2018-08-23 08:25:21Z jschulte $
+# $Id: gb_nmap_tcp_seq.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # TCP/IP Predictable TCP Initial Sequence Number Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-1999-0077", "CVE-2000-0916", "CVE-2001-0288");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11089 $");
+  script_version("$Revision: 11865 $");
 
   script_name("TCP/IP Predictable TCP Initial Sequence Number Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20010301-ios-tcp-isn-random");
   script_xref(name:"URL", value:"ftp://ftp.freebsd.org/pub/FreeBSD/CERT/advisories/FreeBSD-SA-00:52.tcp-iss.asc");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 10:25:21 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-22 11:14:29 +0200 (Mon, 22 Apr 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -53,7 +53,7 @@ if (description)
 A cracker may use this flaw to spoof TCP connections");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"solution", value:"Update your OS to a more recent version.");
- exit(0);
+  exit(0);
 }
 
 tcp_seq = get_kb_item("Host/tcp_seq");

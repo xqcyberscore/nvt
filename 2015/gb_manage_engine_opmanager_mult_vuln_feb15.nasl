@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_opmanager_mult_vuln_feb15.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_manage_engine_opmanager_mult_vuln_feb15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # ZOHO ManageEngine OpManager Multiple Vulnerabilities - Feb15
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805473");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-7864");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-20 11:53:55 +0530 (Fri, 20 Mar 2015)");
   script_name("ZOHO ManageEngine OpManager Multiple Vulnerabilities - Feb15");
 
@@ -56,10 +56,7 @@ if(description)
   versions  8 through 11.5 build 11400");
 
   script_tag(name:"solution", value:"Upgrade to version 11.6 or install the
-  patch for v11.4 and 11.5 from the link below
-  https://support.zoho.com/portal/manageengine/helpcenter/articles/vulnera
-  bilities-in-failoverhelperservlet
-  For updates refer to http://www.manageengine.com");
+  patch for v11.4 and 11.5  bilities-in-failoverhelperservlet");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -72,6 +69,8 @@ if(description)
   script_dependencies("gb_manage_engine_opmanager_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("OpManager/installed");
   script_require_ports("Services/www", 8080);
+  script_xref(name:"URL", value:"https://support.zoho.com/portal/manageengine/helpcenter/articles/vulnera");
+  script_xref(name:"URL", value:"http://www.manageengine.com");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sophos_web_appliance_mult_vuln_09_2013.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_sophos_web_appliance_mult_vuln_09_2013.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Sophos Web Protection Appliance Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = 'cpe:/a:sophos:web_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103781");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-4983", "CVE-2013-4983");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Sophos Web Protection Appliance Multiple Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-09 14:28:20 +0200 (Mon, 09 Sep 2013)");
 
   script_xref(name:"URL", value:"http://www.coresecurity.com/advisories/sophos-web-protection-appliance-multiple-vulnerabilities");
@@ -59,7 +59,7 @@ if (description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_analysis");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

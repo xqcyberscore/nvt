@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_monlist_enabled.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_ntp_monlist_enabled.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # NTP Monlist Feature Enabled
 #
@@ -31,7 +31,7 @@ if (description)
   script_cve_id("CVE-2013-5211");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11867 $");
 
   script_name("NTP Monlist Feature Enabled");
 
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://bugs.ntp.org/show_bug.cgi?id=1532");
   script_xref(name:"URL", value:"http://lists.ntp.org/pipermail/pool/2011-December/005616.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-06 14:14:08 +0100 (Mon, 06 Jan 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,7 +62,7 @@ requests, as exploited in the wild in December 2013.");
 fails to properly handle certain incoming network packets.");
   script_tag(name:"affected", value:"NTP before 4.2.7p26");
 
- exit(0);
+  exit(0);
 }
 
 

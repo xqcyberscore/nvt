@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_verax_nms_multiple_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_verax_nms_multiple_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Verax Network Management System Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803181");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1350", "CVE-2013-1351", "CVE-2013-1352", "CVE-2013-1631");
   script_bugtraq_id(58334);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-03-15 13:15:33 +0530 (Fri, 15 Mar 2013)");
   script_name("Verax Network Management System Multiple Vulnerabilities");
 
@@ -68,14 +68,14 @@ if(description)
   - The Verax NMS Console, users can navigate to monitored devices and perform
     predefined actions (NMSAction), such as repairing tables on a MySQL database
     or restarting services.");
-  script_tag(name:"solution", value:"Upgrade to Verax NMS 2.1.0 or later,
-  For updates refer to http://www.veraxsystems.com/en/products/nms");
+  script_tag(name:"solution", value:"Upgrade to Verax NMS 2.1.0 or later.");
   script_tag(name:"summary", value:"The host is running Verax Network Management System and is prone to
   multiple vulnerabilities.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.veraxsystems.com/en/products/nms");
   exit(0);
 }
 

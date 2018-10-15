@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_rce_vuln_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_foxit_reader_mult_rce_vuln_win.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Foxit Reader Multiple Remote Code Execution Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811585");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-10952", "CVE-2017-10951");
   script_bugtraq_id(100412, 100409);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-21 13:07:23 +0530 (Mon, 21 Aug 2017)");
   script_name("Foxit Reader Multiple Remote Code Execution Vulnerabilities (Windows)");
 
@@ -53,9 +53,7 @@ if(description)
     execute a system call in app.launchURL method.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to execute code under the context of the current process.
-
-  Impact Level: System/Application");
+  attackers to execute code under the context of the current process.");
 
   script_tag(name:"affected", value:"All Foxit Reader versions on windows
   with 'Safe reading mode' feature disabled.");
@@ -63,9 +61,7 @@ if(description)
   script_tag(name:"solution", value:"Mitigation is available,
   Safe reading mode should be enabled always and additionally users can also
   uncheck the 'Enable JavaScript Actions' from Foxit's Preferences menu,
-  although this may break some functionality.
-
-  For updates refer to http://www.foxitsoftware.com");
+  although this may break some functionality.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod", value:"30");
@@ -77,6 +73,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_mandatory_keys("foxit/reader/ver");
+  script_xref(name:"URL", value:"http://www.foxitsoftware.com");
   exit(0);
 }
 

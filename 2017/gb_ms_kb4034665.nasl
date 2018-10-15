@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4034665.nasl 11816 2018-10-10 10:42:56Z mmartin $
+# $Id: gb_ms_kb4034665.nasl 11879 2018-10-12 12:48:49Z mmartin $
 #
 # Microsoft Windows Server 2012 Multiple Vulnerabilities (KB4034665)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811605");
-  script_version("$Revision: 11816 $");
+  script_version("$Revision: 11879 $");
   script_cve_id("CVE-2017-0174", "CVE-2017-0250", "CVE-2017-0293", "CVE-2017-8591",
                 "CVE-2017-8593", "CVE-2017-8620", "CVE-2017-8624", "CVE-2017-8633",
                 "CVE-2017-8635", "CVE-2017-8636", "CVE-2017-8641", "CVE-2017-8651",
@@ -36,7 +36,7 @@ if(description)
                     100055, 100056, 100057, 100058, 100059, 100085, 100089, 100092);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-09 08:53:58 +0530 (Wed, 09 Aug 2017)");
   script_name("Microsoft Windows Server 2012 Multiple Vulnerabilities (KB4034665)");
 
@@ -107,7 +107,7 @@ if(!sysPath ){
   exit(0);
 }
 
-fileVer = fetch_file_version(sysPath, file_name:"drivers\tdx.sys");
+fileVer = fetch_file_version(sysPath:sysPath, file_name:"drivers\tdx.sys");
 if(!fileVer){
   exit(0);
 }

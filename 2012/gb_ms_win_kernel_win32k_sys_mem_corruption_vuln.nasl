@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_kernel_win32k_sys_mem_corruption_vuln.nasl 11372 2018-09-13 12:12:50Z asteins $
+# $Id: gb_ms_win_kernel_win32k_sys_mem_corruption_vuln.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Kernel 'win32k.sys' Memory Corruption Vulnerability
 #
@@ -29,8 +29,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802379");
   script_tag(name:"creation_date", value:"2012-01-13 16:00:36 +0100 (Fri, 13 Jan 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
-  script_version("$Revision: 11372 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 11876 $");
   script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2011-5046");
   script_bugtraq_id(51122);
@@ -91,7 +91,7 @@ if("AMD64" >< sysArch)
     exit(0);
   }
 
-  sysVer = fetch_file_version(sysPath, file_name:"system32\Win32k.sys");
+  sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Win32k.sys");
 
   if(!isnull(sysVer))
   {

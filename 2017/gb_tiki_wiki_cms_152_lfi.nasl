@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiki_wiki_cms_152_lfi.nasl 5144 2017-01-31 09:55:46Z cfi $
+# $Id: gb_tiki_wiki_cms_152_lfi.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # TTiki Wiki CMS Groupware 'fixedURLData' Local File Inclusion Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108064");
-  script_version("$Revision: 5144 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2016-10143");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 10:55:46 +0100 (Tue, 31 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-30 16:00:00 +0100 (Mon, 30 Jan 2017)");
   script_name("Tiki Wiki CMS Groupware 'fixedURLData' Local File Inclusion Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -49,16 +49,13 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with Tiki Wiki CMS Groupware
   and is prone to a local file inclusion vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detect NVT
-  and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The Flaw is due to improper sanitization
   of input passed to the 'fixedURLData' parameter of the 'display_banner.php' script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an user having access to the
-  admin backend to gain access to arbitrary files and to compromise the application.
-
-  Impact Level: System/Application");
+  admin backend to gain access to arbitrary files and to compromise the application.");
 
   script_tag(name:"affected", value:"Tiki Wiki CMS Groupware versions:
 
@@ -67,11 +64,12 @@ if(description)
   - 13.x, 14.x and 15.x below 15.4");
 
   script_tag(name:"solution", value:"Upgrade to Tiki Wiki CMS Groupware version 12.11 LTS, 15.4 or
-  later. For updates refer to https://tiki.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"https://tiki.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_unspecified_vuln_oct15.nasl 11445 2018-09-18 08:09:39Z mmartin $
+# $Id: gb_java_unspecified_vuln_oct15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Oracle Java SE JRE Unspecified Vulnerability Oct 2015 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806519");
-  script_version("$Revision: 11445 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-4871");
   script_bugtraq_id(77238);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-29 09:37:58 +0530 (Thu, 29 Oct 2015)");
   script_name("Oracle Java SE JRE Unspecified Vulnerability Oct 2015 (Windows)");
 
@@ -51,8 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Oracle Java SE 7 update 85 and prior on
   Windows.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/topics/security/alerts-086861.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

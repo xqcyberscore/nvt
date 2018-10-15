@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-032.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: secpod_ms13-032.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Active Directory Denial of Service Vulnerability (2830914)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902965");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2013-1282");
   script_bugtraq_id(58848);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-10 12:37:03 +0530 (Wed, 10 Apr 2013)");
   script_name("Microsoft Windows Active Directory Denial of Service Vulnerability (2830914)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52917/");
@@ -63,12 +63,12 @@ if(description)
   LDAP queries. This can be exploited to exhaust available memory resources and
   render the LDAP service non-responsive via a specially crafted LDAP query.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms13-032");
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS13-032.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-032");
   exit(0);
 }
 
@@ -92,7 +92,7 @@ if(hotfix_check_sp(win2003:3, win2003x64:3) > 0)
 {
   if(registry_key_exists(key:"SYSTEM\CurrentControlSet\Services\NTDS\Performance"))
   {
-    ntdsaVer = fetch_file_version(sysPath, file_name:"system32\Ntdsa.dll");
+    ntdsaVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Ntdsa.dll");
     if(ntdsaVer != NULL)
     {
       if(version_is_less(version:ntdsaVer, test_version:"5.2.3790.5130"))
@@ -108,7 +108,7 @@ if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3) > 0)
 {
   if(registry_key_exists(key:"SYSTEM\CurrentControlSet\Services\ADAM\Linkage"))
   {
-    adamdsaVer = fetch_file_version(sysPath, file_name:"ADAM\Adamdsa.dll");
+    adamdsaVer = fetch_file_version(sysPath:sysPath, file_name:"ADAM\Adamdsa.dll");
     if(adamdsaVer != NULL)
     {
       if(version_is_less(version:adamdsaVer, test_version:"1.1.3790.5131"))
@@ -121,7 +121,7 @@ if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3) > 0)
 }
 
 ## AD LAS For Windows 7, vista and 2008 server
-dllVer = fetch_file_version(sysPath, file_name:"system32\Ntdsai.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Ntdsai.dll");
 if(!dllVer){
   exit(0);
 }

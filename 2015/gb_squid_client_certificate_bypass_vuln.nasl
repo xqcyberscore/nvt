@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_client_certificate_bypass_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_squid_client_certificate_bypass_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Squid SSL-Bump Certificate Validation Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806104");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-3455");
   script_bugtraq_id(74438);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 14:34:34 +0530 (Tue, 08 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid SSL-Bump Certificate Validation Bypass Vulnerability");
@@ -58,8 +58,7 @@ if(description)
   Squid 3.5 -> 3.5.3");
 
   script_tag(name:"solution", value:"Apply the patch or upgrade to version
-  Squid 3.5.4, 3.4.13, 3.3.14, 3.2.14 or later.
-  For updates refer to http://www.squid-cache.org/Advisories/SQUID-2015_1.txt");
+  Squid 3.5.4, 3.4.13, 3.3.14, 3.2.14 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1032221");

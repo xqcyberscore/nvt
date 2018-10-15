@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netdecision_dashboard_srv_info_disc_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_netdecision_dashboard_srv_info_disc_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Netmechanica NetDecision Dashboard Server Information Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802703");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-1464");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-08 17:47:52 +0530 (Thu, 08 Mar 2012)");
   script_name("Netmechanica NetDecision Dashboard Server Information Disclosure Vulnerability");
 
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an improper validation of malicious HTTP request
   appended with '?' character, which discloses the Dashboard server's web script
   physical path.");
-  script_tag(name:"solution", value:"Upgrade to NetDecision Dashboard Server 4.6.1 or later,");
+  script_tag(name:"solution", value:"Upgrade to NetDecision Dashboard Server 4.6.1 or later.");
   script_tag(name:"summary", value:"This host is running NetDecision Dashboard Server and is prone to
   information disclosure vulnerability.");
 

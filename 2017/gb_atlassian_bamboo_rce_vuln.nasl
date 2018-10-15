@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bamboo_rce_vuln.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_atlassian_bamboo_rce_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Atlassian Bamboo Remote Command Execution Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:atlassian:bamboo";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106878");
-  script_version("$Revision: 7571 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-16 14:35:00 +0700 (Fri, 16 Jun 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-16 14:35:00 +0700 (Fri, 16 Jun 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-8907");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Atlassian Bamboo Remote Command Execution Vulnerability");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_atlassian_bamboo_detect.nasl");
   script_mandatory_keys("AtlassianBamboo/Installed");
 
-  script_tag(name: "summary", value: "Atlassian Bamboo is prone to a remote code execution vulnerability.");
+  script_tag(name:"summary", value:"Atlassian Bamboo is prone to a remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Bamboo does not correctly check if a user creating a deployment project had
+  script_tag(name:"insight", value:"Bamboo does not correctly check if a user creating a deployment project had
 the edit permission and therefore the rights to do so. An attacker who can login to Bamboo as a user without the
 edit permission for deployment projects is able to use this vulnerability, provided there is an existing plan
 with a green build, to create a deployment project and execute arbitrary code on an available Bamboo Agent. By
 default a local agent is enabled this means that code execution can occur on the system hosting Bamboo as the user
 running Bamboo.");
 
-  script_tag(name: "affected", value: "Atlassiona Bamboo version 5.0.0 before 5.15.7 and 6.0.0.");
+  script_tag(name:"affected", value:"Atlassiona Bamboo version 5.0.0 before 5.15.7 and 6.0.0.");
 
-  script_tag(name: "solution", value: "Update to 5.15.7, 6.0.1 or later.");
+  script_tag(name:"solution", value:"Update to 5.15.7, 6.0.1 or later.");
 
-  script_xref(name: "URL", value: "https://confluence.atlassian.com/bamboo/bamboo-security-advisory-2017-06-14-907283498.html");
+  script_xref(name:"URL", value:"https://confluence.atlassian.com/bamboo/bamboo-security-advisory-2017-06-14-907283498.html");
 
   exit(0);
 }

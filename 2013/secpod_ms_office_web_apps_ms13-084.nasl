@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_web_apps_ms13-084.nasl 11576 2018-09-24 14:59:42Z cfischer $
+# $Id: secpod_ms_office_web_apps_ms13-084.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Microsoft Office Web Apps Remote Code Execution vulnerability (2885089)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903327");
-  script_version("$Revision: 11576 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-3889", "CVE-2013-3895");
   script_bugtraq_id(62829, 62800);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 17:04:48 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Office Web Apps Remote Code Execution vulnerability (2885089)");
 
@@ -42,9 +42,7 @@ if(description)
   Bulletin MS13-084.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-
-  http://technet.microsoft.com/en-us/security/bulletin/ms13-084");
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"insight", value:"Flaw is due to improper sanitation of user supplied input via a specially
   crafted Excel file.");
   script_tag(name:"affected", value:"Microsoft Web Applications 2010 Service Pack 2 and prior.
@@ -62,6 +60,7 @@ if(description)
   script_dependencies("gb_ms_office_web_apps_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Web/Apps/Ver");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-084");
   exit(0);
 }
 

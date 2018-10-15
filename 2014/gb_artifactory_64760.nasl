@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_artifactory_64760.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: gb_artifactory_64760.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Artifactory XStream Remote Code Execution Vulnerability
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2013-7285");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Artifactory XStream Remote Code Execution Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64760");
   script_xref(name:"URL", value:"http://www.jfrog.com/confluence/display/RTF/Artifactory+3.1.1");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-13 10:30:44 +0100 (Thu, 13 Mar 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -61,7 +61,7 @@ which is prone to a remote code execution vulnerability.");
   script_tag(name:"summary", value:"Artifactory is prone to a remote code-execution vulnerability.");
   script_tag(name:"affected", value:"Artifactory < 3.1.1.1");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

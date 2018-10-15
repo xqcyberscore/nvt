@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_mult_vuln03.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_open_xchange_appsuite_mult_vuln03.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Open-Xchange (OX) AppSuite Multiple Vulnerabilities -03 Nov15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806522");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2013-5200", "CVE-2013-5935", "CVE-2013-5936", "CVE-2013-5934");
   script_bugtraq_id(62311);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-02 10:34:36 +0530 (Mon, 02 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Multiple Vulnerabilities -03 Nov15");
@@ -54,9 +54,7 @@ if(description)
   7.0.x before 7.0.2-rev15 and 7.2.x before 7.2.2-rev16");
 
   script_tag(name:"solution", value:"Upgrade to Open-Xchange (OX) AppSuite
-  version 7.0.2-rev15 or 7.2.2-rev16 or later.
-
-  For updates refer to https://www.open-xchange.com");
+  version 7.0.2-rev15 or 7.2.2-rev16 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +66,7 @@ if(description)
   script_dependencies("gb_ox_app_suite_detect.nasl");
   script_mandatory_keys("open_xchange_appsuite/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.open-xchange.com");
   exit(0);
 }
 

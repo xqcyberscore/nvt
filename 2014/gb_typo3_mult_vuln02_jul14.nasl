@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_vuln02_jul14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_typo3_mult_vuln02_jul14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # TYPO3 Multiple Vulnerabilities-02 July-2104
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804465");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-3944", "CVE-2014-3946");
   script_bugtraq_id(67629, 67624);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-07-03 13:22:50 +0530 (Thu, 03 Jul 2014)");
   script_name("TYPO3 Multiple Vulnerabilities-02 July-2104");
 
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to easily gain access
 to a users session and gain access to potentially sensitive information.");
   script_tag(name:"affected", value:"TYPO3 versions 6.2.0 to 6.2.2");
-  script_tag(name:"solution", value:"Upgrade to TYPO3 6.2.3 or later,
-For updates refer to http://typo3.org");
+  script_tag(name:"solution", value:"Upgrade to TYPO3 6.2.3 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/58901");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_stored_procedure_unspecified_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_mysql_stored_procedure_unspecified_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # MySQL Stored Procedure Unspecified Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803483");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2013-2376", "CVE-2013-1511");
   script_bugtraq_id(59227);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-22 18:36:21 +0530 (Mon, 22 Apr 2013)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -49,7 +49,7 @@ if(description)
   related to Stored Procedure.");
 
   script_tag(name:"solution", value:"Upgrade to MySQL version 5.5.31 or 5.6.11
-  or later, http://dev.mysql.com/downloads");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

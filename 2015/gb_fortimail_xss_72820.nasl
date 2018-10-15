@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortimail_xss_72820.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_fortimail_xss_72820.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Fortinet FortiMail Web Action Quarantine Release Feature Cross Site Scripting Vulnerability
 #
@@ -31,7 +31,7 @@ if (description)
   script_bugtraq_id(72820);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-8617");
 
   script_name("Fortinet FortiMail Web Action Quarantine Release Feature Cross Site Scripting Vulnerability");
@@ -58,7 +58,7 @@ because it fails to properly sanitize user-supplied input.");
 
   script_tag(name:"qod_type", value:"remote_app");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-18 13:18:03 +0100 (Wed, 18 Mar 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -67,7 +67,7 @@ because it fails to properly sanitize user-supplied input.");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

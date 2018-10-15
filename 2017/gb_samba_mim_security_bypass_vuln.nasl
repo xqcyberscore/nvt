@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_mim_security_bypass_vuln.nasl 10398 2018-07-04 12:11:48Z cfischer $
+# $Id: gb_samba_mim_security_bypass_vuln.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # Samba Man in the Middle Security Bypass Vulnerability (Heimdal)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811522");
-  script_version("$Revision: 10398 $");
+  script_version("$Revision: 11901 $");
   script_cve_id("CVE-2017-11103");
   script_bugtraq_id(99551);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 14:11:48 +0200 (Wed, 04 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-13 12:28:31 +0530 (Thu, 13 Jul 2017)");
   script_name("Samba Man in the Middle Security Bypass Vulnerability (Heimdal)");
   script_category(ACT_GATHER_INFO);
@@ -58,9 +58,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue will allow
   a MITM attacker to impersonate a trusted server and thus gain elevated access
-  to the domain by returning malicious replication or authorization data.
-
-  Impact Level: Application");
+  to the domain by returning malicious replication or authorization data.");
 
   script_tag(name:"affected", value:"All versions of Samba from 4.0.0 before
   4.6.6 or 4.5.12 or 4.4.15.
@@ -69,9 +67,9 @@ if(description)
   Samba binaries built against MIT Kerberos are not vulnerable.");
 
   script_tag(name:"solution", value:"Upgrade to Samba 4.6.6 or 4.5.12 or 4.4.15
-  or later or apply the patch from https://www.samba.org/samba/security.
-  For updates refer to https://www.samba.org");
+  or later or apply the patch from below.");
 
+  script_xref(name:"URL", value:"https://www.samba.org/samba/security");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

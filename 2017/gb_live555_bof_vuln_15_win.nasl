@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_live555_bof_vuln_15_win.nasl 9421 2018-04-10 10:20:06Z asteins $
+# $Id: gb_live555_bof_vuln_15_win.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # LIVE555 Streaming Media Buffer Overflow Vulnerability (Windows)
 #
@@ -29,34 +29,32 @@ CPE = "cpe:/a:live5555:streaming_media";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107182");
-  script_version("$Revision: 9421 $");
+  script_version("$Revision: 11863 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-10 12:20:06 +0200 (Tue, 10 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-22 12:42:40 +0200 (Mon, 22 May 2017)");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("LIVE555 Streaming Media Buffer Overflow Vulnerability (Windows)");
 
-  script_tag(name: "summary", value:"The host is installed with LIVE555 Streaming Media and is prone to a buffer overflow vulnerability.");
+  script_tag(name:"summary", value:"The host is installed with LIVE555 Streaming Media and is prone to a buffer overflow vulnerability.");
 
-  script_tag(name: "vuldetect", value:"Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The flaw is due to a buffer overflow error in the parseRTSPRequestString function in RTSPServer.cpp file");
+  script_tag(name:"insight", value:"The flaw is due to a buffer overflow error in the parseRTSPRequestString function in RTSPServer.cpp file");
 
-  script_tag(name: "impact", value:"Successful exploitation will allow remote
-  attackers to cause a denial of service.
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to cause a denial of service.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Live555 Media Streaming Versions before 2015.07.23.");
 
-  script_tag(name: "affected", value:"Live555 Media Streaming Versions before 2015.07.23.");
+  script_tag(name:"solution", value:"Upgrade to 2015.07.23 or later versions.");
 
-  script_tag(name: "solution", value:"Upgrade to 2015.07.23 or later versions. For updates refer to http://www.live555.com/");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name: "solution_type", value:"VendorFix");
-
-  script_xref(name: "URL", value: "http://www.live555.com/liveMedia/public/changelog.txt");
-  script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/2543");
+  script_xref(name:"URL", value:"http://www.live555.com/liveMedia/public/changelog.txt");
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/2543");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

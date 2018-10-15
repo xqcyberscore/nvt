@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_polycom_52301.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_polycom_52301.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Polycom Products Directory Traversal and Command Injection Vulnerabilities
 #
@@ -31,7 +31,7 @@ if (description)
   script_bugtraq_id(52301);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11865 $");
 
   script_name("Polycom Products Directory Traversal and Command Injection Vulnerabilities");
 
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.polycom.com/");
   script_xref(name:"URL", value:"http://blog.tempest.com.br/joao-paulo-campello/polycom-web-management-interface-os-command-injection.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-13 11:31:54 +0100 (Wed, 13 Feb 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,7 +62,7 @@ with the privileges of the user running the application.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

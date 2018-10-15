@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_memory_corruption_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_apple_itunes_memory_corruption_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Apple iTunes ActiveX Control Memory Corruption Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803765");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1035");
   script_bugtraq_id(62486);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-27 15:45:01 +0530 (Fri, 27 Sep 2013)");
   script_name("Apple iTunes ActiveX Control Memory Corruption Vulnerability (Windows)");
 
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apple iTunes and is prone to memory corruption
 vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Upgrade to Apple iTunes version 11.1 or later,
-For updates refer to http://www.apple.com/itunes");
+  script_tag(name:"solution", value:"Upgrade to Apple iTunes version 11.1 or later.");
   script_tag(name:"insight", value:"The flaw is due to an error within an ActiveX Control.");
   script_tag(name:"affected", value:"Apple iTunes before 11.1 on windows");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code and
@@ -59,6 +58,7 @@ or cause denial of service.");
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
   script_mandatory_keys("iTunes/Win/Installed");
+  script_xref(name:"URL", value:"http://www.apple.com/itunes");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vsphere_data_protection_mult_vuln.nasl 7034 2017-08-31 13:44:04Z santu $
+# $Id: gb_vsphere_data_protection_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # VMware vSphere Data Protection (VDP) Multiple Vulnerabilities
 #
@@ -29,58 +29,51 @@ CPE = "cpe:/a:vmware:vsphere_data_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811319");
-  script_version("$Revision: 7034 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-4914", "CVE-2017-4917");
   script_bugtraq_id(98936, 98939);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 15:44:04 +0200 (Thu, 31 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-30 16:55:06 +0530 (Wed, 30 Aug 2017)");
   script_tag(name:"qod_type", value:"package");
   script_name("VMware vSphere Data Protection (VDP) Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"This host is installed with VMware vSphere
+  script_tag(name:"summary", value:"This host is installed with VMware vSphere
   Data Protection (VDP) and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with
-  the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to
 
   - A deserialization issue.
- 
+
   - Storing vCenter Server credentials locally using reversible encryption.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute commands on the appliance, also can obtain password
-  information.
+  information.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"VMware vSphere Data Protection (VDP)
+  script_tag(name:"affected", value:"VMware vSphere Data Protection (VDP)
   versions 6.1.x, 6.0.x, 5.8.x, and 5.5.x");
 
-  script_tag(name: "solution" , value:"Upgrade to VMware vSphere Data Protection
-  (VDP) 6.1.4, 6.0.5 or later. For updates refer to http://www.vmware.com");
+  script_tag(name:"solution", value:"Upgrade to VMware vSphere Data Protection
+  (VDP) 6.1.4, 6.0.5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://www.vmware.com/security/advisories/VMSA-2017-0010.html");
+  script_xref(name:"URL", value:"https://www.vmware.com/security/advisories/VMSA-2017-0010.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_vmware_vsphere_data_protection_version.nasl");
   script_mandatory_keys("vmware/vSphere_Data_Protection/version");
+  script_xref(name:"URL", value:"http://www.vmware.com");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-appVer = "";
-report = "";
-
-## Get the version
 if(!appVer = get_app_version(cpe:CPE)){
   exit(0);
 }

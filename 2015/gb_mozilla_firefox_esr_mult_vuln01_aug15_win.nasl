@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_aug15_win.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_aug15_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities - Aug15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806022");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-4473", "CVE-2015-4475", "CVE-2015-4478", "CVE-2015-4479",
                 "CVE-2015-4480", "CVE-2015-4481", "CVE-2015-4482", "CVE-2015-4484",
                 "CVE-2015-4485", "CVE-2015-4486", "CVE-2015-4487", "CVE-2015-4488",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(76294, 76297);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-19 10:17:42 +0530 (Wed, 19 Aug 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities - Aug15 (Windows)");
 
@@ -89,7 +89,7 @@ if(description)
   38.2 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version
-  38.2 or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  38.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -103,6 +103,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox-ESR/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

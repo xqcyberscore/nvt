@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mailspect_mult_vuln_06_14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_mailspect_mult_vuln_06_14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Mailspect Control Panel Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105050");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
   script_name("Mailspect Control Panel Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Jun/137");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-26 11:36:16 +0200 (Thu, 26 Jun 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -60,7 +60,7 @@ the application.");
   script_tag(name:"summary", value:"Mailspect Control Panel is prone to multiple vulnerabilities.");
   script_tag(name:"affected", value:"Mailspect Control Panel version 4.0.5");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

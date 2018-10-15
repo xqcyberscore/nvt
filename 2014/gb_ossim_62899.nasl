@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ossim_62899.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ossim_62899.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # AlienVault Open Source SIEM (OSSIM) 'timestamp' Parameter Directory Traversal Vulnerability
 #
@@ -33,14 +33,14 @@ if (description)
   script_bugtraq_id(62899);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
 
   script_name("AlienVault Open Source SIEM (OSSIM) 'timestamp' Parameter Directory Traversal Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62899");
   script_xref(name:"URL", value:"http://forums.alienvault.com/discussion/comment/9407");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-19 11:18:42 +0200 (Thu, 19 Jun 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"solution_type", value:"VendorFix");
@@ -62,7 +62,7 @@ vulnerability because it fails to sufficiently sanitize user-supplied input.");
 Traversal Vulnerability");
   script_tag(name:"affected", value:"All AlienVault Versions prior to v4.3.3.1");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

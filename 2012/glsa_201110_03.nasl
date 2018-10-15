@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201110_03.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201110_03.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2010-2761", "CVE-2010-3172", "CVE-2010-3764", "CVE-2010-4411", "CVE-2010-4567", "CVE-2010-4568", "CVE-2010-4569", "CVE-2010-4570", "CVE-2010-4572", "CVE-2011-0046", "CVE-2011-0048", "CVE-2011-2379", "CVE-2011-2380", "CVE-2011-2381", "CVE-2011-2976", "CVE-2011-2977", "CVE-2011-2978", "CVE-2011-2979");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-12 10:04:39 -0500 (Sun, 12 Feb 2012)");
   script_name("Gentoo Security Advisory GLSA 201110-03 (bugzilla)");
   script_category(ACT_GATHER_INFO);
@@ -53,12 +53,12 @@ if(description)
 NOTE: This is a legacy GLSA. Updates for all affected architectures are
       available since August 27, 2011. It is likely that your system is
 already
-      no longer affected by this issue.
+      no longer affected by this issue.");
 
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201110-03
-http://bugs.gentoo.org/show_bug.cgi?id=352781
-http://bugs.gentoo.org/show_bug.cgi?id=380255
-http://bugs.gentoo.org/show_bug.cgi?id=386203");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201110-03");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=352781");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=380255");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=386203");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201110-03.");
   script_tag(name:"qod_type", value:"package");

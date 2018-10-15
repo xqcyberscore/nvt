@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samsung_dvr_auth_bypass_08_13.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_samsung_dvr_auth_bypass_08_13.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Samsung DVR Authentication Bypass
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103770");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-3585", "CVE-2013-3586");
   script_bugtraq_id(61942, 61938);
   script_tag(name:"cvss_base", value:"7.6");
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/27753");
   script_xref(name:"URL", value:"http://www.andreafabrizi.it/?exploits:samsung:dvr");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 14:27:11 +0200 (Wed, 21 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -71,7 +71,7 @@ cookie into the HTTP request. ");
   script_tag(name:"summary", value:"The remote Samsung DVR is prone to an Authentication Bypass.");
   script_tag(name:"affected", value:"Samsung DVR with firmware version <= 1.10");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

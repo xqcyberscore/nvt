@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-006.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: secpod_ms13-006.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Security Feature Bypass Vulnerability (2785220)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901214");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2013-0013");
   script_bugtraq_id(57144);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-09 12:04:09 +0530 (Wed, 09 Jan 2013)");
   script_name("Microsoft Windows Security Feature Bypass Vulnerability (2785220)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51724");
@@ -56,8 +56,7 @@ if(description)
   script_tag(name:"insight", value:"The vulnerability is caused when Windows fails to properly handle SSL/TLS
   session version negotiation.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  https://technet.microsoft.com/en-us/security/bulletin/ms13-006");
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS13-006.");
   script_tag(name:"qod_type", value:"registry");
@@ -79,7 +78,7 @@ if(!sysPath ){
   exit(0);
 }
 
-exeVer = fetch_file_version(sysPath, file_name:"system32\Ncrypt.dll");
+exeVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Ncrypt.dll");
 if(!exeVer){
   exit(0);
 }

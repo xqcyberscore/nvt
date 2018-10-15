@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_contact_form_maker_sql_inj_vuln.nasl 11323 2018-09-11 10:20:18Z ckuersteiner $
+# $Id: gb_joomla_contact_form_maker_sql_inj_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Joomla Contact Form Maker SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805519");
-  script_version("$Revision: 11323 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:20:18 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-01 18:13:27 +0530 (Wed, 01 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
 
@@ -52,9 +52,7 @@ queries in the back-end database, allowing for the manipulation or disclosure of
 
   script_tag(name:"affected", value:"Joomla Contact Form Maker version 1.0.1");
 
-  script_tag(name:"solution", value:"Upgrade to 1.0.3 or later.
-  For updates refer to
-  http://extensions.joomla.org/extensions/extension/contacts-and-feedback/contact-forms/contact-form-maker");
+  script_tag(name:"solution", value:"Upgrade to 1.0.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +66,7 @@ queries in the back-end database, allowing for the manipulation or disclosure of
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"http://extensions.joomla.org/extensions/extension/contacts-and-feedback/contact-forms/contact-form-maker");
   exit(0);
 }
 

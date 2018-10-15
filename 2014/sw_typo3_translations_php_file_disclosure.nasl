@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_typo3_translations_php_file_disclosure.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: sw_typo3_translations_php_file_disclosure.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # TYPO3 Translations.php File Disclosure Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105141");
-  script_version("$Revision: 9381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11867 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-12 12:00:00 +0100 (Fri, 12 Dec 2014)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,8 +57,7 @@ if(description)
   character (%00), it is possible to retrieve arbitrary files that are
   readable by the web server process.");
   script_tag(name:"affected", value:"TYPO3 3.5 b5");
-  script_tag(name:"solution", value:"Upgrade to TYPO3 version 3.5.0 or later,
-  for updates refer to http://typo3.org/");
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 3.5.0 or later.");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/6985");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/313488");
@@ -66,6 +65,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://typo3.org/");
   exit(0);
 }
 

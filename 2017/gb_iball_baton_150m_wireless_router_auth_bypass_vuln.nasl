@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iball_baton_150m_wireless_router_auth_bypass_vuln.nasl 9895 2018-05-18 04:24:05Z ckuersteiner $
+# $Id: gb_iball_baton_150m_wireless_router_auth_bypass_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # iBall Baton 150M Wireless Router Authentication Bypass Vulnerability
 #
@@ -29,23 +29,23 @@ CPE = "cpe:/h:iball:baton_150m_wireless-n_router";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811313");
-  script_version("$Revision: 9895 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-6558", "CVE-2017-14244");
   script_bugtraq_id(96822);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 06:24:05 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-31 12:06:39 +0530 (Thu, 31 Aug 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("iBall Baton 150M Wireless Router Authentication Bypass Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is running iBall Baton 150M
+  script_tag(name:"summary", value:"The host is running iBall Baton 150M
   Wireless Router and is prone to authentication bypass vulnerability.");
 
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to get specific information or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - iball Baton 150M Router login page is insecurely developed and any attacker
     could bypass the admin authentication just by tweaking the password.cgi file.
@@ -53,26 +53,23 @@ if(description)
   - iBall ADSL2+ Home Router does not properly authenticate when pages are
     accessed through cgi version.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to bypass authentication mechanism and perform
   unauthorized actions and can access sensitive information and perform actions
   such as reset router, downloading backup configuration, upload backup etc.
-  This may lead to further attacks. 
+  This may lead to further attacks.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"
-  iBall Baton 150M Wireless-N ADSI.2+ Router 1.2.6 build 110401.
+  script_tag(name:"affected", value:"iBall Baton 150M Wireless-N ADSI.2+ Router 1.2.6 build 110401.
   iBall ADSL2+ Home Router WRA150N Firmware version FW_iB-LR7011A_1.0.2");
 
-  script_tag(name: "solution" , value:"No known solution is available as of 18th May, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 18th May, 2018. Information regarding
 this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/42591");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/42740");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2017/Mar/22");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42591");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42740");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Mar/22");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -95,7 +92,7 @@ url = "/password.cgi";
 req = http_get(item: url, port:netPort);
 rcvRes = http_keepalive_send_recv(port:netPort, data:req);
 
-if(rcvRes =~ "HTTP/1.. 200" && ">Access Control -- Password<" >< rcvRes && 
+if(rcvRes =~ "HTTP/1.. 200" && ">Access Control -- Password<" >< rcvRes &&
    "Access to your DSL router" >< rcvRes && "pwdAdmin =" >< rcvRes &&
    "pwdSupport =" >< rcvRes && "pwdUser =" >< rcvRes)
 {

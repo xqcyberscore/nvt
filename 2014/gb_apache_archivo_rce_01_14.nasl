@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_archivo_rce_01_14.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: gb_apache_archivo_rce_01_14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Apache Archiva Multiple Remote Command Execution Vulnerabilities
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2013-2251");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Apache Archiva Multiple Remote Command Execution Vulnerabilities");
 
@@ -40,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2014010087");
   script_xref(name:"URL", value:"http://struts.apache.org/release/2.3.x/docs/s2-016.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-15 18:13:42 +0100 (Wed, 15 Jan 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -64,7 +64,7 @@ side code.'");
 vulnerabilities.");
   script_tag(name:"affected", value:"Apache Archiva <= 1.3.6");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

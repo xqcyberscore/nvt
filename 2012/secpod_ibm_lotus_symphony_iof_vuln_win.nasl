@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_symphony_iof_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ibm_lotus_symphony_iof_vuln_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # IBM Lotus Symphony Image Object Integer Overflow Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902808");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-0192");
   script_bugtraq_id(51591);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-25 12:12:12 +0530 (Wed, 25 Jan 2012)");
   script_name("IBM Lotus Symphony Image Object Integer Overflow Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an integer overflow error when processing embedded
   image objects. This can be exploited to cause a heap-based buffer overflow
   via a specially crafted JPEG object within a DOC file.");
-  script_tag(name:"solution", value:"Upgrade to IBM Lotus Symphony version 3.0.1 or later,");
+  script_tag(name:"solution", value:"Upgrade to IBM Lotus Symphony version 3.0.1 or later.");
   script_tag(name:"summary", value:"This host is installed with IBM Lotus Symphony and is prone to
   integer overflow vulnerability.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_scalance_62341.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_siemens_scalance_62341.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Siemens Scalance X-200 Series Switches Insufficient Entropy Vulnerability
 #
@@ -31,7 +31,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.103907");
   script_bugtraq_id(62341);
   script_cve_id("CVE-2013-5709");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:C");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://subscriber.communications.siemens.com/");
   script_xref(name:"URL", value:"http://blog.ioactive.com/2014/02/the-password-is-irrelevant-too.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-17 17:18:56 +0100 (Mon, 17 Feb 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -63,7 +63,7 @@ the entropy of random number generator.");
   script_tag(name:"affected", value:"Siemens Scalance X-200 Series switches running firmware versions prior
 to 5.0.0 are vulnerable.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

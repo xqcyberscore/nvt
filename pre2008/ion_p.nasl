@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ion_p.nasl 11761 2018-10-05 10:25:32Z jschulte $
+# $Id: ion_p.nasl 11891 2018-10-12 19:46:20Z cfischer $
 #
 # ion-p/ion-p.exe Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11729");
-  script_version("$Revision: 11761 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-05 12:25:32 +0200 (Fri, 05 Oct 2018) $");
+  script_version("$Revision: 11891 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 21:46:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(6091);
   script_tag(name:"cvss_base", value:"5.0");
@@ -44,14 +44,16 @@ if(description)
 
   script_tag(name:"summary", value:"The ion-p.exe exists on this webserver.
   Some versions of this file are vulnerable to remote exploit.");
+
   script_tag(name:"impact", value:"An attacker, exploiting this vulnerability, may be able to gain
   access to confidential data and/or escalate their privileges on the Web server.");
-  script_tag(name:"solution_type", value:"WillNotFix");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective features,
   remove the product or replace the product by another one.");
 
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
@@ -62,28 +64,32 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-port = get_http_port( default:80 );
+if( host_runs( "windows" ) == "yes" ) {
+  files = traversal_files( "windows" );
+  prefix = "c:\\";
+  check_file = "/ion-p.exe?page=";
+  check_os = "windows";
+} else if( host_runs( "linux" ) == "yes" ) {
+  files = traversal_files( "linux" );
+  prefix = "../../../../../";
+  check_file = "/ion-p?page=";
+} else {
+  exit( 0 ); # nb: This CGI is low prio these days so don't run this test against a system we don't know the OS.
+}
 
-files = traversal_files();
+port = get_http_port( default:80 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
 
-  if( host_runs( "windows" ) == "yes" ) {
-    prefix = "c:\\";
-  } else if( host_runs( "linux" ) == "yes" ) {
-    prefix = "../../../../../";
-  } else {
-    # This CGI is low prio these days so don't run this test against a system we don't know the OS.
-    exit(0);
-  }
-
   foreach pattern( keys( files ) ) {
 
     file = files[pattern];
+    if( check_os == "windows" )
+      file = str_replace( find:"/", string:file, replace:"\\" );
 
-    url = dir + "/ion-p.exe?page=" + prefix + file;
+    url = dir + check_file + prefix + file;
 
     if( http_vuln_check( port:port, url:url, pattern:pattern ) ) {
       report = report_vuln_url( port:port, url:url );

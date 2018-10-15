@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_vuln_oct_09.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_typo3_mult_vuln_oct_09.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # TYPO3 Multiple Vulnerabilities Oct09
 #
@@ -28,14 +28,14 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803990");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2009-3628", "CVE-2009-3629", "CVE-2009-3630", "CVE-2009-3631",
                 "CVE-2009-3632", "CVE-2009-3633", "CVE-2009-3635", "CVE-2009-3636");
   script_bugtraq_id(36801);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-27 12:45:17 +0530 (Fri, 27 Dec 2013)");
   script_name("TYPO3 Multiple Vulnerabilities Oct09");
 
@@ -56,8 +56,7 @@ validate user supplied input properly.
 
   - Multiple error exist in Install Tool, which allows login with know md5 hash of
 Install Tool password.");
-  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.1.13, 4.2.10, 4.3beta2 or later,
-For updates refer to, http://typo3.org/");
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.1.13, 4.2.10, 4.3beta2 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with TYPO3 and is prone to multiple vulnerabilities.");
   script_tag(name:"affected", value:"TYPO3 versions 4.0.13 and below, 4.1.0 to 4.1.12, 4.2.0 to 4.2.9 and 4.3.0beta1");

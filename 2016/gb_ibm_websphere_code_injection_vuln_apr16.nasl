@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_code_injection_vuln_apr16.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_ibm_websphere_code_injection_vuln_apr16.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # IBM WebSphere Application Server Code Injection Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807675");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2016-0283");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-21 12:11:03 +0530 (Thu, 21 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM WebSphere Application Server Code Injection Vulnerability");
@@ -53,7 +53,7 @@ if(description)
   Liberty Profile 8.5.x before 8.5.5.9");
 
   script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
-  Server (WAS) Liberty Profile version 8.5.5.9, or later, ");
+  Server (WAS) Liberty Profile version 8.5.5.9, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

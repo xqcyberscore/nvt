@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kunena_forum_xss_vuln.nasl 5687 2017-03-23 09:50:41Z cfi $
+# $Id: gb_kunena_forum_xss_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Kunena Forum Extension 'message subject' Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:kunena:kunena";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108106");
-  script_version("$Revision: 5687 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-5673");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 10:50:41 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-23 09:57:33 +0100 (Thu, 23 Mar 2017)");
   script_name("Kunena Forum Extension 'message subject' Cross Site Scripting Vulnerability");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -48,15 +48,12 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with the Kunena Forum Extension for Joomla
   and is prone to a cross-site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Successfully exploitation will allow remote
   attacker to execute arbitrary script code in the browser of an unsuspecting user
   in the context of the affected site. This may allow the attacker to steal
-  cookie-based authentication credentials and to launch other attacks.
-
-  Impact Level: Application");
+  cookie-based authentication credentials and to launch other attacks.");
 
   script_tag(name:"affected", value:"Kunena Forum Extension versions 5.0.2 through 5.0.4.");
 

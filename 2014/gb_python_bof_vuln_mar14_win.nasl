@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_bof_vuln_mar14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_python_bof_vuln_mar14_win.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Python 'socket.recvfrom_into' Buffer Overflow Vulnerability Mar14 (Windows)
 #
@@ -29,16 +29,15 @@ CPE = "cpe:/a:python:python";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804322");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-1912");
   script_bugtraq_id(65379);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-05 12:18:28 +0530 (Wed, 05 Mar 2014)");
   script_name("Python 'socket.recvfrom_into' Buffer Overflow Vulnerability Mar14 (Windows)");
-
 
   script_tag(name:"summary", value:"This host is installed with Python and is prone to buffer overflow
 vulnerability.");
@@ -49,13 +48,9 @@ overflow, resulting in a denial of service or potentially allowing the
 execution of arbitrary code.");
   script_tag(name:"affected", value:"Python version 2.5 before 2.7.7 and 3.x before 3.3.4");
   script_tag(name:"solution", value:"Upgrade to Python version 2.7.7, 3.3.4 or later.
-For updates refer www.python.org/download/
-
-Or Apply the appropriate patch from below link,
-http://bugs.python.org/issue20246
 
 *****
-  NOTE: Ignore this warning if patch is already applied.
+NOTE: Ignore this warning if patch is already applied.
 *****");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,13 +64,13 @@ http://bugs.python.org/issue20246
   script_family("Buffer overflow");
   script_dependencies("gb_python_detect_win.nasl");
   script_mandatory_keys("Python6432/Win/Installed");
+  script_xref(name:"URL", value:"http://bugs.python.org/issue20246");
+  script_xref(name:"URL", value:"http://www.python.org/download/");
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
 
 if(!pyVer = get_app_version(cpe:CPE)){
   exit(0);

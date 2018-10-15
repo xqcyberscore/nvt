@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_acti_mult_vuln.nasl 9137 2018-03-19 13:14:57Z asteins $
+# $Id: gb_acti_mult_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # ACTi Cameras Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:acti:acti";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106649");
-  script_version("$Revision: 9137 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-19 14:14:57 +0100 (Mon, 19 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2017-03-14 12:58:36 +0700 (Tue, 14 Mar 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-14 12:58:36 +0700 (Tue, 14 Mar 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-3184", "CVE-2017-3185", "CVE-2017-3186");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("ACTi Cameras Multiple Vulnerabilities");
 
@@ -51,29 +51,29 @@ if (description)
   script_dependencies("gb_acti_devices_detect.nasl");
   script_mandatory_keys("acti_device/detected");
 
-  script_tag(name: "summary", value: "ACTi Cameras are prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"ACTi Cameras are prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Tries to access the factory reset page and checks the response.");
+  script_tag(name:"vuldetect", value:"Tries to access the factory reset page and checks the response.");
 
-  script_tag(name: "insight", value: "ACTi Cameras are prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"ACTi Cameras are prone to multiple vulnerabilities:
 
-- Missing authentication for the factory reset page. (CVE-2017-3184)
+  - Missing authentication for the factory reset page. (CVE-2017-3184)
 
-- The web application uses the GET method to process requests that contain sensitive information such as user
+  - The web application uses the GET method to process requests that contain sensitive information such as user
 account name and password, which can expose that information through the browser's history, referrers, web logs,
 and other sources. (CVE-2017-3185)
 
-- Device uses non-random default credentials across all devices. A remote attacker can take complete control of a
+  - Device uses non-random default credentials across all devices. A remote attacker can take complete control of a
 device using default admin credentials. (CVE-2017-3186)");
 
-  script_tag(name: "affected", value: "ACTi devices including D, B, I, and E series models using firmware version
+  script_tag(name:"affected", value:"ACTi devices including D, B, I, and E series models using firmware version
 A1D-500-V6.11.31-AC");
 
-  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of this vulnerability.
-      Likely none will be provided anymore. General solution options are to upgrade to a newer release,
-      disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name: "URL", value: "https://www.kb.cert.org/vuls/id/355151");
+  script_xref(name:"URL", value:"https://www.kb.cert.org/vuls/id/355151");
 
   exit(0);
 }

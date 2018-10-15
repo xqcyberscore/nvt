@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sophos_xg_path_trav_vuln.nasl 6414 2017-06-23 09:35:47Z ckuersteiner $
+# $Id: gb_sophos_xg_path_trav_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Sophos XG Firewall Path Traversal Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:sophos:xg';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106903");
-  script_version("$Revision: 6414 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-23 11:35:47 +0200 (Fri, 23 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-23 10:58:06 +0700 (Fri, 23 Jun 2017)");
-  script_tag(name: "cvss_base", value: "7.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:P/A:N");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-23 10:58:06 +0700 (Fri, 23 Jun 2017)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Sophos XG Firewall Path Traversal Vulnerability");
 
@@ -49,12 +49,12 @@ if (description)
   script_dependencies("gb_sophos_xg_detect.nasl", "gb_sophos_xg_detect_userportal.nasl");
   script_mandatory_keys("sophos/xg/installed");
 
-  script_tag(name: "summary", value: "Sophos XG Firewall is prone to a path traversal vulnerability where a
+  script_tag(name:"summary", value:"Sophos XG Firewall is prone to a path traversal vulnerability where a
 low privileged user may download arbitrary files or elevate his privileges.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Crafting a download request and adding a path traversal vector to it, an
+  script_tag(name:"insight", value:"Crafting a download request and adding a path traversal vector to it, an
 authenticated user, can use this function to download files that are outside the normal scope of the download
 feature (including sensitive files).
 
@@ -62,11 +62,11 @@ In addition, the function can be called from a low privileged user, a user that 
 A combinations of these two vulnerabilities can be used to compromise the integrity of the server, by allowing a
 user to elevate his privileges.");
 
-  script_tag(name: "affected", value: "Sophos XG Firewall before version 16.05.5 MR5");
+  script_tag(name:"affected", value:"Sophos XG Firewall before version 16.05.5 MR5");
 
-  script_tag(name: "solution", value: "Update to version 16.05.5 MR5 or later.");
+  script_tag(name:"solution", value:"Update to version 16.05.5 MR5 or later.");
 
-  script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/3253");
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3253");
 
   exit(0);
 }

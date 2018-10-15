@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170726-aniacp.nasl 9895 2018-05-18 04:24:05Z ckuersteiner $
+# $Id: gb_cisco_ios_xe_cisco-sa-20170726-aniacp.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Cisco IOS XE Software Autonomic Control Plane Channel Information Disclosure Vulnerability
 #
@@ -29,45 +29,45 @@ CPE = "cpe:/o:cisco:ios_xe";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106989");
- script_cve_id("CVE-2017-6665");
- script_tag(name: "cvss_base", value: "3.3");
- script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 9895 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106989");
+  script_cve_id("CVE-2017-6665");
+  script_tag(name:"cvss_base", value:"3.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11874 $");
 
- script_name("Cisco IOS XE Software Autonomic Control Plane Channel Information Disclosure Vulnerability");
+  script_name("Cisco IOS XE Software Autonomic Control Plane Channel Information Disclosure Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170726-aniacp");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170726-aniacp");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "No known solution is available as of 18th May, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 18th May, 2018. Information regarding
 this issue will be updated once solution details are available.");
 
- script_tag(name: "summary", value: "A vulnerability in the Autonomic Networking feature of Cisco IOS XE Software
+  script_tag(name:"summary", value:"A vulnerability in the Autonomic Networking feature of Cisco IOS XE Software
 could allow an unauthenticated, adjacent attacker to reset the Autonomic Control Plane (ACP) of an affected system
 and view ACP packets that are transferred in clear text within an affected system.");
 
- script_tag(name: "insight", value: "The vulnerability is due to unknown reasons. An attacker could exploit this
+  script_tag(name:"insight", value:"The vulnerability is due to unknown reasons. An attacker could exploit this
 vulnerability by capturing and replaying ACP packets that are transferred within an affected system. A successful
 exploit could allow the attacker to reset the ACP of an affected system, resulting in a denial of service (DoS)
 condition.");
 
- script_tag(name: "impact", value: "A successful exploit could also allow the attacker to capture and view ACP
+  script_tag(name:"impact", value:"A successful exploit could also allow the attacker to capture and view ACP
 packets, which should have been encrypted over the ACP, in clear text.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
- script_tag(name: "last_modification", value: "$Date: 2018-05-18 06:24:05 +0200 (Fri, 18 May 2018) $");
- script_tag(name: "creation_date", value: "2017-07-28 08:48:54 +0700 (Fri, 28 Jul 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xe_version.nasl");
- script_mandatory_keys("cisco_ios_xe/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-28 08:48:54 +0700 (Fri, 28 Jul 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xe_version.nasl");
+  script_mandatory_keys("cisco_ios_xe/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_application_server_68210.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ibm_websphere_application_server_68210.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # IBM WebSphere Application Server Unspecified Information Disclosure Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-0965", "CVE-2014-3022");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
 
   script_name("IBM WebSphere Application Server Unspecified Information Disclosure Vulnerability");
 
@@ -44,7 +44,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.ibm.com");
   script_xref(name:"URL", value:"http://www-4.ibm.com/software/webservers/appserv/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-08-21 11:58:12 +0200 (Thu, 21 Aug 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -67,7 +67,7 @@ IBM WebSphere Application Server 8.5.0.0 through 8.5.5.1
 IBM WebSphere Application Server 8.0.0.0 through 8.0.0.8
 IBM WebSphere Application Server 7.0.0.0 through 7.0.0.31");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

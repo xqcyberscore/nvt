@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_cmd_exec_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_symantec_web_gateway_cmd_exec_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Symantec Web Gateway Remote Shell Command Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802632");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_bugtraq_id(53444, 53443);
   script_cve_id("CVE-2012-0297", "CVE-2012-0299");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-01 12:12:12 +0530 (Fri, 01 Jun 2012)");
   script_name("Symantec Web Gateway Remote Shell Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -57,7 +57,7 @@ if(description)
   input. This can be exploited to execute arbitrary code by injecting crafted
   data or including crafted data.");
 
-  script_tag(name:"solution", value:"Upgrade to Symantec Web Gateway version 5.0.3 or later,");
+  script_tag(name:"solution", value:"Upgrade to Symantec Web Gateway version 5.0.3 or later.");
 
   script_tag(name:"summary", value:"This host is running Symantec Web Gateway and is prone to command
   execution vulnerability.");

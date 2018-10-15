@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_itunes_tutorials_sec_bypass_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: secpod_itunes_tutorials_sec_bypass_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Apple iTunes Tutorials Window Security Bypass Vulnerability (Windows)
 #
@@ -29,27 +29,25 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804232");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1242");
   script_bugtraq_id(65088);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-30 16:54:49 +0530 (Thu, 30 Jan 2014)");
   script_name("Apple iTunes Tutorials Window Security Bypass Vulnerability (Windows)");
 
 
   script_tag(name:"summary", value:"This host is installed with Apple iTunes and is prone to security bypass
 vulnerability.");
-  script_tag(name:"vuldetect", value:"Get the installed version of Apple iTunes and check the version is vulnerable
-or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaw exists due to iTunes Tutorials window, which uses a non-secure HTTP
 connection to retrieve content.");
   script_tag(name:"impact", value:"Successful exploitation may allow an attacker to perform man-in-the-middle
 attacks and obtain sensitive information..");
   script_tag(name:"affected", value:"Apple iTunes before 11.1.4 on Windows");
-  script_tag(name:"solution", value:"Upgrade to version 11.1.4 or later,
-For updates refer to http://www.apple.com/itunes/download");
+  script_tag(name:"solution", value:"Upgrade to version 11.1.4 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -60,6 +58,7 @@ For updates refer to http://www.apple.com/itunes/download");
   script_family("General");
   script_dependencies("secpod_apple_itunes_detection_win_900123.nasl");
   script_mandatory_keys("iTunes/Win/Installed");
+  script_xref(name:"URL", value:"http://www.apple.com/itunes/download");
   exit(0);
 }
 

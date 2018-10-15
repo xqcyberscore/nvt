@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_sep_mult_vuln_jan14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_symantec_sep_mult_vuln_jan14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Symantec Endpoint Protection Multiple Vulnerabilities Jan-14
 #
@@ -29,21 +29,20 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804199");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-5009", "CVE-2013-5010", "CVE-2013-5011");
   script_bugtraq_id(64128, 64129, 64130);
   script_tag(name:"cvss_base", value:"7.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-27 16:29:04 +0530 (Mon, 27 Jan 2014)");
   script_name("Symantec Endpoint Protection Multiple Vulnerabilities Jan-14");
 
 
   script_tag(name:"summary", value:"This host is installed with Symantec Endpoint Protection is prone to
 multiple vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version of Symantec Endpoint Protection and check the
-version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaw exists due to,
 
   - application not properly verifying the authentication of authorised users.

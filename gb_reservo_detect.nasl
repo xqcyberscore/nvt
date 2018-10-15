@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_reservo_detect.nasl 8547 2018-01-26 12:05:54Z jschulte $
+# $Id: gb_reservo_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Reservo Image Hosting Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113094");
-  script_version("$Revision: 8547 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-26 13:05:54 +0100 (Fri, 26 Jan 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-26 12:39:40 +0100 (Fri, 26 Jan 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://reservo.co/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:reservo:image_hosting";

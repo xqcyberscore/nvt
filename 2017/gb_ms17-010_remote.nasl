@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-010_remote.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_ms17-010_remote.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Microsoft Windows SMB Server Multiple Vulnerabilities-Remote (4013389)
 #
@@ -28,20 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810676");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-0143", "CVE-2017-0144", "CVE-2017-0145", "CVE-2017-0146",
                 "CVE-2017-0147", "CVE-2017-0148");
   script_bugtraq_id(96703, 96704, 96705, 96707, 96709, 96706);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-22 17:51:25 +0530 (Wed, 22 Mar 2017)");
   script_name("Microsoft Windows SMB Server Multiple Vulnerabilities-Remote (4013389)");
 
   script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS17-010.");
 
-  script_tag(name: "vuldetect" , value:"Send the crafted SMB transaction request
+  script_tag(name:"vuldetect", value:"Send the crafted SMB transaction request
   with fid = 0 and check the response to confirm the vulnerability.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to the way that the
@@ -49,12 +49,9 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain the ability to execute code on the target server, also
-  could lead to information disclosure from the server.
+  could lead to information disclosure from the server.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows 10 x32/x64 Edition
+  script_tag(name:"affected", value:"Microsoft Windows 10 x32/x64 Edition
   Microsoft Windows Server 2012 Edition
   Microsoft Windows Server 2016
   Microsoft Windows 8.1 x32/x64 Edition
@@ -65,33 +62,24 @@ if(description)
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link, https://technet.microsoft.com/library/security/MS17-010");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_active");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/4013078");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS17-010");
-  script_xref(name : "URL" , value : "https://github.com/rapid7/metasploit-framework/pull/8167/files");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-in/kb/4013078");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS17-010");
+  script_xref(name:"URL", value:"https://github.com/rapid7/metasploit-framework/pull/8167/files");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_smb_version_detect.nasl", "os_detection.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("smb_v1/supported", "Host/runs_windows");
   exit(0);
 }
 
 include("smb_nt.inc");
 include("host_details.inc");
-
-## Variable Initialization
-name = "";
-smbPort = "";
-soc = "";
-smb_neg_resp = "";
-smb_sess_resp = "";
-smb_sess_andx_resp = ""; 
-smb_trans_resp = "";
 
 name = kb_smb_name();
 smbPort = kb_smb_transport();
@@ -193,7 +181,7 @@ smb_sess_andx_req = raw_string(0x00, 0x00, 0x01, 0x02, 0xff, 0x53, 0x4d, 0x42,
                                0x73, 0x00, 0x00, 0x00, 0x00, 0x18, 0x03, 0xc8,
                                0x00, 0x00, 0x42, 0x53, 0x52, 0x53, 0x50, 0x59,
                                0x4c, 0x20, 0x00, 0x00, 0x00, 0x00, 0xc5, 0xa6)
-                               + raw_string(uid_low, uid_high) +  
+                               + raw_string(uid_low, uid_high) +
                                raw_string( 0x80, 0x00, 0x0c, 0xff, 0x00, 0x00,
                                0x00, 0x00, 0x44, 0x01, 0x00, 0x00, 0x00, 0x00,
                                0x00, 0x00, 0x00, 0x61, 0x00, 0x00, 0x00, 0x00,
@@ -253,16 +241,16 @@ else {
 }
 
 # SMB Pipe PeekNamedPipe Request, FID: 0x0000
-smbtrans_request = raw_string(0x00, 0x00, 0x00, 0x4a, 0xff, 0x53, 0x4d, 0x42, 
-                              0x25, 0x00, 0x00, 0x00, 0x00, 0x18, 0x01, 0x28, 
-                              0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+smbtrans_request = raw_string(0x00, 0x00, 0x00, 0x4a, 0xff, 0x53, 0x4d, 0x42,
+                              0x25, 0x00, 0x00, 0x00, 0x00, 0x18, 0x01, 0x28,
+                              0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                               0x00, 0x00, 0x00, 0x00)+raw_string(tid_low, tid_high) +
                               raw_string( 0xf5, 0x5e)+raw_string(uid_low, uid_high) +
-                              raw_string(0x26, 0x76, 0x10, 0x00, 0x00, 0x00, 
-                              0x00, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 
-                              0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                              0x00, 0x4a, 0x00, 0x00, 0x00, 0x4a, 0x00, 0x02, 
-                              0x00, 0x23, 0x00, 0x00, 0x00, 0x07, 0x00, 0x5c, 
+                              raw_string(0x26, 0x76, 0x10, 0x00, 0x00, 0x00,
+                              0x00, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00,
+                              0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                              0x00, 0x4a, 0x00, 0x00, 0x00, 0x4a, 0x00, 0x02,
+                              0x00, 0x23, 0x00, 0x00, 0x00, 0x07, 0x00, 0x5c,
                               0x50, 0x49, 0x50, 0x45, 0x5c, 0x00);
 
 send( socket:soc, data: smbtrans_request);
@@ -279,9 +267,9 @@ if(strlen( smb_trans_resp ) < 39)
 ## "STATUS_INVALID_HANDLE".
 if(ord(smb_trans_resp[9]) == 5 &&  ord(smb_trans_resp[10]) == 2 &&
    ord(smb_trans_resp[11]) == 0 && ord(smb_trans_resp[12]) == 192)
-{ 
+{
   security_message(port:smbPort );
   close(soc);
   exit(0);
-}	
+}
 close(soc);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_flash_player_mult_vuln_win_feb12.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_adobe_flash_player_mult_vuln_win_feb12.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities (Windows) - Feb12
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802803");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-0751", "CVE-2012-0752", "CVE-2012-0753", "CVE-2012-0754",
                 "CVE-2012-0757", "CVE-2012-0756", "CVE-2012-0767");
   script_bugtraq_id(52037, 52032, 52033, 52034, 51999, 52036, 52040);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-22 11:17:41 +0530 (Wed, 22 Feb 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities (Windows) - Feb12");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48033");
@@ -67,7 +67,7 @@ if(description)
 
   - Improper validation of user supplied input which allows attackers
     to execute arbitrary HTML and script code in a user's browser session");
-  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 11.1.102.62 or later,");
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 11.1.102.62 or later.");
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
   multiple vulnerabilities.");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_movable_type_57490.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_movable_type_57490.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Movable Type Multiple SQL Injection and Command Injection Vulnerabilities
 #
@@ -34,14 +34,14 @@ if (description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11865 $");
 
   script_name("Movable Type Multiple SQL Injection and Command Injection Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57490");
   script_xref(name:"URL", value:"http://www.sixapart.com/movabletype/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-31 13:27:06 +0100 (Thu, 31 Jan 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -61,7 +61,7 @@ code, compromise the application, access or modify data, or exploit
 latent vulnerabilities in the underlying database.
 
 Versions prior to Movable Type 4.38 are vulnerable.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

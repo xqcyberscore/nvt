@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_live_meeting_ms15-080.nasl 11612 2018-09-26 05:47:26Z cfischer $
+# $Id: gb_ms_live_meeting_ms15-080.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Microsoft Live Meeting Remote Code Execution Vulnerabilities (3078662)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:office_live_meeting";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805084");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-2431", "CVE-2015-2435", "CVE-2015-2455", "CVE-2015-2456",
                 "CVE-2015-2463", "CVE-2015-2464");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 12:58:42 +0530 (Wed, 12 Aug 2015)");
   script_name("Microsoft Live Meeting Remote Code Execution Vulnerabilities (3078662)");
 
@@ -52,9 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Live Meeting 2007 Console");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS15-080");
+  listed hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +67,7 @@ if(description)
   script_dependencies("gb_ms_live_meeting_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/OfficeLiveMeeting/Ver");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-080");
   exit(0);
 }
 

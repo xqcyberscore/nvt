@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_smb_signing_info_disc_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ms_smb_signing_info_disc_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Microsoft SMB Signing Information Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902797");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-02 16:53:51 +0530 (Mon, 02 Apr 2012)");
   script_name("Microsoft SMB Signing Information Disclosure Vulnerability");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/916846");
@@ -49,8 +49,8 @@ if(description)
   network traffic, capture, and reply to SMB transactions that are not signed
   by performing a man-in-the-middle (MITM) attack to obtain sensitive
   information.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is disabled SMB signing and is prone to information
   disclosure vulnerability.");
   script_tag(name:"qod_type", value:"registry");

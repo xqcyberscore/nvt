@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_ipcomera_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_dlink_ipcomera_mult_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # D-link IP Camera DCS-2103 Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805031");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-9234", "CVE-2014-9238");
   script_bugtraq_id(71484);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-15 14:54:29 +0530 (Mon, 15 Dec 2014)");
   script_name("D-link IP Camera DCS-2103 Multiple Vulnerabilities");
 
@@ -58,8 +58,7 @@ if(description)
   script_tag(name:"affected", value:"D-link IP camera DCS-2103 with firmware 1.0.0");
 
   script_tag(name:"solution", value:"Upgrade to D-link IP camera DCS-2103 with
-  firmware after 1.0.0
-  For updates refer to http://www.dlink.com");
+  firmware after 1.0.0");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -74,6 +73,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("DCS-2103/banner");
 
+  script_xref(name:"URL", value:"http://www.dlink.com");
   exit(0);
 }
 

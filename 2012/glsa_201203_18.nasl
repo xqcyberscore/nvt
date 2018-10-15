@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201203_18.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201203_18.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.71304");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-30 07:59:57 -0400 (Mon, 30 Apr 2012)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
@@ -51,11 +51,11 @@ if(description)
 
 NOTE: This is a legacy GLSA. Updates for all affected architectures are
       available since November 11, 2011. It is likely that your system is
-      already no longer affected by this issue.
+      already no longer affected by this issue.");
 
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201203-18
-http://bugs.gentoo.org/show_bug.cgi?id=388867
-http://flavio.tordini.org/minitube-1-6-released");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201203-18");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=388867");
+  script_xref(name:"URL", value:"http://flavio.tordini.org/minitube-1-6-released");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201203-18.");
   script_tag(name:"qod_type", value:"package");

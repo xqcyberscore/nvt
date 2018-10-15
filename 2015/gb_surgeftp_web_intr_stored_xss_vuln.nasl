@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_surgeftp_web_intr_stored_xss_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_surgeftp_web_intr_stored_xss_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Surgeftp Web Interface Multiple Stored XSS Vulnerabilities
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806805");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-18 09:54:55 +0530 (Fri, 18 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Surgeftp Web Interface Multiple Stored XSS Vulnerabilities");
@@ -68,7 +68,7 @@ General solution options are to upgrade to a newer release, disable respective f
   script_require_ports("Services/www", 7021);
   script_mandatory_keys("surgeftp/banner");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

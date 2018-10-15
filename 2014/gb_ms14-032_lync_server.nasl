@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-032_lync_server.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-032_lync_server.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Lync Server Information Disclosure Vulnerability (2969258)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804459");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_bugtraq_id(67893);
   script_cve_id("CVE-2014-1823");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-11 10:24:37 +0530 (Wed, 11 Jun 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Lync Server Information Disclosure Vulnerability (2969258)");
@@ -47,9 +47,8 @@ a user's browser session in context of an affected site.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain sensitive
 information that may aid in further attacks.");
   script_tag(name:"affected", value:"Microsoft Lync Server 2013 ");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms14-032");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/58537");
@@ -62,6 +61,7 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-032");
                       "secpod_ms_lync_server_detect_win.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/Lync/Server/Name", "MS/Lync/Server/path");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms14-032");
   exit(0);
 }
 

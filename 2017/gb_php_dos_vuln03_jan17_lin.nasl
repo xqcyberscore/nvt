@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_dos_vuln03_jan17_lin.nasl 10454 2018-07-09 05:32:41Z cfischer $
+# $Id: gb_php_dos_vuln03_jan17_lin.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # PHP Denial of Service Vulnerability - 03 - Jan17 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108056");
-  script_version("$Revision: 10454 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2016-10162");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:32:41 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-25 11:00:00 +0100 (Wed, 25 Jan 2017)");
   script_name("PHP Denial of Service Vulnerability - 03 - Jan17 (Linux)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -47,8 +47,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to multiple denial of service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to the php_wddx_pop_element
   function in ext/wddx/wddx.c via an inapplicable class name in a wddxPacket XML document,
@@ -56,14 +55,12 @@ if(description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to cause a denial of service (NULL pointer dereference
-  and application crash).
-
-  Impact Level: Application");
+  and application crash).");
 
   script_tag(name:"affected", value:"PHP versions 7.0.x before 7.0.15 and 7.1.x before 7.1.1.");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 7.0.15, 7.1.1
-  or later. For updates refer to http://www.php.net");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jan14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_google_chrome_mult_vuln01_jan14_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 Jan2014 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804186");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-6641", "CVE-2013-6643", "CVE-2013-6644", "CVE-2013-6645",
                 "CVE-2013-6646");
   script_bugtraq_id(64805, 64981);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 12:19:43 +0530 (Tue, 21 Jan 2014)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Jan2014 (Windows)");
 
@@ -59,8 +59,7 @@ vulnerabilities.");
 service, execute an arbitrary code, trigger a sync with an arbitrary Google
 account and other impacts.");
   script_tag(name:"affected", value:"Google Chrome version prior to 32.0.1700.76 on Windows.");
-  script_tag(name:"solution", value:"Upgrade to version 32.0.1700.76 or later,
-For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to version 32.0.1700.76 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -72,6 +71,7 @@ For updates refer to http://www.google.com/chrome");
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

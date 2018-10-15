@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_cms_mult_vuln_apr17.nasl 6930 2017-08-16 06:11:35Z cfischer $
+# $Id: gb_modx_cms_mult_vuln_apr17.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # MODX Revolution CMS Multiple Vulnerabilities
 #
@@ -30,16 +30,16 @@ CPE = 'cpe:/a:modx:revolution';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106799");
-  script_version("$Revision: 6930 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-16 08:11:35 +0200 (Wed, 16 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-05-15 08:46:55 +0700 (Mon, 15 May 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-05-15 08:46:55 +0700 (Mon, 15 May 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_cve_id("CVE-2017-9067", "CVE-2017-9068", "CVE-2017-9069", "CVE-2017-9070", "CVE-2017-9071", "CVE-2017-1000067");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("MODX Revolution CMS Multiple Vulnerabilities");
 
@@ -51,37 +51,37 @@ if (description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("modx_cms/installed");
 
-  script_tag(name: "summary", value: "MODX Revolution CMS is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"MODX Revolution CMS is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "MODX Revolution CMS is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"MODX Revolution CMS is prone to multiple vulnerabilities:
 
-- Stored XSS in UserGroup names and various other fields
+  - Stored XSS in UserGroup names and various other fields
 
-- User/email enumeration in forgot password feature
+  - User/email enumeration in forgot password feature
 
-- XSS cache poisoning via Host header
+  - XSS cache poisoning via Host header
 
-- Reflected XSS in setup
+  - Reflected XSS in setup
 
-- Local file inclusion vulnerability in setup action parameter
+  - Local file inclusion vulnerability in setup action parameter
 
-- Various local file inclusion preventions to also protect on windows
+  - Various local file inclusion preventions to also protect on windows
 
-- Stored XSS in resource pagetitle
+  - Stored XSS in resource pagetitle
 
-- Blind SQL injection
+  - Blind SQL injection
 
-- PHP code execution");
+  - PHP code execution");
 
-  script_tag(name: "affected", value: "Version 2.5.6 and prior.");
+  script_tag(name:"affected", value:"Version 2.5.6 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 2.5.7");
+  script_tag(name:"solution", value:"Update to version 2.5.7");
 
-  script_xref(name: "URL", value: "https://raw.githubusercontent.com/modxcms/revolution/v2.5.7-pl/core/docs/changelog.txt");
-  script_xref(name: "URL", value: "https://bitflipper.eu/finding/2017/05/modx-revolution-256-blind-sql-injection.html");
-  script_xref(name: "URL", value: "https://bitflipper.eu/finding/2017/05/modx-revolution-256-php-code-execution.html");
+  script_xref(name:"URL", value:"https://raw.githubusercontent.com/modxcms/revolution/v2.5.7-pl/core/docs/changelog.txt");
+  script_xref(name:"URL", value:"https://bitflipper.eu/finding/2017/05/modx-revolution-256-blind-sql-injection.html");
+  script_xref(name:"URL", value:"https://bitflipper.eu/finding/2017/05/modx-revolution-256-php-code-execution.html");
 
   exit(0);
 }

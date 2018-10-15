@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_drda_connection_dos_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_ibm_db2_drda_connection_dos_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # IBM DB2 Chaining Functionality DRDA Module DoS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802456");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-2180");
   script_bugtraq_id(53873);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-06 16:20:17 +0530 (Thu, 06 Sep 2012)");
   script_name("IBM DB2 Chaining Functionality DRDA Module DoS Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49437/");
@@ -57,7 +57,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is caused due an error within chaining functionality in the
   Distributed Relational Database Architecture (DRDA) module, which can be
   exploited to cause a crash by sending a specially crafted DRDA request.");
-  script_tag(name:"solution", value:"Upgrade to IBM DB2 version 9.7 FP6, 9.8 FP5 or later,");
+  script_tag(name:"solution", value:"Upgrade to IBM DB2 version 9.7 FP6, 9.8 FP5 or later.");
   script_tag(name:"summary", value:"The host is running IBM DB2 and is prone to denial of service
   vulnerability.");
 

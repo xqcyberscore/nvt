@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-016.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-016.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Windows SAMR Protocol Security Bypass Vulnerability (2934418)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804245");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-0317");
   script_bugtraq_id(66012);
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-12 08:48:40 +0530 (Wed, 12 Mar 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows SAMR Protocol Security Bypass Vulnerability (2934418)");
@@ -54,8 +54,7 @@ Microsoft Windows Server 2008 R2 x64 Service Pack 1 and prior
 Microsoft Windows Server 2012
 Microsoft Windows Server 2012 R2");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms14-016");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2934418");
@@ -87,7 +86,7 @@ if(!sysPath ){
 
 if(registry_key_exists(key:"SYSTEM\CurrentControlSet\Services\ADAM\Linkage"))
 {
-  adamdsaVer = fetch_file_version(sysPath, file_name:"ADAM\Adamdsa.dll");
+  adamdsaVer = fetch_file_version(sysPath:sysPath, file_name:"ADAM\Adamdsa.dll");
 
   if(adamdsaVer != NULL)
   {
@@ -112,7 +111,7 @@ if(registry_key_exists(key:"SYSTEM\CurrentControlSet\Services\ADAM\Linkage"))
 }
 
 #i# Get the version for Samsrv.dll
-dllVer = fetch_file_version(sysPath, file_name:"system32\Samsrv.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Samsrv.dll");
 if(!dllVer){
   exit(0);
 }

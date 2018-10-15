@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_mult_vuln_feb17.nasl 8276 2018-01-03 12:29:18Z asteins $
+# $Id: gb_ibm_websphere_mq_mult_vuln_feb17.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # IBM WebSphere MQ Multiple Vulnerabilities - February17
 #
@@ -29,52 +29,52 @@ CPE = 'cpe:/a:ibm:websphere_mq';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106620");
- script_version("$Revision: 8276 $");
- script_tag(name: "last_modification", value: "$Date: 2018-01-03 13:29:18 +0100 (Wed, 03 Jan 2018) $");
- script_tag(name: "creation_date", value: "2017-02-27 13:28:29 +0700 (Mon, 27 Feb 2017)");
- script_tag(name: "cvss_base", value: "4.3");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.106620");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-27 13:28:29 +0700 (Mon, 27 Feb 2017)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
- script_cve_id("CVE-2016-3013", "CVE-2016-3052", "CVE-2016-8915", "CVE-2016-9009");
+  script_cve_id("CVE-2016-3013", "CVE-2016-3052", "CVE-2016-8915", "CVE-2016-9009");
 
- script_tag(name: "qod_type", value: "registry");
+  script_tag(name:"qod_type", value:"registry");
 
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_name("IBM WebSphere MQ Multiple Vulnerabilities - February17");
+  script_name("IBM WebSphere MQ Multiple Vulnerabilities - February17");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_family("General");
- script_dependencies("gb_ibm_websphere_mq_detect.nasl");
- script_mandatory_keys("IBM/Websphere/MQ/Win/Ver");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("General");
+  script_dependencies("gb_ibm_websphere_mq_detect.nasl");
+  script_mandatory_keys("IBM/Websphere/MQ/Win/Ver");
 
- script_tag(name: "summary", value: "IBM WebSphere MQ is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"IBM WebSphere MQ is prone to multiple vulnerabilities.");
 
- script_tag(name: "insight", value: "IBM WebSphere MQ is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"IBM WebSphere MQ is prone to multiple vulnerabilities:
 
-- MQ Channel data conversion denial of service (CVE-2016-3013)
+  - MQ Channel data conversion denial of service (CVE-2016-3013)
 
-- Java clients might send a password in clear text (CVE-2016-3052)
+  - Java clients might send a password in clear text (CVE-2016-3052)
 
-- Invalid channel protocol flows cause denial of service on HP-UX (CVE-2016-8915)
+  - Invalid channel protocol flows cause denial of service on HP-UX (CVE-2016-8915)
 
-- Cluster channel definition causes denial of service to cluster (CVE-2016-9009)");
+  - Cluster channel definition causes denial of service to cluster (CVE-2016-9009)");
 
- script_tag(name: "affected", value: "IBM WebSphere MQ 8");
+  script_tag(name:"affected", value:"IBM WebSphere MQ 8");
 
- script_tag(name: "solution", value: "Upgrade to version 8.0.0.6.");
+  script_tag(name:"solution", value:"Upgrade to version 8.0.0.6.");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_xref(name: "URL", value: 'https://www-01.ibm.com/support/docview.wss?uid=swg21998661');
- script_xref(name: "URL", value: 'https://www-01.ibm.com/support/docview.wss?uid=swg21998660');
- script_xref(name: "URL", value: 'https://www-01.ibm.com/support/docview.wss?uid=swg21998649');
- script_xref(name: "URL", value: 'https://www-01.ibm.com/support/docview.wss?uid=swg21998647');
+  script_xref(name:"URL", value:'https://www-01.ibm.com/support/docview.wss?uid=swg21998661');
+  script_xref(name:"URL", value:'https://www-01.ibm.com/support/docview.wss?uid=swg21998660');
+  script_xref(name:"URL", value:'https://www-01.ibm.com/support/docview.wss?uid=swg21998649');
+  script_xref(name:"URL", value:'https://www-01.ibm.com/support/docview.wss?uid=swg21998647');
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

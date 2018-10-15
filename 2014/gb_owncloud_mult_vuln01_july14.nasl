@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln01_july14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_owncloud_mult_vuln01_july14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # ownCloud Multiple Vulnerabilities-01 July14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804658");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2012-5056", "CVE-2012-5057", "CVE-2012-5336");
   script_bugtraq_id(68295, 68305);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-07-03 12:50:12 +0530 (Thu, 03 Jul 2014)");
   script_name("ownCloud Multiple Vulnerabilities-01 July14");
 
@@ -64,8 +64,7 @@ arbitrary user files, insert arbitrary HTTP headers and execute arbitrary
 script code in a user's browser session within the trust relationship
 between their browser and the server.");
   script_tag(name:"affected", value:"ownCloud Server 4.0.x before 4.0.8");
-  script_tag(name:"solution", value:"Upgrade to ownCloud version 4.0.8 or later,
-For updates refer to http://owncloud.org");
+  script_tag(name:"solution", value:"Upgrade to ownCloud version 4.0.8 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://owncloud.org/about/security/advisories/CVE-2012-5336");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prtg_netmon_xss_vuln.nasl 6983 2017-08-22 08:28:33Z ckuersteiner $
+# $Id: gb_prtg_netmon_xss_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # PRTG Network Monitor XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:paessler:prtg_network_monitor';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140316");
-  script_version("$Revision: 6983 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-22 10:28:33 +0200 (Tue, 22 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-21 14:39:58 +0700 (Mon, 21 Aug 2017)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-21 14:39:58 +0700 (Mon, 21 Aug 2017)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-9816");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("PRTG Network Monitor XSS Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("gb_prtg_network_monitor_detect.nasl");
   script_mandatory_keys("prtg_network_monitor/installed");
 
-  script_tag(name: "summary", value: "PRTG Network Monitor is prone to a cross-site scripting vulnerability which
+  script_tag(name:"summary", value:"PRTG Network Monitor is prone to a cross-site scripting vulnerability which
 allows remote attackers to inject arbitrary web script or HTML via unspecified vectors.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "PRTG Network Monitor before version 17.2.32.2279.");
+  script_tag(name:"affected", value:"PRTG Network Monitor before version 17.2.32.2279.");
 
-  script_tag(name: "solution", value: "Update to 17.2.32.2279 or later.");
+  script_tag(name:"solution", value:"Update to 17.2.32.2279 or later.");
 
-  script_xref(name: "URL", value: "https://www.paessler.com/prtg/history/stable");
+  script_xref(name:"URL", value:"https://www.paessler.com/prtg/history/stable");
 
   exit(0);
 }

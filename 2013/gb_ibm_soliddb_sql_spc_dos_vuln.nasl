@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_soliddb_sql_spc_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_ibm_soliddb_sql_spc_dos_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # IBM solidDB Stored Procedure Call Handling Denial of Service Vulnerability
 #
@@ -28,22 +28,21 @@ CPE = "cpe:/a:ibm:soliddb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803761");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2013-3031");
   script_bugtraq_id(59637);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-20 12:22:19 +0530 (Fri, 20 Sep 2013)");
   script_name("IBM solidDB Stored Procedure Call Handling Denial of Service Vulnerability");
 
 
   script_tag(name:"summary", value:"This host is running IBM solidDB and is prone to denial of service
 vulnerability.");
-  script_tag(name:"vuldetect", value:"Get the installed version of IBM solidDB with the help of detect NVT and check
-the version is vulnerable or not.");
-  script_tag(name:"solution", value:"Upgrade IBM solidDB to 6.0.1070, 6.3.0.56, 6.5.0.12, 7.0.0.4 or later,
-http://www-03.ibm.com/software/products/us/en/ibmsoli");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade IBM solidDB to 6.0.1070, 6.3.0.56, 6.5.0.12, 7.0.0.4 or later.");
+  script_xref(name:"URL", value:"http://www-03.ibm.com/software/products/us/en/ibmsoli");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"The flaw is due to an error when calling stored procedures without input
 parameters when the parameters have default values. This can be exploited

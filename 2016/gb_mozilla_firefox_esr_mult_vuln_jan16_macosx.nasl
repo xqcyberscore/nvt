@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln_jan16_macosx.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_mozilla_firefox_esr_mult_vuln_jan16_macosx.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities - Jan16 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807053");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2016-1935", "CVE-2016-1930");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-29 11:03:21 +0530 (Fri, 29 Jan 2016)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities - Jan16 (Mac OS X)");
 
@@ -56,7 +56,7 @@ if(description)
   before 38.6 on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version
-  38.6 or later, ");
+  38.6 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

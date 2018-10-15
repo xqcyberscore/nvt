@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_64670.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_cisco_nx_os_64670.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Cisco NX-OS BGP Message Denial of Service Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2013-6982");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Cisco NX-OS BGP Message Denial of Service Vulnerability");
 
@@ -40,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64670");
   script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuj03174");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-13 10:35:00 +0100 (Mon, 13 Jan 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -59,7 +59,7 @@ device to reset, denying service to legitimate users.");
 fails to properly handle the BGP updates.");
   script_tag(name:"affected", value:"Cisco Nexus 7000 running NX-OS 6.2(2)S27");
 
- exit(0);
+  exit(0);
 }
 
 if( ! device = get_kb_item( "cisco_nx_os/device" ) ) exit( 0 );

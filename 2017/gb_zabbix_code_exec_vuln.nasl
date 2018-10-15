@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_code_exec_vuln.nasl 7651 2017-11-03 13:41:18Z cfischer $
+# $Id: gb_zabbix_code_exec_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Zabbix Arbitrary Code Execution Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106545");
-  script_version("$Revision: 7651 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-03 14:41:18 +0100 (Fri, 03 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2017-01-26 14:54:40 +0700 (Thu, 26 Jan 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-26 14:54:40 +0700 (Thu, 26 Jan 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-4338");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Zabbix Arbitrary Code Execution Vulnerability");
 
@@ -51,19 +51,19 @@ if (description)
   script_dependencies("zabbix_web_detect.nasl");
   script_mandatory_keys("Zabbix/installed");
 
-  script_tag(name: "summary", value: "Zabbix is prone to an arbitrary code execution vulnerability.");
+  script_tag(name:"summary", value:"Zabbix is prone to an arbitrary code execution vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The mysql user parameter configuration script (userparameter_mysql.conf),
+  script_tag(name:"insight", value:"The mysql user parameter configuration script (userparameter_mysql.conf),
 when used with a shell other than bash, allows context-dependent attackers to execute arbitrary code or SQL
 commands via the mysql.size parameter.");
 
-  script_tag(name: "affected", value: "Zabbix version prior to 2.0.18, 2.2.x and 3.0.x");
+  script_tag(name:"affected", value:"Zabbix version prior to 2.0.18, 2.2.x and 3.0.x");
 
-  script_tag(name: "solution", value: "Update to 2.0.18, 2.2.13, 3.0.3 or newer versions.");
+  script_tag(name:"solution", value:"Update to 2.0.18, 2.2.13, 3.0.3 or newer versions.");
 
-  script_xref(name: "URL", value: "https://packetstormsecurity.com/files/136898/Zabbix-Agent-3.0.1-mysql.size-Shell-Command-Injection.html");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/136898/Zabbix-Agent-3.0.1-mysql.size-Shell-Command-Injection.html");
 
   exit(0);
 }

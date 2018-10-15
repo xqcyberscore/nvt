@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3191944.nasl 6479 2017-06-29 07:59:07Z teissa $
+# $Id: gb_ms_kb3191944.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Microsoft Office Multiple Vulnerabilities (KB3191944)
 #
@@ -27,40 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811098");
-  script_version("$Revision: 6479 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-8509", "CVE-2017-8511", "CVE-2017-8512");
   script_bugtraq_id(98812, 98815, 98816);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:59:07 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 14:05:00 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Office Multiple Vulnerabilities (KB3191944)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB3191944");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to multiple errors
   in the Microsoft Office software when the Office software fails to properly
   handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow the
-  remote attacker to execute arbitrary code in the context of current user.
-
-  Impact Level: System/Application");
+  remote attacker to execute arbitrary code in the context of current user.");
 
   script_tag(name:"affected", value:"Microsoft Office 2016");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/3191944");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3191944");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3191944");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -76,18 +71,12 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## variable Initialization
-officeVer = "";
-offPath = "";
-offdllVer = "";
-
 ## MS Office Version
 officeVer = get_kb_item("MS/Office/Ver");
 if(!officeVer || !(officeVer =~ "^(16\.)")){
   exit(0);
 }
 
-## Check Program File Directory
 path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                        item:"ProgramFilesDir");
 if(!path){
@@ -98,13 +87,11 @@ if(!path){
 ##To Do, Check path for 64bit installation and update path here
 offPath = path + "\Microsoft Office\root\VFS\ProgramFilesCommonX86\Microsoft Shared\Office16";
 
-## Get Version from mso.dll
 offdllVer = fetch_file_version(sysPath:offPath, file_name:"mso.dll");
 if(!offdllVer){
   exit(0);
 }
 
-##Check for vulnerable Microsoft Office versions
 if(offdllVer =~ "^(16\.)" && version_is_less(version:offdllVer, test_version:"16.0.4549.1001"))
 {
   report = 'File checked:     ' + offPath + "\Mso.dll" + '\n' +

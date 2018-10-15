@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln1_macosx_july11.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_opera_mult_vuln1_macosx_july11.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Opera Browser Multiple Vulnerabilities-01 July-11 (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802755");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-2628", "CVE-2011-2629", "CVE-2011-2630", "CVE-2011-2631",
                 "CVE-2011-2632", "CVE-2011-2633");
   script_bugtraq_id(48570);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-19 11:17:38 +0530 (Thu, 19 Apr 2012)");
   script_name("Opera Browser Multiple Vulnerabilities-01 July-11 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/44611");
@@ -59,7 +59,7 @@ if(description)
     column-count property.
 
   - When handling destruction of a silver light instance.");
-  script_tag(name:"solution", value:"Upgrade to Opera Web Browser Version 11.11 or later,");
+  script_tag(name:"solution", value:"Upgrade to Opera Web Browser Version 11.11 or later.");
   script_tag(name:"summary", value:"The host is installed with Opera browser and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"package");

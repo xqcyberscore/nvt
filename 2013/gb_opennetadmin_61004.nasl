@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opennetadmin_61004.nasl 11497 2018-09-20 10:31:54Z mmartin $
+# $Id: gb_opennetadmin_61004.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # OpenNetAdmin 'ona.log' File Remote PHP Code Execution Vulnerability
 #
@@ -31,10 +31,10 @@ if (description)
   script_bugtraq_id(61004);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_version("$Revision: 11497 $");
+  script_version("$Revision: 11865 $");
   script_name("OpenNetAdmin 'ona.log' File Remote PHP Code Execution Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61004");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-13 15:18:42 +0200 (Tue, 13 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -57,7 +57,7 @@ of authentication.");
   script_tag(name:"affected", value:"OpenNetAdmin 13.03.01 is vulnerable, other versions may also be
 affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

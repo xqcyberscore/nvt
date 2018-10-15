@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_gom_player_avi_unspecified_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_gom_player_avi_unspecified_vuln_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # GOM Media Player 'AVI' File Unspecified Vulnerability (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903002");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-1264");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-21 16:45:16 +0530 (Wed, 21 Mar 2012)");
   script_name("GOM Media Player 'AVI' File Unspecified Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://gom.gomtv.com/gomIntro.html?type=4");
@@ -49,7 +49,7 @@ if(description)
   script_tag(name:"affected", value:"GOM Media Player version prior to 2.1.37.5091 on Windows");
   script_tag(name:"insight", value:"The flaw is due to an unspecified error, which allows remote attackers
   to execute arbitrary code via a crafted AVI file.");
-  script_tag(name:"solution", value:"Upgrade to GOM Media Player 2.1.37.5091 or later,");
+  script_tag(name:"solution", value:"Upgrade to GOM Media Player 2.1.37.5091 or later.");
   script_tag(name:"summary", value:"This host is installed with GOM Media Player and is prone to
   unspecified vulnerability.");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_mult_dos_vuln_feb13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_pidgin_mult_dos_vuln_feb13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Pidgin Multiple Denial of Service Vulnerabilities -Feb13 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803308");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-0271", "CVE-2013-0272", "CVE-2013-0273", "CVE-2013-0274");
   script_bugtraq_id(57951, 57952, 57954);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-20 19:21:44 +0530 (Wed, 20 Feb 2013)");
   script_name("Pidgin Multiple Denial of Service Vulnerabilities -Feb13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52178");
@@ -58,13 +58,13 @@ if(description)
   - Does not properly terminate long user IDs, in sametime.c in libpurple.
 
   - upnp.c in libpurple fails to null-terminate strings in UPnP responses.");
-  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.10.7 or later.
-  For updates refer to http://pidgin.im/download/windows/");
+  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.10.7 or later.");
   script_tag(name:"summary", value:"This host is installed with Pidgin and is prone to multiple denial of
   service vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://pidgin.im/download/windows/");
   exit(0);
 }
 

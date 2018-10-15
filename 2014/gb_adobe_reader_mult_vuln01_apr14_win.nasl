@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804353");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-0511", "CVE-2014-0512");
   script_bugtraq_id(66205, 66512);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 14:00:20 +0530 (Tue, 21 Jan 2014)");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 Apr14 (Windows)");
 
@@ -45,8 +45,7 @@ vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass sandbox restrictions,
 execute arbitrary code and compromise a user's system.");
   script_tag(name:"affected", value:"Adobe Reader XI version 11.0.6 and probably other versions on Windows.");
-  script_tag(name:"solution", value:"Upgrade to version 11.0.07 or higher,
-For updates refer to http://get.adobe.com/reader");
+  script_tag(name:"solution", value:"Upgrade to version 11.0.07 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -58,6 +57,7 @@ For updates refer to http://get.adobe.com/reader");
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_win.nasl");
   script_mandatory_keys("Adobe/Reader/Win/Installed");
+  script_xref(name:"URL", value:"http://get.adobe.com/reader");
   exit(0);
 }
 

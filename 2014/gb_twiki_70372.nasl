@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_70372.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_twiki_70372.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # TWiki 'debugenableplugins' Parameter Remote Code Execution Vulnerability
 #
@@ -34,9 +34,9 @@ if (description)
   script_cve_id("CVE-2014-7236");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
   script_name("TWiki 'debugenableplugins' Parameter Remote Code Execution Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-27 12:57:24 +0100 (Mon, 27 Oct 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -70,7 +70,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

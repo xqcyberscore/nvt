@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_66569.nasl 11186 2018-09-03 09:12:42Z mmartin $
+# $Id: gb_otrs_66569.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # OTRS Help Desk Cross Site Scripting/Clickjacking Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103933");
-  script_version("$Revision: 11186 $");
+  script_version("$Revision: 11867 $");
   script_bugtraq_id(66569);
   script_cve_id("CVE-2014-2553", "CVE-2014-2554");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-03 12:44:23 +0200 (Thu, 03 Apr 2014)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -68,8 +68,7 @@ if(description)
   the requests. This can be exploited to perform certain unspecified
   actions by tricking a user into e.g. clicking a specially crafted link
   via clickjacking.");
-  script_tag(name:"solution", value:"Upgrade to Open Ticket Request System (OTRS) 3.1.21, 3.2.16 or 3.3.6
-  For updates refer to http://otrs.org/download/");
+  script_tag(name:"solution", value:"Upgrade to Open Ticket Request System (OTRS) 3.1.21, 3.2.16 or 3.3.6");
   script_tag(name:"summary", value:"OTRS Help Desk is prone to a cross site scripting and to a clickjacking
   vulnerability because it fails to properly sanitize user-supplied input before using
   it in dynamically generated content.");
@@ -79,6 +78,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
+  script_xref(name:"URL", value:"http://otrs.org/download/");
   exit(0);
 }
 

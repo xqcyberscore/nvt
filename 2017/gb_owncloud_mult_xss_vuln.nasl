@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_xss_vuln.nasl 6812 2017-07-31 06:15:43Z cfischer $
+# $Id: gb_owncloud_mult_xss_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # ownCloud Multiple XSS Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106966");
-  script_version("$Revision: 6812 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-31 08:15:43 +0200 (Mon, 31 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-19 13:10:50 +0700 (Wed, 19 Jul 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-19 13:10:50 +0700 (Wed, 19 Jul 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-8896", "CVE-2017-9338");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("ownCloud Multiple XSS Vulnerabilities");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_owncloud_detect.nasl");
   script_mandatory_keys("owncloud/installed");
 
-  script_tag(name: "summary", value: "ownCloud is prone to multiple cross-site scripting vulnerabilities.");
+  script_tag(name:"summary", value:"ownCloud is prone to multiple cross-site scripting vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "ownCloud is prone to multiple cross-site scripting vulnerabilities:
+  script_tag(name:"insight", value:"ownCloud is prone to multiple cross-site scripting vulnerabilities:
 
-- XSS on error pages by injecting code in url parameters. (CVE-2017-8896)
+  - XSS on error pages by injecting code in url parameters. (CVE-2017-8896)
 
-- Inadequate escaping lead to XSS vulnerability in the search module. (CVE-2017-9338)");
+  - Inadequate escaping lead to XSS vulnerability in the search module. (CVE-2017-9338)");
 
-  script_tag(name: "solution", value: "Update to ownCloud Server 8.2.12, 9.0.10, 9.1.6, 10.0.2 or later
+  script_tag(name:"solution", value:"Update to ownCloud Server 8.2.12, 9.0.10, 9.1.6, 10.0.2 or later
 versions.");
 
-  script_xref(name: "URL", value: "https://owncloud.org/security/advisory/?id=oc-sa-2017-004");
-  script_xref(name: "URL", value: "https://owncloud.org/security/advisory/?id=oc-sa-2017-007");
+  script_xref(name:"URL", value:"https://owncloud.org/security/advisory/?id=oc-sa-2017-004");
+  script_xref(name:"URL", value:"https://owncloud.org/security/advisory/?id=oc-sa-2017-007");
 
   exit(0);
 }

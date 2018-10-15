@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_dos_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_wireshark_dos_vuln_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Wireshark Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903024");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-0538");
   script_bugtraq_id(46167);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-25 17:03:00 +0530 (Wed, 25 Apr 2012)");
   script_name("Wireshark Denial of Service Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/65182");
@@ -51,7 +51,7 @@ if(description)
   Wireshark version 1.4.0 through 1.4.3");
   script_tag(name:"insight", value:"The flaw is due to uninitialized pointer during processing of a '.pcap'
   file in the pcap-ng format.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.2.15 or 1.4.4 or later,");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.2.15 or 1.4.4 or later.");
   script_tag(name:"summary", value:"This host is installed Wireshark and is prone to denial of service
   vulnerability.");
   script_tag(name:"qod_type", value:"package");

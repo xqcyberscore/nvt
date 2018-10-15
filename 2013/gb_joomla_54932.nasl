@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_54932.nasl 11449 2018-09-18 10:04:42Z mmartin $
+# $Id: gb_joomla_54932.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Joomla S5 Clan Roster com_s5clanroster 'id' Parameter SQL Injection Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:joomla:joomla";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103713");
-  script_version("$Revision: 11449 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
 
@@ -40,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.shape5.com/product_details/club_extensions/s5_clan_roster.html");
   script_xref(name:"URL", value:"http://www.joomla.org");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 12:04:42 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-17 11:02:29 +0200 (Fri, 17 May 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -60,7 +60,7 @@ vulnerability because it fails to sufficiently sanitize user-supplied data befor
 Exploiting this issue could allow an attacker to compromise the application, access or modify data, or exploit
 latent vulnerabilities in the underlying database.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

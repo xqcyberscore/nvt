@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eXtplorer_57058.nasl 11007 2018-08-16 13:20:25Z mmartin $
+# $Id: gb_eXtplorer_57058.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # eXtplorer 'ext_find_user()' Function Authentication Bypass Vulnerability
 #
@@ -30,7 +30,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103639");
   script_bugtraq_id(57058);
-  script_version("$Revision: 11007 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"9.7");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:P");
 
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57058");
   script_xref(name:"URL", value:"http://extplorer.net/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-10 12:43:09 +0100 (Thu, 10 Jan 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -48,7 +48,7 @@ if (description)
   script_dependencies("gb_eXtplorer_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("eXtplorer/installed");
-  script_tag(name:"solution", value:"Updates are available; please see the references for more information.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"eXtplorer is prone to an authentication-bypass vulnerability.
 
@@ -56,7 +56,7 @@ Remote attackers can exploit this issue to bypass the authentication
 mechanism and gain unauthorized access.
 
 eXtplorer 2.1.2, 2.1.1, and 2.1.0 are vulnerable.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

@@ -29,14 +29,14 @@ CPE = "cpe:/a:mozilla:thunderbird_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804011");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1718", "CVE-2013-1722", "CVE-2013-1725", "CVE-2013-1726",
                 "CVE-2013-1730", "CVE-2013-1732", "CVE-2013-1735", "CVE-2013-1736",
                 "CVE-2013-1737");
   script_bugtraq_id(62463, 62460, 62467, 62482, 62473, 62469, 62479, 62478, 62475);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-24 15:33:00 +0530 (Tue, 24 Sep 2013)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities-01 Sep13 (Windows)");
 
@@ -44,8 +44,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Mozilla Thunderbird ESR and is prone to multiple
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird ESR version 17.0.9 or later,
-For updates refer to http://www.mozilla.com/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird ESR version 17.0.9 or later.");
   script_tag(name:"insight", value:"For more details about the vulnerabilities, refer the reference section.");
   script_tag(name:"affected", value:"Mozilla Thunderbird ESR version 17.x before 17.0.9 on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain escalated privileges,
@@ -61,6 +60,7 @@ restrictions, and compromise a user's system.");
   script_family("General");
   script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird-ESR/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/thunderbird");
   exit(0);
 }
 

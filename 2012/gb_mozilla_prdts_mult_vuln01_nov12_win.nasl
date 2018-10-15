@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln01_nov12_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_mozilla_prdts_mult_vuln01_nov12_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 November12 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803055");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-4209", "CVE-2012-4214", "CVE-2012-4215", "CVE-2012-4216",
                 "CVE-2012-4201", "CVE-2012-4202", "CVE-2012-4207", "CVE-2012-5842",
                 "CVE-2012-5841", "CVE-2012-5829", "CVE-2012-5840", "CVE-2012-5833",
@@ -36,7 +36,7 @@ if(description)
                     56631, 56636, 56642, 56637, 56635);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 12:10:03 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 November12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51358");
@@ -70,7 +70,7 @@ if(description)
     property.
 
   - Error when rendering GIF images.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 17.0 or later,");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 17.0 or later.");
   script_tag(name:"summary", value:"This host is installed with Mozilla Firefox and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

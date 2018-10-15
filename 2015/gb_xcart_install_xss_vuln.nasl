@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xcart_install_xss_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_xcart_install_xss_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # X_CART Installation Script Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:qualiteam:x-cart";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806059");
-  script_version("$Revision: 11492 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-5455");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-05 11:33:14 +0530 (Mon, 05 Oct 2015)");
   script_name("X_CART Installation Script Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -59,12 +59,12 @@ if(description)
   script_tag(name:"affected", value:"XCART versions 4.5.0 and possibly earlier.");
   script_tag(name:"solution", value:"For a workaround, websites running X-Cart
   version 4.5.0 (and possibly below) remove their /install/ directory once it is
-  installed.
-  For updates refer to https://www.x-cart.com");
+  installed.");
 
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"https://www.x-cart.com");
   exit(0);
 }
 

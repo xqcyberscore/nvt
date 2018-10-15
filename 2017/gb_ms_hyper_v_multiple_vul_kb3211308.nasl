@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_hyper_v_multiple_vul_kb3211308.nasl 11816 2018-10-10 10:42:56Z mmartin $
+# $Id: gb_ms_hyper_v_multiple_vul_kb3211308.nasl 11879 2018-10-12 12:48:49Z mmartin $
 #
 # Microsoft Windows Hyper-V Multiple Vulnerabilities (KB3211308)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810848");
-  script_version("$Revision: 11816 $");
+  script_version("$Revision: 11879 $");
   script_cve_id("CVE-2017-0163", "CVE-2017-0168", "CVE-2017-0180");
   script_bugtraq_id(97465, 97418, 97444);
   script_tag(name:"cvss_base", value:"7.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-12 12:24:16 +0530 (Wed, 12 Apr 2017)");
   script_name("Microsoft Windows Hyper-V Multiple Vulnerabilities (KB3211308)");
 
@@ -80,7 +80,7 @@ if(!sysPath ){
   exit(0);
 }
 
-qzVer = fetch_file_version(sysPath, file_name:"Hvax64.exe");
+qzVer = fetch_file_version(sysPath:sysPath, file_name:"Hvax64.exe");
 if(!qzVer){
   exit(0);
 }

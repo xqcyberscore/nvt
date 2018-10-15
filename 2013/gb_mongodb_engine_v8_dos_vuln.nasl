@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_engine_v8_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_mongodb_engine_v8_dos_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # MongoDB engine_v8 Denial of Service Vulnerability
 #
@@ -29,20 +29,18 @@ CPE = "cpe:/a:mongodb:mongodb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803950");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-3969");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-07 12:56:33 +0530 (Mon, 07 Oct 2013)");
   script_name("MongoDB engine_v8 Denial of Service Vulnerability");
 
   script_tag(name:"summary", value:"This host is running MongoDB and
   is prone to a denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of
-  MongoDB with the help of detect NVT and check the version is vulnerable
-  or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An error exists in engine_v8 which
   fails to parse certain regular expressions.");
@@ -53,8 +51,7 @@ if (description)
 
   script_tag(name:"affected", value:"MongoDB version 2.4.0 through 2.4.4 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to MongoDB version 2.4.5 or 2.5.1 or later,
-  For updates refer to http://www.mongodb.org");
+  script_tag(name:"solution", value:"Upgrade to MongoDB version 2.4.5 or 2.5.1 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.mongodb.org/about/alerts");
   script_xref(name:"URL", value:"http://secunia.com/advisories/54170");

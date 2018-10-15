@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_int_overflow_vuln_jul14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_postgresql_int_overflow_vuln_jul14_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # PostgreSQL Multiple Integer Overflow Vulnerabilities July14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804712");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-2669");
   script_bugtraq_id(66557);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-07-07 15:46:46 +0530 (Mon, 07 Jul 2014)");
   script_name("PostgreSQL Multiple Integer Overflow Vulnerabilities July14 (Windows)");
 
@@ -47,9 +47,7 @@ validated.");
   script_tag(name:"impact", value:"Successful exploitation may allow an attacker to gain elevated privileges.");
   script_tag(name:"affected", value:"PostgreSQL version before 9.0.x before 9.0.16, 9.1.x before 9.1.12,
 9.2.x before 9.2.7, and 9.3.x before 9.3.3");
-  script_tag(name:"solution", value:"Upgrade to version 9.3.3, 9.2.7, 9.1.12, and 9.0.16, or higher,
-
-For updates refer to http://www.postgresql.org/download");
+  script_tag(name:"solution", value:"Upgrade to version 9.3.3, 9.2.7, 9.1.12, and 9.0.16, or later.");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -62,6 +60,7 @@ For updates refer to http://www.postgresql.org/download");
   script_dependencies("postgresql_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/postgresql", 5432);
   script_mandatory_keys("PostgreSQL/installed", "Host/runs_windows");
+  script_xref(name:"URL", value:"http://www.postgresql.org/download");
   exit(0);
 }
 

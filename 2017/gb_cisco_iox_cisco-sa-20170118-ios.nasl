@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_iox_cisco-sa-20170118-ios.nasl 5037 2017-01-19 09:58:59Z ckuerste $
+# $Id: gb_cisco_iox_cisco-sa-20170118-ios.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Cisco Cisco IOx Software Information Disclosure Vulnerability
 #
@@ -29,44 +29,44 @@ CPE = "cpe:/a:cisco:iox";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106527");
- script_cve_id("CVE-2017-3805");
- script_tag(name: "cvss_base", value: "5.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 5037 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106527");
+  script_cve_id("CVE-2017-3805");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11874 $");
 
- script_name("Cisco Cisco IOx Software Information Disclosure Vulnerability");
+  script_name("Cisco Cisco IOx Software Information Disclosure Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170118-ios");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170118-ios");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the web-based management interface of Cisco IOx Software
+  script_tag(name:"summary", value:"A vulnerability in the web-based management interface of Cisco IOx Software
 could allow an unauthenticated, remote attacker to view confidential information that is displayed without
 authenticating to the device.");
 
- script_tag(name: "insight", value: "The vulnerability is due to lack of proper input validation of the HTTP URL
+  script_tag(name:"insight", value:"The vulnerability is due to lack of proper input validation of the HTTP URL
 being requested. An attacker could exploit this vulnerability by sending a crafted HTTP request to the targeted
 device.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to view confidential information that
+  script_tag(name:"impact", value:"An exploit could allow the attacker to view confidential information that
 should only be visible to authenticated users to the device. The attacker could use this information to conduct
 additional reconnaissance attacks.");
 
- script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-01-19 10:58:59 +0100 (Thu, 19 Jan 2017) $");
- script_tag(name: "creation_date", value: "2017-01-19 11:06:22 +0700 (Thu, 19 Jan 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_iox_web_detect.nasl");
- script_mandatory_keys("cisco_iox/installed");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-19 11:06:22 +0700 (Thu, 19 Jan 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_iox_web_detect.nasl");
+  script_mandatory_keys("cisco_iox/installed");
+  exit(0);
 }
 
 include("host_details.inc");

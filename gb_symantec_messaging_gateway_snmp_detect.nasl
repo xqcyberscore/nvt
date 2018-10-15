@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_snmp_detect.nasl 11499 2018-09-20 10:38:00Z ckuersteiner $
+# $Id: gb_symantec_messaging_gateway_snmp_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Symantec Messaging Gateway Detection (SNMP)
 #
@@ -30,8 +30,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105718");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11499 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:38:00 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-17 12:13:39 +0200 (Tue, 17 May 2016)");
   script_name("Symantec Messaging Gateway Detection (SNMP)");
 
@@ -46,7 +46,7 @@ if (description)
   script_require_udp_ports("Services/udp/snmp", 161);
   script_mandatory_keys("SNMP/installed_software/available");
 
- exit(0);
+  exit(0);
 }
 
 include("snmp_func.inc");

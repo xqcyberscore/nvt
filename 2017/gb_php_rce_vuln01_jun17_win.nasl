@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_rce_vuln01_jun17_win.nasl 10457 2018-07-09 06:23:47Z cfischer $
+# $Id: gb_php_rce_vuln01_jun17_win.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # PHP Remote Code Execution Vulnerability-01 Jun17 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810955");
-  script_version("$Revision: 10457 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2016-4473");
   script_bugtraq_id(98999);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:23:47 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-20 15:46:19 +0530 (Tue, 20 Jun 2017)");
   script_name("PHP Remote Code Execution Vulnerability-01 Jun17 (Windows)");
 
@@ -49,14 +49,12 @@ if(description)
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to execute arbitrary code in the context of the user running
   the affected application. Failed exploit attempts will likely cause a
-  denial-of-service condition.
-
-  Impact Level: Application");
+  denial-of-service condition.");
 
   script_tag(name:"affected", value:"PHP versions 7.0.7 and 5.6.x on Windows");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 7.0.8 or 5.6.23
-  or later. For updates refer to http://www.php.net");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -68,8 +66,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("php/installed","Host/runs_windows");
+  script_mandatory_keys("php/installed", "Host/runs_windows");
 
+  script_xref(name:"URL", value:"http://www.php.net");
   exit(0);
 }
 

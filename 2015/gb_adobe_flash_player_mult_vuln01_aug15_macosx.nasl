@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_aug15_macosx.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_adobe_flash_player_mult_vuln01_aug15_macosx.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities -01 Aug15 (Mac OS X)
 #
@@ -28,7 +28,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805955");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-5124", "CVE-2015-5125", "CVE-2015-5127", "CVE-2015-5129",
                 "CVE-2015-5130", "CVE-2015-5131", "CVE-2015-5132", "CVE-2015-5133",
                 "CVE-2015-5134", "CVE-2015-5539", "CVE-2015-5540", "CVE-2015-5541",
@@ -41,7 +41,7 @@ if(description)
   script_bugtraq_id(75959, 76291, 76282, 76282, 76283, 76283, 76289, 76288, 76287);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-18 09:53:03 +0530 (Tue, 18 Aug 2015)");
   script_name("Adobe Flash Player Multiple Vulnerabilities -01 Aug15 (Mac OS X)");
 
@@ -63,8 +63,7 @@ if(description)
   18.0.0.232 on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
-  18.0.0.232 or later. For updates refer to
-  http://get.adobe.com/flashplayer");
+  18.0.0.232 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -76,6 +75,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Flash/Player/MacOSX/Version");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

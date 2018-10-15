@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geoserver_xxe_08_15.nasl 11220 2018-09-04 11:57:09Z mmartin $
+# $Id: gb_geoserver_xxe_08_15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Geoserver XML External Entity Information Disclosure Vulnerability
 #
@@ -30,7 +30,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105320");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11220 $");
+  script_version("$Revision: 11872 $");
   script_name("Geoserver XML External Entity Information Disclosure Vulnerability");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37757/");
@@ -46,7 +46,7 @@ information, this may lead to further attacks.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-17 13:57:49 +0200 (Mon, 17 Aug 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -55,7 +55,7 @@ information, this may lead to further attacks.");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("GeoServer/installed");
 
- exit(0);
+  exit(0);
 }
 
 CPE = 'cpe:/a:geoserver:geoserver';

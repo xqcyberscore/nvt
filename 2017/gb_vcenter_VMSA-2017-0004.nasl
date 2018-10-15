@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2017-0004.nasl 5595 2017-03-16 17:32:19Z mime $
+# $Id: gb_vcenter_VMSA-2017-0004.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # VMSA-2017-0004: VMware product updates resolve remote code execution vulnerability via Apache Struts 2
 #
@@ -27,36 +27,36 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140190");
- script_cve_id("CVE-2017-5638");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5595 $");
- script_name("VMSA-2017-0004: VMware product updates resolve remote code execution vulnerability via Apache Struts 2");
+  script_oid("1.3.6.1.4.1.25623.1.0.140190");
+  script_cve_id("CVE-2017-5638");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11863 $");
+  script_name("VMSA-2017-0004: VMware product updates resolve remote code execution vulnerability via Apache Struts 2");
 
- script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2017-0004.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2017-0004.html");
 
- script_tag(name: "vuldetect" , value:"Check the build number");
+  script_tag(name:"vuldetect", value:"Check the build number");
 
- script_tag(name: "insight" , value:"Remote code execution vulnerability via Apache Struts 2
+  script_tag(name:"insight", value:"Remote code execution vulnerability via Apache Struts 2
 Multiple VMware products contain a remote code execution vulnerability due to the use of Apache Struts 2. Successful exploitation of this issue may result in the complete compromise of an affected product.");
 
- script_tag(name: "solution" , value:"See vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See vendor advisory for a solution.");
 
- script_tag(name: "summary" , value:"VMware product updates resolve remote code execution vulnerability via Apache Struts 2");
+  script_tag(name:"summary", value:"VMware product updates resolve remote code execution vulnerability via Apache Struts 2");
 
- script_tag(name: "affected" , value:"vCenter 6.5 and 6.0");
+  script_tag(name:"affected", value:"vCenter 6.5 and 6.0");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 18:32:19 +0100 (Thu, 16 Mar 2017) $");
- script_tag(name:"creation_date", value:"2017-03-16 09:26:49 +0100 (Thu, 16 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_vcenter_detect.nasl");
- script_mandatory_keys("VMware_vCenter/version","VMware_vCenter/build");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-16 09:26:49 +0100 (Thu, 16 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_vcenter_detect.nasl");
+  script_mandatory_keys("VMware_vCenter/version", "VMware_vCenter/build");
 
  exit(0);
 

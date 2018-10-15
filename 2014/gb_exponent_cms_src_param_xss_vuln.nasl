@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exponent_cms_src_param_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_exponent_cms_src_param_xss_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Exponent CMS 'src' POST Parameter Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:exponentcms:exponent_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804785");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-6635");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-31 13:10:53 +0530 (Fri, 31 Oct 2014)");
   script_name("Exponent CMS 'src' POST Parameter Cross-Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -59,13 +59,14 @@ if(description)
   to execute arbitrary HTML and script code in the context of an affected site.");
 
   script_tag(name:"affected", value:"Exponent CMS version 2.3.0, Prior versions
-  may also be affected.For updates refer to http://www.exponentcms.org");
+  may also be affected.");
 
   script_tag(name:"solution", value:"Upgrade to Exponent CMS version after 2.3.0");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.exponentcms.org");
   exit(0);
 }
 

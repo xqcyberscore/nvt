@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symphony_cms_97594.nasl 6836 2017-08-02 14:05:29Z asteins $
+# $Id: gb_symphony_cms_97594.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Symphony CMS <= 2.6.11 Remote Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symphony-cms:symphony_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108142");
-  script_version("$Revision: 6836 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-7694", "CVE-2017-8876");
   script_bugtraq_id(97594);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-02 16:05:29 +0200 (Wed, 02 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-19 06:57:33 +0200 (Wed, 19 Apr 2017)");
   script_name("Symphony CMS <= 2.6.11 Remote Code Execution Vulnerability");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -51,14 +51,11 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Symphony CMS
   and is prone to a remote code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Successfully exploitation will allow remote
   attackers to execute code and get a webshell from the back-end. The attacker must
-  be authenticated and enter PHP code in the datasource editor or event editor.
-
-  Impact Level: Application/System");
+  be authenticated and enter PHP code in the datasource editor or event editor.");
 
   script_tag(name:"affected", value:"Symphony CMS versions through 2.6.11.");
 

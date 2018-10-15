@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_rsfiles_sql_inj_vuln.nasl 11101 2018-08-24 09:42:11Z ckuersteiner $
+# $Id: gb_joomla_rsfiles_sql_inj_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # Joomla RSfiles SQL Injection Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803441");
-  script_version("$Revision: 11101 $");
+  script_version("$Revision: 11883 $");
   script_bugtraq_id(58547);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 11:42:11 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-03-20 15:59:21 +0530 (Wed, 20 Mar 2013)");
 
   script_name("Joomla RSfiles SQL Injection Vulnerabilities");
@@ -60,8 +60,7 @@ queries in the back-end database, allowing for the manipulation or disclosure of
 'com_rsfiles', 'view' is set to 'files', 'layout' is set to 'agreement', and 'tmpl' is set to 'component') is not
 properly sanitised before being used in a SQL query.");
 
-  script_tag(name:"solution", value:"Upgrade to Joomla RSfiles REV 12 or later.
-For updates refer http://www.rsjoomla.com/joomla-extensions/joomla-download-manager.html");
+  script_tag(name:"solution", value:"Upgrade to Joomla RSfiles REV 12 or later.");
 
   script_tag(name:"summary", value:"This host is installed with Joomla RSfiles and is prone to sql injection
 vulnerabilities.");

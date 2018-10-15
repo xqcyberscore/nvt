@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_cpuapr2017-3236618_02_win.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_oracle_java_cpuapr2017-3236618_02_win.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Oracle Java SE Security Updates (cpuapr2017-3236618) 02 - Windows
 #
@@ -29,16 +29,16 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810746");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-3512", "CVE-2017-3511");
   script_bugtraq_id(97727, 97731);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-19 13:06:39 +0530 (Wed, 19 Apr 2017)");
   script_name("Oracle Java SE Security Updates (cpuapr2017-3236618) 02 - Windows");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle Java SE
+  script_tag(name:"summary", value:"The host is installed with Oracle Java SE
   and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
@@ -46,26 +46,24 @@ if(description)
   script_tag(name:"insight", value:"Multiple flaws exists due to multiple
   unspecified errors in 'AWT', and 'JCE' sub-components.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
-  attackers to cause some unspecified impacts.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  attackers to cause some unspecified impacts.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"Oracle Java SE version 1.7.0.131
+  script_tag(name:"affected", value:"Oracle Java SE version 1.7.0.131
   and earlier, 1.8.0.121 and earlier on Windows");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html");
+  script_tag(name:"solution", value:"Apply the patch");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html#AppendixJAVA");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html#AppendixJAVA");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html");
   exit(0);
 }
 

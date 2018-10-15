@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_loginizer_mult_vuln.nasl 6959 2017-08-18 07:24:59Z asteins $
+# $Id: gb_wordpress_loginizer_mult_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # WordPress Loginizer Plugin Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140287");
-  script_version("$Revision: 6959 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-08 16:16:18 +0700 (Tue, 08 Aug 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-08 16:16:18 +0700 (Tue, 08 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-12650", "CVE-2017-12651");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress Loginizer Plugin Multiple Vulnerabilities");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "WordPress Loginizer plugin is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"WordPress Loginizer plugin is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "WordPress Loginizer plugin is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"WordPress Loginizer plugin is prone to multiple vulnerabilities:
 
-- SQL Injection via the X-Forwarded-For HTTP header. (CVE-2017-12650)
+  - SQL Injection via the X-Forwarded-For HTTP header. (CVE-2017-12650)
 
-- Cross Site Request Forgery (CSRF) in the Blacklist and Whitelist IP Wizard in init.php because the HTTP Referer
+  - Cross Site Request Forgery (CSRF) in the Blacklist and Whitelist IP Wizard in init.php because the HTTP Referer
 header is not checked. (CVE-2017-12651)");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "WordPress Loginizer plugin version 1.3.5 and prior.");
+  script_tag(name:"affected", value:"WordPress Loginizer plugin version 1.3.5 and prior.");
 
-  script_tag(name: "solution", value: "Update to version 1.3.6 or later.");
+  script_tag(name:"solution", value:"Update to version 1.3.6 or later.");
 
-  script_xref(name: "URL", value: "https://sv.wordpress.org/plugins/loginizer/#developers");
+  script_xref(name:"URL", value:"https://sv.wordpress.org/plugins/loginizer/#developers");
 
   exit(0);
 }

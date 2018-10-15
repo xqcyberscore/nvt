@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_20170201_lin.nasl 9301 2018-04-04 12:02:46Z cfischer $
+# $Id: gb_cloudbees_jenkins_20170201_lin.nasl 11900 2018-10-15 07:44:31Z mmartin $
 #
 # CloudBees Jenkins Multiple Vulnerability Feb17 - 01 - (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108095");
-  script_version("$Revision: 9301 $");
+  script_version("$Revision: 11900 $");
   script_cve_id("CVE-2011-4969", "CVE-2015-0886", "CVE-2017-2598", "CVE-2017-2599",
                 "CVE-2017-2600", "CVE-2017-2601", "CVE-2017-2602", "CVE-2017-2603",
                 "CVE-2017-2604", "CVE-2017-2605", "CVE-2017-2606", "CVE-2017-2607",
@@ -37,7 +37,7 @@ if(description)
                 "CVE-2017-2612", "CVE-2017-2613", "CVE-2017-1000362");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 14:02:46 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-13 11:00:00 +0100 (Mon, 13 Mar 2017)");
   script_name("CloudBees Jenkins Multiple Vulnerability Feb17 - 01 - (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -53,8 +53,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with CloudBees Jenkins and is prone to
   multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detect NVT
-  and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -69,14 +68,12 @@ if(description)
   - a information disclosure vulnerability");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain sensitive information,
-  to bypass intended access restrictions and execute arbitrary code.
-
-  Impact Level: Application");
+  to bypass intended access restrictions and execute arbitrary code.");
 
   script_tag(name:"affected", value:"CloudBees Jenkins LTS 2.32.1 and prior, Jenkins main line 2.43 and prior.");
 
   script_tag(name:"solution", value:"Upgrade to CloudBees Jenkins main line to 2.44 or later / Jenkins LTS to 2.32.2 or
-  later. For more updates refer to https://www.cloudbees.com");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

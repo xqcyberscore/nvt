@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortiweb_FG-IR-14-009.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_fortiweb_FG-IR-14-009.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # FortiOS: FortiWeb Multiple Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-1955", "CVE-2014-1956", "CVE-2014-1957");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11872 $");
 
   script_name("FortiOS: FortiWeb Multiple Vulnerabilities");
 
@@ -53,7 +53,7 @@ escalation (CVE-2014-1957) issues.");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 12:17:13 +0100 (Wed, 11 Feb 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("FortiOS Local Security Checks");
@@ -61,7 +61,7 @@ escalation (CVE-2014-1957) issues.");
   script_dependencies("gb_fortiweb_version.nasl");
   script_mandatory_keys("fortiweb/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

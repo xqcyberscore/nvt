@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_postgresql_pgbouncer_dos_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: secpod_postgresql_pgbouncer_dos_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # PostgreSQL PgBouncer Denial of Service Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903102");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2012-4575");
   script_bugtraq_id(56371);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-25 11:24:17 +0530 (Fri, 25 Jan 2013)");
   script_name("PostgreSQL PgBouncer Denial of Service Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51128");
@@ -51,12 +51,12 @@ if(description)
   script_tag(name:"affected", value:"PostgreSQL PgBouncer Pooler version 1.5.2 and prior on Windows");
   script_tag(name:"insight", value:"An error exists within the 'add_database' function in objects.c in the
   pgbouncer pooler when adding new databases with an an overly large name.");
-  script_tag(name:"solution", value:"Upgrade to PostgreSQL PgBouncer Pooler version 1.5.3 or later,
-  For updates refer to http://wiki.postgresql.org/wiki/PgBouncer");
+  script_tag(name:"solution", value:"Upgrade to PostgreSQL PgBouncer Pooler version 1.5.3 or later.");
   script_tag(name:"summary", value:"This host is installed with PostgreSQL PgBouncer pooler and is
   prone to denial of service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://wiki.postgresql.org/wiki/PgBouncer");
   exit(0);
 }
 

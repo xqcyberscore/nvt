@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_multiple_unspecified_vuln01.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_mysql_multiple_unspecified_vuln01.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # MySQL Multiple Unspecified Vulnerabilities - 01
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803484");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2013-2392", "CVE-2013-2391", "CVE-2013-2389", "CVE-2013-2375");
   script_bugtraq_id(59224, 59242, 59207, 59209);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-22 16:38:19 +0530 (Mon, 22 Apr 2013)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -53,8 +53,8 @@ if(description)
   5.6.x before 5.6.11");
   script_tag(name:"insight", value:"Unspecified error in Server Optimizer, Server Privileges, InnoDB, and in
   some unspecified vectors.");
-  script_tag(name:"solution", value:"Upgrade to MySQL version 5.1.69 or 5.5.31 or 5.6.11 or later,
-  http://dev.mysql.com/downloads");
+  script_tag(name:"solution", value:"Upgrade to MySQL version 5.1.69 or 5.5.31 or 5.6.11 or later.");
+  script_xref(name:"URL", value:"http://dev.mysql.com/downloads");
   script_tag(name:"summary", value:"The host is running MySQL and is prone to multiple unspecified
   vulnerabilities.");
 

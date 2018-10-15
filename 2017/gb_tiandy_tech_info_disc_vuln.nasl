@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiandy_tech_info_disc_vuln.nasl 10055 2018-06-04 04:44:00Z ckuersteiner $
+# $Id: gb_tiandy_tech_info_disc_vuln.nasl 11900 2018-10-15 07:44:31Z mmartin $
 #
 # Tiandy IP cameras Sensitive Information Disclosure Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107183");
-  script_version("$Revision: 10055 $");
+  script_version("$Revision: 11900 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 06:44:00 +0200 (Mon, 04 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-04 16:39:44 +0530 (Wed, 04 Oct 2017)");
   script_cve_id("CVE-2017-15236");
   script_name("Tiandy IP cameras Sensitive Information Disclosure Vulnerability");
@@ -44,17 +44,17 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to download the following files:
 
-- config_server.ini
+  - config_server.ini
 
-- extendword.txt
+  - extendword.txt
 
-- config_ptz.dat
+  - config_ptz.dat
 
-- config_right.dat
+  - config_right.dat
 
-- config_dg.dat
+  - config_dg.dat
 
-- config_burn.dat.");
+  - config_burn.dat.");
 
   script_tag(name:"affected", value:"Tiandy IP cameras version 5.56.17.120.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201209_24.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201209_24.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2012-0866", "CVE-2012-0867", "CVE-2012-0868", "CVE-2012-2143", "CVE-2012-2655", "CVE-2012-3488", "CVE-2012-3489");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-03 11:11:28 -0400 (Wed, 03 Oct 2012)");
   script_name("Gentoo Security Advisory GLSA 201209-24 (PostgreSQL)");
   script_category(ACT_GATHER_INFO);
@@ -66,13 +66,12 @@ All PostgreSQL 8.3 server users should upgrade to the latest version:
 
       # emerge --sync
       # emerge --ask --oneshot --verbose
-'>=dev-db/postgresql-server-8.3.20'
+'>=dev-db/postgresql-server-8.3.20'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201209-24
-http://bugs.gentoo.org/show_bug.cgi?id=406037
-http://bugs.gentoo.org/show_bug.cgi?id=419727
-http://bugs.gentoo.org/show_bug.cgi?id=431766");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201209-24");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=406037");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=419727");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=431766");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201209-24.");
   script_tag(name:"qod_type", value:"package");

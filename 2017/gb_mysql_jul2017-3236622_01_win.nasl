@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_jul2017-3236622_01_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_mysql_jul2017-3236622_01_win.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Oracle Mysql Security Updates (jul2017-3236622) 01 - Windows
 #
@@ -29,24 +29,24 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811430");
-  script_version("$Revision: 7543 $");
-  script_cve_id("CVE-2017-3650", "CVE-2017-3637", "CVE-2017-3639", "CVE-2017-3638", 
-		"CVE-2017-3642", "CVE-2017-3643", "CVE-2017-3640", "CVE-2017-3644", 
+  script_version("$Revision: 11874 $");
+  script_cve_id("CVE-2017-3650", "CVE-2017-3637", "CVE-2017-3639", "CVE-2017-3638",
+		"CVE-2017-3642", "CVE-2017-3643", "CVE-2017-3640", "CVE-2017-3644",
 		"CVE-2017-3645", "CVE-2017-3529");
   script_bugtraq_id(99808, 99748, 99753, 99778, 99779, 99772, 99765, 99775, 99783, 99746);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-19 11:03:19 +0530 (Wed, 19 Jul 2017)");
   script_name("Oracle Mysql Security Updates (jul2017-3236622) 01 - Windows");
 
   script_tag(name:"summary", value:"This host is running Oracle MySQL and is
   prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to
+
   - A flaw in the C API component to partially access data.
 
   - A flaw in the X Plugin component.
@@ -55,22 +55,19 @@ if(description)
 
   - A flaw in the Server: Optimizer component.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
-  will allow remote  have an impact on confidentiality, integrity and availablility.
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
+  will allow remote  have an impact on confidentiality, integrity and availablility.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Oracle MySQL version 5.7.18 and earlier,
+  script_tag(name:"affected", value:"Oracle MySQL version 5.7.18 and earlier,
   on Windows.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-  http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html#AppendixMSQL");
+  script_tag(name:"solution", value:"Apply the patch");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html#AppendixMSQL");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/security-advisory/cpujul2017-3236622.html#AppendixMSQL");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -85,16 +82,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-mysqlVer = "";
-sqlPort = "";
-
-## Get Port
 if(!sqlPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
 if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort)){
   exit(0);
 }

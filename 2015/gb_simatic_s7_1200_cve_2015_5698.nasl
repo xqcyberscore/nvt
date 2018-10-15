@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_1200_cve_2015_5698.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_simatic_s7_1200_cve_2015_5698.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Siemens SIMATIC S7-1200 CSRF Vulnerability
 #
@@ -31,7 +31,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105349");
   script_cve_id("CVE-2015-5698");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -39,7 +39,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.siemens.com/cert/pool/cert/siemens_security_advisory_ssa-134003.pdf");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 11:14:36 +0200 (Wed, 09 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -56,7 +56,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

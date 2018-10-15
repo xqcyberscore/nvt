@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_wddm_unspecified_vuln_nov14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_oracle_virtualbox_wddm_unspecified_vuln_nov14_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Oracle Virtualbox WDDM Unspecified Vulnerability Nov14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804949");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-6540");
   script_bugtraq_id(70493);
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-03 11:52:04 +0530 (Mon, 03 Nov 2014)");
   script_name("Oracle Virtualbox WDDM Unspecified Vulnerability Nov14 (Mac OS X)");
 
@@ -53,8 +53,7 @@ if(description)
   before 4.2.26, and 4.3.x before 4.3.14 on Mac OS X");
 
   script_tag(name:"solution", value:"Upgrade to Oracle VM VirtualBox version
-  4.1.34 or 4.2.26 or 4.3.14 or later, For updates refer to
-  https://www.virtualbox.org");
+  4.1.34 or 4.2.26 or 4.3.14 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_oracle_virtualbox_detect_macosx.nasl");
   script_mandatory_keys("Oracle/VirtualBox/MacOSX/Version");
+  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coldfusion_57330.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_coldfusion_57330.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Adobe ColdFusion Authentication Bypass Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2013-0632");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
 
   script_name("Adobe ColdFusion Authentication Bypass Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57330");
   script_xref(name:"URL", value:"http://www.adobe.com/products/coldfusion/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-20 12:36:50 +0200 (Tue, 20 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -65,7 +65,7 @@ logging in.");
 Note: This issue affects ColdFusion customers who do not have password
 protection enabled or do not have a password set.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

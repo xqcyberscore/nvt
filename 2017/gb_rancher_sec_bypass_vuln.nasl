@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rancher_sec_bypass_vuln.nasl 9380 2018-04-06 11:04:51Z asteins $
+# $Id: gb_rancher_sec_bypass_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Rancher Server Security Bypass Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:rancher:rancher";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107248");
-  script_version("$Revision: 9380 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:04:51 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-16 10:53:43 +0200 (Mon, 16 Oct 2017)");
   script_cve_id("CVE-2017-7297");
   script_bugtraq_id(97180);
@@ -40,18 +40,18 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Rancher Server Security Bypass Vulnerability");
-  script_tag(name: "summary", value: "Rancher Server is prone to a security-bypass vulnerability.");
+  script_tag(name:"summary", value:"Rancher Server is prone to a security-bypass vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "Security Exposure: Any authenticated users can disable auth via API");
+  script_tag(name:"insight", value:"Security Exposure: Any authenticated users can disable auth via API");
 
-  script_tag(name: "impact" , value: "Attackers can exploit this issue to bypass certain security restrictions to perform unauthorized actions");
+  script_tag(name:"impact", value:"Attackers can exploit this issue to bypass certain security restrictions to perform unauthorized actions");
 
-  script_tag(name: "affected", value: "rancher Server 1.5.2, rancher Server 1.4.2, rancher Server 1.3.4, rancher Server 1.2.3");
-  script_tag(name: "solution", value: "Update to : rancher Server 1.5.3, rancher Server 1.4.3, rancher Server 1.3.5 or rancher Server 1.2.4.");
+  script_tag(name:"affected", value:"rancher Server 1.5.2, rancher Server 1.4.2, rancher Server 1.3.4, rancher Server 1.2.3");
+  script_tag(name:"solution", value:"Update to : rancher Server 1.5.3, rancher Server 1.4.3, rancher Server 1.3.5 or rancher Server 1.2.4.");
 
-  script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/97180");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/97180");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

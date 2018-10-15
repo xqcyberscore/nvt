@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_buf_ovfl_vuln.nasl 5969 2017-04-18 14:59:34Z ckuerste $
+# $Id: gb_asterisk_buf_ovfl_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Asterisk CDR Buffer Overflow Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106737");
-  script_version("$Revision: 5969 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-18 16:59:34 +0200 (Tue, 18 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-10 13:40:13 +0200 (Mon, 10 Apr 2017)");
-  script_tag(name: "cvss_base", value: "6.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-10 13:40:13 +0200 (Mon, 10 Apr 2017)");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-7617");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Asterisk CDR Buffer Overflow Vulnerability");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("secpod_asterisk_detect.nasl");
   script_mandatory_keys("Asterisk-PBX/Installed");
 
-  script_tag(name: "summary", value: "Asterisk is prone to a buffer overflow vulnerability in CDR's set user.");
+  script_tag(name:"summary", value:"Asterisk is prone to a buffer overflow vulnerability in CDR's set user.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "No size checking is done when setting the user field on a CDR. Thus, it is
+  script_tag(name:"insight", value:"No size checking is done when setting the user field on a CDR. Thus, it is
 possible for someone to use an arbitrarily large string and write past the end of the user field storage buffer.
 This allows the possibility of remote code injection.");
 
-  script_tag(name: "impact", value: "An authenticated remote attacker may execute arbitrary code.");
+  script_tag(name:"impact", value:"An authenticated remote attacker may execute arbitrary code.");
 
-  script_tag(name: "affected", value: "Asterisk Open Source 13.x, 14.x and Certified Asterisk 13.13.");
+  script_tag(name:"affected", value:"Asterisk Open Source 13.x, 14.x and Certified Asterisk 13.13.");
 
-  script_tag(name: "solution", value: "Upgrade to Version 13.14.1, 14.3.1, 13.13-cert3 or
+  script_tag(name:"solution", value:"Upgrade to Version 13.14.1, 14.3.1, 13.13-cert3 or
 later.");
 
-  script_xref(name: "URL", value: "http://downloads.asterisk.org/pub/security/AST-2017-001.html");
+  script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2017-001.html");
 
   exit(0);
 }

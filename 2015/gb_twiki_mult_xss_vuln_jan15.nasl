@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_mult_xss_vuln_jan15.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_twiki_mult_xss_vuln_jan15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # TWiki Multiple Cross-Site Scripting Vulnerabilities - Jan15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805234");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-9325");
   script_bugtraq_id(71735);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-06 12:20:18 +0530 (Tue, 06 Jan 2015)");
   script_name("TWiki Multiple Cross-Site Scripting Vulnerabilities - Jan15");
   script_category(ACT_ATTACK);
@@ -60,9 +60,7 @@ if(description)
 
   script_tag(name:"affected", value:"TWiki versions 6.0.1");
 
-  script_tag(name:"solution", value:"Update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.twiki.org/cgi-bin/view/Codev/SecurityAlert-CVE-2014-9325");
+  script_tag(name:"solution", value:"Update to the hotfixe in the referenced advisory.");
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Dec/81");
   script_xref(name:"URL", value:"http://www.twiki.org/cgi-bin/view/Codev/SecurityAlert-CVE-2014-9325");

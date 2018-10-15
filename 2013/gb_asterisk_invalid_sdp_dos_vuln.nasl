@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_invalid_sdp_dos_vuln.nasl 11504 2018-09-20 12:55:48Z cfischer $
+# $Id: gb_asterisk_invalid_sdp_dos_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Asterisk Products Invalid SDP SIP Channel Driver DoS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:digium:asterisk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802063");
-  script_version("$Revision: 11504 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-5642");
   script_bugtraq_id(62022);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:55:48 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-28 15:06:58 +0530 (Mon, 28 Oct 2013)");
   script_name("Asterisk Products Invalid SDP SIP Channel Driver DoS Vulnerability");
   script_category(ACT_DENIAL);
@@ -54,8 +54,7 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to Asterisk Open Source to 1.8.23.1, 10.12.3, 11.5.1 or later,
   Certified Asterisk to 1.8.15-cert3, 11.2-cert2 or later,
-  Asterisk Digiumphones 10.12.3-digiumphones or later,
-  For updates refer to http://www.asterisk.org");
+  Asterisk Digiumphones 10.12.3-digiumphones or later.");
 
   script_tag(name:"insight", value:"Error within the SIP channel driver when handling a crafted SDP in a SIP
   request.");
@@ -70,6 +69,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"exploit");
 
+  script_xref(name:"URL", value:"http://www.asterisk.org");
   exit(0);
 }
 

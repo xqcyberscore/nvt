@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_sec_bypass_vuln_apr13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_postgresql_sec_bypass_vuln_apr13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # PostgreSQL Security Bypass Vulnerability - Apr13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803475");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1901");
   script_bugtraq_id(58878);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-09 17:48:56 +0530 (Tue, 09 Apr 2013)");
   script_name("PostgreSQL Security Bypass Vulnerability - Apr13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52837");
@@ -51,13 +51,12 @@ if(description)
   script_tag(name:"affected", value:"PostgreSQL version 9.2.x before 9.2.4 and 9.1.x before 9.1.9");
   script_tag(name:"insight", value:"Improper handling of a call for the pg_start_backup() or pg_stop_backup()
   functions.");
-  script_tag(name:"solution", value:"Upgrade to PostgreSQL 9.1.8 or 9.2.3 or later,
-
-  For updates refer to http://www.postgresql.org/download");
+  script_tag(name:"solution", value:"Upgrade to PostgreSQL 9.1.8 or 9.2.3 or later.");
   script_tag(name:"summary", value:"This host is installed with PostgreSQL and is prone to security
   bypass vulnerability.");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.postgresql.org/download");
   exit(0);
 }
 

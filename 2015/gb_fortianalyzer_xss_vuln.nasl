@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortianalyzer_xss_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_fortianalyzer_xss_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # FortiAnalyzer Reflected Cross Site Scripting Vulnerability - May 2015
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/h:fortinet:fortianalyzer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805640");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-3620");
   script_bugtraq_id(74646);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-01 15:56:50 +0530 (Mon, 01 Jun 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("FortiAnalyzer Reflected Cross Site Scripting Vulnerability - May 2015");
@@ -56,7 +56,7 @@ if(description)
   through 5.0.10 and 5.2.0 through 5.2.1");
 
   script_tag(name:"solution", value:"Upgrade to Fortinet FortiAnalyzer 5.0.11 or
-  5.2.2 or later. For updates refer to http://www.fortinet.com");
+  5.2.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +67,7 @@ if(description)
   script_family("FortiOS Local Security Checks");
   script_dependencies("gb_fortianalyzer_version.nasl");
   script_mandatory_keys("fortianalyzer/version");
+  script_xref(name:"URL", value:"http://www.fortinet.com");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmturbo_operations_mngr_dir_trav_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_vmturbo_operations_mngr_dir_trav_vuln.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # VM Turbo Operations Manager Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804448");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2014-3806");
   script_bugtraq_id(67292);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-09 14:42:04 +0530 (Fri, 09 May 2014)");
   script_name("VM Turbo Operations Manager Directory Traversal Vulnerability");
 
@@ -45,8 +45,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to perform directory traversal
   attacks and read arbitrary files on the affected application.");
   script_tag(name:"affected", value:"VM Turbo Operations Manager 4.5.x and earlier");
-  script_tag(name:"solution", value:"Upgrade to VM Turbo Operations Manager 4.6 or later,
-  For updates refer to http://go.vmturbo.com/cloud-edition-download.html ");
+  script_tag(name:"solution", value:"Upgrade to VM Turbo Operations Manager 4.6 or later.");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/532061");
   script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/vm-turbo-operations-manager-45x-directory-traversal");
@@ -61,6 +60,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://go.vmturbo.com/cloud-edition-download.html");
   exit(0);
 }
 

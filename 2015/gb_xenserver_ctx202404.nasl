@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx202404.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_xenserver_ctx202404.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Citrix XenServer Multiple Security Updates (CTX202404)
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2015-7835", "CVE-2015-7969", "CVE-2015-7970", "CVE-2015-7971", "CVE-2015-7972");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Citrix XenServer Multiple Security Updates (CTX202404)");
 
   script_xref(name:"URL", value:"http://support.citrix.com/article/CTX202404");
 
   script_tag(name:"vuldetect", value:"Check the installed hotfixes");
-  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory.");
 
   script_tag(name:"summary", value:"A number of security vulnerabilities have been identified in Citrix XenServer that may allow a malicious administrator of a guest VM to compromise the host and guest users to crash the host. These vulnerabilities affect all currently supported versions of Citrix XenServer up to and including Citrix XenServer 6.5 Service Pack 1.
 The following vulnerabilities have been addressed:
@@ -55,7 +55,7 @@ CVE-2015-7972 (Low): Populate-on-demand balloon size inaccuracy can crash guests
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-26 12:29:16 +0100 (Thu, 26 Nov 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Citrix Xenserver Local Security Checks");
@@ -63,7 +63,7 @@ CVE-2015-7972 (Low): Populate-on-demand balloon size inaccuracy can crash guests
   script_dependencies("gb_xenserver_version.nasl");
   script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

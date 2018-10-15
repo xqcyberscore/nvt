@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arubaos_cve_2015_1388.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_arubaos_cve_2015_1388.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # ArubaOS Remote Access Point (RAP) Command Injection
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-1388");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
 
   script_name("ArubaOS Remote Access Point (RAP) Command Injection");
 
@@ -48,7 +48,7 @@ attackers to execute arbitrary commands via unspecified vectors.");
 
   - ArubaOS 6.3.1.15 or later
 
-  - ArubaOS 6.4.2.4 or later");
+  - ArubaOS 6.4.2.4 or later.");
 
   script_tag(name:"summary", value:"Aruba has identified a problem with the 'RAP Console' feature used in
 Aruba access points operating in Remote AP mode.");
@@ -67,7 +67,7 @@ Aruba access points operating in Remote AP mode.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-07 14:06:08 +0200 (Tue, 07 Apr 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -75,7 +75,7 @@ Aruba access points operating in Remote AP mode.");
   script_dependencies("gb_arubaos_detect.nasl");
   script_mandatory_keys("ArubaOS/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

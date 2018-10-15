@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16954.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_f5_big_ip_sol16954.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # F5 BIG-IP - SOL16954 - Multiple PHP CDF vulnerabilities CVE-2014-0237 and CVE-2014-0238
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-0237", "CVE-2014-0238");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11872 $");
 
   script_name("F5 BIG-IP - SOL16954 - Multiple PHP CDF vulnerabilities CVE-2014-0237 and CVE-2014-0238");
 
@@ -52,7 +52,7 @@ The cdf_read_property_info function in cdf.c in the Fileinfo component in PHP be
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-19 10:32:18 +0200 (Sat, 19 Sep 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");
@@ -60,7 +60,7 @@ The cdf_read_property_info function in cdf.c in the Fileinfo component in PHP be
   script_dependencies("gb_f5_big_ip_version.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

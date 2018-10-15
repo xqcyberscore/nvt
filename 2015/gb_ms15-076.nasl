@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-076.nasl 11635 2018-09-27 06:07:37Z cfischer $
+# $Id: gb_ms15-076.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # MS Windows Remote Procedure Call Privilege Elevation Vulnerability (3067505)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805921");
-  script_version("$Revision: 11635 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-2370");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 12:11:27 +0530 (Wed, 15 Jul 2015)");
   script_name("MS Windows Remote Procedure Call Privilege Elevation Vulnerability (3067505)");
 
@@ -56,9 +56,7 @@ if(description)
   Microsoft Windows Server 2012/2012R2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/en-us/library/security/MS15-076");
+  listed hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -93,7 +91,7 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"System32\Kerberos.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Kerberos.dll");
 if(!dllVer){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_host_hdr_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_squid_host_hdr_dos_vuln.nasl 11866 2018-10-12 10:12:29Z cfischer $
 #
 # Squid Proxy Host Header Denial Of Service Vulnerability
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802057");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11866 $");
   script_cve_id("CVE-2013-4123");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:12:29 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-12 12:42:47 +0530 (Mon, 12 Aug 2013)");
   script_name("Squid Proxy Host Header Denial Of Service Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Squid Proxy Server and is prone to Denial Of Service
 vulnerability.");
   script_tag(name:"vuldetect", value:"Send crafted 'Host' header request and check is it vulnerable to DoS or not.");
-  script_tag(name:"solution", value:"Upgrade to Squid Version 3.2.13 or 3.3.8 or latest or apply patch,
-For updates refer to http://www.squid-cache.org/Download");
+  script_tag(name:"solution", value:"Upgrade to Squid Version 3.2.13 or 3.3.8 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Error when handling port number values within the 'Host' header of HTTP
 requests.");
@@ -62,6 +61,7 @@ service via a crafted port number values in the 'Host' header.");
   script_mandatory_keys("squid_proxy_server/installed");
   script_require_ports("Services/www", "Services/http_proxy", 3128, 8080);
 
+  script_xref(name:"URL", value:"http://www.squid-cache.org/Download");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_xss_vuln.nasl 9248 2018-03-29 04:48:33Z asteins $
+# $Id: gb_cms_made_simple_xss_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # CMS Made Simple Multiple XSS Vulnerabilities
 #
@@ -30,18 +30,18 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106697");
-  script_version("$Revision: 9248 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-29 06:48:33 +0200 (Thu, 29 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2017-03-28 11:42:33 +0700 (Tue, 28 Mar 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-28 11:42:33 +0700 (Tue, 28 Mar 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-7255", "CVE-2017-7256", "CVE-2017-7257", "CVE-2017-9668");
   script_bugtraq_id(97203, 97204, 97205);
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("CMS Made Simple Multiple XSS Vulnerabilities");
 
@@ -52,27 +52,28 @@ if (description)
   script_dependencies("cms_made_simple_detect.nasl");
   script_mandatory_keys("cmsmadesimple/installed");
 
-  script_tag(name: "summary", value: "CMS Made Simple is prone to multiple cross-site scripting vulnerabilities.");
+  script_tag(name:"summary", value:"CMS Made Simple is prone to multiple cross-site scripting vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "CMS Made Simple is prone to multiple cross-site scripting vulnerabilities:
+  script_tag(name:"insight", value:"CMS Made Simple is prone to multiple cross-site scripting vulnerabilities:
 
-- XSS in the 'Content-->News-->Add Article' feature via the m1_title parameter. (CVE-2017-7255)
+  - XSS in the 'Content-->News-->Add Article' feature via the m1_title parameter. (CVE-2017-7255)
 
-- XSS in the 'Content-->News-->Add Article' feature via the m1_summary parameter. (CVE-2017-7256)
+  - XSS in the 'Content-->News-->Add Article' feature via the m1_summary parameter. (CVE-2017-7256)
 
-- XSS in the 'Content-->News-->Add Article' feature via the m1_content parameter. (CVE-2017-7257)
+  - XSS in the 'Content-->News-->Add Article' feature via the m1_content parameter. (CVE-2017-7257)
 
-- In admin\addgroup.php when adding a user group, there is no XSS filtering, resulting in storage-type XSS
+  - In admin\addgroup.php when adding a user group, there is no XSS filtering, resulting in storage-type XSS
 generation, via the description parameter in an addgroup action. (CVE-2017-9668)");
 
-  script_tag(name: "affected", value: "CMS Made Simple version 2.1.6.");
+  script_tag(name:"affected", value:"CMS Made Simple version 2.1.6.");
 
-  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of this vulnerability.
-Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name: "URL", value: "https://github.com/XiaoZhis/ProjectSend/issues/2");
+  script_xref(name:"URL", value:"https://github.com/XiaoZhis/ProjectSend/issues/2");
 
   exit(0);
 }

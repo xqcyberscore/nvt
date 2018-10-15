@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-006.nasl 11612 2018-09-26 05:47:26Z cfischer $
+# $Id: gb_ms15-006.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Error Reporting Security Feature Bypass Vulnerability (3004365)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805239");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-0001");
   script_bugtraq_id(71927);
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-14 08:08:22 +0530 (Wed, 14 Jan 2015)");
   script_name("Microsoft Windows Error Reporting Security Feature Bypass Vulnerability (3004365)");
 
@@ -54,9 +54,7 @@ if(description)
   Microsoft Windows Server 2012/R2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS15-006");
+  listed hotfixes or download and install the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/62134");
@@ -86,7 +84,7 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\wer.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\wer.dll");
 if(!dllVer){
   exit(0);
 }

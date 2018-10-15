@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_on_eol_lin.nasl 7570 2017-10-26 07:33:23Z asteins $
+# $Id: gb_jboss_on_eol_lin.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # JBoss Operations Network End of Life Detection (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113020");
-  script_version("$Revision: 7570 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:33:23 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-16 14:09:10 +0200 (Mon, 16 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,23 +48,15 @@ if( description )
   script_require_ports("Services/www", 7080);
   script_mandatory_keys("jboss_on/installed", "Host/runs_unixoide");
 
-  tag_summary = "The JBoss Operations Network version on the remote host has reached the end of life and should not be used anymore.";
-
-  tag_impact = "An end of life version of JBoss Operations Network is not receiving any security updates from the vendor. Unfixed security vulnerabilities
-    might be leveraged by an attacker to compromise the security of this host.";
-
-  tag_solution = "Update the JBoss Operations Network version on the remote host to a still supported version.";
-
-  tag_vuldetect = "Get the installed version with the help of the detection NVT and check if the version is unsupported.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
+  script_tag(name:"summary", value:"The JBoss Operations Network version on the remote host has reached the end of life and should not be used anymore.");
+  script_tag(name:"impact", value:"An end of life version of JBoss Operations Network is not receiving any security updates from the vendor. Unfixed security vulnerabilities
+    might be leveraged by an attacker to compromise the security of this host.");
+  script_tag(name:"solution", value:"Update the JBoss Operations Network version on the remote host to a still supported version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_xref(name:"URL", value:"https://access.redhat.com/support/policy/updates/jboss_notes/#Life_cycle_dates");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:redhat:jboss_operations_network";

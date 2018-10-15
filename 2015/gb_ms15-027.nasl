@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-027.nasl 11612 2018-09-26 05:47:26Z cfischer $
+# $Id: gb_ms15-027.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows NETLOGON Spoofing Vulnerability (3002657)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805145");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-0005");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-11 11:03:39 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows NETLOGON Spoofing Vulnerability (3002657)");
@@ -87,7 +87,7 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Netlogon.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Netlogon.dll");
 if(!dllVer){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_bof_vuln_jan13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_adobe_prdts_bof_vuln_jan13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Adobe Flash Player Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803152");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-0630");
   script_bugtraq_id(57184);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-15 15:38:40 +0530 (Tue, 15 Jan 2013)");
   script_name("Adobe Flash Player Buffer Overflow Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51771");
@@ -51,12 +51,12 @@ if(description)
   script_tag(name:"affected", value:"Adobe Flash Player version before 10.3.183.50, 11.x before 11.5.502.146 on Windows");
   script_tag(name:"insight", value:"An integer overflow error within 'flash.display.BitmapData()', which can be
   exploited to cause a heap-based buffer overflow.");
-  script_tag(name:"solution", value:"Update to Adobe Flash Player version 10.3.183.50 or 11.5.502.146 or later,
-  For updates refer to http://get.adobe.com/flashplayer");
+  script_tag(name:"solution", value:"Update to Adobe Flash Player version 10.3.183.50 or 11.5.502.146 or later.");
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
   buffer overflow vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

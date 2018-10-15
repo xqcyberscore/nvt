@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jetbrains_loc_file_disc_vuln.nasl 9475 2018-04-13 10:10:45Z asteins $
+# $Id: gb_jetbrains_loc_file_disc_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # JetBrains Remote Code Execution and Local File Disclosure Vulnerability (Active Check)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:jetbrains:jetbrains";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107231");
-  script_version("$Revision: 9475 $");
+  script_version("$Revision: 11874 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 12:10:45 +0200 (Fri, 13 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-25 10:25:40 +0530 (Fri, 25 Aug 2017)");
 
   script_tag(name:"qod_type", value:"exploit");
@@ -46,20 +46,19 @@ if(description)
   to use a malicious website in order to access various internal API endpoints, gain access to data saved by the IDE, and gather various meta-information like IDE version or open a project. ");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  remote attackers to read arbitrary files on the target system.
-
-  Impact Level: System/Application");
+  remote attackers to read arbitrary files on the target system.");
 
   script_tag(name:"affected", value:"JetBrains releases 2016.1 and before.");
 
-  script_tag(name:"solution", value: "Patch is available at : https://blog.jetbrains.com/blog/2016/05/11/security-update-for-intellij-based-ides-v2016-1-and-older-versions/");
+  script_tag(name:"solution", value:"Patch is available.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://blog.saynotolinux.com/blog/2016/08/15/jetbrains-ide-remote-code-execution-and-local-file-disclosure-vulnerability-analysis/");
+  script_xref(name:"URL", value:"https://blog.jetbrains.com/blog/2016/05/11/security-update-for-intellij-based-ides-v2016-1-and-older-versions/");
 
   script_category(ACT_ATTACK);
-  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_jetbrains_ide_detection.nasl");
   script_mandatory_keys("jetBrains/installed", "jetBrains/ide");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_dashboard_xss_vuln_feb15.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_splunk_dashboard_xss_vuln_feb15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Splunk Dashboard Cross-Site Scripting Vulnerability - Feb15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:splunk:splunk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805334");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-8302");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-05 12:04:16 +0530 (Thu, 05 Feb 2015)");
   script_name("Splunk Dashboard Cross-Site Scripting Vulnerability - Feb15");
 
@@ -53,7 +53,7 @@ if(description)
   and 6.0.x before 6.0.6 and 6.1.x before 6.1.4");
 
   script_tag(name:"solution", value:"Upgrade to Splunk version 5.0.10
-  or 6.0.6 or 6.1.4 or later. For updates refer to http://www.splunk.com");
+  or 6.0.6 or 6.1.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

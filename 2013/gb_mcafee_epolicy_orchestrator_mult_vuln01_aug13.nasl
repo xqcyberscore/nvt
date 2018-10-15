@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_mult_vuln01_aug13.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_mcafee_epolicy_orchestrator_mult_vuln01_aug13.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # McAfee ePolicy Orchestrator (ePO) Multiple Vulnerabilities-01 August13
 #
@@ -28,22 +28,20 @@ CPE = "cpe:/a:mcafee:epolicy_orchestrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803864");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-0140", "CVE-2013-0141");
   script_bugtraq_id(59500, 59505);
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-09 14:52:18 +0530 (Fri, 09 Aug 2013)");
   script_name("McAfee ePolicy Orchestrator (ePO) Multiple Vulnerabilities-01 August13");
 
 
   script_tag(name:"summary", value:"This host is running McAfee ePolicy Orchestrator and is prone to multiple
 vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help detect NVT and check the version is
-vulnerable or not.");
-  script_tag(name:"solution", value:"Upgrade to McAfee ePolicy Orchestrator version 5.0 or 4.6.6 or 4.5.7 or later,
-For updates refer to http://www.mcafee.com/in/products/epolicy-orchestrator.aspx");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade to McAfee ePolicy Orchestrator version 5.0 or 4.6.6 or 4.5.7 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Flaws are due to improper sanitation of user supplied input via 'uid'
 parameter to /EPOAGENTMETA/DisplayMSAPropsDetail.do script and specifically
@@ -62,6 +60,7 @@ disclosure of arbitrary data.");
   script_dependencies("gb_mcafee_epolicy_orchestrator_detect.nasl");
   script_mandatory_keys("mcafee_ePO/installed");
   script_require_ports("Services/www", 8443);
+  script_xref(name:"URL", value:"http://www.mcafee.com/in/products/epolicy-orchestrator.aspx");
   exit(0);
 }
 

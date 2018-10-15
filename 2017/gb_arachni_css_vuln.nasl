@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arachni_css_vuln.nasl 9532 2018-04-19 09:52:06Z asteins $
+# $Id: gb_arachni_css_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Arachni v1.5-0.5.11 - Cross-Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:arachni:arachni";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107221");
-  script_version("$Revision: 9532 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 11:52:06 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-15 12:26:25 +0200 (Thu, 15 Jun 2017)");
 
   script_tag(name:"cvss_base", value:"4.3");
@@ -39,21 +39,21 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Arachni v1.5-0.5.11 - Cross-Site Scripting Vulnerability");
 
-  script_tag(name: "summary", value: "Arachni is vulnerable to a Cross-Site Scripting Vulnerability.");
+  script_tag(name:"summary", value:"Arachni is vulnerable to a Cross-Site Scripting Vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "The target URL field which is available when configuring a scan is vulnerable to cross site scripting.
+  script_tag(name:"insight", value:"The target URL field which is available when configuring a scan is vulnerable to cross site scripting.
   As scans can be shared and viewed by other users including the admin account, it is possible to execute the cross-site scripting under another users context.");
 
-  script_tag(name: "impact" , value: "The vulnerability allows remote attackers to inject own malicious script codes on the application-side of the vulnerable service.");
+  script_tag(name:"impact", value:"The vulnerability allows remote attackers to inject own malicious script codes on the application-side of the vulnerable service.");
 
-  script_tag(name: "affected", value: "Arachni Version 1.5-0.5.11");
+  script_tag(name:"affected", value:"Arachni Version 1.5-0.5.11");
 
-  script_tag(name: "solution", value: "Update to 1.5-0.5.12 or later.");
+  script_tag(name:"solution", value:"Update to 1.5-0.5.12 or later.");
 
-  script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2017/May/5");
-  script_xref(name: "URL", value: "https://github.com/Arachni/arachni-ui-web/blob/experimental/CHANGELOG.md#0512-march-29-2017");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/May/5");
+  script_xref(name:"URL", value:"https://github.com/Arachni/arachni-ui-web/blob/experimental/CHANGELOG.md#0512-march-29-2017");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_category(ACT_GATHER_INFO);

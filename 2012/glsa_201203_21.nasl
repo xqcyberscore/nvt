@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201203_21.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201203_21.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_cve_id("CVE-2012-1183", "CVE-2012-1184");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-30 07:59:57 -0400 (Mon, 30 Apr 2012)");
   script_name("Gentoo Security Advisory GLSA 201203-21 (Asterisk)");
   script_category(ACT_GATHER_INFO);
@@ -47,13 +47,12 @@ if(description)
   script_tag(name:"solution", value:"All Asterisk users should upgrade to the latest version:
 
       # emerge --sync
-      # emerge --ask --oneshot --verbose '>=net-misc/asterisk-1.8.10.1'
+      # emerge --ask --oneshot --verbose '>=net-misc/asterisk-1.8.10.1'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201203-21
-http://bugs.gentoo.org/show_bug.cgi?id=408431
-http://downloads.asterisk.org/pub/security/AST-2012-002.txt
-http://downloads.asterisk.org/pub/security/AST-2012-003.txt");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201203-21");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=408431");
+  script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2012-002.txt");
+  script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2012-003.txt");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201203-21.");
   script_tag(name:"qod_type", value:"package");

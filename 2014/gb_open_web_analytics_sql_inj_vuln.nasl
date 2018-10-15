@@ -29,12 +29,12 @@ CPE = "cpe:/a:openwebanalytics:open_web_analytics";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803795");
-  script_version("$Revision: 11504 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1206");
   script_bugtraq_id(64774);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 14:55:48 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 13:34:38 +0530 (Tue, 21 Jan 2014)");
   script_name("Open Web Analytics 'owa_email_address' SQL Injection Vulnerability");
 
@@ -55,8 +55,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"solution", value:"Upgrade to Open Web Analytics 1.5.5 or later,
-  For updates refer to http://downloads.openwebanalytics.com");
+  script_tag(name:"solution", value:"Upgrade to Open Web Analytics 1.5.5 or later.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/56350");
   script_xref(name:"URL", value:"http://www.secureworks.com/advisories/SWRX-2014-001/SWRX-2014-001.pdf");
@@ -68,6 +67,7 @@ if(description)
   script_mandatory_keys("OpenWebAnalytics/installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"http://downloads.openwebanalytics.com");
   exit(0);
 }
 

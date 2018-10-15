@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtls_virtua_mult_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_vtls_virtua_mult_sql_inj_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # vtls-Virtua 'InfoStation.cgi' Multiple SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804759");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-2081");
   script_bugtraq_id(69413);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-08-27 13:21:53 +0530 (Wed, 27 Aug 2014)");
   script_name("vtls-Virtua 'InfoStation.cgi' Multiple SQL Injection Vulnerabilities");
 
@@ -46,8 +46,7 @@ if(description)
   and script code and SQL statements on the vulnerable system, which may leads to
   access or modify data in the underlying database.");
   script_tag(name:"affected", value:"vtls-Virtua version 2014.X and 2013.2.X");
-  script_tag(name:"solution", value:"Upgrade to version 2014.1.1 or 2013.2.4 or higher,
-  for updates refer to http://www.vtls.com/products/vtls-virtua");
+  script_tag(name:"solution", value:"Upgrade to version 2014.1.1 or 2013.2.4 or later.");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127997");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Aug/64");
@@ -60,6 +59,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+  script_xref(name:"URL", value:"http://www.vtls.com/products/vtls-virtua");
   exit(0);
 }
 

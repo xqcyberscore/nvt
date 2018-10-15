@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011052.nasl 6873 2017-08-08 12:35:26Z teissa $
+# $Id: gb_ms_kb4011052.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Microsoft Outlook 2016 Multiple Vulnerabilities (KB4011052)
 #
@@ -27,23 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811263");
-  script_version("$Revision: 6873 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-8571", "CVE-2017-8572", "CVE-2017-8663");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-08 14:35:26 +0200 (Tue, 08 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-28 16:05:18 +0530 (Fri, 28 Jul 2017)");
   script_name("Microsoft Outlook 2016 Multiple Vulnerabilities (KB4011052)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4011052");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
-   
-  - An error when Microsoft Office Outlook improperly handles input. 
+
+  - An error when Microsoft Office Outlook improperly handles input.
 
   - An error when Microsoft Office improperly discloses the contents of its memory.
 
@@ -52,21 +51,17 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to execute arbitrary commands, gain access to potentially sensitive
-  information and bypass certain security restrictions.
-
-  Impact Level: System/Application");
+  information and bypass certain security restrictions.");
 
   script_tag(name:"affected", value:"Microsoft Outlook 2016");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4011052");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4011052");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4011052");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -83,32 +78,23 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 
-## Variable Initialization
-outlookVer = "";
-outlookFile = "";
-
-## Check for Office outlook Version
 outlookVer = get_kb_item("SMB/Office/Outlook/Version");
 
-## Check for Microsoft Outlook 2016
 if(!outlookVer || !(outlookVer =~ "^16\.")){
   exit(0);
 }
 
-## Get Office outlook Path
 outlookFile = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
                               "\App Paths\OUTLOOK.EXE", item:"Path");
 if(!outlookFile){
   exit(0);
 }
 
-## Get Office outlook Version
 outlookVer = fetch_file_version(sysPath:outlookFile, file_name:"outlook.exe");
 if(!outlookVer){
   exit(0);
 }
 
-## Check for vulnerable versions
 if(version_in_range(version:outlookVer, test_version:"16.0", test_version2:"16.0.4573.1000"))
 {
   report = 'File checked:     ' +  outlookFile + "\outlook.exe" + '\n' +

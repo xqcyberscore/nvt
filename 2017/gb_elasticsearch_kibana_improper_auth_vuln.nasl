@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_improper_auth_vuln.nasl 9011 2018-03-02 13:09:15Z cfischer $
+# $Id: gb_elasticsearch_kibana_improper_auth_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Elasticsearch Kibana Improper Authentication Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811410");
-  script_version("$Revision: 9011 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2016-10364");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-02 14:09:15 +0100 (Fri, 02 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-03 20:27:52 +0530 (Mon, 03 Jul 2017)");
   script_name("Elasticsearch Kibana Improper Authentication Vulnerability");
 
@@ -43,22 +43,19 @@ if(description)
   This NVT has been split into two NVTs with the OIDs 1.3.6.1.4.1.25623.1.0.108259 and
   1.3.6.1.4.1.25623.1.0.108260");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an improper authentication to
   requests to advanced settings and the short URL service.");
 
   script_tag(name:"impact", value:"Successful exploitation will lead an
   authenticated user to make requests to advanced settings and the short URL
-  services regardless of their own permissions.
-
-  Impact Level: Application");
+  services regardless of their own permissions.");
 
   script_tag(name:"affected", value:"Elasticsearch Kibana version 5.0.0 and 5.0.1");
 
   script_tag(name:"solution", value:"Upgrade to Elasticsearch Kibana version
-  5.0.2 or later. For updates refer to https://www.elastic.co");
+  5.0.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

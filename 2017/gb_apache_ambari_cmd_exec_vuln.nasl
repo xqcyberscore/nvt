@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_cmd_exec_vuln.nasl 5803 2017-03-31 05:06:31Z ckuerste $
+# $Id: gb_apache_ambari_cmd_exec_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Apache Ambari Command Execution Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:apache:ambari";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106712");
-  script_version("$Revision: 5803 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-31 07:06:31 +0200 (Fri, 31 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2017-03-31 11:19:39 +0700 (Fri, 31 Mar 2017)");
-  script_tag(name: "cvss_base", value: "7.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-31 11:19:39 +0700 (Fri, 31 Mar 2017)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-6807");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Apache Ambari Command Execution Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_apache_ambari_detect.nasl");
   script_mandatory_keys("Apache/Ambari/Installed");
 
-  script_tag(name: "summary", value: "Apache Ambrari is prone to an unauthenticated custom command execution
+  script_tag(name:"summary", value:"Apache Ambrari is prone to an unauthenticated custom command execution
 vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Custom commands may be executed on the Ambari Agent hosts without
+  script_tag(name:"insight", value:"Custom commands may be executed on the Ambari Agent hosts without
 authorization, leading to unauthorized access to operations that may affect the underlying system. Such
 operations are invoked by the Ambari Agent process on Ambari Agent hosts, as the user executing the Ambari Agent
 process.");
 
-  script_tag(name: "affected", value: "Apache Ambari 2.4.0 to 2.4.1");
+  script_tag(name:"affected", value:"Apache Ambari 2.4.0 to 2.4.1");
 
-  script_tag(name: "solution", value: "Upgrade to version 2.4.2");
+  script_tag(name:"solution", value:"Upgrade to version 2.4.2");
 
-  script_xref(name: "URL", value: "https://cwiki.apache.org/confluence/display/AMBARI/Ambari+Vulnerabilities#AmbariVulnerabilities-FixedinAmbari2.4.2");
+  script_xref(name:"URL", value:"https://cwiki.apache.org/confluence/display/AMBARI/Ambari+Vulnerabilities#AmbariVulnerabilities-FixedinAmbari2.4.2");
 
   exit(0);
 }

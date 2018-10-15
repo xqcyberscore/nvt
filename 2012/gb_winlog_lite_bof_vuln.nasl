@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winlog_lite_bof_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_winlog_lite_bof_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Sielco Sistemi Winlog PRO Buffer overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802552");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-4037");
   script_bugtraq_id(50932);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-03 18:03:49 +0530 (Tue, 03 Jan 2012)");
   script_name("Sielco Sistemi Winlog PRO Buffer overflow Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47078");
@@ -49,7 +49,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an unspecified error when processing certain values
   in project files and can be exploited to cause a buffer overflow by tricking
   a user into loading a malicious project file.");
-  script_tag(name:"solution", value:"Upgrade to  Winlog Lite version 2.07.09 or later,");
+  script_tag(name:"solution", value:"Upgrade to  Winlog Lite version 2.07.09 or later.");
   script_tag(name:"summary", value:"This host is installed with Sielco Sistemi Winlog PRO and is prone
   to buffer overflow vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary

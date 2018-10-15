@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_clickjacking_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_mozilla_prdts_clickjacking_vuln_win.nasl 11861 2018-10-12 09:29:59Z cfischer $
 #
 # Mozilla Products Certificate Page Clickjacking Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802893");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11861 $");
   script_cve_id("CVE-2012-1964");
   script_bugtraq_id(54581);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:29:59 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-07-23 18:40:44 +0530 (Mon, 23 Jul 2012)");
   script_name("Mozilla Products Certificate Page Clickjacking Vulnerability (Windows)");
 
@@ -61,14 +61,15 @@ if(description)
   exception via an IFRAME element");
   script_tag(name:"summary", value:"This host is installed with Mozilla firefox/thunderbird/seamonkey and is
   prone to clickjacking vulnerability.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 14.0 or ESR version 10.0.6 or later,  Upgrade to SeaMonkey version to 2.11 or later,
-  http://www.mozilla.org/projects/seamonkey/
-
-  Upgrade to Thunderbird version to 14.0 or ESR 10.0.6 or later,
-  http://www.mozilla.org/en-US/thunderbird/");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 14.0 or ESR version 10.0.6 or later, upgrade to SeaMonkey version to 2.11 or later,
+  upgrade to Thunderbird version to 14.0 or ESR 10.0.6 or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/projects/seamonkey/");
+  script_xref(name:"URL", value:"http://www.mozilla.org/en-US/thunderbird/");
+
   exit(0);
 }
 

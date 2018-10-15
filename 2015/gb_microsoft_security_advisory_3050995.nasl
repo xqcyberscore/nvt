@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3050995.nasl 11635 2018-09-27 06:07:37Z cfischer $
+# $Id: gb_microsoft_security_advisory_3050995.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Digital Certificates Security Advisory (3050995)
 #
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805507");
-  script_version("$Revision: 11635 $");
+  script_version("$Revision: 11876 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 08:07:37 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 18:58:02 +0530 (Wed, 25 Mar 2015)");
   script_name("Microsoft Digital Certificates Security Advisory (3050995)");
 
@@ -85,7 +85,7 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Advpack.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Advpack.dll");
 if(!dllVer){
   exit(0);
 }

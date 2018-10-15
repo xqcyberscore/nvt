@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mit_krb5_kpasswd_pingpong_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_mit_krb5_kpasswd_pingpong_dos_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # MIT Kerberos 5 kpasswd UDP Packet Denial Of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802056");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_bugtraq_id(60008);
   script_cve_id("CVE-2002-2443");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-20 10:48:39 +0530 (Thu, 20 Jun 2013)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -53,10 +53,10 @@ if(description)
   UDP packets before sending responses and can be exploited to exhaust CPU and
   network resources via the UDP 'ping-pong' attack.");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"solution", value:"Upgrade to MIT Kerberos 5 version 1.11.3 or later,
-  For updates refer to http://web.mit.edu/kerberos");
+  script_tag(name:"solution", value:"Upgrade to MIT Kerberos 5 version 1.11.3 or later.");
   script_tag(name:"summary", value:"This host is running MIT Kerberos and is prone to denial of
   service vulnerability.");
+  script_xref(name:"URL", value:"http://web.mit.edu/kerberos");
   exit(0);
 }
 

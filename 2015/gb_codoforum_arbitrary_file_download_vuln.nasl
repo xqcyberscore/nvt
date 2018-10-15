@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_codoforum_arbitrary_file_download_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_codoforum_arbitrary_file_download_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Codoforum Arbitrary File Download Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:codoforum:codoforum";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805494");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-9261");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-17 12:08:01 +0530 (Tue, 17 Mar 2015)");
   script_name("Codoforum Arbitrary File Download Vulnerability");
   script_category(ACT_ATTACK);
@@ -53,7 +53,7 @@ if(description)
   attackers to gain access to arbitrary files and to compromise the application.");
   script_tag(name:"affected", value:"Codoforum version 2.5.1.");
   script_tag(name:"solution", value:"Upgrade to Codoforum version 2.6  or
-  later. For updates refer to https://codoforum.com/");
+  later.");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/130739/");
   script_xref(name:"URL", value:"http://security.szurek.pl/codoforum-251-arbitrary-file-download.html");
@@ -61,6 +61,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"https://codoforum.com/");
   exit(0);
 }
 

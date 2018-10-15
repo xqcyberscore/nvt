@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_linksys_security_bypass_60897.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_multiple_linksys_security_bypass_60897.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Multiple Cisco Linksys Products Security Bypass Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2013-5122");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Multiple Cisco Linksys Products Security Bypass Vulnerability");
 
@@ -40,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60897");
   script_xref(name:"URL", value:"http://www.cisco.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-05 11:24:23 +0200 (Thu, 05 Jun 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -65,7 +65,7 @@ Cisco Linksys EA3500 running firmware 1.0.30
 Cisco Linksys E4200 running firmware 2.0.36
 Cisco Linksys EA4500 running firmware 2.0.36 ");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

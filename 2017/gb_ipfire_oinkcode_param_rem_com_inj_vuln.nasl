@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipfire_oinkcode_param_rem_com_inj_vuln.nasl 8957 2018-02-26 14:41:13Z asteins $
+# $Id: gb_ipfire_oinkcode_param_rem_com_inj_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # IPFire 'OINKCODE' Parameter Remote Command injection Vulnerability
 #
@@ -28,12 +28,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811728");
-  script_version("$Revision: 8957 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-9757");
   script_bugtraq_id(99173);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-26 15:41:13 +0100 (Mon, 26 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-06 16:29:23 +0530 (Wed, 06 Sep 2017)");
   script_tag(name:"qod_type", value:"package");
   script_name("IPFire 'OINKCODE' Parameter Remote Command injection Vulnerability");
@@ -41,7 +41,7 @@ if (description)
   script_tag(name:"summary", value:"This host is running IPFire and is prone to
   remote command injection vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Check the version of IPFire"); 
+  script_tag(name:"vuldetect", value:"Check the version of IPFire");
 
   script_tag(name:"insight", value:"The flaw exists as the file 'ids.cgi'
   doesn't sanitize the 'OINKCODE' parameter and input gets passed to a system
@@ -49,19 +49,17 @@ if (description)
 
   script_tag(name:"impact", value:"Successfully exploiting this issue may allow
   an attacker to execute arbitrary code in the context of the affected
-  application. Failed exploit attempts may cause a denial-of-service condition. 
-
-  Impact Level: System/Application");
+  application. Failed exploit attempts may cause a denial-of-service condition.");
 
   script_tag(name:"affected", value:"IPFire versions prior to 2.19 Core Update 112");
 
-  script_tag(name: "solution" , value:"Upgrade to IPFire version 2.19 Core
-  Update 112 or later. For updates refer to http://www.ipfire.org");
+  script_tag(name:"solution", value:"Upgrade to IPFire version 2.19 Core
+  Update 112 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/42149");
-  script_xref(name : "URL" , value : "http://www.ipfire.org/news/ipfire-2-19-core-update-112-released");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42149");
+  script_xref(name:"URL", value:"http://www.ipfire.org/news/ipfire-2-19-core-update-112-released");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -73,26 +71,16 @@ if (description)
 
 include("version_func.inc");
 
-# Variable Initialization
-rls = "";
-vers = "";
-version = "";
-core_update = "";
-core = "";
-firVersion = "";
 report = "";
 
-## Get Release
 if(!rls = get_kb_item("ipfire/system-release")){
   exit(0);
 }
 
-## Check for application
 if( "IPFire" >!< rls ){
   exit(0);
 }
 
-## Grep for Version
 vers = eregmatch( pattern:'IPFire ([0-9.]+[^ ]*)', string:rls );
 if(!vers[1]){
   exit(0);
@@ -100,7 +88,6 @@ if(!vers[1]){
   version = vers[1];
 }
 
-## Get Core Update
 core_update = eregmatch( pattern:'core([0-9]+)', string:rls );
 if(core_update[1]){
   core = core_update[1];
@@ -112,7 +99,6 @@ else{
 ##Combine Core Version with Version
 firVersion = version + '.' + core;
 
-## Check for vulnerable version
 if(version_is_less( version:firVersion, test_version:"2.19.112"))
 {
   report_fixed_ver(installed_version: version + ' Core Update' + core,  fixed_version: "2.19 Core Update 112");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_endpoint_manager_web_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_ibm_endpoint_manager_web_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # IBM Endpoint Manager Web Detection
 #
@@ -31,8 +31,8 @@ if (description)
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-03 13:24:33 +0100 (Wed, 03 Dec 2014)");
   script_name("IBM Endpoint Manager Web Detection");
 
@@ -47,7 +47,7 @@ from the reply.");
   script_require_ports("Services/www", 52311);
   script_mandatory_keys("BigFixHTTPServer/banner");
 
- exit(0);
+  exit(0);
 }
 
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_76326.nasl 11345 2018-09-12 07:02:17Z cfischer $
+# $Id: gb_cisco_vcs_76326.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco TelePresence Video Communication Server Expressway Information Disclosure Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-4314");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_version("$Revision: 11345 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Cisco TelePresence Video Communication Server Expressway Information Disclosure Vulnerability");
 
@@ -56,7 +56,7 @@ This issue is being tracked by Cisco BugId CSCuv40422. ");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:02:17 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-27 15:44:02 +0200 (Thu, 27 Aug 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -64,7 +64,7 @@ This issue is being tracked by Cisco BugId CSCuv40422. ");
   script_dependencies("gb_cisco_vcs_detect.nasl", "gb_cisco_vcs_ssh_detect.nasl");
   script_mandatory_keys("cisco_vcs/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

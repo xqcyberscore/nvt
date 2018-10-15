@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_rce_vuln_dec17.nasl 8075 2017-12-11 10:32:06Z asteins $
+# $Id: gb_otrs_rce_vuln_dec17.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # OTRS Remote Code Execution Vulnerability - Dec '17
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:otrs:otrs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112152");
-  script_version("$Revision: 8075 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-11 11:32:06 +0100 (Mon, 11 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-12-11 11:50:38 +0100 (Mon, 11 Dec 2017)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-11 11:50:38 +0100 (Mon, 11 Dec 2017)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-16921");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("OTRS Remote Code Execution Vulnerability - Dec '17");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("secpod_otrs_detect.nasl");
   script_mandatory_keys("OTRS/installed");
 
-  script_tag(name: "summary", value: "OTRS is prone to a remote code execution vulnerability.");
+  script_tag(name:"summary", value:"OTRS is prone to a remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "An attacker who is logged into OTRS as an agent can manipulate form parameters
+  script_tag(name:"insight", value:"An attacker who is logged into OTRS as an agent can manipulate form parameters
 and execute arbitrary shell commands with the permissions of the OTRS or web server user.");
 
-  script_tag(name: "affected", value: "OTRS 6.0.x up to and including 6.0.1, OTRS 5.0.x up to and including 5.0.24 and OTRS 4.0.x up to and including 4.0.26.");
+  script_tag(name:"affected", value:"OTRS 6.0.x up to and including 6.0.1, OTRS 5.0.x up to and including 5.0.24 and OTRS 4.0.x up to and including 4.0.26.");
 
-  script_tag(name: "solution", value: "Upgrade to OTRS 4.0.27, 5.0.25, 6.0.2 or later.");
+  script_tag(name:"solution", value:"Upgrade to OTRS 4.0.27, 5.0.25, 6.0.2 or later.");
 
-  script_xref(name: "URL", value: "https://www.otrs.com/security-advisory-2017-09-security-update-otrs-framework/");
+  script_xref(name:"URL", value:"https://www.otrs.com/security-advisory-2017-09-security-update-otrs-framework/");
 
   exit(0);
 }

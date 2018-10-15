@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dedecms_detect.nasl 10150 2018-06-11 09:52:27Z asteins $
+# $Id: gb_dedecms_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # DedeCMS Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112300");
-  script_version("$Revision: 10150 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 11:52:27 +0200 (Mon, 11 Jun 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-06-11 11:32:22 +0200 (Mon, 11 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,7 @@ if( description )
 
   script_xref(name:"URL", value:"http://www.dedecms.com/");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "cpe.inc" );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3203474.nasl 7260 2017-09-26 06:48:48Z asteins $
+# $Id: gb_ms_kb3203474.nasl 11879 2018-10-12 12:48:49Z mmartin $
 #
 # Microsoft Office 2016 Remote Code Execution Vulnerability (KB3203474)
 #
@@ -27,41 +27,36 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811667");
-  script_version("$Revision: 7260 $");
+  script_version("$Revision: 11879 $");
   script_cve_id("CVE-2017-8630");
   script_bugtraq_id(100732);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-13 09:18:23 +0530 (Wed, 13 Sep 2017)");
   script_name("Microsoft Office 2016 Remote Code Execution Vulnerability (KB3203474)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB3203474");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in
   Microsoft Office software when it fails to properly handle objects in
   memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an
-  attacker who successfully exploited the vulnerability could use a specially 
-  crafted file to perform actions in the security context of the current user. 
-
-  Impact Level: System/Application");
+  attacker who successfully exploited the vulnerability could use a specially
+  crafted file to perform actions in the security context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Office 2016");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/3203474");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3203474");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3203474");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -77,14 +72,9 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## variable Initialization
-comPath = "";
-ortVer = "";
- 
 # Office 2016
-if(get_kb_item("MS/Office/Ver") =~ "^(16).*")
+if(get_kb_item("MS/Office/Ver") =~ "^16.*")
 {
-  ## Get the file version
   comPath = registry_get_sz(key:"SOFTWARE\Microsoft\Office\16.0\Access\InstallRoot",
                            item:"Path");
   if(comPath)

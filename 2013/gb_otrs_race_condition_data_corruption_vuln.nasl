@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_race_condition_data_corruption_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_otrs_race_condition_data_corruption_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # OTRS Race Condition Data Corruption Vulnerability
 #
@@ -28,23 +28,21 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803928");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2010-4765");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-22 11:18:31 +0530 (Sun, 22 Sep 2013)");
   script_name("OTRS Race Condition Data Corruption Vulnerability");
 
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote authenticated users to
 corrupt data in TicketCounter.log file by creating tickets.");
-  script_tag(name:"vuldetect", value:"Get the installed version of OTRS with the help of detect NVT and check the
-version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"An error exists in Race condition in the Kernel::System::Main::FileWrite
 method which allow user to corrupt the TicketCounter.log file");
-  script_tag(name:"solution", value:"Upgrade to OTRS (Open Ticket Request System) version 2.4.8 or later,
-For updates refer to http://www.otrs.com/en/");
+  script_tag(name:"solution", value:"Upgrade to OTRS (Open Ticket Request System) version 2.4.8 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with OTRS (Open Ticket Request System) and is prone to
 data corruption vulnerability.");
@@ -57,6 +55,7 @@ data corruption vulnerability.");
   script_dependencies("secpod_otrs_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("OTRS/installed");
+  script_xref(name:"URL", value:"http://www.otrs.com/en/");
   exit(0);
 }
 

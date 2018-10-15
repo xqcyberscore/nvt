@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_calendar_id_priv_esc_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_owncloud_calendar_id_priv_esc_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # ownCloud 'calendar_id' Parameter privilege Escalation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804285");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-2043");
   script_bugtraq_id(59966);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 17:00:55 +0530 (Tue, 06 May 2014)");
   script_name("ownCloud 'calendar_id' Parameter privilege Escalation Vulnerability");
 
@@ -48,8 +48,7 @@ checking for ownership.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain privilege and
 download calendars of other users.");
   script_tag(name:"affected", value:"ownCloud Server 4.5.x before version 4.5.11 and 5.x before 5.0.6");
-  script_tag(name:"solution", value:"Upgrade to ownCloud version 4.5.11 or 5.0.6 or later,
-For updates refer to http://owncloud.org");
+  script_tag(name:"solution", value:"Upgrade to ownCloud version 4.5.11 or 5.0.6 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2013/q2/324");

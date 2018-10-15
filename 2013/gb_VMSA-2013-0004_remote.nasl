@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0004_remote.nasl 11069 2018-08-21 12:29:19Z mmartin $
+# $Id: gb_VMSA-2013-0004_remote.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # VMSA-2013-0004 VMware ESXi security update for third party library (remote check)
 #
@@ -31,11 +31,11 @@ if (description)
   script_cve_id("CVE-2012-5134");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11069 $");
+  script_version("$Revision: 11865 $");
   script_name("VMSA-2013-0004 VMware ESXi security update for third party library (remote check)");
 
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 14:29:19 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-03 14:03:01 +0100 (Tue, 03 Dec 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -55,7 +55,7 @@ ESXi 4.1 without patch ESXi410-201304401");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0004.html");
- exit(0);
+  exit(0);
 }
 
 include("vmware_esx.inc");

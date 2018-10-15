@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_dos_vuln_jun13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_php_dos_vuln_jun13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # PHP Denial of Service Vulnerability - Jun13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803677");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-4636");
   script_bugtraq_id(60728);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-25 17:10:23 +0530 (Tue, 25 Jun 2013)");
   script_name("PHP Denial of Service Vulnerability - Jun13 (Windows)");
 
@@ -56,8 +56,7 @@ if(description)
   script_tag(name:"insight", value:"Flaw in 'mget' function in libmagic/softmagic.c, which triggers incorrect
   MIME type detection during access to an finfo object.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP 5.4.16 or later,
-  For updates refer to http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to PHP 5.4.16 or later.");
 
   script_tag(name:"summary", value:"This host is running PHP and is prone denial of service
   vulnerability.");
@@ -65,6 +64,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.php.net/downloads.php");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201208_01.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201208_01.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"6.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2012-0219");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 11:34:52 -0400 (Thu, 30 Aug 2012)");
   script_name("Gentoo Security Advisory GLSA 201208-01 (socat)");
   script_category(ACT_GATHER_INFO);
@@ -47,12 +47,11 @@ if(description)
   script_tag(name:"solution", value:"All socat users should upgrade to the latest version:
 
       # emerge --sync
-      # emerge --ask --oneshot --verbose '>=net-misc/socat-1.7.2.1'
+      # emerge --ask --oneshot --verbose '>=net-misc/socat-1.7.2.1'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201208-01
-http://bugs.gentoo.org/show_bug.cgi?id=415977
-http://www.dest-unreach.org/socat/contrib/socat-secadv3.html");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201208-01");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=415977");
+  script_xref(name:"URL", value:"http://www.dest-unreach.org/socat/contrib/socat-secadv3.html");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201208-01.");
   script_tag(name:"qod_type", value:"package");

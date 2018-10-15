@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_accellion_fta_rce_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_accellion_fta_rce_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Accellion FTA Remote Command Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/h:accellion:secure_file_transfer_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106032");
-  script_version("$Revision: 11492 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 11872 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-05 10:57:09 +0700 (Wed, 05 Aug 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -64,7 +64,7 @@ appliance.");
 
   script_tag(name:"affected", value:"Accellion FTA Version 9.11.200 and prior.");
 
-  script_tag(name:"solution", value:"Upgrade to version 9.11.210 or later");
+  script_tag(name:"solution", value:"Upgrade to version 9.11.210 or later.");
 
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/132665/Accellion-FTA-getStatus-verify_oauth_token-Command-Execution.html");
 

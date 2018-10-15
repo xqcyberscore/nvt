@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2871997.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_microsoft_security_advisory_2871997.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Update to Improve Credentials Protection and Management (2871997)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804453");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-0292");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-15 13:07:18 +0530 (Thu, 15 May 2014)");
   script_name("Update to Improve Credentials Protection and Management (2871997)");
 
@@ -48,8 +48,7 @@ Microsoft Windows 8 for 32/64-bit Systems
 Microsoft Windows 7 for 32/x64-bit Systems Service Pack 1
 Microsoft Windows Server 2008 R2 for x64-based Systems Service Pack 1");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/library/security/2871997.aspx");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://support.microsoft.com/kb/2871997");
   script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/2871997.aspx");
@@ -80,7 +79,7 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Lsass.exe");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Lsass.exe");
 if(!dllVer){
   exit(0);
 }

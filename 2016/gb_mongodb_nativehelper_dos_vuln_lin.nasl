@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_nativehelper_dos_vuln_lin.nasl 11830 2018-10-11 06:12:56Z cfischer $
+# $Id: gb_mongodb_nativehelper_dos_vuln_lin.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # MongoDB nativeHelper Denial of Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mongodb:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808150");
-  script_version("$Revision: 11830 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2013-1892");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 08:12:56 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 12:39:18 +0530 (Tue, 07 Jun 2016)");
   script_name("MongoDB nativeHelper Denial of Service Vulnerability (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -56,7 +56,7 @@ if(description)
   in SpiderMonkey which fails to validate requests properly.");
 
   script_tag(name:"solution", value:"Upgrade to MongoDB version 2.0.9 or 2.2.4
-  or 2.4.2 or later, ");
+  or 2.4.2 or later.");
 
   script_tag(name:"summary", value:"This host is running MongoDB and is prone
   to a denial of service vulnerability.");

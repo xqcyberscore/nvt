@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_veritas_backup_exec_agent_browser_bof_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_veritas_backup_exec_agent_browser_bof_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # VERITAS Backup Exec Agent Browser Remote Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802981");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2004-1172");
   script_bugtraq_id(11974);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-11 13:42:29 +0530 (Thu, 11 Oct 2012)");
   script_name("VERITAS Backup Exec Agent Browser Remote Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -59,7 +59,7 @@ if(description)
   stack-based buffer overflow.");
 
   script_tag(name:"solution", value:"Upgrade to Veritas Backup Exec Agent Browser 8.60.3878 Hotfix 68 or
-  9.1.4691 Hotfix 40 or later,");
+  9.1.4691 Hotfix 40 or later.");
 
   script_tag(name:"summary", value:"This host is running VERITAS Backup Exec Agent Browser and is prone
   to buffer overflow vulnerability.");

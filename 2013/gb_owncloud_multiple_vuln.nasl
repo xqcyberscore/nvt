@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_multiple_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_owncloud_multiple_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # ownCloud Cross-Site Scripting and File Upload Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803741");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2012-5606", "CVE-2012-5607", "CVE-2012-5608", "CVE-2012-5609", "CVE-2012-5610");
   script_bugtraq_id(56658, 56764);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 16:55:36 +0530 (Wed, 21 Aug 2013)");
   script_name("ownCloud Cross-Site Scripting and File Upload Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -50,8 +50,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP request and check whether it is able to read
   cookie or not.");
 
-  script_tag(name:"solution", value:"Upgrade to ownCloud 4.5.2 or later,
-  For updates refer to http://owncloud.org");
+  script_tag(name:"solution", value:"Upgrade to ownCloud 4.5.2 or later.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 

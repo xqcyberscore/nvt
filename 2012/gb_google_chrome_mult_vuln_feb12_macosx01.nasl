@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_feb12_macosx01.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_google_chrome_mult_vuln_feb12_macosx01.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - February 12 (MAC OS X 01)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802599");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-3026", "CVE-2011-3015", "CVE-2011-3027", "CVE-2011-3025",
                 "CVE-2011-3024", "CVE-2011-3023", "CVE-2011-3021", "CVE-2011-3020",
                 "CVE-2011-3019", "CVE-2011-3016", "CVE-2011-3017", "CVE-2011-3018");
   script_bugtraq_id(52049, 52031);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 15:06:35 +0530 (Tue, 21 Feb 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - February 12 (MAC OS X 01)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48016/");
@@ -66,7 +66,7 @@ if(description)
   - Use-after-free error while handling database.
 
   - Heap overflow in path rendering.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 17.0.963.56 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 17.0.963.56 or later.");
   script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"package");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln02_oct13.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_java_mult_unspecified_vuln02_oct13.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Oct 2013 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804118");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-5831", "CVE-2013-5832", "CVE-2013-5812", "CVE-2013-5824",
                 "CVE-2013-5818", "CVE-2013-5819", "CVE-2013-5823", "CVE-2013-5789",
                 "CVE-2013-5820", "CVE-2013-5852", "CVE-2013-5848", "CVE-2013-5776",
@@ -38,17 +38,15 @@ if(description)
                     63124, 63156, 63152, 63089, 63098, 63155);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-25 19:03:24 +0530 (Fri, 25 Oct 2013)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Oct 2013 (Windows)");
 
 
   script_tag(name:"summary", value:"This host is installed with Oracle Java SE JRE and is prone to multiple
 vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version of Oracle Java SE JRE with the help of detect NVT
-and check it is vulnerable or not.");
-  script_tag(name:"solution", value:"Apply the patch from below link,
-http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"insight", value:"Multiple unspecified vulnerabilities exists, For more details about the
 vulnerabilities refer the reference section.");
   script_tag(name:"affected", value:"Oracle Java SE 7 update 40 and earlier, 6 update 60 and earlier on Windows");

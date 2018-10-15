@@ -1,6 +1,6 @@
 #############################################################################/##
 # OpenVAS Vulnerability Test
-# $Id: gb_tor_info_disc_vuln_oct14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_tor_info_disc_vuln_oct14_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Tor 'Relay Early' Traffic Confirmation Attack Vunerability Oct14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:tor:tor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804933");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-5117");
   script_bugtraq_id(68968);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-14 09:26:32 +0530 (Tue, 14 Oct 2014)");
 
   script_name("Tor 'Relay Early' Traffic Confirmation Attack Vunerability oct14 (Windows)");
@@ -54,7 +54,7 @@ if(description)
   before 0.2.5.6-alpha on Windows");
 
   script_tag(name:"solution", value:"Upgrade to version 0.2.4.23 or
-  0.2.5.6-alpha or later, For updates refer to https://www.torproject.org");
+  0.2.5.6-alpha or later.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_tor_detect_win.nasl");
   script_mandatory_keys("Tor/Win/Ver");
+  script_xref(name:"URL", value:"https://www.torproject.org");
   exit(0);
 }
 

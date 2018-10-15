@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_jun13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_apple_safari_webkit_mult_vuln_jun13_macosx.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Apple Safari Webkit Multiple Vulnerabilities - June13 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803810");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1023", "CVE-2013-1013", "CVE-2013-1012", "CVE-2013-1009");
   script_bugtraq_id(60364, 60363, 60361, 60362);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-13 17:57:32 +0530 (Thu, 13 Jun 2013)");
   script_name("Apple Safari Webkit Multiple Vulnerabilities - June13 (Mac OS X)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5785");
@@ -50,12 +50,12 @@ if(description)
   script_tag(name:"affected", value:"Apple Safari versions prior to 6.0.5 on Mac OS X");
   script_tag(name:"insight", value:"Multiple flaws due to unspecified error in WebKit, XSS Auditor while
   handling iframe.");
-  script_tag(name:"solution", value:"Upgrade to Apple Safari version 6.0.5 or later,
-  For updates refer to http://www.apple.com/support/downloads");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 6.0.5 or later.");
   script_tag(name:"summary", value:"The host is installed with Apple Safari web browser and is prone
   to multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.apple.com/support/downloads");
   exit(0);
 }
 

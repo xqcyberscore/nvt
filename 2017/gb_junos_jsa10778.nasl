@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10778.nasl 6101 2017-05-11 08:27:07Z teissa $
+# $Id: gb_junos_jsa10778.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Junos BGP UPDATE DoS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106752");
-  script_version ("$Revision: 6101 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-11 10:27:07 +0200 (Thu, 11 May 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-13 08:24:49 +0200 (Thu, 13 Apr 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-13 08:24:49 +0200 (Thu, 13 Apr 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-2313");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos BGP UPDATE DoS Vulnerability");
 
@@ -48,23 +48,23 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version");
 
-  script_tag(name: "summary", value: "Junos OS is prone to denial of service vulnerability when receiving BGP
+  script_tag(name:"summary", value:"Junos OS is prone to denial of service vulnerability when receiving BGP
 UPDATE messages.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value: "Junos OS 15.1 and later releases may be impacted by the receipt of a
+  script_tag(name:"insight", value:"Junos OS 15.1 and later releases may be impacted by the receipt of a
 crafted BGP UPDATE which can lead to an rpd (routing process daemon) crash and restart.  Repeated crashes of the
 rpd daemon can result in an extended denial of service condition.");
 
-  script_tag(name: "impact", value: "An attacker may cause a denial of service condition.");
+  script_tag(name:"impact", value:"An attacker may cause a denial of service condition.");
 
-  script_tag(name: "affected", value: "Junos OS 15.1, 16.1 and 16.2");
+  script_tag(name:"affected", value:"Junos OS 15.1, 16.1 and 16.2");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10778");
 
@@ -78,7 +78,7 @@ include("version_func.inc");
 if (!version = get_app_version(cpe: CPE, nofork: TRUE))
   exit(0);
 
-if (version =~ "^15") {  
+if (version =~ "^15") {
   if ((revcomp(a: version, b: "15.1F2-S15") < 0) &&
       (revcomp(a: version, b: "15.1F") >= 0)) {
     report = report_fixed_ver(installed_version: version, fixed_version: "15.1F2-S15");

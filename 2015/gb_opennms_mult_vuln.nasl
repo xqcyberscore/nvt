@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opennms_mult_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_opennms_mult_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # OpenNMS Default Credentials and XXE Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:opennms:opennms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806531");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-7856", "CVE-2015-0975");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-04 13:01:47 +0530 (Wed, 04 Nov 2015)");
   script_name("OpenNMS Default Credentials and XXE Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -61,8 +61,7 @@ if(description)
   attacker to obtain access by leveraging knowledge of the credentials and
   launch further attacks including XML External Entity Injection.");
   script_tag(name:"affected", value:"OpenNMS versions prior to 14.0.3");
-  script_tag(name:"solution", value:"Upgrade to OpenNMS version 14.0.3 or later.
-  For updates refer to http://www.opennms.org");
+  script_tag(name:"solution", value:"Upgrade to OpenNMS version 14.0.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_minibb_blind_sql_inj_vuln_jan15.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_minibb_blind_sql_inj_vuln_jan15.nasl 11873 2018-10-12 11:25:39Z cfischer $
 #
 # miniBB bb_func_unsub.php 'code' Parameter Blind SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805119");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11873 $");
   script_cve_id("CVE-2014-9254");
   script_bugtraq_id(71805);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:25:39 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-07 13:19:25 +0530 (Wed, 07 Jan 2015)");
   script_name("miniBB bb_func_unsub.php 'code' Parameter Blind SQL Injection Vulnerability");
 
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"affected", value:"MiniBB version 3.1 before 20141127");
 
   script_tag(name:"solution", value:"Update to version 3.1 released on
-  2014-11-27, For updates refer to http://www.minibb.com");
+  2014-11-27.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -66,6 +66,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+  script_xref(name:"URL", value:"http://www.minibb.com");
   exit(0);
 }
 

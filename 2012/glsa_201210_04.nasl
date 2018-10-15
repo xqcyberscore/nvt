@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201210_04.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201210_04.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:C/A:C");
   script_cve_id("CVE-2011-1750", "CVE-2011-1751", "CVE-2011-2212", "CVE-2011-2512", "CVE-2012-0029", "CVE-2012-2652");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-22 08:43:44 -0400 (Mon, 22 Oct 2012)");
   script_name("Gentoo Security Advisory GLSA 201210-04 (ebuild)");
   script_category(ACT_GATHER_INFO);
@@ -48,16 +48,15 @@ if(description)
 
       # emerge --sync
       # emerge --ask --oneshot --verbose
-'>=app-emulation/qemu-kvm-1.1.1-r1'
+'>=app-emulation/qemu-kvm-1.1.1-r1'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201210-04
-http://bugs.gentoo.org/show_bug.cgi?id=364889
-http://bugs.gentoo.org/show_bug.cgi?id=365259
-http://bugs.gentoo.org/show_bug.cgi?id=372411
-http://bugs.gentoo.org/show_bug.cgi?id=373997
-http://bugs.gentoo.org/show_bug.cgi?id=400595
-http://bugs.gentoo.org/show_bug.cgi?id=430456");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201210-04");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=364889");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=365259");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=372411");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=373997");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=400595");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=430456");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201210-04.");
   script_tag(name:"qod_type", value:"package");

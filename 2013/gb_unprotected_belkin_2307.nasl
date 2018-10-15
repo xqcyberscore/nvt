@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unprotected_belkin_2307.nasl 11219 2018-09-04 11:52:00Z cfischer $
+# $Id: gb_unprotected_belkin_2307.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Belkin 2307 Unprotected Web Console
 #
@@ -28,7 +28,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103704");
-  script_version("$Revision: 11219 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -36,7 +36,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.belkin.com");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-23 12:01:48 +0100 (Tue, 23 Apr 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -49,7 +49,7 @@ if(description)
   script_tag(name:"solution", value:"Set a password.");
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"summary", value:"The remote Belkin 2307 Web Console is not protected by a password.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_info_disc_vuln_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_putty_info_disc_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # PuTTY Information Disclosure vulnerability (Windows)
 #
@@ -28,19 +28,18 @@ CPE = "cpe:/a:putty:putty";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803880");
-  script_version("$Revision: 11356 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2011-4607");
   script_bugtraq_id(51021);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-26 15:35:39 +0530 (Mon, 26 Aug 2013)");
   script_name("PuTTY Information Disclosure vulnerability (Windows)");
   script_tag(name:"summary", value:"The host is installed with PuTTY and is prone to information disclosure
 vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Upgrade to version 0.62 or later,
-For updates refer to http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html");
+  script_tag(name:"solution", value:"Upgrade to version 0.62 or later.");
   script_tag(name:"insight", value:"Flaw is due to improper handling of session passwords that were stored in the
 memory during the keyboard-interactive authentication");
   script_tag(name:"affected", value:"PuTTY version 0.59 before 0.62 on Windows");
@@ -56,6 +55,7 @@ memory during the keyboard-interactive authentication");
   script_family("General");
   script_dependencies("gb_putty_portable_detect.nasl");
   script_mandatory_keys("putty/version");
+  script_xref(name:"URL", value:"http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html");
   exit(0);
 }
 

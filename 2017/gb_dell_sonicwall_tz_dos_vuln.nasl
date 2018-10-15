@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_tz_dos_vuln.nasl 5208 2017-02-06 10:00:07Z ckuerste $
+# $Id: gb_dell_sonicwall_tz_dos_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Dell SonicWALL TZ 100 DoS Vulnerability
 #
@@ -31,15 +31,15 @@ CPE = 'cpe:/a:dell:sonicwall_totalsecure_tz_100_firmware';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106570");
-  script_version("$Revision: 5208 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-06 11:00:07 +0100 (Mon, 06 Feb 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-06 14:03:54 +0700 (Mon, 06 Feb 2017)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-06 14:03:54 +0700 (Mon, 06 Feb 2017)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Dell SonicWALL TZ 100 DoS Vulnerability");
 
@@ -50,18 +50,18 @@ if (description)
   script_dependencies("gb_dell_sonicwall_tz_snmp_detect.nasl");
   script_mandatory_keys("sonicwall/tz/detected");
 
-  script_tag(name: "summary", value: "Dell SonicWALL TZ 100 is prone to a denial of service vulnerability.");
+  script_tag(name:"summary", value:"Dell SonicWALL TZ 100 is prone to a denial of service vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Dell SonicWall TotalSecure TZ 100 devices allow remote attackers to cause a
+  script_tag(name:"insight", value:"Dell SonicWall TotalSecure TZ 100 devices allow remote attackers to cause a
 denial of service via a crafted packet.");
 
-  script_tag(name: "affected", value: "Dell SonicWALL TZ 100 devices with firmware before 5.9.1.0-22o.");
+  script_tag(name:"affected", value:"Dell SonicWALL TZ 100 devices with firmware before 5.9.1.0-22o.");
 
-  script_tag(name: "solution", value: "Update to firmware version 5.9.1.0-22o or later.");
+  script_tag(name:"solution", value:"Update to firmware version 5.9.1.0-22o or later.");
 
-  script_xref(name: "URL", value: "https://jvn.jp/en/jp/JVN90135579/index.html");
+  script_xref(name:"URL", value:"https://jvn.jp/en/jp/JVN90135579/index.html");
 
   exit(0);
 }

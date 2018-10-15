@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804087");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-0497");
   script_bugtraq_id(65327);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-05 15:24:29 +0530 (Wed, 05 Feb 2014)");
   script_name("Adobe Flash Player Arbitrary Code Execution Vulnerability - 01 Feb14 (Linux)");
 
@@ -47,8 +47,7 @@ user-supplied input is not properly validated.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to, execute arbitrary code and
 cause buffer overflow.");
   script_tag(name:"affected", value:"Adobe Flash Player versions before 11.2.202.336 on Linux");
-  script_tag(name:"solution", value:"Update to Adobe Flash Player version 11.2.202.336 or later,
-For updates refer to  http://get.adobe.com/flashplayer");
+  script_tag(name:"solution", value:"Update to Adobe Flash Player version 11.2.202.336 or later.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -60,6 +59,7 @@ For updates refer to  http://get.adobe.com/flashplayer");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

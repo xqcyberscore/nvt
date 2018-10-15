@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_fusion_dnd_fun_oob_mem_access_vuln_macosx.nasl 11816 2018-10-10 10:42:56Z mmartin $
+# $Id: gb_vmware_fusion_dnd_fun_oob_mem_access_vuln_macosx.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # VMware Fusion DnD Function Out-of-Bounds Memory Access Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:fusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810530");
-  script_version("$Revision: 11816 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2016-7461");
   script_bugtraq_id(94280);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-03 13:26:09 +0530 (Fri, 03 Feb 2017)");
   script_name("VMware Fusion DnD Function Out-of-Bounds Memory Access Vulnerability (Mac OS X)");
 
@@ -55,7 +55,7 @@ if(description)
   Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to VMware Fusion version
-  8.5.2 or later, ");
+  8.5.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10791.nasl 6714 2017-07-13 09:15:20Z ckuersteiner $
+# $Id: gb_junos_jsa10791.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Junos SRX Series: Hardcoded Credentials Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106943");
-  script_version ("$Revision: 6714 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-13 11:15:20 +0200 (Thu, 13 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-13 11:36:34 +0700 (Thu, 13 Jul 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-13 11:36:34 +0700 (Thu, 13 Jul 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-2343");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos SRX Series: Hardcoded Credentials Vulnerability");
 
@@ -48,21 +48,21 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version", "Junos/model");
 
-  script_tag(name: "summary", value: "Junos OS on SRX series contain hardcoded credentials.");
+  script_tag(name:"summary", value:"Junos OS on SRX series contain hardcoded credentials.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value: "As part of an internal security review of the UserFW services authentication
+  script_tag(name:"insight", value:"As part of an internal security review of the UserFW services authentication
 API, hardcoded credentials were identified and removed which can impact both the SRX Series device, and
 potentially LDAP and Active Directory integrated points.
 
 Credentials may be taken from the network via man-in-the-middle attacks, or other attack vectors, as above, or
 others not listed.");
 
-  script_tag(name: "impact", value: "An attacker may be able to completely compromise both the SRX Series device
+  script_tag(name:"impact", value:"An attacker may be able to completely compromise both the SRX Series device
 without authentication, other SRX Series devices deployed in the same environment running vulnerable versions of
 Junos OS, as well as Active Directory servers and service, including but not limited to, user accounts,
 workstations, servers performing other functions such as email, database, etc. which are also tied to the Active
@@ -71,9 +71,9 @@ administrative control over one or more Active Directories depending on the cred
 administrator of the AD domains and SRX devices performing integrated authentication of users, groups and
 devices.");
 
-  script_tag(name: "affected", value: "Junos OS 12.3X48 and 15.1X49 on SRX Series.");
+  script_tag(name:"affected", value:"Junos OS 12.3X48 and 15.1X49 on SRX Series.");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10791");
 

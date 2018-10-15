@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4036108.nasl 7260 2017-09-26 06:48:48Z asteins $
+# $Id: gb_ms_kb4036108.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
-# Microsoft Exchange Server Multiple Vulnerabilities (KB4036108) 
+# Microsoft Exchange Server Multiple Vulnerabilities (KB4036108)
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -29,28 +29,25 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811761");
-  script_version("$Revision: 7260 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-11761", "CVE-2017-8758");
   script_bugtraq_id(100731, 100723);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 08:48:48 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-14 10:51:52 +0530 (Thu, 14 Sep 2017)");
   script_name("Microsoft Exchange Server Multiple Vulnerabilities (KB4036108)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4036108");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to error in the
   way that Exchange parses Calendar-related messages.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to gain access to potentially sensitive information.
-
-  Impact Level: System/Application");
+  to gain access to potentially sensitive information.");
 
   script_tag(name:"affected", value:"Microsoft Exchange Server 2016 CU5
   Microsoft Exchange Server 2016 CU6
@@ -59,13 +56,11 @@ if(description)
   Microsoft Exchange Server 2013 SP1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4036108");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4036108");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4036108");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -82,21 +77,13 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-ExVer = "";
-dllVer = "";
-path = "";
-
-## Get the installed path
 exchangePath = get_app_location(cpe:CPE);
 if(!exchangePath || "Could not find the install location" >< exchangePath){
   exit(0);
 }
 
-##Get CU
 cum_update = get_kb_item("MS/Exchange/Cumulative/Update/no");
 
-## Get Version from ExSetup.exe file version
 exeVer = fetch_file_version(sysPath:exchangePath, file_name:"Bin\ExSetup.exe");
 if(exeVer)
 {

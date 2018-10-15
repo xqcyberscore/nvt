@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecava_integraxor_sql_inj_vuln2.nasl 6385 2017-06-21 07:06:43Z ckuersteiner $
+# $Id: gb_ecava_integraxor_sql_inj_vuln2.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # ECAVA IntegraXor SQL Injection Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:ecava:integraxor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106888");
-  script_version("$Revision: 6385 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-21 09:06:43 +0200 (Wed, 21 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-21 11:05:39 +0700 (Wed, 21 Jun 2017)");
-  script_tag(name: "cvss_base", value: "7.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-21 11:05:39 +0700 (Wed, 21 Jun 2017)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-6050");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("ECAVA IntegraXor SQL Injection Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("gb_ecava_integraxor_detect.nasl");
   script_mandatory_keys("EcavaIntegraXor/Installed");
 
-  script_tag(name: "summary", value: "ECAVA IntegraXor is prone to multiple SQL injection vulnerabilities.");
+  script_tag(name:"summary", value:"ECAVA IntegraXor is prone to multiple SQL injection vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The application fails to properly validate user input, which may allow for
+  script_tag(name:"insight", value:"The application fails to properly validate user input, which may allow for
 an unauthenticated attacker to remotely execute arbitrary code in the form of SQL queries.");
 
-  script_tag(name: "affected", value: "IntegraXor Versions 5.2.1231.0 and prior.");
+  script_tag(name:"affected", value:"IntegraXor Versions 5.2.1231.0 and prior.");
 
-  script_tag(name: "solution", value: "Update to 6.0.522.1 or later versions.");
+  script_tag(name:"solution", value:"Update to 6.0.522.1 or later versions.");
 
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-17-171-01");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-17-171-01");
 
   exit(0);
 }

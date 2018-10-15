@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_mult_vuln_0517_2.nasl 9297 2018-04-04 10:04:33Z ckuersteiner $
+# $Id: gb_openemr_mult_vuln_0517_2.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # OpenEMR <= 5.0.0 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:open-emr:openemr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108206");
-  script_version("$Revision: 9297 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 12:04:33 +0200 (Wed, 04 Apr 2018) $");
+  script_version("$Revision: 11901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-08-15 09:04:14 +0200 (Tue, 15 Aug 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -50,19 +50,19 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("openemr/installed");
 
-  script_tag(name:"summary", value: "This host is installed with OpenEMR and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with OpenEMR and is prone to multiple
 vulnerabilities");
 
   script_tag(name:"vuldetect", value:"Checks the version.");
 
   script_tag(name:"impact", value:"Successful exploitation allows attackers to:
 
-- bypass intended access restrictions via a crafted name
+  - bypass intended access restrictions via a crafted name
 
-- upload files of dangerous types as a low-privilege user which can result in arbitrary code execution within the
+  - upload files of dangerous types as a low-privilege user which can result in arbitrary code execution within the
 context of the vulnerable application.
 
-- inject arbitrary web script or HTML.");
+  - inject arbitrary web script or HTML.");
 
   script_tag(name:"affected", value:"OpenEMR 5.0.0 and prior");
 
@@ -70,9 +70,9 @@ context of the vulnerable application.
 
   script_tag(name:"solution", value:"Apply the patch in the reverenced commit URL.");
 
-  script_xref(name: "URL", value: "https://www.wizlynxgroup.com/security-research-advisories/vuln/WLX-2017-002");
-  script_xref(name: "URL", value: "https://github.com/openemr/openemr/commit/b8963a5ca483211ed8de71f18227a0e66a2582ad");
-  script_xref(name: "URL", value: "https://www.wizlynxgroup.com/security-research-advisories/vuln/WLX-2017-001");
+  script_xref(name:"URL", value:"https://www.wizlynxgroup.com/security-research-advisories/vuln/WLX-2017-002");
+  script_xref(name:"URL", value:"https://github.com/openemr/openemr/commit/b8963a5ca483211ed8de71f18227a0e66a2582ad");
+  script_xref(name:"URL", value:"https://www.wizlynxgroup.com/security-research-advisories/vuln/WLX-2017-001");
 
   exit(0);
 }

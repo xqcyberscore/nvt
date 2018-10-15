@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_ip_video_cam__server_default_admin_credentials.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: gb_multiple_ip_video_cam__server_default_admin_credentials.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Multiple IP Video/Camera Server Web Interface Default Admin Credentials
 #
@@ -28,12 +28,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103887");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11867 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Multiple IP Video/Camera Server Web Interface Default Admin Credentials");
   script_xref(name:"URL", value:"http://dariusfreamon.wordpress.com/2014/01/18/s3-s2071-s4071-ip-video-server-web-interface-default-admin-credentials/");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 15:02:06 +0200 (Tue, 21 Jan 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -53,7 +53,7 @@ access to sensitive information or modify system configuration.");
 
   script_tag(name:"solution_type", value:"Workaround");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

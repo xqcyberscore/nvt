@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ghost_72325.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_wordpress_ghost_72325.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # GNU glibc Remote Heap Buffer Overflow Vulnerability (Wordpress)
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-0235");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11492 $");
+  script_version("$Revision: 11872 $");
 
   script_name("GNU glibc Remote Heap Buffer Overflow Vulnerability (Wordpress)");
 
@@ -52,7 +52,7 @@ vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-31 15:37:56 +0100 (Sat, 31 Jan 2015)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -61,7 +61,7 @@ vulnerability.");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
- exit(0);
+  exit(0);
 }
 
 

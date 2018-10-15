@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_dukaPress_dir_trav_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_wordpress_dukaPress_dir_trav_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Wordpress DukaPress 'src' Parameter Directory Traversal Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805122");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-8799");
   script_bugtraq_id(71294);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-09 15:07:11 +0530 (Fri, 09 Jan 2015)");
   script_name("Wordpress DukaPress 'src' Parameter Directory Traversal Vulnerability");
 
@@ -54,8 +54,7 @@ if(description)
 
   script_tag(name:"affected", value:"Wordpress DukaPress plugin before 2.5.4");
 
-  script_tag(name:"solution", value:"Upgrade to version 2.5.4 or higher,
-  For updates refer to https://wordpress.org/plugins/dukapress");
+  script_tag(name:"solution", value:"Upgrade to version 2.5.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/dukapress");
   exit(0);
 }
 

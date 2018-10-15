@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netsweeper_mult_vuln_aug15.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_netsweeper_mult_vuln_aug15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Netsweeper Multiple Vulnerabilities - Aug15
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:netsweeper:netsweeper";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805962");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-9612", "CVE-2014-9605", "CVE-2014-9610", "CVE-2014-9619");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-08-25 14:52:59 +0530 (Tue, 25 Aug 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Netsweeper Multiple Vulnerabilities - Aug15");
@@ -61,7 +61,7 @@ if(description)
   4.1.2.");
 
   script_tag(name:"solution", value:"Upgrade to Netsweeper version 3.1.10,
-  4.0.9 or 4.1.2 or later. For updates refer to http://www.netsweeper.com/");
+  4.0.9 or 4.1.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -76,6 +76,7 @@ if(description)
   script_dependencies("gb_netsweeper_remote_detect.nasl");
   script_mandatory_keys("Netsweeper/Installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.netsweeper.com/");
   exit(0);
 }
 

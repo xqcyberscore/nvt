@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K52180214.nasl 6826 2017-08-01 08:56:22Z ckuersteiner $
+# $Id: gb_f5_big_ip_K52180214.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # F5 BIG-IP - MCPD vulnerability CVE-2016-7474
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140221");
- script_cve_id("CVE-2016-7474","CVE-2016-9244");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6826 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140221");
+  script_cve_id("CVE-2016-7474", "CVE-2016-9244");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11863 $");
 
- script_name("F5 BIG-IP - Article: K52180214 - MCPD vulnerability CVE-2016-7474");
+  script_name("F5 BIG-IP - Article: K52180214 - MCPD vulnerability CVE-2016-7474");
 
- script_xref(name:"URL", value:"https://support.f5.com/csp/article/K52180214");
+  script_xref(name:"URL", value:"https://support.f5.com/csp/article/K52180214");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary", value:"In some cases the MCPD binary cache may allow a user with Advanced Shell access, or privileges to generate a qkview, to temporarily obtain normally unrecoverable information.");
- script_tag(name: "impact", value:"A local user may have access to sensitive data such as passwords for recently created local user accounts and passphrases that have been set since the last reboot.");
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"In some cases the MCPD binary cache may allow a user with Advanced Shell access, or privileges to generate a qkview, to temporarily obtain normally unrecoverable information.");
+  script_tag(name:"impact", value:"A local user may have access to sensitive data such as passwords for recently created local user accounts and passphrases that have been set since the last reboot.");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-08-01 10:56:22 +0200 (Tue, 01 Aug 2017) $");
- script_tag(name:"creation_date", value:"2017-03-27 12:41:02 +0200 (Mon, 27 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-27 12:41:02 +0200 (Mon, 27 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
+  exit(0);
 }
 
 include("version_func.inc");

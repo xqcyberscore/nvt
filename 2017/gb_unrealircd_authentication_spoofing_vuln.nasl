@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unrealircd_authentication_spoofing_vuln.nasl 9341 2018-04-06 05:27:04Z cfischer $
+# $Id: gb_unrealircd_authentication_spoofing_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # UnrealIRCd Authentication Spoofing Vulnerability
 #
@@ -29,37 +29,33 @@ CPE = "cpe:/a:unrealircd:unrealircd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809883");
-  script_version("$Revision: 9341 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2016-7144");
   script_bugtraq_id(92763);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 07:27:04 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-03 16:51:06 +0530 (Fri, 03 Feb 2017)");
   script_name("UnrealIRCd Authentication Spoofing Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with UnrealIRCd
+  script_tag(name:"summary", value:"This host is installed with UnrealIRCd
   and is prone to authentication spoofing vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an error in
+  script_tag(name:"insight", value:"The flaw exists due to an error in
   the 'm_authenticate' function in 'modules/m_sasl.c' script.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allows remote attackers to spoof certificate fingerprints and consequently
-  log in as another user.
+  log in as another user.");
 
-  Impact Level: Application.");
-
-  script_tag(name: "affected" , value:"UnrealIRCd before 3.2.10.7 and
+  script_tag(name:"affected", value:"UnrealIRCd before 3.2.10.7 and
   4.x before 4.0.6.");
 
-  script_tag(name: "solution" , value:"Upgrade to UnrealIRCd 3.2.10.7,
-  or 4.0.6, or later.
-  For updates refer to https://bugs.unrealircd.org/main_page.php");
- 
+  script_tag(name:"solution", value:"Upgrade to UnrealIRCd 3.2.10.7,
+  or 4.0.6, or later.");
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2016/q3/420");
@@ -70,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_unrealircd_detect.nasl");
   script_mandatory_keys("UnrealIRCD/Detected");
+  script_xref(name:"URL", value:"https://bugs.unrealircd.org/main_page.php");
   exit(0);
 }
 
@@ -77,17 +74,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-##Get port from CPE
 if(!UnPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Get Version from CPE
 if(!UnVer = get_app_version(cpe:CPE, port:UnPort)){
   exit(0);
 }
 
-## Check for vulnerable versions
 ## Reminder: UnrealIRCd 3.2.x End Of Life
 if(version_is_less(version:UnVer, test_version:"3.2.10.7"))
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_logstash_freak_attack_lin.nasl 9000 2018-03-01 13:59:11Z cfischer $
+# $Id: gb_elasticsearch_logstash_freak_attack_lin.nasl 11884 2018-10-12 13:33:40Z cfischer $
 #
 # Elasticsearch Logstash 'CVE-2015-5378' Man in the Middle Security Bypass Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:logstash";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107279");
-  script_version("$Revision: 9000 $");
+  script_version("$Revision: 11884 $");
   script_bugtraq_id(76015);
   script_cve_id("CVE-2015-5378");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 14:59:11 +0100 (Thu, 01 Mar 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:33:40 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-31 14:18:58 +0100 (Wed, 31 Jan 2018)");
   script_name("Elasticsearch Logstash 'CVE-2015-5378' Man in the Middle Security Bypass Vulnerability (Linux)");
 

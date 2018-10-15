@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_word_kb3191865.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_ms_office_word_kb3191865.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities (KB3191865)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810776");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-0254", "CVE-2017-0281");
   script_bugtraq_id(98101, 98297);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 10:50:42 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities (KB3191865)");
@@ -40,28 +40,24 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB3191865");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaws exist as Office software
   fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker run arbitrary code in the context of the current user.
-
-  Impact Level: System/Application");
+  attacker run arbitrary code in the context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft office Word 2016");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  link, https://support.microsoft.com/en-us/help/3191865");
+  hotfixes or download and update mentioned hotfixes in the advisory below.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3191865");
-  script_xref(name : "URL" , value : "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2017-0254");
-  script_xref(name : "URL" , value : "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2017-0281");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3191865");
+  script_xref(name:"URL", value:"https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2017-0254");
+  script_xref(name:"URL", value:"https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2017-0281");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -73,10 +69,6 @@ if(description)
 
 
 include("version_func.inc");
-
-## variable Initialization
-exeVer = "";
-exePath = "";
 
 ## Word 2016
 exeVer = get_kb_item("SMB/Office/Word/Version");

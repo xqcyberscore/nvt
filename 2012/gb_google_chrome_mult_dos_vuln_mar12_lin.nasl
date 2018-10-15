@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_dos_vuln_mar12_lin.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_google_chrome_mult_dos_vuln_mar12_lin.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Google Chrome Multiple Denial of Service Vulnerabilities - March12 (Linux)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802808");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-3031", "CVE-2011-3032", "CVE-2011-3033", "CVE-2011-3034",
                 "CVE-2011-3035", "CVE-2011-3036", "CVE-2011-3037", "CVE-2011-3038",
                 "CVE-2011-3039", "CVE-2011-3040", "CVE-2011-3041", "CVE-2011-3042",
@@ -35,7 +35,7 @@ if(description)
   script_bugtraq_id(52271);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-08 15:50:55 +0530 (Thu, 08 Mar 2012)");
   script_name("Google Chrome Multiple Denial of Service Vulnerabilities - March12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48265");
@@ -51,7 +51,7 @@ if(description)
   cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 17.0.963.65 on Linux.");
   script_tag(name:"insight", value:"For more information on the vulnerabilities refer the reference section.");
-  script_tag(name:"solution", value:"Upgrade to the Google Chrome 17.0.963.65 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 17.0.963.65 or later.");
   script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
   denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");

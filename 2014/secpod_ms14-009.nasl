@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms14-009.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: secpod_ms14-009.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft .NET Framework Multiple Vulnerabilities (2916607)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903337");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-0253", "CVE-2014-0257", "CVE-2014-0295");
   script_bugtraq_id(65415, 65417, 65418);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-12 10:37:08 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft .NET Framework Multiple Vulnerabilities (2916607)");
 
@@ -51,8 +51,7 @@ Microsoft Bulletin MS14-009.");
 mechanism and cause denial of service.");
   script_tag(name:"affected", value:"Microsoft .NET Framework 1.0, 1.1, 2.0, 3.0, 3.5, 3.5.1, 4.0, 4.5 and 4.5.1");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms14-009");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_lucent_ascend_file_parser_dos_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_wireshark_lucent_ascend_file_parser_dos_vuln_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Wireshark Lucent/Ascend File Parser Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802844");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-2597");
   script_bugtraq_id(48506);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-03 15:29:17 +0530 (Thu, 03 May 2012)");
   script_name("Wireshark Lucent/Ascend File Parser Denial of Service Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/45086");
@@ -49,7 +49,7 @@ if(description)
   script_tag(name:"affected", value:"Wireshark version 1.2.0 to 1.2.17, 1.4.0 to 1.4.7 and 1.6.0");
   script_tag(name:"insight", value:"The flaw is due to an error in Lucent/Ascend file parser when
   processing malicious packets.");
-  script_tag(name:"solution", value:"Upgrade to Wireshark 1.2.18 or later,");
+  script_tag(name:"solution", value:"Upgrade to Wireshark 1.2.18 or later.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to denial of
   service vulnerability.");
   script_tag(name:"qod_type", value:"package");

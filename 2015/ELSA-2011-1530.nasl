@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ELSA-2011-1530.nasl 11688 2018-09-28 13:36:28Z cfischer $
+# $Id: ELSA-2011-1530.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Oracle Linux Local Check
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.122034");
-  script_version("$Revision: 11688 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"creation_date", value:"2015-10-06 14:11:59 +0300 (Tue, 06 Oct 2015)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 15:36:28 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_name("Oracle Linux Local Check: ELSA-2011-1530");
   script_tag(name:"insight", value:"ELSA-2011-1530 -  Oracle Linux 6 kernel security, bug fix and enhancement update. Please see the references for more insight.");
   script_tag(name:"solution", value:"Update the affected packages to the latest available version.");
@@ -46,7 +46,7 @@ if(description)
   script_copyright("Eero Volotinen");
   script_family("Oracle Linux Local Security Checks");
 
-exit(0);
+  exit(0);
 }
 include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");

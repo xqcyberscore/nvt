@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_mult_vuln_may16.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_apache_subversion_mult_vuln_may16.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Apache Subversion Multiple Vulnerabilities May-16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807684");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2015-5343");
   script_tag(name:"cvss_base", value:"8.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-02 15:57:20 +0530 (Mon, 02 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Subversion Multiple Vulnerabilities May-16");
@@ -55,7 +55,7 @@ if(description)
   and 1.9.0 through 1.9.2");
 
   script_tag(name:"solution", value:"Upgrade to Apache subversion version 1.8.15,
-  or 1.9.3, or later, ");
+  or 1.9.3, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

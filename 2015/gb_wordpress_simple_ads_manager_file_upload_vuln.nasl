@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_simple_ads_manager_file_upload_vuln.nasl 11466 2018-09-19 09:23:32Z cfischer $
+# $Id: gb_wordpress_simple_ads_manager_file_upload_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Wordpress Simple Ads Manager Plugin File Upload Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805530");
-  script_version("$Revision: 11466 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-2825");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 11:23:32 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-08 18:02:38 +0530 (Wed, 08 Apr 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress Simple Ads Manager Plugin File Upload Vulnerability");
@@ -55,8 +55,7 @@ if(description)
   version 2.5.94");
 
   script_tag(name:"solution", value:"Upgrade to Wordpress Simple Ads Manager
-  Plugin version 2.6.96 or later.
-  For updates refer to https://profiles.wordpress.org/minimus");
+  Plugin version 2.6.96 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -70,6 +69,7 @@ if(description)
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"https://profiles.wordpress.org/minimus");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_count_per_day_plugin_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_wordpress_count_per_day_plugin_mult_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Wordpress Count per Day Plugin Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803430");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-03-06 11:34:32 +0530 (Wed, 06 Mar 2013)");
   script_name("Wordpress Count per Day Plugin Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Mar/43");
@@ -59,13 +59,13 @@ returned to the user.
 
   - Malformed GET request to ajax.php, counter-core.php, counter-options.php,
 counter.php, massbots.php, and userperspan.php scripts.");
-  script_tag(name:"solution", value:"Update to version 3.2.6 or later,
-For updates refer to http://wordpress.org/extend/plugins/count-per-day");
+  script_tag(name:"solution", value:"Update to version 3.2.6 or later.");
   script_tag(name:"summary", value:"This host is running WordPress with Count per Day plugin and is
 prone to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/count-per-day");
   exit(0);
 }
 

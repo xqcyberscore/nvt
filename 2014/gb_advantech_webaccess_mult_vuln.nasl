@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_advantech_webaccess_mult_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Advantech WebAccess Multiple Vulnerabilities
 #
@@ -28,7 +28,7 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804430");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-0763", "CVE-2014-0764", "CVE-2014-0765", "CVE-2014-0766",
                 "CVE-2014-0767", "CVE-2014-0768", "CVE-2014-0770", "CVE-2014-0771",
                 "CVE-2014-0772", "CVE-2014-0773");
@@ -36,15 +36,14 @@ if(description)
                     66732, 66733, 66750, 66749, 66742);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-16 14:52:28 +0530 (Wed, 16 Apr 2014)");
   script_name("Advantech WebAccess Multiple Vulnerabilities");
 
 
   script_tag(name:"summary", value:"This host is running Advantech WebAccess and is prone to multiple
 vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version of Advantech WebAccess with the help of detect NVT
-and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"- Certain input related to some SOAP requests is not properly sanitised within
    the DBVisitor.dll component before being used in a SQL query.
 
@@ -65,8 +64,7 @@ and check the version is vulnerable or not.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct SQL injection attacks,
 bypass certain security restrictions, and compromise a user's system.");
   script_tag(name:"affected", value:"Advantech WebAccess before 7.2");
-  script_tag(name:"solution", value:"Upgrade to Advantech WebAccess 7.2 or later,
-For updates refer to http://webaccess.advantech.com");
+  script_tag(name:"solution", value:"Upgrade to Advantech WebAccess 7.2 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/57873");
@@ -78,6 +76,7 @@ For updates refer to http://webaccess.advantech.com");
   script_dependencies("gb_advantech_webaccess_detect.nasl");
   script_mandatory_keys("Advantech/WebAccess/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://webaccess.advantech.com");
   exit(0);
 }
 

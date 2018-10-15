@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_file_server_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_http_file_server_mult_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # HTTP File Server Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:httpfilesever:hfs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803171");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-19 15:17:57 +0530 (Tue, 19 Feb 2013)");
   script_name("HTTP File Server Multiple Vulnerabilities");
 
@@ -55,14 +55,14 @@ if(description)
   - An error due to the '~upload ' script allowing the upload of files with
   arbitrary extensions to a folder inside the webroot can be exploited to
   execute arbitrary PHP code by uploading a malicious PHP script.");
-  script_tag(name:"solution", value:"Update to version 2.3 or later,
-  For updates refer to http://www.rejetto.com/hfs");
+  script_tag(name:"solution", value:"Update to version 2.3 or later.");
   script_tag(name:"summary", value:"This host is running HTTP File Server and is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.rejetto.com/hfs");
   exit(0);
 }
 

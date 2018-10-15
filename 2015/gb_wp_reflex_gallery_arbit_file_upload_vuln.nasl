@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_reflex_gallery_arbit_file_upload_vuln.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_wp_reflex_gallery_arbit_file_upload_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Wordpress Reflex Gallery Arbitrary File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805154");
-  script_version("$Revision: 11492 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-17 16:10:09 +0530 (Tue, 17 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Reflex Gallery Arbitrary File Upload Vulnerability");
@@ -53,7 +53,7 @@ if(description)
   version 3.1.3, Prior versions may also be affected.");
 
   script_tag(name:"solution", value:"Upgrade to Wordpress Reflex Gallery Plugin
-  version 3.1.4 or later, For updates refer to https://wordpress.org/plugins/reflex-gallery");
+  version 3.1.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36374");
@@ -64,6 +64,7 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/reflex-gallery");
   exit(0);
 }
 

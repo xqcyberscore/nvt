@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_hypervisor_kb3217845.nasl 11816 2018-10-10 10:42:56Z mmartin $
+# $Id: gb_ms_hypervisor_kb3217845.nasl 11879 2018-10-12 12:48:49Z mmartin $
 #
 # Microsoft Windows Hypervisor Code Integrity Privilege Escalation Vulnerability (KB3217845)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811211");
-  script_version("$Revision: 11816 $");
+  script_version("$Revision: 11879 $");
   script_cve_id("CVE-2017-0193");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 12:42:56 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-20 17:50:43 +0530 (Tue, 20 Jun 2017)");
   script_name("Microsoft Windows Hypervisor Code Integrity Privilege Escalation Vulnerability (KB3217845)");
 
@@ -82,7 +82,7 @@ if(!sysPath ){
   exit(0);
 }
 
-fileVer = fetch_file_version(sysPath, file_name:"hvax64.exe");
+fileVer = fetch_file_version(sysPath:sysPath, file_name:"hvax64.exe");
 if(!fileVer){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_weak_hash.nasl 7798 2017-11-17 05:43:16Z teissa $
+# $Id: gb_wordpress_weak_hash.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # WordPress through 4.8.2 Weak Password Hash Algorithm
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113048");
-  script_version("$Revision: 7798 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-17 06:43:16 +0100 (Fri, 17 Nov 2017) $");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-09 13:53:54 +0100 (Thu, 09 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -59,7 +59,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://core.trac.wordpress.org/ticket/21022");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:wordpress:wordpress";

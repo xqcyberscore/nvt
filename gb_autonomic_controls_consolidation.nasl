@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_autonomic_controls_consolidation.nasl 10804 2018-08-07 10:01:21Z jschulte $
+# $Id: gb_autonomic_controls_consolidation.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Autonomic Controls Detection (Consolidation)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113244");
-  script_version("$Revision: 10804 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 12:01:21 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-07 10:33:33 +0200 (Tue, 07 Aug 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,7 +49,7 @@ if( description )
 
   script_xref(name:"URL", value:"http://www.autonomic-controls.com/products/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/h:autonomic_controls:remote:";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-20170215-cucm.nasl 5441 2017-02-28 08:41:33Z cfi $
+# $Id: gb_cisco_cucm_cisco-sa-20170215-cucm.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # Cisco Unified Communications Manager Cross-Site Scripting Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/a:cisco:unified_communications_manager";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106597");
- script_cve_id("CVE-2017-3821");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 5441 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106597");
+  script_cve_id("CVE-2017-3821");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11901 $");
 
- script_name("Cisco Unified Communications Manager Cross-Site Scripting Vulnerability");
+  script_name("Cisco Unified Communications Manager Cross-Site Scripting Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170215-cucm");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170215-cucm");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the serviceability page of Cisco Unified Communications
+  script_tag(name:"summary", value:"A vulnerability in the serviceability page of Cisco Unified Communications
 Manager could allow an unauthenticated, remote attacker to conduct reflected cross-site scripting (XSS) attacks.");
 
- script_tag(name: "insight", value: "The vulnerability is due to improper sanitization or encoding of
+  script_tag(name:"insight", value:"The vulnerability is due to improper sanitization or encoding of
 user-supplied data by the serviceability page of an affected version of Cisco Unified Communications Manager. An
 attacker could exploit this vulnerability by persuading a targeted user to follow a malicious link.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to conduct a reflected XSS attack.");
+  script_tag(name:"impact", value:"An exploit could allow the attacker to conduct a reflected XSS attack.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-02-28 09:41:33 +0100 (Tue, 28 Feb 2017) $");
- script_tag(name: "creation_date", value: "2017-02-16 13:14:56 +0700 (Thu, 16 Feb 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_cucm_version.nasl");
- script_mandatory_keys("cisco/cucm/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-16 13:14:56 +0700 (Thu, 16 Feb 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_cucm_version.nasl");
+  script_mandatory_keys("cisco/cucm/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

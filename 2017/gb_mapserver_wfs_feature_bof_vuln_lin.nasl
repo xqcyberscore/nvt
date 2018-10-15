@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mapserver_wfs_feature_bof_vuln_lin.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_mapserver_wfs_feature_bof_vuln_lin.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # MapServer WFS Feature Requests Buffer Overflow Vulnerability (Linux)
 #
@@ -29,35 +29,32 @@ CPE = "cpe:/a:umn:mapserver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810791");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-5522");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-06 12:11:11 +0530 (Tue, 06 Jun 2017)");
   script_name("MapServer WFS Feature Requests Buffer Overflow Vulnerability (Linux)");
 
   script_tag(name:"summary", value:"This host is running MapServer and is prone
   to buffer overflow vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an error in 'WFS' get
   feature requests. Does not handle with specific WFS get feature requests
   properly.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to crash the service, or potentially execute arbitrary code.
-
-  Impact Level: Application");
+  attackers to crash the service, or potentially execute arbitrary code.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"affected", value:"MapServer versions before 6.0.6,
   6.2.x before 6.2.4, 6.4.x before 6.4.5, and 7.0.x before 7.0.4 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to version 6.0.6, 6.2.4, 6.4.5,
-  7.0.4 or later. For updates refer to http://www.mapserver.org");
+  7.0.4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,7 +66,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
   script_dependencies("os_detection.nasl", "gb_mapserver_detect.nasl");
-  script_mandatory_keys("MapServer/Installed","Host/runs_unixoide");
+  script_mandatory_keys("MapServer/Installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
   exit(0);
 }
@@ -78,20 +75,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-#Variable initialize
-webPort = "";
-webVer = "";
-
 if(!webPort = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-## Get the version
 if(!webVer = get_app_version(cpe:CPE, port:webPort)){
  exit(0);
 }
 
-## Checking for vulnerable version
 if(version_is_less(version:webVer, test_version:"6.0.6")){
   fix = "6.0.6";
 }

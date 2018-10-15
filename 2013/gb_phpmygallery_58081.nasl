@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmygallery_58081.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_phpmygallery_58081.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # PHPmyGallery Local File Disclosure and Cross Site Scripting Vulnerabilities
 #
@@ -29,13 +29,13 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103668");
   script_bugtraq_id(58081);
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
   script_name("PHPmyGallery Local File Disclosure and Cross Site Scripting Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/58081");
   script_xref(name:"URL", value:"http://phpmygallery.kapierich.net/en/");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-26 12:29:14 +0100 (Tue, 26 Feb 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -57,7 +57,7 @@ sensitive information from local files on computers running the
 vulnerable application. This may aid in further attacks
 
 PHPmyGallery 1.51.010 and prior versions are vulnerable.");
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

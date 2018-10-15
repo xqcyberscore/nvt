@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln_may13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_wireshark_dos_vuln_may13_macosx.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Wireshark ASN.1 BER Dissector DoS Vulnerability - May 13 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803619");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-3557", "CVE-2013-3556");
   script_bugtraq_id(59997, 60021);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-28 13:52:52 +0530 (Tue, 28 May 2013)");
   script_name("Wireshark ASN.1 BER Dissector DoS Vulnerability - May 13 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53425");
@@ -50,12 +50,12 @@ if(description)
 
   - 'dissect_ber_choice' function in epan/dissectors/packet-ber.c does not
     properly initialize variables.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.15 or 1.8.7 or later,
-  For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.15 or 1.8.7 or later.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to denial of
   service vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.wireshark.org/download");
   exit(0);
 }
 

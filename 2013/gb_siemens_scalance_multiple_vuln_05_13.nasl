@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_scalance_multiple_vuln_05_13.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_siemens_scalance_multiple_vuln_05_13.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Siemens Scalance X200 Series Switches Multiple Vulnerabilities.
 #
@@ -46,7 +46,7 @@ within the application and execute commands with escalated privileges.");
   script_cve_id("CVE-2013-3634", "CVE-2013-3633");
   script_tag(name:"cvss_base", value:"8.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11865 $");
 
   script_name("Siemens Scalance X200 Series Switches Multiple Vulnerabilities");
 
@@ -55,7 +55,7 @@ within the application and execute commands with escalated privileges.");
   script_xref(name:"URL", value:"http://subscriber.communications.siemens.com/");
   script_xref(name:"URL", value:"http://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-170686.pdf");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-30 17:50:28 +0200 (Thu, 30 May 2013)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -63,7 +63,7 @@ within the application and execute commands with escalated privileges.");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports(23);
- exit(0);
+  exit(0);
 }
 
 include("telnet_func.inc");

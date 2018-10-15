@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx201145.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_xenserver_ctx201145.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Citrix XenServer Multiple Security Updates (CTX201145)
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2015-4106", "CVE-2015-4163", "CVE-2015-4164", "CVE-2015-2756", "CVE-2015-4103", "CVE-2015-4104", "CVE-2015-4105");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Citrix XenServer Multiple Security Updates (CTX201145)");
 
   script_xref(name:"URL", value:"http://support.citrix.com/article/CTX201145");
 
   script_tag(name:"vuldetect", value:"Check the installed hotfixes");
-  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory.");
 
   script_tag(name:"summary", value:"A number of security vulnerabilities have been identified in Citrix XenServer that may allow a malicious administrator
 of a guest VM to crash the host. These vulnerabilities affect all currently supported versions of Citrix XenServer up to and including
@@ -71,7 +71,7 @@ XenServer 6.1.0");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-12 16:17:32 +0200 (Fri, 12 Jun 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Citrix Xenserver Local Security Checks");
@@ -79,7 +79,7 @@ XenServer 6.1.0");
   script_dependencies("gb_xenserver_version.nasl");
   script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

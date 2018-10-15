@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_jdbc_driver_sql_inj_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_postgresql_jdbc_driver_sql_inj_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # PostgreSQL JDBC Driver SQL Injection Vulnerability (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803220");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2012-1618");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 19:16:05 +0530 (Thu, 24 Jan 2013)");
   script_name("PostgreSQL JDBC Driver SQL Injection Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2012/Mar/125");
@@ -50,12 +50,12 @@ if(description)
   script_tag(name:"affected", value:"PostgreSQL JDBC Driver versions 8.1 on Windows");
   script_tag(name:"insight", value:"An error exists within the JDBC driver which fails to escape unspecified
   JDBC statement parameters.");
-  script_tag(name:"solution", value:"Upgrade to PostgreSQL JDBC Driver versions 8.2 or later,
-  For updates refer to http://jdbc.postgresql.org/download.html");
+  script_tag(name:"solution", value:"Upgrade to PostgreSQL JDBC Driver versions 8.2 or later.");
   script_tag(name:"summary", value:"This host is installed with PostgreSQL with JDBC Driver and is
   prone to sql injection vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://jdbc.postgresql.org/download.html");
   exit(0);
 }
 

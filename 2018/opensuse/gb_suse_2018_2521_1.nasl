@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2521_1.nasl 11133 2018-08-27 10:21:00Z santu $
+# $Id: gb_suse_2018_2521_1.nasl 11897 2018-10-15 05:26:22Z cfischer $
 #
 # SuSE Update for nextcloud openSUSE-SU-2018:2521-1 (nextcloud)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851868");
-  script_version("$Revision: 11133 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 12:21:00 +0200 (Mon, 27 Aug 2018) $");
+  script_version("$Revision: 11897 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-27 07:20:43 +0200 (Mon, 27 Aug 2018)");
   script_cve_id("CVE-2018-3780");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for nextcloud openSUSE-SU-2018:2521-1 (nextcloud)");
   script_tag(name:"summary", value:"Check the version of nextcloud");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_zero_cipher.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_ipmi_zero_cipher.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # IPMI Cipher Zero Authentication Bypass Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103840");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("IPMI Cipher Zero Authentication Bypass Vulnerability");
@@ -36,7 +36,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://fish2.com/ipmi/cipherzero.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-11-27 15:03:17 +0100 (Wed, 27 Nov 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -55,7 +55,7 @@ device and disclose sensitive information.");
   script_tag(name:"summary", value:"Intelligent Platform Management Interface is prone to an authentication-
 bypass vulnerability.");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

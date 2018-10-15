@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_56597.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_hp_ilo_56597.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # HP Integrated Lights-Out Unspecified Information Disclosure Vulnerability
 #
@@ -32,9 +32,9 @@ if (description)
   script_cve_id("CVE-2012-3271");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11865 $");
   script_name("HP Integrated Lights-Out Unspecified Information Disclosure Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-10 18:14:19 +0200 (Tue, 10 Sep 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -64,7 +64,7 @@ Integrated Lights-Out 4 (aka iLO4) with firmware before 1.13");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

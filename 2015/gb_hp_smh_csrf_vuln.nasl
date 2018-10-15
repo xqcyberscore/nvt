@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_csrf_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_hp_smh_csrf_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # HP System Management Homepage Cross-site Request Forgery Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805692");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-2134");
   script_bugtraq_id(75961);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-27 14:14:07 +0530 (Mon, 27 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("HP System Management Homepage Cross-site Request Forgery Vulnerability");
@@ -55,8 +55,7 @@ if(description)
   script_tag(name:"affected", value:"HP System Management Homepage before 7.5.0");
 
   script_tag(name:"solution", value:"Upgrade to HP System Management Homepage
-  7.5.0 or later. For updates refer to
-  http://www8.hp.com/us/en/products/server-software/product-detail.html?oid=344313");
+  7.5.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +67,7 @@ if(description)
   script_dependencies("secpod_hp_smh_detect.nasl");
   script_mandatory_keys("HP/SMH/installed");
   script_require_ports("Services/www", 2301, 2381);
+  script_xref(name:"URL", value:"http://www8.hp.com/us/en/products/server-software/product-detail.html?oid=344313");
   exit(0);
 }
 

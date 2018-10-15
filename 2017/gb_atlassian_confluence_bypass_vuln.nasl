@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_confluence_bypass_vuln.nasl 6392 2017-06-21 10:06:19Z teissa $
+# $Id: gb_atlassian_confluence_bypass_vuln.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # Atlassian Confluence Access Restriction Bypass Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:atlassian:confluence";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106869");
-  script_version("$Revision: 6392 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-21 12:06:19 +0200 (Wed, 21 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-14 09:24:05 +0700 (Wed, 14 Jun 2017)");
-  script_tag(name: "cvss_base", value: "4.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_version("$Revision: 11901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-14 09:24:05 +0700 (Wed, 14 Jun 2017)");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-9505");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Atlassian Confluence Access Restriction Bypass Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_atlassian_confluence_detect.nasl");
   script_mandatory_keys("atlassian_confluence/installed");
 
-  script_tag(name: "summary", value: "Atlassian Confluence is prone to a access restriction bypass vulnerability
+  script_tag(name:"summary", value:"Atlassian Confluence is prone to a access restriction bypass vulnerability
 using watch notifications.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Confluence does not check if a user had permission to view a page when
+  script_tag(name:"insight", value:"Confluence does not check if a user had permission to view a page when
 creating a workbox notification about new comments. An attacker who can login to Confluence could receive workbox
 notifications, which contain the content of comments, for comments added to a page after they started watching it
 even if they do not have permission to view the page itself.");
 
-  script_tag(name: "affected", value: "Atlassian Confluence 4.3.0 until 6.1.1.");
+  script_tag(name:"affected", value:"Atlassian Confluence 4.3.0 until 6.1.1.");
 
-  script_tag(name: "solution", value: "Update to 6.2.1 or later versions.");
+  script_tag(name:"solution", value:"Update to 6.2.1 or later versions.");
 
-  script_xref(name: "URL", value: "https://jira.atlassian.com/browse/CONFSERVER-52560");
+  script_xref(name:"URL", value:"https://jira.atlassian.com/browse/CONFSERVER-52560");
 
   exit(0);
 }

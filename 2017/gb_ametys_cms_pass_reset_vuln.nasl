@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ametys_cms_pass_reset_vuln.nasl 9532 2018-04-19 09:52:06Z asteins $
+# $Id: gb_ametys_cms_pass_reset_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Ametys CMS Unauthenticated Password Reset Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:ametys:cms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107257");
-  script_version("$Revision: 9532 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-19 11:52:06 +0200 (Thu, 19 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-11-13 13:29:03 +0200 (Mon, 13 Nov 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-13 13:29:03 +0200 (Mon, 13 Nov 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Ametys CMS Unauthenticated Password Reset Vulnerability");
 
@@ -49,17 +49,17 @@ if (description)
   script_dependencies("gb_ametys_cms_detect.nasl");
   script_mandatory_keys("ametys/detected");
 
-  script_tag(name: "summary", value: "Ametys CMS is prone to an unauthenticated password reset vulnerability.");
+  script_tag(name:"summary", value:"Ametys CMS is prone to an unauthenticated password reset vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "impact", value: "Unauthenticated user can perform administrative operations without properly authorization.");
+  script_tag(name:"impact", value:"Unauthenticated user can perform administrative operations without properly authorization.");
 
-  script_tag(name: "affected", value: "Ametys CMS prior to 4.0.3");
+  script_tag(name:"affected", value:"Ametys CMS prior to 4.0.3");
 
-  script_tag(name: "solution", value: "Update to version 4.0.3 or later.");
+  script_tag(name:"solution", value:"Update to version 4.0.3 or later.");
 
-  script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/3517");
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3517");
 
   exit(0);
 }

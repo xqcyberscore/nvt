@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_server_autocomplete_field_stored_xss_vuln.nasl 11092 2018-08-23 09:40:58Z santu $
+# $Id: gb_nextcloud_server_autocomplete_field_stored_xss_vuln.nasl 11897 2018-10-15 05:26:22Z cfischer $
 #
 # Nextcloud Server 'Autocomplete field' Stored XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813916");
-  script_version("$Revision: 11092 $");
+  script_version("$Revision: 11897 $");
   script_cve_id("CVE-2018-3780");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 11:40:58 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-20 17:29:50 +0530 (Mon, 20 Aug 2018)");
   script_name("Nextcloud Server 'Autocomplete field' Stored XSS Vulnerability");
 

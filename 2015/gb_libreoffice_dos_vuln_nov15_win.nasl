@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_dos_vuln_nov15_win.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_libreoffice_dos_vuln_nov15_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # LibreOffice DOC Bookmarks Denial of Service Vulnerability Nov15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806599");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-5214");
   script_bugtraq_id(77486);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-16 15:31:04 +0530 (Mon, 16 Nov 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("LibreOffice DOC Bookmarks Denial of Service Vulnerability Nov15 (Windows)");
@@ -55,7 +55,7 @@ if(description)
   before 5.0.1 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to LibreOffice version
-  4.4.6 or 5.0.1 or later, For updates refer to http://www.libreoffice.org");
+  4.4.6 or 5.0.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +65,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_libreoffice_detect_portable_win.nasl");
   script_mandatory_keys("LibreOffice/Win/Ver");
+  script_xref(name:"URL", value:"http://www.libreoffice.org");
   exit(0);
 }
 

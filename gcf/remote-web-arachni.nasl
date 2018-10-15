@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-web-arachni.nasl 11665 2018-09-28 07:14:18Z cfischer $
+# $Id: remote-web-arachni.nasl 11886 2018-10-12 13:48:53Z cfischer $
 #
 # Assess web security with arachni
 #
@@ -25,8 +25,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.110001");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11665 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11886 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:48:53 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-02-02 13:26:27 +0100 (Wed, 02 Feb 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("arachni (NASL wrapper)");
@@ -59,7 +59,7 @@ See the preferences section for arachni options.
 Note that the scanner is using limited set of arachni options.
 Therefore, for more complete web assessment, you should
 use standalone arachni tool for deeper/customized checks.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

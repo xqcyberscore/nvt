@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_php_file_upload_vuln_aug18_lin.nasl 10945 2018-08-14 06:57:51Z santu $
+# $Id: gb_wordpress_php_file_upload_vuln_aug18_lin.nasl 11897 2018-10-15 05:26:22Z cfischer $
 #
 # Wordpress PHP File Upload Vulnerability August 18 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813911");
-  script_version("$Revision: 10945 $");
+  script_version("$Revision: 11897 $");
   script_cve_id("CVE-2018-14028");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 08:57:51 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-13 13:11:17 +0530 (Mon, 13 Aug 2018)");
   script_name("Wordpress PHP File Upload Vulnerability August 18 (Linux)");
 

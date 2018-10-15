@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 11276 2018-09-07 08:18:40Z cfischer $
+# $Id: http_keepalive.inc 11896 2018-10-13 14:47:25Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11276 $
+# $Revision: 11896 $
 #
 ###############################################################################
 
@@ -167,7 +167,10 @@ function http_keepalive_recv_body( headers, bodyonly ) {
   if( ( length < 0 ) && ( egrep( pattern:"transfer-encoding: chunked", string:headers, icase:TRUE ) ) ) {
     while( 1 ) {
       tmp = recv_line( socket:__ka_socket, length:4096 );
-      length = hex2dec( xvalue:tmp );
+      if( ! tmp )
+        length = 0;
+      else
+        length = hex2dec( xvalue:tmp );
       if( length > 1048576 ) {
         length = 1048576;
         killme = 1;
@@ -258,9 +261,19 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
     return NULL;
   }
 
+  # nb: We should expect at least a request like: "GET / HTTP/1.1\r\n" (length: 16).
+  # But for some specific cases we're just checking for some less data.
+  if( strlen( data ) < 8 || data !~ "^(DELETE|PROPFIND|PUT|GET|HEAD|POST|OPTIONS|REPORT|MKCOL|MOVE|PROPPATCH|COPY|PATCH|CONNECT|TRACE|LOCK|UNLOCK|TRACK|M-POST|CHECKOUT|CHECKIN|UNCHECKOUT|VERSION-CONTROL|BASELINE-CONTROL).*HTTP/(1\.[01]|2)" ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_keepalive_send_recv(): Invalid HTTP request (length < 8, invalid HTTP method or missing HTTP/ header) passed in 'data' variable." );
+  }
+
   # http_get() won't add a Host: header if only HTTP/1.0 support was detected
   if( "Host:" >!< data && "HTTP/1.0" >!< data ) {
-    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#No 'Host:' header passed in data variable of http_keepalive_send_recv(). This might lead to issues if SNI is enabled on the remote host." );
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_keepalive_send_recv(): No 'Host:' header passed in data variable. This might lead to issues if SNI is enabled on the remote host." );
+  }
+
+  if( data !~ "^(DELETE|PROPFIND|PUT|GET|HEAD|POST|OPTIONS|REPORT|MKCOL|MOVE|PROPPATCH|COPY|PATCH|CONNECT|TRACE|LOCK|UNLOCK|TRACK|M-POST|CHECKOUT|CHECKIN|UNCHECKOUT|VERSION-CONTROL|BASELINE-CONTROL) (/|\.+/|https?:|\*).* HTTP" ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_keepalive_send_recv(): URL/URI of the HTTP request passed in 'data' variable doesn't start with one of the following: '/, ./, http, *'." );
   }
 
   if( _http_ka_debug ) display( "DEBUG: http_keepalive_send_recv( port: ", port, ", data: ", data, ", bodyonly: ", bodyonly, " )\n" );

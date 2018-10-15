@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_aug12_macosx.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: gb_adobe_prdts_mult_vuln_aug12_macosx.nasl 11870 2018-10-12 11:12:45Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities - Mac OS X
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802937");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11870 $");
   script_cve_id("CVE-2012-4149", "CVE-2012-4148", "CVE-2012-4147", "CVE-2012-2051",
                 "CVE-2012-2050", "CVE-2012-4160", "CVE-2012-2049", "CVE-2012-4159",
                 "CVE-2012-4158", "CVE-2012-4157", "CVE-2012-4156", "CVE-2012-4155",
@@ -40,10 +40,9 @@ if(description)
                     55022, 55023);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:12:45 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-20 11:01:35 +0530 (Mon, 20 Aug 2012)");
   script_name("Adobe Reader Multiple Vulnerabilities - Mac OS X");
-
 
   script_tag(name:"summary", value:"This host is installed with Adobe Reader and is prone to multiple
 vulnerabilities.");
@@ -67,25 +66,18 @@ the context of the affected application or cause a denial of service.");
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-## Function to check the versions of abode reader
-function version_check(ver)
-{
-  if(version_in_range(version:ver, test_version:"9.0", test_version2:"9.5.1") ||
-     version_in_range(version:ver, test_version:"10.0", test_version2:"10.1.3"))
-  {
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-    exit(0);
-  }
-}
 
 if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
 if(readerVer =~ "^(9|10)"){
-  version_check(ver:readerVer);
+  if(version_in_range(version:ver, test_version:"9.0", test_version2:"9.5.1") ||
+     version_in_range(version:ver, test_version:"10.0", test_version2:"10.1.3"))
+  {
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
+    exit(0);
+  }
 }

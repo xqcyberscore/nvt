@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_libpng_plugin_dos_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_vlc_media_player_libpng_plugin_dos_vuln_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # VLC Media Player 'libpng_plugin' Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802489");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-5470");
   script_bugtraq_id(55850);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 14:31:32 +0530 (Fri, 02 Nov 2012)");
   script_name("VLC Media Player 'libpng_plugin' Denial of Service Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/21889/");
@@ -49,7 +49,7 @@ if(description)
   script_tag(name:"affected", value:"VLC media player version 2.0.3 and prior on Mac OS X");
   script_tag(name:"insight", value:"The flaw is due to an error in 'libpng_plugin' when handling a crafted PNG
   file. Which can be exploited to cause a crash.");
-  script_tag(name:"solution", value:"Upgrade to VLC media player 2.0.4 or later,");
+  script_tag(name:"solution", value:"Upgrade to VLC media player 2.0.4 or later.");
   script_tag(name:"summary", value:"This host is installed with VLC Media Player and is prone to
   denial of service vulnerability.");
   script_tag(name:"qod_type", value:"package");

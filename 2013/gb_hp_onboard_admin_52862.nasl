@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_onboard_admin_52862.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_hp_onboard_admin_52862.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # HP Onboard Administrator Multiple Security Vulnerabilities
 #
@@ -34,13 +34,13 @@ if (description)
   script_cve_id("CVE-2012-0128", "CVE-2012-0129", "CVE-2012-0130");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11865 $");
   script_name("HP Onboard Administrator Multiple Security Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52862");
   script_xref(name:"URL", value:"http://h18004.www1.hp.com/products/blades/components/onboard/index.html?jumpid=reg_R1002_USEN");
   script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c03263573");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-01 11:28:03 +0200 (Tue, 01 Oct 2013)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -67,7 +67,7 @@ potentially malicious site. This may aid in phishing attacks.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

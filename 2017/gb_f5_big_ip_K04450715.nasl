@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K04450715.nasl 5604 2017-03-17 16:42:21Z mime $
+# $Id: gb_f5_big_ip_K04450715.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # F5 BIG-IP - libxml2 vulnerability CVE-2015-8806
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140193");
- script_cve_id("CVE-2015-8806","CVE-2016-9244");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5604 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140193");
+  script_cve_id("CVE-2015-8806", "CVE-2016-9244");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11863 $");
 
- script_name("F5 BIG-IP - libxml2 vulnerability CVE-2015-8806");
+  script_name("F5 BIG-IP - libxml2 vulnerability CVE-2015-8806");
 
- script_xref(name:"URL", value:"https://support.f5.com/csp/article/K04450715");
+  script_xref(name:"URL", value:"https://support.f5.com/csp/article/K04450715");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary", value:"dict.c in libxml2 allows remote attackers to cause a denial of service (heap-based buffer over-read and application crash) via an unexpected character immediately after the '<!DOCTYPE html' substring in a crafted HTML document.");
- script_tag(name: "impact", value:"This vulnerability allows disruption of service.");
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"dict.c in libxml2 allows remote attackers to cause a denial of service (heap-based buffer over-read and application crash) via an unexpected character immediately after the '<!DOCTYPE html' substring in a crafted HTML document.");
+  script_tag(name:"impact", value:"This vulnerability allows disruption of service.");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-17 17:42:21 +0100 (Fri, 17 Mar 2017) $");
- script_tag(name:"creation_date", value:"2017-03-17 10:24:10 +0100 (Fri, 17 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-17 10:24:10 +0100 (Fri, 17 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
+  exit(0);
 }
 
 include("version_func.inc");

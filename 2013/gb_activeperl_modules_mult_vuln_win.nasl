@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_activeperl_modules_mult_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_activeperl_modules_mult_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Active Perl Modules Multiple Vulnerabilities (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803343");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2011-5060", "CVE-2011-4114", "CVE-2011-3597", "CVE-2011-2939",
                 "CVE-2011-2728");
   script_bugtraq_id(49911);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-03-27 11:15:50 +0530 (Wed, 27 Mar 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -76,14 +76,12 @@ if(description)
   Upgrade to Active Perl PAR module version 1.003 or later
   Upgrade to Active Perl Digest module version 1.17 or later
   Upgrade to Active Perl Encode module version 2.44 or later
-  Upgrade Active Perl PAR::Packer module version 1.012 or later
-  For updates refer to http://www.perl.org/get.html
-
-  *****
+  Upgrade Active Perl PAR::Packer module version 1.012 or later  *****
   NOTE: Ignore this warning if above mentioned versions of modules are already installed.
   *****");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.perl.org/get.html");
   exit(0);
 }
 

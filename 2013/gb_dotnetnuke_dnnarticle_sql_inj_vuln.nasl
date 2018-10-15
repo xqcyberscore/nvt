@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnetnuke_dnnarticle_sql_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_dotnetnuke_dnnarticle_sql_inj_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # DotNetNuke DNNArticle Module SQL Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:dotnetnuke:dotnetnuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803868");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-5117");
   script_bugtraq_id(61788);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-19 11:59:21 +0530 (Mon, 19 Aug 2013)");
   script_name("DotNetNuke DNNArticle Module SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -48,8 +48,7 @@ if(description)
   scripting vulnerability.");
   script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check whether it is able to read the
   SQL server version or not.");
-  script_tag(name:"solution", value:"Upgrade to version 10.1 or later,
-  For updates refer to http://www.zldnn.com");
+  script_tag(name:"solution", value:"Upgrade to version 10.1 or later.");
   script_tag(name:"insight", value:"Input passed via the 'categoryid' GET parameter to 'desktopmodules/
   dnnarticle/dnnarticlerss.aspx' (when 'moduleid' is set) is not properly
   sanitized before being used in a SQL query.");
@@ -64,6 +63,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
+  script_xref(name:"URL", value:"http://www.zldnn.com");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-022.nasl 5752 2017-03-29 04:01:01Z teissa $
+# $Id: gb_ms17-022.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # MS Windows XML Core Services Information Disclosure Vulnerability (4010321)
 #
@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810623");
-  script_version("$Revision: 5752 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-0022");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 10:03:11 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows XML Core Services Information Disclosure Vulnerability (4010321)");
@@ -38,19 +38,15 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS17-022.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw exists due to improper handling of
   objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to test for the presence of files on disk.
+  attackers to test for the presence of files on disk.");
 
-  Impact Level: System");
-
-  script_tag(name:"affected", value:"
-  Microsoft Windows Vista x32/x64 Edition Service Pack 2
+  script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Edition Service Pack 2
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1
@@ -62,19 +58,18 @@ if(description)
   Microsoft Windows Server 2016 x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS17-022");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4010321");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS17-022");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4010321");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS17-022");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -85,18 +80,12 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-mssysPath = "";
-msdllVer="";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, winVistax64:3, win2008x64:3, win2008:3, win7:2, win7x64:2,
                    win2008r2:2, win8_1:1, win8_1x64:1, win2012:1, win2012R2:1, win10:1,
                    win10x64:1, win2016:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 mssysPath = smb_get_systemroot();
 if(!mssysPath ){
   exit(0);
@@ -109,10 +98,8 @@ if(!msdllVer && !pdfVer && !edgeVer){
   exit(0);
 }
 
-## Windows Vista and Windows Server 2008
 if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0 && msdllVer)
 {
-  ## Check for Msxml3.dll version
   if(version_is_less(version:msdllVer, test_version:"8.100.5014.0"))
   {
     Vulnerable_range = "Less than 8.100.5014.0";
@@ -120,10 +107,8 @@ if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0 && ms
   }
 }
 
-## Windows 7 and Windows Server 2008 R2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && msdllVer)
 {
-  ## Check for Msxml3.dll version
   ## GDR info not given
   if(version_is_less(version:msdllVer, test_version:"8.110.7601.23648"))
   {
@@ -135,7 +120,6 @@ else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && msdllVer)
 ## Win 8.1 and win2012R2, Taking Windows.data.pdf.dll file as update is cummulative
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && pdfVer)
 {
-  ## Check for Windows.data.pdf.dll version
   if(version_is_less(version:pdfVer, test_version:"6.3.9600.18569"))
   {
     Vulnerable_range = "Less than 6.3.9600.18569";
@@ -153,24 +137,20 @@ else if(hotfix_check_sp(win2012:1) > 0 && msdllVer)
   }
 }
 
-## Windows 10
 else if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) > 0 && edgeVer)
 {
-  ## Check for Edgehtml.dll version
   if(version_is_less(version:edgeVer, test_version:"11.0.10240.17319"))
   {
     Vulnerable_range = "Less than 11.0.10240.17319";
     VULN3 = TRUE ;
   }
 
-  ## Windows 10 Version 1511
   else if(version_in_range(version:edgeVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.838"))
   {
     Vulnerable_range = "11.0.10586.0 - 11.0.10586.839";
     VULN3 = TRUE ;
   }
 
-  ## Windows 10 version 1607 and Windows Server 2016
   else if(version_in_range(version:edgeVer, test_version:"11.0.14393.0", test_version2:"11.0.14393.952"))
   {
     Vulnerable_range = "11.0.14393.0 - 11.0.14393.952";

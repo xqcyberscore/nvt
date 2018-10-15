@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_57133.nasl 11497 2018-09-20 10:31:54Z mmartin $
+# $Id: gb_wordpress_57133.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # WordPress Google Doc Embedder Plugin Arbitrary File Disclosure Vulnerability
 #
@@ -34,14 +34,14 @@ if (description)
   script_cve_id("CVE-2012-4915");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11497 $");
+  script_version("$Revision: 11865 $");
 
   script_name("WordPress Google Doc Embedder Plugin Arbitrary File Disclosure Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57133");
   script_xref(name:"URL", value:"http://www.wordpress.org/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-08 14:00:15 +0100 (Tue, 08 Jan 2013)");
 
   script_category(ACT_ATTACK);
@@ -63,7 +63,7 @@ application.
 
 Google Doc Embedder 2.4.6 is vulnerable, other versions may also be affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

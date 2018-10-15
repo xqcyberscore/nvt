@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_scoreboard_sec_bypass_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_apache_scoreboard_sec_bypass_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Apache HTTP Server Scoreboard Security Bypass Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803744");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2012-0031");
   script_bugtraq_id(51407);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 19:53:07 +0530 (Wed, 21 Aug 2013)");
   script_name("Apache HTTP Server Scoreboard Security Bypass Vulnerability (Windows)");
 
@@ -42,8 +42,7 @@ if(description)
 vulnerability.");
   script_tag(name:"vuldetect", value:"Get the installed version Apache HTTP Server with the help of detect NVT
 and check it is vulnerable or not.");
-  script_tag(name:"solution", value:"Upgrade to Apache HTTP Server 2.2.22 or later,
-For updates refer to http://svn.apache.org");
+  script_tag(name:"solution", value:"Upgrade to Apache HTTP Server 2.2.22 or later.");
   script_tag(name:"insight", value:"The flaw is due to an error in 'inscoreboard.c', certain type field within
 a scoreboard shared memory segment leading to an invalid call to the free
 function.");

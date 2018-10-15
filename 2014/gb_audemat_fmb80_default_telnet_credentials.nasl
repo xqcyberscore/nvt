@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_audemat_fmb80_default_telnet_credentials.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_audemat_fmb80_default_telnet_credentials.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Audemat FMB80 RDS Encoder Default root Credentials
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103898");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Audemat FMB80 RDS Encoder Default root Credentials");
@@ -36,7 +36,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://dariusfreamon.wordpress.com/2014/01/28/audemat-fmb80-rds-encoder-default-root-credentials/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-29 15:02:06 +0200 (Wed, 29 Jan 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -53,7 +53,7 @@ access to sensitive information or modify system configuration.");
   script_tag(name:"solution", value:"Change/Set the password.");
   script_tag(name:"solution_type", value:"Mitigation");
 
- exit(0);
+  exit(0);
 }
 
 include("telnet_func.inc");

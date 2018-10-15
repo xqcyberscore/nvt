@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_ticket_print_info_disclosure_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_otrs_ticket_print_info_disclosure_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # OTRS Ticket-print Information Disclosure Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803926");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2010-4761");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-22 9:18:31 +0530 (Sun, 22 Sep 2013)");
   script_name("OTRS Ticket-print Information Disclosure Vulnerability");
 
@@ -40,12 +40,11 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote authenticated users to obtain
 potentially sensitive information from the (1) responsible, (2) owner,
 (3) accounted time, (4) pending until, and (5) lock fields by reading this dialog.");
-  script_tag(name:"vuldetect", value:"Get the installed version of OTRS with the help of detect NVT and check the
-version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"An error exists in customer-interface ticket-print dialog which fails to
 restrict customer-visible data");
   script_tag(name:"solution", value:"Upgrade to OTRS (Open Ticket Request System) version 3.0.0-beta3 or
-later, For updates refer to http://www.otrs.com/en/");
+later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with OTRS (Open Ticket Request System) and is prone to
 information disclosure vulnerability.");
@@ -57,6 +56,7 @@ information disclosure vulnerability.");
   script_dependencies("secpod_otrs_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("OTRS/installed");
+  script_xref(name:"URL", value:"http://www.otrs.com/en/");
   exit(0);
 }
 

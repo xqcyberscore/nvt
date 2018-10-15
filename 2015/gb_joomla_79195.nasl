@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_79195.nasl 11323 2018-09-11 10:20:18Z ckuersteiner $
+# $Id: gb_joomla_79195.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Joomla! Core Remote Code Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-8562", "CVE-2015-8563", "CVE-2015-8564", "CVE-2015-8565");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11323 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Joomla! Core Remote Code Execution Vulnerability");
 
@@ -50,7 +50,7 @@ output of the phpinfo() command.");
   script_tag(name:"insight", value:"Browser information is not filtered properly while saving the session values
 into the database which leads to a Remote Code Execution vulnerability.");
 
-  script_tag(name:"solution", value:"Update to 3.4.6 or higher");
+  script_tag(name:"solution", value:"Update to 3.4.6 or later.");
 
   script_tag(name:"summary", value:"Joomla! is prone to remote code-execution vulnerability.");
 
@@ -60,7 +60,7 @@ through 3.4.5");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:20:18 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-16 15:35:12 +0100 (Wed, 16 Dec 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");

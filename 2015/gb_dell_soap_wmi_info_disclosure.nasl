@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_soap_wmi_info_disclosure.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_dell_soap_wmi_info_disclosure.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Dell Foundation Services SOAP WMI API Information Disclosure
 #
@@ -30,8 +30,8 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105476");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11492 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_version("$Revision: 11872 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-03 11:32:22 +0100 (Thu, 03 Dec 2015)");
   script_name("Dell Foundation Services 'SOAP WMI API' Remote Information Disclosure");
 
@@ -39,7 +39,7 @@ if (description)
   script_tag(name:"vuldetect", value:"Send a HTTP GET request and check the response.");
   script_tag(name:"solution", value:"Update to a Dell Foundation Services > 3.0.700.0 or uninstall Dell Foundation Services");
   script_tag(name:"insight", value:"Dell Foundation Services starts an HTTPd that listens on port 7779. The previous service tag leak was fixed by removing the JSONP API.
-However, the webservice in question is still available; it is now a SOAP service, and all methods of that webservice can be accessed, not just the ServiceTagmethod. This affects hardware, installed software, running processes, installed services, accessible hard disks, filesystem metadata (filenames, file size, dates) and more.");
+However, the webservice in question is still available. It is now a SOAP service, and all methods of that webservice can be accessed, not just the ServiceTagmethod. This affects hardware, installed software, running processes, installed services, accessible hard disks, filesystem metadata (filenames, file size, dates) and more.");
   script_tag(name:"affected", value:"Dell Foundation Services 3.0.700.0");
 
   script_xref(name:"URL", value:"http://lizardhq.rum.supply/2015/12/01/dell-foundation-services.2.html");
@@ -54,7 +54,7 @@ However, the webservice in question is still available; it is now a SOAP service
   script_require_ports("Services/www", 7779);
   script_mandatory_keys("Microsoft-HTTPAPI/banner");
 
- exit(0);
+  exit(0);
 }
 
 

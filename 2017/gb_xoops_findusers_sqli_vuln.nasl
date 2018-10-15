@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xoops_findusers_sqli_vuln.nasl 5953 2017-04-13 12:58:23Z cfi $
+# $Id: gb_xoops_findusers_sqli_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # XOOPS 'findusers.php' SQL Injection Vulnerability
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:xoops:xoops";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108137");
-  script_version("$Revision: 5953 $");
-  script_tag(name:"last_modification", value: "$Date: 2017-04-13 14:58:23 +0200 (Thu, 13 Apr 2017) $");
-  script_tag(name:"creation_date", value: "2017-04-13 12:06:51 +0200 (Thu, 13 Apr 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-13 12:06:51 +0200 (Thu, 13 Apr 2017)");
   script_cve_id("CVE-2017-7290");
   script_bugtraq_id(97230);
   script_tag(name:"cvss_base", value:"6.5");
@@ -48,26 +48,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/97230");
   script_xref(name:"URL", value:"https://gist.github.com/jk1986/3b304ac6b4ae52ae667bba380c2dce19");
 
-  tag_impact = "Exploiting this issue could allow an attacker to compromise the application, access or
-  modify data, or exploit latent vulnerabilities in the underlying database. 
-
-  Impact Level: Application/System.";
-
-  tag_affected = "XOOPS version prior to 2.5.8.1";
-
-  tag_insight = "The flaw exists due to XOOPS allowing remote authenticated administrators to execute
+  script_tag(name:"summary", value:"This host is running XOOPS and is prone to a sql injection vulnerability.");
+  script_tag(name:"insight", value:"The flaw exists due to XOOPS allowing remote authenticated administrators to execute
   arbitrary SQL commands via the url parameter to findusers.php. An example attack uses 'into outfile'
-  to create a backdoor program.";
-
-  tag_solution = "Upgrade to XOOPS version 2.5.8.1 or later.";
-
-  tag_summary = "This host is running XOOPS and is prone to a sql injection vulnerability.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected" , value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  to create a backdoor program.");
+  script_tag(name:"impact", value:"Exploiting this issue could allow an attacker to compromise the application, access or
+  modify data, or exploit latent vulnerabilities in the underlying database.");
+  script_tag(name:"affected", value:"XOOPS version prior to 2.5.8.1");
+  script_tag(name:"solution", value:"Upgrade to XOOPS version 2.5.8.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

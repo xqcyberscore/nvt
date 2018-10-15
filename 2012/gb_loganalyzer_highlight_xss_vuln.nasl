@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_loganalyzer_highlight_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_loganalyzer_highlight_xss_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Adiscon LogAnalyzer 'highlight' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802645");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-3790");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 11:11:11 +0530 (Thu, 21 Jun 2012)");
   script_name("Adiscon LogAnalyzer 'highlight' Parameter Cross Site Scripting Vulnerability");
 
@@ -56,7 +56,7 @@ if(description)
   verified before it is returned to the user. This can be exploited to execute
   arbitrary HTML and script code in a user's browser session in the context of
   a vulnerable site.");
-  script_tag(name:"solution", value:"Upgrade to Adiscon LogAnalyzer version 3.4.4 or 3.5.5 or later,");
+  script_tag(name:"solution", value:"Upgrade to Adiscon LogAnalyzer version 3.4.4 or 3.5.5 or later.");
   script_tag(name:"summary", value:"This host is running Adiscon LogAnalyzer and is prone to cross site
   scripting vulnerability.");
 

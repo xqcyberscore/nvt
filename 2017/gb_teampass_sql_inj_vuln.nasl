@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teampass_sql_inj_vuln.nasl 7919 2017-11-28 07:45:29Z asteins $
+# $Id: gb_teampass_sql_inj_vuln.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # TeamPass SQL Injection Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:teampass:teampass';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112143");
-  script_version("$Revision: 7919 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2017-9436");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-28 08:45:29 +0100 (Tue, 28 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-28 09:01:00 +0100 (Tue, 28 Nov 2017)");
   script_name("TeamPass SQL Injection Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -48,19 +48,18 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with TeamPass and
   is prone to an sql injection vulnerability in users.queries.php.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to read sensitive data and/or modify database data.");
 
   script_tag(name:"affected", value:"TeamPass before version 2.1.27.4.");
 
-  script_tag(name:"solution", value:"Upgrade to TeamPass 2.1.27.4 or later,
-  For updates refer to http://teampass.net/");
+  script_tag(name:"solution", value:"Upgrade to TeamPass 2.1.27.4 or later.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://teampass.net/");
   exit(0);
 }
 

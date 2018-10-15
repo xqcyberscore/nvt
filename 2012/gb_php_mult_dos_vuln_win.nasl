@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_dos_vuln_win.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_php_mult_dos_vuln_win.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # PHP Multiple Denial of Service Vulnerabilities (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802566");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2011-4153", "CVE-2012-0781");
   script_bugtraq_id(51417);
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 11:30:34 +0530 (Mon, 23 Jan 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -64,7 +64,7 @@ if(description)
   - An error in 'tidy_diagnose' function, which might allows remote attackers
    to cause a denial of service via crafted input.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP version 5.4.0 or later, ");
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.4.0 or later.");
 
   script_tag(name:"summary", value:"This host is installed with PHP and is prone to multiple denial of
   service vulnerabilities.");

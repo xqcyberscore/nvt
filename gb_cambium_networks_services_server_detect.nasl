@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cambium_networks_services_server_detect.nasl 8159 2017-12-18 15:10:39Z cfischer $
+# $Id: gb_cambium_networks_services_server_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Cambium Networks Services Server Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113059");
-  script_version("$Revision: 8159 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-30 10:23:24 +0100 (Thu, 30 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.cambiumnetworks.com/products/management/cns-server/");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "cpe.inc" );

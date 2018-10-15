@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2017-10_2017-12_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2017-10_2017-12_win.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Mozilla Firefox Security Updates(mfsa_2017-10_2017-12)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810751");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2017-5433", "CVE-2017-5435", "CVE-2017-5436", "CVE-2017-5461",
                 "CVE-2017-5459", "CVE-2017-5466", "CVE-2017-5434", "CVE-2017-5432",
                 "CVE-2017-5460", "CVE-2017-5438", "CVE-2017-5439", "CVE-2017-5440",
@@ -43,65 +43,100 @@ if(description)
                 "CVE-2017-5429");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-20 10:53:01 +0530 (Thu, 20 Apr 2017)");
   script_name("Mozilla Firefox Security Updates(mfsa_2017-10_2017-12)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
+
   - An use-after-free in SMIL animation functions,
+
   - An use-after-free during transaction processing in the editor,
+
   - An uut-of-bounds write with malicious font in Graphite 2,
+
   - An Out-of-bounds write in Base64 encoding in NSS,
+
   - The buffer overflow in WebGL,
+
   - The origin confusion when reloading isolated data:text/html URL,
+
   - An use-after-free during focus handling,
+
   - An use-after-free in text input selection,
+
   - An use-after-free in frame selection,
+
   - An use-after-free in nsAutoPtr during XSLT processing,
+
   - An use-after-free in nsTArray Length() during XSLT processing,
+
   - An use-after-free in txExecutionState destructor during XSLT processing,
+
   - An use-after-free with selection during scroll events,
+
   - An use-after-free during style changes,
+
   - The memory corruption with accessibility and DOM manipulation,
+
   - The out-of-bounds write during BinHex decoding,
+
   - The buffer overflow while parsing application/http-index-format content,
+
   - An out-of-bounds read when HTTP/2 DATA frames are sent with incorrect data,
+
   - An out-of-bounds read during glyph processing,
+
   - An out-of-bounds read in ConvolvePixel,
+
   - An out-of-bounds write in ClearKeyDecryptor,
+
   - The vulnerabilities in Libevent library,
+
   - The sandbox escape allowing file system read access through file picker,
+
   - The sandbox escape through internal feed reader APIs,
+
   - The sandbox escape allowing local file system access,
+
   - The Potential Buffer overflow in flex-generated code,
+
   - An uninitialized values used while parsing application/http-index-format content,
+
   - The crash during bidirectional unicode manipulation with animation,
+
   - An addressbar spoofing using javascript: URI on Firefox for Android,
+
   - An addressbar spoofing with onblur event,
+
   - The DRBG flaw in NSS,
+
   - The memory corruption when drawing Skia content,
+
   - The addressbar spoofing during scrolling with editable content on Firefox for Android,
+
   - The HTML injection into RSS Reader feed preview page through TITLE element,
+
   - The drag and drop of javascript: URLs can allow for self-XSS,
+
   - An incorrect ownership model for Private Browsing information and
+
   - The memory safety bugs fixed in Firefox 53 and Firefox ESR 52.1.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code, to delete arbitrary files by leveraging
   certain local file execution, to obtain sensitive information, and to cause
-  a denial of service.
+  a denial of service.");
 
-  Impact Level: Application.");
+  script_tag(name:"affected", value:"Mozilla Firefox version before 53.0 on Windows.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 53.0 on Windows.");
-
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 53.0
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 53.0
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -111,6 +146,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

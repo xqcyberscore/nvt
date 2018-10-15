@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln01_jan13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_opera_mult_vuln01_jan13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Opera Multiple Vulnerabilities-01 Jan13 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803138");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2012-6470", "CVE-2012-6471");
   script_bugtraq_id(56788, 56984);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-07 14:00:10 +0530 (Mon, 07 Jan 2013)");
   script_name("Opera Multiple Vulnerabilities-01 Jan13 (Windows)");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1038/");
@@ -51,8 +51,7 @@ if(description)
 
   - Repeated attempts to access a target site can trigger address field
     spoofing.");
-  script_tag(name:"solution", value:"Upgrade to Opera version 12.12 or later,
-  For updates refer to http://www.opera.com/");
+  script_tag(name:"solution", value:"Upgrade to Opera version 12.12 or later.");
   script_tag(name:"summary", value:"The host is installed with Opera and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

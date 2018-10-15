@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trueconf_mult_vuln.nasl 7631 2017-11-02 13:36:10Z jschulte $
+# $Id: gb_trueconf_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # TrueConf Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:trueconf:trueconf";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106551");
-  script_version("$Revision: 7631 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-02 14:36:10 +0100 (Thu, 02 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2017-01-30 10:52:02 +0700 (Mon, 30 Jan 2017)");
-  script_tag(name: "cvss_base", value: "4.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-30 10:52:02 +0700 (Mon, 30 Jan 2017)");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("TrueConf Multiple Vulnerabilities");
 
@@ -49,29 +49,29 @@ if (description)
   script_dependencies("gb_trueconf_detect.nasl");
   script_mandatory_keys("trueconf/installed");
 
-  script_tag(name: "summary", value: "TrueConf is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"TrueConf is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "TrueConf is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"TrueConf is prone to multiple vulnerabilities:
 
-- The administration interface allows users to perform certain actions via HTTP requests without performing any
+  - The administration interface allows users to perform certain actions via HTTP requests without performing any
 validity checks to verify the requests. This can be exploited to perform certain actions with administrative
 privileges if a logged-in user visits a malicious web site.
 
-- Input passed via the 'redirect_url' GET parameter is not properly verified before being used to redirect users.
+  - Input passed via the 'redirect_url' GET parameter is not properly verified before being used to redirect users.
 This can be exploited to redirect a user to an arbitrary website e.g. when a user clicks a specially crafted
 link to the affected script hosted on a trusted domain.
 
-- TrueConf also suffers from multiple stored, reflected and DOM XSS issues when input passed via several
+  - TrueConf also suffers from multiple stored, reflected and DOM XSS issues when input passed via several
 parameters to several scripts is not properly sanitized before being returned to the user. This can be exploited
 to execute arbitrary HTML and script code in a user's browser session in context of an affected site.");
 
-  script_tag(name: "affected", value: "TrueConf 4.3.7.12255 and 4.3.7.12219.");
+  script_tag(name:"affected", value:"TrueConf 4.3.7.12255 and 4.3.7.12219.");
 
-  script_tag(name: "solution", value: "Upgrade to TrueConf version 4.3.8 or above.");
+  script_tag(name:"solution", value:"Upgrade to TrueConf version 4.3.8 or above.");
 
-  script_xref(name: "URL", value: "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5393.php");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5393.php");
 
   exit(0);
 }

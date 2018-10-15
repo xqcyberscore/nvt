@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_aironet_cisco-sa-20170405-aironet.nasl 5975 2017-04-19 07:43:02Z teissa $
+# $Id: gb_cisco_aironet_cisco-sa-20170405-aironet.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Cisco Aironet 1800, 2800, and 3800 Series Access Point Platforms Shell Bypass Vulnerability
 #
@@ -29,46 +29,46 @@ CPE = "cpe:/o:cisco:wireless_lan_controller_software";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106731");
- script_cve_id("CVE-2016-9196");
- script_tag(name:"cvss_base", value:"7.2");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5975 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106731");
+  script_cve_id("CVE-2016-9196");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11874 $");
 
- script_name("Cisco Aironet 1800, 2800, and 3800 Series Access Point Platforms Shell Bypass Vulnerability");
+  script_name("Cisco Aironet 1800, 2800, and 3800 Series Access Point Platforms Shell Bypass Vulnerability");
 
- script_xref(name: "URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170405-aironet");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170405-aironet");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in login authentication management in Cisco Aironet 1800,
+  script_tag(name:"summary", value:"A vulnerability in login authentication management in Cisco Aironet 1800,
 2800, and 3800 Series Access Point platforms could allow an authenticated, local attacker to gain unrestricted
 root access to the underlying Linux operating system. The root Linux shell is provided for advanced troubleshooting
 and should not be available to individual users, even those with root privileges. The attacker must have the root
 password to exploit this vulnerability.");
 
- script_tag(name: "insight", value: "The vulnerability occurs because of incorrect management of user credentials
+  script_tag(name:"insight", value:"The vulnerability occurs because of incorrect management of user credentials
 when the user authenticates to the device. An attacker could exploit this vulnerability by authenticating to the
 affected device with the root account.");
 
- script_tag(name: "impact", value: "An exploit could allow the authenticated, privileged attacker to bypass the
+  script_tag(name:"impact", value:"An exploit could allow the authenticated, privileged attacker to bypass the
 controls required for root Linux shell access. If the authenticated user obtains root Linux shell access, further
 compromise may be possible.");
 
- script_tag(name: "qod_type", value: "remote_banner");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-04-19 09:43:02 +0200 (Wed, 19 Apr 2017) $");
- script_tag(name: "creation_date", value: "2017-04-07 13:36:40 +0200 (Fri, 07 Apr 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_wlc_version.nasl");
- script_mandatory_keys("cisco_wlc/version", "cisco_wlc/model");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-07 13:36:40 +0200 (Fri, 07 Apr 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_wlc_version.nasl");
+  script_mandatory_keys("cisco_wlc/version", "cisco_wlc/model");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

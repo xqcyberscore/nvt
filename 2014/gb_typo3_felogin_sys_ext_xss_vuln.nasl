@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_felogin_sys_ext_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_typo3_felogin_sys_ext_xss_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # TYPO3 Felogin System Extension Cross Site Scripting Vulnerability
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803987");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2008-5656");
   script_bugtraq_id(32284);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-26 15:31:34 +0530 (Thu, 26 Dec 2013)");
   script_name("TYPO3 Felogin System Extension Cross Site Scripting Vulnerability");
 
@@ -44,8 +44,7 @@ script code.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"An error exists in the felogin system extension which fails to sufficiently
 sanitize user supplied input.");
-  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.2.3 or later,
-For updates refer to, http://typo3.org/");
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.2.3 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with TYPO3 and is prone to cross site scripting
 vulnerability.");

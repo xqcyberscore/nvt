@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tftpd32_req_format_string_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_tftpd32_req_format_string_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # TFTPD32 Request Error Message Format String Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902835");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2006-0328");
   script_bugtraq_id(16333);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-23 14:14:14 +0530 (Wed, 23 May 2012)");
   script_name("TFTPD32 Request Error Message Format String Vulnerability");
 
@@ -54,7 +54,7 @@ if(description)
   a TFTP request is used to construct an error message. This can be exploited
   to crash the application via a TFTP request packet containing a specially
   crafted filename.");
-  script_tag(name:"solution", value:"Upgrade to Tftpd32 version 2.8.2 or later,");
+  script_tag(name:"solution", value:"Upgrade to Tftpd32 version 2.8.2 or later.");
   script_tag(name:"summary", value:"This host is running TFTPD32 and is prone to format string
   vulnerability.");
   script_tag(name:"solution_type", value:"VendorFix");

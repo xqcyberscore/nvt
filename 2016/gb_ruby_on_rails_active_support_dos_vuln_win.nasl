@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_active_support_dos_vuln_win.nasl 11811 2018-10-10 09:55:00Z asteins $
+# $Id: gb_ruby_on_rails_active_support_dos_vuln_win.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # Ruby on Rails Active Support Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807383");
-  script_version("$Revision: 11811 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2015-3227");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 11:55:00 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-13 16:29:50 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Ruby on Rails Active Support Denial of Service Vulnerability (Windows)");
@@ -54,7 +54,7 @@ if(description)
   Ruby on Rails 4.2.x before 4.2.2 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Ruby on Rails 4.1.11,
-  4.2.2 or later, ");
+  4.2.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

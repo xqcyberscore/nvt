@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dd_wrt_35742.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_dd_wrt_35742.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # DD-WRT Web Management Interface Remote Arbitrary Shell Command Injection Vulnerability
 #
@@ -30,7 +30,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.103792");
   script_bugtraq_id(35742);
   script_cve_id("CVE-2009-2765");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.dd-wrt.com");
   script_xref(name:"URL", value:"http://www.heise.de/ct/artikel/Aufstand-der-Router-1960334.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-23 13:51:05 +0200 (Mon, 23 Sep 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -63,9 +63,9 @@ via shell metacharacters in a request to a cgi-bin/ URI");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"DD-WRT is prone to a remote command-injection vulnerability because it
 fails to adequately sanitize user-supplied input data.");
-  script_tag(name:"affected", value:"DD-WRT v24-sp1 is affected; other versions may also be vulnerable.");
+  script_tag(name:"affected", value:"DD-WRT v24-sp1 is affected. Other versions may also be vulnerable.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

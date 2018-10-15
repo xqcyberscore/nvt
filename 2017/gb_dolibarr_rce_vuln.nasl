@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_rce_vuln.nasl 7799 2017-11-17 06:09:34Z teissa $
+# $Id: gb_dolibarr_rce_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Dolibarr ERP/CRM Remote Code Execution Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:dolibarr:dolibarr';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106908");
-  script_version("$Revision: 7799 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-17 07:09:34 +0100 (Fri, 17 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-26 15:10:30 +0700 (Mon, 26 Jun 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-26 15:10:30 +0700 (Mon, 26 Jun 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-9840");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Dolibarr ERP/CRM Remote Code Execution Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("gb_dolibarr_detect.nasl");
   script_mandatory_keys("Dolibarr/installed");
 
-  script_tag(name: "summary", value: "Dolibarr ERP/CRM allows low-privilege users to upload files of dangerous
+  script_tag(name:"summary", value:"Dolibarr ERP/CRM allows low-privilege users to upload files of dangerous
 types, which can result in arbitrary code execution within the context of the vulnerable application.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Dolibarr ERP/CRM 5.0.3 and prior");
+  script_tag(name:"affected", value:"Dolibarr ERP/CRM 5.0.3 and prior");
 
-  script_tag(name: "solution", value: "Update to version 5.0.4.");
+  script_tag(name:"solution", value:"Update to version 5.0.4.");
 
-  script_xref(name: "URL", value: "https://www.wizlynxgroup.com/security-research-advisories/vuln/WLX-2017-009");
+  script_xref(name:"URL", value:"https://www.wizlynxgroup.com/security-research-advisories/vuln/WLX-2017-009");
 
   exit(0);
 }

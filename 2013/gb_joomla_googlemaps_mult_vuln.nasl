@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_googlemaps_mult_vuln.nasl 11201 2018-09-03 14:35:07Z cfischer $
+# $Id: gb_joomla_googlemaps_mult_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Joomla Googlemaps Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:joomla:joomla';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803836");
-  script_version("$Revision: 11201 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2013-7428", "CVE-2013-7429", "CVE-2013-7430", "CVE-2013-7431", "CVE-2013-7432", "CVE-2013-7433", "CVE-2013-7434");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-22 15:14:31 +0530 (Mon, 22 Jul 2013)");
 
   script_name("Joomla Googlemaps Multiple Vulnerabilities");
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is vulnerable
   or not.");
 
-  script_tag(name:"solution", value:"Upgrade to Googlemaps plugin for Joomla version 3.1 or later. For updates
-refer to http://extensions.joomla.org/extensions/maps-a-weather/maps-a-locations/maps/1147");
+  script_tag(name:"solution", value:"Upgrade to Googlemaps plugin for Joomla version 3.1 or later.");
 
   script_tag(name:"insight", value:"Input passed via 'url' parameter to 'plugin_googlemap2_proxy.php'
   is not properly sanitised before being returned to the user.");
@@ -70,6 +69,7 @@ refer to http://extensions.joomla.org/extensions/maps-a-weather/maps-a-locations
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://extensions.joomla.org/extensions/maps-a-weather/maps-a-locations/maps/1147");
   exit(0);
 }
 

@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805726");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2015-2426");
   script_bugtraq_id(75951);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-21 11:36:10 +0530 (Tue, 21 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Font Driver Remote Code Execution Vulnerability (3079904)");
@@ -92,7 +92,7 @@ if(!sysPath ){
   exit(0);
 }
 
-userVer = fetch_file_version(sysPath, file_name:"system32\Atmfd.dll");
+userVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Atmfd.dll");
 if(!userVer){
   exit(0);
 }

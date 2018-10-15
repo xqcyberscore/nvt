@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_hadoop_secure_mode.nasl 6289 2017-06-07 06:55:18Z emoss $
+# $Id: gb_apache_hadoop_secure_mode.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # Apache Hadoop 'Secure Mode' Disabled
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:apache:hadoop";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108173");
-  script_version("$Revision: 6289 $");
+  script_version("$Revision: 11901 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-07 08:55:18 +0200 (Wed, 07 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-06 15:24:50 +0200 (Tue, 06 Jun 2017)");
   script_name("Apache Hadoop 'Secure Mode' Disabled");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -52,9 +52,7 @@ if(description)
   doesn't require authentication for users.");
 
   script_tag(name:"impact", value:"Successful exploitation might allow a remote
-  attacker to gain unauthenticated acces to data saved within this Hadoop instance.
-
-  Impact Level: System/Application");
+  attacker to gain unauthenticated acces to data saved within this Hadoop instance.");
 
   script_tag(name:"affected", value:"Apache Hadoop instances with 'Secure Mode' disabled.");
 

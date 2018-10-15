@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-074.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: secpod_ms12-074.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (2745030)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902934");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-1895", "CVE-2012-1896", "CVE-2012-2519", "CVE-2012-4776",
                 "CVE-2012-4777");
   script_bugtraq_id(56455, 56456, 56462, 56464);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-14 11:47:24 +0530 (Wed, 14 Nov 2012)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (2745030)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51236/");
@@ -79,8 +79,8 @@ if(description)
   - An error within permissions checking of Windows Presentation Foundation (WPF)
     objects that perform reflection can be exploited via a specially crafted XAML
     Browser Application (XBAP) or an untrusted .NET application.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory ");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-074.");
   script_tag(name:"qod_type", value:"registry");

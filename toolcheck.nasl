@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: toolcheck.nasl 11665 2018-09-28 07:14:18Z cfischer $
+# $Id: toolcheck.nasl 11885 2018-10-12 13:47:20Z cfischer $
 # Description: Initializing routine for checking presence of helper tools
 #
 # Authors:
@@ -33,8 +33,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810000");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11665 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 09:14:18 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-08-17 09:05:44 +0200 (Mon, 17 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Availability of scanner helper tools");
@@ -56,7 +56,7 @@ if(description)
 
  The consequence might be that certain vulnerabilities are missed
  because respective tests are not performed.");
- exit(0);
+  exit(0);
 }
 
 # Silent exit if no check to perform

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_bof_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_php_bof_vuln_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # PHP '_php_stream_scandir()' Buffer Overflow Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803317");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2012-2688");
   script_bugtraq_id(54638);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-03-01 12:30:11 +0530 (Fri, 01 Mar 2013)");
   script_name("PHP '_php_stream_scandir()' Buffer Overflow Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -55,8 +55,7 @@ if(description)
   script_tag(name:"insight", value:"Flaw related to overflow in the _php_stream_scandir function in the
   stream implementation.");
 
-  script_tag(name:"solution", value:"Upgrade to PHP 5.4.5 or 5.3.15 or later
-  For updates refer to http://www.php.net/downloads.php");
+  script_tag(name:"solution", value:"Upgrade to PHP 5.4.5 or 5.3.15 or later.");
 
   script_tag(name:"summary", value:"This host is running PHP and is prone to buffer overflow
   vulnerability.");
@@ -64,6 +63,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.php.net/downloads.php");
   exit(0);
 }
 

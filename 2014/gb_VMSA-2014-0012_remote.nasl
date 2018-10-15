@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2014-0012_remote.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_VMSA-2014-0012_remote.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # VMSA-2014-0012: VMware vSphere product updates address security vulnerabilities (remote check)
 #
@@ -31,7 +31,7 @@ if (description)
   script_cve_id("CVE-2014-3797", "CVE-2014-8371", "CVE-2013-2877", "CVE-2014-0191", "CVE-2014-0015", "CVE-2014-0138", "CVE-2013-1752", "CVE-2013-4238");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
   script_name("VMSA-2014-0012: VMware vSphere product updates address security vulnerabilities (remote check)");
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0012.html");
@@ -76,7 +76,7 @@ VMware vCenter Server 5.1 prior to Update 3
 VMware vCenter Server 5.0 prior to Update 3c
 VMware ESXi 5.1 without patch ESXi510-201412101-SG");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-05 11:32:51 +0100 (Fri, 05 Dec 2014)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -102,7 +102,7 @@ if( ! fixed_builds[esxVersion] ) exit( 0 );
 if( int( esxBuild ) < int( fixed_builds[esxVersion] ) )
 {
   security_message(port:0, data: esxi_remote_report( ver:esxVersion, build: esxBuild, fixed_build: fixed_builds[esxVersion] ) );
-  exit( 0 );
+  exit(0);
 }
 
 exit( 99 );

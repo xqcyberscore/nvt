@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: kerio_wrf_management_detection.nasl 11029 2018-08-17 09:30:04Z cfischer $
+# $Id: kerio_wrf_management_detection.nasl 11885 2018-10-12 13:47:20Z cfischer $
 # Description: Kerio WinRoute Firewall HTTP/HTTPS Management Detection
 #
 # Authors:
@@ -29,17 +29,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20225");
-  script_version("$Revision: 11029 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:30:04 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("Kerio WinRoute Firewall HTTP/HTTPS Management Detection");
 
-
-
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"Mitigation");
   script_family("Product detection");
 
   script_copyright("This script is Copyright (C) 2005 Ferdy Riphagen");
@@ -58,7 +57,7 @@ The remote host appears to be running the Kerio WinRoute Firewall
 application.  It is possible to access the HTTP or HTTPS management
 interface on the host.");
 
- exit(0);
+  exit(0);
 }
 
 include("cpe.inc");

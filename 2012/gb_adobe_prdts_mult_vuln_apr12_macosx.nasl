@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_apr12_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_adobe_prdts_mult_vuln_apr12_macosx.nasl 11870 2018-10-12 11:12:45Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities April-2012 (Mac OS X)
 #
@@ -29,15 +29,14 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802749");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11870 $");
   script_cve_id("CVE-2012-0777", "CVE-2012-0776", "CVE-2012-0774", "CVE-2012-0775");
   script_bugtraq_id(52950, 52952, 52951, 52949);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:12:45 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-17 13:03:11 +0530 (Tue, 17 Apr 2012)");
   script_name("Adobe Reader Multiple Vulnerabilities April-2012 (Mac OS X)");
-
 
   script_tag(name:"summary", value:"This host is installed with Adobe Reader and is prone to multiple
 vulnerabilities.");
@@ -55,7 +54,7 @@ to corrupt memory.
 restrictions, execute arbitrary code via unspecified vectors or cause a denial
 of service.");
   script_tag(name:"affected", value:"Adobe Reader version 9.x to 9.5 and prior and 10.x to 10.1.2 on Mac OS X");
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 9.5.1 or 10.1.3 on later,");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 9.5.1 or 10.1.3 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -70,25 +69,18 @@ of service.");
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
-
-## Function to check the versions of abode reader
-function version_check(ver)
-{
-  if(version_in_range(version:ver, test_version:"9.0", test_version2:"9.5") ||
-     version_in_range(version:ver, test_version:"10.0", test_version2:"10.1.2"))
-  {
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-    exit(0);
-  }
-}
 
 if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
 if(readerVer =~ "^(9|10)"){
-  version_check(ver:readerVer);
+  if(version_in_range(version:ver, test_version:"9.0", test_version2:"9.5") ||
+     version_in_range(version:ver, test_version:"10.0", test_version2:"10.1.2"))
+  {
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
+    exit(0);
+  }
 }

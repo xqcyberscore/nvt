@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitecom_wlm-3500_backdoor_acc_auth_bypass_vuln.nasl 11582 2018-09-25 06:26:12Z cfischer $
+# $Id: gb_sitecom_wlm-3500_backdoor_acc_auth_bypass_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Sitecom WLM-3500 Backdoor Accounts Authentication Bypass vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803193");
-  script_version("$Revision: 11582 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-18 15:27:50 +0530 (Thu, 18 Apr 2013)");
   script_name("Sitecom WLM-3500 Backdoor Accounts Authentication Bypass vulnerability");
 
@@ -49,8 +49,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will let the remote attacker to access the web
   interface of the affected devices using two distinct hard-coded users.");
   script_tag(name:"affected", value:"Sitecom WLM-3500, firmware versions < 1.07");
-  script_tag(name:"solution", value:"Upgrade to Sitecom WLM-3500, firmware versions 1.07 or later,
-  For updates refer to http://www.sitecom.com/");
+  script_tag(name:"solution", value:"Upgrade to Sitecom WLM-3500, firmware versions 1.07 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is running Sitecom WLM-3500 Router and is prone to authentication
   bypass vulnerability.");
@@ -63,6 +62,7 @@ if(description)
   of the device that contains, among the other things, also the password for the
   'admin' user; thus, escalating to administrative privileges is trivial.");
 
+  script_xref(name:"URL", value:"http://www.sitecom.com/");
   exit(0);
 }
 

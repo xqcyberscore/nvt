@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nvt_debugging.nasl 10994 2018-08-16 06:34:59Z cfischer $
+# $Id: nvt_debugging.nasl 11895 2018-10-13 09:50:47Z cfischer $
 #
 # Report NVT debug logs
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111091");
-  script_version("$Revision: 10994 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 08:34:59 +0200 (Thu, 16 Aug 2018) $");
+  script_version("$Revision: 11895 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-13 11:50:47 +0200 (Sat, 13 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-25 15:12:12 +0100 (Fri, 25 Mar 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -129,6 +129,9 @@ if( ! isnull( items ) ) {
     x_oid = x[0];
     x_text = x[1];
     if( "1.3.6.1.4.1.25623.1.0.802045" >< x_oid && "Host:" >< x_text ) continue; # gb_linux_rootkit_nginx_iframe_injection.nasl requires a wrong host header
+    if( "1.3.6.1.4.1.25623.1.0.103293" >< x_oid && "URL/URI of the HTTP" >< x_text ) continue; # gb_apache_49957.nasl requires sending a @localhost URI
+    if( "1.3.6.1.4.1.25623.1.0.17230" >< x_oid && "URL/URI of the HTTP" >< x_text ) continue; # cern_httpd_access_ctrl.nasl requires sending a \ at the start of the URI
+    if( "1.3.6.1.4.1.25623.1.0.900522" >< x_oid && ( "URL/URI of the HTTP" >< x_text || "Invalid HTTP request" >< x_text ) ) continue; # secpod_ziproxy_server_detect.nasl might require the wrong request to trigger the detection
     found = TRUE;
     report += '- ' + x_oid + ': ' + x_text + '\n';
   }

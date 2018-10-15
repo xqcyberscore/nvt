@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_ie_memory_corruption_vuln.nasl 11576 2018-09-24 14:59:42Z cfischer $
+# $Id: secpod_ms_ie_memory_corruption_vuln.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Internet Explorer Memory Corruption Vulnerability (2755801)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903213");
-  script_version("$Revision: 11576 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-3343");
   script_bugtraq_id(60478);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-12 16:51:29 +0530 (Wed, 12 Jun 2013)");
   script_name("Microsoft Internet Explorer Memory Corruption Vulnerability (2755801)");
 
@@ -41,9 +41,8 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a security update according to Microsoft Security
 Advisory (2755801).");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-http://technet.microsoft.com/en-us/security/advisory/2755801");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
   script_tag(name:"insight", value:"Unspecified flaw due to improper sanitization of user-supplied input.");
   script_tag(name:"affected", value:"Microsoft Windows 8
 Microsoft Windows 8.1
@@ -85,7 +84,7 @@ if(!sysPath ){
   exit(0);
 }
 
-flashVer = fetch_file_version(sysPath, file_name:"system32\Macromed\Flash\Flash.ocx");
+flashVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Macromed\Flash\Flash.ocx");
 if(!flashVer){
   exit(0);
 }

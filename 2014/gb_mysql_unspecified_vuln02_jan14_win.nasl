@@ -28,13 +28,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804073");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-0427", "CVE-2014-0430", "CVE-2014-0433",
                 "CVE-2013-5882", "CVE-2013-5894");
   script_bugtraq_id(64868, 64893, 64895, 64854, 64873);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 14:34:22 +0530 (Tue, 21 Jan 2014)");
   script_name("Oracle MySQL Multiple Unspecified vulnerabilities - 02 Jan14 (Windows)");
 
@@ -47,8 +47,7 @@ to FTS, Performance Schema, Thread Pooling, Stored Procedures, and InnoDB.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to manipulate certain data
 and cause a DoS (Denial of Service).");
   script_tag(name:"affected", value:"Oracle MySQL version 5.6.13 and earlier on Windows.");
-  script_tag(name:"solution", value:"Apply the patch from below link,
-http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/56491");
   script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html");

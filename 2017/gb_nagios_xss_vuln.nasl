@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_xss_vuln.nasl 5952 2017-04-13 12:34:17Z cfi $
+# $Id: gb_nagios_xss_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Nagios 'corewindow' Parameter Cross-Site Scripting Vulnerability
 #
@@ -30,9 +30,9 @@ CPE = 'cpe:/a:nagios:nagios';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108136");
-  script_version("$Revision: 5952 $");
-  script_tag(name:"last_modification", value: "$Date: 2017-04-13 14:34:17 +0200 (Thu, 13 Apr 2017) $");
-  script_tag(name:"creation_date", value: "2017-04-13 12:06:51 +0200 (Thu, 13 Apr 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-13 12:06:51 +0200 (Thu, 13 Apr 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2016-6209");
@@ -59,8 +59,8 @@ if(description)
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Jun/20");
   script_xref(name:"URL", value:"https://www.nagios.org/projects/nagios-core/history/4x/");
 
-  script_tag(name: "qod_type", value:"remote_banner_unreliable");
-  script_tag(name: "solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }

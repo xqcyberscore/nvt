@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_cron_jobs_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_apache_activemq_cron_jobs_xss_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # Apache ActiveMQ < 5.9.0 Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803866");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2013-1879", "CVE-2013-1880");
   script_bugtraq_id(61142, 65615);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-13 14:52:49 +0530 (Tue, 13 Aug 2013)");
   script_name("Apache ActiveMQ < 5.9.0 Multiple Cross Site Scripting Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -52,9 +52,7 @@ if(description)
   cross site scripting vulnerabilities.");
   script_tag(name:"vuldetect", value:"Send a Crafted HTTP POST request and check whether it is able to read the
   cookie or not.");
-  script_tag(name:"solution", value:"Upgrade to version 5.9.0 or later,
-
-  For Updates refer to http://activemq.apache.org");
+  script_tag(name:"solution", value:"Upgrade to version 5.9.0 or later.");
   script_tag(name:"insight", value:"Multiple flaws exist due to:
 
   - an improper validation of the command in a user crontab file upon processing by the scheduled.jsp script

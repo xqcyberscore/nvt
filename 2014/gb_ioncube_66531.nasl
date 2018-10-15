@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ioncube_66531.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_ioncube_66531.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # ionCube Loader Wizard 'loader-wizard.php' Multiple Security Vulnerabilities
 #
@@ -29,12 +29,12 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103932");
   script_bugtraq_id(66531);
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11867 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
   script_name("ionCube Loader Wizard 'loader-wizard.php' Multiple Security Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/66531");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-01 13:11:55 +0200 (Tue, 01 Apr 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -59,7 +59,7 @@ steal cookie-based authentication credentials to launch other attacks.");
   script_tag(name:"summary", value:"ionCube Loader is prone to multiple security vulnerabilities:");
   script_tag(name:"affected", value:"Versions prior to ionCube Loader 2.46 are vulnerable. ");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

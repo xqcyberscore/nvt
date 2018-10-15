@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_web_gateway_mult_vuln_SB10205.nasl 11835 2018-10-11 08:38:49Z mmartin $
+# $Id: gb_mcafee_web_gateway_mult_vuln_SB10205.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # McAfee Web Gateway Multiple Vulnerabilities (SB10205)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mcafee:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811258");
-  script_version("$Revision: 11835 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2012-6706", "CVE-2017-1000364", "CVE-2017-1000366",
                 "CVE-2017-1000368");
   script_bugtraq_id(98838, 99127, 99130);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 10:38:49 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-28 12:24:03 +0530 (Fri, 28 Jul 2017)");
   script_name("McAfee Web Gateway Multiple Vulnerabilities (SB10205)");
 
@@ -68,7 +68,7 @@ if(description)
   7.7.x before 7.7.2.3");
 
   script_tag(name:"solution", value:"Upgrade to McAfee Web Gateway version
-  7.6.2.15 or 7.7.2.3 or later, ");
+  7.6.2.15 or 7.7.2.3 or later.");
 
   script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10205");
 

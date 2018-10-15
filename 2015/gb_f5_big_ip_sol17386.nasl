@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17386.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_f5_big_ip_sol17386.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # F5 BIG-IP - SOL17386 - vCMP DoS vulnerability CVE-2015-6546
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-6546");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11299 $");
+  script_version("$Revision: 11872 $");
 
   script_name("F5 BIG-IP - SOL17386 - vCMP DoS vulnerability CVE-2015-6546");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-19 10:55:12 +0200 (Mon, 19 Oct 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");
@@ -59,7 +59,7 @@ if (description)
   script_dependencies("gb_f5_big_ip_version.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_esm_SB10137.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mcafee_esm_SB10137.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # McAfee Enterprise Security Manager Authentication Bypass Vulnerability
 #
@@ -31,7 +31,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105479");
   script_cve_id("CVE-2015-8024");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
@@ -48,7 +48,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-04 14:28:09 +0100 (Fri, 04 Dec 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -56,7 +56,7 @@ if (description)
   script_dependencies("gb_mcafee_esm_version.nasl");
   script_mandatory_keys("mcafee/esm/version", "mcafee/esm/mr");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_65509.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_freepbx_65509.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # FreePBX 'admin/config.php' Remote Code Execution Vulnerability
 #
@@ -33,13 +33,13 @@ if (description)
   script_cve_id("CVE-2014-1903");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
   script_name("FreePBX 'admin/config.php' Remote Code Execution Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65509");
   script_xref(name:"URL", value:"http://freepbx.org");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-14 11:41:40 +0100 (Fri, 14 Mar 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,7 +62,7 @@ args parameters to admin/config.php.");
   script_tag(name:"summary", value:"FreePBX is prone to a remote code-execution vulnerability.");
   script_tag(name:"affected", value:"FreePBX versions 2.9, 2.10, 2.11, and 12 are vulnerable.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

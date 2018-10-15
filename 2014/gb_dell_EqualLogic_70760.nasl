@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_EqualLogic_70760.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: gb_dell_EqualLogic_70760.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Dell EqualLogic Directory Traversal Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2013-3304");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Dell EqualLogic Directory Traversal Vulnerability");
 
@@ -51,7 +51,7 @@ arbitrary system files. Information harvested may aid in launching further attac
   script_tag(name:"affected", value:"Dell EqualLogic Firmware versions 6.0 is vulnerable. Other versions
 may also be affected.");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-29 13:15:11 +0100 (Wed, 29 Oct 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,7 +62,7 @@ may also be affected.");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

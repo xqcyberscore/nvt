@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_watchguard_fireware_xxe_dos_nd_xss_vuln_oct17.nasl 8602 2018-01-31 12:19:39Z cfischer $
+# $Id: gb_watchguard_fireware_xxe_dos_nd_xss_vuln_oct17.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # WatchGuard Fireware XTM XXE DOS and Stored XSS Vulnerabilities
 #
@@ -30,19 +30,18 @@ CPE = 'cpe:/o:watchguard:fireware';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811910");
-  script_version("$Revision: 8602 $");
+  script_version("$Revision: 11901 $");
   script_cve_id("CVE-2017-14615", "CVE-2017-14616");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 13:19:39 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-04 13:28:50 +0530 (Wed, 04 Oct 2017)");
   script_name("WatchGuard Fireware XTM XXE DOS and Stored XSS Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is running WatchGuard Fireware XMT
   Web UI is prone to XXE DOS and stored XSS  vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
 
@@ -59,24 +58,22 @@ if (description)
 
   script_tag(name:"impact", value:"Successful exploitation of these vulnerabilities
   allow an attacker to inject arbitrary JavaScript into the Firebox log messages,
-  which could impact users of the Web UI Traffic Monitor.
- 
-  Impact Level: Application");
+  which could impact users of the Web UI Traffic Monitor.");
 
   script_tag(name:"affected", value:"WatchGuard Fireware before 12.0");
 
-  script_tag(name:"solution", value:"Upgrade to WatchGuard Fireware 12.0 or later.
-  For updates refer to http://tomcat.apache.org");
+  script_tag(name:"solution", value:"Upgrade to WatchGuard Fireware 12.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2017/Sep/22");
   script_xref(name:"URL", value:"https://watchguardsupport.secure.force.com/publicKB?type=KBSecurityIssues&SFDCID=kA62A0000000L0HSAU&lang=en_US");
   script_category(ACT_GATHER_INFO);
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_watchguard_fireware_detect.nasl", "gb_snmp_os_detection.nasl");
   script_mandatory_keys("watchguard_fireware/installed");
+  script_xref(name:"URL", value:"http://tomcat.apache.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_vuln02_feb15_macosx.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_oracle_virtualbox_mult_vuln02_feb15_macosx.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Oracle Virtualbox Multiple Vulnerabilities Feb15 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805432");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-0427", "CVE-2014-6595", "CVE-2014-6590", "CVE-2014-6589",
                 "CVE-2014-6588");
   script_bugtraq_id(72216, 72206, 72213, 72202, 72196);
   script_tag(name:"cvss_base", value:"3.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-02 10:11:39 +0530 (Mon, 02 Feb 2015)");
   script_name("Oracle Virtualbox Multiple Vulnerabilities Feb15 (Mac OS X)");
 
@@ -55,7 +55,7 @@ if(description)
   on Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Oracle VirtualBox version
-  4.3.20 or later. For updates refer to https://www.virtualbox.org");
+  4.3.20 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +69,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_oracle_virtualbox_detect_macosx.nasl");
   script_mandatory_keys("Oracle/VirtualBox/MacOSX/Version");
+  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
 

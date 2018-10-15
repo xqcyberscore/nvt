@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0022.nasl 8721 2018-02-08 13:40:24Z cfischer $
+# $Id: gb_panos_pan_sa-2017_0022.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Palo Alto PAN-OS NTP Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106996");
-  script_version("$Revision: 8721 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-08 14:40:24 +0100 (Thu, 08 Feb 2018) $");
-  script_tag(name: "creation_date", value: "2017-07-28 10:39:33 +0700 (Fri, 28 Jul 2017)");
-  script_tag(name: "cvss_base", value: "6.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-28 10:39:33 +0700 (Fri, 28 Jul 2017)");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-9042", "CVE-2017-6460");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Palo Alto PAN-OS NTP Vulnerabilities");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("gb_palo_alto_panOS_version.nasl");
   script_mandatory_keys("palo_alto_pan_os/version");
 
-  script_tag(name: "summary", value: "The Network Time Protocol (NTP) library has been found to contains two
+  script_tag(name:"summary", value:"The Network Time Protocol (NTP) library has been found to contains two
 vulnerabilities CVE-2016-9042 and CVE-2017-6460. Palo Alto Networks software makes use of the vulnerable library
 and may be affected. This issue only affects the management plane of the firewall.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "PAN-OS 6.1, PAN-OS 7.0, PAN-OS 7.1, PAN-OS 8.0.3 and earlier.");
+  script_tag(name:"affected", value:"PAN-OS 6.1, PAN-OS 7.0, PAN-OS 7.1, PAN-OS 8.0.3 and earlier.");
 
-  script_tag(name: "solution", value: "Update to PAN-OS 7.0.18 or later, PAN-OS 7.1.12 or later, PAN-OS 8.0.4 or
+  script_tag(name:"solution", value:"Update to PAN-OS 7.0.18 or later, PAN-OS 7.1.12 or later, PAN-OS 8.0.4 or
 later.");
 
-  script_xref(name: "URL", value: "https://securityadvisories.paloaltonetworks.com/Home/Detail/92");
+  script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/92");
 
   exit(0);
 }

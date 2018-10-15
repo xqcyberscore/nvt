@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prime_home_95933.nasl 5179 2017-02-03 07:04:40Z cfi $
+# $Id: gb_cisco_prime_home_95933.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Cisco Prime Home Authentication Bypass Vulnerability
 #
@@ -29,38 +29,38 @@ CPE = "cpe:/a:cisco:prime_home";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140148");
- script_bugtraq_id(95933);
- script_cve_id("CVE-2017-3791");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5179 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.140148");
+  script_bugtraq_id(95933);
+  script_cve_id("CVE-2017-3791");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11874 $");
 
- script_name("Cisco Prime Home Authentication Bypass Vulnerability");
+  script_name("Cisco Prime Home Authentication Bypass Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/95933");
- script_xref(name:"URL", value:"http://www.cisco.com/");
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170201-prime-home");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/95933");
+  script_xref(name:"URL", value:"http://www.cisco.com/");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170201-prime-home");
 
- script_tag(name: "impact" , value:"An attacker can exploit this issue to bypass the authentication mechanism and perform unauthorized actions. This may lead to further attacks.");
- script_tag(name: "vuldetect" , value:"Check the version.");
- script_tag(name: "solution" , value:"Updates are available. Please see the references or vendor advisory for more information.");
- script_tag(name: "summary" , value:"Cisco Prime Home is prone to an authentication-bypass vulnerability.");
- script_tag(name: "affected" , value:"This vulnerability affects Cisco Prime Home versions from 6.3.0.0 to the first fixed release.");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to bypass the authentication mechanism and perform unauthorized actions. This may lead to further attacks.");
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
+  script_tag(name:"summary", value:"Cisco Prime Home is prone to an authentication-bypass vulnerability.");
+  script_tag(name:"affected", value:"This vulnerability affects Cisco Prime Home versions from 6.3.0.0 to the first fixed release.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-03 08:04:40 +0100 (Fri, 03 Feb 2017) $");
- script_tag(name:"creation_date", value:"2017-02-02 16:06:02 +0100 (Thu, 02 Feb 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_prime_home_web_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-02 16:06:02 +0100 (Thu, 02 Feb 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_prime_home_web_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

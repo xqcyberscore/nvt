@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201207_04.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201207_04.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2012-2118");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-10 03:22:54 -0400 (Fri, 10 Aug 2012)");
   script_name("Gentoo Security Advisory GLSA 201207-04 (xorg-server)");
   script_category(ACT_GATHER_INFO);
@@ -56,10 +56,10 @@ All X.Org X Server 1.10.x users should upgrade to the latest version:
       # emerge --ask --oneshot --verbose '>=x11-base/xorg-server-1.10.6-r1'
 
 
-X.Org X Server 1.9.x is not affected.
+X.Org X Server 1.9.x is not affected.");
 
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201207-04
-http://bugs.gentoo.org/show_bug.cgi?id=412609");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201207-04");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=412609");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201207-04.");
   script_tag(name:"qod_type", value:"package");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_cisco-sa-20170315-wlc-mesh.nasl 5851 2017-04-04 09:21:55Z teissa $
+# $Id: gb_cisco_wlc_cisco-sa-20170315-wlc-mesh.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Cisco Meshed Wireless LAN Controller Impersonation Vulnerability
 #
@@ -29,42 +29,42 @@ CPE = "cpe:/o:cisco:wireless_lan_controller_software";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106665");
- script_cve_id("CVE-2017-3854");
- script_tag(name:"cvss_base", value:"8.3");
- script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5851 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106665");
+  script_cve_id("CVE-2017-3854");
+  script_tag(name:"cvss_base", value:"8.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11863 $");
 
- script_name("Cisco Meshed Wireless LAN Controller Impersonation Vulnerability");
+  script_name("Cisco Meshed Wireless LAN Controller Impersonation Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170315-wlc-mesh");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170315-wlc-mesh");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the mesh code of Cisco Wireless LAN Controller (WLC)
+  script_tag(name:"summary", value:"A vulnerability in the mesh code of Cisco Wireless LAN Controller (WLC)
 software could allow an unauthenticated, remote attacker to impersonate a WLC in a meshed topology.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient authentication of the parent access
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient authentication of the parent access
 point in a mesh configuration. An attacker could exploit this vulnerability by forcing the target system to
 disconnect from the correct parent access point and reconnect to a rogue access point owned by the attacker.");
 
- script_tag(name: "impact", value: "An exploit could allow the attacker to control the traffic flowing through
+  script_tag(name:"impact", value:"An exploit could allow the attacker to control the traffic flowing through
 the impacted access point or take full control of the target system.");
 
- script_tag(name: "qod_type", value: "remote_banner");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-04-04 11:21:55 +0200 (Tue, 04 Apr 2017) $");
- script_tag(name: "creation_date", value: "2017-03-17 10:43:42 +0700 (Fri, 17 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_wlc_version.nasl");
- script_mandatory_keys("cisco_wlc/version", "cisco_wlc/model");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-17 10:43:42 +0700 (Fri, 17 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_wlc_version.nasl");
+  script_mandatory_keys("cisco_wlc/version", "cisco_wlc/model");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

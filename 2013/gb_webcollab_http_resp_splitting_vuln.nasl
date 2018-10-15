@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webcollab_http_resp_splitting_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_webcollab_http_resp_splitting_vuln.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # WebCollab 'item' Parameter HTTP Response Splitting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803773");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11888 $");
   script_bugtraq_id(63247);
   script_cve_id("CVE-2013-2652");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-28 15:46:55 +0530 (Mon, 28 Oct 2013)");
   script_name("WebCollab 'item' Parameter HTTP Response Splitting Vulnerability");
 
@@ -42,8 +42,7 @@ if(description)
   is able to inject malicious data in header or not.");
   script_tag(name:"insight", value:"Input passed via the 'item' GET parameter to help/help_language.php is not
   properly sanitised before being returned to the user.");
-  script_tag(name:"solution", value:"Upgrade to WebCollab 3.31 or later,
-  For updates refer to http://webcollab.sourceforge.net ");
+  script_tag(name:"solution", value:"Upgrade to WebCollab 3.31 or later.");
   script_tag(name:"summary", value:"This host is installed with WebCollab and is prone to HTTP response splitting
   vulnerability.");
   script_tag(name:"affected", value:"WebCollab versions 3.30 and prior.");
@@ -64,6 +63,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+  script_xref(name:"URL", value:"http://webcollab.sourceforge.net");
   exit(0);
 }
 

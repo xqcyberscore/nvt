@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-014.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ms12-014.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # MS Windows Indeo Codec Remote Code Execution Vulnerability (2661637)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902792");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2010-3138");
   script_bugtraq_id(42730);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 13:02:52 +0530 (Wed, 15 Feb 2012)");
   script_name("MS Windows Indeo Codec Remote Code Execution Vulnerability (2661637)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/41114/");
@@ -55,8 +55,8 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an error in 'Indeo' filter, it is loading libraries
   (e.g. iacenc.dll) in an insecure manner.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
 
   script_tag(name:"summary", value:"This host is missing an important security update according to
   Microsoft Bulletin MS12-014.");
@@ -103,7 +103,7 @@ if(share && file)
   }
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Iacenc.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Iacenc.dll");
 if(dllVer)
 {
   if(version_is_less(version:dllVer, test_version:"1.0.0.0")){

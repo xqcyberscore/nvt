@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_sql_inj_vuln_nov14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_mantisbt_sql_inj_vuln_nov14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # MantisBT SQL Injection Vulnerability -01 November14
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804891");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-8554", "CVE-2014-9281", "CVE-2014-9280", "CVE-2014-9117",
                 "CVE-2014-6387", "CVE-2014-9506", "CVE-2014-9089", "CVE-2014-6316",
                 "CVE-2014-9388", "CVE-2014-8553");
   script_bugtraq_id(70856, 71371, 71361, 71321, 69780, 71298, 71478, 71553);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-25 14:59:21 +0530 (Tue, 25 Nov 2014)");
   script_name("MantisBT SQL Injection Vulnerability -01 November14");
 
@@ -84,8 +84,7 @@ if(description)
 
   script_tag(name:"affected", value:"MantisBT version 1.2.17 and earlier");
 
-  script_tag(name:"solution", value:"Upgrade to MantisBT version 1.2.18 or later.
-  For updates refer to http://www.mantisbt.org/download.php");
+  script_tag(name:"solution", value:"Upgrade to MantisBT version 1.2.18 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -100,6 +99,7 @@ if(description)
   script_dependencies("mantis_detect.nasl");
   script_mandatory_keys("mantisbt/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.mantisbt.org/download.php");
   exit(0);
 }
 

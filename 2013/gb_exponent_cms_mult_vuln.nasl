@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exponent_cms_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_exponent_cms_mult_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Exponent CMS Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:exponentcms:exponent_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803702");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-3294", "CVE-2013-3295");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-23 14:56:02 +0530 (Thu, 23 May 2013)");
   script_name("Exponent CMS Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -66,8 +66,7 @@ if(description)
   - Improper filtration of user-supplied input passed via the 'page' HTTP GET
     parameter to '/install/popup.php' script.");
 
-  script_tag(name:"solution", value:"Update to Exponent CMS 2.2.0 Release Candidate 1 or later,
-  For updates refer to http://www.exponentcms.org");
+  script_tag(name:"solution", value:"Update to Exponent CMS 2.2.0 Release Candidate 1 or later.");
 
   script_tag(name:"summary", value:"This host is installed with Exponent CMS and is prone to multiple
   vulnerabilities.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moinmoin_mult_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_moinmoin_mult_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # MoinMoin Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:moinmo:moinmoin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803445");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2012-6080", "CVE-2012-6081", "CVE-2012-6082", "CVE-2012-6495");
   script_bugtraq_id(57076, 57082, 57089, 57147);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-03-21 15:03:34 +0530 (Thu, 21 Mar 2013)");
   script_name("MoinMoin Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -65,15 +65,14 @@ if(description)
 
   - Input passed via page name in rss link is not properly sanitised before
     being displayed to the user.");
-  script_tag(name:"solution", value:"Update to MoinMoin 1.9.6 or later,
-
-  For updates refer to http://moinmo.in/MoinMoinDownload");
+  script_tag(name:"solution", value:"Update to MoinMoin 1.9.6 or later.");
   script_tag(name:"summary", value:"This host is installed with MoinMoin and is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://moinmo.in/MoinMoinDownload");
   exit(0);
 }
 

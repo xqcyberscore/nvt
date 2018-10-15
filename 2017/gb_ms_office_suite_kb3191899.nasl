@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_suite_kb3191899.nasl 6096 2017-05-10 15:16:10Z antu123 $
+# $Id: gb_ms_office_suite_kb3191899.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Microsoft Office Suite Remote Code Execution Vulnerability (KB3191899)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810781");
-  script_version("$Revision: 6096 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-0281");
   script_bugtraq_id(98297);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 17:16:10 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 11:51:39 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Suite Remote Code Execution Vulnerability (KB3191899)");
@@ -40,26 +40,22 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important update for
   Microsoft Office Suite according to Microsoft KB3191899");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to error when the Office
   software fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to run arbitrary code in the context of the current user on an
-  affected system.
-
-  Impact Level: System/Application");
+  affected system.");
 
   script_tag(name:"affected", value:"Microsoft Office 2010 Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  link, https://support.microsoft.com/en-us/help/3191899");
+  hotfixes or download and update mentioned hotfixes in the advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3191899");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3191899");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -75,19 +71,12 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable initialization
-officeVer = "";
-offPath = "";
-offexeVer = "";
-commonpath = "";
-
 ## MS Office
 officeVer = get_kb_item("MS/Office/Ver");
 if(!officeVer){
   exit(0);
 }
 
-## Get Office File Path
 commonpath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                             item:"CommonFilesDir");
 if(!commonpath){
@@ -97,7 +86,6 @@ if(!commonpath){
 ##For office 2010
 if(officeVer =~ "^14\.")
 {
-  ## Get Version from Mso.dll
   offPath = commonpath + "\Microsoft Shared\Office14";
   offexeVer = fetch_file_version(sysPath:offPath, file_name:"Mso.dll");
   if(offexeVer && version_in_range(version:offexeVer, test_version:"14.0", test_version2:"14.0.7181.4999"))

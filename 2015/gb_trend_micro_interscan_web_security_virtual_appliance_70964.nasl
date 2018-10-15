@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_70964.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_70964.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Trend Micro InterScan Web Security Virtual Appliance Multiple Information Disclosure Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-8510");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Trend Micro InterScan Web Security Virtual Appliance Multiple Information Disclosure Vulnerabilities");
 
@@ -60,7 +60,7 @@ multiple information-disclosure vulnerabilities.");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-08 10:22:02 +0200 (Wed, 08 Apr 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -68,7 +68,7 @@ multiple information-disclosure vulnerabilities.");
   script_dependencies("gb_trend_micro_interscan_web_security_virtual_appliance_version.nasl");
   script_mandatory_keys("IWSVA/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

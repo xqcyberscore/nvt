@@ -28,11 +28,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804081");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_bugtraq_id(65141);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-28 13:07:10 +0530 (Tue, 28 Jan 2014)");
   script_name("WordPress SS Downloads Multiple Cross Site Scripting Vulnerability");
 
@@ -50,8 +50,7 @@ before being returned to the user.");
 script code in a user's browser session in the context of an affected site.");
   script_tag(name:"affected", value:"Wordpress SS Downloads Plugin version 1.4.4.1, Other versions may also be
 affected.");
-  script_tag(name:"solution", value:"Upgrade Wordpress SS Downloads to version 1.5 or later,
-For updates refer to http://wordpress.org/plugins/ss-downloads");
+  script_tag(name:"solution", value:"Upgrade Wordpress SS Downloads to version 1.5 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/56532");
@@ -65,6 +64,7 @@ For updates refer to http://wordpress.org/plugins/ss-downloads");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://wordpress.org/plugins/ss-downloads");
   exit(0);
 }
 

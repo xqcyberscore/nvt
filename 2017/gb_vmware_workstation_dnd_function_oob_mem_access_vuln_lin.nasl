@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_dnd_function_oob_mem_access_vuln_lin.nasl 5206 2017-02-06 09:20:37Z antu123 $
+# $Id: gb_vmware_workstation_dnd_function_oob_mem_access_vuln_lin.nasl 11900 2018-10-15 07:44:31Z mmartin $
 #
 # VMware Workstation DnD Function Out-of-Bounds Access Vulnerability (Linux)
 #
@@ -29,43 +29,40 @@ CPE = "cpe:/a:vmware:workstation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810532");
-  script_version("$Revision: 5206 $");
+  script_version("$Revision: 11900 $");
   script_cve_id("CVE-2016-7461");
   script_bugtraq_id(94280);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-06 10:20:37 +0100 (Mon, 06 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-02-03 13:26:17 +0530 (Fri, 03 Feb 2017)");
   script_name("VMware Workstation DnD Function Out-of-Bounds Access Vulnerability (Linux)");
 
-  script_tag(name: "summary" , value:"The host is installed with VMware Workstation
+  script_tag(name:"summary", value:"The host is installed with VMware Workstation
   and is prone to an out-of-bounds memory access vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an out-of-bounds memory 
+  script_tag(name:"insight", value:"The flaw is due to an out-of-bounds memory
   access error in drag-and-drop (DnD) function.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
-  attackers to execute arbitrary code in the context of the user running the 
-  affected application. Failed exploit attempts will likely result in 
-  denial-of-service conditions.
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  attackers to execute arbitrary code in the context of the user running the
+  affected application. Failed exploit attempts will likely result in
+  denial-of-service conditions.");
 
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value:"VMware Workstation 12.x before
+  script_tag(name:"affected", value:"VMware Workstation 12.x before
   12.5.2 on Linux.");
 
-  script_tag(name: "solution" , value:"Upgrade to Workstation version
-  12.5.2 or later, For updates refer to http://www.vmware.com");
+  script_tag(name:"solution", value:"Upgrade to Workstation version
+  12.5.2 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   ## if both the drag-and-drop function and the copy-and-paste (C&P)
   ## function are disabled application is not vulnerable, so qod is reduced
   script_tag(name:"qod_type", value:"executable_version_unreliable");
-  script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2016-0019.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0019.html");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -78,16 +75,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-vmwareVer = "";
-
-## Get version
 if(!vmwareVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
-if(vmwareVer =~ "^(12)")
+if(vmwareVer =~ "^12")
 {
   if(version_is_less(version:vmwareVer, test_version:"12.5.2"))
   {

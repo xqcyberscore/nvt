@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-20170315-ucm.nasl 5706 2017-03-24 08:04:22Z teissa $
+# $Id: gb_cisco_cucm_cisco-sa-20170315-ucm.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Cisco Unified Communications Manager Web Interface Cross-Site Scripting Vulnerability
 #
@@ -29,43 +29,43 @@ CPE = "cpe:/a:cisco:unified_communications_manager";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106659");
- script_cve_id("CVE-2017-3872");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 5706 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106659");
+  script_cve_id("CVE-2017-3872");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11874 $");
 
- script_name("Cisco Unified Communications Manager Web Interface Cross-Site Scripting Vulnerability");
+  script_name("Cisco Unified Communications Manager Web Interface Cross-Site Scripting Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170315-ucm");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170315-ucm");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A cross-site scripting (XSS) filter bypass vulnerability in the web-based
+  script_tag(name:"summary", value:"A cross-site scripting (XSS) filter bypass vulnerability in the web-based
 management interface of Cisco Unified Communications Manager could allow an unauthenticated, remote attacker to
 conduct XSS attacks against a user of an affected device.");
 
- script_tag(name: "insight", value: "The vulnerability is due to a failure to properly call XSS filter subsystems
+  script_tag(name:"insight", value:"The vulnerability is due to a failure to properly call XSS filter subsystems
 when a URL contains a certain parameter.");
 
- script_tag(name: "impact", value: "An attacker who can persuade an authenticated user of an affected device to
+  script_tag(name:"impact", value:"An attacker who can persuade an authenticated user of an affected device to
 follow an attacker-provided link or visit an attacker-controlled website could exploit this vulnerability to
 execute arbitrary code in the context of the affected site in the user's browser.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-24 09:04:22 +0100 (Fri, 24 Mar 2017) $");
- script_tag(name: "creation_date", value: "2017-03-16 11:50:39 +0700 (Thu, 16 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_cucm_version.nasl");
- script_mandatory_keys("cisco/cucm/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-16 11:50:39 +0700 (Thu, 16 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_cucm_version.nasl");
+  script_mandatory_keys("cisco/cucm/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

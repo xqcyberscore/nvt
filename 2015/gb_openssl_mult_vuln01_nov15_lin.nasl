@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln01_nov15_lin.nasl 11542 2018-09-21 20:22:36Z cfischer $
+# $Id: gb_openssl_mult_vuln01_nov15_lin.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # OpenSSL Multiple Vulnerabilities -01 Nov15 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806729");
-  script_version("$Revision: 11542 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-1787", "CVE-2015-0290", "CVE-2015-0291", "CVE-2015-0285",
                 "CVE-2015-0208", "CVE-2015-0207");
   script_bugtraq_id(73238, 73226, 73235, 73234, 73229);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:22:36 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-24 18:49:30 +0530 (Tue, 24 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Multiple Vulnerabilities -01 Nov15 (Linux)");
@@ -69,8 +69,7 @@ if(description)
   script_tag(name:"affected", value:"OpenSSL versions 1.0.2 before 1.0.2a on
   Linux");
 
-  script_tag(name:"solution", value:"Upgrade to OpenSSL 1.0.2a or later.
-  For updates refer to https://www.openssl.org");
+  script_tag(name:"solution", value:"Upgrade to OpenSSL 1.0.2a or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1031929");

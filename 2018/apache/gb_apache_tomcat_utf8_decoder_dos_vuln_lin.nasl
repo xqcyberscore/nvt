@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_utf8_decoder_dos_vuln_lin.nasl 10637 2018-07-26 09:34:03Z santu $
+# $Id: gb_apache_tomcat_utf8_decoder_dos_vuln_lin.nasl 11884 2018-10-12 13:33:40Z cfischer $
 #
 # Apache Tomcat 'UTF-8 Decoder' Denial of Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813725");
-  script_version("$Revision: 10637 $");
+  script_version("$Revision: 11884 $");
   script_cve_id("CVE-2018-1336");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 11:34:03 +0200 (Thu, 26 Jul 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:33:40 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-24 13:21:03 +0530 (Tue, 24 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat 'UTF-8 Decoder' Denial of Service Vulnerability (Linux)");

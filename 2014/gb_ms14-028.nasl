@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-028.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-028.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft iSCSI Denial of Service Vulnerabilities (2962485)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802074");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-0255", "CVE-2014-0256");
   script_bugtraq_id(67280, 67281);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-14 17:09:23 +0530 (Wed, 14 May 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft iSCSI Denial of Service Vulnerabilities (2962485)");
@@ -49,8 +49,7 @@ stop responding via specially crafted iSCSI packets.");
 Microsoft Windows Server 2012 R2
 Microsoft Windows Server 2008 R2 x64 Service Pack 1 and prior");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/library/security/ms14-028");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/58281");
@@ -79,7 +78,7 @@ if(!sysPath){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"\system32\Iscsitgt.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"\system32\Iscsitgt.dll");
 if(!sysVer){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_local_file_inclusion_vuln_aug14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_owncloud_local_file_inclusion_vuln_aug14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # ownCloud Local File Inclusion Vulnerability -01 Aug14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804821");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-4929");
   script_bugtraq_id(68975);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-08-25 21:35:23 +0530 (Mon, 25 Aug 2014)");
   script_name("ownCloud Local File Inclusion Vulnerability -01 Aug14");
 
@@ -48,8 +48,7 @@ user-supplied input to the 'filename' parameter in a require_once statement.");
 overwriting the existing configuration or execute arbitrary PHP code or disclose
 the contents of any file on the system.");
   script_tag(name:"affected", value:"ownCloud Server 5.0.x before version 5.0.17, 6.0.x before version 6.0.4");
-  script_tag(name:"solution", value:"Upgrade to ownCloud version 5.0.17 or 6.0.4 or later.
-For updates refer to http://owncloud.org");
+  script_tag(name:"solution", value:"Upgrade to ownCloud version 5.0.17 or 6.0.4 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://owncloud.org/changelog/");

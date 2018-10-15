@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icinga2_detect.nasl 9018 2018-03-02 21:18:09Z cfischer $
+# $Id: gb_icinga2_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Icinga 2 Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113120");
-  script_version("$Revision: 9018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-02 22:18:09 +0100 (Fri, 02 Mar 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-03-01 13:53:44 +0100 (Thu, 01 Mar 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,7 +55,7 @@ if( description )
   script_xref(name:"URL", value:"https://www.icinga.com/products/icinga-2/");
   script_xref(name:"URL", value:"https://www.icinga.com/docs/icinga2/latest/doc/12-icinga2-api/");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "http_func.inc" );

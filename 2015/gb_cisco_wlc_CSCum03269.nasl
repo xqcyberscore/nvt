@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_CSCum03269.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_cisco_wlc_CSCum03269.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco Wireless LAN Controller Wireless Web Authentication Denial of Service Vulnerability
 #
@@ -31,8 +31,8 @@ if (description)
   script_cve_id("CVE-2015-0723");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11218 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 11872 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-23 13:59:48 +0200 (Wed, 23 Sep 2015)");
   script_name("Cisco Wireless LAN Controller Wireless Web Authentication Denial of Service Vulnerability");
 
@@ -54,7 +54,7 @@ vulnerability by sending a request designed to trigger the vulnerability and cau
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_wlc_version.nasl");
   script_mandatory_keys("cisco_wlc/version");
- exit(0);
+  exit(0);
 }
 
 

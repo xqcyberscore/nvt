@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-049.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-049.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Windows Installer Service Privilege Escalation Vulnerarbility (2962490)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804808");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-1814");
   script_bugtraq_id(69112);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-08-13 10:30:09 +0530 (Wed, 13 Aug 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows Installer Service Privilege Escalation Vulnerarbility (2962490)");
@@ -52,9 +52,8 @@ Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
 Microsoft Windows 8 x32/x64
 Windows 8.1 x32/x64 Edition
 Microsoft Windows Server 2012/R2");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms14-049");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/60674");
@@ -66,6 +65,7 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-049");
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms14-049");
   exit(0);
 }
 
@@ -86,7 +86,7 @@ if(!sysPath){
   exit(0);
 }
 
-msiVer = fetch_file_version(sysPath, file_name:"system32\msi.dll");
+msiVer = fetch_file_version(sysPath:sysPath, file_name:"system32\msi.dll");
 if(!msiVer){
   exit(0);
 }

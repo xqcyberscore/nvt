@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_everfocus_multiple_devices_lfi_03_2013.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_everfocus_multiple_devices_lfi_03_2013.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # EverFocus Multiple Devices Directory Traversal
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103682");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
@@ -37,7 +37,7 @@ if (description)
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/120827/DDIVRT-2013-50.txt");
   script_xref(name:"URL", value:"http://www.everfocus.com/firmware_upgrade.cfm");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-03-20 10:34:19 +0100 (Wed, 20 Mar 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"summary", value:"Multiple EverFocus devices allowing unauthenticated remote users to retrieve arbitrary
 system files that are located outside of the web root through a directory traversal on
 port 80.");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

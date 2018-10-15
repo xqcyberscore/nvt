@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xibo_61352.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_xibo_61352.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Xibo 'index.php' Multiple Directory Traversal Vulnerabilities
 #
@@ -32,10 +32,10 @@ if (description)
   script_cve_id("CVE-2013-5979");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11865 $");
   script_name("Xibo 'index.php' Multiple Directory Traversal Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61352");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-07 11:05:49 +0200 (Mon, 07 Oct 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -64,7 +64,7 @@ it fails to properly sanitize user-supplied input.");
   script_tag(name:"affected", value:"Xibo 1.2.2 and 1.4.1 are vulnerable, other versions may also be
 affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

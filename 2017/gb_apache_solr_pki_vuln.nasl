@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_pki_vuln.nasl 7028 2017-08-31 09:47:19Z ckuersteiner $
+# $Id: gb_apache_solr_pki_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Apache Solr Inter-Node Communication Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:apache:solr";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106934");
-  script_version("$Revision: 7028 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-31 11:47:19 +0200 (Thu, 31 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-10 14:38:21 +0700 (Mon, 10 Jul 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-10 14:38:21 +0700 (Mon, 10 Jul 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
-  script_cve_id("CVE-2017-7660"); 
+  script_cve_id("CVE-2017-7660");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Apache Solr Inter-Node Communication Vulnerability");
 
@@ -51,7 +51,7 @@ if (description)
   script_dependencies("secpod_apache_solr_detect.nasl");
   script_mandatory_keys("Apache/Solr/Installed");
 
-  script_tag(name: "summary", value: "Solr uses a PKI based mechanism to secure inter-node communication when
+  script_tag(name:"summary", value:"Solr uses a PKI based mechanism to secure inter-node communication when
 security is enabled. It is possible to create a specially crafted node name that does not exist as part of the
 cluster and point it to a malicious node. This can trick the nodes in cluster to believe that the malicious node
 is a member of the cluster. So, if Solr users have enabled BasicAuth authentication mechanism using the
@@ -59,13 +59,13 @@ BasicAuthPlugin or if the user has implemented a custom Authentication plugin, w
 'HttpClientInterceptorPlugin' or 'HttpClientBuilderPlugin', his/her servers are vulnerable to this attack. Users
 who only use SSL without basic authentication or those who use Kerberos are not affected.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Apache Solr 5.x and 6.x");
+  script_tag(name:"affected", value:"Apache Solr 5.x and 6.x");
 
-  script_tag(name: "solution", value: "Upgrade to version 5.5.5, 6.6.0 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 5.5.5, 6.6.0 or later.");
 
-  script_xref(name: "URL", value: "https://issues.apache.org/jira/browse/SOLR-10624");
+  script_xref(name:"URL", value:"https://issues.apache.org/jira/browse/SOLR-10624");
 
   exit(0);
 }

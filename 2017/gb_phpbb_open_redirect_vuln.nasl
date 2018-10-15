@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpbb_open_redirect_vuln.nasl 7523 2017-10-20 08:20:46Z cfischer $
+# $Id: gb_phpbb_open_redirect_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # phpBB Open Redirect Vulnerability
 #
@@ -29,8 +29,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113005");
-  script_version("$Revision: 7523 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:20:46 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-28 11:56:33 +0200 (Thu, 28 Sep 2017)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -63,7 +63,7 @@ if( description )
   script_xref(name:"URL", value:"https://wiki.phpbb.com/Release_Highlights/3.1.4");
   script_xref(name:"URL", value:"https://www.phpbb.com/community/viewtopic.php?f=14&t=2313941");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:phpbb:phpbb";

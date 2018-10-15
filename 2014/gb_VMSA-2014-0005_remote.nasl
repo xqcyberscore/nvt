@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2014-0005_remote.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_VMSA-2014-0005_remote.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # VMSA-2014-0005: VMware Workstation, Player, Fusion, and ESXi patches address a guest privilege escalation (remote check)
 #
@@ -31,13 +31,13 @@ if (description)
   script_cve_id("CVE-2014-3793");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11867 $");
   script_name("VMSA-2014-0005: VMware Workstation, Player, Fusion, and ESXi patches address a guest privilege escalation");
 
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0005.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-02 11:04:01 +0100 (Mon, 02 Jun 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -83,7 +83,7 @@ if( ! fixed_builds[esxVersion] ) exit( 0 );
 if( int( esxBuild ) < int( fixed_builds[esxVersion] ) )
 {
   security_message(port:0, data: esxi_remote_report( ver:esxVersion, build: esxBuild, fixed_build: fixed_builds[esxVersion] ) );
-  exit( 0 );
+  exit(0);
 }
 
 exit( 99 );

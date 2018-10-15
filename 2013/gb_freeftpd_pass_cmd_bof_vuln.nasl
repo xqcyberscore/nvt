@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freeftpd_pass_cmd_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_freeftpd_pass_cmd_bof_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # freeFTPD PASS Command Buffer Overflow Vulnerability
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803747");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-22 16:55:03 +0530 (Thu, 22 Aug 2013)");
   script_name("freeFTPD PASS Command Buffer Overflow Vulnerability");
 
   script_tag(name:"summary", value:"The host is running FreeFTPD Server and is prone to buffer overflow
 vulnerability.");
   script_tag(name:"vuldetect", value:"Send the crafted FTP request and check server is dead or not.");
-  script_tag(name:"solution", value:"Upgrade to freeFTPd version 1.0.12 or later,
-For updates refer to http://www.freesshd.com/?ctt=download");
+  script_tag(name:"solution", value:"Upgrade to freeFTPd version 1.0.12 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"The flaw is due to an improper handling of huge data in the 'PASS'
 command.");
@@ -55,6 +54,7 @@ effectively denying service to legitimate users.");
   script_family("FTP");
   script_dependencies("secpod_ftp_anonymous.nasl");
   script_require_ports("Services/ftp", 21);
+  script_xref(name:"URL", value:"http://www.freesshd.com/?ctt=download");
   exit(0);
 }
 

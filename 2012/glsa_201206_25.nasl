@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201206_25.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201206_25.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_cve_id("CVE-2010-0408", "CVE-2010-0434", "CVE-2010-1452", "CVE-2010-2791", "CVE-2011-3192", "CVE-2011-3348", "CVE-2011-3368", "CVE-2011-3607", "CVE-2011-4317", "CVE-2012-0021", "CVE-2012-0031", "CVE-2012-0053", "CVE-2012-0883");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-10 03:22:53 -0400 (Fri, 10 Aug 2012)");
   script_name("Gentoo Security Advisory GLSA 201206-25 (apache)");
   script_category(ACT_GATHER_INFO);
@@ -46,20 +46,19 @@ if(description)
   script_tag(name:"solution", value:"All Apache HTTP Server users should upgrade to the latest version:
 
       # emerge --sync
-      # emerge --ask --oneshot --verbose '>=www-servers/apache-2.2.22-r1'
+      # emerge --ask --oneshot --verbose '>=www-servers/apache-2.2.22-r1'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201206-25
-http://bugs.gentoo.org/show_bug.cgi?id=308049
-http://bugs.gentoo.org/show_bug.cgi?id=330195
-http://bugs.gentoo.org/show_bug.cgi?id=380475
-http://bugs.gentoo.org/show_bug.cgi?id=382971
-http://bugs.gentoo.org/show_bug.cgi?id=385859
-http://bugs.gentoo.org/show_bug.cgi?id=389353
-http://bugs.gentoo.org/show_bug.cgi?id=392189
-http://bugs.gentoo.org/show_bug.cgi?id=398761
-http://bugs.gentoo.org/show_bug.cgi?id=401081
-http://bugs.gentoo.org/show_bug.cgi?id=412481");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201206-25");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=308049");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=330195");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=380475");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=382971");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=385859");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=389353");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=392189");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=398761");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=401081");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=412481");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201206-25.");
   script_tag(name:"qod_type", value:"package");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-051.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-051.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2976627)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804739");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-2774", "CVE-2014-2784", "CVE-2014-2796", "CVE-2014-2808",
                 "CVE-2014-2810", "CVE-2014-2811", "CVE-2014-2817", "CVE-2014-2818",
                 "CVE-2014-2819", "CVE-2014-2820", "CVE-2014-2821", "CVE-2014-2822",
@@ -44,7 +44,7 @@ if(description)
                     69132, 69134, 70937, 72593, 70578, 70937);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-08-13 07:44:02 +0530 (Wed, 13 Aug 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2976627)");
@@ -58,8 +58,7 @@ Bulletin MS14-051.");
 and compromise a user's system.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x/10.x/11.x");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms14-051");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/60670");
@@ -71,6 +70,7 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-051");
   script_dependencies("gb_ms_ie_detect.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms14-051");
   exit(0);
 }
 
@@ -97,7 +97,7 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Mshtml.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Mshtml.dll");
 if(!dllVer){
   exit(0);
 }

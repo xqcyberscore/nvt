@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gigaset_sx762_default_pw.nasl 11219 2018-09-04 11:52:00Z cfischer $
+# $Id: gb_gigaset_sx762_default_pw.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Siemens Gigaset sx762 Default Password
 #
@@ -30,10 +30,10 @@ CPE = 'cpe:/h:siemens:gigaset:sx762';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103730");
-  script_version("$Revision: 11219 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-05 14:44:04 +0200 (Wed, 05 Jun 2013)");
   script_name("Siemens Gigaset sx762 Default Password");
   script_category(ACT_ATTACK);
@@ -52,7 +52,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_vul");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

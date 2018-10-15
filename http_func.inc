@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 11853 2018-10-12 06:40:08Z cfischer $
+# $Id: http_func.inc 11896 2018-10-13 14:47:25Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11853 $
+# $Revision: 11896 $
 #
 ###############################################################################
 
@@ -579,8 +579,31 @@ function http_send_recv( port, data ) {
 
   local_var s, r;
 
-  if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_send_recv" );
-  if( ! data ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#http_send_recv" );
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_send_recv" );
+    return NULL;
+  }
+
+  if( ! data ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#http_send_recv" );
+    return NULL;
+  }
+
+  # nb: We should expect at least a request like: "GET / HTTP/1.1\r\n" (length: 16).
+  # But for some specific cases we're just checking for some less data.
+  if( strlen( data ) < 8 || data !~ "^(DELETE|PROPFIND|PUT|GET|HEAD|POST|OPTIONS|REPORT|MKCOL|MOVE|PROPPATCH|COPY|PATCH|CONNECT|TRACE|LOCK|UNLOCK|TRACK|M-POST|CHECKOUT|CHECKIN|UNCHECKOUT|VERSION-CONTROL|BASELINE-CONTROL).*HTTP/(1\.[01]|2)" ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_send_recv(): Invalid HTTP request (length < 8, invalid HTTP method or missing HTTP/ header) passed in 'data' variable." );
+  }
+
+  # http_get() won't add a Host: header if only HTTP/1.0 support was detected
+  # nb: Commented out for now as quite a lot older VTs are probably passing a HTTP request without the Host: header
+  #if( "Host:" >!< data && "HTTP/1.0" >!< data ) {
+  #  set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_send_recv(): No 'Host:' header passed in data variable. This might lead to issues if SNI is enabled on the remote host." );
+  #}
+
+  if( data !~ "^(DELETE|PROPFIND|PUT|GET|HEAD|POST|OPTIONS|REPORT|MKCOL|MOVE|PROPPATCH|COPY|PATCH|CONNECT|TRACE|LOCK|UNLOCK|TRACK|M-POST|CHECKOUT|CHECKIN|UNCHECKOUT|VERSION-CONTROL|BASELINE-CONTROL) (/|\.+/|https?:|\*).* HTTP" ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_send_recv(): URL/URI of the HTTP request passed in 'data' variable doesn't start with one of the following: '/, ./, http, *'." );
+  }
 
   s = http_open_socket( port );
   if( ! s ) return;
@@ -602,7 +625,6 @@ function http_send_recv( port, data ) {
     return http_gunzip( buf:r );
 
   return r;
-
 }
 
 # @brief Returns the detected directories (e.g. by webmirror.nasl and/or
@@ -999,7 +1021,7 @@ function extract_location_from_redirect( port, data, debug ) {
     # The location header is pointing to the same hostname / ip
     if( host >< location_host || ip >< location_host ) {
       loc = ereg_replace( string:location, pattern:"(https:|http:)?//[^/]*/([^?]*)", replace:"/\2", icase:TRUE );
-      if( debug || _http_debug ) display( 'DEBUG: Location header is pointing to "' + location + '" on the same host/ip. Returning this location.\n' );
+      if( debug || _http_debug ) display( 'DEBUG: Location header is pointing to "' + location + '" on the same host/ip. Returning the "' + loc + '" part of the location.\n' );
       return loc;
     # If its not pointing to the same hostname / ip we can't follow it
     } else {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samiftp_retr_cmd_dos_vuln.nasl 11582 2018-09-25 06:26:12Z cfischer $
+# $Id: gb_samiftp_retr_cmd_dos_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # SamiFTP Server 'RETR' Command Denial of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803717");
-  script_version("$Revision: 11582 $");
+  script_version("$Revision: 11865 $");
   script_bugtraq_id(60513);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-13 15:16:51 +0530 (Thu, 13 Jun 2013)");
   script_name("SamiFTP Server 'RETR' Command Denial of Service Vulnerability");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/26133");
@@ -47,11 +47,11 @@ a denial of service.");
   script_tag(name:"affected", value:"SamiFTP Server version 2.0.1");
   script_tag(name:"insight", value:"The flaw is due to an error while parsing RETR command, which can
 be exploited to crash the FTP service by sending crafted data via 'RETR' command.");
-  script_tag(name:"solution", value:"Upgrade to version 2.0.2 or later,
-For updates refer to http://www.karjasoft.com/old.php");
+  script_tag(name:"solution", value:"Upgrade to version 2.0.2 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"The host is running SamiFTP Server and is prone to denial of
 service vulnerability.");
+  script_xref(name:"URL", value:"http://www.karjasoft.com/old.php");
   exit(0);
 }
 

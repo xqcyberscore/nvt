@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-034.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ms12-034.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # MS Security Update For Microsoft Office, .NET Framework, and Silverlight (2681578)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902832");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11876 $");
   script_bugtraq_id(50462, 53324, 53326, 53327, 53335, 53347, 53351, 53358,
                     53360, 53363);
   script_cve_id("CVE-2011-3402", "CVE-2012-0159", "CVE-2012-0162", "CVE-2012-0164",
@@ -35,7 +35,7 @@ if(description)
                 "CVE-2012-0181", "CVE-2012-1848");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 09:09:09 +0530 (Wed, 09 May 2012)");
   script_name("MS Security Update For Microsoft Office, .NET Framework, and Silverlight (2681578)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49120");
@@ -96,8 +96,8 @@ if(description)
 
   - An error in win32k.sys related to scrollbar calculations can be exploited
     to execute arbitrary code in the context of another process.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-034.");
   script_tag(name:"qod_type", value:"registry");
@@ -238,7 +238,7 @@ if(!sysPath){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"system32\Win32k.sys");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Win32k.sys");
 if(sysVer)
 {
   if(hotfix_check_sp(xp:4) > 0)
@@ -282,7 +282,7 @@ if(sysVer)
   }
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Dwrite.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Dwrite.dll");
 if(dllVer)
 {
   if(hotfix_check_sp(winVista:3, win2008:3) > 0)

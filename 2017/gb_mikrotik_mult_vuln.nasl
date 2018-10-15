@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_mult_vuln.nasl 10055 2018-06-04 04:44:00Z ckuersteiner $
+# $Id: gb_mikrotik_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # MikroTik Router Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113068");
-  script_version("$Revision: 10055 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 06:44:00 +0200 (Mon, 04 Jun 2018) $");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-12-14 12:11:10 +0100 (Thu, 14 Dec 2017)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -55,9 +55,9 @@ if( description )
 
   script_tag(name:"insight", value:"The vulnerabilties allow for two ways of causing an Denial of Service:
 
-- An attacker can flood the device with ICMP packets
+  - An attacker can flood the device with ICMP packets
 
-- An attacker can connect to TCP-port 53 an send data starting with a lot of Null-Byte characters, probably
+  - An attacker can connect to TCP-port 53 an send data starting with a lot of Null-Byte characters, probably
 related to DNS.");
 
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to make the device
@@ -70,7 +70,7 @@ this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://mikrotik.com/download/changelogs/current-release-tree");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/o:mikrotik:routeros";

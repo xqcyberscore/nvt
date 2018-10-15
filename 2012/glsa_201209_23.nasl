@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: glsa_201209_23.nasl 11671 2018-09-28 10:44:05Z cfischer $
+# $Id: glsa_201209_23.nasl 11859 2018-10-12 08:53:01Z cfischer $
 #
 # Auto generated from Gentoo's XML based advisory
 #
@@ -33,8 +33,8 @@ if(description)
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-1570", "CVE-2009-3909", "CVE-2010-4540", "CVE-2010-4541", "CVE-2010-4542", "CVE-2010-4543", "CVE-2011-1178", "CVE-2011-2896", "CVE-2012-2763", "CVE-2012-3402");
-  script_version("$Revision: 11671 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:44:05 +0200 (Fri, 28 Sep 2018) $");
+  script_version("$Revision: 11859 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:53:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-03 11:11:28 -0400 (Wed, 03 Oct 2012)");
   script_name("Gentoo Security Advisory GLSA 201209-23 (gimp)");
   script_category(ACT_GATHER_INFO);
@@ -47,16 +47,15 @@ if(description)
   script_tag(name:"solution", value:"All GIMP users should upgrade to the latest version:
 
       # emerge --sync
-      # emerge --ask --oneshot --verbose '>=media-gfx/gimp-2.6.12-r2'
+      # emerge --ask --oneshot --verbose '>=media-gfx/gimp-2.6.12-r2'");
 
-
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201209-23
-http://bugs.gentoo.org/show_bug.cgi?id=293127
-http://bugs.gentoo.org/show_bug.cgi?id=350915
-http://bugs.gentoo.org/show_bug.cgi?id=372975
-http://bugs.gentoo.org/show_bug.cgi?id=379289
-http://bugs.gentoo.org/show_bug.cgi?id=418425
-http://bugs.gentoo.org/show_bug.cgi?id=432582");
+  script_xref(name:"URL", value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20201209-23");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=293127");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=350915");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=372975");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=379289");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=418425");
+  script_xref(name:"URL", value:"http://bugs.gentoo.org/show_bug.cgi?id=432582");
   script_tag(name:"summary", value:"The remote host is missing updates announced in
 advisory GLSA 201209-23.");
   script_tag(name:"qod_type", value:"package");

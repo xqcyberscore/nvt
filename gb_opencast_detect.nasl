@@ -1,6 +1,6 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencast_detect.nasl 10529 2018-07-17 13:54:35Z asteins $
+# $Id: gb_opencast_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Opencast detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113057");
-  script_version("$Revision: 10529 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-17 15:54:35 +0200 (Tue, 17 Jul 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-29 13:56:41 +0100 (Wed, 29 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,7 @@ if( description )
 
   script_xref(name:"URL", value:"http://www.opencast.org");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "cpe.inc" );

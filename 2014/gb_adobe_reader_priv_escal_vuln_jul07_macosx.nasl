@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_priv_escal_vuln_jul07_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_reader_priv_escal_vuln_jul07_macosx.nasl 11868 2018-10-12 10:53:07Z cfischer $
 #
 # Adobe Reader Privilege Escalation Vulnerability - Jul07 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804631");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11868 $");
   script_cve_id("CVE-2006-3452");
   script_bugtraq_id(18945);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:53:07 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-05 12:48:53 +0530 (Thu, 05 Jun 2014)");
   script_name("Adobe Reader Privilege Escalation Vulnerability - Jul07 (Mac OS X)");
 
@@ -47,8 +47,7 @@ installed files and folders.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to gain elevated privileges and
 remove the files or replace them with malicious binaries.");
   script_tag(name:"affected", value:"Adobe Reader version 6.0.4 and before on Mac OS X.");
-  script_tag(name:"solution", value:"Update to Adobe Reader version 6.0.5 or later. For updates refer,
-For updates refer to http://www.adobe.com");
+  script_tag(name:"solution", value:"Update to Adobe Reader version 6.0.5 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 

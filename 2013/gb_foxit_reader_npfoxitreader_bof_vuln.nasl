@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_npfoxitreader_bof_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_foxit_reader_npfoxitreader_bof_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Foxit Reader Plugin URL Processing Buffer Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803163");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_bugtraq_id(57174);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 13:51:25 +0530 (Thu, 24 Jan 2013)");
   script_name("Foxit Reader PDF File Handling Memory Corruption Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51733");
@@ -51,12 +51,12 @@ if(description)
   browsers (npFoxitReaderPlugin.dll) when processing a URL and can be
   exploited to cause a stack-based buffer overflow via an overly long
   file name in the URL.");
-  script_tag(name:"solution", value:"Upgrade to the Foxit Reader version 5.4.5 or later,
-  For updates refer to http://www.foxitsoftware.com/Secure_PDF_Reader");
+  script_tag(name:"solution", value:"Upgrade to the Foxit Reader version 5.4.5 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"The host is installed with Foxit Reader and is prone to buffer
   overflow vulnerability.");
 
+  script_xref(name:"URL", value:"http://www.foxitsoftware.com/Secure_PDF_Reader");
   exit(0);
 }
 

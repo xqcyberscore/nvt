@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monitorix_63913.nasl 11077 2018-08-22 09:40:33Z mmartin $
+# $Id: gb_monitorix_63913.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Monitorix HTTP Server Remote Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103855");
   script_bugtraq_id(63913);
-  script_version("$Revision: 11077 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Monitorix HTTP Server Remote Code Execution Vulnerability");
   script_xref(name:"URL", value:"http://www.monitorix.org/news.html#N331");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-12 14:22:20 +0100 (Thu, 12 Dec 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -54,7 +54,7 @@ which led into a number of security vulnerabilities.");
   script_tag(name:"summary", value:"Monitorix HTTP Server Remote Code Execution Vulnerability");
   script_tag(name:"affected", value:"Monitorix < 3.3.1");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

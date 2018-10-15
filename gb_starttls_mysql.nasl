@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_mysql.nasl 5215 2017-02-07 08:48:46Z teissa $
+# $Id: gb_starttls_mysql.nasl 11898 2018-10-15 07:17:45Z cfischer $
 #
-# MySQL / MariaDB (STARTTLS-like) SSL/TLS Detection
+# SSL/TLS: MySQL / MariaDB (STARTTLS-like) SSL/TLS Detection
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -27,22 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108071");
-  script_version("$Revision: 5215 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-07 09:48:46 +0100 (Tue, 07 Feb 2017) $");
+  script_version("$Revision: 11898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:17:45 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"creation_date", value:"2017-02-06 11:18:02 +0100 (Mon, 06 Feb 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("MySQL / MariaDB (STARTTLS-like) SSL/TLS Detection");
+  script_name("SSL/TLS: MySQL / MariaDB (STARTTLS-like) SSL/TLS Detection");
   script_category(ACT_GATHER_INFO);
-  script_family("Service detection");
+  script_family("SSL and TLS");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_dependencies("mysql_version.nasl");
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL_MariaDB/installed");
 
-  script_tag(name:"summary", value:"The remote MySQL / MariaDB Server supports (STARTTLS-like) SSL/TLS.");
+  script_tag(name:"summary", value:"Checks if the remote MySQL / MariaDB Server supports (STARTTLS-like) SSL/TLS.");
 
   script_tag(name:"qod_type", value:"remote_banner");
+
+  script_xref(name:"URL", value:"https://dev.mysql.com/doc/internals/en/ssl.html");
 
   exit(0);
 }
@@ -96,7 +98,7 @@ close( soc );
 if( hello_done ) {
   set_kb_item( name:"mysql/" + port + "/starttls", value:TRUE );
   set_kb_item( name:"starttls_typ/" + port, value:"mysql" );
-  log_message( port:port );
+  log_message( port:port, data:"The remote MySQL / MariaDB Server supports (STARTTLS-like) SSL/TLS." );
 }
 
 exit( 0 );

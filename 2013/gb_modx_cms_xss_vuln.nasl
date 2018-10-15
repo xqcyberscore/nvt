@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_cms_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_modx_cms_xss_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # MODX CMS Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804124");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_bugtraq_id(63274);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-29 11:49:17 +0530 (Tue, 29 Oct 2013)");
   script_name("MODX CMS Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -55,8 +55,7 @@ if(description)
   script_tag(name:"insight", value:"Flaw exists due to improper sanitization of url, when accessing 'findcore.php'
   and 'xpdo.class.php' scripts.");
 
-  script_tag(name:"solution", value:"Upgrade to MODX version 2.3.0 or later.
-  For updates refer to http://modx.com");
+  script_tag(name:"solution", value:"Upgrade to MODX version 2.3.0 or later.");
 
   script_tag(name:"summary", value:"This host is running MODX CMS and is prone to cross site scripting
   vulnerability");
@@ -66,6 +65,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://modx.com");
   exit(0);
 }
 

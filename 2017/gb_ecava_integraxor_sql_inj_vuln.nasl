@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecava_integraxor_sql_inj_vuln.nasl 5324 2017-02-17 10:11:19Z ckuerste $
+# $Id: gb_ecava_integraxor_sql_inj_vuln.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # ECAVA IntegraXor SQL Injection Vulnerability
 #
@@ -30,18 +30,18 @@ CPE = "cpe:/a:ecava:integraxor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106607");
-  script_version("$Revision: 5324 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-17 11:11:19 +0100 (Fri, 17 Feb 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-17 10:06:51 +0700 (Fri, 17 Feb 2017)");
-  script_tag(name: "cvss_base", value: "7.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-17 10:06:51 +0700 (Fri, 17 Feb 2017)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-8341");
   script_bugtraq_id(95907);
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("ECAVA IntegraXor Multiple Vulnerabilities");
 
@@ -52,22 +52,22 @@ if (description)
   script_dependencies("gb_ecava_integraxor_detect.nasl");
   script_mandatory_keys("EcavaIntegraXor/Installed");
 
-  script_tag(name: "summary", value: "ECAVA IntegraXor is prone to multiple SQL injection vulnerabilities.");
+  script_tag(name:"summary", value:"ECAVA IntegraXor is prone to multiple SQL injection vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The Ecava IntegraXor web server has parameters that are vulnerable to SQL
+  script_tag(name:"insight", value:"The Ecava IntegraXor web server has parameters that are vulnerable to SQL
 injection. If the queries are not sanitized, the host's database could be subject to read, write, and delete
 commands.");
 
-  script_tag(name: "impact", value: "A successful exploit of this vulnerability could lead to arbitrary data
+  script_tag(name:"impact", value:"A successful exploit of this vulnerability could lead to arbitrary data
 leakage, data manipulation, and remote code execution.");
 
-  script_tag(name: "affected", value: "Version 5.0.413.0");
+  script_tag(name:"affected", value:"Version 5.0.413.0");
 
-  script_tag(name: "solution", value: "Update to 5.2.722.2 or later versions.");
+  script_tag(name:"solution", value:"Update to 5.2.722.2 or later versions.");
 
-  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-17-031-02");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-17-031-02");
 
   exit(0);
 }

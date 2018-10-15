@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ros_55123.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_ros_55123.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Rugged Operating System Private Key Disclosure Vulnerability
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2012-4698");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11865 $");
 
   script_name("Rugged Operating System Private Key Disclosure Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55123");
   script_xref(name:"URL", value:"http://www.ruggedcom.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-04 13:15:52 +0100 (Fri, 04 Jan 2013)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -60,7 +60,7 @@ private key and use it to decrypt SSL traffic between an end user and
 a RuggedCom network device.
 
 Rugged Operating System 3.11.0 and previous versions are affected.");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

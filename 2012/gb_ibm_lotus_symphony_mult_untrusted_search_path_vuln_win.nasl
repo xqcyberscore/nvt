@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_symphony_mult_untrusted_search_path_vuln_win.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_ibm_lotus_symphony_mult_untrusted_search_path_vuln_win.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # IBM Lotus Symphony Multiple Untrusted Search Path Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:lotus_symphony";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802963");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2010-5204");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-09-17 15:01:39 +0530 (Mon, 17 Sep 2012)");
   script_name("IBM Lotus Symphony Multiple Untrusted Search Path Vulnerabilities (Windows)");
 
@@ -63,13 +63,12 @@ since the disclosure of this vulnerability. Likely none will be provided anymore
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.
 
-Apply the workaround from below links:
-
-http://support.microsoft.com/kb/2264107
-
-http://technet.microsoft.com/en-us/security/advisory/2269637#EGF");
+Apply the workaround");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2264107
+
+http://technet.microsoft.com/en-us/security/advisory/2269637#EGF");
   exit(0);
 }
 

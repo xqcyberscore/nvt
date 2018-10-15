@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln_lin7.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_mantisbt_xss_vuln_lin7.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # MantisBT Multiple XSS Vulnerabilities (Linux)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140267");
-  script_version("$Revision: 7543 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-02 12:48:43 +0700 (Wed, 02 Aug 2017)");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-02 12:48:43 +0700 (Wed, 02 Aug 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-12061", "CVE-2017-12062");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("MantisBT Multiple XSS Vulnerabilities (Linux)");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("mantis_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("mantisbt/installed", "Host/runs_unixoide");
 
-  script_tag(name: "summary", value: "MantisBT is prone to multiple cross-site scripting vulnerabilities.");
+  script_tag(name:"summary", value:"MantisBT is prone to multiple cross-site scripting vulnerabilities.");
 
-  script_tag(name: "insight", value: "MantisBT is prone to multiple cross-site scripting vulnerabilities:
+  script_tag(name:"insight", value:"MantisBT is prone to multiple cross-site scripting vulnerabilities:
 
-- XSS in /admin/install.php script (CVE-2017-12061)
+  - XSS in /admin/install.php script (CVE-2017-12061)
 
-- XSS in manage_user_page.php (CVE-2017-12062)");
+  - XSS in manage_user_page.php (CVE-2017-12062)");
 
-  script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "solution", value: "Update to version 1.3.12, 2.5.2 or later.");
+  script_tag(name:"solution", value:"Update to version 1.3.12, 2.5.2 or later.");
 
-  script_xref(name: "URL", value: "https://mantisbt.org/bugs/view.php?id=23146");
-  script_xref(name: "URL", value: "https://mantisbt.org/bugs/view.php?id=23166");
+  script_xref(name:"URL", value:"https://mantisbt.org/bugs/view.php?id=23146");
+  script_xref(name:"URL", value:"https://mantisbt.org/bugs/view.php?id=23166");
 
   exit(0);
 }

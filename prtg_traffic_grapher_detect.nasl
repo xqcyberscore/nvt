@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: prtg_traffic_grapher_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: prtg_traffic_grapher_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # PRTG Traffic Grapher Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100215");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-06-01 13:46:24 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("PRTG Traffic Grapher Detection");
@@ -44,7 +44,7 @@ if (description)
   script_tag(name:"summary", value:"PRTG Traffic Grapher, a Windows software for monitoring and
   classifying bandwidth traffic usage is running at this host.");
   script_xref(name:"URL", value:"http://www.paessler.com/prtg6");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

@@ -1,6 +1,6 @@
 #############################################################################/##
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_unspec_vuln_oct14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_libreoffice_unspec_vuln_oct14_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # LibreOffice Unspecified Vulnerability Oct14 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804929");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-0247");
   script_bugtraq_id(68151);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-01 12:57:54 +0530 (Wed, 01 Oct 2014)");
 
   script_name("LibreOffice Unspecified Vulnerability Oct14 (Mac OS X)");
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"LibreOffice version 4.1.4/4.2.0 prior
   to 4.2.5 on Mac OS X");
 
-  script_tag(name:"solution", value:"Upgrade to LibreOffice 4.2.5 or later,
-  For updates refer to http://www.libreoffice.org");
+  script_tag(name:"solution", value:"Upgrade to LibreOffice 4.2.5 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_libreoffice_detect_macosx.nasl");
   script_mandatory_keys("LibreOffice/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.libreoffice.org");
   exit(0);
 }
 

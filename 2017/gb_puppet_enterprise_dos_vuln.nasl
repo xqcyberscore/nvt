@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_puppet_enterprise_dos_vuln.nasl 8786 2018-02-13 10:48:03Z cfischer $
+# $Id: gb_puppet_enterprise_dos_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
-# Puppet Enterprise < 2016.4.3 / 2016.5 < 2016.5.2 DoS Vulnerability 
+# Puppet Enterprise < 2016.4.3 / 2016.5 < 2016.5.2 DoS Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,17 +30,17 @@ CPE = "cpe:/a:puppet:enterprise";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106582");
-  script_version("$Revision: 8786 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-13 11:48:03 +0100 (Tue, 13 Feb 2018) $");
-  script_tag(name: "creation_date", value: "2017-02-09 13:27:28 +0700 (Thu, 09 Feb 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-09 13:27:28 +0700 (Thu, 09 Feb 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2016-9686");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Puppet Enterprise < 2016.4.3 / 2016.5 < 2016.5.2 DoS Vulnerability");
 
@@ -51,19 +51,19 @@ if (description)
   script_dependencies("gb_puppet_enterprise_detect.nasl");
   script_mandatory_keys("puppet_enterprise/installed");
 
-  script_tag(name: "summary", value: "Puppet Enterprise is prone to a denial of service vulnerability.");
+  script_tag(name:"summary", value:"Puppet Enterprise is prone to a denial of service vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "The Puppet Communications Protocol (PCP) broker incorrectly validates
+  script_tag(name:"insight", value:"The Puppet Communications Protocol (PCP) broker incorrectly validates
 message header sizes. An attacker could use this vulnerability to crash the PCP broker, preventing commands from
 being sent to agents.");
 
-  script_tag(name: "affected", value: "Puppet Enterprise 2015.3.x and 2016.x.");
+  script_tag(name:"affected", value:"Puppet Enterprise 2015.3.x and 2016.x.");
 
-  script_tag(name: "solution", value: "Update to version 2016.4.3, 2016.5.2 or later.");
+  script_tag(name:"solution", value:"Update to version 2016.4.3, 2016.5.2 or later.");
 
-  script_xref(name: "URL", value: "https://puppet.com/security/cve/cve-2016-9686");
+  script_xref(name:"URL", value:"https://puppet.com/security/cve/cve-2016-9686");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_wddm_unspecified_vuln_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_oracle_virtualbox_wddm_unspecified_vuln_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Oracle VM VirtualBox Graphics Driver(WDDM) Unspecified Vulnerability (Mac OS X)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804434");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-2441");
   script_bugtraq_id(66868);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-18 12:52:15 +0530 (Fri, 18 Apr 2014)");
   script_name("Oracle VM VirtualBox Graphics Driver(WDDM) Unspecified Vulnerability (Mac OS X)");
 
 
   script_tag(name:"summary", value:"This host is installed with Oracle VM VirtualBox and is prone to unspecified
 vulnerability.");
-  script_tag(name:"vuldetect", value:"Get the installed version of Oracle VM VirtualBox and check the version is
-vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaw is  due to an error within the Graphics driver(WDDM) for Windows
 guests component and can be exploited by disclose, update, insert, or delete
 certain data and to cause a crash.");
@@ -51,8 +50,7 @@ information, manipulate certain data, and cause a DoS (Denial of
 Service).");
   script_tag(name:"affected", value:"Oracle Virtualization VirtualBox 4.1.x before 4.1.32, 4.2.x before 4.2.24,
 and 4.3.x before 4.3.10 on Mac OS X");
-  script_tag(name:"solution", value:"Upgrade to Oracle VM VirtualBox version 4.1.32, 4.2.24, 4.3.10 or later,
-For updates refer to https://www.virtualbox.org");
+  script_tag(name:"solution", value:"Upgrade to Oracle VM VirtualBox version 4.1.32, 4.2.24, 4.3.10 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -63,6 +61,7 @@ For updates refer to https://www.virtualbox.org");
   script_family("General");
   script_dependencies("secpod_oracle_virtualbox_detect_macosx.nasl");
   script_mandatory_keys("Oracle/VirtualBox/MacOSX/Version");
+  script_xref(name:"URL", value:"https://www.virtualbox.org");
   exit(0);
 }
 

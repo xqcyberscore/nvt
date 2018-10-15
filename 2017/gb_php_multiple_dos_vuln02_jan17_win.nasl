@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_multiple_dos_vuln02_jan17_win.nasl 10454 2018-07-09 05:32:41Z cfischer $
+# $Id: gb_php_multiple_dos_vuln02_jan17_win.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # PHP Multiple Denial of Service Vulnerabilities - 02 - Jan17 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108055");
-  script_version("$Revision: 10454 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2016-10159", "CVE-2016-10160");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 07:32:41 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-25 11:00:00 +0100 (Wed, 25 Jan 2017)");
   script_name("PHP Multiple Denial of Service Vulnerabilities - 02 - Jan17 (Windows)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -48,8 +48,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with PHP and is prone
   to multiple denial of service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to
 
@@ -60,14 +59,11 @@ if(description)
   via a crafted PHAR archive with an alias mismatch.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
-  remote attackers to cause a denial of service (memory consumption or application crash).
-
-  Impact Level: Application");
+  remote attackers to cause a denial of service (memory consumption or application crash).");
 
   script_tag(name:"affected", value:"PHP versions before 5.6.30 and 7.0.x before 7.0.15");
 
-  script_tag(name:"solution", value:"Upgrade to PHP version 5.6.30, 7.0.15 or later.
-  For updates refer to http://www.php.net");
+  script_tag(name:"solution", value:"Upgrade to PHP version 5.6.30, 7.0.15 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

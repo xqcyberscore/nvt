@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20151104-aos.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_cisco_wsa_cisco-sa-20151104-aos.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco Web Security Appliance AsyncOS TCP Flood Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-6321", "CVE-2015-6293", "CVE-2015-6298");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Cisco Web Security Appliance AsyncOS TCP Flood Denial of Service Vulnerability");
 
@@ -53,7 +53,7 @@ unauthenticated, remote attacker to exhaust all available memory, preventing the
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-06 15:21:08 +0100 (Fri, 06 Nov 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -61,7 +61,7 @@ unauthenticated, remote attacker to exhaust all available memory, preventing the
   script_dependencies("gb_cisco_wsa_version.nasl");
   script_mandatory_keys("cisco_wsa/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

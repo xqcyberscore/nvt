@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_floating_social_media_wpp_rfi_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_wordpress_floating_social_media_wpp_rfi_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # WordPress Floating Social Media Links Plugin 'wpp' RFI Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803078");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_bugtraq_id(56913);
   script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Do, 26 Okt 2017)$");
   script_tag(name:"creation_date", value:"2012-12-18 12:54:08 +0530 (Tue, 18 Dec 2012)");
@@ -55,7 +55,7 @@ if(description)
   'wpp' parameter in 'fsml-hideshow.js.php' and 'fsml-admin.js.php', which
   allows attackers to read arbitrary files via a ../(dot dot) sequences.");
 
-  script_tag(name:"solution", value:"Upgrade to the WordPress Portable phpMyAdmin Plugin version 1.4.3 or later,");
+  script_tag(name:"solution", value:"Upgrade to the WordPress Portable phpMyAdmin Plugin version 1.4.3 or later.");
 
   script_tag(name:"summary", value:"This host is installed with WordPress Floating Social Media Links Plugin and
   is prone to remote file inclusion vulnerabilities.");

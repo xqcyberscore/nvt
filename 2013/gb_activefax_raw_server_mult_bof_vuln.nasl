@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803169");
-  script_version("$Revision: 11582 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 08:26:12 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-11 17:46:45 +0530 (Mon, 11 Feb 2013)");
   script_name("ActiveFax RAW Server Multiple Buffer Overflow Vulnerabilities");
   script_category(ACT_DENIAL);
@@ -52,14 +52,14 @@ if(description)
   the '@F000', '@F506', and '@F605' data fields can be exploited to cause
   stack-based buffer overflows by sending a specially crafted command to
   the server.");
-  script_tag(name:"solution", value:"Upgrade to ActiveFax 5.01 beta or later,
-  For updates refer to http://www.actfax.com/download/beta/actfax_setup_en.exe");
+  script_tag(name:"solution", value:"Upgrade to ActiveFax 5.01 beta or later.");
   script_tag(name:"summary", value:"The host is running ActiveFax RAW Server and is prone to multiple buffer
   overflow vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  script_xref(name:"URL", value:"http://www.actfax.com/download/beta/actfax_setup_en.exe");
   exit(0);
 }
 

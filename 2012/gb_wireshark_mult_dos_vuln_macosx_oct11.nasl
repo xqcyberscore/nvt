@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_macosx_oct11.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_wireshark_mult_dos_vuln_macosx_oct11.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802625");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_bugtraq_id(49521, 49522, 49524);
   script_cve_id("CVE-2011-3482", "CVE-2011-3483", "CVE-2011-3484");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-05-02 12:12:12 +0530 (Wed, 02 May 2012)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/45927/");
@@ -56,7 +56,7 @@ if(description)
 
   - An error within the OpenSafety dissector can be exploited to cause a large
     loop and crash the application.");
-  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.2 or later,");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.2 or later.");
   script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to multiple
   denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"package");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-064.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-064.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows OLE Object Handling Code Execution Vulnerabilities (3011443)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805015");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11876 $");
   script_cve_id("CVE-2014-6332", "CVE-2014-6352");
   script_bugtraq_id(70952, 70690);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 10:12:10 +0530 (Wed, 12 Nov 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -59,9 +59,7 @@ if(description)
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS14-064");
+  listed hotfixes or download and install the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/61803");
@@ -75,6 +73,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS14-064");
   exit(0);
 }
 
@@ -95,8 +94,8 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer1 = fetch_file_version(sysPath, file_name:"system32\Packager.dll");
-dllVer2 = fetch_file_version(sysPath, file_name:"system32\Oleaut32.dll");
+dllVer1 = fetch_file_version(sysPath:sysPath, file_name:"system32\Packager.dll");
+dllVer2 = fetch_file_version(sysPath:sysPath, file_name:"system32\Oleaut32.dll");
 if(!dllVer1 && !dllVer2){
   exit(0);
 }

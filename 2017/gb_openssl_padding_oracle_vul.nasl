@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_padding_oracle_vul.nasl 9403 2018-04-09 07:48:27Z asteins $
+# $Id: gb_openssl_padding_oracle_vul.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # SSL/TLS: OpenSSL 'CVE-2016-2107' Padding Oracle Vulnerability
 #
@@ -27,25 +27,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107141");
-  script_version("$Revision: 9403 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2016-2107");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:48:27 +0200 (Mon, 09 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-30 12:21:46 +0100 (Thu, 30 Mar 2017)");
   script_name("SSL/TLS: OpenSSL 'CVE-2016-2107' Padding Oracle Vulnerability");
 
-  script_tag(name: "summary" , value: "This host is installed with OpenSSL and is prone to padding oracle attack.");
+  script_tag(name:"summary", value:"This host is installed with OpenSSL and is prone to padding oracle attack.");
 
-  script_tag(name: "vuldetect" , value: "Send an encrypted padded message and check the returned alert (Record Overflow if vulnerable, Bad Record Mac if no vulnerable.");
+  script_tag(name:"vuldetect", value:"Send an encrypted padded message and check the returned alert (Record Overflow if vulnerable, Bad Record Mac if no vulnerable.");
 
-  script_tag(name: "insight" , value: "The vulnerability is due to not considering memory allocation during a certain padding check.");
+  script_tag(name:"insight", value:"The vulnerability is due to not considering memory allocation during a certain padding check.");
 
-  script_tag(name: "impact" , value: "Exploiting this vulnerability allows remote attackers to obtain sensitive cleartext information via a padding oracle attack against an AES CBC session.");
+  script_tag(name:"impact", value:"Exploiting this vulnerability allows remote attackers to obtain sensitive cleartext information via a padding oracle attack against an AES CBC session.");
 
-  script_tag(name: "affected" , value:"OpenSSL before 1.0.1t and 1.0.2 before 1.0.2h.");
+  script_tag(name:"affected", value:"OpenSSL before 1.0.1t and 1.0.2 before 1.0.2h.");
 
-  script_tag(name: "solution" , value:"OpenSSL 1.0.2 users should upgrade to 1.0.2h.
+  script_tag(name:"solution", value:"OpenSSL 1.0.2 users should upgrade to 1.0.2h.
 
 OpenSSL 1.0.1 users should upgrade to 1.0.1t.");
 
@@ -53,7 +53,7 @@ OpenSSL 1.0.1 users should upgrade to 1.0.1t.");
 
   script_tag(name:"qod_type", value:"exploit");
 
-  script_xref(name: "URL" , value : "https://www.openssl.org/news/secadv/20160503.txt");
+  script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20160503.txt");
   script_category(ACT_ATTACK);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wdmn_wireless_router_info_disc_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_wdmn_wireless_router_info_disc_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Western Digital My Net Devices Information Disclosure Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803731");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-5006");
   script_bugtraq_id(61361);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-05 16:18:11 +0530 (Mon, 05 Aug 2013)");
   script_name("Western Digital My Net Devices Information Disclosure Vulnerability");
 
@@ -44,9 +44,7 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to version 1.07.16, for the My Net N900 and My Net N900.
   For My Net N600 and My Net N750 solution is to revert to the earlier firmware of 1.01.04 or 1.01.20,
-  or disable remote administrative access.
-
-  For updates refer to http://www.wdc.com/en");
+  or disable remote administrative access.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -77,6 +75,7 @@ if(description)
   script_mandatory_keys("MyNetN679/banner");
   script_require_ports("Services/www", 8080);
 
+  script_xref(name:"URL", value:"http://www.wdc.com/en");
   exit(0);
 }
 

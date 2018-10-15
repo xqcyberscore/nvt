@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_certificate_key_length_spoofing_vuln.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: gb_ms_certificate_key_length_spoofing_vuln.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Windows Minimum Certificate Key Length Spoofing Vulnerability (2661254)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803007");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11876 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-23 16:14:43 +0530 (Thu, 23 Aug 2012)");
   script_name("Microsoft Windows Minimum Certificate Key Length Spoofing Vulnerability (2661254)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2661254");
@@ -49,17 +49,23 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to spoof content, perform
   phishing attacks or perform man-in-the-middle attacks.");
   script_tag(name:"affected", value:"Microsoft Windows XP x32 Edition Service Pack 3 and prior
+
   Microsoft Windows XP x64 Edition Service Pack 2 and prior
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
   Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
   script_tag(name:"insight", value:"The private keys used in digital certificate with RSA keys less than 1024
   bits in length can be derived and could allow an attacker to duplicate the
   certificates. An duplicate certificate could be used to spoof content,
   perform phishing attacks, or perform man-in-the-middle attacks.");
-  script_tag(name:"solution", value:"Apply the Patch ");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"summary", value:"The host is installed with Microsoft Windows operating system and
   is prone to digital certificate key length spoofing vulnerability.");
   exit(0);
@@ -81,7 +87,7 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\Crypt32.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Crypt32.dll");
 if(!dllVer){
   exit(0);
 }

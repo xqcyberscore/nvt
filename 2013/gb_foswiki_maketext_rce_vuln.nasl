@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foswiki_maketext_rce_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_foswiki_maketext_rce_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # Foswiki 'MAKETEXT' variable Remote Command Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:foswiki:foswiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802049");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_bugtraq_id(56950);
   script_cve_id("CVE-2012-6329", "CVE-2012-6330");
   script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-02 15:49:29 +0530 (Wed, 02 Jan 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Foswiki 'MAKETEXT' variable Remote Command Execution Vulnerability");
@@ -56,9 +56,8 @@ if(description)
   script_tag(name:"insight", value:"flaw is due to improper validation of '%MAKETEXT{}%' foswiki macro
   (UserInterfaceInternationalisation is enabled) which is used to localize
   user interface content to a language of choice.");
-  script_tag(name:"solution", value:"Upgrade to Foswiki version 1.1.7 or later or apply patch,
-  http://foswiki.org/Support/SecurityAlert-CVE-2012-6329
-  http://foswiki.org/Support/SecurityAlert-CVE-2012-6330");
+  script_tag(name:"solution", value:"Upgrade to Foswiki version 1.1.7 or later or apply the patch
+  from the referenced vendor advisories.");
   script_tag(name:"summary", value:"The host is installed with foswiki and is prone to remote command
   execution vulnerability.");
 

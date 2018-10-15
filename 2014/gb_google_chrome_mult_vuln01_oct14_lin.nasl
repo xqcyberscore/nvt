@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_oct14_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_google_chrome_mult_vuln01_oct14_lin.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - 01 Oct14 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804938");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-3200", "CVE-2014-3199", "CVE-2014-3198", "CVE-2014-3197",
                 "CVE-2014-3195", "CVE-2014-3194", "CVE-2014-3193", "CVE-2014-3192",
                 "CVE-2014-3191", "CVE-2014-3190", "CVE-2014-3189", "CVE-2014-3188",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(70273, 70262, 70587);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-10-16 16:48:48 +0530 (Thu, 16 Oct 2014)");
 
   script_name("Google Chrome Multiple Vulnerabilities - 01 Oct14 (Linux)");
@@ -71,8 +71,7 @@ if(description)
   script_tag(name:"affected", value:"Google Chrome prior to version 38.0.2125.101
   on Linux.");
 
-  script_tag(name:"solution", value:"Upgrade to Google Chrome 38.0.2125.101 or later,
-  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to Google Chrome 38.0.2125.101 or later.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -83,6 +82,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

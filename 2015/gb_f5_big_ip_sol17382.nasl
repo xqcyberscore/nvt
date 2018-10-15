@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17382.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_f5_big_ip_sol17382.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # F5 BIG-IP - SOL17382 - OpenSSL vulnerability CVE-2010-4252
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2010-4252");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11872 $");
 
   script_name("F5 BIG-IP - SOL17382 - OpenSSL vulnerability CVE-2010-4252");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 12:16:35 +0200 (Wed, 14 Oct 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("F5 Local Security Checks");
@@ -59,7 +59,7 @@ if (description)
   script_dependencies("gb_f5_big_ip_version.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
- exit(0);
+  exit(0);
 }
 
 include("version_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_telnet_backdoor_12_2015.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_juniper_screenos_telnet_backdoor_12_2015.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Backdoor in ScreenOS (Telnet)
 #
@@ -31,7 +31,7 @@ if (description)
   script_cve_id("CVE-2015-7755", "CVE-2015-7754");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Backdoor in ScreenOS (Telnet)");
 
@@ -53,7 +53,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-21 10:35:33 +0100 (Mon, 21 Dec 2015)");
   script_category(ACT_ATTACK);
   script_family("General");
@@ -61,7 +61,7 @@ if (description)
   script_dependencies("find_service.nasl");
   script_require_ports("Services/telnet", 23);
 
- exit(0);
+  exit(0);
 }
 
 include("telnet_func.inc");

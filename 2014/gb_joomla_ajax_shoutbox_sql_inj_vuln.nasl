@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_ajax_shoutbox_sql_inj_vuln.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_joomla_ajax_shoutbox_sql_inj_vuln.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Joomla Component AJAX Shoutbox SQL Injection Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804338");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11878 $");
   script_bugtraq_id(66261);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-18 10:00:07 +0530 (Tue, 18 Mar 2014)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -54,8 +54,7 @@ queries in the back-end database, allowing for the manipulation or disclosure of
 
   script_tag(name:"affected", value:"Joomla AJAX Shoutbox version 1.6 and probably earlier.");
 
-  script_tag(name:"solution", value:"Upgrade to Joomla AJAX Shoutbox version 1.7 or later, For updates refer to
-http://batjo.nl/shoutbox");
+  script_tag(name:"solution", value:"Upgrade to Joomla AJAX Shoutbox version 1.7 or later.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/57450");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/32331");
@@ -71,6 +70,7 @@ http://batjo.nl/shoutbox");
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"http://batjo.nl/shoutbox");
   exit(0);
 }
 

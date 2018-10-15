@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_vuln_dec15_lin.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_mantisbt_mult_vuln_dec15_lin.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # MantisBT Multiple Vulnerabilities December15 (Linux)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806641");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-9270", "CVE-2014-9279", "CVE-2014-9269");
   script_bugtraq_id(71372, 71359, 71368);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-03 16:05:34 +0530 (Thu, 03 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("MantisBT Multiple Vulnerabilities December15 (Linux) (Linux)");
@@ -62,8 +62,7 @@ if(description)
   script_tag(name:"affected", value:"MantisBT versions 1.1.0a3 through 1.2.x
   before 1.2.18");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.2.18 or later, For
-  updates refer to http://www.mantisbt.org.");
+  script_tag(name:"solution", value:"Upgrade to version 1.2.18 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -77,6 +76,7 @@ if(description)
   script_dependencies("mantis_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("mantisbt/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.mantisbt.org.");
   exit(0);
 }
 

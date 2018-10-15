@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_dos_vuln.nasl 9122 2018-03-17 14:01:04Z cfischer $
+# $Id: gb_asterisk_dos_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Asterisk Open Source and Certified Asterisk RTP Resource Exhaustion Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:digium:asterisk';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107148");
-  script_version("$Revision: 9122 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-18 10:44:46 +0200 (Tue, 18 Apr 2017)");
   script_cve_id("CVE-2016-7551");
 
@@ -39,23 +39,22 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Asterisk Open Source and Certified Asterisk RTP Resource Exhaustion Denial of Service Vulnerability");
-  script_tag(name: "summary", value: "DEPRECATED since this check is already covered in 'Asterisk RTP Resource
+  script_tag(name:"summary", value:"DEPRECATED since this check is already covered in 'Asterisk RTP Resource
 Exhaustion Vulnerability' (OID: 1.3.6.1.4.1.25623.1.0.106239)
 
 Asterisk Open Source and Certified Asterisk are prone to a remote denial-of-service vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check
-  if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "The overlap dialing feature in chan_sip allows chan_sip to report to
+  script_tag(name:"insight", value:"The overlap dialing feature in chan_sip allows chan_sip to report to
   a device that the number that has been dialed is incomplete and more digits are required. If this functionality
   is used with a device that has performed username/password authentication RTP resources are leaked. This occurs
   because the code fails to release the old RTP resources before allocating new ones in this scenario. If all
   resources are used then RTP port exhaustion will occur and no RTP sessions are able to be set up.");
 
-  script_tag(name: "impact" , value: "An attacker can exploit this issue to cause a denial-of-service condition.");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to cause a denial-of-service condition.");
 
-  script_tag(name: "affected", value: "The following products and versions are vulnerable:
+  script_tag(name:"affected", value:"The following products and versions are vulnerable:
 
 Digium Asterisk 13 before 13.11.1,
 
@@ -64,10 +63,10 @@ Digium Asterisk 11 before 11.23.1,
 Digium Certified Asterisk 13 before 13.8-cert3,
 
 Digium Certified Asterisk 11 before 11.6-cert15.");
-  script_tag(name: "solution", value: "Updates are available. Please see the references or vendor advisory for more information.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
 
-  script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/92888");
-  script_xref(name: "URL" , value: "https://downloads.asterisk.org/pub/security/AST-2016-007.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/92888");
+  script_xref(name:"URL", value:"https://downloads.asterisk.org/pub/security/AST-2016-007.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
@@ -78,7 +77,7 @@ Digium Certified Asterisk 11 before 11.6-cert15.");
   script_dependencies("secpod_asterisk_detect.nasl");
   script_mandatory_keys("Asterisk-PBX/Installed");
 
-  script_tag(name: "deprecated", value: TRUE);
+  script_tag(name:"deprecated", value: TRUE);
 
   exit(0);
 }

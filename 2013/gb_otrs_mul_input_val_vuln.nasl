@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_mul_input_val_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_otrs_mul_input_val_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # OTRS Multiple Input Validation Vulnerabilities
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803935");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2005-3893", "CVE-2005-3894", "CVE-2005-3895");
   script_bugtraq_id(15537);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-25 15:32:50 +0530 (Wed, 25 Sep 2013)");
   script_name("OTRS Multiple Input Validation Vulnerabilities");
 
@@ -41,14 +41,12 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to steal the victim's
 cookie-based authentication credentials or execute arbitrary SQL commands and
 bypass authentication.");
-  script_tag(name:"vuldetect", value:"Get the installed version of OTRS with the help of detect NVT and check the
-version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple error exists in the application which fails to validate below user-supplied
 input's properly
 For XSS attack (1) QueueID parameter and (2) Action parameters (3) AttachmentDownloadType.
 For SQL attack (1) user parameter (2) TicketID and (3) ArticleID parameters");
-  script_tag(name:"solution", value:"Upgrade to OTRS (Open Ticket Request System) version 1.3.3 or 2.0.4 or later,
-For updates refer to http://www.otrs.com/en/");
+  script_tag(name:"solution", value:"Upgrade to OTRS (Open Ticket Request System) version 1.3.3 or 2.0.4 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with OTRS (Open Ticket Request System) and is prone to
 multiple input validation vulnerabilities.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ros_62798.nasl 11024 2018-08-17 08:18:16Z mmartin $
+# $Id: gb_ros_62798.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # RuggedCom Rugged Operating System Remote Security Bypass Vulnerability
 #
@@ -30,7 +30,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103803");
   script_bugtraq_id(62798);
-  script_version("$Revision: 11024 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
@@ -40,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62798");
   script_xref(name:"URL", value:"http://www.ruggedcom.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:18:16 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-10 17:14:09 +0200 (Thu, 10 Oct 2013)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -63,7 +63,7 @@ for more information.");
   script_tag(name:"summary", value:"Rugged Operating System is prone to a security-bypass vulnerability.");
   script_tag(name:"affected", value:"Rugged Operating System prior to 3.12.2 are vulnerable.");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

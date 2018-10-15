@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_buffer_overflow_vuln.nasl 9297 2018-04-04 10:04:33Z ckuersteiner $
+# $Id: gb_redis_buffer_overflow_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Redis 4.0.2 and prior Buffer Overflow vulnerability
 #
@@ -29,8 +29,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113011");
-  script_version("$Revision: 9297 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 12:04:33 +0200 (Wed, 04 Apr 2018) $");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-10 14:58:31 +0200 (Tue, 10 Oct 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -61,7 +61,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://github.com/antirez/redis/issues/4278");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:redis:redis";

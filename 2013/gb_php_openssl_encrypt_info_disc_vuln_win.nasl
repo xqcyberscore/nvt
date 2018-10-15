@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_openssl_encrypt_info_disc_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_php_openssl_encrypt_info_disc_vuln_win.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # PHP 'openssl_encrypt()' Function Information Disclosure Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803164");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2012-6113");
   script_bugtraq_id(57462);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 16:39:00 +0530 (Thu, 24 Jan 2013)");
   script_name("PHP 'openssl_encrypt()' Function Information Disclosure Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -43,6 +43,7 @@ if(description)
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("php/installed", "Host/runs_windows");
 
+  script_xref(name:"URL", value:"http://www.php.net/downloads.php");
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=61413");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/81400");
   script_xref(name:"URL", value:"http://git.php.net/?p=php-src.git;a=commitdiff;h=270a406ac94b5fc5cc9ef59fc61e3b4b95648a3e");
@@ -59,9 +60,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with PHP and is prone to information
   disclosure vulnerability");
 
-  script_tag(name:"solution", value:"Apply patch or upgrade latest version,
-  http://www.php.net/downloads.php
-  https://bugs.php.net/bug.php?id=61413
+  script_tag(name:"solution", value:"Apply the patch or upgrade to the latest version from the references.
 
   *****
   NOTE: Ignore this warning, if above mentioned patch is manually applied.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_extbase_90832.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_typo3_extbase_90832.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
 # TYPO3 Extbase Remote Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108058");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2016-5091");
   script_bugtraq_id(90832);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-25 13:00:00 +0100 (Wed, 25 Jan 2017)");
   script_name("TYPO3 Extbase Remote Code Execution Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -48,20 +48,16 @@ if(description)
   script_xref(name:"URL", value:"https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-013/");
 
   script_tag(name:"impact", value:"A remote attacker can leverage this issue to execute arbitrary code within the context
-  of the application. Successful exploits will compromise the application and possibly the underlying system.
+  of the application. Successful exploits will compromise the application and possibly the underlying system.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of the detect NVT and check if the version
-  is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Extbase request handling fails to implement a proper access check for requested
   controller/ action combinations, which makes it possible for an attacker to execute arbitrary Extbase actions by
   crafting a special request. To successfully exploit this vulnerability, an attacker must have access to at least
   one Extbase plugin or module action in a TYPO3 installation.");
 
-  script_tag(name:"solution", value:"Upgrade to TYPO3 version 6.2.24, 7.6.8 or 8.1.1 or later,
-  For updates refer to, http://typo3.org/");
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 6.2.24, 7.6.8 or 8.1.1 or later.");
 
   script_tag(name:"summary", value:"This host is installed with TYPO3 and is prone to a remote code-execution vulnerability.");
 
@@ -70,6 +66,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
+  script_xref(name:"URL", value:"http://typo3.org/");
   exit(0);
 }
 

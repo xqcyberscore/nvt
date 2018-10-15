@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-043.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-043.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Windows Media Center Remote Code Execution Vulnerability (2978742)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802079");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-4060");
   script_bugtraq_id(69093);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-08-13 11:57:50 +0530 (Wed, 13 Aug 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows Media Center Remote Code Execution Vulnerability (2978742)");
@@ -54,9 +54,8 @@ Windows Media Center for
   - Microsoft Windows 8.1 x32/x64 Edition
 
 Windows Media Center TV Pack for Windows Vista x32/x64 Edition");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/library/security/ms14-043");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"https://support.microsoft.com/kb/2978742");
@@ -94,7 +93,7 @@ if(!media_center_ver){
   exit(0);
 }
 
-mcplayer_ver = fetch_file_version(sysPath, file_name:"ehome\Mcplayer.dll");
+mcplayer_ver = fetch_file_version(sysPath:sysPath, file_name:"ehome\Mcplayer.dll");
 if(!mcplayer_ver){
   exit(0);
 }

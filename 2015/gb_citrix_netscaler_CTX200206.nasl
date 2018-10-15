@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX200206.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_citrix_netscaler_CTX200206.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Citrix NetScaler Arbitrary Code Execution Vulnerability (CTX200206)
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-7140");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Citrix NetScaler Arbitrary Code Execution Vulnerability (CTX200206)");
 
@@ -55,7 +55,7 @@ vulnerability.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-12 13:11:00 +0200 (Tue, 12 May 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -63,7 +63,7 @@ vulnerability.");
   script_dependencies("gb_citrix_netscaler_version.nasl");
   script_mandatory_keys("citrix_netscaler/detected");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

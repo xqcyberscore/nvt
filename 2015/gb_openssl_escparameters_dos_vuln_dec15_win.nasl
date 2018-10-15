@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_escparameters_dos_vuln_dec15_win.nasl 11542 2018-09-21 20:22:36Z cfischer $
+# $Id: gb_openssl_escparameters_dos_vuln_dec15_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # OpenSSL ECParameters Denial of Service Vulnerability Dec15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806746");
-  script_version("$Revision: 11542 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-1788");
   script_bugtraq_id(75158);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:22:36 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-01 09:41:47 +0530 (Tue, 01 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL ECParameters Denial of Service Vulnerability Dec15 (Windows)");
@@ -55,8 +55,7 @@ if(description)
   before 1.0.1n, 1.0.0 before 1.0.0e, 0.9.8 before 0.9.8s on Windows");
 
   script_tag(name:"solution", value:"Upgrade to OpenSSL 0.9.8s or 1.0.0e or
-  1.0.1n  or 1.0.2b or later.
-  For updates refer to https://www.openssl.org");
+  1.0.1n  or 1.0.2b or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20150611.txt");

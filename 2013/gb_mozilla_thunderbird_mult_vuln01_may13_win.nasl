@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_may13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_may13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities -01 May13 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803609");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-1681", "CVE-2013-1680", "CVE-2013-1679", "CVE-2013-1678",
                 "CVE-2013-1677", "CVE-2013-1676", "CVE-2013-1675", "CVE-2013-1674",
                 "CVE-2013-1672", "CVE-2013-1670", "CVE-2013-0801");
@@ -35,7 +35,7 @@ if(description)
                     59865, 59855);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-27 13:01:55 +0530 (Mon, 27 May 2013)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities -01 May13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53443");
@@ -65,12 +65,12 @@ if(description)
   - Use-after-free vulnerabilities in following functions,
     'nsContentUtils::RemoveScriptBlocker', 'nsFrameList::FirstChild', and
     'mozilla::plugins::child::_geturlnotify'.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 17.0.6 or later,
-  For updates refer to http://www.mozilla.com/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 17.0.6 or later.");
   script_tag(name:"summary", value:"This host is installed with Mozilla Thunderbird and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/thunderbird");
   exit(0);
 }
 

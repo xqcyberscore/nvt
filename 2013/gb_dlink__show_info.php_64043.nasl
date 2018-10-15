@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink__show_info.php_64043.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_dlink__show_info.php_64043.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Multiple D-Link DIR Series Routers 'model/__show_info.php' Local File Disclosure Vulnerability
 #
@@ -29,7 +29,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103858");
   script_bugtraq_id(64043);
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64043");
   script_xref(name:"URL", value:"http://www.dlink.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-16 14:34:55 +0100 (Mon, 16 Dec 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -64,7 +64,7 @@ supplied input.");
 D-Link DIR-300
 DIR-600");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

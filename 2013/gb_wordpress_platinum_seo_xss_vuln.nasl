@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_platinum_seo_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_wordpress_platinum_seo_xss_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # WordPress Platinum SEO plugin Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804020");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2013-5918");
   script_bugtraq_id(62692);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-27 18:05:55 +0530 (Fri, 27 Sep 2013)");
   script_name("WordPress Platinum SEO plugin Cross Site Scripting Vulnerability");
 
@@ -42,8 +42,7 @@ if(description)
 cross site scripting vulnerability.");
   script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check whether it is able to read the
 cookie or not.");
-  script_tag(name:"solution", value:"Upgrade to version 1.3.8 or higher,
-For Updated refer to http://wordpress.org/plugins/platinum-seo-pack");
+  script_tag(name:"solution", value:"Upgrade to version 1.3.8 or later.");
   script_tag(name:"insight", value:"Input passed via the 's' parameter to platinum_seo_pack.php script is
 not properly sanitized before being returned to the user.");
   script_tag(name:"affected", value:"WordPress Platinum SEO Plugin version 1.3.7 and prior.");

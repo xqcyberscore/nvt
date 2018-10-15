@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_backup_auth_bypass_vuln_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_comodo_backup_auth_bypass_vuln_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # COMODO BackUp Authentication Bypass Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:comodo:backup";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805344");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-9633");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 11:49:43 +0530 (Fri, 06 Mar 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("COMODO BackUp Authentication Bypass Vulnerability (Windows)");
@@ -54,7 +54,7 @@ if(description)
   4.4.1.23 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to COMODO BackUp version
-  4.4.1.23 or later, For updates refer to https://backup.comodo.com");
+  4.4.1.23 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/35905");
@@ -64,6 +64,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_comodo_backup_detect_win.nasl");
   script_mandatory_keys("Comodo/BackUp/Win/Ver");
+  script_xref(name:"URL", value:"https://backup.comodo.com");
   exit(0);
 }
 

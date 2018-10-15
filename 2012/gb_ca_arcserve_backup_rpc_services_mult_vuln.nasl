@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ca_arcserve_backup_rpc_services_mult_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_ca_arcserve_backup_rpc_services_mult_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # CA ARCserve Backup RPC Services Multiple Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802677");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-2971", "CVE-2012-2972");
   script_bugtraq_id(56116);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-11-20 11:04:50 +0530 (Tue, 20 Nov 2012)");
   script_name("CA ARCserve Backup RPC Services Multiple Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51012/");
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to an error in the RPC service, which fails to validate
   user supplied crafted input.");
 
-  script_tag(name:"solution", value:"Apply the patch");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_tag(name:"summary", value:"This host is installed with CA ARCserve Backup and is prone
   multiple vulnerabilities.");

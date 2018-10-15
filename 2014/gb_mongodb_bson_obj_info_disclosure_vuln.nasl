@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_bson_obj_info_disclosure_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_mongodb_bson_obj_info_disclosure_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # MongoDB BSON Object Information Disclosure Vulnerability
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:mongodb:mongodb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804246");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2012-6619");
   script_bugtraq_id(64687);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-14 18:12:20 +0530 (Fri, 14 Mar 2014)");
   script_name("MongoDB BSON Object Information Disclosure Vulnerability");
 
   script_tag(name:"summary", value:"This host is running MongoDB and
   is prone to a denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of MongoDB
-  with the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"An error exists in the application
   which fails to properly validate incorrect length of an BSON object");
@@ -53,8 +52,7 @@ if (description)
 
   script_tag(name:"affected", value:"MongoDB version prior to 2.3.2 on Windows");
 
-  script_tag(name:"solution", value:"Upgrade to MongoDB version 2.3.2 or later,
-  For updates refer to http://www.mongodb.org");
+  script_tag(name:"solution", value:"Upgrade to MongoDB version 2.3.2 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://jira.mongodb.org/browse/SERVER-7769");
   script_category(ACT_GATHER_INFO);
@@ -64,6 +62,7 @@ if (description)
   script_dependencies("gb_mongodb_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/mongodb", 27017);
   script_mandatory_keys("mongodb/installed", "Host/runs_windows");
+  script_xref(name:"URL", value:"http://www.mongodb.org");
   exit(0);
 }
 

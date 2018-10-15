@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln02_oct12_win.nasl 11818 2018-10-10 11:35:42Z asteins $
+# $Id: gb_oracle_java_se_mult_vuln02_oct12_win.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 oct12 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802479");
-  script_version("$Revision: 11818 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-5085", "CVE-2012-5084", "CVE-2012-5073", "CVE-2012-5077",
                 "CVE-2012-5079", "CVE-2012-5081", "CVE-2012-5083");
   script_bugtraq_id(56067, 56063, 56080, 56058, 56082, 56071, 56025);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-10 13:35:42 +0200 (Wed, 10 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-19 12:43:54 +0530 (Fri, 19 Oct 2012)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 oct12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50949/");
@@ -51,7 +51,7 @@ if(description)
   5.0 Update 36 and earlier and 1.4.2_38 and earlier");
   script_tag(name:"insight", value:"Multiple unspecified vulnerabilities exists in the application related
   to 2D, Networking, Swing, Libraries, Security and JSSE.");
-  script_tag(name:"solution", value:"Apply the patch ");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"summary", value:"This host is installed with Oracle Java SE and is prone to multiple
   unspecified vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pcoweb_default_root_password.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_pcoweb_default_root_password.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # CAREL pCOWeb Default root Password
 #
@@ -28,12 +28,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103717");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("CAREL pCOWeb Default root Password");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-23 11:24:55 +0200 (Thu, 23 May 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -46,7 +46,7 @@ if (description)
   script_tag(name:"summary", value:"The remote pCOWeb has the default password 'froot' for the root account.
 This issue may be exploited by a remote attacker to gain access to sensitive
 information or modify system configuration.");
- exit(0);
+  exit(0);
 }
 
 include("telnet_func.inc");

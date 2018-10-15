@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_photo_gallery_blind_sql_inj_vuln.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_wp_photo_gallery_blind_sql_inj_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Wordpress Photo Gallery Blind SQL injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805127");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-1055");
   script_bugtraq_id(72015);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-20 11:04:59 +0530 (Tue, 20 Jan 2015)");
   script_name("Wordpress Photo Gallery Blind SQL injection Vulnerability");
 
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Wordpress Photo Gallery plugin version
   1.2.7, other versions may also be affected.");
 
-  script_tag(name:"solution", value:"Update to version 1.2.8 or later,
-  For updates refer to https://wordpress.org/plugins/photo-gallery");
+  script_tag(name:"solution", value:"Update to version 1.2.8 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -70,6 +69,7 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/photo-gallery");
   exit(0);
 }
 

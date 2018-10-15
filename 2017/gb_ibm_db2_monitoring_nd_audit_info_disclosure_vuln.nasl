@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_monitoring_nd_audit_info_disclosure_vuln.nasl 5070 2017-01-24 10:05:10Z antu123 $
+# $Id: gb_ibm_db2_monitoring_nd_audit_info_disclosure_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # IBM DB2 'monitoring' and 'audit feature' Information Disclosure Vulnerability
 #
@@ -29,44 +29,39 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809855");
-  script_version("$Revision: 5070 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2014-0919");
   script_bugtraq_id(74217);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:05:10 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-04 11:08:09 +0530 (Wed, 04 Jan 2017)");
   script_name("IBM DB2 'monitoring' and 'audit feature' Information Disclosure Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is running IBM DB2 and is
+  script_tag(name:"summary", value:"This host is running IBM DB2 and is
   prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version of IBM DB2
-  with the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to IBM DB2 stores
+  script_tag(name:"insight", value:"The flaw exists due to IBM DB2 stores
   passwords during the processing of certain SQL statements by the monitoring
   and audit facilities.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   authenticated users to obtain sensitive information via commands associated with
-  these facilities.
+  these facilities.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"
-  IBM DB2 versions 9.5 through FP10
+  script_tag(name:"affected", value:"IBM DB2 versions 9.5 through FP10
   IBM DB2 versions 9.7 through FP10
   IBM DB2 versions 9.8 through FP5
   IBM DB2 versions 10.1 through FP4
   IBM DB2 versions 10.5 through FP5");
 
-  script_tag(name: "solution" , value:"Apply the appropriate fix from below links,
-  http://www-01.ibm.com/support/docview.wss?uid=swg21698021");
+  script_tag(name:"solution", value:"Apply the appropriate fix");
 
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1032247");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1032247");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21698021");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1032247");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1032247");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21698021");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -82,10 +77,6 @@ if(description)
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
-
-## Variable Initialization
-ibmVer  = "";
-ibmPort = "";
 
 if(!ibmPort = get_app_port(cpe:CPE)){
   exit(0);

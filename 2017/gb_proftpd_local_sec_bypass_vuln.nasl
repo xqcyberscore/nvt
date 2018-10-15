@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_proftpd_local_sec_bypass_vuln.nasl 5962 2017-04-18 08:01:50Z teissa $
+# $Id: gb_proftpd_local_sec_bypass_vuln.nasl 11888 2018-10-12 15:27:49Z cfischer $
 #
-# ProFTPD 'AllowChrootSymlinks' Local Security Bypass Vulnerability 
+# ProFTPD 'AllowChrootSymlinks' Local Security Bypass Vulnerability
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
@@ -29,10 +29,10 @@ CPE = "cpe:/a:proftpd:proftpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810731");
-  script_version("$Revision: 5962 $");
+  script_version("$Revision: 11888 $");
   script_cve_id("CVE-2017-7418");
   script_bugtraq_id(97409);
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 10:01:50 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 17:27:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-06 14:55:50 +0530 (Thu, 06 Apr 2017)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running ProFTPD server and
   is prone to local security bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The ProFTPD controls whether the home
   directory of a user could contain a symbolic link through the
@@ -52,15 +51,12 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allows
   attackers to bypass certain security restrictions and perform
-  unauthorized actions. 
-
-  Impact Level: Application");
+  unauthorized actions.");
 
   script_tag(name:"affected", value:"ProFTPD versions prior to 1.3.5e and
   1.3.6 prior to 1.3.6rc5 are vulnerable.");
 
-  script_tag(name:"solution", value:"Upgrade ProFTPD 1.3.5e, 1.3.6rc5 or later,
-  For updates refer to http://www.proftpd.org");
+  script_tag(name:"solution", value:"Upgrade ProFTPD 1.3.5e, 1.3.6rc5 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -74,6 +70,7 @@ if(description)
   script_dependencies("secpod_proftpd_server_detect.nasl");
   script_require_ports("Services/ftp", 21);
   script_mandatory_keys("ProFTPD/Installed");
+  script_xref(name:"URL", value:"http://www.proftpd.org");
   exit(0);
 }
 
@@ -85,9 +82,8 @@ if( isnull( port = get_app_port( cpe:CPE ) ) ) exit( 0 );
 
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check for ProFTPD versions prior to 1.3.5e and 1.3.6 prior to 1.3.6rc5
 if( version_is_less( version:vers, test_version:"1.3.5e" ) ||
-    version_in_range(version:vers, test_version:"1.3.6", test_version2:"1.3.6.rc4")) 
+    version_in_range(version:vers, test_version:"1.3.6", test_version2:"1.3.6.rc4"))
 {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.3.5e/1.3.6rc5" );
   security_message( port:port, data:report );

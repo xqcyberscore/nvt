@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exponent_cms_mult_sqli_rce.nasl 5530 2017-03-09 12:42:40Z cfi $
+# $Id: gb_exponent_cms_mult_sqli_rce.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Exponent CMS < 2.4.0 Multiple SQL Injection and Remote Code Execution Vulnerabilities
 #
@@ -30,14 +30,14 @@ CPE = "cpe:/a:exponentcms:exponent_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108093");
-  script_version("$Revision: 5530 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2016-7400", "CVE-2016-7565", "CVE-2016-7780", "CVE-2016-7781",
                 "CVE-2016-7782", "CVE-2016-7783", "CVE-2016-7784", "CVE-2016-7788",
                 "CVE-2016-7789", "CVE-2016-7790", "CVE-2016-7791", "CVE-2016-9019",
                 "CVE-2016-9020", "CVE-2016-9087");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 13:42:40 +0100 (Thu, 09 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-09 12:45:17 +0100 (Thu, 09 Mar 2017)");
   script_name("Exponent CMS < 2.4.0 Multiple SQL Injection and Remote Code Execution Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -54,14 +54,11 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Exponent CMS
   and is prone to multiple sql injection and remote code execution vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to e.g dump database data out to a malicious server or execute code
-  via the /install/index.php setup tool.
-
-  Impact Level: System/Application");
+  via the /install/index.php setup tool.");
 
   script_tag(name:"affected", value:"Exponent CMS 2.3.9 and earlier.");
 

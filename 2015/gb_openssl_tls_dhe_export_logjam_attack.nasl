@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_tls_dhe_export_logjam_attack.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_openssl_tls_dhe_export_logjam_attack.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # SSL/TLS: 'DHE_EXPORT' Man in the Middle Security Bypass Vulnerability (LogJam)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805188");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-4000");
   script_bugtraq_id(74733);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-05-22 13:17:23 +0530 (Fri, 22 May 2015)");
   script_name("SSL/TLS: 'DHE_EXPORT' Man in the Middle Security Bypass Vulnerability (LogJam)");
   script_category(ACT_GATHER_INFO);
@@ -68,8 +68,7 @@ if(description)
   script_tag(name:"solution", value:"- Remove support for 'DHE_EXPORT' cipher
   suites from the service
 
-  - If running OpenSSL updateto version 1.0.2b or 1.0.1n or later,
-  For updates refer to https://www.openssl.org");
+  - If running OpenSSL updateto version 1.0.2b or 1.0.1n or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

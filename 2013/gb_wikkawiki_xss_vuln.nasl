@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wikkawiki_xss_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_wikkawiki_xss_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # WikkaWiki Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803892");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-5586");
   script_bugtraq_id(62325);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-16 15:14:50 +0530 (Mon, 16 Sep 2013)");
   script_name("WikkaWiki Cross Site Scripting Vulnerability");
 
@@ -40,8 +40,7 @@ if (description)
   vulnerability.");
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to
   read the cookie or not.");
-  script_tag(name:"solution", value:"Upgrade to WikkaWiki 1.3.4-p1 or later,
-  For updates refer to http://www.wikkawiki.org");
+  script_tag(name:"solution", value:"Upgrade to WikkaWiki 1.3.4-p1 or later.");
   script_tag(name:"insight", value:"Input passed via 'wakka' parameter to 'wikka.php' script is not properly
   sanitised before being returned to the user.");
   script_tag(name:"affected", value:"WikkaWiki 1.3.4 and probably prior.");
@@ -60,6 +59,7 @@ if (description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+  script_xref(name:"URL", value:"http://www.wikkawiki.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_netweaver_portal_rce_04_13.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_sap_netweaver_portal_rce_04_13.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # SAP NetWeaver Portal 'ConfigServlet' Remote Code Execution
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103700");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
 
@@ -37,7 +37,7 @@ if (description)
   script_xref(name:"URL", value:"http://erpscan.com/wp-content/uploads/2012/11/Breaking-SAP-Portal-HackerHalted-2012.pdf");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/24963/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-18 16:24:58 +0200 (Thu, 18 Apr 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -53,7 +53,7 @@ if (description)
 Successfully exploiting these issues may allow an attacker to execute
 arbitrary code with the privileges of the user running the affected
 application.");
- exit(0);
+  exit(0);
 }
 
 include("misc_func.inc");

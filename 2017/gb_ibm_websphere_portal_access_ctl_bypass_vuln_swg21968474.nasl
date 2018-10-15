@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_portal_access_ctl_bypass_vuln_swg21968474.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_ibm_websphere_portal_access_ctl_bypass_vuln_swg21968474.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
-# IBM WebSphere Portal Access Control Bypass Vulnerability(swg22000152) 
+# IBM WebSphere Portal Access Control Bypass Vulnerability(swg22000152)
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
@@ -29,47 +29,44 @@ CPE = 'cpe:/a:ibm:websphere_portal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810733");
-  script_version("$Revision: 7571 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2015-4997");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-07 17:09:57 +0530 (Fri, 07 Apr 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM WebSphere Portal Access Control Bypass Vulnerability(swg22000152)");
 
-  script_tag(name: "summary" , value:"This host is installed with IBM Websphere
+  script_tag(name:"summary", value:"This host is installed with IBM Websphere
   Portal and is prone to access control bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The flaw is due to an improper validation
+  script_tag(name:"insight", value:"The flaw is due to an improper validation
   of access control. By sending specially crafted requests, an attacker could
   exploit this vulnerability to bypass security and gain unauthorized access
   to the vulnerable system or other systems.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a remote
+  script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to bypass access control restrictions and gain access to the target
-  system.
+  system.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"IBM WebSphere Portal 8.5.0 before Cumulative Fix 08 (CF08)");
 
-  script_tag(name: "affected" , value:"IBM WebSphere Portal 8.5.0 before Cumulative Fix 08 (CF08)");
-
-  script_tag(name: "solution" , value:"Upgrade to IBM WebSphere Portal
-  8.5.0 with Cumulative Fix 08 (CF08) later.
-  For updates refer to https://www.ibm.com/developerworks/downloads/ls/wpe ");
+  script_tag(name:"solution", value:"Upgrade to IBM WebSphere Portal
+  8.5.0 with Cumulative Fix 08 (CF08) later. ");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21968474");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1033982");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg1PI47694");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21968474");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1033982");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg1PI47694");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_ibm_websphere_portal_detect.nasl");
   script_mandatory_keys("ibm_websphere_portal/installed");
+  script_xref(name:"URL", value:"https://www.ibm.com/developerworks/downloads/ls/wpe");
   exit(0);
 }
 
@@ -77,12 +74,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Get port
 if(!webPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!webVer = get_app_version(cpe:CPE, port:webPort)){
  exit(0);
 }

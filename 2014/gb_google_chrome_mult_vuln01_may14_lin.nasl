@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_may14_lin.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_google_chrome_mult_vuln01_may14_lin.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities - 01 May14 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804602");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1740", "CVE-2014-1741", "CVE-2014-1742");
   script_bugtraq_id(67374, 67376, 67375);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-21 15:25:49 +0530 (Wed, 21 May 2014)");
   script_name("Google Chrome Multiple Vulnerabilities - 01 May14 (Linux)");
 
@@ -53,8 +53,7 @@ editing/FrameSelection.cpp related to editing.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct a denial of
 service and potentially execute arbitrary code.");
   script_tag(name:"affected", value:"Google Chrome version prior to 34.0.1847.137 on Linux.");
-  script_tag(name:"solution", value:"Upgrade to Google Chrome 34.0.1847.137 or later,
-For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to Google Chrome 34.0.1847.137 or later.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,6 +64,7 @@ For updates refer to http://www.google.com/chrome");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
 
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

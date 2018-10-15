@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-019.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-019.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft File Handling Component Remote Code Execution Vulnerability (2922229)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804375");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-0315");
   script_bugtraq_id(66619);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 08:14:46 +0530 (Wed, 09 Apr 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft File Handling Component Remote Code Execution Vulnerability (2922229)");
@@ -57,8 +57,7 @@ Microsoft Windows Vista x32/x64 Service Pack 2 and prior
 Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior
 Microsoft Windows Server 2008 R2 x64 Service Pack 1 and prior");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms14-019");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/57642");
@@ -92,7 +91,7 @@ if(!sysPath){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"\system32\kernel32.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"\system32\kernel32.dll");
 if(!sysVer){
   exit(0);
 }

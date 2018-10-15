@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3118304.nasl 6406 2017-06-22 10:42:26Z teissa $
+# $Id: gb_ms_kb3118304.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Microsoft Office Remote Code Execution Vulnerability (KB3118304)
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811086");
-  script_version("$Revision: 6406 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-8510");
   script_bugtraq_id(98813);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:42:26 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 08:24:16 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (KB3118304)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB3118304");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in Microsoft
   Office software when the Office software fails to properly handle objects in
@@ -49,20 +48,16 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to use a specially crafted file and perform actions in the security context of
   the current user. The file could then, for example, take actions on behalf of
-  the logged-on user with the same permissions as the current user. 
-
-  Impact Level: System/Application");
+  the logged-on user with the same permissions as the current user.");
 
   script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/3118304");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3118304");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3118304");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -77,31 +72,22 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable initialization
-path = "";
-offVer = "";
-fileVer = "";
-filePath = "";
-
 ## MS Office
 offVer = get_kb_item("MS/Office/Ver");
 if(!offVer){
   exit(0);
 }
 
-## Get Office File Path
 path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                             item:"CommonFilesDir");
 if(!path){
   exit(0);
 }
 
-##Check for Office 2007
 if(offVer =~ "^(12\.)")
 {
   filePath = path + "\Microsoft Shared\GRPHFLT";
 
-  ## Get File version
   fileVer = fetch_file_version(sysPath:filePath, file_name:"pictim32.flt");
   if(fileVer && fileVer =~ "^(2006\.)")
   {

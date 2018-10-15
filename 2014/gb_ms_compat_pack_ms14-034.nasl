@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_compat_pack_ms14-034.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms_compat_pack_ms14-034.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerability (2969261)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804458");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-2778");
   script_bugtraq_id(67896);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-11 08:46:24 +0530 (Wed, 11 Jun 2014)");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerability (2969261)");
 
@@ -45,9 +45,8 @@ which can be exploited to execute arbitrary code.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
 code, cause memory corruption and compromise the system.");
   script_tag(name:"affected", value:"Microsoft Office Compatibility Pack Service Pack 3 and prior");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms14-034");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -60,6 +59,7 @@ https://technet.microsoft.com/en-us/security/bulletin/ms14-034");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/WordCnv/Version");
   script_require_ports(139, 445);
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms14-034");
   exit(0);
 }
 

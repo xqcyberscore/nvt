@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_endpoint_cve_2014_3066.nasl 11186 2018-09-03 09:12:42Z mmartin $
+# $Id: gb_ibm_endpoint_cve_2014_3066.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # IBM Endpoint Manager XML External Entity Injection
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-0224");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11186 $");
+  script_version("$Revision: 11867 $");
 
   script_name("IBM Endpoint Manager XML External Entity Injection");
 
@@ -65,7 +65,7 @@ All 8.2 releases of Web Reports and Server API earlier than 8.2.1445.0");
   script_tag(name:"solution_type", value:"VendorFix");
 
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-03 14:44:19 +0100 (Wed, 03 Dec 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -75,7 +75,7 @@ All 8.2 releases of Web Reports and Server API earlier than 8.2.1445.0");
   script_require_ports("Services/www", 52311);
   script_mandatory_keys("ibm_endpoint_manager/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

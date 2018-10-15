@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_management_center_77124.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_cisco_firesight_management_center_77124.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco FireSIGHT Management Center for VMware Security Bypass Vulnerability
 #
@@ -34,14 +34,14 @@ if (description)
   script_cve_id("CVE-2015-6335");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Cisco FireSIGHT Management Center for VMware Security Bypass Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/77124");
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151016-fmc");
 
-  script_tag(name:"impact", value:"Attackers can exploit this issue to bypass security restrictions to perform unauthorized actions; this may aid in launching
+  script_tag(name:"impact", value:"Attackers can exploit this issue to bypass security restrictions to perform unauthorized actions. This may aid in launching
 further attacks.");
 
   script_tag(name:"vuldetect", value:"Check the version");
@@ -56,14 +56,14 @@ and executing commands on the underlying operating system. The user needs to log
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-29 13:50:58 +0100 (Thu, 29 Oct 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_firesight_management_center_version.nasl");
   script_mandatory_keys("cisco_firesight_management_center/version", "cisco_firesight_management_center/model");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

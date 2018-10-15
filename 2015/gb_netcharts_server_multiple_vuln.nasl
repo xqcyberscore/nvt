@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netcharts_server_multiple_vuln.nasl 11424 2018-09-17 08:03:52Z mmartin $
+# $Id: gb_netcharts_server_multiple_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # NetCharts Server Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:visual_mining:netcharts_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805643");
-  script_version("$Revision: 11424 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-4031", "CVE-2015-4032");
   script_bugtraq_id(74788);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 10:03:52 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-03 12:12:21 +0530 (Wed, 03 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("NetCharts Server Multiple Vulnerabilities");
@@ -62,8 +62,7 @@ if(description)
   script_tag(name:"solution", value:"As a workaround restrict interaction with
   the service to trusted machines. Only the clients and servers that have a
   legitimate procedural relationship with the service should be permitted to
-  communicate with it.
-  For updates refer to http://www.visualmining.com/nc-server/");
+  communicate with it.");
 
   script_tag(name:"solution_type", value:"Workaround");
 
@@ -76,6 +75,7 @@ if(description)
   script_dependencies("gb_netcharts_server_detect.nasl");
   script_mandatory_keys("netchart/installed");
   script_require_ports("Services/www", 8001);
+  script_xref(name:"URL", value:"http://www.visualmining.com/nc-server/");
   exit(0);
 }
 

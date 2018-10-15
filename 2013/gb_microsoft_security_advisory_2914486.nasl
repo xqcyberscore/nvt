@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2914486.nasl 11576 2018-09-24 14:59:42Z cfischer $
+# $Id: gb_microsoft_security_advisory_2914486.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Windows Kernel Privilege Escalation Vulnerability (2914368)
 #
@@ -30,12 +30,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803971");
-  script_version("$Revision: 11576 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-5065");
   script_bugtraq_id(63971);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-02 15:40:48 +0530 (Mon, 02 Dec 2013)");
   script_name("Microsoft Windows Kernel Privilege Escalation Vulnerability (2914368)");
 
@@ -43,9 +43,8 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security update according to
 Microsoft Bulletin MS14-002");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms14-002");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and install
+  the hotfixes from the referenced advisory.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"The flaw is  due to an input validation error within the NDPROXY (NDProxy.sys)
 kernel component and can be exploited to execute arbitrary code with kernel
@@ -85,7 +84,7 @@ if(!sysPath){
   exit(0);
 }
 
-win32SysVer = fetch_file_version(sysPath, file_name:"system32\drivers\Ndproxy.sys");
+win32SysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\drivers\Ndproxy.sys");
 if(!win32SysVer){
   exit(0);
 }

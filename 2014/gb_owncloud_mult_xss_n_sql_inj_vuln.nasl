@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_xss_n_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_owncloud_mult_xss_n_sql_inj_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # ownCloud Multiple XSS and SQL Injection Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804412");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-1893", "CVE-2013-1890");
   script_bugtraq_id(58855, 58852);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-14 13:43:56 +0530 (Fri, 14 Mar 2014)");
   script_name("ownCloud Multiple XSS and SQL Injection Vulnerabilities");
 
@@ -53,8 +53,7 @@ injection vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to inject or manipulate
 SQL queries in the back-end database or conduct script insertion.");
   script_tag(name:"affected", value:"ownCloud Server before version 5.0.1");
-  script_tag(name:"solution", value:"Upgrade to ownCloud version 5.0.1 or later,
-For updates refer to http://owncloud.org");
+  script_tag(name:"solution", value:"Upgrade to ownCloud version 5.0.1 or later.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/52833");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/83253");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rabbitmq_dos_vuln.nasl 9443 2018-04-11 12:28:11Z cfischer $
+# $Id: gb_rabbitmq_dos_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # RabbitMQ DoS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:pivotal_software:rabbitmq';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106499");
-  script_version("$Revision: 9443 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-11 14:28:11 +0200 (Wed, 11 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-01-06 12:45:06 +0700 (Fri, 06 Jan 2017)");
-  script_tag(name:"cvss_base", value: "6.8");
-  script_tag(name:"cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-06 12:45:06 +0700 (Fri, 06 Jan 2017)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
 
   script_cve_id("CVE-2015-8786");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("RabbitMQ DoS Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_rabbitmq_amqp_detect.nasl");
   script_mandatory_keys("rabbitmq/amqp/installed");
 
-  script_tag(name: "summary", value: "RabbitMQ is prone to a denial of service vulnerability.");
+  script_tag(name:"summary", value:"RabbitMQ is prone to a denial of service vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "RabbitMQ allows remote authenticated users with certain
+  script_tag(name:"insight", value:"RabbitMQ allows remote authenticated users with certain
 privileges to cause a denial of service (resource consumption) via the 'lengths_age' or 'lengths_incr'
 parameter.");
 
-  script_tag(name: "impact", value: "An authenticated attacker may cause a denial of service condition.");
+  script_tag(name:"impact", value:"An authenticated attacker may cause a denial of service condition.");
 
-  script_tag(name: "affected", value: "RabbitMQ before 3.6.1.");
+  script_tag(name:"affected", value:"RabbitMQ before 3.6.1.");
 
-  script_tag(name: "solution", value: "Update to version 3.6.1");
+  script_tag(name:"solution", value:"Update to version 3.6.1");
 
-  script_xref(name: "URL", value: "https://github.com/rabbitmq/rabbitmq-server/releases/tag/rabbitmq_v3_6_1");
+  script_xref(name:"URL", value:"https://github.com/rabbitmq/rabbitmq-server/releases/tag/rabbitmq_v3_6_1");
 
   exit(0);
 }

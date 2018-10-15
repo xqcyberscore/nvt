@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_root_avamar.nasl 11672 2018-09-28 10:48:17Z jschulte $
+# $Id: gb_ssh_root_avamar.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Default Password `avam@r` for root Account.
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140133");
-  script_version("$Revision: 11672 $");
+  script_version("$Revision: 11863 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Default Password `avam@r` for root Account.");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-28 12:48:17 +0200 (Fri, 28 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-31 11:12:08 +0100 (Tue, 31 Jan 2017)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -50,7 +50,7 @@ if (description)
   script_dependencies("ssh_detect.nasl", "os_detection.nasl");
   script_require_keys("Host/runs_unixoide");
   script_tag(name:"qod_type", value:"exploit");
- exit(0);
+  exit(0);
 }
 
 include("ssh_func.inc");

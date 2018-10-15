@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_xss_utf-8_vuln_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_opera_xss_utf-8_vuln_macosx.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Opera Cross-Site Scripting (XSS) Vulnerability (Mac OS X)
 #
@@ -29,21 +29,19 @@ CPE = "cpe:/a:opera:opera_browser";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804103");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-4705");
   script_bugtraq_id(31795);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-01 17:28:40 +0530 (Tue, 01 Oct 2013)");
   script_name("Opera Cross-Site Scripting (XSS) Vulnerability (Mac OS X)");
 
 
   script_tag(name:"summary", value:"This host is installed with Opera and is prone to XSS attack.");
-  script_tag(name:"vuldetect", value:"Get the installed version of Opera with the help of detect NVT and check
-the version is vulnerable or not.");
-  script_tag(name:"solution", value:"Upgrade to Opera version 15.00 or later,
-For updates refer to http://www.opera.com");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade to Opera version 15.00 or later.");
   script_tag(name:"insight", value:"The flaw is due to some error when encoding settings are set to UTF-8.");
   script_tag(name:"affected", value:"Opera versions prior to 15.00 on Mac OS X.");
   script_tag(name:"impact", value:"Successful exploitation will let attacker to execute an arbitrary web

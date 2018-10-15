@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_berta_cms_file_upload_vuln.nasl 11422 2018-09-17 07:30:48Z mmartin $
+# $Id: gb_berta_cms_file_upload_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Berta CMS Arbitrary File Upload Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805356");
-  script_version("$Revision: 11422 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-2780");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-07 12:32:43 +0530 (Tue, 07 Apr 2015)");
   script_name("Berta CMS Arbitrary File Upload Vulnerability");
 
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Berta CMS version before 0.8.10b.");
 
   script_tag(name:"solution", value:"Upgrade to Berta CMS version 0.8.10b
-  or later, For updates refer to http://www.berta.me");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +67,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+  script_xref(name:"URL", value:"http://www.berta.me");
   exit(0);
 }
 

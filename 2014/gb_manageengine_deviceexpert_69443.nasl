@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_deviceexpert_69443.nasl 11207 2018-09-04 07:22:57Z mmartin $
+# $Id: gb_manageengine_deviceexpert_69443.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # ManageEngine DeviceExpert User Credentials Information Disclosure Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2014-5377");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11207 $");
+  script_version("$Revision: 11867 $");
 
   script_name("ManageEngine DeviceExpert User Credentials Information Disclosure Vulnerability");
 
@@ -51,10 +51,10 @@ a GET request to 'ReadUsersFromMasterServlet'.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"summary", value:"ManageEngine DeviceExpert is prone to an information-disclosure vulnerability.");
 
-  script_tag(name:"affected", value:"ManageEngine DeviceExpert 5.9 Build 5980 is vulnerable; other versions
+  script_tag(name:"affected", value:"ManageEngine DeviceExpert 5.9 Build 5980 is vulnerable. Other versions
 may also be affected.");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 09:22:57 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-09-09 14:44:24 +0200 (Tue, 09 Sep 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -64,7 +64,7 @@ may also be affected.");
   script_require_ports("Services/www", 6060);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

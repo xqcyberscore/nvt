@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_63732.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: gb_cisco_nx_os_63732.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Cisco Nexus 1000V Local Arbitrary Command Execution Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2013-5556");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Cisco Nexus 1000V  Local Arbitrary Command Execution Vulnerability");
 
@@ -52,7 +52,7 @@ vulnerability.");
   script_tag(name:"affected", value:"Cisco Nexus 1000V");
 
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-05 16:22:05 +0100 (Wed, 05 Nov 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -61,7 +61,7 @@ vulnerability.");
   script_dependencies("gb_cisco_nx_os_version.nasl");
   script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
 
- exit(0);
+  exit(0);
 }
 
 if( ! device = get_kb_item( "cisco_nx_os/device" ) ) exit( 0 );

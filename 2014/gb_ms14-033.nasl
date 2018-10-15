@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-033.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-033.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Window XML Core Services Information Disclosure Vulnerability (2966061)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804635");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-1816");
   script_bugtraq_id(67895);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-06-11 08:45:39 +0530 (Wed, 11 Jun 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Window XML Core Services Information Disclosure Vulnerability (2966061)");
@@ -63,8 +63,7 @@ Microsoft Windows Server 2012
 
 Microsoft Windows Server 2012 R2");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/library/security/ms14-033");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"https://support.microsoft.com/kb/2939576");
@@ -99,7 +98,7 @@ if(!sysPath ){
   exit(0);
 }
 
-dllVer3 = fetch_file_version(sysPath, file_name:"system32\Msxml3.dll");
+dllVer3 = fetch_file_version(sysPath:sysPath, file_name:"system32\Msxml3.dll");
 
 if(dllVer3)
 {
@@ -149,13 +148,13 @@ if(dllVer3)
   }
 }
 
-dllVer4 = fetch_file_version(sysPath, file_name:"system32\Msxml3r.dll");
+dllVer4 = fetch_file_version(sysPath:sysPath, file_name:"system32\Msxml3r.dll");
 
 if(dllVer4)
 {
   if(hotfix_check_sp(win8:1) > 0)
   {
-    dllVer4 = fetch_file_version(sysPath, file_name:"system32\Msxml3r.dll");
+    dllVer4 = fetch_file_version(sysPath:sysPath, file_name:"system32\Msxml3r.dll");
 
     if(version_is_less(version:dllVer4, test_version:"8.110.9600.16384")){
       security_message( port: 0, data: "The target host was found to be vulnerable" );
@@ -165,7 +164,7 @@ if(dllVer4)
 }
 
 
-dllVer6 = fetch_file_version(sysPath, file_name:"system32\Msxml6.dll");
+dllVer6 = fetch_file_version(sysPath:sysPath, file_name:"system32\Msxml6.dll");
 
 if(dllVer6)
 {

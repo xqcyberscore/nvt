@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_feb13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_feb13_macosx.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities -01 Feb13 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803425");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-0784", "CVE-2013-0783", "CVE-2013-0782", "CVE-2013-0781",
                 "CVE-2013-0780", "CVE-2013-0779", "CVE-2013-0778", "CVE-2013-0777",
                 "CVE-2013-0765", "CVE-2013-0772", "CVE-2013-0773", "CVE-2013-0774",
@@ -36,7 +36,7 @@ if(description)
                     58034, 58041, 58038, 58042, 58044);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-21 19:36:53 +0530 (Thu, 21 Feb 2013)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -84,11 +84,11 @@ if(description)
 
     'mozilla::image::RasterImage::DrawFrameTo()', when rendering GIF images.");
 
-  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 17.0.3 or later,
-  For updates refer to http://www.mozilla.com/en-US/thunderbird");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 17.0.3 or later.");
   script_tag(name:"summary", value:"This host is installed with Mozilla Thunderbird and is prone to multiple
   vulnerabilities.");
 
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/thunderbird");
   exit(0);
 }
 

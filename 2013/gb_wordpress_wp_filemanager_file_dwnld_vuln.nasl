@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_filemanager_file_dwnld_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_wordpress_wp_filemanager_file_dwnld_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # WordPress wp-FileManager Plugin File Download Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803492");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-04-17 17:30:46 +0530 (Wed, 17 Apr 2013)");
   script_name("WordPress wp-FileManager Plugin File Download Vulnerability");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/25440");
@@ -54,8 +54,7 @@ if(description)
   'wordpress/wp-content/plugins/wp-filemanager/incl/libfile.php' script is
   not properly validating '../'(dot dot) sequences before being returned
   to the user.");
-  script_tag(name:"solution", value:"Upgrade to version 1.4.0 or later,
-  For updates refer to http://wordpress.org/extend/plugins/wp-filemanager");
+  script_tag(name:"solution", value:"Upgrade to version 1.4.0 or later.");
   script_tag(name:"summary", value:"This host is running WordPress with wp-FileManager plugin and is
   prone to file download vulnerability.");
 

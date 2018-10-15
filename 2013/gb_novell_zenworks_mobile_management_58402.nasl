@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zenworks_mobile_management_58402.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_novell_zenworks_mobile_management_58402.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Novell ZENworks Mobile Management  Local File Include Vulnerability
 #
@@ -33,14 +33,14 @@ if (description)
   script_cve_id("CVE-2013-1081");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11865 $");
 
   script_name("Novell ZENworks Mobile Management  Local File Include Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/58402");
   script_xref(name:"URL", value:"http://www.novell.com/support/kb/doc.php?id=7011895");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-10 13:05:34 +0200 (Mon, 10 Jun 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -58,12 +58,11 @@ supplied input.
 
 An attacker can exploit this vulnerability to obtain potentially
 sensitive information and execute arbitrary local scripts. This could
-allow the attacker to compromise the application and the computer;
-other attacks are also possible.
+allow the attacker to compromise the application and the computer.
+Other attacks are also possible.
 
-Novell ZENworks Mobile Management 2.6.0, 2.6.1 and 2.7.0 are
-vulnerable.");
- exit(0);
+Novell ZENworks Mobile Management 2.6.0, 2.6.1 and 2.7.0 are vulnerable.");
+  exit(0);
 }
 
 include("misc_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wisegiga_nas_multiple_vuln.nasl 11025 2018-08-17 08:27:37Z cfischer $
+# $Id: gb_wisegiga_nas_multiple_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # WiseGiga NAS Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/h:wisegiga:nas";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811336");
-  script_version("$Revision: 11025 $");
+  script_version("$Revision: 11863 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-09-12 13:20:40 +0530 (Tue, 12 Sep 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("WiseGiga NAS Multiple Vulnerabilities");
@@ -49,13 +49,13 @@ if(description)
   - By sending GET request to the following URI's with 'filename=' as a
     parameter, an attacker can trigger the vulnerabilities:
 
-    - /webfolder/download_file1.php
+  - /webfolder/download_file1.php
 
-    - down_data.php
+  - down_data.php
 
-    - download_file.php
+  - download_file.php
 
-    - mobile/download_file1.php
+  - mobile/download_file1.php
 
   - By sending GET request to '/mobile/download_file2.php' an attacker can get
     sensitive information.
@@ -67,15 +67,13 @@ if(description)
 
   - Default accounts:
 
-    - Username: guest
+  - Username: guest
 
-    - Password: guest09#$ ");
+  - Password: guest09#$ ");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to bypass authentication mechanism and perform
-  unauthorized actions and execute arbitrary commands.
-
-  Impact Level: System/Application");
+  unauthorized actions and execute arbitrary commands.");
 
   script_tag(name:"affected", value:"WiseGiga NAS devices.");
 

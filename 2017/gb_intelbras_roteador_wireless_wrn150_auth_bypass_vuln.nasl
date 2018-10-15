@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intelbras_roteador_wireless_wrn150_auth_bypass_vuln.nasl 11025 2018-08-17 08:27:37Z cfischer $
+# $Id: gb_intelbras_roteador_wireless_wrn150_auth_bypass_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Intelbras Roteador Wireless N WRN Device Authentication Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:intelbras_roteador:wireless-n_wrn";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812015");
-  script_version("$Revision: 11025 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-14942");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-10-06 20:36:50 +0530 (Fri, 06 Oct 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Intelbras Roteador Wireless N WRN Device Authentication Bypass Vulnerability");
@@ -49,16 +49,14 @@ if(description)
   by tweaking the cookie.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to bypass authentication mechanism and gain access to sensitive data.
-
-  Impact Level: System/Application");
+  attackers to bypass authentication mechanism and gain access to sensitive data.");
 
   script_tag(name:"affected", value:"Intelbras Roteador Wireless WRN150 with
   firmware version 1.0.1. Other models and other firmware versions may also be
   affected.");
 
   script_tag(name:"solution", value:"Upgrade to the latest firmware available
-  from the vendor. For updates refer to http://intelbras.com.br");
+  from the vendor.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,6 +69,7 @@ if(description)
   script_dependencies("gb_intelbras_roteador_wireless_n_wrn_devices_detect.nasl");
   script_mandatory_keys("intelbras/roteador/N-WRN/detected");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://intelbras.com.br");
   exit(0);
 }
 

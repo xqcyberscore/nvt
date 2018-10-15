@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_vuln01.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_cloudbees_jenkins_mult_vuln01.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # CloudBees Jenkins Multiple Vulnerabilities -01 December15
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807012");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-2068", "CVE-2014-2066", "CVE-2014-2065", "CVE-2014-2064",
                 "CVE-2014-2063", "CVE-2014-2062", "CVE-2014-2061", "CVE-2014-2060",
                 "CVE-2014-2058");
   script_bugtraq_id(65694, 65720);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-21 15:34:06 +0530 (Mon, 21 Dec 2015)");
   script_name("CloudBees Jenkins Multiple Vulnerabilities -01 December15");
 
@@ -78,7 +78,7 @@ if(description)
   Windows");
 
   script_tag(name:"solution", value:"Upgrade to CloudBees Jenkins LTS 1.532.2
-  or later. For more updates refer to https://www.cloudbees.com");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -93,6 +93,7 @@ if(description)
   script_dependencies("sw_jenkins_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("jenkins/installed", "Host/runs_windows");
   script_require_ports("Services/www", 8080);
+  script_xref(name:"URL", value:"https://www.cloudbees.com");
   exit(0);
 }
 

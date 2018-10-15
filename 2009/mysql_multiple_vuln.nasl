@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mysql_multiple_vuln.nasl 11830 2018-10-11 06:12:56Z cfischer $
+# $Id: mysql_multiple_vuln.nasl 11884 2018-10-12 13:33:40Z cfischer $
 #
 # MySQL multiple Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100356");
-  script_version("$Revision: 11830 $");
+  script_version("$Revision: 11884 $");
   script_cve_id("CVE-2009-4028", "CVE-2009-4030");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 08:12:56 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:33:40 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2009-11-20 12:35:38 +0100 (Fri, 20 Nov 2009)");
   script_bugtraq_id(37075, 37076);
-  script_tag(name:"cvss_base", value:"4.4");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("MySQL multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");

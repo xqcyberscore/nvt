@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pcoweb_default_accounts.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: gb_pcoweb_default_accounts.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # CAREL pCOWeb Default Account Security Bypass Vulnerability
 #
@@ -28,13 +28,13 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103716");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11865 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
   script_name("CAREL pCOWeb Default Account Security Bypass Vulnerability");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/121716/CAREL-pCOWeb-1.5.0-Default-Credential-Shell-Access.html");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-23 11:24:55 +0200 (Thu, 23 May 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -49,7 +49,7 @@ gain access to sensitive information or modify system configuration.
 It was possible to login as user 'http' with no password.");
   script_tag(name:"solution", value:"Login with telnet and set a password or change the shell from '/bin/bash' to '/bin/nologin'.");
   script_tag(name:"solution_type", value:"Workaround");
-exit(0);
+  exit(0);
 }
 
 include("telnet_func.inc");

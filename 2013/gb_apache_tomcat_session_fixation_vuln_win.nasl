@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_session_fixation_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_apache_tomcat_session_fixation_vuln_win.nasl 11866 2018-10-12 10:12:29Z cfischer $
 #
 # Apache Tomcat Session Fixation Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803636");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11866 $");
   script_cve_id("CVE-2013-2067");
   script_bugtraq_id(59799);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:12:29 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-06 12:57:30 +0530 (Thu, 06 Jun 2013)");
   script_name("Apache Tomcat Session Fixation Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -57,8 +57,7 @@ if(description)
   module in 'java/org/apache/catalina/authenticator/FormAuthenticator.java'.");
   script_tag(name:"summary", value:"The host is running Apache Tomcat Server and is prone to session
   fixation vulnerability.");
-  script_tag(name:"solution", value:"Apply patch or upgrade Apache Tomcat to 7.0.33 or 6.0.37 or later,
-  For updates refer to http://tomcat.apache.org
+  script_tag(name:"solution", value:"Apply patch or upgrade Apache Tomcat to 7.0.33 or 6.0.37 or later.
 
   *****
   NOTE: Ignore this warning, if above mentioned patch is manually applied.
@@ -67,6 +66,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://tomcat.apache.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_lem_77016.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_solarwinds_lem_77016.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # SolarWinds Log and Event Manager Command Injection Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2015-7839", "CVE-2015-7840");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
 
   script_name("SolarWinds Log and Event Manager Command Injection Vulnerability");
 
@@ -53,7 +53,7 @@ The second flaw exists within requests to /services/messagebroker/nonsecurestrea
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-13 11:00:23 +0100 (Fri, 13 Nov 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -61,7 +61,7 @@ The second flaw exists within requests to /services/messagebroker/nonsecurestrea
   script_dependencies("gb_solarwinds_log_event_manager_version.nasl");
   script_mandatory_keys("solarwinds_lem/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

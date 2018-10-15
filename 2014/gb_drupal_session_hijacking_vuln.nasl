@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_session_hijacking_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_drupal_session_hijacking_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Drupal Session Hijacking Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:drupal:drupal';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105935");
-  script_version("$Revision: 11402 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_version("$Revision: 11867 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-09 16:55:49 +0700 (Tue, 09 Dec 2014)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -62,7 +62,7 @@ user's session, allowing an attacker to hijack a random session.");
 
   script_tag(name:"affected", value:"Drupal 6.x versions prior to 6.34. Drupal 7.x versions prior to 7.34.");
 
-  script_tag(name:"solution", value:"Upgrade to Drupal 6.34, 7.34 or later");
+  script_tag(name:"solution", value:"Upgrade to Drupal 6.34, 7.34 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.drupal.org/SA-CORE-2014-006");
 

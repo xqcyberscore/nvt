@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_mult_vuln.nasl 11542 2018-09-21 20:22:36Z cfischer $
+# $Id: gb_openssh_mult_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # OpenSSH Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806052");
-  script_version("$Revision: 11542 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-6564", "CVE-2015-6563", "CVE-2015-5600");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:22:36 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-15 10:17:32 +0530 (Tue, 15 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSH Multiple Vulnerabilities");
@@ -58,8 +58,7 @@ if(description)
 
   script_tag(name:"affected", value:"OpenSSH versions before 7.0");
 
-  script_tag(name:"solution", value:"Upgrade to OpenSSH 7.0 or later.
-  For updates refer to http://www.openssh.com");
+  script_tag(name:"solution", value:"Upgrade to OpenSSH 7.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Aug/54");
@@ -71,6 +70,7 @@ if(description)
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("openssh/detected");
+  script_xref(name:"URL", value:"http://www.openssh.com");
   exit(0);
 }
 

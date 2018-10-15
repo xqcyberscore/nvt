@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openoffice_mult_vuln_apr15_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_apache_openoffice_mult_vuln_apr15_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Apache OpenOffice Multiple Vulnerabilities Apr15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805463");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-3575", "CVE-2014-3524");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-04-09 13:09:07 +0530 (Thu, 09 Apr 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Apache OpenOffice Multiple Vulnerabilities Apr15 (Windows)");
@@ -58,7 +58,7 @@ if(description)
   script_tag(name:"affected", value:"Apache OpenOffice before 4.1.1 on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Apache OpenOffice version
-  4.1.1 or later, For updates refer to http://www.openoffice.org");
+  4.1.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +69,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_openoffice_detect_win.nasl");
   script_mandatory_keys("OpenOffice/Win/Ver");
+  script_xref(name:"URL", value:"http://www.openoffice.org");
   exit(0);
 }
 

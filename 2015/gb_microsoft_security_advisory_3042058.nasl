@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3042058.nasl 11612 2018-09-26 05:47:26Z cfischer $
+# $Id: gb_microsoft_security_advisory_3042058.nasl 11876 2018-10-12 12:20:01Z cfischer $
 #
 # Microsoft Cryptographic Cipher Suite Prioritization Advisory (3042058)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806091");
-  script_version("$Revision: 11612 $");
+  script_version("$Revision: 11876 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 07:47:26 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:20:01 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-15 10:51:26 +0530 (Thu, 15 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Cryptographic Cipher Suite Prioritization Advisory (3042058)");
@@ -56,9 +56,7 @@ if(description)
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/3042058");
+  listed hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -90,7 +88,7 @@ if(!sysPath){
   exit(0);
 }
 
-dllVer = fetch_file_version(sysPath, file_name:"system32\schannel.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\schannel.dll");
 if(!dllVer){
   exit(0);
 }

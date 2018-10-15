@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_jul13_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_adobe_flash_player_mult_vuln01_jul13_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities-01 July13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803831");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-3347", "CVE-2013-3345", "CVE-2013-3344");
   script_bugtraq_id(61048, 61045, 61043);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-25 17:21:07 +0530 (Thu, 25 Jul 2013)");
   script_name("Adobe Flash Player Multiple Vulnerabilities-01 July13 (Windows)");
 
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to multiple
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Update to Adobe Flash Player version 11.7.700.232 or 11.8.800.94 or later
-For updates refer to  http://get.adobe.com/flashplayer");
+  script_tag(name:"solution", value:"Update to Adobe Flash Player version 11.7.700.232 or 11.8.800.94 or later.");
   script_tag(name:"insight", value:"Multiple unspecified error exists and an integer overflow error exists
 when resampling a PCM buffer.");
   script_tag(name:"affected", value:"Adobe Flash Player before 11.7.700.232 and 11.8.x before 11.8.800.94 on
@@ -61,6 +60,7 @@ memory corruption via unspecified vectors.");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
+  script_xref(name:"URL", value:"http://get.adobe.com/flashplayer");
   exit(0);
 }
 

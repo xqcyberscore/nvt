@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_nov14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_adobe_air_mult_vuln01_nov14_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Adobe AIR Multiple Vulnerabilities(APSB14-24)-(Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804797");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-0573", "CVE-2014-0574", "CVE-2014-0576", "CVE-2014-0577",
                 "CVE-2014-0581", "CVE-2014-0582", "CVE-2014-0583", "CVE-2014-0584",
                 "CVE-2014-0585", "CVE-2014-0586", "CVE-2014-0588", "CVE-2014-0589",
@@ -39,7 +39,7 @@ if(description)
                     71045, 71048, 71051, 71046, 71036, 71049, 71047, 71050, 71040);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-11-14 11:58:00 +0530 (Fri, 14 Nov 2014)");
   script_name("Adobe AIR Multiple Vulnerabilities(APSB14-24)-(Mac OS X)");
 
@@ -68,7 +68,7 @@ if(description)
   on Mac OS X");
 
   script_tag(name:"solution", value:"Upgrade to Adobe AIR version
-  15.0.0.356 or later. For updates refer to http://get.adobe.com/air");
+  15.0.0.356 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
@@ -81,6 +81,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Air/MacOSX/Version");
+  script_xref(name:"URL", value:"http://get.adobe.com/air");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_compat_pack_ms17-014.nasl 5752 2017-03-29 04:01:01Z teissa $
+# $Id: gb_ms_office_compat_pack_ms17-014.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Microsoft Office Compatibility Pack Multiple Vulnerabilities (4013241)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810711");
-  script_version("$Revision: 5752 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-0006", "CVE-2017-0019");
   script_bugtraq_id(96740, 96042);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-15 14:08:22 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Compatibility Pack Multiple Vulnerabilities (4013241)");
@@ -40,33 +40,30 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS17-014.");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists as Microsoft Office
   improperly handles input.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to potentially sensitive information and run arbitrary
-  code in the context of the current user.
-
-  Impact Level: System/Application");
+  code in the context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Office Compatibility Pack Service
   Pack 3 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  https://technet.microsoft.com/library/security/ms17-014");
+  hotfixes or download and update mentioned hotfixes in the advisory below.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3178682");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3178677");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms17-014");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3178682");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3178677");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms17-014");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/Office/ComptPack/Version", "SMB/Office/XLCnv/Version");
   exit(0);
 }
@@ -77,19 +74,12 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-xlcnvVer = "";
-wordcnvVer = "";
-path = "";
-sysVer = "";
-
 path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                               item:"ProgramFilesDir");
 if(!path){
   exit(0);
 }
 
-# Check for Office Compatibility Pack 2007
 if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
 {
   xlcnvVer = get_kb_item("SMB/Office/XLCnv/Version");

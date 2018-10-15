@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_asset_manager_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_mcafee_asset_manager_mult_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # McAfee Asset Manager Multiple Vulnerabilities
 #
@@ -28,20 +28,19 @@ CPE = "cpe:/a:mcafee:asset_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804428");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-2587", "CVE-2014-2588");
   script_bugtraq_id(66302);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-17 11:25:02 +0530 (Thu, 17 Apr 2014)");
   script_name("McAfee Asset Manager Multiple Vulnerabilities");
 
 
   script_tag(name:"summary", value:"This host is running McAfee Asset Manager and is prone to directory traversal
 and SQL injection vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version of McAfee Asset Manager with the help of detect NVT
-and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaws are due to,
 
   - The '/servlet/downloadReport' script not properly sanitizing user input,

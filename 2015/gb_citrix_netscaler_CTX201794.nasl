@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX201794.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_citrix_netscaler_CTX201794.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Citrix NetScaler Service Delivery Appliance Multiple Security Updates (CTX202482)
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-7996", "CVE-2015-7997", "CVE-2015-7998");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Citrix NetScaler Service Delivery Appliance Multiple Security Updates (CTX202482)");
 
@@ -47,7 +47,7 @@ CVE-2015-7998: Vulnerability in Citrix NetScaler Service Delivery Appliance Serv
   script_tag(name:"vuldetect", value:"Check the version");
   script_tag(name:"solution", value:"Update to:
 Citrix NetScaler ADC and NetScaler Gateway version 10.5 Build 58.11 and later and 10.5.e Build 56.1505.e and later
-and 10.1 Build 133.9 and later");
+and 10.1 Build 133.9 and later.");
 
   script_tag(name:"summary", value:"A number of vulnerabilities have been identified in Citrix NetScaler Service Delivery Appliance (SDX) Service VM (SVM).");
 
@@ -57,7 +57,7 @@ Version 10.1, 10.1e and earlier up to and including 10.1 Build 132.8");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-16 11:03:39 +0100 (Mon, 16 Nov 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -65,7 +65,7 @@ Version 10.1, 10.1e and earlier up to and including 10.1 Build 132.8");
   script_dependencies("gb_citrix_netscaler_version.nasl");
   script_mandatory_keys("citrix_netscaler/detected");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_windows_ie_n_egde_type_confusion_rce_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_microsoft_windows_ie_n_egde_type_confusion_rce_vuln.nasl 11879 2018-10-12 12:48:49Z mmartin $
 #
 # Microsoft Edge and Internet Explorer Type Confusion Remote Code Execution Vulnerability
 #
@@ -27,31 +27,28 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810577");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11879 $");
   script_cve_id("CVE-2017-0037");
   script_bugtraq_id(96088);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-03-01 14:28:21 +0530 (Wed, 01 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Edge and Internet Explorer Type Confusion Remote Code Execution Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with Microsoft Edge or
+  script_tag(name:"summary", value:"This host is installed with Microsoft Edge or
   Internet Explorer and is prone to remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to a type confusion 
-  issue in the 'Layout::MultiColumnBoxBuilder::HandleColumnBreakOnColumnSpanningElement' 
+  script_tag(name:"insight", value:"The flaw exists due to a type confusion
+  issue in the 'Layout::MultiColumnBoxBuilder::HandleColumnBreakOnColumnSpanningElement'
   function in mshtml.dll.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to execute arbitrary code in the context of the currently logged-in user. Failed 
-  attacks will cause denial of service conditions.
-
-  Impact Level: System");
+  to execute arbitrary code in the context of the currently logged-in user. Failed
+  attacks will cause denial of service conditions.");
 
   script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
 
@@ -65,24 +62,22 @@ if(description)
 
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.");
 
-  script_tag(name: "solution" , value:"Run Windows Update and update the listed
-  hotfixes or download and update mentioned hotfixes in the advisory from the
-  below link,
-
-  https://technet.microsoft.com/library/security/MS17-006
-
-  https://technet.microsoft.com/library/security/MS17-007");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed
+  hotfixes or download and update mentioned hotfixes in the advisory below.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://bugs.chromium.org/p/project-zero/issues/detail?id=1011");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/41454");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1037906");
+  script_xref(name:"URL", value:"https://bugs.chromium.org/p/project-zero/issues/detail?id=1011");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/41454");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1037906");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS17-007");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS17-006");
   exit(0);
 }
 
@@ -92,39 +87,26 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-iePath = "";
-ieVer   = "";
-iedllVer  = NULL;
-edgeVer = NULL;
-
-## Check for OS and Service Pack
-if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win2012R2:1, win8_1:1, 
+if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win2012R2:1, win8_1:1,
                    win8_1x64:1, win10:1, win10x64:1, win2016:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath){
   exit(0);
 }
 
-## Get Version from Mshtml.dll
-iedllVer = fetch_file_version(sysPath, file_name:"system32\Mshtml.dll");
+iedllVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Mshtml.dll");
 
-## Fetch the version of 'Edgehtml.dll'
-edgeVer = fetch_file_version(sysPath, file_name:"system32\Edgehtml.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Edgehtml.dll");
 
 if(!edgeVer && !iedllVer){
   exit(0);
 }
 
-## Windows 8.1 and Windows Server 2012 R2
-## Windows 7 and Server 2008r2
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1, win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Mshtml.dll version
   if(version_is_less_equal(version:iedllVer, test_version:"11.0.9600.18538"))
   {
      Vulnerable_range1 = "11.0.9600.18538 and prior";
@@ -134,8 +116,6 @@ if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1, win7:2, win7x64:2, win200
 
 else if((hotfix_check_sp(win2016:1) > 0))
 {
-  ## Windows 2016 Server
-  ## Check for egdehtml.dll version
   if(version_in_range(version:edgeVer, test_version:"11.0.14393.0", test_version2:"11.0.14393.693"))
   {
     Vulnerable_range2 = "11.0.14393.0 - 11.0.14393.693";
@@ -143,11 +123,8 @@ else if((hotfix_check_sp(win2016:1) > 0))
   }
 }
 
-##Windows 10
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Windows 10
-  ## Check for edgehtml.dll version
   if(version_is_less_equal(version:edgeVer, test_version:"11.0.10240.17236"))
   {
     Vulnerable_range2 = "11.0.10240.17236 and prior";

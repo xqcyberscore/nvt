@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_mar14_macosx.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_apple_safari_webkit_mult_vuln_mar14_macosx.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Apple Safari 'Webkit' Multiple Vulnerabilities-01 Mar14 (Mac OS X)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804319");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1268", "CVE-2014-1269", "CVE-2014-1270");
   script_bugtraq_id(65778, 65780, 65781);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-03 16:56:35 +0530 (Mon, 03 Mar 2014)");
   script_name("Apple Safari 'Webkit' Multiple Vulnerabilities-01 Mar14 (Mac OS X)");
 
@@ -46,8 +46,7 @@ memory.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct arbitrary code
 execution or denial of service.");
   script_tag(name:"affected", value:"Apple Safari before version 6.1.2 and 7.x before version 7.0.2 on Mac OS X.");
-  script_tag(name:"solution", value:"Upgrade to Apple Safari version 6.1.2 or 7.0.2 or later,
-For updates refer to http://www.apple.com/support");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 6.1.2 or 7.0.2 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -59,6 +58,7 @@ For updates refer to http://www.apple.com/support");
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");
   script_mandatory_keys("AppleSafari/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.apple.com/support");
   exit(0);
 }
 

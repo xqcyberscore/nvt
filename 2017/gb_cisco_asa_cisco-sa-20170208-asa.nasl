@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_cisco-sa-20170208-asa.nasl 5471 2017-03-03 07:01:03Z cfi $
+# $Id: gb_cisco_asa_cisco-sa-20170208-asa.nasl 11901 2018-10-15 08:47:18Z mmartin $
 #
 # Cisco ASA Clientless SSL VPN CIFS Heap Overflow Vulnerability
 #
@@ -29,25 +29,25 @@ CPE = "cpe:/a:cisco:asa";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106583");
- script_cve_id("CVE-2017-3807");
- script_tag(name:"cvss_base", value:"8.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
- script_version("$Revision: 5471 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106583");
+  script_cve_id("CVE-2017-3807");
+  script_tag(name:"cvss_base", value:"8.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
+  script_version("$Revision: 11901 $");
 
- script_name("Cisco ASA Clientless SSL VPN CIFS Heap Overflow Vulnerability");
+  script_name("Cisco ASA Clientless SSL VPN CIFS Heap Overflow Vulnerability");
 
- script_xref(name:"URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170208-asa");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170208-asa");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution" , value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary" , value: "A vulnerability in Common Internet Filesystem (CIFS) code in the Clientless
+  script_tag(name:"summary", value:"A vulnerability in Common Internet Filesystem (CIFS) code in the Clientless
 SSL VPN functionality of Cisco ASA Software could allow an authenticated, remote attacker to cause a heap
 overflow.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient validation of user supplied input.
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient validation of user supplied input.
 An attacker could exploit this vulnerability by sending a crafted URL to the affected system.
 
 Only traffic directed to the affected system can be used to exploit this vulnerability. This vulnerability
@@ -55,22 +55,22 @@ affects systems configured in routed firewall mode only and in single or multipl
 vulnerability can be triggered by IPv4 or IPv6 traffic. A valid TCP connection is needed to perform the attack.
 The attacker needs to have valid credentials to log in to the Clientless SSL VPN portal.");
 
- script_tag(name: "impact", value: "An exploit could allow the remote attacker to cause a reload of the affected
+  script_tag(name:"impact", value:"An exploit could allow the remote attacker to cause a reload of the affected
 system or potentially execute code.");
 
- script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-03 08:01:03 +0100 (Fri, 03 Mar 2017) $");
- script_tag(name: "creation_date", value: "2017-02-09 13:48:30 +0700 (Thu, 09 Feb 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
- script_mandatory_keys("cisco_asa/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 10:47:18 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-09 13:48:30 +0700 (Thu, 09 Feb 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
+  script_mandatory_keys("cisco_asa/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");
@@ -81,7 +81,7 @@ if (!version = get_app_version(cpe: CPE, nofork: TRUE))
 
 check_vers = ereg_replace(string: version, pattern: "\(([0-9.]+)\)", replace: ".\1");
 
-affected = make_list( 
+affected = make_list(
 		'7.0.1',
 		'7.0.1.4',
 		'7.0.2',

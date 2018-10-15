@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_n_acrobat_mult_vuln_jan13_macosx.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_adobe_reader_n_acrobat_mult_vuln_jan13_macosx.nasl 11870 2018-10-12 11:12:45Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities - Jan 13 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803211");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11870 $");
   script_cve_id("CVE-2012-1530", "CVE-2013-0601", "CVE-2013-0602", "CVE-2013-0603",
                 "CVE-2013-0604", "CVE-2013-0605", "CVE-2013-0606", "CVE-2013-0607",
                 "CVE-2013-0608", "CVE-2013-0609", "CVE-2013-0610", "CVE-2013-0611",
@@ -42,10 +42,9 @@ if(description)
                     57294, 57275, 57276, 57270, 57295, 57277, 57296, 57285, 57297, 65275);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:12:45 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-01-21 13:16:59 +0530 (Mon, 21 Jan 2013)");
   script_name("Adobe Reader Multiple Vulnerabilities - Jan 13 (Mac OS X)");
-
 
   script_tag(name:"summary", value:"This host is installed with Adobe Reader and is prone to multiple
 vulnerabilities.");
@@ -55,8 +54,7 @@ vulnerabilities.");
 restrictions, execute arbitrary code in the context of the affected application
 or cause a denial of service.");
   script_tag(name:"affected", value:"Adobe Reader versions 9.x to 9.5.2, 10.x to 10.1.4 and 11.0.0 on Mac OS X");
-  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 9.5.3 or 10.1.5 or 11.0.1 or later,
-For updates refer to http://www.adobe.com");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 9.5.3 or 10.1.5 or 11.0.1 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -71,12 +69,10 @@ For updates refer to http://www.adobe.com");
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-## Function to check the versions of abode reader
-function version_check(adver)
+if(readerVer = get_app_version(cpe:CPE))
 {
   if(adver =~ "^(9|10|11\.0)")
   {
@@ -88,9 +84,4 @@ function version_check(adver)
       exit(0);
     }
   }
-}
-
-if(readerVer = get_app_version(cpe:CPE))
-{
-  version_check(adver:readerVer);
 }

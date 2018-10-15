@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_epm_xxe_n_sql_inj_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_symantec_epm_xxe_n_sql_inj_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Symantec Endpoint Protection Manager XXE and SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804513");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-5014", "CVE-2013-5015");
   script_bugtraq_id(65466, 65467);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-20 11:33:41 +0530 (Thu, 20 Mar 2014)");
   script_name("Symantec Endpoint Protection Manager XXE and SQL Injection Vulnerabilities");
 
@@ -48,7 +48,7 @@ if(description)
   Edition 12.x before 12.1.4023.4080");
   script_tag(name:"solution", value:"Upgrade Symantec Endpoint Protection Manager to version 11.0.7405.1424 or
   12.1.4023.4080 or later, and Symantec Protection Center Small Business Edition
-  to version 12.1.4023.4080 or later, For updates refer to http://www.symantec.com");
+  to version 12.1.4023.4080 or later.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/56798");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2014/Feb/82");
@@ -66,6 +66,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_analysis");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.symantec.com");
   exit(0);
 }
 

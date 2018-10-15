@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mobotix_webcam_detect.nasl 11407 2018-09-15 11:02:05Z cfischer $
+# $Id: gb_mobotix_webcam_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Mobotix Webcam Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113232");
-  script_version("$Revision: 11407 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 13:02:05 +0200 (Sat, 15 Sep 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-07-18 09:55:45 +0200 (Wed, 18 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,7 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.mobotix.com");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/h:mobotix:webcam:";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_xss_n_insecure_file_permis_vuln.nasl 8595 2018-01-31 08:04:59Z cfischer $
+# $Id: gb_ibm_was_xss_n_insecure_file_permis_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # IBM Websphere Application Server 'XSS' And 'Insecure File Permissions' Vulnerabilities
 #
@@ -29,44 +29,40 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811254");
-  script_version("$Revision: 8595 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-1380", "CVE-2017-1382");
   script_tag(name:"cvss_base", value:"3.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 09:04:59 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-07-25 12:01:55 +0530 (Tue, 25 Jul 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server 'XSS' And 'Insecure File Permissions' Vulnerabilities");
 
-  script_tag(name: "summary" , value:"This host is installed with IBM Websphere
+  script_tag(name:"summary", value:"This host is installed with IBM Websphere
   application server and is prone to XSS and insecure file permissions
   vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Insecure file permissions after custom startup scripts are run. The custom
     startup script will not pull the umask from the server.xml.
+
   - Insufficient sanitizaion of input in the Web UI.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a local
+  script_tag(name:"impact", value:"Successful exploitation will allow a local
   attacker could exploit this to gain access to files with an unknown impact and
   allow remote attacker to embed arbitrary JavaScript code in the Web UI thus
   altering the intended functionality potentially leading to credentials disclosure
-  within a trusted session.
+  within a trusted session.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"IBM WebSphere Application Server (WAS)
+  script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS)
   V9.0.0.0 through 9.0.0.4, V8.5.0.0 through 8.5.5.11, V8.0.0.0 through 8.0.0.13
   and V7.0.0.0 through 7.0.0.43.");
 
-  script_tag(name:"solution" , value:"Upgrade to IBM WebSphere Application
-  Server (WAS) 9.0.0.5 or 8.5.5.12 or 8.0.0.14 or 7.0.0.45 or later.
-  For updates refer to
-  http://www-01.ibm.com/support/docview.wss?uid=swg22004785
-  http://www-01.ibm.com/support/docview.wss?uid=swg22004786");
+  script_tag(name:"solution", value:"Upgrade to IBM WebSphere Application
+  Server (WAS) 9.0.0.5 or 8.5.5.12 or 8.0.0.14 or 7.0.0.45 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -79,15 +75,12 @@ if(description)
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_mandatory_keys("ibm_websphere_application_server/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg22004785");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
-
-## Initialize variables
-fix  = "";
-wasVer = "";
 
 if(!wasPort = get_app_port(cpe:CPE)){
   exit(0);

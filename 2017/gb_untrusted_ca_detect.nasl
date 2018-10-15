@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_untrusted_ca_detect.nasl 8740 2018-02-09 11:36:38Z cfischer $
+# $Id: gb_untrusted_ca_detect.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # SSL/TLS: Untrusted Certificate Authorities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113054");
-  script_version("$Revision: 8740 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 12:36:38 +0100 (Fri, 09 Feb 2018) $");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-11-21 10:13:14 +0100 (Tue, 21 Nov 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -55,10 +55,10 @@ if( description )
 
   script_tag(name:"solution", value:"Replace the SSL/TLS certificate with one signed by a trusted certificate authority.");
 
-  exit( 0 );
+  exit(0);
 }
 
-include("global_settings.inc");
+
 include("ssl_funcs.inc");
 
 ssls = get_kb_list( "HostDetails/SSLInfo/*" );

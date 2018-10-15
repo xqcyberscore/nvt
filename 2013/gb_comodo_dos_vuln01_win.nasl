@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_dos_vuln01_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_comodo_dos_vuln01_win.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Comodo Internet Security Denial of Service Vulnerability-01
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803687");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2010-5186");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-05 15:45:49 +0530 (Fri, 05 Jul 2013)");
   script_name("Comodo Internet Security Denial of Service Vulnerability-01");
   script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/429015.php");
@@ -46,8 +46,7 @@ if(description)
   script_tag(name:"affected", value:"Comodo Internet Security versions before 4.1.150349.920");
   script_tag(name:"insight", value:"Flaw related to the antivirus component, triggered when a user opens an
   unspecified malformed file.");
-  script_tag(name:"solution", value:"Upgrade to Comodo Internet Security version 4.1.150349.920 or later,
-  For updates refer to http://personalfirewall.comodo.com");
+  script_tag(name:"solution", value:"Upgrade to Comodo Internet Security version 4.1.150349.920 or later.");
   script_tag(name:"summary", value:"The host is installed with Comodo Internet Security and is prone
   to denial of service vulnerability.");
   script_tag(name:"qod_type", value:"registry");

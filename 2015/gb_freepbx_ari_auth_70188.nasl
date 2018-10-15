@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_ari_auth_70188.nasl 11492 2018-09-20 08:38:50Z mmartin $
+# $Id: gb_freepbx_ari_auth_70188.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # FreePBX 'index.php' Remote Command Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-7235");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11492 $");
+  script_version("$Revision: 11872 $");
 
   script_name("FreePBX 'index.php' Remote Command Execution Vulnerability");
 
@@ -59,7 +59,7 @@ the application fails to sufficiently sanitize input data.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 10:38:50 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-02-06 16:04:47 +0100 (Fri, 06 Feb 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -68,7 +68,7 @@ the application fails to sufficiently sanitize input data.");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("freepbx/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

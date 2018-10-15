@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_listings_xss_vuln.nasl 11445 2018-09-18 08:09:39Z mmartin $
+# $Id: gb_mediawiki_listings_xss_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # MediaWiki Listings extension Cross-site scripting Vulnerability - Jan15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805326");
-  script_version("$Revision: 11445 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-9477");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 10:09:39 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 12:37:41 +0530 (Fri, 23 Jan 2015)");
   script_name("MediaWiki Listings extension Cross-site scripting Vulnerability - Jan15");
 
@@ -54,7 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Listings extension version before 1.2.0 for Mediawiki");
 
   script_tag(name:"solution", value:"Upgrade to Listings extension version 1.2.0
-  or later. For updates refer to http://www.mediawiki.org/wiki/Extension:Listings");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://phabricator.wikimedia.org/T77624");
@@ -66,6 +66,7 @@ if(description)
   script_dependencies("find_service.nasl", "secpod_mediawiki_detect.nasl");
   script_mandatory_keys("mediawiki/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.mediawiki.org/wiki/Extension:Listings");
   exit(0);
 }
 

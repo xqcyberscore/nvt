@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jre_mult_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_jre_mult_vuln_macosx.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Java Runtime Environment Multiple Vulnerabilities (MAC OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802738");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2011-3563", "CVE-2011-5035", "CVE-2012-0497", "CVE-2012-0498",
                 "CVE-2012-0499", "CVE-2012-0500", "CVE-2012-0501", "CVE-2012-0502",
                 "CVE-2012-0503", "CVE-2012-0505", "CVE-2012-0506", "CVE-2012-0507");
@@ -35,7 +35,7 @@ if(description)
                     52013, 52017, 52014, 52161);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-04-09 17:06:23 +0530 (Mon, 09 Apr 2012)");
   script_name("Java Runtime Environment Multiple Vulnerabilities (MAC OS X)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5228");
@@ -51,7 +51,7 @@ if(description)
   possibly execute arbitrary code.");
   script_tag(name:"affected", value:"Java Runtime Environment (JRE) version 1.6.0_29");
   script_tag(name:"insight", value:"The flaws are due to multiple unspecified errors in th application.");
-  script_tag(name:"solution", value:"Upgrade to Java Runtime Environment (JRE) version 1.6.0_31 or later");
+  script_tag(name:"solution", value:"Upgrade to Java Runtime Environment (JRE) version 1.6.0_31 or later.");
   script_tag(name:"summary", value:"The host is installed with Java Runtime Environment and is prone to
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"package");

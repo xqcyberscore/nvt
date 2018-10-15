@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2014-0002_remote.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_VMSA-2014-0002_remote.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # VMSA-2014-0002: VMware vSphere updates to third party libraries (remote check)
 #
@@ -32,13 +32,13 @@ if (description)
   script_cve_id("CVE-2013-5211", "CVE-2013-4332");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11867 $");
   script_name("VMSA-2014-0002 VMware vSphere updates to third party libraries (remote check)");
 
 
   script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0002.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-03-12 14:04:01 +0100 (Wed, 12 Mar 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -89,7 +89,7 @@ if( ! fixed_builds[esxVersion] ) exit( 0 );
 if( int( esxBuild ) < int( fixed_builds[esxVersion] ) )
  {
   security_message(port:0, data: esxi_remote_report( ver:esxVersion, build: esxBuild, fixed_build: fixed_builds[esxVersion] ) );
-  exit( 0 );
+  exit(0);
 }
 
 exit( 99 );

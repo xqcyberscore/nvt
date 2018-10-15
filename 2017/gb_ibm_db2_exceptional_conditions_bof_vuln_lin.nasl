@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_exceptional_conditions_bof_vuln_lin.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_ibm_db2_exceptional_conditions_bof_vuln_lin.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # IBM DB2 'Exceptional Conditions' Buffer Overflow Vulnerability (Linux)
 #
@@ -29,39 +29,34 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811404");
-  script_version("$Revision: 7571 $");
+  script_version("$Revision: 11863 $");
   script_cve_id("CVE-2017-1105");
   script_bugtraq_id(99271);
   script_tag(name:"cvss_base", value:"3.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-29 13:12:55 +0530 (Thu, 29 Jun 2017)");
   script_name("IBM DB2 'Exceptional Conditions' Buffer Overflow Vulnerability (Linux)");
 
-  script_tag(name: "summary" , value:"This host is running IBM DB2 and is
+  script_tag(name:"summary", value:"This host is running IBM DB2 and is
   prone to buffer overflow vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version of IBM DB2
-  with the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The falws exists due to an improper 
+  script_tag(name:"insight", value:"The falws exists due to an improper
   Handling of Exceptional Conditions.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a local
-  attacker to overwrite DB2 files or cause a denial of service.
+  script_tag(name:"impact", value:"Successful exploitation will allow a local
+  attacker to overwrite DB2 files or cause a denial of service.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"
-  IBM DB2 versions 9.7 before FP11
+  script_tag(name:"affected", value:"IBM DB2 versions 9.7 before FP11
   IBM DB2 versions 10.1 before FP6
   IBM DB2 versions 10.5 before FP8
   IBM DB2 versions 11.1 before 11.1.2 FP2");
 
-  script_tag(name: "solution" , value:"Apply the appropriate fix from below links,
-  http://www-01.ibm.com/support/docview.wss?uid=swg22003877");
+  script_tag(name:"solution", value:"Apply the appropriate fix");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg22003877");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg22003877");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -76,10 +71,6 @@ if(description)
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
-
-## Variable Initialization
-ibmVer  = "";
-ibmPort = "";
 
 if(!ibmPort = get_app_port(cpe:CPE)){
   exit(0);

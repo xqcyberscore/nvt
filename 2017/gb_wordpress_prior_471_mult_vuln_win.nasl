@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_prior_471_mult_vuln_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_wordpress_prior_471_mult_vuln_win.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # WordPress < 4.7.1 Multiple Security Vulnerabilities (Windows)
 #
@@ -31,12 +31,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108047");
-  script_version("$Revision: 7543 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-5493", "CVE-2017-5492", "CVE-2017-5491", "CVE-2017-5490",
   "CVE-2017-5489", "CVE-2017-5488", "CVE-2017-5487", "CVE-2016-10066");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-01-20 12:20:15 +0100 (Fri, 20 Jan 2017)");
   script_name("WordPress < 4.7.1 Multiple Security Vulnerabilities (Windows)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running WordPress and is prone
   to multiple security vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
 
@@ -70,14 +69,11 @@ if(description)
   - Weak cryptographic security for multisite activation key");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
-  remote attacker to e.g. obtain sensitive information or inject arbitrary web script or HTML. 
-
-  Impact Level: Application");
+  remote attacker to e.g. obtain sensitive information or inject arbitrary web script or HTML.");
 
   script_tag(name:"affected", value:"WordPress versions 4.7 and earlier on Windows.");
 
-  script_tag(name:"solution", value:"Upgrade to WordPress version 4.7.1.
-  For updates refer to https://wordpress.org");
+  script_tag(name:"solution", value:"Upgrade to WordPress version 4.7.1.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

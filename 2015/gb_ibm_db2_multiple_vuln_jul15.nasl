@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_multiple_vuln_jul15.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_ibm_db2_multiple_vuln_jul15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # IBM DB2 Multiple Vulnerabilities - July15
 #
@@ -28,21 +28,20 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805940");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-1935", "CVE-2015-1922", "CVE-2015-1883", "CVE-2015-0157",
                 "CVE-2014-8910");
   script_bugtraq_id(75908, 75911, 75946, 75947, 75949);
   script_tag(name:"cvss_base", value:"8.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-29 14:18:25 +0530 (Wed, 29 Jul 2015)");
   script_name("IBM DB2 Multiple Vulnerabilities - July15");
 
   script_tag(name:"summary", value:"This host is running IBM DB2 and is
   prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version of IBM DB2
-  with the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -71,11 +70,7 @@ if(description)
 
   IBM DB2 versions 10.5 through FP5");
 
-  script_tag(name:"solution", value:"Apply the appropriate fix from below links,
-
-  http://www-01.ibm.com/support/docview.wss?uid=swg21697988
-
-  http://www-01.ibm.com/support/docview.wss?uid=swg21697987
+  script_tag(name:"solution", value:"Apply the appropriate fix  http://www-01.ibm.com/support/docview.wss?uid=swg21697987
 
   http://www-01.ibm.com/support/docview.wss?uid=swg21698308
 
@@ -98,6 +93,7 @@ if(description)
   script_family("Databases");
   script_dependencies("gb_ibm_db2_remote_detect.nasl");
   script_mandatory_keys("IBM-DB2/installed");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21697988");
   exit(0);
 }
 

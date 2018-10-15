@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_space_JSA10698.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_junos_space_JSA10698.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Multiple Vulnerabilities in Junos Space
 #
@@ -33,7 +33,7 @@ if (description)
                "CVE-2013-5908");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Multiple Vulnerabilities in Junos Space");
 
@@ -50,14 +50,14 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-16 20:11:07 +0200 (Fri, 16 Oct 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_junos_space_version.nasl");
   script_mandatory_keys("junos_space/installed");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

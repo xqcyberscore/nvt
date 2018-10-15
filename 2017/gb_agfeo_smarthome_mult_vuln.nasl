@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_agfeo_smarthome_mult_vuln.nasl 6749 2017-07-18 09:55:56Z ckuersteiner $
+# $Id: gb_agfeo_smarthome_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # AGFEO SmartHome Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:agfeo:smarthome";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106965");
-  script_version("$Revision: 6749 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-18 11:55:56 +0200 (Tue, 18 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-18 15:36:38 +0700 (Tue, 18 Jul 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-18 15:36:38 +0700 (Tue, 18 Jul 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("AGFEO SmartHome Multiple Vulnerabilities");
 
@@ -49,25 +49,25 @@ if (description)
   script_dependencies("gb_agfeo_smarthome_detect.nasl");
   script_mandatory_keys("agfeo_smarthome/detected");
 
-  script_tag(name: "summary", value: "AGFEO SmartHome is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"AGFEO SmartHome is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "AGFEO SmartHome is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"AGFEO SmartHome is prone to multiple vulnerabilities:
 
-- Unauthenticated access to web services and authentication bypass
+  - Unauthenticated access to web services and authentication bypass
 
-- Unauthenticated access to configuration ports
+  - Unauthenticated access to configuration ports
 
-- Hardcoded cryptographic keys
+  - Hardcoded cryptographic keys
 
-- Multiple reflected cross site scripting (XSS) vulnerabilities");
+  - Multiple reflected cross site scripting (XSS) vulnerabilities");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "AGFEO SmartHome on ES 5/6/7 prior to version 1.12c");
+  script_tag(name:"affected", value:"AGFEO SmartHome on ES 5/6/7 prior to version 1.12c");
 
-  script_tag(name: "solution", value: "Upgrade to version 1.12c or later.");
+  script_tag(name:"solution", value:"Upgrade to version 1.12c or later.");
 
-  script_xref(name: "URL", value: "https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20170712-0_AGFEO_Smart_Home_Multiple_critical_vulnerabilities_v10.txt");
+  script_xref(name:"URL", value:"https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20170712-0_AGFEO_Smart_Home_Multiple_critical_vulnerabilities_v10.txt");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_robohelp_code_exec_vuln_win.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_adobe_robohelp_code_exec_vuln_win.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Adobe RoboHelp Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:adobe:robohelp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803771");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-5327");
   script_bugtraq_id(62887);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-17 16:38:27 +0530 (Thu, 17 Oct 2013)");
   script_name("Adobe RoboHelp Arbitrary Code Execution Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with Adobe RoboHelp and is prone to arbitrary code
 execution vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"solution", value:"Apply the patch from below link,
-http://www.adobe.com/support/security/bulletins/apsb13-24.html ");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"insight", value:"The flaw is due to an unspecified error and can be exploited to cause
 memory corruption.");
   script_tag(name:"affected", value:"Adobe RoboHelp version 10.x on Windows");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_hostname_security_bypass_vuln_win.nasl 10806 2018-08-07 10:06:18Z santu $
+# $Id: gb_apache_tomcat_hostname_security_bypass_vuln_win.nasl 11897 2018-10-15 05:26:22Z cfischer $
 #
 # Apache Tomcat 'Hostname Verification' Security Bypass Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813742");
-  script_version("$Revision: 10806 $");
+  script_version("$Revision: 11897 $");
   script_cve_id("CVE-2018-8034");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 12:06:18 +0200 (Tue, 07 Aug 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 07:26:22 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-08-03 16:49:49 +0530 (Fri, 03 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Tomcat 'Hostname Verification' Security Bypass Vulnerability (Windows)");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2916652.nasl 11576 2018-09-24 14:59:42Z cfischer $
+# $Id: gb_microsoft_security_advisory_2916652.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Digital Certificates Security Advisory (2916652)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803978");
-  script_version("$Revision: 11576 $");
+  script_version("$Revision: 11878 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-12-10 17:56:31 +0530 (Tue, 10 Dec 2013)");
   script_name("Microsoft Digital Certificates Security Advisory (2916652)");
 
@@ -39,8 +39,7 @@ if(description)
 advisory (2916652).");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link
-https://technet.microsoft.com/en-us/security/advisory/2916652");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"The flaw is due to DG Tresor which improperly issued a subordinate CA
 certificate");
@@ -60,6 +59,7 @@ phishing attacks, or perform man-in-the-middle attacks.");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/advisory/2916652");
   exit(0);
 }
 
@@ -79,7 +79,7 @@ if(!sysPath ){
   exit(0);
 }
 
-exeVer = fetch_file_version(sysPath, file_name:"system32\Crypt32.dll");
+exeVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Crypt32.dll");
 if(!exeVer){
   exit(0);
 }

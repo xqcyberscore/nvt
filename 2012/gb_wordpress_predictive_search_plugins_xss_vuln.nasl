@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_predictive_search_plugins_xss_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_wordpress_predictive_search_plugins_xss_vuln.nasl 11861 2018-10-12 09:29:59Z cfischer $
 #
 # WordPress WP e-Commerce And WooCommerce Predictive Search Plugin 'rs' XSS Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803072");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11861 $");
   script_bugtraq_id(56702, 56703);
   script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fr, 14 Apr 2017)$");
   script_tag(name:"creation_date", value:"2012-12-10 13:35:37 +0530 (Mon, 10 Dec 2012)");
@@ -65,7 +65,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running WordPress WP e-Commerce or WooCommerce Predictive
   Search Plugins and is prone to cross site scripting vulnerability.");
 
-  script_tag(name:"solution", value:"Upgrade to the WordPress WooCommerce Predictive Search Plugin version 1.0.6 or later,  Upgrade to the WordPress WP e-Commerce Predictive Search Plugin version 1.1.2 or later,");
+  script_tag(name:"solution", value:"Upgrade to the WordPress WooCommerce Predictive Search Plugin version 1.0.6 or later, upgrade to the WordPress WP e-Commerce Predictive Search Plugin version 1.1.2 or later.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_archiva_home_page_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_apache_archiva_home_page_xss_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Apache Archiva Home Page Cross-Site Scripting vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:archiva";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804447");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-2187");
   script_bugtraq_id(66998);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-08 17:04:00 +0530 (Thu, 08 May 2014)");
   script_name("Apache Archiva Home Page Cross-Site Scripting vulnerability");
 
@@ -48,8 +48,7 @@ it to users.");
 script code in a user's browser within the trust relationship between their
 browser and the server.");
   script_tag(name:"affected", value:"Apache Archiva 1.2 through 1.2.2 and 1.3 before 1.3.8");
-  script_tag(name:"solution", value:"Upgrade to Apache Archiva 1.3.8, 2.0.1 or later,
-For updates refer to http://archiva.apache.org/index.cgi");
+  script_tag(name:"solution", value:"Upgrade to Apache Archiva 1.3.8, 2.0.1 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://archiva.apache.org/security.html");
@@ -61,6 +60,7 @@ For updates refer to http://archiva.apache.org/index.cgi");
   script_dependencies("gb_apache_archiva_detect.nasl");
   script_mandatory_keys("apache_archiva/installed");
   script_require_ports("Services/www", 80, 8080);
+  script_xref(name:"URL", value:"http://archiva.apache.org/index.cgi");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_info_disc_vuln_dec14_win.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_mozilla_firefox_info_disc_vuln_dec14_win.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Mozilla Firefox CSP Information Disclosure Vulnerability Dec14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805216");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1591");
   script_bugtraq_id(71399);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-16 09:32:14 +0530 (Tue, 16 Dec 2014)");
   script_name("Mozilla Firefox CSP Information Disclosure Vulnerability Dec14 (Windows)");
 
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Mozilla Firefox version 33.0 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 34.0
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -64,6 +64,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

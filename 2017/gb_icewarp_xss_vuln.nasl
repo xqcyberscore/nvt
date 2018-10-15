@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icewarp_xss_vuln.nasl 9895 2018-05-18 04:24:05Z ckuersteiner $
+# $Id: gb_icewarp_xss_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # IceWarp XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:icewarp:mail_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140331");
-  script_version("$Revision: 9895 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-18 06:24:05 +0200 (Fri, 18 May 2018) $");
-  script_tag(name: "creation_date", value: "2017-08-29 10:02:16 +0700 (Tue, 29 Aug 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-29 10:02:16 +0700 (Tue, 29 Aug 2017)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-12844");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("IceWarp XSS Vulnerability");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("gb_icewarp_web_detect.nasl");
   script_mandatory_keys("icewarp/installed");
 
-  script_tag(name: "summary", value: "IceWarp is prone to a cross-site scripting vulnerability");
+  script_tag(name:"summary", value:"IceWarp is prone to a cross-site scripting vulnerability");
 
-  script_tag(name: "insight", value: "Cross-site scripting (XSS) vulnerability in the admin panel in IceWarp Mail
+  script_tag(name:"insight", value:"Cross-site scripting (XSS) vulnerability in the admin panel in IceWarp Mail
 Server allows remote authenticated domain administrators to inject arbitrary web script or HTML via a crafted
 user name.");
 
-  script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "affected", value: "IceWarp version 10.4.4 and maybe prior and later.");
+  script_tag(name:"affected", value:"IceWarp version 10.4.4 and maybe prior and later.");
 
-  script_tag(name: "solution", value: "No known solution is available as of 18th May, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 18th May, 2018. Information regarding
 this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "https://youtu.be/MI4dhEia1d4");
+  script_xref(name:"URL", value:"https://youtu.be/MI4dhEia1d4");
 
   exit(0);
 }

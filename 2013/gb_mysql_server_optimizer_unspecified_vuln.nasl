@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_server_optimizer_unspecified_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_mysql_server_optimizer_unspecified_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # MySQL Server Optimizer Component Unspecified Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803800");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2012-1696");
   script_bugtraq_id(53071);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-04 13:19:03 +0530 (Tue, 04 Jun 2013)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -50,8 +50,7 @@ if(description)
   availability via unknown vectors.");
   script_tag(name:"affected", value:"MySQL version 5.5.x before 5.5.20");
   script_tag(name:"insight", value:"Unspecified error in MySQL Server component related to Server Optimizer.");
-  script_tag(name:"solution", value:"Apply the patch from the below link,
-  http://www.oracle.com/technetwork/topics/security/cpuapr2012-366314.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"summary", value:"The host is running MySQL and is prone to unspecified
   vulnerability.");
 

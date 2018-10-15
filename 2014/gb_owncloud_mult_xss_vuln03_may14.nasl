@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_xss_vuln03_may14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_owncloud_mult_xss_vuln03_may14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # ownCloud Multiple Cross Site Scripting Vulnerabilities -03 May14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804284");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-2150");
   script_bugtraq_id(60416);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 16:30:55 +0530 (Tue, 06 May 2014)");
   script_name("ownCloud Multiple Cross Site Scripting Vulnerabilities -03 May14");
 
@@ -48,8 +48,7 @@ passed via the unspecified vectors to js/viewer.js script.");
 script code in a user's browser within the trust relationship between their
 browser and the server.");
   script_tag(name:"affected", value:"ownCloud Server before version 4.5.12 and 5.0.x before version 5.0.7");
-  script_tag(name:"solution", value:"Upgrade to ownCloud version 4.5.12 or 5.0.7 or later,
-For updates refer to http://owncloud.org");
+  script_tag(name:"solution", value:"Upgrade to ownCloud version 4.5.12 or 5.0.7 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2013/q2/514");

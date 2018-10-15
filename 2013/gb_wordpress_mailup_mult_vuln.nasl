@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mailup_mult_vuln.nasl 11620 2018-09-26 09:10:24Z asteins $
+# $Id: gb_wordpress_mailup_mult_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Wordpress MailUp Plugin Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803448");
-  script_version("$Revision: 11620 $");
+  script_version("$Revision: 11865 $");
   script_cve_id("CVE-2013-2640");
   script_bugtraq_id(58467);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 11:10:24 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-03-26 13:22:02 +0530 (Tue, 26 Mar 2013)");
   script_name("Wordpress MailUp Plugin Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51917");
@@ -52,8 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Wordpress MailUp Plugin version 1.3.1 and prior");
   script_tag(name:"insight", value:"Not properly restrict access to unspecified Ajax functions in
   ajax.functions.php");
-  script_tag(name:"solution", value:"Upgrade Wordpress MailUp Plugin 1.3.2 or later,
-  For updates refer to http://wordpress.org/extend/plugins/wp-mailup");
+  script_tag(name:"solution", value:"Upgrade Wordpress MailUp Plugin 1.3.2 or later.");
   script_tag(name:"summary", value:"This host is installed with Wordpress MailUp Plugin and is prone
   to multiple vulnerabilities.");
 

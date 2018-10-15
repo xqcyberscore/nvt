@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_62403.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: gb_cisco_nx_os_62403.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Cisco Open Network Environment Platform Denial of Service Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
   script_cve_id("CVE-2013-5496");
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:C");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Cisco Open Network Environment Platform  Denial of Service Vulnerability");
 
@@ -40,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62403");
   script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCui51551");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-01-10 12:10:24 +0100 (Fri, 10 Jan 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -59,7 +59,7 @@ service to legitimate users.");
 denial-of-service vulnerability");
   script_tag(name:"affected", value:"Nexus 3000 Series with NX-OS 6.0(2)U1(2) and 6.0(2)U1(1)");
 
- exit(0);
+  exit(0);
 }
 
 if( ! device = get_kb_item( "cisco_nx_os/device" ) ) exit( 0 );

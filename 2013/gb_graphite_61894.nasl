@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphite_61894.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_graphite_61894.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Graphite Remote Code Execution Vulnerability
 #
@@ -32,14 +32,14 @@ if (description)
   script_cve_id("CVE-2013-5093");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
 
   script_name("Graphite Remote Code Execution Vulnerability");
 
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61894");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-08-22 17:46:22 +0200 (Thu, 22 Aug 2013)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -64,7 +64,7 @@ a condition where arbitrary code can be executed");
   script_tag(name:"summary", value:"Graphite is prone to a remote code-execution vulnerability.");
   script_tag(name:"affected", value:"Graphite versions 0.9.5 through 0.9.10 are vulnerable.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

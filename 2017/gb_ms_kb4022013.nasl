@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022013.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_ms_kb4022013.nasl 11879 2018-10-12 12:48:49Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4022013)
 #
@@ -27,51 +27,48 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811163");
-  script_version("$Revision: 7585 $");
-  script_cve_id("CVE-2017-8476", "CVE-2017-8478", "CVE-2017-8479", "CVE-2017-8480", 
-                "CVE-2017-8481", "CVE-2017-8482", "CVE-2017-8485", "CVE-2017-8489", 
-                "CVE-2017-0299", "CVE-2017-8491", "CVE-2017-8492", "CVE-2017-0300", 
+  script_version("$Revision: 11879 $");
+  script_cve_id("CVE-2017-8476", "CVE-2017-8478", "CVE-2017-8479", "CVE-2017-8480",
+                "CVE-2017-8481", "CVE-2017-8482", "CVE-2017-8485", "CVE-2017-8489",
+                "CVE-2017-0299", "CVE-2017-8491", "CVE-2017-8492", "CVE-2017-0300",
                 "CVE-2017-8462", "CVE-2017-8469");
   script_bugtraq_id(98903, 98845, 98856, 98857, 98862, 98858, 98860, 98865, 98884,
                     98869, 98870, 98901, 98900, 98842);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-14 09:35:26 +0530 (Wed, 14 Jun 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4022013)");
 
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4022013");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
+
   - The Windows kernel improperly initializes objects in memory.
- 
+
   - The Windows kernel fails to properly initialize a memory address, allowing
     an attacker to retrieve information that could lead to a Kernel Address Space
     Layout Randomization (KASLR) bypass.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to obtain information to further compromise the user's system.
-
-  Impact Level: System");
+  to obtain information to further compromise the user's system.");
 
   script_tag(name:"affected", value:"Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4022013");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4022013");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4022013");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -82,28 +79,20 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-fileVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2008:3, win2008x64:3) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of 'Advapi32.dll'
-fileVer = fetch_file_version(sysPath, file_name:"Advapi32.dll");
+fileVer = fetch_file_version(sysPath:sysPath, file_name:"Advapi32.dll");
 if(!fileVer){
   exit(0);
 }
 
-## Check for Advapi32.dll version
 if(version_is_less(version:fileVer, test_version:"6.0.6002.19598"))
 {
   Vulnerable_range = "Less than 6.0.6002.19598";

@@ -29,9 +29,9 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803418");
-  script_version("$Revision: 11525 $");
+  script_version("$Revision: 11865 $");
   script_bugtraq_id(57931, 57947);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 17:19:23 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-02-19 19:28:21 +0530 (Tue, 19 Feb 2013)");
   script_cve_id("CVE-2013-0640", "CVE-2013-0641");
   script_tag(name:"cvss_base", value:"9.3");
@@ -52,8 +52,7 @@ Adobe Acrobat X Version 10.x prior to 10.1.6 on Windows
 
 Adobe Acrobat XI Version 11.x prior to 11.0.02 on Windows");
   script_tag(name:"insight", value:"The flaws are due to unspecified errors.");
-  script_tag(name:"solution", value:"Upgrade to version 9.5.4 or X (10.1.6) or XI (11.0.02) or later,
-For updates refer to http://www.adobe.com");
+  script_tag(name:"solution", value:"Upgrade to version 9.5.4 or X (10.1.6) or XI (11.0.02) or later.");
   script_tag(name:"summary", value:"This host is installed with Adobe Acrobat and is prone to
 multiple unspecified vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary

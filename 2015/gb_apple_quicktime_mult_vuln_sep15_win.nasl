@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_vuln_sep15_win.nasl 11422 2018-09-17 07:30:48Z mmartin $
+# $Id: gb_apple_quicktime_mult_vuln_sep15_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Apple QuickTime Multiple Vulnerabilities Sep15 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apple:quicktime";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805969");
-  script_version("$Revision: 11422 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-3788", "CVE-2015-3789", "CVE-2015-3790", "CVE-2015-3791",
                 "CVE-2015-3792", "CVE-2015-5751", "CVE-2015-5779", "CVE-2015-5785",
                 "CVE-2015-5786");
   script_bugtraq_id(76340, 76443, 76444);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:30:48 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-01 17:24:20 +0530 (Tue, 01 Sep 2015)");
   script_name("Apple QuickTime Multiple Vulnerabilities Sep15 (Windows)");
 
@@ -55,7 +55,7 @@ if(description)
   Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Apple QuickTime version 7.7.8
-  or later. For updates refer to http://support.apple.com/downloads");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +68,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_apple_quicktime_detection_win_900124.nasl");
   script_mandatory_keys("QuickTime/Win/Ver");
+  script_xref(name:"URL", value:"http://support.apple.com/downloads");
   exit(0);
 }
 

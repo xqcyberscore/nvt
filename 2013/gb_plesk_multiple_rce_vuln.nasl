@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plesk_multiple_rce_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_plesk_multiple_rce_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # Parallels Plesk PHP Code Execution and Command Execution Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803712");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2013-3843", "CVE-2013-4878");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-06 11:34:50 +0530 (Thu, 06 Jun 2013)");
   script_name("Parallels Plesk PHP Code Execution and Command Execution Vulnerabilities");
 
@@ -53,8 +53,8 @@ if(description)
   script_tag(name:"insight", value:"The flaws are due to improper validation of HTTP POST requests, By sending
   a specially crafted direct request, an attacker can execute PHP code or
   OS commands.");
-  script_tag(name:"solution", value:"Upgrade to Plesk 11.0.9 or later,
-  http://www.parallels.com/download/plesk");
+  script_tag(name:"solution", value:"Upgrade to Plesk 11.0.9 or later.");
+  script_xref(name:"URL", value:"http://www.parallels.com/download/plesk");
   script_tag(name:"summary", value:"This host is installed with Parallels Plesk and is prone to
   PHP code execution and command execution vulnerabilities.");
 

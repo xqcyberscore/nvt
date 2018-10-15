@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_endpoint_protection_mult_vuln_oct15.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_symantec_endpoint_protection_mult_vuln_oct15.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Symantec Endpoint Protection Multiple Vulnerabilities Oct15
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805982");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-9229", "CVE-2014-9228", "CVE-2014-9227");
   script_bugtraq_id(75204, 75202, 75203);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-10-09 11:10:42 +0530 (Fri, 09 Oct 2015)");
   script_name("Symantec Endpoint Protection Multiple Vulnerabilities Oct15");
 
@@ -60,8 +60,7 @@ if(description)
   version 12.1 RU6");
 
   script_tag(name:"solution", value:"Update to Symantec Endpoint Protection (SEP)
-  version 12.1 RU6 or later. For updates refer to
-  http://www.symantec.com/en/in/endpoint-protection");
+  version 12.1 RU6 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -72,6 +71,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("secpod_symantec_prdts_detect.nasl");
   script_mandatory_keys("Symantec/Endpoint/Protection");
+  script_xref(name:"URL", value:"http://www.symantec.com/en/in/endpoint-protection");
   exit(0);
 }
 

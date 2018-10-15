@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortimail_xss_vuln.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_fortimail_xss_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # FortiMail Stored Cross Site Scripting Vulnerability - June 2015
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:fortinet:fortimail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805646");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2014-8617");
   script_bugtraq_id(72820);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-06-08 11:54:11 +0530 (Mon, 08 Jun 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("FortiMail Stored Cross Site Scripting Vulnerability - June 2015");
@@ -57,8 +57,7 @@ if(description)
   5.0.x before 5.0.8, 5.1.x before 5.1.5, and 5.2.x before 5.2.3.");
 
   script_tag(name:"solution", value:"Upgrade to Fortinet FortiMail 4.3.9 or
-  5.0.8 or 5.1.5 or 5.2.3 or later.
-  For updates refer to http://www.fortinet.com/");
+  5.0.8 or 5.1.5 or 5.2.3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +68,7 @@ if(description)
   script_family("FortiOS Local Security Checks");
   script_dependencies("gb_fortimail_version.nasl");
   script_mandatory_keys("fortimail/version");
+  script_xref(name:"URL", value:"http://www.fortinet.com/");
   exit(0);
 }
 

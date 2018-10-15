@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asr_1000_CSCuv93130.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_cisco_asr_1000_CSCuv93130.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Cisco ASR 1000 Series Root Shell License Bypass Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2015-6383");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11299 $");
+  script_version("$Revision: 11872 $");
 
   script_name("Cisco ASR 1000 Series Root Shell License Bypass Vulnerability");
 
@@ -51,7 +51,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-12-01 14:48:03 +0100 (Tue, 01 Dec 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -59,7 +59,7 @@ if (description)
   script_dependencies("gb_cisco_asr_1000_detect.nasl");
   script_mandatory_keys("cisco_asr_1000/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

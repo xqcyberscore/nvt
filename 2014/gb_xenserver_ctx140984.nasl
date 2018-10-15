@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx140984.nasl 11339 2018-09-11 14:25:52Z mmartin $
+# $Id: gb_xenserver_ctx140984.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Citrix XenServer Multiple Security Updates (CTX140984)
 #
@@ -34,14 +34,14 @@ if (description)
   script_cve_id("CVE-2014-4021", "CVE-2014-4947", "CVE-2014-4948");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11339 $");
+  script_version("$Revision: 11867 $");
 
   script_name("Citrix XenServer Multiple Security Updates (CTX140984)");
 
   script_xref(name:"URL", value:"http://support.citrix.com/article/CTX140984");
 
   script_tag(name:"vuldetect", value:"Check the installed hotfixes");
-  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory.");
 
   script_tag(name:"summary", value:"A number of security vulnerabilities have been identified in Citrix XenServer.
 These vulnerabilities affect all currently supported versions of Citrix XenServer up to and including Citrix
@@ -56,15 +56,18 @@ The following vulnerabilities have been addressed:
   - CVE-2014-4948: Citrix XenServer guest denial of service and information leak through guest VHD modification");
 
   script_tag(name:"affected", value:"Citrix XenServer 6.2 Service Pack 1,
+
 Citrix XenServer 6.1,
+
 Citrix XenServer 6.0.2
+
 Citrix XenServer 6.0.0");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-12-18 17:37:46 +0100 (Thu, 18 Dec 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("Citrix Xenserver Local Security Checks");
@@ -72,7 +75,7 @@ Citrix XenServer 6.0.0");
   script_dependencies("gb_xenserver_version.nasl");
   script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-053.nasl 11579 2018-09-25 05:43:52Z cfischer $
+# $Id: gb_ms14-053.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Microsoft .NET Framework Denial of Service Vulnerability (2990931)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804480");
-  script_version("$Revision: 11579 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-4072");
   script_bugtraq_id(69603);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 07:43:52 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-09-10 09:34:51 +0530 (Wed, 10 Sep 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -55,9 +55,7 @@ if(description)
   2.0, 3.0, 3.5, 3.5.1, 4.0, 4.5, 4.5.1 and 4.5.2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS14-053");
+  listed hotfixes or download and install the hotfixes from the referenced advisory.");
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/60982");

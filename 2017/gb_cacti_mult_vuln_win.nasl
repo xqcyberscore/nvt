@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_vuln_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_cacti_mult_vuln_win.nasl 11900 2018-10-15 07:44:31Z mmartin $
 #
 # Cacti Multiple Vulnerabilities (Windows)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:cacti:cacti";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140269");
-  script_version("$Revision: 7543 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-02 16:54:25 +0700 (Wed, 02 Aug 2017)");
+  script_version("$Revision: 11900 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-02 16:54:25 +0700 (Wed, 02 Aug 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-12065", "CVE-2017-12066");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Cacti Multiple Vulnerabilities (Windows)");
 
@@ -49,26 +49,26 @@ if (description)
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("cacti_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("cacti/installed","Host/runs_windows");
+  script_mandatory_keys("cacti/installed", "Host/runs_windows");
 
-  script_tag(name: "summary", value: "Cacti is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Cacti is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "Cacti is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Cacti is prone to multiple vulnerabilities:
 
-- spikekill.php in Cactimight allow remote attackers to execute arbitrary code via the avgnan, outlier-start, or
+  - spikekill.php in Cactimight allow remote attackers to execute arbitrary code via the avgnan, outlier-start, or
 outlier-end parameter. (CVE-2017-12065)
 
-- Cross-site scripting (XSS) vulnerability in aggregate_graphs.php in Cacti allows remote authenticated users to
+  - Cross-site scripting (XSS) vulnerability in aggregate_graphs.php in Cacti allows remote authenticated users to
 inject arbitrary web script or HTML via specially crafted HTTP Referer headers, related to the $cancel_url
 variable. (CVE-2017-12066)");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Cacti version 1.1.15 and prior.");
+  script_tag(name:"affected", value:"Cacti version 1.1.15 and prior.");
 
-  script_tag(name: "solution", value: "Upgrade to version 1.1.16 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 1.1.16 or later.");
 
-  script_xref(name: "URL", value: "https://github.com/Cacti/cacti/issues/877");
+  script_xref(name:"URL", value:"https://github.com/Cacti/cacti/issues/877");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_lock_url_dos_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_apache_subversion_lock_url_dos_vuln.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Apache Subversion 'mod_dav_svn' Module Multiple DoS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802055");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11865 $");
   script_bugtraq_id(58897, 58323);
   script_cve_id("CVE-2013-1847", "CVE-2013-1849");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-06-11 12:32:36 +0530 (Tue, 11 Jun 2013)");
   script_name("Apache Subversion 'mod_dav_svn' Module Multiple DoS Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52966/");
@@ -55,8 +55,7 @@ if(description)
 
   - 'PROPFIND' request on an activity URL.");
 
-  script_tag(name:"solution", value:"Upgrade to Apache Subversion version 1.6.21 or 1.7.9 or later,
-  For updates refer to http://subversion.apache.org");
+  script_tag(name:"solution", value:"Upgrade to Apache Subversion version 1.6.21 or 1.7.9 or later.");
 
   script_tag(name:"summary", value:"The host is running Apache Subversion and is prone to multiple
   denial of service vulnerabilities.");

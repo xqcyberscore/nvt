@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_jira_mult_vuln.nasl 5969 2017-04-18 14:59:34Z ckuerste $
+# $Id: gb_atlassian_jira_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Atlassian JIRA Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:atlassian:jira';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106761");
-  script_version("$Revision: 5969 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-18 16:59:34 +0200 (Tue, 18 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-18 11:43:10 +0200 (Tue, 18 Apr 2017)");
-  script_tag(name: "cvss_base", value: "6.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-18 11:43:10 +0200 (Tue, 18 Apr 2017)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-4318", "CVE-2016-4319");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Atlassian JIRA Multiple Vulnerabilities");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("secpod_atlassian_jira_detect.nasl");
   script_mandatory_keys("atlassian_jira/installed");
 
-  script_tag(name: "summary", value: "Atlassian JIRA is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Atlassian JIRA is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Atlassian JIRA is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"Atlassian JIRA is prone to multiple vulnerabilities:
 
-- XSS vulnerability in project/ViewDefaultProjectRoleActors.jspa via a role name. (CVE-2016-4318)
+  - XSS vulnerability in project/ViewDefaultProjectRoleActors.jspa via a role name. (CVE-2016-4318)
 
-- CSRF vulnerability in /auditing/settings. (CVE-2016-4319)");
+  - CSRF vulnerability in /auditing/settings. (CVE-2016-4319)");
 
-  script_tag(name: "affected", value: "Atlassian JIRA before 7.1.9.");
+  script_tag(name:"affected", value:"Atlassian JIRA before 7.1.9.");
 
-  script_tag(name: "solution", value: "Update to version 7.1.9 or later.");
+  script_tag(name:"solution", value:"Update to version 7.1.9 or later.");
 
-  script_xref(name: "URL", value: "https://jira.atlassian.com/browse/JRASERVER-61861");
-  script_xref(name: "URL", value: "https://jira.atlassian.com/browse/JRASERVER-61803");
+  script_xref(name:"URL", value:"https://jira.atlassian.com/browse/JRASERVER-61861");
+  script_xref(name:"URL", value:"https://jira.atlassian.com/browse/JRASERVER-61803");
 
   exit(0);
 }

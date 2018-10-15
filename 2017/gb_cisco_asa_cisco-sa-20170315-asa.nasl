@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_cisco-sa-20170315-asa.nasl 5585 2017-03-16 06:43:05Z ckuerste $
+# $Id: gb_cisco_asa_cisco-sa-20170315-asa.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Cisco Adaptive Security Appliance BGP Bidirectional Forwarding Detection ACL Bypass Vulnerability
 #
@@ -29,42 +29,42 @@ CPE = "cpe:/a:cisco:asa";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106654");
- script_cve_id("CVE-2017-3867");
- script_tag(name: "cvss_base", value: "5.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 5585 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106654");
+  script_cve_id("CVE-2017-3867");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11874 $");
 
- script_name("Cisco Adaptive Security Appliance BGP Bidirectional Forwarding Detection ACL Bypass Vulnerability");
+  script_name("Cisco Adaptive Security Appliance BGP Bidirectional Forwarding Detection ACL Bypass Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170315-asa");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170315-asa");
 
- script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
 
- script_tag(name: "summary", value: "A vulnerability in the Border Gateway Protocol (BGP) Bidirectional
+  script_tag(name:"summary", value:"A vulnerability in the Border Gateway Protocol (BGP) Bidirectional
 Forwarding Detection (BFD) implementation of Cisco Adaptive Security Appliance (ASA) Software could allow an
 unauthenticated, remote attacker to bypass the access control list (ACL) for specific TCP and UDP traffic.");
 
- script_tag(name: "insight", value: "The vulnerability occurs because the BFD implementation incorrectly allows
+  script_tag(name:"insight", value:"The vulnerability occurs because the BFD implementation incorrectly allows
 traffic with destination ports 3784 and 3785 through the interface ACLs.");
 
- script_tag(name: "impact", value: "An attacker could exploit this vulnerability by sending TCP or UDP packets
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by sending TCP or UDP packets
 with a destination port of 3784 or 3785 through the ASA.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-16 07:43:05 +0100 (Thu, 16 Mar 2017) $");
- script_tag(name: "creation_date", value: "2017-03-16 09:23:08 +0700 (Thu, 16 Mar 2017)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
- script_mandatory_keys("cisco_asa/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-16 09:23:08 +0700 (Thu, 16 Mar 2017)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
+  script_mandatory_keys("cisco_asa/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

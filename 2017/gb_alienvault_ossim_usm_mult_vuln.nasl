@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alienvault_ossim_usm_mult_vuln.nasl 5644 2017-03-21 09:07:05Z teissa $
+# $Id: gb_alienvault_ossim_usm_mult_vuln.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # AlienVault OSSIM/USM Multiple Vulnerabilities
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106617");
-  script_version("$Revision: 5644 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-21 10:07:05 +0100 (Tue, 21 Mar 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-23 09:39:34 +0700 (Thu, 23 Feb 2017)");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-23 09:39:34 +0700 (Thu, 23 Feb 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-7955");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("AlienVault OSSIM/USM Multiple Vulnerabilities");
 
@@ -49,17 +49,17 @@ if (description)
   script_dependencies("gb_ossim_web_detect.nasl");
   script_mandatory_keys("OSSIM/installed");
 
-  script_tag(name: "summary", value: "AlienVault OSSIM and USM are prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"AlienVault OSSIM and USM are prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP request and checks the response.");
 
-  script_tag(name: "insight", value: "Multiple vulnerabilities like object injection, authentication bypass and
+  script_tag(name:"insight", value:"Multiple vulnerabilities like object injection, authentication bypass and
 IP spoofing, have been found in AlienVault OSSIM and AlienVault USM.");
 
-  script_tag(name: "solution", value: "Update to 5.3.5 or newer versions.");
+  script_tag(name:"solution", value:"Update to 5.3.5 or newer versions.");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/41424/");
-  script_xref(name: "URL", value: "https://pentest.blog/unexpected-journey-into-the-alienvault-ossimusm-during-engagement/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/41424/");
+  script_xref(name:"URL", value:"https://pentest.blog/unexpected-journey-into-the-alienvault-ossimusm-during-engagement/");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_mar15_macosx.nasl 11423 2018-09-17 07:35:16Z cfischer $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_mar15_macosx.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-01 Mar15 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805478");
-  script_version("$Revision: 11423 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-0836", "CVE-2015-0831", "CVE-2015-0827", "CVE-2015-0822");
   script_bugtraq_id(72742, 72746, 72755, 72756);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 09:35:16 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-03-03 15:37:42 +0530 (Tue, 03 Mar 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 Mar15 (Mac OS X)");
 
@@ -66,7 +66,7 @@ if(description)
   Mac OS X");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 31.5
-  or later, For updates refer to https://www.mozilla.org/en-US/firefox/organizations");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -80,6 +80,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox-ESR/MacOSX/Version");
+  script_xref(name:"URL", value:"https://www.mozilla.org/en-US/firefox/organizations");
   exit(0);
 }
 

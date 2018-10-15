@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_eol_win.nasl 6498 2017-06-30 14:11:44Z cfischer $
+# $Id: gb_mysql_eol_win.nasl 11900 2018-10-15 07:44:31Z mmartin $
 #
 # MySQL End Of Life Detection (Windows)
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108189");
-  script_version("$Revision: 6498 $");
+  script_version("$Revision: 11900 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 16:11:44 +0200 (Fri, 30 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:44:31 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-26 13:48:20 +0200 (Mon, 26 Jun 2017)");
   script_name("MySQL End Of Life Detection (Windows)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -44,20 +44,12 @@ if(description)
   script_xref(name:"URL", value:"https://www.mysql.com/support/eol-notice.html");
   script_xref(name:"URL", value:"https://en.wikipedia.org/wiki/MySQL#Release_history");
 
-  tag_summary = "The MySQL version on the remote host has reached the end of life and should
-  not be used anymore.";
-
-  tag_impact = "An end of life version of MySQL is not receiving any security updates from the vendor. Unfixed security vulnerabilities
-  might be leveraged by an attacker to compromise the security of this host.";
-
-  tag_solution = "Update the MySQL version on the remote host to a still supported version.";
-
-  tag_vuldetect = "Get the installed version with the help of the detect NVT and check if the version is unsupported.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
+  script_tag(name:"summary", value:"The MySQL version on the remote host has reached the end of life and should
+  not be used anymore.");
+  script_tag(name:"impact", value:"An end of life version of MySQL is not receiving any security updates from the vendor. Unfixed security vulnerabilities
+  might be leveraged by an attacker to compromise the security of this host.");
+  script_tag(name:"solution", value:"Update the MySQL version on the remote host to a still supported version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

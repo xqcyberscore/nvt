@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln02_nov15_win.nasl 11542 2018-09-21 20:22:36Z cfischer $
+# $Id: gb_openssl_mult_vuln02_nov15_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # OpenSSL Multiple Vulnerabilities -02 Nov15 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806733");
-  script_version("$Revision: 11542 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-0293", "CVE-2015-0289", "CVE-2015-0288", "CVE-2015-0287",
                 "CVE-2015-0286", "CVE-2015-0209");
   script_bugtraq_id(73232, 73231, 73237, 73227, 73225, 73239);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-21 22:22:36 +0200 (Fri, 21 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-26 11:33:57 +0530 (Thu, 26 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Multiple Vulnerabilities -02 Nov15 (Windows)");
@@ -71,8 +71,7 @@ if(description)
   before 1.0.0r, 1.0.1 before 1.0.1m, and 1.0.2 before 1.0.2a on Windows");
 
   script_tag(name:"solution", value:"Upgrade to OpenSSL 0.9.8zf or 1.0.0r or
-  1.0.1m or 1.0.2a or later.
-  For updates refer to https://www.openssl.org");
+  1.0.1m or 1.0.2a or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.ubuntu.com/usn/USN-2537-1");

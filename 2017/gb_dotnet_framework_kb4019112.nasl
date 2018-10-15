@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_kb4019112.nasl 7582 2017-10-26 11:56:51Z cfischer $
+# $Id: gb_dotnet_framework_kb4019112.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Microsoft .NET Framework Security Bypass Vulnerability (4019112)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811039");
-  script_version("$Revision: 7582 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-0248");
   script_bugtraq_id(98117);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-05-11 13:37:20 +0530 (Thu, 11 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Security Bypass Vulnerability (4019112)");
@@ -40,37 +40,31 @@ if(description)
   script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft KB4019112");
 
-  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
-  check appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw exists when Microsoft .NET Framework
   (and .NET Core) components do not completely validate certificates.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass certain security restrictions and perform unauthorized
-  actions.
+  actions.");
 
-  Impact Level: System/Application");
-
-  script_tag(name:"affected", value:"
-  Microsoft .NET Framework 3.5.1
+  script_tag(name:"affected", value:"Microsoft .NET Framework 3.5.1
   Microsoft .NET Framework 4.5.2
   Microsoft .NET Framework 4.6/4.6.1
   Microsoft .NET Framework 4.6.2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-us/help/4019112");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4019112");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4019112");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
   exit(0);
@@ -82,31 +76,20 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-key = "";
-item = "";
-dotPath = "";
-dllVer = "";
-brkVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2008:3, win2008x64:3, win7:2, win7x64:2, win2008r2:2) <= 0){
   exit(0);
 }
 
-## Confirm .NET
 key = "SOFTWARE\Microsoft\ASP.NET\";
 if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-## Try to Get Version
 foreach item (registry_enum_keys(key:key))
 {
   dotPath = registry_get_sz(key:key + item, item:"Path");
   if(dotPath && "\Microsoft.NET\Framework" >< dotPath)
   {
-    ## Get version from System.data.dll
     dllVer = fetch_file_version(sysPath:dotPath, file_name:"system.dll");
     if(!dllVer){
       exit(0);

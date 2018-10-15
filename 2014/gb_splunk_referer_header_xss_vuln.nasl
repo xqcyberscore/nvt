@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_referer_header_xss_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_splunk_referer_header_xss_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # Splunk Referer Header Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:splunk:splunk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804479");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-5198");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-09-08 13:34:59 +0530 (Mon, 08 Sep 2014)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -55,8 +55,7 @@ if(description)
 
   script_tag(name:"affected", value:"Splunk Version 6.1.x before 6.1.3");
 
-  script_tag(name:"solution", value:"Upgrade to version 6.1.3 or later,
-  For updates refer to http://www.splunk.com/download");
+  script_tag(name:"solution", value:"Upgrade to version 6.1.3 or later.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/59940");
   script_xref(name:"URL", value:"http://www.splunk.com/view/SP-CAAAM9H");
@@ -71,6 +70,7 @@ if(description)
   script_mandatory_keys("Splunk/installed");
   script_require_ports("Services/www", 80);
 
+  script_xref(name:"URL", value:"http://www.splunk.com/download");
   exit(0);
 }
 

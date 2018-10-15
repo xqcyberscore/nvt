@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_xss_vuln_jul14.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_mantisbt_mult_xss_vuln_jul14.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # MantisBT Multiple Cross-Site Scripting Vulnerabilities -01 July14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804676");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2013-1810", "CVE-2013-0197");
   script_bugtraq_id(57468, 57456);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-07-14 11:59:38 +0530 (Mon, 14 Jul 2014)");
   script_name("MantisBT Multiple Cross-Site Scripting Vulnerabilities -01 July14");
 
@@ -53,8 +53,7 @@ not properly sanitised before being returned to the user.");
 code in a user's browser within the trust relationship between their browser and
 the server.");
   script_tag(name:"affected", value:"MantisBT version 1.2.12, prior versions may also be affected.");
-  script_tag(name:"solution", value:"Upgrade to MantisBT version 1.2.13 or later.
-For updates refer to http://www.mantisbt.org/download.php");
+  script_tag(name:"solution", value:"Upgrade to MantisBT version 1.2.13 or later.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/51853");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/81394");
@@ -71,6 +70,7 @@ For updates refer to http://www.mantisbt.org/download.php");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"http://www.mantisbt.org/download.php");
   exit(0);
 }
 

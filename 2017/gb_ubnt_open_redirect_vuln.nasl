@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubnt_open_redirect_vuln.nasl 6798 2017-07-25 09:58:11Z ckuersteiner $
+# $Id: gb_ubnt_open_redirect_vuln.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Ubiquiti Networks Products Open Redirect Vulnerability
 #
@@ -28,15 +28,15 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106985");
-  script_version("$Revision: 6798 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-25 11:58:11 +0200 (Tue, 25 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-25 14:45:24 +0700 (Tue, 25 Jul 2017)");
-  script_tag(name: "cvss_base", value: "5.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-25 14:45:24 +0700 (Tue, 25 Jul 2017)");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Ubiquiti Networks Products Open Redirect Vulnerability");
 
@@ -47,17 +47,17 @@ if (description)
   script_dependencies("gb_ubnt_discovery_protocol_detect.nasl");
   script_mandatory_keys("ubnt_discovery_proto/detected", "ubnt_discovery_proto/firmware");
 
-  script_tag(name: "summary", value: "Multiple Ubiquiti Networks products are prone to an open redirect
+  script_tag(name:"summary", value:"Multiple Ubiquiti Networks products are prone to an open redirect
 vulnerability.");
 
-  script_tag(name: "insight", value: "A open redirect vulnerability can be triggered by luring an attacked user
+  script_tag(name:"insight", value:"A open redirect vulnerability can be triggered by luring an attacked user
 to authenticate to a Ubiquiti AirOS device by clicking on a crafted link.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "solution", value: "Upgrade to firmware version 6.0.3 (XM), 1.3.5 (SW) or later.");
+  script_tag(name:"solution", value:"Upgrade to firmware version 6.0.3 (XM), 1.3.5 (SW) or later.");
 
-  script_xref(name: "URL", value: "https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20170724-1_Ubiquiti_Networks_-Open_Redirect_in_Login_Page_v10.txt");
+  script_xref(name:"URL", value:"https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20170724-1_Ubiquiti_Networks_-Open_Redirect_in_Login_Page_v10.txt");
 
   exit(0);
 }

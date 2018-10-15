@@ -28,12 +28,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804574");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2014-0384", "CVE-2014-2419", "CVE-2014-2438");
   script_bugtraq_id(66835, 66880, 66846);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-05-08 12:56:56 +0530 (Thu, 08 May 2014)");
   script_name("Oracle MySQL Multiple Unspecified vulnerabilities - 01 May14 (Windows)");
 
@@ -46,8 +46,7 @@ to Partition, Replication and XML subcomponent.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to manipulate certain data
 and cause a DoS (Denial of Service).");
   script_tag(name:"affected", value:"Oracle MySQL version 5.5.35 and earlier and 5.6.15 and earlier on Windows.");
-  script_tag(name:"solution", value:"Apply the patch from below link,
-http://www.oracle.com/technetwork/topics/security/cpuapr2014-1972952.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/57940");
   script_xref(name:"URL", value:"http://www.scaprepo.com/view.jsp?id=oval:org.secpod.oval:def:701638");

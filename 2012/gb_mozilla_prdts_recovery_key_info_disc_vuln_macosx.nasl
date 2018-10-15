@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_recovery_key_info_disc_vuln_macosx.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_mozilla_prdts_recovery_key_info_disc_vuln_macosx.nasl 11861 2018-10-12 09:29:59Z cfischer $
 #
 # Mozilla Products 'Firefox Recovery Key.html' Information Disclosure Vulnerability (MAC OS X)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802582");
-  script_version("$Revision: 11855 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_version("$Revision: 11861 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:29:59 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-02-06 14:03:00 +0530 (Mon, 06 Feb 2012)");
   script_cve_id("CVE-2012-0450");
   script_bugtraq_id(51787);
@@ -52,11 +52,12 @@ if(description)
   standard filesystem operations.");
   script_tag(name:"summary", value:"The host is installed with Mozilla firefox/seamonkey and is prone
   to information disclosure vulnerability.");
-  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 10.0 or  later,  Upgrade to SeaMonkey version to 2.7 or later
-  http://www.mozilla.org/projects/seamonkey/");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 10.0 or  later, Upgrade to SeaMonkey version to 2.7 or later.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/projects/seamonkey/");
+
   exit(0);
 }
 

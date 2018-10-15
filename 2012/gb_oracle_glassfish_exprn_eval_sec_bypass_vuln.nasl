@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_exprn_eval_sec_bypass_vuln.nasl 11549 2018-09-22 12:11:10Z cfischer $
+# $Id: gb_oracle_glassfish_exprn_eval_sec_bypass_vuln.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Oracle GlassFish Server Expression Evaluation Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802927");
-  script_version("$Revision: 11549 $");
+  script_version("$Revision: 11878 $");
   script_bugtraq_id(50846);
   script_cve_id("CVE-2011-4358");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-22 14:11:10 +0200 (Sat, 22 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-07 13:44:27 +0530 (Tue, 07 Aug 2012)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -66,8 +66,7 @@ certain security restrictions.");
   script_tag(name:"summary", value:"This host is running Oracle GlassFish Server and is prone to a security
 bypass vulnerability.");
 
-  script_tag(name:"solution", value:"Apply the patch from below link,
-http://www.oracle.com/technetwork/topics/security/cpujul2012-392727.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
 
   exit(0);
 }

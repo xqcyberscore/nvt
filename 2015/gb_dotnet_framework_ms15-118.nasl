@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms15-118.nasl 11584 2018-09-25 07:02:39Z cfischer $
+# $Id: gb_dotnet_framework_ms15-118.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Microsoft .NET Framework Privilege Elevation Vulnerabilities (3104507)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806614");
-  script_version("$Revision: 11584 $");
+  script_version("$Revision: 11872 $");
   script_cve_id("CVE-2015-6096", "CVE-2015-6099", "CVE-2015-6115");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-25 09:02:39 +0200 (Tue, 25 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 09:47:24 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerabilities (3104507)");
 
@@ -65,9 +65,7 @@ if(description)
   Microsoft .NET Framework 4.6, 4.6 RC");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS15-118");
+  listed hotfixes or download and install the hotfixes from the referenced advisory.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

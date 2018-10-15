@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-079.nasl 11576 2018-09-24 14:59:42Z cfischer $
+# $Id: secpod_ms13-079.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Microsoft Windows Active Directory Denial of Service Vulnerability (2853587)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901222");
-  script_version("$Revision: 11576 $");
+  script_version("$Revision: 11878 $");
   script_bugtraq_id(62184);
   script_cve_id("CVE-2013-3868");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-24 16:59:42 +0200 (Mon, 24 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 12:41:50 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft Windows Active Directory Denial of Service Vulnerability (2853587)");
 
@@ -41,8 +41,7 @@ if(description)
 Bulletin MS13-079.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms13-079");
+install the hotfixes from the referenced advisory.");
   script_tag(name:"insight", value:"Flaw is caused when the LDAP directory service fails to properly handle
 a specially crafted LDAP query.");
   script_tag(name:"affected", value:"Active Directory Lightweight Directory Service (AD LDS) on,
@@ -95,7 +94,7 @@ if(!(registry_key_exists(key:"SYSTEM\CurrentControlSet\Services\NTDS"))){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"system32\Ntdsatq.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Ntdsatq.dll");
 if(!sysVer){
   exit(0);
 }

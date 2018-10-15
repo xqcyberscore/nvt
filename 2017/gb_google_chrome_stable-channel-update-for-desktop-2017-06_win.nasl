@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-06_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2017-06_win.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2017-06)-Windows
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811080");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11874 $");
   script_cve_id("CVE-2017-5070", "CVE-2017-5071", "CVE-2017-5072", "CVE-2017-5073",
                 "CVE-2017-5074", "CVE-2017-5075", "CVE-2017-5086", "CVE-2017-5076",
                 "CVE-2017-5077", "CVE-2017-5078", "CVE-2017-5079", "CVE-2017-5080",
-                "CVE-2017-5081", "CVE-2017-5082", "CVE-2017-5083", "CVE-2017-5085" );
+                "CVE-2017-5081", "CVE-2017-5082", "CVE-2017-5083", "CVE-2017-5085");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-06-06 10:00:35 +0530 (Tue, 06 Jun 2017)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2017-06)-Windows");
 
@@ -73,24 +73,23 @@ if(description)
 
   - Inappropriate javascript execution on WebUI pages.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
-  will allow remote attackers to have some unspecified impact on the affected user.
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
+  will allow remote attackers to have some unspecified impact on the affected user.");
 
-  Impact Level: Application");
+  script_tag(name:"affected", value:"Google Chrome version prior to 59.0.3071.86 on Windows");
 
-  script_tag(name: "affected" , value:"Google Chrome version prior to 59.0.3071.86 on Windows");
-
-  script_tag(name: "solution", value:"Upgrade to Google Chrome version 59.0.3071.86
-  or later. For updates refer to http://www.google.com/chrome");
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version 59.0.3071.86
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "https://chromereleases.googleblog.com/2017/06/stable-channel-update-for-desktop.html");
+  script_xref(name:"URL", value:"https://chromereleases.googleblog.com/2017/06/stable-channel-update-for-desktop.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

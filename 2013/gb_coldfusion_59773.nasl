@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coldfusion_59773.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_coldfusion_59773.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # Adobe ColdFusion  Information Disclosure Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2013-3336", "CVE-2013-1389");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11878 $");
 
   script_name("Adobe ColdFusion  Information Disclosure Vulnerability");
 
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.adobe.com/products/coldfusion/");
   script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb13-13.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-05-10 11:21:00 +0200 (Fri, 10 May 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -50,15 +50,15 @@ if (description)
   script_dependencies("gb_coldfusion_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("coldfusion/installed");
-  script_tag(name:"solution", value:"Apply the patch from below link,
-http://helpx.adobe.com/coldfusion/kb/coldfusion-security-hotfix-apsb13-13.html");
+  script_tag(name:"solution", value:"Apply the patch from the referenced advisory.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"Adobe ColdFusion is prone to an information-disclosure vulnerability.
 
 Attackers can exploit this issue to retrieve files stored on the
 server and obtain sensitive information. This may aid in launching
 further attacks.");
- exit(0);
+  script_xref(name:"URL", value:"http://helpx.adobe.com/coldfusion/kb/coldfusion-security-hotfix-apsb13-13.html");
+  exit(0);
 }
 
 include("misc_func.inc");

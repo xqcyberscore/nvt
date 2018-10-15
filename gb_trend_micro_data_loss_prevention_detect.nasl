@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_data_loss_prevention_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_trend_micro_data_loss_prevention_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Trend Micro Data Loss Prevention Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103181");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-06-14 13:57:36 +0200 (Tue, 14 Jun 2011)");
   script_tag(name:"cvss_base", value:"0.0");
 
@@ -44,7 +44,7 @@ if (description)
   script_tag(name:"summary", value:"This host is running Trend Micro Data Loss Prevention, a network and
 endpoint-based data loss prevention (DLP) solution.");
   script_xref(name:"URL", value:"http://us.trendmicro.com/us/products/enterprise/data-loss-prevention/index.html");
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10785.nasl 5951 2017-04-13 12:17:37Z ckuerste $
+# $Id: gb_junos_jsa10785.nasl 11863 2018-10-12 09:42:02Z mmartin $
 #
 # Junos Multiple BIND Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106748");
-  script_version ("$Revision: 5951 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-13 14:17:37 +0200 (Thu, 13 Apr 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-13 08:24:49 +0200 (Thu, 13 Apr 2017)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11863 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 11:42:02 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-13 08:24:49 +0200 (Thu, 13 Apr 2017)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_cve_id("CVE-2016-2776", "CVE-2016-8864", "CVE-2016-9131", "CVE-2016-9147", "CVE-2016-9444");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Junos Multiple BIND Vulnerabilities");
 
@@ -48,36 +48,36 @@ if (description)
 
   script_family("JunOS Local Security Checks");
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version");
 
-  script_tag(name: "summary", value: "Junos OS is prone to multiple denial of service vulnerabilities in ISC
+  script_tag(name:"summary", value:"Junos OS is prone to multiple denial of service vulnerabilities in ISC
 BIND named.");
 
-  script_tag(name: "vuldetect" , value: "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name: "insight", value: "Multiple vulnerabilities where found in the BIND version used by Junos OS:
+  script_tag(name:"insight", value:"Multiple vulnerabilities where found in the BIND version used by Junos OS:
 
-- buffer.c in named in ISC BIND does not properly construct responses, which allows remote attackers to cause a
+  - buffer.c in named in ISC BIND does not properly construct responses, which allows remote attackers to cause a
 denial of service via a crafted query. (CVE-2016-2776)
 
-- named in ISC BIND allows remote attackers to cause a denial of service via a DNAME record in the answer section
+  - named in ISC BIND allows remote attackers to cause a denial of service via a DNAME record in the answer section
 of a response to a recursive query, related to db.c and resolver.c. (CVE-2016-8864)
 
-- named in ISC BIND allows remote attackers to cause a denial of service via a malformed response to an RTYPE ANY
+  - named in ISC BIND allows remote attackers to cause a denial of service via a malformed response to an RTYPE ANY
 query. (CVE-2016-9131)
 
-- named in ISC BIND allows remote attackers to cause a denial of service via a response containing an
+  - named in ISC BIND allows remote attackers to cause a denial of service via a response containing an
 inconsistency among the DNSSEC-related RRsets. (CVE-2016-9147)
 
-- named in ISC BIND allows remote attackers to cause a denial of service via a crafted DS resource record in an
+  - named in ISC BIND allows remote attackers to cause a denial of service via a crafted DS resource record in an
 answer. (CVE-2016-9444)");
 
-  script_tag(name: "impact", value: "An attacker may cause a denial of service condition.");
+  script_tag(name:"impact", value:"An attacker may cause a denial of service condition.");
 
-  script_tag(name: "affected", value: "Junos OS 12.1X46, 12.3X48 and 15.1X49.");
+  script_tag(name:"affected", value:"Junos OS 12.1X46, 12.3X48 and 15.1X49.");
 
-  script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper. As a
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As a
 workaround disable the DNS proxy service.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10785");

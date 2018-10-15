@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: bugbear.nasl 11404 2018-09-15 09:17:49Z cfischer $
+# $Id: bugbear.nasl 11885 2018-10-12 13:47:20Z cfischer $
 # Description: Bugbear worm
 #
 # Authors:
@@ -44,21 +44,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11135");
-  script_version("$Revision: 11404 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:17:49 +0200 (Sat, 15 Sep 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_xref(name:"IAVA", value:"2001-a-0004");
   script_bugtraq_id(2524);
   script_cve_id("CVE-2001-0154"); # For MS01-020 - should be changed later
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
   script_name("Bugbear worm");
-
-
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
-
   script_copyright("This script is Copyright (C) 2002 Michel Arboi & Thomas Reinke");
   script_family("Malware");
   script_require_ports(36794);
@@ -68,8 +64,7 @@ if(description)
   - Close your Windows shares
 
   - Update your IE browser
-  See 'Incorrect MIME Header Can Cause IE to Execute E-mail Attachment'
-  http://www.microsoft.com/technet/security/bulletin/MS01-020.mspx");
+  See 'Incorrect MIME Header Can Cause IE to Execute E-mail Attachment'");
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"summary", value:"BugBear backdoor is listening on this port.
 A cracker may connect to it to retrieve secret
@@ -80,19 +75,19 @@ antivirus or personal firewall software. It propagates
 itself through email and open Windows shares.
 Depending on the antivirus vendor, it is known as: Tanatos,
 I-Worm.Tanatos, NATOSTA.A, W32/Bugbear-A, Tanatos, W32/Bugbear@MM,
-WORM_BUGBEAR.A, Win32.BugBear...
+WORM_BUGBEAR.A, Win32.BugBear...");
 
-http://www.sophos.com/virusinfo/analyses/w32bugbeara.html
-http://www.ealaddin.com/news/2002/esafe/bugbear.asp
-http://securityresponse.symantec.com/avcenter/venc/data/w32.bugbear@mm.html
-http://vil.nai.com/vil/content/v_99728.htm
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/MS01-020.mspx");
+  script_xref(name:"URL", value:"http://www.sophos.com/virusinfo/analyses/w32bugbeara.html");
+  script_xref(name:"URL", value:"http://www.ealaddin.com/news/2002/esafe/bugbear.asp");
+  script_xref(name:"URL", value:"http://securityresponse.symantec.com/avcenter/venc/data/w32.bugbear@mm.html");
+  script_xref(name:"URL", value:"http://vil.nai.com/vil/content/v_99728.htm");
+  script_xref(name:"URL", value:"http://online.securityfocus.com/news/1034");
+  script_xref(name:"URL", value:"http://support.microsoft.com/default.aspx?scid=KB;en-us;329770&");
 
-Reference : http://online.securityfocus.com/news/1034
-Reference : http://support.microsoft.com/default.aspx?scid=KB;en-us;329770&");
- exit(0);
+  exit(0);
 }
 
-#
 include("misc_func.inc");
 
 port = 36794;

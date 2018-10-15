@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_accellion_fta_file_discl_vuln.nasl 11831 2018-10-11 07:49:24Z jschulte $
+# $Id: gb_accellion_fta_file_discl_vuln.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Accellion FTA File Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/h:accellion:secure_file_transfer_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106031");
-  script_version("$Revision: 11831 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 09:49:24 +0200 (Thu, 11 Oct 2018) $");
+  script_version("$Revision: 11872 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-07-28 09:48:42 +0700 (Tue, 28 Jul 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -65,7 +65,7 @@ if (description)
 
   script_tag(name:"affected", value:"Accellion FTA Version 9.11.200 and prior.");
 
-  script_tag(name:"solution", value:"Upgrade to version 9.11.210 or later");
+  script_tag(name:"solution", value:"Upgrade to version 9.11.210 or later.");
 
   exit(0);
 }

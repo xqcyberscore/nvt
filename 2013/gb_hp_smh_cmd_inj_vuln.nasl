@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_cmd_inj_vuln.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_hp_smh_cmd_inj_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # HP System Management Homepage Command Injection Vulnerability-July2013
 #
@@ -28,22 +28,20 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803846");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11883 $");
   script_cve_id("CVE-2013-3576");
   script_bugtraq_id(60471);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-07-30 13:30:42 +0530 (Tue, 30 Jul 2013)");
   script_name("HP System Management Homepage Command Injection Vulnerability-July2013");
 
-
   script_tag(name:"summary", value:"This host is running HP System Management Homepage (SMH) and is prone to
 command injection  vulnerability.");
-  script_tag(name:"vuldetect", value:"Get the installed version of HP SMH with the help of detect NVT and check
-it is vulnerable or not.");
-  script_tag(name:"solution", value:"Upgrade to version 7.2.2, or higher. For Updates refer to,
-http://h18013.www1.hp.com/products/servers/management/agents/index.html");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade to version 7.2.2, or later.");
+  script_xref(name:"URL", value:"http://h18013.www1.hp.com/products/servers/management/agents/index.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"The flaw is triggered when the ginkgosnmp.inc script uses the last path
 segment of the current requested URL path in an exec call without properly

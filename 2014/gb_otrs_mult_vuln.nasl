@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_mult_vuln.nasl 11402 2018-09-15 09:13:36Z cfischer $
+# $Id: gb_otrs_mult_vuln.nasl 11867 2018-10-12 10:48:11Z cfischer $
 #
 # OTRS Multiple Vulnerabilities
 #
@@ -28,21 +28,20 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804236");
-  script_version("$Revision: 11402 $");
+  script_version("$Revision: 11867 $");
   script_cve_id("CVE-2014-1471", "CVE-2014-1694");
   script_bugtraq_id(65217, 65241);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 11:13:36 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:48:11 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-02-07 18:02:09 +0530 (Fri, 07 Feb 2014)");
   script_name("OTRS Multiple Vulnerabilities");
 
 
   script_tag(name:"summary", value:"This host is installed with OTRS (Open Ticket Request System) and is prone to
 multiple vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version of OTRS with the help of detect NVT and check the
-version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"- Flaw is in State.pm script, which fail to sufficiently sanitize user
    supplied data.
 
@@ -54,8 +53,7 @@ injecting arbitrary SQL code or perform unauthorized actions in the context
 of a logged-in user.");
   script_tag(name:"affected", value:"Open Ticket Request System (OTRS) 3.1.x before 3.1.19, 3.2.x before 3.2.14,
 and 3.3.x before 3.3.4 ");
-  script_tag(name:"solution", value:"Upgrade to OTRS 3.1.19 or 3.2.14 or 3.3.4 or later,
-For updates refer to http://www.otrs.com/en/");
+  script_tag(name:"solution", value:"Upgrade to OTRS 3.1.19 or 3.2.14 or 3.3.4 or later.");
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/56644");
@@ -68,6 +66,7 @@ For updates refer to http://www.otrs.com/en/");
   script_dependencies("secpod_otrs_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("OTRS/installed");
+  script_xref(name:"URL", value:"http://www.otrs.com/en/");
   exit(0);
 }
 

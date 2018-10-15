@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmydirectory_id_param_sql_inj_vuln.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: gb_phpmydirectory_id_param_sql_inj_vuln.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # phpMyDirectory 'id' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802977");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-5288");
   script_bugtraq_id(51342);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-10-05 16:54:35 +0530 (Fri, 05 Oct 2012)");
   script_name("phpMyDirectory 'id' Parameter SQL Injection Vulnerability");
 
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"insight", value:"Input passed via the 'id' parameter to page.php is not properly sanitised
   before being used in SQL queries.");
 
-  script_tag(name:"solution", value:"Upgrade to phpMyDirectory version 1.4.1 or later,");
+  script_tag(name:"solution", value:"Upgrade to phpMyDirectory version 1.4.1 or later.");
 
   script_tag(name:"summary", value:"The host is running phpMyDirectory and is prone to SQL injection
   vulnerability.");

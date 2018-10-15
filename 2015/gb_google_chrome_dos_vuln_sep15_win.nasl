@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_dos_vuln_sep15_win.nasl 11452 2018-09-18 11:24:16Z mmartin $
+# $Id: gb_google_chrome_dos_vuln_sep15_win.nasl 11872 2018-10-12 11:22:41Z cfischer $
 #
 # Google Chrome Denial of Service Vulnerability September15 (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806054");
-  script_version("$Revision: 11452 $");
+  script_version("$Revision: 11872 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-18 13:24:16 +0200 (Tue, 18 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:22:41 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2015-09-07 12:19:25 +0530 (Mon, 07 Sep 2015)");
   script_name("Google Chrome Denial of Service Vulnerability September15 (Windows)");
 
@@ -51,7 +51,7 @@ if(description)
   prior on Windows.");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version
-  46.0.2490.71 or later, For updates refer to http://www.google.com/chrome");
+  46.0.2490.71 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -64,6 +64,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

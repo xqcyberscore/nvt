@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-020_remote.nasl 11855 2018-10-12 07:34:51Z cfischer $
+# $Id: secpod_ms12-020_remote.nasl 11857 2018-10-12 08:25:16Z cfischer $
 #
 # Microsoft Remote Desktop Protocol Remote Code Execution Vulnerabilities (2671387)
 #
@@ -30,12 +30,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902818");
-  script_version("$Revision: 11855 $");
+  script_version("$Revision: 11857 $");
   script_cve_id("CVE-2012-0002", "CVE-2012-0152");
   script_bugtraq_id(52353, 52354);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 09:34:51 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 10:25:16 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-03-16 16:21:31 +0100 (Fri, 16 Mar 2012)");
   script_name("Microsoft Remote Desktop Protocol Remote Code Execution Vulnerabilities (2671387)");
   script_category(ACT_GATHER_INFO);
@@ -68,8 +68,8 @@ if(description)
   object in memory that has been improperly initialized or has been deleted
   and the way RDP service processes the packets.");
 
-  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory");
+  script_tag(name:"solution", value:"Run Windows Update and install the listed hotfixes or download and
+  install the hotfixes from the referenced advisory.");
 
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS12-020.");

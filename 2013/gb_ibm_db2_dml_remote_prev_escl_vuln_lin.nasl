@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_dml_remote_prev_escl_vuln_lin.nasl 11401 2018-09-15 08:45:50Z cfischer $
+# $Id: gb_ibm_db2_dml_remote_prev_escl_vuln_lin.nasl 11878 2018-10-12 12:40:08Z cfischer $
 #
 # IBM DB2 DML Statement Execution Remote Privilege Escalation Vulnerability (Linux)
 #
@@ -28,22 +28,20 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803758");
-  script_version("$Revision: 11401 $");
+  script_version("$Revision: 11878 $");
   script_cve_id("CVE-2013-4033");
   script_bugtraq_id(62018);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-15 10:45:50 +0200 (Sat, 15 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:40:08 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-09-05 17:50:25 +0530 (Thu, 05 Sep 2013)");
   script_name("IBM DB2 DML Statement Execution Remote Privilege Escalation Vulnerability (Linux)");
 
 
   script_tag(name:"summary", value:"This host is running IBM DB2 and is prone to privilege escalation
 vulnerability.");
-  script_tag(name:"vuldetect", value:"Get the installed version of IBM DB2 with the help of detect NVT and check
-the version is vulnerable or not.");
-  script_tag(name:"solution", value:"Apply the appropriate fix from below link,
-http://www-01.ibm.com/support/docview.wss?uid=swg21646809");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Apply the appropriate fix");
   script_tag(name:"insight", value:"The flaw is due to the program failing to limit users from the EXPLAIN
 authority, which will allow a remote attacker to potentially execute the SELECT,
 INSERT, UPDATE or DELETE DML statements with elevated privileges.");

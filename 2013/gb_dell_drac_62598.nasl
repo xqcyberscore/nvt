@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_drac_62598.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_dell_drac_62598.nasl 11865 2018-10-12 10:03:43Z cfischer $
 #
 # Dell iDRAC6 and iDRAC7 'ErrorMsg' Parameter Cross Site Scripting Vulnerability
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103808");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 12:03:43 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-10-14 11:13:22 +0200 (Mon, 14 Oct 2013)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11865 $");
 
   script_bugtraq_id(62598);
   script_cve_id("CVE-2013-3589");
@@ -76,7 +76,7 @@ versions.
 
 NOTE: iDRAC6 'modular' (blades) are not affected, no updates are required.");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

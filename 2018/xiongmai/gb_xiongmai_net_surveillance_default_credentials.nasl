@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xiongmai_net_surveillance_default_credentials.nasl 11799 2018-10-09 18:44:23Z tpassfeld $
+# $Id: gb_xiongmai_net_surveillance_default_credentials.nasl 11882 2018-10-12 13:16:23Z tpassfeld $
 #
 # Xiongmai Net Surveillance Default Credentials
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114039");
-  script_version("$Revision: 11799 $");
+  script_version("$Revision: 11882 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-09 20:44:23 +0200 (Tue, 09 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:16:23 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-10-09 19:58:10 +0200 (Tue, 09 Oct 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
@@ -73,7 +73,8 @@ CPE = "cpe:/a:xiongmai:net_surveillance";
 if(!port = get_app_port(cpe: CPE)) exit(0);
 if(!get_app_location(cpe: CPE, port: port)) exit(0); # nb: Unused but added to have a reference to the Detection-NVT in the GSA
 
-creds = make_array("admin", "");
+creds = make_array("admin", "",
+                   "default", "tluafed");
 
 url = "/Login.htm";
 

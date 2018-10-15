@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kentico_cms_detect.nasl 8892 2018-02-20 14:54:50Z asteins $
+# $Id: gb_kentico_cms_detect.nasl 11885 2018-10-12 13:47:20Z cfischer $
 #
 # Kentico CMS Product Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113117");
-  script_version("$Revision: 8892 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-20 15:54:50 +0100 (Tue, 20 Feb 2018) $");
+  script_version("$Revision: 11885 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:47:20 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 13:31:37 +0100 (Tue, 20 Feb 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,7 @@ if( description )
 
   script_xref(name:"URL", value:"https://www.kentico.com");
 
-  exit( 0 );
+  exit(0);
 }
 
 include( "http_func.inc" );

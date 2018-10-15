@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_urlvalidator_dos_vuln_win.nasl 7543 2017-10-24 11:02:02Z cfischer $
+# $Id: gb_apache_struts_urlvalidator_dos_vuln_win.nasl 11874 2018-10-12 11:28:04Z mmartin $
 #
 # Apache Struts URLValidator DoS Vulnerability (Windows)
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:apache:struts";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106955");
-  script_version("$Revision: 7543 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-24 13:02:02 +0200 (Tue, 24 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-18 09:09:00 +0700 (Tue, 18 Jul 2017)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11874 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:28:04 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-18 09:09:00 +0700 (Tue, 18 Jul 2017)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-7672");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Apache Struts URLValidator DoS Vulnerability (Windows)");
 
@@ -51,17 +51,17 @@ if (description)
   script_dependencies("gb_apache_struts_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("ApacheStruts/installed", "Host/runs_windows");
 
-  script_tag(name: "summary", value: "If an application allows enter an URL in a form field and built-in
+  script_tag(name:"summary", value:"If an application allows enter an URL in a form field and built-in
 URLValidator is used, it is possible to prepare a special URL which will be used to overload server process when
 performing validation of the URL.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "Struts 2.5 - Struts 2.5.10.1");
+  script_tag(name:"affected", value:"Struts 2.5 - Struts 2.5.10.1");
 
-  script_tag(name: "solution", value: "Upgrade to Struts 2.5.12 or later.");
+  script_tag(name:"solution", value:"Upgrade to Struts 2.5.12 or later.");
 
-  script_xref(name: "URL", value: "https://struts.apache.org/docs/s2-047.html");
+  script_xref(name:"URL", value:"https://struts.apache.org/docs/s2-047.html");
 
   exit(0);
 }

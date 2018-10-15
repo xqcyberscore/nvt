@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_desktopcentral_file_upload_vuln.nasl 11497 2018-09-20 10:31:54Z mmartin $
+# $Id: gb_manageengine_desktopcentral_file_upload_vuln.nasl 11883 2018-10-12 13:31:09Z cfischer $
 #
 # ManageEngine Desktop Central Arbitrary File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803777");
-  script_version("$Revision: 11497 $");
+  script_version("$Revision: 11883 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 12:31:54 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 15:31:09 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2013-11-20 12:28:14 +0530 (Wed, 20 Nov 2013)");
   script_name("ManageEngine Desktop Central Arbitrary File Upload Vulnerability");
   script_category(ACT_ATTACK);
@@ -44,6 +44,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/29674");
   script_xref(name:"URL", value:"http://security-assessment.com/files/documents/advisory/DesktopCentral%20Arbitrary%20File%20Upload.pdf");
+  script_xref(name:"URL", value:"http://www.manageengine.com/products/desktop-central");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to gain arbitrary code
   execution on the server.");
@@ -51,8 +52,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw in the AgentLogUploadServlet. This servlet takes input from HTTP
   POST and constructs an output file on the server without performing any
   sanitisation or even checking if the caller is authenticated.");
-  script_tag(name:"solution", value:"Apply the patch supplied by the vendor (Patch 80293),
-  http://www.manageengine.com/products/desktop-central");
+  script_tag(name:"solution", value:"Apply the patch supplied by the vendor (Patch 80293)");
   script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP POST request and check whether it
   is able to create the file or not.");
   script_tag(name:"summary", value:"This host is running ManageEngine Desktop Central and is prone to arbitrary

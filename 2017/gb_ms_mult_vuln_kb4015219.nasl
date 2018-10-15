@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_mult_vuln_kb4015219.nasl 6106 2017-05-11 10:32:49Z antu123 $
+# $Id: gb_ms_mult_vuln_kb4015219.nasl 11879 2018-10-12 12:48:49Z mmartin $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4015219)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810922");
-  script_version("$Revision: 6106 $");
+  script_version("$Revision: 11879 $");
   script_cve_id("CVE-2017-0202", "CVE-2017-0203", "CVE-2017-0205", "CVE-2017-0208",
                 "CVE-2017-0210", "CVE-2017-0211", "CVE-2017-0192", "CVE-2017-0191",
                 "CVE-2017-0189", "CVE-2017-0188", "CVE-2017-0186", "CVE-2017-0185",
@@ -38,63 +38,75 @@ if(description)
                 "CVE-2017-0156", "CVE-2017-0093", "CVE-2017-0058", "CVE-2013-6629");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 12:32:49 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-12 14:48:49 +0200 (Fri, 12 Oct 2018) $");
   script_tag(name:"creation_date", value:"2017-04-12 10:47:16 +0530 (Wed, 12 Apr 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4015219)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft security update KB4015219.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
-  appropriate patch is applied or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
-  - The open-source libjpeg image-processing library fails to properly handle 
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
+  - The open-source libjpeg image-processing library fails to properly handle
     objects in memory.
+
   - The win32k component improperly provides kernel information.
+
   - An error in the way that the Scripting Engine renders when handling objects
     in memory in Microsoft browsers.
-  - The VBScript engine, when rendered in Internet Explorer, improperly handles 
+
+  - The VBScript engine, when rendered in Internet Explorer, improperly handles
     objects in memory.
+
   - Microsoft Graphics Component fails to properly handle objects in memory.
-  - Microsoft .NET Framework fails to properly validate input before loading 
+
+  - Microsoft .NET Framework fails to properly validate input before loading
     libraries.
-  - Windows Hyper-V Network Switch on a host server fails to properly validate 
+
+  - Windows Hyper-V Network Switch on a host server fails to properly validate
     input from an authenticated user on a guest operating system.
+
   - Windows fails to properly sanitize handles in memory.
+
   - LDAP request buffer lengths are improperly calculated.
+
   - Windows kernel improperly handles objects in memory.
+
   - Windows kernel-mode driver fails to properly handle objects in memory.
-  - Adobe Type Manager Font Driver (ATMFD.dll) fails to properly handle objects 
+
+  - Adobe Type Manager Font Driver (ATMFD.dll) fails to properly handle objects
     in memory.
-  - Edge Content Security Policy (CSP) fails to properly validate certain 
+
+  - Edge Content Security Policy (CSP) fails to properly validate certain
     specially crafted documents.
+
   - Chakra scripting engine does not properly handle objects in memory.
+
   - Internet Explorer does not properly enforce cross-domain policies.
+
   - Microsoft Windows OLE fails an integrity-level check");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to obtain information to further compromise the user's system, execute arbitrary
   code in the context of the current user, gain the same user rights as the current
-  user, could take control of an affected system and cause a host machine to crash.
-
-  Impact Level: System");
+  user, could take control of an affected system and cause a host machine to crash.");
 
   script_tag(name:"affected", value:"Microsoft Windows 10 Version 1511 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://support.microsoft.com/en-gb/help/4015219");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-gb/help/4015219");
-  script_xref(name : "URL" , value : "https://portal.msrc.microsoft.com/en-us/security-guidance");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-gb/help/4015219");
+  script_xref(name:"URL", value:"https://portal.msrc.microsoft.com/en-us/security-guidance");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -105,13 +117,7 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-gdiVer = "";
-usrVer  = "";
 
-
-## check for OS and Service Pack
 if(hotfix_check_sp(win10:1, win10x64:1) <= 0){
   exit(0);
 }
@@ -121,17 +127,13 @@ if(!sysPath ){
   exit(0);
 }
 
-## Fetch the version of 'Edgehtml.dll'
-edgeVer = fetch_file_version(sysPath, file_name:"system32\Edgehtml.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Edgehtml.dll");
 if(!edgeVer){
   exit(0);
 }
 
-## Windows 10
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Check for Edgehtml.dll version
-  ## Windows 10 Version 1511
   if(version_in_range(version:edgeVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.872"))
   {
     report = 'File checked:     ' + sysPath + "\system32\Edgehtml.dll" + '\n' +
