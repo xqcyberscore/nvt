@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_mult_bof_vuln.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_advantech_webaccess_mult_bof_vuln.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Advantech WebAccess Multiple Buffer Overflow Vulnerabilities Jan16
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807041");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2014-9202", "CVE-2014-9208");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-25 12:23:44 +0530 (Mon, 25 Jan 2016)");
   script_name("Advantech WebAccess Multiple Buffer Overflow Vulnerabilities Jan16");
 
@@ -52,8 +52,7 @@ if(description)
   before 8.0_20150816");
 
   script_tag(name:"solution", value:"Upgrade to Advantech WebAccess version
-  8.0_20150816 or later,
-  For updates refer to http://www.advantech.com/industrial-automation/webaccess");
+  8.0_20150816 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -67,6 +66,7 @@ if(description)
   script_dependencies("gb_advantech_webaccess_detect.nasl");
   script_mandatory_keys("Advantech/WebAccess/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.advantech.com/industrial-automation/webaccess");
   exit(0);
 }
 

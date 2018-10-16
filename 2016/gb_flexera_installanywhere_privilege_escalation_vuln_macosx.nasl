@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flexera_installanywhere_privilege_escalation_vuln_macosx.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_flexera_installanywhere_privilege_escalation_vuln_macosx.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Flexera InstallAnywhere Privilege Escalation Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:flexerasoftware:installanywhere";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809019");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-4560");
   script_bugtraq_id(90979);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-29 13:05:30 +0530 (Mon, 29 Aug 2016)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("Flexera InstallAnywhere Privilege Escalation Vulnerability (Mac OS X)");
@@ -54,7 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Flexera InstallAnywhere all versions on Mac OS X.");
 
   script_tag(name:"solution", value:"Apply the hotfix from the link mentioned in
-  reference. For updates refer to http://www.flexerasoftware.com");
+  reference.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -64,6 +64,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_flexera_installanywhere_detect_macosx.nasl");
   script_mandatory_keys("InstallAnywhere/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.flexerasoftware.com");
   exit(0);
 }
 

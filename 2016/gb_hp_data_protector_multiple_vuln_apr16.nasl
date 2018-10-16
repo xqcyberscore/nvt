@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_multiple_vuln_apr16.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_hp_data_protector_multiple_vuln_apr16.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # HP Data Protector Multiple Vulnerabilities - Apr16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807814");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-2004", "CVE-2016-2005", "CVE-2016-2006", "CVE-2016-2007",
                 "CVE-2016-2008", "CVE-2015-2808");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-26 18:03:24 +0530 (Tue, 26 Apr 2016)");
   script_name("HP Data Protector Multiple Vulnerabilities - Apr16");
 
@@ -60,8 +60,7 @@ if(description)
   before 8.15, and 9.x before 9.06");
 
   script_tag(name:"solution", value:"Upgrade to HP Data Protector version 7.03_108
-  or 8.15 or 9.06 or later. For updates refer to,
-  http://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05085988");
+  or 8.15 or 9.06 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); # 09.00 versions are currently not reporting a reliable version in the banner

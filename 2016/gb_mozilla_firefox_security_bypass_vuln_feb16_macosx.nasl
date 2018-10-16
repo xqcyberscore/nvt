@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_security_bypass_vuln_feb16_macosx.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_mozilla_firefox_security_bypass_vuln_feb16_macosx.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Mozilla Firefox Security Bypass Vulnerability - Feb16 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807069");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-1949");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-15 12:47:02 +0530 (Mon, 15 Feb 2016)");
   script_name("Mozilla Firefox Security Bypass Vulnerability - Feb16 (Mac OS X)");
 
@@ -53,7 +53,7 @@ if(description)
   Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 44.0.2
-  or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -66,6 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
+  script_xref(name:"URL", value:"http://www.mozilla.com/en-US/firefox/all.html");
   exit(0);
 }
 

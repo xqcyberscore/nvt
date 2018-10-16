@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop_31-2016-08_lin.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop_31-2016-08_lin.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop_31-2016-08)-Linux
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809033");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-5147", "CVE-2016-5148", "CVE-2016-5149", "CVE-2016-5150",
                 "CVE-2016-5151", "CVE-2016-5152", "CVE-2016-5153", "CVE-2016-5154",
                 "CVE-2016-5155", "CVE-2016-5156", "CVE-2016-5157", "CVE-2016-5158",
@@ -39,7 +39,7 @@ if(description)
   script_bugtraq_id(92717);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-06 14:41:40 +0530 (Tue, 06 Sep 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_31-2016-08)-Linux");
 
@@ -82,8 +82,7 @@ if(description)
   53.0.2785.92 on Linux");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version
-  53.0.2785.92 or later.
-  For updates refer to http://www.google.com/chrome");
+  53.0.2785.92 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -96,6 +95,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

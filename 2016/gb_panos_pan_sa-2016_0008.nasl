@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0008.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_panos_pan_sa-2016_0008.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Palo Alto PAN-OS PAN-SA-2016-0008
 #
@@ -32,7 +32,7 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105793");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11903 $");
 
   script_name("Palo Alto PAN-OS PAN-SA-2016-0008");
 
@@ -50,7 +50,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-05 16:55:13 +0200 (Tue, 05 Jul 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("Palo Alto PAN-OS Local Security Checks");
@@ -58,7 +58,7 @@ if (description)
   script_dependencies("gb_palo_alto_panOS_version.nasl");
   script_mandatory_keys("palo_alto_pan_os/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

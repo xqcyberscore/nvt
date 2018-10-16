@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgres_tls_support.nasl 11898 2018-10-15 07:17:45Z cfischer $
+# $Id: gb_postgres_tls_support.nasl 11915 2018-10-16 08:05:09Z cfischer $
 #
 # SSL/TLS: PostgreSQL SSL/TLS Support Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105013");
-  script_version("$Revision: 11898 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:17:45 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 11915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 10:05:09 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-25 11:29:22 +0100 (Fri, 25 Apr 2014)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/postgresql", 5432);
   script_mandatory_keys("PostgreSQL/installed");
 
-  script_tag(name:"summary", value:"Checks if the remote PostgreSQL Server supports SSL/TLS.");
+  script_tag(name:"summary", value:"Checks if the remote PostgreSQL server supports SSL/TLS.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -67,7 +67,7 @@ if( ! recv ) exit( 0 );
 if( recv == "S" ) {
   set_kb_item( name:"postgres/" + port + "/starttls", value:TRUE );
   set_kb_item( name:"starttls_typ/" + port, value:"postgres" );
-  log_message( port:port, data:"The remote PostgreSQL Server supports SSL/TLS." );
+  log_message( port:port, data:"The remote PostgreSQL server supports SSL/TLS." );
 }
 
 exit( 0 );

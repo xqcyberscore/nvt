@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx217363.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_xenserver_ctx217363.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Citrix XenServer Security Update for CVE-2016-7777 (CTX217363)
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-7777");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
 
   script_name("Citrix XenServer Security Update for CVE-2016-7777 (CTX217363)");
 
@@ -48,7 +48,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-25 10:24:27 +0200 (Tue, 25 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("Citrix Xenserver Local Security Checks");
@@ -56,7 +56,7 @@ if (description)
   script_dependencies("gb_xenserver_version.nasl");
   script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

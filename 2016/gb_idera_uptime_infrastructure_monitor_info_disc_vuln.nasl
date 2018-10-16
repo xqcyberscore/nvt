@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_idera_uptime_infrastructure_monitor_info_disc_vuln.nasl 11426 2018-09-17 09:38:26Z asteins $
+# $Id: gb_idera_uptime_infrastructure_monitor_info_disc_vuln.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Idera Up.time Agent Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:idera:uptime_infrastructure_monitor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808235");
-  script_version("$Revision: 11426 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2015-8268");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-27 17:28:12 +0530 (Mon, 27 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Idera Up.time Agent Information Disclosure Vulnerability");
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Idera Up.time
   Agent and is prone to information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect nvt and check whether it is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an unauthenticated access
   to remote file system that the uptime.agent has read access to.");
@@ -54,8 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Up.time agent versions 7.5 and 7.6
   on Linux");
 
-  script_tag(name:"solution", value:"Upgrade to Up.time agent 7.7 or later.
-  For updates refer to https://www.idera.com");
+  script_tag(name:"solution", value:"Upgrade to Up.time agent 7.7 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://vuldb.com/?id.87807");
@@ -67,6 +65,7 @@ if(description)
   script_dependencies("gb_uptime_infrastructure_monitor_remote_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("Idera/Uptime/Infrastructure/Monitor/Installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://www.idera.com");
   exit(0);
 }
 

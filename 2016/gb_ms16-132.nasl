@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-132.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms16-132.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Microsoft Graphics Component Multiple Vulnerabilities (3199120)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809466");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-7210", "CVE-2016-7205", "CVE-2016-7217", "CVE-2016-7256");
   script_bugtraq_id(94030, 94033, 94066, 94156);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-09 09:56:10 +0530 (Wed, 09 Nov 2016)");
   script_name("Microsoft Graphics Component Multiple Vulnerabilities (3199120)");
 
@@ -73,10 +73,7 @@ if(description)
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-
-  https://technet.microsoft.com/library/security/MS16-132");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -109,8 +106,8 @@ if(!sysPath ){
   exit(0);
 }
 
-dllver = fetch_file_version(sysPath, file_name:"System32\Fontsub.dll");
-edgeVer = fetch_file_version(sysPath, file_name:"System32\Edgehtml.dll");
+dllver = fetch_file_version(sysPath:sysPath, file_name:"System32\Fontsub.dll");
+edgeVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Edgehtml.dll");
 if(!dllver && !edgeVer){
   exit(0);
 }

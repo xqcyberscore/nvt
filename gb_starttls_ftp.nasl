@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_ftp.nasl 11898 2018-10-15 07:17:45Z cfischer $
+# $Id: gb_starttls_ftp.nasl 11915 2018-10-16 08:05:09Z cfischer $
 #
 # SSL/TLS: FTP 'AUTH TLS' Command Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105009");
-  script_version("$Revision: 11898 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:17:45 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 11915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 10:05:09 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 16:39:22 +0100 (Wed, 09 Apr 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_dependencies("ftpserver_detect_type_nd_version.nasl");
   script_require_ports("Services/ftp", 21);
 
-  script_tag(name:"summary", value:"Checks if the remote FTP Server supports SSL/TLS (FTPS) with the 'AUTH TLS' command.");
+  script_tag(name:"summary", value:"Checks if the remote FTP server supports SSL/TLS (FTPS) with the 'AUTH TLS' command.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -70,7 +70,7 @@ if( ! buf ) exit( 0 );
 if( "234" >< buf ) {
   set_kb_item( name:"ftp/" + port + "/starttls", value:TRUE );
   set_kb_item( name:"starttls_typ/" + port, value:"ftp" );
-  log_message( port:port, data:"The remote FTP Server supports TLS (FTPS) with the 'AUTH TLS' command." );
+  log_message( port:port, data:"The remote FTP server supports TLS (FTPS) with the 'AUTH TLS' command." );
 }
 
 exit( 0 );

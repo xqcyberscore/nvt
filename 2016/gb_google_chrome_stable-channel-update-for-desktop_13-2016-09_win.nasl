@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop_13-2016-09_win.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop_13-2016-09_win.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop_13-2016-09)-Windows
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809045");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-5170", "CVE-2016-5171", "CVE-2016-5172", "CVE-2016-5173",
                 "CVE-2016-5174", "CVE-2016-5175", "CVE-2016-7549", "CVE-2016-5176");
   script_bugtraq_id(92942, 93160, 93234);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-15 11:32:52 +0530 (Thu, 15 Sep 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_13-2016-09)-Windows");
 
@@ -70,8 +70,7 @@ if(description)
   prior to 53.0.2785.113 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version
-  53.0.2785.113 or later.
-  For updates refer to http://www.google.com/chrome");
+  53.0.2785.113 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -84,6 +83,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

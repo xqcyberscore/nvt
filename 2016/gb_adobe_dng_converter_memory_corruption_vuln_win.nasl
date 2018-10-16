@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_dng_converter_memory_corruption_vuln_win.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_adobe_dng_converter_memory_corruption_vuln_win.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Adobe DNG Converter Memory Corruption Vulnerability - (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:dng_converter";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809763");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-7856");
   script_bugtraq_id(94875);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-12-15 17:16:00 +0530 (Thu, 15 Dec 2016)");
   script_name("Adobe DNG Converter Memory Corruption Vulnerability - (Windows)");
 
@@ -52,8 +52,7 @@ if(description)
   Windows");
 
   script_tag(name:"solution", value:"Upgrade to Adobe DNG Converter version 9.8
-  or later. For updates refer to,
-  https://www.adobe.com/support/downloads/product.jsp?product=106&platform=Windows");
+  or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
@@ -63,6 +62,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_adobe_dng_converter_detect_win.nasl");
   script_mandatory_keys("Adobe/DNG/Converter/Win/Version");
+  script_xref(name:"URL", value:"https://www.adobe.com/support/downloads/product.jsp?product=106&platform=Windows");
   exit(0);
 }
 

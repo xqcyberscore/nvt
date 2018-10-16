@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln03_jan16_macosx.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_wireshark_mult_dos_vuln03_jan16_macosx.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Wireshark Multiple Denial-of-Service Vulnerabilities-03 January16 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806948");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2015-8716", "CVE-2015-8715", "CVE-2015-8714", "CVE-2015-8713",
                 "CVE-2015-8719", "CVE-2015-8717", "CVE-2015-8712");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-01-11 11:59:19 +0530 (Mon, 11 Jan 2016)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-03 January16 (Mac OS X)");
 
@@ -73,7 +73,7 @@ if(description)
   on Mac OS X");
 
   script_tag(name:"solution", value:"Upgrade to Wireshark version 1.12.9 or
-  later, For updates refer to https://www.wireshark.org");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

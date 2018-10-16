@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-027.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms16-027.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Microsoft Windows Media Remote Code Execution Vulnerabilities (3143146)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806897");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-0098", "CVE-2016-0101");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-03-09 09:44:08 +0530 (Wed, 09 Mar 2016)");
   script_name("Microsoft Windows Media Remote Code Execution Vulnerabilities (3143146)");
 
@@ -53,9 +53,7 @@ if(description)
   Microsoft Windows 10 x32/x64");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-027");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -90,8 +88,8 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer1 = fetch_file_version(sysPath, file_name:"System32\Wmp.dll");
-sysVer2 = fetch_file_version(sysPath, file_name:"System32\Mfds.dll");
+sysVer1 = fetch_file_version(sysPath:sysPath, file_name:"System32\Wmp.dll");
+sysVer2 = fetch_file_version(sysPath:sysPath, file_name:"System32\Mfds.dll");
 
 if(!sysVer1 && !sysVer2){
   exit(0);

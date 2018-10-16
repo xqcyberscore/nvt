@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-087.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms16-087.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Microsoft Windows Print Spooler Components Multiple Vulnerabilities (3170005)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808194");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-3238", "CVE-2016-3239");
   script_bugtraq_id(91609, 91612);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-13 08:01:45 +0530 (Wed, 13 Jul 2016)");
   script_name("Microsoft Windows Print Spooler Components Multiple Vulnerabilities (3170005)");
 
@@ -63,9 +63,7 @@ if(description)
   Microsoft Windows 10 Version 1511 for 32-bit/64-bit");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-087");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -100,7 +98,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"System32\Win32spl.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"System32\Win32spl.dll");
 if(!sysVer){
   exit(0);
 }

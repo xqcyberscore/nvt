@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_dos_vuln03_feb16.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_apache_subversion_dos_vuln03_feb16.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Apache Subversion 'mod_dav_svn' Denial Of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806859");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2014-8108");
   script_bugtraq_id(71725);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-08 18:19:08 +0530 (Mon, 08 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Subversion 'mod_dav_svn' Denial Of Service Vulnerability");
@@ -54,8 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Apache Subversion 1.7.x before 1.7.19
   and 1.8.x before 1.8.11");
 
-  script_tag(name:"solution", value:"Upgrade to version 1.7.19, or 1.8.11 or later,
-  For updates refer to https://subversion.apache.org");
+  script_tag(name:"solution", value:"Upgrade to version 1.7.19, or 1.8.11 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

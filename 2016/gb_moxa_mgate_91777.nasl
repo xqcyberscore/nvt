@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_mgate_91777.nasl 11426 2018-09-17 09:38:26Z asteins $
+# $Id: gb_moxa_mgate_91777.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Moxa MGate Authentication Bypass Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2016-5804");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11426 $");
+  script_version("$Revision: 11903 $");
 
   script_name("Moxa MGate Authentication Bypass Vulnerability");
 
@@ -57,7 +57,7 @@ MGate MB3270, versions prior to v2.7");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-25 14:23:53 +0200 (Mon, 25 Jul 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -66,7 +66,7 @@ MGate MB3270, versions prior to v2.7");
   script_require_ports("Services/www", 80, "Services/telnet", 23);
   script_mandatory_keys("moxa/mgate/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

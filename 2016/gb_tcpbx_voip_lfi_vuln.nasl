@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tcpbx_voip_lfi_vuln.nasl 11647 2018-09-27 09:31:07Z jschulte $
+# $Id: gb_tcpbx_voip_lfi_vuln.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # tcPbX 'tcpbx_lang' Parameter Local File Inclusion Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:tcpbx:tcpbx_voip";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809009");
-  script_version("$Revision: 11647 $");
+  script_version("$Revision: 11903 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-27 11:31:07 +0200 (Thu, 27 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-23 16:18:17 +0530 (Tue, 23 Aug 2016)");
   script_name("tcPbX 'tcpbx_lang' Parameter Local File Inclusion Vulnerability");
 
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"affected", value:"tcPbX versions prior to 1.2.1.");
 
-  script_tag(name:"solution", value:"Update to version 1.2.1 or later.
-  For updates refer to http://www.tcpbx.org");
+  script_tag(name:"solution", value:"Update to version 1.2.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

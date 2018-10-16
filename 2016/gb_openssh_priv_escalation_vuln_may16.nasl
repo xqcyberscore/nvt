@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_priv_escalation_vuln_may16.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_openssh_priv_escalation_vuln_may16.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # OpenSSH Privilege Escalation Vulnerability - May16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807574");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2015-8325");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-02 15:45:55 +0530 (Mon, 02 May 2016)");
   script_name("OpenSSH Privilege Escalation Vulnerability - May16");
 
@@ -52,8 +52,7 @@ if(description)
 
   script_tag(name:"affected", value:"OpenSSH versions through 7.2p2");
 
-  script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.2p2-3 or later.
-  For updates refer to http://www.openssh.com");
+  script_tag(name:"solution", value:"Upgrade to OpenSSH version 7.2p2-3 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,6 +67,7 @@ if(description)
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("openssh/detected");
+  script_xref(name:"URL", value:"http://www.openssh.com");
   exit(0);
 }
 

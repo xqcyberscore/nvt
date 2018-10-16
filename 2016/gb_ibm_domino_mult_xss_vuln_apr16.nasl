@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_mult_xss_vuln_apr16.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_ibm_domino_mult_xss_vuln_apr16.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # IBM Domino Multiple Cross-site Scripting Vulnerabilities - Apr16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807649");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2015-2014", "CVE-2015-2015");
   script_bugtraq_id(76373, 76376);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:52 +0530 (Wed, 06 Apr 2016)");
   script_name("IBM Domino Multiple Cross-site Scripting Vulnerabilities - Apr16");
 
@@ -54,9 +54,7 @@ if(description)
   and 9.0 before 9.0.1 FP4.");
 
   script_tag(name:"solution", value:"Upgrade to IBM Domino 8.5.3 FP6 IF9 or
-  9.0.1 FP4 or later.
-  For more information refer to,
-  http://www-01.ibm.com/support/docview.wss?uid=swg21663023");
+  9.0.1 FP4 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +67,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_lotus_domino_detect.nasl");
   script_mandatory_keys("Domino/Version");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21663023");
   exit(0);
 }
 

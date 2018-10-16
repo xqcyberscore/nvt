@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiki_wiki_cms_arbitrary_file_download_vuln.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_tiki_wiki_cms_arbitrary_file_download_vuln.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Tiki Wiki CMS Groupware Arbitrary File Download Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808576");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-12 12:32:54 +0530 (Tue, 12 Jul 2016)");
   script_name("Tiki Wiki CMS Groupware Arbitrary File Download Vulnerability");
   script_category(ACT_ATTACK);
@@ -59,11 +59,12 @@ if(description)
   script_tag(name:"affected", value:"Tiki Wiki CMS Groupware version 15.0");
 
   script_tag(name:"solution", value:"Upgrade to Tiki Wiki CMS Groupware version 15.1 or
-  later. For updates refer to https://tiki.org");
+  later.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
+  script_xref(name:"URL", value:"https://tiki.org");
   exit(0);
 }
 

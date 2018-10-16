@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powershell_core_detect_lin.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: gb_powershell_core_detect_lin.nasl 11902 2018-10-15 09:26:53Z santu $
 #
 # PowerShell Version Detection (Linux)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812746");
-  script_version("$Revision: 10905 $");
+  script_version("$Revision: 11902 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 11:26:53 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-31 10:53:40 +0530 (Wed, 31 Jan 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("PowerShell Version Detection (Linux)");
@@ -57,32 +57,35 @@ include("host_details.inc");
 ps_sock = ssh_login_or_reuse_connection();
 if(!ps_sock) exit( 0 );
 
-paths = find_bin(prog_name:"pwsh", sock:ps_sock);
-foreach bin (paths)
+list = make_list('pwsh-preview', 'pwsh');
+foreach pgm (list)
 {
-  psVer = get_bin_version(full_prog_name:chomp(bin), sock:ps_sock, version_argv:"-v",
-                           ver_pattern:"PowerShell v([0-9a-z.-]+)");
-
-  if(psVer[1])
+  paths = find_bin(prog_name:pgm, sock:ps_sock);
+  foreach bin (paths)
   {
-    ##For preview versions
-    psVer = ereg_replace(pattern:"-preview", string:psVer[1], replace:"");
+    psVer = get_bin_version(full_prog_name:chomp(bin), sock:ps_sock, version_argv:"-v",
+                            ver_pattern:"PowerShell v?([0-9a-z.-]+)");
 
-    set_kb_item(name:"PowerShell/Linux/Ver", value:psVer);
+   if(psVer[1])
+   {
+      ##For preview versions
+      psVer = ereg_replace(pattern:"-preview", string:psVer[1], replace:"");
 
-    ## New cpe created
-    cpe = build_cpe( value:psVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:powershell:" );
-    if( isnull( cpe ) )
-      cpe = "cpe:/a:microsoft:powershell";
+      set_kb_item(name:"PowerShell/Linux/Ver", value:psVer);
 
-    register_product( cpe:cpe, location:bin );
+      cpe = build_cpe( value:psVer, exp:"^([0-9rc.-]+)", base:"cpe:/a:microsoft:powershell:" );
+      if( isnull( cpe ) )
+        cpe = "cpe:/a:microsoft:powershell";
 
-    log_message(data:build_detection_report(app:"PowerShell",
+      register_product( cpe:cpe, location:bin );
+
+      log_message(data:build_detection_report(app:"PowerShell",
                                               version:psVer,
                                               install:bin,
                                               cpe:cpe,
                                               concluded:psVer));
-    exit(0);
+      exit(0);
+    }
   }
 }
 close(ps_sock);

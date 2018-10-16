@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_endpoint_encryption_info_disc_vuln.nasl 11426 2018-09-17 09:38:26Z asteins $
+# $Id: gb_symantec_endpoint_encryption_info_disc_vuln.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Symantec Endpoint Encryption Client Memory Dump Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE= "cpe:/a:symantec:endpoint_encryption";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808071");
-  script_version("$Revision: 11426 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2015-6556");
   script_tag(name:"cvss_base", value:"2.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 13:17:49 +0530 (Tue, 07 Jun 2016)");
   script_name("Symantec Endpoint Encryption Client Memory Dump Information Disclosure Vulnerability");
 
@@ -53,7 +53,7 @@ if(description)
   prior to 11.1.0.");
 
   script_tag(name:"solution", value:"Update to Symantec Endpoint Encryption (SEE)
-  version 11.1.0 or later. For updates refer to http://www.symantec.com");
+  version 11.1.0 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -65,6 +65,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_symantec_endpoint_encryption_detect.nasl");
   script_mandatory_keys("Symantec/Endpoint/Encryption/Win/Ver");
+  script_xref(name:"URL", value:"http://www.symantec.com");
   exit(0);
 }
 

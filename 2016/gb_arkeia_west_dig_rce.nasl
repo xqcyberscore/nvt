@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arkeia_west_dig_rce.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_arkeia_west_dig_rce.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Western Digital Arkeia <= v11.0.12 Remote Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:arkeia:western_digital_arkeia";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107041");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2015-7709");
 
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-16 13:16:06 +0200 (Tue, 16 Aug 2016)");
 
   script_name("Western Digital Arkeia <= v11.0.12 Remote Code Execution Vulnerability");
@@ -50,7 +50,7 @@ if(description)
 
   script_tag(name:"summary", value:"This host is running Arkeia Appliance and is affected by a remote code execution vulnerability.");
   script_tag(name:"vuldetect", value:"Execute a command using the ARKFS_EXEC_CMD function");
-  script_tag(name:"solution", value:"For updates refer to http://www.arkeia.com/");
+  script_tag(name:"solution", value:"");
   script_tag(name:"insight", value:"The insufficient checks on the authentication of all clients in arkeiad daemon can be bypassed.");
   script_tag(name:"affected", value:"Western Digital Arkeia 11.0.12 and below.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary commands with root or SYSTEM privileges.");
@@ -58,6 +58,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_active");
 
+  script_xref(name:"URL", value:"http://www.arkeia.com/");
   exit(0);
 }
 

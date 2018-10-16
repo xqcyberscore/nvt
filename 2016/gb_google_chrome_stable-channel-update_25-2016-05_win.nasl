@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update_25-2016-05_win.nasl 11426 2018-09-17 09:38:26Z asteins $
+# $Id: gb_google_chrome_stable-channel-update_25-2016-05_win.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update_25-2016-05)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807334");
-  script_version("$Revision: 11426 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-1672", "CVE-2016-1673", "CVE-2016-1674", "CVE-2016-1675",
                 "CVE-2016-1676", "CVE-2016-1677", "CVE-2016-1678", "CVE-2016-1679",
                 "CVE-2016-1680", "CVE-2016-1681", "CVE-2016-1682", "CVE-2016-1683",
@@ -38,7 +38,7 @@ if(description)
                 "CVE-2016-1692", "CVE-2016-1693", "CVE-2016-1694", "CVE-2016-1695");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-30 13:22:34 +0530 (Mon, 30 May 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update_25-2016-05)-Windows");
 
@@ -100,8 +100,7 @@ if(description)
   prior to 51.0.2704.63 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version
-  51.0.2704.63 or later.
-  For updates refer to http://www.google.com/chrome");
+  51.0.2704.63 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -114,6 +113,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

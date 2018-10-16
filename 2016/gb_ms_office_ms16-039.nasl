@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-039.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms_office_ms16-039.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Microsoft Office Remote Code Execution Vulnerability (3148522)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807800");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-0145");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-13 11:42:32 +0530 (Wed, 13 Apr 2016)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (3148522)");
 
@@ -50,9 +50,7 @@ if(description)
   Microsoft Office 2010 Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/library/security/MS16-039");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

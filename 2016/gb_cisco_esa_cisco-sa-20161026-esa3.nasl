@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20161026-esa3.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_cisco_esa_cisco-sa-20161026-esa3.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Cisco Email Security Appliance Corrupted Attachment Fields Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-6356");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11903 $");
 
   script_name("Cisco Email Security Appliance Corrupted Attachment Fields Denial of Service Vulnerability");
 
@@ -43,33 +43,31 @@ if (description)
 
   script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
   script_tag(name:"summary", value:"A vulnerability in the email message filtering feature of Cisco AsyncOS Software for Cisco Email
-Security Appliances could allow an unauthenticated, remote attacker to cause an affected device to
-stop scanning and forwarding email messages due to a denial of service (DoS) condition.
+  Security Appliances could allow an unauthenticated, remote attacker to cause an affected device to
+  stop scanning and forwarding email messages due to a denial of service (DoS) condition.
 
-The vulnerability is due to improper input validation of email attachments that have corrupted
-fields. An attacker could exploit this vulnerability by sending a crafted email message, which has
-an attachment with corrupted fields, through an affected device. When the affected software filters
-the attachment, the filtering process could crash and restart, resulting in a DoS condition. After
-the filtering process restarts, the software resumes filtering for the same attachment, causing the
-filtering process to crash and restart again. A successful exploit could allow the attacker to cause
-a repeated DoS condition.
+  The vulnerability is due to improper input validation of email attachments that have corrupted
+  fields. An attacker could exploit this vulnerability by sending a crafted email message, which has
+  an attachment with corrupted fields, through an affected device. When the affected software filters
+  the attachment, the filtering process could crash and restart, resulting in a DoS condition. After
+  the filtering process restarts, the software resumes filtering for the same attachment, causing the
+  filtering process to crash and restart again. A successful exploit could allow the attacker to cause
+  a repeated DoS condition.
 
-Cisco has released software updates that address this vulnerability. There are no workarounds that
-address this vulnerability.
-
-http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20161026-esa3");
+  Cisco has released software updates that address this vulnerability. There are no workarounds that
+  address this vulnerability.");
 
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-27 14:11:57 +0200 (Thu, 27 Oct 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_esa_version.nasl");
   script_mandatory_keys("cisco_esa/installed");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

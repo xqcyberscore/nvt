@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_connect_mult_vuln_feb16.nasl 11493 2018-09-20 09:02:35Z asteins $
+# $Id: gb_adobe_connect_mult_vuln_feb16.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Adobe Connect Multiple Vulnerabilities Feb16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:connect";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806868");
-  script_version("$Revision: 11493 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-0950", "CVE-2016-0949", "CVE-2016-0948");
   script_bugtraq_id(83122, 83120, 83115);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-20 11:02:35 +0200 (Thu, 20 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-15 12:26:35 +0530 (Mon, 15 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe Connect Multiple Vulnerabilities Feb16");
@@ -60,7 +60,7 @@ if(description)
   script_tag(name:"affected", value:"Adobe Connect versions before 9.5.2");
 
   script_tag(name:"solution", value:"Upgrade to Adobe Connect version 9.5.2 or
-  later, For updates refer to http://www.adobe.com");
+  later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -72,6 +72,7 @@ if(description)
   script_dependencies("gb_adobe_connect_detect.nasl");
   script_mandatory_keys("adobe/connect/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://www.adobe.com");
   exit(0);
 }
 

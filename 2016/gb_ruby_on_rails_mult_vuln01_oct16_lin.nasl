@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_mult_vuln01_oct16_lin.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_ruby_on_rails_mult_vuln01_oct16_lin.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Ruby on Rails Multiple Vulnerabilities-01 Oct16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809357");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-0752", "CVE-2016-0751", "CVE-2015-7576");
   script_bugtraq_id(81801, 81800, 81803);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-17 18:48:40 +0530 (Mon, 17 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Ruby on Rails Multiple Vulnerabilities-01 Oct16 (Linux)");
@@ -64,8 +64,7 @@ if(description)
   Ruby on Rails 4.2.x before 4.2.5.1 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to Ruby on Rails 3.2.22.1 or
-  4.1.14.1 or 4.2.5.1, or later,
-  For updates refer to http://rubyonrails.org");
+  4.1.14.1 or 4.2.5.1, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -77,6 +76,7 @@ if(description)
   script_dependencies("secpod_ruby_rails_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("RubyOnRails/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 3000);
+  script_xref(name:"URL", value:"http://rubyonrails.org");
   exit(0);
 }
 

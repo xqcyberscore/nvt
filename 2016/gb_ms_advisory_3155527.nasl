@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_advisory_3155527.nasl 11614 2018-09-26 07:39:28Z asteins $
+# $Id: gb_ms_advisory_3155527.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Microsoft Windows Cipher Suites For FalseStart MiTM Vulnerability (3155527)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807326");
-  script_version("$Revision: 11614 $");
+  script_version("$Revision: 11903 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-26 09:39:28 +0200 (Wed, 26 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 12:46:33 +0530 (Wed, 11 May 2016)");
   script_name("Microsoft Windows Cipher Suites For FalseStart MiTM Vulnerability (3155527)");
 
@@ -52,9 +52,7 @@ if(description)
   Microsoft Windows Server 2012/2012R2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
-  listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,
-  https://technet.microsoft.com/en-us/library/security/3155527");
+  listed hotfixes or download and update mentioned hotfixes in the advisory");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -87,7 +85,7 @@ if(!sysPath ){
   exit(0);
 }
 
-sysVer = fetch_file_version(sysPath, file_name:"system32\Lsasrv.dll");
+sysVer = fetch_file_version(sysPath:sysPath, file_name:"system32\Lsasrv.dll");
 if(!sysVer){
   exit(0);
 }

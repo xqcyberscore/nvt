@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_vuln01_july16.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_typo3_mult_vuln01_july16.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # TYPO3 Multiple Vulnerabilities-01 July16
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808270");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-07-27 10:28:48 +0530 (Wed, 27 Jul 2016)");
   script_name("TYPO3 Multiple Vulnerabilities-01 July16");
 
@@ -58,8 +58,7 @@ if(description)
   7.6.0 to 7.6.9 and 8.0.0 to 8.2.0");
 
   script_tag(name:"solution", value:"Upgrade to TYPO3 version 6.2.26 or
-  7.6.10 or 8.2.1 or later.
-  For updates refer to https://typo3.org/typo3-cms");
+  7.6.10 or 8.2.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -76,6 +75,7 @@ if(description)
   script_dependencies("gb_typo3_detect.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"https://typo3.org/typo3-cms");
   exit(0);
 }
 

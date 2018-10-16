@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_aug12_win.nasl 11870 2018-10-12 11:12:45Z cfischer $
+# $Id: gb_adobe_prdts_mult_vuln_aug12_win.nasl 11905 2018-10-15 12:43:50Z cfischer $
 #
 # Adobe Reader Multiple Vulnerabilities - Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802936");
-  script_version("$Revision: 11870 $");
+  script_version("$Revision: 11905 $");
   script_cve_id("CVE-2012-4149", "CVE-2012-4148", "CVE-2012-4147", "CVE-2012-2051",
                 "CVE-2012-2050", "CVE-2012-4160", "CVE-2012-2049", "CVE-2012-4159",
                 "CVE-2012-4158", "CVE-2012-4157", "CVE-2012-4156", "CVE-2012-4155",
@@ -39,19 +39,24 @@ if(description)
                     55018, 55017, 55016, 55015, 55012, 55027, 55013, 55010, 55011);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-12 13:12:45 +0200 (Fri, 12 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 14:43:50 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2012-08-20 11:01:35 +0530 (Mon, 20 Aug 2012)");
   script_name("Adobe Reader Multiple Vulnerabilities - Windows");
 
   script_tag(name:"summary", value:"This host is installed with Adobe Reader and is prone to multiple
-vulnerabilities.");
+  vulnerabilities.");
+
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name:"insight", value:"The flaws are due to unspecified errors which can be exploited to corrupt
-memory.");
+
+  script_tag(name:"insight", value:"The flaws are due to unspecified errors which can be exploited to corrupt memory.");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code in
-the context of the affected application or cause a denial of service.");
+  the context of the affected application or cause a denial of service.");
+
   script_tag(name:"affected", value:"Adobe Reader versions 9.x through 9.5.1 and 10.x through 10.1.3 on Windows");
+
   script_tag(name:"solution", value:"Upgrade to Adobe Reader version 9.5.2 or 10.1.4 or later.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -68,15 +73,18 @@ the context of the affected application or cause a denial of service.");
 include("host_details.inc");
 include("version_func.inc");
 
-if(!readerVer = get_app_version(cpe:CPE)){
-  exit(0);
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
+vers = infos['version'];
+
+if( vers !~ "^(9|10)\.0" ) exit( 99 );
+
+path = infos['location'];
+
+if( version_in_range( version:vers, test_version:"9.0", test_version2:"9.5.1" ) ||
+    version_in_range( version:vers, test_version:"10.0", test_version2:"10.1.3" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"9.5.2/10.1.4", install_path:path );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-if(readerVer =~ "^(9|10)"){
-  if(version_in_range(version:ver, test_version:"9.0", test_version2:"9.5.1") ||
-     version_in_range(version:ver, test_version:"10.0", test_version2:"10.1.3"))
-  {
-    security_message( port: 0, data: "The target host was found to be vulnerable" );
-    exit(0);
-  }
-}
+exit( 99 );

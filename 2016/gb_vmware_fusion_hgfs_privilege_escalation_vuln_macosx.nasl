@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_fusion_hgfs_privilege_escalation_vuln_macosx.nasl 11426 2018-09-17 09:38:26Z asteins $
+# $Id: gb_vmware_fusion_hgfs_privilege_escalation_vuln_macosx.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # VMware Fusion 'HGFS' Feature Privilege Escalation Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:fusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809020");
-  script_version("$Revision: 11426 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-5330");
   script_bugtraq_id(92323);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-01 10:20:57 +0530 (Thu, 01 Sep 2016)");
   script_name("VMware Fusion 'HGFS' Feature Privilege Escalation Vulnerability (Mac OS X)");
 
@@ -54,7 +54,7 @@ if(description)
   Mac OS X.");
 
   script_tag(name:"solution", value:"Upgrade to VMware Fusion version
-  8.1.1 or later, For updates refer to http://www.vmware.com");
+  8.1.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

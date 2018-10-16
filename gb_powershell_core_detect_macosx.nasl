@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powershell_core_detect_macosx.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: gb_powershell_core_detect_macosx.nasl 11902 2018-10-15 09:26:53Z santu $
 #
 # PowerShell Core Version Detection (Mac OS X)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812744");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 11902 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 11:26:53 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2018-01-30 14:45:05 +0530 (Tue, 30 Jan 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("PowerShell Core Version Detection (Mac OS X)");
@@ -60,30 +60,36 @@ if(!sock){
   exit(0);
 }
 
-psVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
-                                       "PowerShell.app/Contents/Info CFBundleShortVersionString"));
+list = make_list("PowerShell-preview.app", "PowerShell.app");
 
-close(sock);
+foreach app (list)
+{
+  psVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" + app +
+                                       "/Contents/Info CFBundleShortVersionString"));
 
-if(isnull(psVer) || "does not exist" >< psVer){
-  exit(0);
+
+  if(isnull(psVer)|| "does not exist" >< psVer){
+    continue;
+  }
+
+  close(sock);
+
+  ## For preview versions
+  psVer = ereg_replace(pattern:"-preview", string:psVer, replace:"");
+
+  set_kb_item(name: "PowerShell/MacOSX/Version", value:psVer);
+
+  ## New cpe created
+  cpe = build_cpe(value:psVer, exp:"^([0-9rc.-]+)", base:"cpe:/a:microsoft:powershell:");
+  if(isnull(cpe))
+    cpe = 'cpe:/a:microsoft:powershell';
+
+  register_product(cpe:cpe, location:'/Applications/' + app);
+
+  log_message(data: build_detection_report(app: "PowerShell",
+                                           version: psVer,
+                                           install: "/Applications/" + app,
+                                           cpe: cpe,
+                                           concluded: psVer));
 }
-
-## For preview versions
-psVer = ereg_replace(pattern:"-preview", string:psVer, replace:"");
-
-set_kb_item(name: "PowerShell/MacOSX/Version", value:psVer);
-
-## New cpe created
-cpe = build_cpe(value:psVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:powershell:");
-if(isnull(cpe))
-  cpe = 'cpe:/a:microsoft:powershell';
-
-register_product(cpe:cpe, location:'/Applications/PowerShell.app');
-
-log_message(data: build_detection_report(app: "PowerShell",
-                                         version: psVer,
-                                         install: "/Applications/PowerShell.app",
-                                         cpe: cpe,
-                                         concluded: psVer));
 exit(0);

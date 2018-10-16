@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.nasl 10407 2018-07-05 07:11:01Z cfischer $
+# $Id: host_details.nasl 11908 2018-10-15 13:35:13Z cfischer $
 #
 # Host Details
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103997");
-  script_version("$Revision: 10407 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 09:11:01 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 11908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 15:35:13 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2011-03-16 12:21:12 +0100 (Wed, 16 Mar 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -52,6 +52,7 @@ if(description)
 
 SCRIPT_DESC = "Host Details";
 
+include("xml.inc");
 include("host_details.inc");
 
 hostname = get_host_name();
@@ -63,7 +64,7 @@ if( ! isnull( hostname ) && hostname != '' && hostname != hostip ) {
   register_host_detail( name:"hostname", value:hostname, desc:SCRIPT_DESC );
   #nb: This just has duplicated the hostame above (see r30003 in trunk)
   #Maybe there is another way to differ between them so keep this commented out for now
-  #register_host_detail( name:"DNS-via-TargetDefinition", value:hostname, desc:SCRIPT_DESC );
+  #Temp commented out: register_host_detail( name:"DNS-via-TargetDefinition", value:hostname, desc:SCRIPT_DESC );
 }
 
 if( hostname == hostip || hostname == "" || isnull( hostname ) ) {

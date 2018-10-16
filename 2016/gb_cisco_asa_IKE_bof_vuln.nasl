@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_IKE_bof_vuln.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_cisco_asa_IKE_bof_vuln.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Cisco ASA Software IKEv1 and IKEv2 Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cisco:asa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806682");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-1287");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-02-11 14:20:25 +0530 (Thu, 11 Feb 2016)");
   script_tag(name:"qod_type", value:"package");
   script_name("Cisco ASA Software IKEv1 and IKEv2 Buffer Overflow Vulnerability");
@@ -62,7 +62,7 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to 8.4(7.30) or 8.2(5.59)
   or 8.7(1.18) or 9.0(4.38) or 9.1(6.11) or 9.2(4.5) or 9.3(3.7) or 9.4(2.4) or
-  9.5(2.2). For updates refer to http://www.cisco.com");
+  9.5(2.2).");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

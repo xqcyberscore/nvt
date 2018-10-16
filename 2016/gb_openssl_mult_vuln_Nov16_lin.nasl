@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln_Nov16_lin.nasl 11426 2018-09-17 09:38:26Z asteins $
+# $Id: gb_openssl_mult_vuln_Nov16_lin.nasl 11903 2018-10-15 10:26:16Z asteins $
 # OpenSSL Multiple Vulnerabilities - Nov 16 (Linux)
 #
 # Authors:
@@ -28,12 +28,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107079");
-  script_version("$Revision: 11426 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-7054", "CVE-2016-7053");
 
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-11-11 11:19:11 +0100 (Fri, 11 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
@@ -41,8 +41,7 @@ if(description)
 
   script_tag(name:"summary", value:"This host is running OpenSSL and is prone
   to multiple vulnerabilities.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of the detection NVT and check if the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to:
 
   1. TLS connections using *-CHACHA20-POLY1305 ciphersuites are susceptible to a DoS attack by corrupting larger payloads. This can result in an OpenSSL crash..

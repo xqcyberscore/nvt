@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:archiva";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808280");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-4469", "CVE-2016-5005");
   script_bugtraq_id(91707, 91703);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-02 19:48:44 +0530 (Tue, 02 Aug 2016)");
   script_name("Apache Archiva Cross Site Scripting And CSRF Vulnerabilities");
 
@@ -58,8 +58,7 @@ if(description)
 
   script_tag(name:"affected", value:"Apache Archiva version 1.3.9 and prior.");
 
-  script_tag(name:"solution", value:"Upgrade to Apache Archiva 2.2.1 or later.
-  For updates refer to https://archiva.apache.org");
+  script_tag(name:"solution", value:"Upgrade to Apache Archiva 2.2.1 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -74,6 +73,7 @@ if(description)
   script_dependencies("gb_apache_archiva_detect.nasl");
   script_mandatory_keys("apache_archiva/installed");
   script_require_ports("Services/www", 8080, 80);
+  script_xref(name:"URL", value:"https://archiva.apache.org");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update_30-2013-07_lin.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_google_chrome_stable-channel-update_30-2013-07_lin.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Google Chrome Security Updates(stable-channel-update_30-2013-07)-Linux
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809069");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2013-2881", "CVE-2013-2882", "CVE-2013-2883", "CVE-2013-2884",
                 "CVE-2013-2885", "CVE-2013-2886");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-10-19 11:28:07 +0530 (Wed, 19 Oct 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update_30-2013-07)-Linux");
 
@@ -64,7 +64,7 @@ if(description)
   script_tag(name:"affected", value:"Google Chrome version prior to 28.0.1500.95 on Linux");
 
   script_tag(name:"solution", value:"Upgrade to Google Chrome version
-  28.0.1500.95 or later, For updates refer to http://www.google.com/chrome");
+  28.0.1500.95 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -77,6 +77,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
+  script_xref(name:"URL", value:"http://www.google.com/chrome");
   exit(0);
 }
 

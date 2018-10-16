@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_mysql.nasl 11898 2018-10-15 07:17:45Z cfischer $
+# $Id: gb_starttls_mysql.nasl 11915 2018-10-16 08:05:09Z cfischer $
 #
 # SSL/TLS: MySQL / MariaDB (STARTTLS-like) SSL/TLS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108071");
-  script_version("$Revision: 11898 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-15 09:17:45 +0200 (Mon, 15 Oct 2018) $");
+  script_version("$Revision: 11915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-16 10:05:09 +0200 (Tue, 16 Oct 2018) $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"creation_date", value:"2017-02-06 11:18:02 +0100 (Mon, 06 Feb 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL_MariaDB/installed");
 
-  script_tag(name:"summary", value:"Checks if the remote MySQL / MariaDB Server supports (STARTTLS-like) SSL/TLS.");
+  script_tag(name:"summary", value:"Checks if the remote MySQL / MariaDB server supports (STARTTLS-like) SSL/TLS.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -98,7 +98,7 @@ close( soc );
 if( hello_done ) {
   set_kb_item( name:"mysql/" + port + "/starttls", value:TRUE );
   set_kb_item( name:"starttls_typ/" + port, value:"mysql" );
-  log_message( port:port, data:"The remote MySQL / MariaDB Server supports (STARTTLS-like) SSL/TLS." );
+  log_message( port:port, data:"The remote MySQL / MariaDB server supports (STARTTLS-like) SSL/TLS." );
 }
 
 exit( 0 );

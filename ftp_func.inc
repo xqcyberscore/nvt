@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ftp_func.inc 7922 2017-11-28 10:06:28Z cfischer $
+# $Id: ftp_func.inc 11909 2018-10-15 14:42:32Z cfischer $
 #
 # Methods for handling FTP
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7922 $
+# $Revision: 11909 $
 #
 ###############################################################################
 
@@ -98,6 +98,8 @@ function get_ftp_banner( port ) {
       }
     }
   }
+
+  # TBD: Also include the output of the HELP command within the banner? (See e.g. sw_pure-ftpd_detect.nasl)
 
   replace_kb_item( name:"ftp/banner/" + port, value:banner );
   return banner;

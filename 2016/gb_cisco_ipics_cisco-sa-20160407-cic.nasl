@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ipics_cisco-sa-20160407-cic.nasl 11345 2018-09-12 07:02:17Z cfischer $
+# $Id: gb_cisco_ipics_cisco-sa-20160407-cic.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Cisco IP Interoperability and Collaboration System Cross-Site Scripting Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-1375");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11345 $");
+  script_version("$Revision: 11903 $");
 
   script_name("Cisco IP Interoperability and Collaboration System Cross-Site Scripting Vulnerability");
 
@@ -50,7 +50,7 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:02:17 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-04-11 14:05:33 +0200 (Mon, 11 Apr 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -58,7 +58,7 @@ if (description)
   script_dependencies("gb_cisco_ipics_version.nasl");
   script_mandatory_keys("cisco/ipics/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

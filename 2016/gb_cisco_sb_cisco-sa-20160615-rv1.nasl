@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sb_cisco-sa-20160615-rv1.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_cisco_sb_cisco-sa-20160615-rv1.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Cisco RV110W, RV130W, and RV215W Routers Cross-Site Scripting Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-1396");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
 
   script_name("Cisco RV110W, RV130W, and RV215W Routers Cross-Site Scripting Vulnerability");
 
@@ -57,7 +57,7 @@ attacker to access sensitive browser-based information.");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-06-17 13:54:53 +0200 (Fri, 17 Jun 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
@@ -65,7 +65,7 @@ attacker to access sensitive browser-based information.");
   script_dependencies("gb_cisco_small_business_devices_snmp_detect.nasl");
   script_mandatory_keys("cisco/small_business/model", "cisco/small_business/version");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

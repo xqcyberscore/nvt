@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_management_center_cisco-sa-20160907-fsss.nasl 11426 2018-09-17 09:38:26Z asteins $
+# $Id: gb_cisco_firesight_management_center_cisco-sa-20160907-fsss.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Cisco FireSIGHT System Software Cross-Site Scripting Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2016-6395");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_version("$Revision: 11426 $");
+  script_version("$Revision: 11903 $");
 
   script_name("Cisco FireSIGHT System Software Cross-Site Scripting Vulnerability");
 
@@ -57,14 +57,14 @@ this vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-17 11:38:26 +0200 (Mon, 17 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-09-08 10:15:39 +0700 (Thu, 08 Sep 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_firesight_management_center_version.nasl", "gb_cisco_firesight_management_center_http_detect.nasl");
   script_mandatory_keys("cisco_firesight_management_center/version");
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-056.nasl 11837 2018-10-11 09:17:05Z asteins $
+# $Id: gb_ms16-056.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # Microsoft Windows Journal Memory Corruption Vulnerability (3156761)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808019");
-  script_version("$Revision: 11837 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2016-0182");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-10-11 11:17:05 +0200 (Thu, 11 Oct 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-05-11 10:37:53 +0530 (Wed, 11 May 2016)");
   script_name("Microsoft Windows Journal Memory Corruption Vulnerability (3156761)");
 
@@ -100,7 +100,7 @@ if(!sysPath){
 
 sysPath = sysPath + "\Windows Journal";
 
-dllVer = fetch_file_version(sysPath, file_name:"Inkseg.dll");
+dllVer = fetch_file_version(sysPath:sysPath, file_name:"Inkseg.dll");
 if(!dllVer){
   exit(0);
 }

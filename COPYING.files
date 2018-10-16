@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 15 Oct 2018 11:21:34 +0200
+# Automatically created on:  Tue, 16 Oct 2018 10:38:28 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38864,6 +38864,11 @@
 2018/centos/gb_CESA-2018_2768_nss_centos7.nasl: GPLv2+
 2018/centos/gb_CESA-2018_2834_firefox_centos6.nasl: GPLv2+
 2018/centos/gb_CESA-2018_2835_firefox_centos7.nasl: GPLv2+
+2018/centos/gb_CESA-2018_2846_kernel_centos6.nasl: GPLv2+
+2018/centos/gb_CESA-2018_2881_firefox_centos6.nasl: GPLv2+
+2018/centos/gb_CESA-2018_2884_firefox_centos7.nasl: GPLv2+
+2018/centos/gb_CESA-2018_2892_glusterfs_centos6.nasl: GPLv2+
+2018/centos/gb_CESA-2018_2898_nss_centos6.nasl: GPLv2+
 2018/centos/gb_fedora_2018_46f3f13c68_libgxps_fc27.nasl: GPLv2+
 2018/centos/gb_fedora_2018_5392896132_dhcp_fc26.nasl: GPLv2+
 2018/centos/gb_fedora_2018_98684f429b_xen_fc27.nasl: GPLv2+
@@ -39144,6 +39149,9 @@
 2018/debian/deb_4314.nasl: GPLv2+
 2018/debian/deb_4315.nasl: GPLv2+
 2018/debian/deb_4316.nasl: GPLv2+
+2018/debian/deb_4317.nasl: GPLv2+
+2018/debian/deb_4318.nasl: GPLv2+
+2018/debian/deb_4319.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39587,6 +39595,8 @@
 2018/debian/deb_dla_1530.nasl: GPLv2+
 2018/debian/deb_dla_1531.nasl: GPLv2+
 2018/debian/deb_dla_1544.nasl: GPLv2+
+2018/debian/deb_dla_1545.nasl: GPLv2+
+2018/debian/deb_dla_1546.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -41201,6 +41211,7 @@
 2018/microsoft/gb_asp_dotnet_core_dos_vuln_may18_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_dos_vuln_sep18_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_dos_vuln_win.nasl: GPLv2+
+2018/microsoft/gb_asp_dotnet_core_info_disc_vuln_oct18_win.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_core_multiple_vuln.nasl: GPLv2+
 2018/microsoft/gb_asp_dotnet_sec_bypass_vuln_july18.nasl: GPLv2+
 2018/microsoft/gb_dotnet_core_sdk_dos_vuln_may18_win.nasl: GPLv2+
@@ -41499,6 +41510,9 @@
 2018/microsoft/gb_ms_powershell_dos_vuln_lin.nasl: GPLv2+
 2018/microsoft/gb_ms_powershell_dos_vuln_macosx.nasl: GPLv2+
 2018/microsoft/gb_ms_powershell_dos_vuln_win.nasl: GPLv2+
+2018/microsoft/gb_ms_powershell_info_disc_vuln_oct18_lin.nasl: GPLv2+
+2018/microsoft/gb_ms_powershell_info_disc_vuln_oct18_macosx.nasl: GPLv2+
+2018/microsoft/gb_ms_powershell_info_disc_vuln_oct18_win.nasl: GPLv2+
 2018/microsoft/gb_ms_powershell_sec_bypass_vuln_july18_lin.nasl: GPLv2+
 2018/microsoft/gb_ms_powershell_sec_bypass_vuln_july18_macosx.nasl: GPLv2+
 2018/microsoft/gb_ms_powershell_sec_bypass_vuln_july18_win.nasl: GPLv2+
@@ -41968,6 +41982,11 @@
 2018/opensuse/gb_suse_2018_2996_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_2998_1.nasl: GPLv2+
 2018/opensuse/gb_suse_2018_3001_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3035_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3036_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3043_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3051_1.nasl: GPLv2+
+2018/opensuse/gb_suse_2018_3056_1.nasl: GPLv2+
 2018/openvpn/gb_openvpn_win_dos_vuln.nasl: GPLv2+
 2018/openwebanalytics/gb_open_web_analytics_php_obj_inj_vuln.nasl: GPLv2+
 2018/openxchange/gb_open_xchange_appsuite_content_spoof_vuln_june18.nasl: GPLv2+
@@ -42573,8 +42592,12 @@
 2018/webmin/gb_webmin_xss_vuln_mar18_lin.nasl: GPLv2+
 2018/webmin/gb_webmin_xss_vuln_mar18_win.nasl: GPLv2+
 2018/western_digital/gb_wd_wdtv_rce_vuln.nasl: GPLv2+
+2018/wireshark/gb_wireshark_coap_n_steam_ihs_disc_diss_dos_vuln_macosx.nasl: GPLv2+
+2018/wireshark/gb_wireshark_coap_n_steam_ihs_disc_diss_dos_vuln_win.nasl: GPLv2+
 2018/wireshark/gb_wireshark_dos_vuln_macosx.nasl: GPLv2+
 2018/wireshark/gb_wireshark_dos_vuln_win.nasl: GPLv2+
+2018/wireshark/gb_wireshark_ms_wsp_dos_vuln_wnpa-sec-2018-47_macosx.nasl: GPLv2+
+2018/wireshark/gb_wireshark_ms_wsp_dos_vuln_wnpa-sec-2018-47_win.nasl: GPLv2+
 2018/wireshark/gb_wireshark_mult_dos_vuln01_apr18_macosx.nasl: GPLv2+
 2018/wireshark/gb_wireshark_mult_dos_vuln01_apr18_win.nasl: GPLv2+
 2018/wireshark/gb_wireshark_mult_dos_vuln_apr18_macosx.nasl: GPLv2+
@@ -60278,6 +60301,7 @@ gsf/2018/ibm/gb_ibm_was_liberty_non_sec_auth_info_disc_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_was_virtual_member_manager_sec_bypass_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_code_exec_vuln_swg21639553.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_code_exec_vuln_swg22016254.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_app_server_dir_trav_vuln_ibm10729521.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_info_disc_vuln_swg22016887.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_mitm_vuln_ibm10718837.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_app_server_priv_esc_vuln.nasl: GPLv2+
@@ -60311,6 +60335,7 @@ gsf/2018/ibm/gb_ibm_websphere_portal_ibm10732287.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_portal_info_disc_vuln_swg21642097.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_portal_mult_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_portal_swg22014276.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_portal_xss_vuln_ibm10731155.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_portal_xss_vuln_swg22012409.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_portal_xss_vuln_swg22012416.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_portal_xss_vuln_swg22013097.nasl: GPLv2+

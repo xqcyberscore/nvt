@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_arbitrary_code_exec_vuln_aug16_lin.nasl 11473 2018-09-19 11:21:09Z asteins $
+# $Id: gb_php_arbitrary_code_exec_vuln_aug16_lin.nasl 11903 2018-10-15 10:26:16Z asteins $
 #
 # PHP Arbitrary Code Execution Vulnerability - Aug16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808671");
-  script_version("$Revision: 11473 $");
+  script_version("$Revision: 11903 $");
   script_cve_id("CVE-2015-4116");
   script_bugtraq_id(75127);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-19 13:21:09 +0200 (Wed, 19 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-10-15 12:26:16 +0200 (Mon, 15 Oct 2018) $");
   script_tag(name:"creation_date", value:"2016-08-31 12:31:36 +0530 (Wed, 31 Aug 2016)");
   script_name("PHP Arbitrary Code Execution Vulnerability - Aug16 (Linux)");
 
@@ -54,7 +54,7 @@ if(description)
   before 5.6.11 on Linux.");
 
   script_tag(name:"solution", value:"Upgrade to PHP version 5.5.27,
-  or 5.6.11, or later. For updates refer to http://www.php.net");
+  or 5.6.11, or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
